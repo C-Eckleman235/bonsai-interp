@@ -370,7 +370,44 @@ details summary:focus-visible { outline: 2px solid var(--accent); outline-offset
       <figure><div class="tbl"><table><thead><tr><th>Question</th><th>Differential evolution</th><th>globalMOO</th></tr></thead><tbody>
       ${Object.keys(de.goals).map(g => `<tr><td><b>${esc(g.replaceAll("_", " "))}</b><div class="kinds">${esc(de.goals[g].question)}</div></td><td>${cell(de.goals[g])}</td><td>${cell(gm && gm.goals[g])}</td></tr>`).join("")}
       </tbody></table></div>
-      <figcaption>On this five-output problem with rare combinations, differential evolution met five of six goals at 624 evaluations each. globalMOO met two, but one of them was the most informative result: it found the token present and the pole silent with no pain at all ("He lost his nerve…"). The token route has more than one gate.</figcaption></figure>`);
+      <figcaption>On this five-output problem with rare combinations, differential evolution met five of six goals at 624 evaluations each. globalMOO met two, but one of them was the most informative result: it found the token present and the pole silent with no pain at all ("He lost his nerve…"). The token route has more than one gate. The "override" answer put the pain sentence after the Arabic one, so it never tested the gate; the pre-registered test below does.</figcaption></figure>`);
+  }
+
+
+  // ---------- pre-registered circuit test
+  if (D.gate && D.gate.spec && D.gate.results) {
+    const G = D.gate.spec, R = D.gate.results;
+    const setNames = { A_open_latin: "Open constructions", B_closed_latin: "Closed constructions", C_concept_route: "Arabic / Korean / Chinese", D_controls_latin_anatomical: "Anatomical controls" };
+    const nPass = R.results.filter(r => r.pass).length;
+    sec(`<div class="eyebrow">10 · Pre-registered test</div><h2>Testing the circuit story on sentences it had never seen</h2>
+      <p class="prose">The circuit inverse suggested three claims. Each was turned into scored predictions, written and committed to git before any of these sentences was run. Every sentence is read twice: after a neutral sentence and after a pain sentence. ${nPass} of ${R.results.length} predictions held. One claim was falsified: pain closes the Arabic route too.</p>
+      <div class="tiles">${Object.entries(G.claims).map(([k, v]) => `<div class="tile"><span class="l"><b>${esc(k.split("_")[0])}</b> ${esc(v)}</span></div>`).join("")}</div>
+      <figure><div class="legend"><span><i style="background:var(--s1)"></i>after a neutral sentence</span><span><i style="background:var(--s2)"></i>after a pain sentence</span></div>
+      <div class="chart-wrap" id="gatechart"></div>
+      <figcaption>Activation of the probed pole on each test sentence's own tokens, as a fraction of its corpus max. Hollow rows are exploratory sentences with no scored prediction. The dashed line is the 0.3 threshold the predictions used.</figcaption></figure>
+      <figure><div class="tbl"><table><thead><tr><th>Prediction</th><th>Observed</th><th>Needed</th><th></th></tr></thead><tbody>
+      ${R.results.map(r => `<tr><td>${esc(r.prediction)}</td><td class="num">${r.observed}${r.of ? " of " + r.of : ""}</td><td class="num">${r.needed}</td><td><span class="${r.pass ? "ok" : "miss"}">${r.pass ? "held" : "failed"}</span></td></tr>`).join("")}
+      </tbody></table></div>
+      <figcaption>The pain-unit prediction failed because the unit fires on the pain sentence itself, not on the later "nerve" sentence: the gate is carried forward through the context. The Arabic prediction failed because pain context cuts the concept route as hard as the token route.</figcaption></figure>`);
+    const rows = [];
+    Object.entries(R.rows).forEach(([set, rs]) => { rows.push({ head: setNames[set] || set }); rs.forEach(r => rows.push(r)); });
+    const rowH = 22, W = 900, m = { l: 330, r: 20, t: 8, b: 26 }, H = m.t + m.b + rows.length * rowH;
+    const xmax = 1.2, x = v => m.l + Math.max(0, Math.min(xmax, v)) / xmax * (W - m.l - m.r);
+    const svg = mk("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Dumbbell chart: pole activation after neutral vs pain context for each pre-registered sentence" });
+    [0, 0.3, 0.6, 0.9, 1.2].forEach(v => { mk("line", { x1: x(v), x2: x(v), y1: m.t, y2: H - m.b, stroke: v === 0.3 ? "var(--ink-3)" : "var(--grid)", "stroke-dasharray": v === 0.3 ? "4 4" : "", fill: "none" }, svg); txt(svg, x(v), H - 8, v.toFixed(1), { "text-anchor": "middle" }); });
+    const wrap = document.getElementById("gatechart"); wrap.appendChild(svg); const tip = tipFor(wrap);
+    rows.forEach((r, i) => {
+      const y = m.t + i * rowH + rowH / 2;
+      if (r.head) { txt(svg, 0, y + 4, r.head, { fill: "var(--ink)", "font-family": "IBM Plex Sans, sans-serif", "font-size": 12.5, "font-weight": 600 }); return; }
+      const t = r.text.length > 46 ? r.text.slice(0, 45) + "…" : r.text;
+      txt(svg, 12, y + 4, t, { fill: r.scored ? "var(--ink-2)" : "var(--ink-3)", "font-family": "IBM Plex Sans, sans-serif", "font-size": 11.5 });
+      mk("line", { x1: x(r.nerve_pain), x2: x(r.nerve_neutral), y1: y, y2: y, stroke: "var(--ink-3)", "stroke-width": 2, fill: "none" }, svg);
+      [["nerve_neutral", "var(--s1)"], ["nerve_pain", "var(--s2)"]].forEach(([k, col]) => {
+        const c = mk("circle", { cx: x(r[k]), cy: y, r: 5, fill: r.scored ? col : "var(--surface)", stroke: col, "stroke-width": 2 }, svg);
+        c.addEventListener("pointerenter", () => placeTip(tip, svg, W, H, x(r[k]), y, `<b>${esc(r.text)}</b><br>neutral ${f2(r.nerve_neutral)} · pain ${f2(r.nerve_pain)}<br>token ${f2(r.token_neutral)} · concept ${f2(r.concept_neutral)}`));
+        c.addEventListener("pointerleave", () => tip.hidden = true);
+      });
+    });
   }
 
   // ---------- method

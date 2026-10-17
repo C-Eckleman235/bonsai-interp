@@ -1,6 +1,6 @@
 {
  "note": "Map of the probed pole's causal neighbourhood, from neighbors.json and the circuit inverse. Labels are first readings from each unit's own top corpus examples.",
- "claim": "Two input routes reach 'nerve': a Latin-script token route that pain context and some constructions can close, and a concept route used by non-Latin scripts that stays open. The output spreads thinly over many later neurons.",
+ "claim": "Two input routes reach 'nerve': a Latin-script token route and a concept route used by Arabic and Korean. Preceding pain context closes both, and some constructions ('lost his nerve', 'had the nerve to') close the token route on their own. The output spreads thinly over many later neurons.",
  "nodes": [
   {
    "id": "latin",
@@ -16,7 +16,7 @@
    "y": 190,
    "kind": "text",
    "label": "Non-Latin text",
-   "sub": "عصبية · 神经 · 신경"
+   "sub": "عصبية · 신경"
   },
   {
    "id": "paintext",
@@ -141,8 +141,8 @@
  ],
  "evidence": [
   "Zeroing L3/N6493 removes 74% of the pole's activation on average (95% on anatomical examples), and zeroing L8/N7756 removes 61%. No other single input passes 15%.",
-  "Circuit inverse (SciPy): with the token unit quiet (0.03), Arabic 'nervous system' still drives the pole to 0.61 through the concept unit, and still does (0.61) beside 'chronic pain' with the pain unit at 0.70.",
-  "Circuit inverse (globalMOO): the token unit fires (0.71) while the pole stays silent (0.10) with no pain present, in 'He lost his nerve at the last moment'. Construction can close the token route too.",
+  "Pre-registered test: with the token unit at 0.00, Arabic sentences still drive the pole to 0.31–0.41 through the concept unit (3 of 4), in both senses. Pain context before them cuts that to 7–37% (0 of 4 kept half), so the concept route is gated too. An earlier example that seemed to show otherwise had the pain sentence after the Arabic one.",
+  "Pre-registered test: 'lost his nerve' and 'had the nerve to' light the token unit (6 of 6 at ≥ 0.4) while the pole stays below 0.3 (6 of 6; mean 0.19 against 0.60 for 'worked up the nerve', 'nerve-racking', 'Nerven blank'). Construction closes the token route without any pain.",
   "Zeroing the pole moves its strongest reader by 0.12 of that reader's range; every other later neuron moves by less than 0.06."
  ],
  "unit_labels": {

@@ -152,3 +152,28 @@ Tool: `python -m mono.probe.run {forward|solo|invert|induce} 9/3688 +`. All arti
 - The concept route (non-Latin scripts) looks sense-agnostic.
 - The pole's psychological specificity is a property of the token route and its gates.
 - Solver note: on this 5-output, rare-combination problem DE beat globalMOO on 5 of 6 goals. globalMOO's one success produced the most informative counterexample.
+
+## 2026-10-17: Pre-registered gate/route test for L9/N3688+ (`gate_test.json`, committed in 9613a67 before the run)
+
+Each sentence was read after [preamble] + context, under neutral and pain contexts (2 contexts × 3 preambles each). Nodes were measured on the sentence's own tokens. Result: **9 of 11 predictions pass.**
+
+| prediction | result |
+|---|---|
+| A open Latin constructions fire (≥ .3) | ✔ 7/8 |
+| A pain context halves them (ratio ≤ .5) | ✔ 6/8 (e.g. "Ich brauchte starke Nerven" 0.72 → 0.03) |
+| A pain unit ≥ .3 on the sentence's tokens | ✗ 0/8. The pain unit fires on the context sentence, not on the test sentence. The gate is carried forward, presumably by attention. |
+| B "lost his nerve" / "had the nerve to": token ≥ .4 | ✔ 6/6 |
+| B …while the pole stays < .3 | ✔ 6/6; mean 0.19 vs 0.60 for set A |
+| C Arabic concept unit ≥ .3 | ✔ 4/4 (token unit 0.00) |
+| C Arabic fires in either sense | ✔ 3/4 |
+| C Arabic not gated by pain (ratio ≥ .5) | ✗ **0/4**. Ratios 0.07–0.37: pain closes the concept route too. |
+| D Latin anatomical controls: token present, pole weak | ✔ 4/4, ✔ 4/4 |
+
+**Exploratory (unscored)**
+- "kept his nerve" fires (0.41); "lost his nerve" does not (0.14).
+- "What a nerve he has" fires (0.61); "had the nerve to" does not (0.14–0.25).
+- Korean 신경 fires ~0.31–0.37 in both senses. Chinese 神经 does not fire (0.02–0.04).
+
+**Correction to the earlier circuit reading**
+- The "override" example (Arabic beside "chronic pain" at 0.61) had the pain sentence *after* the Arabic one. A causal model cannot be gated by later text, so that example never tested the gate.
+- Revised story: both input routes are gated by *preceding* physical-sensation context. The token route is additionally construction-sensitive: open for "worked up / kept / mustered the nerve", "nerve-racking", "Nerven blank"; closed for "lost his nerve" and "had the nerve to".
