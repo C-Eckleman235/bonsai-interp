@@ -10,6 +10,7 @@
   --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a;
   --good: #1f7a3a; --good-bg: #e4f2e8; --bad: #b3261e; --bad-bg: #f8e5e3; --warn: #8a5a00; --warn-bg: #f7eed8;
   --mark: #fff1c7; --mark-ink: #4a3500;
+  --div-pos: #2a78d6; --div-neg: #e34948; --div-mid: #d9d7d1;
   --font-display: "Fraunces", Georgia, "Times New Roman", serif;
   --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
@@ -20,7 +21,7 @@
     --rule: #2b3230; --grid: #232927; --accent: #5fc2a8; --accent-soft: #1c2e29;
     --s1: #3987e5; --s2: #d95926; --s3: #199e70;
     --good: #6fcf8a; --good-bg: #1c2e22; --bad: #f08a80; --bad-bg: #351f1d; --warn: #e5b45a; --warn-bg: #33291a;
-    --mark: #4a3d12; --mark-ink: #ffe9a8; color-scheme: dark;
+    --mark: #4a3d12; --mark-ink: #ffe9a8; --div-pos: #3987e5; --div-neg: #e66767; --div-mid: #4a4a46; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
@@ -28,7 +29,7 @@
   --rule: #2b3230; --grid: #232927; --accent: #5fc2a8; --accent-soft: #1c2e29;
   --s1: #3987e5; --s2: #d95926; --s3: #199e70;
   --good: #6fcf8a; --good-bg: #1c2e22; --bad: #f08a80; --bad-bg: #351f1d; --warn: #e5b45a; --warn-bg: #33291a;
-  --mark: #4a3d12; --mark-ink: #ffe9a8; color-scheme: dark;
+  --mark: #4a3d12; --mark-ink: #ffe9a8; --div-pos: #3987e5; --div-neg: #e66767; --div-mid: #4a4a46; color-scheme: dark;
 }
 * { box-sizing: border-box; }
 body { background: var(--bg); color: var(--ink); font: 16px/1.6 var(--font-body); }
@@ -145,9 +146,9 @@ details summary:focus-visible { outline: 2px solid var(--accent); outline-offset
   // ---------- three directions + verdict
   const tiles = [];
   if (ho) tiles.push([`${f2(ho.auroc)}`, `Held-out AUROC of the refined label: 24 sentences written before testing, accuracy ${f2(ho.accuracy)}`]);
-  if (de && de.goals.leak) tiles.push([`${f2(de.goals.leak.y.act)}`, `Strongest activation found with nothing nerve-related present (token “${esc((de.goals.leak.peak_token || "").trim())}”)`]);
+  if (de && de.goals.leak) tiles.push([`${f2(de.goals.leak.y.act)}`, `Strongest activation the inverse found with nothing related to the label present${de.goals.leak.satisfied ? ` (token “${esc((de.goals.leak.peak_token || "").trim())}”)` : " — below the 0.3 bar: no leak"}`]);
   if (gm && de) tiles.push([`${(gm.gmoo.doe_evals + Object.values(gm.goals).reduce((a, g) => a + g.evals, 0)).toLocaleString()} vs ${Object.values(de.goals).reduce((a, g) => a + g.evals, 0).toLocaleString()}`, `Model evaluations for the full inverse battery: globalMOO vs SciPy differential evolution`]);
-  if (gm && gm.goals.silent_on_concept) tiles.push([`0.72 → ${f2((de || gm).goals.silent_on_concept.y.act)}`, `A clear psychological “nerve” silenced by a pain sentence before it (sense flip)`]);
+  if (ho) tiles.push([`${Math.round(ho.fire_rate_predicted_fire * 12)} / 12`, `New sentences written from the label alone that fired the neuron strongly (≥ 0.3); ${Math.round(ho.fire_rate_predicted_quiet * 12)} of 12 near misses did`]);
   sec(`<div class="eyebrow">Summary</div>
     <div class="dirs">
       <div class="dir"><span class="arrow">text → neuron</span><h3>Forward</h3><p>What fires it in 8M tokens of real text, and how much each kind of sentence in a 98-sentence bank drives it.</p></div>
@@ -169,8 +170,8 @@ details summary:focus-visible { outline: 2px solid var(--accent); outline-offset
 
   // ---------- forward: bank dose-response strip
   const groups = [
-    ["Psychological sense", r => (r.rel_h2 ?? 0) >= 0.9],
-    ["Other uses of the morpheme", r => r.rel_pos >= 0.5 && (r.rel_h2 ?? 0) < 0.9],
+    ["On the label", r => (r[D.hyp_key] ?? r.rel_pos) >= 0.9],
+    ["Earlier label only", r => r.rel_pos >= 0.5 && (r[D.hyp_key] ?? r.rel_pos) < 0.9],
     ["Related meaning, no morpheme", r => r.kind === "near" && r.rel_pos < 0.5],
     ["Opposite pole concept", r => r.kind === "opposite" || (r.kind === "top" && r.rel_neg >= 0.8 && r.rel_pos < 0.5)],
     ["Look-alike spellings", r => r.kind === "spelling"],
@@ -185,6 +186,7 @@ details summary:focus-visible { outline: 2px solid var(--accent); outline-offset
     </tbody></table></div>`);
   {
     const W = 920, H = 330, m = { l: 44, r: 10, t: 14, b: 58 };
+    const live = groups.filter(([, t]) => D.bank.some(t)); groups.length = 0; live.forEach(g => groups.push(g));
     const gw = (W - m.l - m.r) / groups.length;
     const ymax = Math.max(1.0, ...D.bank.map(r => r.act)) * 1.05;
     const y = v => m.t + (1 - Math.max(-0.05, v) / ymax) * (H - m.t - m.b);
@@ -206,6 +208,55 @@ details summary:focus-visible { outline: 2px solid var(--accent); outline-offset
       });
       txt(svg, cx, H - 4, `n=${rows.length}`, { "text-anchor": "middle", "font-size": 10 });
     });
+  }
+
+
+  // ---------- iris: every probe sentence around the neuron
+  {
+    const key = D.hyp_key || "rel_pos";
+    const pts = [];
+    const sectorOf = r => r.kind === "top" ? (r[key] >= 0.5 ? "on" : r.rel_neg >= 0.8 ? "opposite" : "unrelated") : r.kind === "corpus" ? "unrelated" : r.kind;
+    D.bank.forEach(r => pts.push({ sector: sectorOf(r), rel: r[key] ?? r.rel_pos ?? 0, act: r.act, opp: r.opp, text: r.text, sub: r.branch, src: "bank" }));
+    if (D.holdout) D.holdout.rows.forEach(r => pts.push({ sector: "held-out", rel: r.predict === "fire" ? 0.95 : 0.15, act: r.act, opp: r.opp, text: r.text, sub: "predicted " + r.predict, src: "held-out" }));
+    if (D.mined) D.mined.rows.forEach(r => pts.push({ sector: "mined: " + r.source_role, rel: r.rel ?? 0.5, act: r.act, opp: r.opp, text: r.text, sub: r.source_unit, src: "mined" }));
+    const order = ["on", "held-out", "near", "spelling", "opposite", "unrelated"];
+    const sectors = [...new Set(pts.map(p => p.sector))].sort((a, b) => ((order.indexOf(a) + 1) || 50) - ((order.indexOf(b) + 1) || 50) || a.localeCompare(b));
+    const sectorName = { on: "on-concept", "held-out": "held-out", near: "related meaning", spelling: "look-alikes", opposite: "opposite concept", unrelated: "unrelated / corpus" };
+    const s2i = sec(`<div class="eyebrow">Iris</div><h2>Every probe sentence, arranged around the neuron</h2>
+      <p class="prose">Each dot is one sentence the probe ran. The angle groups sentences by type. Distance from the centre is how unrelated the sentence is to the label: on-concept near the middle, unrelated at the rim. Colour is what the sentence did to the neuron: blue drives the probed pole, orange drives the opposite pole, grey does neither. A clean neuron shows a blue core and a grey rim.</p>
+      <figure><div class="chart-wrap" id="iris" style="max-width:720px;margin:0 auto"></div>
+      <div class="legend" style="justify-content:center"><span><i style="background:var(--div-pos)"></i>drives ${esc(D.pole)} pole</span><span><i style="background:var(--div-mid)"></i>neither</span><span><i style="background:var(--div-neg)"></i>drives opposite pole</span><span>dot size: strength</span></div>
+      <figcaption>Colour is the probed pole's activation minus the opposite pole's, each as a fraction of its corpus maximum, capped at ±1. Rings mark relevance 1, 0.5 and 0. Hover a dot to read the sentence.</figcaption></figure>`);
+    const W = 720, C = W / 2, R0 = 46, R1 = 96, R = 300;
+    const svg = mk("svg", { viewBox: `0 0 ${W} ${W}`, role: "img", "aria-label": "Radial plot of probe sentences around the neuron, coloured by which pole they drive" });
+    const radius = rel => R1 + (1 - Math.max(0, Math.min(1, rel))) * (R - R1);
+    [1, 0.5, 0].forEach(rel => mk("circle", { cx: C, cy: C, r: radius(rel), fill: "none", stroke: "var(--grid)", "stroke-dasharray": rel === 0.5 ? "3 4" : "" }, svg));
+    const span = 2 * Math.PI / sectors.length;
+    sectors.forEach((secName, si) => {
+      const a0 = -Math.PI / 2 + si * span;
+      mk("line", { x1: C + R0 * Math.cos(a0), y1: C + R0 * Math.sin(a0), x2: C + (R + 18) * Math.cos(a0), y2: C + (R + 18) * Math.sin(a0), stroke: "var(--grid)" }, svg);
+      const am = a0 + span / 2, lx = C + (R + 30) * Math.cos(am), ly = C + (R + 30) * Math.sin(am);
+      txt(svg, lx, ly + 4, sectorName[secName] || secName, { "text-anchor": Math.abs(Math.cos(am)) < 0.3 ? "middle" : Math.cos(am) > 0 ? "start" : "end", fill: "var(--ink-2)", "font-family": "IBM Plex Sans, sans-serif", "font-size": 12 });
+      const mine = pts.filter(p => p.sector === secName).sort((a, b) => (a.sub || "").localeCompare(b.sub || "") || b.rel - a.rel);
+      mine.forEach((p, i) => {
+        const a = a0 + span * (0.08 + 0.84 * (mine.length > 1 ? i / (mine.length - 1) : 0.5));
+        const rr = radius(p.rel) + ((i % 5) - 2) * 9;  // spread same-relevance dots into a band
+        p.x = C + rr * Math.cos(a); p.y = C + rr * Math.sin(a);
+      });
+    });
+    const wrap = document.getElementById("iris"); wrap.appendChild(svg); const tip = tipFor(wrap);
+    pts.sort((a, b) => Math.abs(a.act - a.opp) - Math.abs(b.act - b.opp)).forEach(p => {
+      const v = Math.max(-1, Math.min(1, (p.act || 0) - (p.opp || 0)));
+      const col = v >= 0 ? `color-mix(in oklab, var(--div-pos) ${Math.round(100 * Math.sqrt(v))}%, var(--div-mid))` : `color-mix(in oklab, var(--div-neg) ${Math.round(100 * Math.sqrt(-v))}%, var(--div-mid))`;
+      const size = 3.5 + 5 * Math.min(1, Math.max(p.act || 0, p.opp || 0));
+      const c = mk("circle", { cx: p.x, cy: p.y, r: size, fill: col, stroke: "var(--surface)", "stroke-width": 1.2 }, svg);
+      if (p.src === "held-out") c.setAttribute("stroke", "var(--ink-2)");
+      c.addEventListener("pointerenter", () => placeTip(tip, svg, W, W, p.x, p.y, `<b>${esc(p.text)}</b><br>${esc(p.sub || "")} · pole ${f2(p.act)} · opposite ${f2(p.opp)} · relevance ${f2(p.rel)}`));
+      c.addEventListener("pointerleave", () => tip.hidden = true);
+    });
+    mk("circle", { cx: C, cy: C, r: R0 - 8, fill: "var(--accent-soft)", stroke: "var(--accent)", "stroke-width": 2 }, svg);
+    txt(svg, C, C - 2, D.neuron.replace(/[+-]$/, ""), { "text-anchor": "middle", fill: "var(--ink)", "font-size": 11.5, "font-weight": 600 });
+    txt(svg, C, C + 13, (D.pole === "+" ? "+" : "−") + " pole", { "text-anchor": "middle", "font-size": 10.5 });
   }
 
   // ---------- held-out
@@ -238,7 +289,7 @@ details summary:focus-visible { outline: 2px solid var(--accent); outline-offset
         return `<div class="goal"><div class="goal-head"><h3>${esc(g.replaceAll("_", " "))}</h3><span class="q">${esc(q)}</span></div>
           <div class="solves">${solveHTML("globalMOO", a, chip(a))}${solveHTML("Differential evolution", b, chip(b))}</div></div>`;
       }).join("")}`);
-    if (de && de.goals.silent_on_concept) {
+    if (de && de.goals.silent_on_concept && V.highlight_flip) {
       const r = de.goals.silent_on_concept;
       const alone = D.bank.find(x => x.text === r.sentences.find(s => s.kind === "on" || s.kind === "top")?.text);
       sec(`<div class="eyebrow">Highlight</div><h2>Context flips the sense</h2>
@@ -261,7 +312,7 @@ details summary:focus-visible { outline: 2px solid var(--accent); outline-offset
         <tr><td>Goals met</td><td class="num">${met(gm)} / ${Object.keys(gm.goals).length}</td><td class="num">${met(de)} / ${Object.keys(de.goals).length}</td></tr>
         ${gmt && det ? ["tight_25", "tight_50", "tight_75"].map(g => `<tr><td>${g.replace("tight_", "")}% ± 0.015, from a neutral start</td><td class="num">${f2(gmt.goals[g].y.act)} · ${gmt.goals[g].evals} evals ${gmt.goals[g].satisfied ? "✓" : "✗"}</td><td class="num">${f2(det.goals[g].y.act)} · ${det.goals[g].evals} evals ${det.goals[g].satisfied ? "✓" : "✗"}</td></tr>`).join("") : ""}
       </tbody></table></div>
-      <p class="prose">globalMOO learns the passage-to-activation map once from a shared design, then answers each new question in a few evaluations. That makes it the right tool for mapping a neuron's graded response and its offshoots: it gets within about 0.02 of a requested level at a small fraction of the cost. Differential evolution is the right tool for extremes and adversarial searches, such as the maximum and the leak. Its larger budget finds rare passages that a surrogate trained on 161 points smooths over. Five of globalMOO's goals here were already met by its design sample; the tight-target rows are the fair test of its learned inverse.</p>`);
+      <p class="prose">globalMOO learns the passage-to-activation map once from a shared design, then answers each new question in a few evaluations. That makes it the right tool for mapping a neuron's graded response and its offshoots: it gets within about 0.02 of a requested level at a small fraction of the cost. Differential evolution is the right tool for extremes and adversarial searches, such as the maximum and the leak. Its larger budget finds rare passages that a surrogate trained on 161 points smooths over. ${Object.values(gm.goals).filter(g => g.evals <= 1).length} of globalMOO's goals here were already met by its design sample${gmt ? "; the tight-target rows are the fair test of its learned inverse" : ""}.</p>`);
   }
 
   // ---------- induce
@@ -408,6 +459,18 @@ details summary:focus-visible { outline: 2px solid var(--accent); outline-offset
         c.addEventListener("pointerleave", () => tip.hidden = true);
       });
     });
+  }
+
+
+  // ---------- mining the neighbourhood
+  if (D.mined) {
+    const Mn = D.mined;
+    sec(`<div class="eyebrow">11 · Mining the neighbourhood</div><h2>Looking for other readings in its neighbours' examples</h2>
+      <p class="prose">If a neuron had a second, hidden job, the sentences that drive its inputs and readers are a good place to find it. Each key neighbour's own top corpus sentences (both poles) were rated for relevance to the label before evaluation, then run through this neuron. ${Mn.alternatives.length} of ${Mn.rows.length} fired it at 0.3 or more while rated off-label. They appear in the iris above as the "mined" sectors.</p>
+      <div class="two"><figure><div class="tbl"><table><thead><tr><th>Neighbour</th><th>Role</th><th>Fires this neuron</th><th>Max</th></tr></thead><tbody>
+      ${Object.entries(Mn.by_unit).map(([u, x]) => `<tr><td><code>${esc(u)}</code><div class="kinds">${esc(x.label)}</div></td><td>${esc(x.role)}</td><td class="num">${x.fire} / ${x.n}</td><td class="num">${f2(x.max)}</td></tr>`).join("")}
+      </tbody></table></div></figure>
+      <figure><h3>Off-label sentences that fired it</h3><div class="ex-list">${Mn.alternatives.map(r => `<div class="ex"><span class="a">${f2(r.act)}</span>${esc(r.text.slice(0, 160))} <span class="kinds">via ${esc(r.source_unit)} (${esc(r.source_role)})</span></div>`).join("") || "<p>None.</p>"}</div></figure></div>`);
   }
 
   // ---------- method

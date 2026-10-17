@@ -177,3 +177,41 @@ Each sentence was read after [preamble] + context, under neutral and pain contex
 **Correction to the earlier circuit reading**
 - The "override" example (Arabic beside "chronic pain" at 0.61) had the pain sentence *after* the Arabic one. A causal model cannot be gated by later text, so that example never tested the gate.
 - Revised story: both input routes are gated by *preceding* physical-sensation context. The token route is additionally construction-sensitive: open for "worked up / kept / mustered the nerve", "nerve-racking", "Nerven blank"; closed for "lost his nerve" and "had the nerve to".
+
+## 2026-10-17: Probe calibration on three neurons, and neighbour mining for L9/N3688
+
+**Protocol**
+- Every neuron got the same probe.
+- Banks for the two calibration neurons were written by separate agents that saw only corpus examples.
+- At most one label refinement is allowed before the held-out test. The L22 refinement was done by an agent that saw the bank results.
+- Every held-out set and globalMOO plan was committed before it was run (commits 3977f9d, 103f75a, 973fd76).
+
+| measure | L9/N3688 nerve | L10/N5749 genre | L22/N11024 unclear |
+|---|---|---|---|
+| held-out fire rate (label-written text fires ≥ .3) | 58% | **75%** | **33%** |
+| held-out false positives | 0% | 0% | 0% |
+| held-out AUROC | 0.92 | 1.00 | 0.92 (after refinement) |
+| opposite pole, on-label fire rate | 82% | 89% | **0%** |
+| cross-talk (opposite pole on the pole's concept) | 0.21 (related axis) | 0.005 (unrelated) | 0.02 |
+| leak found by the DE inverse | 0.40 ("strong") | 0.29 (none) | 0.23 (none) |
+| induction | coherent both ways | coherent both ways (fuel; genre / literary / tradition) | incoherent (relief, glad / on, still), ~6× weaker KL |
+| globalMOO 25 / 50 / 75% | ✓✓✓ | ✓✓✓ in 7–10 evals | ✓✗✗ |
+
+**Reading**
+- The probe's verdicts differ as intended: one context-gated axis, two clean unrelated poles, and no single coherent job.
+- No single number does it. AUROC is too lenient: a refined label can rank sentences without making the neuron fire. Low leakage is not cleanliness: the unclear neuron barely fires on anything.
+- The discriminating evidence is the held-out fire rate (the essay's own new-example test), opposite-pole coherence, induction coherence and strength, and cross-talk (related vs unrelated poles).
+- The unclear neuron's refined label did find real structure. Hypothetical money outcomes ("would have roughly $200,000") reach 0.4–1.0.
+
+**Neighbour mining, L9/N3688** (`mono/probe/mine.py`)
+- Method: 115 top corpus sentences of 12 causal neighbours (6 inputs, 2 gates, 4 readers), rated for relevance before evaluation (commit 3977f9d).
+- 6 fired the pole off-label:
+  - 3 Arabic anatomical sentences, the known concept-route offshoot;
+  - "nerve poison";
+  - a symptom list peaking on "tingling", a small physical-sensation leak;
+  - one unexplained (0.33).
+- None of the 40 sentences from downstream readers fired it.
+- No unrelated alternative reading was found. The mining confirms the known offshoots.
+
+**New views**
+- The iris plot: every probe sentence placed around the neuron by type (angle) and label relevance (radius), coloured by which pole it drives. It is in every dossier and on the calibration page (`reports/calibration.html`).

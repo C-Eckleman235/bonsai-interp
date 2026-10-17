@@ -52,6 +52,18 @@ def solo(ws, ev=None):
                         "max_act": float(max(r["act"] for r in v))}
                     for k in sorted({r["kind"] for r in rows}) for v in [[r for r in rows if r["kind"] == k]]},
     }
+    # the opposite pole, scored against its own label (rel_neg) the same way
+    rn = np.array([s.get("rel_neg", 0.0) for s in bank["sentences"]])
+    opp = np.array([r["opp"] for r in res])
+    out["opposite_pole"] = {
+        "label": bank["label"]["-" if ws.pole == "+" else "+"],
+        "spearman": textinv.spearman(rn, opp), "auroc": textinv.auroc(opp[rn >= 0.9], opp[rn <= 0.2]),
+        "strong_on": float(np.mean(opp[rn >= 0.9] >= 0.3)) if (rn >= 0.9).any() else None,
+        "strong_off": float(np.mean(opp[rn <= 0.2] >= 0.3)) if (rn <= 0.2).any() else None,
+        "leak_max": float(opp[rn <= 0.2].max()) if (rn <= 0.2).any() else None}
+    # cross-talk between the poles: does each pole respond to the other pole's concept?
+    out["cross"] = {"pole_on_opposite_concept": float(act[rn >= 0.9].mean()) if (rn >= 0.9).any() else None,
+                    "opposite_on_pole_concept": float(opp[rel >= 0.9].mean()) if (rel >= 0.9).any() else None}
     # hypothesis competition: how well does each label's relevance rating predict activation?
     hyps = bank.get("hypotheses", {"rel_pos": bank["label"][ws.pole]})
     out["hypotheses"] = {}
@@ -142,6 +154,10 @@ if __name__ == "__main__":
         lm = o["leak_max"]
         print(f"  strongest off-concept sentence: {lm['act']:.3f} '{lm['text'][:90]}' peak={lm['peak_token']!r}")
         print(f"  silent on-concept sentences: {len(o['silent_on'])}")
+        op = o["opposite_pole"]
+        print(f"  OPPOSITE POLE: spearman {op['spearman']:.3f}  AUROC {op['auroc'] if op['auroc'] is None else round(op['auroc'], 3)}  "
+              f"strong on {op['strong_on']}  off {op['strong_off']}  leak max {op['leak_max']}  | {op['label'][:70]}")
+        print(f"  cross-talk: pole on opposite concept {o['cross']['pole_on_opposite_concept']}  opposite on pole concept {o['cross']['opposite_on_pole_concept']}")
         for k, h in o["hypotheses"].items():
             print(f"  {k}: spearman {h['spearman']:.3f}  AUROC {h['auroc']:.3f}  strong on {h['strong_on']:.2f} off {h['strong_off']:.2f}  | {h['label'][:70]}")
         if "holdout" in o:

@@ -23,6 +23,9 @@ def build(ws: Workspace):
         "max": fwd["max"], "label": bank["label"], "hypotheses": solo.get("hypotheses"),
         "examples": {p: [{"act": e["act"], "text": e["text"]} for e in fwd["examples"][p][:6]] for p in "+-"},
         "bank": [keep(r) for r in solo["rows"]],
+        "hyp_key": solo["holdout"]["hypothesis"] if "holdout" in solo else
+                   max(solo["hypotheses"], key=lambda k: solo["hypotheses"][k]["auroc"] or 0),
+        "mined": opt(ws, "mined.json"),
         "holdout": solo.get("holdout"),
         "invert": {k: opt(ws, f"invert_{k}.json") for k in ("gmoo", "de", "gmoo_tight", "de_tight")},
         "plan": opt(ws, "gmoo_plan.json"), "verdict": opt(ws, "verdict.json"),
