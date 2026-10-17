@@ -473,6 +473,21 @@ details summary:focus-visible { outline: 2px solid var(--accent); outline-offset
       <figure><h3>Off-label sentences that fired it</h3><div class="ex-list">${Mn.alternatives.map(r => `<div class="ex"><span class="a">${f2(r.act)}</span>${esc(r.text.slice(0, 160))} <span class="kinds">via ${esc(r.source_unit)} (${esc(r.source_role)})</span></div>`).join("") || "<p>None.</p>"}</div></figure></div>`);
   }
 
+
+  // ---------- quick checks of neighbours
+  if (D.quick) {
+    const Q = D.quick.neighbours;
+    sec(`<div class="eyebrow">12 · Quick checks of the neighbours</div><h2>Trying to break the neighbours' labels</h2>
+      <p class="prose">Every node in the circuit map carries a label from reading its top examples. Each label got three cheap attempts at falsification. First, which tokens push the neuron directly through the embedding path (weights only). Second, which earlier neurons feed it on its own top examples: one more layer back. Third, 8 sentences that should fire it and 8 near misses, with predictions committed before the run. ${Q.filter(q => q.survives).length} of ${Q.length} labels survived.</p>
+      <div class="tbl"><table><thead><tr><th>Neighbour</th><th>Label tested</th><th>Result</th><th>Direct tokens</th><th>Fed by (one layer back)</th></tr></thead><tbody>
+      ${Q.map(q => `<tr><td><code>${esc(q.unit)}${esc(q.pole)}</code><div class="kinds">${esc(q.role)}</div></td><td>${esc(q.label)}</td>
+        <td><span class="${q.survives ? "ok" : "miss"}">${q.survives ? "held" : "failed"}</span><div class="kinds">fire ${q.n_fire}/8 · false positives ${q.n_false_pos}/8</div></td>
+        <td>${q.direct_tokens.slice(0, 6).map(t => `<code>${esc(t)}</code>`).join(" ")}</td>
+        <td>${q.feeders.slice(0, 3).map(f => `<div><code>${esc(f.unit)}</code> <span class="kinds">${Math.round(100 * f.drop)}% · peaks ${esc(f.peaks_pos.slice(0, 3).join(", "))}</span></div>`).join("")}</td></tr>`).join("")}
+      </tbody></table></div>
+      <p class="prose" style="font-size:.88rem;color:var(--ink-3)">Direct tokens are only meaningful for early layers; for layers 8 and 10 they are close to noise. Feeder percentages are the share of the neighbour's activation lost when that feeder alone is zeroed, averaged over its top six corpus examples.</p>`);
+  }
+
   // ---------- method
   sec(`<div class="eyebrow">Method and caveats</div><h2>How this was made</h2>
     <ul class="plain prose">

@@ -215,3 +215,16 @@ Each sentence was read after [preamble] + context, under neutral and pain contex
 
 **New views**
 - The iris plot: every probe sentence placed around the neuron by type (angle) and label relevance (radius), coloured by which pole it drives. It is in every dossier and on the calibration page (`reports/calibration.html`).
+
+## 2026-10-17: Quick checks of nerve's four key neighbours (`mono/probe/quick.py`; tests committed in d56f984)
+
+Each neighbour got: weights-only direct token drivers; "one layer back" (attribution on its own top corpus examples, then zeroing each candidate feeder); and 8 fire / 8 quiet pre-registered sentences.
+
+| neighbour | label | fire / FP | one layer back |
+|---|---|---|---|
+| L3/N6493 + (main input) | token "nerve", Latin script | ✔ 8/8, 1 FP ("Nerf" 0.39) | Direct tokens: ` nerve`, ` nerves`, then Serv / erved / reserved. Feeders are layer-0 spelling units (serve, reserved, -erv-). **A spelling detector for nerv/nerf.** |
+| L8/N7756 + (second input) | nerve/nervous-system concept, Arabic-heavy | ✔ 8/8, 0 FP (Arabic 0.9–1.2, German 0.67, English 0.37–0.49) | Arabic subword units (بي, ب) and the "veins" unit |
+| L8/N3858 + (pain gate) | pain, word and concept | ✔ 7/8, 0 FP ("pain au chocolat" 0.11) | Multilingual pain unit L6/N2055 (Schmerzen, doler), then numbness |
+| L10/N6901 + (strongest reader) | nervous system / neuroanatomy | ✗ 4/8 | Fires on motor commands / motor control / speech production; silent on hippocampus, thalamus, dopamine. Feeders: ` motor` detectors at L0 and L2. **Post hoc (untested): a motor ↔ sensory axis.** Its − pole is taste and smell receptors. |
+
+Reading: the circuit's inputs and gate are solid. The token route is spelling-level. The reader was mislabelled, and it does not respond to psychological "nerve" ("my nerves were on edge" 0.02).

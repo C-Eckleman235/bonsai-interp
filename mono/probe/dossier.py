@@ -38,6 +38,7 @@ def build(ws: Workspace):
                                                 "units": nb["disambiguators"]["units"][:3]},
                              "downstream_by_branch": {b: r[:5] for b, r in nb.get("downstream_by_branch", {}).items()}}
     data["map"] = opt(ws, "neighborhood.json")
+    data["quick"] = opt(ws, "quick.json")
     data["gate"] = {"spec": opt(ws, "gate_test.json"), "results": opt(ws, "gate_test_results.json")}
     data["circuit_inv"] = {k: opt(ws, f"circuit_{k}.json") for k in ("de", "gmoo")}
     for k, v in data["invert"].items():
