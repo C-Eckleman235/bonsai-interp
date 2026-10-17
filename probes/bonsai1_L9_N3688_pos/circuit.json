@@ -1,0 +1,18 @@
+{
+ "note": "Nodes from neighbors.json. Each activation is a fraction of that pole's corpus max. Goals ask about the circuit, not one neuron.",
+ "nodes": [
+  {"name": "nerve", "L": 9, "n": 3688, "pole": "+", "label": "probed pole: psychological 'nerve'"},
+  {"name": "token", "L": 3, "n": 6493, "pole": "+", "label": "the token 'nerve' (main input, 74% of activation)"},
+  {"name": "concept", "L": 8, "n": 7756, "pole": "+", "label": "nerve/neural concept (second input, 61%)"},
+  {"name": "pain", "L": 8, "n": 3858, "pole": "+", "label": "pain detector (context disambiguator)"},
+  {"name": "reader", "L": 10, "n": 6901, "pole": "+", "label": "nervous-system reader (strongest downstream)"}
+ ],
+ "goals": {
+  "bypass": {"question": "Can 'nerve' fire (≥0.3) while its token input stays quiet (≤0.1)?", "goals": [["nerve", ">=", 0.3], ["token", "<=", 0.1]]},
+  "gated": {"question": "Token clearly present (≥0.5) but 'nerve' silent (≤0.1): what is the pain unit doing?", "goals": [["token", ">=", 0.5], ["nerve", "<=", 0.1]]},
+  "override": {"question": "Can 'nerve' stay strong (≥0.5) with the pain unit also strongly active (≥0.5)?", "goals": [["nerve", ">=", 0.5], ["pain", ">=", 0.5]]},
+  "concept_without_token": {"question": "Concept input active (≥0.5) with no token (≤0.1): does 'nerve' follow?", "goals": [["concept", ">=", 0.5], ["token", "<=", 0.1]]},
+  "reader_other_routes": {"question": "Does the reader fire (≥0.5) with 'nerve' quiet (≤0.1)?", "goals": [["reader", ">=", 0.5], ["nerve", "<=", 0.1]]},
+  "clean_max": {"question": "Strongest 'nerve' with the pain unit quiet (≤0.1)", "goals": [["pain", "<=", 0.1], ["nerve", "max"]]}
+ }
+}

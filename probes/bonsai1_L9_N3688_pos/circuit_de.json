@@ -1,0 +1,326 @@
+{
+ "solver": "de",
+ "nodes": [
+  {
+   "name": "nerve",
+   "L": 9,
+   "n": 3688,
+   "pole": "+",
+   "label": "probed pole: psychological 'nerve'"
+  },
+  {
+   "name": "token",
+   "L": 3,
+   "n": 6493,
+   "pole": "+",
+   "label": "the token 'nerve' (main input, 74% of activation)"
+  },
+  {
+   "name": "concept",
+   "L": 8,
+   "n": 7756,
+   "pole": "+",
+   "label": "nerve/neural concept (second input, 61%)"
+  },
+  {
+   "name": "pain",
+   "L": 8,
+   "n": 3858,
+   "pole": "+",
+   "label": "pain detector (context disambiguator)"
+  },
+  {
+   "name": "reader",
+   "L": 10,
+   "n": 6901,
+   "pole": "+",
+   "label": "nervous-system reader (strongest downstream)"
+  }
+ ],
+ "goals": {
+  "bypass": {
+   "question": "Can 'nerve' fire (≥0.3) while its token input stays quiet (≤0.1)?",
+   "satisfied": true,
+   "evals": 624,
+   "extra": {},
+   "x": [
+    0.3695,
+    0.1909,
+    0.6114,
+    0.5803,
+    0.7296,
+    0.976
+   ],
+   "y": {
+    "nerve": 0.6109,
+    "token": 0.0278,
+    "concept": 1.0541,
+    "pain": 0.0674,
+    "reader": 0.0855,
+    "dose": 0.1,
+    "dose_broad": 1.0
+   },
+   "text": "Emperor Nero is said to have played music while Rome burned. The cold water stung, and then her fingers went numb. - عدم التوازن في الموصلات العصبية في الجهاز العصبي .",
+   "sentences": [
+    {
+     "i": 34,
+     "text": "Emperor Nero is said to have played music while Rome burned.",
+     "kind": "spelling",
+     "branch": "spelling",
+     "rel": 0.0
+    },
+    {
+     "i": 49,
+     "text": "The cold water stung, and then her fingers went numb.",
+     "kind": "opposite",
+     "branch": "opposite",
+     "rel": 0.0
+    },
+    {
+     "i": 65,
+     "text": "- عدم التوازن في الموصلات العصبية في الجهاز العصبي .",
+     "kind": "top",
+     "branch": "non-English",
+     "rel": 0.1
+    }
+   ]
+  },
+  "gated": {
+   "question": "Token clearly present (≥0.5) but 'nerve' silent (≤0.1): what is the pain unit doing?",
+   "satisfied": true,
+   "evals": 624,
+   "extra": {},
+   "x": [
+    0.1097,
+    0.3338,
+    0.9715,
+    0.63,
+    0.8183,
+    0.1688
+   ],
+   "y": {
+    "nerve": 0.0821,
+    "token": 0.7202,
+    "concept": 0.4556,
+    "pain": 1.0408,
+    "reader": 0.0711,
+    "dose": 1.0,
+    "dose_broad": 1.0
+   },
+   "text": "Pain receptors in the skin respond to heat, pressure, and injury. She finally worked up the nerve to ask for a raise. What audacity, showing up uninvited after everything he said!",
+   "sentences": [
+    {
+     "i": 46,
+     "text": "Pain receptors in the skin respond to heat, pressure, and injury.",
+     "kind": "opposite",
+     "branch": "opposite",
+     "rel": 0.0
+    },
+    {
+     "i": 6,
+     "text": "She finally worked up the nerve to ask for a raise.",
+     "kind": "on",
+     "branch": "idiom-courage",
+     "rel": 1.0
+    },
+    {
+     "i": 31,
+     "text": "What audacity, showing up uninvited after everything he said!",
+     "kind": "near",
+     "branch": "near",
+     "rel": 0.5
+    }
+   ]
+  },
+  "override": {
+   "question": "Can 'nerve' stay strong (≥0.5) with the pain unit also strongly active (≥0.5)?",
+   "satisfied": true,
+   "evals": 624,
+   "extra": {},
+   "x": [
+    0.7567,
+    0.8934,
+    0.0156,
+    0.7907,
+    0.542,
+    0.9152
+   ],
+   "y": {
+    "nerve": 0.6122,
+    "token": 0.009,
+    "concept": 0.9329,
+    "pain": 0.7004,
+    "reader": 0.063,
+    "dose": 0.1,
+    "dose_broad": 1.0
+   },
+   "text": "- عدم التوازن في الموصلات العصبية في الجهاز العصبي . Chronic pain can persist long after an injury has healed. White appears to have attempted to flee, and was killed by an arrow through the heart.",
+   "sentences": [
+    {
+     "i": 65,
+     "text": "- عدم التوازن في الموصلات العصبية في الجهاز العصبي .",
+     "kind": "top",
+     "branch": "non-English",
+     "rel": 0.1
+    },
+    {
+     "i": 50,
+     "text": "Chronic pain can persist long after an injury has healed.",
+     "kind": "opposite",
+     "branch": "opposite",
+     "rel": 0.0
+    },
+    {
+     "i": 87,
+     "text": "White appears to have attempted to flee, and was killed by an arrow through the heart.",
+     "kind": "corpus",
+     "branch": "unrelated",
+     "rel": 0.0
+    }
+   ]
+  },
+  "concept_without_token": {
+   "question": "Concept input active (≥0.5) with no token (≤0.1): does 'nerve' follow?",
+   "satisfied": true,
+   "evals": 624,
+   "extra": {},
+   "x": [
+    0.3695,
+    0.1909,
+    0.6114,
+    0.5803,
+    0.7296,
+    0.976
+   ],
+   "y": {
+    "nerve": 0.6109,
+    "token": 0.0278,
+    "concept": 1.0541,
+    "pain": 0.0674,
+    "reader": 0.0855,
+    "dose": 0.1,
+    "dose_broad": 1.0
+   },
+   "text": "Emperor Nero is said to have played music while Rome burned. The cold water stung, and then her fingers went numb. - عدم التوازن في الموصلات العصبية في الجهاز العصبي .",
+   "sentences": [
+    {
+     "i": 34,
+     "text": "Emperor Nero is said to have played music while Rome burned.",
+     "kind": "spelling",
+     "branch": "spelling",
+     "rel": 0.0
+    },
+    {
+     "i": 49,
+     "text": "The cold water stung, and then her fingers went numb.",
+     "kind": "opposite",
+     "branch": "opposite",
+     "rel": 0.0
+    },
+    {
+     "i": 65,
+     "text": "- عدم التوازن في الموصلات العصبية في الجهاز العصبي .",
+     "kind": "top",
+     "branch": "non-English",
+     "rel": 0.1
+    }
+   ]
+  },
+  "reader_other_routes": {
+   "question": "Does the reader fire (≥0.5) with 'nerve' quiet (≤0.1)?",
+   "satisfied": false,
+   "evals": 624,
+   "extra": {},
+   "x": [
+    0.6736,
+    0.0726,
+    0.4488,
+    0.714,
+    0.8538,
+    0.3934
+   ],
+   "y": {
+    "nerve": 0.1201,
+    "token": 0.7828,
+    "concept": 0.4643,
+    "pain": 0.6871,
+    "reader": 0.4036,
+    "dose": 1.0,
+    "dose_broad": 1.0
+   },
+   "text": "Diabetic neuropathy affects all peripheral nerves: pain fibers, motor neurons, autonomic nerves. Blood vessels carry oxygen-rich blood away from the heart. The constant drilling next door is getting on my nerves.",
+   "sentences": [
+    {
+     "i": 71,
+     "text": "Diabetic neuropathy affects all peripheral nerves: pain fibers, motor neurons, autonomic nerves.",
+     "kind": "top",
+     "branch": "anatomy",
+     "rel": 0.1
+    },
+    {
+     "i": 33,
+     "text": "Blood vessels carry oxygen-rich blood away from the heart.",
+     "kind": "near",
+     "branch": "near",
+     "rel": 0.0
+    },
+    {
+     "i": 5,
+     "text": "The constant drilling next door is getting on my nerves.",
+     "kind": "on",
+     "branch": "idiom-anxiety",
+     "rel": 1.0
+    }
+   ]
+  },
+  "clean_max": {
+   "question": "Strongest 'nerve' with the pain unit quiet (≤0.1)",
+   "satisfied": true,
+   "evals": 624,
+   "extra": {},
+   "x": [
+    0.4078,
+    0.3408,
+    0.9344,
+    0.9678,
+    0.7141,
+    0.816
+   ],
+   "y": {
+    "nerve": 1.0571,
+    "token": 0.8505,
+    "concept": 0.6786,
+    "pain": 0.0196,
+    "reader": 0.0893,
+    "dose": 1.0,
+    "dose_broad": 1.0
+   },
+   "text": "Le Ghana se présente en quart de finale de la CAN-2013 dans la peau du favori face à l'étonnant Cap-Vert, samedi à Port Elizabeth. These days we’re starting to see more firmware updates for hard drives, especially solid-state drives, and these can be nerve-wracking to install. The nervous system coordinates every movement of the body.",
+   "sentences": [
+    {
+     "i": 76,
+     "text": "Le Ghana se présente en quart de finale de la CAN-2013 dans la peau du favori face à l'étonnant Cap-Vert, samedi à Port Elizabeth.",
+     "kind": "corpus",
+     "branch": "unrelated",
+     "rel": 0.0
+    },
+    {
+     "i": 67,
+     "text": "These days we’re starting to see more firmware updates for hard drives, especially solid-state drives, and these can be nerve-wracking to install.",
+     "kind": "top",
+     "branch": "idiom-anxiety",
+     "rel": 1.0
+    },
+    {
+     "i": 23,
+     "text": "The nervous system coordinates every movement of the body.",
+     "kind": "on",
+     "branch": "derived (nervous, neural)",
+     "rel": 0.1
+    }
+   ]
+  }
+ },
+ "started": "2026-10-17 14:25",
+ "forward_passes": 645
+}

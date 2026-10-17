@@ -1,0 +1,444 @@
+<title>Bonsai Neuron Inversions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column (~68ch) with wide figures breaking out to 920px; lab-notebook register */
+:root {
+  --bg: #f7f8f6;
+  --surface: #ffffff;
+  --ink: #15191a;
+  --ink-2: #4b5452;
+  --ink-3: #7a8381;
+  --rule: #dfe3e0;
+  --accent: #1f6b5c;
+  --accent-soft: #e3efeb;
+  --s1: #2a78d6;
+  --s2: #eb6834;
+  --s3: #1baf7a;
+  --good: #1f7a3a;
+  --good-bg: #e4f2e8;
+  --bad: #b3261e;
+  --bad-bg: #f8e5e3;
+  --warn: #8a5a00;
+  --warn-bg: #f7eed8;
+  --grid: #e9ece9;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121615; --surface: #1a1f1e; --ink: #eef1ef; --ink-2: #b9c1be; --ink-3: #8a9491;
+    --rule: #2c3331; --accent: #5fc2a8; --accent-soft: #1d2f2a;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+    --good: #6fcf8a; --good-bg: #1c2e22; --bad: #f08a80; --bad-bg: #351f1d; --warn: #e5b45a; --warn-bg: #33291a;
+    --grid: #252b29; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121615; --surface: #1a1f1e; --ink: #eef1ef; --ink-2: #b9c1be; --ink-3: #8a9491;
+  --rule: #2c3331; --accent: #5fc2a8; --accent-soft: #1d2f2a;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+  --good: #6fcf8a; --good-bg: #1c2e22; --bad: #f08a80; --bad-bg: #351f1d; --warn: #e5b45a; --warn-bg: #33291a;
+  --grid: #252b29; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 16px/1.6 var(--font-body); }
+.page { max-width: 920px; margin: 0 auto; padding-inline: 20px; padding-block: 48px 96px; display: flex; flex-direction: column; gap: 56px; }
+.prose { max-width: 68ch; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 650; text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+h1 { font-size: clamp(2rem, 5vw, 2.9rem); line-height: 1.08; }
+h2 { font-size: 1.6rem; line-height: 1.2; }
+h3 { font-size: 1.15rem; font-weight: 500; }
+p { margin: 0; }
+section { display: flex; flex-direction: column; gap: 16px; }
+.eyebrow { font: 500 0.75rem/1 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.lede { font-size: 1.12rem; color: var(--ink-2); }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 20px; font: 0.82rem/1.4 var(--font-mono); color: var(--ink-3); }
+code, .mono { font-family: var(--font-mono); font-size: 0.88em; }
+.status { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.status > div { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.chip { display: inline-flex; align-items: center; gap: 6px; font: 500 0.72rem/1 var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; padding: 4px 8px; border-radius: 999px; width: fit-content; }
+.chip.done { color: var(--good); background: var(--good-bg); }
+.chip.run { color: var(--warn); background: var(--warn-bg); }
+.chip.no { color: var(--bad); background: var(--bad-bg); }
+.status h3 { font-size: 1rem; }
+.status p { font-size: 0.9rem; color: var(--ink-2); }
+figure { margin: 0; background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+figcaption { font-size: 0.88rem; color: var(--ink-2); max-width: 68ch; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.85rem; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.legend i { width: 18px; height: 3px; border-radius: 2px; display: inline-block; }
+.chart-wrap { position: relative; width: 100%; }
+.chart-wrap svg { width: 100%; height: auto; display: block; overflow: visible; }
+.tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--bg); font: 0.78rem/1.45 var(--font-mono); padding: 8px 10px; border-radius: 6px; white-space: nowrap; transform: translate(-50%, calc(-100% - 12px)); }
+.tip b { font-weight: 500; }
+.tbl { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.88rem; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font: 500 0.72rem/1.3 var(--font-mono); letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); }
+td.num { text-align: right; font-family: var(--font-mono); }
+.ok { color: var(--good); font-weight: 600; }
+.miss { color: var(--bad); font-weight: 600; }
+details summary { cursor: pointer; font-size: 0.85rem; color: var(--accent); }
+details summary:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.tile { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; display: flex; flex-direction: column; gap: 2px; }
+.tile .v { font: 500 1.7rem/1.1 var(--font-mono); }
+.tile .l { font-size: 0.82rem; color: var(--ink-2); }
+.callout { background: var(--accent-soft); border-radius: 6px; padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; max-width: 68ch; }
+.chain { font: 0.9rem/1.7 var(--font-mono); background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; overflow-x: auto; white-space: pre; }
+ul { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; }
+.two-up { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.cards { display: flex; flex-direction: column; gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 16px 18px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.card-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+.card-head h3 { font-family: var(--font-mono); font-size: 1rem; font-weight: 500; }
+.card-head span { font-size: 0.82rem; color: var(--ink-3); }
+.poles { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+.pole { display: flex; flex-direction: column; gap: 8px; min-width: 0; border-top: 2px solid var(--rule); padding-top: 10px; }
+.pole .sign { font: 500 0.72rem/1 var(--font-mono); letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); }
+.pole .label { font-weight: 500; line-height: 1.4; }
+.chip.one { color: var(--good); background: var(--good-bg); }
+.chip.two { color: var(--warn); background: var(--warn-bg); }
+.chip.unclear { color: var(--ink-2); background: var(--grid); }
+.ex { font: 0.78rem/1.5 var(--font-mono); color: var(--ink-2); background: var(--bg); border-radius: 4px; padding: 6px 8px; overflow-wrap: anywhere; }
+.ex mark { background: var(--accent-soft); color: var(--ink); font-weight: 600; border-radius: 3px; padding: 0 2px; outline: 1px solid var(--accent); }
+.ex .a { color: var(--ink-3); margin-right: 6px; }
+.metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 14px; font-size: 0.8rem; }
+.metrics div { display: flex; flex-direction: column; }
+.metrics dt { color: var(--ink-3); font: 0.68rem/1.3 var(--font-mono); text-transform: uppercase; letter-spacing: 0.04em; }
+.ante { background: var(--accent-soft); border-radius: 6px; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px; font-size: 0.82rem; }
+.ante ul { gap: 4px; }
+.ante li span { color: var(--ink-3); font-size: 0.76rem; }
+.ante-sum { font-weight: 500; }
+.metrics dd { margin: 0; font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+@media (max-width: 560px) { .tiles { grid-template-columns: 1fr; } .page { padding-block: 28px 64px; gap: 44px; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="page">
+
+<header style="display:flex;flex-direction:column;gap:14px">
+  <div class="eyebrow">Interim report · 17 Oct 2026 · v2</div>
+  <h1>Bonsai Neuron Inversions</h1>
+  <p class="lede prose">This is a working test of Nick Cammarata's claim that LLM neurons are already clean, run on Prism ML's 1-bit and ternary Bonsai models. The extension: read each neuron forwards (what inputs fire it) and backwards (which antecedents an inverse solver needs to drive it to a target).</p>
+  <div class="meta"><span>Models: Qwen3-8B · Ternary-Bonsai-8B · Bonsai-8B (1-bit)</span><span>GPU: RTX 5080 16 GB</span><span>Solvers: SciPy · globalMOO</span></div>
+</header>
+
+<section>
+  <div class="eyebrow">Where things stand</div>
+  <div class="status">
+    <div><span class="chip done">Done</span><h3>Exact 1-bit loader</h3><p>All three 8B models run with hooks on every MLP neuron. The 1-bit and ternary weights are bit-exact (2-bit packing), and the model fits in 4.3 GB.</p></div>
+    <div><span class="chip done">Done</span><h3>Neuron identity check</h3><p>Same neuron index = same neuron across precisions in layers 5–33. Chart below.</p></div>
+    <div><span class="chip done">Done</span><h3>Inverse toolkit</h3><p>One problem spec, six solvers. Validated on a toy neuron, including live globalMOO calls.</p></div>
+    <div><span class="chip done">Done</span><h3>Forward corpus scan</h3><p>8M tokens through Bonsai-8B, with the top 32 examples saved for each pole of all 442k neurons.</p></div>
+    <div><span class="chip run">First pass</span><h3>Neuron interpretations</h3><p>12 random mid-layer neurons (24 poles), each read forwards and screened backwards. Labels are a first reading and not yet blind-tested.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Finding 1</div>
+  <h2>First neuron readings: most Bonsai poles have one job</h2>
+  <p class="prose">We picked 12 neurons at random from layers 8–28 of the 1-bit model and read the top ten corpus examples for each pole. Most poles have one recognizable job, often the same job across several languages. Examples: a neuron for the word "nerve" in English, German, Korean and Arabic; an afterlife neuron firing on "heaven", "Paradise" and the Arabic "this world and the hereafter"; and a "genre" neuron whose opposite pole, unrelated, fires on refuelling at gas stations. The essay treats the two poles of a neuron as separate units, and in this sample they usually hold related jobs.</p>
+  <figure>
+    <div class="chart-wrap" id="verdictchart"></div>
+    <div class="legend" id="verdictlegend"></div>
+    <figcaption>Share of poles by how many jobs they appear to do. Bonsai-8B is our first reading of 24 poles from 10 examples each. Qwen3-32B is the essay's audit estimate, built with far more examples and blind tests. The two rows are not yet measured the same way. Treat the Bonsai row as a first impression, not a comparison.</figcaption>
+  </figure>
+  <p class="prose"><b>Reading backwards.</b> For each pole's strongest example, we find the 24 upstream neurons with the largest causal attribution, then give each one a gain from 0 to 1. Three questions follow.</p>
+  <ul class="prose">
+    <li>How much of the activation do those 24 neurons carry?</li>
+    <li>Can a solver set the gains to land the activation at a requested fraction? This is the round trip.</li>
+    <li>What is the smallest set of upstream neurons that keeps half the activation?</li>
+  </ul>
+  <p class="prose">Where a few upstream neurons carry a pole, we read those neurons' own top examples. That chains the backward view back into the forward view. Four such chains are shown in the cards. In the "genre" pole, spelling routes (the token "genre", the subword "gener-") meet a meaning route (literary forms). In the printf pole, every key input is itself a format-string feature.</p>
+  <div class="callout">
+    <h3>Two lessons from the pilot</h3>
+    <p><b>Backward analysis must sample each branch.</b> The strongest example of the "best" pole turned out to be its "all … in common" offshoot, so the inverse described the offshoot's route rather than the main job. The next screen will run the inverse on examples from each cluster of the forward view.</p>
+    <p><b>Our route-sharing metric is too strict.</b> Comparing raw attribution vectors over all 442k upstream neurons, even clearly one-concept poles show their 8 top examples as 8 separate routes (median top-24 overlap about 5%). That is more likely a measurement problem than a finding. Grouping upstream neurons into labelled bundles first, as the essay does, should fix it.</p>
+  </div>
+  <div class="two-up">
+    <figure>
+      <h3>Round trip: requested vs achieved</h3>
+      <div class="chart-wrap" id="rtchart"></div>
+      <figcaption>Each dot is one pole at one requested level, solved with <code>least_squares</code> and autograd in at most 25 evaluations. Dots on the diagonal mean the inverse map works. Hollow dots mark requests below what zeroing all 24 neurons can reach, so they are unreachable by construction.</figcaption>
+    </figure>
+    <figure>
+      <h3>How concentrated is the input?</h3>
+      <div class="chart-wrap" id="concchart"></div>
+      <figcaption>Activation left after zeroing the pole's top 24 upstream neurons. Near 0 means a few neurons carry it, so the pole has a compact circuit. Near 1 means its input is spread out, or arrives through attention and the embedding rather than earlier neurons.</figcaption>
+    </figure>
+  </div>
+  <div class="eyebrow" style="margin-top:8px">Neuron cards</div>
+  <div id="cards" class="cards"></div>
+</section>
+
+<section>
+  <div class="eyebrow">Finding 2</div>
+  <h2>Quantization-aware training keeps the base model's neurons</h2>
+  <p class="prose">We ran the same 12,288 tokens through all three models and correlated every neuron with every neuron of the same layer in another model. When a neuron's best match carries the same index, Bonsai's 1-bit training kept that neuron in place. If so, the 16-bit, ternary and 1-bit versions of a neuron can be compared directly, which makes the precision ladder a paired experiment.</p>
+  <figure>
+    <div class="legend" aria-hidden="true">
+      <span><i style="background:var(--s1)"></i>Qwen3-8B ↔ Ternary</span>
+      <span><i style="background:var(--s2)"></i>Qwen3-8B ↔ 1-bit</span>
+      <span><i style="background:var(--s3)"></i>Ternary ↔ 1-bit</span>
+    </div>
+    <div class="chart-wrap" id="idchart"></div>
+    <figcaption>Share of neurons whose best-correlated neuron in the other model has the same index, by layer (Bonsai-8B has 36 layers × 12,288 neurons). In the middle of the network nearly every neuron survives. Identity erodes in the final layers, most at 1 bit. L1 is low for every pair and may be a sampling artifact: early neurons are sparse and 12k tokens is a small sample.</figcaption>
+    <details>
+      <summary>Show as table</summary>
+      <div class="tbl"><table id="idtable"></table></div>
+    </details>
+  </figure>
+  <div class="tiles">
+    <div class="tile"><span class="v">28.7</span><span class="l">Qwen3-8B perplexity (16-bit)</span></div>
+    <div class="tile"><span class="v">32.7</span><span class="l">Ternary-Bonsai-8B (~1.6 bit)</span></div>
+    <div class="tile"><span class="v">36.7</span><span class="l">Bonsai-8B (1 bit)</span></div>
+  </div>
+  <p class="prose" style="font-size:.88rem;color:var(--ink-3)">Perplexity on the same 1,024-token passage of the essay. Same-index Pearson r is moderate (median 0.25–0.54), because the bulk of weak activations dominates it. The next metric to measure is overlap in the strong-activation tail, which is what neuron audits look at.</p>
+</section>
+
+<section>
+  <div class="eyebrow">Method</div>
+  <h2>Reading a neuron backwards</h2>
+  <p class="prose">A Qwen3 MLP neuron computes a = silu(g)·u, with g and u both linear in the normalized residual stream. Each step back along the chain of antecedents has a different mathematical structure, so each needs a different solver. The inverse is only as convincing as the round trip: ask for a target activation, apply the solution, and measure what you actually get.</p>
+  <div class="chain">tokens ──► residual stream ──► upstream neurons, heads ──► (g, u) ──► a = silu(g)·u
+   L4             L3                       L2 / L1                 L0</div>
+  <div class="tbl"><table>
+    <thead><tr><th>Level</th><th>Antecedents</th><th>Structure</th><th>Tool</th></tr></thead>
+    <tbody>
+      <tr><td>L0</td><td>normalized residual</td><td>two linear constraints</td><td>closed form, no optimizer</td></tr>
+      <tr><td>L1</td><td>upstream neurons, weights only</td><td>linear, bounded</td><td>SciPy <code>lsq_linear</code>, <code>milp</code> (minimum support)</td></tr>
+      <tr><td>L2</td><td>gains on upstream neurons, real input</td><td>smooth, differentiable, objectives conflict</td><td><code>least_squares</code> / L-BFGS-B with autograd. globalMOO for the Pareto front, selected neurons only</td></tr>
+      <tr><td>L3</td><td>residual or concept coefficients</td><td>continuous, high-dimensional</td><td>torch Adam. globalMOO when k ≤ 30</td></tr>
+      <tr><td>L4</td><td>text: semantic slots or tokens</td><td>discrete, black box</td><td>globalMOO on interpretable slots. <code>differential_evolution</code>, GCG and an agent-written maximum as baselines</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout">
+    <h3>Budget rule</h3>
+    <p>Bulk screening of many neurons runs on the local SciPy/torch toolchain only. globalMOO is reserved for 2–4 carefully chosen neurons, one well-posed problem at a time, trained once and queried for many targets. Each run gets a written hypothesis beforehand.</p>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Finding 3</div>
+  <h2>Each solver earns its place on a different kind of query</h2>
+  <p class="prose">This calibration toy is a single SwiGLU neuron with 8 inputs, so it is not a model result. It shows the solvers' characters before we spend any runs on real neurons. globalMOO's learned inverse hits targets inside its trained envelope in a handful of evaluations, but does not extrapolate beyond it. Gradient least-squares is fast whenever the map is differentiable. Differential evolution is robust and expensive.</p>
+  <figure>
+    <div class="tbl"><table>
+      <thead><tr><th>Goal</th><th>globalMOO<br>(after 181-pt design)</th><th>Differential evolution</th><th>least_squares + autograd</th></tr></thead>
+      <tbody>
+        <tr><td>a ≈ 1.0 ± 1% (inside design range)</td><td><span class="ok">hit</span> · 5 evals</td><td><span class="ok">hit</span> · 704</td><td><span class="miss">0.990</span> · 7</td></tr>
+        <tr><td>a ≈ 3.0 ± 1% (beyond design max 1.84)</td><td><span class="miss">stalled at 1.84</span></td><td><span class="ok">hit</span> · 704</td><td><span class="ok">hit</span> · 7</td></tr>
+        <tr><td>a ≈ −0.2 with g ≥ 0.5 (other regime)</td><td><span class="ok">hit</span> · 1</td><td><span class="ok">hit</span> · 704</td><td><span class="ok">hit</span> · 11</td></tr>
+        <tr><td>maximize a</td><td>1.92 · 60</td><td>3.53 · 704</td><td>n/a</td></tr>
+        <tr><td>a ≈ 1.0 and ‖x‖₁ ≤ 2</td><td><span class="miss">0.61</span></td><td><span class="miss">0.84</span></td><td><span class="miss">0.88</span> (likely infeasible)</td></tr>
+      </tbody>
+    </table></div>
+    <figcaption>Evaluations = forward-model calls. globalMOO's design-of-experiments cost (181 calls) is paid once per problem and then shared by every query. We also fixed a setup issue in our code: an untargeted output that starts at 0 was pinned to 0 by its percent band, so free outputs now use absolute bands.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <div class="eyebrow">Next</div>
+  <h2>What lands next</h2>
+  <ul class="prose">
+    <li><b>Blind-test the labels</b> with the essay's protocol. From each label alone, write 5 new examples and 5 near misses, then measure how often each fires strongly (≥30% of corpus max).</li>
+    <li><b>Same neurons at 16-bit and ternary.</b> Scan Qwen3-8B and Ternary-Bonsai-8B and compare these 24 poles directly. This tests the essay's prediction that capacity limits broaden neurons rather than pack them.</li>
+    <li><b>Label the upstream units</b> in each pole's minimal circuit, so the backward view reads as concepts rather than neuron IDs.</li>
+    <li><b>Candidates for one careful globalMOO run</b> each, sent to you for approval first:
+      <ul>
+        <li>L9/N3688 "nerve": one compact route;</li>
+        <li>L27/N64 "afterlife": spread-out input;</li>
+        <li>L10/N5749: two unrelated poles.</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+</div>
+
+<script>
+(function () {
+  const layers = [1, 5, 9, 13, 17, 21, 25, 29, 33, 35];
+  const series = [
+    { name: "Qwen3-8B ↔ Ternary", color: "var(--s1)", v: [43.2, 99.1, 99.9, 99.8, 99.4, 99.6, 99.5, 98.7, 97.6, 78.5] },
+    { name: "Qwen3-8B ↔ 1-bit", color: "var(--s2)", v: [40.2, 94.6, 98.7, 97.2, 95.3, 94.7, 92.0, 84.2, 80.7, 47.2] },
+    { name: "Ternary ↔ 1-bit", color: "var(--s3)", v: [42.8, 99.7, 99.9, 99.7, 98.3, 99.4, 99.2, 96.6, 96.8, 82.5] },
+  ];
+  // table view
+  const t = document.getElementById("idtable");
+  t.innerHTML = "<thead><tr><th>Layer</th>" + series.map(s => `<th>${s.name}</th>`).join("") + "</tr></thead><tbody>" +
+    layers.map((L, i) => `<tr><td>L${L}</td>` + series.map(s => `<td class="num">${s.v[i].toFixed(1)}%</td>`).join("") + "</tr>").join("") + "</tbody>";
+
+  const W = 860, H = 340, m = { l: 48, r: 128, t: 12, b: 40 };
+  const x = L => m.l + (L / 35) * (W - m.l - m.r);
+  const y = v => m.t + (1 - v / 100) * (H - m.t - m.b);
+  const ns = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(ns, "svg");
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  svg.setAttribute("role", "img");
+  svg.setAttribute("aria-label", "Line chart: share of neurons whose best match is the same index, by layer, for three model pairs");
+  const el = (tag, attrs, parent = svg) => { const e = document.createElementNS(ns, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; };
+  for (const v of [0, 25, 50, 75, 100]) {
+    el("line", { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), stroke: "var(--grid)", "stroke-width": 1, fill: "none" });
+    const tx = el("text", { x: m.l - 8, y: y(v) + 4, "text-anchor": "end", fill: "var(--ink-3)", "font-size": 11, "font-family": "IBM Plex Mono, monospace" });
+    tx.textContent = v + "%";
+  }
+  for (const L of layers) {
+    const tx = el("text", { x: x(L), y: H - m.b + 18, "text-anchor": "middle", fill: "var(--ink-3)", "font-size": 11, "font-family": "IBM Plex Mono, monospace" });
+    tx.textContent = "L" + L;
+  }
+  const xl = el("text", { x: (m.l + W - m.r) / 2, y: H - 4, "text-anchor": "middle", fill: "var(--ink-3)", "font-size": 11, "font-family": "IBM Plex Sans, sans-serif" });
+  xl.textContent = "layer";
+  const cross = el("line", { y1: m.t, y2: H - m.b, stroke: "var(--ink-3)", "stroke-width": 1, "stroke-dasharray": "3 3", opacity: 0, fill: "none" });
+  const endY = [];
+  series.forEach(s => {
+    el("path", { d: s.v.map((v, i) => (i ? "L" : "M") + x(layers[i]) + " " + y(v)).join(""), stroke: s.color, "stroke-width": 2, fill: "none", "stroke-linejoin": "round", "stroke-linecap": "round" });
+    s.dots = s.v.map((v, i) => el("circle", { cx: x(layers[i]), cy: y(v), r: 4, fill: s.color, stroke: "var(--surface)", "stroke-width": 2 }));
+    endY.push(y(s.v[s.v.length - 1]));
+  });
+  // direct labels at the right end, de-collided
+  const order = series.map((s, i) => i).sort((a, b) => endY[a] - endY[b]);
+  let last = -Infinity;
+  order.forEach(i => {
+    let yy = Math.max(endY[i], last + 15); last = yy;
+    const tx = el("text", { x: x(35) + 10, y: yy + 4, fill: "var(--ink-2)", "font-size": 11.5, "font-family": "IBM Plex Sans, sans-serif" });
+    tx.textContent = series[i].name;
+  });
+  const wrap = document.getElementById("idchart");
+  wrap.appendChild(svg);
+  const tip = document.createElement("div"); tip.className = "tip"; tip.hidden = true; wrap.appendChild(tip);
+  const hit = el("rect", { x: m.l, y: m.t, width: W - m.l - m.r, height: H - m.t - m.b, fill: "transparent" });
+  function show(evt) {
+    const r = svg.getBoundingClientRect();
+    const px = (evt.clientX - r.left) * (W / r.width);
+    let i = 0, best = Infinity;
+    layers.forEach((L, k) => { const d = Math.abs(x(L) - px); if (d < best) { best = d; i = k; } });
+    cross.setAttribute("x1", x(layers[i])); cross.setAttribute("x2", x(layers[i])); cross.setAttribute("opacity", 1);
+    series.forEach(s => s.dots.forEach((d, k) => d.setAttribute("r", k === i ? 6 : 4)));
+    tip.innerHTML = `<b>Layer ${layers[i]}</b><br>` + series.map(s => `${s.name}: ${s.v[i].toFixed(1)}%`).join("<br>");
+    tip.style.left = (x(layers[i]) / W * r.width) + "px";
+    tip.style.top = (y(Math.max(...series.map(s => s.v[i]))) / H * r.height) + "px";
+    tip.hidden = false;
+  }
+  function hide() { tip.hidden = true; cross.setAttribute("opacity", 0); series.forEach(s => s.dots.forEach(d => d.setAttribute("r", 4))); }
+  hit.addEventListener("pointermove", show);
+  hit.addEventListener("pointerleave", hide);
+})();
+</script>
+<script id="neuron-data" type="application/json">__NEURON_DATA__</script>
+<script>
+(function () {
+  const data = JSON.parse(document.getElementById("neuron-data").textContent);
+  const ns = "http://www.w3.org/2000/svg";
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const mk = (tag, attrs, parent) => { const e = document.createElementNS(ns, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+  const txt = (parent, x, y, s, extra = {}) => { const t = mk("text", Object.assign({ x, y, fill: "var(--ink-3)", "font-size": 11, "font-family": "IBM Plex Mono, monospace" }, extra), parent); t.textContent = s; return t; };
+  const poles = data.flatMap(n => n.poles.map(p => Object.assign({ id: n.id + " " + p.pole }, p)));
+
+  // --- verdict tally: two 100% bars
+  const cats = [["one", "One main job", "var(--s1)"], ["two", "Two related jobs", "var(--s3)"], ["unclear", "Not yet understood", "var(--ink-3)"]];
+  const bon = cats.map(([k]) => poles.filter(p => p.verdict === k).length);
+  const rows = [["Bonsai-8B 1-bit · our first read (24 poles)", bon.map(c => 100 * c / poles.length), bon], ["Qwen3-32B · essay audit", [90, 7, 3], null]];
+  {
+    const W = 860, H = 128, l = 0, r = 0, bw = W - l - r;
+    const svg = mk("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Stacked bars: share of poles with one job, two related jobs, or not understood" });
+    rows.forEach(([name, vals, counts], i) => {
+      const y = 18 + i * 58;
+      txt(svg, 0, y, name, { fill: "var(--ink-2)", "font-family": "IBM Plex Sans, sans-serif", "font-size": 12.5 });
+      let x = l;
+      vals.forEach((v, j) => {
+        const w = bw * v / 100;
+        if (w <= 0) return;
+        const rect = mk("rect", { x: x + (x > l ? 1 : 0), y: y + 8, width: Math.max(0, w - (x > l ? 2 : 0)), height: 22, rx: 3, fill: cats[j][2] }, svg);
+        const t = mk("title", {}, rect); t.textContent = `${cats[j][1]}: ${counts ? counts[j] + " of " + poles.length + " · " : ""}${v.toFixed(0)}%`;
+        if (w > 44) txt(svg, x + 8, y + 23, v.toFixed(0) + "%", { fill: "#fff", "font-size": 11.5 });
+        x += w;
+      });
+    });
+    document.getElementById("verdictchart").appendChild(svg);
+    document.getElementById("verdictlegend").innerHTML = cats.map(([, n, c]) => `<span><i style="background:${c};height:10px;width:10px;border-radius:2px"></i>${n}</span>`).join("");
+  }
+
+  // shared tooltip helper
+  function attachTip(wrap) { const tip = document.createElement("div"); tip.className = "tip"; tip.hidden = true; wrap.appendChild(tip); return tip; }
+
+  // --- round trip scatter
+  {
+    const W = 420, H = 340, m = { l: 44, r: 14, t: 14, b: 40 };
+    const sx = v => m.l + v * (W - m.l - m.r), sy = v => m.t + (1 - v) * (H - m.t - m.b);
+    const svg = mk("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Scatter: requested versus achieved activation fraction" });
+    [0, .25, .5, .75, 1].forEach(v => {
+      mk("line", { x1: m.l, x2: W - m.r, y1: sy(v), y2: sy(v), stroke: "var(--grid)", fill: "none" }, svg);
+      txt(svg, m.l - 6, sy(v) + 4, v.toFixed(2), { "text-anchor": "end" });
+    });
+    [0.25, 0.5, 0.75].forEach(v => txt(svg, sx(v), H - m.b + 16, v.toFixed(2), { "text-anchor": "middle" }));
+    txt(svg, (m.l + W - m.r) / 2, H - 6, "requested fraction of clean activation", { "text-anchor": "middle", "font-family": "IBM Plex Sans, sans-serif" });
+    mk("line", { x1: sx(0), y1: sy(0), x2: sx(1), y2: sy(1), stroke: "var(--ink-3)", "stroke-dasharray": "4 4", fill: "none" }, svg);
+    const wrap = document.getElementById("rtchart"); wrap.appendChild(svg); const tip = attachTip(wrap);
+    poles.forEach((p, i) => (p.round_trip || []).forEach(r => {
+      const reachable = p.ablate_top24 <= r.target + 0.02;
+      const jx = ((i % 7) - 3) * 0.006;
+      const c = mk("circle", { cx: sx(r.target + jx), cy: sy(Math.max(0, Math.min(1.05, r.achieved))), r: 5, fill: reachable ? "var(--s1)" : "var(--surface)", stroke: "var(--s1)", "stroke-width": 2 }, svg);
+      c.addEventListener("pointerenter", () => {
+        const b = svg.getBoundingClientRect();
+        tip.innerHTML = `<b>${esc(p.id)}</b><br>asked ${r.target.toFixed(2)} → got ${r.achieved.toFixed(3)}<br>${r.evals} evals${reachable ? "" : "<br>below the floor of " + p.ablate_top24.toFixed(2)}`;
+        tip.style.left = (+c.getAttribute("cx") / W * b.width) + "px"; tip.style.top = (+c.getAttribute("cy") / H * b.height) + "px"; tip.hidden = false;
+      });
+      c.addEventListener("pointerleave", () => tip.hidden = true);
+    }));
+  }
+
+  // --- concentration strip (sorted bars)
+  {
+    const ps = poles.filter(p => p.ablate_top24 != null).sort((a, b) => a.ablate_top24 - b.ablate_top24);
+    const rowH = 16, W = 420, m = { l: 92, r: 40, t: 6, b: 26 }, H = m.t + m.b + ps.length * rowH;
+    const sx = v => m.l + Math.max(0, Math.min(1, v)) * (W - m.l - m.r);
+    const svg = mk("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Bar chart: activation remaining after zeroing the top 24 upstream neurons, per pole" });
+    [0, .5, 1].forEach(v => { mk("line", { x1: sx(v), x2: sx(v), y1: m.t, y2: H - m.b, stroke: "var(--grid)", fill: "none" }, svg); txt(svg, sx(v), H - 8, v.toFixed(1), { "text-anchor": "middle" }); });
+    ps.forEach((p, i) => {
+      const y = m.t + i * rowH;
+      txt(svg, m.l - 6, y + 11, p.id, { "text-anchor": "end", "font-size": 10.5 });
+      const w = Math.max(2, sx(p.ablate_top24) - m.l);
+      const rect = mk("rect", { x: m.l, y: y + 3, width: w, height: rowH - 6, rx: 2, fill: "var(--s1)" }, svg);
+      const t = mk("title", {}, rect); t.textContent = `${p.id}: ${p.ablate_top24.toFixed(2)} remains — ${p.label}`;
+      txt(svg, m.l + w + 4, y + 11, p.ablate_top24.toFixed(2), { "font-size": 10 });
+    });
+    document.getElementById("concchart").appendChild(svg);
+  }
+
+  // --- cards
+  const verdictName = { one: "one job", two: "two related jobs", unclear: "not yet understood" };
+  function spark(c) {
+    if (!c) return "–";
+    const W = 120, H = 26, x = i => 2 + i * (W - 4) / (c.length - 1), y = v => H - 2 - Math.max(0, Math.min(1.2, v)) / 1.2 * (H - 4);
+    const d = c.map((v, i) => (i ? "L" : "M") + x(i).toFixed(1) + " " + y(v).toFixed(1)).join("");
+    return `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="keep curve"><line x1="2" x2="${W - 2}" y1="${y(0.5)}" y2="${y(0.5)}" stroke="var(--grid)" stroke-dasharray="2 2"/><path d="${d}" fill="none" stroke="var(--s1)" stroke-width="2" stroke-linejoin="round"/></svg>`;
+  }
+  const order = ["L9/N3688", "L10/N5749", "L15/N3421", "L13/N10734", "L27/N64"];
+  data.sort((a, b) => (order.indexOf(a.id) + 1 || 99) - (order.indexOf(b.id) + 1 || 99));
+  const hl = s => esc(s).replace("⟦", "<mark>").replace("⟧", "</mark>").replace(/⏎/g, "↵ ");
+  document.getElementById("cards").innerHTML = data.map(n => `
+    <article class="card">
+      <div class="card-head"><h3>${n.id}</h3><span>layer ${n.L} of 36 · neuron ${n.n} of 12,288</span></div>
+      <div class="poles">${n.poles.map(p => `
+        <div class="pole">
+          <span class="sign">${p.pole === "+" ? "Positive pole" : "Negative pole"} · max ${p.max != null ? Math.abs(p.max).toFixed(1) : "–"}</span>
+          <div class="label">${esc(p.label)}</div>
+          <span class="chip ${p.verdict}">${verdictName[p.verdict]}</span>
+          ${(p.examples || []).map(e => `<div class="ex"><span class="a">${e.act.toFixed(1)}</span>${hl(e.text)}</div>`).join("")}
+          ${p.round_trip ? `<dl class="metrics">
+            <div><dt>Left after zeroing top 24</dt><dd>${p.ablate_top24.toFixed(2)}</dd></div>
+            <div><dt>Round trip .25 / .50 / .75</dt><dd>${p.round_trip.map(r => r.achieved.toFixed(2)).join(" / ")}</dd></div>
+            <div><dt>Top-k kept to retain half</dt><dd>${p.k_half === 0 ? "none needed" : p.k_half == null ? "not within 24" : "k = " + p.k_half}</dd></div>
+            <div><dt>Keep curve, k = 0…24</dt><dd>${spark(p.keep_curve)}</dd></div>
+          </dl>` : `<dl class="metrics"><div><dt>Backward screen</dt><dd>pending</dd></div></dl>`}
+          ${p.antecedents ? `<div class="ante"><div class="ante-sum">${esc(p.antecedents.summary)}</div><ul>${p.antecedents.units.map(([u, l, r]) => `<li><code>${esc(u)}</code> ${esc(l)} <span>${esc(r)}</span></li>`).join("")}</ul></div>` : ""}
+        </div>`).join("")}
+      </div>
+    </article>`).join("");
+})();
+</script>

@@ -1,0 +1,35 @@
+[project]
+name = "monosemanticity"
+version = "0.1.0"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "torch>=2.8",
+    "transformers>=4.56",
+    "safetensors",
+    "accelerate",
+    "datasets",
+    "numpy",
+    "pandas",
+    "pyarrow",
+    "tqdm",
+    "python-dotenv",
+    "globalmoo-sdk",
+    "anthropic",
+    "scipy",
+    "scikit-learn",
+]
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.setuptools]
+packages = ["mono"]
+
+[tool.uv]
+# globalmoo-sdk pins numpy==1.26.4 but never imports numpy; pyarrow/datasets need numpy 2
+override-dependencies = ["numpy>=2"]

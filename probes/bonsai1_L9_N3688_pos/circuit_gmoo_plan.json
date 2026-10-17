@@ -1,0 +1,14 @@
+{
+ "written": "2026-10-17, after the local differential-evolution circuit run and before the globalMOO run",
+ "budget": "One globalMOO model for the 5-node circuit (nerve, token, concept, pain, reader), trained once and queried for the 6 circuit goals in circuit.json, max 40 iterations each.",
+ "hypothesis": "'nerve' (L9/N3688+) has two parallel input routes: a Latin-script token route (L3/N6493) and a concept route (L8/N7756) carrying non-Latin scripts. The pain detector (L8/N3858) gates the token route; it may not gate the concept route. The reader (L10/N6901) depends on 'nerve'.",
+ "predictions": {
+  "bypass": "Satisfied only by passages using non-Latin 'nerve' (Arabic/CJK), with concept ≥ 0.5.",
+  "gated": "Satisfied with pain ≥ 0.5 in the passage.",
+  "override": "If satisfied, through the concept route (token low).",
+  "concept_without_token": "Satisfied; 'nerve' follows (≥ 0.3).",
+  "reader_other_routes": "Not satisfiable within the bank (DE best 0.40).",
+  "clean_max": "'nerve' ~0.8–1.06 with a Latin-script psychological passage.",
+  "efficiency": "Fewer model evaluations than DE's 3,744 for the six goals."
+ }
+}

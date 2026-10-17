@@ -1,0 +1,166 @@
+{
+ "note": "Map of the probed pole's causal neighbourhood, from neighbors.json and the circuit inverse. Labels are first readings from each unit's own top corpus examples.",
+ "claim": "Two input routes reach 'nerve': a Latin-script token route that pain context and some constructions can close, and a concept route used by non-Latin scripts that stays open. The output spreads thinly over many later neurons.",
+ "nodes": [
+  {
+   "id": "latin",
+   "x": 80,
+   "y": 70,
+   "kind": "text",
+   "label": "Latin-script text",
+   "sub": "nerve-racking · Nerven"
+  },
+  {
+   "id": "nonlatin",
+   "x": 80,
+   "y": 190,
+   "kind": "text",
+   "label": "Non-Latin text",
+   "sub": "عصبية · 神经 · 신경"
+  },
+  {
+   "id": "paintext",
+   "x": 80,
+   "y": 310,
+   "kind": "text",
+   "label": "Pain context",
+   "sub": "pain receptors · Schmerzen"
+  },
+  {
+   "id": "token",
+   "x": 300,
+   "y": 70,
+   "kind": "unit",
+   "label": "L3/N6493",
+   "sub": "token 'nerve'"
+  },
+  {
+   "id": "concept",
+   "x": 300,
+   "y": 190,
+   "kind": "unit",
+   "label": "L8/N7756",
+   "sub": "nerve/neural concept"
+  },
+  {
+   "id": "pain",
+   "x": 300,
+   "y": 310,
+   "kind": "unit",
+   "label": "L8/N3858",
+   "sub": "pain detector"
+  },
+  {
+   "id": "nerve",
+   "x": 540,
+   "y": 130,
+   "kind": "probed",
+   "label": "L9/N3688 +",
+   "sub": "psychological 'nerve'"
+  },
+  {
+   "id": "r1",
+   "x": 800,
+   "y": 60,
+   "kind": "unit",
+   "label": "L10/N6901",
+   "sub": "nervous-system reader"
+  },
+  {
+   "id": "r2",
+   "x": 800,
+   "y": 150,
+   "kind": "unit",
+   "label": "L14/N9470",
+   "sub": "emotional distress"
+  },
+  {
+   "id": "rmany",
+   "x": 800,
+   "y": 240,
+   "kind": "faint",
+   "label": "many readers",
+   "sub": "each < 0.06 of range"
+  }
+ ],
+ "edges": [
+  {
+   "from": "latin",
+   "to": "token",
+   "type": "excite",
+   "label": ""
+  },
+  {
+   "from": "nonlatin",
+   "to": "concept",
+   "type": "excite",
+   "label": ""
+  },
+  {
+   "from": "paintext",
+   "to": "pain",
+   "type": "excite",
+   "label": ""
+  },
+  {
+   "from": "token",
+   "to": "nerve",
+   "type": "excite",
+   "label": "74%"
+  },
+  {
+   "from": "concept",
+   "to": "nerve",
+   "type": "excite",
+   "label": "61%"
+  },
+  {
+   "from": "pain",
+   "to": "nerve",
+   "type": "gate",
+   "label": "flips sense"
+  },
+  {
+   "from": "nerve",
+   "to": "r1",
+   "type": "excite",
+   "label": "+0.12"
+  },
+  {
+   "from": "nerve",
+   "to": "r2",
+   "type": "excite",
+   "label": "+0.06"
+  },
+  {
+   "from": "nerve",
+   "to": "rmany",
+   "type": "weak",
+   "label": ""
+  }
+ ],
+ "evidence": [
+  "Zeroing L3/N6493 removes 74% of the pole's activation on average (95% on anatomical examples), and zeroing L8/N7756 removes 61%. No other single input passes 15%.",
+  "Circuit inverse (SciPy): with the token unit quiet (0.03), Arabic 'nervous system' still drives the pole to 0.61 through the concept unit, and still does (0.61) beside 'chronic pain' with the pain unit at 0.70.",
+  "Circuit inverse (globalMOO): the token unit fires (0.71) while the pole stays silent (0.10) with no pain present, in 'He lost his nerve at the last moment'. Construction can close the token route too.",
+  "Zeroing the pole moves its strongest reader by 0.12 of that reader's range; every other later neuron moves by less than 0.06."
+ ],
+ "unit_labels": {
+  "L3/N6493": "the token 'nerve' (nerve, Nerven, ner-ve)",
+  "L8/N7756": "nerve/neural concept (Arabic عصب top examples)",
+  "L7/N1548": "− pole: veins (neck veins, marble veining)",
+  "L5/N5628": "− pole: the subword 'enceph-' (encephalitis)",
+  "L3/N6185": "the prefix 'neuro-'",
+  "L0/N11629": "the token ' neuro'",
+  "L6/N1460": "− pole: numbness and tingling",
+  "L0/N1684": "the token ' serve' (shares '-erve')",
+  "L8/N3858": "pain (painkillers, pain control)",
+  "L6/N2055": "pain in other languages (Schmerzen, doler, وجع)",
+  "L8/N2325": "pressure, force, touch",
+  "L10/N6901": "nervous system and neuroanatomy (− pole: sensory receptors)",
+  "L14/N9470": "emotional disappointment (失望, 失落)",
+  "L14/N8050": "narrated past events ('once told me', 'drove')",
+  "L10/N8852": "insulation and conductors (myelin, copper wire)",
+  "L20/N1951": "idioms and fixed expressions"
+ }
+}

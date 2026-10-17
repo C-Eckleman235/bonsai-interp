@@ -1,0 +1,350 @@
+{
+ "solver": "gmoo",
+ "nodes": [
+  {
+   "name": "nerve",
+   "L": 9,
+   "n": 3688,
+   "pole": "+",
+   "label": "probed pole: psychological 'nerve'"
+  },
+  {
+   "name": "token",
+   "L": 3,
+   "n": 6493,
+   "pole": "+",
+   "label": "the token 'nerve' (main input, 74% of activation)"
+  },
+  {
+   "name": "concept",
+   "L": 8,
+   "n": 7756,
+   "pole": "+",
+   "label": "nerve/neural concept (second input, 61%)"
+  },
+  {
+   "name": "pain",
+   "L": 8,
+   "n": 3858,
+   "pole": "+",
+   "label": "pain detector (context disambiguator)"
+  },
+  {
+   "name": "reader",
+   "L": 10,
+   "n": 6901,
+   "pole": "+",
+   "label": "nervous-system reader (strongest downstream)"
+  }
+ ],
+ "goals": {
+  "bypass": {
+   "question": "Can 'nerve' fire (≥0.3) while its token input stays quiet (≤0.1)?",
+   "satisfied": false,
+   "evals": 41,
+   "extra": {
+    "stopped": "max_iter",
+    "doe_evals": 161
+   },
+   "x": [
+    0.7051,
+    0.7258,
+    0.8502,
+    0.2283,
+    0.0142,
+    0.1414
+   ],
+   "y": {
+    "nerve": 0.1735,
+    "token": 0.088,
+    "concept": 0.3658,
+    "pain": 0.0319,
+    "reader": 0.0481,
+    "dose": 0.5,
+    "dose_broad": 0.5
+   },
+   "text": "신경민 의원은 오늘 국회에서 기자회견을 열었다. What audacity, showing up uninvited after everything he said! The museum's new wing houses a collection of medieval tapestries.",
+   "sentences": [
+    {
+     "i": 25,
+     "text": "신경민 의원은 오늘 국회에서 기자회견을 열었다.",
+     "kind": "on",
+     "branch": "name containing the morpheme",
+     "rel": 0.0
+    },
+    {
+     "i": 31,
+     "text": "What audacity, showing up uninvited after everything he said!",
+     "kind": "near",
+     "branch": "near",
+     "rel": 0.5
+    },
+    {
+     "i": 54,
+     "text": "The museum's new wing houses a collection of medieval tapestries.",
+     "kind": "unrelated",
+     "branch": "unrelated",
+     "rel": 0.0
+    }
+   ]
+  },
+  "gated": {
+   "question": "Token clearly present (≥0.5) but 'nerve' silent (≤0.1): what is the pain unit doing?",
+   "satisfied": true,
+   "evals": 10,
+   "extra": {
+    "stopped": "satisfied",
+    "doe_evals": 161
+   },
+   "x": [
+    0.0471,
+    0.0322,
+    0.0125,
+    0.0683,
+    0.9277,
+    0.1716
+   ],
+   "y": {
+    "nerve": 0.099,
+    "token": 0.7141,
+    "concept": 0.2343,
+    "pain": 0.0157,
+    "reader": 0.0536,
+    "dose": 1.0,
+    "dose_broad": 1.0
+   },
+   "text": "افتتحت المكتبة الجديدة أبوابها للزوار يوم السبت. The museum's new wing houses a collection of medieval tapestries. He lost his nerve at the last moment and stayed on the ledge.",
+   "sentences": [
+    {
+     "i": 59,
+     "text": "افتتحت المكتبة الجديدة أبوابها للزوار يوم السبت.",
+     "kind": "unrelated",
+     "branch": "unrelated",
+     "rel": 0.0
+    },
+    {
+     "i": 54,
+     "text": "The museum's new wing houses a collection of medieval tapestries.",
+     "kind": "unrelated",
+     "branch": "unrelated",
+     "rel": 0.0
+    },
+    {
+     "i": 7,
+     "text": "He lost his nerve at the last moment and stayed on the ledge.",
+     "kind": "on",
+     "branch": "idiom-courage",
+     "rel": 1.0
+    }
+   ]
+  },
+  "override": {
+   "question": "Can 'nerve' stay strong (≥0.5) with the pain unit also strongly active (≥0.5)?",
+   "satisfied": false,
+   "evals": 41,
+   "extra": {
+    "stopped": "max_iter",
+    "doe_evals": 161
+   },
+   "x": [
+    0.6956,
+    0.0473,
+    0.996,
+    0.9989,
+    0.6652,
+    1.0
+   ],
+   "y": {
+    "nerve": 0.281,
+    "token": 0.7828,
+    "concept": 0.5379,
+    "pain": 0.6853,
+    "reader": 0.2475,
+    "dose": 1.0,
+    "dose_broad": 1.0
+   },
+   "text": "Diabetic neuropathy affects all peripheral nerves: pain fibers, motor neurons, autonomic nerves. These days we’re starting to see more firmware updates for hard drives, especially solid-state drives, and these can be nerve-wracking to install. 신경민 후보를 지지한다는 김 모(30",
+   "sentences": [
+    {
+     "i": 71,
+     "text": "Diabetic neuropathy affects all peripheral nerves: pain fibers, motor neurons, autonomic nerves.",
+     "kind": "top",
+     "branch": "anatomy",
+     "rel": 0.1
+    },
+    {
+     "i": 67,
+     "text": "These days we’re starting to see more firmware updates for hard drives, especially solid-state drives, and these can be nerve-wracking to install.",
+     "kind": "top",
+     "branch": "idiom-anxiety",
+     "rel": 1.0
+    },
+    {
+     "i": 62,
+     "text": "신경민 후보를 지지한다는 김 모(30",
+     "kind": "top",
+     "branch": "name containing the morpheme",
+     "rel": 0.0
+    }
+   ]
+  },
+  "concept_without_token": {
+   "question": "Concept input active (≥0.5) with no token (≤0.1): does 'nerve' follow?",
+   "satisfied": false,
+   "evals": 41,
+   "extra": {
+    "stopped": "max_iter",
+    "doe_evals": 161
+   },
+   "x": [
+    0.9873,
+    0.0,
+    0.4547,
+    0.0012,
+    0.0006,
+    0.0
+   ],
+   "y": {
+    "nerve": 0.2884,
+    "token": 0.1558,
+    "concept": 0.5011,
+    "pain": 0.1274,
+    "reader": 0.0813,
+    "dose": 1.0,
+    "dose_broad": 1.0
+   },
+   "text": "시험 때문에 신경이 많이 쓰였다. Le Ghana se présente en quart de finale de la CAN-2013 dans la peau du favori face à l'étonnant Cap-Vert, samedi à Port Elizabeth. افتتحت المكتبة الجديدة أبوابها للزوار يوم السبت.",
+   "sentences": [
+    {
+     "i": 15,
+     "text": "시험 때문에 신경이 많이 쓰였다.",
+     "kind": "on",
+     "branch": "non-English",
+     "rel": 1.0
+    },
+    {
+     "i": 76,
+     "text": "Le Ghana se présente en quart de finale de la CAN-2013 dans la peau du favori face à l'étonnant Cap-Vert, samedi à Port Elizabeth.",
+     "kind": "corpus",
+     "branch": "unrelated",
+     "rel": 0.0
+    },
+    {
+     "i": 59,
+     "text": "افتتحت المكتبة الجديدة أبوابها للزوار يوم السبت.",
+     "kind": "unrelated",
+     "branch": "unrelated",
+     "rel": 0.0
+    }
+   ]
+  },
+  "reader_other_routes": {
+   "question": "Does the reader fire (≥0.5) with 'nerve' quiet (≤0.1)?",
+   "satisfied": false,
+   "evals": 41,
+   "extra": {
+    "stopped": "max_iter",
+    "doe_evals": 161
+   },
+   "x": [
+    0.0,
+    0.0,
+    0.8616,
+    0.0017,
+    0.1494,
+    0.9868
+   ],
+   "y": {
+    "nerve": 0.021,
+    "token": 0.2742,
+    "concept": 0.4892,
+    "pain": 0.0157,
+    "reader": 0.2464,
+    "dose": 0.9,
+    "dose_broad": 0.8
+   },
+   "text": "افتتحت المكتبة الجديدة أبوابها للزوار يوم السبت. He felt nervous before stepping onto the stage. Neurons communicate with one another across tiny gaps called synapses.",
+   "sentences": [
+    {
+     "i": 59,
+     "text": "افتتحت المكتبة الجديدة أبوابها للزوار يوم السبت.",
+     "kind": "unrelated",
+     "branch": "unrelated",
+     "rel": 0.0
+    },
+    {
+     "i": 21,
+     "text": "He felt nervous before stepping onto the stage.",
+     "kind": "on",
+     "branch": "derived (nervous, neural)",
+     "rel": 0.9
+    },
+    {
+     "i": 27,
+     "text": "Neurons communicate with one another across tiny gaps called synapses.",
+     "kind": "near",
+     "branch": "near",
+     "rel": 0.0
+    }
+   ]
+  },
+  "clean_max": {
+   "question": "Strongest 'nerve' with the pain unit quiet (≤0.1)",
+   "satisfied": true,
+   "evals": 27,
+   "extra": {
+    "stopped": "stalled",
+    "doe_evals": 161
+   },
+   "x": [
+    0.0367,
+    0.9356,
+    0.6256,
+    0.5276,
+    0.8692,
+    0.4075
+   ],
+   "y": {
+    "nerve": 0.3653,
+    "token": 0.5586,
+    "concept": 0.3755,
+    "pain": 0.067,
+    "reader": 0.0535,
+    "dose": 1.0,
+    "dose_broad": 1.0
+   },
+   "text": "After much undue depreciation Boileau's critical work has been rehabilitated by recent writers, perhaps to the extent of some exaggeration in the other direction. The cold water stung, and then her fingers went numb. The constant drilling next door is getting on my nerves.",
+   "sentences": [
+    {
+     "i": 84,
+     "text": "After much undue depreciation Boileau's critical work has been rehabilitated by recent writers, perhaps to the extent of some exaggeration in the other direction.",
+     "kind": "corpus",
+     "branch": "unrelated",
+     "rel": 0.0
+    },
+    {
+     "i": 49,
+     "text": "The cold water stung, and then her fingers went numb.",
+     "kind": "opposite",
+     "branch": "opposite",
+     "rel": 0.0
+    },
+    {
+     "i": 5,
+     "text": "The constant drilling next door is getting on my nerves.",
+     "kind": "on",
+     "branch": "idiom-anxiety",
+     "rel": 1.0
+    }
+   ]
+  }
+ },
+ "started": "2026-10-17 14:28",
+ "gmoo": {
+  "model_id": 6720,
+  "project_id": 12577,
+  "trial_id": 17553,
+  "doe_evals": 161
+ },
+ "forward_passes": 504
+}

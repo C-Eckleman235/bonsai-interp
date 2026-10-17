@@ -1,0 +1,388 @@
+<title>__TITLE__</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: lab-dossier column (~70ch) with figures breaking to 960px; three reading directions mark the sections */
+:root {
+  --bg: #f6f7f5; --surface: #ffffff; --ink: #14191a; --ink-2: #4a5351; --ink-3: #788280;
+  --rule: #dde2df; --grid: #e8ebe9; --accent: #1f6b5c; --accent-soft: #e2eeea;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a;
+  --good: #1f7a3a; --good-bg: #e4f2e8; --bad: #b3261e; --bad-bg: #f8e5e3; --warn: #8a5a00; --warn-bg: #f7eed8;
+  --mark: #fff1c7; --mark-ink: #4a3500;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111514; --surface: #191e1d; --ink: #eef1ef; --ink-2: #b8c0bd; --ink-3: #89938f;
+    --rule: #2b3230; --grid: #232927; --accent: #5fc2a8; --accent-soft: #1c2e29;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+    --good: #6fcf8a; --good-bg: #1c2e22; --bad: #f08a80; --bad-bg: #351f1d; --warn: #e5b45a; --warn-bg: #33291a;
+    --mark: #4a3d12; --mark-ink: #ffe9a8; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111514; --surface: #191e1d; --ink: #eef1ef; --ink-2: #b8c0bd; --ink-3: #89938f;
+  --rule: #2b3230; --grid: #232927; --accent: #5fc2a8; --accent-soft: #1c2e29;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+  --good: #6fcf8a; --good-bg: #1c2e22; --bad: #f08a80; --bad-bg: #351f1d; --warn: #e5b45a; --warn-bg: #33291a;
+  --mark: #4a3d12; --mark-ink: #ffe9a8; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 16px/1.6 var(--font-body); }
+.page { max-width: 960px; margin: 0 auto; padding-inline: 20px; padding-block: 48px 96px; display: flex; flex-direction: column; gap: 60px; }
+.prose { max-width: 70ch; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 650; text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); line-height: 1.04; }
+h2 { font-size: 1.65rem; line-height: 1.2; }
+h3 { font-size: 1.1rem; font-weight: 500; }
+p { margin: 0; }
+section { display: flex; flex-direction: column; gap: 16px; }
+.eyebrow { font: 500 0.74rem/1.2 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.deck { font-size: 1.15rem; color: var(--ink-2); max-width: 66ch; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 18px; font: 0.8rem/1.4 var(--font-mono); color: var(--ink-3); }
+code, .mono { font-family: var(--font-mono); font-size: 0.88em; }
+.dirs { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+.dir { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.dir .arrow { font: 500 0.8rem/1 var(--font-mono); color: var(--accent); }
+.dir p { font-size: 0.9rem; color: var(--ink-2); }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.tile { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.tile .v { font: 500 1.6rem/1.15 var(--font-mono); font-variant-numeric: tabular-nums; }
+.tile .l { font-size: 0.84rem; color: var(--ink-2); }
+.verdict { display: flex; flex-direction: column; gap: 10px; background: var(--accent-soft); border-radius: 8px; padding: 18px 20px; }
+.verdict .chip { width: fit-content; }
+.verdict ul { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; font: 500 0.72rem/1 var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; padding: 5px 9px; border-radius: 999px; }
+.chip.good { color: var(--good); background: var(--good-bg); }
+.chip.bad { color: var(--bad); background: var(--bad-bg); }
+.chip.warn { color: var(--warn); background: var(--warn-bg); }
+figure { margin: 0; background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+figcaption { font-size: 0.87rem; color: var(--ink-2); max-width: 72ch; }
+.chart-wrap { position: relative; width: 100%; }
+.chart-wrap svg { width: 100%; height: auto; display: block; overflow: visible; }
+.tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--bg); font: 0.76rem/1.45 var(--font-mono); padding: 8px 10px; border-radius: 6px; max-width: 340px; white-space: normal; transform: translate(-50%, calc(-100% - 12px)); z-index: 2; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.84rem; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; }
+.legend i.line { width: 18px; height: 3px; border-radius: 2px; }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+.ex-list { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.ex { font: 0.8rem/1.55 var(--font-mono); color: var(--ink-2); background: var(--bg); border-radius: 5px; padding: 7px 9px; overflow-wrap: anywhere; }
+.ex .a { color: var(--ink-3); margin-right: 8px; }
+mark { background: var(--mark); color: var(--mark-ink); font-weight: 600; border-radius: 3px; padding: 0 2px; }
+.tbl { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.86rem; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font: 500 0.7rem/1.3 var(--font-mono); letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); }
+td.num { font-family: var(--font-mono); text-align: right; white-space: nowrap; }
+.ok { color: var(--good); font-weight: 600; } .miss { color: var(--bad); font-weight: 600; }
+.goal { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.goal-head { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; }
+.goal-head h3 { font-family: var(--font-body); font-size: 0.98rem; font-weight: 600; }
+.goal-head .q { color: var(--ink-2); font-size: 0.9rem; }
+.solves { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+.solve { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.solve .who { font: 500 0.72rem/1.2 var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.passage { font-size: 0.86rem; line-height: 1.55; background: var(--bg); border-radius: 5px; padding: 8px 10px; overflow-wrap: anywhere; }
+.passage .sent { border-bottom: 2px solid transparent; }
+.passage .sent.k-on, .passage .sent.k-top { border-bottom-color: var(--s1); }
+.passage .sent.k-opposite { border-bottom-color: var(--s2); }
+.kinds { font: 0.72rem/1.3 var(--font-mono); color: var(--ink-3); }
+.flip { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+.flip > div { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.big { font: 500 2rem/1 var(--font-mono); }
+.ladder { display: flex; flex-direction: column; gap: 6px; }
+.ladder div { display: grid; grid-template-columns: 64px 1fr; gap: 10px; font-size: 0.85rem; align-items: baseline; }
+.ladder .c { font-family: var(--font-mono); color: var(--ink-3); text-align: right; }
+.gen { display: grid; grid-template-columns: 64px 1fr; gap: 10px; font-size: 0.88rem; align-items: baseline; padding-block: 6px; border-bottom: 1px solid var(--rule); }
+.gen .c { font-family: var(--font-mono); color: var(--ink-3); text-align: right; }
+.gen .t { min-width: 0; overflow-wrap: anywhere; }
+.gen .t b { font-weight: 600; }
+ul.plain { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; }
+details summary { cursor: pointer; color: var(--accent); font-size: 0.86rem; }
+details summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 560px) { .page { padding-block: 28px 64px; gap: 48px; } .gen, .ladder div { grid-template-columns: 48px 1fr; } }
+</style>
+
+<div class="page" id="app"></div>
+
+<script id="dossier-data" type="application/json">__DOSSIER_DATA__</script>
+<script>
+(function () {
+  const D = JSON.parse(document.getElementById("dossier-data").textContent);
+  const V = D.verdict || {};
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const f2 = v => (v == null ? "–" : Number(v).toFixed(2));
+  const peakHL = (text, tokenStr, end) => {
+    if (end == null || !tokenStr) return esc(text);
+    const t = tokenStr, start = Math.max(0, end - t.length);
+    return esc(text.slice(0, start)) + "<mark>" + esc(text.slice(start, end)) + "</mark>" + esc(text.slice(end));
+  };
+  const bracketHL = t => esc(t).replace("⟦", "<mark>").replace("⟧", "</mark>").replace(/⏎/g, "↵ ");
+  const ns = "http://www.w3.org/2000/svg";
+  const mk = (tag, attrs, parent) => { const e = document.createElementNS(ns, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+  const txt = (parent, x, y, s, extra = {}) => { const t = mk("text", Object.assign({ x, y, fill: "var(--ink-3)", "font-size": 11, "font-family": "IBM Plex Mono, monospace" }, extra), parent); t.textContent = s; return t; };
+  function tipFor(wrap) { const t = document.createElement("div"); t.className = "tip"; t.hidden = true; wrap.appendChild(t); return t; }
+  function placeTip(tip, svg, W, H, x, y, html) { const b = svg.getBoundingClientRect(); tip.innerHTML = html; tip.style.left = (x / W * b.width) + "px"; tip.style.top = (y / H * b.height) + "px"; tip.hidden = false; }
+
+  const inv = D.invert || {}, gm = inv.gmoo, de = inv.de, gmt = inv.gmoo_tight, det = inv.de_tight;
+  const ho = D.holdout, ind = D.induce;
+  const app = document.getElementById("app");
+  const sec = html => { const s = document.createElement("section"); s.innerHTML = html; app.appendChild(s); return s; };
+
+  // ---------- header
+  const h = document.createElement("header");
+  h.style.cssText = "display:flex;flex-direction:column;gap:14px";
+  h.innerHTML = `<div class="eyebrow">Neuron dossier · ${esc(D.model === "bonsai1" ? "Bonsai-8B, 1-bit" : D.model)} · layer ${D.L} of 36 · neuron ${D.n}</div>
+    <h1>${esc(V.title || D.neuron)}</h1>
+    <p class="deck">${esc(V.headline || "")}</p>
+    <div class="meta"><span>${esc(D.neuron)} (positive pole probed)</span><span>corpus max +${f2(D.max["+"])} / −${f2(Math.abs(D.max["-"]))} over 8M tokens</span><span>tool: mono.probe</span></div>`;
+  app.appendChild(h);
+
+  // ---------- three directions + verdict
+  const tiles = [];
+  if (ho) tiles.push([`${f2(ho.auroc)}`, `Held-out AUROC of the refined label: 24 sentences written before testing, accuracy ${f2(ho.accuracy)}`]);
+  if (de && de.goals.leak) tiles.push([`${f2(de.goals.leak.y.act)}`, `Strongest activation found with nothing nerve-related present (token “${esc((de.goals.leak.peak_token || "").trim())}”)`]);
+  if (gm && de) tiles.push([`${(gm.gmoo.doe_evals + Object.values(gm.goals).reduce((a, g) => a + g.evals, 0)).toLocaleString()} vs ${Object.values(de.goals).reduce((a, g) => a + g.evals, 0).toLocaleString()}`, `Model evaluations for the full inverse battery: globalMOO vs SciPy differential evolution`]);
+  if (gm && gm.goals.silent_on_concept) tiles.push([`0.72 → ${f2((de || gm).goals.silent_on_concept.y.act)}`, `A clear psychological “nerve” silenced by a pain sentence before it (sense flip)`]);
+  sec(`<div class="eyebrow">Summary</div>
+    <div class="dirs">
+      <div class="dir"><span class="arrow">text → neuron</span><h3>Forward</h3><p>What fires it in 8M tokens of real text, and how much each kind of sentence in a 98-sentence bank drives it.</p></div>
+      <div class="dir"><span class="arrow">target → text</span><h3>Inverse</h3><p>Ask for an activation level, or for “fire without the concept”, and let a solver compose natural passages that achieve it.</p></div>
+      <div class="dir"><span class="arrow">neuron → model</span><h3>Induce</h3><p>Push the neuron up or down inside the model and read what the model then says.</p></div>
+    </div>
+    <div class="tiles">${tiles.map(([v, l]) => `<div class="tile"><span class="v">${v}</span><span class="l">${l}</span></div>`).join("")}</div>
+    <div class="verdict"><span class="chip good">${esc(V.verdict || "")}</span>
+      <ul>${(V.summary || []).map(s => `<li>${esc(s)}</li>`).join("")}</ul>
+      <div><b>Offshoots found:</b> ${(V.offshoots || []).map(esc).join(" · ")}</div></div>`);
+
+  // ---------- forward: corpus examples
+  sec(`<div class="eyebrow">1 · Forward</div><h2>What fires it in real text</h2>
+    <p class="prose">The strongest examples of each pole from an 8M-token scan of web, educational, multilingual and code text. The highlighted token is where the neuron peaks.</p>
+    <div class="two">
+      <figure><h3>Positive pole</h3><div class="ex-list">${D.examples["+"].map(e => `<div class="ex"><span class="a">${f2(e.act)}</span>${bracketHL(e.text.slice(-200))}</div>`).join("")}</div></figure>
+      <figure><h3>Negative pole</h3><div class="ex-list">${D.examples["-"].map(e => `<div class="ex"><span class="a">${f2(e.act)}</span>${bracketHL(e.text.slice(-200))}</div>`).join("")}</div></figure>
+    </div>`);
+
+  // ---------- forward: bank dose-response strip
+  const groups = [
+    ["Psychological sense", r => (r.rel_h2 ?? 0) >= 0.9],
+    ["Other uses of the morpheme", r => r.rel_pos >= 0.5 && (r.rel_h2 ?? 0) < 0.9],
+    ["Related meaning, no morpheme", r => r.kind === "near" && r.rel_pos < 0.5],
+    ["Opposite pole concept", r => r.kind === "opposite" || (r.kind === "top" && r.rel_neg >= 0.8 && r.rel_pos < 0.5)],
+    ["Look-alike spellings", r => r.kind === "spelling"],
+    ["Unrelated and random corpus", r => ["unrelated", "corpus"].includes(r.kind) || (r.kind === "top" && r.rel_pos < 0.5 && r.rel_neg < 0.8)],
+  ];
+  const s2 = sec(`<div class="eyebrow">2 · Forward, controlled</div><h2>A bank of natural sentences, rated before testing</h2>
+    <p class="prose">98 sentences: the label's concept across senses and languages, related meanings without the word, look-alike spellings (Nero, Nerf, verve), the opposite pole's concept, and random corpus sentences. Each was rated for relevance to the label before any was run. Every sentence is read after a neutral preamble, because this neuron is damped at the first positions of a sequence. Without that control, position and meaning get confused.</p>
+    <figure><div class="chart-wrap" id="strip"></div>
+    <figcaption>Each dot is one sentence's peak activation as a fraction of the corpus maximum. The dashed line marks 0.3, the essay's threshold for a strong response. Hover a dot to read the sentence.</figcaption></figure>
+    <div class="tbl"><table><thead><tr><th>Label hypothesis</th><th>Spearman with activation</th><th>AUROC on vs off</th><th>Strong on-concept</th><th>Strong off-concept</th></tr></thead><tbody>
+    ${Object.values(D.hypotheses || {}).map(hh => `<tr><td>${esc(hh.label)}</td><td class="num">${f2(hh.spearman)}</td><td class="num">${f2(hh.auroc)}</td><td class="num">${Math.round(100 * hh.strong_on)}%</td><td class="num">${Math.round(100 * hh.strong_off)}%</td></tr>`).join("")}
+    </tbody></table></div>`);
+  {
+    const W = 920, H = 330, m = { l: 44, r: 10, t: 14, b: 58 };
+    const gw = (W - m.l - m.r) / groups.length;
+    const ymax = Math.max(1.0, ...D.bank.map(r => r.act)) * 1.05;
+    const y = v => m.t + (1 - Math.max(-0.05, v) / ymax) * (H - m.t - m.b);
+    const svg = mk("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Strip chart of bank sentence activations by group" });
+    [0, 0.25, 0.5, 0.75, 1].forEach(v => { mk("line", { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), stroke: "var(--grid)", fill: "none" }, svg); txt(svg, m.l - 6, y(v) + 4, v.toFixed(2), { "text-anchor": "end" }); });
+    mk("line", { x1: m.l, x2: W - m.r, y1: y(0.3), y2: y(0.3), stroke: "var(--ink-3)", "stroke-dasharray": "4 4", fill: "none" }, svg);
+    const wrap = document.getElementById("strip"); wrap.appendChild(svg); const tip = tipFor(wrap);
+    groups.forEach(([name, test], gi) => {
+      const cx = m.l + gw * (gi + 0.5);
+      const words = name.split(" "); const mid = Math.ceil(words.length / 2);
+      txt(svg, cx, H - m.b + 18, words.slice(0, mid).join(" "), { "text-anchor": "middle", "font-family": "IBM Plex Sans, sans-serif", "font-size": 11.5, fill: "var(--ink-2)" });
+      txt(svg, cx, H - m.b + 33, words.slice(mid).join(" "), { "text-anchor": "middle", "font-family": "IBM Plex Sans, sans-serif", "font-size": 11.5, fill: "var(--ink-2)" });
+      const rows = D.bank.filter(test);
+      rows.forEach((r, i) => {
+        const jx = cx + (((i * 37) % 23) / 22 - 0.5) * gw * 0.6;
+        const c = mk("circle", { cx: jx, cy: y(r.act), r: 5, fill: gi === 0 ? "var(--s1)" : gi === 3 ? "var(--s2)" : "var(--ink-3)", "fill-opacity": gi === 0 || gi === 3 ? 0.9 : 0.55, stroke: "var(--surface)", "stroke-width": 1.5 }, svg);
+        c.addEventListener("pointerenter", () => placeTip(tip, svg, W, H, jx, y(r.act), `<b>${f2(r.act)}</b> · ${esc(r.text)}`));
+        c.addEventListener("pointerleave", () => tip.hidden = true);
+      });
+      txt(svg, cx, H - 4, `n=${rows.length}`, { "text-anchor": "middle", "font-size": 10 });
+    });
+  }
+
+  // ---------- held-out
+  if (ho) {
+    const s3 = sec(`<div class="eyebrow">3 · Pre-registered test</div><h2>New sentences, predicted before they were run</h2>
+      <p class="prose">After the bank screen narrowed the label to its psychological sense, 24 new sentences were written with a prediction for each: 12 that should fire and 12 near misses that should not (anatomical nerves, anxiety or courage without the word, Nero). None of them had been evaluated when the predictions were written.</p>
+      <div class="tiles">
+        <div class="tile"><span class="v">${Math.round(ho.fire_rate_predicted_fire * 12)} / 12</span><span class="l">predicted to fire that fired (≥ 0.3)</span></div>
+        <div class="tile"><span class="v">${Math.round(ho.fire_rate_predicted_quiet * 12)} / 12</span><span class="l">predicted quiet that fired (false positives)</span></div>
+        <div class="tile"><span class="v">${f2(ho.auroc)}</span><span class="l">AUROC, predicted-fire vs predicted-quiet</span></div>
+      </div>
+      <figure><div class="tbl"><table><thead><tr><th>Prediction</th><th>Activation</th><th>Sentence</th></tr></thead><tbody>
+      ${[...ho.rows].sort((a, b) => b.act - a.act).map(r => `<tr><td><span class="${r.hit ? "ok" : "miss"}">${r.hit ? "✓" : "✗"}</span> ${r.predict}</td><td class="num">${f2(r.act)}</td><td>${peakHL(r.text, r.peak_token, r.peak_char)}</td></tr>`).join("")}
+      </tbody></table></div>
+      <figcaption>The misses are all predicted-fire sentences that fired weaker than 0.3 (French “les nerfs”, “nerves of steel”, “nervous energy”). There were no false positives.</figcaption></figure>`);
+  }
+
+  // ---------- inverse
+  if (gm || de) {
+    const order = ["level_25", "level_50", "level_75", "max", "leak", "offshoot", "silent_on_concept", "near_miss_ceiling"];
+    const solveHTML = (who, r, chip) => !r ? "" : `<div class="solve"><div class="who">${who} ${chip}<span>act ${f2(r.y.act)} · relevance ${f2(r.y.dose)} · ${r.evals} evals</span></div>
+      <div class="passage">${r.sentences.map((s, i) => `<span class="sent k-${s.kind}">${i === r.sentences.findIndex(() => true) ? "" : ""}${esc(s.text)}</span>`).join(" ")}</div>
+      <div class="kinds">peak token “${esc((r.peak_token || "").trim())}” · sentences: ${r.sentences.map(s => esc(s.kind)).join(", ")}</div></div>`;
+    const chip = r => r ? (r.satisfied ? `<span class="chip good">met</span>` : `<span class="chip bad">not met</span>`) : "";
+    sec(`<div class="eyebrow">4 · Inverse</div><h2>Asking for activations, getting passages</h2>
+      <p class="prose">Each input is a three-sentence passage of real text drawn from the bank. A solver places each sentence by two continuous coordinates: how on-concept it is, and how strongly it fires among sentences of similar relevance. That makes the space smooth enough to learn an inverse from. Below, each question is put to globalMOO (one trained model, queried for every goal) and to SciPy's differential evolution.</p>
+      <div class="legend"><span><i class="line" style="background:var(--s1)"></i>underline: on-concept sentence</span><span><i class="line" style="background:var(--s2)"></i>underline: opposite-pole sentence</span></div>
+      ${order.filter(g => (gm && gm.goals[g]) || (de && de.goals[g])).map(g => {
+        const a = gm && gm.goals[g], b = de && de.goals[g], q = (a || b).question;
+        return `<div class="goal"><div class="goal-head"><h3>${esc(g.replaceAll("_", " "))}</h3><span class="q">${esc(q)}</span></div>
+          <div class="solves">${solveHTML("globalMOO", a, chip(a))}${solveHTML("Differential evolution", b, chip(b))}</div></div>`;
+      }).join("")}`);
+    if (de && de.goals.silent_on_concept) {
+      const r = de.goals.silent_on_concept;
+      const alone = D.bank.find(x => x.text === r.sentences.find(s => s.kind === "on" || s.kind === "top")?.text);
+      sec(`<div class="eyebrow">Highlight</div><h2>Context flips the sense</h2>
+        <div class="flip">
+          <div><span class="eyebrow" style="color:var(--ink-3)">Alone, after a neutral preamble</span><span class="big">${f2(alone ? alone.act : null)}</span><div class="passage">${esc(alone ? alone.text : "")}</div></div>
+          <div><span class="eyebrow" style="color:var(--ink-3)">After a sentence about pain receptors</span><span class="big">${f2(r.y.act)}</span><div class="passage">${r.sentences.map(s => `<span class="sent k-${s.kind}">${esc(s.text)}</span>`).join(" ")}</div><div class="kinds">opposite pole in the same passage: ${f2(r.y.opp)} of its corpus max</div></div>
+        </div>
+        <p class="prose">The inverse was asked for a passage where the psychological sense is clearly present but the neuron stays quiet. It found one by putting physical-sensation context first. The same words, “worked up the nerve”, stop driving the positive pole, and the negative pole takes over. The neuron is resolving which kind of nerve is meant.</p>`);
+    }
+  }
+
+  // ---------- solver comparison
+  if (gm && de) {
+    const gTot = gm.gmoo.doe_evals + Object.values(gm.goals).reduce((a, g) => a + g.evals, 0);
+    const dTot = Object.values(de.goals).reduce((a, g) => a + g.evals, 0);
+    const met = r => Object.values(r.goals).filter(g => g.satisfied).length;
+    sec(`<div class="eyebrow">5 · Which solver for which question</div><h2>A learned inverse vs a global search</h2>
+      <div class="tbl"><table><thead><tr><th></th><th>globalMOO</th><th>Differential evolution</th></tr></thead><tbody>
+        <tr><td>Model evaluations, all goals</td><td class="num">${gTot.toLocaleString()} (${gm.gmoo.doe_evals} shared design points)</td><td class="num">${dTot.toLocaleString()}</td></tr>
+        <tr><td>Goals met</td><td class="num">${met(gm)} / ${Object.keys(gm.goals).length}</td><td class="num">${met(de)} / ${Object.keys(de.goals).length}</td></tr>
+        ${gmt && det ? ["tight_25", "tight_50", "tight_75"].map(g => `<tr><td>${g.replace("tight_", "")}% ± 0.015, from a neutral start</td><td class="num">${f2(gmt.goals[g].y.act)} · ${gmt.goals[g].evals} evals ${gmt.goals[g].satisfied ? "✓" : "✗"}</td><td class="num">${f2(det.goals[g].y.act)} · ${det.goals[g].evals} evals ${det.goals[g].satisfied ? "✓" : "✗"}</td></tr>`).join("") : ""}
+      </tbody></table></div>
+      <p class="prose">globalMOO learns the passage-to-activation map once from a shared design, then answers each new question in a few evaluations. That makes it the right tool for mapping a neuron's graded response and its offshoots: it gets within about 0.02 of a requested level at a small fraction of the cost. Differential evolution is the right tool for extremes and adversarial searches, such as the maximum and the leak. Its larger budget finds rare passages that a surrogate trained on 161 points smooths over. Five of globalMOO's goals here were already met by its design sample; the tight-target rows are the fair test of its learned inverse.</p>`);
+  }
+
+  // ---------- induce
+  if (ind) {
+    const s6 = sec(`<div class="eyebrow">6 · Induce</div><h2>Pushing the neuron, reading the model</h2>
+      <p class="prose">The neuron's activation is raised or lowered by c times its corpus maximum at every position, on four neutral prompts. The chart tracks the next-token probability of the label's words and of the opposite pole's words (pain, numb, tingling, ache, burning). The ladder lists the tokens whose probability rises most at each setting.</p>
+      <figure><div class="legend"><span><i class="line" style="background:var(--s1)"></i>label words (nerve, nervous, …)</span><span><i class="line" style="background:var(--s2)"></i>opposite-pole words (pain, numb, …)</span></div>
+      <div class="chart-wrap" id="induce"></div>
+      <figcaption>Log scale. Negative c pushes toward the opposite pole; positive c toward the probed pole.</figcaption></figure>
+      <div class="two"><figure><h3>Tokens that gain the most</h3><div class="ladder">${ind.sweep.filter(s => s.c !== 0).map(s => `<div><span class="c">${s.c > 0 ? "+" : ""}${s.c}×</span><span>${s.top_gain.slice(0, 7).map(t => `<code>${esc(t)}</code>`).join(" ")}</span></div>`).join("")}</div></figure>
+      <figure><h3>“Before the big presentation, I felt …”</h3><div>${ind.generations.filter(g => g.prompt.startsWith("Before")).map(g => `<div class="gen"><span class="c">${g.c > 0 ? "+" : ""}${g.c}×</span><span class="t"><b>${esc(g.continuation.split(/[.!?]/)[0])}</b>${esc(g.continuation.slice(g.continuation.split(/[.!?]/)[0].length, 140))}…</span></div>`).join("")}</div>
+      <figcaption>${esc(D.judgement ? D.judgement.negative_direction.split(".").slice(-3).join(".") : "")}</figcaption></figure></div>`);
+    const W = 720, H = 260, m = { l: 54, r: 12, t: 12, b: 34 };
+    const cs = ind.sweep.map(s => s.c);
+    const x = i => m.l + i * (W - m.l - m.r) / (cs.length - 1);
+    const lo = -5, hi = -1, y = p => m.t + (1 - (Math.log10(Math.max(p, 1e-5)) - lo) / (hi - lo)) * (H - m.t - m.b);
+    const svg = mk("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Line chart of concept and opposite token probability versus steering strength" });
+    [-5, -4, -3, -2, -1].forEach(e => { mk("line", { x1: m.l, x2: W - m.r, y1: y(10 ** e), y2: y(10 ** e), stroke: "var(--grid)", fill: "none" }, svg); txt(svg, m.l - 6, y(10 ** e) + 4, "1e" + e, { "text-anchor": "end" }); });
+    cs.forEach((c, i) => txt(svg, x(i), H - m.b + 18, (c > 0 ? "+" : "") + c, { "text-anchor": "middle" }));
+    [["p_concept", "var(--s1)"], ["p_opposite", "var(--s2)"]].forEach(([k, col]) => {
+      mk("path", { d: ind.sweep.map((s, i) => (i ? "L" : "M") + x(i) + " " + y(s[k])).join(""), stroke: col, "stroke-width": 2, fill: "none", "stroke-linejoin": "round" }, svg);
+      ind.sweep.forEach((s, i) => mk("circle", { cx: x(i), cy: y(s[k]), r: 4, fill: col, stroke: "var(--surface)", "stroke-width": 2 }, svg));
+    });
+    const wrap = document.getElementById("induce"); wrap.appendChild(svg); const tip = tipFor(wrap);
+    ind.sweep.forEach((s, i) => {
+      const r = mk("rect", { x: x(i) - (W - m.l - m.r) / (cs.length - 1) / 2, y: m.t, width: (W - m.l - m.r) / (cs.length - 1), height: H - m.t - m.b, fill: "transparent" }, svg);
+      r.addEventListener("pointerenter", () => placeTip(tip, svg, W, H, x(i), m.t + 20, `<b>c = ${s.c}</b><br>label words ${s.p_concept.toExponential(1)}<br>opposite words ${s.p_opposite.toExponential(1)}<br>KL ${s.kl_from_base.toFixed(2)}`));
+      r.addEventListener("pointerleave", () => tip.hidden = true);
+    });
+  }
+
+  // ---------- circuit
+  if (D.circuit && D.circuit.keep_curve) {
+    const C = D.circuit, A = C.antecedents;
+    sec(`<div class="eyebrow">7 · Backward through the network</div><h2>Which earlier neurons feed it</h2>
+      <p class="prose">On the strongest corpus example, the 24 upstream neurons with the largest attribution were zeroed in turn, keeping only the top k. ${A ? esc(A.summary) : ""}</p>
+      <div class="two"><figure><div class="chart-wrap" id="keep"></div><figcaption>Activation retained when only the top-k upstream neurons are kept and the other 24−k are zeroed.</figcaption></figure>
+      ${A ? `<figure><h3>Key antecedents</h3><ul class="plain">${A.units.map(([u, l, r]) => `<li><code>${esc(u)}</code> ${esc(l)} <span style="color:var(--ink-3)">· ${esc(r)}</span></li>`).join("")}</ul></figure>` : ""}</div>`);
+    const W = 420, H = 230, m = { l: 40, r: 10, t: 10, b: 30 };
+    const kc = C.keep_curve, ymax = Math.max(1.1, ...kc);
+    const x = k => m.l + k * (W - m.l - m.r) / (kc.length - 1), y = v => m.t + (1 - v / ymax) * (H - m.t - m.b);
+    const svg = mk("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Keep curve" });
+    [0, 0.5, 1].forEach(v => { mk("line", { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), stroke: v === 0.5 ? "var(--ink-3)" : "var(--grid)", "stroke-dasharray": v === 0.5 ? "4 4" : "", fill: "none" }, svg); txt(svg, m.l - 6, y(v) + 4, v.toFixed(1), { "text-anchor": "end" }); });
+    [0, 8, 16, 24].forEach(k => txt(svg, x(k), H - 8, "k=" + k, { "text-anchor": "middle" }));
+    mk("path", { d: kc.map((v, k) => (k ? "L" : "M") + x(k) + " " + y(v)).join(""), stroke: "var(--s1)", "stroke-width": 2, fill: "none" }, svg);
+    kc.forEach((v, k) => mk("circle", { cx: x(k), cy: y(v), r: 3, fill: "var(--s1)" }, svg));
+    document.getElementById("keep").appendChild(svg);
+  }
+
+
+  // ---------- fan-out: neighbourhood map + circuit inverse
+  if (D.map && D.neighbors) {
+    const M = D.map, NB = D.neighbors, lab = u => (M.unit_labels || {})[u] || "";
+    const s8 = sec(`<div class="eyebrow">8 · Fan-out</div><h2>The neighbourhood: two ways in, many ways out</h2>
+      <p class="prose">${esc(M.claim)}</p>
+      <figure><div class="chart-wrap" id="nbmap"></div>
+      <figcaption>${esc(M.claim)} Percentages on input arrows are the share of the pole's activation lost when that one unit is zeroed. Numbers on output arrows are how far each reader moves, as a fraction of its own range, when the pole is zeroed. The barred arrow is a gate: pain context pushes the pole toward its physical-sense opposite.</figcaption></figure>
+      <ul class="plain prose">${(M.evidence || []).map(e => `<li>${esc(e)}</li>`).join("")}</ul>
+      <div class="two">
+        <figure><h3>Inputs, ranked by causal effect</h3><div class="tbl"><table><thead><tr><th>Unit</th><th>Reading</th><th>Lost when zeroed</th></tr></thead><tbody>
+        ${NB.upstream.map(r => `<tr><td><code>${esc(r.unit)}</code></td><td>${esc(lab(r.unit))}</td><td class="num">${Math.round(100 * r.drop_mean)}%</td></tr>`).join("")}
+        </tbody></table></div></figure>
+        <figure><h3>Readers, by branch</h3><div class="tbl"><table><thead><tr><th>Branch</th><th>Unit</th><th>Reading</th><th>Moves</th></tr></thead><tbody>
+        ${Object.entries(NB.downstream_by_branch || {}).map(([b, rows]) => rows.slice(0, 4).map((r, i) => `<tr><td>${i ? "" : esc(b)}</td><td><code>${esc(r.unit)}</code></td><td>${esc(lab(r.unit))}</td><td class="num">${r.effect > 0 ? "+" : ""}${r.effect.toFixed(3)}</td></tr>`).join("")).join("")}
+        </tbody></table></div><figcaption>Change in each later neuron when the pole is zeroed, as a fraction of that neuron's corpus range. Blank readings are units not yet labelled.</figcaption></figure>
+      </div>`);
+    // diagram
+    const W = 900, H = 360, NW = 160, NH = 46;
+    const svg = mk("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": M.claim });
+    const defs = mk("defs", {}, svg);
+    const mkArrow = (id, col) => { const m = mk("marker", { id, viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 7, markerHeight: 7, orient: "auto-start-reverse" }, defs); mk("path", { d: "M0,0 L10,5 L0,10 z", fill: col }, m); };
+    mkArrow("arr", "currentColor"); mkArrow("arrf", "var(--ink-3)");
+    const node = Object.fromEntries(M.nodes.map(n => [n.id, n]));
+    M.edges.forEach(e => {
+      const a = node[e.from], b = node[e.to];
+      const x1 = a.x + (a.kind === "text" ? 64 : NW / 2), y1 = a.y, x2 = b.x - NW / 2 - 4, y2 = b.y + (e.type === "gate" ? 14 : 0);
+      const col = e.type === "gate" ? "var(--s2)" : e.type === "weak" ? "var(--ink-3)" : "currentColor";
+      const ln = mk("line", { x1, y1, x2, y2, stroke: col, "stroke-width": e.type === "weak" ? 1.5 : 2, fill: "none",
+        "stroke-dasharray": e.type === "weak" ? "5 4" : "" }, svg);
+      if (e.type === "gate") {
+        const dx = x2 - x1, dy = y2 - y1, L = Math.hypot(dx, dy), px = -dy / L * 9, py = dx / L * 9;
+        mk("line", { x1: x2 - px, y1: y2 - py, x2: x2 + px, y2: y2 + py, stroke: col, "stroke-width": 3 }, svg);
+      } else ln.setAttribute("marker-end", e.type === "weak" ? "url(#arrf)" : "url(#arr)");
+      if (e.label) {
+        const t = e.type === "gate" ? 0.3 : 0.5, mx = x1 + (x2 - x1) * t + (e.type === "gate" ? 8 : 0), my = y1 + (y2 - y1) * t - 8;
+        txt(svg, mx, my, e.label, { "text-anchor": e.type === "gate" ? "start" : "middle", fill: e.type === "gate" ? "var(--s2)" : "currentColor", "font-size": 11.5, "paint-order": "stroke", stroke: "var(--surface)", "stroke-width": 4 });
+      }
+    });
+    M.nodes.forEach(n => {
+      const x = n.x - NW / 2, y = n.y - NH / 2;
+      if (n.kind !== "text") mk("rect", { x, y, width: NW, height: NH, rx: 6,
+        fill: n.kind === "probed" ? "var(--accent-soft)" : "var(--surface)",
+        stroke: n.kind === "probed" ? "var(--accent)" : n.kind === "faint" ? "var(--ink-3)" : "currentColor",
+        "stroke-width": n.kind === "probed" ? 2.5 : 1.2, "stroke-dasharray": n.kind === "faint" ? "5 4" : "" }, svg);
+      txt(svg, n.x, n.y - 3, n.label, { "text-anchor": "middle", fill: "currentColor", "font-size": 12.5, "font-weight": n.kind === "probed" ? 600 : 500, "font-family": n.kind === "text" ? "IBM Plex Sans, sans-serif" : "IBM Plex Mono, monospace" });
+      txt(svg, n.x, n.y + 13, n.sub, { "text-anchor": "middle", fill: "var(--ink-3)", "font-size": 11, "font-family": "IBM Plex Sans, sans-serif" });
+    });
+    svg.style.color = "var(--ink)";
+    document.getElementById("nbmap").appendChild(svg);
+  }
+  if (D.circuit_inv && D.circuit_inv.de) {
+    const de = D.circuit_inv.de, gm = D.circuit_inv.gmoo, names = de.nodes.map(n => n.name);
+    const cell = r => !r ? "–" : `<span class="${r.satisfied ? "ok" : "miss"}">${r.satisfied ? "✓" : "✗"}</span> ${names.map(nm => `${nm} ${f2(r.y[nm])}`).join(" · ")}<div class="kinds">${r.evals} evals · ${esc(r.sentences.map(s => s.text.slice(0, 48)).join(" | "))}…</div>`;
+    sec(`<div class="eyebrow">9 · Circuit inverse</div><h2>Inverse questions about the circuit, not the neuron</h2>
+      <p class="prose">The same space of natural passages, but now five outputs at once: the pole, its two inputs, the pain gate and the main reader, each as a fraction of its corpus maximum. Each question asks for a combination that tests a claim about the circuit. globalMOO ran one model for the whole circuit (trial ${gm ? gm.gmoo.trial_id : "–"}), with its predictions written down beforehand.</p>
+      <figure><div class="tbl"><table><thead><tr><th>Question</th><th>Differential evolution</th><th>globalMOO</th></tr></thead><tbody>
+      ${Object.keys(de.goals).map(g => `<tr><td><b>${esc(g.replaceAll("_", " "))}</b><div class="kinds">${esc(de.goals[g].question)}</div></td><td>${cell(de.goals[g])}</td><td>${cell(gm && gm.goals[g])}</td></tr>`).join("")}
+      </tbody></table></div>
+      <figcaption>On this five-output problem with rare combinations, differential evolution met five of six goals at 624 evaluations each. globalMOO met two, but one of them was the most informative result: it found the token present and the pole silent with no pain at all ("He lost his nerve…"). The token route has more than one gate.</figcaption></figure>`);
+  }
+
+  // ---------- method
+  sec(`<div class="eyebrow">Method and caveats</div><h2>How this was made</h2>
+    <ul class="plain prose">
+      <li>Model: Prism ML's Bonsai-8B (1-bit weights, Qwen3-8B architecture), run exactly from its unpacked weights with hooks on every MLP neuron. A neuron is one channel of silu(gate)·up; its poles are the positive and negative sides.</li>
+      <li>Corpus: 8M tokens (web, educational, eight languages, code) in 1,024-token windows. Activations are reported as fractions of each pole's corpus maximum.</li>
+      <li>The sentence bank, its relevance ratings, the held-out sentences and their predictions were written by Claude before evaluation. The label was refined once, after the bank screen. The held-out test is what validates the refinement.</li>
+      <li>Every probe text is read after three neutral preambles (mean), on its own tokens only. Without this, early sequence positions damp the neuron and confound the results.</li>
+      <li>Inverse: globalMOO trial ${gm ? gm.gmoo.trial_id : "–"} (one model for this neuron, plan written before the run), and SciPy differential evolution (12 generations, population 48 per goal).</li>
+      <li>Induction adds c × corpus max to one neuron at every position. That is far outside natural activations, and the greedy generations from four prompts are illustrative.</li>
+      <li>This is one neuron. The tool is designed to run the same protocol on many neurons; Tier-1 screening is local only.</li>
+    </ul>`);
+})();
+</script>
