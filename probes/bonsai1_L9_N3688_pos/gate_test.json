@@ -1,0 +1,88 @@
+{
+ "written": "2026-10-17 by Claude, before any of these sentences or contexts was evaluated. Committed to git before the run.",
+ "claims": {
+  "C1_pain_gate": "Pain context closes the Latin-script token route. A psychological 'nerve' sentence fires much less after a pain sentence than after a neutral sentence.",
+  "C2_construction_gate": "Some constructions close the token route without any pain: 'lost his nerve' and 'had the nerve to' activate the token unit but not the pole.",
+  "C3_concept_route_open": "The concept route (non-Latin scripts) is sense-agnostic and not closed by pain: Arabic 'nerve' sentences drive the pole in either sense, and pain context does not halve them."
+ },
+ "measurement": {
+  "nodes": "nerve = L9/N3688 +, token = L3/N6493 +, concept = L8/N7756 +, pain = L8/N3858 +. Each is the max over the test sentence's own tokens, as a fraction of that pole's corpus max.",
+  "contexts": "Each sentence S is read as [preamble] + C + ' ' + S for every preamble (3) and every context C of the condition (2), then averaged. 'fire' means nerve >= 0.3. 'ratio' = nerve(pain) / nerve(neutral).",
+  "neutral_contexts": ["The library added a new reading room on the second floor.", "The train schedule changes every spring and autumn."],
+  "pain_contexts": ["Pain receptors in the skin respond to heat, pressure, and injury.", "The burn on her arm throbbed with a sharp, stinging pain."]
+ },
+ "sets": {
+  "A_open_latin": {
+   "claim": "C1",
+   "sentences": [
+    "Parallel parking downtown is a nerve-racking experience for new drivers.",
+    "The penalty shootout was absolutely nerve-wracking to watch.",
+    "It took me months to work up the nerve to quit my job.",
+    "She finally mustered the nerve to speak to her neighbor.",
+    "His constant whistling really gets on my nerves.",
+    "Vor dem Vorstellungsgespräch lagen meine Nerven blank.",
+    "Esa espera interminable me puso de los nervios.",
+    "Ich brauchte starke Nerven, um das durchzustehen."
+   ],
+   "predictions": {
+    "fires_neutral": "nerve(neutral) >= 0.3 in at least 6 of 8",
+    "pain_gate": "ratio <= 0.5 in at least 6 of 8",
+    "pain_unit_on": "pain unit >= 0.3 in the pain condition for at least 6 of 8 (measured on S's tokens; the unit may also respond to the context's spill-over)"
+   }
+  },
+  "B_closed_latin": {
+   "claim": "C2",
+   "sentences": [
+    "He lost his nerve just before the jump.",
+    "She lost her nerve and turned back at the door.",
+    "Many climbers lose their nerve near the summit.",
+    "I can't believe you had the nerve to say that.",
+    "They had the nerve to charge us twice for the same meal.",
+    "How dare he have the nerve to show up here?"
+   ],
+   "exploratory": [
+    "The goalkeeper kept his nerve under enormous pressure.",
+    "What a nerve he has, turning up uninvited!"
+   ],
+   "predictions": {
+    "token_present": "token(neutral) >= 0.4 in at least 5 of 6",
+    "pole_silent": "nerve(neutral) < 0.3 in at least 5 of 6",
+    "contrast_with_A": "mean nerve(neutral) of B is less than half the mean of A"
+   }
+  },
+  "C_concept_route": {
+   "claim": "C3",
+   "sentences": [
+    "يتكون الجهاز العصبي المحيطي من الأعصاب التي تربط الدماغ بالأطراف.",
+    "أصيب العصب البصري بضرر بسبب ارتفاع ضغط العين.",
+    "كانت أعصابي متوترة جدا قبل الامتحان.",
+    "فقد أعصابه وصرخ في وجه الجميع."
+   ],
+   "exploratory": [
+    "医生说他的面部神经受到了损伤。",
+    "比赛前他神经非常紧张。",
+    "말초 신경이 손상되어 손끝에 감각이 없다.",
+    "발표를 앞두고 신경이 곤두섰다."
+   ],
+   "predictions": {
+    "concept_on": "concept(neutral) >= 0.3 in at least 3 of 4 Arabic sentences",
+    "fires_either_sense": "nerve(neutral) >= 0.3 in at least 3 of 4 Arabic sentences (both anatomical and psychological)",
+    "not_pain_gated": "ratio >= 0.5 in at least 3 of 4 Arabic sentences",
+    "exploratory_cjk": "No scored prediction. Expected nerve(neutral) >= 0.2 for most CJK sentences."
+   }
+  },
+  "D_controls_latin_anatomical": {
+   "claim": "control",
+   "sentences": [
+    "The optic nerve carries visual signals from the eye to the brain.",
+    "A pinched nerve in the lower back can cause sciatica.",
+    "Local anesthetic blocks the nerve before the tooth is drilled.",
+    "Each spinal nerve exits the vertebral column through a small opening."
+   ],
+   "predictions": {
+    "token_present": "token(neutral) >= 0.4 in at least 3 of 4",
+    "pole_weak": "nerve(neutral) < 0.3 in at least 3 of 4"
+   }
+  }
+ }
+}
