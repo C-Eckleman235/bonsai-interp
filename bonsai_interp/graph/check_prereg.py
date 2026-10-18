@@ -53,12 +53,18 @@ def main():
                     problems.append(f"{p}: contributions are append-only; it was {dict(M='modified', D='deleted', R='renamed').get(st[0])} in {c[:7]}")
     on_base = lambda p: subprocess.run(["git", "cat-file", "-e", f"{a.base}:{p}"], capture_output=True).returncode == 0
     total = 0
+    tracked = set(git("ls-tree", "-r", "--name-only", "HEAD").split("\n"))
     for path, i in first.items():
         p = PurePosixPath(path)
         if path.startswith(("graph/neurons/", "graph/edges.json", "graph/index.json")) and not a.allow_derived:
             problems.append(f"{path}: derived file in a PR; drop it (git rm --cached) - the merge agent regenerates derived files on main")
         if path.startswith(("data/", "models/")):
             problems.append(f"{path}: nothing may be added under data/ or models/ (use the release or the library)")
+        if path.startswith(("graph/", "runs/")) and p.suffix in (".json", ".jsonl", ".md", ".txt"):
+            from bonsai_interp.graph.contrib import LOCAL_PATH
+            body = git("show", f"HEAD:{path}") if path in tracked else ""
+            if LOCAL_PATH.search(body):
+                problems.append(f"{path}: contains a local path (e.g. C:/Users/<name>/…); redact it to ~ (DATA_POLICY: no local paths)")
         if path.startswith("graph/"):
             size = len(git("show", f"HEAD:{path}").encode("utf-8")) if path in git("ls-tree", "-r", "--name-only", "HEAD").split("\n") else 0
             total += size
