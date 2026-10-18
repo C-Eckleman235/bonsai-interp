@@ -1,0 +1,88 @@
+{
+ "id": "bonsai1/L13/N3792+",
+ "model": "bonsai1",
+ "layer": 13,
+ "index": 3792,
+ "pole": "+",
+ "label": "Dense: about 1.0M tokens in the 0.10-0.20 band and 183k in 0.20-0.35, so it is on for most prose tokens at a low level. Its top end favours the token that completes a familiar multi-token name or fixed term: the last subword of a proper name (Eli|ade, Rh|ine, Tigr|is, Anj|ou, Ch|aim), regnal numerals (James I), author initials in citations, and set phrases (Internet of Things, Pap smear, amni|ocentesis). It also fires on letter and e-mail delimiters ('Regards,', 'From:').",
+ "short": "dense",
+ "kind": "dense / positional",
+ "status": "dense",
+ "depth": "quick",
+ "tests": [
+  {
+   "type": "quick-8+8",
+   "author": "claude",
+   "tests_file": "probes/bonsai1_L9_N3688_pos/web_tests_claude_0.json",
+   "result_file": "probes/bonsai1_L9_N3688_pos/web_quick_claude.json",
+   "prereg_commit": "b273a0c",
+   "label_tested": "Final subword/token completing a proper name (person, river, city, regnal numeral, initial) or a header/sign-off delimiter in encyclopedic, reference-list and crossword-style text",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "survives": false
+  },
+  {
+   "type": "quick-8+8",
+   "author": "bonsai",
+   "tests_file": "probes/bonsai1_L9_N3688_pos/web_tests_bonsai.json",
+   "result_file": "probes/bonsai1_L9_N3688_pos/web_quick_bonsai.json",
+   "prereg_commit": "b273a0c",
+   "label_tested": "Final subword/token completing a proper name (person, river, city, regnal numeral, initial) or a header/sign-off delimiter in encyclopedic, reference-list and crossword-style text",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "survives": false
+  },
+  {
+   "type": "quick-8+8",
+   "author": "claude",
+   "tests_file": "probes/bonsai1_L9_N3688_pos/relabel_tests_0.json",
+   "result_file": "probes/bonsai1_L9_N3688_pos/relabel_quick.json",
+   "prereg_commit": "0eeecfb",
+   "label_tested": "Dense: about 1.0M tokens in the 0.10-0.20 band and 183k in 0.20-0.35, so it is on for most prose tokens at a low level. Its top end favours the token that completes a familiar multi-token name or fixed term: the last subword of a proper name (Eli|ade, Rh|ine, Tigr|is, Anj|ou, Ch|aim), regnal numerals (James I), author initials in citations, and set phrases (Internet of Things, Pap smear, amni|ocentesis). It also fires on letter and e-mail delimiters ('Regards,', 'From:').",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "survives": false
+  }
+ ],
+ "label_history": [
+  [
+   "claude round",
+   "Final subword/token completing a proper name (person, river, city, regnal numeral, initial) or a header/sign-off delimiter in encyclopedic, reference-list and crossword-style text"
+  ],
+  [
+   "bonsai round",
+   "Final subword/token completing a proper name (person, river, city, regnal numeral, initial) or a header/sign-off delimiter in encyclopedic, reference-list and crossword-style text"
+  ],
+  [
+   "claude round",
+   "Dense: about 1.0M tokens in the 0.10-0.20 band and 183k in 0.20-0.35, so it is on for most prose tokens at a low level. Its top end favours the token that completes a familiar multi-token name or fixed term: the last subword of a proper name (Eli|ade, Rh|ine, Tigr|is, Anj|ou, Ch|aim), regnal numerals (James I), author initials in citations, and set phrases (Internet of Things, Pap smear, amni|ocentesis). It also fires on letter and e-mail delimiters ('Regards,', 'From:')."
+  ]
+ ],
+ "examples": [
+  "successfully for '\"+self.subject+\"'<br><br>Your Support Ticket Number is '\"+self.name+\"' <br><br>Please note for further information. <br><br>Regards⟦,⟧ <br>Team TailorPad.\"⏎\t\t\tsender = frappe.session",
+  "em.⏎The second half of the 18th century heralded the spread of Chassidism. At its beginning the rabbis who officiated in L were \"mitnagdim\", like Yaakov Ch⟦aim⟧ (died in 1769), son of the great mentor",
+  "sity.⏎36. The blood group whose red cells carry both the A and B antigens.⏎40. A river in north central Switzerland that runs northeast into the Rh⟦ine⟧.⏎42. Largest known toad species.⏎46. Type genus",
+  " powers emerging within the yogi, states sutra 3.23. The meditation technique discussed in the Yoga Sutras of Patanjali is thus, states Mircea Eli⟦ade⟧, a means to knowledge and siddhi (yogic power).⏎"
+ ],
+ "evidence": [
+  "probes/bonsai1_L9_N3688_pos/web.html"
+ ],
+ "roles": [
+  "reader"
+ ],
+ "contributors": [
+  "bonsai-interp core"
+ ]
+}

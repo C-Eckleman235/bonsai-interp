@@ -1,3 +1,5 @@
+> Note (2026-10-18): the package was renamed from `mono` to `bonsai_interp`. Commands and paths below use the new name; commit messages and pre-registration files keep the old one.
+
 # Findings log
 
 ## 2026-10-17: Neuron identity survives quantization-aware training (mid layers)

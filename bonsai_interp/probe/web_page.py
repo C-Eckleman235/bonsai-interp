@@ -18,7 +18,8 @@ def short(label, k=24):
     return (s[:k - 1] + "…") if len(s) > k else s
 
 
-def build(ws: Workspace):
+def collect(ws: Workspace):
+    """Every neighbourhood node with its latest label and test results, plus edges and side data."""
     W = ws.load("web_nodes.json")
     spec = ws.load("web_spec.json")  # lateral cluster, claim, texts, caveats, short-name overrides (LLM stage)
     labels, kinds, attempts = {}, {}, {}
@@ -70,6 +71,11 @@ def build(ws: Workspace):
             "bank_units": bank["units"], "bank_rows": bank["rows"], "bank_acts": bank["acts"], "caveats": spec["caveats"]}
     if not data["lateral_inv"]["de"]:
         data["lateral_inv"] = None
+    return data
+
+
+def build(ws: Workspace):
+    data = collect(ws)
     blob = json.dumps(data, ensure_ascii=False).replace("</", "<\\/").replace("�", "\\ufffd")
     out = ws.path("web.html")
     out.write_text(TEMPLATE.read_text(encoding="utf-8").replace("__WEB_DATA__", blob), encoding="utf-8")

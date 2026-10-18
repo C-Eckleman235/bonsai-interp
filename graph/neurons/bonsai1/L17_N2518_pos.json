@@ -1,0 +1,108 @@
+{
+ "id": "bonsai1/L17/N2518+",
+ "model": "bonsai1",
+ "layer": 17,
+ "index": 2518,
+ "pole": "+",
+ "label": "Python code: the module or object name (or its first .attribute) at the head of a dotted reference used as a value right after '=' or as a call argument, esp. logging, sys, os.environ, settings, self.<attr>, request, args (= logging.getLogger, = sys.stdout.write, stderr=sys.stderr, get(..., self.default_x))",
+ "short": "Python dotted head",
+ "kind": "contextual",
+ "status": "held",
+ "depth": "quick",
+ "tests": [
+  {
+   "type": "quick-8+8",
+   "author": "claude",
+   "tests_file": "probes/bonsai1_L9_N3688_pos/web_tests_claude_2.json",
+   "result_file": "probes/bonsai1_L9_N3688_pos/web_quick_claude.json",
+   "prereg_commit": "b273a0c",
+   "label_tested": "Python code: a dotted reference to a module, class or object attribute used as a value, especially on the right of an assignment or after if/elif (logger.error, sys.stdout.write, settings.DEBUG, logging.getLogger, self._flag)",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "survives": false
+  },
+  {
+   "type": "quick-8+8",
+   "author": "bonsai",
+   "tests_file": "probes/bonsai1_L9_N3688_pos/web_tests_bonsai.json",
+   "result_file": "probes/bonsai1_L9_N3688_pos/web_quick_bonsai.json",
+   "prereg_commit": "b273a0c",
+   "label_tested": "Python code: a dotted reference to a module, class or object attribute used as a value, especially on the right of an assignment or after if/elif (logger.error, sys.stdout.write, settings.DEBUG, logging.getLogger, self._flag)",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "survives": false
+  },
+  {
+   "type": "quick-8+8",
+   "author": "claude",
+   "tests_file": "probes/bonsai1_L9_N3688_pos/relabel_tests_1.json",
+   "result_file": "probes/bonsai1_L9_N3688_pos/relabel_quick.json",
+   "prereg_commit": "0eeecfb",
+   "label_tested": "Python code: the head of a dotted attribute-access expression that starts a value slot, i.e. the module/object name or its first .attribute right after '=', 'if'/'elif', a comma, '(' or 'in' (= os.environ, = sys.stdout.write, if settings.DEBUG, = logging.getLogger, , self.default_days, in self.rep)",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "survives": false
+  },
+  {
+   "type": "quick-8+8",
+   "author": "claude",
+   "tests_file": "probes/bonsai1_L9_N3688_pos/relabel2_tests.json",
+   "result_file": "probes/bonsai1_L9_N3688_pos/relabel2_quick.json",
+   "prereg_commit": "d9e9e34",
+   "label_tested": "Python code: the module or object name (or its first .attribute) at the head of a dotted reference used as a value right after '=' or as a call argument, esp. logging, sys, os.environ, settings, self.<attr>, request, args (= logging.getLogger, = sys.stdout.write, stderr=sys.stderr, get(..., self.default_x))",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "survives": true
+  }
+ ],
+ "label_history": [
+  [
+   "claude round",
+   "Python code: a dotted reference to a module, class or object attribute used as a value, especially on the right of an assignment or after if/elif (logger.error, sys.stdout.write, settings.DEBUG, logging.getLogger, self._flag)"
+  ],
+  [
+   "bonsai round",
+   "Python code: a dotted reference to a module, class or object attribute used as a value, especially on the right of an assignment or after if/elif (logger.error, sys.stdout.write, settings.DEBUG, logging.getLogger, self._flag)"
+  ],
+  [
+   "claude round",
+   "Python code: the head of a dotted attribute-access expression that starts a value slot, i.e. the module/object name or its first .attribute right after '=', 'if'/'elif', a comma, '(' or 'in' (= os.environ, = sys.stdout.write, if settings.DEBUG, = logging.getLogger, , self.default_days, in self.rep)"
+  ],
+  [
+   "claude round",
+   "Python code: the module or object name (or its first .attribute) at the head of a dotted reference used as a value right after '=' or as a call argument, esp. logging, sys, os.environ, settings, self.<attr>, request, args (= logging.getLogger, = sys.stdout.write, stderr=sys.stderr, get(..., self.default_x))"
+  ]
+ ],
+ "examples": [
+  "er.BaseHTTPRequestHandler):⏎⏎            server_version = \"MonitorHTTPServer/1.0\"⏎            log_error = http_logger⟦.error⟧⏎            log_message = http_logger.info⏎⏎            def do_GET(self):⏎",
+  "t's not the real sys.stdout; this⏎        # allows us to write test cases for the set_trace behavior.⏎        save_set_trace = pdb⟦.set⟧_trace⏎        self.debugger = _OutputRedirectingPdb(save_stdout",
+  "t(unittest.TestCase):⏎    def setUp(self):⏎        self.con = MockConnection()⏎⏎    def test_table_distinct(self):⏎        t = self⟦.con⟧.table('functional_alltypes')⏎⏎        expr = t[t.string_col, t",
+  "ndle = None⏎    if isinstance(output, str):⏎        if not output or output == \"-\":⏎            writer = sys.stdout⟦.write⟧⏎        elif output.startswith(\">>\"):⏎            file_handle = open(os.path"
+ ],
+ "evidence": [
+  "probes/bonsai1_L9_N3688_pos/web.html"
+ ],
+ "roles": [
+  "sibling",
+  "via L20/N5963"
+ ],
+ "contributors": [
+  "bonsai-interp core"
+ ]
+}
