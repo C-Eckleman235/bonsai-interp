@@ -4,10 +4,13 @@ weak and middle activations (not only the top 32) can be sampled, annotated and 
   scan     record the given neurons on every token of N windows -> data/bands_<tag>.npz
   sample   for a neuron and pole, draw contexts from activation bands (fractions of corpus max)
 
-  python -m bonsai_interp.probe.bands scan --units 9/3688,10/6901,... --windows 6000 --tag web
+  python -m bonsai_interp.probe.bands scan --units 9/3688,10/6901,... --windows 1000 --tag mine   (about 3-4 min per 1,000 windows)
+  python -m bonsai_interp.probe.bands sample --units 9/3688 --tag mine --pole + --k 8
 """
 import argparse
 import re
+import sys
+import time
 
 import numpy as np
 import torch
@@ -25,6 +28,7 @@ def scan(units, windows, tag, batch=8):
     layers = sorted({L for L, _ in units})
     out = {u: np.zeros((len(toks), toks.shape[1]), np.float16) for u in units}
     rec.mode, rec.layers, rec.stop_at = "act", set(layers), layers[-1]
+    t0 = time.time()
     for s in range(0, len(toks), batch):
         x = torch.from_numpy(toks[s:s + batch].astype(np.int64)).cuda()
         try:
@@ -35,7 +39,9 @@ def scan(units, windows, tag, batch=8):
             out[(L, n)][s:s + batch] = rec.store[L][:, :, n].float().cpu().numpy().astype(np.float16)
         rec.clear()
         if (s // batch) % 100 == 0:
-            print(f"{s + batch}/{len(toks)}", flush=True)
+            done = s + batch
+            eta = (time.time() - t0) / done * (len(toks) - done)
+            print(f"{done}/{len(toks)} windows, about {eta / 60:.1f} min left", flush=True)
     rec.mode, rec.stop_at = None, None
     np.savez(ROOT / "data" / f"bands_{tag}.npz", windows=windows,
              **{f"L{L}_N{n}": a for (L, n), a in out.items()})
@@ -84,7 +90,20 @@ if __name__ == "__main__":
     ap.add_argument("--units", required=True)
     ap.add_argument("--windows", type=int, default=6000)
     ap.add_argument("--tag", default="web")
+    ap.add_argument("--pole", default="+", help="sample: which pole")
+    ap.add_argument("--k", type=int, default=8, help="sample: contexts per band")
     a = ap.parse_args()
     units = [tuple(map(int, u.split("/"))) for u in a.units.split(",")]
     if a.stage == "scan":
         scan(units, a.windows, a.tag)
+    elif a.stage == "sample":
+        L, n = units[0]
+        res = sample(a.tag, L, n, a.pole, k=a.k)
+        for band, v in res.items():
+            if band.startswith("_"):
+                continue
+            print(f"== band {band}: {v['count']:,} tokens")
+            for e in v["examples"]:
+                print(f"  {e['frac']:.2f} | {e['text'][-150:]}")
+    else:
+        sys.exit(f"unknown stage {a.stage!r}: use scan or sample")

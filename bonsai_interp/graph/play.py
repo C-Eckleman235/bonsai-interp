@@ -8,6 +8,7 @@
   python -m bonsai_interp.graph.play step --neuron bonsai1/L12/N5397- [--k 4]
       -> the strongest feeders of a pole (single-unit zeroing on its top examples): candidates for "step out one neuron"
   python -m bonsai_interp.graph.play look --neuron bonsai1/L12/N5397-      top corpus examples
+  python -m bonsai_interp.graph.play probe --neuron bonsai1/L12/N5397- "a sentence" "another"   exploration, nothing recorded
   python -m bonsai_interp.graph.fold                                         refresh the derived records
   python -m bonsai_interp.graph.play doctor                                  is this machine ready? (agents: run first)
   python -m bonsai_interp.graph.play brief interpret --neuron <id> --handle <you>   full mission instructions for an agent
@@ -128,6 +129,31 @@ def look(a):
 
 
 
+def probe(a):
+    """Exploration only: score sentences on a pole without recording anything. Use it freely before
+    pre-registering; the committed test is what counts."""
+    import torch
+    from bonsai_interp import explore
+    from bonsai_interp.model import load
+    from bonsai_interp.probe import textinv
+    m = NEURON.match(a.neuron)
+    if not m:
+        sys.exit("neuron must look like bonsai1/L12/N345+")
+    texts = list(a.sentences) + ([ln.strip() for ln in Path(a.file).read_text(encoding="utf-8").splitlines() if ln.strip()] if a.file else [])
+    if not texts:
+        sys.exit("give sentences as arguments or --file (one per line)")
+    L, n, pole = int(m["L"]), int(m["n"]), 0 if m["pole"] == "+" else 1
+    torch.cuda.set_per_process_memory_fraction(0.8)
+    model, tok, rec = load(m["model"])
+    tok.padding_side = "right"
+    s = explore.scan(m["model"])
+    ev = textinv.TextEvaluator(model, tok, rec, L, n, float(s["top_val"][L, pole, 0, n]), float(s["top_val"][L, 1 - pole, 0, n]),
+                               1.0 if pole == 0 else -1.0)
+    for t, r in zip(texts, ev(texts)):
+        print(f"{r['act']:6.3f}  peak {r['peak_token']!r:<14} {t}")
+    print("(exploration only: nothing was recorded; fractions of the pole's corpus max, held = 0.3)")
+
+
 def edge(a):
     """Record measured edges as a 'map' contribution (no test needed; both ends need records of their own)."""
     for end in (a.src, a.dst):
@@ -166,6 +192,10 @@ def main():
     s.add_argument("--k", type=int, default=4)
     lk = sub.add_parser("look")
     lk.add_argument("--neuron", required=True)
+    pr = sub.add_parser("probe", help="exploration: score sentences on a pole, nothing recorded")
+    pr.add_argument("--neuron", required=True)
+    pr.add_argument("sentences", nargs="*")
+    pr.add_argument("--file", help="one sentence per line")
     e = sub.add_parser("edge", help="record a measured edge between two poles")
     e.add_argument("--from", dest="src", required=True)
     e.add_argument("--to", dest="dst", required=True)
@@ -184,7 +214,7 @@ def main():
     if a.cmd in ("doctor", "brief"):
         from bonsai_interp.graph import agent
         return getattr(agent, a.cmd)(a)
-    {"new": new, "run": run, "step": step, "look": look, "edge": edge}[a.cmd](a)
+    {"new": new, "run": run, "step": step, "look": look, "edge": edge, "probe": probe}[a.cmd](a)
 
 
 if __name__ == "__main__":

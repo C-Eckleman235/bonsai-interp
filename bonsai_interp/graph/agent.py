@@ -82,7 +82,7 @@ def doctor(a):
     sys.exit(0 if all(req) else 1)
 
 
-RULES = """Rules (from AGENTS.md; CI enforces 1-3):
+RULES = """Rules (from AGENTS.md; once CI is enabled it enforces 1-3, and play run already refuses uncommitted tests):
 1. Commit the .tests.json ON ITS OWN before running anything that scores it; results go in a SECOND commit. Never amend, squash or edit a committed .tests.json.
 2. Never edit or delete files under graph/contributions/ (yours included). Never hand-edit graph/neurons, edges.json or index.json: run fold.
 3. Only the two contribution files (<= 64 KB each) go in git; bulky material goes to the library (DATA_POLICY.md).
@@ -122,19 +122,27 @@ def brief(a):
             if rec:
                 out += [f"Note: {nid} already has a record (status {rec['status']}). Consider a QC mission instead.", ""]
             target = nid
+        branch = f"interpret/{target.split('/', 1)[-1].replace('/', '-').replace('+', '-pos').replace('-N', '-N')}" if target != "TARGET" else "interpret/<target>"
         out += [f"1. Check nobody has claimed it: {check_claim}   (if an open claim exists, stop and ask for another neuron)",
-                f"   Claim it: {claim}",
+                f"   Claim it: {claim}   (if the 'claim' label is missing, drop --label; the title is what counts)",
+                f"   Start a branch: git checkout -b {branch}",
                 f"2. Look: {py} -m bonsai_interp.graph.play look --neuron {target}",
-                f"   Also look past the top examples: weak and middle bands and the most frequent strong tokens "
-                f"({py} -m bonsai_interp.probe.bands scan --units {u} --windows 2000 --tag mine, then bands.sample).{gm}",
+                f"   Look past the top examples: the weak and middle bands, and which tokens fire it most often:",
+                f"   {py} -m bonsai_interp.probe.bands scan --units {u} --windows 1000 --tag mine   (about 4 minutes)",
+                f"   {py} -m bonsai_interp.probe.bands sample --units {u} --tag mine --pole <+|-> --k 8",
+                f"   Try candidate sentences freely before committing anything (nothing is recorded):",
+                f"   {py} -m bonsai_interp.graph.play probe --neuron {target} \"first sentence\" \"second sentence\"{gm}",
                 f"3. Write the pre-registration: {py} -m bonsai_interp.graph.play new interpret --neuron {target} --handle {a.handle}",
                 "   Fill in: your label (at the level the test can support), 8 sentences that should fire the pole, 8 near misses",
                 "   that keep topic, length and style and drop only the claimed trigger. Optional: short, unit_kind, confidence, notes.",
+                "   The bar is hard: 0.30 of the pole's max. Make the fire sentences clear cases (put borderline ones in notes, not the test).",
                 f'   Commit it ALONE: git add {folder} && git commit -m "Pre-register interpret test for {target}"',
                 f"4. Run it: {py} -m bonsai_interp.graph.play run <the .tests.json>  then  {py} -m bonsai_interp.graph.fold",
                 f'   Commit the results SEPARATELY: git add graph && git commit -m "Results for {target}"',
                 f"5. Validate: {py} -m bonsai_interp.graph.validate",
-                f'6. Push a branch and open the PR: gh pr create --repo moridinamael/bonsai-interp --template interpret.md --title "interpret: {target} <short label>"',
+                f"6. Push the branch and open the PR. gh's --template needs an editor, so fill a copy instead:",
+                f"   cp .github/PULL_REQUEST_TEMPLATE/interpret.md pr.md  (fill it in; add 'Closes #<claim issue>'), then",
+                f'   git push -u origin {branch} && gh pr create --repo moridinamael/bonsai-interp --title "interpret: {target} <short label>" --body-file pr.md  (then delete pr.md)',
                 "7. If the label failed and you have a better idea, a second round is a NEW contribution (play new again) with new sentences.",
                 "   After three honest failed rounds, record it and move on; that is a result too."]
     elif a.kind == "qc":
@@ -150,7 +158,9 @@ def brief(a):
                 f'   Commit it ALONE: git add {folder} && git commit -m "Pre-register QC of {nid}"',
                 f"4. Run: {py} -m bonsai_interp.graph.play run <the .tests.json>  then  {py} -m bonsai_interp.graph.fold",
                 f'   Commit SEPARATELY: git add graph && git commit -m "QC results for {nid}"',
-                f"5. Validate ({py} -m bonsai_interp.graph.validate), push a branch, open: gh pr create --repo moridinamael/bonsai-interp --template qc.md --title \"qc: {nid} <verdict>\""]
+                f"5. Validate ({py} -m bonsai_interp.graph.validate). Push a branch (git checkout -b qc/<neuron> before step 3's commit),",
+                f"   fill a copy of .github/PULL_REQUEST_TEMPLATE/qc.md as pr.md, then",
+                f"   gh pr create --repo moridinamael/bonsai-interp --title \"qc: {nid} <verdict>\" --body-file pr.md  (then delete pr.md)"]
     elif a.kind == "blind":
         run = f"runs/{dt.date.today().isoformat()}_bonsai1_L{L}_N{n}"
         words = " ".join(w for w in (rec or {}).get("short", "").replace("'", "").split() if len(w) > 3)[:80] or "<key words of the current label>"
