@@ -1,0 +1,29 @@
+name: checks
+# Every PR: contributions are valid, append-only, pre-registered before their results, within the size caps,
+# and carry no derived graph files. On main: the derived files match a fresh fold (validate --strict).
+# Standard library only, so this takes seconds.
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  graph:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate contributions
+        if: github.event_name == 'pull_request'
+        run: python -m bonsai_interp.graph.validate
+      - name: Check pre-registration order, append-only, size caps, no derived files
+        if: github.event_name == 'pull_request'
+        run: python -m bonsai_interp.graph.check_prereg --base origin/${{ github.base_ref }}
+      - name: Derived files match the contributions (circuit breaker)
+        if: github.event_name == 'push'
+        run: python -m bonsai_interp.graph.validate --strict

@@ -1,8 +1,8 @@
-<!-- PR shape 1 of 2: INTERPRET a neuron pole. Title: "interpret: bonsai1/L12/N5397- <short label>" -->
+<!-- PR shape 1 of 2: INTERPRET one or more neuron poles. Title: "interpret: bonsai1/L12/N5397- <short label>",
+     or for a sweep "sweep: 16 poles (<held> held)" with one line per pole under "Sweep" below. -->
 
 ## Interpret: `bonsai1/L__/N____±`
 
-- **Claim issue:** #<!-- the claim issue this closes -->
 - **Role:** <!-- target (from the game's random draw) / peripheral: feeds or reads <neuron id> (stepping out) -->
 - **Label:** <!-- one sentence: what fires this pole, at the level your test supports -->
 - **Unit kind:** <!-- lexical / contextual / sparse feature / dense / positional / unclear -->
@@ -39,3 +39,9 @@
 - [ ] Near misses keep the topic and drop the claimed trigger.
 - [ ] Nothing bulky, no tensors, no local paths (DATA_POLICY.md).
 - [ ] `python -m bonsai_interp.graph.validate` passes.
+
+## Sweep (only for a sweep PR)
+
+| pole | label | outcome |
+|---|---|---|
+| <!-- bonsai1/L__/N____± --> | <!-- short label --> | <!-- held / failed / dense --> |

@@ -3,6 +3,9 @@
   python -m bonsai_interp.graph.play new interpret --neuron bonsai1/L12/N5397- --handle octocat
   python -m bonsai_interp.graph.play new qc --neuron bonsai1/L12/N345+ --handle octocat --verdict confirm
       -> graph/contributions/<model>/<pole folder>/<id>.tests.json   (fill in the label and sentences, then COMMIT)
+  python -m bonsai_interp.graph.play draw --k 16 [--seed 7] [--layers 0-35]
+      -> k random poles with no record yet, for a sweep (no claims: a duplicate is an independent replication)
+  python -m bonsai_interp.graph.play new interpret --neuron <id> <id> ... --handle octocat   one tests file per pole
   python -m bonsai_interp.graph.play run graph/contributions/.../<id>.tests.json
       -> <id>.json with the results (needs the GPU; commit it in a SECOND commit)
   python -m bonsai_interp.graph.play step --neuron bonsai1/L12/N5397- [--k 4]
@@ -40,18 +43,29 @@ def _commit():
 
 
 def new(a):
-    m = NEURON.match(a.neuron)
-    if not m:
-        sys.exit("neuron must look like bonsai1/L12/N5397+ (model/layer/index and pole)")
+    bad = [x for x in a.neuron if not NEURON.match(x)]
+    if bad:
+        sys.exit(f"neuron must look like bonsai1/L12/N5397+ (model/layer/index and pole): {bad}")
+    paths = [_new_one(a, nid) for nid in a.neuron]
+    rel = [p.relative_to(ROOT).as_posix() for p in paths]
+    what = a.neuron[0] if len(paths) == 1 else f"{len(paths)} poles"
+    print(f"wrote {len(paths)} tests file(s):\n  " + "\n  ".join(rel) +
+          "\nFill in each label and its 16 sentences, then commit the tests files ALONE (one commit for all of them is fine):\n"
+          f"  git add {' '.join(rel)} && git commit -m \"Pre-register {a.kind} tests for {what}\"\n"
+          f"then: python -m bonsai_interp.graph.play run {' '.join(rel)}")
+
+
+def _new_one(a, nid):
+    m = NEURON.match(nid)
     cid = f"{dt.date.today().isoformat()}-{a.handle}-{secrets.token_hex(2)}"
-    d = folder_for(a.neuron)
+    d = folder_for(nid)
     d.mkdir(parents=True, exist_ok=True)
     unit = f"L{m['L']}/N{m['n']}"
     current = None
     rec = ROOT / "graph" / "neurons" / m["model"] / f"{d.name}.json"
     if rec.exists():
         current = json.loads(rec.read_text(encoding="utf-8")).get("label")
-    t = {"contribution": cid, "contributor": a.handle, "kind": a.kind, "neuron": a.neuron, "protocol": "quick-8+8@2",
+    t = {"contribution": cid, "contributor": a.handle, "kind": a.kind, "neuron": nid, "protocol": "quick-8+8@2",
          "written": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
          **({"qc": {"verdict": a.verdict, "label_under_test": current}} if a.kind == "qc" else {}),
          "neighbours": [{"unit": unit, "pole": m["pole"], "label": current if a.kind == "qc" and a.verdict != "refine" else "<your label>",
@@ -61,9 +75,21 @@ def new(a):
                      "screens": ["look"], "_screens_vocabulary": sorted(SCREENS)}}
     p = d / f"{cid}.tests.json"
     p.write_text(json.dumps(t, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
-    print(f"wrote {p.relative_to(ROOT)}\nFill in the label and the 16 sentences, then commit THIS FILE ALONE:\n"
-          f"  git add {p.relative_to(ROOT).as_posix()} && git commit -m \"Pre-register {a.kind} test for {a.neuron}\"\n"
-          f"then: python -m bonsai_interp.graph.play run {p.relative_to(ROOT).as_posix()}")
+    return p
+
+
+def draw(a):
+    """k random poles with no record in the graph. No claims: if two people draw the same pole, both results
+    count, and the second is an independent replication."""
+    import random
+    known = set(json.loads((ROOT / "graph" / "index.json").read_text(encoding="utf-8"))["neurons"])
+    lo, hi = map(int, a.layers.split("-"))
+    rng, out = random.Random(a.seed), []
+    while len(out) < a.k:
+        nid = f"bonsai1/L{rng.randint(lo, hi)}/N{rng.randrange(12288)}{rng.choice('+-')}"
+        if nid not in known and nid not in out:
+            out.append(nid)
+    print(" ".join(out))
 
 
 def _check_tests_file(path):
@@ -226,13 +252,17 @@ def main():
     sub = ap.add_subparsers(dest="cmd", required=True)
     n = sub.add_parser("new")
     n.add_argument("kind", choices=["interpret", "qc"])
-    n.add_argument("--neuron", required=True)
+    n.add_argument("--neuron", required=True, nargs="+", help="one or more poles; one tests file each")
     n.add_argument("--handle", required=True, help="your GitHub handle")
     n.add_argument("--verdict", choices=["confirm", "dispute", "refine"], default="confirm",
                    help="qc only: confirm = re-test the label as is; refine = propose a better label")
     r = sub.add_parser("run", help="score one or more committed pre-registrations (one model load for all)")
     r.add_argument("tests_files", nargs="+")
     r.add_argument("--author", help="who wrote the sentences, if not you (e.g. 'bonsai' when the model wrote them)")
+    dr = sub.add_parser("draw", help="k random poles with no record yet (for a sweep)")
+    dr.add_argument("--k", type=int, default=16)
+    dr.add_argument("--seed", type=int, help="reproducible draw (default: random)")
+    dr.add_argument("--layers", default="0-35")
     s = sub.add_parser("step")
     s.add_argument("--neuron", required=True)
     s.add_argument("--k", type=int, default=4)
@@ -264,8 +294,9 @@ def main():
     d = sub.add_parser("doctor", help="check this machine is ready to play")
     d.add_argument("--quick", action="store_true", help="skip loading the model")
     b = sub.add_parser("brief", help="print the full instructions for a mission (for an AI agent)")
-    b.add_argument("kind", choices=["interpret", "qc", "step", "blind"])
-    b.add_argument("--neuron", required=True)
+    b.add_argument("kind", choices=["interpret", "sweep", "qc", "step", "blind"])
+    b.add_argument("--neuron", help="the pole (every kind but sweep)")
+    b.add_argument("--k", type=int, default=16, help="sweep: how many poles")
     b.add_argument("--handle", default="<your-github-handle>")
     b.add_argument("--gmoo", action="store_true", help="include the optional globalMOO step")
     b.add_argument("--depth", choices=["quick", "standard", "deep"], default="quick",
@@ -280,7 +311,7 @@ def main():
     if a.cmd == "which":
         from bonsai_interp.graph import which
         return which.main(a)
-    {"new": new, "run": run, "step": step, "look": look, "edge": edge, "probe": probe}[a.cmd](a)
+    {"new": new, "draw": draw, "run": run, "step": step, "look": look, "edge": edge, "probe": probe}[a.cmd](a)
 
 
 if __name__ == "__main__":

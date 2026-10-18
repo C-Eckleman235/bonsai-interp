@@ -33,11 +33,17 @@ def _model_dir(env, default):
         for line in (ROOT / ".env").read_text(encoding="utf-8").splitlines():
             if line.startswith(env + "="):
                 v = line.split("=", 1)[1].strip().strip('"')
-    return Path(v) if v else ROOT / "models" / default
+    if v:
+        return Path(v)
+    # the 1.16 GB GGUF folder (models/Bonsai-8B) is the default; an older unpacked download still works
+    for d in (default, *(alt for alt in ("Bonsai-8B-unpacked",) if default == "Bonsai-8B")):
+        if (ROOT / "models" / d).exists():
+            return ROOT / "models" / d
+    return ROOT / "models" / default
 
 
 MODELS = {
-    "bonsai1": _model_dir("BONSAI1_PATH", "Bonsai-8B-unpacked"),
+    "bonsai1": _model_dir("BONSAI1_PATH", "Bonsai-8B"),
     "ternary": _model_dir("TERNARY_PATH", "Ternary-Bonsai-8B-unpacked"),
     "qwen": _model_dir("QWEN_PATH", "Qwen3-8B"),
 }
@@ -74,6 +80,16 @@ class PackedLinear(nn.Module):
         self.register_buffer("packed", c[..., 0] | c[..., 1] << 2 | c[..., 2] << 4 | c[..., 3] << 6)
         self.register_buffer("scale", scale.to(torch.float16))
         self.in_features, self.out_features = in_f, out_f
+
+    @classmethod
+    def from_parts(cls, packed: torch.Tensor, scale: torch.Tensor, out_f: int, in_f: int):
+        """Built directly from already-packed codes (the GGUF reader), skipping the float weight."""
+        m = nn.Module.__new__(cls)
+        nn.Module.__init__(m)
+        m.register_buffer("packed", packed)
+        m.register_buffer("scale", scale.to(torch.float16))
+        m.in_features, m.out_features = in_f, out_f
+        return m
 
     def weight(self) -> torch.Tensor:
         p = self.packed
@@ -153,6 +169,18 @@ class HookedMLP(nn.Module):
 
 
 def _read_all(path: Path):
+    """Yields (name, tensor), or (name, ("packed", parts)) for a 1-bit linear read from a GGUF."""
+    if not (path / "model.safetensors.index.json").exists():
+        from bonsai_interp import gguf_weights
+        if gguf_weights.find(path) is None:
+            raise FileNotFoundError(f"{path}: no model.safetensors.index.json and no .gguf (bash scripts/download_models.sh)")
+        for n, t in gguf_weights.tensors(path):
+            if ".layers." in n and t.tensor_type.name == "Q1_0":
+                packed, scale, out_f, in_f = gguf_weights.packed_parts(t)
+                yield n, ("packed", (packed, scale, out_f, in_f))  # moved to DEVICE by load()
+            else:
+                yield n, gguf_weights.dense(t)
+        return
     idx = json.loads((path / "model.safetensors.index.json").read_text())["weight_map"]
     by_file = {}
     for name, f in idx.items():
@@ -179,7 +207,7 @@ def load(name: str = "bonsai1"):
         parent = modules[mod_name]
         if isinstance(parent, nn.Linear) and attr == "weight" and ".layers." in n:
             pname, _, child = mod_name.rpartition(".")
-            setattr(modules[pname], child, lin_cls(t).to(DEVICE))
+            setattr(modules[pname], child, (PackedLinear.from_parts(*t[1]) if isinstance(t, tuple) else lin_cls(t)).to(DEVICE))
         else:
             parent._parameters[attr] = nn.Parameter(t.to(COMPUTE_DTYPE).to(DEVICE), requires_grad=False)
         del t

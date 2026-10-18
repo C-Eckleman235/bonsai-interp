@@ -2,7 +2,6 @@
 
 ## QC: `bonsai1/L__/N____±`
 
-- **Claim issue:** #<!-- optional for QC -->
 - **Label under test:** <!-- copied from graph/neurons/…; for refine, also give your new label -->
 - **Intended verdict:** <!-- confirm (re-test as is) / dispute (a test designed to break it) / refine (a better label, with its own test) -->
 

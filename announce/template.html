@@ -172,7 +172,7 @@ th { font: 600 0.68rem/1.3 var(--mono); letter-spacing: 0.06em; text-transform: 
       <div><b>1.15 GB</b><span>Bonsai-8B in its native 1-bit format (PrismML, Apache-2.0)</span></div>
       <div><b>36 × 12,288</b><span>layers × MLP neurons; 884,736 poles in all</span></div>
       <div><b>92–99%</b><span>of neurons in layers 5–25 sit at the same index as their counterpart in full-precision Qwen3-8B</span></div>
-      <div><b>16 GB</b><span>of GPU memory is enough to run every tool here</span></div>
+      <div><b>8 GB</b><span>of GPU memory is enough to run every tool here</span></div>
     </div>
     <p>The last number matters for the science. Bonsai was trained to be 1-bit from the start, yet it kept the neuron basis of the model it came from. So a label found cheaply on the 1-bit model can be checked on the full-precision one, neuron by neuron. A 1-bit network is also an interesting object in its own right: every weight is plus or minus one scale per group of 128.</p>
   </section>
@@ -186,7 +186,7 @@ th { font: 600 0.68rem/1.3 var(--mono); letter-spacing: 0.06em; text-transform: 
         <p style="color:var(--ink-2)">The survey is built for AI coding agents to operate. You paste one prompt to set up, then one prompt per mission. The procedure lives in the repository, so the game updates when the method does.</p>
       </div>
       <ol class="loop">
-        <li><b>Draw</b>Click the map, or draw a random unclaimed pole. Your agent claims it with a GitHub issue.</li>
+        <li><b>Draw</b>Click the map, draw one pole, or start a sweep of 16. No claims: two people on one pole is a free replication.</li>
         <li><b>Look</b>Top corpus examples, then the weak and middle activations, and which tokens fire it most often.</li>
         <li><b>Pre-register</b>A label, 8 sentences that should fire it, 8 near misses. Committed on its own, before anything is scored.</li>
         <li><b>Run</b>The test runs on your GPU. Held means at least 5 of 8 fire and at most 1 near miss does.</li>
@@ -197,7 +197,7 @@ th { font: 600 0.68rem/1.3 var(--mono); letter-spacing: 0.06em; text-transform: 
         <div class="shot"><canvas class="mini" id="zoom" width="640" height="360" aria-label="One block of 1,024 neurons from layer 9, each cell split into its + and − pole"></canvas>
           <p class="cap"><b>The map zooms.</b> From the whole model, to a block of 1,024 neurons (shown: layer 9, where the nerve neuron lives), to one neuron's labels, tests and history.</p></div>
         <div class="shot"><pre id="shot-mission"></pre>
-          <p class="cap"><b>One prompt per mission.</b> The page hands your agent a mission. The repository turns it into a full brief: claim, look, pre-register, run, PR.</p></div>
+          <p class="cap"><b>One prompt per mission.</b> The page hands your agent a mission. The repository turns it into a full brief: look, pre-register, run, PR.</p></div>
         <div class="shot"><pre id="shot-result">L12/N5397-: fire 5/8, near misses firing 0/8 -> HELD
 wrote graph/contributions/bonsai1/L12_N5397_neg/
       core-bonsai1-l12-n5397-neg-00.json
@@ -332,10 +332,10 @@ check_prereg: tests committed in b756721,
       </div>
       <div class="req">
         <dl>
-          <dt>GPU</dt><dd>NVIDIA, 16 GB of memory (tested on an RTX 5080)</dd>
-          <dt>Disk</dt><dd>About 18 GB: the Bonsai-8B weights (16 GB) and the corpus and scan (1.4 GB)</dd>
+          <dt>GPU</dt><dd>NVIDIA with 8 GB of memory (a mission peaks at about 5 GB; tested on an RTX 5080), or an Apple Silicon Mac</dd>
+          <dt>Disk</dt><dd>About 3 GB: the 1-bit Bonsai-8B weights (1.2 GB) and the corpus and scan (1.4 GB)</dd>
           <dt>Agent</dt><dd>Claude Code, Codex, or any coding agent that can run a shell</dd>
-          <dt>Accounts</dt><dd>GitHub, for claims and pull requests</dd>
+          <dt>Accounts</dt><dd>GitHub, for pull requests</dd>
           <dt>Optional</dt><dd>A globalMOO key for learned inverse search; the SciPy path works without one</dd>
           <dt>Licence</dt><dd>Code MIT; graph data and write-ups CC-BY-4.0</dd>
         </dl>
@@ -439,7 +439,7 @@ check_prereg: tests committed in b756721,
     `<div class="tier${i === 0 ? " now" : ""}"><div class="kicker">${when}</div><h3>${name}</h3><p>${what}</p><div class="bar"><i style="width:${Math.min(100, 100 * n / of)}%"></i></div><div class="count">${n.toLocaleString()} / ${of.toLocaleString()} ${unit}</div></div>`).join("");
 
   // setup prompt
-  const BOOT = "Set me up to play the Bonsai Neuron Survey, an open, test-backed map of what each neuron in the 1-bit Bonsai-8B model does.\n\n1. Ask me where to work (default: a folder called bonsai-survey in my home directory). Clone these two repositories side by side there:\n   https://github.com/moridinamael/bonsai-interp\n   https://github.com/moridinamael/neuron-cleanroom\n2. In bonsai-interp, read AGENTS.md and follow section 1, \"Get ready\".\n3. Run: uv run python -m bonsai_interp.graph.play doctor\n   Fix every FAIL and run it again until it prints READY.\n4. Ask me only for what you can't do yourself: logging in to GitHub (gh auth login), permission to use about 18 GB of disk, and, optionally, a globalMOO API key for .env.\n5. Finish by telling me \"Ready to survey\", with the GPU and the doctor summary. From then on I'll paste mission prompts from the survey page.";
+  const BOOT = "Set me up to play the Bonsai Neuron Survey, an open, test-backed map of what each neuron in the 1-bit Bonsai-8B model does.\n\n1. Ask me where to work (default: a folder called bonsai-survey in my home directory). Clone these two repositories side by side there:\n   https://github.com/moridinamael/bonsai-interp\n   https://github.com/moridinamael/neuron-cleanroom\n2. In bonsai-interp, read AGENTS.md and follow section 1, \"Get ready\".\n3. Run: uv run python -m bonsai_interp.graph.play doctor\n   Fix every FAIL and run it again until it prints READY.\n4. Ask me only for what you can't do yourself: logging in to GitHub (gh auth login), permission to use about 3 GB of disk, and, optionally, a globalMOO API key for .env.\n5. Finish by telling me \"Ready to survey\", with the GPU and the doctor summary. From then on I'll paste mission prompts from the survey page.";
   document.getElementById("boot").textContent = BOOT;
   const btn = document.getElementById("copy");
   btn.addEventListener("click", () => { (navigator.clipboard ? navigator.clipboard.writeText(BOOT) : Promise.reject()).then(() => { btn.textContent = "Copied"; setTimeout(() => (btn.textContent = "Copy the setup prompt"), 1500); },

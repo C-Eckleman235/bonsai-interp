@@ -11,7 +11,7 @@ The procedure lives in **[AGENTS.md](AGENTS.md)**, written so an AI agent can fo
 
 ## The short version
 
-1. Claim a neuron pole. Write the label, 8 sentences that should fire it and 8 near misses, and commit that file on its own (`play new`).
+1. Pick poles (`play draw --k 16` for a sweep; no claims). For each, write the label, 8 sentences that should fire it and 8 near misses, and commit the tests files on their own (`play new`).
 2. Run it (`play run`; several files at once load the model only once). Commit the results in a separate commit.
 3. Open a PR containing only files under `graph/contributions/`. The merge agent checks the commit order, merges, and regenerates the graph.
 

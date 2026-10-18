@@ -49,7 +49,7 @@ uv run python -m bonsai_interp.explore --model bonsai1 --neuron 9/3688 --pole +
 uv run python -m bonsai_interp.graph.validate
 ```
 
-Hardware: one 16 GB NVIDIA GPU is enough (the reference setup is Windows with an RTX 5080). The
+Hardware: an 8 GB NVIDIA GPU is enough; a mission peaks at about 5 GB (the reference setup is Windows with an RTX 5080). The
 1-bit weights are stored packed and dequantized per layer. An Apple Silicon Mac also works (see
 below), and the CPU works for checks. `bonsai_interp/env.py` detects the OS, device, dtype,
 memory and agent CLIs in one place. `uv run python -m bonsai_interp.env` prints that report, and
@@ -65,7 +65,7 @@ weights and the same bfloat16 arithmetic as on CUDA.
 - **Requirements.** An M1 or later Mac with macOS 14 or later. The macOS torch wheels need
   macOS 14, and so does bfloat16 on MPS. We recommend 32 GB or more of unified memory. 16 GB
   works but is tight: one process holds about 8 GB (the 4.5 GB model, the 1.1 GB scan and the
-  batches), next to macOS and the agent CLI. 8 GB is not enough. You also need about 18 GB of
+  batches), next to macOS and the agent CLI. 8 GB is not enough. You also need about 3 GB of
   disk.
 - **Install.** Use the same commands as above. `uv sync` takes torch from PyPI on macOS, and
   that build includes MPS. The scripts run in the stock bash or zsh.
@@ -110,7 +110,7 @@ To rebuild the data instead of downloading it, run `python -m bonsai_interp.corp
 Add a neuron, relabel one, or contribute a blind replication. See
 [CONTRIBUTING.md](CONTRIBUTING.md). The short version:
 
-1. Draw a neuron on the survey page, or pick one to QC, and claim it.
+1. Start a sweep of 16 random poles on the survey page, or draw one neuron, or pick one to QC. There are no claims.
 2. `python -m bonsai_interp.graph.play new …` writes the pre-registration. Fill it in and commit it alone.
 3. `python -m bonsai_interp.graph.play run …` writes the results; commit them separately (contribution files only).
 4. Open a PR with the `interpret` or `qc` template. CI checks that contributions are append-only, that the tests came first, the size caps, and the derived files.
