@@ -450,3 +450,44 @@ Window-start artifact:
 - P4 failed: the physical impact words did not fire (crack 0.05, shaken 0.06, broken 0.08), so the hit/hurt branch is narrower than its name.
 
 **Reading.** The neuron's two strongest triggers prefer opposite senses: physical "strong" and psychological "nerve". The dual-sense hypothesis is rejected. What unites the branches is still open: packing, a shared downstream use, or a token-level property. The circuit trace is the planned test.
+
+## 2026-10-18: Blind run 5, L17/N9491 (Claude): a long-context copying unit (neuron-cleanroom `runs/2026-10-18_bonsai1_L17_N9491`, PR #4)
+
+- **+ pole held under quick-8+8@2** (AUROC 0.94, median 0.224): "near-certain continuation in new text", most often the next piece of a rare word, name or identifier already used earlier in the document.
+  - It needs long context (256 to 1,024 tokens). Removing the earlier mention kills or halves the peak.
+  - A pre-registered held-out entropy check replicated the direction but narrowly missed two of its own thresholds, and the report says so.
+- **− pole:** no label survived.
+- **Feeders:** 2 of 4 held (arsenic L3/N2114−; analogy vehicle onset L14/N7100+).
+- **Our predictions:** 5 of 6 (Brier 0.17). The miss was ours: the top examples looked like idioms, and the blind agent's occlusion and entropy tests showed copying instead.
+- **Audit:** clean after one auditor fix (`../x` after `cd` into the agent's own scratchpad).
+- **First PR through the colour-in lane:** checks passed, the merge workflow merged it 10 s later and pushed "fold after #4".
+
+## 2026-10-18: The auto tier at layer 12: a pole's top peak token rarely explains it (`graph/auto/bonsai1_L12.*`, pre-registered in e04269c)
+
+**Rule (auto-token@1, fixed before scoring)**
+- **Candidate:** a pole is a candidate when one token is the peak of ≥ 16 of its 32 top scan examples.
+- **Test:**
+  - Fire: 8 held-out snippets (corpus windows the scan never read) that end on that token.
+  - Near misses: the same snippets with only that token swapped for a same-shape, similar-frequency word.
+- **Judge:** quick-8+8@2.
+
+**Results (layer 12, 24,576 poles)**
+- **Classes:**
+  - context: 22,743 (no peak token covers half the top examples)
+  - token: 644, plus 544 untestable (punctuation and fragments with no same-shape substitute)
+  - dense: 558
+  - positional: 87
+- **Held:** 34 of 644 (5%). The failures:
+  - The median fire snippet reached only 0.04 of max, and the median AUROC was 0.59.
+  - Function words: 0 of 243 held.
+  - Even poles where all top examples share one token: 4 of 54 held.
+- **What held is clean:**
+  - English: 'according' (×3), 'hopefully', 'maybe', 'pytest', 'classmethod', 'facebook', 'redistribute'
+  - Other languages: 'auch', 'として', 'حيث'
+- **Cost:** 11 minutes of CPU and 2.4 minutes of GPU per layer.
+
+**Reading**
+- At layer 12, sharing a peak token is far from being a token detector. Most of these poles respond to that token only in particular contexts.
+- So the top-k view overstates lexical monosemanticity. This bears directly on the essay's claim, at least for "clean" read as "fires on one token".
+- The tier cannot colour the map. It labels about 0.1% of poles per layer, and classifies the rest for agents.
+- A context-aware rule (e.g. previous token + peak token) would be auto-token@2. It needs a fresh pre-registration on a different layer, because layer 12 was used to look.
