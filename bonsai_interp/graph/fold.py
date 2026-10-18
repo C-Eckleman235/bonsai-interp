@@ -32,6 +32,32 @@ def _union(a, b):
     return a + [x for x in (b or []) if x not in a]
 
 
+LEVELS = ["unexamined", "tested", "re-tested", "checked", "investigated", "replicated"]
+
+
+def scrutiny(r, contribs):
+    """How much evidence a pole has, separate from what the evidence says (status). Derived, never claimed.
+
+    1 tested        one pre-registered test
+    2 re-tested     two or more test rounds, or tests written by a second author
+    3 checked       a QC by a contributor other than the label's author, or a held-out test
+    4 investigated  a full probe, or a blind clean-room investigation
+    5 replicated    a full probe plus an independent blind replication
+    """
+    tests = [t for t in r["tests"] if t.get("protocol") != "cleanroom@1"]
+    rounds = len({t["contribution"] for t in tests})
+    authors = {t.get("author") or "?" for t in tests}
+    first = next((c["contributor"] for c in contribs if c["kind"] == "interpret"), None)
+    qc_other = any(c["kind"] == "qc" and c["contributor"] != first for c in contribs)
+    held_out = any(t.get("protocol") == "held-out@1" for t in tests)
+    full, blind = r.get("depth") == "full", bool(r["replications"])
+    level = (5 if full and blind else 4 if full or blind else 3 if qc_other or held_out
+             else 2 if rounds >= 2 or len(authors) >= 2 else 1 if tests else 0)
+    return {"level": level, "name": LEVELS[level], "test_rounds": rounds,
+            "sentences": sum(sum(t.get("n_written") or [0]) for t in tests),
+            "contributors": len(r["contributors"]), "qc": sum(r["qc"].values())}
+
+
 def fold_neuron(neuron, contribs):
     m = NEURON.match(neuron)
     r = {"id": neuron, "model": m["model"], "layer": int(m["L"]), "index": int(m["n"]), "pole": m["pole"],
@@ -72,6 +98,7 @@ def fold_neuron(neuron, contribs):
             elif not held:
                 r["label"] = c["label"]
                 failed_rounds += res == "failed"
+    r["scrutiny"] = scrutiny(r, contribs)
     if r["kind"] and "dense" in r["kind"]:
         r["status"] = "dense"
     elif r["depth"] == "full":
@@ -115,7 +142,8 @@ def fold():
                                                                                             "contributors": r["contributors"],
                                                                                             "t": [[t.get("protocol"), t["outcome"], t.get("n_fire"), t.get("n_false_pos"), t.get("author"), t["contribution"]]
                                                                                                   for t in r["tests"]],
-                                                                                            "history": [h[1:] for h in r["label_history"]][-6:]}
+                                                                                            "history": [h[1:] for h in r["label_history"]][-6:],
+                                                                                            "scrutiny": r["scrutiny"]}
                        for n, r in sorted(records.items())},
            "edges": [[e["from"], e["to"], e["kind"]] for e in E],
            "contributors": dict(sorted(points.items(), key=lambda t: (-t[1], t[0]))),

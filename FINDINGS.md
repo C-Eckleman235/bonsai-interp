@@ -392,3 +392,43 @@ It rejected: "nerve in any sense" (0/8), nervousness or anxiety ("nervous" 0.01�
 - The README's practice list included "look at weak and middling activations, and how often each kind of trigger occurs", which our disproof round taught us.
 - The toolchain carries our preambles, thresholds and goal battery.
 - The agent is the same model family as the original investigator.
+
+## 2026-10-18: Second blind clean-room run, on a random neuron (bonsai1/L12/N5397; draw committed in neuron-cleanroom 0d513c1, predictions 1035094)
+
+**Setup**
+- The neuron was drawn with a fixed seed (20261018), and the draw was committed before anyone looked.
+- I made a quick study of my own and committed it first:
+  - − pole label held at 5/8 with 0 false positives (b756721 → b35e372).
+  - + label (the delimiter closing a dense run of detail) failed at 0/8.
+- The room was built by `cleanroom.build_room` from interp commit a4d218d with `--hints none`.
+- Run: 43 minutes, 77 tool calls, 2 sub-agents, 0 globalMOO models.
+- Audit clean once two auditor false positives were fixed. The agent used its own session scratchpad twice, to hide the answer key of a blind test whose sha256 it committed first.
+
+**Its findings**
+
+Window-start artifact:
+- 17 of the + pole's 32 top corpus examples sit at window positions below 64 (about 2 expected).
+- After a neutral preamble they collapse, e.g. 0.95 → 0.16.
+- Both poles are 3–4× enriched in the first 64 positions.
+- This explains why my + label failed: it was built on the artifact.
+- **Every scan-based label may be affected.** The scan should exclude or flag early positions.
+
++ pole: several jobs (confidence 0.55).
+- The peak is the line break that ends a row deep inside a long hex/byte dump. It grows with dump length: 3 lines 0.17, 12 lines 0.57, 30 lines 0.88. It exceeds the corpus max on synthetic dumps.
+- Separate offshoots, each with disjoint feeders: `', '.join` separators and long "ha ha" runs.
+- A diffuse 0.3–0.5 tail remains unexplained. Blind labelling of corpus hits scored at chance (0.45).
+
+− pole: several jobs (confidence 0.65).
+- Its top-level reading (H-1, token right after a number or code) held at 8/8, 0 false positives, matching mine.
+- It splits into four sub-jobs, each 5–6/6 with 0 false positives and its own feeders:
+  - unit after a dimension
+  - nested-array row closer
+  - inner characters of long IDs
+  - delimiters after phone numbers and citation years
+- "Any number" fails: version strings 0.07, coordinates 0.25.
+
+**Our predictions:** 7 of 8 held. P5 (− pole "one main job") failed.
+
+**Pattern across both blind runs:** the agents count jobs by circuits, so disjoint feeder sets mean several jobs. This is a defensible operational definition, and it gives a stricter verdict than the essay's "one job plus offshoots".
+
+**New in the graph:** a derived `scrutiny` level per pole, separate from status. The levels are tested, re-tested, checked, investigated and replicated.

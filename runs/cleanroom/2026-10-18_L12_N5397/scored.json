@@ -1,0 +1,79 @@
+{
+ "scored": "2026-10-18, after reading the blind REPORT.md and summary.json",
+ "run": {
+  "wall_clock_min": 43,
+  "tool_calls": 77,
+  "sub_agents": 2,
+  "globalmoo_models": 0,
+  "pre_registration_commits": [
+   "fe255af",
+   "17c2fb4",
+   "714e27d",
+   "9b9c6f4",
+   "5f831a4",
+   "0963733"
+  ]
+ },
+ "audit": "77 tool calls, 0 denied, 0 flagged after two auditor false positives were fixed (an 'if a:\n' code string read as a drive path; the word 'Monosemanticity' in the report read as the repo name). 2 uses of the agent's own session scratchpad, to hide a blind-test answer key whose sha256 it committed first.",
+ "predictions": [
+  {
+   "id": "P1",
+   "p": 0.7,
+   "outcome": true,
+   "note": "- pole: token inside or right after a structured numeric/code value"
+  },
+  {
+   "id": "P2",
+   "p": 0.6,
+   "outcome": true,
+   "note": "names delimiters, row closers and units"
+  },
+  {
+   "id": "P3",
+   "p": 0.7,
+   "outcome": true,
+   "note": "+ verdict: several jobs, with a large unexplained tail"
+  },
+  {
+   "id": "P4",
+   "p": 0.4,
+   "outcome": true,
+   "note": "escape-string dumps are the + pole's peak job"
+  },
+  {
+   "id": "P5",
+   "p": 0.55,
+   "outcome": false,
+   "note": "- verdict: several jobs (separate feeders per sub-job)"
+  },
+  {
+   "id": "P6",
+   "p": 0.4,
+   "outcome": true,
+   "note": "notes 530k weak + activations in the echo regime"
+  },
+  {
+   "id": "P7",
+   "p": 0.6,
+   "outcome": true,
+   "note": "band scan of 3,000 windows, context truncation and position analysis without hints"
+  },
+  {
+   "id": "P8",
+   "p": 0.95,
+   "outcome": true,
+   "note": "clean"
+  }
+ ],
+ "beyond_predictions": [
+  "Found a window-start artifact: 17 of 32 top + examples at window positions < 64; both poles 3-4x enriched there; the scan behind our own + label was built on it.",
+  "Our + label (dense-detail delimiter) is explained: it was the artifact. Our - label survived and was decomposed into four sub-jobs with separate feeders.",
+  "Used no globalMOO model (judged a remote DOE over a long-text bank too expensive)."
+ ],
+ "comparison": {
+  "ours_minus": "held 5/8 (0 FP)",
+  "blind_minus": "H-1 8/8 (0 FP); four sub-jobs each 5-6/6",
+  "ours_plus": "failed 0/8",
+  "blind_plus": "several jobs; peak = row-ending line breaks in long hex/byte dumps; window-start artifact explains our failure"
+ }
+}

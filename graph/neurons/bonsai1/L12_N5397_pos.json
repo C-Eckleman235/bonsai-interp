@@ -25,6 +25,14 @@
    "protocol": "quick-8+8@1",
    "contribution": "core-bonsai1-l12-n5397-pos-00",
    "outcome": "failed"
+  },
+  {
+   "protocol": "cleanroom@1",
+   "tests_file": "runs/cleanroom/2026-10-18_L12_N5397/predictions.json",
+   "prereg_commit": "neuron-cleanroom@1035094",
+   "outcome": "disagrees: our label was a window-start artifact",
+   "result_file": "runs/cleanroom/2026-10-18_L12_N5397/scored.json",
+   "contribution": "core-bonsai1-l12-n5397-pos-blind1"
   }
  ],
  "label_history": [
@@ -36,22 +44,44 @@
  ],
  "examples": [],
  "evidence": [
-  "probes/bonsai1_L12_N5397_pos/quick.json"
+  "probes/bonsai1_L12_N5397_pos/quick.json",
+  "runs/cleanroom/2026-10-18_L12_N5397/REPORT.md",
+  "https://github.com/moridinamael/neuron-cleanroom/tree/main/runs/2026-10-18_bonsai1_L12_N5397"
  ],
  "roles": [
   "random draw (seed 20261018)",
   "blind-run target"
  ],
  "contributors": [
-  "bonsai-interp-core"
+  "bonsai-interp-core",
+  "neuron-cleanroom-blind-agent"
  ],
  "contributions": [
-  "core-bonsai1-l12-n5397-pos-00"
+  "core-bonsai1-l12-n5397-pos-00",
+  "core-bonsai1-l12-n5397-pos-blind1"
  ],
  "qc": {
   "confirm": 0,
   "dispute": 0,
   "refine": 0
  },
- "replications": []
+ "replications": [
+  {
+   "contribution": "core-bonsai1-l12-n5397-pos-blind1",
+   "label": "Row-ending line breaks (newline / backslash-newline) deep inside long raw hex/byte-data dumps (\\xNN/octal/\\u escape strings, hash and byte lists), ramping with dump length; separate offshoots: Python ', '.join separator, long 'ha ha' runs, plus a diffuse low-precision tail of prose/code tokens",
+   "verdict": "several jobs",
+   "confidence": 0.55,
+   "notes": "Blind clean-room run, no method hints, random draw (seed 20261018). The agent found a window-start artifact: 17 of 32 top + examples sit at window positions < 64 and collapse after a neutral preamble.",
+   "outcome": "disagrees: our label was a window-start artifact"
+  }
+ ],
+ "verdict": "several jobs",
+ "scrutiny": {
+  "level": 4,
+  "name": "investigated",
+  "test_rounds": 1,
+  "sentences": 16,
+  "contributors": 2,
+  "qc": 0
+ }
 }

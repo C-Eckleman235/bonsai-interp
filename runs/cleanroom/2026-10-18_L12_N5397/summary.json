@@ -1,0 +1,35 @@
+{
+ "pole_plus": {
+  "label": "Row-ending line breaks (newline / backslash-newline) deep inside long raw hex/byte-data dumps (\\xNN/octal/\\u escape strings, hash and byte lists), ramping with dump length; separate offshoots: Python ', '.join separator, long 'ha ha' runs, plus a diffuse low-precision tail of prose/code tokens",
+  "verdict": "several jobs",
+  "confidence": 0.55
+ },
+ "pole_minus": {
+  "label": "Token inside or right after a structured numeric/code value: unit after a dimension (9x13 inch), nested-array row closer '],' (even with word items), deep characters of long alphanumeric IDs/hex strings, delimiters after phone numbers and citation years",
+  "verdict": "several jobs",
+  "confidence": 0.65
+ },
+ "rejected_labels": [
+  "+ sentence-final period ending a factual sentence (H+2 0/8; corpus top examples are window-start artifacts, 0.95->0.16 after preamble)",
+  "+ sentence boundary / sentence-initial connective (same firing rate sentence-initially and mid-sentence)",
+  "+ closing brackets / continuation indentation of multi-line code (H+3 0/8)",
+  "+ Python string separator before .join as main label (H+1 2/8; only ', ' fires)",
+  "+ any long non-linguistic token run (holdout 2/8 predicted-fire reached 0.3)",
+  "+ line breaks in backslash-escape dumps only (R3: 3/8 false positives on hash list, 0x list, no-linebreak dump)",
+  "- any digit-bearing number or code (R3 4/8; versions 0.07, coordinates 0.25)",
+  "- list delimiters require numeric items (nested word lists fire 0.87 on '],')",
+  "- comma-newline continuing multi-line argument lists as a reliable job (R5 3/6)"
+ ],
+ "key_tests": [
+  {"name": "H-1 minus: number/code -> delimiter/unit", "prediction": "survives", "result": "survived 8/8 fire, 0/8 false positives", "commit": "fe255af"},
+  {"name": "H-2 minus: word-only code lists", "prediction": "fails (<=3/8)", "result": "failed 1/8; nested word list '],' fired 0.87", "commit": "fe255af"},
+  {"name": "H+1 plus: ', '.join separator", "prediction": "survives weakly", "result": "failed 2/8", "commit": "fe255af"},
+  {"name": "H+2 plus: prose sentence end after factual clause", "prediction": "fails", "result": "failed 0/8 (as predicted)", "commit": "fe255af"},
+  {"name": "H+3 plus: multi-line code closers", "prediction": "fails", "result": "failed 0/8 (as predicted)", "commit": "fe255af"},
+  {"name": "Holdout plus: long non-linguistic runs", "prediction": "accuracy >=0.75, >=6/8 fire", "result": "accuracy 0.62, 2/8 fire -> label rejected", "commit": "17c2fb4"},
+  {"name": "R3 plus: line breaks in long escape dumps", "prediction": "survives", "result": "8/8 fire but 3/8 false positives -> fails, broadened to hex/byte dumps", "commit": "714e27d"},
+  {"name": "R3 minus: any digit-bearing number/code", "prediction": "survives", "result": "failed 4/8", "commit": "714e27d"},
+  {"name": "R4 blind corpus labelling (40 per pole, same-token hard negatives)", "prediction": "+ 0.55-0.70, - 0.65-0.80 accuracy", "result": "+ 0.45 (missed), - 0.675 (met)", "commit": "9b9c6f4"},
+  {"name": "R5 minus sub-jobs", "prediction": "dimension, nested rows, long IDs survive; code-arg newline fails", "result": "5/6, 6/6, 6/6 survive; code-arg 3/6 fails; all as predicted", "commit": "0963733"}
+ ]
+}

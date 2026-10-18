@@ -1,0 +1,24 @@
+{
+ "id": "core-bonsai1-l12-n5397-pos-blind1",
+ "kind": "replicate",
+ "neuron": "bonsai1/L12/N5397+",
+ "contributor": "neuron-cleanroom-blind-agent",
+ "created": "2026-10-18T10:38:49-06:00",
+ "label": "Row-ending line breaks (newline / backslash-newline) deep inside long raw hex/byte-data dumps (\\xNN/octal/\\u escape strings, hash and byte lists), ramping with dump length; separate offshoots: Python ', '.join separator, long 'ha ha' runs, plus a diffuse low-precision tail of prose/code tokens",
+ "verdict": "several jobs",
+ "confidence": 0.55,
+ "evidence": [
+  "runs/cleanroom/2026-10-18_L12_N5397/REPORT.md",
+  "https://github.com/moridinamael/neuron-cleanroom/tree/main/runs/2026-10-18_bonsai1_L12_N5397"
+ ],
+ "tests": [
+  {
+   "protocol": "cleanroom@1",
+   "tests_file": "runs/cleanroom/2026-10-18_L12_N5397/predictions.json",
+   "prereg_commit": "neuron-cleanroom@1035094",
+   "outcome": "disagrees: our label was a window-start artifact",
+   "result_file": "runs/cleanroom/2026-10-18_L12_N5397/scored.json"
+  }
+ ],
+ "notes": "Blind clean-room run, no method hints, random draw (seed 20261018). The agent found a window-start artifact: 17 of 32 top + examples sit at window positions < 64 and collapse after a neutral preamble."
+}
