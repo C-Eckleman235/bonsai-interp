@@ -1,0 +1,42 @@
+{
+ "pole_plus": {
+  "label": "Several merged jobs, all vetoed by preceding pain/sensation discourse: (1) main: 'nerve(s)' outside neuroanatomy, multilingual (nerve-racking, bundle of nerves, Nerven, nerveux, 신경, nerve agent, nerve damage as a disease complication); (2) physical/material 'strong' in concrete text; (3) weak: the injury word or body part in violent harm (shot in the leg)",
+  "verdict": "several jobs",
+  "confidence": 0.7
+ },
+ "pole_minus": {
+  "label": "Somatosensory/nociceptive physiology: detecting and transmitting pain, touch, pressure, temperature, tingling/burning (receptors, fibres, pain signals); offshoot: pulling/jerking a hand or limb back/away",
+  "verdict": "one main job with offshoots",
+  "confidence": 0.8
+ },
+ "rejected_labels": [
+  "+: the word nerve in any sense (Q+4 0/8; corpus median 0.00 on ' nerve')",
+  "+: nervousness/anxiety in general ('nervous' 0.01-0.06)",
+  "+: physical/material strength as the whole pole (Q+2 1/8)",
+  "+: violent bodily injury as a label in its own right (Q+3 1/8; P4E failed)",
+  "+: visceral intensity / danger-strain-arousal context (danger-calm delta ~0)",
+  "+: feeling/sensation words in other languages (blind P-feeling 0/4)",
+  "+: one unified 'visceral physical intensity' job (held-out acc 0.62; disjoint feeders)",
+  "+: nerve whenever the left context has no pain words (corpus AUROC 0.68 < 0.75)",
+  "-: pain in any sense (Q-2 0/8; emotional pain <= 0.11)",
+  "-: medicine/neurology in general (retina 0.04, cochlea 0.05, insulin 0.01)",
+  "-: physical withdrawal in general (Q-3 1/8)",
+  "-: stimulus-triggered withdrawal reflex as the offshoot ('smiled and pulled her hand away' 0.63)"
+ ],
+ "key_tests": [
+  {"name": "- pole blind held-out (24 sentences, sub-agent)", "prediction": "accuracy >= 0.75", "result": "accuracy 0.96, AUROC 1.00 (held)", "commit": "9f80ff5"},
+  {"name": "+ pole blind held-out (32 sentences, sub-agent)", "prediction": "accuracy >= 0.65", "result": "accuracy 0.62, AUROC 0.84; nerve items 8/8 correct, strong/injury fire items all 0.05-0.22 (failed)", "commit": "9f80ff5"},
+  {"name": "quick Q-1 somatosensory / Q-2 pain-any-sense / Q-3 withdrawal-general", "prediction": "survive / fail / fail", "result": "8/8 0FP / 0/8 / 1/8 (all held)", "commit": "9f80ff5"},
+  {"name": "quick Q+1 nerve-figurative / Q+2 physical strong / Q+3 violent harm / Q+4 lexical nerve", "prediction": "survive / survive / survive / fail", "result": "5/8 / 1/8 / 1/8 / 0/8 (Q+2, Q+3 failed)", "commit": "9f80ff5"},
+  {"name": "context: danger/strain/stress vs calm raises +", "prediction": "delta(+) >= +0.05..0.08", "result": "delta ~0 or negative (failed); H+ctx rejected", "commit": "0b5703a"},
+  {"name": "context: pain discourse flips nerve targets", "prediction": "delta(+) <= -0.05 and delta(-) >= +0.05", "result": "delta(+) -0.46, delta(-) +0.16 (held)", "commit": "0b5703a"},
+  {"name": "circuit: + branches have disjoint feeders", "prediction": "top-3 overlap <= 1; nerve feeder < 0.2 drop on strong", "result": "overlap 0; L8/N7756 0.635 nerve vs 0.001 strong; L8/N9260 and L0/N8811 0.289 strong only (held)", "commit": "6f430e5"},
+  {"name": "circuit: - pain feeder absent from withdrawal", "prediction": "L8/N3858 >= 0.15 on pain-mech, < 0.10 on withdrawal", "result": "0.34 vs -0.003 (held)", "commit": "6f430e5"},
+  {"name": "flip: 'smiled' instead of 'flinched' silences hand withdrawal", "prediction": "flipped < 0.15", "result": "0.63 (failed)", "commit": "6f430e5"},
+  {"name": "minimal pairs: nerve after sensory left context", "prediction": "<= 1/4 reach + 0.15", "result": "0/4; - pole 0.37-0.70 (held)", "commit": "9c224a0"},
+  {"name": "minimal pairs: nerve after neutral left context", "prediction": ">= 3/4 reach + 0.3", "result": "1/4 (failed)", "commit": "9c224a0"},
+  {"name": "calm-context physical vs abstract strong", "prediction": ">= 0.3 vs < 0.2", "result": "0.44 vs 0.09 (held); business context physical 0.26 (not < 0.2)", "commit": "9c224a0"},
+  {"name": "corpus-wide nerve gate (pain words in 40 left tokens)", "prediction": "AUROC >= 0.75", "result": "0.68 after token-id bugfix (failed)", "commit": "9c224a0"},
+  {"name": "single globalMOO model, + pole", "prediction": "leak satisfied via nerve passage; silent_on_concept via pain-first passage", "result": "levels and tight_50 hit in 5-22 evals; leak/offshoot/silent/max collapsed, not satisfied (failed)", "commit": "9c224a0"}
+ ]
+}

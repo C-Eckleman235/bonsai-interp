@@ -1,0 +1,16 @@
+{
+ "scored": "2026-10-17, after reading REPORT.md and summary.json of the blind run",
+ "run": {"wall_clock_min": 40, "tool_calls": 51, "sub_agents": 1, "globalmoo_models": 1, "commits": "9f80ff5..d20a905 (clean-room repo)"},
+ "audit": "51 tool calls, 0 denied, 0 flagged; no path outside the clean room, no web, no memory reads (audit.json)",
+ "predictions": [
+  {"id": "P1", "p": 0.9, "outcome": true, "note": "'nerve(s) outside neuroanatomy' is the main + job by peak"},
+  {"id": "P2", "p": 0.65, "outcome": "partial", "note": "psychological idioms pass (Q+1 5/8, held-out 4/4) but the label is broader: 'outside neuroanatomy', incl. nerve agent and nerve damage"},
+  {"id": "P3", "p": 0.5, "outcome": true, "note": "'strong' is the most frequent strong trigger; physical/material sense, register-dependent"},
+  {"id": "P4", "p": 0.35, "outcome": true, "note": "weak violent-harm branch, peak on the body part"},
+  {"id": "P5", "p": 0.25, "outcome": true, "note": "'nervous' 0.01-0.06"},
+  {"id": "P6", "p": 0.75, "outcome": true, "note": "- pole = somatosensory/nociceptive physiology, plus a hand-withdrawal offshoot"},
+  {"id": "P7", "p": 0.6, "outcome": false, "note": "verdict 'several jobs' (it notes 'one main job with offshoots' is a fair alternative)"},
+  {"id": "P8", "p": 0.95, "outcome": true, "note": "audit clean"}
+ ],
+ "disclosure": "The clean-room README's 'good practice' list included 'look at weak and middling activations, and how often each kind of trigger occurs in the corpus'. That advice was learned from our own disproof round and nudged the agent toward the frequency analysis that exposed 'strong'. The toolchain also carries our methods (neutral preambles, 8+8 quick-test threshold, inverse goal battery). The run is blind to results, not to methods. The agent is the same model family as the original investigator."
+}

@@ -345,3 +345,48 @@ Anticipation (exploratory, whole-word nerve tokens only)
 **Totals.** The web now has 60 neurons, and 52 labels hold on the latest round.
 - Published: web page https://claude.ai/artifact/QfEFnhVJj281rQw5Jpx3Xu and dossier https://claude.ai/artifact/AHrzdNHkF9wYFP9FVWXJRt.
 - Figure: `reports/figures/nerve_connectome.png`.
+
+## 2026-10-17: Blind clean-room replication of L9/N3688 (`runs/cleanroom/`; our predictions committed in 2dae2f0 before launch)
+
+**Setup**
+- A headless Claude Code agent (Opus 5.5) ran in a separate folder with its own git repo.
+- It had a scrubbed copy of the toolchain, the corpus and scan, and the model weights. It had none of our probes, findings or reports. Nerve-tailored steering prompts and opposite tokens were removed.
+- Web access and reads of this repo or of Claude memory were denied by permission rules. The full transcript was audited: 51 tool calls, 0 denied, 0 flagged.
+- It took 40 minutes, 4 pre-registration rounds and one globalMOO model.
+
+**Its labels** (from `blind/REPORT.md`)
+
++ pole: "several jobs", confidence 0.7. All three jobs are vetoed by preceding pain or sensation discourse.
+1. "nerve(s)" outside neuroanatomy, in several languages. This is the main job by peak.
+2. Physical or material "strong". This is the most frequent strong trigger, and it is damped by business register.
+3. A weak branch for violent harm, peaking on the body part.
+
+It rejected: "nerve in any sense" (0/8), nervousness or anxiety ("nervous" 0.01–0.06), danger or strain context (Δ≈0), feeling words in other languages, and one unified job (held-out accuracy 0.62, disjoint feeders).
+
+− pole: "somatosensory / nociceptive physiology", one main job with an offshoot, confidence 0.8.
+- The blind held-out set scored accuracy 0.96 and AUROC 1.00.
+- "Pain in any sense" failed at 0/8, and "medicine in general" failed.
+- The offshoot is "pulling a hand or limb back".
+
+**Agreement with our work**
+- The nerve feeder is the same neuron: L8/N7756 (0.635 vs our 0.61).
+- The pain neuron L8/N3858 acts as the context switch, as in our gate test.
+- "nervous" is silent, matching our H3.
+- 'strong' and impact are branches and courage-meaning is not, matching our H5 and H4.
+- globalMOO behaved the same way: good at graded targets in 5–22 evals, fails at extremes.
+
+**New to us**
+- **Disjoint feeders per + branch.** 'strong' is fed by L8/N9260 ("Powerful, potent") and L0/N8811 at 0.29 each, with about 0 drop on nerve. The nerve feeder gives 0.001 on strong. This argues for "several jobs" over our "one word family".
+- **The pain-context veto as a signed axis.** One pain sentence drives every + target to about 0 (nerve −0.46, strong −0.35, injury −0.26) while the − pole rises.
+- **A − withdrawal offshoot**: "pulled her hand away" 0.63–0.98, with separate feeders. We never examined this.
+- **A register confound in our preambles.** The office/invoice preamble damps physical "strong" by about 0.17. This may explain why our branch tests read 'strong' at about half of nerve.
+- It did not report our spelling route L3/N6493.
+
+**Our pre-registered predictions** (`scored.json`): 6 of 8 held, 1 was partial and 1 failed.
+- P2 was partial: its label is "nerve outside anatomy", broader than the psychological sense.
+- P7 failed: it chose "several jobs".
+
+**Disclosure.** The clean room is blind to our results, not to our methods.
+- The README's practice list included "look at weak and middling activations, and how often each kind of trigger occurs", which our disproof round taught us.
+- The toolchain carries our preambles, thresholds and goal battery.
+- The agent is the same model family as the original investigator.
