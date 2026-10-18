@@ -13,7 +13,7 @@ import numpy as np
 import torch
 
 from bonsai_interp import explore
-from bonsai_interp.device import DEVICE
+from bonsai_interp.env import DEVICE
 from bonsai_interp.model import load
 from bonsai_interp.probe import bands as B
 from bonsai_interp.probe.workspace import Workspace

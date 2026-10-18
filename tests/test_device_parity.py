@@ -40,7 +40,7 @@ ATTR_CORR = 0.95    # correlation of the reference's top attributions
 @functools.cache
 def _model():
     from bonsai_interp import explore
-    from bonsai_interp.device import limit_memory
+    from bonsai_interp.env import limit_memory
     from bonsai_interp.model import load
     limit_memory(0.8)
     model, tok, rec = load("bonsai1")
@@ -52,7 +52,7 @@ def measure():
     """Everything the test compares, on this machine's device."""
     import numpy as np
     import torch
-    from bonsai_interp.device import DEVICE, describe
+    from bonsai_interp.env import DEVICE, describe
     from bonsai_interp.inverse.neuron import NeuronSite
     from bonsai_interp.model import StopForward
     from bonsai_interp.probe import textinv
@@ -127,14 +127,14 @@ def compare(got, ref):
 
 
 def test_device_parity():
-    from bonsai_interp.device import describe
+    from bonsai_interp.env import describe
     got = measure()
     bad = compare(got, json.loads(REF.read_text(encoding="utf-8")))
     assert not bad, f"{describe()} disagrees with the CUDA reference:\n  " + "\n  ".join(bad)
 
 
 def main():
-    from bonsai_interp.device import DEVICE
+    from bonsai_interp.env import DEVICE
     got = measure()
     if "--record" in sys.argv:
         if DEVICE.type != "cuda":

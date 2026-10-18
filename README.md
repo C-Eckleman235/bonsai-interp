@@ -49,9 +49,13 @@ uv run python -m bonsai_interp.explore --model bonsai1 --neuron 9/3688 --pole +
 uv run python -m bonsai_interp.graph.validate
 ```
 
-Hardware: one 16 GB GPU is enough. The 1-bit weights are stored packed and dequantized per
-layer. An Apple Silicon Mac also works (see below), and the CPU works for checks. globalMOO is
-optional; it needs `GMOO_API_KEY` in `.env` (see `.env.example`).
+Hardware: one 16 GB NVIDIA GPU is enough (the reference setup is Windows with an RTX 5080). The
+1-bit weights are stored packed and dequantized per layer. An Apple Silicon Mac also works (see
+below), and the CPU works for checks. `bonsai_interp/env.py` detects the OS, device, dtype,
+memory and agent CLIs in one place. `uv run python -m bonsai_interp.env` prints that report, and
+`play doctor` prints it too. On a CUDA machine the defaults are unchanged: CUDA, bfloat16 and
+the 0.8 memory cap. globalMOO is optional; it needs `GMOO_API_KEY` in `.env` (see
+`.env.example`).
 
 ### Running on a Mac
 
@@ -84,9 +88,12 @@ weights and the same bfloat16 arithmetic as on CUDA.
   chip. Only the model work scales by that factor; the agent's own reading and writing time
   does not. Blind rooms suit a Mac better than live play, because nobody waits on them. Please
   report what doctor prints on your Mac so we can replace these estimates.
-- **Clean-room missions on macOS.** `cleanroom.build_room` links the weights and data into the
-  room with symlinks on macOS and Linux (junctions on Windows). Codex runs inside its macOS
-  Seatbelt sandbox in `workspace-write` mode. As on Windows, that sandbox blocks writes outside
+- **Clean-room missions on macOS.** The Windows handling in neuron-cleanroom stays, behind
+  platform checks. `build_room` links the weights and data into the room with junctions on
+  Windows and with symlinks on macOS and Linux. Clearing read-only git files when a room is
+  removed happens only on Windows. Codex gets its `[windows] sandbox = "unelevated"` setting
+  only on Windows. Elsewhere Codex runs inside its own sandbox in `workspace-write` mode, which
+  on macOS is Seatbelt. As on Windows, that sandbox blocks writes outside
   the room and blocks the network, but it does not block reads, so the audit is still the check
   on reads. We have not yet tested whether Metal is reachable inside the sandbox. Launch rooms
   with `BONSAI_DEVICE=mps` exported, so that a room which cannot see the GPU fails at once

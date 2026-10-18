@@ -1,13 +1,19 @@
-"""The one device setting for the whole toolchain: CUDA, Apple Silicon (PyTorch MPS) or CPU.
+"""What this machine offers, detected in one place: OS, compute device, dtype, memory, agent CLIs.
 
-Pick it with BONSAI_DEVICE=cuda|mps|cpu (environment or .env); otherwise the first available of
-cuda > mps > cpu is used. Every module puts tensors on DEVICE and computes in DTYPE.
+Device: BONSAI_DEVICE=cuda|mps|cpu (environment or .env); otherwise the first available of
+cuda > mps > cpu. On a CUDA machine nothing changes from the original CUDA-only toolchain:
+same device, bfloat16, same memory cap. Every module puts tensors on DEVICE and computes in DTYPE.
 
-DTYPE is bfloat16, as on the reference CUDA machine. MPS has bfloat16 only on macOS 14+; where a
-bfloat16 matmul fails we fall back to float32 (float16 can overflow Qwen3's large residual
-activations) and warn. BONSAI_DTYPE=bfloat16|float16|float32 overrides the choice.
+DTYPE is bfloat16 where the device supports it (any recent NVIDIA GPU, the CPU, MPS on macOS 14+).
+Otherwise it falls back to float32 with a warning (float16 can overflow Qwen3's large residual
+activations). BONSAI_DTYPE=bfloat16|float16|float32 overrides the choice.
+
+`python -m bonsai_interp.env` prints the capability report that `play doctor` shows.
 """
 import os
+import platform
+import shutil
+import subprocess
 import warnings
 from pathlib import Path
 
@@ -16,6 +22,7 @@ os.environ.setdefault("PYTORCH_ENABLE_MPS_FALLBACK", "1")  # an op MPS lacks run
 import torch
 
 ROOT = Path(__file__).resolve().parent.parent
+OS = {"Windows": "windows", "Darwin": "macos", "Linux": "linux"}.get(platform.system(), platform.system().lower())
 
 
 def _setting(name):
@@ -33,7 +40,7 @@ def _pick_device():
         if want.startswith("cuda") and not torch.cuda.is_available():
             raise RuntimeError(f"BONSAI_DEVICE={want} but torch sees no CUDA GPU")
         if want == "mps" and not torch.backends.mps.is_available():
-            raise RuntimeError("BONSAI_DEVICE=mps but torch.backends.mps is not available (Apple Silicon + macOS 12.3+ needed)")
+            raise RuntimeError("BONSAI_DEVICE=mps but torch.backends.mps is not available (Apple Silicon + macOS 14 needed)")
         return torch.device(want)
     if torch.cuda.is_available():
         return torch.device("cuda")
@@ -46,11 +53,14 @@ def _pick_dtype(dev):
     want = _setting("BONSAI_DTYPE")
     if want:
         return getattr(torch, want)
+    if dev.type == "cuda" and not torch.cuda.is_bf16_supported():
+        warnings.warn(f"{torch.cuda.get_device_name(dev)} has no bfloat16; computing in float32 (slower, slightly different numerics)")
+        return torch.float32
     if dev.type == "mps":
         try:
             a = torch.ones(4, 4, dtype=torch.bfloat16, device=dev)
             (a @ a).sum().item()
-        except Exception as e:  # older macOS: no bfloat16 on MPS
+        except Exception as e:  # macOS before 14: no bfloat16 on MPS
             warnings.warn(f"bfloat16 is not supported on this MPS device ({type(e).__name__}); computing in float32 "
                           "(slightly different numerics from the CUDA reference; update to macOS 14+ for bfloat16)")
             return torch.float32
@@ -82,30 +92,65 @@ def synchronize():
         torch.mps.synchronize()
 
 
-def describe():
-    """One line for logs and `play doctor`, e.g. 'cuda: NVIDIA GeForce RTX 5080, 16 GB (bfloat16)'."""
-    dt = str(DTYPE).removeprefix("torch.")
-    if DEVICE.type == "cuda":
-        p = torch.cuda.get_device_properties(DEVICE)
-        return f"cuda: {p.name}, {p.total_memory / 2**30:.0f} GB ({dt})"
-    if DEVICE.type == "mps":
-        import platform
-        import subprocess
-        chip = subprocess.run(["sysctl", "-n", "machdep.cpu.brand_string"], capture_output=True, text=True).stdout.strip()
-        mem = subprocess.run(["sysctl", "-n", "hw.memsize"], capture_output=True, text=True).stdout.strip()
-        mem = f", {int(mem) / 2**30:.0f} GB unified" if mem.isdigit() else ""
-        return f"mps: {chip or 'Apple Silicon'}{mem}, macOS {platform.mac_ver()[0]} ({dt})"
-    return f"cpu ({dt}; slow, for checks only)"
+def _sysctl(key):
+    try:
+        return subprocess.run(["sysctl", "-n", key], capture_output=True, text=True).stdout.strip()
+    except OSError:
+        return ""
 
 
-def memory_gb():
-    """Memory the model can use on DEVICE, in GB (GPU memory, unified memory on a Mac, RAM on CPU)."""
-    if DEVICE.type == "cuda":
-        return torch.cuda.get_device_properties(DEVICE).total_memory / 2**30
-    if DEVICE.type == "mps":
-        return torch.mps.recommended_max_memory() / 2**30
+def ram_gb():
+    """System RAM (unified memory on a Mac), in GB; nan when unknown."""
+    if OS == "macos":
+        v = _sysctl("hw.memsize")
+        return int(v) / 2**30 if v.isdigit() else float("nan")
     try:
         import psutil
         return psutil.virtual_memory().total / 2**30
     except ImportError:
         return float("nan")
+
+
+def memory_gb():
+    """Memory the model can use on DEVICE, in GB: GPU memory, unified memory on a Mac, RAM on the CPU."""
+    if DEVICE.type == "cuda":
+        return torch.cuda.get_device_properties(DEVICE).total_memory / 2**30
+    return ram_gb()
+
+
+def describe():
+    """One line, e.g. 'cuda: NVIDIA GeForce RTX 5080, 16 GB (bfloat16)'."""
+    dt = str(DTYPE).removeprefix("torch.")
+    if DEVICE.type == "cuda":
+        p = torch.cuda.get_device_properties(DEVICE)
+        return f"cuda: {p.name}, {p.total_memory / 2**30:.0f} GB ({dt})"
+    if DEVICE.type == "mps":
+        return f"mps: {_sysctl('machdep.cpu.brand_string') or 'Apple Silicon'}, {ram_gb():.0f} GB unified ({dt})"
+    return f"cpu ({dt}; slow, for checks only)"
+
+
+def agent_clis():
+    """Agent CLIs on PATH (blind clean-room missions need one): name -> path or None."""
+    return {name: shutil.which(name) for name in ("claude", "codex")}
+
+
+def report():
+    """The capability report: what this machine can run and how."""
+    os_ver = {"macos": platform.mac_ver()[0], "windows": platform.version()}.get(OS, platform.release())
+    return {"os": f"{OS} {os_ver} ({platform.machine()})", "device": DEVICE.type, "dtype": str(DTYPE).removeprefix("torch."),
+            "accelerator": describe(), "memory_gb": round(memory_gb(), 1), "ram_gb": round(ram_gb(), 1),
+            "device_forced": _setting("BONSAI_DEVICE") is not None, "torch": torch.__version__, "agent_clis": agent_clis()}
+
+
+def report_lines():
+    r = report()
+    clis = ", ".join(f"{k} ({'found' if v else 'missing'})" for k, v in r["agent_clis"].items())
+    return [f"OS           {r['os']}",
+            f"device       {r['accelerator']}" + (" [BONSAI_DEVICE]" if r["device_forced"] else " [auto: cuda > mps > cpu]"),
+            f"memory       {r['memory_gb']:.0f} GB on the device, {r['ram_gb']:.0f} GB RAM",
+            f"torch        {r['torch']}",
+            f"agent CLIs   {clis}"]
+
+
+if __name__ == "__main__":
+    print("\n".join(report_lines()))

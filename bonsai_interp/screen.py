@@ -21,7 +21,7 @@ import numpy as np
 import torch
 
 from bonsai_interp import explore
-from bonsai_interp.device import empty_cache, limit_memory
+from bonsai_interp.env import empty_cache, limit_memory
 from bonsai_interp.inverse import solvers as S
 from bonsai_interp.inverse.neuron import NeuronSite, circuit_problem
 from bonsai_interp.inverse.problem import Goal

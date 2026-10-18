@@ -17,7 +17,7 @@ import numpy as np
 import torch
 
 from bonsai_interp import explore
-from bonsai_interp.device import DEVICE
+from bonsai_interp.env import DEVICE
 from bonsai_interp.inverse.neuron import NeuronSite
 from bonsai_interp.model import StopForward
 from bonsai_interp.probe.run import setup

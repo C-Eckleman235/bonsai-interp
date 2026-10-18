@@ -7,7 +7,7 @@ import sys
 
 import torch
 
-from bonsai_interp.device import empty_cache, limit_memory
+from bonsai_interp.env import empty_cache, limit_memory
 from bonsai_interp.model import load
 from bonsai_interp.probe.quick import one_back
 from bonsai_interp.probe.web import forward_dump

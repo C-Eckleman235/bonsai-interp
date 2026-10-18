@@ -11,7 +11,7 @@ import sys
 
 import torch
 
-from bonsai_interp.device import DEVICE, limit_memory
+from bonsai_interp.env import DEVICE, limit_memory
 from bonsai_interp.model import load
 from bonsai_interp.probe.workspace import Workspace
 

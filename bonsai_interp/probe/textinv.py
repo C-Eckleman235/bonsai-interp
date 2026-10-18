@@ -26,7 +26,7 @@ import time
 import numpy as np
 import torch
 
-from bonsai_interp.device import DEVICE
+from bonsai_interp.env import DEVICE
 from bonsai_interp.inverse.problem import Goal, InverseProblem, Var
 from bonsai_interp.model import StopForward
 

@@ -13,7 +13,7 @@ import time
 import numpy as np
 import torch
 
-from bonsai_interp.device import limit_memory
+from bonsai_interp.env import limit_memory
 from bonsai_interp.inverse import solvers as S
 from bonsai_interp.inverse.problem import satisfied
 from bonsai_interp.model import load

@@ -30,17 +30,18 @@ def doctor(a):
     v = sys.version_info
     req.append(_ok((3, 11) <= v[:2] <= (3, 13), "Python 3.11-3.13", platform.python_version(), "uv python install 3.13 && uv sync"))
     try:
-        import torch  # noqa: F401
-        from bonsai_interp.device import DEVICE, describe, memory_gb
-        # the device every command will use (BONSAI_DEVICE=cuda|mps|cpu overrides the cuda > mps > cpu pick)
-        _ok(True if DEVICE.type != "cpu" else "warn", "device", describe(),
-            "no CUDA GPU or Apple Silicon found: the CPU works for checks, but missions take hours")
+        from bonsai_interp.env import DEVICE, describe, memory_gb, report, report_lines
+        print("This machine (bonsai_interp/env.py; BONSAI_DEVICE=cuda|mps|cpu overrides the device):")
+        for ln in report_lines():
+            print(f"       {ln}")
+        if DEVICE.type == "cpu":
+            why = "set by BONSAI_DEVICE" if report()["device_forced"] else "no CUDA GPU or Apple Silicon found"
+            _ok("warn", "device", f"{describe()}: {why}; missions would take hours")
+        mem = memory_gb()
         if DEVICE.type == "cuda":
-            mem = memory_gb()
             req.append(_ok(mem >= 15, "GPU memory >= 15 GB", f"{mem:.1f} GB", "use a 16 GB+ GPU"))
         elif DEVICE.type == "mps":
-            ram = int(subprocess.run(["sysctl", "-n", "hw.memsize"], capture_output=True, text=True).stdout.strip() or 0) / 2**30
-            req.append(_ok(ram >= 16 and (True if ram >= 32 else "warn"), "unified memory >= 16 GB (32 GB recommended)", f"{ram:.0f} GB",
+            req.append(_ok(mem >= 16 and (True if mem >= 32 else "warn"), "unified memory >= 16 GB (32 GB recommended)", f"{mem:.0f} GB",
                            "use a Mac with 16 GB+ unified memory"))
     except ImportError:
         req.append(_ok(False, "torch", "not importable", "uv sync"))
@@ -71,13 +72,19 @@ def doctor(a):
     env = ROOT / ".env"
     has_key = env.exists() and "GMOO_API_KEY=" in env.read_text(encoding="utf-8") and env.read_text(encoding="utf-8").split("GMOO_API_KEY=")[1].strip()[:1] not in ("", "\n")
     _ok(True if has_key else None, "globalMOO key (optional)", "present" if has_key else "not set; SciPy-only missions still work")
-    _ok(True if shutil.which("claude") else None, "claude CLI (optional, blind missions)", shutil.which("claude") or "not found")
+    try:
+        from bonsai_interp.env import agent_clis
+        clis = agent_clis()
+    except ImportError:  # no torch: already reported above
+        clis = {c: shutil.which(c) for c in ("claude", "codex")}
+    for cli, path in clis.items():
+        _ok(True if path else None, f"{cli} CLI (optional, blind missions)", path or "not found")
     cr = ROOT.parent / "neuron-cleanroom"
     _ok(True if cr.exists() else None, "neuron-cleanroom checkout (optional, blind missions)", str(cr) if cr.exists() else "not cloned next to this repo")
     if all(req) and not a.quick:
         # end to end: load the model and read one known neuron on one sentence
         from bonsai_interp import explore
-        from bonsai_interp.device import DEVICE, limit_memory
+        from bonsai_interp.env import DEVICE, limit_memory
         from bonsai_interp.model import load
         from bonsai_interp.probe import textinv
         limit_memory(0.8)
@@ -95,7 +102,7 @@ def doctor(a):
                        "this device computes differently from CUDA: run tests/test_device_parity.py and report its output"))
         # speed, to compare machines: the reference RTX 5080 loads in ~15 s and reads ~3,600 tokens/s
         import torch
-        from bonsai_interp.device import synchronize
+        from bonsai_interp.env import synchronize
         x = torch.from_numpy(explore.corpus()[:8, :256].astype("int64")).to(DEVICE)
         with torch.no_grad():
             model.model(x[:1, :32])

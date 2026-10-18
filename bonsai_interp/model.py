@@ -19,7 +19,7 @@ import torch.nn.functional as F
 from safetensors import safe_open
 from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer
 
-from bonsai_interp.device import DEVICE, DTYPE
+from bonsai_interp.env import DEVICE, DTYPE
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -42,7 +42,7 @@ MODELS = {
     "qwen": _model_dir("QWEN_PATH", "Qwen3-8B"),
 }
 GROUP = 128
-COMPUTE_DTYPE = DTYPE  # bfloat16 unless the device lacks it (see device.py)
+COMPUTE_DTYPE = DTYPE  # bfloat16 unless the device lacks it (see env.py)
 
 
 class _DequantLinear(torch.autograd.Function):
@@ -165,7 +165,7 @@ def _read_all(path: Path):
 
 
 def load(name: str = "bonsai1"):
-    """Returns (model, tokenizer, recorder). The model lives on DEVICE (bonsai_interp.device)."""
+    """Returns (model, tokenizer, recorder). The model lives on DEVICE (bonsai_interp.env)."""
     path = MODELS[name]
     cfg = AutoConfig.from_pretrained(path)
     cfg.dtype = COMPUTE_DTYPE

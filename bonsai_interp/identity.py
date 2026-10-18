@@ -14,7 +14,7 @@ import json
 import numpy as np
 import torch
 
-from bonsai_interp.device import DEVICE, empty_cache
+from bonsai_interp.env import DEVICE, empty_cache
 from bonsai_interp.model import ROOT, load
 
 LAYERS = [1, 5, 9, 13, 17, 21, 25, 29, 33, 35]

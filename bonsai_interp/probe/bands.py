@@ -16,7 +16,7 @@ import numpy as np
 import torch
 
 from bonsai_interp import explore
-from bonsai_interp.device import DEVICE
+from bonsai_interp.env import DEVICE
 from bonsai_interp.model import ROOT, StopForward, load
 
 BANDS = [(0.05, 0.1), (0.1, 0.2), (0.2, 0.3), (0.3, 0.5), (0.5, 10.0)]

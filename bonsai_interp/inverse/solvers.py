@@ -17,7 +17,7 @@ import torch
 from dotenv import load_dotenv
 from scipy import optimize
 
-from bonsai_interp.device import DEVICE
+from bonsai_interp.env import DEVICE
 from bonsai_interp.inverse.problem import InverseProblem, goal_terms, satisfied, scalarize
 
 

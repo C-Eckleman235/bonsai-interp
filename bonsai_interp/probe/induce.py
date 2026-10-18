@@ -11,7 +11,7 @@
 import numpy as np
 import torch
 
-from bonsai_interp.device import DEVICE
+from bonsai_interp.env import DEVICE
 from bonsai_interp.probe.run import setup
 from bonsai_interp.probe.workspace import Workspace
 

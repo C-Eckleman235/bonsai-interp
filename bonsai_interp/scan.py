@@ -17,7 +17,7 @@ import time
 import numpy as np
 import torch
 
-from bonsai_interp.device import DEVICE
+from bonsai_interp.env import DEVICE
 from bonsai_interp.model import ROOT, load
 
 K = 32

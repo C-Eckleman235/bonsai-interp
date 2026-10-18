@@ -14,7 +14,7 @@ import numpy as np
 import torch
 
 from bonsai_interp import explore
-from bonsai_interp.device import DEVICE, empty_cache, limit_memory
+from bonsai_interp.env import DEVICE, empty_cache, limit_memory
 from bonsai_interp.inverse.linear import Weights
 from bonsai_interp.model import StopForward, load
 from bonsai_interp.probe import textinv
