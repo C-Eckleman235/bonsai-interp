@@ -1,11 +1,11 @@
 """Exploratory: how does the 'nerve' circuit treat the word 'nervous', and is there a dedicated 'nervous' neuron?"""
 import sys
-sys.path.insert(0, r"~\Documents\GitHub\monosemanticity")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[1]))
 import numpy as np
 import torch
-from mono import explore
-from mono.model import load, StopForward
-from mono.probe import textinv
+from bonsai_interp import explore
+from bonsai_interp.model import load, StopForward
+from bonsai_interp.probe import textinv
 
 NERVOUS = [
     "I felt nervous before the job interview.", "She was nervous about the test results.",

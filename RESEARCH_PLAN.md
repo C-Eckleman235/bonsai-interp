@@ -144,6 +144,6 @@ The neuron is `a = silu(g)·u`, with `g = w_g·x̂` and `u = w_u·x̂`, where `x
 
 ## Deliverables
 
-- `mono/` pipeline.
+- `bonsai_interp/` pipeline.
 - A neuron-paper browser (artifact).
 - A write-up comparing against the essay's numbers.

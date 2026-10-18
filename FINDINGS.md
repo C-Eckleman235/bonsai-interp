@@ -2,7 +2,7 @@
 
 ## 2026-10-17: Neuron identity survives quantization-aware training (mid layers)
 
-**Setup** (`python -m mono.identity --windows 12`)
+**Setup** (`python -m bonsai_interp.identity --windows 12`)
 - 12,288 tokens from the corpus tail, run through all three models.
 - Neuron = SwiGLU product channel.
 - Metric 1: same-index Pearson r.
@@ -74,7 +74,7 @@ The toy is `a = silu(w_g·x)·(w_u·x)`, with x ∈ [-1,1]⁸. All solvers ran a
 
 ## 2026-10-17: Neuron probe (forward + inverse + induce) on L9/N3688, Bonsai-8B 1-bit
 
-Tool: `python -m mono.probe.run {forward|solo|invert|induce} 9/3688 +`. All artifacts are in `probes/bonsai1_L9_N3688_pos/`.
+Tool: `python -m bonsai_interp.probe.run {forward|solo|invert|induce} 9/3688 +`. All artifacts are in `probes/bonsai1_L9_N3688_pos/`.
 
 **Forward**
 - Top corpus examples suggested H1: "the morpheme *nerve* across languages".
@@ -116,7 +116,7 @@ Tool: `python -m mono.probe.run {forward|solo|invert|induce} 9/3688 +`. All arti
 
 ## 2026-10-17: Fan-out from L9/N3688+ ("nerve"): neighbourhood and circuit inverse
 
-`python -m mono.probe.neighbors 9/3688 +` uses 12 branch examples (6 psychological, 4 anatomical, 1 name, 1 "strong"), all read after a neutral preamble.
+`python -m bonsai_interp.probe.neighbors 9/3688 +` uses 12 branch examples (6 psychological, 4 anatomical, 1 name, 1 "strong"), all read after a neutral preamble.
 
 **Upstream (single-unit zero ablation; share of the pole's activation lost)**
 - **Narrow fan-in, two dominant inputs:**
@@ -203,7 +203,7 @@ Each sentence was read after [preamble] + context, under neutral and pain contex
 - The discriminating evidence is the held-out fire rate (the essay's own new-example test), opposite-pole coherence, induction coherence and strength, and cross-talk (related vs unrelated poles).
 - The unclear neuron's refined label did find real structure. Hypothetical money outcomes ("would have roughly $200,000") reach 0.4–1.0.
 
-**Neighbour mining, L9/N3688** (`mono/probe/mine.py`)
+**Neighbour mining, L9/N3688** (`bonsai_interp/probe/mine.py`)
 - Method: 115 top corpus sentences of 12 causal neighbours (6 inputs, 2 gates, 4 readers), rated for relevance before evaluation (commit 3977f9d).
 - 6 fired the pole off-label:
   - 3 Arabic anatomical sentences, the known concept-route offshoot;
@@ -216,7 +216,7 @@ Each sentence was read after [preamble] + context, under neutral and pain contex
 **New views**
 - The iris plot: every probe sentence placed around the neuron by type (angle) and label relevance (radius), coloured by which pole it drives. It is in every dossier and on the calibration page (`reports/calibration.html`).
 
-## 2026-10-17: Quick checks of nerve's four key neighbours (`mono/probe/quick.py`; tests committed in d56f984)
+## 2026-10-17: Quick checks of nerve's four key neighbours (`bonsai_interp/probe/quick.py`; tests committed in d56f984)
 
 Each neighbour got: weights-only direct token drivers; "one layer back" (attribution on its own top corpus examples, then zeroing each candidate feeder); and 8 fire / 8 quiet pre-registered sentences.
 
@@ -229,7 +229,7 @@ Each neighbour got: weights-only direct token drivers; "one layer back" (attribu
 
 Reading: the circuit's inputs and gate are solid. The token route is spelling-level. The reader was mislabelled, and it does not respond to psychological "nerve" ("my nerves were on edge" 0.02).
 
-## 2026-10-17: The neighbourhood web around L9/N3688 (`mono/probe/web.py`, `lateral.py`; tests committed in b273a0c, plan in bfac101)
+## 2026-10-17: The neighbourhood web around L9/N3688 (`bonsai_interp/probe/web.py`, `lateral.py`; tests committed in b273a0c, plan in bfac101)
 
 **Crawl:** 48 neurons.
 - 6 readers: kept if at least 2 of 3 methods agree (zero-ablation, a 2×-max boost, weights-only cosine).
@@ -277,7 +277,7 @@ Reading: the circuit's inputs and gate are solid. The token route is spelling-le
 
 **Reading:** L9/N3688 is not a "nervousness" neuron. It responds to the word *nerve* (and nerv- forms) when used in its psychological sense. The token route makes it surface-bound: the meaning of English "nervous" is carried elsewhere, alongside "anxious". This is a third sharpening of the label, after H1 (any "nerve" morpheme) and H2 (psychological sense).
 
-## 2026-10-17: Trying to disprove the nerve neuron, relabelling the failures, and the lateral family's inputs (`mono/probe/disproof.py`, `bands.py`, `h4.py`, `predictive.py`, `lateral_out.py`; plans committed in 77e7426, 192e5b9, 0eeecfb, d9e9e34 before each run)
+## 2026-10-17: Trying to disprove the nerve neuron, relabelling the failures, and the lateral family's inputs (`bonsai_interp/probe/disproof.py`, `bands.py`, `h4.py`, `predictive.py`, `lateral_out.py`; plans committed in 77e7426, 192e5b9, 0eeecfb, d9e9e34 before each run)
 
 **Band scan.** Full per-token activations for nerve and 14 web neurons over 6,000 corpus windows (6.1M tokens, `data/bands_web.npz`). This was used to look below the top examples.
 
