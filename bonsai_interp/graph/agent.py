@@ -39,7 +39,8 @@ def doctor(a):
             _ok("warn", "device", f"{describe()}: {why}; missions would take hours")
         mem = memory_gb()
         if DEVICE.type == "cuda":
-            req.append(_ok(mem >= 15, "GPU memory >= 15 GB", f"{mem:.1f} GB", "use a 16 GB+ GPU"))
+            # measured peak of any mission step (load, play run/probe, logits, the auto tier): about 5.2 GB
+            req.append(_ok(mem >= 7.5, "GPU memory >= 8 GB", f"{mem:.1f} GB", "use an 8 GB+ GPU"))
         elif DEVICE.type == "mps":
             req.append(_ok(mem >= 16 and (True if mem >= 32 else "warn"), "unified memory >= 16 GB (32 GB recommended)", f"{mem:.0f} GB",
                            "use a Mac with 16 GB+ unified memory"))

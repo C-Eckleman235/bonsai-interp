@@ -34,7 +34,7 @@ If that is even roughly right, the neurons themselves are a usable basis, and a 
 | **1.15 GB** | Bonsai-8B in its native 1-bit format (PrismML, Apache-2.0) |
 | **36 × 12,288** | layers × MLP neurons; 884,736 poles in all |
 | **92–99%** | of neurons in layers 5–25 sit at the same index as their counterpart in full-precision Qwen3-8B |
-| **16 GB** | of GPU memory is enough to run every tool here |
+| **8 GB** | of GPU memory is enough to run every tool here |
 
 The third number matters for the science. Bonsai was trained to be 1-bit from the start, yet it kept the neuron basis of the model it came from. So a label found cheaply on the 1-bit model can be checked on the full-precision one, neuron by neuron. A 1-bit network is also an interesting object in its own right: every weight is plus or minus one scale per group of 128.
 
@@ -163,8 +163,8 @@ A sense of scale: at ten minutes of agent and GPU time per pole, the full survey
 
 | | |
 |---|---|
-| GPU | NVIDIA, 16 GB of memory (tested on an RTX 5080) |
-| Disk | About 18 GB: the Bonsai-8B weights (16 GB) and the corpus and scan (1.4 GB) |
+| GPU | NVIDIA with 8 GB of memory (a mission peaks at about 5 GB; tested on an RTX 5080), or an Apple Silicon Mac |
+| Disk | About 3 GB: the 1-bit Bonsai-8B weights (1.2 GB) and the corpus and scan (1.4 GB) |
 | Agent | Claude Code, Codex, or any coding agent that can run a shell |
 | Accounts | GitHub, for pull requests |
 | Optional | A globalMOO key for learned inverse search; the SciPy path works without one |
@@ -181,7 +181,7 @@ Set me up to play the Bonsai Neuron Survey, an open, test-backed map of what eac
 2. In bonsai-interp, read AGENTS.md and follow section 1, "Get ready".
 3. Run: uv run python -m bonsai_interp.graph.play doctor
    Fix every FAIL and run it again until it prints READY.
-4. Ask me only for what you can't do yourself: logging in to GitHub (gh auth login), permission to use about 18 GB of disk, and, optionally, a globalMOO API key for .env.
+4. Ask me only for what you can't do yourself: logging in to GitHub (gh auth login), permission to use about 3 GB of disk, and, optionally, a globalMOO API key for .env.
 5. Finish by telling me "Ready to survey", with the GPU and the doctor summary. From then on I'll paste mission prompts from the survey page.
 ```
 

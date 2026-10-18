@@ -11,10 +11,10 @@ Run every Python command through the project environment: `uv run python -m …`
 
 ## 1. Get ready (once per machine)
 
-You need about 18 GB of disk in total: 16 GB of weights and 1.4 GB of data. The scripts are
+You need about 3 GB of disk in total: 1.2 GB of weights and 1.4 GB of data. The scripts are
 bash; on Windows, Git Bash (which comes with Git for Windows) runs them.
 
-Hardware: an NVIDIA GPU with 16 GB or more, or an Apple Silicon Mac (macOS 14 or later; 32 GB
+Hardware: an NVIDIA GPU with 8 GB or more (a mission peaks at about 5 GB), or an Apple Silicon Mac (macOS 14 or later; 32 GB
 of unified memory recommended, 16 GB is tight). The toolchain picks the device itself (CUDA,
 then Apple's MPS, then the CPU). To force one, put `BONSAI_DEVICE=cuda`, `mps` or `cpu` in
 `.env`. The CPU is fine for checks but too slow for missions. Mac details are in the README
@@ -27,10 +27,10 @@ under "Running on a Mac".
    install it from https://docs.astral.sh/uv/.
 3. Get the model weights (Bonsai-8B only):
    - If they are **already on this machine**, put `BONSAI1_PATH=<that folder>` in `.env`
-     instead of downloading. The folder is the one that contains `config.json` and the
-     `model-0000x-of-00004.safetensors` shards.
-   - Otherwise run `bash scripts/download_models.sh` (about 16 GB). Ask before using that much
-     disk. A warning about unauthenticated Hugging Face requests is harmless.
+     instead of downloading. The folder is the one that contains `config.json` and either the
+     `model-0000x-of-00004.safetensors` shards or `Bonsai-8B-Q1_0.gguf`.
+   - Otherwise run `bash scripts/download_models.sh`. It fetches PrismML's 1-bit GGUF (1.2 GB),
+     which holds exactly the same weights as the 16 GB unpacked release. A warning about unauthenticated Hugging Face requests is harmless.
 4. Fetch the data: `bash scripts/fetch_data.sh`. It downloads the corpus (120 MB), the full
    neuron scan (1.1 GB) and a band scan (0.2 GB), and needs `gh` to be logged in.
 5. Run `python -m bonsai_interp.graph.play doctor` and fix whatever it reports, until it says

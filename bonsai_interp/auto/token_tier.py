@@ -63,6 +63,7 @@ def prereg(a):
     s, toks, tok = explore.scan("bonsai1"), explore.corpus(), explore.tokenizer()
     ti = np.load(ROOT / "data" / "token_index_bonsai1.npz")
     vocab = len(tok)
+    t0 = time.time()
     text = {i: tok.decode([i]) for i in range(vocab)}
     keys = {i: _key(t) for i, t in text.items()}
     by_key = {}
@@ -90,7 +91,7 @@ def prereg(a):
         if len(w) == 0:
             return []
         pick, seen = [], set()
-        for j in rng.permutation(len(w)):
+        for j in (rng.permutation(len(w)) if len(w) <= 4096 else rng.choice(len(w), 4096, replace=False)):
             if w[j] in seen:
                 continue
             seen.add(w[j]); pick.append((int(w[j]), int(p[j])))
@@ -108,6 +109,7 @@ def prereg(a):
         near = [int(i) for i in window if keys[i] != k and keys[i][:4] != k[:4] and k[:4] not in keys[i]]
         return near[rng.integers(len(near))] if near else None
 
+    print(f"setup {time.time() - t0:.0f} s", flush=True)
     rows, counts = [], {}
     pid = lambda p, n: f"bonsai1/L{L}/N{n}{'+' if p == 0 else '-'}"
     for p in (0, 1):
@@ -152,11 +154,13 @@ def prereg(a):
                     shown = text[max(ids, key=lambda i: freq[i])]
                     row.update({"label": f"the token {shown!r} (auto: peak token of {cnt}/32 top corpus examples)", "fire": fire, "quiet": quiet})
             rows.append(row)
+            if len(rows) % 2048 == 0:
+                print(f"  {len(rows)}/24576 poles  {time.time() - t0:.0f} s  {counts}", flush=True)
     OUT.mkdir(parents=True, exist_ok=True)
     MANIFESTS.mkdir(parents=True, exist_ok=True)
     tests_p, man_p, _ = _paths(L)
     blob = "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows).encode("utf-8")
-    with gzip.open(tests_p, "wb", mtime=0) as f:
+    with gzip.GzipFile(tests_p, "wb", mtime=0) as f:
         f.write(blob)
     man = {"protocol": PROTOCOL, "layer": L, "written": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
            "toolchain_commit": _commit(), "tests_file": tests_p.relative_to(ROOT).as_posix(),
@@ -244,7 +248,7 @@ def score(a):
             r = {**r, "per_sentence": per, "outcome": res, "median_fire": round(float(np.median(fire)), 3)}
             tally[res] = tally.get(res, 0) + 1
         out.append(r)
-    with gzip.open(res_p, "wb", mtime=0) as f:
+    with gzip.GzipFile(res_p, "wb", mtime=0) as f:
         f.write("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in out).encode("utf-8"))
     summ = {"layer": L, "protocol": PROTOCOL, "scored": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
             "toolchain_commit": _commit(), "prereg_commit": committed[-1][:12], "classes": man["classes"], "token_outcomes": tally,

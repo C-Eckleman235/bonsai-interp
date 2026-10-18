@@ -3,8 +3,9 @@
 A Q1_0 block is 128 weights: one fp16 scale and 128 sign bits (bit 1 -> +scale, bit 0 -> -scale).
 That is exactly the group-binary form PackedLinear stores, so the 2-bit codes are built straight
 from the bits, with no float copy of the weight. Checked against the unpacked safetensors: every
-linear weight, the embeddings and the output head are bit-identical, and the norms agree to fp32
-rounding (identical once cast to bfloat16).
+linear weight, the embeddings and the output head are bit-identical, and the norms are identical
+after rounding through float16 (how the unpacked release stores them). On CUDA the two loads give
+bit-identical activations and logits.
 
 The folder also needs the small config and tokenizer files from prism-ml/Bonsai-8B-unpacked
 (scripts/download_models.sh fetches both).
@@ -63,7 +64,10 @@ def dense(t) -> torch.Tensor:
         w = (bits.astype(np.float32) * 2 - 1).reshape(out_f, in_f // 128, 128) * scale.astype(np.float32)[..., None]
         return torch.from_numpy(w.reshape(out_f, in_f))
     if t.tensor_type.name in ("F32", "F16", "BF16"):
-        return torch.from_numpy(np.asarray(t.data).astype(np.float32).reshape([int(x) for x in reversed(t.shape)]))
+        # the unpacked release (the reference every result was measured on) stores the norms as float16; the GGUF's
+        # float32 copies differ in the last bits, so round through float16 to reproduce the reference exactly
+        w = np.asarray(t.data).astype(np.float16).astype(np.float32)
+        return torch.from_numpy(w.reshape([int(x) for x in reversed(t.shape)]))
     raise ValueError(f"{t.name}: tensor type {t.tensor_type.name} is not supported (only the Q1_0 Bonsai GGUF is)")
 
 
