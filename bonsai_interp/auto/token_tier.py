@@ -172,7 +172,7 @@ def prereg(a):
 def score(a):
     import torch
     from bonsai_interp import explore
-    from bonsai_interp.device import DEVICE, limit_memory
+    from bonsai_interp.env import DEVICE, limit_memory
     from bonsai_interp.graph.protocols import PROTOCOLS
     from bonsai_interp.model import StopForward, load
     from bonsai_interp.probe.textinv import PREAMBLES
