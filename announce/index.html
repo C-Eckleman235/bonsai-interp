@@ -1,0 +1,452 @@
+<title>The Bonsai Neuron Survey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a field report in one reading column (the LessWrong post), interrupted by full-width "store page" plates:
+   the night-sky hero map, how it plays, the mechanics, the Early Access roadmap and the system requirements. */
+:root {
+  --paper: #f3f5f2; --sheet: #ffffff; --ink: #172624; --ink-2: #435753; --ink-3: #7a8c88; --rule: #d6dfdb;
+  --night: #0f1433; --night-2: #1a2150; --night-ink: #e8ecff; --night-dim: #8f98c9;
+  --mark: #2d3fc6; --plus: #c27a12; --minus: #138a7c; --held: #1f7a4d; --failed: #b4441f;
+  --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+  --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --mono: "JetBrains Mono", "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #10181a; --sheet: #162124; --ink: #e2ebe8; --ink-2: #a9bcb7; --ink-3: #6d837e; --rule: #263532;
+  --night: #0b0f26; --night-2: #151b40; --night-ink: #e8ecff; --night-dim: #8f98c9;
+  --mark: #8c9bff; --plus: #e6a84c; --minus: #3cc4b2; --held: #4fc386; --failed: #ee7a52; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --paper: #10181a; --sheet: #162124; --ink: #e2ebe8; --ink-2: #a9bcb7; --ink-3: #6d837e; --rule: #263532;
+  --night: #0b0f26; --night-2: #151b40; --night-ink: #e8ecff; --night-dim: #8f98c9;
+  --mark: #8c9bff; --plus: #e6a84c; --minus: #3cc4b2; --held: #4fc386; --failed: #ee7a52; color-scheme: dark }
+
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font: 18px/1.62 var(--body); }
+.page { display: flex; flex-direction: column; gap: 56px; padding-block: 0 96px; }
+.col { width: 100%; max-width: 720px; margin-inline: auto; padding-inline: 20px; display: flex; flex-direction: column; gap: 18px; }
+.wide { width: 100%; max-width: 1180px; margin-inline: auto; padding-inline: 20px; }
+h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; letter-spacing: -0.015em; line-height: 1.08; }
+h2 { font-size: 1.85rem; font-weight: 700; }
+h3 { font-size: 1.15rem; font-weight: 700; }
+p { margin: 0; }
+a { color: var(--mark); }
+.kicker { font: 600 0.72rem/1.2 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+code, .mono { font-family: var(--mono); font-size: 0.82em; }
+:focus-visible { outline: 2px solid var(--mark); outline-offset: 2px; }
+figure { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+figure img { width: 100%; height: auto; display: block; border: 1px solid var(--rule); border-radius: 3px; background: #fff; }
+figcaption { font-size: 0.84rem; color: var(--ink-2); line-height: 1.5; }
+ul, ol { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; }
+
+/* hero: the night sky of 442,368 neurons */
+.hero { background: var(--night); color: var(--night-ink); }
+.hero-in { max-width: 1180px; margin-inline: auto; padding-inline: 20px; padding-block: 44px 36px; display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 32px; align-items: center; }
+@media (max-width: 900px) { .hero-in { grid-template-columns: 1fr; } }
+.hero h1 { font-size: clamp(2.6rem, 6.4vw, 4.6rem); font-weight: 800; line-height: 0.94; letter-spacing: -0.03em; }
+.hero .tag { font-family: var(--display); font-size: clamp(1.15rem, 2.2vw, 1.45rem); font-weight: 500; color: var(--night-ink); max-width: 30ch; }
+.hero .sub { color: var(--night-dim); font-size: 1rem; max-width: 46ch; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tags span { font: 600 0.7rem/1 var(--mono); letter-spacing: 0.05em; text-transform: uppercase; padding: 6px 8px; border-radius: 2px; background: var(--night-2); color: var(--night-dim); }
+.ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+.cta { font: 700 0.95rem/1 var(--display); padding: 13px 18px; border-radius: 3px; text-decoration: none; }
+.cta.go { background: var(--plus); color: var(--night); }
+.cta.read { border: 1px solid var(--night-dim); color: var(--night-ink); }
+.sky { position: relative; min-width: 0; }
+.sky canvas { display: block; width: 100%; height: auto; }
+.ticker { font: 0.78rem/1.4 var(--mono); color: var(--night-dim); min-height: 2.8em; margin-top: 8px; }
+.ticker b { color: var(--night-ink); font-weight: 600; }
+
+/* boxes in the reading column */
+.tldr { background: var(--sheet); border: 1px solid var(--rule); border-radius: 4px; padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; font-size: 0.97rem; }
+.status { font-size: 0.92rem; color: var(--ink-2); border-left: 3px solid var(--plus); padding-left: 12px; }
+.numbers { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+.numbers div { display: flex; flex-direction: column; gap: 2px; border-top: 2px solid var(--ink); padding-top: 8px; }
+.numbers b { font: 700 1.55rem/1.1 var(--display); font-variant-numeric: tabular-nums; }
+.numbers span { font-size: 0.82rem; color: var(--ink-2); line-height: 1.4; }
+
+/* store-page plates */
+.plate { background: var(--sheet); border-block: 1px solid var(--rule); padding-block: 40px; }
+.plate-in { display: flex; flex-direction: column; gap: 22px; }
+.loop { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; counter-reset: step; }
+@media (max-width: 960px) { .loop { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .loop { grid-template-columns: 1fr; } }
+.loop li { list-style: none; display: flex; flex-direction: column; gap: 4px; font-size: 0.88rem; color: var(--ink-2); line-height: 1.45; border-top: 3px solid var(--ink); padding-top: 10px; counter-increment: step; }
+.loop li::before { content: counter(step); font: 700 0.75rem/1 var(--mono); color: var(--ink-3); }
+.loop li b { font-family: var(--display); font-size: 1.02rem; color: var(--ink); }
+.shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 900px) { .shots { grid-template-columns: 1fr; } }
+.shot { background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; padding: 14px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.shot pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: 0.74rem/1.5 var(--mono); color: var(--ink); background: var(--sheet); border: 1px solid var(--rule); border-radius: 3px; padding: 10px; }
+.shot .cap { font-size: 0.82rem; color: var(--ink-2); line-height: 1.45; }
+.mini { display: block; width: 100%; height: auto; border-radius: 3px; background: var(--night); }
+.missions { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 900px) { .missions { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .missions { grid-template-columns: 1fr; } }
+.mission { border: 1px solid var(--rule); border-radius: 4px; padding: 12px; display: flex; flex-direction: column; gap: 4px; font-size: 0.86rem; color: var(--ink-2); line-height: 1.45; background: var(--paper); }
+.mission b { font-family: var(--display); font-size: 1.02rem; color: var(--ink); display: flex; justify-content: space-between; gap: 8px; }
+.mission b span { font: 600 0.74rem/1.6 var(--mono); color: var(--mark); }
+.mech { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 900px) { .mech { grid-template-columns: 1fr; } }
+.mech div { display: flex; flex-direction: column; gap: 6px; font-size: 0.92rem; color: var(--ink-2); line-height: 1.5; }
+.mech h3 { color: var(--ink); }
+
+/* the nerve story */
+.timeline { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0; }
+.timeline li { display: grid; grid-template-columns: 4.6rem minmax(0, 1fr); gap: 12px; padding-block: 10px; border-top: 1px solid var(--rule); font-size: 0.95rem; }
+.timeline li span { font: 600 0.76rem/1.5 var(--mono); color: var(--ink-3); }
+.timeline li.dead p { color: var(--ink-3); text-decoration: line-through; text-decoration-color: var(--failed); }
+.timeline li.dead em { display: block; text-decoration: none; color: var(--failed); font-style: normal; font-size: 0.86rem; }
+.chart-box { background: var(--sheet); border: 1px solid var(--rule); border-radius: 4px; padding: 14px; }
+.chart-box svg { display: block; width: 100%; height: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.86rem; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font: 600 0.68rem/1.3 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+.tbl { overflow-x: auto; background: var(--sheet); border: 1px solid var(--rule); border-radius: 4px; }
+
+/* roadmap */
+.road { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 960px) { .road { grid-template-columns: 1fr; } }
+.tier { border: 1px solid var(--rule); border-radius: 4px; padding: 14px; display: flex; flex-direction: column; gap: 8px; background: var(--paper); font-size: 0.86rem; color: var(--ink-2); line-height: 1.45; }
+.tier .kicker { color: var(--mark); }
+.tier.now { border-color: var(--ink); }
+.tier h3 { color: var(--ink); }
+.bar { height: 6px; border-radius: 3px; background: var(--rule); overflow: hidden; }
+.bar i { display: block; height: 100%; min-width: 3px; background: var(--plus); }
+.tier .count { font: 600 0.74rem/1.3 var(--mono); color: var(--ink-3); }
+
+/* requirements + join */
+.req { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 24px; }
+@media (max-width: 900px) { .req { grid-template-columns: 1fr; } }
+.req dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; margin: 0; font-size: 0.9rem; }
+.req dt { font: 600 0.72rem/1.6 var(--mono); letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); }
+.req dd { margin: 0; }
+.boot { display: flex; flex-direction: column; gap: 8px; }
+.boot pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: 0.76rem/1.5 var(--mono); background: var(--paper); border: 1px solid var(--rule); border-radius: 3px; padding: 12px; max-height: 300px; overflow-y: auto; }
+.boot button { align-self: flex-start; font: 700 0.85rem/1 var(--display); background: var(--mark); color: var(--sheet); border: 0; border-radius: 3px; padding: 10px 14px; cursor: pointer; }
+.refs li { font-size: 0.88rem; color: var(--ink-2); }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<div class="page">
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-in">
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div class="kicker" style="color:var(--night-dim)">Open science game · Early Access</div>
+        <h1>The Bonsai Neuron Survey</h1>
+        <p class="tag">442,368 neurons in a real language model. Label every one, and make each label survive a test that could have failed.</p>
+        <p class="sub">A co-operative, agent-run survey of Bonsai-8B, a 1-bit LLM small enough for a gaming GPU. You draw a neuron. Your Claude Code or Codex agent investigates it, commits a test before running it, and sends the result as a pull request.</p>
+        <div class="tags"><span>Interpretability</span><span>Co-op</span><span>Runs on your GPU</span><span>Agent-operated</span><span>Pre-registered</span><span>MIT + CC-BY</span></div>
+        <div class="ctas"><a class="cta go" href="#join">Start surveying</a><a class="cta read" href="#tldr">Read the write-up</a></div>
+      </div>
+      <div class="sky">
+        <canvas id="sky" width="1200" height="760" aria-label="All 36 layers of Bonsai-8B as rows of 12,288 neurons, with the poles surveyed so far lit up; brighter halos mean more scrutiny"></canvas>
+        <div class="ticker" id="ticker" aria-live="off"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- TL;DR -->
+  <section class="col" id="tldr">
+    <div class="kicker">TL;DR</div>
+    <div class="tldr">
+      <ul>
+        <li><b>Claim being tested.</b> Nick Cammarata's essay <i>Neural Networks Are Already Clean</i> (Goodfire, 2026) argues that most native MLP neurons in modern LLMs have one main job, once each neuron's two signs (its "poles") are read separately. If that holds, a complete, checkable map of a real network's neurons is a finite job.</li>
+        <li><b>What we built.</b> A toolchain that reads a neuron forwards (what text fires it), backwards (an inverse solver, using SciPy and globalMOO, that finds text hitting a target activation), and by steering. Every label must pass a pre-registered test, and a clean-room harness lets a blind AI agent re-derive a label from nothing.</li>
+        <li><b>What we found so far.</b> 66 poles labelled and tested. Our flagship "nerve" neuron fought back: its narrow label failed our own disproof attempt, and a blind agent with no access to our notes independently found the same three-branch structure.</li>
+        <li><b>What we want.</b> Players. The survey is a game your coding agent plays on your GPU. Contributions are append-only, CI-checked, and reviewed by QC from other players.</li>
+      </ul>
+    </div>
+    <p class="status"><b>Epistemic status:</b> early. The method works end to end and has caught our own mistakes several times. We have deep results on one neuron, quick tests on about sixty, and two blind replications. Whether "already clean" holds across the whole model is exactly the open question this project exists to answer.</p>
+  </section>
+
+  <!-- WHY NOW -->
+  <section class="col">
+    <div class="kicker">Why this is possible now</div>
+    <h2>A map you could actually finish</h2>
+    <p>Interpretability has mostly moved from neurons to learned dictionaries, because individual neurons looked hopelessly polysemantic. Cammarata's essay argues that this impression comes from reading neurons the wrong way. The positive and negative sides of a SwiGLU neuron are different jobs and must be split, and what looks like unrelated jobs is usually one job plus offshoots you can follow. His estimate for Qwen3-32B is that about 90% of poles have one main job, about 7% have two related jobs, and a few percent are not understood.</p>
+    <p>If that is even roughly right, the neurons themselves are a usable basis, and a full survey is a counting problem with a finish line. We picked a model where the counting is cheap:</p>
+    <div class="numbers">
+      <div><b>1.15 GB</b><span>Bonsai-8B in its native 1-bit format (PrismML, Apache-2.0)</span></div>
+      <div><b>36 × 12,288</b><span>layers × MLP neurons; 884,736 poles in all</span></div>
+      <div><b>92–99%</b><span>of neurons in layers 5–25 sit at the same index as their counterpart in full-precision Qwen3-8B</span></div>
+      <div><b>16 GB</b><span>of GPU memory is enough to run every tool here</span></div>
+    </div>
+    <p>The last number matters for the science. Bonsai was trained to be 1-bit from the start, yet it kept the neuron basis of the model it came from. So a label found cheaply on the 1-bit model can be checked on the full-precision one, neuron by neuron. A 1-bit network is also an interesting object in its own right: every weight is plus or minus one scale per group of 128.</p>
+  </section>
+
+  <!-- HOW IT PLAYS -->
+  <section class="plate" id="play">
+    <div class="wide plate-in">
+      <div style="display:flex;flex-direction:column;gap:8px;max-width:720px">
+        <div class="kicker">How it plays</div>
+        <h2>You pick the neuron. Your agent does the lab work.</h2>
+        <p style="color:var(--ink-2)">The survey is built for AI coding agents to operate. You paste one prompt to set up, then one prompt per mission. The procedure lives in the repository, so the game updates when the method does.</p>
+      </div>
+      <ol class="loop">
+        <li><b>Draw</b>Click the map, or draw a random unclaimed pole. Your agent claims it with a GitHub issue.</li>
+        <li><b>Look</b>Top corpus examples, then the weak and middle activations, and which tokens fire it most often.</li>
+        <li><b>Pre-register</b>A label, 8 sentences that should fire it, 8 near misses. Committed on its own, before anything is scored.</li>
+        <li><b>Run</b>The test runs on your GPU. Held means at least 5 of 8 fire and at most 1 near miss does.</li>
+        <li><b>Submit</b>Results go in a second commit and a pull request. CI checks the commit order and the size caps.</li>
+        <li><b>Get checked</b>Other players QC your label with new sentences. Enough failed checks and the pole turns contested.</li>
+      </ol>
+      <div class="shots">
+        <div class="shot"><canvas class="mini" id="zoom" width="640" height="360" aria-label="One block of 1,024 neurons from layer 9, each cell split into its + and − pole"></canvas>
+          <p class="cap"><b>The map zooms.</b> From the whole model, to a block of 1,024 neurons (shown: layer 9, where the nerve neuron lives), to one neuron's labels, tests and history.</p></div>
+        <div class="shot"><pre id="shot-mission"></pre>
+          <p class="cap"><b>One prompt per mission.</b> The page hands your agent a mission. The repository turns it into a full brief: claim, look, pre-register, run, PR.</p></div>
+        <div class="shot"><pre id="shot-result">L12/N5397-: fire 5/8, near misses firing 0/8 -> HELD
+wrote graph/contributions/bonsai1/L12_N5397_neg/
+      core-bonsai1-l12-n5397-neg-00.json
+
+fold: 66 neuron records rebuilt from 131 contributions
+validate: 0 problems
+check_prereg: tests committed in b756721,
+              results in b35e372 -> OK</pre>
+          <p class="cap"><b>Results you can audit.</b> Nobody edits a record by hand. Each one is rebuilt from an append-only log of contributions, and CI checks that every test predates its result.</p></div>
+      </div>
+      <div class="missions">
+        <div class="mission"><b>Interpret <span>+10 XP</span></b>Label a pole nobody has touched.</div>
+        <div class="mission"><b>QC <span>+6 XP</span></b>Confirm, dispute or refine someone else's label, with your own sentences.</div>
+        <div class="mission"><b>Step out <span>+13 XP</span></b>Find what feeds a labelled neuron, and label that. This is how webs and circuits grow.</div>
+        <div class="mission"><b>Blind run <span>+15 XP</span></b>Seal an agent in a clean room with only the tools, and see whether it re-finds the label.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NERVE STORY -->
+  <section class="col">
+    <div class="kicker">Worked example</div>
+    <h2>The nerve neuron, and how it fought back</h2>
+    <p>Layer 9, neuron 3688, positive pole. Its top examples are a gift: "nerve-racking", German <i>Nerven</i>, French <i>nerveuse</i>, Korean 신경, Arabic عصبية. Its negative pole fires on pain signals, numbness and temperature. An easy label, it seemed. Here is what happened to it as we tried to break it.</p>
+    <ol class="timeline">
+      <li class="dead"><span>H1</span><p>The morpheme "nerve" in any language, any sense.<em>Anatomical "nerve" mostly pushes the opposite pole.</em></p></li>
+      <li class="dead"><span>H2</span><p>"Nerve" as psychological strain or courage.<em>Passed a pre-registered held-out test (AUROC 0.92, no false positives), then lost to H3.</em></p></li>
+      <li class="dead"><span>H3</span><p>Tied to the word form: English "nervous" barely fires it, German "nervös" does.<em>True, but not the whole story.</em></p></li>
+      <li class="dead"><span>D1–D3</span><p>A pre-registered attempt to disprove it.<em>Only 13% of its strong firings in 6.1M tokens sit near a "nerve" word.</em></p></li>
+      <li class="dead"><span>H4</span><p>One broader job: force, strength, strain.<em>Strength and impact pass; sensation and courage-without-the-word fail.</em></p></li>
+      <li><span>H5</span><p><b>A lexical detector peaking on the psychological word "nerve", with weaker, reliable branches for "strong" and for words about being hit or hurt.</b></p></li>
+    </ol>
+    <div class="chart-box">
+      <div class="kicker" style="margin-bottom:8px">Strong firings (≥ 0.3 of max) per token, 6.1M corpus tokens</div>
+      <svg id="tokbars" viewBox="0 0 680 300" role="img" aria-label="' strong' accounts for 88 strong firings, ' nerve' for 13, then injury and impact words"></svg>
+      <div style="display:flex;flex-wrap:wrap;gap:6px 16px;font-size:0.8rem;color:var(--ink-2);margin-top:6px">
+        <span><i style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--plus);margin-right:6px"></i>strength</span>
+        <span><i style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--mark);margin-right:6px"></i>a "nerve" word</span>
+        <span><i style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--failed);margin-right:6px"></i>hit, hurt, injury</span>
+        <span><i style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--ink-3);margin-right:6px"></i>other</span></div>
+    </div>
+    <p>The chart is the moment the label broke. The top-32 examples are almost all "nerve". Counted across the whole corpus, the most common trigger is " strong", because "strong" is a far more frequent word. A label read off the top of the distribution described the neuron's peak, not its daily work.</p>
+    <figure>
+      <img src="img/nerve_neuron.png" alt="Six-panel figure of L9/N3688: top examples, the dose-response of its label, inverse-solver results, steering effects and its two input routes" loading="lazy">
+      <figcaption>The neuron read three ways. Forwards: top examples and dose-response. Backwards: an inverse solver asked for text at 25, 50 and 75% of the neuron's maximum. By steering: what the model writes when the neuron is pushed.</figcaption>
+    </figure>
+    <p>The inverse view is where the learned-surrogate optimizer earns its place. Asked for passages that drive a target neuron to a given level, globalMOO hit graded targets in 2–10 evaluations once trained, where differential evolution needed about 600. It is weak at extremes and rare combinations, so the two solvers split the work.</p>
+  </section>
+
+  <!-- WEB -->
+  <section class="wide">
+    <figure>
+      <img src="img/nerve_connectome.png" alt="The neighbourhood of the nerve neuron: two input routes, a pain gate, diffuse readers, and a family of emotional-tension neurons with their own inputs" loading="lazy">
+      <figcaption style="max-width:720px">Stepping out one neuron at a time. Two inputs carry the nerve neuron: a spelling detector (74% of its activation) and an Arabic-heavy concept unit (61%). A pain detector closes both routes. Beside it sits a family of separate tension neurons (suspense, can't wait, overwhelmed, disappointed). Each of those has its own crisp, tested inputs: "can't stand", "life span", "answer to", "disconnect". 52 of 60 neighbourhood labels held their tests.</figcaption>
+    </figure>
+  </section>
+
+  <!-- BLIND -->
+  <section class="col">
+    <div class="kicker">Replication</div>
+    <h2>A blind agent found the same neuron</h2>
+    <p>A label is more convincing if someone who never saw it can rediscover it. So we built a clean room: a sealed folder with the toolchain, the corpus and the weights, and no labels, notes or results. A fresh agent gets one neuron and the instruction to find out what it does and to try to break its own labels. Web access and reads outside the room are denied. The full transcript is kept and audited, and we commit our predictions about what it will find before it starts.</p>
+    <div class="tbl"><table>
+      <thead><tr><th></th><th>Blind agent (40 min, no access to our work)</th><th>Our reading (two days)</th></tr></thead>
+      <tbody>
+        <tr><td>+ pole</td><td>Several jobs: "nerve" outside anatomy, physical "strong", violent harm</td><td>One word family: "nerve" first, then "strong" and hit/hurt words</td></tr>
+        <tr><td>− pole</td><td>Somatosensory physiology, plus pulling a hand back (held-out AUROC 1.00)</td><td>Pain and bodily sensation (studied less)</td></tr>
+        <tr><td>"nervous"</td><td>Silent (0.01–0.06)</td><td>Silent</td></tr>
+        <tr><td>Main input</td><td>L8/N7756 (0.64)</td><td>L8/N7756 (0.61)</td></tr>
+        <tr><td>Audit</td><td colspan="2">51 tool calls, nothing outside the room. 6 of our 8 pre-registered predictions held.</td></tr>
+      </tbody>
+    </table></div>
+    <p>The disagreement was the useful part. The blind agent showed that each branch has its own separate inputs, which is a real argument for "several jobs" over our "one word family". It also caught a flaw in our method: one of our neutral preambles damped physical "strong" by about 0.17.</p>
+    <p id="blind2">The second blind run used a neuron drawn at random with a committed seed (L12/N5397), and no method hints at all. It was humbling in a useful way.</p>
+    <ul>
+      <li><b>It caught an artifact in our scan.</b> 17 of the positive pole's 32 top examples sit in the first 64 positions of a corpus window, against about 2 by chance. Read again after a neutral preamble they collapse, from 0.95 to 0.16. My own label for that pole had been built on them, and it had failed its test. Now we know why, and the scan will exclude early positions.</li>
+      <li><b>It found what the pole really peaks on.</b> The line break that ends a row deep inside a long hex or byte dump. Activation grows with the dump's length (0.17 at 3 lines, 0.88 at 30) and passes the corpus maximum on synthetic dumps.</li>
+      <li><b>It agreed with me on the negative pole and then split it.</b> The token right after a structured number or code. It broke this into four sub-jobs (units after dimensions, closers of nested arrays, the inner characters of long IDs, delimiters after phone numbers). Each held a pre-registered test with no false positives, and each has its own upstream feeders.</li>
+      <li><b>It reported its failures.</b> Five of its own labels failed pre-registered tests, and a blind labelling round on ordinary corpus hits scored at chance for the positive pole. Its verdict: neither pole is monosemantic, each has several jobs. 7 of our 8 predictions about its findings held.</li>
+    </ul>
+    <p>Both blind agents counted jobs by circuits: separate feeders meant separate jobs. That is a defensible rule, and it disagrees with the essay's view of offshoots. The survey records the evidence for both readings.</p>
+  </section>
+
+  <!-- MECHANICS -->
+  <section class="plate">
+    <div class="wide plate-in">
+      <div style="display:flex;flex-direction:column;gap:8px;max-width:720px">
+        <div class="kicker">Game mechanics</div>
+        <h2>Rules that make a label worth believing</h2>
+      </div>
+      <div class="mech">
+        <div><h3>Tests before results</h3>A contribution is two files: the test, committed first and alone, then the results. CI rejects a pull request where they arrive in the same commit, and the runner refuses a test file that isn't committed.</div>
+        <div><h3>Near misses carry the weight</h3>Every test has 8 sentences that keep the topic and drop only the claimed trigger. Easy near misses make any label look clean, so reviewers check them first.</div>
+        <div><h3>Append-only, rebuilt by fold</h3>Nothing is overwritten. Each neuron's record is recomputed from its whole contribution log, so merging is idempotent and two players never clobber each other.</div>
+        <div><h3>Verdict and scrutiny</h3>Each pole carries two readings. Status says what the evidence concluded; QC can flip a held label to contested. Scrutiny says how much evidence exists, from one test up to a full probe with a blind replication. The map can show either, so the well-understood regions glow and the dark ones invite players.</div>
+        <div><h3>Failures count</h3>A failed label is recorded, not hidden. Three honest failures make a pole unresolved. Neurons that are on for most text are classified as dense instead of being forced into a label.</div>
+        <div><h3>Small evidence, big library</h3>Git holds the test sentences, results and recipe, about 16 KB per neuron. Logs, banks and transcripts go to a library by hash. Tensors are always recomputed, never stored.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section class="wide plate-in" style="display:flex;flex-direction:column;gap:22px">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:720px">
+      <div class="kicker">Early Access roadmap</div>
+      <h2>From one neuron to a whole working network</h2>
+      <p style="color:var(--ink-2)">The end state is a model where every MLP pole is labelled, classified as dense, or honestly marked unresolved, and enough of the wiring is known to trace real behaviours end to end. Each tier unlocks when the one before it has enough coverage to build on.</p>
+    </div>
+    <div class="road" id="road"></div>
+    <p style="font-size:0.9rem;color:var(--ink-2);max-width:720px">A sense of scale: at ten minutes of agent and GPU time per pole, the full survey is about 147,000 GPU-hours. A thousand players at a few hours a week finish a layer in days and the model in about a year. Triage helps: dense and positional neurons can be classified in bulk, and layer campaigns let players finish one region at a time.</p>
+  </section>
+
+  <!-- RISKS -->
+  <section class="col">
+    <div class="kicker">What could make this fail</div>
+    <h2>Ways this could be wrong</h2>
+    <ul>
+      <li><b>"Clean" may not hold at scale.</b> We chose the nerve neuron because it was the clearest of twelve random pilots. That is selection bias, and only the random draws in the survey can correct it. Our first random draw came back from its blind investigation as "several jobs" on both poles.</li>
+      <li><b>Agents grading agents.</b> Most labels so far were written and tested by Claude models, and the blind agents are Claude too. Shared blind spots are likely. Human players, other model families and a non-Claude judge are on the list.</li>
+      <li><b>An 8 + 8 test is coarse.</b> It catches wrong labels well and over-broad ones less well. Deep probes, QC rounds and blind runs exist for exactly this reason.</li>
+      <li><b>Neurons are not the whole story.</b> We read MLP neurons. Attention, distributed features and anything that lives in superposition across neurons is outside this basis. Single-neuron ablation also misses effects spread across many units, so every web is a lower bound.</li>
+      <li><b>"Monosemantic" is ambiguous.</b> The nerve neuron is one job if a job is a vocabulary, and three jobs if a job is a meaning. The survey records both readings instead of choosing one.</li>
+    </ul>
+  </section>
+
+  <!-- JOIN -->
+  <section class="plate" id="join">
+    <div class="wide plate-in">
+      <div style="display:flex;flex-direction:column;gap:8px;max-width:720px">
+        <div class="kicker">Join the survey</div>
+        <h2>System requirements</h2>
+      </div>
+      <div class="req">
+        <dl>
+          <dt>GPU</dt><dd>NVIDIA, 16 GB of memory (tested on an RTX 5080)</dd>
+          <dt>Disk</dt><dd>About 20 GB: the Bonsai-8B weights and a 1.4 GB corpus scan</dd>
+          <dt>Agent</dt><dd>Claude Code, Codex, or any coding agent that can run a shell</dd>
+          <dt>Accounts</dt><dd>GitHub, for claims and pull requests</dd>
+          <dt>Optional</dt><dd>A globalMOO key for learned inverse search; the SciPy path works without one</dd>
+          <dt>Licence</dt><dd>Code MIT; graph data and write-ups CC-BY-4.0</dd>
+        </dl>
+        <div class="boot">
+          <div class="kicker">Paste this into your agent</div>
+          <pre id="boot"></pre>
+          <button type="button" id="copy">Copy the setup prompt</button>
+          <p style="font-size:0.86rem;color:var(--ink-2)">Then open the survey map, pick a mission and hand your agent the one-line prompt it shows. Repositories: <a href="https://github.com/moridinamael/bonsai-interp">bonsai-interp</a> (toolchain, graph, map) and <a href="https://github.com/moridinamael/neuron-cleanroom">neuron-cleanroom</a> (blind replication).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THANKS + REFS -->
+  <section class="col">
+    <div class="kicker">Credits and related work</div>
+    <ul class="refs">
+      <li>Nick Cammarata, <i>Neural Networks Are Already Clean</i> (Goodfire, 2026). The hypothesis this project tests, and the idea of reading poles separately.</li>
+      <li>PrismML, Bonsai-8B and its 1-bit and ternary releases (Apache-2.0).</li>
+      <li>globalMOO, the learned-inverse optimizer used for backwards search.</li>
+      <li>Bills et al., <i>Language models can explain neurons in language models</i> (OpenAI, 2023): automated labelling, scored by simulation.</li>
+      <li>Bricken et al., <i>Towards Monosemanticity</i> (Anthropic, 2023): dictionary learning, the main alternative to reading neurons directly.</li>
+      <li>Neuronpedia: the open platform for hosting features and explanations.</li>
+    </ul>
+  </section>
+</div>
+
+<script id="pts" type="application/json">[{"L":0,"n":10323,"pole":"+","st":"held","k":1,"s":"'app' in code"},{"L":0,"n":10546,"pole":"+","st":"held","k":1,"s":"disconnect"},{"L":0,"n":1684,"pole":"+","st":"held","k":2,"s":"serve"},{"L":0,"n":55,"pole":"+","st":"held","k":1,"s":"noun after 'the'"},{"L":0,"n":6992,"pole":"+","st":"held","k":2,"s":"token ' on' in running …"},{"L":0,"n":873,"pole":"+","st":"held","k":2,"s":"motor"},{"L":0,"n":947,"pole":"+","st":"failed","k":1,"s":"watch (TV, films)"},{"L":1,"n":1313,"pole":"+","st":"held","k":1,"s":"life span"},{"L":1,"n":4037,"pole":"+","st":"held","k":2,"s":"disappointed"},{"L":10,"n":12013,"pole":"+","st":"held","k":2,"s":"Tomato"},{"L":10,"n":2242,"pole":"+","st":"held","k":2,"s":"autonomic"},{"L":10,"n":2906,"pole":"+","st":"held","k":2,"s":"Nouns/modifiers marking…"},{"L":10,"n":5553,"pole":"-","st":"held","k":2,"s":"biology textbook terms"},{"L":10,"n":5749,"pole":"+","st":"probed","k":4,"s":"The Genre Neuron"},{"L":10,"n":6901,"pole":"+","st":"unresolved","k":2,"s":"neuroanatomy prose?"},{"L":10,"n":7706,"pole":"+","st":"held","k":2,"s":"Colloquial discourse ma…"},{"L":11,"n":10690,"pole":"+","st":"held","k":2,"s":"Software/online service…"},{"L":11,"n":8779,"pole":"+","st":"held","k":1,"s":"reader-need hook"},{"L":11,"n":900,"pole":"+","st":"held","k":2,"s":"Bibliographic reference…"},{"L":12,"n":3688,"pole":"+","st":"held","k":2,"s":"overwhelmed"},{"L":12,"n":469,"pole":"+","st":"held","k":2,"s":"Sufism"},{"L":12,"n":5397,"pole":"+","st":"failed","k":4,"s":"dense-detail delimiter?"},{"L":12,"n":5397,"pole":"-","st":"held","k":4,"s":"separator after a number"},{"L":13,"n":3792,"pole":"+","st":"dense","k":2,"s":"dense"},{"L":14,"n":9470,"pole":"+","st":"dense","k":2,"s":"dense hub"},{"L":17,"n":2518,"pole":"+","st":"held","k":2,"s":"Python dotted head"},{"L":18,"n":12193,"pole":"+","st":"unresolved","k":2,"s":"resuming verbs?"},{"L":19,"n":2291,"pole":"+","st":"dense","k":2,"s":"dense (always on)"},{"L":2,"n":3473,"pole":"+","st":"held","k":2,"s":"motor"},{"L":2,"n":5072,"pole":"+","st":"held","k":2,"s":"trait"},{"L":20,"n":5963,"pole":"-","st":"failed","k":2,"s":"incoherent"},{"L":22,"n":11024,"pole":"+","st":"probed","k":4,"s":"An Unclear Neuron"},{"L":3,"n":6493,"pole":"+","st":"held","k":2,"s":"spelling nerv/nerf"},{"L":4,"n":10610,"pole":"+","st":"held","k":2,"s":"Word-initial 'p'/'P' to…"},{"L":4,"n":12227,"pole":"+","st":"held","k":2,"s":"diarr-"},{"L":4,"n":5387,"pole":"+","st":"held","k":2,"s":"Place/person names cont…"},{"L":4,"n":5727,"pole":"+","st":"held","k":2,"s":"CAS / عص"},{"L":4,"n":5828,"pole":"+","st":"held","k":2,"s":"Arabic -ب"},{"L":4,"n":7510,"pole":"+","st":"held","k":2,"s":"-ate"},{"L":4,"n":7884,"pole":"+","st":"held","k":2,"s":"vic"},{"L":4,"n":7913,"pole":"+","st":"failed","k":1,"s":"unclear filler"},{"L":5,"n":4471,"pole":"+","st":"held","k":2,"s":"English 'Ab'-initial wo…"},{"L":5,"n":9269,"pole":"+","st":"held","k":2,"s":"-bb- in acronyms"},{"L":6,"n":2055,"pole":"+","st":"held","k":2,"s":"pain, other languages"},{"L":6,"n":2446,"pole":"+","st":"held","k":1,"s":"compound-term 2nd piece"},{"L":7,"n":10645,"pole":"+","st":"held","k":1,"s":"can't stand / bear"},{"L":7,"n":1548,"pole":"+","st":"held","k":2,"s":"Latinate anatomy"},{"L":7,"n":2810,"pole":"+","st":"held","k":1,"s":"19th-century 'th'"},{"L":7,"n":619,"pole":"+","st":"held","k":2,"s":"Weak"},{"L":7,"n":7149,"pole":"+","st":"held","k":2,"s":"Tul·are piece"},{"L":7,"n":9782,"pole":"+","st":"held","k":2,"s":"suspense"},{"L":8,"n":3632,"pole":"+","st":"held","k":1,"s":"eager to / can't wait to"},{"L":8,"n":3858,"pole":"+","st":"held","k":2,"s":"pain"},{"L":8,"n":7333,"pole":"+","st":"held","k":2,"s":"brain circuitry"},{"L":8,"n":7756,"pole":"+","st":"held","k":2,"s":"nerve concept (Arabic)"},{"L":8,"n":8229,"pole":"+","st":"held","k":1,"s":"answer to / accountable to"},{"L":9,"n":1061,"pole":"+","st":"held","k":2,"s":"can't wait"},{"L":9,"n":1865,"pole":"+","st":"held","k":2,"s":"p-value digits"},{"L":9,"n":2080,"pole":"+","st":"held","k":2,"s":"of' inside titles of bo…"},{"L":9,"n":2445,"pole":"+","st":"held","k":2,"s":"Jewish religious identity"},{"L":9,"n":2494,"pole":"+","st":"held","k":2,"s":"Animals named or descri…"},{"L":9,"n":3688,"pole":"+","st":"probed","k":5,"s":"The Nerve Neuron"},{"L":9,"n":3688,"pole":"-","st":"replicated","k":4,"s":"somatosensory physiology"},{"L":9,"n":4146,"pole":"+","st":"held","k":2,"s":"Early Christian / Jewis…"},{"L":9,"n":8208,"pole":"+","st":"held","k":2,"s":"Cognitive-psychology/ne…"},{"L":9,"n":9136,"pole":"+","st":"held","k":2,"s":"Desktop PC software UI …"}]</script>
+<script>
+(function () {
+  const P = JSON.parse(document.getElementById("pts").textContent);
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const L_N = 36, N_N = 12288;
+
+  // hero: the night sky. Faint stars for every 96 neurons; the surveyed poles light up one by one.
+  const cv = document.getElementById("sky"), ctx = cv.getContext("2d"), W = cv.width, H = cv.height;
+  const mL = 46, mR = 10, mT = 10, mB = 30, rowH = (H - mT - mB) / L_N;
+  const xOf = n => mL + (n + 0.5) / N_N * (W - mL - mR), yOf = (L, pole) => mT + (L + (pole === "+" ? 0.3 : 0.7)) * rowH;
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const stars = []; for (let L = 0; L < L_N; L++) for (let i = 0; i < 128; i++) stars.push([L, rnd() * N_N, rnd() < 0.5 ? "+" : "-", 0.15 + rnd() * 0.35]);
+  const order = P.slice().sort((a, b) => (b.k || 1) - (a.k || 1) || a.L - b.L);
+  let lit = still ? order.length : 0;
+  function sky() {
+    ctx.fillStyle = css("--night"); ctx.fillRect(0, 0, W, H);
+    ctx.font = "12px " + css("--mono").split(",")[0].replace(/"/g, "");
+    for (let L = 0; L < L_N; L++) { if (L % 4 === 0) { ctx.fillStyle = css("--night-dim"); ctx.textAlign = "right"; ctx.fillText("L" + L, mL - 10, mT + (L + 0.5) * rowH + 4); } }
+    for (const [L, n, pole, a] of stars) { ctx.fillStyle = css("--night-dim"); ctx.globalAlpha = a; ctx.fillRect(xOf(n), yOf(L, pole), 1.6, 1.6); }
+    ctx.globalAlpha = 1;
+    ctx.textAlign = "center"; ctx.fillStyle = css("--night-dim"); ["0", "4,096", "8,192", "12,287"].forEach((t, i) => ctx.fillText(t, xOf([0, 4096, 8192, 12287][i]), H - 9));
+    for (let i = 0; i < lit; i++) { const p = order[i], x = xOf(p.n), y = yOf(p.L, p.pole), c = p.pole === "+" ? css("--plus") : css("--minus");
+      const halo = 6 + 4 * (p.k || 1), core = 1.8 + 0.6 * (p.k || 1);  // glow grows with scrutiny
+      const g = ctx.createRadialGradient(x, y, 0, x, y, halo); g.addColorStop(0, c); g.addColorStop(1, "transparent");
+      ctx.globalAlpha = 0.45; ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, halo, 0, 6.3); ctx.fill();
+      ctx.globalAlpha = 1; ctx.fillStyle = c; ctx.beginPath(); ctx.arc(x, y, core, 0, 6.3); ctx.fill(); }
+  }
+  const tick = document.getElementById("ticker");
+  const say = p => { tick.innerHTML = `<b>bonsai1/L${p.L}/N${p.n}${p.pole === "+" ? "+" : "−"}</b> · ${p.st} · scrutiny ${p.k || 1}<br>${(p.s || "").replace(/[&<>]/g, "")}`; };
+  sky();
+  if (still) say(order[0]); else {
+    const step = () => { if (lit < order.length) { lit++; sky(); say(order[lit - 1]); setTimeout(step, lit < 6 ? 420 : 110); }
+      else { let k = 0; setInterval(() => say(order[k++ % order.length]), 2600); } };
+    setTimeout(step, 500);
+  }
+
+  // screenshot: one block of layer 9
+  const z = document.getElementById("zoom"), zx = z.getContext("2d"), ZW = z.width, ZH = z.height, cols = 64, rows = 16, cw = (ZW - 20) / cols, ch = (ZH - 20) / rows;
+  const mark = new Map(P.filter(p => p.L === 9 && p.n >= 3072 && p.n < 4096).map(p => [p.n + p.pole, p]));
+  function zoom() {
+    zx.fillStyle = css("--night"); zx.fillRect(0, 0, ZW, ZH);
+    for (let i = 0; i < 1024; i++) { const n = 3072 + i, x = 10 + (i % cols) * cw, y = 10 + Math.floor(i / cols) * ch;
+      for (const pole of ["+", "-"]) { const p = mark.get(n + pole);
+        zx.fillStyle = p ? (pole === "+" ? css("--plus") : css("--minus")) : css("--night-2"); zx.fillRect(x + 1, y + (pole === "+" ? 1 : ch / 2), cw - 2, ch / 2 - 1.5); } }
+  }
+  zoom();
+  document.getElementById("shot-mission").textContent =
+    "In my bonsai-interp checkout, run:\n\nuv run python -m bonsai_interp.graph.play brief interpret --neuron bonsai1/L20/N5159+ --handle you\n\nThen carry out the brief it prints, following AGENTS.md. Commit the pre-registered test on its own before running it. When you're done, tell me what you found and give me the pull-request link.";
+
+  // token bars for the nerve neuron
+  const T = [[" strong", 88, 0.164, "s"], [" nerve", 13, 0.091, "n"], [" injury", 7, 0.035, "i"], [" hit", 6, 0.017, "i"], [" nervous", 6, 0.072, "n"], [" wounded", 6, 0.097, "i"], [" feeling", 5, 0.021, "o"], [" stick", 5, 0.045, "o"]];
+  const sv = document.getElementById("tokbars"), NS = "http://www.w3.org/2000/svg";
+  const el = (t, a, p) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); (p || sv).appendChild(e); return e; };
+  function bars() {
+    sv.innerHTML = ""; const left = 110, right = 215, top = 6, rh = 35, mx = 88;
+    const col = { s: css("--plus"), n: css("--mark"), i: css("--failed"), o: css("--ink-3") };
+    T.forEach(([t, k, share, f], i) => { const y = top + i * rh, w = (680 - left - right) * k / mx;
+      const lab = el("text", { x: left - 10, y: y + 21, "text-anchor": "end", "font-family": css("--mono").split(",")[0].replace(/"/g, ""), "font-size": 14, fill: css("--ink") }); lab.textContent = JSON.stringify(t);
+      el("rect", { x: left, y: y + 7, width: Math.max(3, w), height: 20, rx: 2, fill: col[f] });
+      const v = el("text", { x: left + w + 8, y: y + 21, "font-size": 13, fill: css("--ink-2"), "font-family": css("--mono").split(",")[0].replace(/"/g, "") }); v.textContent = `${k}  (${Math.round(share * 100)}% of its uses)`; });
+  }
+  bars();
+
+  // roadmap with real counts
+  const probed = P.filter(p => p.st === "probed").length, labelled = P.length;
+  const R = [["Now", "Survey", "Label poles one at a time, each with a pre-registered test.", labelled, 884736, "poles with a record"],
+    ["Next", "Webs", "Step out from labelled neurons: who feeds them, who reads them.", 61, 5000, "edges measured (target for this tier)"],
+    ["Then", "Layer census", "Finish a whole layer: every pole labelled, dense or unresolved.", 0, 36, "layers complete"],
+    ["Later", "Circuits", "Trace named behaviours end to end through labelled neurons.", 1, 25, "circuits traced (the nerve gate is the first)"],
+    ["Finish", "Whole model", "Every pole accounted for, checked by sampled blind replications.", 2, 884736, "poles blind-replicated"]];
+  document.getElementById("road").innerHTML = R.map(([when, name, what, n, of, unit], i) =>
+    `<div class="tier${i === 0 ? " now" : ""}"><div class="kicker">${when}</div><h3>${name}</h3><p>${what}</p><div class="bar"><i style="width:${Math.min(100, 100 * n / of)}%"></i></div><div class="count">${n.toLocaleString()} / ${of.toLocaleString()} ${unit}</div></div>`).join("");
+
+  // setup prompt
+  const BOOT = "Set me up to play the Bonsai Neuron Survey, an open, test-backed map of what each neuron in the 1-bit Bonsai-8B model does.\n\n1. Ask me where to work (default: a folder called bonsai-survey in my home directory). Clone these two repositories side by side there:\n   https://github.com/moridinamael/bonsai-interp\n   https://github.com/moridinamael/neuron-cleanroom\n2. In bonsai-interp, read AGENTS.md and follow section 1, \"Get ready\".\n3. Run: uv run python -m bonsai_interp.graph.play doctor\n   Fix every FAIL and run it again until it prints READY.\n4. Ask me only for what you can't do yourself: logging in to GitHub (gh auth login), permission to use about 20 GB of disk, and, optionally, a globalMOO API key for .env.\n5. Finish by telling me \"Ready to survey\", with the GPU and the doctor summary. From then on I'll paste mission prompts from the survey page.";
+  document.getElementById("boot").textContent = BOOT;
+  const btn = document.getElementById("copy");
+  btn.addEventListener("click", () => { (navigator.clipboard ? navigator.clipboard.writeText(BOOT) : Promise.reject()).then(() => { btn.textContent = "Copied"; setTimeout(() => (btn.textContent = "Copy the setup prompt"), 1500); },
+    () => { const r = document.createRange(); r.selectNodeContents(document.getElementById("boot")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "Selected: press Ctrl+C"; }); });
+
+  const redraw = () => { sky(); zoom(); bars(); };
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", redraw);
+  new MutationObserver(redraw).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+})();
+</script>
