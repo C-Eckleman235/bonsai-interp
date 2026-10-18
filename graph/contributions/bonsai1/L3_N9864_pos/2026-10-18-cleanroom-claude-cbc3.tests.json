@@ -1,0 +1,43 @@
+{
+ "contribution": "2026-10-18-cleanroom-claude-cbc3",
+ "contributor": "cleanroom-claude",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N9864+",
+ "protocol": "quick-8+8@1",
+ "written": "2026-10-18T17:38:59+00:00",
+ "neighbours": [
+  {
+   "unit": "L3/N9864",
+   "pole": "+",
+   "label": "A caret '^' in code, mostly the start-of-string anchor in a regular expression string (r'^...', \"^(\", match=\"^...\").",
+   "fire": [
+    "pattern = re.compile(r\"^(\\w+)=(\\d+)$\")",
+    "with pytest.raises(ValueError, match=\"^bad value\"):",
+    "KEY_RE = re.compile(r'^[A-Z]+$')",
+    "grep -E '^ERROR' server.log",
+    "if re.match(r\"^\\d{4}-\\d{2}\", line):",
+    "const re = /^https?:\\/\\//;",
+    "assertRegex(text, '^Hello')",
+    "url(r'^admin/', admin.site.urls),"
+   ],
+   "quiet": [
+    "pattern = re.compile(r\"(\\w+)=(\\d+)$\")",
+    "with pytest.raises(ValueError, match=\"bad value\"):",
+    "KEY_RE = re.compile(r'[A-Z]+')",
+    "grep -E 'ERROR' server.log",
+    "x = 2 ** 10",
+    "const re = /https?:\\/\\//;",
+    "assertEqual(text, 'Hello')",
+    "path('admin/', admin.site.urls),"
+   ]
+  }
+ ],
+ "predictions": "quick test: expect >=5/8 fire, <=1 near miss",
+ "short": "regex caret ^ anchor",
+ "confidence": 0.6,
+ "roles": [
+  "feeds bonsai1/L20/N12208+"
+ ],
+ "unit_kind": "token/lexical",
+ "notes": "Sentence 1 of each set originally used a named group (?P<name>...), whose angle bracket the runner rejects as a placeholder; replaced before any run with an unnamed-group regex."
+}

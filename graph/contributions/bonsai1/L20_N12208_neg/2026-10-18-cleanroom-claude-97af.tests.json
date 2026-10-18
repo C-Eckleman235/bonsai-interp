@@ -1,0 +1,40 @@
+{
+ "contribution": "2026-10-18-cleanroom-claude-97af",
+ "contributor": "cleanroom-claude",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N12208-",
+ "protocol": "quick-8+8@1",
+ "written": "2026-10-18T17:33:20+00:00",
+ "neighbours": [
+  {
+   "unit": "L20/N12208",
+   "pole": "-",
+   "label": "Section break with little established context: the line break that ends a short heading, title, caption or source/credit line (no closing punctuation) as body text begins, strongest at the start of a document; weaker on ordinary sentence ends in early or fresh text; quiet in formulaic predictable sequences and run-on sentences.",
+   "fire": [
+    "Image: National Archives/flickr\nThe documents were released to the public last week.",
+    "Heart Health Awareness Week - February\nDoctors are urging people to check their blood pressure.",
+    "Abandoned railway stations of northern England\nSome of these buildings have stood empty for decades.",
+    "Photo credit: Getty Images\nCrowds gathered outside the stadium before kickoff.",
+    "Wilhelm Friedrich Ostwald\nThis article needs additional citations for verification.",
+    "Fuente: EL DIARIO REGIONAL\nLos vecinos se reunieron el lunes para protestar.",
+    "Recipe of the Month - Lentil Soup\nYou will need one cup of red lentils and an onion.",
+    "Source: World Bank Open Data\nGrowth in the region slowed for the third year in a row."
+   ],
+   "quiet": [
+    "Image from the National Archives on flickr shows the documents that were released to the public last week.",
+    "During heart health awareness week in February, doctors are urging people to check their blood pressure.",
+    "Some abandoned railway stations of northern England have stood empty for decades, and locals want them restored.",
+    "According to Getty Images, crowds gathered outside the stadium well before kickoff on Saturday afternoon.",
+    "Wilhelm Friedrich Ostwald, the chemist, won the Nobel Prize, and his work on catalysis is still cited today",
+    "for item in items:\n    total += item.price\n    count += 1",
+    "one, two, three, four, five, six, seven, eight, nine, ten",
+    "You will need one cup of red lentils, an onion, two carrots and a litre of vegetable stock for this soup"
+   ]
+  }
+ ],
+ "predictions": "~5-6/8 headings fire at >=0.3 at the newline; near misses (same content as one sentence, no line break) mostly <0.3 but ordinary sentence ends can reach ~0.25, so 0-2 near misses may fire.",
+ "short": "end of heading/caption line at a fresh section start",
+ "unit_kind": "position/structure",
+ "confidence": 0.55,
+ "notes": "Fire sentence 5 originally began with the end-of-text token, which the runner rejects as a placeholder; replaced before any run by the same line without it."
+}
