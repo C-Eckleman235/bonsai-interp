@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-18-cleanroom-claude-bf96",
+ "contributor": "cleanroom-claude",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N8076+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-18T18:35:44+00:00",
+ "neighbours": [
+  {
+   "unit": "L15/N8076",
+   "pole": "+",
+   "label": "Sub-word piece inside a code identifier or a capitalised defined term in technical text (e.g. objects.|Image|Meta, /api/resource/|Support| Ticket, apply|_update|_rule_to_file, 'Insert Access', 'Your Content')",
+   "fire": [
+    "image_meta = objects.ImageMeta.from_dict(self.test_image_meta)",
+    "response = requests.get('/api/resource/Support Ticket/SUP-00042')",
+    "res = update.apply_update_rule_to_file('a', ('a', NO_CREATE), opts)",
+    "new_host_col = self._new_host_collection(organization=self.org)",
+    "entity_type (google.cloud.dialogflowcx_v3beta1.types.EntityType): Required.",
+    "Every storyboard has a setting called \"Insert Access\" that controls who can insert it.",
+    "We may use all or part of Your Content in our promotional materials.",
+    "drvr = libvirt_driver.LibvirtDriver(fake.FakeVirtAPI(), False)"
+   ],
+   "quiet": [
+    "The image looked better after we adjusted the brightness.",
+    "Please contact support if your ticket has not been answered.",
+    "We will update the rules for the tournament next season.",
+    "The host welcomed every guest at the door with a smile.",
+    "Customers can choose the type of entity they want to register.",
+    "You can insert the card into the slot on the left side.",
+    "Your content will be reviewed by our editors before it appears.",
+    "The driver stopped at the corner to let the children cross."
+   ]
+  }
+ ],
+ "predictions": "One quick test from the top examples: expect >=5/8 fire, <=1 near miss.",
+ "methods": {
+  "agent": "claude-code opus-5.5 (blind room)",
+  "screens": [
+   "look",
+   "step-out",
+   "blind-room"
+  ]
+ },
+ "short": "identifier / defined-term pieces in code and docs",
+ "confidence": 0.6,
+ "roles": [
+  "feeds bonsai1/L17/N9491+"
+ ]
+}
