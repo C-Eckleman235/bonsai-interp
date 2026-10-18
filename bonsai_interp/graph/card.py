@@ -184,8 +184,13 @@ def render(c):
 
 def main(a):
     if len(a.neuron) > 1:  # several cards in one process: the scan and the weights load once
-        for nid in a.neuron:
-            print(render(card(nid, k=a.k, logits=not a.no_logits)), end="\n\n")
+        from pathlib import Path
+        texts = [render(card(nid, k=a.k, logits=not a.no_logits)) for nid in a.neuron]
+        if a.out:  # many cards are long: agents whose tools truncate output read the file in pieces instead
+            Path(a.out).write_text("\n\n".join(texts) + "\n", encoding="utf-8", newline="\n")
+            print(f"wrote {len(texts)} cards to {a.out} (one '=== ' header per neuron)")
+        else:
+            print("\n\n".join(texts))
         return
     c = card(a.neuron[0], k=a.k, logits=not a.no_logits)
     print(render(c))

@@ -194,7 +194,9 @@ def _read_all(path: Path):
 
 def load(name: str = "bonsai1"):
     """Returns (model, tokenizer, recorder). The model lives on DEVICE (bonsai_interp.env)."""
+    import sys
     path = MODELS[name]
+    print(f"loading {name} from {path.name} onto {DEVICE.type} (15-30 s)...", file=sys.stderr, flush=True)
     cfg = AutoConfig.from_pretrained(path)
     cfg.dtype = COMPUTE_DTYPE
     with torch.device("meta"):
