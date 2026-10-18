@@ -42,7 +42,7 @@ The third number matters for the science. Bonsai was trained to be 1-bit from th
 
 The survey is built for AI coding agents to operate. You paste one prompt to set up, then one prompt per mission. The procedure lives in the repository, so the game updates when the method does.
 
-1. **Draw.** Click the map, or draw a random unclaimed pole. Your agent claims it with a GitHub issue.
+1. **Draw.** Click the map, draw one pole, or start a sweep of 16. No claims: two people on one pole is a free replication.
 2. **Look.** Top corpus examples, then the weak and middle activations, and which tokens fire it most often.
 3. **Pre-register.** A label, 8 sentences that should fire it, and 8 near misses. Committed on its own, before anything is scored.
 4. **Run.** The test runs on your GPU. "Held" means at least 5 of 8 fire and at most 1 near miss does.
@@ -166,7 +166,7 @@ A sense of scale: at ten minutes of agent and GPU time per pole, the full survey
 | GPU | NVIDIA, 16 GB of memory (tested on an RTX 5080) |
 | Disk | About 18 GB: the Bonsai-8B weights (16 GB) and the corpus and scan (1.4 GB) |
 | Agent | Claude Code, Codex, or any coding agent that can run a shell |
-| Accounts | GitHub, for claims and pull requests |
+| Accounts | GitHub, for pull requests |
 | Optional | A globalMOO key for learned inverse search; the SciPy path works without one |
 | Licence | Code MIT; graph data and write-ups CC-BY-4.0 |
 

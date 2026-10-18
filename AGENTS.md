@@ -77,9 +77,8 @@ it in order.
    - Never commit tensors, weights, `.env`, keys or local paths.
 5. **globalMOO.** Use at most one globalMOO model per neuron, and only if the person supplied a
    key. Use SciPy for everything else.
-6. **Claim before you work.** Run
-   `gh issue create --repo moridinamael/bonsai-interp --title "claim: <id>" --label claim --body "<mission>"`.
-   If an open claim already exists for that pole, stop and ask for another neuron.
+6. **No claims.** Contributions never conflict, so nobody reserves a pole. If two people test the
+   same one, both results count, and the second is an independent replication.
 7. **Record your methods.** Fill `methods.agent` (who did the work, e.g. "claude-code opus-5.5") and
    `methods.screens` (the analyses you used, from `bonsai_interp/graph/methods.py`) in the tests file.
    `play run` adds what it can detect and the time taken. This is how the survey learns which

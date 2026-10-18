@@ -119,6 +119,36 @@ def doctor(a):
     sys.exit(0 if all(req) else 1)
 
 
+def sweep(a):
+    """A sweep: k random unsurveyed poles in one branch, one pre-registration commit, one batch run, one PR."""
+    py, k = "uv run python", a.k
+    branch = f"sweep/{a.handle.strip('<>')}-{dt.date.today().isoformat()}"
+    out = [f"# Mission: sweep of {k} poles", "",
+           f"Colour in {k} random poles that have no record yet, about 2 minutes each. One branch, one pre-registration commit,",
+           "one batch run, one PR. No claims: a pole someone else also tests gets two independent results, which is good.", "",
+           f"1. Branch: git checkout -b {branch}",
+           f"2. Draw: {py} -m bonsai_interp.graph.play draw --k {k}   (prints {k} pole ids; note them)",
+           f"3. For each pole: {py} -m bonsai_interp.graph.play card --neuron <id>   (seconds, no GPU: top examples, density, flags)",
+           f"   If it is unclear, try a few sentences: {py} -m bonsai_interp.graph.play probe --neuron <id> \"…\" \"…\"",
+           "   Probing loads the model each call, so probe several poles' sentences in a scratch script if you need many.",
+           "   Label at the level the card supports: usually a token or a context. A pole the card flags dense or positional",
+           '   gets "unit_kind": "dense / positional" and a best-effort test; do not force a meaning.',
+           f"4. Pre-register all of them: {py} -m bonsai_interp.graph.play new interpret --neuron <id1> <id2> … --handle {a.handle}",
+           "   Fill every tests file: label, 8 fire sentences, 8 near misses (same topic and style, without the trigger),",
+           "   methods.agent (who you are) and methods.screens (e.g. look, card, probe). quick-8+8@2 judges each: AUROC >= 0.90,",
+           "   median fire >= 0.20 of the pole's max, at most 1 near miss >= 0.30.",
+           '   Commit ALL tests files together and ALONE: git add <the tests files> && git commit -m "Pre-register sweep tests"',
+           f"5. Run them all at once (one model load): {py} -m bonsai_interp.graph.play run <all the tests files>",
+           '   Commit the results SEPARATELY: git add graph/contributions && git commit -m "Sweep results: <held>/<total> held"',
+           f"6. Validate ({py} -m bonsai_interp.graph.validate), push, and open one PR:",
+           f"   cp .github/PULL_REQUEST_TEMPLATE/interpret.md pr.md (fill it in; one line per pole: id, label, outcome), then",
+           f'   git push -u origin {branch} && gh pr create --repo moridinamael/bonsai-interp --title "sweep: {k} poles (<held> held)" --body-file pr.md  (then delete pr.md)',
+           "   The merge agent merges conforming PRs once the checks pass, and regenerates the map.", "",
+           "Failed labels are results too; record them and move on. Do not re-test inside a sweep: a second round is a new mission.",
+           "", RULES, "", "When done, tell the person in two or three sentences what you found and give them the PR link."]
+    print("\n".join(out))
+
+
 RULES = """Rules (from AGENTS.md; once CI is enabled it enforces 1-3, and play run already refuses uncommitted tests):
 1. Commit the .tests.json ON ITS OWN before running anything that scores it; results go in a SECOND commit. Never amend, squash or edit a committed .tests.json.
 2. Never edit or delete files under graph/contributions/ (yours included). Do not commit graph/neurons, edges.json or index.json: the merge agent regenerates them on main after merging.
@@ -127,7 +157,9 @@ RULES = """Rules (from AGENTS.md; once CI is enabled it enforces 1-3, and play r
 
 
 def brief(a):
-    m = NEURON.match(a.neuron)
+    if a.kind == "sweep":
+        return sweep(a)
+    m = NEURON.match(a.neuron or "")
     if not m:
         sys.exit("neuron must look like bonsai1/L12/N5397+")
     L, n, pole, nid = int(m["L"]), int(m["n"]), m["pole"], a.neuron
@@ -136,13 +168,11 @@ def brief(a):
     rec = idx.get(nid)
     py = "uv run python"
     def cmds(t, tu, tp):
-        claim = f'gh issue create --repo moridinamael/bonsai-interp --title "claim: {t}" --label claim --body "{a.kind} mission via the survey"'
-        check = f'gh issue list --repo moridinamael/bonsai-interp --label claim --state open --search "{t} in:title"'
         gm = (f"\n   Optional (one globalMOO model for this neuron, key in .env): {py} -m bonsai_interp.probe.run forward {tu} {tp}, write the bank it asks for "
               f"(probes/…/bank.json), then {py} -m bonsai_interp.probe.run invert {tu} {tp} --solver gmoo. Use what it finds to sharpen the label before step 4."
               if a.gmoo else "")
-        return claim, check, gm
-    claim, check_claim, gm = cmds(nid, u, pole)
+        return gm
+    gm = cmds(nid, u, pole)
     out = [f"# Mission: {a.kind} {nid}", ""]
     if a.kind in ("interpret", "step"):
         if a.kind == "step":
@@ -153,16 +183,15 @@ def brief(a):
                     f'   "roles": ["feeds {nid}"]. After `play run`, add to the results file an edge',
                     f'   {{"from": TARGET, "to": "{nid}", "kind": "feeds", "weight": <drop>, "method": "single-unit zero ablation (play step)"}}.', ""]
             target = "TARGET"
-            claim, check_claim, gm = cmds("TARGET", "<TARGET layer/index>", "<TARGET pole>")
+            gm = cmds("TARGET", "<TARGET layer/index>", "<TARGET pole>")
             u, folder = "<TARGET layer/index>", "graph/contributions/bonsai1/<TARGET folder>"
         else:
             if rec:
                 out += [f"Note: {nid} already has a record (status {rec['status']}). Consider a QC mission instead.", ""]
             target = nid
         branch = f"interpret/{target.split('/', 1)[-1].replace('/', '-').replace('+', '-pos').replace('-N', '-N')}" if target != "TARGET" else "interpret/<target>"
-        out += [f"1. Check nobody has claimed it: {check_claim}   (if an open claim exists, stop and ask for another neuron)",
-                f"   Claim it: {claim}   (if the 'claim' label is missing, drop --label; the title is what counts)",
-                f"   Start a branch: git checkout -b {branch}",
+        out += [f"1. Start a branch: git checkout -b {branch}",
+                "   No claim needed: contributions never conflict, so if someone else tests the same pole, both results count (the second is an independent replication).",
                 f"2. Look: {py} -m bonsai_interp.graph.play look --neuron {target}",
                 f"   Look past the top examples: the weak and middle bands, and which tokens fire it most often:",
                 f"   {py} -m bonsai_interp.probe.bands scan --units {u} --windows 1000 --tag mine   (about 4 minutes)",
@@ -181,7 +210,7 @@ def brief(a):
                 f'   Commit the results SEPARATELY, contribution files only: git add graph/contributions && git commit -m "Results for {target}"',
                 f"5. Validate: {py} -m bonsai_interp.graph.validate",
                 f"6. Push the branch and open the PR. gh's --template needs an editor, so fill a copy instead:",
-                f"   cp .github/PULL_REQUEST_TEMPLATE/interpret.md pr.md  (fill it in; add 'Closes #<claim issue>'), then",
+                f"   cp .github/PULL_REQUEST_TEMPLATE/interpret.md pr.md  (fill it in), then",
                 f'   git push -u origin {branch} && gh pr create --repo moridinamael/bonsai-interp --title "interpret: {target} <short label>" --body-file pr.md  (then delete pr.md)',
                 "7. If the label failed and you have a better idea, a second round is a NEW contribution (play new again) with new sentences.",
                 "   After three honest failed rounds, record it and move on; that is a result too."]
@@ -189,7 +218,7 @@ def brief(a):
         if not rec:
             sys.exit(f"{nid} has no record to QC; use an interpret mission")
         out += [f"Current label: {rec.get('label')}", f"Status: {rec['status']}; QC so far: {rec['qc']}", "",
-                f"1. Optional claim: {claim}",
+                "1. Branch: git checkout -b qc/<neuron>. No claim needed.",
                 f"2. Look at the neuron yourself, especially beyond the top examples: {py} -m bonsai_interp.graph.play look --neuron {nid}{gm}",
                 "   Read its earlier tests in graph/contributions/ only AFTER you have drafted your own sentences, so yours stay independent.",
                 f"3. Choose: confirm (re-test the label as it is), dispute (a test designed to break it), or refine (a better label with its own test).",
@@ -198,7 +227,7 @@ def brief(a):
                 f'   Commit it ALONE: git add {folder} && git commit -m "Pre-register QC of {nid}"',
                 f"4. Run: {py} -m bonsai_interp.graph.play run <the .tests.json>",
                 f'   Commit SEPARATELY, contribution files only: git add graph/contributions && git commit -m "QC results for {nid}"',
-                f"5. Validate ({py} -m bonsai_interp.graph.validate). Push a branch (git checkout -b qc/<neuron> before step 3's commit),",
+                f"5. Validate ({py} -m bonsai_interp.graph.validate) and push the branch,",
                 f"   fill a copy of .github/PULL_REQUEST_TEMPLATE/qc.md as pr.md, then",
                 f"   gh pr create --repo moridinamael/bonsai-interp --title \"qc: {nid} <verdict>\" --body-file pr.md  (then delete pr.md)"]
     elif a.kind == "blind":

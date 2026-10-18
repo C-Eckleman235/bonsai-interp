@@ -1,0 +1,82 @@
+name: merge
+# The colour-in lane, with no agent in the loop: when `checks` passes on a PR that only ADDS files under
+# graph/contributions/ (and clean-room evidence under runs/cleanroom/), merge it with a merge commit and
+# push a "fold after #n" commit that regenerates the derived graph files on main.
+# Everything else (structural changes, new tools or screens) is left for review; the PR gets a comment saying so.
+#
+# Security: this runs with a write token, so it never executes code from the PR. It checks out main (trusted
+# code) and only reads the PR's contribution files as data, after the merge.
+on:
+  workflow_run:
+    workflows: [checks]
+    types: [completed]
+permissions:
+  contents: write
+  pull-requests: write
+concurrency:
+  group: merge-main
+  cancel-in-progress: false
+jobs:
+  colour-in:
+    if: github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+      SHA: ${{ github.event.workflow_run.head_sha }}
+    steps:
+      - name: Find the PR and its lane
+        id: lane
+        run: |
+          n=$(gh pr list --repo "$REPO" --state open --json number,headRefOid --jq ".[] | select(.headRefOid==\"$SHA\") | .number" | head -1)
+          [ -z "$n" ] && { echo "no open PR at $SHA"; echo "pr=" >> "$GITHUB_OUTPUT"; exit 0; }
+          echo "pr=$n" >> "$GITHUB_OUTPUT"
+          other=$(gh api --paginate "repos/$REPO/pulls/$n/files" --jq '.[] | select(.status != "added" or ((.filename | startswith("graph/contributions/") | not) and (.filename | startswith("runs/cleanroom/") | not))) | .filename')
+          if [ -n "$other" ]; then
+            echo "lane=review" >> "$GITHUB_OUTPUT"
+            printf 'Checks pass. Not auto-merged: this PR changes files outside the colour-in lane, so it waits for review:\n```\n%s\n```\n' "$other" > body.md
+            gh pr comment "$n" --repo "$REPO" --body-file body.md
+          else
+            echo "lane=colour-in" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Merge (merge commit, so the tests-before-results order survives)
+        if: steps.lane.outputs.lane == 'colour-in'
+        run: gh pr merge "${{ steps.lane.outputs.pr }}" --repo "$REPO" --merge --match-head-commit "$SHA"
+      - uses: actions/checkout@v4
+        if: steps.lane.outputs.lane == 'colour-in'
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        if: steps.lane.outputs.lane == 'colour-in'
+        with:
+          python-version: "3.12"
+      - name: Fold on main and push (validate --strict is the circuit breaker)
+        if: steps.lane.outputs.lane == 'colour-in'
+        run: |
+          git config user.name "bonsai-survey-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            python -m bonsai_interp.graph.fold
+            python -m bonsai_interp.graph.validate --strict
+            git add graph/neurons graph/edges.json graph/index.json
+            git diff --cached --quiet && { echo "nothing to fold"; exit 0; }
+            git commit -q -m "fold after #${{ steps.lane.outputs.pr }}"
+            git push -q origin HEAD:main && { echo "folded"; exit 0; }
+            sleep 5
+          done
+          echo "could not push the fold after 3 attempts"; exit 1
+      - name: Summary on the PR
+        if: steps.lane.outputs.lane == 'colour-in'
+        run: |
+          python - <<'PY' > summary.md
+          import json, subprocess
+          files = subprocess.run(["gh", "api", "--paginate", f"repos/${{ github.repository }}/pulls/${{ steps.lane.outputs.pr }}/files", "--jq", ".[].filename"],
+                                 capture_output=True, text=True).stdout.split()
+          idx = json.load(open("graph/index.json"))["neurons"]
+          poles = sorted({json.load(open(f)).get("neuron") for f in files if f.endswith(".json") and f.startswith("graph/contributions/")} - {None})
+          lines = [f"- `{p}`: {idx[p]['status']}" + (f" ({idx[p].get('short')})" if idx.get(p, {}).get('short') else "") for p in poles if p in idx]
+          print("Merged and folded. The map now shows:\n" + "\n".join(lines))
+          PY
+          gh pr comment "${{ steps.lane.outputs.pr }}" --repo "$REPO" --body-file summary.md

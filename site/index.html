@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
-/* Layout: a survey sheet. The full 36 x 12,288 map leads; the mission desk (draw, claim, run, PR) sits beside it; rules and scores below. */
+/* Layout: a survey sheet. The full 36 x 12,288 map leads; the mission desk (draw, run, PR) sits beside it; rules and scores below. */
 :root {
   --paper: #eef2ef; --sheet: #f8faf8; --ink: #17302c; --ink-2: #44605a; --ink-3: #7b938d; --rule: #d3ddd9;
   --mark: #2d3fc6; --mark-ink: #ffffff; --plus: #a8620f; --minus: #0f7a6e;
@@ -69,6 +69,7 @@ canvas#map { display: block; width: 100%; min-width: 620px; height: auto; cursor
 
 .desk { display: flex; flex-direction: column; gap: 14px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); }
 .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.actions #sweep { grid-column: 1 / -1; }
 .btn { border: 1px solid var(--rule); background: var(--sheet); border-radius: 3px; padding: 10px 12px; cursor: pointer; text-align: left; display: flex; flex-direction: column; gap: 2px; }
 .btn b { font-family: var(--display); font-size: 1rem; }
 .btn span { font-size: 0.76rem; color: var(--ink-3); }
@@ -169,7 +170,7 @@ td.n { font-family: var(--mono); text-align: right; }
       <div class="eyebrow">Bonsai-8B · 1-bit · 36 layers × 12,288 neurons · two poles each</div>
       <h1>Bonsai Neuron Survey</h1>
       <p class="lede">Every neuron in a 1-bit language model, on one sheet. Your AI agent does the work: draw a neuron, paste one prompt into Claude Code or Codex, and it runs the test on your GPU and opens the pull request. Every label here was tested with sentences committed before the test ran.</p>
-      <p class="preview" id="preview">Private preview. The repositories are private until launch, so the claim and pull-request links work only for collaborators.</p>
+      <p class="preview" id="preview">Private preview. The repositories are private until launch, so the repository and pull-request links work only for collaborators.</p>
     </div>
     <div class="tally" id="tally"></div>
   </header>
@@ -204,7 +205,8 @@ td.n { font-family: var(--mono); text-align: right; }
     <aside class="desk">
       <div class="sheet" style="display:flex;flex-direction:column;gap:12px">
         <div class="actions">
-          <button class="btn primary" id="draw" type="button"><b>Draw a new neuron</b><span>random, unclaimed, +10 XP</span></button>
+          <button class="btn primary" id="sweep" type="button"><b>Sweep 16 poles</b><span>colour in the map fast, +4 XP each</span></button>
+          <button class="btn" id="draw" type="button"><b>Draw a new neuron</b><span>one pole, a closer look, +10 XP</span></button>
           <button class="btn" id="qc" type="button"><b>QC a surveyed one</b><span>fewest checks first, +6 XP</span></button>
           <button class="btn" id="step" type="button"><b>Step out one neuron</b><span>a feeder of a held pole, +10 +3 XP</span></button>
           <button class="btn" id="blind" type="button"><b>Blind replication</b><span>clean-room agent, +15 XP</span></button>
@@ -262,7 +264,7 @@ td.n { font-family: var(--mono); text-align: right; }
                   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } };
   const N = Object.entries(IDX.neurons).map(([id, r]) => { const m = id.match(/^(\w+)\/L(\d+)\/N(\d+)([+-])$/); return { id, model: m[1], L: +m[2], n: +m[3], pole: m[4], ...r }; });
   const byId = Object.fromEntries(N.map(r => [r.id, r]));
-  let mode = "solo", claimed = new Set(), colorBy = "status";
+  let mode = "solo", colorBy = "status";
   const SCR = ["unexamined", "tested", "re-tested", "checked", "investigated", "replicated"];
   const lvl = r => (r.scrutiny ? r.scrutiny.level : 1);
   const colorOf = r => colorBy === "status" ? (css("--" + r.status) || css("--ink-3")) : css("--h" + Math.max(1, lvl(r)));
@@ -361,8 +363,8 @@ td.n { font-family: var(--mono); text-align: right; }
       const n = b * BLK + i, x = bmL + (i % COLS) * cw, y = bmT + Math.floor(i / COLS) * ch;
       for (const pole of ["+", "-"]) {
         const id = `bonsai1/L${L}/N${n}${pole}`, r = byId[id], yy = y + (pole === "+" ? 1 : ch / 2), hh = ch / 2 - 1.5;
-        bx.fillStyle = r ? colorOf(r) : claimed.has(id) ? css("--contested") : css("--rule");
-        bx.globalAlpha = r || claimed.has(id) ? 1 : 0.6; bx.fillRect(x + 1, yy, cw - 2, hh); bx.globalAlpha = 1;
+        bx.fillStyle = r ? colorOf(r) : css("--rule");
+        bx.globalAlpha = r ? 1 : 0.6; bx.fillRect(x + 1, yy, cw - 2, hh); bx.globalAlpha = 1;
       }
     }
     bx.fillStyle = css("--ink-3"); bx.textAlign = "right";
@@ -444,7 +446,7 @@ td.n { font-family: var(--mono); text-align: right; }
   function drawNew() {
     const lmin = Math.max(0, +document.getElementById("lmin").value), lmax = Math.min(35, Math.max(lmin, +document.getElementById("lmax").value));
     for (let t = 0; t < 1000; t++) { const L = lmin + rnd(lmax - lmin + 1), n = rnd(N_N), pole = Math.random() < 0.5 ? "+" : "-", id = `bonsai1/L${L}/N${n}${pole}`;
-      if (!byId[id] && !claimed.has(id)) return { id, L, n, pole }; }
+      if (!byId[id]) return { id, L, n, pole }; }
   }
   function pickQC() {
     const pool = N.filter(r => ["held", "contested", "probed"].includes(r.status)).sort((a, b) => (a.qc.confirm + a.qc.dispute) - (b.qc.confirm + b.qc.dispute));
@@ -455,7 +457,6 @@ td.n { font-family: var(--mono); text-align: right; }
   const handle = () => (document.getElementById("handle").value.trim() || "<you>");
   const folder = r => `graph/contributions/bonsai1/L${r.L}_N${r.n}_${r.pole === "+" ? "pos" : "neg"}`;
   const cmd = (text) => `<div class="cmd"><pre>${esc(text)}</pre><button type="button" data-copy="${esc(text)}" aria-label="Copy command">Copy</button></div>`;
-  const issue = (r, what) => `https://github.com/${REPO}/issues/new?template=claim.yml&title=${encodeURIComponent(`claim: ${r.id}`)}&labels=claim`;
   function agentPrompt(kind, r, from) {
     const id = kind === "step" ? from.id : r.id, h = handle();
     const flag = mode === "gmoo" ? " --gmoo" : "";
@@ -475,6 +476,29 @@ td.n { font-family: var(--mono); text-align: right; }
     (navigator.clipboard ? navigator.clipboard.writeText(b.getAttribute("data-copy")) : Promise.reject()).then(() => { b.textContent = "Copied"; setTimeout(() => (b.textContent = "Copy"), 1400); },
       () => { const pre = b.previousElementSibling, sl = getSelection(), rg = document.createRange(); rg.selectNodeContents(pre); sl.removeAllRanges(); sl.addRange(rg); b.textContent = "Selected"; }); });
 
+  function sweepPrompt() {
+    const h = handle();
+    return `In my bonsai-interp checkout, first update it (git pull), then run:\n\nuv run python -m bonsai_interp.graph.play brief sweep --k 16 --handle ${h}\n\n` +
+      `Then carry out the brief it prints, following AGENTS.md: draw 16 unsurveyed poles, label each from its card, pre-register all the tests in one commit, ` +
+      `run them together, commit the results separately and open one pull request. Stop only for things I must do myself. When you're done, tell me how many held and give me the pull-request link.` +
+      (h === "<you>" ? `\n\n(My GitHub handle: ask me, or read it from \`gh api user --jq .login\`.)` : "");
+  }
+  function sweepMission() {
+    document.getElementById("mission").innerHTML = `<div class="mission" aria-live="polite">
+      <div class="eyebrow">Sweep</div>
+      <div class="id">16 poles<span class="xp">+4 XP each</span></div>
+      <p class="what">Your agent draws 16 random poles nobody has surveyed, labels each from its card in about two minutes, and tests them all in one run. No claims: if someone else draws the same pole, both results count as independent replications.</p>
+      <div class="eyebrow">Hand this to your agent</div>
+      <div class="prompt">${cmd(sweepPrompt())}</div>
+      <details class="byhand"><summary>Do it by hand instead</summary><ol class="steps">
+        <li>Draw 16 poles and read each card.${cmd(`python -m bonsai_interp.graph.play draw --k 16\npython -m bonsai_interp.graph.play card --neuron <id>`)}</li>
+        <li>Pre-register them all in one commit.${cmd(`python -m bonsai_interp.graph.play new interpret --neuron <id1> <id2> … --handle ${handle()}\ngit add <the tests files> && git commit -m "Pre-register sweep tests"`)}</li>
+        <li>Run them together and commit the results separately.${cmd(`python -m bonsai_interp.graph.play run <the tests files>\ngit add graph/contributions && git commit -m "Sweep results"`)}</li>
+        <li>Open one pull request.${cmd(`gh pr create --template interpret.md --title "sweep: 16 poles (<held> held)"`)}</li></ol></details>
+      <div class="links"><a href="https://github.com/${REPO}" target="_blank" rel="noopener">Repository</a>
+        <a href="https://github.com/${REPO}/blob/main/AGENTS.md" target="_blank" rel="noopener">Agent guide</a></div></div>`;
+    store.set("lastMission", { kind: "sweep", id: "" });
+  }
   function mission({ kind, r, from }) {
     const box = document.getElementById("mission"), pc = r.pole === "+" ? "p" : "m", u = `${r.L}/${r.n}`;
     const rec = byId[r.id], xp = { interpret: 10, qc: 6, step: 13, blind: 15 }[kind];
@@ -485,17 +509,16 @@ td.n { font-family: var(--mono); text-align: right; }
       what = kind === "step" ? `Find the neuron that feeds <b>${esc(from.id)}</b> (${esc(from.short || "")}) most strongly, then interpret it.` : "Nobody has surveyed this pole. Find what fires it and test your label.";
       steps = [
         kind === "step" ? `<li>List the strongest feeders of the held pole and pick one.${cmd(`python -m bonsai_interp.graph.play step --neuron ${from.id}`)}</li>` : "",
-        `<li>Claim it so nobody else takes it. <a href="${issue(r)}" target="_blank" rel="noopener">Open the claim issue</a></li>`,
         `<li>Look at what fires it.${cmd(`python -m bonsai_interp.graph.play look --neuron ${r.id}`)}</li>`, ...gm,
         `<li>Write your label, 8 sentences that should fire it and 8 near misses, then commit that file on its own.${cmd(`python -m bonsai_interp.graph.play new interpret --neuron ${r.id} --handle ${handle()}\ngit add ${folder(r)} && git commit -m "Pre-register interpret test for ${r.id}"`)}</li>`,
-        `<li>Run the test, refresh the graph and commit the results separately.${cmd(`python -m bonsai_interp.graph.play run ${folder(r)}/<id>.tests.json\npython -m bonsai_interp.graph.fold\ngit add graph && git commit -m "Results for ${r.id}"`)}</li>`,
+        `<li>Run the test and commit the results separately (contribution files only; the map is regenerated on merge).${cmd(`python -m bonsai_interp.graph.play run ${folder(r)}/<id>.tests.json\ngit add graph/contributions && git commit -m "Results for ${r.id}"`)}</li>`,
         `<li>Open the pull request.${cmd(`gh pr create --template interpret.md --title "interpret: ${r.id} <short label>"`)}</li>`];
     } else if (kind === "qc") {
       what = `Current label: <b>${esc(rec.label || "–")}</b><br>Status ${esc(rec.status)} · ${rec.qc.confirm} confirmations · ${rec.qc.dispute} disputes. Write new sentences; don't reuse the original test.`;
       steps = [
         `<li>Look at it, including weaker activations.${cmd(`python -m bonsai_interp.graph.play look --neuron ${r.id}`)}</li>`, ...gm,
         `<li>Pre-register: confirm the label as it stands, dispute it, or refine it.${cmd(`python -m bonsai_interp.graph.play new qc --neuron ${r.id} --handle ${handle()} --verdict confirm\ngit add ${folder(r)} && git commit -m "Pre-register QC of ${r.id}"`)}</li>`,
-        `<li>Run, refresh and commit separately.${cmd(`python -m bonsai_interp.graph.play run ${folder(r)}/<id>.tests.json\npython -m bonsai_interp.graph.fold\ngit add graph && git commit -m "QC results for ${r.id}"`)}</li>`,
+        `<li>Run and commit the results separately.${cmd(`python -m bonsai_interp.graph.play run ${folder(r)}/<id>.tests.json\ngit add graph/contributions && git commit -m "QC results for ${r.id}"`)}</li>`,
         `<li>Open the pull request.${cmd(`gh pr create --template qc.md --title "qc: ${r.id} confirm"`)}</li>`];
     } else if (kind === "blind") {
       what = `A blind agent on your machine gets the toolchain and this neuron, and nothing else. You write down what you expect it to find before it starts.`;
@@ -520,6 +543,7 @@ td.n { font-family: var(--mono); text-align: right; }
     const t = b.getAttribute("data-copy");
     (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => { b.textContent = "Copied"; setTimeout(() => (b.textContent = "Copy"), 1400); },
       () => { const pre = b.previousElementSibling, s = getSelection(), rg = document.createRange(); rg.selectNodeContents(pre); s.removeAllRanges(); s.addRange(rg); b.textContent = "Selected"; }); });
+  document.getElementById("sweep").onclick = () => sweepMission();
   document.getElementById("draw").onclick = () => { const r = drawNew(); openNeuron(r.L, r.n, r.pole); mission({ kind: "interpret", r }); };
   document.getElementById("qc").onclick = () => { const r = pickQC(); openNeuron(r.L, r.n, r.pole); mission({ kind: "qc", r }); };
   document.getElementById("step").onclick = () => { const f = pickStep(); openNeuron(f.L, f.n, f.pole); mission({ kind: "step", r: f, from: f }); };
@@ -527,7 +551,7 @@ td.n { font-family: var(--mono); text-align: right; }
   document.querySelectorAll(".seg button").forEach(b => b.onclick = () => { mode = b.dataset.mode; document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", x === b)); store.set("mode", mode);
     const last = store.get("lastMission", null); if (last && byId[last.id]) mission({ kind: last.kind, r: byId[last.id], from: byId[last.from] }); });
   ["lmin", "lmax"].forEach(id => document.getElementById(id).addEventListener("change", () => draw()));
-  const hEl = document.getElementById("handle"); hEl.value = store.get("handle", ""); hEl.addEventListener("change", () => { store.set("handle", hEl.value.trim()); const last = store.get("lastMission", null); if (last && (byId[last.id] || last.kind === "interpret")) { const m = last.id.match(/L(\d+)\/N(\d+)([+-])/); mission({ kind: last.kind, r: byId[last.id] || { id: last.id, L: +m[1], n: +m[2], pole: m[3] }, from: byId[last.from] }); } });
+  const hEl = document.getElementById("handle"); hEl.value = store.get("handle", ""); hEl.addEventListener("change", () => { store.set("handle", hEl.value.trim()); const last = store.get("lastMission", null); if (last && last.kind === "sweep") sweepMission(); else if (last && (byId[last.id] || last.kind === "interpret")) { const m = last.id.match(/L(\d+)\/N(\d+)([+-])/); mission({ kind: last.kind, r: byId[last.id] || { id: last.id, L: +m[1], n: +m[2], pole: m[3] }, from: byId[last.from] }); } });
 
   // scores + badges
   document.getElementById("scores").innerHTML = Object.entries(IDX.contributors).map(([h, p]) => `<tr><td class="mono">${esc(h)}</td><td class="n">${p.toLocaleString()}</td></tr>`).join("");
@@ -535,17 +559,14 @@ td.n { font-family: var(--mono); text-align: right; }
     ["Cartographer", "Five edges added by stepping out"], ["Blind witness", "A clean-room replication with a clean audit"], ["Second opinion", "Ten QCs of other people's labels"],
     ["Deep water", "A held label below layer 24"]].map(([b, d]) => `<div class="badge"><b>${b}</b>${d}</div>`).join("");
 
-  // claims from GitHub (works once the repository is public; silently skipped otherwise)
-  fetch(`https://api.github.com/repos/${REPO}/issues?labels=claim&state=open&per_page=100`).then(r => r.ok ? r.json() : [])
-    .then(list => { for (const i of list) { const m = (i.title || "").match(/bonsai1\/L\d+\/N\d+[+-]/); if (m) claimed.add(m[0]); } }).catch(() => {});
-
   colorBy = store.get("colorBy", "status"); document.querySelectorAll("#colorby button").forEach(x => x.setAttribute("aria-pressed", x.dataset.c === colorBy)); legend();
   show("map"); draw();
   const last = store.get("lastMission", null), m0 = store.get("mode", "solo");
   if (m0 === "gmoo") { mode = "gmoo"; document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", x.dataset.mode === "gmoo")); }
-  if (last && (byId[last.id] || last.kind === "interpret")) { const m = last.id.match(/L(\d+)\/N(\d+)([+-])/);
+  if (last && last.kind === "sweep") sweepMission();
+  else if (last && (byId[last.id] || last.kind === "interpret")) { const m = last.id.match(/L(\d+)\/N(\d+)([+-])/);
     mission({ kind: last.kind, r: byId[last.id] || { id: last.id, L: +m[1], n: +m[2], pole: m[3] }, from: byId[last.from] }); }
-  else mission({ kind: "interpret", r: drawNew() });
+  else sweepMission();
   const redraw = () => { draw(view.sel); if (view.level === "block") drawBlock(); };
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", redraw);
   new MutationObserver(redraw).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });

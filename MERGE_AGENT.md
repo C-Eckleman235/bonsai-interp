@@ -5,6 +5,19 @@ merging is **mechanical, idempotent and non-destructive**: the agent never decid
 "is". It checks that a contribution is well formed and honest about its order, then lets `fold`
 derive the record.
 
+## Lanes
+
+| Lane | What the PR changes | Who merges |
+|---|---|---|
+| **Colour-in** | only *adds* files under `graph/contributions/` (and clean-room evidence under `runs/cleanroom/`) | the `merge` workflow, automatically, as soon as `checks` passes; it then pushes "fold after #n" |
+| **Structural** | edits or deletes anything, schema, protocols, fold rules, docs | review (the triage routine comments; the owner merges) |
+| **Tool** | adds one screen or analysis under `bonsai_interp/` plus its entry in `methods.py` | review, one tool per PR |
+
+The colour-in lane has no agent in the loop: the checks below are mechanical, and everything they
+cannot check (honest results, good near misses) is caught by QC missions and by sampled blind
+rooms, not by a reviewer reading every PR. The rest of this document is the procedure for the
+review lanes, and what the workflow does for colour-in.
+
 ## For each PR
 
 1. **Classify it** from the title or template: `interpret`, `qc`, `replicate`, `map`, or tooling.
@@ -19,9 +32,10 @@ derive the record.
 3. **Check the changed paths.** A contribution PR may add only:
    - `graph/contributions/<model>/<pole folder>/<id>.tests.json` and `<id>.json`, one pair per
      contribution (a `map` contribution may be a single `<id>.json`)
-   - the regenerated `graph/neurons/…`, `graph/edges.json` and `graph/index.json`
+   - clean-room evidence under `runs/cleanroom/<run>/` (exports from neuron-cleanroom)
 
-   Anything else (code, probes, data) means the PR should be split.
+   Derived files (`graph/neurons/…`, `graph/edges.json`, `graph/index.json`) are never in a PR.
+   Anything else (code, probes, data) is a structural or tool PR, or should be split.
 4. **Check the content.** These are judgement calls, but they are bounded:
    - **Sentences.** The 8 near misses keep the topic and drop the claimed trigger. If they
      are unrelated filler, ask for real near misses. Near misses that are too easy make a
@@ -39,9 +53,8 @@ derive the record.
    them with `python -m bonsai_interp.graph.validate --strict`. If that check fails, stop merging and
    alert the owner (circuit breaker). Squashing would destroy the
    tests-before-results order that CI checked.
-7. **Close the claim issue.** Add the labels `held`, `failed`, `contested` or `refined` from the
-   folded status. Post a one-line summary, for example: "L12/N5397- held 6/8 (0 FP); 2 QCs
-   pending".
+7. **Post a one-line summary** on the PR from the folded status, for example: "L12/N5397- held
+   (AUROC 0.97); 2 QCs pending". There are no claim issues to close.
 
 ## Conflicts between PRs
 

@@ -110,7 +110,7 @@ To rebuild the data instead of downloading it, run `python -m bonsai_interp.corp
 Add a neuron, relabel one, or contribute a blind replication. See
 [CONTRIBUTING.md](CONTRIBUTING.md). The short version:
 
-1. Draw a neuron on the survey page, or pick one to QC, and claim it.
+1. Start a sweep of 16 random poles on the survey page, or draw one neuron, or pick one to QC. There are no claims.
 2. `python -m bonsai_interp.graph.play new …` writes the pre-registration. Fill it in and commit it alone.
 3. `python -m bonsai_interp.graph.play run …` writes the results; commit them separately (contribution files only).
 4. Open a PR with the `interpret` or `qc` template. CI checks that contributions are append-only, that the tests came first, the size caps, and the derived files.
