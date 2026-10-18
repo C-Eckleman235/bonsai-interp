@@ -150,7 +150,7 @@ def sweep(a):
            "4. Pre-register all of them. Each pole needs a label, 8 fire sentences and 8 near misses (same topic and style, without the trigger).",
            f"   Easiest: write one plan.json and run {py} -m bonsai_interp.graph.play fill --plan plan.json --agent \"<who you are>\"",
            '   plan.json: {"<pole id>": {"label": "...", "fire": [8 sentences], "quiet": [8 near misses], "short": "2-5 words",',
-           '   "unit_kind": "lexical|contextual|sparse feature|dense|positional|unclear", "confidence": 0.6, "notes": "..."}, ...}',
+           '   "unit_kind": "lexical | contextual | sparse feature | dense / positional | unclear", "confidence": 0.6, "notes": "..."}, ...}',
            "   (fill writes LF line endings, removes the template's reference list and refuses wrong keys). Or edit the files directly:",
            "   methods.agent (who you are) and methods.screens (e.g. card, probe). quick-8+8@2 judges each: AUROC >= 0.90,",
            "   median fire >= 0.20 of the pole's max, at most 1 near miss >= 0.30.",

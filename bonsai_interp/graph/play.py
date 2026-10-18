@@ -102,7 +102,7 @@ def draw(a):
         print(f"the {len(paths)} tests files are listed in .sweep/latest.txt (git add --pathspec-from-file=.sweep/latest.txt; play run --list .sweep/latest.txt)")
 
 
-OPTIONAL = {"short": "a 2-5 word name for the map", "unit_kind": "lexical / contextual / sparse feature / dense / positional / unclear",
+OPTIONAL = {"short": "a 2-5 word name for the map", "unit_kind": "lexical | contextual | sparse feature | dense / positional | unclear",
             "confidence": "a number 0-1 or low / medium / high", "notes": "free text (e.g. 'some sentences suggested by Twitch chat')",
             "predictions": "what you expect, written before the run"}
 
@@ -184,7 +184,8 @@ def run(a):
     from bonsai_interp.probe import textinv
     limit_memory(0.8)
     models, scans = {}, {}
-    for f, _, t, rel, prereg in todo:
+    for i, (f, _, t, rel, prereg) in enumerate(todo, 1):
+        print(f"[{i}/{len(todo)}] scoring {t['neuron']} ...", flush=True)
         m = NEURON.match(t["neuron"])
         if m["model"] not in models:
             models[m["model"]] = load(m["model"])
