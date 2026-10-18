@@ -176,7 +176,7 @@ def describe(p: InverseProblem, x, y):
     idx, text = p.manifold.passage(x)
     r = next((e for e in reversed(p.log) if e["text"] == text), None)
     return {"x": [round(float(v), 4) for v in x], "y": dict(zip(p.outputs, [round(float(v), 4) for v in y])),
-            "text": text, "sentences": [{"i": i, **{k: p.manifold.s[i][k] for k in ("text", "kind", "branch")},
+            "text": text, "sentences": [{"i": i, **{k: p.manifold.s[i].get(k, p.manifold.s[i].get("family")) for k in ("text", "kind", "branch")},
                                          "rel": p.manifold.s[i].get(p.manifold.key, 0.0),
                                          "solo_act": round(float(p.manifold.solo_act[i]), 4)} for i in idx],
             "peak_token": r and r["peak_token"], "peak_char": r and r["peak_char"]}
@@ -267,5 +267,5 @@ def build_circuit_problem(evaluator: CircuitEvaluator, manifold: SentenceManifol
 def describe_circuit(p, x, y):
     idx, text = p.manifold.passage(x)
     return {"x": [round(float(v), 4) for v in x], "y": dict(zip(p.outputs, [round(float(v), 4) for v in y])),
-            "text": text, "sentences": [{"i": i, **{k: p.manifold.s[i][k] for k in ("text", "kind", "branch")},
+            "text": text, "sentences": [{"i": i, **{k: p.manifold.s[i].get(k, p.manifold.s[i].get("family")) for k in ("text", "kind", "branch")},
                                          "rel": p.manifold.s[i].get(p.manifold.key, 0.0)} for i in idx]}

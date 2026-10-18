@@ -1,0 +1,345 @@
+{
+ "solver": "de",
+ "nodes": [
+  {
+   "name": "nerve",
+   "L": 9,
+   "n": 3688,
+   "pole": "+",
+   "label": "psychological 'nerve' (probed)"
+  },
+  {
+   "name": "suspense",
+   "L": 7,
+   "n": 9782,
+   "pole": "+",
+   "label": "suspense, close watching, nail-biter",
+   "lateral": true,
+   "rel": 0.7
+  },
+  {
+   "name": "anticipation",
+   "L": 9,
+   "n": 1061,
+   "pole": "+",
+   "label": "eager anticipation: can't wait, impatient",
+   "lateral": true,
+   "rel": 0.7
+  },
+  {
+   "name": "overwhelm",
+   "L": 12,
+   "n": 3688,
+   "pole": "+",
+   "label": "overwhelming, stressful, nerve-wracking",
+   "lateral": true,
+   "rel": 0.7
+  },
+  {
+   "name": "disappointed",
+   "L": 1,
+   "n": 4037,
+   "pole": "+",
+   "label": "the word 'disappointed'",
+   "lateral": true,
+   "rel": 0.5
+  },
+  {
+   "name": "reader",
+   "L": 14,
+   "n": 9470,
+   "pole": "+",
+   "label": "shared reader of nerve and 'disappointed' (label failed)"
+  }
+ ],
+ "goals": {
+  "nerve_alone": {
+   "question": "Psychological 'nerve' strong (≥ 0.5) with suspense, anticipation and overwhelm all quiet (≤ 0.15)",
+   "satisfied": true,
+   "evals": 624,
+   "extra": {},
+   "x": [
+    0.4928,
+    0.5389,
+    0.222,
+    0.8361,
+    0.0421,
+    0.4464
+   ],
+   "y": {
+    "nerve": 0.5973,
+    "suspense": 0.0371,
+    "anticipation": 0.0947,
+    "overwhelm": 0.0738,
+    "disappointed": 0.0079,
+    "reader": 0.1859,
+    "dose": 0.1,
+    "dose_broad": 0.1
+   },
+   "text": "Повреждение нерва может привести к потере чувствительности. The burn left her skin red, hot, and painful to the touch. افتتحت المكتبة الجديدة أبوابها للزوار يوم السبت.",
+   "sentences": [
+    {
+     "i": 13,
+     "text": "Повреждение нерва может привести к потере чувствительности.",
+     "kind": "on",
+     "branch": "nerve bank",
+     "rel": 0.1
+    },
+    {
+     "i": 44,
+     "text": "The burn left her skin red, hot, and painful to the touch.",
+     "kind": "opposite",
+     "branch": "nerve bank",
+     "rel": 0.0
+    },
+    {
+     "i": 59,
+     "text": "افتتحت المكتبة الجديدة أبوابها للزوار يوم السبت.",
+     "kind": "unrelated",
+     "branch": "nerve bank",
+     "rel": 0.0
+    }
+   ]
+  },
+  "suspense_without_nerve": {
+   "question": "Suspense strong (≥ 0.5) with 'nerve' quiet (≤ 0.1)",
+   "satisfied": true,
+   "evals": 576,
+   "extra": {},
+   "x": [
+    0.1604,
+    0.2733,
+    0.7747,
+    0.9575,
+    0.8865,
+    0.5208
+   ],
+   "y": {
+    "nerve": 0.0363,
+    "suspense": 0.8085,
+    "anticipation": 0.8188,
+    "overwhelm": 0.2976,
+    "disappointed": 0.0119,
+    "reader": 0.26,
+    "dose": 0.7,
+    "dose_broad": 0.7
+   },
+   "text": "Our team scored twice in the final ten minutes to win the match. The kids are so excited they can barely wait for summer camp. The suspense in the story was so thick that I felt like I was watching it closely from the beginning.",
+   "sentences": [
+    {
+     "i": 53,
+     "text": "Our team scored twice in the final ten minutes to win the match.",
+     "kind": "unrelated",
+     "branch": "nerve bank",
+     "rel": 0.0
+    },
+    {
+     "i": 119,
+     "text": "The kids are so excited they can barely wait for summer camp.",
+     "kind": "lateral",
+     "branch": "anticipation (claude)",
+     "rel": 0.7
+    },
+    {
+     "i": 111,
+     "text": "The suspense in the story was so thick that I felt like I was watching it closely from the beginning.",
+     "kind": "lateral",
+     "branch": "suspense (bonsai)",
+     "rel": 0.7
+    }
+   ]
+  },
+  "overwhelm_without_nerve": {
+   "question": "Overwhelm strong (≥ 0.4) with 'nerve' quiet (≤ 0.1)",
+   "satisfied": true,
+   "evals": 624,
+   "extra": {},
+   "x": [
+    0.657,
+    0.4882,
+    0.3506,
+    0.4706,
+    0.4142,
+    0.8416
+   ],
+   "y": {
+    "nerve": 0.0339,
+    "suspense": 0.1578,
+    "anticipation": 0.0134,
+    "overwhelm": 0.4262,
+    "disappointed": 0.0092,
+    "reader": 0.3447,
+    "dose": 0.7,
+    "dose_broad": 0.7
+   },
+   "text": "The new job required handling a lot of stress, and the constant pressure to perform made it emotionally draining. Tendons connect muscles to bones and help transmit force. I never thought the old bridge would last this long.",
+   "sentences": [
+    {
+     "i": 140,
+     "text": "The new job required handling a lot of stress, and the constant pressure to perform made it emotionally draining.",
+     "kind": "lateral",
+     "branch": "overwhelm (bonsai)",
+     "rel": 0.7
+    },
+    {
+     "i": 32,
+     "text": "Tendons connect muscles to bones and help transmit force.",
+     "kind": "near",
+     "branch": "nerve bank",
+     "rel": 0.0
+    },
+    {
+     "i": 36,
+     "text": "I never thought the old bridge would last this long.",
+     "kind": "spelling",
+     "branch": "nerve bank",
+     "rel": 0.0
+    }
+   ]
+  },
+  "nerve_and_overwhelm": {
+   "question": "Both 'nerve' and overwhelm strong (≥ 0.4)",
+   "satisfied": true,
+   "evals": 624,
+   "extra": {},
+   "x": [
+    0.1097,
+    0.3338,
+    0.9715,
+    0.63,
+    0.8183,
+    0.1688
+   ],
+   "y": {
+    "nerve": 0.781,
+    "suspense": 0.5878,
+    "anticipation": 0.1372,
+    "overwhelm": 0.4991,
+    "disappointed": 0.01,
+    "reader": 0.2949,
+    "dose": 1.0,
+    "dose_broad": 1.0
+   },
+   "text": "Further development of these concepts led to Ivan Sutherland's groundbreaking Sketchpad program on the TX-2. It’s kind of a nerve-racking feeling in some ways, because in some ways you Patients starting the new medication should be monitored closely.",
+   "sentences": [
+    {
+     "i": 83,
+     "text": "Further development of these concepts led to Ivan Sutherland's groundbreaking Sketchpad program on the TX-2.",
+     "kind": "corpus",
+     "branch": "nerve bank",
+     "rel": 0.0
+    },
+    {
+     "i": 60,
+     "text": "It’s kind of a nerve-racking feeling in some ways, because in some ways you",
+     "kind": "top",
+     "branch": "nerve bank",
+     "rel": 1.0
+    },
+    {
+     "i": 102,
+     "text": "Patients starting the new medication should be monitored closely.",
+     "kind": "lateral",
+     "branch": "suspense (claude)",
+     "rel": 0.7
+    }
+   ]
+  },
+  "nerve_and_anticipation": {
+   "question": "Both 'nerve' and anticipation strong (≥ 0.4)",
+   "satisfied": true,
+   "evals": 624,
+   "extra": {},
+   "x": [
+    0.9306,
+    0.858,
+    0.5242,
+    0.0288,
+    0.1502,
+    0.4293
+   ],
+   "y": {
+    "nerve": 0.4272,
+    "suspense": 0.1021,
+    "anticipation": 1.1,
+    "overwhelm": 0.0746,
+    "disappointed": 0.0101,
+    "reader": 0.2387,
+    "dose": 0.7,
+    "dose_broad": 0.7
+   },
+   "text": "Les fans attendent la sortie du film avec impatience. 신경이 손상되면 손가락에 감각이 없어질 수 있다. The train to Edinburgh leaves from platform four at nine o'clock.",
+   "sentences": [
+    {
+     "i": 118,
+     "text": "Les fans attendent la sortie du film avec impatience.",
+     "kind": "lateral",
+     "branch": "anticipation (claude)",
+     "rel": 0.7
+    },
+    {
+     "i": 14,
+     "text": "신경이 손상되면 손가락에 감각이 없어질 수 있다.",
+     "kind": "on",
+     "branch": "nerve bank",
+     "rel": 0.1
+    },
+    {
+     "i": 56,
+     "text": "The train to Edinburgh leaves from platform four at nine o'clock.",
+     "kind": "unrelated",
+     "branch": "nerve bank",
+     "rel": 0.0
+    }
+   ]
+  },
+  "reader_without_nerve": {
+   "question": "The shared reader active (≥ 0.3) with 'nerve' quiet (≤ 0.1): does it have lateral routes?",
+   "satisfied": true,
+   "evals": 624,
+   "extra": {},
+   "x": [
+    0.4379,
+    0.6581,
+    0.7225,
+    0.1928,
+    0.6714,
+    0.7922
+   ],
+   "y": {
+    "nerve": 0.0425,
+    "suspense": 0.367,
+    "anticipation": 0.6302,
+    "overwhelm": 0.3351,
+    "disappointed": 0.011,
+    "reader": 0.3434,
+    "dose": 0.7,
+    "dose_broad": 0.7
+   },
+   "text": "Install the package and restart the server before running the tests. He described the argument as a tricky task, but the emotional tension in the room made it feel more like a battle. They were all excited about the new feature, and it felt like they couldn’t wait to test it out.",
+   "sentences": [
+    {
+     "i": 55,
+     "text": "Install the package and restart the server before running the tests.",
+     "kind": "unrelated",
+     "branch": "nerve bank",
+     "rel": 0.0
+    },
+    {
+     "i": 142,
+     "text": "He described the argument as a tricky task, but the emotional tension in the room made it feel more like a battle.",
+     "kind": "lateral",
+     "branch": "overwhelm (bonsai)",
+     "rel": 0.7
+    },
+    {
+     "i": 126,
+     "text": "They were all excited about the new feature, and it felt like they couldn’t wait to test it out.",
+     "kind": "lateral",
+     "branch": "anticipation (bonsai)",
+     "rel": 0.7
+    }
+   ]
+  }
+ }
+}

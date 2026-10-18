@@ -228,3 +228,39 @@ Each neighbour got: weights-only direct token drivers; "one layer back" (attribu
 | L10/N6901 + (strongest reader) | nervous system / neuroanatomy | ✗ 4/8 | Fires on motor commands / motor control / speech production; silent on hippocampus, thalamus, dopamine. Feeders: ` motor` detectors at L0 and L2. **Post hoc (untested): a motor ↔ sensory axis.** Its − pole is taste and smell receptors. |
 
 Reading: the circuit's inputs and gate are solid. The token route is spelling-level. The reader was mislabelled, and it does not respond to psychological "nerve" ("my nerves were on edge" 0.02).
+
+## 2026-10-17: The neighbourhood web around L9/N3688 (`mono/probe/web.py`, `lateral.py`; tests committed in b273a0c, plan in bfac101)
+
+**Crawl:** 48 neurons.
+- 6 readers: kept if at least 2 of 3 methods agree (zero-ablation, a 2×-max boost, weights-only cosine).
+- 24 siblings: other main inputs of those readers.
+- 10 co-firing on nerve's sentences. Sanity check: the top one is nerve's own concept input, r = 0.69.
+- 8 second-hop upstream feeders.
+
+**Testing:**
+- Every node got a blind label from 3 Claude agents (top examples only), and two pre-registered 8 + 8 sentence tests from the same label: one written by Claude, one by Bonsai-8B itself.
+- A label holds with at least 5 of 8 firing and at most 1 false positive.
+
+**What held**
+- Claude-written tests held **38 of 48** labels.
+- Upstream feeders and siblings are mostly crisp token or spelling detectors: motor, serve, diarr-, trait, -ate, vic, Albany, p-value digits.
+- **All 6 readers failed.** Nerve's downstream is diffuse at this level of analysis.
+
+**Lateral family of psychological "nerve"** (all held their labels)
+- suspense L7/N9782; eager anticipation L9/N1061; overwhelmed L12/N3688; "disappointed" L1/N4037.
+- Each fires on its own sentences (0.6–0.9) and barely on the others' or on nerve's.
+- Zeroing any one moves the others by at most 0.03: parallel jobs, not a chain.
+- Their shared reader L14/N9470 reaches 0.30–0.34 without nerve, via anticipation and suspense. This **falsified** the pre-registered prediction; it is a family hub.
+
+**Lateral-cluster inverse** (6 outputs)
+- DE met 6 of 6 goals at about 600 evals each.
+- globalMOO met 5 of 6 at **2–10 evals** each (one model, trial 17556; a crashed first run was resumed on the same trained model).
+- Answers: every relative fires without nerve; nerve fires with all of them quiet (0.60); mixed passages co-activate them.
+
+**Two authors**
+- Bonsai's sentences are more predictable to Bonsai (median perplexity 40 vs 57), yet they fire the targets less (66% vs 80%) and misfire more as near misses (27% vs 3%).
+- Excluding the 146 sentences with leaked prompt wording: 69% vs 80% fire, 15% vs 3% false positives.
+- Bonsai's tests held 18 of 48 labels, failing mostly on false positives. The model can produce a concept but cannot reliably write around it.
+- Self-generated text gets no special treatment from these neurons.
+
+**globalMOO usage to date:** 8 models (3 toy, nerve, nerve circuit, genre, unclear, nerve lateral cluster).

@@ -1,0 +1,368 @@
+{
+ "solver": "gmoo",
+ "nodes": [
+  {
+   "name": "nerve",
+   "L": 9,
+   "n": 3688,
+   "pole": "+",
+   "label": "psychological 'nerve' (probed)"
+  },
+  {
+   "name": "suspense",
+   "L": 7,
+   "n": 9782,
+   "pole": "+",
+   "label": "suspense, close watching, nail-biter",
+   "lateral": true,
+   "rel": 0.7
+  },
+  {
+   "name": "anticipation",
+   "L": 9,
+   "n": 1061,
+   "pole": "+",
+   "label": "eager anticipation: can't wait, impatient",
+   "lateral": true,
+   "rel": 0.7
+  },
+  {
+   "name": "overwhelm",
+   "L": 12,
+   "n": 3688,
+   "pole": "+",
+   "label": "overwhelming, stressful, nerve-wracking",
+   "lateral": true,
+   "rel": 0.7
+  },
+  {
+   "name": "disappointed",
+   "L": 1,
+   "n": 4037,
+   "pole": "+",
+   "label": "the word 'disappointed'",
+   "lateral": true,
+   "rel": 0.5
+  },
+  {
+   "name": "reader",
+   "L": 14,
+   "n": 9470,
+   "pole": "+",
+   "label": "shared reader of nerve and 'disappointed' (label failed)"
+  }
+ ],
+ "goals": {
+  "nerve_alone": {
+   "question": "Psychological 'nerve' strong (≥ 0.5) with suspense, anticipation and overwhelm all quiet (≤ 0.15)",
+   "satisfied": true,
+   "evals": 2,
+   "extra": {
+    "stopped": "platform_done",
+    "doe_evals": 161
+   },
+   "x": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "y": {
+    "nerve": 0.5986,
+    "suspense": 0.0371,
+    "anticipation": 0.0945,
+    "overwhelm": 0.0695,
+    "disappointed": 0.0081,
+    "reader": 0.1998,
+    "dose": 0.1,
+    "dose_broad": 0.1
+   },
+   "text": "Повреждение нерва может привести к потере чувствительности. Повреждение нерва может привести к потере чувствительности. Повреждение нерва может привести к потере чувствительности.",
+   "sentences": [
+    {
+     "i": 13,
+     "text": "Повреждение нерва может привести к потере чувствительности.",
+     "kind": "on",
+     "branch": "nerve bank",
+     "rel": 0.1
+    },
+    {
+     "i": 13,
+     "text": "Повреждение нерва может привести к потере чувствительности.",
+     "kind": "on",
+     "branch": "nerve bank",
+     "rel": 0.1
+    },
+    {
+     "i": 13,
+     "text": "Повреждение нерва может привести к потере чувствительности.",
+     "kind": "on",
+     "branch": "nerve bank",
+     "rel": 0.1
+    }
+   ]
+  },
+  "suspense_without_nerve": {
+   "question": "Suspense strong (≥ 0.5) with 'nerve' quiet (≤ 0.1)",
+   "satisfied": true,
+   "evals": 9,
+   "extra": {
+    "stopped": "satisfied",
+    "doe_evals": 161
+   },
+   "x": [
+    0.6966,
+    0.6169,
+    0.3831,
+    0.404,
+    0.8769,
+    0.5716
+   ],
+   "y": {
+    "nerve": 0.0859,
+    "suspense": 0.5266,
+    "anticipation": 0.8188,
+    "overwhelm": 0.2649,
+    "disappointed": 0.0126,
+    "reader": 0.2496,
+    "dose": 0.7,
+    "dose_broad": 0.7
+   },
+   "text": "The German expression for suspense, *gespannt*, perfectly captured the feeling of the situation. Le nerf optique transmet les images de l'œil au cerveau. The kids are so excited they can barely wait for summer camp.",
+   "sentences": [
+    {
+     "i": 110,
+     "text": "The German expression for suspense, *gespannt*, perfectly captured the feeling of the situation.",
+     "kind": "lateral",
+     "branch": "suspense (bonsai)",
+     "rel": 0.7
+    },
+    {
+     "i": 11,
+     "text": "Le nerf optique transmet les images de l'œil au cerveau.",
+     "kind": "on",
+     "branch": "nerve bank",
+     "rel": 0.1
+    },
+    {
+     "i": 119,
+     "text": "The kids are so excited they can barely wait for summer camp.",
+     "kind": "lateral",
+     "branch": "anticipation (claude)",
+     "rel": 0.7
+    }
+   ]
+  },
+  "overwhelm_without_nerve": {
+   "question": "Overwhelm strong (≥ 0.4) with 'nerve' quiet (≤ 0.1)",
+   "satisfied": false,
+   "evals": 41,
+   "extra": {
+    "stopped": "max_iter",
+    "doe_evals": 161
+   },
+   "x": [
+    0.2612,
+    0.2621,
+    0.6653,
+    0.2994,
+    0.746,
+    0.1863
+   ],
+   "y": {
+    "nerve": 0.1349,
+    "suspense": 0.1797,
+    "anticipation": 0.1245,
+    "overwhelm": 0.519,
+    "disappointed": 0.0086,
+    "reader": 0.2504,
+    "dose": 0.7,
+    "dose_broad": 0.7
+   },
+   "text": "Blood vessels carry oxygen-rich blood away from the heart. She found the presentation nerve-wracking, especially when the audience seemed uninterested and the room was too quiet. The new job required handling a lot of stress, and the constant pressure to perform made it emotionally draining.",
+   "sentences": [
+    {
+     "i": 33,
+     "text": "Blood vessels carry oxygen-rich blood away from the heart.",
+     "kind": "near",
+     "branch": "nerve bank",
+     "rel": 0.0
+    },
+    {
+     "i": 139,
+     "text": "She found the presentation nerve-wracking, especially when the audience seemed uninterested and the room was too quiet.",
+     "kind": "lateral",
+     "branch": "overwhelm (bonsai)",
+     "rel": 0.7
+    },
+    {
+     "i": 140,
+     "text": "The new job required handling a lot of stress, and the constant pressure to perform made it emotionally draining.",
+     "kind": "lateral",
+     "branch": "overwhelm (bonsai)",
+     "rel": 0.7
+    }
+   ]
+  },
+  "nerve_and_overwhelm": {
+   "question": "Both 'nerve' and overwhelm strong (≥ 0.4)",
+   "satisfied": true,
+   "evals": 10,
+   "extra": {
+    "stopped": "satisfied",
+    "doe_evals": 161
+   },
+   "x": [
+    0.9953,
+    0.3644,
+    0.8464,
+    0.2205,
+    0.7749,
+    0.5318
+   ],
+   "y": {
+    "nerve": 0.4102,
+    "suspense": 0.711,
+    "anticipation": 0.5167,
+    "overwhelm": 0.7301,
+    "disappointed": 0.0079,
+    "reader": 0.3163,
+    "dose": 1.0,
+    "dose_broad": 1.0
+   },
+   "text": "The constant drilling next door is getting on my nerves. Juggling five freelance clients at once can be nerve wracking. Wir sind gespannt, wie das Rennen am Sonntag ausgeht.",
+   "sentences": [
+    {
+     "i": 5,
+     "text": "The constant drilling next door is getting on my nerves.",
+     "kind": "on",
+     "branch": "nerve bank",
+     "rel": 1.0
+    },
+    {
+     "i": 136,
+     "text": "Juggling five freelance clients at once can be nerve wracking.",
+     "kind": "lateral",
+     "branch": "overwhelm (claude)",
+     "rel": 0.7
+    },
+    {
+     "i": 103,
+     "text": "Wir sind gespannt, wie das Rennen am Sonntag ausgeht.",
+     "kind": "lateral",
+     "branch": "suspense (claude)",
+     "rel": 0.7
+    }
+   ]
+  },
+  "nerve_and_anticipation": {
+   "question": "Both 'nerve' and anticipation strong (≥ 0.4)",
+   "satisfied": true,
+   "evals": 9,
+   "extra": {
+    "stopped": "satisfied",
+    "doe_evals": 161
+   },
+   "x": [
+    0.9734,
+    0.1204,
+    0.8677,
+    0.2214,
+    0.7246,
+    0.8787
+   ],
+   "y": {
+    "nerve": 0.5034,
+    "suspense": 0.3759,
+    "anticipation": 0.6792,
+    "overwhelm": 0.7092,
+    "disappointed": 0.0072,
+    "reader": 0.2356,
+    "dose": 0.9,
+    "dose_broad": 0.9
+   },
+   "text": "He felt nervous before stepping onto the stage. Juggling five freelance clients at once can be nerve wracking. The doctor expressed eagerness to begin treatment, saying he couldn’t wait for the patient’s recovery.",
+   "sentences": [
+    {
+     "i": 21,
+     "text": "He felt nervous before stepping onto the stage.",
+     "kind": "on",
+     "branch": "nerve bank",
+     "rel": 0.9
+    },
+    {
+     "i": 136,
+     "text": "Juggling five freelance clients at once can be nerve wracking.",
+     "kind": "lateral",
+     "branch": "overwhelm (claude)",
+     "rel": 0.7
+    },
+    {
+     "i": 125,
+     "text": "The doctor expressed eagerness to begin treatment, saying he couldn’t wait for the patient’s recovery.",
+     "kind": "lateral",
+     "branch": "anticipation (bonsai)",
+     "rel": 0.7
+    }
+   ]
+  },
+  "reader_without_nerve": {
+   "question": "The shared reader active (≥ 0.3) with 'nerve' quiet (≤ 0.1): does it have lateral routes?",
+   "satisfied": true,
+   "evals": 7,
+   "extra": {
+    "stopped": "satisfied",
+    "doe_evals": 161
+   },
+   "x": [
+    0.2956,
+    0.4837,
+    0.2887,
+    0.3978,
+    0.4156,
+    0.3927
+   ],
+   "y": {
+    "nerve": 0.0752,
+    "suspense": 0.0258,
+    "anticipation": 0.0566,
+    "overwhelm": 0.0483,
+    "disappointed": 0.0101,
+    "reader": 0.3015,
+    "dose": 0.1,
+    "dose_broad": 0.1
+   },
+   "text": "Emperor Nero is said to have played music while Rome burned. The burn left her skin red, hot, and painful to the touch. 신경이 손상되면 손가락에 감각이 없어질 수 있다.",
+   "sentences": [
+    {
+     "i": 34,
+     "text": "Emperor Nero is said to have played music while Rome burned.",
+     "kind": "spelling",
+     "branch": "nerve bank",
+     "rel": 0.0
+    },
+    {
+     "i": 44,
+     "text": "The burn left her skin red, hot, and painful to the touch.",
+     "kind": "opposite",
+     "branch": "nerve bank",
+     "rel": 0.0
+    },
+    {
+     "i": 14,
+     "text": "신경이 손상되면 손가락에 감각이 없어질 수 있다.",
+     "kind": "on",
+     "branch": "nerve bank",
+     "rel": 0.1
+    }
+   ]
+  }
+ },
+ "gmoo": {
+  "model_id": 6723,
+  "trial_id": 17556,
+  "doe_evals": 161
+ }
+}

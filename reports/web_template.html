@@ -42,11 +42,11 @@ section { display: flex; flex-direction: column; gap: 14px; }
 .tile { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 12px 14px; display: flex; flex-direction: column; gap: 2px; }
 .tile .v { font: 500 1.5rem/1.15 var(--font-mono); font-variant-numeric: tabular-nums; }
 .tile .l { font-size: 0.82rem; color: var(--ink-2); }
-.graph-band { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 14px; align-items: start; }
+.graph-band { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 14px; align-items: start; }
 @media (max-width: 900px) { .graph-band { grid-template-columns: 1fr; } }
 .panel { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 14px; min-width: 0; }
 .graph-wrap { overflow-x: auto; }
-.graph-wrap svg { display: block; min-width: 820px; width: 100%; height: auto; }
+.graph-wrap svg { display: block; min-width: 980px; width: 100%; height: auto; }
 .node { cursor: pointer; }
 .node:focus-visible circle { stroke: var(--accent); stroke-width: 3; }
 .legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.8rem; color: var(--ink-2); }
@@ -110,15 +110,15 @@ code { font-family: var(--font-mono); font-size: 0.86em; }
     <span><i class="ln" style="background:var(--s2)"></i>gate</span><span><i class="ln" style="background:var(--ink-3)"></i>co-fires (dashed)</span><span><i style="background:none;border:2px solid var(--accent)"></i>lateral cluster</span></div>
     <div class="graph-band"><div class="panel graph-wrap" id="graph"></div><div class="panel insp" id="insp"><p style="color:var(--ink-3);font-size:.9rem">Select a neuron in the web or the table to inspect it.</p></div></div>`);
   {
-    const W = 1100, H = 640, mL = 40, mR = 30, mT = 30, mB = 40, Lmax = 21;
+    const W = 1180, H = 860, mL = 30, mR = 150, mT = 30, mB = 40, Lmax = 20;
     const x = L => mL + L / Lmax * (W - mL - mR);
     const svg = mk("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Layered graph of neurons around L9/N3688" });
-    for (let L = 0; L <= Lmax; L++) { mk("line", { x1: x(L), x2: x(L), y1: mT - 10, y2: H - mB + 6, stroke: "var(--grid)" }, svg); if (L % 2 === 0 || L === 9) txt(svg, x(L), H - 14, "L" + L, { "text-anchor": "middle", "font-family": "IBM Plex Mono, monospace", "font-size": 10.5, fill: L === 9 ? "var(--accent)" : "var(--ink-3)" }); }
+    for (let L = 0; L <= Lmax; L++) { mk("line", { x1: x(L), x2: x(L), y1: mT - 10, y2: H - mB + 6, stroke: "var(--grid)" }, svg); txt(svg, x(L), H - 14, "L" + L, { "text-anchor": "middle", "font-family": "IBM Plex Mono, monospace", "font-size": 12, fill: L === 9 ? "var(--accent)" : "var(--ink-3)" }); }
     const all = [{ unit: D.center, L: 9, center: true }, ...N];
     const cols = {};
     all.forEach(n => (cols[n.L] = cols[n.L] || []).push(n));
     const order = r => (r.center ? 5 : r.roles.includes("input") || r.roles.includes("gate") ? 1 : r.roles.includes("hop-2 upstream") ? 0 : r.roles.includes("reader") ? 3 : r.roles.includes("co-fires") ? 6 : 8);
-    Object.values(cols).forEach(c => { c.sort((a, b) => order(a) - order(b) || a.n - b.n); c.forEach((n, i) => { n.y = mT + 20 + (i + 0.5) * ((H - mT - mB - 30) / c.length); n.x = x(n.L) + (c.length > 6 ? ((i % 2) * 2 - 1) * 9 : 0); }); });
+    Object.values(cols).forEach(c => { c.sort((a, b) => order(a) - order(b) || a.n - b.n); c.forEach((n, i) => { n.y = mT + 20 + (i + 0.5) * ((H - mT - mB - 30) / c.length); n.x = x(n.L) + (c.length > 5 ? ((i % 2) * 2 - 1) * 12 : 0); }); });
     const pos = Object.fromEntries(all.map(n => [n.unit, n]));
     const col = { feeds: "var(--ink)", reads: "var(--s1)", "feeds reader": "var(--s3)", gates: "var(--s2)", "co-fires": "var(--ink-3)" };
     D.edges.forEach(e => {
@@ -132,9 +132,9 @@ code { font-family: var(--font-mono); font-size: 0.86em; }
     all.forEach(n => {
       const gN = mk("g", { class: "node", tabindex: 0, role: "button", "aria-label": n.unit }, svg);
       const fill = n.center ? "var(--accent)" : `var(--${verdict(n) === "good" ? "good" : verdict(n) === "bad" ? "bad" : "na"})`;
-      mk("circle", { cx: n.x, cy: n.y, r: n.center ? 13 : 7.5, fill, stroke: n.lateral ? "var(--accent)" : "var(--surface)", "stroke-width": n.lateral ? 3 : 1.5 }, gN);
+      mk("circle", { cx: n.x, cy: n.y, r: n.center ? 15 : 9, fill, stroke: n.lateral ? "var(--accent)" : "var(--surface)", "stroke-width": n.lateral ? 3 : 1.5 }, gN);
       const short = n.center ? "nerve" : (n.short || "");
-      txt(gN, n.x + (n.center ? 17 : 11), n.y + 4, short, { "font-size": n.center ? 12.5 : 10, fill: n.center ? "var(--ink)" : "var(--ink-2)", "font-weight": n.center || n.lateral ? 600 : 400 });
+      txt(gN, n.x + (n.center ? 19 : 13), n.y + 4.5, short, { "font-size": n.center ? 15 : 12.5, fill: n.center ? "var(--ink)" : "var(--ink-2)", "font-weight": n.center || n.lateral ? 600 : 400 });
       if (!n.center) { gN.addEventListener("click", () => inspect(n.unit)); gN.addEventListener("keydown", ev => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); inspect(n.unit); } }); }
     });
     document.getElementById("graph").appendChild(svg);

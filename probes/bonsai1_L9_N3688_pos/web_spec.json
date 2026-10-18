@@ -1,0 +1,22 @@
+{
+ "claim": "Starting from the 'nerve' neuron, we crawled 48 neurons that feed it, read it, feed its readers, or fire alongside it. Each got a blind label and two pre-registered tests, one written by Claude and one by Bonsai itself. The inputs are crisp spelling and concept detectors. The readers are diffuse. Beside 'nerve' sits a small family of separate emotional-tension neurons (suspense, eager anticipation, being overwhelmed, disappointment) that share a reader but do not feed each other.",
+ "lateral": ["L7/N9782", "L9/N1061", "L12/N3688", "L1/N4037"],
+ "lateral_text": "Four relatives of psychological 'nerve' held their labels: suspense (L7/N9782), eager anticipation (L9/N1061), feeling overwhelmed (L12/N3688), and the word 'disappointed' (L1/N4037). Each fires on its own sentences and barely on the others' or on nerve's. Zeroing any one moves the others by at most 0.03, so they are parallel jobs, not a chain. The inverse confirms it: every relative can be driven without 'nerve', 'nerve' can be driven with all of them quiet, and mixed passages drive several at once. Their shared reader (L14/N9470) reaches 0.30–0.34 without 'nerve', through the anticipation and suspense contexts. That falsified a pre-registered prediction and makes it a hub for the family. globalMOO answered five of the six questions in 2–10 evaluations each, against about 600 for differential evolution.",
+ "sources_text": "Bonsai's own sentences are more predictable to it (median perplexity 40 vs 57), yet they drive the target neurons less: 66% of its 'should fire' sentences fired, against 80% for Claude's. Its near misses misfired 27% of the time, against 3%. The gap holds after removing the 146 Bonsai sentences that leaked prompt wording ('the feature detector…'): 69% vs 80% fire, 15% vs 3% false positives. Bonsai can produce text with the concept but cannot reliably write around it. Its tests therefore fail most labels on false positives (18 of 48 held, against 38). Self-generated text gets no special treatment from these neurons.",
+ "short": {
+  "L3/N6493": "spelling nerv/nerf", "L8/N7756": "nerve concept (Arabic)", "L8/N3858": "pain", "L6/N2055": "pain, other languages",
+  "L10/N6901": "motor ↔ sensory", "L14/N9470": "emotional hub", "L9/N1061": "can't wait", "L7/N9782": "suspense",
+  "L12/N3688": "overwhelmed", "L1/N4037": "disappointed", "L10/N2242": "autonomic", "L8/N7333": "brain circuitry",
+  "L0/N873": "motor", "L2/N3473": "motor", "L0/N1684": "serve", "L4/N5828": "Arabic -ب", "L4/N5727": "CAS / عص",
+  "L7/N1548": "Latinate anatomy", "L5/N9269": "-bb- in acronyms", "L20/N5963": "reader (incoherent)",
+  "L19/N2291": "reader (incoherent)", "L13/N3792": "reader (name endings?)", "L10/N5553": "reader (biology)",
+  "L4/N7884": "vic", "L9/N1865": "p-value digits", "L4/N12227": "diarr-", "L2/N5072": "trait", "L4/N7510": "-ate"
+ },
+ "caveats": [
+  "Edges come from zeroing one neuron at a time. Spread-out effects and attention paths are missed, so the web is a lower bound on connectivity.",
+  "Labels are first readings by blind agents from 8 top examples per pole. A held label passed an 8 + 8 sentence test (at least 5 of 8 firing, at most 1 false positive), not a full probe.",
+  "All six readers failed their labels. That could mean deep readers are diffuse, or that 8 examples are too few to label them. A full probe on the strongest reader would tell which.",
+  "Bonsai-written tests fail mostly on near misses. They measure the model's ability to write around a concept as much as the neuron's selectivity.",
+  "Every test set and the lateral-cluster predictions were committed to git before they were run (commits b273a0c, bfac101). globalMOO used one model for the lateral cluster; a crashed first run was resumed on the same model rather than retrained."
+ ]
+}

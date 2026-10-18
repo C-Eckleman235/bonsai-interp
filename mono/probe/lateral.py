@@ -101,6 +101,20 @@ def couple(ws):
     ws.save("lateral_coupling.json", out)
 
 
+def _find_trained(name):
+    """(model_id, trial_id) of an already trained globalMOO model with this name, so a crashed
+    run is resumed instead of creating a second model."""
+    from globalmoo.request.read_model import ReadModel
+    from globalmoo.request.read_models import ReadModels
+    c = S._gmoo()
+    for m in c.execute_request(ReadModels()):
+        if m.name == name:
+            full = c.execute_request(ReadModel(model_id=m.id))
+            if full.projects and full.projects[0].trials:
+                return m.id, full.projects[0].trials[-1].id
+    return None
+
+
 def invert(ws, solver):
     spec = ws.load("lateral_spec.json")
     scan = explore.scan(ws.model)
@@ -112,7 +126,9 @@ def invert(ws, solver):
     p = textinv.build_circuit_problem(ev, man)
     out = {"solver": solver, "nodes": spec["nodes"], "goals": {}}
     if solver == "gmoo":
-        gm = S.GmooInverse(p, f"mono-lateral-{ws.model}-L{ws.L}-N{ws.n}")
+        name = f"mono-lateral-{ws.model}-L{ws.L}-N{ws.n}"
+        existing = _find_trained(name)
+        gm = S.GmooInverse.attach(p, *existing) if existing else S.GmooInverse(p, name)
         out["gmoo"] = {"model_id": gm.model_id, "trial_id": gm.trial.id, "doe_evals": gm.doe_evals}
     for name, g in spec["goals"].items():
         G = [Goal(*x) if len(x) == 3 else Goal(x[0], x[1]) for x in g["goals"]]

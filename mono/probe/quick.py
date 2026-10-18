@@ -82,7 +82,7 @@ def run(ws: Workspace, tests=("quick_tests.json",), out="quick.json", with_feede
                "n_fire": n_fire, "n_false_pos": n_fp, "n_written": [len(nb["fire"]), len(nb["quiet"])],
                "survives": bool(n_fire >= need and n_fp <= 1)}
         results.append(res)
-        print(f"\n===== {nb['unit']}{nb['pole']} ({nb['role']}): {nb['label']}")
+        print(f"\n===== {nb['unit']}{nb['pole']} ({nb.get('role', '')}): {nb['label']}")
         print(f"  VERDICT: {'SURVIVES' if res['survives'] else 'FAILS'}  fire {n_fire}/{len(nb['fire'])} (need {need})  false positives {n_fp}/{len(nb['quiet'])}")
         print(f"  direct tokens: {direct}")
         for f in feeders:
