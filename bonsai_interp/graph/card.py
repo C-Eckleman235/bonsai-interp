@@ -89,25 +89,32 @@ def flags(st):
 
 @lru_cache(None)
 def _weights(name):
-    """(weight map, model folder, final norm gain in fp32, unembedding in fp16) on the CPU."""
-    from safetensors import safe_open
+    """(down_proj column reader, final norm gain in fp32, unembedding in fp16) on the CPU, from the
+    unpacked safetensors or from the 1-bit GGUF (bonsai_interp.gguf_weights), whichever the folder holds."""
     from bonsai_interp.model import MODELS
     path = MODELS[name]
+    if not (path / "model.safetensors.index.json").exists():
+        from bonsai_interp import gguf_weights
+        ts = gguf_weights.by_name(path)
+        col = lambda L, n: gguf_weights.column(ts[f"model.layers.{L}.mlp.down_proj.weight"], n)
+        return col, gguf_weights.dense(ts["model.norm.weight"]), gguf_weights.dense(ts["lm_head.weight"]).half()
+    from safetensors import safe_open
     idx = json.loads((path / "model.safetensors.index.json").read_text())["weight_map"]
     def get(t):
         with safe_open(str(path / idx[t]), "pt", device="cpu") as h:
             return h.get_tensor(t)
-    return idx, path, get("model.norm.weight").float(), get("lm_head.weight")
+    def col(L, n):
+        t = f"model.layers.{L}.mlp.down_proj.weight"
+        with safe_open(str(path / idx[t]), "pt", device="cpu") as h:
+            return h.get_slice(t)[:, n:n + 1][:, 0].float()
+    return col, get("model.norm.weight").float(), get("lm_head.weight")
 
 
 def direct_logits(name, L, n, k=12):
     """Tokens the + pole's output direction promotes / suppresses directly (the - pole does the reverse):
     W_U (g * d), d = down_proj column n, g = final RMSNorm gain. Same as probe/induce.py `direct`."""
-    from safetensors import safe_open
-    idx, path, g, wu = _weights(name)
-    t = f"model.layers.{L}.mlp.down_proj.weight"
-    with safe_open(str(path / idx[t]), "pt", device="cpu") as h:
-        d = h.get_slice(t)[:, n:n + 1][:, 0].float()
+    col, g, wu = _weights(name)
+    d = col(L, n)
     logits = _matvec(wu, g * d)
     tok = explore.tokenizer()
     top, bot = logits.topk(k), (-logits).topk(k)

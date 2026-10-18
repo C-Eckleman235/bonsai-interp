@@ -76,7 +76,7 @@ jobs:
                                  capture_output=True, text=True).stdout.split()
           idx = json.load(open("graph/index.json"))["neurons"]
           poles = sorted({json.load(open(f)).get("neuron") for f in files if f.endswith(".json") and f.startswith("graph/contributions/")} - {None})
-          lines = [f"- `{p}`: {idx[p]['status']}" + (f" ({idx[p].get('short')})" if idx.get(p, {}).get('short') else "") for p in poles if p in idx]
+          lines = [f"- `{p}`: {idx[p]['status']}" + (f" ({idx[p].get('short') or (idx[p].get('label') or '')[:70]})" if idx.get(p, {}).get('short') or idx.get(p, {}).get('label') else "") for p in poles if p in idx]
           print("Merged and folded. The map now shows:\n" + "\n".join(lines))
           PY
           gh pr comment "${{ steps.lane.outputs.pr }}" --repo "$REPO" --body-file summary.md

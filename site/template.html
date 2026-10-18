@@ -483,8 +483,8 @@ td.n { font-family: var(--mono); text-align: right; }
       <div class="eyebrow">Hand this to your agent</div>
       <div class="prompt">${cmd(sweepPrompt())}</div>
       <details class="byhand"><summary>Do it by hand instead</summary><ol class="steps">
-        <li>Draw 16 poles and read each card.${cmd(`python -m bonsai_interp.graph.play draw --k 16\npython -m bonsai_interp.graph.play card --neuron <id>`)}</li>
-        <li>Pre-register them all in one commit.${cmd(`python -m bonsai_interp.graph.play new interpret --neuron <id1> <id2> … --handle ${handle()}\ngit add <the tests files> && git commit -m "Pre-register sweep tests"`)}</li>
+        <li>Draw 16 poles (this writes a tests file for each) and read each card.${cmd(`python -m bonsai_interp.graph.play draw --k 16 --handle ${handle()}\npython -m bonsai_interp.graph.play card --neuron <id>`)}</li>
+        <li>Fill in every tests file, then pre-register them all in one commit.${cmd(`git add <the tests files> && git commit -m "Pre-register sweep tests"`)}</li>
         <li>Run them together and commit the results separately.${cmd(`python -m bonsai_interp.graph.play run <the tests files>\ngit add graph/contributions && git commit -m "Sweep results"`)}</li>
         <li>Open one pull request.${cmd(`gh pr create --template interpret.md --title "sweep: 16 poles (<held> held)"`)}</li></ol></details>
       <div class="links"><a href="https://github.com/${REPO}" target="_blank" rel="noopener">Repository</a>

@@ -90,6 +90,9 @@ def draw(a):
         if nid not in known and nid not in out:
             out.append(nid)
     print(" ".join(out))
+    if a.handle:  # write the tests files for exactly these poles, so the ids cannot drift between draw and new
+        a.neuron, a.kind, a.verdict = out, "interpret", "confirm"
+        new(a)
 
 
 def _check_tests_file(path):
@@ -147,7 +150,13 @@ def run(a):
             test = {"protocol": t["protocol"], "tests_file": rel, "prereg_commit": prereg, "author": a.author or t["contributor"],
                     "n_fire": nf, "n_false_pos": fp, "n_written": [len(fire), len(quiet)], "per_sentence": per}
             tests.append(test)
-            print(f"{t['neuron']:<22} {nb['unit']}{nb['pole']}: fire {nf}/{len(fire)}, near misses firing {fp}/{len(quiet)} "
+            fa, qa = [r["act"] for r in fire], [r["act"] for r in quiet]
+            auroc = sum((x > y) + 0.5 * (x == y) for x in fa for y in qa) / (len(fa) * len(qa))
+            med = sorted(fa)[len(fa) // 2] if len(fa) % 2 else sum(sorted(fa)[len(fa) // 2 - 1: len(fa) // 2 + 1]) / 2
+            print(f"{t['neuron']:<22} AUROC {auroc:.2f} (need >= 0.90), median fire {med:.2f} (need >= 0.20), "
+                  f"near misses >= 0.30: {fp} (max 1); fire >= 0.30: {nf}/{len(fa)} -> {outcome(test).upper()} under {t['protocol']}"
+                  if t["protocol"] == "quick-8+8@2" else
+                  f"{t['neuron']:<22} {nb['unit']}{nb['pole']}: fire {nf}/{len(fire)}, near misses firing {fp}/{len(quiet)} "
                   f"-> {outcome(test).upper()} under {t['protocol']}")
         p = Path(f).resolve()
         declared = dict(t.get("methods") or {})
@@ -223,7 +232,8 @@ def probe(a):
                                1.0 if pole == 0 else -1.0)
     for t, r in zip(texts, ev(texts)):
         print(f"{r['act']:6.3f}  peak {r['peak_token']!r:<14} {t}")
-    print("(exploration only: nothing was recorded; fractions of the pole's corpus max, held = 0.3)")
+    print("(exploration only: nothing was recorded. Fractions of the pole's corpus max. A quick-8+8@2 test holds when its 8 fire "
+          "sentences beat its 8 near misses (AUROC >= 0.90), the median fire sentence reaches 0.20, and at most 1 near miss reaches 0.30)")
 
 
 def edge(a):
@@ -263,6 +273,7 @@ def main():
     dr.add_argument("--k", type=int, default=16)
     dr.add_argument("--seed", type=int, help="reproducible draw (default: random)")
     dr.add_argument("--layers", default="0-35")
+    dr.add_argument("--handle", help="also write an interpret tests file for each drawn pole (play new), as a sweep does")
     s = sub.add_parser("step")
     s.add_argument("--neuron", required=True)
     s.add_argument("--k", type=int, default=4)

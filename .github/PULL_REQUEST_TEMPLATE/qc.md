@@ -30,5 +30,5 @@
 
 - [ ] New sentences, not copies of the original test.
 - [ ] Tests were committed before results (do not squash those commits).
-- [ ] Only new files under `graph/contributions/…` plus refreshed derived files; no edits to anyone's contribution.
+- [ ] Only new files under `graph/contributions/…` (no derived files: they are regenerated on main); no edits to anyone's contribution.
 - [ ] `python -m bonsai_interp.graph.validate` passes.

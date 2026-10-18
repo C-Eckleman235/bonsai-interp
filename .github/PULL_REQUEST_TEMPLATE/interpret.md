@@ -34,7 +34,7 @@
 
 ## Checklist
 
-- [ ] Exactly the two contribution files are added, under `graph/contributions/…`, plus refreshed derived files from `python -m bonsai_interp.graph.fold`.
+- [ ] Only contribution files are added (a tests file and a results file per pole, under `graph/contributions/…`). No derived files: the merge workflow regenerates them on main.
 - [ ] Tests were committed before results (do not squash those commits).
 - [ ] Near misses keep the topic and drop the claimed trigger.
 - [ ] Nothing bulky, no tensors, no local paths (DATA_POLICY.md).

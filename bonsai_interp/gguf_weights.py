@@ -71,6 +71,21 @@ def dense(t) -> torch.Tensor:
     raise ValueError(f"{t.name}: tensor type {t.tensor_type.name} is not supported (only the Q1_0 Bonsai GGUF is)")
 
 
+def column(t, j) -> torch.Tensor:
+    """Column j of a Q1_0 weight (e.g. one neuron's down_proj output direction) as float32, without
+    dequantizing the rest."""
+    out_f, in_f = int(t.shape[1]), int(t.shape[0])
+    raw = np.asarray(t.data).view(np.uint8).reshape(out_f, in_f // 128, 18)[:, j // 128]
+    scale = raw[:, :2].copy().view(np.float16)[:, 0].astype(np.float32)
+    bit = (raw[:, 2 + (j % 128) // 8] >> (j % 8)) & 1
+    return torch.from_numpy((bit.astype(np.float32) * 2 - 1) * scale)
+
+
+def by_name(path: Path) -> dict:
+    """{hf_name: gguf tensor} for the folder's GGUF (memory-mapped, nothing loaded yet)."""
+    return dict(tensors(path))
+
+
 def tensors(path: Path):
     """Yields (hf_name, gguf tensor) for every tensor in the folder's GGUF."""
     from gguf import GGUFReader

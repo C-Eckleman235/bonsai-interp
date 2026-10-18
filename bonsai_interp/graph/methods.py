@@ -19,6 +19,8 @@ SCREENS = {
     "look": "top corpus examples (play look / explore)",
     "bands": "full activation distribution and band samples (probe.bands)",
     "probe": "exploratory sentence scoring, nothing recorded (play probe)",
+    "card": "neuron card: top examples, density, regimes, logit effect, flags (play card)",
+    "which": "reverse search: which poles fire on a text or token (play which)",
     "quick-test": "pre-registered 8 + 8 sentence test (quick-8+8)",
     "second-round": "a further labelling round after a failed test",
     "step-out": "strongest feeders by attribution + single-unit zeroing (play step), edges recorded",
