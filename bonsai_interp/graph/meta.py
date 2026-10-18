@@ -11,6 +11,7 @@ import statistics
 from collections import defaultdict
 
 from bonsai_interp.graph.contrib import ROOT, load_all
+from bonsai_interp.graph.protocols import outcome
 
 
 def main():
@@ -29,7 +30,7 @@ def main():
         if not m:
             continue
         n_with += 1
-        held = [t.get("survives") for t in c.get("tests", []) if t.get("protocol", "").startswith("quick")]
+        held = [outcome(t) == "held" for t in c.get("tests", []) if (t.get("protocol") or t.get("type") or "").startswith("quick")]
         row = {"held": held[-1] if held else None, "minutes": m.get("minutes"),
                "scrutiny": (idx.get(c["neuron"], {}).get("scrutiny") or {}).get("level")}
         for s in set(m.get("screens", [])) | set(m.get("detected", [])):
