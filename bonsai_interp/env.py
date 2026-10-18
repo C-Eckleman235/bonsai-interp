@@ -34,15 +34,20 @@ def _setting(name):
     return (v or "").strip().lower() or None
 
 
+def _cuda_ok():
+    # CUDA_VISIBLE_DEVICES="" leaves is_available() True with no device to use
+    return torch.cuda.is_available() and torch.cuda.device_count() > 0
+
+
 def _pick_device():
     want = _setting("BONSAI_DEVICE")
     if want:
-        if want.startswith("cuda") and not torch.cuda.is_available():
+        if want.startswith("cuda") and not _cuda_ok():
             raise RuntimeError(f"BONSAI_DEVICE={want} but torch sees no CUDA GPU")
         if want == "mps" and not torch.backends.mps.is_available():
             raise RuntimeError("BONSAI_DEVICE=mps but torch.backends.mps is not available (Apple Silicon + macOS 14 needed)")
         return torch.device(want)
-    if torch.cuda.is_available():
+    if _cuda_ok():
         return torch.device("cuda")
     if torch.backends.mps.is_available():
         return torch.device("mps")
