@@ -20,10 +20,24 @@ from safetensors import safe_open
 from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer
 
 ROOT = Path(__file__).resolve().parent.parent
+
+
+def _model_dir(env, default):
+    """Weights already on this machine can be used in place: set e.g. BONSAI1_PATH=<folder> in the
+    environment or in .env, instead of downloading a second copy into models/."""
+    import os
+    v = os.environ.get(env)
+    if not v and (ROOT / ".env").exists():
+        for line in (ROOT / ".env").read_text(encoding="utf-8").splitlines():
+            if line.startswith(env + "="):
+                v = line.split("=", 1)[1].strip().strip('"')
+    return Path(v) if v else ROOT / "models" / default
+
+
 MODELS = {
-    "bonsai1": ROOT / "models" / "Bonsai-8B-unpacked",
-    "ternary": ROOT / "models" / "Ternary-Bonsai-8B-unpacked",
-    "qwen": ROOT / "models" / "Qwen3-8B",
+    "bonsai1": _model_dir("BONSAI1_PATH", "Bonsai-8B-unpacked"),
+    "ternary": _model_dir("TERNARY_PATH", "Ternary-Bonsai-8B-unpacked"),
+    "qwen": _model_dir("QWEN_PATH", "Qwen3-8B"),
 }
 GROUP = 128
 COMPUTE_DTYPE = torch.bfloat16

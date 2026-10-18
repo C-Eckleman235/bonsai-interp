@@ -138,8 +138,10 @@ def _ok(flag, name, detail="", fix=""):
 
 def doctor(a):
     """Check that this machine can play. Exit code 0 when every required check passes."""
+    import logging
     import platform
     import shutil
+    logging.getLogger("torch.distributed.elastic.multiprocessing.redirects").setLevel(logging.ERROR)
     req = []
     v = sys.version_info
     req.append(_ok((3, 11) <= v[:2] <= (3, 13), "Python 3.11-3.13", platform.python_version(), "uv python install 3.13 && uv sync"))
@@ -153,9 +155,19 @@ def doctor(a):
             req.append(_ok(mem >= 15, "GPU memory >= 15 GB", f"{mem:.1f} GB", "use a 16 GB+ GPU"))
     except ImportError:
         req.append(_ok(False, "torch", "not importable", "uv sync"))
-    m = ROOT / "models" / "Bonsai-8B-unpacked" / "config.json"
-    req.append(_ok(m.exists(), "Bonsai-8B weights", str(m.parent.relative_to(ROOT)), "bash scripts/download_models.sh  (Bonsai-8B-unpacked is enough)"))
-    for f, size in (("corpus.npz", 100e6), ("scan_bonsai1.npz", 1e9)):
+    from bonsai_interp.model import MODELS
+    m = MODELS["bonsai1"] / "config.json"
+    shards_ok, detail = m.exists(), str(m.parent)
+    idx_f = m.parent / "model.safetensors.index.json"
+    if idx_f.exists():
+        shards = sorted(set(json.loads(idx_f.read_text(encoding="utf-8"))["weight_map"].values()))
+        have = [s for s in shards if (m.parent / s).exists()]
+        size = sum((m.parent / s).stat().st_size for s in have) / 2**30
+        shards_ok = len(have) == len(shards) and size > 14
+        detail = f"{m.parent} ({len(have)}/{len(shards)} shards, {size:.1f} GB)"
+    req.append(_ok(shards_ok, "Bonsai-8B weights", detail,
+                   "bash scripts/download_models.sh, or if the weights are already on this machine put BONSAI1_PATH=<that folder> in .env"))
+    for f, size in (("corpus.npz", 115e6), ("scan_bonsai1.npz", 1.1e9)):
         p = ROOT / "data" / f
         req.append(_ok(p.exists() and p.stat().st_size > size, f"data/{f}", f"{p.stat().st_size / 1e6:.0f} MB" if p.exists() else "missing",
                        "bash scripts/fetch_data.sh"))
@@ -276,6 +288,11 @@ def brief(a):
     print("\n".join(out))
 
 def main():
+    for stream in (sys.stdout, sys.stderr):  # Windows consoles default to a legacy code page
+        try:
+            stream.reconfigure(encoding="utf-8", errors="replace")
+        except (AttributeError, ValueError):
+            pass
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
     n = sub.add_parser("new")

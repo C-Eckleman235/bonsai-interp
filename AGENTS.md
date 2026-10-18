@@ -11,21 +11,29 @@ Run every Python command through the project environment: `uv run python -m …`
 
 ## 1. Get ready (once per machine)
 
-1. Install the environment: `uv sync`. You need Python 3.11–3.13 and uv. If uv is missing,
+You need about 18 GB of disk in total: 16 GB of weights and 1.4 GB of data. The scripts are
+bash; on Windows, Git Bash (which comes with Git for Windows) runs them.
+
+1. Clone https://github.com/moridinamael/neuron-cleanroom next to this repository; blind
+   clean-room missions need it. Ask the person for their GitHub handle now, since every
+   mission uses it.
+2. Install the environment: `uv sync`. You need Python 3.11–3.13 and uv. If uv is missing,
    install it from https://docs.astral.sh/uv/.
-2. Download the model: `bash scripts/download_models.sh` gets Bonsai-8B only (about 16 GB of
-   disk), which is all you need. Ask before using that much disk.
-3. Fetch the data: `bash scripts/fetch_data.sh`. This gets the corpus and the full neuron scan
-   (1.4 GB) and needs `gh` to be logged in.
-4. Run `python -m bonsai_interp.graph.play doctor` and fix whatever it reports, until it says
-   **READY**.
-5. **Ask the person** only for things you cannot do yourself:
+3. Get the model weights (Bonsai-8B only):
+   - If they are **already on this machine**, put `BONSAI1_PATH=<that folder>` in `.env`
+     instead of downloading. The folder is the one that contains `config.json` and the
+     `model-0000x-of-00004.safetensors` shards.
+   - Otherwise run `bash scripts/download_models.sh` (about 16 GB). Ask before using that much
+     disk. A warning about unauthenticated Hugging Face requests is harmless.
+4. Fetch the data: `bash scripts/fetch_data.sh`. It downloads the corpus (120 MB), the full
+   neuron scan (1.1 GB) and a band scan (0.2 GB), and needs `gh` to be logged in.
+5. Run `python -m bonsai_interp.graph.play doctor` and fix whatever it reports, until it says
+   **READY**. Doctor checks every weight shard, then loads the model and reads one known neuron.
+6. **Ask the person** only for things you cannot do yourself:
    - logging in to GitHub (`gh auth login`)
-   - their GitHub handle
    - a globalMOO key, which is optional and goes in `.env` as `GMOO_API_KEY=…`
    - permission to use the disk space
-6. For blind clean-room missions, also clone https://github.com/moridinamael/neuron-cleanroom
-   next to this repository. You also need the `claude` CLI.
+   - for blind missions, the `claude` CLI or `codex` CLI
 
 When everything passes, tell the person "Ready to survey". Report the GPU and anything optional
 that is missing.

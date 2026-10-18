@@ -333,7 +333,7 @@ check_prereg: tests committed in b756721,
       <div class="req">
         <dl>
           <dt>GPU</dt><dd>NVIDIA, 16 GB of memory (tested on an RTX 5080)</dd>
-          <dt>Disk</dt><dd>About 20 GB: the Bonsai-8B weights and a 1.4 GB corpus scan</dd>
+          <dt>Disk</dt><dd>About 18 GB: the Bonsai-8B weights (16 GB) and the corpus and scan (1.4 GB)</dd>
           <dt>Agent</dt><dd>Claude Code, Codex, or any coding agent that can run a shell</dd>
           <dt>Accounts</dt><dd>GitHub, for claims and pull requests</dd>
           <dt>Optional</dt><dd>A globalMOO key for learned inverse search; the SciPy path works without one</dd>
@@ -439,7 +439,7 @@ check_prereg: tests committed in b756721,
     `<div class="tier${i === 0 ? " now" : ""}"><div class="kicker">${when}</div><h3>${name}</h3><p>${what}</p><div class="bar"><i style="width:${Math.min(100, 100 * n / of)}%"></i></div><div class="count">${n.toLocaleString()} / ${of.toLocaleString()} ${unit}</div></div>`).join("");
 
   // setup prompt
-  const BOOT = "Set me up to play the Bonsai Neuron Survey, an open, test-backed map of what each neuron in the 1-bit Bonsai-8B model does.\n\n1. Ask me where to work (default: a folder called bonsai-survey in my home directory). Clone these two repositories side by side there:\n   https://github.com/moridinamael/bonsai-interp\n   https://github.com/moridinamael/neuron-cleanroom\n2. In bonsai-interp, read AGENTS.md and follow section 1, \"Get ready\".\n3. Run: uv run python -m bonsai_interp.graph.play doctor\n   Fix every FAIL and run it again until it prints READY.\n4. Ask me only for what you can't do yourself: logging in to GitHub (gh auth login), permission to use about 20 GB of disk, and, optionally, a globalMOO API key for .env.\n5. Finish by telling me \"Ready to survey\", with the GPU and the doctor summary. From then on I'll paste mission prompts from the survey page.";
+  const BOOT = "Set me up to play the Bonsai Neuron Survey, an open, test-backed map of what each neuron in the 1-bit Bonsai-8B model does.\n\n1. Ask me where to work (default: a folder called bonsai-survey in my home directory). Clone these two repositories side by side there:\n   https://github.com/moridinamael/bonsai-interp\n   https://github.com/moridinamael/neuron-cleanroom\n2. In bonsai-interp, read AGENTS.md and follow section 1, \"Get ready\".\n3. Run: uv run python -m bonsai_interp.graph.play doctor\n   Fix every FAIL and run it again until it prints READY.\n4. Ask me only for what you can't do yourself: logging in to GitHub (gh auth login), permission to use about 18 GB of disk, and, optionally, a globalMOO API key for .env.\n5. Finish by telling me \"Ready to survey\", with the GPU and the doctor summary. From then on I'll paste mission prompts from the survey page.";
   document.getElementById("boot").textContent = BOOT;
   const btn = document.getElementById("copy");
   btn.addEventListener("click", () => { (navigator.clipboard ? navigator.clipboard.writeText(BOOT) : Promise.reject()).then(() => { btn.textContent = "Copied"; setTimeout(() => (btn.textContent = "Copy the setup prompt"), 1500); },
