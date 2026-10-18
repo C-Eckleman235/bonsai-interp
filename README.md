@@ -43,7 +43,7 @@ The worked example is **L9/N3688**, the "nerve" neuron:
 
 ```bash
 uv sync                                   # Python 3.11-3.13, CUDA 12.8 wheels for torch
-bash scripts/download_models.sh           # Bonsai-8B (plus the ternary and Qwen3-8B ladder) into models/
+bash scripts/download_models.sh           # Bonsai-8B into models/ (--all adds the ternary and Qwen3-8B ladder)
 bash scripts/fetch_data.sh                # corpus.npz + scan_bonsai1.npz from the GitHub release into data/
 uv run python -m bonsai_interp.explore --model bonsai1 --neuron 9/3688 --pole +
 uv run python -m bonsai_interp.graph.validate

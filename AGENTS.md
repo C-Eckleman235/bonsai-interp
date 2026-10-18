@@ -13,8 +13,8 @@ Run every Python command through the project environment: `uv run python -m …`
 
 1. Install the environment: `uv sync`. You need Python 3.11–3.13 and uv. If uv is missing,
    install it from https://docs.astral.sh/uv/.
-2. Download the model: `bash scripts/download_models.sh` (about 16 GB of disk). It is enough to
-   download only `prism-ml/Bonsai-8B-unpacked`. Ask before using that much disk.
+2. Download the model: `bash scripts/download_models.sh` gets Bonsai-8B only (about 16 GB of
+   disk), which is all you need. Ask before using that much disk.
 3. Fetch the data: `bash scripts/fetch_data.sh`. This gets the corpus and the full neuron scan
    (1.4 GB) and needs `gh` to be logged in.
 4. Run `python -m bonsai_interp.graph.play doctor` and fix whatever it reports, until it says
