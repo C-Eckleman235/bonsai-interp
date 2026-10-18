@@ -46,11 +46,24 @@ def main():
                "--allowedTools", "Bash,Read,Edit,Write,Glob,Grep", "--max-budget-usd", str(a.budget),
                "--output-format", "stream-json", "--verbose"]
     else:
-        cmd = ["codex", "exec", "--json", "--sandbox", "danger-full-access", "-c", "approval_policy=never", prompt(a.k)]
+        cmd = ["codex", "exec", "--json", "--sandbox", "danger-full-access", prompt(a.k)]
+    env = dict(os.environ)
+    if a.agent == "codex":
+        # a fresh CODEX_HOME with only auth.json: the person's own config may name a model their login cannot use,
+        # and a player's agent should start from Codex's defaults anyway (as neuron-cleanroom's launch does)
+        import shutil
+        import tempfile
+        real = Path(os.environ.get("CODEX_HOME", Path.home() / ".codex"))
+        base = Path.home() / ".cleanroom-codex"
+        base.mkdir(exist_ok=True)
+        home = Path(tempfile.mkdtemp(prefix="sweep-", dir=base))
+        shutil.copy2(real / "auth.json", home / "auth.json")
+        (home / "config.toml").write_text('model_reasoning_effort = "high"\napproval_policy = "never"\n', encoding="utf-8")
+        env["CODEX_HOME"] = str(home)
     flags = 0x00004000 if sys.platform == "win32" else 0  # BELOW_NORMAL_PRIORITY_CLASS
     t = out / f"sweep-{n}-{a.agent}.jsonl"
     with open(t, "w", encoding="utf-8") as f, open(t.with_suffix(".stderr.txt"), "w", encoding="utf-8") as e:
-        rc = subprocess.run(cmd, cwd=WORK, stdout=f, stderr=e, stdin=subprocess.DEVNULL, creationflags=flags).returncode
+        rc = subprocess.run(cmd, cwd=WORK, stdout=f, stderr=e, stdin=subprocess.DEVNULL, creationflags=flags, env=env).returncode
     print(f"sweep {n} ({a.agent}): exit {rc}; transcript {t}")
 
 

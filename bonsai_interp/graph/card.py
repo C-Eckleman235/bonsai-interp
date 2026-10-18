@@ -182,7 +182,11 @@ def render(c):
 
 
 def main(a):
-    c = card(a.neuron, k=a.k, logits=not a.no_logits)
+    if len(a.neuron) > 1:  # several cards in one process: the scan and the weights load once
+        for nid in a.neuron:
+            print(render(card(nid, k=a.k, logits=not a.no_logits)), end="\n\n")
+        return
+    c = card(a.neuron[0], k=a.k, logits=not a.no_logits)
     print(render(c))
     if a.out:
         from pathlib import Path

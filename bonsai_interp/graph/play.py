@@ -268,7 +268,8 @@ def main():
                    help="qc only: confirm = re-test the label as is; refine = propose a better label")
     r = sub.add_parser("run", help="score one or more committed pre-registrations (one model load for all)")
     r.add_argument("tests_files", nargs="+")
-    r.add_argument("--author", help="who wrote the sentences, if not you (e.g. 'bonsai' when the model wrote them)")
+    r.add_argument("--author", help="only when the SENTENCES came from someone else, e.g. 'bonsai' when the model wrote them or 'twitch-chat'; "
+                   "who did the work goes in the tests file's methods.agent, not here")
     dr = sub.add_parser("draw", help="k random poles with no record yet (for a sweep)")
     dr.add_argument("--k", type=int, default=16)
     dr.add_argument("--seed", type=int, help="reproducible draw (default: random)")
@@ -291,7 +292,8 @@ def main():
     e.add_argument("--method", default="single-unit zero ablation (play step)")
     e.add_argument("--handle", required=True)
     c = sub.add_parser("card", help="a card for any neuron (labelled or not): examples, density, regimes, logit effect")
-    c.add_argument("--neuron", required=True, help="bonsai1/L9/N3688+ (the pole is shown first) or L9/N3688")
+    c.add_argument("--neuron", required=True, nargs="+", help="bonsai1/L9/N3688+ (the pole is shown first) or L9/N3688; "
+                   "give several to print several cards in one go (much faster than one call each)")
     c.add_argument("--k", type=int, default=6, help="top examples per pole")
     c.add_argument("--out", help="also write the card: .json for data, anything else for the text")
     c.add_argument("--no-logits", action="store_true", help="skip the direct logit effect (no weights needed)")

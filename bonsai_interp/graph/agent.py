@@ -130,14 +130,15 @@ def doctor(a):
 def sweep(a):
     """A sweep: k random unsurveyed poles in one branch, one pre-registration commit, one batch run, one PR."""
     py, k = "uv run python", a.k
-    branch = f"sweep/{a.handle.strip('<>')}-{dt.date.today().isoformat()}"
+    branch = f"sweep/{a.handle.strip('<>')}-{dt.datetime.now().strftime('%Y-%m-%d-%H%M')}"  # unique per sweep
     out = [f"# Mission: sweep of {k} poles", "",
            f"Colour in {k} random poles that have no record yet, about 2 minutes each. One branch, one pre-registration commit,",
            "one batch run, one PR. No claims: a pole someone else also tests gets two independent results, which is good.", "",
            f"1. Branch: git checkout -b {branch}",
            f"2. Draw and create the tests files: {py} -m bonsai_interp.graph.play draw --k {k} --handle {a.handle}",
            f"   (prints {k} pole ids and writes one tests file per pole; work on exactly those files)",
-           f"3. For each pole: {py} -m bonsai_interp.graph.play card --neuron <id>   (seconds, no GPU: top examples, density, flags)",
+           f"3. Read every card in one call: {py} -m bonsai_interp.graph.play card --neuron <id1> <id2> …   (no GPU: top examples, density, flags,",
+           "   logit effect; one call loads the scan and weights once, so do not call it once per pole)",
            f"   If it is unclear, try a few sentences: {py} -m bonsai_interp.graph.play probe --neuron <id> \"…\" \"…\"",
            "   Probing loads the model each call, so probe several poles' sentences in a scratch script if you need many.",
            "   Label at the level the card supports: usually a token or a context. A pole the card flags dense or positional",
