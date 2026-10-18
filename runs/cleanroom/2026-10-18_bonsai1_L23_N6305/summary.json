@@ -1,0 +1,138 @@
+{
+  "pole_plus": {
+    "label": "Context-gated temporal and conditional frame openings, especially After/Once and reduced when-clauses",
+    "verdict": "unclear",
+    "confidence": 0.45
+  },
+  "pole_minus": {
+    "label": "Reference domains for quantified claims: relative-clause restrictors, outcome denominators, and event-condition subjects",
+    "verdict": "one main job with offshoots",
+    "confidence": 0.75
+  },
+  "rejected_labels": [
+    {
+      "pole": "+",
+      "label": "General fronted temporal/conditional clause detector",
+      "reason": "Initial 0/8 strong responses, lexical alternatives Before/If/When often silent; contextual gating unresolved."
+    },
+    {
+      "pole": "+",
+      "label": "Topically relevant procedural context explains the gate",
+      "reason": "Procedural context suppressed the diagnostic; related and unrelated context each produced 3/8 fires in transfer tests."
+    },
+    {
+      "pole": "-",
+      "label": "Restrictive relative clauses alone",
+      "reason": "Initial 2/8; a sentence about awards from nominations without a relative clause reached 0.862, and inverse search amplified this branch."
+    },
+    {
+      "pole": "-",
+      "label": "Generic quantification or mentions of testing/attempting",
+      "reason": "Plain quantification, standalone numbers, and simple tested/examined/attempts sentences stayed weak while domain restrictions and outcome denominators fired."
+    }
+  ],
+  "key_tests": [
+    {
+      "name": "Initial positive label",
+      "prediction": "At least 5/8 temporal or conditional frames fire; at most 1/8 controls.",
+      "result": "0/8 fire, 0/8 controls: failed.",
+      "commit": "d8088b9"
+    },
+    {
+      "name": "Initial negative label",
+      "prediction": "At least 5/8 restrictive relatives fire; at most 1/8 controls.",
+      "result": "2/8 fire, 0/8 controls: failed.",
+      "commit": "300026e"
+    },
+    {
+      "name": "Final positive label",
+      "prediction": "Expect 3-6/8 candidate-fire passages and 0-1/8 near misses at 0.30. The official >=5 and <=1 criterion is unchanged. Predict a higher paired mean for fire than near misses. Context is part of each input; each entry contains a short lead-in and one test sentence.",
+      "result": "5/8 fire; 0/8 near misses; HELD",
+      "commit": "afef9ff"
+    },
+    {
+      "name": "Final negative label",
+      "prediction": "At least 5/8 reference-domain examples fire; at most 1/8 controls.",
+      "result": "7/8 fire; 0/8 near misses; HELD Conditional example was 0.296; all four relatives, both denominators, and the ordinal passed.",
+      "commit": "261c1db"
+    },
+    {
+      "name": "Adversarial sentence banks",
+      "prediction": "Temporal/conditional frames and restrictive relatives should beat plain clauses; unquantified relatives and lexical near misses challenge breadth.",
+      "result": "148 entries per pole, including 92 authored entries. Positive maximum 0.269; negative numerical counterexample 0.862. Relevance annotations have documented limitations.",
+      "commit": "3970260"
+    },
+    {
+      "name": "Context and syntax diagnostics",
+      "prediction": "Procedural context boosts After/Once; quantified relative constructions beat simple clauses.",
+      "result": "Procedural After decreased from 0.183 to 0.033. Most workers I interviewed: 0.362 negative, versus The workers I interviewed: 0.185. Four ungrammatical Every workers rows excluded from interpretation.",
+      "commit": "c07897b"
+    },
+    {
+      "name": "Context transfer",
+      "prediction": "Related extended context should restore positive activity more reliably than unrelated context.",
+      "result": "0/8 target-only, 3/8 related-context, and 3/8 unrelated-context entries fired. Topical relevance did not explain the gate. Original corpus prefixes recovered strong activity.",
+      "commit": "ec25557"
+    },
+    {
+      "name": "Positive inverse",
+      "prediction": "Seek off-label activation >=0.30 and on-label silence <=0.10, plus graded targets and maximum.",
+      "result": "Maximum 0.4585; silent-on-label 0.0674; leak goal failed. Best eligible off-label candidate across all goals was 0.274. No global absence claim.",
+      "commit": "3970260"
+    },
+    {
+      "name": "Negative inverse",
+      "prediction": "Seek off-label activation >=0.30 and on-label silence <=0.10.",
+      "result": "Leak goal succeeded at 0.6923; numerical-denominator near-miss reached 0.8846; maximum 1.1971. Silent winner used a nonrestrictive relative and is not counted against the strictly restrictive label.",
+      "commit": "3970260"
+    },
+    {
+      "name": "Induction, both poles",
+      "prediction": "Positive steering favors temporal function-word tokens; negative favors relative-clause tokens.",
+      "result": "Simple token-set prediction did not hold at c=2. Negative steering instead prominently promoted tested/checked/tried; c=5 and c=10 generations became repetitive. Positive direction suppresses those tokens.",
+      "commit": "3970260"
+    },
+    {
+      "name": "Signed feeder and scan audit",
+      "prediction": "Dominant source pole should explain its full-unit drop; full-prefix activations should reproduce scan values.",
+      "result": "Scan peaks reproduced within about 2%. Confirmed sources: L19/N11756-, L22/N4819+, L22/N408+, L22/N12064-.",
+      "commit": "ba89ed5"
+    },
+    {
+      "name": "Feeder bonsai1/L19/N11756-",
+      "prediction": "At least 5/8 fire, at most 1/8 near misses.",
+      "result": "5/8 fire; 0/8 near misses; HELD; feeds target +, displayed full-unit drop 0.05.",
+      "commit": "4677944"
+    },
+    {
+      "name": "Feeder bonsai1/L22/N4819+",
+      "prediction": "At least 5/8 fire, at most 1/8 near misses.",
+      "result": "8/8 fire; 0/8 near misses; HELD; feeds target +, displayed full-unit drop 0.04.",
+      "commit": "3631f69"
+    },
+    {
+      "name": "Feeder bonsai1/L22/N408+",
+      "prediction": "At least 5/8 fire, at most 1/8 near misses.",
+      "result": "5/8 fire; 0/8 near misses; HELD; feeds target -, displayed full-unit drop 0.07.",
+      "commit": "d71379e"
+    },
+    {
+      "name": "Feeder bonsai1/L22/N12064-",
+      "prediction": "At least 5/8 fire, at most 1/8 near misses.",
+      "result": "5/8 fire; 0/8 near misses; HELD; feeds target -, displayed full-unit drop 0.05.",
+      "commit": "506a4b7"
+    },
+    {
+      "name": "Lower-band corpus audit",
+      "prediction": "Temporal/conditional openings and reference-domain patterns should remain visible outside discovery windows.",
+      "result": "The 512-window audit found 37 positive and 39 negative tokens at or above 0.30 of corpus maximum, plus 414 positive and 655 negative tokens in [0.10,0.30). Twelve contexts per pole per band were sampled outside all original top-32 discovery windows. The main patterns recur, but the positive label has clear boundary cases and the negative pattern extends to code and Arabic.",
+      "commit": "320bed6"
+    },
+    {
+      "name": "Natural-size causal ablation",
+      "prediction": "Zero only the peak position; median KL(clean || ablated) below 0.1 nats.",
+      "result": "Positive median KL 0.000519; negative 0.034725. Eight corpus peaks per pole; natural interventions, not generation stress tests.",
+      "commit": "50b16d2"
+    }
+  ]
+}
