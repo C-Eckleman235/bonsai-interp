@@ -432,3 +432,21 @@ Window-start artifact:
 **Pattern across both blind runs:** the agents count jobs by circuits, so disjoint feeder sets mean several jobs. This is a defensible operational definition, and it gives a stricter verdict than the essay's "one job plus offshoots".
 
 **New in the graph:** a derived `scrutiny` level per pole, separate from status. The levels are tested, re-tested, checked, investigated and replicated.
+
+## 2026-10-18: Is L9/N3688+ a neuron for words with both a physical and a psychological sense? No. (`probes/bonsai1_L9_N3688_pos/dualsense_test.json`, committed in 4a74b78 before running)
+
+**Setup**
+- 13 dual-sense words: strong, weak, stiff, tough, hard, soft, fragile, spine, backbone, grit, crack, shaken, broken.
+- Each in one physical and one psychological sentence.
+- Controls: 4 psychological-only sentences and 4 physical-only sentences.
+
+**Results**
+- Excluding "strong", **0 of 24** sentences fired at ≥ 0.3 (mean 0.046). The physical-only controls average 0.026, and the psychological-only ones 0.018.
+- "strong": physical 0.48, psychological 0.07.
+- Reference sentences with "nerve": 0.24 and 0.47.
+
+**Against the predictions**
+- P1, P2 and P3 held.
+- P4 failed: the physical impact words did not fire (crack 0.05, shaken 0.06, broken 0.08), so the hit/hurt branch is narrower than its name.
+
+**Reading.** The neuron's two strongest triggers prefer opposite senses: physical "strong" and psychological "nerve". The dual-sense hypothesis is rejected. What unites the branches is still open: packing, a shared downstream use, or a token-level property. The circuit trace is the planned test.
