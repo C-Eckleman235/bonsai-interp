@@ -1,0 +1,45 @@
+{
+ "contribution": "2026-10-18-moridinamael-114b",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N3362+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-18T23:53:50+00:00",
+ "neighbours": [
+  {
+   "unit": "L30/N3362",
+   "pole": "+",
+   "label": "Literal text immediately before an interpolation field in a Python f-string",
+   "fire": [
+    "def report(size):\n    print(f\"Buffer size: {size}\")",
+    "def check(kind):\n    raise ValueError(f\"Unsupported type: {kind}\")",
+    "def status(name):\n    return f\"Current task: {name}\"",
+    "def describe(index):\n    print(f\"Item number {index}\")",
+    "def launch(args):\n    command = f\"converter {args}\"\n    return command",
+    "def warn(filename):\n    return f\"Missing file: {filename}\"",
+    "def announce(count):\n    print(f\"Records processed: {count}\")",
+    "def explain(rank):\n    raise RuntimeError(f\"Invalid matrix rank: {rank}\")"
+   ],
+   "quiet": [
+    "def report(size):\n    print(\"Buffer size: {}\".format(size))",
+    "def check(kind):\n    raise ValueError(\"Unsupported type: {}\".format(kind))",
+    "def status(name):\n    return \"Current task: {}\".format(name)",
+    "def describe(index):\n    print(\"Item number {}\".format(index))",
+    "def launch(args):\n    command = \"converter {}\".format(args)\n    return command",
+    "def warn(filename):\n    return \"Missing file: {}\".format(filename)",
+    "def announce(count):\n    print(\"Records processed: {}\".format(count))",
+    "def explain(rank):\n    raise RuntimeError(\"Invalid matrix rank: {}\".format(rank))"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "codex gpt-6",
+  "screens": [
+   "card"
+  ]
+ },
+ "short": "F-string interpolation lead-in",
+ "unit_kind": "contextual",
+ "confidence": 0.85,
+ "notes": "All six positive card examples are f-string literal spans before braces; the output direction promotes opening braces. Controls use ordinary strings with format fields and .format, retaining messages and interpolation semantics. Codex-authored code snippets; cards only."
+}
