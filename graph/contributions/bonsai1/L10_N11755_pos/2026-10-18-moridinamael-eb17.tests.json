@@ -1,0 +1,62 @@
+{
+ "contribution": "2026-10-18-moridinamael-eb17",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N11755+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-18T22:51:20+00:00",
+ "neighbours": [
+  {
+   "unit": "L10/N11755",
+   "pole": "+",
+   "label": "loop variable / index expression in numeric Python (numpy) code, e.g. 'for a in np.arange'",
+   "fire": [
+    "B = np.zeros(p+1)\nfor a in np.arange(1., p + 1):\n    B[a-1] = a",
+    "x = np.ones(n)\nfor t in range(num_steps):\n    x = x * 2",
+    "Bdxi = np.zeros(p+1)\nfor a in np.arange(1., p + 1):\n    Bdxi[a-1] = a * xi",
+    "w = np.zeros(k)\nfor j in np.arange(k):\n    w[j] = j ** 2",
+    "theta = my_index_theta * delta_theta + 0.5",
+    "y = np.empty(m)\nfor b in np.arange(1, m):\n    y[b-1] = b / m",
+    "acc = np.zeros(3)\nfor s in range(steps):\n    acc[s % 3] += s",
+    "C = np.zeros(q)\nfor c in np.arange(q):\n    C[c] = np.sin(c)"
+   ],
+   "quiet": [
+    "B = np.zeros(p+1)\nB[0] = 1.0",
+    "x = np.ones(n)\nx = x * 2",
+    "Bdxi = np.zeros(p+1)\nBdxi[0] = xi",
+    "w = np.zeros(k)\nw = w ** 2",
+    "theta = 0.5",
+    "y = np.empty(m)\ny.fill(1 / m)",
+    "acc = np.zeros(3)\nacc += 1",
+    "C = np.zeros(q)\nC = np.sin(C)"
+   ]
+  }
+ ],
+ "predictions": "uncertain: probing gave only 0.04-0.36",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ],
+  "_screens_vocabulary": [
+   "atlas",
+   "bands",
+   "bank-solo",
+   "blind-room",
+   "card",
+   "disproof",
+   "held-out",
+   "induce",
+   "inverse-de",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round",
+   "step-out",
+   "which"
+  ]
+ }
+}
