@@ -1,0 +1,141 @@
+{
+ "source": "claude",
+ "written": "2026-10-17, final relabel agent, from token tables + examples + previous failures, before evaluation",
+ "neighbours": [
+  {
+   "unit": "L10/N5553",
+   "pole": "-",
+   "label": "Sparse, context-driven: content nouns and term-completing subwords in textbook-style biology, physiology and biochemistry explanations; its most reliable tokens are zinc, diabetic, membranes, lymph, the -oid suffix and genic|ulate, with weaker hits on mass, carbon and diameter in the same register",
+   "kind": "contextual",
+   "confidence": 0.35,
+   "fire": [
+    "Zinc helps the immune system fight bacterial infections and heals small wounds faster.",
+    "Diabetic patients often lose sensation in their feet because high blood sugar damages small nerves.",
+    "Cell membranes are made of a double layer of lipids with proteins embedded in them.",
+    "The lymph nodes filter lymph and trap bacteria before they can reach the bloodstream.",
+    "Thyroid hormones regulate how quickly the body uses energy from food.",
+    "Optic tract fibers end in the lateral geniculate body of the thalamus.",
+    "Mucous membranes line the nose and mouth and keep these surfaces moist.",
+    "A diet low in zinc slows growth in children and weakens their resistance to disease."
+   ],
+   "quiet": [
+    "The zinc roof of the old garage rattled loudly in the wind.",
+    "He bought a new membrane for the drum kit at the music shop.",
+    "The bus left the station at nine and arrived in the city an hour later.",
+    "Our team celebrated the end of the season with a big dinner.",
+    "She paid for the tickets with cash and kept the receipt.",
+    "The committee voted to postpone the decision until next month.",
+    "The diameter of the pizza was printed on the menu next to the price.",
+    "Tourists crowded the square to watch the fireworks at midnight."
+   ]
+  },
+  {
+   "unit": "L10/N6901",
+   "pole": "+",
+   "label": "Classical neuroanatomy description (Gray's-Anatomy style) of brain regions, nerves and functional centres: fires on the specific structure or function term, most reliably associative, oculom|otor, frontal / f|ront|al, locom|otion, and speech or motor centres named inside such a description",
+   "kind": "contextual",
+   "confidence": 0.4,
+   "fire": [
+    "The associative areas of the cortex link sensory impressions with memory and judgement.",
+    "The oculomotor nerve leaves the midbrain and supplies most of the muscles that move the eye.",
+    "The centre for speech lies in the inferior frontal gyrus of the left hemisphere.",
+    "Fibres from the frontal lobe descend through the internal capsule to the pons.",
+    "Locomotion depends on rhythmic circuits in the spinal cord that are driven from the brainstem.",
+    "The nucleus of the oculomotor nerve lies beneath the cerebral aqueduct at the level of the superior colliculus.",
+    "Large associative tracts connect the frontal and occipital lobes within each hemisphere.",
+    "Injury to the precentral gyrus produces paralysis because it contains the motor centres for the opposite side of the body."
+   ],
+   "quiet": [
+    "The front door of the house was painted bright blue last summer.",
+    "His speech at the wedding made everyone laugh.",
+    "The motor of the old boat finally gave out halfway across the lake.",
+    "We walked along the beach and collected shells until sunset.",
+    "The museum is open every day except Monday.",
+    "She took the train to the city to visit her grandmother.",
+    "The company announced a new frontal advertising campaign for the holidays.",
+    "Prices rose sharply after the harvest failed in the south."
+   ]
+  },
+  {
+   "unit": "L7/N7149",
+   "pole": "+",
+   "label": "The middle subword 'are' / 'arem' after 'Tul' in Tulare (the California county) and tularemia (the rabbit-fever infection); other rare multi-piece names do not reliably fire",
+   "kind": "lexical",
+   "confidence": 0.8,
+   "fire": [
+    "Tularemia is a bacterial infection that hunters can catch from rabbits and hares.",
+    "Growers in Tulare County lost much of their orange crop to the hard frost.",
+    "The clinic confirmed two cases of tularemia after a tick bite outbreak.",
+    "Visalia is the county seat of Tulare County in the San Joaquin Valley.",
+    "Tulare Lake once covered a huge area before it was drained for farming.",
+    "Health officials warned that tularemia can spread through contaminated water.",
+    "The dairy farms of Tulare produce more milk than many entire states.",
+    "Symptoms of tularemia include fever, skin ulcers and swollen lymph glands."
+   ],
+   "quiet": [
+    "Tulsa is the second largest city in Oklahoma.",
+    "The Tuileries garden lies between the Louvre and the Place de la Concorde.",
+    "The war crimes trials were held at Nuremberg after the war.",
+    "The students are waiting for the bus outside the school.",
+    "Tulane University is located in New Orleans.",
+    "The sultan kept a large harem in his palace.",
+    "Tula is an industrial city south of Moscow.",
+    "Malaria is spread by mosquitoes in tropical regions."
+   ]
+  },
+  {
+   "unit": "L17/N2518",
+   "pole": "+",
+   "label": "Python code: the module or object name (or its first .attribute) at the head of a dotted reference used as a value right after '=' or as a call argument, esp. logging, sys, os.environ, settings, self.<attr>, request, args (= logging.getLogger, = sys.stdout.write, stderr=sys.stderr, get(..., self.default_x))",
+   "kind": "contextual",
+   "confidence": 0.5,
+   "fire": [
+    "    handler = logging.StreamHandler(sys.stderr)",
+    "    out = sys.stderr.write",
+    "    home_dir = os.environ.get('HOME', '/tmp')",
+    "    debug = settings.DEBUG",
+    "        timeout = kwargs.get('timeout', self.default_timeout)",
+    "        warn = app_logger.warning",
+    "    proc = subprocess.run(cmd, stdout=sys.stdout, stderr=sys.stderr)",
+    "    log = logging.getLogger('worker')"
+   ],
+   "quiet": [
+    "The system settings were changed to enable dark mode.",
+    "import os",
+    "    def __init__(self, name):",
+    "    # read the configuration file before starting",
+    "    return None",
+    "    name = 'logging'",
+    "    count = 0",
+    "Please check the logging output in your browser console."
+   ]
+  },
+  {
+   "unit": "L18/N12193",
+   "pole": "+",
+   "label": "Verbs of resuming or restoring a previous state after an interruption, on the verb itself: resumed / resume, woke, restore / restored, settled down, reconnect (narrative and instructional prose); generic 'return to' / 'back' fire only rarely",
+   "kind": "contextual",
+   "confidence": 0.4,
+   "fire": [
+    "The match was halted for an hour by rain and resumed late in the afternoon.",
+    "When he woke the next morning, the fever had finally broken.",
+    "Engineers worked through the night to restore power to the hospital.",
+    "Keep the bulb dry for eight weeks, then resume watering once new shoots appear.",
+    "Talks between the two sides resumed after a three-month pause.",
+    "She woke with a start when the train lurched to a halt.",
+    "After the crowd cheered, the speaker waited for the hall to settle down and resumed his speech.",
+    "Once the cable was repaired, the router was able to reconnect and normal service was restored."
+   ],
+   "quiet": [
+    "The match started at noon in bright sunshine.",
+    "He fell asleep on the sofa while watching television.",
+    "Engineers designed a new bridge across the river.",
+    "Water the seedlings every morning during the first week.",
+    "The two sides signed the agreement in Geneva.",
+    "She bought a train ticket to Edinburgh.",
+    "The speaker began by thanking the organisers.",
+    "The new router comes with four network ports."
+   ]
+  }
+ ]
+}
