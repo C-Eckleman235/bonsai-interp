@@ -89,7 +89,7 @@ code { font-family: var(--font-mono); font-size: 0.86em; }
   const app = document.getElementById("app");
   const add = html => { const s = document.createElement("section"); s.innerHTML = html; app.appendChild(s); return s; };
   const N = D.nodes, byU = Object.fromEntries(N.map(n => [n.unit, n]));
-  const verdict = n => n.claude == null ? "na" : n.claude.survives ? "good" : "bad";
+  const verdict = n => n.kind && /dense/.test(n.kind) ? "dense" : n.claude == null ? "na" : n.claude.survives ? "good" : "bad";
 
   // header
   const h = document.createElement("header"); h.style.cssText = "display:flex;flex-direction:column;gap:12px";
@@ -99,18 +99,18 @@ code { font-family: var(--font-mono); font-size: 0.86em; }
   app.appendChild(h);
   add(`<div class="tiles">
     <div class="tile"><span class="v">${N.length}</span><span class="l">neurons reached from "nerve" (readers, their other inputs, co-firing, second-hop feeders)</span></div>
-    <div class="tile"><span class="v">${nHeld} / ${nTested}</span><span class="l">labels that held a pre-registered 8 + 8 sentence test (Claude-written)</span></div>
+    <div class="tile"><span class="v">${nHeld} / ${nTested}</span><span class="l">labels that held a pre-registered 8 + 8 sentence test (Claude-written, latest round; dense units count as failed)</span></div>
     <div class="tile"><span class="v">${D.lateral.length}</span><span class="l">lateral relatives of psychological "nerve" found (tension, suspense, anticipation…)</span></div>
     <div class="tile"><span class="v">${pct(D.sources.summary.fire_rate.bonsai)} vs ${pct(D.sources.summary.fire_rate.claude)}</span><span class="l">fire rate of Bonsai-written vs Claude-written test sentences, same labels</span></div></div>`);
 
   // ---------------- graph
   const g = add(`<div class="eyebrow">Web</div><h2>Who feeds it, who reads it, who sits beside it</h2>
-    <div class="legend"><span><i style="background:var(--good)"></i>label held its test</span><span><i style="background:var(--bad)"></i>label failed</span><span><i style="background:var(--na)"></i>not tested</span>
+    <div class="legend"><span><i style="background:var(--good)"></i>label held its test</span><span><i style="background:var(--bad)"></i>label failed</span><span><i style="background:var(--na)"></i>not tested</span><span><i style="background:var(--surface);border:2px solid var(--ink-3)"></i>dense unit (on for much of the text)</span>
     <span><i class="ln" style="background:var(--ink)"></i>feeds</span><span><i class="ln" style="background:var(--s1)"></i>reads "nerve"</span><span><i class="ln" style="background:var(--s3)"></i>feeds a reader (lateral)</span>
     <span><i class="ln" style="background:var(--s2)"></i>gate</span><span><i class="ln" style="background:var(--ink-3)"></i>co-fires (dashed)</span><span><i style="background:none;border:2px solid var(--accent)"></i>lateral cluster</span></div>
     <div class="graph-band"><div class="panel graph-wrap" id="graph"></div><div class="panel insp" id="insp"><p style="color:var(--ink-3);font-size:.9rem">Select a neuron in the web or the table to inspect it.</p></div></div>`);
   {
-    const W = 1180, H = 860, mL = 30, mR = 150, mT = 30, mB = 40, Lmax = 20;
+    const colMax = Math.max(...Object.values([{ L: 9 }, ...N].reduce((a, n) => (a[n.L] = (a[n.L] || 0) + 1, a), {}))), W = 1180, H = Math.max(980, 90 + colMax * 52), mL = 30, mR = 150, mT = 30, mB = 40, Lmax = 20;
     const x = L => mL + L / Lmax * (W - mL - mR);
     const svg = mk("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Layered graph of neurons around L9/N3688" });
     for (let L = 0; L <= Lmax; L++) { mk("line", { x1: x(L), x2: x(L), y1: mT - 10, y2: H - mB + 6, stroke: "var(--grid)" }, svg); txt(svg, x(L), H - 14, "L" + L, { "text-anchor": "middle", "font-family": "IBM Plex Mono, monospace", "font-size": 12, fill: L === 9 ? "var(--accent)" : "var(--ink-3)" }); }
@@ -120,7 +120,7 @@ code { font-family: var(--font-mono); font-size: 0.86em; }
     const order = r => (r.center ? 5 : r.roles.includes("input") || r.roles.includes("gate") ? 1 : r.roles.includes("hop-2 upstream") ? 0 : r.roles.includes("reader") ? 3 : r.roles.includes("co-fires") ? 6 : 8);
     Object.values(cols).forEach(c => { c.sort((a, b) => order(a) - order(b) || a.n - b.n); c.forEach((n, i) => { n.y = mT + 20 + (i + 0.5) * ((H - mT - mB - 30) / c.length); n.x = x(n.L) + (c.length > 5 ? ((i % 2) * 2 - 1) * 12 : 0); }); });
     const pos = Object.fromEntries(all.map(n => [n.unit, n]));
-    const col = { feeds: "var(--ink)", reads: "var(--s1)", "feeds reader": "var(--s3)", gates: "var(--s2)", "co-fires": "var(--ink-3)" };
+    const col = { feeds: "var(--ink)", reads: "var(--s1)", "feeds reader": "var(--s3)", "feeds lateral": "var(--s3)", gates: "var(--s2)", "co-fires": "var(--ink-3)" };
     D.edges.forEach(e => {
       const a = pos[e.from], b = pos[e.to]; if (!a || !b) return;
       const w = Math.min(4, 0.8 + 18 * Math.abs(e.w) * (e.kind === "co-fires" ? 0.15 : 1));
@@ -131,10 +131,10 @@ code { font-family: var(--font-mono); font-size: 0.86em; }
     const tipWrap = document.getElementById("graph"); tipWrap.style.position = "relative";
     all.forEach(n => {
       const gN = mk("g", { class: "node", tabindex: 0, role: "button", "aria-label": n.unit }, svg);
-      const fill = n.center ? "var(--accent)" : `var(--${verdict(n) === "good" ? "good" : verdict(n) === "bad" ? "bad" : "na"})`;
-      mk("circle", { cx: n.x, cy: n.y, r: n.center ? 15 : 9, fill, stroke: n.lateral ? "var(--accent)" : "var(--surface)", "stroke-width": n.lateral ? 3 : 1.5 }, gN);
+      const fill = n.center ? "var(--accent)" : verdict(n) === "dense" ? "var(--surface)" : `var(--${verdict(n) === "good" ? "good" : verdict(n) === "bad" ? "bad" : "na"})`;
+      mk("circle", { cx: n.x, cy: n.y, r: n.center ? 15 : 9, fill, stroke: n.lateral ? "var(--accent)" : verdict(n) === "dense" ? "var(--ink-3)" : "var(--surface)", "stroke-width": n.lateral ? 3 : verdict(n) === "dense" ? 2.5 : 1.5 }, gN);
       const short = n.center ? "nerve" : (n.short || "");
-      txt(gN, n.x + (n.center ? 19 : 13), n.y + 4.5, short, { "font-size": n.center ? 15 : 12.5, fill: n.center ? "var(--ink)" : "var(--ink-2)", "font-weight": n.center || n.lateral ? 600 : 400 });
+      txt(gN, n.x + (n.center ? 19 : 13), n.y + 4.5, short, { "font-size": n.center ? 15 : 12.5, fill: n.center ? "var(--ink)" : "var(--ink-2)", "font-weight": n.center || n.lateral ? 600 : 400, stroke: "var(--surface)", "stroke-width": 3.5, "paint-order": "stroke", "stroke-linejoin": "round" });
       if (!n.center) { gN.addEventListener("click", () => inspect(n.unit)); gN.addEventListener("keydown", ev => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); inspect(n.unit); } }); }
     });
     document.getElementById("graph").appendChild(svg);
@@ -147,7 +147,7 @@ code { font-family: var(--font-mono); font-size: 0.86em; }
     document.getElementById("insp").innerHTML = `<span class="unit">${esc(u)}${esc(n.pole)}</span>
       <div class="lab">${esc(n.label || "unlabelled")}</div>
       <dl class="kv"><dt>roles</dt><dd>${esc(n.roles.join(", "))}${n.via ? " via " + esc(n.via) : ""}</dd>
-      <dt>label confidence</dt><dd>${f2(n.confidence)}</dd>${res(c, "Claude tests")}${res(b, "Bonsai tests")}</dl>
+      <dt>label confidence</dt><dd>${f2(n.confidence)}</dd><dt>kind</dt><dd>${esc(n.kind || "–")}</dd><dt>labelling rounds</dt><dd>${n.attempts}</dd>${res(c, "Claude tests (latest)")}${res(b, "Bonsai tests")}</dl>
       <div class="chart-wrap" id="mini"></div>
       <div class="eyebrow" style="color:var(--ink-3)">nerve's sentences, as this neuron sees them</div>
       <div class="eyebrow" style="color:var(--ink-3);margin-top:6px">top corpus examples (${esc(n.pole)} pole)</div>
@@ -177,6 +177,66 @@ code { font-family: var(--font-mono); font-size: 0.86em; }
     });
     mk("circle", { cx: C, cy: C, r: 16, fill: "var(--accent-soft)", stroke: "var(--accent)" }, svg);
     wrap.appendChild(svg);
+  }
+
+  // ---------------- trying to disprove 'nerve'
+  if (D.disproof && D.disproof.d1 && D.token_table) {
+    const bn = k => ({ strength: "strength", impact_injury: "impact / injury", reaction_sensation: "sensation", mental_fortitude: "fortitude, no word" }[k] || k);
+    const X = D.disproof, d1 = X.d1, d3 = X.d3, h4 = X.h4, pred = X.pred, T = D.token_table;
+    const fam = t => /nerv|nerf|нерв|신경|神|عصب/i.test(t) ? "nerve word" : /strong|strength|power/i.test(t) ? "strength" : /injur|wound|hit|struck|strike|blow|hurt|kill|shot|attack|damage|crash|hard|heavy|violent/i.test(t) ? "impact / injury" : "other";
+    const famCol = { "nerve word": "var(--accent)", strength: "var(--s1)", "impact / injury": "var(--s2)", other: "var(--na)" };
+    const d2 = X.d2 || {}, d2top = b => { const r = d2[b]; if (!r) return "–"; const [t, k] = Object.entries(r.D_themes)[0] || ["–", 0]; return `${Math.round(100 * (1 - r.share.D))}% nerve-related; largest other theme “${esc(t)}” ${k}/${r.n}`; };
+    const rows = [
+      ["D1 · every strong firing (≥ 0.3 of max) in 6.1M corpus tokens", "≥ 90% within 3 tokens of a 'nerve' word", `${Math.round(100 * d1.share_with_morpheme)}% (${d1.with_morpheme} of ${d1.strong_tokens})`, false],
+      ["D2 · 120 weak/mid-band contexts, annotated blind to band", "'nerve' meaning still visible; no theme ≥ ⅓ of a band", `0.2–0.3 band: ${d2top("0.20-0.30")}. 0.3–0.5 band: ${d2top("0.30-0.50")}. No theme reached ⅓, so its disproof condition was not met.`, false],
+      ["D3 · leak search over 1,199 sentences with no 'nerve' word (SciPy DE)", "max < 0.4, and not through an unrelated concept", `${f2(d3.de_max.y.act)}, peak on “${esc((d3.de_max.peak_token || "").trim())}”: the strength branch, not a new concept`, false],
+      ["H4 · is it one coarser job: force / strength / strain?", "all 4 branches AUROC ≥ 0.75", Object.entries(h4.branches).map(([k, v]) => `${bn(k)} ${f2(v.auroc)}`).join(" · "), false],
+      ["Anticipation · does it fire where 'nerve' is the likely next word?", "(exploratory, no prediction)", `no: rank correlation ${f2(pred.spearman_act_vs_p_next_nerve)} over ${pred.positions.toLocaleString()} positions`, null],
+    ];
+    add(`<div class="eyebrow">Trying to disprove it</div><h2>We tried to break the "nerve" label. It broke in an informative way.</h2>
+      <p class="prose">${esc(D.disproof_text)}</p>
+      <div class="tbl"><table><thead><tr><th>Attempt</th><th>Prediction (committed before running)</th><th>Result</th></tr></thead><tbody>
+      ${rows.map(([a, b, c, ok]) => `<tr><td>${esc(a)}</td><td>${esc(b)}</td><td>${ok === null ? "" : `<span class="chip ${ok ? "good" : "bad"}">${ok ? "held" : "failed"}</span> `}${c}</td></tr>`).join("")}
+      </tbody></table></div>
+      <div class="two"><div class="panel"><h3>Which tokens make it fire strongly</h3><div class="chart-wrap" id="tokbars"></div>
+        <p style="font-size:.8rem;color:var(--ink-3)">Bars count strong firings (≥ 0.3 of max) per token across 6.1M corpus tokens. Each label gives the count, the share of that token's occurrences that fire strongly, and its mean activation. " strong" fires the neuron more often and more reliably than " nerve". Most corpus uses of " nerve" are anatomical, and those push the opposite pole.</p></div>
+      <div class="panel"><h3>Four candidate branches, none containing a "nerve" word</h3><div class="chart-wrap" id="h4bars"></div>
+        <p style="font-size:.8rem;color:var(--ink-3)">Mean activation on 8 branch sentences (coloured) vs 8 matched near misses (grey), with AUROC. The dashed line is psychological "nerve" itself. Strength and impact are real but weaker branches. Sensation and fortitude-without-the-word do nothing.</p></div></div>
+      <div class="callout"><h3>Revised reading</h3><p>${esc(D.disproof_verdict)}</p></div>`);
+    {
+      const R = T.rows.slice(0, 16), W = 520, rowH = 22, m = { l: 118, r: 150, t: 4 }, H = m.t + R.length * rowH + 6;
+      const mx = Math.max(...R.map(r => r.strong));
+      const svg = mk("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Strong firings per token: ' strong' leads, then ' nerve' and injury words" });
+      R.forEach((r, i) => {
+        const y = m.t + i * rowH, w = (W - m.l - m.r) * r.strong / mx;
+        txt(svg, m.l - 8, y + 15, JSON.stringify(r.token), { "text-anchor": "end", "font-family": "IBM Plex Mono, monospace", "font-size": 11.5, fill: "var(--ink)" });
+        mk("rect", { x: m.l, y: y + 4, width: Math.max(2, w), height: rowH - 8, rx: 3, fill: famCol[fam(r.token)] }, svg);
+        txt(svg, m.l + w + 6, y + 15, `${r.strong} · ${Math.round(100 * r.share)}% · mean ${r.mean >= 0 ? "+" : ""}${f2(r.mean)}`, { "font-size": 10.5, fill: "var(--ink-2)" });
+      });
+      const wrap = document.getElementById("tokbars"); wrap.appendChild(svg);
+      const lg = document.createElement("div"); lg.className = "legend";
+      lg.innerHTML = Object.entries(famCol).map(([k, c]) => `<span><i style="background:${c}"></i>${k}</span>`).join("");
+      wrap.appendChild(lg);
+    }
+    {
+      const B = Object.entries(h4.branches), W = 520, H = 260, m = { l: 40, r: 10, t: 16, b: 46 };
+      const ref = h4.reference.reduce((a, r) => a + r.act, 0) / h4.reference.length, ymax = Math.max(0.6, ref * 1.15);
+      const y = v => m.t + (1 - v / ymax) * (H - m.t - m.b), gw = (W - m.l - m.r) / B.length;
+      const svg = mk("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Branch test: strength and impact fire, sensation and fortitude do not" });
+      [0, 0.2, 0.4].forEach(v => { mk("line", { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), stroke: "var(--grid)" }, svg); txt(svg, m.l - 6, y(v) + 4, f2(v), { "text-anchor": "end" }); });
+      mk("line", { x1: m.l, x2: W - m.r, y1: y(ref), y2: y(ref), stroke: "var(--accent)", "stroke-width": 2, "stroke-dasharray": "5 4" }, svg);
+      txt(svg, W - m.r, y(ref) - 6, `psychological "nerve" (${f2(ref)})`, { "text-anchor": "end", fill: "var(--ink-2)", "font-size": 10.5 });
+      const bcol = { strength: "var(--s1)", impact_injury: "var(--s2)" };
+      B.forEach(([k, v], i) => {
+        const cx = m.l + gw * (i + 0.5), bw = gw * 0.28, q = Math.max(0, v.mean_quiet);
+        mk("rect", { x: cx - bw - 1, y: y(v.mean_fire), width: bw, height: Math.max(1, y(0) - y(v.mean_fire)), rx: 3, fill: bcol[k] || "var(--na)" }, svg);
+        mk("rect", { x: cx + 1, y: y(q), width: bw, height: Math.max(1, y(0) - y(q)), rx: 3, fill: "var(--grid)" }, svg);
+        txt(svg, cx - bw / 2 - 1, y(v.mean_fire) - 5, f2(v.mean_fire), { "text-anchor": "middle", "font-size": 10, fill: "var(--ink-2)" });
+        txt(svg, cx, H - m.b + 17, bn(k), { "text-anchor": "middle", "font-size": 11, fill: "var(--ink-2)" });
+        txt(svg, cx, H - m.b + 32, `AUROC ${f2(v.auroc)}`, { "text-anchor": "middle", "font-size": 10.5, fill: v.auroc >= 0.75 ? "var(--good)" : "var(--bad)", "font-weight": 600 });
+      });
+      document.getElementById("h4bars").appendChild(svg);
+    }
   }
 
   // ---------------- lateral cluster

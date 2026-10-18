@@ -276,3 +276,72 @@ Reading: the circuit's inputs and gate are solid. The token route is spelling-le
 - Contrasting "nervous" with "anxious" over layers 1–14 finds only spelling-level units: L2/N8177 "Nor", L4/N7189 "-ve / erv", L1/N9531 "na-", plus the known token and concept inputs. No dedicated semantic "nervous ≠ anxious" unit turned up. Expected, since the two are near-synonyms.
 
 **Reading:** L9/N3688 is not a "nervousness" neuron. It responds to the word *nerve* (and nerv- forms) when used in its psychological sense. The token route makes it surface-bound: the meaning of English "nervous" is carried elsewhere, alongside "anxious". This is a third sharpening of the label, after H1 (any "nerve" morpheme) and H2 (psychological sense).
+
+## 2026-10-17: Trying to disprove the nerve neuron, relabelling the failures, and the lateral family's inputs (`mono/probe/disproof.py`, `bands.py`, `h4.py`, `predictive.py`, `lateral_out.py`; plans committed in 77e7426, 192e5b9, 0eeecfb, d9e9e34 before each run)
+
+**Band scan.** Full per-token activations for nerve and 14 web neurons over 6,000 corpus windows (6.1M tokens, `data/bands_web.npz`). This was used to look below the top examples.
+
+**Disproof attempts on L9/N3688+** (`disproof_plan.json`)
+
+D1, corpus strong firings (prediction: ≥ 90% have a 'nerve' word within 3 tokens). **Failed.**
+- Only 49 of 379 (12.9%) of strong firings (≥ 0.3 of max) have a 'nerve' word within 3 tokens.
+- The rest are mostly ' strong' and words for being hit, hurt or wounded.
+
+D2, blind annotation of 120 contexts in the bands 0.05–0.1, 0.1–0.2, 0.2–0.3 and 0.3–0.5. The annotator could not see the bands.
+- About 100% of contexts are "unrelated" in every band.
+- No theme reaches a third of any band. The largest is injury/violence, 7/30 in 0.3–0.5.
+- Force, injury and strength together make up about 63% of the 0.3–0.5 band.
+- The prediction failed, but the disproof condition (one coherent unrelated theme) was not met.
+
+D3, leak search with SciPy DE over 1,199 sentences containing no 'nerve' word.
+- The maximum is 0.52, with its peak on ' strong'. This is the strength branch, not a new concept.
+
+Per-token table (`token_table.json`)
+- ' strong' fires strongly on 88 of 538 occurrences (16%, mean +0.17).
+- ' nerve' fires strongly on 13 of 143 occurrences (9%, mean −0.05). Its anatomical uses push the − pole.
+- Next come injury, hit, nervous and wounded.
+
+H4, one coarser "force / strength / strain" job (`h4_test.json`, sentences without any 'nerve' word). **Rejected**: two of the four branches fail.
+
+| Branch | AUROC | Mean activation |
+|---|---|---|
+| strength | 0.97 | 0.25 |
+| impact/injury | 1.00 | 0.13 |
+| reaction/sensation | 0.47 | – |
+| courage/composure without the word | 0.61 | – |
+| psychological 'nerve' (reference) | – | 0.50 |
+
+Anticipation (exploratory, whole-word nerve tokens only)
+- Activation vs P(next token is 'nerve') has a Spearman correlation of −0.01 over 556k positions.
+- It is not a predictive unit.
+
+**Reading (H5).** The narrow label is falsified on frequency.
+- L9/N3688+ is a lexical detector that peaks on the psychological word 'nerve'.
+- It has reliable but weaker branches for 'strong' (about half the peak) and for hit/hurt words (about a quarter).
+- No unrelated concept was found anywhere in its range.
+- The meaning alone does not drive it: courage without the word, sensation, and anticipation of the word all fail.
+- It is one family of words, not one concept. Whether that counts as "monosemantic" depends on whether features are defined by meaning or by the vocabulary they serve.
+- Selection-bias note: nerve was chosen as the clearest of 12 random pilot neurons.
+
+**Relabelling the 10 web neurons whose labels failed** (two more rounds, using band-sampled examples as well as top examples)
+- 4 now hold:
+  - L9/N2445: religious identity in Jewish texts, 7/8.
+  - L10/N5553−: biology-textbook terms, 5/8.
+  - L7/N7149: the Tul·are piece, 8/8.
+  - L17/N2518: head of a Python dotted reference, 5/8.
+- 3 are dense units, on for 20–72% of tokens above 0.1 of max: L13/N3792, L19/N2291 and L14/N9470, the family hub. An 8 + 8 test cannot hold for these by design.
+- L20/N5963 is weakly dense and incoherent.
+- 2 remain unresolved after three rounds: L10/N6901 (4/8 each time) and L18/N12193.
+
+**Inputs of the lateral family** (12 new neurons, 3 per family member, by zero-ablation; 10 of 12 labels held)
+- can't-wait L9/N1061 is driven by:
+  - 'to' after eagerness (L8/N3632, 27%)
+  - "can't stand / can't bear" (L7/N10645, 20%)
+  - the 'th' of '19th century' (L7/N2810, 6%)
+- disappointed L1/N4037 is driven by 'disconnect' (L0/N10546, 35%), a noun after 'the' (L0/N55) and 'app' in code (L0/N10323).
+- overwhelmed L12/N3688 is driven by 'answer to / accountable to' (L8/N8229), a reader-need hook in ad copy (L11/N8779) and the second piece of a technical term (L6/N2446). Each contributes only 3–4%, so this one is diffuse.
+- suspense L7/N9782 is driven by 'life span' (L1/N1313, 10%). Two inputs failed: 'watch' TV (L0/N947, 3 false positives) and an unclear filler unit (L4/N7913).
+
+**Totals.** The web now has 60 neurons, and 52 labels hold on the latest round.
+- Published: web page https://claude.ai/artifact/QfEFnhVJj281rQw5Jpx3Xu and dossier https://claude.ai/artifact/AHrzdNHkF9wYFP9FVWXJRt.
+- Figure: `reports/figures/nerve_connectome.png`.

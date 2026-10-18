@@ -1,17 +1,19 @@
 {
  "title": "The Nerve Neuron",
- "headline": "One neuron, read three ways, keeps telling the same story. Layer 9, neuron 3688 of 1-bit Bonsai-8B is an axis for the word 'nerve', resolved by context: psychological strain and composure at one pole, bodily sensation at the other.",
- "verdict": "One main job with local offshoots",
+ "headline": "Layer 9, neuron 3688 of 1-bit Bonsai-8B peaks on the word 'nerve' in its psychological sense, and its opposite pole carries bodily sensation. A pre-registered attempt to disprove that label showed it is too narrow. Most of the neuron's strong firing in ordinary text comes from 'strong' and from words for being hit or hurt. These are weaker, reliable branches of one vocabulary, not a second unrelated job, and the meaning of courage without the word does not drive it.",
+ "verdict": "A word family, not one concept",
  "summary": [
   "Forward: its strongest corpus examples are 'nerve-racking', German 'Nerven', French 'nerveuse', Korean 신경 and Arabic عصبية. Its opposite pole fires on pain signals, numbness and temperature sense.",
   "Inverse: asked for text at 25, 50 and 75% of its corpus maximum, both solvers built passages that hit those levels from the label's sense of 'nerve'. Asked to fire it with nothing nerve-related, the only success was the word 'strong' (0.40), plausibly the fortitude branch. Asked to silence a clear psychological 'nerve', the solver put a sentence about pain receptors in front of it: the pole fell from 0.72 to 0.08 and the opposite pole jumped to 1.56.",
   "Induce: pushing the neuron toward its negative pole makes the model talk about pain, heat and receptors ('I felt… the pain' instead of 'nervous'). Pushing it gently positive raises 'calmly', 'strongly', 'proud'.",
-  "Fan-out: two inputs carry it, a layer-3 detector for the token 'nerve' (74%) and a layer-8 nerve/neural concept unit used by Arabic and Korean (61%). A pre-registered test (9 of 11 predictions held) showed that preceding pain context closes both routes, and that constructions like 'lost his nerve' and 'had the nerve to' close the token route by themselves. Its output spreads thinly: no later neuron moves by more than 0.12 of its range."
+  "Fan-out: two inputs carry it, a layer-3 detector for the token 'nerve' (74%) and a layer-8 nerve/neural concept unit used by Arabic and Korean (61%). A pre-registered test (9 of 11 predictions held) showed that preceding pain context closes both routes, and that constructions like 'lost his nerve' and 'had the nerve to' close the token route by themselves. Its output spreads thinly: no later neuron moves by more than 0.12 of its range.",
+  "Disproof: every strong firing in 6.1M corpus tokens was checked. Only 13% sit next to a 'nerve' word, and ' strong' fires it strongly more often than ' nerve' does (88 vs 13 times). A blind annotator found no single theme taking a third of any weak band. A leak search over 1,199 sentences with no 'nerve' word peaked at 0.52, on 'strong'. Branch tests with no 'nerve' word: strength and impact pass, while sensation (AUROC 0.47) and courage or composure without the word (0.61) fail. It does not fire in anticipation of 'nerve' as the next word (rank correlation −0.01)."
  ],
  "offshoots": [
+  "'strong' and strength (mean 0.25 of max, AUROC 0.97; the most common strong trigger in the corpus)",
+  "words for being hit, wounded or injured (mean 0.13, AUROC 1.00)",
   "anatomical 'nerve', weaker (0.1–0.6 depending on context)",
-  "the 신경 token inside the Korean name 신경민 (0.51)",
-  "'strong' after violent context (0.40)"
+  "the 신경 token inside the Korean name 신경민 (0.51)"
  ],
  "label_history": [
   [
@@ -25,6 +27,22 @@
   [
    "Pre-registered test of H2",
    "24 new sentences: accuracy 0.79, AUROC 0.92, no false positives"
+  ],
+  [
+   "H3, after the gate test",
+   "Tied to the word form: English 'nervous' barely fires it, while nervös and nerveux do"
+  ],
+  [
+   "Disproof D1–D3 (pre-registered)",
+   "Failed on frequency: 13% of strong firings near a 'nerve' word; D3 max 0.52 via 'strong'; weak bands diffuse"
+  ],
+  [
+   "H4, one coarse 'force / strength / strain' job",
+   "Rejected: strength 0.97 and impact 1.00 pass, sensation 0.47 and wordless fortitude 0.61 fail"
+  ],
+  [
+   "H5, current reading",
+   "A lexical detector peaking on the psychological word 'nerve', with weaker reliable branches for 'strong' and hit/hurt words"
   ]
  ],
  "highlight_flip": true
