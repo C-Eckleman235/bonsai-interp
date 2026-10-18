@@ -97,7 +97,7 @@ def draw(a):
         lst = ROOT / ".sweep" / "latest.txt"  # gitignored; the list survives long output and later steps
         lst.parent.mkdir(exist_ok=True)
         lst.write_text("\n".join(paths) + "\n", encoding="utf-8", newline="\n")
-        print(f"the {len(paths)} tests files are listed in .sweep/latest.txt (e.g. git add $(cat .sweep/latest.txt))")
+        print(f"the {len(paths)} tests files are listed in .sweep/latest.txt (git add --pathspec-from-file=.sweep/latest.txt; play run --list .sweep/latest.txt)")
 
 
 def _check_tests_file(path):
@@ -123,7 +123,10 @@ def _check_tests_file(path):
 def run(a):
     """Score one or more committed pre-registrations with ONE model load (batching is where the time goes:
     loading takes 30-60 s, a 16-sentence test about a second)."""
-    checked = [(f, *_check_tests_file(f)) for f in a.tests_files]
+    files = list(a.tests_files) + ([ln.strip() for ln in Path(a.list).read_text(encoding="utf-8").splitlines() if ln.strip()] if a.list else [])
+    if not files:
+        sys.exit("give tests files, or --list <file with one per line>")
+    checked = [(f, *_check_tests_file(f)) for f in files]
     problems = [c[1] for c in checked if c[1]]
     for msg in problems:
         print("SKIP", msg)
@@ -284,7 +287,8 @@ def main():
     n.add_argument("--verdict", choices=["confirm", "dispute", "refine"], default="confirm",
                    help="qc only: confirm = re-test the label as is; refine = propose a better label")
     r = sub.add_parser("run", help="score one or more committed pre-registrations (one model load for all)")
-    r.add_argument("tests_files", nargs="+")
+    r.add_argument("tests_files", nargs="*")
+    r.add_argument("--list", help="a file listing tests files, one per line (e.g. .sweep/latest.txt from play draw); works in any shell")
     r.add_argument("--author", help="only when the SENTENCES came from someone else, e.g. 'bonsai' when the model wrote them or 'twitch-chat'; "
                    "who did the work goes in the tests file's methods.agent, not here")
     dr = sub.add_parser("draw", help="k random poles with no record yet (for a sweep)")
