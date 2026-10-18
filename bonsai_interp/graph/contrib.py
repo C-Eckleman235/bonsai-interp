@@ -25,6 +25,7 @@ ID = re.compile(r"^\d{4}-\d{2}-\d{2}-[A-Za-z0-9-]+-[A-Za-z0-9]{4,}$|^core-[a-z0-
 NEURON = re.compile(r"^(?P<model>[a-z0-9_]+)/L(?P<L>\d+)/N(?P<n>\d+)(?P<pole>[+-])$")
 LOCAL_PATH = re.compile(r"(?i)\b[a-z]:[\\/]+users[\\/]|/home/[a-z]|/Users/[A-Za-z]")
 MAX_FILE = 64 * 1024
+METHODS_REQUIRED_FROM = "2026-10-18T18:30"  # contributions created earlier predate the methods block
 MAX_NOTES = 4000
 MAX_EXAMPLE = 400
 
@@ -64,6 +65,10 @@ def check(path: Path, c: dict):
         say(f"{rel}: kind must be one of {sorted(KINDS)}")
     if not NEURON.match(c["neuron"]) or folder_for(c["neuron"]) != path.parent:
         say(f"{rel}: neuron {c['neuron']!r} does not match its folder")
+    if not c["id"].startswith("core-") and c["kind"] in ("interpret", "qc", "replicate") and c["created"] >= METHODS_REQUIRED_FROM:
+        mt = c.get("methods") or {}
+        if not mt.get("agent") or not isinstance(mt.get("screens"), list) or not mt.get("screens"):
+            say(f"{rel}: needs a 'methods' block with 'agent' and a non-empty 'screens' list (see bonsai_interp/graph/methods.py)")
     if c["kind"] in ("interpret", "qc") and not c.get("tests"):
         say(f"{rel}: an {c['kind']} contribution needs at least one pre-registered test")
     if c["kind"] == "interpret" and not c.get("label"):

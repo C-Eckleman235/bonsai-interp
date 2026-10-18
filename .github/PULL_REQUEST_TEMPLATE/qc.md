@@ -17,6 +17,12 @@
 
 <!-- the line printed by `play run`. A confirm whose test fails counts as a dispute automatically. -->
 
+## Methods used
+
+- Agent: <!-- e.g. claude-code opus-5.5, codex gpt-6.1, human -->
+- Screens: <!-- from bonsai_interp/graph/methods.py: look, bands, probe, quick-test, step-out, ... (also in the results file's "methods") -->
+- Depth / time: <!-- quick / standard / deep; minutes -->
+
 ## What you looked at
 
 <!-- e.g. "weak bands 0.1–0.3", "other languages", "the word without the meaning" -->

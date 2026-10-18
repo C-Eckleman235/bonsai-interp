@@ -25,6 +25,7 @@ import sys
 from pathlib import Path
 
 from bonsai_interp.graph.contrib import NEURON, ROOT, folder_for
+from bonsai_interp.graph.methods import SCREENS, detect, minutes_between
 
 TEMPLATE_FIRE = ["<sentence that should fire the pole>"] * 8
 TEMPLATE_QUIET = ["<near miss: same topic, without the claimed trigger>"] * 8
@@ -51,7 +52,9 @@ def new(a):
          **({"qc": {"verdict": a.verdict, "label_under_test": current}} if a.kind == "qc" else {}),
          "neighbours": [{"unit": unit, "pole": m["pole"], "label": current if a.kind == "qc" and a.verdict != "refine" else "<your label>",
                          "fire": TEMPLATE_FIRE, "quiet": TEMPLATE_QUIET}],
-         "predictions": "<optional: what you expect, e.g. '6/8 fire, 0 near misses'>"}
+         "predictions": "<optional: what you expect, e.g. '6/8 fire, 0 near misses'>",
+         "methods": {"agent": "<who did the work: e.g. 'claude-code opus-5.5', 'codex gpt-6.1', 'human'>",
+                     "screens": ["look"], "_screens_vocabulary": sorted(SCREENS)}}
     p = d / f"{cid}.tests.json"
     p.write_text(json.dumps(t, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
     print(f"wrote {p.relative_to(ROOT)}\nFill in the label and the 16 sentences, then commit THIS FILE ALONE:\n"
@@ -91,10 +94,21 @@ def run(a):
         tests.append({"protocol": t["protocol"], "tests_file": rel, "prereg_commit": prereg, "author": a.author or t["contributor"],
                       "n_fire": nf, "n_false_pos": fp, "n_written": [len(fire), len(quiet)], "per_sentence": per})
         print(f"{nb['unit']}{nb['pole']}: fire {nf}/{len(fire)}, near misses firing {fp}/{len(quiet)} -> {'HELD' if nf >= 5 and fp <= 1 else 'FAILED'}")
+    declared = dict(t.get("methods") or {})
+    declared.pop("_screens_vocabulary", None)
+    if not declared.get("agent") or "<" in str(declared.get("agent")):
+        sys.exit("fill in methods.agent in the tests file (who did the work), commit, then run")
+    tests_screens = ["quick-test"] + (["second-round"] if len(list(p.parent.glob("*.tests.json"))) > 1 else [])
+    meth = {**declared, "screens": sorted(set(declared.get("screens", [])) | set(tests_screens)),
+            "detected": detect(ROOT, int(m["L"]), int(m["n"]), m["pole"]), "toolchain_commit": _commit(),
+            "minutes": minutes_between(ROOT, rel)}
+    unknown = [x for x in meth["screens"] if x not in SCREENS]
+    if unknown:
+        print(f"note: screens not in the shared vocabulary (add them in bonsai_interp/graph/methods.py): {unknown}")
     c = {"id": t["contribution"], "kind": t["kind"], "neuron": t["neuron"], "contributor": t["contributor"],
          "created": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
          "recipe": {"toolchain_commit": _commit(), "command": f"python -m bonsai_interp.graph.play run {rel}"},
-         "label": t["neighbours"][0]["label"], "tests": tests}
+         "label": t["neighbours"][0]["label"], "tests": tests, "methods": meth}
     if t["kind"] == "qc":
         c["qc"] = {"verdict": t["qc"]["verdict"], "label_under_test": t["qc"].get("label_under_test")}
         if t["qc"]["verdict"] != "refine":

@@ -136,6 +136,8 @@ def brief(a):
                 "   Fill in: your label (at the level the test can support), 8 sentences that should fire the pole, 8 near misses",
                 "   that keep topic, length and style and drop only the claimed trigger. Optional: short, unit_kind, confidence, notes.",
                 "   The bar is hard: 0.30 of the pole's max. Make the fire sentences clear cases (put borderline ones in notes, not the test).",
+                "   Also fill methods.agent (who you are, e.g. 'claude-code opus-5.5') and methods.screens (what you used; vocabulary in",
+                "   bonsai_interp/graph/methods.py). play run adds what it can detect and the minutes taken.",
                 f'   Commit it ALONE: git add {folder} && git commit -m "Pre-register interpret test for {target}"',
                 f"4. Run it: {py} -m bonsai_interp.graph.play run <the .tests.json>  then  {py} -m bonsai_interp.graph.fold",
                 f'   Commit the results SEPARATELY: git add graph && git commit -m "Results for {target}"',

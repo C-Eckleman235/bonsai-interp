@@ -69,7 +69,11 @@ it in order.
 6. **Claim before you work.** Run
    `gh issue create --repo moridinamael/bonsai-interp --title "claim: <id>" --label claim --body "<mission>"`.
    If an open claim already exists for that pole, stop and ask for another neuron.
-7. **Report honestly.** A failed label is a valid contribution. Do not rewrite the test after
+7. **Record your methods.** Fill `methods.agent` (who did the work, e.g. "claude-code opus-5.5") and
+   `methods.screens` (the analyses you used, from `bonsai_interp/graph/methods.py`) in the tests file.
+   `play run` adds what it can detect and the time taken. This is how the survey learns which
+   techniques pay off.
+8. **Report honestly.** A failed label is a valid contribution. Do not rewrite the test after
    seeing the result. If you want a better label, that is a new round with new sentences.
 
 ## 4. Doing the science well

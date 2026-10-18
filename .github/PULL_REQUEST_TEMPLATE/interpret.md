@@ -18,6 +18,12 @@
 
 <!-- paste the line printed by `play run`, e.g. "L12/N5397-: fire 6/8, near misses firing 0/8 -> HELD" -->
 
+## Methods used
+
+- Agent: <!-- e.g. claude-code opus-5.5, codex gpt-6.1, human -->
+- Screens: <!-- from bonsai_interp/graph/methods.py: look, bands, probe, quick-test, step-out, ... (also in the results file's "methods") -->
+- Depth / time: <!-- quick / standard / deep; minutes -->
+
 ## Edges (if you stepped out)
 
 <!-- from -> to, kind, weight, method; also listed in the results file -->
