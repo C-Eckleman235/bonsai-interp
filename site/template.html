@@ -8,6 +8,7 @@
   --paper: #eef2ef; --sheet: #f8faf8; --ink: #17302c; --ink-2: #44605a; --ink-3: #7b938d; --rule: #d3ddd9;
   --mark: #2d3fc6; --mark-ink: #ffffff; --plus: #a8620f; --minus: #0f7a6e;
   --held: #1f7a4d; --failed: #b4441f; --dense: #8a9590; --probed: #2d3fc6; --replicated: #7b4bb8; --contested: #c08a12;
+  --h1: #c9d3e8; --h2: #8fa6d6; --h3: #5a76c9; --h4: #c9851d; --h5: #c2410c;
   --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
   --body: "Public Sans", "Segoe UI", system-ui, sans-serif;
   --mono: "JetBrains Mono", "Cascadia Mono", Consolas, monospace;
@@ -15,11 +16,13 @@
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
   --paper: #0f1716; --sheet: #15201e; --ink: #e3ece9; --ink-2: #a8bcb6; --ink-3: #6f8781; --rule: #26342f;
   --mark: #8c9bff; --mark-ink: #0f1716; --plus: #e0a34a; --minus: #3cc2b0;
-  --held: #4fc386; --failed: #ee7a52; --dense: #77837e; --probed: #8c9bff; --replicated: #b892ee; --contested: #e7b84a; color-scheme: dark } }
+  --held: #4fc386; --failed: #ee7a52; --dense: #77837e; --probed: #8c9bff; --replicated: #b892ee; --contested: #e7b84a;
+  --h1: #2c3a5c; --h2: #3f5a9a; --h3: #6c8be0; --h4: #e0a245; --h5: #ff7a3d; color-scheme: dark } }
 :root[data-theme="dark"] {
   --paper: #0f1716; --sheet: #15201e; --ink: #e3ece9; --ink-2: #a8bcb6; --ink-3: #6f8781; --rule: #26342f;
   --mark: #8c9bff; --mark-ink: #0f1716; --plus: #e0a34a; --minus: #3cc2b0;
-  --held: #4fc386; --failed: #ee7a52; --dense: #77837e; --probed: #8c9bff; --replicated: #b892ee; --contested: #e7b84a; color-scheme: dark }
+  --held: #4fc386; --failed: #ee7a52; --dense: #77837e; --probed: #8c9bff; --replicated: #b892ee; --contested: #e7b84a;
+  --h1: #2c3a5c; --h2: #3f5a9a; --h3: #6c8be0; --h4: #e0a245; --h5: #ff7a3d; color-scheme: dark }
 
 * { box-sizing: border-box; }
 body { background: var(--paper); color: var(--ink); font: 15px/1.55 var(--body); }
@@ -153,7 +156,7 @@ td.n { font-family: var(--mono); text-align: right; }
         <form class="find" id="find"><label for="q" class="eyebrow" style="align-self:center">Go to</label><input type="text" id="q" placeholder="L12/N5397 or 12/5397" autocomplete="off"><button type="submit">Open</button><span class="err" id="qerr"></span></form>
       </div>
       <section id="v-map">
-        <div class="row" style="justify-content:space-between"><h2>The survey map</h2><span class="mono" id="cursor" style="color:var(--ink-3)">hover the map</span></div>
+        <div class="row" style="justify-content:space-between"><h2>The survey map</h2><div class="row"><span style="color:var(--ink-2);font-size:.8rem">Colour by</span><div class="seg" role="group" aria-label="Colour by" id="colorby"><button type="button" data-c="status" aria-pressed="true">Status</button><button type="button" data-c="scrutiny" aria-pressed="false">Scrutiny</button></div><span class="mono" id="cursor" style="color:var(--ink-3)">hover the map</span></div></div>
         <div class="mapwrap" id="mapwrap"><canvas id="map" width="1240" height="720" aria-label="Map of all 36 layers by 12,288 neurons with surveyed poles marked"></canvas></div>
         <div class="legend" id="legend"></div>
         <p class="hint">Each row is a layer; neuron index runs left to right at true scale. Click anywhere to zoom into that block of 1,024 neurons.</p>
@@ -231,7 +234,10 @@ td.n { font-family: var(--mono); text-align: right; }
                   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } };
   const N = Object.entries(IDX.neurons).map(([id, r]) => { const m = id.match(/^(\w+)\/L(\d+)\/N(\d+)([+-])$/); return { id, model: m[1], L: +m[2], n: +m[3], pole: m[4], ...r }; });
   const byId = Object.fromEntries(N.map(r => [r.id, r]));
-  let mode = "solo", claimed = new Set();
+  let mode = "solo", claimed = new Set(), colorBy = "status";
+  const SCR = ["unexamined", "tested", "re-tested", "checked", "investigated", "replicated"];
+  const lvl = r => (r.scrutiny ? r.scrutiny.level : 1);
+  const colorOf = r => colorBy === "status" ? (css("--" + r.status) || css("--ink-3")) : css("--h" + Math.max(1, lvl(r)));
 
   // tally
   const held = N.filter(r => r.status === "held").length;
@@ -263,16 +269,22 @@ td.n { font-family: var(--mono); text-align: right; }
     for (const e of IDX.edges) { const a = byId[e[0]], b = byId[e[1]]; if (!a || !b) continue;
       ctx.strokeStyle = css("--ink-3"); ctx.globalAlpha = 0.28; ctx.beginPath(); ctx.moveTo(xOf(a.n), yOf(a.L, a.pole)); ctx.lineTo(xOf(b.n), yOf(b.L, b.pole)); ctx.stroke(); ctx.globalAlpha = 1; }
     for (const r of N) {
-      ctx.fillStyle = css("--" + r.status) || css("--ink-3");
-      ctx.beginPath(); ctx.arc(xOf(r.n), yOf(r.L, r.pole), r.status === "probed" ? 5.5 : 3.6, 0, 2 * Math.PI); ctx.fill();
+      ctx.fillStyle = colorOf(r);
+      const rad = colorBy === "scrutiny" ? 2.6 + lvl(r) * 1.1 : (r.status === "probed" ? 5.5 : 3.6);
+      if (colorBy === "scrutiny" && lvl(r) >= 4) { const g = ctx.createRadialGradient(xOf(r.n), yOf(r.L, r.pole), 0, xOf(r.n), yOf(r.L, r.pole), rad * 3.2); g.addColorStop(0, colorOf(r)); g.addColorStop(1, "transparent"); ctx.globalAlpha = 0.35; ctx.fillStyle = g; ctx.beginPath(); ctx.arc(xOf(r.n), yOf(r.L, r.pole), rad * 3.2, 0, 2 * Math.PI); ctx.fill(); ctx.globalAlpha = 1; ctx.fillStyle = colorOf(r); }
+      ctx.beginPath(); ctx.arc(xOf(r.n), yOf(r.L, r.pole), rad, 0, 2 * Math.PI); ctx.fill();
       ctx.strokeStyle = css("--sheet"); ctx.lineWidth = 1.2; ctx.stroke();
     }
     if (sel) { const x = xOf(sel.n), y = yOf(sel.L, sel.pole);
       ctx.strokeStyle = css("--mark"); ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(x, y, 10, 0, 2 * Math.PI); ctx.stroke();
       ctx.beginPath(); ctx.moveTo(x - 16, y); ctx.lineTo(x - 11, y); ctx.moveTo(x + 11, y); ctx.lineTo(x + 16, y); ctx.moveTo(x, y - 16); ctx.lineTo(x, y - 11); ctx.moveTo(x, y + 11); ctx.lineTo(x, y + 16); ctx.stroke(); }
   }
-  document.getElementById("legend").innerHTML = STATUS.map(s => `<span><i style="background:var(--${s})"></i>${s}</span>`).join("") +
-    `<span><i style="background:none;border:1px solid var(--ink-3)"></i>upper half of a row = + pole, lower = − pole</span>`;
+  function legend() { document.getElementById("legend").innerHTML = (colorBy === "status" ? STATUS.map(s => `<span><i style="background:var(--${s})"></i>${s}</span>`).join("")
+    : SCR.slice(1).map((s, i) => `<span><i style="background:var(--h${i + 1})"></i>${i + 1} ${s}</span>`).join("")) +
+    `<span><i style="background:none;border:1px solid var(--ink-3)"></i>upper half of a row = + pole, lower = − pole</span>`; }
+  legend();
+  document.getElementById("colorby").addEventListener("click", ev => { const b = ev.target.closest("[data-c]"); if (!b) return; colorBy = b.dataset.c;
+    document.querySelectorAll("#colorby button").forEach(x => x.setAttribute("aria-pressed", x === b)); store.set("colorBy", colorBy); legend(); draw(); if (view.level === "block") drawBlock(); });
   const at = ev => { const b = cv.getBoundingClientRect(); const x = (ev.clientX - b.left) * W / b.width, y = (ev.clientY - b.top) * H / b.height;
     const L = Math.floor((y - mT) / rowH), n = Math.round((x - mL) / (W - mL - mR) * N_N - 0.5), pole = ((y - mT) / rowH - L) < 0.5 ? "+" : "-";
     let near = null, best = 9; for (const r of N) { const d = Math.hypot(xOf(r.n) - x, yOf(r.L, r.pole) - y); if (d < best) { best = d; near = r; } }
@@ -280,7 +292,7 @@ td.n { font-family: var(--mono); text-align: right; }
   cv.addEventListener("mousemove", ev => { const p = at(ev); if (!p.ok) { tip.hidden = true; return; }
     document.getElementById("cursor").textContent = `L${p.L} · N${p.n} · ${p.pole === "+" ? "+ pole" : "− pole"}`;
     if (p.near) { tip.hidden = false; tip.style.left = p.px + "px"; tip.style.top = p.py + "px";
-      tip.innerHTML = `${esc(p.near.id)} · ${esc(p.near.status)}<br>${esc(p.near.short || p.near.label || "")}`; } else tip.hidden = true; });
+      tip.innerHTML = `${esc(p.near.id)} · ${esc(p.near.status)} · scrutiny ${lvl(p.near)}<br>${esc(p.near.short || p.near.label || "")}`; } else tip.hidden = true; });
   cv.addEventListener("mouseleave", () => { tip.hidden = true; });
   cv.addEventListener("click", ev => { const p = at(ev); if (!p.ok) return;
     if (p.near) openNeuron(p.near.L, p.near.n, p.near.pole); else openBlock(p.L, Math.floor(p.n / BLK)); });
@@ -321,7 +333,7 @@ td.n { font-family: var(--mono); text-align: right; }
       const n = b * BLK + i, x = bmL + (i % COLS) * cw, y = bmT + Math.floor(i / COLS) * ch;
       for (const pole of ["+", "-"]) {
         const id = `bonsai1/L${L}/N${n}${pole}`, r = byId[id], yy = y + (pole === "+" ? 1 : ch / 2), hh = ch / 2 - 1.5;
-        bx.fillStyle = r ? css("--" + r.status) : claimed.has(id) ? css("--contested") : css("--rule");
+        bx.fillStyle = r ? colorOf(r) : claimed.has(id) ? css("--contested") : css("--rule");
         bx.globalAlpha = r || claimed.has(id) ? 1 : 0.6; bx.fillRect(x + 1, yy, cw - 2, hh); bx.globalAlpha = 1;
       }
     }
@@ -352,7 +364,7 @@ td.n { font-family: var(--mono); text-align: right; }
     const tests = (r.t || []).map(t => `<li>${esc(t[0])} · <b style="color:var(--${col(t[1])})">${esc(t[1])}</b>${t[2] != null ? ` · fire ${t[2]}/8 · near misses ${t[3]}/8` : ""}${t[4] ? ` · by ${esc(t[4])}` : ""}</li>`).join("");
     const hist = (r.history || []).map(h => `<li>${esc(h[0])} <span class="mono">(${esc(h[1])})</span></li>`).join("");
     return `<div class="polecard">${head}<p class="lab">${esc(r.label || "–")}</p>
-      <dl><dt>kind</dt><dd>${esc(r.kind || "–")}</dd><dt>depth</dt><dd>${esc(r.depth)}</dd><dt>QC</dt><dd>${r.qc.confirm} confirm · ${r.qc.dispute} dispute · ${r.qc.refine} refine</dd>
+      <dl><dt>scrutiny</dt><dd><span style="color:var(--h${Math.max(1, lvl(r))});font-weight:600">${lvl(r)} ${esc(SCR[lvl(r)])}</span>${r.scrutiny && r.scrutiny.test_rounds ? ` · ${r.scrutiny.test_rounds} test round${r.scrutiny.test_rounds > 1 ? "s" : ""}` : ""}${r.scrutiny && r.scrutiny.sentences ? ` · ${r.scrutiny.sentences} test sentences` : ""}</dd><dt>kind</dt><dd>${esc(r.kind || "–")}</dd><dt>depth</dt><dd>${esc(r.depth)}</dd><dt>QC</dt><dd>${r.qc.confirm} confirm · ${r.qc.dispute} dispute · ${r.qc.refine} refine</dd>
       <dt>contributors</dt><dd>${esc((r.contributors || []).join(", "))}</dd>${r.replicated ? `<dt>replicated</dt><dd>blind clean room</dd>` : ""}</dl>
       ${tests ? `<div class="eyebrow">Tests</div><ul class="hist">${tests}</ul>` : ""}${hist ? `<div class="eyebrow">Labels tried</div><ol class="hist">${hist}</ol>` : ""}
       <div class="acts"><button type="button" data-act="qc" data-id="${id}">QC it</button><button type="button" data-act="step" data-id="${id}">Step out from it</button>${r.replicated ? "" : `<button type="button" data-act="blind" data-id="${id}">Blind run</button>`}</div></div>`;
@@ -474,6 +486,7 @@ td.n { font-family: var(--mono); text-align: right; }
   fetch(`https://api.github.com/repos/${REPO}/issues?labels=claim&state=open&per_page=100`).then(r => r.ok ? r.json() : [])
     .then(list => { for (const i of list) { const m = (i.title || "").match(/bonsai1\/L\d+\/N\d+[+-]/); if (m) claimed.add(m[0]); } }).catch(() => {});
 
+  colorBy = store.get("colorBy", "status"); document.querySelectorAll("#colorby button").forEach(x => x.setAttribute("aria-pressed", x.dataset.c === colorBy)); legend();
   show("map"); draw();
   const last = store.get("lastMission", null), m0 = store.get("mode", "solo");
   if (m0 === "gmoo") { mode = "gmoo"; document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", x.dataset.mode === "gmoo")); }
