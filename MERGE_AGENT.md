@@ -32,11 +32,12 @@ derive the record.
    - **Artefacts.** Each URL resolves and its sha256 matches. If one does not, ask for a fix;
      it does not block the merge.
    - **Recipe.** It names a toolchain commit that exists on `main`.
-5. **If the contributor's derived files are stale** (they forgot to run `fold`), run
-   `python -m bonsai_interp.graph.fold` on the PR branch, commit the regenerated files as
-   "fold", and re-run step 2. The output is deterministic, so this can never conflict with
-   their contribution.
-6. **Merge with a merge commit, never a squash.** Squashing would destroy the
+5. **PRs carry contributions only.** `check_prereg` rejects derived files
+   (`graph/neurons/`, `edges.json`, `index.json`) in a PR. Ask the contributor to drop them.
+6. **Merge with a merge commit, never a squash.** Then, on `main`, run
+   `python -m bonsai_interp.graph.fold`, commit the regenerated files as "fold after #<n>", and check
+   them with `python -m bonsai_interp.graph.validate --strict`. If that check fails, stop merging and
+   alert the owner (circuit breaker). Squashing would destroy the
    tests-before-results order that CI checked.
 7. **Close the claim issue.** Add the labels `held`, `failed`, `contested` or `refined` from the
    folded status. Post a one-line summary, for example: "L12/N5397- held 6/8 (0 FP); 2 QCs
@@ -44,10 +45,9 @@ derive the record.
 
 ## Conflicts between PRs
 
-Two PRs that add contributions for the same neuron never conflict on contribution files,
-because each has its own `<id>`. They do conflict on the derived files. Merge one, then on the
-other run `git merge origin/main`, then `python -m bonsai_interp.graph.fold`, then commit.
-Because fold is deterministic, the result is the same whichever PR merged first.
+PRs never conflict: each contribution has its own `<id>`, and derived files only ever change on
+`main` in the merge agent's fold commits. Fold is deterministic, so the order of merges does not
+change the result.
 
 ## Idempotence, concretely
 

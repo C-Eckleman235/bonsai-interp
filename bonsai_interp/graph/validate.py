@@ -1,6 +1,7 @@
 """Validate the graph (no model or torch needed).
 
-  python -m bonsai_interp.graph.validate        exit 1 on any problem
+  python -m bonsai_interp.graph.validate             contributions only (what a PR is checked against)
+  python -m bonsai_interp.graph.validate --strict    also: derived files on disk match the fold exactly (main)
 
 Checks every contribution and pre-registration file against the rules in graph/SCHEMA.md and
 DATA_POLICY.md, then checks that the committed neuron records, edges and index are exactly what
@@ -29,12 +30,13 @@ def main():
     stray = [p for p in contrib.C.rglob("*") if p.is_file() and p.suffix not in (".json", ".md")]
     errs += [f"{p.relative_to(ROOT).as_posix()}: only .json and .md files are allowed under graph/contributions" for p in stray]
     files = fold.fold()
-    for p, s in files.items():
-        if not (ROOT / p).exists() or (ROOT / p).read_text(encoding="utf-8") != s:
-            errs.append(f"{p}: out of date with the contributions (run python -m bonsai_interp.graph.fold and commit)")
-    for p in (ROOT / "graph" / "neurons").glob("*/*.json"):
-        if p.relative_to(ROOT).as_posix() not in files:
-            errs.append(f"{p.relative_to(ROOT).as_posix()}: record with no contributions (records are derived; do not add them by hand)")
+    if "--strict" in sys.argv:  # on main, after the merge agent's fold commit: derived files must match exactly
+        for p, s in files.items():
+            if not (ROOT / p).exists() or (ROOT / p).read_text(encoding="utf-8") != s:
+                errs.append(f"{p}: out of date with the contributions (run python -m bonsai_interp.graph.fold and commit)")
+        for p in (ROOT / "graph" / "neurons").glob("*/*.json"):
+            if p.relative_to(ROOT).as_posix() not in files:
+                errs.append(f"{p.relative_to(ROOT).as_posix()}: record with no contributions (records are derived; do not add them by hand)")
     neurons = set(json.loads(files["graph/index.json"])["neurons"])
     for e in json.loads(files["graph/edges.json"])["edges"]:
         for end in ("from", "to"):

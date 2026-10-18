@@ -53,13 +53,14 @@ it in order.
 ## 3. Rules you must not break
 
 1. **Pre-register.** Write the test (label, 8 sentences that should fire the pole, and 8 near
-   misses) and **commit it on its own before running anything that scores it**. Then run, fold
-   and commit the results in a **second** commit. Never amend or squash those two commits
+   misses) and **commit it on its own before running anything that scores it**. Then run
+   and commit the results (contribution files only) in a **second** commit. Never amend or squash those two commits
    together, and never edit a committed `.tests.json`. CI checks all of this.
 2. **Append-only.** Never edit or delete anyone's files under `graph/contributions/`, including
    your own earlier ones. A correction is a new contribution.
-3. **Records are derived.** Never edit `graph/neurons/`, `graph/edges.json` or `graph/index.json`
-   by hand. Run `python -m bonsai_interp.graph.fold`.
+3. **PRs carry contributions only.** Never commit `graph/neurons/`, `graph/edges.json` or
+   `graph/index.json`: the merge agent regenerates them on `main` after each merge. You may run
+   `python -m bonsai_interp.graph.fold` locally to preview the record, but don't commit the output.
 4. **Data policy** ([DATA_POLICY.md](DATA_POLICY.md)):
    - Only the two contribution files go in git, at most 64 KB each.
    - Banks, logs and transcripts go to the library and are referenced by hash.

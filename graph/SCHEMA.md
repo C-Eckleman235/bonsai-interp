@@ -50,6 +50,9 @@ merging the same contribution twice changes nothing, and new information never o
 
 - `quick-8+8@1`: held if at least 5 of 8 sentences fire at 0.3 or more of the pole's corpus max,
   and at most 1 near miss does.
+- `quick-8+8@2` (the default for new tests): held if the fire sentences rank above the near misses
+  (AUROC >= 0.90), the median fire sentence reaches 0.20 of the pole's corpus max, and at most 1
+  near miss reaches 0.30. It needs the per-sentence activations that `play run` records.
 - `held-out@1`
 - `cleanroom@1`
 
@@ -87,7 +90,7 @@ More rules:
 ```bash
 python -m bonsai_interp.graph.play new interpret --neuron bonsai1/L12/N5397- --handle you
 python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L12_N5397_neg/<id>.tests.json
-python -m bonsai_interp.graph.fold            # refresh the derived files
+python -m bonsai_interp.graph.fold            # preview the derived files locally (the merge agent commits them on main)
 python -m bonsai_interp.graph.validate        # what CI runs
 python -m bonsai_interp.graph.check_prereg --base origin/main
 ```

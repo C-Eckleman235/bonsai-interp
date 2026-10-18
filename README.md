@@ -62,7 +62,7 @@ Add a neuron, relabel one, or contribute a blind replication. See
 
 1. Draw a neuron on the survey page, or pick one to QC, and claim it.
 2. `python -m bonsai_interp.graph.play new …` writes the pre-registration. Fill it in and commit it alone.
-3. `python -m bonsai_interp.graph.play run …` writes the results. Run `python -m bonsai_interp.graph.fold`, then commit again.
+3. `python -m bonsai_interp.graph.play run …` writes the results; commit them separately (contribution files only).
 4. Open a PR with the `interpret` or `qc` template. CI checks that contributions are append-only, that the tests came first, the size caps, and the derived files.
 
 ## Licences

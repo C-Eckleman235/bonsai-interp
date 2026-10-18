@@ -26,6 +26,7 @@ from pathlib import Path
 
 from bonsai_interp.graph.contrib import NEURON, ROOT, folder_for
 from bonsai_interp.graph.methods import SCREENS, detect, minutes_between
+from bonsai_interp.graph.protocols import outcome
 
 TEMPLATE_FIRE = ["<sentence that should fire the pole>"] * 8
 TEMPLATE_QUIET = ["<near miss: same topic, without the claimed trigger>"] * 8
@@ -47,7 +48,7 @@ def new(a):
     rec = ROOT / "graph" / "neurons" / m["model"] / f"{d.name}.json"
     if rec.exists():
         current = json.loads(rec.read_text(encoding="utf-8")).get("label")
-    t = {"contribution": cid, "contributor": a.handle, "kind": a.kind, "neuron": a.neuron, "protocol": "quick-8+8@1",
+    t = {"contribution": cid, "contributor": a.handle, "kind": a.kind, "neuron": a.neuron, "protocol": "quick-8+8@2",
          "written": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
          **({"qc": {"verdict": a.verdict, "label_under_test": current}} if a.kind == "qc" else {}),
          "neighbours": [{"unit": unit, "pole": m["pole"], "label": current if a.kind == "qc" and a.verdict != "refine" else "<your label>",
@@ -62,63 +63,88 @@ def new(a):
           f"then: python -m bonsai_interp.graph.play run {p.relative_to(ROOT).as_posix()}")
 
 
+def _check_tests_file(path):
+    """(problem or None, tests dict, rel path, prereg commit) for one pre-registration."""
+    p = Path(path).resolve()
+    rel = p.relative_to(ROOT).as_posix()
+    if subprocess.run(["git", "log", "--format=%h", "-1", "--", rel], cwd=ROOT, capture_output=True, text=True).stdout.strip() == "":
+        return f"{rel}: not committed yet; commit the pre-registration first", None, rel, None
+    if subprocess.run(["git", "diff", "--quiet", "HEAD", "--", rel], cwd=ROOT).returncode != 0:
+        return f"{rel}: has uncommitted edits; a pre-registration must be run exactly as committed", None, rel, None
+    t = json.loads(p.read_text(encoding="utf-8"))
+    if any("<" in s for nb in t["neighbours"] for s in nb["fire"] + nb["quiet"] + [nb["label"]]):
+        return f"{rel}: still has <placeholders>", None, rel, None
+    agent = (t.get("methods") or {}).get("agent")
+    if not agent or "<" in str(agent):
+        return f"{rel}: fill in methods.agent (who did the work), commit, then run", None, rel, None
+    prereg = subprocess.run(["git", "log", "--diff-filter=A", "--format=%h", "--", rel], cwd=ROOT, capture_output=True, text=True).stdout.split()[-1]
+    return None, t, rel, prereg
+
+
 def run(a):
+    """Score one or more committed pre-registrations with ONE model load (batching is where the time goes:
+    loading takes 30-60 s, a 16-sentence test about a second)."""
+    checked = [(f, *_check_tests_file(f)) for f in a.tests_files]
+    problems = [c[1] for c in checked if c[1]]
+    for msg in problems:
+        print("SKIP", msg)
+    todo = [c for c in checked if not c[1]]
+    if not todo:
+        sys.exit("nothing to run")
     import torch
     from bonsai_interp import explore
     from bonsai_interp.model import load
     from bonsai_interp.probe import textinv
-    p = Path(a.tests_file).resolve()
-    rel = p.relative_to(ROOT).as_posix()
-    if subprocess.run(["git", "log", "--format=%h", "-1", "--", rel], cwd=ROOT, capture_output=True, text=True).stdout.strip() == "":
-        sys.exit(f"{rel} is not committed yet. Commit the pre-registration first, then run it.")
-    if subprocess.run(["git", "diff", "--quiet", "HEAD", "--", rel], cwd=ROOT).returncode != 0:
-        sys.exit(f"{rel} has uncommitted edits. A pre-registration must be run exactly as committed.")
-    t = json.loads(p.read_text(encoding="utf-8"))
-    if any("<" in s for nb in t["neighbours"] for s in nb["fire"] + nb["quiet"] + [nb["label"]]):
-        sys.exit("the tests file still has <placeholders>")
-    prereg = subprocess.run(["git", "log", "--diff-filter=A", "--format=%h", "--", rel], cwd=ROOT, capture_output=True, text=True).stdout.split()[-1]
-    m = NEURON.match(t["neuron"])
     torch.cuda.set_per_process_memory_fraction(0.8)
-    model, tok, rec = load(m["model"])
-    tok.padding_side = "right"
-    scan = explore.scan(m["model"])
-    tests = []
-    for nb in t["neighbours"]:
-        L, n = map(int, nb["unit"][1:].split("/N"))
-        pole = 0 if nb["pole"] == "+" else 1
-        pmax, omax = float(scan["top_val"][L, pole, 0, n]), float(scan["top_val"][L, 1 - pole, 0, n])
-        ev = textinv.TextEvaluator(model, tok, rec, L, n, pmax, omax, 1.0 if pole == 0 else -1.0)
-        fire, quiet = ev(nb["fire"]), ev(nb["quiet"])
-        per = [{"set": s, "i": i, "act": round(r["act"], 3), "peak": r["peak_token"]} for s, rs in (("fire", fire), ("quiet", quiet)) for i, r in enumerate(rs)]
-        nf, fp = sum(r["act"] >= 0.3 for r in fire), sum(r["act"] >= 0.3 for r in quiet)
-        tests.append({"protocol": t["protocol"], "tests_file": rel, "prereg_commit": prereg, "author": a.author or t["contributor"],
-                      "n_fire": nf, "n_false_pos": fp, "n_written": [len(fire), len(quiet)], "per_sentence": per})
-        print(f"{nb['unit']}{nb['pole']}: fire {nf}/{len(fire)}, near misses firing {fp}/{len(quiet)} -> {'HELD' if nf >= 5 and fp <= 1 else 'FAILED'}")
-    declared = dict(t.get("methods") or {})
-    declared.pop("_screens_vocabulary", None)
-    if not declared.get("agent") or "<" in str(declared.get("agent")):
-        sys.exit("fill in methods.agent in the tests file (who did the work), commit, then run")
-    tests_screens = ["quick-test"] + (["second-round"] if len(list(p.parent.glob("*.tests.json"))) > 1 else [])
-    meth = {**declared, "screens": sorted(set(declared.get("screens", [])) | set(tests_screens)),
-            "detected": detect(ROOT, int(m["L"]), int(m["n"]), m["pole"]), "toolchain_commit": _commit(),
-            "minutes": minutes_between(ROOT, rel)}
-    unknown = [x for x in meth["screens"] if x not in SCREENS]
-    if unknown:
-        print(f"note: screens not in the shared vocabulary (add them in bonsai_interp/graph/methods.py): {unknown}")
-    c = {"id": t["contribution"], "kind": t["kind"], "neuron": t["neuron"], "contributor": t["contributor"],
-         "created": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
-         "recipe": {"toolchain_commit": _commit(), "command": f"python -m bonsai_interp.graph.play run {rel}"},
-         "label": t["neighbours"][0]["label"], "tests": tests, "methods": meth}
-    if t["kind"] == "qc":
-        c["qc"] = {"verdict": t["qc"]["verdict"], "label_under_test": t["qc"].get("label_under_test")}
-        if t["qc"]["verdict"] != "refine":
-            c.pop("label")
-    for k in ("short", "unit_kind", "confidence", "notes", "roles", "via"):
-        if t.get(k) is not None:
-            c[k] = t[k]
-    out = p.with_name(p.name.replace(".tests.json", ".json"))
-    out.write_text(json.dumps(c, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
-    print(f"wrote {out.relative_to(ROOT)}. Next: python -m bonsai_interp.graph.fold, then commit the results in a second commit and open a PR.")
+    models, scans = {}, {}
+    for f, _, t, rel, prereg in todo:
+        m = NEURON.match(t["neuron"])
+        if m["model"] not in models:
+            models[m["model"]] = load(m["model"])
+            models[m["model"]][1].padding_side = "right"
+            scans[m["model"]] = explore.scan(m["model"])
+        model, tok, rec = models[m["model"]]
+        scan = scans[m["model"]]
+        tests = []
+        for nb in t["neighbours"]:
+            L, n = map(int, nb["unit"][1:].split("/N"))
+            pole = 0 if nb["pole"] == "+" else 1
+            pmax, omax = float(scan["top_val"][L, pole, 0, n]), float(scan["top_val"][L, 1 - pole, 0, n])
+            ev = textinv.TextEvaluator(model, tok, rec, L, n, pmax, omax, 1.0 if pole == 0 else -1.0)
+            fire, quiet = ev(nb["fire"]), ev(nb["quiet"])
+            per = [{"set": s, "i": i, "act": round(r["act"], 3), "peak": r["peak_token"]} for s, rs in (("fire", fire), ("quiet", quiet)) for i, r in enumerate(rs)]
+            nf, fp = sum(r["act"] >= 0.3 for r in fire), sum(r["act"] >= 0.3 for r in quiet)
+            test = {"protocol": t["protocol"], "tests_file": rel, "prereg_commit": prereg, "author": a.author or t["contributor"],
+                    "n_fire": nf, "n_false_pos": fp, "n_written": [len(fire), len(quiet)], "per_sentence": per}
+            tests.append(test)
+            print(f"{t['neuron']:<22} {nb['unit']}{nb['pole']}: fire {nf}/{len(fire)}, near misses firing {fp}/{len(quiet)} "
+                  f"-> {outcome(test).upper()} under {t['protocol']}")
+        p = Path(f).resolve()
+        declared = dict(t.get("methods") or {})
+        declared.pop("_screens_vocabulary", None)
+        tests_screens = ["quick-test"] + (["second-round"] if len(list(p.parent.glob("*.tests.json"))) > 1 else [])
+        meth = {**declared, "screens": sorted(set(declared.get("screens", [])) | set(tests_screens)),
+                "detected": detect(ROOT, int(m["L"]), int(m["n"]), m["pole"]), "toolchain_commit": _commit(),
+                "minutes": minutes_between(ROOT, rel), "batch_size": len(todo)}
+        unknown = [x for x in meth["screens"] if x not in SCREENS]
+        if unknown:
+            print(f"note: screens not in the shared vocabulary (add them in bonsai_interp/graph/methods.py): {unknown}")
+        c = {"id": t["contribution"], "kind": t["kind"], "neuron": t["neuron"], "contributor": t["contributor"],
+             "created": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+             "recipe": {"toolchain_commit": _commit(), "command": f"python -m bonsai_interp.graph.play run {rel}"},
+             "label": t["neighbours"][0]["label"], "tests": tests, "methods": meth}
+        if t["kind"] == "qc":
+            c["qc"] = {"verdict": t["qc"]["verdict"], "label_under_test": t["qc"].get("label_under_test")}
+            if t["qc"]["verdict"] != "refine":
+                c.pop("label")
+        for k in ("short", "unit_kind", "confidence", "notes", "roles", "via"):
+            if t.get(k) is not None:
+                c[k] = t[k]
+        out = p.with_name(p.name.replace(".tests.json", ".json"))
+        out.write_text(json.dumps(c, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
+        print(f"   wrote {out.relative_to(ROOT).as_posix()}")
+    print(f"\n{len(todo)} scored, {len(problems)} skipped. Commit the results files in a SEPARATE commit from the pre-registrations "
+          f"and open a PR with only graph/contributions/ files (the merge agent regenerates the derived graph files).")
 
 
 def step(a):
@@ -198,8 +224,8 @@ def main():
     n.add_argument("--handle", required=True, help="your GitHub handle")
     n.add_argument("--verdict", choices=["confirm", "dispute", "refine"], default="confirm",
                    help="qc only: confirm = re-test the label as is; refine = propose a better label")
-    r = sub.add_parser("run")
-    r.add_argument("tests_file")
+    r = sub.add_parser("run", help="score one or more committed pre-registrations (one model load for all)")
+    r.add_argument("tests_files", nargs="+")
     r.add_argument("--author", help="who wrote the sentences, if not you (e.g. 'bonsai' when the model wrote them)")
     s = sub.add_parser("step")
     s.add_argument("--neuron", required=True)
@@ -224,6 +250,8 @@ def main():
     b.add_argument("--neuron", required=True)
     b.add_argument("--handle", default="<your-github-handle>")
     b.add_argument("--gmoo", action="store_true", help="include the optional globalMOO step")
+    b.add_argument("--depth", choices=["quick", "standard", "deep"], default="quick",
+                   help="quick (~5-10 min, the default), standard (~30-45 min) or deep (hours)")
     a = ap.parse_args()
     if a.cmd in ("doctor", "brief"):
         from bonsai_interp.graph import agent

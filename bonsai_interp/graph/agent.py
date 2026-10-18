@@ -84,7 +84,7 @@ def doctor(a):
 
 RULES = """Rules (from AGENTS.md; once CI is enabled it enforces 1-3, and play run already refuses uncommitted tests):
 1. Commit the .tests.json ON ITS OWN before running anything that scores it; results go in a SECOND commit. Never amend, squash or edit a committed .tests.json.
-2. Never edit or delete files under graph/contributions/ (yours included). Never hand-edit graph/neurons, edges.json or index.json: run fold.
+2. Never edit or delete files under graph/contributions/ (yours included). Do not commit graph/neurons, edges.json or index.json: the merge agent regenerates them on main after merging.
 3. Only the two contribution files (<= 64 KB each) go in git; bulky material goes to the library (DATA_POLICY.md).
 4. Report honestly: a failed label is a valid contribution. Do not rewrite a test after seeing its result."""
 
@@ -135,12 +135,13 @@ def brief(a):
                 f"3. Write the pre-registration: {py} -m bonsai_interp.graph.play new interpret --neuron {target} --handle {a.handle}",
                 "   Fill in: your label (at the level the test can support), 8 sentences that should fire the pole, 8 near misses",
                 "   that keep topic, length and style and drop only the claimed trigger. Optional: short, unit_kind, confidence, notes.",
-                "   The bar is hard: 0.30 of the pole's max. Make the fire sentences clear cases (put borderline ones in notes, not the test).",
+                "   Judged by quick-8+8@2: the 8 fire sentences must rank above the 8 near misses (AUROC >= 0.90), the median fire sentence must",
+                "   reach 0.20 of the pole's max, and at most 1 near miss may reach 0.30. Clear cases make clean tests.",
                 "   Also fill methods.agent (who you are, e.g. 'claude-code opus-5.5') and methods.screens (what you used; vocabulary in",
                 "   bonsai_interp/graph/methods.py). play run adds what it can detect and the minutes taken.",
                 f'   Commit it ALONE: git add {folder} && git commit -m "Pre-register interpret test for {target}"',
-                f"4. Run it: {py} -m bonsai_interp.graph.play run <the .tests.json>  then  {py} -m bonsai_interp.graph.fold",
-                f'   Commit the results SEPARATELY: git add graph && git commit -m "Results for {target}"',
+                f"4. Run it: {py} -m bonsai_interp.graph.play run <the .tests.json>  (several files at once load the model only once)",
+                f'   Commit the results SEPARATELY, contribution files only: git add graph/contributions && git commit -m "Results for {target}"',
                 f"5. Validate: {py} -m bonsai_interp.graph.validate",
                 f"6. Push the branch and open the PR. gh's --template needs an editor, so fill a copy instead:",
                 f"   cp .github/PULL_REQUEST_TEMPLATE/interpret.md pr.md  (fill it in; add 'Closes #<claim issue>'), then",
@@ -158,8 +159,8 @@ def brief(a):
                 f"   {py} -m bonsai_interp.graph.play new qc --neuron {nid} --handle {a.handle} --verdict <confirm|dispute|refine>",
                 "   Write NEW sentences (8 fire, 8 near misses); do not reuse the original test.",
                 f'   Commit it ALONE: git add {folder} && git commit -m "Pre-register QC of {nid}"',
-                f"4. Run: {py} -m bonsai_interp.graph.play run <the .tests.json>  then  {py} -m bonsai_interp.graph.fold",
-                f'   Commit SEPARATELY: git add graph && git commit -m "QC results for {nid}"',
+                f"4. Run: {py} -m bonsai_interp.graph.play run <the .tests.json>",
+                f'   Commit SEPARATELY, contribution files only: git add graph/contributions && git commit -m "QC results for {nid}"',
                 f"5. Validate ({py} -m bonsai_interp.graph.validate). Push a branch (git checkout -b qc/<neuron> before step 3's commit),",
                 f"   fill a copy of .github/PULL_REQUEST_TEMPLATE/qc.md as pr.md, then",
                 f"   gh pr create --repo moridinamael/bonsai-interp --title \"qc: {nid} <verdict>\" --body-file pr.md  (then delete pr.md)"]
@@ -175,5 +176,18 @@ def brief(a):
                 f"4. python -m cleanroom.audit --run {run}; python -m cleanroom.collect --run {run}; score your predictions in {run}/scored.json;",
                 f"   python -m cleanroom.remove_room ../rooms/L{L}_N{n}   (never delete a room by hand: it links to the model weights)",
                 "5. Open a PR to neuron-cleanroom with the run record, and add a 'replicate' contribution to bonsai-interp that points at it."]
+    if a.kind in ("interpret", "qc"):
+        if a.depth == "quick":  # ~5-10 minutes: top examples, a few probes, one pre-registered test
+            out = [ln for ln in out if not any(k in ln for k in ("bands scan", "bands sample", "Look past the top examples"))]
+            out.insert(2, f"Depth: QUICK (about 5-10 minutes). Look, probe a handful of sentences, pre-register one test, run it. "
+                          f"Skip band scans and step-outs. Batch several neurons in one `play run a.tests.json b.tests.json ...` to load the model once.")
+        elif a.depth == "standard":
+            out.insert(2, "Depth: STANDARD (about 30-45 minutes). Quick, plus the band scan and sampling below, a second round if the first fails, "
+                          f"and one step-out: `{py} -m bonsai_interp.graph.play step --neuron <id> --k 4`, label and test the top feeder, record the edge with `play edge`.")
+        else:
+            out.insert(2, "Depth: DEEP (hours; only for neurons worth it). Standard, plus a sentence bank with competing hypotheses and a held-out set "
+                          f"({py} -m bonsai_interp.probe.run forward|solo L/n <pole>), inverse search (… invert --solver de; one globalMOO model at most), "
+                          "steering (… induce), neighbours (python -m bonsai_interp.probe.neighbors), and attempts to break the label "
+                          "(frequency tables, weak bands, leak search). List every screen used in methods.screens.")
     out += ["", RULES, "", "When done, tell the person in two or three sentences what you found and give them the PR link."]
     print("\n".join(out))

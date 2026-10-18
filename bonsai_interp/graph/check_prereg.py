@@ -37,6 +37,7 @@ def role(name):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--base", default="origin/main")
+    ap.add_argument("--allow-derived", action="store_true", help="for the merge agent's own fold commits")
     a = ap.parse_args()
     commits = git("rev-list", "--reverse", f"{a.base}..HEAD").split()
     order = {c: i for i, c in enumerate(commits)}
@@ -44,7 +45,8 @@ def main():
     for c in commits:
         for line in git("show", "--name-status", "--format=", c).splitlines():
             st, *paths = line.split("\t")
-            if st.startswith(("A", "C")) and paths:
+            derived = paths and paths[-1].startswith(("graph/neurons/", "graph/edges.json", "graph/index.json"))
+            if paths and (st.startswith(("A", "C")) or (st.startswith("M") and derived)):  # a modified contribution must stay unrecorded here
                 first.setdefault(paths[-1], order[c])
             for p in paths:
                 if p.startswith("graph/contributions/") and (st.startswith(("M", "D", "R"))) and p not in first:
@@ -53,6 +55,8 @@ def main():
     total = 0
     for path, i in first.items():
         p = PurePosixPath(path)
+        if path.startswith(("graph/neurons/", "graph/edges.json", "graph/index.json")) and not a.allow_derived:
+            problems.append(f"{path}: derived file in a PR; drop it (git rm --cached) - the merge agent regenerates derived files on main")
         if path.startswith(("data/", "models/")):
             problems.append(f"{path}: nothing may be added under data/ or models/ (use the release or the library)")
         if path.startswith("graph/"):
