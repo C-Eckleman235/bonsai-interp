@@ -92,6 +92,13 @@ ol.steps { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column
 .cmd { display: flex; gap: 6px; align-items: stretch; margin-top: 4px; }
 .cmd pre { margin: 0; flex: 1; min-width: 0; overflow-x: auto; background: var(--paper); border: 1px solid var(--rule); border-radius: 3px; padding: 6px 8px; font: 0.74rem/1.45 var(--mono); white-space: pre; }
 .cmd button { border: 1px solid var(--rule); background: var(--sheet); border-radius: 3px; cursor: pointer; font-size: 0.72rem; padding: 0 8px; color: var(--ink-2); }
+.prompt pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 0.76rem; }
+.prompt .cmd { align-items: stretch; }
+.prompt .cmd button { font-weight: 600; color: var(--mark); border-color: var(--mark); }
+details.byhand { border-top: 1px solid var(--rule); padding-top: 8px; }
+details.byhand summary { cursor: pointer; font-size: 0.82rem; color: var(--ink-2); }
+details.byhand[open] summary { margin-bottom: 8px; }
+.agentnote { font-size: 0.8rem; color: var(--ink-3); }
 .links { display: flex; gap: 8px; flex-wrap: wrap; }
 .links a { font-size: 0.82rem; font-weight: 600; text-decoration: none; border: 1px solid var(--mark); border-radius: 3px; padding: 6px 10px; }
 
@@ -141,7 +148,7 @@ td.n { font-family: var(--mono); text-align: right; }
     <div style="display:flex;flex-direction:column;gap:12px">
       <div class="eyebrow">Bonsai-8B · 1-bit · 36 layers × 12,288 neurons · two poles each</div>
       <h1>Bonsai Neuron Survey</h1>
-      <p class="lede">Every neuron in a 1-bit language model, on one sheet. Draw an unsurveyed one, run its test on your own GPU, and send the result as a pull request. Every label here was tested with sentences committed before the test ran.</p>
+      <p class="lede">Every neuron in a 1-bit language model, on one sheet. Your AI agent does the work: draw a neuron, paste one prompt into Claude Code or Codex, and it runs the test on your GPU and opens the pull request. Every label here was tested with sentences committed before the test ran.</p>
       <p class="preview" id="preview">Private preview. The repositories are private until launch, so the claim and pull-request links work only for collaborators.</p>
     </div>
     <div class="tally" id="tally"></div>
@@ -205,9 +212,10 @@ td.n { font-family: var(--mono); text-align: right; }
     </section>
     <section>
       <div class="eyebrow">Before your first neuron</div>
-      <h2>Set up your bench</h2>
-      <div class="checklist" id="checklist"></div>
-      <p style="font-size:.82rem;color:var(--ink-3)">You need a GPU with 16 GB of memory. The 1-bit weights load packed at 2 bits each. Ticks are kept in this browser only.</p>
+      <h2>Start your agent</h2>
+      <p style="font-size:.88rem;color:var(--ink-2)">Paste this into Claude Code, Codex or any agent that can run a shell. It clones the repositories, installs everything, and keeps going until the readiness check passes.</p>
+      <div class="prompt" id="bootstrap"></div>
+      <p class="agentnote">You need an NVIDIA GPU with 16 GB of memory, about 20 GB of disk, and a GitHub account. The agent asks you only for what it can't do itself: logging in to GitHub, your handle, the disk space, and an optional globalMOO key. The procedure lives in the repository's <code>AGENTS.md</code>, so this prompt stays current.</p>
     </section>
     <section>
       <div class="eyebrow">Scoreboard</div>
@@ -391,6 +399,25 @@ td.n { font-family: var(--mono); text-align: right; }
   const folder = r => `graph/contributions/bonsai1/L${r.L}_N${r.n}_${r.pole === "+" ? "pos" : "neg"}`;
   const cmd = (text) => `<div class="cmd"><pre>${esc(text)}</pre><button type="button" data-copy="${esc(text)}" aria-label="Copy command">Copy</button></div>`;
   const issue = (r, what) => `https://github.com/${REPO}/issues/new?template=claim.yml&title=${encodeURIComponent(`claim: ${r.id}`)}&labels=claim`;
+  function agentPrompt(kind, r, from) {
+    const id = kind === "step" ? from.id : r.id, h = handle();
+    const flag = mode === "gmoo" ? " --gmoo" : "";
+    return `In my bonsai-interp checkout, run:\n\nuv run python -m bonsai_interp.graph.play brief ${kind} --neuron ${id} --handle ${h}${flag}\n\n` +
+      `Then carry out the brief it prints, following AGENTS.md. Its rules are strict: commit the pre-registered test on its own before running it, ` +
+      `and never edit committed contributions. Stop only for things I must do myself. When you're done, tell me what you found and give me the pull-request link.` +
+      (h === "<you>" ? `\n\n(My GitHub handle: ask me, or read it from \`gh api user --jq .login\`.)` : "");
+  }
+  const BOOT = `Set me up to play the Bonsai Neuron Survey, an open, test-backed map of what each neuron in the 1-bit Bonsai-8B model does.\n\n` +
+    `1. Ask me where to work (default: a folder called bonsai-survey in my home directory). Clone these two repositories side by side there:\n   https://github.com/${REPO}\n   https://github.com/${CLEAN}\n` +
+    `2. In bonsai-interp, read AGENTS.md and follow section 1, "Get ready".\n` +
+    `3. Run: uv run python -m bonsai_interp.graph.play doctor\n   Fix every FAIL and run it again until it prints READY.\n` +
+    `4. Ask me only for what you can't do yourself: logging in to GitHub (gh auth login), permission to use about 20 GB of disk, and, optionally, a globalMOO API key for .env.\n` +
+    `5. Finish by telling me "Ready to survey", with the GPU and the doctor summary. From then on I'll paste mission prompts from the survey page.`;
+  document.getElementById("bootstrap").innerHTML = cmd(BOOT);
+  document.getElementById("bootstrap").addEventListener("click", ev => { const b = ev.target.closest("button[data-copy]"); if (!b) return;
+    (navigator.clipboard ? navigator.clipboard.writeText(b.getAttribute("data-copy")) : Promise.reject()).then(() => { b.textContent = "Copied"; setTimeout(() => (b.textContent = "Copy"), 1400); },
+      () => { const pre = b.previousElementSibling, sl = getSelection(), rg = document.createRange(); rg.selectNodeContents(pre); sl.removeAllRanges(); sl.addRange(rg); b.textContent = "Selected"; }); });
+
   function mission({ kind, r, from }) {
     const box = document.getElementById("mission"), pc = r.pole === "+" ? "p" : "m", u = `${r.L}/${r.n}`;
     const rec = byId[r.id], xp = { interpret: 10, qc: 6, step: 13, blind: 15 }[kind];
@@ -423,7 +450,10 @@ td.n { font-family: var(--mono); text-align: right; }
     box.innerHTML = `<div class="mission" aria-live="polite">
       <div class="eyebrow">${esc(title)}</div>
       <div class="id">L${r.L}/N${r.n}<span class="pole ${pc}">${r.pole === "+" ? "+ POLE" : "− POLE"}</span>${rec ? `<span class="chip" style="color:var(--${rec.status})">${esc(rec.status)}</span>` : ""}<span class="xp">+${xp} XP</span></div>
-      <p class="what">${what}</p><ol class="steps">${steps.join("")}</ol>
+      <p class="what">${what}</p>
+      <div class="eyebrow">Hand this to your agent</div>
+      <div class="prompt">${cmd(agentPrompt(kind, r, from))}</div>
+      <details class="byhand"><summary>Do it by hand instead</summary><ol class="steps">${steps.join("")}</ol></details>
       <div class="links"><a href="https://github.com/${kind === "blind" ? CLEAN : REPO}" target="_blank" rel="noopener">Repository</a>
         <a href="https://github.com/${REPO}/blob/main/${kind === "qc" ? "graph/SCHEMA.md" : "CONTRIBUTING.md"}" target="_blank" rel="noopener">${kind === "qc" ? "How records fold" : "Contributor guide"}</a></div></div>`;
     store.set("lastMission", { kind, id: r.id, from: from && from.id });
@@ -440,20 +470,7 @@ td.n { font-family: var(--mono); text-align: right; }
   document.querySelectorAll(".seg button").forEach(b => b.onclick = () => { mode = b.dataset.mode; document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", x === b)); store.set("mode", mode);
     const last = store.get("lastMission", null); if (last && byId[last.id]) mission({ kind: last.kind, r: byId[last.id], from: byId[last.from] }); });
   ["lmin", "lmax"].forEach(id => document.getElementById(id).addEventListener("change", () => draw()));
-  const hEl = document.getElementById("handle"); hEl.value = store.get("handle", ""); hEl.addEventListener("change", () => store.set("handle", hEl.value.trim()));
-
-  // checklist
-  const CHECK = [["clone", "Clone bonsai-interp and neuron-cleanroom", `git clone https://github.com/${REPO}\ngit clone https://github.com/${CLEAN}`],
-                 ["env", "Install the environment (Python 3.11–3.13, CUDA 12.8 torch)", "cd bonsai-interp && uv sync"],
-                 ["model", "Download Bonsai-8B (16 GB unpacked)", "bash scripts/download_models.sh"],
-                 ["data", "Fetch the corpus and full neuron scan (1.4 GB)", "bash scripts/fetch_data.sh"],
-                 ["gmoo", "Optional: add a globalMOO key to .env", "echo GMOO_API_KEY=... >> .env"],
-                 ["claude", "Optional, for blind runs: install the Claude Code CLI", "npm install -g @anthropic-ai/claude-code"]];
-  const done = store.get("checks", {});
-  document.getElementById("checklist").innerHTML = CHECK.map(([k, t, c]) => `<label><input type="checkbox" id="ck-${k}" ${done[k] ? "checked" : ""}><span>${esc(t)}${cmd(c)}</span></label>`).join("");
-  document.getElementById("checklist").addEventListener("change", ev => { const k = ev.target.id.slice(3); done[k] = ev.target.checked; store.set("checks", done); });
-  document.getElementById("checklist").addEventListener("click", ev => { const b = ev.target.closest("button[data-copy]"); if (!b) return; ev.preventDefault();
-    const t = b.getAttribute("data-copy"); (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => { b.textContent = "Copied"; setTimeout(() => (b.textContent = "Copy"), 1400); }, () => {}); });
+  const hEl = document.getElementById("handle"); hEl.value = store.get("handle", ""); hEl.addEventListener("change", () => { store.set("handle", hEl.value.trim()); const last = store.get("lastMission", null); if (last && (byId[last.id] || last.kind === "interpret")) { const m = last.id.match(/L(\d+)\/N(\d+)([+-])/); mission({ kind: last.kind, r: byId[last.id] || { id: last.id, L: +m[1], n: +m[2], pole: m[3] }, from: byId[last.from] }); } });
 
   // scores + badges
   document.getElementById("scores").innerHTML = Object.entries(IDX.contributors).map(([h, p]) => `<tr><td class="mono">${esc(h)}</td><td class="n">${p.toLocaleString()}</td></tr>`).join("");
