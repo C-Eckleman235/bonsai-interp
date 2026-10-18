@@ -38,8 +38,20 @@ def examples(name, L, n, pole=0, k=12, before=48, after=8):
             break
         w, p, r = s["top_win"][L, pole, j, n], int(s["top_pos"][L, pole, j, n]), s["top_reg"][L, pole, j, n]
         ids = toks[w]
-        text = tok.decode(ids[max(0, p - before):p]) + "⟦" + tok.decode(ids[p:p + 1]) + "⟧" + \
-            tok.decode(ids[p + 1:p + 1 + after])
+        # byte-level tokens can split one character (common in CJK, Arabic, emoji): widen the marked span to whole
+        # characters, so the peak shows as text instead of U+FFFD (the peak token is inside the ⟦ ⟧)
+        a, b = p, p + 1
+        for _ in range(4):
+            if "�" not in tok.decode(ids[a:b]) and "�" not in tok.decode(ids[max(0, a - before):a])[-1:]:
+                break
+            if "�" in tok.decode(ids[a:b])[-1:] and b < len(ids):
+                b += 1
+            elif a > 0:
+                a -= 1
+            else:
+                break
+        text = tok.decode(ids[max(0, a - before):a]).lstrip("�") + "⟦" + tok.decode(ids[a:b]) + "⟧" + \
+            tok.decode(ids[b:b + after]).rstrip("�")
         out.append((float(v) * (1 if pole == 0 else -1), REGIMES[r], int(w), p, text.replace("\n", "⏎")))
     return out
 
