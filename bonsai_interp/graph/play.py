@@ -53,6 +53,7 @@ def new(a):
           "\nFill in each label and its 16 sentences, then commit the tests files ALONE (one commit for all of them is fine):\n"
           f"  git add {' '.join(rel)} && git commit -m \"Pre-register {a.kind} tests for {what}\"\n"
           f"then: uv run python -m bonsai_interp.graph.play run {' '.join(rel)}")
+    return rel
 
 
 def _new_one(a, nid):
@@ -92,7 +93,11 @@ def draw(a):
     print(" ".join(out))
     if a.handle:  # write the tests files for exactly these poles, so the ids cannot drift between draw and new
         a.neuron, a.kind, a.verdict = out, "interpret", "confirm"
-        new(a)
+        paths = new(a)
+        lst = ROOT / ".sweep" / "latest.txt"  # gitignored; the list survives long output and later steps
+        lst.parent.mkdir(exist_ok=True)
+        lst.write_text("\n".join(paths) + "\n", encoding="utf-8", newline="\n")
+        print(f"the {len(paths)} tests files are listed in .sweep/latest.txt (e.g. git add $(cat .sweep/latest.txt))")
 
 
 def _check_tests_file(path):
