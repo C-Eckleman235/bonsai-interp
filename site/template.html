@@ -120,6 +120,23 @@ canvas#block { display: block; width: 100%; min-width: 560px; height: auto; curs
 .polecard .acts { display: flex; gap: 6px; flex-wrap: wrap; }
 .polecard .acts button { border: 1px solid var(--mark); color: var(--mark); background: none; border-radius: 3px; padding: 5px 9px; cursor: pointer; font-size: 0.8rem; font-weight: 600; }
 .hist { margin: 0; padding-left: 1.1em; font-size: 0.78rem; color: var(--ink-2); display: flex; flex-direction: column; gap: 3px; }
+.cardhead { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-top: 10px; }
+.ccard { border: 1px dashed var(--rule); border-radius: 4px; padding: 12px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.meter { display: grid; grid-template-columns: auto minmax(40px, 1fr) auto; white-space: nowrap; gap: 6px; align-items: center; font-size: 0.74rem; color: var(--ink-2); }
+.meter .bar { height: 6px; background: var(--rule); border-radius: 3px; overflow: hidden; }
+.meter .bar i { display: block; height: 100%; background: var(--ink-3); }
+.meter .v { font-family: var(--mono); text-align: right; font-variant-numeric: tabular-nums; min-width: 4.2em; }
+.regime { font-size: 0.72rem; color: var(--ink-3); }
+.ex { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.ex li { font: 0.72rem/1.45 var(--mono); color: var(--ink-2); overflow-wrap: anywhere; border-left: 2px solid var(--rule); padding-left: 7px; }
+.ex li b { color: var(--ink); font-weight: 600; margin-right: 6px; }
+.ex mark { color: var(--paper); border-radius: 2px; padding: 0 2px; }
+.ccard.p .ex mark { background: var(--plus); } .ccard.m .ex mark { background: var(--minus); }
+.flag { font: 600 0.66rem/1 var(--mono); text-transform: uppercase; letter-spacing: 0.04em; padding: 3px 6px; border-radius: 2px; background: var(--contested); color: var(--paper); }
+.logits { font-size: 0.8rem; color: var(--ink-2); display: flex; flex-direction: column; gap: 4px; margin-top: 10px; }
+.logits .toks { font-family: var(--mono); font-size: 0.74rem; color: var(--ink); overflow-wrap: anywhere; }
+.logits .toks span { border: 1px solid var(--rule); border-radius: 2px; padding: 0 4px; margin: 0 4px 3px 0; display: inline-block; white-space: pre; }
 
 /* lower sections */
 .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
@@ -172,6 +189,7 @@ td.n { font-family: var(--mono); text-align: right; }
       <section id="v-neuron" hidden>
         <div class="row" style="justify-content:space-between;align-items:baseline"><h2 id="ntitle" class="mono" style="font-family:var(--mono)"></h2><span class="hint" id="nsub"></span></div>
         <div class="poles" id="poles"></div>
+        <div id="ncard"></div>
       </section>
     </div>
 
@@ -222,9 +240,11 @@ td.n { font-family: var(--mono); text-align: right; }
 </div>
 
 <script id="index-data" type="application/json">__INDEX__</script>
+<script id="card-data" type="application/json">__CARDS__</script>
 <script>
 (function () {
   const IDX = JSON.parse(document.getElementById("index-data").textContent);
+  const CARDS = (() => { try { return JSON.parse(document.getElementById("card-data").textContent); } catch (e) { return {}; } })();
   const REPO = "moridinamael/bonsai-interp", CLEAN = "moridinamael/neuron-cleanroom";
   const L_N = 36, N_N = 12288;
   const STATUS = ["held", "probed", "replicated", "contested", "failed", "unresolved", "dense"];
@@ -369,14 +389,39 @@ td.n { font-family: var(--mono); text-align: right; }
       ${tests ? `<div class="eyebrow">Tests</div><ul class="hist">${tests}</ul>` : ""}${hist ? `<div class="eyebrow">Labels tried</div><ol class="hist">${hist}</ol>` : ""}
       <div class="acts"><button type="button" data-act="qc" data-id="${id}">QC it</button><button type="button" data-act="step" data-id="${id}">Step out from it</button>${r.replicated ? "" : `<button type="button" data-act="blind" data-id="${id}">Blind run</button>`}</div></div>`;
   }
+  // neuron card: corpus scan + weights, label-free (built by site/build.py for surveyed neurons; `play card` for any neuron)
+  const pct = v => v >= 0.1 ? (100 * v).toFixed(0) + "%" : v >= 0.001 ? (100 * v).toFixed(1) + "%" : v > 0 ? (100 * v).toFixed(3) + "%" : "0%";
+  const FLAG_TIP = { dense: "on for 10% or more of tokens at 0.1 of max: an 8 + 8 test can hardly pass", broad: "1% or more of tokens reach 0.1 of max: near misses will often fire weakly",
+    positional: "top peaks cluster at one window position", "gate-closed": "most strong activations come from the gate-closed (echo / leak) regime" };
+  function cardHTML(L, n) {
+    const c = CARDS[`${L}/${n}`], cmdText = `python -m bonsai_interp.graph.play card --neuron bonsai1/L${L}/N${n}+`;
+    const head = `<div class="cardhead"><h3>Corpus card</h3><span class="hint">From the full corpus scan and the weights: what the neuron does, before anyone labels it.</span></div>`;
+    if (!c) return head + `<p class="hint" style="margin-top:6px">Cards are built into this page for surveyed neurons only. Any neuron's card is one command away (no GPU needed):</p>${cmd(cmdText)}`;
+    const pole = p => { const x = c[p]; if (!x) return ""; const pc = p === "+" ? "p" : "m", w = v => Math.min(100, Math.sqrt(v / 0.25) * 100).toFixed(1);
+      const regs = p === "+" ? ["gate open (+x+)", "echo (−x−)"] : ["gate open (+g −u)", "leak (−g +u)"];
+      return `<div class="ccard ${pc}"><div class="row"><span class="pole ${pc}">${p === "+" ? "+ POLE" : "− POLE"}</span><span class="mono" style="font-size:.76rem;color:var(--ink-2)">corpus max ${x.m.toFixed(2)}</span>${(x.f || []).map(f => `<span class="flag" title="${esc(FLAG_TIP[f] || f)}">${esc(f)}</span>`).join("")}</div>
+        <div class="meter" title="share of all scanned tokens"><span>tokens ≥ 0.1 max</span><span class="bar"><i style="width:${w(x.d[0])}%"></i></span><span class="v">${pct(x.d[0])}</span></div>
+        <div class="meter" title="share of all scanned tokens"><span>tokens ≥ 0.3 max</span><span class="bar"><i style="width:${w(x.d[1])}%"></i></span><span class="v">${pct(x.d[1])}</span></div>
+        <div class="regime">Regime of activations ≥ 0.1 max: ${regs.map((r, i) => `${r} ${Math.round(100 * (x.r[i] || 0))}%`).join(" · ")}</div>
+        <ul class="ex">${x.x.map(e => `<li><b>${e[0].toFixed(1)}</b>…${esc(e[1])}<mark>${esc(e[2])}</mark>${esc(e[3])}</li>`).join("")}</ul></div>`; };
+    const toks = a => a.map(t => `<span>${esc(JSON.stringify(t).slice(1, -1))}</span>`).join("");
+    const lg = c.u ? `<div class="logits"><div class="eyebrow">Direct logit effect of the output direction</div>
+      <div>When the + pole fires it pushes up <span class="toks">${toks(c.u[0])}</span></div><div>and pushes down <span class="toks">${toks(c.u[1])}</span></div>
+      <div class="hint" style="margin:0">The − pole does the reverse. Weights only, before the final normalisation; early layers' direct effects are often weak.</div></div>` : "";
+    return head + `<div class="cards">${pole("+")}${pole("-")}</div>${lg}`;
+  }
   function openNeuron(L, n, focusPole) {
     view = { level: "neuron", L, n, b: Math.floor(n / BLK) }; show("neuron");
     document.getElementById("ntitle").textContent = `bonsai1 / L${L} / N${n}`;
     const k = ["+", "-"].filter(pole => byId[`bonsai1/L${L}/N${n}${pole}`]).length;
     document.getElementById("nsub").textContent = k ? `${k} of 2 poles surveyed` : "not surveyed yet";
     document.getElementById("poles").innerHTML = poleCard(L, n, "+") + poleCard(L, n, "-");
+    document.getElementById("ncard").innerHTML = cardHTML(L, n);
     draw({ L, n, pole: focusPole || "+" });
   }
+  document.getElementById("ncard").addEventListener("click", ev => { const b = ev.target.closest("button[data-copy]"); if (!b) return;
+    (navigator.clipboard ? navigator.clipboard.writeText(b.getAttribute("data-copy")) : Promise.reject()).then(() => { b.textContent = "Copied"; setTimeout(() => (b.textContent = "Copy"), 1400); },
+      () => { const pre = b.previousElementSibling, sl = getSelection(), rg = document.createRange(); rg.selectNodeContents(pre); sl.removeAllRanges(); sl.addRange(rg); b.textContent = "Selected"; }); });
   document.getElementById("poles").addEventListener("click", ev => { const t = ev.target.closest("[data-act]"); if (!t) return;
     const m = t.dataset.id.match(/L(\d+)\/N(\d+)([+-])/), r = byId[t.dataset.id] || { id: t.dataset.id, L: +m[1], n: +m[2], pole: m[3] };
     mission({ kind: t.dataset.act, r, from: t.dataset.act === "step" ? r : undefined }); });

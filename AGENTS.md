@@ -82,6 +82,10 @@ it in order.
 - **Explore with `play probe`.** It scores any sentences on a pole without recording anything:
   `python -m bonsai_interp.graph.play probe --neuron <id> "sentence" …`. If you write your own
   scripts, run them from the repository root with `PYTHONPATH=.` so `bonsai_interp` imports.
+- **Start from the card.** `play card --neuron <id>` shows both poles' top examples, how dense the
+  pole is, its sign regimes and the tokens its output promotes, and flags dense or positional units,
+  in seconds and without the GPU. `play which "text"` goes the other way: which poles fire on each
+  token of your text (`--token " nerve"` for poles whose top examples peak on one token).
 - **Look widely before you label.** Read the top examples with `play look`. Then look at weak
   and middle activations and at which tokens fire the pole most *often* (`bonsai_interp.probe.bands`).
   The flagship example: the "nerve" neuron's commonest strong trigger was " strong".

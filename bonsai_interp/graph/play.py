@@ -9,6 +9,9 @@
       -> the strongest feeders of a pole (single-unit zeroing on its top examples): candidates for "step out one neuron"
   python -m bonsai_interp.graph.play look --neuron bonsai1/L12/N5397-      top corpus examples
   python -m bonsai_interp.graph.play probe --neuron bonsai1/L12/N5397- "a sentence" "another"   exploration, nothing recorded
+  python -m bonsai_interp.graph.play card --neuron bonsai1/L9/N3688+        card for ANY neuron: examples, density, logit effect, flags
+  python -m bonsai_interp.graph.play which "some text"                     reverse search: which poles fire on each token
+  python -m bonsai_interp.graph.play which --token " nerve"                  poles whose top corpus peaks are this token
   python -m bonsai_interp.graph.fold                                         refresh the derived records
   python -m bonsai_interp.graph.play doctor                                  is this machine ready? (agents: run first)
   python -m bonsai_interp.graph.play brief interpret --neuron <id> --handle <you>   full mission instructions for an agent
@@ -243,6 +246,18 @@ def main():
     e.add_argument("--weight", type=float, required=True, help="feeds: share of the target's activation lost when the source is zeroed")
     e.add_argument("--method", default="single-unit zero ablation (play step)")
     e.add_argument("--handle", required=True)
+    c = sub.add_parser("card", help="a card for any neuron (labelled or not): examples, density, regimes, logit effect")
+    c.add_argument("--neuron", required=True, help="bonsai1/L9/N3688+ (the pole is shown first) or L9/N3688")
+    c.add_argument("--k", type=int, default=6, help="top examples per pole")
+    c.add_argument("--out", help="also write the card: .json for data, anything else for the text")
+    c.add_argument("--no-logits", action="store_true", help="skip the direct logit effect (no weights needed)")
+    w = sub.add_parser("which", help="reverse search: text -> poles firing on each token, or --token -> poles")
+    w.add_argument("text", nargs="?")
+    w.add_argument("--token", help="a token as the model sees it, e.g. ' nerve' (leading space matters)")
+    w.add_argument("--k", type=int, default=8, help="poles per token")
+    w.add_argument("--min-max", type=float, default=0.5, help="ignore poles whose corpus max is below this (fractions of a tiny max are noise)")
+    w.add_argument("--keep-dense", action="store_true", help="also list dense / positional poles (hidden by default)")
+    w.add_argument("--rebuild", action="store_true", help="--token: rebuild the token index from the scan")
     d = sub.add_parser("doctor", help="check this machine is ready to play")
     d.add_argument("--quick", action="store_true", help="skip loading the model")
     b = sub.add_parser("brief", help="print the full instructions for a mission (for an AI agent)")
@@ -256,6 +271,12 @@ def main():
     if a.cmd in ("doctor", "brief"):
         from bonsai_interp.graph import agent
         return getattr(agent, a.cmd)(a)
+    if a.cmd == "card":
+        from bonsai_interp.graph import card
+        return card.main(a)
+    if a.cmd == "which":
+        from bonsai_interp.graph import which
+        return which.main(a)
     {"new": new, "run": run, "step": step, "look": look, "edge": edge, "probe": probe}[a.cmd](a)
 
 

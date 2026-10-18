@@ -85,6 +85,75 @@ More rules:
 - For list fields, the record holds the union of all contributions, in order. For scalar fields,
   the latest contribution wins.
 
+## Read API
+
+The derived files are the survey's public, read-only API. There is no server and no account: read
+them from a clone, or over HTTPS from the `main` branch (once the repository is public):
+
+```
+https://raw.githubusercontent.com/moridinamael/bonsai-interp/main/graph/index.json
+https://raw.githubusercontent.com/moridinamael/bonsai-interp/main/graph/neurons/bonsai1/L20_N12208_neg.json
+https://raw.githubusercontent.com/moridinamael/bonsai-interp/main/graph/edges.json
+```
+
+They change only when the merge agent folds a merged contribution, so a commit hash pins a snapshot.
+Neuron ids are always `<model>/L<layer>/N<index><pole>`, e.g. `bonsai1/L20/N12208-`; record file names
+are `L<layer>_N<index>_<pos|neg>.json`.
+
+### `graph/index.json` (one object, about 1 KB per surveyed pole)
+
+| Field | Type | Meaning |
+|---|---|---|
+| `models` | `{model: {layers, neurons_per_layer}}` | The models the ids refer to (only `bonsai1`) |
+| `neurons` | `{id: entry}` | One entry per pole that has at least one contribution; poles not listed are unsurveyed |
+| `neurons[id].status` | string | One of the statuses in the table above |
+| `neurons[id].label`, `.short` | string or null | Current label (see "How a record is folded") and its short form |
+| `neurons[id].kind` | string or null | `unit_kind`, e.g. `dense / positional`, `token/lexical` |
+| `neurons[id].depth` | string | `quick` or `full` |
+| `neurons[id].qc` | `{confirm, dispute, refine}` | QC counts |
+| `neurons[id].n_contrib` | int | Number of contributions |
+| `neurons[id].replicated` | bool | Has a blind clean-room replication |
+| `neurons[id].contributors` | `[handle]` | In order of first contribution |
+| `neurons[id].t` | `[[protocol, outcome, n_fire, n_false_pos, author, contribution id]]` | Every test, oldest first. `outcome` is `held`, `failed`, `invalid` (fields missing for its protocol), `recorded` (a protocol the code does not score) or, for `cleanroom@1`, the blind verdict in words |
+| `neurons[id].history` | `[[label, outcome]]` | The last six labels tried |
+| `neurons[id].scrutiny` | `{level, name, test_rounds, sentences, contributors, qc}` | How much evidence there is, 0 `unexamined` to 5 `replicated` |
+| `edges` | `[[from id, to id, kind]]` | Every edge, without weights (those are in `edges.json`) |
+| `contributors` | `{handle: points}` | The scoreboard, highest first |
+
+### `graph/neurons/<model>/<pole>.json` (the full record)
+
+Every field listed under "How a record is folded": `id`, `model`, `layer`, `index`, `pole`, `label`,
+`short`, `kind`, `status`, `depth`, `tests` (each with its `contribution` and `outcome`), `label_history`
+(`[contribution id, label, outcome]`), `examples`, `evidence`, `roles`, `contributors`, `contributions`,
+`qc`, `replications` and `scrutiny`, plus the latest value of each optional scalar (`verdict`, `summary`,
+`offshoots`, `lineage`). A record's `contributions` list names the files that produced it, so every
+number can be traced to a pre-registered test.
+
+### `graph/edges.json`
+
+`{"edges": [{from, to, kind, weight, method, contribution, …}]}`, sorted, with the latest measurement of
+each `(from, to, kind, method)`. `kind` is `feeds`, `reads`, `gates`, `co-fires` or an older free-text
+kind such as `feeds lateral`; for `feeds`, `weight` is the share of the target's activation lost when
+the source is zeroed.
+
+### Not part of the API
+
+- `site/cards.json` and the cards embedded in the survey page are label-free summaries of the corpus
+  scan and the weights (top examples, density, regimes, direct logit effect) for surveyed neurons.
+  Their compact format may change with the page; for any neuron, run
+  `python -m bonsai_interp.graph.play card --neuron <id> --out card.json`.
+- `data/token_index_bonsai1.npz` (token -> poles, used by `play which --token`) is a local artifact
+  rebuilt from the scan on first use; it is never committed.
+
+### Versioning
+
+Field names above are stable. Changes are **additive**: new fields may appear at any level, and
+readers should ignore fields they don't know. Status values and test outcomes may gain new values;
+treat an unknown one as "not held". A change that renames or removes a field, or changes a field's
+meaning, adds a top-level `"schema"` integer to `index.json` (its absence means schema 1) and is
+announced in this file. Protocols are versioned separately (see above), so a test's numbers are always
+read under the rule it was made under.
+
 ## Commands
 
 ```bash
@@ -93,4 +162,6 @@ python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L12_N5397_neg
 python -m bonsai_interp.graph.fold            # preview the derived files locally (the merge agent commits them on main)
 python -m bonsai_interp.graph.validate        # what CI runs
 python -m bonsai_interp.graph.check_prereg --base origin/main
+python -m bonsai_interp.graph.play card --neuron bonsai1/L9/N3688+   # any neuron: examples, density, logit effect
+python -m bonsai_interp.graph.play which "some text"                 # reverse search; or --token " nerve"
 ```
