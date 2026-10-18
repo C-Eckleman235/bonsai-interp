@@ -491,3 +491,34 @@ Window-start artifact:
 - So the top-k view overstates lexical monosemanticity. This bears directly on the essay's claim, at least for "clean" read as "fires on one token".
 - The tier cannot colour the map. It labels about 0.1% of poles per layer, and classifies the rest for agents.
 - A context-aware rule (e.g. previous token + peak token) would be auto-token@2. It needs a fresh pre-registration on a different layer, because layer 12 was used to look.
+
+## 2026-10-18: Sweep missions, the first five rounds (`runs/playtest/2026-10-18/sweep-*.jsonl`, PRs #5-#9)
+
+Headless agents played the survey page's sweep prompt in an ordinary player checkout (1.2 GB GGUF weights), one sweep at a time, and every PR merged itself.
+
+| round | agent | held | cost | minutes |
+|---|---|---|---|---|
+| 1 | Claude (opus-5.5) | 10/16 | $0.90 | 6.5 |
+| 2 | Codex (default model) | 2/16 | n/a | ~6 |
+| 3 | Claude | 12/16 | $1.41 | 7.2 |
+| 4 | Codex | 6/16 | n/a | ~8 |
+| 5 | Claude | 10/16 | $0.93 | 4.6 |
+
+**Reading**
+- 40 of 80 poles held, and the map grew from 100 to about 160 poles, at about 2 to 3 minutes and $0.06 per pole.
+- **The agents label differently.**
+  - Codex wrote narrow "word X in context Y" labels, with near misses that keep the word and change only the context: 4 of 16 reached AUROC 0.90 in round 2.
+  - Claude labelled at the token or topic level the card supports: 13 of 16 reached it.
+  - So in a sweep, Codex mostly tests context-gating hypotheses and finds them false, and that is still information.
+- **Typical failures:** poles the card flags broad or weak, and labels written from scattered cards.
+- **Papercuts fixed between rounds:**
+  - `download_models.sh` lost `config.json`
+  - the card's logit effect could not read the GGUF
+  - `play run` printed counts that read like the pass rule
+  - `draw` and `new` ids could drift
+  - `uv.lock` was stale
+  - `<` in a sentence was taken for a template placeholder
+  - one card per process was slow (cards now batch, and `probe --plan` scores many poles at once)
+  - branch names collided
+  - long output was truncated
+  - the PR body file sat inside the repo

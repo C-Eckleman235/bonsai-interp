@@ -147,12 +147,14 @@ def sweep(a):
            "4. Pre-register all of them. Fill every tests file: label, 8 fire sentences, 8 near misses (same topic and style, without the trigger),",
            "   methods.agent (who you are) and methods.screens (e.g. card, probe). quick-8+8@2 judges each: AUROC >= 0.90,",
            "   median fire >= 0.20 of the pole's max, at most 1 near miss >= 0.30.",
-           '   Commit ALL tests files together and ALONE: git add <the tests files> && git commit -m "Pre-register sweep tests"',
+           "   Optional keys: notes, short, unit_kind, confidence, predictions. Delete _screens_vocabulary (it is only a reference list)",
+           "   and any optional key you leave unfilled.",
+           "   Commit ALL tests files together and ALONE, with the git command `play draw` printed.",
            f"5. Run them all at once (one model load): {py} -m bonsai_interp.graph.play run <all the tests files>",
            '   Commit the results SEPARATELY: git add graph/contributions && git commit -m "Sweep results: <held>/<total> held"',
            f"6. Validate ({py} -m bonsai_interp.graph.validate), push, and open one PR:",
-           f"   cp .github/PULL_REQUEST_TEMPLATE/interpret.md pr.md (fill it in; one line per pole: id, label, outcome), then",
-           f'   git push -u origin {branch} && gh pr create --repo moridinamael/bonsai-interp --title "sweep: {k} poles (<held> held)" --body-file pr.md  (then delete pr.md)',
+           f"   cp .github/PULL_REQUEST_TEMPLATE/interpret.md .git/pr.md (fill it in; one line per pole: id, label, outcome), then",
+           f'   git push -u origin {branch} && gh pr create --repo moridinamael/bonsai-interp --title "sweep: {k} poles (<held> held)" --body-file .git/pr.md',
            "   The merge agent merges conforming PRs once the checks pass, and regenerates the map.", "",
            "Failed labels are results too; record them and move on. Do not re-test inside a sweep: a second round is a new mission.",
            "", RULES, "", "When done, tell the person in two or three sentences what you found and give them the PR link."]
@@ -220,8 +222,8 @@ def brief(a):
                 f'   Commit the results SEPARATELY, contribution files only: git add graph/contributions && git commit -m "Results for {target}"',
                 f"5. Validate: {py} -m bonsai_interp.graph.validate",
                 f"6. Push the branch and open the PR. gh's --template needs an editor, so fill a copy instead:",
-                f"   cp .github/PULL_REQUEST_TEMPLATE/interpret.md pr.md  (fill it in), then",
-                f'   git push -u origin {branch} && gh pr create --repo moridinamael/bonsai-interp --title "interpret: {target} <short label>" --body-file pr.md  (then delete pr.md)',
+                f"   cp .github/PULL_REQUEST_TEMPLATE/interpret.md .git/pr.md  (fill it in), then",
+                f'   git push -u origin {branch} && gh pr create --repo moridinamael/bonsai-interp --title "interpret: {target} <short label>" --body-file .git/pr.md',
                 "7. If the label failed and you have a better idea, a second round is a NEW contribution (play new again) with new sentences.",
                 "   After three honest failed rounds, record it and move on; that is a result too."]
     elif a.kind == "qc":
@@ -238,8 +240,8 @@ def brief(a):
                 f"4. Run: {py} -m bonsai_interp.graph.play run <the .tests.json>",
                 f'   Commit SEPARATELY, contribution files only: git add graph/contributions && git commit -m "QC results for {nid}"',
                 f"5. Validate ({py} -m bonsai_interp.graph.validate) and push the branch,",
-                f"   fill a copy of .github/PULL_REQUEST_TEMPLATE/qc.md as pr.md, then",
-                f"   gh pr create --repo moridinamael/bonsai-interp --title \"qc: {nid} <verdict>\" --body-file pr.md  (then delete pr.md)"]
+                f"   fill a copy of .github/PULL_REQUEST_TEMPLATE/qc.md as .git/pr.md (git never tracks it), then",
+                f"   gh pr create --repo moridinamael/bonsai-interp --title \"qc: {nid} <verdict>\" --body-file .git/pr.md"]
     elif a.kind == "blind":
         run = f"runs/{dt.date.today().isoformat()}_bonsai1_L{L}_N{n}"
         words = " ".join(w for w in (rec or {}).get("short", "").replace("'", "").split() if len(w) > 3)[:80] or "<key words of the current label>"

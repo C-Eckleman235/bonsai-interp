@@ -48,11 +48,11 @@ def new(a):
         sys.exit(f"neuron must look like bonsai1/L12/N5397+ (model/layer/index and pole): {bad}")
     paths = [_new_one(a, nid) for nid in a.neuron]
     rel = [p.relative_to(ROOT).as_posix() for p in paths]
-    what = a.neuron[0] if len(paths) == 1 else f"{len(paths)} poles"
+    what = a.neuron[0] if len(paths) == 1 else f"{len(paths)} poles" + (" (sweep)" if getattr(a, "k", None) else "")
     print(f"wrote {len(paths)} tests file(s):\n  " + "\n  ".join(rel) +
           "\nFill in each label and its 16 sentences, then commit the tests files ALONE (one commit for all of them is fine):\n"
           f"  git add {' '.join(rel)} && git commit -m \"Pre-register {a.kind} tests for {what}\"\n"
-          f"then: python -m bonsai_interp.graph.play run {' '.join(rel)}")
+          f"then: uv run python -m bonsai_interp.graph.play run {' '.join(rel)}")
 
 
 def _new_one(a, nid):
