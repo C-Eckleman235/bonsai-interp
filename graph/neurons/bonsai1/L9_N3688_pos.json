@@ -11,19 +11,84 @@
  "depth": "full",
  "tests": [
   {
-   "type": "held-out",
    "author": "claude",
    "tests_file": "probes/bonsai1_L9_N3688_pos/holdout.json",
    "result_file": "probes/bonsai1_L9_N3688_pos/solo.json",
    "prereg_commit": "cda8f17",
-   "label_tested": "H2 (refined after the solo screen): 'nerve(s)' as psychological strain, composure or courage (nerve-racking, on my nerves, Nerven blank, nerveuse, worked up the nerve), not anatomical nerves",
    "accuracy": 0.792,
    "auroc": 0.917,
    "fire_rate_predicted_fire": 0.583,
-   "fire_rate_predicted_quiet": 0.0
+   "fire_rate_predicted_quiet": 0.0,
+   "protocol": "held-out@1",
+   "contribution": "core-bonsai1-l9-n3688-pos-00",
+   "outcome": "held"
+  },
+  {
+   "protocol": "cleanroom@1",
+   "tests_file": "runs/cleanroom/predictions.json",
+   "prereg_commit": "2dae2f0",
+   "outcome": "partly agrees",
+   "result_file": "runs/cleanroom/scored.json",
+   "contribution": "core-bonsai1-l9-n3688-pos-01"
   }
  ],
  "label_history": [
+  [
+   "core-bonsai1-l9-n3688-pos-00",
+   "A lexical detector peaking on the psychological word 'nerve', with weaker reliable branches for 'strong' and hit/hurt words",
+   "held"
+  ]
+ ],
+ "examples": [
+  "e saying, “All right, we’ve given you what we think we need to give you, and now just go and walk the earth. Be an adult.”⏎It’s kind of a⟦ nerve⟧-racking feeling in some ways, because in some ways you",
+  "ür begeistern, systematisch zu arbeiten und Ordnung in Dinge zu bringen? Dafür zu sorgen, dass die Kasse stimmt und die Akten geordnet sind? Haben Sie die N⟦erv⟧en, auch den 50. Kunden noch freundlich",
+  "심도 엇갈리고 있다. 대림2동에 거주하는 버스 운전사 박 모(68)씨는 “민주당 사람이 온다고 해서 달라질 게 있느냐”면서 권 후보를 지지 의사를 밝혔다. 신⟦경⟧민 후보를 지지한다는 김 모(30",
+  "donne liberté et sérénité malgré sa solitude. La caméra retranscrit avec force l’état d’esprit de chacun des personnages dans leur espace respectif, elle est⟦ nerve⟧use et âpre pour Lee, et fixe et ca"
+ ],
+ "evidence": [
+  "probes/bonsai1_L9_N3688_pos/dossier.html",
+  "probes/bonsai1_L9_N3688_pos/",
+  "runs/cleanroom/blind/REPORT.md"
+ ],
+ "roles": [],
+ "contributors": [
+  "bonsai-interp-core",
+  "neuron-cleanroom-blind-agent"
+ ],
+ "contributions": [
+  "core-bonsai1-l9-n3688-pos-00",
+  "core-bonsai1-l9-n3688-pos-edges",
+  "core-bonsai1-l9-n3688-pos-01"
+ ],
+ "qc": {
+  "confirm": 0,
+  "dispute": 0,
+  "refine": 0
+ },
+ "replications": [
+  {
+   "contribution": "core-bonsai1-l9-n3688-pos-01",
+   "label": "Several merged jobs, all vetoed by preceding pain/sensation discourse: (1) main: 'nerve(s)' outside neuroanatomy, multilingual (nerve-racking, bundle of nerves, Nerven, nerveux, 신경, nerve agent, nerve damage as a disease complication); (2) physical/material 'strong' in concrete text; (3) weak: the injury word or body part in violent harm (shot in the leg)",
+   "verdict": "several jobs",
+   "confidence": 0.7,
+   "outcome": "partly agrees"
+  }
+ ],
+ "verdict": "several jobs",
+ "summary": [
+  "Forward: its strongest corpus examples are 'nerve-racking', German 'Nerven', French 'nerveuse', Korean 신경 and Arabic عصبية. Its opposite pole fires on pain signals, numbness and temperature sense.",
+  "Inverse: asked for text at 25, 50 and 75% of its corpus maximum, both solvers built passages that hit those levels from the label's sense of 'nerve'. Asked to fire it with nothing nerve-related, the only success was the word 'strong' (0.40), plausibly the fortitude branch. Asked to silence a clear psychological 'nerve', the solver put a sentence about pain receptors in front of it: the pole fell from 0.72 to 0.08 and the opposite pole jumped to 1.56.",
+  "Induce: pushing the neuron toward its negative pole makes the model talk about pain, heat and receptors ('I felt… the pain' instead of 'nervous'). Pushing it gently positive raises 'calmly', 'strongly', 'proud'.",
+  "Fan-out: two inputs carry it, a layer-3 detector for the token 'nerve' (74%) and a layer-8 nerve/neural concept unit used by Arabic and Korean (61%). A pre-registered test (9 of 11 predictions held) showed that preceding pain context closes both routes, and that constructions like 'lost his nerve' and 'had the nerve to' close the token route by themselves. Its output spreads thinly: no later neuron moves by more than 0.12 of its range.",
+  "Disproof: every strong firing in 6.1M corpus tokens was checked. Only 13% sit next to a 'nerve' word, and ' strong' fires it strongly more often than ' nerve' does (88 vs 13 times). A blind annotator found no single theme taking a third of any weak band. A leak search over 1,199 sentences with no 'nerve' word peaked at 0.52, on 'strong'. Branch tests with no 'nerve' word: strength and impact pass, while sensation (AUROC 0.47) and courage or composure without the word (0.61) fail. It does not fire in anticipation of 'nerve' as the next word (rank correlation −0.01)."
+ ],
+ "offshoots": [
+  "'strong' and strength (mean 0.25 of max, AUROC 0.97; the most common strong trigger in the corpus)",
+  "words for being hit, wounded or injured (mean 0.13, AUROC 1.00)",
+  "anatomical 'nerve', weaker (0.1–0.6 depending on context)",
+  "the 신경 token inside the Korean name 신경민 (0.51)"
+ ],
+ "lineage": [
   [
    "H1, from corpus top examples",
    "The morpheme 'nerve' across languages, any sense"
@@ -52,42 +117,5 @@
    "H5, current reading",
    "A lexical detector peaking on the psychological word 'nerve', with weaker reliable branches for 'strong' and hit/hurt words"
   ]
- ],
- "examples": [
-  "e saying, “All right, we’ve given you what we think we need to give you, and now just go and walk the earth. Be an adult.”⏎It’s kind of a⟦ nerve⟧-racking feeling in some ways, because in some ways you",
-  "ür begeistern, systematisch zu arbeiten und Ordnung in Dinge zu bringen? Dafür zu sorgen, dass die Kasse stimmt und die Akten geordnet sind? Haben Sie die N⟦erv⟧en, auch den 50. Kunden noch freundlich",
-  "심도 엇갈리고 있다. 대림2동에 거주하는 버스 운전사 박 모(68)씨는 “민주당 사람이 온다고 해서 달라질 게 있느냐”면서 권 후보를 지지 의사를 밝혔다. 신⟦경⟧민 후보를 지지한다는 김 모(30",
-  "donne liberté et sérénité malgré sa solitude. La caméra retranscrit avec force l’état d’esprit de chacun des personnages dans leur espace respectif, elle est⟦ nerve⟧use et âpre pour Lee, et fixe et ca"
- ],
- "evidence": [
-  "probes/bonsai1_L9_N3688_pos/dossier.html",
-  "probes/bonsai1_L9_N3688_pos/"
- ],
- "roles": [],
- "contributors": [
-  "bonsai-interp core"
- ],
- "verdict": "A word family, not one concept",
- "summary": [
-  "Forward: its strongest corpus examples are 'nerve-racking', German 'Nerven', French 'nerveuse', Korean 신경 and Arabic عصبية. Its opposite pole fires on pain signals, numbness and temperature sense.",
-  "Inverse: asked for text at 25, 50 and 75% of its corpus maximum, both solvers built passages that hit those levels from the label's sense of 'nerve'. Asked to fire it with nothing nerve-related, the only success was the word 'strong' (0.40), plausibly the fortitude branch. Asked to silence a clear psychological 'nerve', the solver put a sentence about pain receptors in front of it: the pole fell from 0.72 to 0.08 and the opposite pole jumped to 1.56.",
-  "Induce: pushing the neuron toward its negative pole makes the model talk about pain, heat and receptors ('I felt… the pain' instead of 'nervous'). Pushing it gently positive raises 'calmly', 'strongly', 'proud'.",
-  "Fan-out: two inputs carry it, a layer-3 detector for the token 'nerve' (74%) and a layer-8 nerve/neural concept unit used by Arabic and Korean (61%). A pre-registered test (9 of 11 predictions held) showed that preceding pain context closes both routes, and that constructions like 'lost his nerve' and 'had the nerve to' close the token route by themselves. Its output spreads thinly: no later neuron moves by more than 0.12 of its range.",
-  "Disproof: every strong firing in 6.1M corpus tokens was checked. Only 13% sit next to a 'nerve' word, and ' strong' fires it strongly more often than ' nerve' does (88 vs 13 times). A blind annotator found no single theme taking a third of any weak band. A leak search over 1,199 sentences with no 'nerve' word peaked at 0.52, on 'strong'. Branch tests with no 'nerve' word: strength and impact pass, while sensation (AUROC 0.47) and courage or composure without the word (0.61) fail. It does not fire in anticipation of 'nerve' as the next word (rank correlation −0.01)."
- ],
- "offshoots": [
-  "'strong' and strength (mean 0.25 of max, AUROC 0.97; the most common strong trigger in the corpus)",
-  "words for being hit, wounded or injured (mean 0.13, AUROC 1.00)",
-  "anatomical 'nerve', weaker (0.1–0.6 depending on context)",
-  "the 신경 token inside the Korean name 신경민 (0.51)"
- ],
- "replications": [
-  {
-   "type": "blind clean room",
-   "path": "runs/cleanroom/blind/REPORT.md",
-   "label": "Several merged jobs, all vetoed by preceding pain/sensation discourse: (1) main: 'nerve(s)' outside neuroanatomy, multilingual (nerve-racking, bundle of nerves, Nerven, nerveux, 신경, nerve agent, nerve damage as a disease complication); (2) physical/material 'strong' in concrete text; (3) weak: the injury word or body part in violent harm (shot in the leg)",
-   "verdict": "several jobs",
-   "confidence": 0.7
-  }
  ]
 }

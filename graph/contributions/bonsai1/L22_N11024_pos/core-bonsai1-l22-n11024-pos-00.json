@@ -1,0 +1,44 @@
+{
+ "id": "core-bonsai1-l22-n11024-pos-00",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N11024+",
+ "contributor": "bonsai-interp-core",
+ "created": "2026-10-17T16:37:09-06:00",
+ "label": "The payoff token of a stated outcome: the word that completes the result/consequence of a conditional, causal or modal clause (would/could/will + verb + OUTCOME, 'leads to an increase in X', 'cannot be redeemed', 'contract strongly'), and in code the returned value or final statement of a branch ('return res', 'print(10)')",
+ "tests": [
+  {
+   "author": "claude",
+   "tests_file": "probes/bonsai1_L22_N11024_pos/holdout.json",
+   "result_file": "probes/bonsai1_L22_N11024_pos/solo.json",
+   "prereg_commit": "103f75a",
+   "accuracy": 0.667,
+   "auroc": 0.924,
+   "fire_rate_predicted_fire": 0.333,
+   "fire_rate_predicted_quiet": 0.0,
+   "protocol": "held-out@1"
+  }
+ ],
+ "depth": "full",
+ "lineage": [],
+ "verdict": "No single coherent job found",
+ "summary": [
+  "Forward: a blind agent's best label from corpus examples ('the payoff token of a stated outcome') predicted the bank poorly. Only 15% of on-label sentences fired strongly, and 11 were silent.",
+  "Refinement and held-out: a second agent, seeing the bank results, narrowed it to 'the closing amount of a hypothetical change'. That ranks new sentences well (AUROC 0.92), but only 4 of 12 predicted-fire sentences actually fired. All four are hypothetical money outcomes ('would have roughly $200,000').",
+  "Opposite pole: no sentence written for its label fired strongly (0%).",
+  "Induce: no coherent theme in either direction ('relief', 'glad' vs 'on', 'still', 'calm'), and about 6× weaker effect on the model than the genre neuron. globalMOO missed its 50% and 75% targets, consistent with a neuron that has no smooth response to label-driven text."
+ ],
+ "offshoots": [
+  "hypothetical money outcomes ('would have close to N3,000') reach 0.4–1.0"
+ ],
+ "short": "An Unclear Neuron",
+ "examples": [
+  "mple presented by the Mishna is when the consecrated animals die. In both cases the animal carcass must be buried and cannot be redeemed⟦.⟧ Rabbi Shimon disagrees with this ruling, arguing that in the",
+  "to make your money go further.⏎For example, a 10-year old who stashed N1,000 in a high-yield savings account earning 2% would have close to N3,00⟦0⟧ by retirement age. Alternatively, if they earned 7%",
+  "olonged stretch and causes the muscle to relax. If a muscle's inverse stretch reflex becomes weakened, it will tend to contract strongly⟦.⟧ The theory also explains why cramps are more likely to occur",
+  ". Wealth Effect (real balances) : As P level decreases, dollars held can now buy more (=wealth) …leads to…. …increase in Consumption…= increase in⟦ AD⟧ C. Exchange Rate effect (Foreign Purchases) : As"
+ ],
+ "evidence": [
+  "probes/bonsai1_L22_N11024_pos/dossier.html",
+  "probes/bonsai1_L22_N11024_pos/"
+ ]
+}

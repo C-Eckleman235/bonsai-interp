@@ -1,0 +1,27 @@
+name: Claim a neuron
+description: Reserve a neuron pole for 14 days while you interpret or QC it.
+title: "claim: bonsai1/L__/N____±"
+labels: ["claim"]
+body:
+  - type: input
+    id: neuron
+    attributes:
+      label: Neuron pole
+      description: "Full id, e.g. bonsai1/L12/N5397- (model/layer/index and pole)"
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What you will do
+      options: ["interpret (new neuron)", "qc (re-test an existing label)", "replicate (blind clean-room run)", "step out (a feeder or reader of a graph neuron)"]
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: How
+      options: ["solo (I investigate)", "clean room (blind agent on my machine)", "solo + globalMOO"]
+  - type: markdown
+    attributes:
+      value: "Claims expire after 14 days without a linked PR. One open claim per person at a time keeps neurons available for others."

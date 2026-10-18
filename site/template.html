@@ -1,0 +1,470 @@
+<title>Bonsai Neuron Survey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a survey sheet. The full 36 x 12,288 map leads; the mission desk (draw, claim, run, PR) sits beside it; rules and scores below. */
+:root {
+  --paper: #eef2ef; --sheet: #f8faf8; --ink: #17302c; --ink-2: #44605a; --ink-3: #7b938d; --rule: #d3ddd9;
+  --mark: #2d3fc6; --mark-ink: #ffffff; --plus: #a8620f; --minus: #0f7a6e;
+  --held: #1f7a4d; --failed: #b4441f; --dense: #8a9590; --probed: #2d3fc6; --replicated: #7b4bb8; --contested: #c08a12;
+  --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+  --body: "Public Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #0f1716; --sheet: #15201e; --ink: #e3ece9; --ink-2: #a8bcb6; --ink-3: #6f8781; --rule: #26342f;
+  --mark: #8c9bff; --mark-ink: #0f1716; --plus: #e0a34a; --minus: #3cc2b0;
+  --held: #4fc386; --failed: #ee7a52; --dense: #77837e; --probed: #8c9bff; --replicated: #b892ee; --contested: #e7b84a; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --paper: #0f1716; --sheet: #15201e; --ink: #e3ece9; --ink-2: #a8bcb6; --ink-3: #6f8781; --rule: #26342f;
+  --mark: #8c9bff; --mark-ink: #0f1716; --plus: #e0a34a; --minus: #3cc2b0;
+  --held: #4fc386; --failed: #ee7a52; --dense: #77837e; --probed: #8c9bff; --replicated: #b892ee; --contested: #e7b84a; color-scheme: dark }
+
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font: 15px/1.55 var(--body); }
+.wrap { max-width: 1280px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 80px; display: flex; flex-direction: column; gap: 36px; }
+h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; letter-spacing: -0.015em; }
+h1 { font-size: clamp(2.1rem, 5.4vw, 3.6rem); font-weight: 800; line-height: 0.98; }
+h2 { font-size: 1.45rem; font-weight: 700; }
+h3 { font-size: 1.05rem; font-weight: 700; }
+p { margin: 0; }
+.eyebrow { font: 600 0.72rem/1.2 var(--mono); letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-3); }
+.lede { color: var(--ink-2); max-width: 62ch; font-size: 1.04rem; }
+code, .mono { font-family: var(--mono); font-size: 0.86em; }
+a { color: var(--mark); }
+button, select, input { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--mark); outline-offset: 2px; }
+
+/* header */
+.top { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: end; }
+.tally { display: flex; gap: 22px; flex-wrap: wrap; font-variant-numeric: tabular-nums; }
+.tally div { display: flex; flex-direction: column; }
+.tally b { font: 700 1.6rem/1.1 var(--display); }
+.tally span { font-size: 0.78rem; color: var(--ink-3); }
+@media (max-width: 760px) { .top { grid-template-columns: 1fr; } }
+.preview { font-size: 0.82rem; color: var(--ink-2); border-left: 3px solid var(--contested); padding-left: 10px; max-width: 70ch; }
+
+/* map + desk */
+.survey { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 18px; align-items: start; }
+@media (max-width: 980px) { .survey { grid-template-columns: 1fr; } }
+.sheet { background: var(--sheet); border: 1px solid var(--rule); border-radius: 4px; padding: 16px; min-width: 0; }
+.mapwrap { position: relative; overflow-x: auto; }
+canvas#map { display: block; width: 100%; min-width: 620px; height: auto; cursor: crosshair; touch-action: manipulation; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.78rem; color: var(--ink-2); margin-top: 10px; }
+.legend i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; vertical-align: 0; }
+.hint { font-size: 0.8rem; color: var(--ink-3); margin-top: 6px; }
+.tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--paper); font: 0.74rem/1.4 var(--mono); padding: 6px 8px; border-radius: 3px; max-width: 280px; transform: translate(-50%, calc(-100% - 12px)); z-index: 3; }
+
+.desk { display: flex; flex-direction: column; gap: 14px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); }
+.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.btn { border: 1px solid var(--rule); background: var(--sheet); border-radius: 3px; padding: 10px 12px; cursor: pointer; text-align: left; display: flex; flex-direction: column; gap: 2px; }
+.btn b { font-family: var(--display); font-size: 1rem; }
+.btn span { font-size: 0.76rem; color: var(--ink-3); }
+.btn.primary { background: var(--mark); border-color: var(--mark); color: var(--mark-ink); }
+.btn.primary span { color: var(--mark-ink); opacity: 0.85; }
+.btn:hover { border-color: var(--ink-3); }
+.row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 0.84rem; }
+.row label { color: var(--ink-2); }
+select, input[type=text], input[type=number] { background: var(--paper); border: 1px solid var(--rule); border-radius: 3px; padding: 5px 7px; min-width: 0; }
+input[type=number] { width: 4.2em; }
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; }
+.seg button { border: 0; background: transparent; padding: 5px 9px; cursor: pointer; font-size: 0.8rem; color: var(--ink-2); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+/* mission card */
+.mission { border: 1px solid var(--ink); border-radius: 4px; background: var(--sheet); padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.mission .id { font: 700 1.5rem/1.1 var(--mono); letter-spacing: -0.02em; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.pole { font: 700 0.72rem/1 var(--mono); padding: 4px 7px; border-radius: 2px; color: var(--paper); }
+.pole.p { background: var(--plus); } .pole.m { background: var(--minus); }
+.chip { font: 600 0.68rem/1 var(--mono); letter-spacing: 0.04em; text-transform: uppercase; padding: 4px 7px; border-radius: 999px; border: 1px solid currentColor; }
+.xp { margin-left: auto; font: 600 0.8rem/1 var(--mono); color: var(--mark); }
+.mission .what { font-size: 0.88rem; color: var(--ink-2); }
+ol.steps { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 8px; font-size: 0.86rem; }
+.cmd { display: flex; gap: 6px; align-items: stretch; margin-top: 4px; }
+.cmd pre { margin: 0; flex: 1; min-width: 0; overflow-x: auto; background: var(--paper); border: 1px solid var(--rule); border-radius: 3px; padding: 6px 8px; font: 0.74rem/1.45 var(--mono); white-space: pre; }
+.cmd button { border: 1px solid var(--rule); background: var(--sheet); border-radius: 3px; cursor: pointer; font-size: 0.72rem; padding: 0 8px; color: var(--ink-2); }
+.links { display: flex; gap: 8px; flex-wrap: wrap; }
+.links a { font-size: 0.82rem; font-weight: 600; text-decoration: none; border: 1px solid var(--mark); border-radius: 3px; padding: 6px 10px; }
+
+/* views */
+.crumbs { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; font-size: 0.84rem; }
+.crumbs button { border: 0; background: none; padding: 0; color: var(--mark); cursor: pointer; font: inherit; }
+.crumbs span.sep { color: var(--ink-3); }
+.crumbs b { font-family: var(--mono); font-size: 0.82rem; }
+.find { display: flex; gap: 6px; }
+.find input { width: 13em; font-family: var(--mono); font-size: 0.82rem; }
+.find button { border: 1px solid var(--rule); background: var(--paper); border-radius: 3px; padding: 4px 10px; cursor: pointer; }
+.find .err { font-size: 0.76rem; color: var(--failed); align-self: center; }
+canvas#block { display: block; width: 100%; min-width: 560px; height: auto; cursor: pointer; }
+.blocknav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 0.82rem; }
+.blocknav button { border: 1px solid var(--rule); background: var(--paper); border-radius: 3px; padding: 3px 9px; cursor: pointer; }
+.found { display: flex; flex-direction: column; gap: 4px; font-size: 0.84rem; margin-top: 8px; }
+.found button { border: 0; background: none; padding: 4px 0; text-align: left; cursor: pointer; color: var(--ink); display: flex; gap: 10px; align-items: baseline; border-bottom: 1px solid var(--rule); }
+.found button .mono { color: var(--mark); flex: none; }
+.poles { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.polecard { border: 1px solid var(--rule); border-radius: 4px; padding: 12px; display: flex; flex-direction: column; gap: 8px; min-width: 0; background: var(--paper); }
+.polecard .lab { font-size: 0.95rem; }
+.polecard dl { display: grid; grid-template-columns: auto 1fr; gap: 3px 10px; margin: 0; font-size: 0.8rem; }
+.polecard dt { color: var(--ink-3); } .polecard dd { margin: 0; font-family: var(--mono); font-size: 0.78rem; overflow-wrap: anywhere; }
+.polecard .acts { display: flex; gap: 6px; flex-wrap: wrap; }
+.polecard .acts button { border: 1px solid var(--mark); color: var(--mark); background: none; border-radius: 3px; padding: 5px 9px; cursor: pointer; font-size: 0.8rem; font-weight: 600; }
+.hist { margin: 0; padding-left: 1.1em; font-size: 0.78rem; color: var(--ink-2); display: flex; flex-direction: column; gap: 3px; }
+
+/* lower sections */
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+.cols > section { min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+.shape { border-top: 3px solid var(--ink); padding-top: 10px; display: flex; flex-direction: column; gap: 6px; font-size: 0.88rem; }
+.shape ul { margin: 0; padding-left: 1.1em; color: var(--ink-2); }
+table { border-collapse: collapse; width: 100%; font-size: 0.84rem; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--rule); }
+th { font: 600 0.68rem/1.2 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+td.n { font-family: var(--mono); text-align: right; }
+.checklist { display: flex; flex-direction: column; gap: 8px; font-size: 0.86rem; }
+.checklist label { display: flex; gap: 8px; align-items: flex-start; }
+.badges { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+.badge { border: 1px dashed var(--rule); border-radius: 4px; padding: 8px; font-size: 0.78rem; color: var(--ink-2); }
+.badge b { display: block; font-family: var(--display); color: var(--ink); font-size: 0.92rem; }
+@media (prefers-reduced-motion: no-preference) { .mission { animation: land 0.35s ease-out; } @keyframes land { from { transform: translateY(6px); } to { transform: none; } } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="eyebrow">Bonsai-8B · 1-bit · 36 layers × 12,288 neurons · two poles each</div>
+      <h1>Bonsai Neuron Survey</h1>
+      <p class="lede">Every neuron in a 1-bit language model, on one sheet. Draw an unsurveyed one, run its test on your own GPU, and send the result as a pull request. Every label here was tested with sentences committed before the test ran.</p>
+      <p class="preview" id="preview">Private preview. The repositories are private until launch, so the claim and pull-request links work only for collaborators.</p>
+    </div>
+    <div class="tally" id="tally"></div>
+  </header>
+
+  <div class="survey">
+    <div class="sheet" style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <nav class="crumbs" id="crumbs" aria-label="Zoom level"></nav>
+        <form class="find" id="find"><label for="q" class="eyebrow" style="align-self:center">Go to</label><input type="text" id="q" placeholder="L12/N5397 or 12/5397" autocomplete="off"><button type="submit">Open</button><span class="err" id="qerr"></span></form>
+      </div>
+      <section id="v-map">
+        <div class="row" style="justify-content:space-between"><h2>The survey map</h2><span class="mono" id="cursor" style="color:var(--ink-3)">hover the map</span></div>
+        <div class="mapwrap" id="mapwrap"><canvas id="map" width="1240" height="720" aria-label="Map of all 36 layers by 12,288 neurons with surveyed poles marked"></canvas></div>
+        <div class="legend" id="legend"></div>
+        <p class="hint">Each row is a layer; neuron index runs left to right at true scale. Click anywhere to zoom into that block of 1,024 neurons.</p>
+      </section>
+      <section id="v-block" hidden>
+        <div class="row" style="justify-content:space-between"><h2 id="btitle"></h2>
+          <div class="blocknav"><button type="button" id="bprev" aria-label="Previous block">← prev</button><button type="button" id="bnext" aria-label="Next block">next →</button>
+          <button type="button" id="bup" aria-label="Layer above">layer −1</button><button type="button" id="bdown" aria-label="Layer below">layer +1</button></div></div>
+        <div class="mapwrap" id="blockwrap"><canvas id="block" width="1240" height="420" aria-label="One block of 1,024 neurons; each cell is one neuron, top half the + pole, bottom half the − pole"></canvas></div>
+        <p class="hint">Each cell is one neuron: the top half is its + pole, the bottom half its − pole. Click a cell to open that neuron.</p>
+        <div class="found" id="found"></div>
+      </section>
+      <section id="v-neuron" hidden>
+        <div class="row" style="justify-content:space-between;align-items:baseline"><h2 id="ntitle" class="mono" style="font-family:var(--mono)"></h2><span class="hint" id="nsub"></span></div>
+        <div class="poles" id="poles"></div>
+      </section>
+    </div>
+
+    <aside class="desk">
+      <div class="sheet" style="display:flex;flex-direction:column;gap:12px">
+        <div class="actions">
+          <button class="btn primary" id="draw" type="button"><b>Draw a new neuron</b><span>random, unclaimed, +10 XP</span></button>
+          <button class="btn" id="qc" type="button"><b>QC a surveyed one</b><span>fewest checks first, +6 XP</span></button>
+          <button class="btn" id="step" type="button"><b>Step out one neuron</b><span>a feeder of a held pole, +10 +3 XP</span></button>
+          <button class="btn" id="blind" type="button"><b>Blind replication</b><span>clean-room agent, +15 XP</span></button>
+        </div>
+        <div class="row"><label for="lmin">Layers</label><input type="number" id="lmin" min="0" max="35" value="6"><span>to</span><input type="number" id="lmax" min="0" max="35" value="24">
+          <label for="handle" style="margin-left:auto">GitHub</label><input type="text" id="handle" placeholder="your handle" style="width:9em"></div>
+        <div class="row"><span style="color:var(--ink-2)">Mode</span>
+          <div class="seg" role="group" aria-label="Mode"><button type="button" data-mode="solo" aria-pressed="true">Solo</button><button type="button" data-mode="gmoo" aria-pressed="false">Solo + globalMOO</button></div></div>
+      </div>
+      <div id="mission"></div>
+    </aside>
+  </div>
+
+  <div class="cols">
+    <section>
+      <div class="eyebrow">Two pull-request shapes</div>
+      <h2>What you send back</h2>
+      <div class="shape"><h3>Interpret</h3><ul>
+        <li><code>&lt;id&gt;.tests.json</code>: your label, 8 sentences that should fire it, and 8 near misses. Committed first, on its own.</li>
+        <li><code>&lt;id&gt;.json</code>: the results written by <code>play run</code>. Committed second.</li>
+        <li>Held when at least 5 of 8 fire at 0.3 of the pole's corpus maximum and at most 1 near miss does.</li></ul></div>
+      <div class="shape"><h3>QC</h3><ul>
+        <li>New sentences for an existing label: <b>confirm</b> it as it stands, <b>dispute</b> it with a test built to break it, or <b>refine</b> it with a better label.</li>
+        <li>A confirm that fails counts as a dispute. When disputes outnumber confirmations, the pole is marked contested.</li></ul></div>
+      <p style="font-size:.82rem;color:var(--ink-3)">Contributions are append-only. A merge never edits anyone's work; each neuron's record is rebuilt from all of its contributions.</p>
+    </section>
+    <section>
+      <div class="eyebrow">Before your first neuron</div>
+      <h2>Set up your bench</h2>
+      <div class="checklist" id="checklist"></div>
+      <p style="font-size:.82rem;color:var(--ink-3)">You need a GPU with 16 GB of memory. The 1-bit weights load packed at 2 bits each. Ticks are kept in this browser only.</p>
+    </section>
+    <section>
+      <div class="eyebrow">Scoreboard</div>
+      <h2>Surveyors</h2>
+      <div style="overflow-x:auto"><table><thead><tr><th>Surveyor</th><th style="text-align:right">XP</th></tr></thead><tbody id="scores"></tbody></table></div>
+      <div class="badges" id="badges"></div>
+    </section>
+  </div>
+</div>
+
+<script id="index-data" type="application/json">__INDEX__</script>
+<script>
+(function () {
+  const IDX = JSON.parse(document.getElementById("index-data").textContent);
+  const REPO = "moridinamael/bonsai-interp", CLEAN = "moridinamael/neuron-cleanroom";
+  const L_N = 36, N_N = 12288;
+  const STATUS = ["held", "probed", "replicated", "contested", "failed", "unresolved", "dense"];
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const store = { get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
+                  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } };
+  const N = Object.entries(IDX.neurons).map(([id, r]) => { const m = id.match(/^(\w+)\/L(\d+)\/N(\d+)([+-])$/); return { id, model: m[1], L: +m[2], n: +m[3], pole: m[4], ...r }; });
+  const byId = Object.fromEntries(N.map(r => [r.id, r]));
+  let mode = "solo", claimed = new Set();
+
+  // tally
+  const held = N.filter(r => r.status === "held").length;
+  document.getElementById("tally").innerHTML =
+    `<div><b>${(L_N * N_N).toLocaleString()}</b><span>neurons</span></div>` +
+    `<div><b>${N.length}</b><span>poles surveyed</span></div>` +
+    `<div><b>${held}</b><span>labels holding</span></div>` +
+    `<div><b>${(100 * N.length / (2 * L_N * N_N)).toFixed(4)}%</b><span>of the map</span></div>`;
+
+  // map
+  const cv = document.getElementById("map"), ctx = cv.getContext("2d"), tip = document.createElement("div");
+  tip.className = "tip"; tip.hidden = true; document.getElementById("mapwrap").appendChild(tip);
+  const W = cv.width, H = cv.height, mL = 44, mR = 12, mT = 14, mB = 26, rowH = (H - mT - mB) / L_N;
+  const xOf = n => mL + (n + 0.5) / N_N * (W - mL - mR), yOf = (L, pole) => mT + (L + (pole === "+" ? 0.32 : 0.68)) * rowH;
+  function draw(sel) {
+    ctx.clearRect(0, 0, W, H);
+    ctx.font = "11px " + css("--mono").split(",")[0].replace(/"/g, "");
+    const lmin = +document.getElementById("lmin").value, lmax = +document.getElementById("lmax").value;
+    for (let L = 0; L < L_N; L++) {
+      const y = mT + L * rowH;
+      ctx.fillStyle = L >= lmin && L <= lmax ? css("--sheet") : css("--paper");
+      ctx.fillRect(mL, y, W - mL - mR, rowH);
+      ctx.strokeStyle = css("--rule"); ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(mL, y + rowH / 2); ctx.lineTo(W - mR, y + rowH / 2); ctx.stroke();
+      if (L % 3 === 0) { ctx.fillStyle = css("--ink-3"); ctx.textAlign = "right"; ctx.fillText("L" + L, mL - 8, y + rowH / 2 + 4); }
+    }
+    ctx.textAlign = "center"; ctx.fillStyle = css("--ink-3");
+    [0, 2048, 4096, 6144, 8192, 10240, 12287].forEach(n => ctx.fillText(n.toLocaleString(), xOf(n), H - 8));
+    for (const e of IDX.edges) { const a = byId[e[0]], b = byId[e[1]]; if (!a || !b) continue;
+      ctx.strokeStyle = css("--ink-3"); ctx.globalAlpha = 0.28; ctx.beginPath(); ctx.moveTo(xOf(a.n), yOf(a.L, a.pole)); ctx.lineTo(xOf(b.n), yOf(b.L, b.pole)); ctx.stroke(); ctx.globalAlpha = 1; }
+    for (const r of N) {
+      ctx.fillStyle = css("--" + r.status) || css("--ink-3");
+      ctx.beginPath(); ctx.arc(xOf(r.n), yOf(r.L, r.pole), r.status === "probed" ? 5.5 : 3.6, 0, 2 * Math.PI); ctx.fill();
+      ctx.strokeStyle = css("--sheet"); ctx.lineWidth = 1.2; ctx.stroke();
+    }
+    if (sel) { const x = xOf(sel.n), y = yOf(sel.L, sel.pole);
+      ctx.strokeStyle = css("--mark"); ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(x, y, 10, 0, 2 * Math.PI); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(x - 16, y); ctx.lineTo(x - 11, y); ctx.moveTo(x + 11, y); ctx.lineTo(x + 16, y); ctx.moveTo(x, y - 16); ctx.lineTo(x, y - 11); ctx.moveTo(x, y + 11); ctx.lineTo(x, y + 16); ctx.stroke(); }
+  }
+  document.getElementById("legend").innerHTML = STATUS.map(s => `<span><i style="background:var(--${s})"></i>${s}</span>`).join("") +
+    `<span><i style="background:none;border:1px solid var(--ink-3)"></i>upper half of a row = + pole, lower = − pole</span>`;
+  const at = ev => { const b = cv.getBoundingClientRect(); const x = (ev.clientX - b.left) * W / b.width, y = (ev.clientY - b.top) * H / b.height;
+    const L = Math.floor((y - mT) / rowH), n = Math.round((x - mL) / (W - mL - mR) * N_N - 0.5), pole = ((y - mT) / rowH - L) < 0.5 ? "+" : "-";
+    let near = null, best = 9; for (const r of N) { const d = Math.hypot(xOf(r.n) - x, yOf(r.L, r.pole) - y); if (d < best) { best = d; near = r; } }
+    return { L, n: Math.max(0, Math.min(N_N - 1, n)), pole, near, px: (ev.clientX - b.left), py: (ev.clientY - b.top), ok: L >= 0 && L < L_N && x >= mL }; };
+  cv.addEventListener("mousemove", ev => { const p = at(ev); if (!p.ok) { tip.hidden = true; return; }
+    document.getElementById("cursor").textContent = `L${p.L} · N${p.n} · ${p.pole === "+" ? "+ pole" : "− pole"}`;
+    if (p.near) { tip.hidden = false; tip.style.left = p.px + "px"; tip.style.top = p.py + "px";
+      tip.innerHTML = `${esc(p.near.id)} · ${esc(p.near.status)}<br>${esc(p.near.short || p.near.label || "")}`; } else tip.hidden = true; });
+  cv.addEventListener("mouseleave", () => { tip.hidden = true; });
+  cv.addEventListener("click", ev => { const p = at(ev); if (!p.ok) return;
+    if (p.near) openNeuron(p.near.L, p.near.n, p.near.pole); else openBlock(p.L, Math.floor(p.n / BLK)); });
+
+  // zoom levels: map -> block of 1,024 neurons -> one neuron (both poles)
+  const BLK = 1024, COLS = 64, ROWS = BLK / COLS;
+  let view = { level: "map" };
+  const views = { map: "v-map", block: "v-block", neuron: "v-neuron" };
+  function show(level) { for (const [k, id] of Object.entries(views)) document.getElementById(id).hidden = k !== level; crumbs(); }
+  function crumbs() {
+    const c = document.getElementById("crumbs"), rng = () => `Layer ${view.L} · N${view.b * BLK}–N${view.b * BLK + BLK - 1}`;
+    const parts = [view.level === "map" ? `<b>Whole model</b>` : `<button type="button" data-go="map">Whole model</button>`];
+    if (view.level === "block") parts.push(`<span class="sep">›</span><b>${rng()}</b>`);
+    if (view.level === "neuron") parts.push(`<span class="sep">›</span><button type="button" data-go="block">${rng()}</button>`, `<span class="sep">›</span><b>L${view.L}/N${view.n}</b>`);
+    c.innerHTML = parts.join("");
+  }
+  document.getElementById("crumbs").addEventListener("click", ev => { const g = ev.target.closest("[data-go]"); if (!g) return;
+    if (g.dataset.go === "map") { view = { level: "map" }; show("map"); draw(); } else openBlock(view.L, view.b); });
+
+  const bc = document.getElementById("block"), bx = bc.getContext("2d"), btip = document.createElement("div");
+  btip.className = "tip"; btip.hidden = true; document.getElementById("blockwrap").appendChild(btip);
+  const BW = bc.width, BH = bc.height, bmL = 56, bmR = 8, bmT = 8, bmB = 22, cw = (BW - bmL - bmR) / COLS, ch = (BH - bmT - bmB) / ROWS;
+  function openBlock(L, b) {
+    L = Math.max(0, Math.min(L_N - 1, L)); b = Math.max(0, Math.min(N_N / BLK - 1, b));
+    view = { level: "block", L, b }; show("block");
+    document.getElementById("btitle").textContent = `Layer ${L}, neurons ${(b * BLK).toLocaleString()}–${(b * BLK + BLK - 1).toLocaleString()}`;
+    drawBlock();
+    const here = N.filter(r => r.L === L && Math.floor(r.n / BLK) === b).sort((x, y) => x.n - y.n || (x.pole < y.pole ? -1 : 1));
+    document.getElementById("found").innerHTML = here.length ? `<div class="eyebrow">Surveyed in this block</div>` + here.map(r =>
+      `<button type="button" data-n="${r.n}" data-pole="${r.pole}"><span class="mono">L${r.L}/N${r.n}${r.pole === "+" ? "+" : "−"}</span><span class="chip" style="color:var(--${r.status})">${esc(r.status)}</span><span>${esc(r.short || r.label || "")}</span></button>`).join("")
+      : `<p class="hint">Nothing surveyed in this block yet. Every cell is open: click one to start.</p>`;
+    draw({ L, n: b * BLK + BLK / 2, pole: "+" });
+  }
+  function drawBlock() {
+    const { L, b } = view; bx.clearRect(0, 0, BW, BH);
+    bx.font = "11px " + css("--mono").split(",")[0].replace(/"/g, "");
+    for (let i = 0; i < BLK; i++) {
+      const n = b * BLK + i, x = bmL + (i % COLS) * cw, y = bmT + Math.floor(i / COLS) * ch;
+      for (const pole of ["+", "-"]) {
+        const id = `bonsai1/L${L}/N${n}${pole}`, r = byId[id], yy = y + (pole === "+" ? 1 : ch / 2), hh = ch / 2 - 1.5;
+        bx.fillStyle = r ? css("--" + r.status) : claimed.has(id) ? css("--contested") : css("--rule");
+        bx.globalAlpha = r || claimed.has(id) ? 1 : 0.6; bx.fillRect(x + 1, yy, cw - 2, hh); bx.globalAlpha = 1;
+      }
+    }
+    bx.fillStyle = css("--ink-3"); bx.textAlign = "right";
+    for (let row = 0; row < ROWS; row += 2) bx.fillText("N" + (b * BLK + row * COLS), bmL - 6, bmT + row * ch + ch * 0.62);
+    bx.textAlign = "center"; [0, 16, 32, 48, 63].forEach(c => bx.fillText("+" + c, bmL + (c + 0.5) * cw, BH - 6));
+  }
+  const bat = ev => { const r = bc.getBoundingClientRect(), x = (ev.clientX - r.left) * BW / r.width, y = (ev.clientY - r.top) * BH / r.height;
+    const col = Math.floor((x - bmL) / cw), row = Math.floor((y - bmT) / ch); if (col < 0 || col >= COLS || row < 0 || row >= ROWS) return null;
+    return { n: view.b * BLK + row * COLS + col, pole: (y - bmT - row * ch) < ch / 2 ? "+" : "-", px: ev.clientX - r.left, py: ev.clientY - r.top }; };
+  bc.addEventListener("mousemove", ev => { const h = bat(ev); if (!h) { btip.hidden = true; return; }
+    const r = byId[`bonsai1/L${view.L}/N${h.n}${h.pole}`]; btip.hidden = false; btip.style.left = h.px + "px"; btip.style.top = h.py + "px";
+    btip.innerHTML = `L${view.L}/N${h.n}${h.pole === "+" ? "+" : "−"} · ${r ? esc(r.status) + "<br>" + esc(r.short || r.label || "") : "unsurveyed"}`; });
+  bc.addEventListener("mouseleave", () => { btip.hidden = true; });
+  bc.addEventListener("click", ev => { const h = bat(ev); if (h) openNeuron(view.L, h.n, h.pole); });
+  document.getElementById("found").addEventListener("click", ev => { const t = ev.target.closest("[data-n]"); if (t) openNeuron(view.L, +t.dataset.n, t.dataset.pole); });
+  document.getElementById("bprev").onclick = () => openBlock(view.L, view.b - 1);
+  document.getElementById("bnext").onclick = () => openBlock(view.L, view.b + 1);
+  document.getElementById("bup").onclick = () => openBlock(view.L - 1, view.b);
+  document.getElementById("bdown").onclick = () => openBlock(view.L + 1, view.b);
+
+  function poleCard(L, n, pole) {
+    const r = byId[`bonsai1/L${L}/N${n}${pole}`], id = `bonsai1/L${L}/N${n}${pole}`, pc = pole === "+" ? "p" : "m";
+    const head = `<div class="row"><span class="pole ${pc}">${pole === "+" ? "+ POLE" : "− POLE"}</span>${r ? `<span class="chip" style="color:var(--${r.status})">${esc(r.status)}</span>` : `<span class="chip" style="color:var(--ink-3)">open</span>`}</div>`;
+    if (!r) return `<div class="polecard">${head}<p class="lab" style="color:var(--ink-2)">Nobody has labelled this pole.</p>
+      <div class="acts"><button type="button" data-act="interpret" data-id="${id}">Interpret it</button><button type="button" data-act="blind" data-id="${id}">Blind run</button></div></div>`;
+    const col = o => o === "held" ? "held" : o === "failed" ? "failed" : "ink-3";
+    const tests = (r.t || []).map(t => `<li>${esc(t[0])} · <b style="color:var(--${col(t[1])})">${esc(t[1])}</b>${t[2] != null ? ` · fire ${t[2]}/8 · near misses ${t[3]}/8` : ""}${t[4] ? ` · by ${esc(t[4])}` : ""}</li>`).join("");
+    const hist = (r.history || []).map(h => `<li>${esc(h[0])} <span class="mono">(${esc(h[1])})</span></li>`).join("");
+    return `<div class="polecard">${head}<p class="lab">${esc(r.label || "–")}</p>
+      <dl><dt>kind</dt><dd>${esc(r.kind || "–")}</dd><dt>depth</dt><dd>${esc(r.depth)}</dd><dt>QC</dt><dd>${r.qc.confirm} confirm · ${r.qc.dispute} dispute · ${r.qc.refine} refine</dd>
+      <dt>contributors</dt><dd>${esc((r.contributors || []).join(", "))}</dd>${r.replicated ? `<dt>replicated</dt><dd>blind clean room</dd>` : ""}</dl>
+      ${tests ? `<div class="eyebrow">Tests</div><ul class="hist">${tests}</ul>` : ""}${hist ? `<div class="eyebrow">Labels tried</div><ol class="hist">${hist}</ol>` : ""}
+      <div class="acts"><button type="button" data-act="qc" data-id="${id}">QC it</button><button type="button" data-act="step" data-id="${id}">Step out from it</button>${r.replicated ? "" : `<button type="button" data-act="blind" data-id="${id}">Blind run</button>`}</div></div>`;
+  }
+  function openNeuron(L, n, focusPole) {
+    view = { level: "neuron", L, n, b: Math.floor(n / BLK) }; show("neuron");
+    document.getElementById("ntitle").textContent = `bonsai1 / L${L} / N${n}`;
+    const k = ["+", "-"].filter(pole => byId[`bonsai1/L${L}/N${n}${pole}`]).length;
+    document.getElementById("nsub").textContent = k ? `${k} of 2 poles surveyed` : "not surveyed yet";
+    document.getElementById("poles").innerHTML = poleCard(L, n, "+") + poleCard(L, n, "-");
+    draw({ L, n, pole: focusPole || "+" });
+  }
+  document.getElementById("poles").addEventListener("click", ev => { const t = ev.target.closest("[data-act]"); if (!t) return;
+    const m = t.dataset.id.match(/L(\d+)\/N(\d+)([+-])/), r = byId[t.dataset.id] || { id: t.dataset.id, L: +m[1], n: +m[2], pole: m[3] };
+    mission({ kind: t.dataset.act, r, from: t.dataset.act === "step" ? r : undefined }); });
+  document.getElementById("find").addEventListener("submit", ev => { ev.preventDefault();
+    const q = document.getElementById("q").value.trim(), err = document.getElementById("qerr");
+    const m = q.match(/^(?:bonsai1\/)?L?(\d{1,2})\s*[\/ ,]\s*N?(\d{1,5})\s*([+\-−])?$/i);
+    if (!m || +m[1] >= L_N || +m[2] >= N_N) { err.textContent = "Use a layer 0–35 and an index 0–12287, e.g. L12/N5397"; return; }
+    err.textContent = ""; openNeuron(+m[1], +m[2], m[3] ? (m[3] === "+" ? "+" : "-") : undefined); });
+
+  // missions
+  const rnd = k => Math.floor(Math.random() * k);
+  function drawNew() {
+    const lmin = Math.max(0, +document.getElementById("lmin").value), lmax = Math.min(35, Math.max(lmin, +document.getElementById("lmax").value));
+    for (let t = 0; t < 1000; t++) { const L = lmin + rnd(lmax - lmin + 1), n = rnd(N_N), pole = Math.random() < 0.5 ? "+" : "-", id = `bonsai1/L${L}/N${n}${pole}`;
+      if (!byId[id] && !claimed.has(id)) return { id, L, n, pole }; }
+  }
+  function pickQC() {
+    const pool = N.filter(r => ["held", "contested", "probed"].includes(r.status)).sort((a, b) => (a.qc.confirm + a.qc.dispute) - (b.qc.confirm + b.qc.dispute));
+    const least = pool.filter(r => r.qc.confirm + r.qc.dispute === pool[0].qc.confirm + pool[0].qc.dispute);
+    return least[rnd(least.length)];
+  }
+  function pickStep() { const pool = N.filter(r => r.status === "held" || r.status === "probed"); return pool[rnd(pool.length)]; }
+  const handle = () => (document.getElementById("handle").value.trim() || "<you>");
+  const folder = r => `graph/contributions/bonsai1/L${r.L}_N${r.n}_${r.pole === "+" ? "pos" : "neg"}`;
+  const cmd = (text) => `<div class="cmd"><pre>${esc(text)}</pre><button type="button" data-copy="${esc(text)}" aria-label="Copy command">Copy</button></div>`;
+  const issue = (r, what) => `https://github.com/${REPO}/issues/new?template=claim.yml&title=${encodeURIComponent(`claim: ${r.id}`)}&labels=claim`;
+  function mission({ kind, r, from }) {
+    const box = document.getElementById("mission"), pc = r.pole === "+" ? "p" : "m", u = `${r.L}/${r.n}`;
+    const rec = byId[r.id], xp = { interpret: 10, qc: 6, step: 13, blind: 15 }[kind];
+    const title = { interpret: "Interpret a new pole", qc: "QC this pole", step: "Step out one neuron", blind: "Blind clean-room replication" }[kind];
+    let what = "", steps = [];
+    const gm = mode === "gmoo" ? [`<li>Optional, one model per neuron: write a sentence bank, then train globalMOO once and ask it for text at 25 / 50 / 75% of max.${cmd(`python -m bonsai_interp.probe.run forward ${u} ${r.pole}\n# write probes/bonsai1_L${r.L}_N${r.n}_${r.pole === "+" ? "pos" : "neg"}/bank.json, then:\npython -m bonsai_interp.probe.run invert ${u} ${r.pole} --solver gmoo`)}</li>`] : [];
+    if (kind === "interpret" || kind === "step") {
+      what = kind === "step" ? `Find the neuron that feeds <b>${esc(from.id)}</b> (${esc(from.short || "")}) most strongly, then interpret it.` : "Nobody has surveyed this pole. Find what fires it and test your label.";
+      steps = [
+        kind === "step" ? `<li>List the strongest feeders of the held pole and pick one.${cmd(`python -m bonsai_interp.graph.play step --neuron ${from.id}`)}</li>` : "",
+        `<li>Claim it so nobody else takes it. <a href="${issue(r)}" target="_blank" rel="noopener">Open the claim issue</a></li>`,
+        `<li>Look at what fires it.${cmd(`python -m bonsai_interp.graph.play look --neuron ${r.id}`)}</li>`, ...gm,
+        `<li>Write your label, 8 sentences that should fire it and 8 near misses, then commit that file on its own.${cmd(`python -m bonsai_interp.graph.play new interpret --neuron ${r.id} --handle ${handle()}\ngit add ${folder(r)} && git commit -m "Pre-register interpret test for ${r.id}"`)}</li>`,
+        `<li>Run the test, refresh the graph and commit the results separately.${cmd(`python -m bonsai_interp.graph.play run ${folder(r)}/<id>.tests.json\npython -m bonsai_interp.graph.fold\ngit add graph && git commit -m "Results for ${r.id}"`)}</li>`,
+        `<li>Open the pull request.${cmd(`gh pr create --template interpret.md --title "interpret: ${r.id} <short label>"`)}</li>`];
+    } else if (kind === "qc") {
+      what = `Current label: <b>${esc(rec.label || "–")}</b><br>Status ${esc(rec.status)} · ${rec.qc.confirm} confirmations · ${rec.qc.dispute} disputes. Write new sentences; don't reuse the original test.`;
+      steps = [
+        `<li>Look at it, including weaker activations.${cmd(`python -m bonsai_interp.graph.play look --neuron ${r.id}`)}</li>`, ...gm,
+        `<li>Pre-register: confirm the label as it stands, dispute it, or refine it.${cmd(`python -m bonsai_interp.graph.play new qc --neuron ${r.id} --handle ${handle()} --verdict confirm\ngit add ${folder(r)} && git commit -m "Pre-register QC of ${r.id}"`)}</li>`,
+        `<li>Run, refresh and commit separately.${cmd(`python -m bonsai_interp.graph.play run ${folder(r)}/<id>.tests.json\npython -m bonsai_interp.graph.fold\ngit add graph && git commit -m "QC results for ${r.id}"`)}</li>`,
+        `<li>Open the pull request.${cmd(`gh pr create --template qc.md --title "qc: ${r.id} confirm"`)}</li>`];
+    } else if (kind === "blind") {
+      what = `A blind agent on your machine gets the toolchain and this neuron, and nothing else. You write down what you expect it to find before it starts.`;
+      steps = [
+        `<li>Build a sealed room from a pinned toolchain commit. List the current label's key words as forbidden so the build fails if anything leaks.${cmd(`cd neuron-cleanroom\npython -m cleanroom.build_room --interp ../bonsai-interp --neuron ${u} --out ../rooms/L${r.L}_N${r.n} --run runs/<date>_bonsai1_L${r.L}_N${r.n} --forbid <label words>`)}</li>`,
+        `<li>Commit your predictions to <code>runs/…/predictions.json</code>, then launch the agent and audit the transcript.${cmd(`python -m cleanroom.launch --room ../rooms/L${r.L}_N${r.n} --run runs/<date>_bonsai1_L${r.L}_N${r.n}\npython -m cleanroom.audit --run runs/<date>_bonsai1_L${r.L}_N${r.n}\npython -m cleanroom.collect --run runs/<date>_bonsai1_L${r.L}_N${r.n}\npython -m cleanroom.remove_room ../rooms/L${r.L}_N${r.n}`)}</li>`,
+        `<li>Add a <code>replicate</code> contribution to bonsai-interp that points at the run, and open both pull requests.</li>`];
+    }
+    box.innerHTML = `<div class="mission" aria-live="polite">
+      <div class="eyebrow">${esc(title)}</div>
+      <div class="id">L${r.L}/N${r.n}<span class="pole ${pc}">${r.pole === "+" ? "+ POLE" : "− POLE"}</span>${rec ? `<span class="chip" style="color:var(--${rec.status})">${esc(rec.status)}</span>` : ""}<span class="xp">+${xp} XP</span></div>
+      <p class="what">${what}</p><ol class="steps">${steps.join("")}</ol>
+      <div class="links"><a href="https://github.com/${kind === "blind" ? CLEAN : REPO}" target="_blank" rel="noopener">Repository</a>
+        <a href="https://github.com/${REPO}/blob/main/${kind === "qc" ? "graph/SCHEMA.md" : "CONTRIBUTING.md"}" target="_blank" rel="noopener">${kind === "qc" ? "How records fold" : "Contributor guide"}</a></div></div>`;
+    store.set("lastMission", { kind, id: r.id, from: from && from.id });
+    draw(r);
+  }
+  document.getElementById("mission").addEventListener("click", ev => { const b = ev.target.closest("button[data-copy]"); if (!b) return;
+    const t = b.getAttribute("data-copy");
+    (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => { b.textContent = "Copied"; setTimeout(() => (b.textContent = "Copy"), 1400); },
+      () => { const pre = b.previousElementSibling, s = getSelection(), rg = document.createRange(); rg.selectNodeContents(pre); s.removeAllRanges(); s.addRange(rg); b.textContent = "Selected"; }); });
+  document.getElementById("draw").onclick = () => { const r = drawNew(); openNeuron(r.L, r.n, r.pole); mission({ kind: "interpret", r }); };
+  document.getElementById("qc").onclick = () => { const r = pickQC(); openNeuron(r.L, r.n, r.pole); mission({ kind: "qc", r }); };
+  document.getElementById("step").onclick = () => { const f = pickStep(); openNeuron(f.L, f.n, f.pole); mission({ kind: "step", r: f, from: f }); };
+  document.getElementById("blind").onclick = () => { const pool = N.filter(r => r.status === "held" && !r.replicated), r = pool[rnd(pool.length)]; openNeuron(r.L, r.n, r.pole); mission({ kind: "blind", r }); };
+  document.querySelectorAll(".seg button").forEach(b => b.onclick = () => { mode = b.dataset.mode; document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", x === b)); store.set("mode", mode);
+    const last = store.get("lastMission", null); if (last && byId[last.id]) mission({ kind: last.kind, r: byId[last.id], from: byId[last.from] }); });
+  ["lmin", "lmax"].forEach(id => document.getElementById(id).addEventListener("change", () => draw()));
+  const hEl = document.getElementById("handle"); hEl.value = store.get("handle", ""); hEl.addEventListener("change", () => store.set("handle", hEl.value.trim()));
+
+  // checklist
+  const CHECK = [["clone", "Clone bonsai-interp and neuron-cleanroom", `git clone https://github.com/${REPO}\ngit clone https://github.com/${CLEAN}`],
+                 ["env", "Install the environment (Python 3.11–3.13, CUDA 12.8 torch)", "cd bonsai-interp && uv sync"],
+                 ["model", "Download Bonsai-8B (16 GB unpacked)", "bash scripts/download_models.sh"],
+                 ["data", "Fetch the corpus and full neuron scan (1.4 GB)", "bash scripts/fetch_data.sh"],
+                 ["gmoo", "Optional: add a globalMOO key to .env", "echo GMOO_API_KEY=... >> .env"],
+                 ["claude", "Optional, for blind runs: install the Claude Code CLI", "npm install -g @anthropic-ai/claude-code"]];
+  const done = store.get("checks", {});
+  document.getElementById("checklist").innerHTML = CHECK.map(([k, t, c]) => `<label><input type="checkbox" id="ck-${k}" ${done[k] ? "checked" : ""}><span>${esc(t)}${cmd(c)}</span></label>`).join("");
+  document.getElementById("checklist").addEventListener("change", ev => { const k = ev.target.id.slice(3); done[k] = ev.target.checked; store.set("checks", done); });
+  document.getElementById("checklist").addEventListener("click", ev => { const b = ev.target.closest("button[data-copy]"); if (!b) return; ev.preventDefault();
+    const t = b.getAttribute("data-copy"); (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => { b.textContent = "Copied"; setTimeout(() => (b.textContent = "Copy"), 1400); }, () => {}); });
+
+  // scores + badges
+  document.getElementById("scores").innerHTML = Object.entries(IDX.contributors).map(([h, p]) => `<tr><td class="mono">${esc(h)}</td><td class="n">${p.toLocaleString()}</td></tr>`).join("");
+  document.getElementById("badges").innerHTML = [["First light", "Your first label that holds"], ["Falsifier", "A dispute that turns a held label contested"],
+    ["Cartographer", "Five edges added by stepping out"], ["Blind witness", "A clean-room replication with a clean audit"], ["Second opinion", "Ten QCs of other people's labels"],
+    ["Deep water", "A held label below layer 24"]].map(([b, d]) => `<div class="badge"><b>${b}</b>${d}</div>`).join("");
+
+  // claims from GitHub (works once the repository is public; silently skipped otherwise)
+  fetch(`https://api.github.com/repos/${REPO}/issues?labels=claim&state=open&per_page=100`).then(r => r.ok ? r.json() : [])
+    .then(list => { for (const i of list) { const m = (i.title || "").match(/bonsai1\/L\d+\/N\d+[+-]/); if (m) claimed.add(m[0]); } }).catch(() => {});
+
+  show("map"); draw();
+  const last = store.get("lastMission", null), m0 = store.get("mode", "solo");
+  if (m0 === "gmoo") { mode = "gmoo"; document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", x.dataset.mode === "gmoo")); }
+  if (last && (byId[last.id] || last.kind === "interpret")) { const m = last.id.match(/L(\d+)\/N(\d+)([+-])/);
+    mission({ kind: last.kind, r: byId[last.id] || { id: last.id, L: +m[1], n: +m[2], pole: m[3] }, from: byId[last.from] }); }
+  else mission({ kind: "interpret", r: drawNew() });
+  const redraw = () => { draw(view.sel); if (view.level === "block") drawBlock(); };
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", redraw);
+  new MutationObserver(redraw).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+})();
+</script>

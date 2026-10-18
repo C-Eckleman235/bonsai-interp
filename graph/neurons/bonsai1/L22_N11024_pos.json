@@ -11,19 +11,26 @@
  "depth": "full",
  "tests": [
   {
-   "type": "held-out",
    "author": "claude",
    "tests_file": "probes/bonsai1_L22_N11024_pos/holdout.json",
    "result_file": "probes/bonsai1_L22_N11024_pos/solo.json",
    "prereg_commit": "103f75a",
-   "label_tested": "H2 (refined after the bank screen): the closing object/amount (or final period) of a hypothetical projection claim that a deliberate action or intervention WOULD/COULD change a measurable quantity -- money accumulated or saved, a bill or cost reduced, efficiency/yield/return raised, risk lowered -- typically with a possessor or a number on the target ('would have close to N3,000', 'would reduce your electricity bill', 'could increase their efficiency'). Weaker for will/may/present-tense action->result statements; near-silent for natural-event conditionals, abstract economic/physical laws, descriptive mentions of the same quantities, and code returns (the corpus code/long-context peaks did not reproduce in isolation, so H2 only claims the short-sentence prose behaviour).",
    "accuracy": 0.667,
    "auroc": 0.924,
    "fire_rate_predicted_fire": 0.333,
-   "fire_rate_predicted_quiet": 0.0
+   "fire_rate_predicted_quiet": 0.0,
+   "protocol": "held-out@1",
+   "contribution": "core-bonsai1-l22-n11024-pos-00",
+   "outcome": "failed"
   }
  ],
- "label_history": [],
+ "label_history": [
+  [
+   "core-bonsai1-l22-n11024-pos-00",
+   "The payoff token of a stated outcome: the word that completes the result/consequence of a conditional, causal or modal clause (would/could/will + verb + OUTCOME, 'leads to an increase in X', 'cannot be redeemed', 'contract strongly'), and in code the returned value or final statement of a branch ('return res', 'print(10)')",
+   "failed"
+  ]
+ ],
  "examples": [
   "mple presented by the Mishna is when the consecrated animals die. In both cases the animal carcass must be buried and cannot be redeemed⟦.⟧ Rabbi Shimon disagrees with this ruling, arguing that in the",
   "to make your money go further.⏎For example, a 10-year old who stashed N1,000 in a high-yield savings account earning 2% would have close to N3,00⟦0⟧ by retirement age. Alternatively, if they earned 7%",
@@ -36,8 +43,17 @@
  ],
  "roles": [],
  "contributors": [
-  "bonsai-interp core"
+  "bonsai-interp-core"
  ],
+ "contributions": [
+  "core-bonsai1-l22-n11024-pos-00"
+ ],
+ "qc": {
+  "confirm": 0,
+  "dispute": 0,
+  "refine": 0
+ },
+ "replications": [],
  "verdict": "No single coherent job found",
  "summary": [
   "Forward: a blind agent's best label from corpus examples ('the payoff token of a stated outcome') predicted the bank poorly. Only 15% of on-label sentences fired strongly, and 11 were silent.",
@@ -47,5 +63,6 @@
  ],
  "offshoots": [
   "hypothetical money outcomes ('would have close to N3,000') reach 0.4–1.0"
- ]
+ ],
+ "lineage": []
 }

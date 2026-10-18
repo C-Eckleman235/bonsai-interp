@@ -11,82 +11,91 @@
  "depth": "quick",
  "tests": [
   {
-   "type": "quick-8+8",
    "author": "claude",
    "tests_file": "probes/bonsai1_L9_N3688_pos/web_tests_claude_2.json",
    "result_file": "probes/bonsai1_L9_N3688_pos/web_quick_claude.json",
    "prereg_commit": "b273a0c",
-   "label_tested": "Python code: a dotted reference to a module, class or object attribute used as a value, especially on the right of an assignment or after if/elif (logger.error, sys.stdout.write, settings.DEBUG, logging.getLogger, self._flag)",
    "n_fire": 3,
    "n_false_pos": 0,
    "n_written": [
     8,
     8
    ],
-   "survives": false
+   "survives": false,
+   "protocol": "quick-8+8@1",
+   "contribution": "core-bonsai1-l17-n2518-pos-00",
+   "outcome": "failed"
   },
   {
-   "type": "quick-8+8",
    "author": "bonsai",
    "tests_file": "probes/bonsai1_L9_N3688_pos/web_tests_bonsai.json",
    "result_file": "probes/bonsai1_L9_N3688_pos/web_quick_bonsai.json",
    "prereg_commit": "b273a0c",
-   "label_tested": "Python code: a dotted reference to a module, class or object attribute used as a value, especially on the right of an assignment or after if/elif (logger.error, sys.stdout.write, settings.DEBUG, logging.getLogger, self._flag)",
    "n_fire": 0,
    "n_false_pos": 0,
    "n_written": [
     8,
     8
    ],
-   "survives": false
+   "survives": false,
+   "protocol": "quick-8+8@1",
+   "counts_for_status": false,
+   "contribution": "core-bonsai1-l17-n2518-pos-01",
+   "outcome": "failed"
   },
   {
-   "type": "quick-8+8",
    "author": "claude",
    "tests_file": "probes/bonsai1_L9_N3688_pos/relabel_tests_1.json",
    "result_file": "probes/bonsai1_L9_N3688_pos/relabel_quick.json",
    "prereg_commit": "0eeecfb",
-   "label_tested": "Python code: the head of a dotted attribute-access expression that starts a value slot, i.e. the module/object name or its first .attribute right after '=', 'if'/'elif', a comma, '(' or 'in' (= os.environ, = sys.stdout.write, if settings.DEBUG, = logging.getLogger, , self.default_days, in self.rep)",
    "n_fire": 4,
    "n_false_pos": 0,
    "n_written": [
     8,
     8
    ],
-   "survives": false
+   "survives": false,
+   "protocol": "quick-8+8@1",
+   "contribution": "core-bonsai1-l17-n2518-pos-02",
+   "outcome": "failed"
   },
   {
-   "type": "quick-8+8",
    "author": "claude",
    "tests_file": "probes/bonsai1_L9_N3688_pos/relabel2_tests.json",
    "result_file": "probes/bonsai1_L9_N3688_pos/relabel2_quick.json",
    "prereg_commit": "d9e9e34",
-   "label_tested": "Python code: the module or object name (or its first .attribute) at the head of a dotted reference used as a value right after '=' or as a call argument, esp. logging, sys, os.environ, settings, self.<attr>, request, args (= logging.getLogger, = sys.stdout.write, stderr=sys.stderr, get(..., self.default_x))",
    "n_fire": 5,
    "n_false_pos": 0,
    "n_written": [
     8,
     8
    ],
-   "survives": true
+   "survives": true,
+   "protocol": "quick-8+8@1",
+   "contribution": "core-bonsai1-l17-n2518-pos-03",
+   "outcome": "held"
   }
  ],
  "label_history": [
   [
-   "claude round",
-   "Python code: a dotted reference to a module, class or object attribute used as a value, especially on the right of an assignment or after if/elif (logger.error, sys.stdout.write, settings.DEBUG, logging.getLogger, self._flag)"
+   "core-bonsai1-l17-n2518-pos-00",
+   "Python code: a dotted reference to a module, class or object attribute used as a value, especially on the right of an assignment or after if/elif (logger.error, sys.stdout.write, settings.DEBUG, logging.getLogger, self._flag)",
+   "failed"
   ],
   [
-   "bonsai round",
-   "Python code: a dotted reference to a module, class or object attribute used as a value, especially on the right of an assignment or after if/elif (logger.error, sys.stdout.write, settings.DEBUG, logging.getLogger, self._flag)"
+   "core-bonsai1-l17-n2518-pos-01",
+   "Python code: a dotted reference to a module, class or object attribute used as a value, especially on the right of an assignment or after if/elif (logger.error, sys.stdout.write, settings.DEBUG, logging.getLogger, self._flag)",
+   "recorded"
   ],
   [
-   "claude round",
-   "Python code: the head of a dotted attribute-access expression that starts a value slot, i.e. the module/object name or its first .attribute right after '=', 'if'/'elif', a comma, '(' or 'in' (= os.environ, = sys.stdout.write, if settings.DEBUG, = logging.getLogger, , self.default_days, in self.rep)"
+   "core-bonsai1-l17-n2518-pos-02",
+   "Python code: the head of a dotted attribute-access expression that starts a value slot, i.e. the module/object name or its first .attribute right after '=', 'if'/'elif', a comma, '(' or 'in' (= os.environ, = sys.stdout.write, if settings.DEBUG, = logging.getLogger, , self.default_days, in self.rep)",
+   "failed"
   ],
   [
-   "claude round",
-   "Python code: the module or object name (or its first .attribute) at the head of a dotted reference used as a value right after '=' or as a call argument, esp. logging, sys, os.environ, settings, self.<attr>, request, args (= logging.getLogger, = sys.stdout.write, stderr=sys.stderr, get(..., self.default_x))"
+   "core-bonsai1-l17-n2518-pos-03",
+   "Python code: the module or object name (or its first .attribute) at the head of a dotted reference used as a value right after '=' or as a call argument, esp. logging, sys, os.environ, settings, self.<attr>, request, args (= logging.getLogger, = sys.stdout.write, stderr=sys.stderr, get(..., self.default_x))",
+   "held"
   ]
  ],
  "examples": [
@@ -103,6 +112,18 @@
   "via L20/N5963"
  ],
  "contributors": [
-  "bonsai-interp core"
- ]
+  "bonsai-interp-core"
+ ],
+ "contributions": [
+  "core-bonsai1-l17-n2518-pos-00",
+  "core-bonsai1-l17-n2518-pos-01",
+  "core-bonsai1-l17-n2518-pos-02",
+  "core-bonsai1-l17-n2518-pos-03"
+ ],
+ "qc": {
+  "confirm": 0,
+  "dispute": 0,
+  "refine": 0
+ },
+ "replications": []
 }

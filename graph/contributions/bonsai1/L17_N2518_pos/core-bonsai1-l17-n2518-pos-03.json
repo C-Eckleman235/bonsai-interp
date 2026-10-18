@@ -1,0 +1,39 @@
+{
+ "id": "core-bonsai1-l17-n2518-pos-03",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N2518+",
+ "contributor": "bonsai-interp-core",
+ "created": "2026-10-17T21:03:26-06:00",
+ "label": "Python code: the module or object name (or its first .attribute) at the head of a dotted reference used as a value right after '=' or as a call argument, esp. logging, sys, os.environ, settings, self.<attr>, request, args (= logging.getLogger, = sys.stdout.write, stderr=sys.stderr, get(..., self.default_x))",
+ "tests": [
+  {
+   "author": "claude",
+   "tests_file": "probes/bonsai1_L9_N3688_pos/relabel2_tests.json",
+   "result_file": "probes/bonsai1_L9_N3688_pos/relabel2_quick.json",
+   "prereg_commit": "d9e9e34",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "survives": true,
+   "protocol": "quick-8+8@1"
+  }
+ ],
+ "short": "Python dotted head",
+ "examples": [
+  "er.BaseHTTPRequestHandler):⏎⏎            server_version = \"MonitorHTTPServer/1.0\"⏎            log_error = http_logger⟦.error⟧⏎            log_message = http_logger.info⏎⏎            def do_GET(self):⏎",
+  "t's not the real sys.stdout; this⏎        # allows us to write test cases for the set_trace behavior.⏎        save_set_trace = pdb⟦.set⟧_trace⏎        self.debugger = _OutputRedirectingPdb(save_stdout",
+  "t(unittest.TestCase):⏎    def setUp(self):⏎        self.con = MockConnection()⏎⏎    def test_table_distinct(self):⏎        t = self⟦.con⟧.table('functional_alltypes')⏎⏎        expr = t[t.string_col, t",
+  "ndle = None⏎    if isinstance(output, str):⏎        if not output or output == \"-\":⏎            writer = sys.stdout⟦.write⟧⏎        elif output.startswith(\">>\"):⏎            file_handle = open(os.path"
+ ],
+ "evidence": [
+  "probes/bonsai1_L9_N3688_pos/web.html"
+ ],
+ "roles": [
+  "sibling",
+  "via L20/N5963"
+ ],
+ "unit_kind": "contextual"
+}

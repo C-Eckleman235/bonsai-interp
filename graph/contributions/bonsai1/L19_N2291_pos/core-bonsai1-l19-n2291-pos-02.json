@@ -1,0 +1,38 @@
+{
+ "id": "core-bonsai1-l19-n2291-pos-02",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N2291+",
+ "contributor": "bonsai-interp-core",
+ "created": "2026-10-17T20:50:42-06:00",
+ "label": "Very dense, close to always on: about 4.4M of 6.1M tokens are above 0.10 of max, including 1.28M in the 0.35-0.60 band, so it is not a feature detector. The top examples lean weakly toward factual or statistical reporting: digits and numbers after a space (P = 0.001, '10 others', '20 percent', phone numbers), list-item openers, disease and statistics terms (odds ratio, diarrhea) and citation dates. It is probably weaker on code such as Python import lines.",
+ "tests": [
+  {
+   "author": "claude",
+   "tests_file": "probes/bonsai1_L9_N3688_pos/relabel_tests_0.json",
+   "result_file": "probes/bonsai1_L9_N3688_pos/relabel_quick.json",
+   "prereg_commit": "0eeecfb",
+   "n_fire": 8,
+   "n_false_pos": 4,
+   "n_written": [
+    8,
+    8
+   ],
+   "survives": false,
+   "protocol": "quick-8+8@1"
+  }
+ ],
+ "short": "dense (always on)",
+ "examples": [
+  "ot, has a 30% market share, and the largest coffee house Starbucks has a 32% market share.⏎See also ⏎-⟦ Accounting⟧ scandals⏎- Alternative financial services⏎- European Financial Services Roundtable⏎-",
+  "нельзя было бы наклеить ярлык, одним своим названием разоблачающий поразительную пустоту, тупость и ничтожество гонимого противника.⏎4. Non habet⟦ (⟧здесь: констатировать отсутствие - лат.), или прием",
+  "ert i.text == divide_answer[num], \"The Response of {} isn't correct.\".format(c.format(\"divide\"))⏎            num += 1⏎⏎        rv = self.app.get(\"/count?op=⟦divide⟧&value1=22&value2=0\")⏎        page =",
+  ". R2: 0%, P = 0.014), and vascular involvement (5-year DFS: yes: 33% vs no: 39%, P = 0.0⟦0⟧1), were significantly associated with inferior DFS in univariate and multivariate analyses"
+ ],
+ "evidence": [
+  "probes/bonsai1_L9_N3688_pos/web.html"
+ ],
+ "roles": [
+  "reader"
+ ],
+ "unit_kind": "dense / positional"
+}

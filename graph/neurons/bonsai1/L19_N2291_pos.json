@@ -11,63 +11,70 @@
  "depth": "quick",
  "tests": [
   {
-   "type": "quick-8+8",
    "author": "claude",
    "tests_file": "probes/bonsai1_L9_N3688_pos/web_tests_claude_1.json",
    "result_file": "probes/bonsai1_L9_N3688_pos/web_quick_claude.json",
    "prereg_commit": "b273a0c",
-   "label_tested": "Incoherent; best guess: content tokens in factual/statistical reporting prose, especially epidemiology and clinical statistics (odds ratio, p-value digits, disease names like diarrhea, citation dates), as opposed to Python import names",
    "n_fire": 8,
    "n_false_pos": 7,
    "n_written": [
     8,
     8
    ],
-   "survives": false
+   "survives": false,
+   "protocol": "quick-8+8@1",
+   "contribution": "core-bonsai1-l19-n2291-pos-00",
+   "outcome": "failed"
   },
   {
-   "type": "quick-8+8",
    "author": "bonsai",
    "tests_file": "probes/bonsai1_L9_N3688_pos/web_tests_bonsai.json",
    "result_file": "probes/bonsai1_L9_N3688_pos/web_quick_bonsai.json",
    "prereg_commit": "b273a0c",
-   "label_tested": "Incoherent; best guess: content tokens in factual/statistical reporting prose, especially epidemiology and clinical statistics (odds ratio, p-value digits, disease names like diarrhea, citation dates), as opposed to Python import names",
    "n_fire": 8,
    "n_false_pos": 8,
    "n_written": [
     8,
     8
    ],
-   "survives": false
+   "survives": false,
+   "protocol": "quick-8+8@1",
+   "counts_for_status": false,
+   "contribution": "core-bonsai1-l19-n2291-pos-01",
+   "outcome": "failed"
   },
   {
-   "type": "quick-8+8",
    "author": "claude",
    "tests_file": "probes/bonsai1_L9_N3688_pos/relabel_tests_0.json",
    "result_file": "probes/bonsai1_L9_N3688_pos/relabel_quick.json",
    "prereg_commit": "0eeecfb",
-   "label_tested": "Very dense, close to always on: about 4.4M of 6.1M tokens are above 0.10 of max, including 1.28M in the 0.35-0.60 band, so it is not a feature detector. The top examples lean weakly toward factual or statistical reporting: digits and numbers after a space (P = 0.001, '10 others', '20 percent', phone numbers), list-item openers, disease and statistics terms (odds ratio, diarrhea) and citation dates. It is probably weaker on code such as Python import lines.",
    "n_fire": 8,
    "n_false_pos": 4,
    "n_written": [
     8,
     8
    ],
-   "survives": false
+   "survives": false,
+   "protocol": "quick-8+8@1",
+   "contribution": "core-bonsai1-l19-n2291-pos-02",
+   "outcome": "failed"
   }
  ],
  "label_history": [
   [
-   "claude round",
-   "Incoherent; best guess: content tokens in factual/statistical reporting prose, especially epidemiology and clinical statistics (odds ratio, p-value digits, disease names like diarrhea, citation dates), as opposed to Python import names"
+   "core-bonsai1-l19-n2291-pos-00",
+   "Incoherent; best guess: content tokens in factual/statistical reporting prose, especially epidemiology and clinical statistics (odds ratio, p-value digits, disease names like diarrhea, citation dates), as opposed to Python import names",
+   "failed"
   ],
   [
-   "bonsai round",
-   "Incoherent; best guess: content tokens in factual/statistical reporting prose, especially epidemiology and clinical statistics (odds ratio, p-value digits, disease names like diarrhea, citation dates), as opposed to Python import names"
+   "core-bonsai1-l19-n2291-pos-01",
+   "Incoherent; best guess: content tokens in factual/statistical reporting prose, especially epidemiology and clinical statistics (odds ratio, p-value digits, disease names like diarrhea, citation dates), as opposed to Python import names",
+   "recorded"
   ],
   [
-   "claude round",
-   "Very dense, close to always on: about 4.4M of 6.1M tokens are above 0.10 of max, including 1.28M in the 0.35-0.60 band, so it is not a feature detector. The top examples lean weakly toward factual or statistical reporting: digits and numbers after a space (P = 0.001, '10 others', '20 percent', phone numbers), list-item openers, disease and statistics terms (odds ratio, diarrhea) and citation dates. It is probably weaker on code such as Python import lines."
+   "core-bonsai1-l19-n2291-pos-02",
+   "Very dense, close to always on: about 4.4M of 6.1M tokens are above 0.10 of max, including 1.28M in the 0.35-0.60 band, so it is not a feature detector. The top examples lean weakly toward factual or statistical reporting: digits and numbers after a space (P = 0.001, '10 others', '20 percent', phone numbers), list-item openers, disease and statistics terms (odds ratio, diarrhea) and citation dates. It is probably weaker on code such as Python import lines.",
+   "failed"
   ]
  ],
  "examples": [
@@ -83,6 +90,17 @@
   "reader"
  ],
  "contributors": [
-  "bonsai-interp core"
- ]
+  "bonsai-interp-core"
+ ],
+ "contributions": [
+  "core-bonsai1-l19-n2291-pos-00",
+  "core-bonsai1-l19-n2291-pos-01",
+  "core-bonsai1-l19-n2291-pos-02"
+ ],
+ "qc": {
+  "confirm": 0,
+  "dispute": 0,
+  "refine": 0
+ },
+ "replications": []
 }

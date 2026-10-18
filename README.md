@@ -11,7 +11,9 @@ requests that add or relabel neurons are checked for that ordering in CI.
 | Path | What it is |
 |---|---|
 | `bonsai_interp/` | The toolchain: model loading with exact 1-bit weights, corpus scan, forward probes, inverse solvers, steering, circuit tools, and the graph format |
-| `graph/` | The interp graph: one JSON record per neuron pole (`graph/neurons/bonsai1/`) plus `graph/edges.json`. See [`graph/SCHEMA.md`](graph/SCHEMA.md) |
+| `graph/` | The interp graph. Append-only contributions (`graph/contributions/`) are folded into one derived record per neuron pole (`graph/neurons/`), plus `edges.json` and `index.json`. See [`graph/SCHEMA.md`](graph/SCHEMA.md) |
+| `site/` | The Bonsai Neuron Survey: a map of all 442,368 neurons to zoom through, and the mission desk that hands out neurons to interpret or QC (`python site/build.py`) |
+| `DATA_POLICY.md`, `MERGE_AGENT.md` | What may be committed and what belongs in the library, and the mechanical merge procedure |
 | `probes/` | Full working files for each probed neuron: banks, pre-registered tests, results, dossiers |
 | `runs/` | One-off studies, including the blind clean-room replication of L9/N3688 |
 | `reports/` | HTML templates, the calibration report and the figures |
@@ -58,10 +60,10 @@ To rebuild the data instead of downloading it, run `python -m bonsai_interp.corp
 Add a neuron, relabel one, or contribute a blind replication. See
 [CONTRIBUTING.md](CONTRIBUTING.md). The short version:
 
-1. Commit your tests and predictions.
-2. Commit the results in a later commit.
-3. Add or update the graph record.
-4. Open a PR. CI validates the record and checks that the tests came first.
+1. Draw a neuron on the survey page, or pick one to QC, and claim it.
+2. `python -m bonsai_interp.graph.play new …` writes the pre-registration. Fill it in and commit it alone.
+3. `python -m bonsai_interp.graph.play run …` writes the results. Run `python -m bonsai_interp.graph.fold`, then commit again.
+4. Open a PR with the `interpret` or `qc` template. CI checks that contributions are append-only, that the tests came first, the size caps, and the derived files.
 
 ## Licences
 
