@@ -1,0 +1,44 @@
+{
+ "contribution": "2026-10-18-moridinamael-3463",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N3869-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-18T23:12:56+00:00",
+ "neighbours": [
+  {
+   "unit": "L29/N3869",
+   "pole": "-",
+   "label": "Python coordinate sequences in y-then-x order, especially the transition from y to x.",
+   "fire": [
+    "value = pixels[y, x]",
+    "location = (y, x)",
+    "def sample(y, x): return grid[y, x]",
+    "image[y, x] = intensity",
+    "coordinates.append((y, x))",
+    "for y in range(rows):\n    for x in range(cols):\n        paint(y, x)",
+    "row = values[y, x, channel]",
+    "offset_y, offset_x = y, x"
+   ],
+   "quiet": [
+    "value = pixels[x, y]",
+    "location = (x, y)",
+    "def sample(x, y): return grid[x, y]",
+    "image[x, y] = intensity",
+    "coordinates.append((x, y))",
+    "for x in range(cols):\n    for y in range(rows):\n        paint(x, y)",
+    "row = values[x, y, channel]",
+    "offset_x, offset_y = x, y"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "codex gpt-6",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "unit_kind": "contextual",
+ "notes": "Opposite pole peaks on x-then-y and promotes y. Controls reverse coordinate order while preserving the same variable names and code structure. Sentences authored by Codex; no Bonsai-generated sentences. Exploratory sentences are disjoint from this preregistered test."
+}
