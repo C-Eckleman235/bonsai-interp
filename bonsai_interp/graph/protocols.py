@@ -4,9 +4,20 @@ A contribution names the protocol of each test ("quick-8+8@1"). Old contribution
 they were made under; a new pipeline adds a new version here instead of changing an old one.
 Tests under a protocol this code does not know are kept and shown, but do not change a status.
 """
+import statistics
 
 def _quick_8_8_v1(t):
     return "held" if t["n_fire"] >= 5 and t["n_false_pos"] <= 1 else "failed"
+
+
+def v2_stats(t):
+    """(AUROC, median fire, near misses >= 0.30) from a test's recorded per-sentence activations, or None."""
+    fire = [r["act"] for r in t["per_sentence"] if r["set"] == "fire"]
+    quiet = [r["act"] for r in t["per_sentence"] if r["set"] == "quiet"]
+    if not fire or not quiet:
+        return None
+    auroc = sum((f > q) + 0.5 * (f == q) for f in fire for q in quiet) / (len(fire) * len(quiet))
+    return auroc, statistics.median(fire), sum(q >= 0.30 for q in quiet)
 
 
 def _quick_8_8_v2(t):

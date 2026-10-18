@@ -49,6 +49,8 @@ def new(a):
     paths = [_new_one(a, nid) for nid in a.neuron]
     rel = [p.relative_to(ROOT).as_posix() for p in paths]
     what = a.neuron[0] if len(paths) == 1 else f"{len(paths)} poles" + (" (sweep)" if getattr(a, "k", None) else "")
+    if getattr(a, "k", None):  # from play draw: the list file is the handle; skip the long commands
+        return rel
     print(f"wrote {len(paths)} tests file(s):\n  " + "\n  ".join(rel) +
           "\nFill in each label and its 16 sentences, then commit the tests files ALONE (one commit for all of them is fine):\n"
           f"  git add {' '.join(rel)} && git commit -m \"Pre-register {a.kind} tests for {what}\"\n"
@@ -98,6 +100,48 @@ def draw(a):
         lst.parent.mkdir(exist_ok=True)
         lst.write_text("\n".join(paths) + "\n", encoding="utf-8", newline="\n")
         print(f"the {len(paths)} tests files are listed in .sweep/latest.txt (git add --pathspec-from-file=.sweep/latest.txt; play run --list .sweep/latest.txt)")
+
+
+OPTIONAL = {"short": "a 2-5 word name for the map", "unit_kind": "lexical / contextual / sparse feature / dense / positional / unclear",
+            "confidence": "a number 0-1 or low / medium / high", "notes": "free text (e.g. 'some sentences suggested by Twitch chat')",
+            "predictions": "what you expect, written before the run"}
+
+
+def fill(a):
+    """Fill tests files from one JSON plan: {"<pole id>": {"label": ..., "fire": [8], "quiet": [8], optional keys}, ...}.
+    Writes LF line endings, drops the template's reference list, and refuses anything it cannot place."""
+    plan = json.loads(Path(a.plan).read_text(encoding="utf-8"))
+    files = [ln.strip() for ln in Path(a.list).read_text(encoding="utf-8").splitlines() if ln.strip()]
+    by_pole = {}
+    for f in files:
+        t = json.loads((ROOT / f).read_text(encoding="utf-8"))
+        by_pole[t["neuron"]] = (f, t)
+    unknown = [k for k in plan if k not in by_pole]
+    if unknown:
+        sys.exit(f"plan has poles that are not in {a.list}: {unknown}")
+    done = []
+    for nid, e in plan.items():
+        f, t = by_pole[nid]
+        bad = [k for k in e if k not in ("label", "fire", "quiet", "agent", "screens", *OPTIONAL)]
+        if bad or len(e.get("fire", [])) != 8 or len(e.get("quiet", [])) != 8 or not e.get("label"):
+            sys.exit(f"{nid}: needs label, 8 fire and 8 quiet sentences; optional keys {sorted(OPTIONAL)}; unknown keys {bad}")
+        nb = t["neighbours"][0]
+        nb.update(label=e["label"], fire=e["fire"], quiet=e["quiet"])
+        for k in OPTIONAL:
+            if k in e:
+                t[k] = e[k]
+        if t.get("predictions", "").startswith("<optional"):
+            t.pop("predictions")
+        m = t.setdefault("methods", {})
+        m.pop("_screens_vocabulary", None)
+        if e.get("agent") or a.agent:
+            m["agent"] = e.get("agent") or a.agent
+        if e.get("screens"):
+            m["screens"] = e["screens"]
+        (ROOT / f).write_text(json.dumps(t, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
+        done.append(f)
+    left = [f for p, (f, _) in by_pole.items() if p not in plan]
+    print(f"filled {len(done)} tests files" + (f"; not in the plan yet: {left}" if left else "; every listed file is filled"))
 
 
 def _check_tests_file(path):
@@ -160,9 +204,9 @@ def run(a):
             test = {"protocol": t["protocol"], "tests_file": rel, "prereg_commit": prereg, "author": a.author or t["contributor"],
                     "n_fire": nf, "n_false_pos": fp, "n_written": [len(fire), len(quiet)], "per_sentence": per}
             tests.append(test)
-            fa, qa = [r["act"] for r in fire], [r["act"] for r in quiet]
-            auroc = sum((x > y) + 0.5 * (x == y) for x in fa for y in qa) / (len(fa) * len(qa))
-            med = sorted(fa)[len(fa) // 2] if len(fa) % 2 else sum(sorted(fa)[len(fa) // 2 - 1: len(fa) // 2 + 1]) / 2
+            from bonsai_interp.graph.protocols import v2_stats
+            auroc, med, _ = v2_stats(test)  # the recorded (rounded) values the rule judges, so print and verdict agree
+            fa = [r["act"] for r in fire]
             print(f"{t['neuron']:<22} AUROC {auroc:.2f} (need >= 0.90), median fire {med:.2f} (need >= 0.20), "
                   f"near misses >= 0.30: {fp} (max 1); fire >= 0.30: {nf}/{len(fa)} -> {outcome(test).upper()} under {t['protocol']}"
                   if t["protocol"] == "quick-8+8@2" else
@@ -291,6 +335,10 @@ def main():
     r.add_argument("--list", help="a file listing tests files, one per line (e.g. .sweep/latest.txt from play draw); works in any shell")
     r.add_argument("--author", help="only when the SENTENCES came from someone else, e.g. 'bonsai' when the model wrote them or 'twitch-chat'; "
                    "who did the work goes in the tests file's methods.agent, not here")
+    fl = sub.add_parser("fill", help="fill the drawn tests files from one JSON plan (LF endings; checks the keys)")
+    fl.add_argument("--plan", required=True, help='{"<pole id>": {"label": ..., "fire": [8], "quiet": [8], "short"/"unit_kind"/"confidence"/"notes": ...}}')
+    fl.add_argument("--list", default=".sweep/latest.txt", help="the tests files (default: the last play draw)")
+    fl.add_argument("--agent", help="methods.agent for every file, e.g. 'claude-code opus-5.5'")
     dr = sub.add_parser("draw", help="k random poles with no record yet (for a sweep)")
     dr.add_argument("--k", type=int, default=16)
     dr.add_argument("--seed", type=int, help="reproducible draw (default: random)")
@@ -346,7 +394,7 @@ def main():
     if a.cmd == "which":
         from bonsai_interp.graph import which
         return which.main(a)
-    {"new": new, "draw": draw, "run": run, "step": step, "look": look, "edge": edge, "probe": probe}[a.cmd](a)
+    {"new": new, "draw": draw, "fill": fill, "run": run, "step": step, "look": look, "edge": edge, "probe": probe}[a.cmd](a)
 
 
 if __name__ == "__main__":
