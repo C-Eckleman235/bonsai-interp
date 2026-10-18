@@ -99,16 +99,18 @@ def _check_tests_file(path):
     """(problem or None, tests dict, rel path, prereg commit) for one pre-registration."""
     p = Path(path).resolve()
     rel = p.relative_to(ROOT).as_posix()
+    t = json.loads(p.read_text(encoding="utf-8"))
+    templates = set(TEMPLATE_FIRE + TEMPLATE_QUIET + ["<your label>"])
+    left = [s for nb in t["neighbours"] for s in nb["fire"] + nb["quiet"] + [nb["label"]] if s in templates]
+    if left:
+        return f"{rel}: still has {len(left)} template placeholder(s), e.g. {left[0]!r}", None, rel, None
+    agent = (t.get("methods") or {}).get("agent")
+    if not agent or str(agent).startswith("<who did the work"):
+        return f"{rel}: fill in methods.agent (who did the work), commit, then run", None, rel, None
     if subprocess.run(["git", "log", "--format=%h", "-1", "--", rel], cwd=ROOT, capture_output=True, text=True).stdout.strip() == "":
-        return f"{rel}: not committed yet; commit the pre-registration first", None, rel, None
+        return f"{rel}: content OK; not committed yet: commit the pre-registration first", None, rel, None
     if subprocess.run(["git", "diff", "--quiet", "HEAD", "--", rel], cwd=ROOT).returncode != 0:
         return f"{rel}: has uncommitted edits; a pre-registration must be run exactly as committed", None, rel, None
-    t = json.loads(p.read_text(encoding="utf-8"))
-    if any("<" in s for nb in t["neighbours"] for s in nb["fire"] + nb["quiet"] + [nb["label"]]):
-        return f"{rel}: still has <placeholders>", None, rel, None
-    agent = (t.get("methods") or {}).get("agent")
-    if not agent or "<" in str(agent):
-        return f"{rel}: fill in methods.agent (who did the work), commit, then run", None, rel, None
     prereg = subprocess.run(["git", "log", "--diff-filter=A", "--format=%h", "--", rel], cwd=ROOT, capture_output=True, text=True).stdout.split()[-1]
     return None, t, rel, prereg
 
@@ -217,21 +219,31 @@ def probe(a):
     from bonsai_interp.env import limit_memory
     from bonsai_interp.model import load
     from bonsai_interp.probe import textinv
-    m = NEURON.match(a.neuron)
-    if not m:
-        sys.exit("neuron must look like bonsai1/L12/N345+")
-    texts = list(a.sentences) + ([ln.strip() for ln in Path(a.file).read_text(encoding="utf-8").splitlines() if ln.strip()] if a.file else [])
-    if not texts:
-        sys.exit("give sentences as arguments or --file (one per line)")
-    L, n, pole = int(m["L"]), int(m["n"]), 0 if m["pole"] == "+" else 1
+    if a.plan:  # {"bonsai1/L4/N11474-": ["sentence", ...], ...}: many poles, one model load
+        plan = json.loads(Path(a.plan).read_text(encoding="utf-8"))
+    else:
+        if not a.neuron:
+            sys.exit("give --neuron and sentences, or --plan plan.json")
+        texts = list(a.sentences) + ([ln.strip() for ln in Path(a.file).read_text(encoding="utf-8").splitlines() if ln.strip()] if a.file else [])
+        if not texts:
+            sys.exit("give sentences as arguments or --file (one per line)")
+        plan = {a.neuron: texts}
+    bad = [k for k in plan if not NEURON.match(k)]
+    if bad:
+        sys.exit(f"neuron must look like bonsai1/L12/N345+: {bad}")
     limit_memory(0.8)
-    model, tok, rec = load(m["model"])
+    model, tok, rec = load(NEURON.match(next(iter(plan)))["model"])
     tok.padding_side = "right"
-    s = explore.scan(m["model"])
-    ev = textinv.TextEvaluator(model, tok, rec, L, n, float(s["top_val"][L, pole, 0, n]), float(s["top_val"][L, 1 - pole, 0, n]),
-                               1.0 if pole == 0 else -1.0)
-    for t, r in zip(texts, ev(texts)):
-        print(f"{r['act']:6.3f}  peak {r['peak_token']!r:<14} {t}")
+    s = explore.scan(NEURON.match(next(iter(plan)))["model"])
+    for nid, texts in plan.items():
+        m = NEURON.match(nid)
+        L, n, pole = int(m["L"]), int(m["n"]), 0 if m["pole"] == "+" else 1
+        ev = textinv.TextEvaluator(model, tok, rec, L, n, float(s["top_val"][L, pole, 0, n]), float(s["top_val"][L, 1 - pole, 0, n]),
+                                   1.0 if pole == 0 else -1.0)
+        if len(plan) > 1:
+            print(f"=== {nid}")
+        for t, r in zip(texts, ev(texts)):
+            print(f"{r['act']:6.3f}  peak {r['peak_token']!r:<14} {t}")
     print("(exploration only: nothing was recorded. Fractions of the pole's corpus max. A quick-8+8@2 test holds when its 8 fire "
           "sentences beat its 8 near misses (AUROC >= 0.90), the median fire sentence reaches 0.20, and at most 1 near miss reaches 0.30)")
 
@@ -281,9 +293,10 @@ def main():
     lk = sub.add_parser("look")
     lk.add_argument("--neuron", required=True)
     pr = sub.add_parser("probe", help="exploration: score sentences on a pole, nothing recorded")
-    pr.add_argument("--neuron", required=True)
+    pr.add_argument("--neuron")
     pr.add_argument("sentences", nargs="*")
     pr.add_argument("--file", help="one sentence per line")
+    pr.add_argument("--plan", help='JSON {"<pole id>": ["sentence", ...], ...}: probe many poles with one model load')
     e = sub.add_parser("edge", help="record a measured edge between two poles")
     e.add_argument("--from", dest="src", required=True)
     e.add_argument("--to", dest="dst", required=True)

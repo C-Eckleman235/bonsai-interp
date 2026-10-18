@@ -160,11 +160,12 @@ def record(name, L, n):
 
 
 def render(c):
-    lines = [f"=== {c['neuron']}  (card: scan + weights; not a tested label)"]
+    lines = [f"=== {c['neuron']}  (card: scan + weights; not a tested label)"
+             + (f"   >>> you asked about the {c['focus']} pole: it is shown first <<<" if c.get("focus") else "")]
     for p in sorted(c["poles"], key=lambda p: p != (c["focus"] or "+")):
         st = c["poles"][p]
         rec = c["records"].get(p)
-        lines.append(f"--- {p} pole   max {st['max']:.2f}   density >0.1·max {st['density']['0.1']:.3%}  >0.3·max {st['density']['0.3']:.3%}"
+        lines.append(f"--- {p} pole{' (ASKED)' if p == c.get('focus') else ''}   max {st['max']:.2f}   density >0.1·max {st['density']['0.1']:.3%}  >0.3·max {st['density']['0.3']:.3%}"
                      f"   regimes {', '.join(f'{k} {v:.0%}' for k, v in st['regimes'].items() if v is not None)}")
         lines.append(f"    record: {rec['status']}: {rec['label']}" if rec else "    record: none (unsurveyed)")
         for f in st["flags"]:
