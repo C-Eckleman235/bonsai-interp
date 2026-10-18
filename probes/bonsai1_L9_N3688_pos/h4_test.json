@@ -1,0 +1,58 @@
+{
+ "written": "2026-10-17, after the disproof attempts D1–D3 and the per-token table, before any of these sentences was evaluated",
+ "question": "Is the + pole one coarser job (H4: strength or force exerted or withstood, physical or mental, with psychological 'nerve' as its peak), or several jobs that happen to share a neuron?",
+ "design": "Four branches found in the corpus, none containing a nerve morpheme. Each has 8 sentences and 8 matched near misses that keep the topic but remove the force or strength. Read after neutral preambles, on the sentence's own tokens.",
+ "predictions": {
+  "per_branch": "AUROC (branch sentences vs their matched near misses) >= 0.75 in every branch",
+  "graded": "Mean activation: psychological-nerve reference > strength > impact/injury, with reaction/sensation lowest; strong firing (>= 0.3) in under half of branch sentences",
+  "verdict_rule": "If all 4 branches reach AUROC >= 0.75, call it one coarser job (force / strength / strain). If 1–2 branches fail, those branches are separate or noise. If 3–4 fail, the corpus branches were weak-band noise, not jobs."
+ },
+ "reference_psych_nerve": [
+  "Waiting for the verdict was the most nerve-racking hour of my life.",
+  "It took real nerve to stand up and contradict the chairman.",
+  "Vor dem Finale lagen bei allen die Nerven blank.",
+  "She kept her nerve while the others panicked."
+ ],
+ "branches": {
+  "strength": {
+   "fire": ["The rope was strong enough to hold the whole climbing team.", "A strong wind tore the shutters off the old barn.",
+            "He has a remarkably strong grip for someone his age.", "Only the strongest swimmers made it across the channel.",
+            "The bridge needs strong steel cables to survive storms.", "Her strong legs carried her up the final climb.",
+            "They built the gate from strong oak beams.", "The team showed strong defense in the second half."],
+   "quiet": ["The rope was long enough to reach the bottom of the cliff.", "A gentle wind moved the curtains in the old barn.",
+             "He has remarkably neat handwriting for someone his age.", "Only the youngest swimmers wore blue caps.",
+             "The bridge needs fresh paint before the summer.", "Her new shoes carried her comfortably up the hill.",
+             "They painted the gate a dark shade of green.", "The team wore new uniforms in the second half."]
+  },
+  "impact_injury": {
+   "fire": ["The car was hit hard by a truck at the junction.", "Two soldiers were badly wounded in the attack.",
+            "He suffered a serious knee injury during the match.", "The boxer was knocked down by a heavy blow.",
+            "The village was struck by a violent storm overnight.", "She was injured when the scaffolding collapsed.",
+            "The ball hit him squarely in the face.", "Several miners were hurt in the explosion."],
+   "quiet": ["The car was parked neatly beside the junction.", "Two soldiers were promoted after the ceremony.",
+             "He bought a new pair of knee pads for the match.", "The boxer signed autographs after the weigh-in.",
+             "The village was decorated for the summer festival.", "She was photographed beside the new scaffolding.",
+             "The ball rolled slowly into the corner.", "Several miners were thanked at the reunion."]
+  },
+  "reaction_sensation": {
+   "fire": ["The rash caused intense itching all over her arms.", "His pulse was racing after the sprint.",
+            "The skin reacted badly to the new soap.", "She felt a sharp tingling in her fingers.",
+            "The patient's reflexes reacted instantly to the tap.", "A burning sensation spread across his chest.",
+            "The cat reacted violently when touched on its tail.", "He could feel his heart pounding in his throat."],
+   "quiet": ["The rash had faded completely by the morning.", "His watch showed the time after the sprint.",
+             "The new soap smelled faintly of lavender.", "She wore a silver ring on her finger.",
+             "The patient's file was placed on the desk.", "A warm blanket was spread across his chest.",
+             "The cat slept quietly on the window sill.", "He hummed a tune while he cooked dinner."]
+  },
+  "mental_fortitude": {
+   "fire": ["She showed great strength of character under pressure.", "He stayed calm and resolute through the crisis.",
+            "It takes courage to admit a mistake in public.", "The players kept their composure in the final minutes.",
+            "Her determination never wavered despite the setbacks.", "They endured the ordeal with remarkable fortitude.",
+            "He summoned all his willpower to finish the race.", "The negotiators remained steady under intense strain."],
+   "quiet": ["She showed great interest in the new exhibit.", "He stayed at a small hotel during the trip.",
+             "It takes an hour to drive to the coast.", "The players changed their shirts at half time.",
+             "Her schedule never changed despite the holidays.", "They enjoyed the concert with their friends.",
+             "He bought a new watch to time the race.", "The negotiators met for lunch at noon."]
+  }
+ }
+}
