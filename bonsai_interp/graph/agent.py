@@ -55,6 +55,13 @@ def doctor(a):
         size = sum((m.parent / s).stat().st_size for s in have) / 2**30
         shards_ok = len(have) == len(shards) and size > 14
         detail = f"{m.parent} ({len(have)}/{len(shards)} shards, {size:.1f} GB)"
+    else:
+        from bonsai_interp import gguf_weights
+        g = gguf_weights.find(m.parent) if m.parent.exists() else None
+        if g is not None:  # the 1.16 GB Q1_0 GGUF: the same weights, bit for bit
+            size = g.stat().st_size / 2**30
+            shards_ok = m.exists() and (m.parent / "tokenizer.json").exists() and size > 1.05
+            detail = f"{g} ({size:.2f} GB GGUF{'' if shards_ok else '; config.json or tokenizer.json missing: rerun download_models.sh'})"
     req.append(_ok(shards_ok, "Bonsai-8B weights", detail,
                    "bash scripts/download_models.sh, or if the weights are already on this machine put BONSAI1_PATH=<that folder> in .env"))
     for f, size in (("corpus.npz", 115e6), ("scan_bonsai1.npz", 1.1e9)):

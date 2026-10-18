@@ -46,6 +46,9 @@ PROTOCOLS = {
                     "about": "8 + 8 test judged on separation: AUROC >= 0.90, median fire >= 0.20 of max, at most 1 near miss >= 0.30"},
     "held-out@1": {"rule": _held_out_v1, "required": ["fire_rate_predicted_fire", "fire_rate_predicted_quiet"],
                    "about": "pre-registered held-out sentences with fire/quiet predictions, scored by fire rate at >= 0.3"},
+    "auto-token@1": {"rule": _quick_8_8_v2, "required": ["per_sentence"],
+                     "about": "the auto tier (bonsai_interp.auto.token_tier): a token hypothesis from the scan's top peaks, tested on 8 held-out "
+                              "snippets ending on the token vs the same snippets with only that token swapped; judged like quick-8+8@2. Scrutiny 0"},
     "cleanroom@1": {"rule": _cleanroom_v1, "required": ["outcome"],
                     "about": "a blind clean-room run (neuron-cleanroom); outcome agrees / partly / disagrees, judged by the reviewer"},
 }
