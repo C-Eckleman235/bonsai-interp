@@ -1,0 +1,141 @@
+{
+ "source": "claude",
+ "written": "2026-10-17, relabel agent, from top + band examples, before evaluation",
+ "neighbours": [
+  {
+   "unit": "L10/N6901",
+   "pole": "+",
+   "label": "Content words inside expository/technical passages about the brain, nervous system and mind: anatomical structure names and functional terms (motor, sensory, olfactory, cortex, responses, reflexes, consciousness, understanding, behaviour), firing mid-description rather than on the word 'brain' itself; extends weakly to body anatomy and philosophy-of-mind prose",
+   "kind": "sparse feature",
+   "confidence": 0.45,
+   "fire": [
+    "Signals leave the primary motor cortex and travel down the corticospinal tract to the spinal cord.",
+    "Damage to the left inferior frontal gyrus impairs the production of speech while comprehension is spared.",
+    "The patient in a vegetative state showed no meaningful responses to voices or to painful stimuli.",
+    "Fibers from the olfactory tract cross in the anterior commissure before reaching the temporal lobe.",
+    "The oculomotor nerve arises from a nucleus near the cerebral aqueduct and controls most eye movements.",
+    "Early in Parkinson's disease, motor symptoms appear after the loss of dopaminergic neurons in the substantia nigra.",
+    "The posterior insula integrates visceral and somatosensory information, while the anterior part handles emotional awareness.",
+    "Lesions of the cerebellum leave the patient unable to produce smooth, coordinated movements of the limbs."
+   ],
+   "quiet": [
+    "The brain of the company, its founder, left for a rival firm last spring.",
+    "She drove her car to the motor show in Geneva on Saturday morning.",
+    "We ordered the soup and a salad, then shared a slice of cake for dessert.",
+    "The council voted to repave the road leading to the north entrance of the park.",
+    "His nerve failed him at the last minute and he did not jump off the high board.",
+    "The new smartphone has a faster processor and a larger battery than last year's model.",
+    "Tickets for the concert sold out within an hour of going on sale.",
+    "The bank raised interest rates by a quarter point at its latest meeting."
+   ]
+  },
+  {
+   "unit": "L9/N2445",
+   "pole": "+",
+   "label": "Religious-identity and observance terms inside texts about Jews and Judaism: Christian/Christianity/Jesus/Yeshua/Messiah/messianic/Gentile/baptized/converted, plus Jewish denomination, clergy and holiday terms (Reform, Cohen, preachers, High Holy Days, New Year) — strongest when Christianity is mentioned against a Jewish context",
+   "kind": "sparse feature",
+   "confidence": 0.55,
+   "fire": [
+    "Many Jews in the medieval town were pressured by the bishop to become baptized Christians or leave.",
+    "Most rabbis reject the claim that Yeshua was the Messiah promised to Israel by the prophets.",
+    "The synagogue and the local Christian churches organized a joint vigil after the attack.",
+    "Messianic Jews worship on the Sabbath but believe that Jesus fulfilled the Hebrew prophecies.",
+    "In the shtetl the old rabbi warned his son never to trust the Gentile landlord.",
+    "During the Inquisition thousands of Spanish Jews converted to Catholicism to escape expulsion.",
+    "The congregation gathered for Rosh Hashanah to hear the shofar announce the Jewish New Year.",
+    "Reform Judaism remains the largest denomination among American Jews, followed by Conservative Judaism."
+   ],
+   "quiet": [
+    "The bakery on the corner sells fresh rye bread every morning.",
+    "The orchestra performed Beethoven's ninth symphony to a packed hall.",
+    "Our team converted the penalty in the final minute to win the match.",
+    "The new year begins with a fireworks show over the harbour in Sydney.",
+    "The reform bill passed the senate after a long debate about taxes.",
+    "He bought a used Christian Dior jacket at the vintage shop downtown.",
+    "The museum's new wing houses modern sculpture and photography.",
+    "The hiking trail climbs steeply through pine forest to the summit lake."
+   ]
+  },
+  {
+   "unit": "L7/N7149",
+   "pole": "+",
+   "label": "Very sparse (about 30 corpus tokens): the second or middle subword piece of rare multi-token proper nouns, mostly place, tribe and disease names, after a short capitalised first piece (Tul|are, Tul|arem|ia, Tuil|eries, Nure|m|berg, Tus|car|ora, Y|arem|uth, Luperc|us, Tar|quin) — a name-completion detector for unusual foreign-looking names",
+   "kind": "sparse feature",
+   "confidence": 0.5,
+   "fire": [
+    "Farmers in Tulare County reported a record citrus harvest after the mild winter.",
+    "The surviving Nazi leaders were tried before the international tribunal at Nuremberg in 1945.",
+    "Rabbit hunters are warned that tularemia can be caught by skinning infected animals.",
+    "Tourists strolled through the Tuileries garden on their way to the Louvre.",
+    "After their defeat in 1713, many Tuscarora families moved north to join the Iroquois.",
+    "The cotton district includes Kern, Kings, Tulare and Fresno counties.",
+    "The legend says that Lucretia was wronged by Tarquin, son of the last Roman king.",
+    "The medieval records spell the port as Yaremuth, Heremuth and several other variants."
+   ],
+   "quiet": [
+    "Farmers in Fresno County reported a record raisin harvest after the mild winter.",
+    "The surviving leaders were tried before the international tribunal in Munich.",
+    "Rabbit hunters are warned that rabies can be caught from infected animals.",
+    "Tourists strolled through the Luxembourg garden on their way to the Pantheon.",
+    "After their defeat, many Cherokee families moved west along the river.",
+    "The district includes Orange, Kern and Riverside counties.",
+    "The legend says the king of Rome was driven out by the people.",
+    "The medieval records spell the port as London and Bristol in most charters."
+   ]
+  },
+  {
+   "unit": "L17/N2518",
+   "pole": "+",
+   "label": "Python code: the head of a dotted attribute-access expression that starts a value slot, i.e. the module/object name or its first .attribute right after '=', 'if'/'elif', a comma, '(' or 'in' (= os.environ, = sys.stdout.write, if settings.DEBUG, = logging.getLogger, , self.default_days, in self.rep)",
+   "kind": "sparse feature",
+   "confidence": 0.5,
+   "fire": [
+    "    api_key = os.environ['API_KEY']",
+    "        if settings.DEBUG:",
+    "    logger = logging.getLogger(__name__)",
+    "            writer = sys.stdout.write",
+    "        days = data.get('days', self.default_days)",
+    "        elif self._in_transaction:",
+    "    for name, value in self.config.items():",
+    "        log_error = http_logger.error"
+   ],
+   "quiet": [
+    "    api_key = 'abc123'",
+    "        if debug:",
+    "    logger = None",
+    "            count = count + 1",
+    "        days = 7",
+    "        elif x > 10:",
+    "    for i in range(10):",
+    "# Set up the logger before running the tests"
+   ]
+  },
+  {
+   "unit": "L18/N12193",
+   "pole": "+",
+   "label": "The completing word of a return/resumption/transition phrase: the verb or its particle/complement when something goes back to, re-enters or resumes a previous state or place (return TO, back IN/inside, again, resume, returns, until [resumes], settle down, reconnect) — narrative and instructional prose; weakly also other phrasal-verb particles (out, up)",
+   "kind": "sparse feature",
+   "confidence": 0.4,
+   "fire": [
+    "After the long winter break the students were eager to return to their old routines.",
+    "She climbed through the window and pulled herself back inside the burning house.",
+    "He stopped taking notes and did not resume until the speaker reached the final slide.",
+    "The soldier was wounded in the war, and when he returns, he finds his village deserted.",
+    "The spacecraft went into hibernation and will not wake up again until next spring.",
+    "After the storm passed, the boat rocked for a minute and then settled down in the calm water.",
+    "Press the Back button in your browser to return to this page when you have finished.",
+    "The trail leaves the river for two miles and then bends east to reconnect with the main road."
+   ],
+   "quiet": [
+    "The students were eager to start their first day at the new school.",
+    "She climbed through the window and looked at the garden below.",
+    "He took careful notes during the entire lecture on pension reform.",
+    "The soldier was wounded in the war and received a medal for bravery.",
+    "The spacecraft launched from Florida on a bright Tuesday morning.",
+    "The boat sailed across the harbour toward the lighthouse.",
+    "Click the link in the email to download the brochure.",
+    "The road runs straight through the valley for twenty miles."
+   ]
+  }
+ ]
+}

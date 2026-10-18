@@ -1,0 +1,141 @@
+{
+ "source": "claude",
+ "written": "2026-10-17, relabel agent, from top + band examples, before evaluation",
+ "neighbours": [
+  {
+   "unit": "L20/N5963",
+   "pole": "-",
+   "label": "Incoherent, and weakly dense at low level (~282k tokens in the 0.10-0.20 band, sparse above 0.20). The only visible regularity is capitalised name or acronym fragments inside multi-word proper names of organisations, publications, places and agencies (Camp Pelham, derStandard, Sustainability Times, NIDDK, DA Reyna, IS targets, LPCTarget, Science 304), plus short code identifiers (data, conf, msg) and odd function words.",
+   "kind": "incoherent",
+   "confidence": 0.2,
+   "fire": [
+    "\"We saw real change in the villages,\" the lead author told Sustainability Times in an interview last week.",
+    "When the Camp Lejeune gate guards finally waved us through, the convoy rolled onto the base.",
+    "Funding for the trial came from the NIDDK and two private foundations.",
+    "Local reporters confirmed that DA Martinez had opened an inquiry into the department.",
+    "The full interview was first published by derStandard.at on Monday morning.",
+    "Officials claimed the airstrikes hit IS positions near the border town.",
+    "The surfers argued that the Kelp Beds should stay open to the public all year.",
+    "The results were later reported in Nature 417 alongside a companion paper."
+   ],
+   "quiet": [
+    "She told her sister about the trip over a long dinner last week.",
+    "The guards opened the gate and the trucks drove slowly into the yard.",
+    "Funding for the study came from several small donations by local families.",
+    "The lawyer said she would look into the matter after the holidays.",
+    "The interview was published on Monday morning and widely shared.",
+    "The storm hit the coast near the border late in the evening.",
+    "The surfers said the beach should stay open to everyone all year.",
+    "The results were reported at a meeting held later that spring."
+   ]
+  },
+  {
+   "unit": "L13/N3792",
+   "pole": "+",
+   "label": "Dense: about 1.0M tokens in the 0.10-0.20 band and 183k in 0.20-0.35, so it is on for most prose tokens at a low level. Its top end favours the token that completes a familiar multi-token name or fixed term: the last subword of a proper name (Eli|ade, Rh|ine, Tigr|is, Anj|ou, Ch|aim), regnal numerals (James I), author initials in citations, and set phrases (Internet of Things, Pap smear, amni|ocentesis). It also fires on letter and e-mail delimiters ('Regards,', 'From:').",
+   "kind": "dense / positional",
+   "confidence": 0.3,
+   "fire": [
+    "The treaty was negotiated on behalf of Charles of Anjou, who then ruled Sicily.",
+    "According to the historian Mircea Eliade, the ritual marked a symbolic rebirth.",
+    "The old trade route followed the River Euphrates down toward the gulf.",
+    "Both Elizabeth I and James I insisted on the authority of the crown.",
+    "The tributary winds northeast until it joins the Rhine near Basel.",
+    "Smart thermostats are a common example of the Internet of Things in ordinary homes.",
+    "Doctors may recommend amniocentesis when an early screening result is abnormal.",
+    "Thanks again for your patience with this ticket. Regards, The Support Team"
+   ],
+   "quiet": [
+    "The treaty was negotiated on behalf of the king, who then ruled the island.",
+    "According to the historian, the ritual marked a kind of symbolic rebirth.",
+    "The old trade route followed the river down toward the gulf.",
+    "Both rulers insisted firmly on the authority of the crown.",
+    "The small stream winds northeast until it reaches a large lake.",
+    "Smart thermostats are now quite common in many ordinary homes.",
+    "Doctors may recommend further tests when an early result is unusual.",
+    "Thanks again for your patience while we look into this problem for you."
+   ]
+  },
+  {
+   "unit": "L19/N2291",
+   "pole": "+",
+   "label": "Very dense, close to always on: about 4.4M of 6.1M tokens are above 0.10 of max, including 1.28M in the 0.35-0.60 band, so it is not a feature detector. The top examples lean weakly toward factual or statistical reporting: digits and numbers after a space (P = 0.001, '10 others', '20 percent', phone numbers), list-item openers, disease and statistics terms (odds ratio, diarrhea) and citation dates. It is probably weaker on code such as Python import lines.",
+   "kind": "dense / positional",
+   "confidence": 0.1,
+   "fire": [
+    "Eight people died and 14 others were injured when the bus left the road.",
+    "The association remained significant in the adjusted model (odds ratio 1.32, P = 0.002).",
+    "Acute diarrhea and suspected malaria were the leading causes of clinic visits that week.",
+    "The program aims to cut the company's carbon footprint by 25 percent within five years.",
+    "The findings were published online in the American Journal of Epidemiology on June 17, 2011.",
+    "For bookings and questions, please call (909) 302-1811 during office hours.",
+    "Printed and bound copies of the textbook cost between 5 and 20 dollars each.",
+    "The trip from El Paso to San Antonio took us nearly 12 hours of driving."
+   ],
+   "quiet": [
+    "import os",
+    "from collections import defaultdict",
+    "import numpy as np",
+    "from typing import List, Optional",
+    "def main():",
+    "    return None",
+    "if __name__ == \"__main__\":",
+    "    pass"
+   ]
+  },
+  {
+   "unit": "L14/N9470",
+   "pole": "+",
+   "label": "Dense: about 1.0M tokens in the 0.10-0.20 band and 333k in 0.20-0.35. Its strongest activations are mid-clause tokens in Chinese and Japanese narrative or commentary prose, often the word that completes an evaluative or emotional predicate (失望, 失落/有些, 陋习, 完善). Its mid range is dominated by Python code tokens (os.path, assert ... ==, method calls, indentation, keyword arguments), with scattered English prose.",
+   "kind": "dense / positional",
+   "confidence": 0.25,
+   "fire": [
+    "看到同学们都已经有了自己的作品，她多少感觉有些失落，但并不后悔当初的选择。",
+    "这样粗劣的教育方式，孩子真的能改掉这些陋习吗？",
+    "大金を払ったのに全く楽しめず、結局失望することになりました。",
+    "培训的目标是让学员拥有完善的人格和良好的沟通能力。",
+    "听到这个消息以后，我十分震惊，很久都说不出话来。",
+    "围观的群众纷纷吐槽这位父亲的做法实在让人担忧。",
+    "せっかく準備したのに、思ったより反応が少なくて少し残念でした。",
+    "他对这次比赛的结果非常不满意，觉得自己还可以做得更好。"
+   ],
+   "quiet": [
+    "Seeing her classmates succeed, she felt a little lost but never regretted her choice.",
+    "Can such crude parenting really help a child break these bad habits?",
+    "We paid a lot of money and still ended up feeling disappointed.",
+    "The goal of the training is to help students build a well-rounded personality.",
+    "When I heard the news I was shocked and could not speak for a long time.",
+    "Onlookers complained that the father's approach was rather worrying.",
+    "We prepared carefully, but the response was smaller than we had hoped.",
+    "He was not satisfied with the result and felt he could have done better."
+   ]
+  },
+  {
+   "unit": "L10/N5553",
+   "pole": "-",
+   "label": "Sparse: anatomy, physiology and biochemistry content words in explanatory biology or medical prose, often the subword that completes a technical term. Examples are body structures, tissues and organs (genic|ulate body, lymph|atic tissue, serous sac, plant roots, fores|kin, peripheral parts), minerals and elements (arsen|ic, zinc, bor|on, tann|ic acid), and bodily conditions or processes (osteodyst|rophy, injuries, inherited condition, dissolves). It is multilingual (English, Russian, Arabic, Japanese).",
+   "kind": "sparse feature",
+   "confidence": 0.55,
+   "fire": [
+    "Visual signals pass through the lateral geniculate body before reaching the occipital cortex.",
+    "Small clusters of lymphatic tissue, such as the tonsils, help trap invading microbes.",
+    "Inside the liver, arsenic is methylated so that it can be excreted in the urine.",
+    "The peritoneum forms a closed sac that lines the wall of the abdominal cavity.",
+    "Rickets is a form of osteodystrophy caused by a lack of vitamin D in childhood.",
+    "Heredity is the passing of traits from parents to their offspring through genes.",
+    "Damage to the peripheral nerves can cause numbness in the hands and feet.",
+    "Plants absorb boron and other trace elements from the soil through their roots."
+   ],
+   "quiet": [
+    "Signals from the old satellite pass through a relay station before reaching the city.",
+    "Small clusters of shops, such as the bakery, help bring visitors to the square.",
+    "Inside the warehouse, every package is labelled so that it can be shipped quickly.",
+    "The committee forms a closed group that meets behind the town hall each week.",
+    "The recession was a period caused by a lack of investment in the region.",
+    "Tradition is the passing of customs from parents to their children over generations.",
+    "Damage to the outer fence can let deer into the garden at night.",
+    "Farmers buy seed and other supplies from the cooperative at the edge of town."
+   ]
+  }
+ ]
+}
