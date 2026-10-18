@@ -1,0 +1,25 @@
+{
+ "written": "2026-10-17, after the web quick checks and before any lateral-cluster evaluation",
+ "note": "Lateral relatives of psychological 'nerve' found by the web crawl (co-firing, or feeding one of nerve's readers), each with a label that held its Claude-written quick check. 'rel' orders the concept dial: nerve's own bank keeps its H2 ratings; lateral sentences sit at 0.7 (tension family) or 0.5 (disappointment).",
+ "nodes": [
+  {"name": "nerve", "L": 9, "n": 3688, "pole": "+", "label": "psychological 'nerve' (probed)"},
+  {"name": "suspense", "L": 7, "n": 9782, "pole": "+", "label": "suspense, close watching, nail-biter", "lateral": true, "rel": 0.7},
+  {"name": "anticipation", "L": 9, "n": 1061, "pole": "+", "label": "eager anticipation: can't wait, impatient", "lateral": true, "rel": 0.7},
+  {"name": "overwhelm", "L": 12, "n": 3688, "pole": "+", "label": "overwhelming, stressful, nerve-wracking", "lateral": true, "rel": 0.7},
+  {"name": "disappointed", "L": 1, "n": 4037, "pole": "+", "label": "the word 'disappointed'", "lateral": true, "rel": 0.5},
+  {"name": "reader", "L": 14, "n": 9470, "pole": "+", "label": "shared reader of nerve and 'disappointed' (label failed)"}
+ ],
+ "goals": {
+  "nerve_alone": {"question": "Psychological 'nerve' strong (≥ 0.5) with suspense, anticipation and overwhelm all quiet (≤ 0.15)",
+                  "goals": [["nerve", ">=", 0.5], ["suspense", "<=", 0.15], ["anticipation", "<=", 0.15], ["overwhelm", "<=", 0.15]]},
+  "suspense_without_nerve": {"question": "Suspense strong (≥ 0.5) with 'nerve' quiet (≤ 0.1)", "goals": [["suspense", ">=", 0.5], ["nerve", "<=", 0.1]]},
+  "overwhelm_without_nerve": {"question": "Overwhelm strong (≥ 0.4) with 'nerve' quiet (≤ 0.1)", "goals": [["overwhelm", ">=", 0.4], ["nerve", "<=", 0.1]]},
+  "nerve_and_overwhelm": {"question": "Both 'nerve' and overwhelm strong (≥ 0.4)", "goals": [["nerve", ">=", 0.4], ["overwhelm", ">=", 0.4]]},
+  "nerve_and_anticipation": {"question": "Both 'nerve' and anticipation strong (≥ 0.4)", "goals": [["nerve", ">=", 0.4], ["anticipation", ">=", 0.4]]},
+  "reader_without_nerve": {"question": "The shared reader active (≥ 0.3) with 'nerve' quiet (≤ 0.1): does it have lateral routes?", "goals": [["reader", ">=", 0.3], ["nerve", "<=", 0.1]]}
+ },
+ "gmoo_plan": {
+  "budget": "One globalMOO model for this 6-node cluster, trained once and queried for the 6 goals (max 40 iterations each).",
+  "predictions": "Each lateral relative can fire without 'nerve' (they are separate jobs, not copies). 'nerve' and overwhelm co-activate easily ('nerve-wracking' is in both). 'nerve' and anticipation co-activate only with a mixed passage. The reader is too weak to reach 0.3 without 'nerve'."
+ }
+}
