@@ -1,0 +1,50 @@
+{
+ "written": "2026-10-18, before the room was built or the agent launched",
+ "our_reading": {
+  "minus": "Token immediately after a number or alphanumeric code, usually a separator (comma, semicolon, newline, quote, space, bracket). Quick test held 5/8, 0 FP (bonsai-interp b756721 -> b35e372).",
+  "plus": "Unclear. Dense at a low level (548k tokens >= 0.1 of max, mostly the echo regime). Strong firings are rare closing delimiters after dense runs of specifics, and escaped line continuations in byte strings (45% of those fire). The dense-detail label failed 0/8 but ranked fire above quiet."
+ },
+ "conditions": "--hints none (no method advice in the room README); globalMOO budget 1; same brief template as run 1.",
+ "predictions": [
+  {
+   "id": "P1",
+   "claim": "The blind - label ties the firing to a preceding number, digit string or code (dates, IDs, hex, phone numbers).",
+   "p": 0.7
+  },
+  {
+   "id": "P2",
+   "claim": "The blind - label names separators or punctuation as the tokens that fire.",
+   "p": 0.6
+  },
+  {
+   "id": "P3",
+   "claim": "The blind verdict for + is 'unclear' or 'several jobs', or it calls + dense or diffuse (not 'monosemantic' and not 'one main job').",
+   "p": 0.7
+  },
+  {
+   "id": "P4",
+   "claim": "The blind report mentions escaped line continuations / backslash sequences in string or byte literals as a + trigger.",
+   "p": 0.4
+  },
+  {
+   "id": "P5",
+   "claim": "The blind verdict for - is 'monosemantic' or 'one main job with offshoots'.",
+   "p": 0.55
+  },
+  {
+   "id": "P6",
+   "claim": "The blind report notes the + pole's very common weak activation (density) or its sign-regime split.",
+   "p": 0.4
+  },
+  {
+   "id": "P7",
+   "claim": "Without method hints, the agent still looks beyond the top-32 examples (bands or frequency analysis).",
+   "p": 0.6
+  },
+  {
+   "id": "P8",
+   "claim": "Audit clean: no flagged tool calls.",
+   "p": 0.95
+  }
+ ]
+}
