@@ -1,0 +1,33 @@
+{
+ "pole_plus": {
+  "label": "Near-certain continuation in new text: fires where the next token is almost fixed by earlier context, most often the next piece of a rare word, name or code identifier already used in the document (copying from context), or the completion of an established pattern; ignores verbatim repeats of long spans; needs long context",
+  "verdict": "one main job with offshoots",
+  "confidence": 0.45
+ },
+ "pole_minus": {
+  "label": "No label survived. Best description (correlate only): tokens inside the second or contrasted member of a comparison, parallel or concession (e.g. the decimal in 'compared to the UK's 5.1%'); deleting the contrast words does not reduce activation",
+  "verdict": "unclear / several jobs",
+  "confidence": 0.25
+ },
+ "rejected_labels": [
+  "+ long-range re-mention of an entity introduced earlier (test 043a: 0/8, AUROC 0.41)",
+  "+ induction / verbatim copying of an earlier span (250-token verbatim repeats: 0.13 -> 0.15)",
+  "+ pure low next-token entropy (only 0.035% of entropy<0.3 tokens fire; steering raises entropy)",
+  "- counterpart slot of a comparison/concession (test 3f18: median 0.194, failed; cue deletion no effect beyond control)",
+  "- second, contrasted member of a contrast/parallel structure (test 6639: median 0.142, AUROC 0.79, failed)"
+ ],
+ "key_tests": [
+  {"name": "+ round 1 quick-8+8: long-range re-mention", "prediction": "FAIL, 1-3/8 fire", "result": "FAILED: 0/8 fire, 1/8 near misses, AUROC 0.41", "commit": "85b3f15"},
+  {"name": "+ round 2 quick-8+8: near-certain continuation (copying)", "prediction": "FAIL on amplitude, median 0.10-0.20", "result": "HELD under @2: median 0.224, AUROC 0.94, 0 near misses (2/8 at >=0.3)", "commit": "9e322f7"},
+  {"name": "+ held-out entropy check (windows 6000-6599)", "prediction": "median entropy at +>=0.3 < 0.6 nats vs random > 1.5; monotone; <2% of low-entropy tokens fire", "result": "0.82 vs 1.86 (P1 narrowly failed), bands 1.37/0.63/0.82 (P2 partly), 0.035% (P3 held)", "commit": "0178781"},
+  {"name": "+ de-copying minimal pairs", "prediction": "mean max activation drops >= 40%, >= 6/8 drop", "result": "0.257 -> 0.154 (-40.1%, marginal; mean per-passage drop 32.5%), 8/8 drop", "commit": "636e331"},
+  {"name": "- round 1 quick-8+8: counterpart slot of comparison/concession", "prediction": "5-6/8 fire, 0-1 near misses", "result": "FAILED: 1/8, AUROC 0.95, median 0.194", "commit": "88e7c38"},
+  {"name": "- round 2 quick-8+8: contrasted second member (minimal pairs)", "prediction": "median 0.20-0.35, AUROC >= 0.85", "result": "FAILED: median 0.142, AUROC 0.79", "commit": "6e735c6"},
+  {"name": "- held-out contrast-cue enrichment and entropy", "prediction": "cue rate >= 2x random; entropy within 0.5 of random", "result": "0.37 vs 0.16 (held); 2.27 vs 1.86 (held)", "commit": "0178781"},
+  {"name": "- contrast-cue deletion vs random-word deletion", "prediction": "cue drop >= 0.30 and >= control + 0.15", "result": "FAILED: cue 0.125 vs control 0.145; 50% of strong contexts have no cue", "commit": "636e331"},
+  {"name": "feeder L3/N2114- arsenic", "prediction": ">=5/8 fire, <=1 near miss", "result": "HELD 8/8, 0/8", "commit": "9c52739"},
+  {"name": "feeder L14/N7100+ analogy-vehicle onset", "prediction": ">=5/8 fire, <=1 near miss", "result": "HELD under @2: 4/8, AUROC 1.00", "commit": "03d2ef1"},
+  {"name": "feeder L9/N1314+ vampires", "prediction": ">=5/8 fire, <=1 near miss", "result": "FAILED: 8/8 fire but 2/8 near misses (near misses were on-concept)", "commit": "077fd83"},
+  {"name": "feeder L15/N8076+ code-identifier pieces", "prediction": ">=5/8 fire, <=1 near miss", "result": "FAILED: 0/8", "commit": "808bccb"}
+ ]
+}
