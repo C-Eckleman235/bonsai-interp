@@ -15,6 +15,7 @@ import numpy as np
 import torch
 
 from bonsai_interp import explore
+from bonsai_interp.device import DEVICE
 from bonsai_interp.model import load
 from bonsai_interp.probe import textinv
 from bonsai_interp.probe.workspace import Workspace
@@ -27,7 +28,7 @@ def perplexity(model, tok, texts, batch=16):
     out = []
     tok.padding_side = "right"
     for s in range(0, len(texts), batch):
-        enc = tok(texts[s:s + batch], return_tensors="pt", padding=True).to("cuda")
+        enc = tok(texts[s:s + batch], return_tensors="pt", padding=True).to(DEVICE)
         logits = model(**enc).logits.float()
         lp = torch.log_softmax(logits[:, :-1], -1).gather(-1, enc.input_ids[:, 1:, None])[..., 0]
         m = enc.attention_mask[:, 1:].float()

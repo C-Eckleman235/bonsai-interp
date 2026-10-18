@@ -14,6 +14,7 @@ import numpy as np
 import torch
 
 from bonsai_interp import explore
+from bonsai_interp.device import DEVICE, empty_cache, limit_memory
 from bonsai_interp.inverse.linear import Weights
 from bonsai_interp.model import StopForward, load
 from bonsai_interp.probe import textinv
@@ -44,7 +45,7 @@ def reader_effects(model, rec, examples, L, n, pmax, scan, window=3):
     layers = list(range(L + 1, min(L + 1 + DOWN, model.config.num_hidden_layers)))
     acc = {"zero": {l: [] for l in layers}, "boost": {l: [] for l in layers}}
     for ids, pos in examples:
-        x = torch.tensor(np.asarray(ids[: pos + window])[None], device="cuda")
+        x = torch.tensor(np.asarray(ids[: pos + window])[None], device=DEVICE)
         res = {}
         for cond, fn in (("clean", None), ("zero", lambda a: _zero_or_set(a, n, None, 0.0)),
                          ("boost", lambda a: _zero_or_set(a, n, pos, 2 * pmax))):
@@ -96,7 +97,7 @@ def cofire(model, tok, rec, texts, L, n, layers):
     k = len(tok(pre).input_ids)
     maxes = {l: [] for l in layers}
     for s in range(0, len(texts), 8):
-        enc = tok([pre + t for t in texts[s:s + 8]], return_tensors="pt", padding=True).to("cuda")
+        enc = tok([pre + t for t in texts[s:s + 8]], return_tensors="pt", padding=True).to(DEVICE)
         rec.mode, rec.layers, rec.stop_at = "act", set(layers), max(layers)
         try:
             model.model(input_ids=enc.input_ids, attention_mask=enc.attention_mask)
@@ -130,7 +131,7 @@ def forward_dump(L, n, k=8):
 
 
 def discover(ws: Workspace):
-    torch.cuda.set_per_process_memory_fraction(0.8)
+    limit_memory(0.8)
     model, tok, rec = load(ws.model)
     tok.padding_side = "right"
     scan = explore.scan(ws.model)
@@ -197,7 +198,7 @@ def discover(ws: Workspace):
             add(f["unit"], "sibling", "+", via=r["unit"])
             edges.append({"from": f["unit"], "to": r["unit"], "kind": "feeds reader", "w": f["drop"]})
         print(f"siblings via {r['unit']}:", [(f['unit'], round(f['drop'], 3)) for f in feeders])
-        torch.cuda.empty_cache()
+        empty_cache()
 
     # ---- 3. co-firing on the probe's own sentences
     sol = ws.load("solo.json")

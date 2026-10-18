@@ -11,6 +11,7 @@ import sys
 
 import torch
 
+from bonsai_interp.device import DEVICE, limit_memory
 from bonsai_interp.model import load
 from bonsai_interp.probe.workspace import Workspace
 
@@ -44,7 +45,7 @@ def write(model, tok, labels, batch=16, max_new=360):
     tok.padding_side = "left"
     outs = []
     for s in range(0, len(prompts), batch):
-        enc = tok(prompts[s:s + batch], return_tensors="pt", padding=True).to("cuda")
+        enc = tok(prompts[s:s + batch], return_tensors="pt", padding=True).to(DEVICE)
         gen = model.generate(**enc, max_new_tokens=max_new, do_sample=False, pad_token_id=tok.pad_token_id, repetition_penalty=1.05)
         outs += [tok.decode(g[enc.input_ids.shape[1]:], skip_special_tokens=True) for g in gen]
         print(f"  generated {min(s + batch, len(prompts))}/{len(prompts)}", flush=True)
@@ -53,7 +54,7 @@ def write(model, tok, labels, batch=16, max_new=360):
 
 
 def main(ws: Workspace):
-    torch.cuda.set_per_process_memory_fraction(0.8)
+    limit_memory(0.8)
     model, tok, rec = load(ws.model)
     claude = []
     for b in range(3):

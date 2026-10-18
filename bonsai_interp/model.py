@@ -19,6 +19,8 @@ import torch.nn.functional as F
 from safetensors import safe_open
 from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer
 
+from bonsai_interp.device import DEVICE, DTYPE
+
 ROOT = Path(__file__).resolve().parent.parent
 
 
@@ -40,7 +42,7 @@ MODELS = {
     "qwen": _model_dir("QWEN_PATH", "Qwen3-8B"),
 }
 GROUP = 128
-COMPUTE_DTYPE = torch.bfloat16
+COMPUTE_DTYPE = DTYPE  # bfloat16 unless the device lacks it (see device.py)
 
 
 class _DequantLinear(torch.autograd.Function):
@@ -156,13 +158,14 @@ def _read_all(path: Path):
     for name, f in idx.items():
         by_file.setdefault(f, []).append(name)
     for f, names in by_file.items():
-        with safe_open(str(path / f), "pt", device="cuda") as h:
+        # off CUDA, read and pack on the CPU and move the packed result (MPS may lack bfloat16)
+        with safe_open(str(path / f), "pt", device="cuda" if DEVICE.type == "cuda" else "cpu") as h:
             for n in names:
                 yield n, h.get_tensor(n)
 
 
 def load(name: str = "bonsai1"):
-    """Returns (model, tokenizer, recorder). The model lives on cuda."""
+    """Returns (model, tokenizer, recorder). The model lives on DEVICE (bonsai_interp.device)."""
     path = MODELS[name]
     cfg = AutoConfig.from_pretrained(path)
     cfg.dtype = COMPUTE_DTYPE
@@ -176,15 +179,15 @@ def load(name: str = "bonsai1"):
         parent = modules[mod_name]
         if isinstance(parent, nn.Linear) and attr == "weight" and ".layers." in n:
             pname, _, child = mod_name.rpartition(".")
-            setattr(modules[pname], child, lin_cls(t))
+            setattr(modules[pname], child, lin_cls(t).to(DEVICE))
         else:
-            parent._parameters[attr] = nn.Parameter(t.to(COMPUTE_DTYPE), requires_grad=False)
+            parent._parameters[attr] = nn.Parameter(t.to(COMPUTE_DTYPE).to(DEVICE), requires_grad=False)
         del t
     if cfg.tie_word_embeddings:
         model.lm_head.weight = model.model.embed_tokens.weight
 
-    # rotary buffers were created on meta; rebuild them on cuda
-    with torch.device("cuda"):
+    # rotary buffers were created on meta; rebuild them on the device
+    with torch.device(DEVICE):
         model.model.rotary_emb = type(model.model.rotary_emb)(cfg)
 
     rec = NeuronRecorder()

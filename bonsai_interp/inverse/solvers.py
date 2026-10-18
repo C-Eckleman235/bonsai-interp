@@ -17,6 +17,7 @@ import torch
 from dotenv import load_dotenv
 from scipy import optimize
 
+from bonsai_interp.device import DEVICE
 from bonsai_interp.inverse.problem import InverseProblem, goal_terms, satisfied, scalarize
 
 
@@ -42,15 +43,15 @@ def _best_from_history(p: InverseProblem, goals, solver, t0, start, extra=None):
 
 
 def _torch_loss(p, goals):
-    scales = torch.tensor(p.scales, dtype=torch.float32, device="cuda")
+    scales = torch.tensor(p.scales, dtype=torch.float32, device=DEVICE)
 
     def f(x_np):
-        x = torch.tensor(x_np, dtype=torch.float32, device="cuda", requires_grad=True)
+        x = torch.tensor(x_np, dtype=torch.float32, device=DEVICE, requires_grad=True)
         y = p.torch_fn(x)
         loss = scalarize(goals, p.outputs, y, scales, xp=torch)
         loss.backward()
         p.history.append((x_np.copy(), y.detach().float().cpu().numpy(), p.tag))
-        return loss.item(), x.grad.double().cpu().numpy()
+        return loss.item(), x.grad.cpu().double().numpy()
 
     return f
 
@@ -67,22 +68,22 @@ def least_squares(p: InverseProblem, goals, x0, max_nfev=60):
     """Trust-region solve of goal residuals with an autograd Jacobian. Best for
     hitting exact target values on several outputs at once."""
     p.tag, start, t0 = "least_squares", len(p.history), time.time()
-    scales = torch.tensor(p.scales, dtype=torch.float32, device="cuda")
+    scales = torch.tensor(p.scales, dtype=torch.float32, device=DEVICE)
 
     def resid_t(x):
         return torch.stack([t * (g.weight ** 0.5) for g, t in
                             goal_terms(goals, p.outputs, p.torch_fn(x), scales, xp=torch)])
 
     def fun(x_np):
-        x = torch.tensor(x_np, dtype=torch.float32, device="cuda")
+        x = torch.tensor(x_np, dtype=torch.float32, device=DEVICE)
         with torch.no_grad():
             y = p.torch_fn(x)
         p.history.append((x_np.copy(), y.float().cpu().numpy(), p.tag))
-        return torch.stack([t for _, t in goal_terms(goals, p.outputs, y, scales, xp=torch)]).double().cpu().numpy()
+        return torch.stack([t for _, t in goal_terms(goals, p.outputs, y, scales, xp=torch)]).cpu().double().numpy()
 
     def jac(x_np):
-        x = torch.tensor(x_np, dtype=torch.float32, device="cuda")
-        return torch.autograd.functional.jacobian(resid_t, x).double().cpu().numpy()
+        x = torch.tensor(x_np, dtype=torch.float32, device=DEVICE)
+        return torch.autograd.functional.jacobian(resid_t, x).cpu().double().numpy()
 
     optimize.least_squares(fun, np.clip(np.asarray(x0, float), p.lo, p.hi), jac=jac,
                            bounds=(p.lo, p.hi), max_nfev=max_nfev, method="trf")

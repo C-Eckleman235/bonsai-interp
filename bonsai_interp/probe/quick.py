@@ -15,6 +15,7 @@ import numpy as np
 import torch
 
 from bonsai_interp import explore
+from bonsai_interp.device import empty_cache, limit_memory
 from bonsai_interp.inverse.linear import Weights, token_weights
 from bonsai_interp.inverse.neuron import NeuronSite
 from bonsai_interp.model import load
@@ -53,7 +54,7 @@ def one_back(model, rec, L, n, pole, k_ex=6, k_cand=24, k_show=4):
 
 def run(ws: Workspace, tests=("quick_tests.json",), out="quick.json", with_feeders=True, need_fire=None):
     spec = {"neighbours": [nb for t in tests for nb in ws.require(t, "write and commit the tests first")["neighbours"]]}
-    torch.cuda.set_per_process_memory_fraction(0.8)
+    limit_memory(0.8)
     model, tok, rec = load(ws.model)
     tok.padding_side = "right"
     W = Weights(ws.model)
@@ -91,7 +92,7 @@ def run(ws: Workspace, tests=("quick_tests.json",), out="quick.json", with_feede
             for r in sorted(res["fire"] + res["quiet"], key=lambda r: -r["act"]):
                 tag = "fire " if r in res["fire"] else "quiet"
                 print(f"    {tag} {r['act']:.2f} peak={r['peak_token']!r:<12} {r['text'][:70]}")
-        torch.cuda.empty_cache()
+        empty_cache()
     ws.save(out, {"neighbours": results})
 
 

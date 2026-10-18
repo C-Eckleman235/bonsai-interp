@@ -16,6 +16,7 @@ import numpy as np
 import torch
 
 from bonsai_interp import explore
+from bonsai_interp.device import DEVICE
 from bonsai_interp.model import ROOT, StopForward, load
 
 BANDS = [(0.05, 0.1), (0.1, 0.2), (0.2, 0.3), (0.3, 0.5), (0.5, 10.0)]
@@ -30,7 +31,7 @@ def scan(units, windows, tag, batch=8):
     rec.mode, rec.layers, rec.stop_at = "act", set(layers), layers[-1]
     t0 = time.time()
     for s in range(0, len(toks), batch):
-        x = torch.from_numpy(toks[s:s + batch].astype(np.int64)).cuda()
+        x = torch.from_numpy(toks[s:s + batch].astype(np.int64)).to(DEVICE)
         try:
             model.model(x)
         except StopForward:

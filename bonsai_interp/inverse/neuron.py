@@ -10,6 +10,7 @@ serves least_squares / L-BFGS-B (torch_fn) and black-box solvers (evaluate_batch
 import numpy as np
 import torch
 
+from bonsai_interp.device import DEVICE
 from bonsai_interp.inverse.problem import InverseProblem, Var
 from bonsai_interp.model import StopForward
 
@@ -21,7 +22,7 @@ class NeuronSite:
     def __init__(self, model, rec, ids, L, n, pos, max_ctx=384):
         self.model, self.rec = model, rec
         start = max(0, pos + 1 - max_ctx)
-        self.ids = torch.as_tensor(ids[start: pos + 1], device="cuda").long()[None]  # nothing after p matters
+        self.ids = torch.as_tensor(ids[start: pos + 1], device=DEVICE).long()[None]  # nothing after p matters
         self.L, self.n, self.pos = L, n, pos - start
 
     def run(self, masks: dict, batch: int = 1):
@@ -45,7 +46,7 @@ class NeuronSite:
 
     def attribution(self):
         """d(target)/d(gain) at θ=1 for every upstream neuron: Σ_t a_t · ∂target/∂a_t."""
-        masks = {l: torch.ones(1, self.model.config.intermediate_size, device="cuda", requires_grad=True)
+        masks = {l: torch.ones(1, self.model.config.intermediate_size, device=DEVICE, requires_grad=True)
                  for l in range(self.L)}
         with torch.enable_grad():
             y = self.run(masks)
@@ -70,8 +71,8 @@ def circuit_problem(site: NeuronSite, attr: dict, k: int = 24, gain_hi: float = 
         masks = {}
         for j, (l, m) in enumerate(units):
             if l not in masks:
-                masks[l] = torch.ones(B, N, device="cuda", dtype=theta.dtype)
-            masks[l] = masks[l].index_put((torch.arange(B, device="cuda"), torch.full((B,), m, device="cuda")),
+                masks[l] = torch.ones(B, N, device=DEVICE, dtype=theta.dtype)
+            masks[l] = masks[l].index_put((torch.arange(B, device=DEVICE), torch.full((B,), m, device=DEVICE)),
                                           theta[:, j])
         return masks
 
@@ -83,7 +84,7 @@ def circuit_problem(site: NeuronSite, attr: dict, k: int = 24, gain_hi: float = 
         res = []
         with torch.no_grad():
             for s in range(0, len(X), chunk):
-                th = torch.tensor(X[s:s + chunk], dtype=torch.float32, device="cuda")
+                th = torch.tensor(X[s:s + chunk], dtype=torch.float32, device=DEVICE)
                 res.append(outputs(th, site.run(masks_for(th), batch=len(th))).cpu().numpy())
         return np.concatenate(res)
 

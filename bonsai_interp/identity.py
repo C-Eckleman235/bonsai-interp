@@ -14,6 +14,7 @@ import json
 import numpy as np
 import torch
 
+from bonsai_interp.device import DEVICE, empty_cache
 from bonsai_interp.model import ROOT, load
 
 LAYERS = [1, 5, 9, 13, 17, 21, 25, 29, 33, 35]
@@ -26,18 +27,18 @@ def record(name, tokens):
     rec.mode, rec.layers = "act", set(LAYERS)
     acts = {l: [] for l in LAYERS}
     for i in range(0, len(tokens), 4):
-        ids = torch.from_numpy(tokens[i:i + 4].astype(np.int64)).cuda()
+        ids = torch.from_numpy(tokens[i:i + 4].astype(np.int64)).to(DEVICE)
         model(ids)
         for l in LAYERS:
             acts[l].append(rec.store[l].reshape(-1, rec.store[l].shape[-1]).to(torch.float16).cpu())
         rec.clear()
     del model
-    torch.cuda.empty_cache()
+    empty_cache()
     return {l: torch.cat(v) for l, v in acts.items()}
 
 
 def zscore(x):
-    x = x.cuda().float()
+    x = x.to(DEVICE).float()
     x = x - x.mean(0)
     return x / x.norm(dim=0).clamp_min(1e-6)
 

@@ -26,6 +26,7 @@ import time
 import numpy as np
 import torch
 
+from bonsai_interp.device import DEVICE
 from bonsai_interp.inverse.problem import Goal, InverseProblem, Var
 from bonsai_interp.model import StopForward
 
@@ -86,7 +87,7 @@ class TextEvaluator:
 
     @torch.no_grad()
     def _run(self, texts, pre_len):
-        enc = self.tok(texts, return_tensors="pt", padding=True).to("cuda")
+        enc = self.tok(texts, return_tensors="pt", padding=True).to(DEVICE)
         rec = self.rec
         rec.mode, rec.layers, rec.stop_at = "act", {self.L}, self.L
         try:
@@ -209,7 +210,7 @@ class CircuitEvaluator:
 
     @torch.no_grad()
     def _run(self, texts, pre_len):
-        enc = self.tok(texts, return_tensors="pt", padding=True).to("cuda")
+        enc = self.tok(texts, return_tensors="pt", padding=True).to(DEVICE)
         rec = self.rec
         rec.mode, rec.layers, rec.stop_at = "act", set(self.layers), self.layers[-1]
         try:

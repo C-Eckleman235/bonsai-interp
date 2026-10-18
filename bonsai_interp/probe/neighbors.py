@@ -17,6 +17,7 @@ import numpy as np
 import torch
 
 from bonsai_interp import explore
+from bonsai_interp.device import DEVICE
 from bonsai_interp.inverse.neuron import NeuronSite
 from bonsai_interp.model import StopForward
 from bonsai_interp.probe.run import setup
@@ -35,7 +36,7 @@ def ids_and_peak(model, tok, rec, text, L, n, sign, find=None):
     with torch.no_grad():
         rec.mode, rec.layers, rec.stop_at = "act", {L}, L
         try:
-            model.model(torch.tensor([ids], device="cuda"))
+            model.model(torch.tensor([ids], device=DEVICE))
         except StopForward:
             pass
         finally:
@@ -61,7 +62,7 @@ def single_ablation(site, units, chunk=20):
             B = len(part)
             masks = {}
             for b, (l, m) in enumerate(part):
-                masks.setdefault(l, torch.ones(B, N, device="cuda"))[b, m] = 0.0
+                masks.setdefault(l, torch.ones(B, N, device=DEVICE))[b, m] = 0.0
             out += (site.run(masks, batch=B) / clean).tolist() if clean else [1.0] * B
     return out
 
@@ -117,7 +118,7 @@ def disambiguators(model, rec, flip_ids, flip_pos, alone_ids, alone_pos, L, n, s
             units = [(r["L"], r["n"]) for r in rows[:k]]
             masks = {}
             for l, m in units:
-                masks.setdefault(l, torch.ones(1, N, device="cuda"))[0, m] = 0.0
+                masks.setdefault(l, torch.ones(1, N, device=DEVICE))[0, m] = 0.0
             new = s_f.run(masks).item()
             group[k] = float((new - y_f) * sign / gap)
     return {"act_alone": y_a * sign, "act_flipped": y_f * sign, "units": rows, "group_restore": group}
@@ -128,7 +129,7 @@ def downstream(model, rec, examples, L, n, scan, window=3):
     layers = list(range(L + 1, min(L + 1 + LAYERS_DOWN, model.config.num_hidden_layers)))
     acc = {l: [] for l in layers}
     for branch, ids, pos in examples:
-        x = torch.tensor(np.asarray(ids[: pos + window])[None], device="cuda")
+        x = torch.tensor(np.asarray(ids[: pos + window])[None], device=DEVICE)
         res = []
         for ablate in (False, True):
             rec.mode, rec.layers, rec.stop_at = "act", set(layers), layers[-1]

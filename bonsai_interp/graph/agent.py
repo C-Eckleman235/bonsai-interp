@@ -6,13 +6,18 @@ import datetime as dt
 import json
 import subprocess
 import sys
+import time
 
 from bonsai_interp.graph.contrib import NEURON, ROOT, folder_for
 
 def _ok(flag, name, detail="", fix=""):
-    mark = {True: "PASS", False: "FAIL", None: "SKIP"}[flag]
+    mark = {True: "PASS", False: "FAIL", None: "SKIP", "warn": "WARN"}[flag]
     print(f"[{mark}] {name}" + (f": {detail}" if detail else "") + (f"\n       fix: {fix}" if flag is False and fix else ""))
     return flag is not False
+
+
+SPEED_REF = 3600  # full-forward tokens/s on the reference RTX 5080 (batch 8 x 256, bfloat16)
+NERVE_REF = 0.4966  # the end-to-end reading on the reference RTX 5080 (CUDA, bfloat16); see tests/device_parity_reference.json
 
 
 def doctor(a):
@@ -25,13 +30,18 @@ def doctor(a):
     v = sys.version_info
     req.append(_ok((3, 11) <= v[:2] <= (3, 13), "Python 3.11-3.13", platform.python_version(), "uv python install 3.13 && uv sync"))
     try:
-        import torch
-        cuda = torch.cuda.is_available()
-        gpu = torch.cuda.get_device_name(0) if cuda else "none"
-        mem = torch.cuda.get_device_properties(0).total_memory / 2**30 if cuda else 0
-        req.append(_ok(cuda, "CUDA GPU", f"{gpu}, {mem:.0f} GB", "install an NVIDIA driver and the CUDA 12.8 torch wheel (uv sync does this)"))
-        if cuda:
+        import torch  # noqa: F401
+        from bonsai_interp.device import DEVICE, describe, memory_gb
+        # the device every command will use (BONSAI_DEVICE=cuda|mps|cpu overrides the cuda > mps > cpu pick)
+        _ok(True if DEVICE.type != "cpu" else "warn", "device", describe(),
+            "no CUDA GPU or Apple Silicon found: the CPU works for checks, but missions take hours")
+        if DEVICE.type == "cuda":
+            mem = memory_gb()
             req.append(_ok(mem >= 15, "GPU memory >= 15 GB", f"{mem:.1f} GB", "use a 16 GB+ GPU"))
+        elif DEVICE.type == "mps":
+            ram = int(subprocess.run(["sysctl", "-n", "hw.memsize"], capture_output=True, text=True).stdout.strip() or 0) / 2**30
+            req.append(_ok(ram >= 16 and (True if ram >= 32 else "warn"), "unified memory >= 16 GB (32 GB recommended)", f"{ram:.0f} GB",
+                           "use a Mac with 16 GB+ unified memory"))
     except ImportError:
         req.append(_ok(False, "torch", "not importable", "uv sync"))
     from bonsai_interp.model import MODELS
@@ -66,18 +76,38 @@ def doctor(a):
     _ok(True if cr.exists() else None, "neuron-cleanroom checkout (optional, blind missions)", str(cr) if cr.exists() else "not cloned next to this repo")
     if all(req) and not a.quick:
         # end to end: load the model and read one known neuron on one sentence
-        import torch
         from bonsai_interp import explore
+        from bonsai_interp.device import DEVICE, limit_memory
         from bonsai_interp.model import load
         from bonsai_interp.probe import textinv
-        torch.cuda.set_per_process_memory_fraction(0.8)
+        limit_memory(0.8)
+        t0 = time.perf_counter()
         model, tok, rec = load("bonsai1")
+        load_s = time.perf_counter() - t0
         tok.padding_side = "right"
         s = explore.scan("bonsai1")
         ev = textinv.TextEvaluator(model, tok, rec, 9, 3688, float(s["top_val"][9, 0, 0, 3688]), float(s["top_val"][9, 1, 0, 3688]), 1.0)
         act = ev(["Waiting for the verdict was the most nerve-racking hour of my life."])[0]["act"]
         req.append(_ok(act >= 0.3, "end-to-end reading (L9/N3688+ on 'nerve-racking')", f"{act:.2f} of max (expected >= 0.3)",
                        "the weights or data do not match this toolchain; re-download them"))
+        req.append(_ok(abs(act - NERVE_REF) <= 0.03, f"device parity ({DEVICE.type} vs the CUDA reference)",
+                       f"{act:.3f} vs {NERVE_REF:.3f} (tolerance 0.03)",
+                       "this device computes differently from CUDA: run tests/test_device_parity.py and report its output"))
+        # speed, to compare machines: the reference RTX 5080 loads in ~15 s and reads ~3,600 tokens/s
+        import torch
+        from bonsai_interp.device import synchronize
+        x = torch.from_numpy(explore.corpus()[:8, :256].astype("int64")).to(DEVICE)
+        with torch.no_grad():
+            model.model(x[:1, :32])
+            synchronize()
+            t0 = time.perf_counter()
+            model.model(x)
+            synchronize()
+        tps = x.numel() / (time.perf_counter() - t0)
+        print(f"[INFO] speed: model load {load_s:.0f} s; full forward {tps:,.0f} tokens/s (8 x 256); "
+              f"the reference RTX 5080 does {SPEED_REF:,} tokens/s, so expect missions to take ~{max(1, SPEED_REF / tps):.0f}x as long")
+        if DEVICE.type != "cuda":
+            print("       fuller parity check (4 neurons, next-token logits, backward pass): uv run python tests/test_device_parity.py")
     print("\nREADY: start a mission with `python -m bonsai_interp.graph.play brief …`" if all(req) else "\nNOT READY: fix the FAIL lines above and run doctor again.")
     sys.exit(0 if all(req) else 1)
 

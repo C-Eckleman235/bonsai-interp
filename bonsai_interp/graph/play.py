@@ -96,9 +96,10 @@ def run(a):
         sys.exit("nothing to run")
     import torch
     from bonsai_interp import explore
+    from bonsai_interp.device import limit_memory
     from bonsai_interp.model import load
     from bonsai_interp.probe import textinv
-    torch.cuda.set_per_process_memory_fraction(0.8)
+    limit_memory(0.8)
     models, scans = {}, {}
     for f, _, t, rel, prereg in todo:
         m = NEURON.match(t["neuron"])
@@ -153,10 +154,11 @@ def run(a):
 def step(a):
     import numpy as np
     import torch
+    from bonsai_interp.device import limit_memory
     from bonsai_interp.model import load
     from bonsai_interp.probe.quick import one_back
     m = NEURON.match(a.neuron)
-    torch.cuda.set_per_process_memory_fraction(0.8)
+    limit_memory(0.8)
     model, tok, rec = load(m["model"])
     feeders = one_back(model, rec, int(m["L"]), int(m["n"]), 0 if m["pole"] == "+" else 1, k_show=a.k)
     for f in feeders:
@@ -177,6 +179,7 @@ def probe(a):
     pre-registering; the committed test is what counts."""
     import torch
     from bonsai_interp import explore
+    from bonsai_interp.device import limit_memory
     from bonsai_interp.model import load
     from bonsai_interp.probe import textinv
     m = NEURON.match(a.neuron)
@@ -186,7 +189,7 @@ def probe(a):
     if not texts:
         sys.exit("give sentences as arguments or --file (one per line)")
     L, n, pole = int(m["L"]), int(m["n"]), 0 if m["pole"] == "+" else 1
-    torch.cuda.set_per_process_memory_fraction(0.8)
+    limit_memory(0.8)
     model, tok, rec = load(m["model"])
     tok.padding_side = "right"
     s = explore.scan(m["model"])

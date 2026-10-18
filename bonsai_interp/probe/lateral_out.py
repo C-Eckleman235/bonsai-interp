@@ -7,6 +7,7 @@ import sys
 
 import torch
 
+from bonsai_interp.device import empty_cache, limit_memory
 from bonsai_interp.model import load
 from bonsai_interp.probe.quick import one_back
 from bonsai_interp.probe.web import forward_dump
@@ -16,7 +17,7 @@ from bonsai_interp.probe.workspace import Workspace
 def run(ws, k=3):
     spec = ws.load("lateral_spec.json")
     known = {nd["unit"] for nd in ws.load("web_nodes.json")["nodes"]} | {ws.load("web_nodes.json")["center"]}
-    torch.cuda.set_per_process_memory_fraction(0.8)
+    limit_memory(0.8)
     model, tok, rec = load(ws.model)
     nodes, edges = {}, []
     for nd in spec["nodes"]:
@@ -31,7 +32,7 @@ def run(ws, k=3):
             nodes.setdefault(f["unit"], {"unit": f["unit"], "L": L, "n": n, "pole": "+", "roles": ["feeds lateral"], "via": u,
                                          "examples": forward_dump(L, n)})
             edges.append({"from": f["unit"], "to": u, "kind": "feeds lateral", "w": f["drop"]})
-        torch.cuda.empty_cache()
+        empty_cache()
     ws.save("lateral_out_nodes.json", {"nodes": list(nodes.values()), "edges": edges})
     ws.save("lateral_out_request.json", {"nodes": [{"unit": v["unit"], "pole": "+", "examples": v["examples"]} for v in nodes.values()]})
     print(len(nodes), "new nodes")

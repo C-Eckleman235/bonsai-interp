@@ -9,13 +9,14 @@ import numpy as np
 import torch
 
 from bonsai_interp import explore
+from bonsai_interp.device import empty_cache, limit_memory
 from bonsai_interp.inverse.neuron import NeuronSite, circuit_problem
 from bonsai_interp.model import ROOT, load
 
 name = sys.argv[1] if len(sys.argv) > 1 else "bonsai1"
 path = ROOT / "data" / f"screen_{name}.jsonl"
 rows = [json.loads(l) for l in path.read_text(encoding="utf-8").splitlines()]
-torch.cuda.set_per_process_memory_fraction(0.8)
+limit_memory(0.8)
 model, tok, rec = load(name)
 s, toks = explore.scan(name), explore.corpus()
 for r in rows:
@@ -29,5 +30,5 @@ for r in rows:
     r["keep_curve"] = [round(float(f), 3) for f in frac]
     r["k_half"] = next((k for k, f in enumerate(frac) if f >= 0.5), None)
     print(f"L{L}/N{n}{r['pole']}: k_half={r['k_half']} curve={r['keep_curve'][:8]}...{r['keep_curve'][-1]}", flush=True)
-    torch.cuda.empty_cache()
+    empty_cache()
 path.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8")

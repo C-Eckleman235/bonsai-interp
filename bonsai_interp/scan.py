@@ -17,6 +17,7 @@ import time
 import numpy as np
 import torch
 
+from bonsai_interp.device import DEVICE
 from bonsai_interp.model import ROOT, load
 
 K = 32
@@ -25,7 +26,7 @@ NB = len(BINS) + 1
 
 
 class LayerStats:
-    def __init__(self, n: int, device="cuda"):
+    def __init__(self, n: int, device=DEVICE):
         self.top_val = torch.full((2, K, n), -float("inf"), device=device)
         self.top_win = torch.full((2, K, n), -1, dtype=torch.int32, device=device)
         self.top_pos = torch.zeros((2, K, n), dtype=torch.int16, device=device)
@@ -79,7 +80,7 @@ def scan(name: str, n_windows: int, batch: int, corpus_path=ROOT / "data" / "cor
     t0 = time.time()
     for i in range(0, len(tokens), batch):
         cur["win0"] = i
-        model.model(torch.from_numpy(tokens[i:i + batch].astype(np.int64)).cuda())  # skip lm_head
+        model.model(torch.from_numpy(tokens[i:i + batch].astype(np.int64)).to(DEVICE))  # skip lm_head
         if (i // batch) % 50 == 0:
             done = i + batch
             el = time.time() - t0

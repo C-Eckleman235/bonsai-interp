@@ -14,6 +14,12 @@ Run every Python command through the project environment: `uv run python -m …`
 You need about 18 GB of disk in total: 16 GB of weights and 1.4 GB of data. The scripts are
 bash; on Windows, Git Bash (which comes with Git for Windows) runs them.
 
+Hardware: an NVIDIA GPU with 16 GB or more, or an Apple Silicon Mac (macOS 14 or later; 32 GB
+of unified memory recommended, 16 GB is tight). The toolchain picks the device itself (CUDA,
+then Apple's MPS, then the CPU). To force one, put `BONSAI_DEVICE=cuda`, `mps` or `cpu` in
+`.env`. The CPU is fine for checks but too slow for missions. Mac details are in the README
+under "Running on a Mac".
+
 1. Clone https://github.com/moridinamael/neuron-cleanroom next to this repository; blind
    clean-room missions need it. Ask the person for their GitHub handle now, since every
    mission uses it.
@@ -29,6 +35,10 @@ bash; on Windows, Git Bash (which comes with Git for Windows) runs them.
    neuron scan (1.1 GB) and a band scan (0.2 GB), and needs `gh` to be logged in.
 5. Run `python -m bonsai_interp.graph.play doctor` and fix whatever it reports, until it says
    **READY**. Doctor checks every weight shard, then loads the model and reads one known neuron.
+   It reports the device and its speed, and it compares the reading with the reference CUDA
+   machine. On a device other than CUDA, also run `uv run python tests/test_device_parity.py`
+   once. It checks four neurons, the model's next-token prediction and the backward pass, and it
+   must print PARITY OK.
 6. **Ask the person** only for things you cannot do yourself:
    - logging in to GitHub (`gh auth login`)
    - a globalMOO key, which is optional and goes in `.env` as `GMOO_API_KEY=…`

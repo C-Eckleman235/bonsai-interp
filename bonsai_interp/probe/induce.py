@@ -11,6 +11,7 @@
 import numpy as np
 import torch
 
+from bonsai_interp.device import DEVICE
 from bonsai_interp.probe.run import setup
 from bonsai_interp.probe.workspace import Workspace
 
@@ -58,7 +59,7 @@ def run(ws: Workspace, gen_tokens=32):
     def steer(c):
         rec.interventions = {} if c == 0 else {L: (lambda a, c=c: _add(a, n, sign * c * pmax))}
 
-    enc = tok(prompts, return_tensors="pt", padding=True).to("cuda")
+    enc = tok(prompts, return_tensors="pt", padding=True).to(DEVICE)
     last = enc.attention_mask.sum(1) - 1
     sweep, base = [], None
     for c in SWEEP:
@@ -85,7 +86,7 @@ def run(ws: Workspace, gen_tokens=32):
     tok.padding_side = "left"
     for c in GEN_LEVELS:
         steer(c)
-        e = tok(prompts, return_tensors="pt", padding=True).to("cuda")
+        e = tok(prompts, return_tensors="pt", padding=True).to(DEVICE)
         out = model.generate(**e, max_new_tokens=gen_tokens, do_sample=False, pad_token_id=tok.pad_token_id)
         rec.interventions = {}
         for prompt, o in zip(prompts, out):

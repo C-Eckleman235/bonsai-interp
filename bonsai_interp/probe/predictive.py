@@ -13,6 +13,7 @@ import numpy as np
 import torch
 
 from bonsai_interp import explore
+from bonsai_interp.device import DEVICE
 from bonsai_interp.model import load
 from bonsai_interp.probe import bands as B
 from bonsai_interp.probe.workspace import Workspace
@@ -37,7 +38,7 @@ def run(ws, n_rand=240, seed=0):
     P, A, T = [], [], []
     for s in range(0, len(wins), 4):
         w = wins[s:s + 4]
-        x = torch.from_numpy(toks[w].astype(np.int64)).cuda()
+        x = torch.from_numpy(toks[w].astype(np.int64)).to(DEVICE)
         lp = torch.log_softmax(model(x).logits.float(), -1)
         p = lp[..., nerve_ids].exp().sum(-1).cpu().numpy()  # P(next token is a nerve token) at each position
         P.append(p), A.append(f[w]), T.append(toks[w])

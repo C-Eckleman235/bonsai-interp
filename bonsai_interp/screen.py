@@ -21,6 +21,7 @@ import numpy as np
 import torch
 
 from bonsai_interp import explore
+from bonsai_interp.device import empty_cache, limit_memory
 from bonsai_interp.inverse import solvers as S
 from bonsai_interp.inverse.neuron import NeuronSite, circuit_problem
 from bonsai_interp.inverse.problem import Goal
@@ -120,7 +121,7 @@ def main():
     lo, hi = map(int, a.layers.split("-"))
     neurons = [tuple(map(int, x.split("/"))) for x in a.neurons.split(",")] if a.neurons else \
         pick_neurons(a.model, a.n, (lo, hi))
-    torch.cuda.set_per_process_memory_fraction(0.8)  # fail loudly instead of spilling into shared memory
+    limit_memory(0.8)  # fail loudly instead of spilling into shared memory
     model, tok, rec = load(a.model)
     out = ROOT / "data" / f"screen_{a.model}.jsonl"
     with open(out, "a", encoding="utf-8") as f:
@@ -140,7 +141,7 @@ def main():
                       f"all-top-k ablated -> {row['inverse']['frac_all_ablated']:.2f} | "
                       f"round-trip {[x['achieved'] for x in row['inverse']['round_trip']]} | "
                       f"{row['seconds']}s", flush=True)
-                torch.cuda.empty_cache()
+                empty_cache()
 
 
 if __name__ == "__main__":
