@@ -14,6 +14,6 @@ if [ "$1" = "--unpacked" ] || [ "$1" = "--all" ]; then
 fi
 # the GGUF holds every weight; config and tokenizer come from the unpacked repository (a few MB)
 hf download prism-ml/Bonsai-8B-gguf Bonsai-8B-Q1_0.gguf --local-dir models/Bonsai-8B
-hf download prism-ml/Bonsai-8B-unpacked --local-dir models/Bonsai-8B \
-  --include "config.json" "generation_config.json" "tokenizer.json" "tokenizer_config.json" "vocab.json" "merges.txt" \
-            "added_tokens.json" "special_tokens_map.json" "chat_template.jinja" "LICENSE" "NOTICE.txt"
+hf download prism-ml/Bonsai-8B-unpacked config.json generation_config.json tokenizer.json tokenizer_config.json vocab.json merges.txt \
+  added_tokens.json special_tokens_map.json chat_template.jinja LICENSE NOTICE.txt --local-dir models/Bonsai-8B
+test -f models/Bonsai-8B/config.json || { echo "download incomplete: models/Bonsai-8B/config.json is missing"; exit 1; }
