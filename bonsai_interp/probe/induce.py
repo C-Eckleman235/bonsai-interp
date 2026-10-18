@@ -15,8 +15,7 @@ from bonsai_interp.probe.run import setup
 from bonsai_interp.probe.workspace import Workspace
 
 # Neutral default prompts. A bank may set "induce_prompts"; the opposite pole's words come from
-# bank["opposite_tokens"]. (The first L9/N3688 run used topic-tailored prompts; they are recorded
-# in its induce.json.)
+# bank["opposite_tokens"]. Each run records the prompts it used in induce.json.
 PROMPTS = [
     "The thing I remember most about that day is",
     "After lunch we walked down to the",
