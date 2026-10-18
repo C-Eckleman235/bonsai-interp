@@ -51,8 +51,8 @@ def one_back(model, rec, L, n, pole, k_ex=6, k_cand=24, k_show=4):
     return out
 
 
-def run(ws: Workspace):
-    spec = ws.require("quick_tests.json", "write and commit quick_tests.json first")
+def run(ws: Workspace, tests=("quick_tests.json",), out="quick.json", with_feeders=True, need_fire=None):
+    spec = {"neighbours": [nb for t in tests for nb in ws.require(t, "write and commit the tests first")["neighbours"]]}
     torch.cuda.set_per_process_memory_fraction(0.8)
     model, tok, rec = load(ws.model)
     tok.padding_side = "right"
@@ -67,28 +67,32 @@ def run(ws: Workspace):
         score = np.minimum(T[0], T[1]) if pole == 0 else np.minimum(T[0], -T[1])
         direct = [tok.decode([int(i)]) for i in np.argsort(-score)[:15]]
         # 2) one layer back
-        feeders = one_back(model, rec, L, n, pole)
+        feeders = one_back(model, rec, L, n, pole) if with_feeders else []
+        need = need_fire if need_fire is not None else nb.get("need_fire", 5)
         # 3) falsification
         pmax, omax = float(scan["top_val"][L, pole, 0, n]), float(scan["top_val"][L, 1 - pole, 0, n])
         ev = textinv.TextEvaluator(model, tok, rec, L, n, pmax, omax, 1.0 if pole == 0 else -1.0)
-        fire, quiet = ev(nb["fire"]), ev(nb["quiet"])
+        fire, quiet = (ev(nb["fire"]) if nb["fire"] else []), (ev(nb["quiet"]) if nb["quiet"] else [])
         n_fire = sum(r["act"] >= 0.3 for r in fire)
         n_fp = sum(r["act"] >= 0.3 for r in quiet)
-        res = {**{k: nb[k] for k in ("unit", "pole", "role", "label", "need_fire")}, "direct_tokens": direct, "feeders": feeders,
+        res = {**{k: nb.get(k) for k in ("unit", "pole", "role", "label", "confidence")}, "need_fire": need,
+               "direct_tokens": direct, "feeders": feeders,
                "fire": [{"text": t, **r} for t, r in zip(nb["fire"], fire)],
                "quiet": [{"text": t, **r} for t, r in zip(nb["quiet"], quiet)],
-               "n_fire": n_fire, "n_false_pos": n_fp, "survives": bool(n_fire >= nb["need_fire"] and n_fp <= 1)}
+               "n_fire": n_fire, "n_false_pos": n_fp, "n_written": [len(nb["fire"]), len(nb["quiet"])],
+               "survives": bool(n_fire >= need and n_fp <= 1)}
         results.append(res)
         print(f"\n===== {nb['unit']}{nb['pole']} ({nb['role']}): {nb['label']}")
-        print(f"  VERDICT: {'SURVIVES' if res['survives'] else 'FAILS'}  fire {n_fire}/8 (need {nb['need_fire']})  false positives {n_fp}/8")
+        print(f"  VERDICT: {'SURVIVES' if res['survives'] else 'FAILS'}  fire {n_fire}/{len(nb['fire'])} (need {need})  false positives {n_fp}/{len(nb['quiet'])}")
         print(f"  direct tokens: {direct}")
         for f in feeders:
             print(f"  feeder {f['unit']:<11} drop {f['drop']:.2f}  + peaks {f['peaks_pos']}  - peaks {f['peaks_neg']}")
-        for r in sorted(res["fire"] + res["quiet"], key=lambda r: -r["act"]):
-            tag = "fire " if r in res["fire"] else "quiet"
-            print(f"    {tag} {r['act']:.2f} peak={r['peak_token']!r:<12} {r['text'][:70]}")
+        if len(spec["neighbours"]) <= 6:
+            for r in sorted(res["fire"] + res["quiet"], key=lambda r: -r["act"]):
+                tag = "fire " if r in res["fire"] else "quiet"
+                print(f"    {tag} {r['act']:.2f} peak={r['peak_token']!r:<12} {r['text'][:70]}")
         torch.cuda.empty_cache()
-    ws.save("quick.json", {"neighbours": results})
+    ws.save(out, {"neighbours": results})
 
 
 if __name__ == "__main__":
