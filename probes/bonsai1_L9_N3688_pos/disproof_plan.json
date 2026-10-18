@@ -1,0 +1,22 @@
+{
+ "written": "2026-10-17, before the band scan finished and before any of these analyses was run",
+ "target": "L9/N3688, + pole. Current label (H3): the word 'nerve' and nerv- forms, strongest in the psychological sense (strain, composure, courage), with known offshoots: anatomical 'nerve', the 신경 token in names, and 'strong' after violent context.",
+ "goal": "Try hard to show this neuron is NOT monosemantic: that it has a second, unrelated job somewhere in its activation range.",
+ "attempts": {
+  "D1_corpus_strong": {
+   "what": "Every token in 6M corpus tokens where the pole reaches >= 0.3 of its corpus max. Automatically check for a nerve morpheme (nerv, nerf, Nerv, нерв, 神经/神經, 신경, عصب, nervi) within 3 tokens either side; send every token without one to blind annotation.",
+   "prediction": ">= 90% of strong activations have a nerve morpheme within 3 tokens.",
+   "disproof_if": "The unexplained strong activations form a coherent unrelated theme with >= 10 instances that is not one of the known offshoots."
+  },
+  "D2_weak_bands": {
+   "what": "30 random contexts (one per window) from each band 0.05–0.1, 0.1–0.2, 0.2–0.3 and 0.3–0.5 of max, annotated blind into: A psychological 'nerve' word; B other 'nerve' word (anatomical, names, other forms); C no nerve word but strain / composure / courage / anxiety meaning; D unrelated; E unclear.",
+   "prediction": "A+B fall as activation falls, while C stays visible (local generalization of the same job). D is under 50% in the 0.2–0.3 band. D contexts in the weak bands share no single coherent theme.",
+   "disproof_if": "Any band has a single coherent theme outside A–C making up >= one third of its contexts."
+  },
+  "D3_large_leak_search": {
+   "what": "A leak search over a large natural bank: ~500 random corpus sentences plus every 'should fire' sentence written for the 48 web neurons, with every sentence containing a nerve morpheme removed. SciPy differential evolution over 3-sentence passages (same manifold as the probe), goal: maximise the pole.",
+   "prediction": "The maximum stays below 0.4, and whatever drives it is composure / fortitude / strain meaning or an orthographic look-alike, not an unrelated concept.",
+   "disproof_if": "A passage with no nerve morpheme reaches >= 0.5, or >= 0.3 through an unrelated concept that replicates in 3 of 3 new sentences written for that concept."
+  }
+ }
+}
