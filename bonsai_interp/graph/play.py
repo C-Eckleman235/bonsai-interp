@@ -136,8 +136,7 @@ def fill(a):
         m.pop("_screens_vocabulary", None)
         if e.get("agent") or a.agent:
             m["agent"] = e.get("agent") or a.agent
-        if e.get("screens"):
-            m["screens"] = e["screens"]
+        m["screens"] = e.get("screens") or a.screens.split(",")
         (ROOT / f).write_text(json.dumps(t, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
         done.append(f)
     left = [f for p, (f, _) in by_pole.items() if p not in plan]
@@ -183,7 +182,7 @@ def run(a):
     from bonsai_interp.model import load
     from bonsai_interp.probe import textinv
     limit_memory(0.8)
-    models, scans = {}, {}
+    models, scans, rows = {}, {}, []
     for i, (f, _, t, rel, prereg) in enumerate(todo, 1):
         print(f"[{i}/{len(todo)}] scoring {t['neuron']} ...", flush=True)
         m = NEURON.match(t["neuron"])
@@ -204,9 +203,12 @@ def run(a):
             nf, fp = sum(r["act"] >= 0.3 for r in fire), sum(r["act"] >= 0.3 for r in quiet)
             test = {"protocol": t["protocol"], "tests_file": rel, "prereg_commit": prereg, "author": a.author or t["contributor"],
                     "n_fire": nf, "n_false_pos": fp, "n_written": [len(fire), len(quiet)], "per_sentence": per}
-            tests.append(test)
             from bonsai_interp.graph.protocols import v2_stats
             auroc, med, _ = v2_stats(test)  # the recorded (rounded) values the rule judges, so print and verdict agree
+            test["outcome"] = outcome(test)  # recorded for convenience; fold always recomputes it from per_sentence
+            test["stats"] = {"auroc": round(auroc, 3), "median_fire": round(med, 3), "near_misses_at_0.3": fp}
+            tests.append(test)
+            rows.append(f"| {t['neuron']} | {(t.get('short') or nb['label'])[:60]} | {t.get('unit_kind', '')} | {auroc:.2f} | {med:.2f} | {fp} | {test['outcome']} |")
             fa = [r["act"] for r in fire]
             print(f"{t['neuron']:<22} AUROC {auroc:.2f} (need >= 0.90), median fire {med:.2f} (need >= 0.20), "
                   f"near misses >= 0.30: {fp} (max 1); fire >= 0.30: {nf}/{len(fa)} -> {outcome(test).upper()} under {t['protocol']}"
@@ -237,6 +239,9 @@ def run(a):
         out = p.with_name(p.name.replace(".tests.json", ".json"))
         out.write_text(json.dumps(c, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
         print(f"   wrote {out.relative_to(ROOT).as_posix()}")
+    held = sum(r.endswith("| held |") for r in rows)
+    print(f"\nSUMMARY: {held}/{len(rows)} held\n| pole | label | unit kind | AUROC | median fire | near misses >= 0.30 | outcome |\n"
+          "|---|---|---|---|---|---|---|\n" + "\n".join(rows) + "\n(paste this table into the PR body)")
     print(f"\n{len(todo)} scored, {len(problems)} skipped. Commit the results files in a SEPARATE commit from the pre-registrations "
           f"and open a PR with only graph/contributions/ files (the merge agent regenerates the derived graph files).")
 
@@ -340,6 +345,7 @@ def main():
     fl.add_argument("--plan", required=True, help='{"<pole id>": {"label": ..., "fire": [8], "quiet": [8], "short"/"unit_kind"/"confidence"/"notes": ...}}')
     fl.add_argument("--list", default=".sweep/latest.txt", help="the tests files (default: the last play draw)")
     fl.add_argument("--agent", help="methods.agent for every file, e.g. 'claude-code opus-5.5'")
+    fl.add_argument("--screens", default="card,look", help="methods.screens for every file (comma-separated); a plan entry's own 'screens' wins")
     dr = sub.add_parser("draw", help="k random poles with no record yet (for a sweep)")
     dr.add_argument("--k", type=int, default=16)
     dr.add_argument("--seed", type=int, help="reproducible draw (default: random)")
