@@ -1,0 +1,94 @@
+{
+ "pole_plus": {
+  "label": "Copy-ahead inside repeated structured records: deep in a list of similar records (citations, code rows, tables, logs, configs), fires on a token whose next token is the template's recurring text already seen in earlier records; grows with record count; needs the earlier copy; weak for repeated prose, silent for a single repeated name.",
+  "verdict": "one main job with offshoots",
+  "confidence": 0.6
+ },
+ "pole_minus": {
+  "label": "Segment end with little established context: strongest at the line break ending a short heading/title/caption/credit line (no closing punctuation) at a fresh section or document start; offshoots on phrase-final words and sentence ends early in a text and field ends in record lists; quiet in formulaic predictable sequences.",
+  "verdict": "one main job with offshoots",
+  "confidence": 0.5
+ },
+ "rejected_labels": [
+  "+ generic induction / next token copyable from context (only 0.3% of induction positions fire; synthetic rare-name repeats at 0-900 tokens <= 0.06)",
+  "+ high model confidence / low entropy (Spearman 0.08 among induction positions)",
+  "+ template continuation excluding verbatim repetition (verbatim-repeated records fire nearly as well, 0.32 vs 0.38)",
+  "- end of a clause or sentence in free prose (v1 pre-registered: 1/8 at 0.3)",
+  "- next token unpredictable / high entropy (entropy 2.58 vs 2.2 baseline, too weak)",
+  "feeder L2/N11953-: next counter in an enumerated series (quick test failed 3/8)"
+ ],
+ "key_tests": [
+  {
+   "name": "+ causal copy-source ablation on top-32 examples (exploratory)",
+   "prediction": "removing earlier (current,next) bigram copies kills activation",
+   "result": "0.83 -> 0.08; truncating to last 128 tokens -> 0.08",
+   "commit": "a7f2795"
+  },
+  {
+   "name": "+ dose: record count 2/4/8/12 x 4 templates",
+   "prediction": "Spearman > 0.5 and mean@12 > 2x mean@2",
+   "result": "Spearman 0.57, 0.27 vs 0.11: held",
+   "commit": "ce225af"
+  },
+  {
+   "name": "+ v1 fire/quiet (7-9 records)",
+   "prediction": ">=5/8 fire, <=1/8 quiet",
+   "result": "3/8 fire, 0/8 quiet: failed at threshold (means 0.27 vs 0.07)",
+   "commit": "ce225af"
+  },
+  {
+   "name": "+ verbatim vs template records",
+   "prediction": "template > verbatim in >=3/4",
+   "result": "3/4, but verbatim records also fire (0.32): exclusion of verbatim rejected",
+   "commit": "ce225af"
+  },
+  {
+   "name": "+ prose repetition vs structured records",
+   "prediction": "prose mean <0.2, records >=0.25, records win >=3/4",
+   "result": "0.15 vs 0.26, 4/4: held",
+   "commit": "a7f2795"
+  },
+  {
+   "name": "- doc-start title newline vs same title mid-document",
+   "prediction": "fresh > deep in >=6/8, ratio >=1.5",
+   "result": "8/8, ratio 2.11: held",
+   "commit": "a7f2795"
+  },
+  {
+   "name": "- v1 clause end in prose",
+   "prediction": ">=5/8 fire, <=1/8 quiet",
+   "result": "1/8 fire, 0/8 quiet: failed (means 0.23 vs 0.06)",
+   "commit": "ce225af"
+  },
+  {
+   "name": "shared-map quick-8+8 L20/N12208+",
+   "prediction": ">=5/8 fire, <=1 near miss",
+   "result": "5/8, 0/8: held (results 7e06b3f)",
+   "commit": "0898785"
+  },
+  {
+   "name": "shared-map quick-8+8 L20/N12208-",
+   "prediction": ">=5/8 fire, <=1 near miss",
+   "result": "6/8, 1/8: held (results 7e06b3f)",
+   "commit": "514fda1"
+  },
+  {
+   "name": "+ bank holdout",
+   "prediction": "4 record lists fire >=0.3, 4 controls quiet",
+   "result": "2/4 fire, 0/4 quiet, AUROC 1.0, accuracy 0.75",
+   "commit": "b8d72f8"
+  },
+  {
+   "name": "+ DE inversion leak goal",
+   "prediction": "cannot reach 0.3 without records",
+   "result": "unsatisfied (best 0.28); max 0.70 with stacked records",
+   "commit": "6bc7578"
+  },
+  {
+   "name": "feeder quick tests",
+   "prediction": ">=5/8, <=1 each",
+   "result": "L0/N11769- held 8/8; L3/N9864+ held 8/8; L1/N9909+ held 8/8 (1 nm); L2/N11953- failed 3/8 (results 39b431f)",
+   "commit": "1ec3d50,f5c2a8e,ab2093f,45cb946,e804f56"
+  }
+ ]
+}

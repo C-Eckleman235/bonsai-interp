@@ -1,0 +1,148 @@
+{
+ "id": "2026-10-18-cleanroom-claude-f822",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N12208+",
+ "contributor": "cleanroom-claude",
+ "created": "2026-10-18T17:34:23+00:00",
+ "recipe": {
+  "toolchain_commit": "3f91646",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L20_N12208_pos/2026-10-18-cleanroom-claude-f822.tests.json"
+ },
+ "label": "Copy-ahead inside repeated structured records: deep in a list of similar records (citations, logs, code rows, tables, configs), fires on a token whose next token is the recurring fixed text of the template, copied from earlier records; grows with the number of records; weak for repeated prose and absent for one repeated name.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@1",
+   "tests_file": "graph/contributions/bonsai1/L20_N12208_pos/2026-10-18-cleanroom-claude-f822.tests.json",
+   "prereg_commit": "0898785",
+   "author": "cleanroom-claude",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.352,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.291,
+     "peak": ".\n"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.432,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.341,
+     "peak": ".street"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.247,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.358,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.586,
+     "peak": "'],\n"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.237,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.015,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.162,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.017,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.025,
+     "peak": " unusually"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.012,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.01,
+     "peak": " surveyed"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.028,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.02,
+     "peak": "stone"
+    }
+   ]
+  }
+ ],
+ "short": "copy-ahead in repeated records/templates",
+ "unit_kind": "context-structure (induction-like)",
+ "confidence": 0.6,
+ "provenance": {
+  "cleanroom_run": "2026-10-18_bonsai1_L20_N12208",
+  "room_results_commit": "7e06b3f7e583675a6f97d3c32e9bfa2a3180c37f",
+  "room_tests_commit": "0898785f185a0a1547649fbf9941ecd61f1b0578",
+  "bundle": "neuron-cleanroom/runs/2026-10-18_bonsai1_L20_N12208/room.bundle"
+ },
+ "methods": {
+  "agent": "claude claude-opus-5-5 (blind room)",
+  "screens": [
+   "bands",
+   "bank-solo",
+   "blind-room",
+   "held-out",
+   "induce",
+   "inverse-de",
+   "look",
+   "quick-test"
+  ],
+  "harness": "neuron-cleanroom",
+  "inferred_at_export": true
+ }
+}

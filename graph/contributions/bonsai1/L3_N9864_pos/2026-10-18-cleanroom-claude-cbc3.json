@@ -1,0 +1,153 @@
+{
+ "id": "2026-10-18-cleanroom-claude-cbc3",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N9864+",
+ "contributor": "cleanroom-claude",
+ "created": "2026-10-18T17:41:36+00:00",
+ "recipe": {
+  "toolchain_commit": "ab2093f",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L3_N9864_pos/2026-10-18-cleanroom-claude-cbc3.tests.json"
+ },
+ "label": "A caret '^' in code, mostly the start-of-string anchor in a regular expression string (r'^...', \"^(\", match=\"^...\").",
+ "tests": [
+  {
+   "protocol": "quick-8+8@1",
+   "tests_file": "graph/contributions/bonsai1/L3_N9864_pos/2026-10-18-cleanroom-claude-cbc3.tests.json",
+   "prereg_commit": "f5c2a8e",
+   "author": "cleanroom-claude",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.719,
+     "peak": "\"^"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.963,
+     "peak": "^"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.664,
+     "peak": "'^"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.77,
+     "peak": " '^"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.836,
+     "peak": "^\\"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.679,
+     "peak": " /^"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 1.006,
+     "peak": " '^"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.619,
+     "peak": "'^"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.002,
+     "peak": "pattern"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.009,
+     "peak": " match"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.004,
+     "peak": "KEY"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.004,
+     "peak": "E"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.006,
+     "peak": "x"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.008,
+     "peak": "const"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.012,
+     "peak": "assert"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.01,
+     "peak": "path"
+    }
+   ]
+  }
+ ],
+ "short": "regex caret ^ anchor",
+ "unit_kind": "token/lexical",
+ "confidence": 0.6,
+ "notes": "Sentence 1 of each set originally used a named group (?P<name>...), whose angle bracket the runner rejects as a placeholder; replaced before any run with an unnamed-group regex.",
+ "roles": [
+  "feeds bonsai1/L20/N12208+"
+ ],
+ "provenance": {
+  "cleanroom_run": "2026-10-18_bonsai1_L20_N12208",
+  "room_results_commit": "39b431f6bd97767b468df2eec356e4d09400c401",
+  "room_tests_commit": "f5c2a8eca99f3c33a6ffd4e3106623378f8649a2",
+  "bundle": "neuron-cleanroom/runs/2026-10-18_bonsai1_L20_N12208/room.bundle"
+ },
+ "methods": {
+  "agent": "claude claude-opus-5-5 (blind room)",
+  "screens": [
+   "bands",
+   "bank-solo",
+   "blind-room",
+   "held-out",
+   "induce",
+   "inverse-de",
+   "look",
+   "quick-test",
+   "step-out"
+  ],
+  "harness": "neuron-cleanroom",
+  "inferred_at_export": true
+ }
+}
