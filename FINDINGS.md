@@ -264,3 +264,15 @@ Reading: the circuit's inputs and gate are solid. The token route is spelling-le
 - Self-generated text gets no special treatment from these neurons.
 
 **globalMOO usage to date:** 8 models (3 toy, nerve, nerve circuit, genre, unclear, nerve lateral cluster).
+
+## 2026-10-17: "nervous" vs the word "nerve" (exploratory, not pre-registered; `runs/nervous_exploratory.py`)
+
+- English " nervous" is a single token, unlike " nerve". **The nerve neuron barely responds to it.**
+  - 0.01–0.03 on "felt nervous", "nervous about", "investors were nervous".
+  - "a nervous laugh" 0.24; "nervousness" 0.15.
+  - Same meaning, different surface form. "nerve-racking" and "worked up the nerve" give 0.6+.
+- Forms tokenized with a nerv- piece do fire it: German "nervös" 0.68, Russian "нервничал" 0.49, French "nerveux" 0.44, Spanish "nervioso" 0.17.
+- Control: swapping in "anxious" gives 0.02. The suspense and anticipation units respond about equally to nervous and anxious (0.18–0.26).
+- Contrasting "nervous" with "anxious" over layers 1–14 finds only spelling-level units: L2/N8177 "Nor", L4/N7189 "-ve / erv", L1/N9531 "na-", plus the known token and concept inputs. No dedicated semantic "nervous ≠ anxious" unit turned up. Expected, since the two are near-synonyms.
+
+**Reading:** L9/N3688 is not a "nervousness" neuron. It responds to the word *nerve* (and nerv- forms) when used in its psychological sense. The token route makes it surface-bound: the meaning of English "nervous" is carried elsewhere, alongside "anxious". This is a third sharpening of the label, after H1 (any "nerve" morpheme) and H2 (psychological sense).
