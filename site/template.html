@@ -406,7 +406,7 @@ td.n { font-family: var(--mono); text-align: right; }
   function agentPrompt(kind, r, from) {
     const id = kind === "step" ? from.id : r.id, h = handle();
     const flag = mode === "gmoo" ? " --gmoo" : "";
-    return `In my bonsai-interp checkout, run:\n\nuv run python -m bonsai_interp.graph.play brief ${kind} --neuron ${id} --handle ${h}${flag}\n\n` +
+    return `In my bonsai-interp checkout, first update it (git pull), then run:\n\nuv run python -m bonsai_interp.graph.play brief ${kind} --neuron ${id} --handle ${h}${flag}\n\n` +
       `Then carry out the brief it prints, following AGENTS.md. Its rules are strict: commit the pre-registered test on its own before running it, ` +
       `and never edit committed contributions. Stop only for things I must do myself. When you're done, tell me what you found and give me the pull-request link.` +
       (h === "<you>" ? `\n\n(My GitHub handle: ask me, or read it from \`gh api user --jq .login\`.)` : "");
