@@ -31,6 +31,14 @@ jobs:
           n=$(gh pr list --repo "$REPO" --state open --json number,headRefOid --jq ".[] | select(.headRefOid==\"$SHA\") | .number" | head -1)
           [ -z "$n" ] && { echo "no open PR at $SHA"; echo "pr=" >> "$GITHUB_OUTPUT"; exit 0; }
           echo "pr=$n" >> "$GITHUB_OUTPUT"
+          # a first-time contributor's first PR waits for a maintainer; once one of theirs has merged, GitHub calls them
+          # CONTRIBUTOR and their conforming PRs merge automatically
+          assoc=$(gh api "repos/$REPO/pulls/$n" --jq .author_association)
+          case "$assoc" in OWNER|MEMBER|COLLABORATOR|CONTRIBUTOR) ;; *)
+            echo "lane=first-time" >> "$GITHUB_OUTPUT"
+            gh pr comment "$n" --repo "$REPO" --body "Checks pass. This is your first contribution here, so a maintainer will look before it merges; after that, conforming PRs from you merge automatically. Thanks!"
+            exit 0 ;;
+          esac
           other=$(gh api --paginate "repos/$REPO/pulls/$n/files" --jq '.[] | select(.status != "added" or ((.filename | startswith("graph/contributions/") | not) and (.filename | startswith("runs/cleanroom/") | not))) | .filename')
           if [ -n "$other" ]; then
             echo "lane=review" >> "$GITHUB_OUTPUT"

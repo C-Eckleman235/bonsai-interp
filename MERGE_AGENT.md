@@ -9,7 +9,7 @@ derive the record.
 
 | Lane | What the PR changes | Who merges |
 |---|---|---|
-| **Colour-in** | only *adds* files under `graph/contributions/` (and clean-room evidence under `runs/cleanroom/`) | the `merge` workflow, automatically, as soon as `checks` passes; it then pushes "fold after #n" |
+| **Colour-in** | only *adds* files under `graph/contributions/` (and clean-room evidence under `runs/cleanroom/`) | the `merge` workflow, automatically, as soon as `checks` passes; it then pushes "fold after #n". A first-time contributor's first PR waits for a maintainer; after one has merged, theirs merge automatically |
 | **Structural** | edits or deletes anything, schema, protocols, fold rules, docs | review (the triage routine comments; the owner merges) |
 | **Tool** | adds one screen or analysis under `bonsai_interp/` plus its entry in `methods.py` | review, one tool per PR |
 
