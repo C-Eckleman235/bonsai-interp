@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-19-moridinamael-9eaf1c4e",
+ "kind": "qc",
+ "neuron": "bonsai1/L10/N2499-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T21:36:12+00:00",
+ "recipe": {
+  "toolchain_commit": "a0192a9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-9eaf1c4e.tests.json"
+ },
+ "label": "Weak, dense hum (the gate-closed leak of the strong psychiatric + pole) that rises when text is about treating or caring for mental illness: psychiatric wards and nurses, antipsychotics and antidepressants by name, ECT, eating-disorder and addiction clinics, asylums, community mental health teams. The same care scenes for physical illness stay lower (~0.1-0.25). Side channels that carry no mental-health meaning: the '-therapy' word family (speech therapy ~0.3-0.46) and the word ' talking' (from 'talking therapy': 'the talking parrot' ~0.29, found by the globalMOO inverse solver), plus the 'Too Little too Late?' headline. Its mapped neighbours (L23/N11310+, L6/N6776+, L24/N1091+, L1/N2546-, L26/N9961+, L0/N8268-) share no topic with it and do not change the label.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-9eaf1c4e.tests.json",
+   "prereg_commit": "a0192a9",
+   "author": "moridinamael",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.267,
+     "peak": " doses"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.332,
+     "peak": " for"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.31,
+     "peak": " patient"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.532,
+     "peak": " psychiatrist"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.412,
+     "peak": " electro"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.362,
+     "peak": " schizophrenia"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.662,
+     "peak": "ych"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.578,
+     "peak": " psychiatrist"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.187,
+     "peak": " surgical"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.206,
+     "peak": " month"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.241,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.174,
+     "peak": " at"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.161,
+     "peak": " patient"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.163,
+     "peak": " diagnosed"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.203,
+     "peak": " week"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.253,
+     "peak": " group"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.387,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-gmoo",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "a0192a9",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Weak, dense hum that rises when text is about treating or caring for mental illness (psychiatric nurses and wards, antipsychotics, antidepressants, ECT, eating-disorder clinics, asylums, crisis teams), even without the words 'psychiatry' or 'therapy'; the same care scenes for physical illness (knees, measles, TB, cancer, diabetes, asthma) stay lower (~0.1-0.25), and mental distress told in plain words without any care setting (panic, grief, hopelessness) also stays near the hum (~0.15-0.2). Side channels from earlier tests still apply: the '-therapy' word family off-topic (speech therapy ~0.46) and the 'Too Little too Late?' headline. Its mapped neighbours (Texas names, shorthand text, re-typed strings) share no topic with it, so they do not change the label."
+ },
+ "notes": "Loop-back QC after mapping the neighbours. Chat was quiet; the house picked the current label. All sentences new and written by the agent (no model-written text). The near misses mirror each fire scene with a physical illness and avoid '-therapy' words and ' talking'."
+}
