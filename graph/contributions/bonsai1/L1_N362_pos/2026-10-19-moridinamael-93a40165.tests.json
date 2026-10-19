@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-19-moridinamael-93a40165",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N362+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T15:32:02+00:00",
+ "roles": ["feeds bonsai1/L3/N694+"],
+ "neighbours": [
+  {
+   "unit": "L1/N362",
+   "pole": "+",
+   "label": "the re-t word family itself, meaning-blind: retract/retraction, retry/retries, retrace, retard/retardant (fires on the word or the piece after 're'); paraphrases (pull in, withdraw, try again, slow) stay quiet, as do other re- words (retreat, retire, retain, retina, rethink) and tract/try/tard without 're'",
+   "short": "the words retract, retry, retrace, retard",
+   "unit_kind": "token / word family",
+   "confidence": "high",
+   "fire": [
+    "The cat will retract its claws when it feels calm.",
+    "The newspaper printed a retraction of the story.",
+    "Click the retry button if the page fails to load.",
+    "The upload script retries three times before giving up.",
+    "The walls were painted with a flame retardant coating.",
+    "Cold storage helps retard the growth of mold.",
+    "Retracing her steps, she found the lost keys.",
+    "The landing gear retracted smoothly after takeoff."
+   ],
+   "quiet": [
+    "The cat will pull in its claws when it feels calm.",
+    "The newspaper printed a correction of the story.",
+    "Click the reload button if the page fails to load.",
+    "The upload script tries three times before giving up.",
+    "The walls were painted with a fire resistant coating.",
+    "Cold storage helps slow the growth of mold.",
+    "Retrieving her bag, she found the lost keys.",
+    "The landing gear retreated smoothly after takeoff."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire; 'Retrieving' may reach ~0.3 on the split 'Ret' piece (capitalized re- words that split can leak); other near misses ~0",
+ "notes": "Step out from bonsai1/L3/N694+ ('tard' letter string); this unit is its 2nd-largest feeder (drop 0.06). Stream house round (no chat sentences). Inverse solver (differential evolution) found no leak and no silent on-concept text; its near-miss ceiling was 'Retracing', so retrace was added to the label.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "step-out",
+   "inverse-de",
+   "bank-solo"
+  ]
+ }
+}
