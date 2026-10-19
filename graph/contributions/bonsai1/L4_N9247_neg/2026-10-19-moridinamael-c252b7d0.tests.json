@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-19-moridinamael-c252b7d0",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N9247-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T14:12:52+00:00",
+ "roles": ["feeds bonsai1/L5/N6367-"],
+ "neighbours": [
+  {
+   "unit": "L4/N9247",
+   "pole": "-",
+   "label": "the predicate right after an ambient/dummy 'it' (it rained, it is snowing, it gets dark, it got cold, it took six weeks, what it takes); weather or nightfall phrased without the empty 'it', and referential 'it', stay quiet",
+   "short": "predicate of ambient 'it' (it rained / gets dark / takes)",
+   "fire": [
+    "By noon it rained so hard the streets flooded.",
+    "It snowed for three days before the pass reopened.",
+    "In December it gets dark before five o'clock.",
+    "After the sun went down it got cold very quickly.",
+    "She has what it takes to lead the team.",
+    "It took the crew six weeks to repair the bridge.",
+    "It was raining when the train finally arrived.",
+    "Up in the mountains it is snowing again."
+   ],
+   "quiet": [
+    "By noon the rain was so heavy the streets flooded.",
+    "Snow fell for three days before the pass reopened.",
+    "In December darkness comes before five o'clock.",
+    "After the sun went down the air got cold very quickly.",
+    "She has the skills needed to lead the team.",
+    "The crew needed six weeks to repair the bridge.",
+    "The rain was falling when the train finally arrived.",
+    "Up in the mountains the snow keeps falling again."
+   ],
+   "unit_kind": "context",
+   "confidence": "high",
+   "notes": "Step-out feeder of bonsai1/L5/N6367- (late), drop 0.12 by single-unit zero ablation. Exploration probes: referential 'it' (it bored me, it ran away, it worked) ~0; 'he takes' 0; weather without 'it' (the storm raged, the weather turned cold, the sky rained ash) ~0; ambient 'it is late/quiet' fires mildly (0.15-0.22), ambient verbs strongest. 'it seems' and 'it stopped' were quiet, so not every expletive-it predicate. These exact sentences were probed during exploration before pre-registration. The inverse-solver round crashed (toolchain JSON serialization error), so no leak search was run."
+  }
+ ],
+ "predictions": "8/8 fire, 0 near misses above 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
