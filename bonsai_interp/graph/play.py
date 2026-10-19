@@ -143,6 +143,27 @@ def fill(a):
     print(f"filled {len(done)} tests files" + (f"; not in the plan yet: {left}" if left else "; every listed file is filled"))
 
 
+def prbody(a):
+    """Write the PR body for the current branch to .pr/<branch>.md (gitignored) from the right template, with the
+    table of the last `play run` filled in for a sweep. Shell-neutral: no mkdir/cp/&& for the agent to translate."""
+    branch = subprocess.run(["git", "branch", "--show-current"], cwd=ROOT, capture_output=True, text=True).stdout.strip()
+    kind = a.kind or ("sweep" if branch.startswith("sweep/") else "qc" if branch.startswith("qc/") else "interpret")
+    body = (ROOT / ".github" / "PULL_REQUEST_TEMPLATE" / f"{kind}.md").read_text(encoding="utf-8")
+    table = ROOT / ".sweep" / "table.md"
+    if kind == "sweep" and table.exists():
+        held_total, *rows = table.read_text(encoding="utf-8").splitlines()
+        held, total = held_total.split("/")
+        body = body.replace("## Sweep: <!-- N --> poles, <!-- held --> held", f"## Sweep: {total} poles, {held} held")
+        body = body.replace("| <!-- bonsai1/L__/N____± --> | <!-- short label --> | <!-- lexical / contextual / … --> | | | | <!-- held / failed --> |",
+                            "\n".join(rows))
+    out = ROOT / ".pr" / f"{branch.replace('/', '-') or 'pr'}.md"
+    out.parent.mkdir(exist_ok=True)
+    out.write_text(body, encoding="utf-8", newline="\n")
+    rel = out.relative_to(ROOT).as_posix()
+    print(f"wrote {rel}: fill in the remaining <!-- --> fields, then\n"
+          f"  git push -u origin {branch}\n  gh pr create --repo moridinamael/bonsai-interp --title \"<title>\" --body-file {rel}")
+
+
 def _check_tests_file(path):
     """(problem or None, tests dict, rel path, prereg commit) for one pre-registration."""
     p = Path(path).resolve()
@@ -240,6 +261,8 @@ def run(a):
         out.write_text(json.dumps(c, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
         print(f"   wrote {out.relative_to(ROOT).as_posix()}")
     held = sum(r.endswith("| held |") for r in rows)
+    (ROOT / ".sweep").mkdir(exist_ok=True)
+    (ROOT / ".sweep" / "table.md").write_text(f"{held}/{len(rows)}\n" + "\n".join(rows) + "\n", encoding="utf-8", newline="\n")
     print(f"\nSUMMARY: {held}/{len(rows)} held\n| pole | label | unit kind | AUROC | median fire | near misses >= 0.30 | outcome |\n"
           "|---|---|---|---|---|---|---|\n" + "\n".join(rows) + "\n(paste this table into the PR body)")
     print(f"\n{len(todo)} scored, {len(problems)} skipped. Commit the results files in a SEPARATE commit from the pre-registrations "
@@ -346,6 +369,8 @@ def main():
     fl.add_argument("--list", default=".sweep/latest.txt", help="the tests files (default: the last play draw)")
     fl.add_argument("--agent", help="methods.agent for every file, e.g. 'claude-code opus-5.5'")
     fl.add_argument("--screens", default="card,look", help="methods.screens for every file (comma-separated); a plan entry's own 'screens' wins")
+    pb = sub.add_parser("prbody", help="write the PR body for this branch to .pr/<branch>.md (sweep: with the last run's table)")
+    pb.add_argument("--kind", choices=["sweep", "interpret", "qc"], help="default: from the branch name")
     dr = sub.add_parser("draw", help="k random poles with no record yet (for a sweep)")
     dr.add_argument("--k", type=int, default=16)
     dr.add_argument("--seed", type=int, help="reproducible draw (default: random)")
@@ -401,7 +426,7 @@ def main():
     if a.cmd == "which":
         from bonsai_interp.graph import which
         return which.main(a)
-    {"new": new, "draw": draw, "fill": fill, "run": run, "step": step, "look": look, "edge": edge, "probe": probe}[a.cmd](a)
+    {"new": new, "draw": draw, "fill": fill, "prbody": prbody, "run": run, "step": step, "look": look, "edge": edge, "probe": probe}[a.cmd](a)
 
 
 if __name__ == "__main__":

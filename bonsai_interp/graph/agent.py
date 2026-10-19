@@ -160,8 +160,9 @@ def sweep(a):
            f"5. Run them all at once (one model load): {py} -m bonsai_interp.graph.play run --list .sweep/latest.txt",
            '   Commit the results SEPARATELY: git add graph/contributions && git commit -m "Sweep results: <held>/<total> held"',
            f"6. Validate ({py} -m bonsai_interp.graph.validate), push, and open one PR:",
-           f"   mkdir -p .pr && cp .github/PULL_REQUEST_TEMPLATE/sweep.md .pr/{bslug}.md (gitignored; paste the table `play run` printed), then",
-           f'   git push -u origin {branch} && gh pr create --repo moridinamael/bonsai-interp --title "sweep: {k} poles (<held> held)" --body-file .pr/{bslug}.md',
+           f"   {py} -m bonsai_interp.graph.play prbody   (writes .pr/{bslug}.md from the sweep template with the results table filled in;",
+           "   add the agent, the two commit hashes and any notes), then",
+           f'   git push -u origin {branch}   then   gh pr create --repo moridinamael/bonsai-interp --title "sweep: {k} poles (<held> held)" --body-file .pr/{bslug}.md',
            "   The merge agent merges conforming PRs once the checks pass, and regenerates the map.", "",
            "Failed labels are results too; record them and move on. Do not re-test inside a sweep: a second round is a new mission.",
            "", RULES, "", "When done, tell the person in two or three sentences what you found and give them the PR link."]
@@ -231,7 +232,7 @@ def brief(a):
                 f"5. Validate: {py} -m bonsai_interp.graph.validate",
                 f"6. Push the branch and open the PR. gh's --template needs an editor, so fill a copy instead:",
                 f"   mkdir -p .pr && cp .github/PULL_REQUEST_TEMPLATE/interpret.md .pr/{bslug}.md  (gitignored; fill it in), then",
-                f'   git push -u origin {branch} && gh pr create --repo moridinamael/bonsai-interp --title "interpret: {target} <short label>" --body-file .pr/{bslug}.md',
+                f'   git push -u origin {branch}   then   gh pr create --repo moridinamael/bonsai-interp --title "interpret: {target} <short label>" --body-file .pr/{bslug}.md',
                 "7. If the label failed and you have a better idea, a second round is a NEW contribution (play new again) with new sentences.",
                 "   After three honest failed rounds, record it and move on; that is a result too."]
     elif a.kind == "qc":
