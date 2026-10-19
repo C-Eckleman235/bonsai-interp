@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-19-moridinamael-2a7e3472",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N3787+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T18:32:49+00:00",
+ "roles": ["feeds bonsai1/L1/N11257-"],
+ "neighbours": [
+  {
+   "unit": "L0/N3787",
+   "pole": "+",
+   "label": "a word or word-piece ending in '-ap' (the 'lap' rhyme), strongest for ' lap', ' clap', ' flap', ' slap', weaker for ' rap', ' nap', ' chap', ' trap', ' tap'; any meaning; a changed vowel (flip, clip, flop) or a synonym stays quiet",
+   "short": "words ending in '-ap' (lap, clap, flap, slap)",
+   "unit_kind": "token / spelling",
+   "confidence": "high",
+   "fire": [
+    "The toddler fell asleep in her grandmother's lap.",
+    "The audience stood up to clap for the band.",
+    "The flag began to flap in the wind.",
+    "He felt the slap of cold water on his face.",
+    "My cousin wants to rap at the talent show.",
+    "The old chap told us a long story.",
+    "After lunch the baby took a nap.",
+    "The fox stepped right into the trap."
+   ],
+   "quiet": [
+    "The toddler fell asleep on her grandmother's knee.",
+    "The audience stood up to cheer for the band.",
+    "The flag began to flutter in the wind.",
+    "He felt the flip of his stomach on the ride.",
+    "My cousin wants to sing at the talent show.",
+    "The old man told us a long story.",
+    "After lunch the baby took a rest.",
+    "The fox stepped right into the trench."
+   ],
+   "notes": "Feeder of bonsai1/L1/N11257- (play step drop 0.08). The top 32 examples are dominated by ' lap' (x17), then slap/clap/flap. Probes: lap/clap/flap/slap 0.73-0.88, rap/chap/nap/zap/tap/trap/snap 0.42-0.67, cap/gap/wrap/strap 0.19-0.28, flip/clip/lip/flop 0.06-0.16, collapse 0.08, laptop 0.16, lapse 0.29, apple 0.02, synonyms (circuit, knee, cheer, doze) under 0.1. Inverse solver (differential evolution): no leak (best 0.21), German 'Klaps' fires on 'aps' at 0.50. The stream's labels vote picked 'just the word lap' by default because chat was quiet; the evidence (clap above lap, rap/nap/chap above 0.5) supported the broader '-ap' family, so that was tested."
+  }
+ ],
+ "predictions": "8/8 fire above 0.40, all near misses under 0.20",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
