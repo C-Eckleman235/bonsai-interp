@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-19-moridinamael-79a3ad12",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N2499-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T13:37:59+00:00",
+ "neighbours": [
+  {
+   "unit": "L10/N2499",
+   "pole": "-",
+   "label": "' late' in the phrase 'too late' (a missed chance); plain temporal 'late', 'too early/soon' and 'never too late' stay near background. Separate second trigger: therapy/psychology vocabulary (not covered by this test)",
+   "short": "'too late'",
+   "unit_kind": "context-gated token",
+   "confidence": "low",
+   "notes": "Weak, dense pole (max 1.52, 11% of tokens >0.1 max, background ~0.1). Both mapped feeders are ' late' units (L0/N5956- token ' late' held; L7/N11810+ ' late'/'too late' failed); this pole keeps only the 'too late' use: plain 'late' (bus, 1980s, meeting) sits at background, 'never too late' ~0. The missed-chance meaning without the word stays at background. The inverse solver found a leak in therapy text (speech therapy 0.46, 'Internal Stress' 0.55, talking cure 0.38), matching the top examples (ECT, psychodynamic, talking therapy), so the near misses avoid therapy words. Probes: 'too late' ranged 0.07-0.28, so the median bar is at risk. Chat was quiet; label picked by the streamer.",
+   "fire": [
+    "Too little, too late, the critics said of the reform.",
+    "It was too late to fix the roof.",
+    "The warning came too late to save the harvest.",
+    "By the time the ambulance arrived it was already too late.",
+    "Too little, too late for the striking workers.",
+    "The rescue boat reached the island too late.",
+    "Help arrived too late for the stranded hikers.",
+    "The vote came far too late to stop the closure."
+   ],
+   "quiet": [
+    "Too little, too early, the critics said of the reform.",
+    "It was too dark to fix the roof.",
+    "The warning came too soon to be believed.",
+    "By the time the ambulance arrived it was already noon.",
+    "Never too late for the striking workers.",
+    "The rescue boat reached the island late at night.",
+    "Help arrived late in the day for the stranded hikers.",
+    "The vote came far too early to stop the closure."
+   ]
+  }
+ ],
+ "predictions": "about 5/8 fire at 0.20-0.28; near misses 0.05-0.16 (too early ~0.15 highest); median fire near the 0.20 bar, so it may fail on median",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
