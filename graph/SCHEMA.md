@@ -50,9 +50,15 @@ merging the same contribution twice changes nothing, and new information never o
 
 - `quick-8+8@1`: held if at least 5 of 8 sentences fire at 0.3 or more of the pole's corpus max,
   and at most 1 near miss does.
-- `quick-8+8@2` (the default for new tests): held if the fire sentences rank above the near misses
-  (AUROC >= 0.90), the median fire sentence reaches 0.20 of the pole's corpus max, and at most 1
-  near miss reaches 0.30. It needs the per-sentence activations that `play run` records.
+- `quick-8+8@2`: held if the fire sentences rank above the near misses (AUROC >= 0.90), the median
+  fire sentence reaches 0.20 of the pole's corpus max, and at most 1 near miss reaches 0.30. It needs
+  the per-sentence activations that `play run` records.
+- `quick-8+8@3` (the default for new tests): @2's rule on sentences whose results the author did not
+  already know. `play probe` logs every sentence it scores (`.probe-log/`, local); `play run` records
+  in `probed_before` how many of the 16 were scored on this neuron before the registration commit.
+  More than 2 makes the outcome `exploratory`: recorded, but neither a hold nor a fail, so a pole whose
+  only tests are exploratory shows as `probed`. Why: pre-registration stops editing a test after its
+  result, but not choosing sentences whose results are already known.
 - `held-out@1`
 - `cleanroom@1`
 

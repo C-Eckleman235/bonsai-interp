@@ -34,6 +34,37 @@ from bonsai_interp.graph.contrib import NEURON, ROOT, folder_for
 from bonsai_interp.graph.methods import SCREENS, detect, minutes_between
 from bonsai_interp.graph.protocols import outcome
 
+PROBE_LOG = ROOT / ".probe-log"  # gitignored: what this checkout has already scored, so tests can say what was known
+
+
+def _probe_key(nid, text):
+    """Neuron (both poles) + whitespace-normalised sentence -> short sha256. Scoring one pole shows the other too."""
+    import hashlib
+    m = NEURON.match(nid)
+    return hashlib.sha256(f"{m['model']}/L{m['L']}/N{m['n']}\n{' '.join(text.split())}".encode("utf-8")).hexdigest()[:20]
+
+
+def log_probed(nid, texts):
+    """Record that these sentences were scored on this neuron (play probe; other scorers may call this too)."""
+    import time
+    m = NEURON.match(nid)
+    PROBE_LOG.mkdir(exist_ok=True)
+    now = time.time()
+    with open(PROBE_LOG / f"{m['model']}_L{m['L']}_N{m['n']}.jsonl", "a", encoding="utf-8", newline="\n") as f:
+        for t in texts:
+            f.write(json.dumps({"sha": _probe_key(nid, t), "t": round(now, 1)}) + "\n")
+
+
+def probed_before(nid, texts, before):
+    """How many of these sentences this checkout scored on this neuron before the unix time `before`."""
+    m = NEURON.match(nid)
+    f = PROBE_LOG / f"{m['model']}_L{m['L']}_N{m['n']}.jsonl"
+    if not f.exists():
+        return 0
+    seen = {d["sha"] for d in (json.loads(x) for x in f.read_text(encoding="utf-8").splitlines() if x.strip()) if d["t"] < before}
+    return sum(_probe_key(nid, t) in seen for t in texts)
+
+
 TEMPLATE_FIRE = ["<sentence that should fire the pole>"] * 8
 TEMPLATE_QUIET = ["<near miss: same topic, without the claimed trigger>"] * 8
 
@@ -72,7 +103,7 @@ def _new_one(a, nid):
     rec = ROOT / "graph" / "neurons" / m["model"] / f"{d.name}.json"
     if rec.exists():
         current = json.loads(rec.read_text(encoding="utf-8")).get("label")
-    t = {"contribution": cid, "contributor": a.handle, "kind": a.kind, "neuron": nid, "protocol": "quick-8+8@2",
+    t = {"contribution": cid, "contributor": a.handle, "kind": a.kind, "neuron": nid, "protocol": "quick-8+8@3",
          "written": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
          **({"qc": {"verdict": a.verdict, "label_under_test": current}} if a.kind == "qc" else {}),
          "neighbours": [{"unit": unit, "pole": m["pole"], "label": current if a.kind == "qc" and a.verdict != "refine" else "<your label>",
@@ -246,8 +277,14 @@ def run(a):
             fire, quiet = ev(nb["fire"]), ev(nb["quiet"])
             per = [{"set": s, "i": i, "act": round(r["act"], 3), "peak": r["peak_token"]} for s, rs in (("fire", fire), ("quiet", quiet)) for i, r in enumerate(rs)]
             nf, fp = sum(r["act"] >= 0.3 for r in fire), sum(r["act"] >= 0.3 for r in quiet)
+            reg_t = int(subprocess.run(["git", "log", "-1", "--format=%ct", prereg], cwd=ROOT, capture_output=True, text=True).stdout.strip() or 0)
+            pb = {"fire": probed_before(t["neuron"], nb["fire"], reg_t), "quiet": probed_before(t["neuron"], nb["quiet"], reg_t),
+                  "source": "this checkout's .probe-log, before the pre-registration commit"}
             test = {"protocol": t["protocol"], "tests_file": rel, "prereg_commit": prereg, "author": a.author or t["contributor"],
-                    "n_fire": nf, "n_false_pos": fp, "n_written": [len(fire), len(quiet)], "per_sentence": per}
+                    "n_fire": nf, "n_false_pos": fp, "n_written": [len(fire), len(quiet)], "per_sentence": per, "probed_before": pb}
+            if pb["fire"] + pb["quiet"]:
+                print(f"NOTE {t['neuron']}: {pb['fire']} fire and {pb['quiet']} near-miss sentences were scored before this test was "
+                      f"registered" + (" (more than 2: under quick-8+8@3 the test is exploratory)" if pb["fire"] + pb["quiet"] > 2 else ""))
             from bonsai_interp.graph.protocols import v2_stats
             auroc, med, _ = v2_stats(test)  # the recorded (rounded) values the rule judges, so print and verdict agree
             test["outcome"] = outcome(test)  # recorded for convenience; fold always recomputes it from per_sentence
@@ -257,7 +294,7 @@ def run(a):
             fa = [r["act"] for r in fire]
             print(f"{t['neuron']:<22} AUROC {auroc:.3f} (need >= 0.90), median fire {med:.3f} (need >= 0.20), "
                   f"near misses >= 0.30: {fp} (max 1); fire >= 0.30: {nf}/{len(fa)} -> {outcome(test).upper()} under {t['protocol']}"
-                  if t["protocol"] == "quick-8+8@2" else
+                  if t["protocol"] in ("quick-8+8@2", "quick-8+8@3") else
                   f"{t['neuron']:<22} {nb['unit']}{nb['pole']}: fire {nf}/{len(fire)}, near misses firing {fp}/{len(quiet)} "
                   f"-> {outcome(test).upper()} under {t['protocol']}")
         p = Path(f).resolve()
@@ -361,8 +398,11 @@ def probe(a):
             print(f"=== {nid}")
         for t, r in zip(texts, ev(texts)):
             print(f"{r['act']:6.3f}  peak {r['peak_token']!r:<14} {t}")
-    print("(exploration only: nothing was recorded. Fractions of the pole's corpus max. A quick-8+8@2 test holds when its 8 fire "
-          "sentences beat its 8 near misses (AUROC >= 0.90), the median fire sentence reaches 0.20, and at most 1 near miss reaches 0.30)")
+        log_probed(nid, texts)
+    print("(exploration: these sentences are now in .probe-log/ as already scored on this neuron. Use probing to find the label,"
+          " then write the test's 16 sentences FRESH: a test that reuses more than 2 scored sentences counts as exploratory, not as a"
+          " hold or a fail. Fractions of the pole's corpus max; a test holds when its 8 fire sentences beat its 8 near misses"
+          " (AUROC >= 0.90), the median fire sentence reaches 0.20, and at most 1 near miss reaches 0.30)")
 
 
 def edge(a):

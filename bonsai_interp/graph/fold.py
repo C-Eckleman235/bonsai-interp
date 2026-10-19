@@ -111,6 +111,8 @@ def fold_neuron(neuron, contribs):
         r["status"] = "failed"
     elif r["replications"] and not r["label_history"]:
         r["status"], r["label"] = "replicated", r["replications"][-1].get("label")
+    elif r["label"]:
+        r["status"] = "probed"  # labelled, but only exploratory or unscored tests so far
     return r
 
 

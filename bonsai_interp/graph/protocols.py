@@ -40,6 +40,20 @@ def _quick_8_8_v2(t):
     return "held" if auroc >= 0.90 and med >= 0.20 and sum(q >= 0.30 for q in quiet) <= 1 else "failed"
 
 
+def _quick_8_8_v3(t):
+    """@2's rule, on sentences whose results the author did not already know.
+
+    Probing candidate sentences before pre-registering is how labels are found, but a test built from sentences
+    already scored mostly confirms what the author saw (pre-registration stops editing after the result, not choosing
+    sentences whose result is known). `play run` records how many of the 16 were scored on this neuron before the
+    registration commit (`probed_before`, from the local probe log). More than 2 makes the test exploratory: it is
+    recorded, but it is neither a hold nor a fail."""
+    pb = t.get("probed_before") or {}
+    if pb.get("fire", 0) + pb.get("quiet", 0) > 2:
+        return "exploratory"
+    return _quick_8_8_v2(t)
+
+
 def _held_out_v1(t):
     # a held-out set passes when its predicted-fire sentences fire at >= 0.5 and its predicted-quiet ones at <= 0.2
     return "held" if t.get("fire_rate_predicted_fire", 0) >= 0.5 and t.get("fire_rate_predicted_quiet", 1) <= 0.2 else "failed"
@@ -55,6 +69,8 @@ PROTOCOLS = {
                     "about": "8 sentences that should fire and 8 near misses; held if >= 5 fire at >= 0.3 of the pole's corpus max and <= 1 near miss does"},
     "quick-8+8@2": {"rule": _quick_8_8_v2, "required": ["per_sentence"],
                     "about": "8 + 8 test judged on separation: AUROC >= 0.90, median fire >= 0.20 of max, at most 1 near miss >= 0.30"},
+    "quick-8+8@3": {"rule": _quick_8_8_v3, "required": ["per_sentence", "probed_before"],
+                    "about": "@2's rule on fresh sentences: more than 2 of the 16 scored before registration (probe log) makes the test exploratory"},
     "held-out@1": {"rule": _held_out_v1, "required": ["fire_rate_predicted_fire", "fire_rate_predicted_quiet"],
                    "about": "pre-registered held-out sentences with fire/quiet predictions, scored by fire rate at >= 0.3"},
     "auto-token@1": {"rule": _quick_8_8_v2, "required": ["per_sentence"],

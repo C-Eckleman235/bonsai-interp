@@ -89,8 +89,12 @@ it in order.
 
 ## 4. Doing the science well
 
-- **Explore with `play probe`.** It scores any sentences on a pole without recording anything:
-  `python -m bonsai_interp.graph.play probe --neuron <id> "sentence" …`. If you write your own
+- **Explore with `play probe`, then test with fresh sentences.** `play probe` scores any sentences on a
+  pole: `python -m bonsai_interp.graph.play probe --neuron <id> "sentence" …`. Use it to find the label.
+  Then write the test's 16 sentences **new, and do not score them before you commit**: a test built from
+  sentences whose results you already know only confirms what you saw. `play probe` keeps a local log
+  (`.probe-log/`), and `play run` records how many test sentences were scored before registration; more
+  than 2 makes the test **exploratory** (recorded, but neither a hold nor a fail, under quick-8+8@3). If you write your own
   scripts, run them from the repository root with `PYTHONPATH=.` so `bonsai_interp` imports.
 - **Start from the card.** `play card --neuron <id>` shows both poles' top examples, how dense the
   pole is, its sign regimes and the tokens its output promotes, and flags dense or positional units,
