@@ -1,0 +1,153 @@
+{
+ "id": "2026-10-19-moridinamael-380e3ecc",
+ "kind": "qc",
+ "neuron": "bonsai1/L10/N2499-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T16:59:51+00:00",
+ "recipe": {
+  "toolchain_commit": "d761b0a",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-380e3ecc.tests.json"
+ },
+ "label": "Weak, dense hum (11% of tokens above 0.1 of max) that is clearly stronger on clinical-psychology / psychiatric / talk-therapy text (psychotherapy, psychiatric symptoms, psychodynamic or interpersonal treatment, ECT, speech therapy); on top of that a smaller lexical bump on the words ' late' (strongest in 'too late', consistent with its 'too' and 'too ADJ to' feeders L0/N943+ and L5/N4199+) and ' talking'. Other feeder words (rain, ret-, bel-) do not carry through. Matched physical-medicine text stays near the base hum. This test checks the topic part only.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-380e3ecc.tests.json",
+   "prereg_commit": "d761b0a",
+   "author": "moridinamael",
+   "n_fire": 5,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.409,
+     "peak": " psychiatrist"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.826,
+     "peak": " analyst"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.779,
+     "peak": " auditory"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.265,
+     "peak": "ulsive"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.659,
+     "peak": " role"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.254,
+     "peak": " psychologist"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": -0.075,
+     "peak": "ognitive"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.519,
+     "peak": " deep"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.14,
+     "peak": " surgeon"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.204,
+     "peak": " valves"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.363,
+     "peak": " patches"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.104,
+     "peak": " is"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.126,
+     "peak": " strength"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.199,
+     "peak": "ars"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.276,
+     "peak": " keep"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.388,
+     "peak": " of"
+    }
+   ],
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.781,
+    "median_fire": 0.464,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "d761b0a",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Weak, dense hum that is somewhat stronger on clinical-psychology / talking-therapy text (psychotherapy, psychiatric symptoms, counselling sessions, psychodynamic or interpersonal treatment, ECT), the + pole's topic leaking through; lateness ('too late') adds little or nothing over matched text. Speech therapy also bumps it (solver)."
+ }
+}
