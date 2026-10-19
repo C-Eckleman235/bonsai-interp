@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-18-moridinamael-17340adf",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L16/N11909-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T02:23:25+00:00",
+ "neighbours": [
+  {
+   "unit": "L16/N11909",
+   "pole": "-",
+   "label": "opening quote of the key string passed to a configuration/parameter getter call (get_param(', environ.get(', getValue(', app.config.get( ')",
+   "short": "config-getter key quote",
+   "unit_kind": "context",
+   "confidence": "low",
+   "fire": [
+    "    base_url = ir_config.get_param('web.base.url')",
+    "    limit = int(params.get_param('stock.max_moves', default=10))",
+    "    token = icp.sudo().get_param('mail.api_token')",
+    "    secret = os.environ.get('SECRET_KEY', 'dev')",
+    "    region = os.environ.get('AWS_REGION')",
+    "    timeout = settings.getValue('Network/Timeout', 30)",
+    "    if not asbool( self.app.config.get( 'verbose', False ) ):",
+    "    delay = int(params.get_param('fleet.delay_alert', default=30))"
+   ],
+   "quiet": [
+    "    base_url = request.form.get('base_url')",
+    "    limit = int(row.get('max_moves', 10))",
+    "    token = 'mail.api_token'",
+    "    secret = options.get('SECRET_KEY', 'dev')",
+    "    print('AWS_REGION is not set')",
+    "    timeout = compute_timeout(network, 30)",
+    "    if not self.verbose:",
+    "    log.debug('fleet delay alert is 30')"
+   ]
+  }
+ ],
+ "predictions": "about 6/8 fire above 0.20 (get_param strongest), near misses at or below 0.15; low confidence because config.get('database', ...) and getint probed weak",
+ "notes": "Quick round from the live stream. Probing found get_param(' strongest (0.55-0.61), environ.get(' 0.20-0.33, getValue 0.17-0.27, and the same keys in request/row/options .get, print, log or assignment at or below 0.15. Some config getters (conf.lookup, parser.getint, config.get('database')) were weak, so the label is narrower than 'any config read'.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "quick-test"
+  ]
+ }
+}
