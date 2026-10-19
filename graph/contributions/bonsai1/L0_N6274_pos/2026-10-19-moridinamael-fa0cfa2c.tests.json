@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-19-moridinamael-fa0cfa2c",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N6274+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T17:53:11+00:00",
+ "roles": ["feeds bonsai1/L1/N1309-"],
+ "neighbours": [
+  {
+   "unit": "L0/N6274",
+   "pole": "+",
+   "label": "the token ' tan' (mid-sentence, lower-case) when the surrounding text is Spanish; English 'tan' alone is silent, but ' tan' after Spanish text fires whatever it means; weaker side triggers ' tales', ' ya', ' ampl', and ' gran' after 'una'",
+   "short": "' tan' in Spanish text",
+   "unit_kind": "token",
+   "confidence": "high",
+   "fire": [
+    "El examen no fue tan difícil como pensaba.",
+    "Nunca había visto una playa tan limpia en el sur.",
+    "Mi abuela cocina tan bien que todos repiten.",
+    "El café de esta mañana estaba tan caliente que me quemé.",
+    "Llegó tan tarde que la tienda había cerrado.",
+    "Los precios no son tan altos como el año pasado.",
+    "Es un pueblo tan tranquilo que nadie cierra la puerta.",
+    "Corría tan rápido que nadie pudo alcanzarlo."
+   ],
+   "quiet": [
+    "El examen no fue muy difícil como pensaba.",
+    "Nunca había visto una playa más limpia en el sur.",
+    "Mi abuela cocina muy bien y todos repiten.",
+    "El café de esta mañana estaba demasiado caliente y me quemé.",
+    "Llegó bastante tarde y la tienda había cerrado.",
+    "Los precios no son muy altos como el año pasado.",
+    "Es un pueblo tranquilo donde nadie cierra la puerta.",
+    "Corría tanto que nadie pudo alcanzarlo."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire, 0 near misses at 0.30",
+ "notes": "Step-out feeder of bonsai1/L1/N1309- (single-unit ablation drop 0.07; the larger feeder L0/N6779+ was already mapped). Sentences written by the agent on stream; chat was quiet this mission. Exploration: English 'a nice tan', 'tan colour', 'Mr Tan', Portuguese 'tão', Italian 'tanto' all under 0.06. Inverse solver (DE) found a leak: English 'Compute tan of the angle' fires 0.62 when placed after a Spanish sentence, so the gate is Spanish context, not the Spanish meaning; folded into the label. 'un gran' is silent (0.10) while 'una gran' fires 0.48.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "bank-solo",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
