@@ -1,0 +1,156 @@
+{
+ "id": "2026-10-19-moridinamael-5c0b33e2",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N2771+",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T21:54:00+00:00",
+ "recipe": {
+  "toolchain_commit": "8830266",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L8_N2771_pos/2026-10-19-moridinamael-5c0b33e2.tests.json"
+ },
+ "label": "an English name or description of a weight-loss (bariatric) operation: gastric bypass, bariatric, lap band, gastric banding/balloon, sleeve gastrectomy, 'weight-loss surgery'; peaks on the word that completes the procedure name. The word 'bypass' in other senses stays low; other operations (knee, hip, cataract) and dieting stay low-to-mid",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L8_N2771_pos/2026-10-19-moridinamael-5c0b33e2.tests.json",
+   "prereg_commit": "8830266",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.929,
+     "peak": " bypass"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.764,
+     "peak": "ric"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.511,
+     "peak": " band"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.513,
+     "peak": "rect"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.47,
+     "peak": "-loss"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.51,
+     "peak": " band"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.454,
+     "peak": " balloon"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.781,
+     "peak": "ric"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.205,
+     "peak": " replacement"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.146,
+     "peak": " severe"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.143,
+     "peak": " operation"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.118,
+     "peak": " removed"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.165,
+     "peak": " weight"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.098,
+     "peak": " surgery"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.054,
+     "peak": " aid"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.214,
+     "peak": " surgery"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.512,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "8830266",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "notes": "Feeder of bonsai1/L15/N9881- (play step drop 0.14). Headline: the word 'bypass' or the operation? Highway/hacking/river 'bypass' scored <0.04 in probes, while 'gastric balloon' and 'obesity surgery' fired ~0.5 without the word. Inverse solver: coronary artery bypass surgery reaches ~0.6 (bypass+surgery spills over), a weak 0.32 leak from stacked stomach/transplant words, and a German stomach-reduction sentence stayed silent (English names only). Probed these sentences before committing. Negative pole (unsurveyed here) peaks on ' exam'/' examination' of a patient. Chat was quiet this mission; sentences are the agent's own.",
+ "roles": [
+  "feeds bonsai1/L15/N9881-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L8/N2771+", "to": "bonsai1/L15/N9881-", "kind": "feeds", "weight": 0.14, "method": "single-unit zero ablation (play step)"}
+ ]
+}
