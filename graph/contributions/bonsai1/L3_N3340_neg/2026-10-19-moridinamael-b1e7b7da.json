@@ -1,0 +1,165 @@
+{
+ "id": "2026-10-19-moridinamael-b1e7b7da",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N3340-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T22:36:19+00:00",
+ "recipe": {
+  "toolchain_commit": "378c000",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L3_N3340_neg/2026-10-19-moridinamael-b1e7b7da.tests.json"
+ },
+ "label": "the word 'pass' itself in any meaning (pass, passed, passes, passing; hand over, go by, succeed, decline, die), but not 'pass' buried inside longer words like passport, compass, passive or trespass",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L3_N3340_neg/2026-10-19-moridinamael-b1e7b7da.tests.json",
+   "prereg_commit": "378c000",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.539,
+     "peak": " pass"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.454,
+     "peak": " passed"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.381,
+     "peak": " pass"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.614,
+     "peak": " pass"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.41,
+     "peak": " passed"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.135,
+     "peak": " pass"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.408,
+     "peak": " passes"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.425,
+     "peak": " passed"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.001,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.003,
+     "peak": " driving"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.003,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.001,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.009,
+     "peak": " cross"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.008,
+     "peak": " go"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.005,
+     "peak": " compass"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.417,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "378c000",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "notes": "Step-out feeder of bonsai1/L4/N10098+ (largest drop, 0.26). The + pole of this unit is weak (max 2.89) and 98% gate-closed echo; the - pole carries the 'pass' signal and fires on ' bypass' (~0.15). Inverse solver (DE) found no leak; code identifiers like walletpassphrase can fire via the 'ass' token.",
+ "roles": [
+  "feeds bonsai1/L4/N10098+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L3/N3340-",
+   "to": "bonsai1/L4/N10098+",
+   "kind": "feeds",
+   "weight": 0.26,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
