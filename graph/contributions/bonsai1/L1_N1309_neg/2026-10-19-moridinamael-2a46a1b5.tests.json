@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-19-moridinamael-2a46a1b5",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N1309-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T17:29:26+00:00",
+ "roles": ["feeds bonsai1/L3/N3250-"],
+ "neighbours": [
+  {
+   "unit": "L1/N1309",
+   "pole": "-",
+   "label": "the Romance degree words trop / troppo / demasiado ('too') and Spanish muy / tan ('very', 'so'), as words: 'tan' also fires in 'tan pronto' (as soon as); très, molto and muito are weaker (about 0.2); 'too' in English, German 'zu' and Russian 'слишком' are silent, as are assez / bastante / beaucoup; separate leak: Russian 'Ты' (you) fires about 0.66",
+   "short": "Romance 'too/very' words (trop, troppo, demasiado, muy, tan)",
+   "confidence": "medium",
+   "notes": "Stepped out from bonsai1/L3/N3250- (English excess 'too'): this L1 unit carries the Romance-language counterpart. Near misses keep each sentence and swap the degree word for a mild one (assez, beaucoup, abbastanza, un poco, bastante) or drop it. Inverse solver (differential evolution over a 43-sentence bank) found the Russian 'Ты' leak and 'tan pronto' as the near-miss ceiling.",
+   "fire": [
+    "Ce café est trop chaud pour moi.",
+    "Elle a trop travaillé cette semaine.",
+    "Questo vestito è troppo stretto.",
+    "La sopa está demasiado salada.",
+    "O carro é demasiado caro.",
+    "Mi abuela es muy amable con todos.",
+    "Nunca había visto un cielo tan azul.",
+    "Este examen fue muy difícil."
+   ],
+   "quiet": [
+    "Ce café est assez chaud pour moi.",
+    "Elle a beaucoup travaillé cette semaine.",
+    "Questo vestito è abbastanza stretto.",
+    "La sopa está un poco salada.",
+    "O carro é bastante caro.",
+    "Mi abuela es amable con todos.",
+    "Nunca había visto un cielo azul así.",
+    "Este examen fue difícil."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire above 0.2, 0 near misses above 0.3; AUROC 1.0",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-out",
+   "card",
+   "probe",
+   "inverse-de",
+   "bank-solo"
+  ]
+ }
+}
