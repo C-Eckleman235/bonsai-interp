@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-19-moridinamael-f3692f52",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N8049+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T15:42:52+00:00",
+ "roles": ["feeds bonsai1/L1/N362+"],
+ "neighbours": [
+  {
+   "unit": "L0/N8049",
+   "pole": "+",
+   "label": "the word tokens ' distract' (strongest), ' attract' and ' retract': spelling, not meaning; synonyms (divert, draw, withdraw) and other -tract words (' extract', ' contract', ' abstract', ' subtract') stay low",
+   "short": "the words 'distract', 'attract', 'retract'",
+   "unit_kind": "token detector",
+   "confidence": "high",
+   "fire": [
+    "Loud music can distract students during exams.",
+    "Please don't distract the driver while she parks.",
+    "Small details distract readers from the main argument.",
+    "Bright colors attract bees to the garden.",
+    "Strong magnets attract iron nails easily.",
+    "Big sales attract crowds to the mall every weekend.",
+    "The senator had to retract his statement on Friday.",
+    "The editor asked the paper to retract the claim."
+   ],
+   "quiet": [
+    "Loud music can annoy students during exams.",
+    "Please don't bother the driver while she parks.",
+    "Small details pull readers away from the main argument.",
+    "Bright colors draw bees to the garden.",
+    "Big sales bring crowds to the mall every weekend.",
+    "The senator had to withdraw his statement on Friday.",
+    "The editor asked the lab to extract the sample.",
+    "The firm will contract the work to a builder."
+   ],
+   "notes": "Strongest feeder of bonsai1/L1/N362+, drop 0.20 by single-unit zero ablation. Card: ' distract' x22 and ' attract' x5 of the top 32. Meaning without the word stays silent (divert/sidetrack/drew focus <= 0.06), while the bare word in a meta sentence ('The word distract has eight letters') hits 0.97. Split spellings ('Subtract', 'Protract' -> 'tract') reach about 0.4, and ' tractor' 0.32, but the whole token ' subtract' is only 0.17. Near misses are twins with a synonym or a look-alike -tract word swapped in. The inverse solver crashed (JSON int64 serialization error), so there was no leak search. Chat was quiet; house picks."
+  }
+ ],
+ "predictions": "8/8 fire (distract ~0.9, attract ~0.6, retract ~0.47); 0 near misses above 0.1",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "step-out"
+  ]
+ }
+}
