@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-19-moridinamael-ec0742f0",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N11028-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T14:30:23+00:00",
+ "roles": ["feeds bonsai1/L6/N8567+"],
+ "neighbours": [
+  {
+   "unit": "L4/N11028",
+   "pole": "-",
+   "label": "The English token 'late'/'Late' itself, in any sense (late grandfather, late show, late 1800s, Late fees, running late), strongest as a modifier before a noun or time phrase; not later/latest, not words containing 'late' (translate, chocolate), not lateness without the word (delayed, tardy)",
+   "short": "the word 'late' (any sense)",
+   "unit_kind": "token",
+   "confidence": "high",
+   "fire": [
+    "My late grandfather built this house by hand.",
+    "The late show starts right after the news.",
+    "Late fees apply if you return the book after Friday.",
+    "In the late eighteenth century, the canal was dug.",
+    "We stayed up late talking about old friends.",
+    "Late on Tuesday, the senator announced her decision.",
+    "The bus was late again, so I walked to work.",
+    "The late afternoon light filled the kitchen."
+   ],
+   "quiet": [
+    "My dear grandfather built this house by hand.",
+    "The night show starts right after the news.",
+    "Extra fees apply if you return the book after Friday.",
+    "In the early eighteenth century, the canal was dug.",
+    "We stayed up talking about old friends until dawn.",
+    "Later on Tuesday, the senator announced her decision.",
+    "The bus was delayed again, so I walked to work.",
+    "The golden afternoon light filled the kitchen."
+   ],
+   "notes": "Feeder of the multilingual lateness unit L6/N8567+ (play step drop 0.08). Probes: attributive 'late' 0.6-0.9, predicative 'late' ~0.25, 'never too late' only 0.01 (weak after 'too'); 'latte'/'Lately' also fire (0.7/0.3); 'later', 'latest', 'tardy', 'delayed', 'en retard' silent. Inverse solver round crashed (toolchain JSON error), so no leak search."
+  }
+ ],
+ "predictions": "8/8 fire above 0.20 (the predicative ones near 0.25), 0 near misses above 0.30; 'Later on Tuesday' highest near miss around 0.04",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
