@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-19-moridinamael-de798e72",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N5893-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-19T23:44:06+00:00",
+ "roles": ["feeds bonsai1/L1/N10972-"],
+ "neighbours": [
+  {
+   "unit": "L0/N5893",
+   "pole": "-",
+   "label": "the 'er'/'ers' piece right after a word-starting 'pass' in passer / passers / passersby / passerine, in any sense (football passer, people walking by, songbirds); not 'pass', 'passing', 'passed', 'passenger' or 'passport'",
+   "short": "pass+er(s): passer, passersby, passerine",
+   "unit_kind": "token",
+   "fire": [
+    "The quarterback is the best passer in the league this season.",
+    "Passersby stopped to watch the street musician.",
+    "A passer on the sidewalk picked up the dropped wallet.",
+    "Sparrows and finches are both passerine birds.",
+    "Several passers-by called for an ambulance.",
+    "She was known as a gifted passer of the ball in midfield.",
+    "The mural caught the eye of every passerby on the corner.",
+    "Ornithologists counted dozens of passerines at the feeder."
+   ],
+   "quiet": [
+    "The trespasser was fined.",
+    "The passing car honked twice.",
+    "The quarterback can pass the ball better than anyone in the league this season.",
+    "People walking by stopped to watch the street musician.",
+    "A pedestrian on the sidewalk picked up the dropped wallet.",
+    "Sparrows and finches are both perching songbirds.",
+    "Several people passing by called for an ambulance.",
+    "She was known for her passing of the ball in midfield."
+   ],
+   "notes": "Test sentences written blind by a second author who saw only the label (letsplay stream). Probing: prose ' pass', 'passing', 'passed', 'passenger', 'passport', 'passive', 'trespasser' all stayed under 0.07; 'passable'/'passably' fired 0.30-0.37 on the suffix piece (left out of the label as weaker). Corpus top examples are dominated by Python 'pass' statements and one 'Passover', which short probes did not reproduce (context/tokenization dependent); the inverse-DE solver flagged a leak on 'passing'/'pass' text that the resident probe scorer did not reproduce."
+  }
+ ],
+ "predictions": "8/8 fire above 0.3; near misses under 0.1",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-out",
+   "card",
+   "probe",
+   "bank-solo",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
