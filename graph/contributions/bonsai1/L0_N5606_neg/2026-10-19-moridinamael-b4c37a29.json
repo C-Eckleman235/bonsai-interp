@@ -1,0 +1,154 @@
+{
+ "id": "2026-10-19-moridinamael-b4c37a29",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N5606-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T17:05:40+00:00",
+ "recipe": {
+  "toolchain_commit": "23237d8",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N5606_neg/2026-10-19-moridinamael-b4c37a29.tests.json"
+ },
+ "label": "English name of a European country, as a whole-word token (strongest for central/eastern European and Benelux/Alpine countries: Slovenia, Lithuania, Croatia, Estonia, Romania, Belgium, Austria); non-European country names in the same frame stay low (India, Australia, Canada, Japan, Brazil under 0.15)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L0_N5606_neg/2026-10-19-moridinamael-b4c37a29.tests.json",
+   "prereg_commit": "23237d8",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.76,
+     "peak": " Slovenia"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.688,
+     "peak": " Lithuania"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.732,
+     "peak": " Croatia"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.542,
+     "peak": " Serbia"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.649,
+     "peak": " Romania"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.574,
+     "peak": " Austria"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.634,
+     "peak": " Belgium"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.688,
+     "peak": " Estonia"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.041,
+     "peak": " India"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.058,
+     "peak": " Australia"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.129,
+     "peak": " Japan"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.14,
+     "peak": " Brazil"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.207,
+     "peak": " Nepal"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.075,
+     "peak": " Canada"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.068,
+     "peak": " Mexico"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.255,
+     "peak": " Cambodia"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.668,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "23237d8",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L3/N5852+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L0/N5606-", "to": "bonsai1/L3/N5852+", "kind": "feeds", "weight": 0.05, "method": "single-unit zero ablation (play step)"}
+ ]
+}
