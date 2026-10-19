@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-18-moridinamael-38a75d74",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N9235+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T03:31:11+00:00",
+ "neighbours": [
+  {
+   "unit": "L0/N9235",
+   "pole": "+",
+   "label": "the word-piece token 'eno' / 'ena' / 'enos' inside a split word (ven|eno, ser|eno, hy|ena, Hel|ena), regardless of meaning",
+   "short": "word-piece 'eno/ena'",
+   "unit_kind": "token / subword",
+   "confidence": "medium",
+   "notes": "Word level: the venom meaning alone (toxina, poison) stays near 0.05, and whole-word tokens (moreno, bueno, phenomena) are silent; the piece fires in unrelated words (sereno, Helena, hyena, verbena). Strongest after 'ven' (veneno ~0.9-1.0). English ' venom' reaches ~0.3, which likely explains the feed into L4/N11070-. Near misses swap only the eno/ena word. Label chosen in a Twitch chat vote (stream); sentences written by the agent.",
+   "fire": [
+    "La serpiente tiene un veneno muy fuerte.",
+    "Las arañas venenosas viven aquí.",
+    "Es un hombre sereno.",
+    "Helena walked to the market.",
+    "The hyena laughed at night.",
+    "She made tea from lemon verbena leaves.",
+    "El escorpión es venenoso.",
+    "Adenosine is a nucleoside."
+   ],
+   "quiet": [
+    "La serpiente tiene una toxina muy fuerte.",
+    "Las arañas peligrosas viven aquí.",
+    "Es un hombre tranquilo.",
+    "Sarah walked to the market.",
+    "The jackal laughed at night.",
+    "She made tea from lemon balm leaves.",
+    "El escorpión es peligroso.",
+    "Guanosine is a nucleoside."
+   ]
+  }
+ ],
+ "roles": [
+  "feeds bonsai1/L4/N11070-"
+ ],
+ "predictions": "8/8 fire, 0 near misses above 0.30 (sentences were probed before pre-registration)",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-out",
+   "card",
+   "look",
+   "bands",
+   "probe",
+   "quick-test"
+  ]
+ }
+}
