@@ -102,6 +102,8 @@ def draw(a):
         paths = new(a)
         lst = ROOT / ".sweep" / "latest.txt"  # gitignored; the list survives long output and later steps
         lst.parent.mkdir(exist_ok=True)
+        for old in ("plan.json", "probe.json", "table.md"):  # a fresh sweep never inherits the last one's plans
+            (lst.parent / old).unlink(missing_ok=True)
         lst.write_text("\n".join(paths) + "\n", encoding="utf-8", newline="\n")
         print(f"the {len(paths)} tests files are listed in .sweep/latest.txt (git add --pathspec-from-file=.sweep/latest.txt; play run --list .sweep/latest.txt)")
 
@@ -387,10 +389,10 @@ def main():
     r.add_argument("--author", help="only when the SENTENCES came from someone else, e.g. 'bonsai' when the model wrote them or 'twitch-chat'; "
                    "who did the work goes in the tests file's methods.agent, not here")
     fl = sub.add_parser("fill", help="fill the drawn tests files from one JSON plan (LF endings; checks the keys)")
-    fl.add_argument("--plan", required=True, help='{"<pole id>": {"label": ..., "fire": [8], "quiet": [8], "short"/"unit_kind"/"confidence"/"notes": ...}}')
+    fl.add_argument("--plan", default=".sweep/plan.json", help='{"<pole id>": {"label": ..., "fire": [8], "quiet": [8], "short"/"unit_kind"/"confidence"/"notes": ...}}')
     fl.add_argument("--list", default=".sweep/latest.txt", help="the tests files (default: the last play draw)")
     fl.add_argument("--agent", help="methods.agent for every file, e.g. 'claude-code opus-5.5'")
-    fl.add_argument("--screens", default="card,look", help="methods.screens for every file (comma-separated); a plan entry's own 'screens' wins")
+    fl.add_argument("--screens", default="card", help="what you actually used, comma-separated (card, probe, look, bands, ...); a plan entry's own 'screens' wins")
     pb = sub.add_parser("prbody", help="write the PR body for this branch to .pr/<branch>.md (sweep: with the last run's table)")
     pb.add_argument("--kind", choices=["sweep", "interpret", "qc"], help="default: from the branch name")
     dr = sub.add_parser("draw", help="k random poles with no record yet (for a sweep)")
