@@ -1,0 +1,163 @@
+{
+ "id": "2026-10-19-moridinamael-df64b1b1",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N7862-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T21:46:51+00:00",
+ "recipe": {
+  "toolchain_commit": "efdfd09",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L27_N7862_neg/2026-10-19-moridinamael-df64b1b1.tests.json"
+ },
+ "label": "Re-typing a long multi-piece identifier that was already written earlier in the same code (fires on its opening piece as the copy starts, in a call, condition, return or assignment); the same spot with a fresh name or a literal stays low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L27_N7862_neg/2026-10-19-moridinamael-df64b1b1.tests.json",
+   "prereg_commit": "efdfd09",
+   "author": "moridinamael",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.016,
+     "peak": "()\n"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.02,
+     "peak": " len"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.018,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.026,
+     "peak": " tries"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.036,
+     "peak": "(total"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.058,
+     "peak": " chunk"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.024,
+     "peak": "_path"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.019,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.015,
+     "peak": "()\n"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.02,
+     "peak": " len"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.015,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.024,
+     "peak": " tries"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.016,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.014,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.015,
+     "peak": " upload"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.018,
+     "peak": "   "
+    }
+   ],
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.844,
+    "median_fire": 0.022,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bands",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bands",
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "efdfd09",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "notes": "Step-in reader of bonsai1/L26/N9961+ (keyword-per-line copies of one object's fields), drop 0.37 under zero ablation. Exploration: plain repeated prose (English made-up words, 'The cat sat on the mat' twice) stayed under 0.04, so this is not a general repeat detector; the inverse solver found a leak on a repeated Chinese sentence (0.37-0.55 at its second copy), and cluttered contexts dampen the code effect. Some fire sentences were seen in probing before pre-registration. Chat was quiet this round; all sentences are the agent's own.",
+ "roles": [
+  "reads bonsai1/L26/N9961+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L26/N9961+",
+   "to": "bonsai1/L27/N7862-",
+   "kind": "feeds",
+   "weight": 0.37,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}

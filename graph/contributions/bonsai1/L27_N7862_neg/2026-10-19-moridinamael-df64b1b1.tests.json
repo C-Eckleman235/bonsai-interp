@@ -1,0 +1,45 @@
+{
+ "contribution": "2026-10-19-moridinamael-df64b1b1",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N7862-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T21:45:57+00:00",
+ "roles": ["reads bonsai1/L26/N9961+"],
+ "neighbours": [
+  {
+   "unit": "L27/N7862",
+   "pole": "-",
+   "label": "Re-typing a long multi-piece identifier that was already written earlier in the same code (fires on its opening piece as the copy starts, in a call, condition, return or assignment); the same spot with a fresh name or a literal stays low",
+   "short": "re-typing an earlier long code name",
+   "unit_kind": "context",
+   "confidence": "low",
+   "fire": [
+    "request_payload_data = load()\nsend(request_payload_data)",
+    "chunk_runner_cmd = build()\nif cut >= len(chunk_runner_cmd):\n    pass",
+    "chunk_runner_cmd = build()\nif chunk_runner_cmd:\n    pass",
+    "max_retry_attempts = 3\nwhile tries < max_retry_attempts:\n    tries += 1",
+    "total_swap_memory_bytes = 5\nprint(total_swap_memory_bytes)",
+    "chunk_runner_cmd = build()\nreturn chunk_runner_cmd",
+    "def save(self, upload_file_path):\n    os.remove(upload_file_path)",
+    "def handle(self, request_payload_data):\n    result = parse(request_payload_data)"
+   ],
+   "quiet": [
+    "request_payload_data = load()\nsend(response_header_info)",
+    "chunk_runner_cmd = build()\nif cut >= len(other_value):\n    pass",
+    "chunk_runner_cmd = build()\nif ready:\n    pass",
+    "max_retry_attempts = 3\nwhile tries < limit:\n    tries += 1",
+    "x = 5\nprint(total_swap_memory_bytes)",
+    "chunk_runner_cmd = build()\nreturn result_value",
+    "def save(self, upload):\n    os.remove(temp_dir)",
+    "def handle(self, request):\n    result = parse(request_payload_data)"
+   ]
+  }
+ ],
+ "predictions": "AUROC likely passes (fresh names mostly under 0.12); the median fire sentence is borderline around 0.19-0.20, so the magnitude bar may fail. Expect 0 near misses at 0.30.",
+ "notes": "Step-in reader of bonsai1/L26/N9961+ (keyword-per-line copies of one object's fields), drop 0.37 under zero ablation. Exploration: plain repeated prose (English made-up words, 'The cat sat on the mat' twice) stayed under 0.04, so this is not a general repeat detector; the inverse solver found a leak on a repeated Chinese sentence (0.37-0.55 at its second copy), and cluttered contexts dampen the code effect. Some fire sentences were seen in probing before pre-registration. Chat was quiet this round; all sentences are the agent's own.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["step-down", "card", "look", "bands", "probe", "inverse-de", "quick-test"]
+ }
+}
