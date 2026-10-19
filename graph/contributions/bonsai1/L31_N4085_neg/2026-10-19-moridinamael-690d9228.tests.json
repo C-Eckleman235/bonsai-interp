@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-19-moridinamael-690d9228",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N4085-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-19T23:37:54+00:00",
+ "roles": ["reads bonsai1/L29/N8721-"],
+ "neighbours": [
+  {
+   "unit": "L31/N4085",
+   "pole": "-",
+   "label": "In a line of program code, the '=' that assigns a value to a variable or attribute (and the start of the value right after it); maths equations, '==' comparisons and plain-English prose describing the same code stay low",
+   "fire": [
+    "count = 0",
+    "self.name = name",
+    "total_price = quantity * unit_cost",
+    "let greeting = \"Hello, world\";",
+    "const MAX_RETRIES = 5;",
+    "user.email = form.get('email')",
+    "int index = list.size() - 1;",
+    "config[\"timeout\"] = 30"
+   ],
+   "quiet": [
+    "SELECT * FROM users WHERE id = 5",
+    "Люди вокруг стояли так плотно, словно в битком набитом поезде.",
+    "if count == 0:",
+    "We set the counter to zero before the loop starts.",
+    "The total price equals the quantity times the unit cost.",
+    "if (greeting === \"Hello, world\") {",
+    "In the equation 2x + 3 = 11, the value of x is 4.",
+    "assert user.email == form.get('email')"
+   ],
+   "unit_kind": "broad",
+   "confidence": "low",
+   "notes": "Test sentences written blind by a second author who saw only the label. The pole's corpus top examples are long Spanish/Russian/Korean prose (peaks on 'están', 'y', 'и', 'estaba'), but those sentences alone score ~0.01 on the resident scorer, so they depend on preceding document context. In short probes, code assignments reached 0.10-0.25 of max and prose stayed near 0, matching the feeder bonsai1/L29/N8721- (step --down drop 0.09)."
+  }
+ ],
+ "predictions": "Close call: code assignments probed at 0.10-0.25, so the 0.20 median may fail even if the ranking holds.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "step-down",
+   "inverse-de"
+  ]
+ }
+}
