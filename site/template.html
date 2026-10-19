@@ -57,7 +57,7 @@ canvas#map { display: block; width: 100%; min-width: 620px; height: auto; cursor
 .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.78rem; color: var(--ink-2); margin-top: 10px; }
 .legend i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; vertical-align: 0; }
 .hint { font-size: 0.8rem; color: var(--ink-3); margin-top: 6px; }
-.tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--paper); font: 0.74rem/1.4 var(--mono); padding: 6px 8px; border-radius: 3px; max-width: 280px; transform: translate(-50%, calc(-100% - 12px)); z-index: 3; }
+.tip { position: fixed; pointer-events: none; background: var(--ink); color: var(--paper); font: 0.74rem/1.4 var(--mono); padding: 6px 8px; border-radius: 3px; max-width: min(280px, calc(100vw - 16px)); z-index: 30; }
 
 .desk { display: flex; flex-direction: column; gap: 14px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); }
 .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -270,7 +270,17 @@ td.n { font-family: var(--mono); text-align: right; }
 
   // map
   const cv = document.getElementById("map"), ctx = cv.getContext("2d"), tip = document.createElement("div");
-  tip.className = "tip"; tip.hidden = true; document.getElementById("mapwrap").appendChild(tip);
+  tip.className = "tip"; tip.hidden = true; document.body.appendChild(tip);
+  // tooltips are fixed to the window (the map's scroll box would clip them): above the cursor, below it when there is
+  // no room above, and always clamped inside the window
+  function placeTip(t, ev) {
+    t.hidden = false;
+    const w = t.offsetWidth, h = t.offsetHeight, pad = 8;
+    let x = ev.clientX - w / 2, y = ev.clientY - h - 12;
+    if (y < pad) y = ev.clientY + 18;
+    t.style.left = Math.max(pad, Math.min(x, window.innerWidth - w - pad)) + "px";
+    t.style.top = Math.max(pad, Math.min(y, window.innerHeight - h - pad)) + "px";
+  }
   const W = cv.width, H = cv.height, mL = 44, mR = 12, mT = 14, mB = 26, rowH = (H - mT - mB) / L_N;
   const xOf = n => mL + (n + 0.5) / N_N * (W - mL - mR), yOf = (L, pole) => mT + (L + (pole === "+" ? 0.32 : 0.68)) * rowH;
   function draw(sel) {
@@ -312,8 +322,8 @@ td.n { font-family: var(--mono); text-align: right; }
     return { L, n: Math.max(0, Math.min(N_N - 1, n)), pole, near, px: (ev.clientX - b.left), py: (ev.clientY - b.top), ok: L >= 0 && L < L_N && x >= mL }; };
   cv.addEventListener("mousemove", ev => { const p = at(ev); if (!p.ok) { tip.hidden = true; return; }
     document.getElementById("cursor").textContent = `L${p.L} · N${p.n} · ${p.pole === "+" ? "+ pole" : "− pole"}`;
-    if (p.near) { tip.hidden = false; tip.style.left = p.px + "px"; tip.style.top = p.py + "px";
-      tip.innerHTML = `${esc(p.near.id)} · ${esc(p.near.status)} · scrutiny ${lvl(p.near)}<br>${esc(p.near.short || p.near.label || "")}`; } else tip.hidden = true; });
+    if (p.near) { tip.innerHTML = `${esc(p.near.id)} · ${esc(p.near.status)} · scrutiny ${lvl(p.near)}<br>${esc(p.near.short || p.near.label || "")}`;
+      placeTip(tip, ev); } else tip.hidden = true; });
   cv.addEventListener("mouseleave", () => { tip.hidden = true; });
   cv.addEventListener("click", ev => { const p = at(ev); if (!p.ok) return;
     if (p.near) openNeuron(p.near.L, p.near.n, p.near.pole); else openBlock(p.L, Math.floor(p.n / BLK)); });
@@ -334,7 +344,7 @@ td.n { font-family: var(--mono); text-align: right; }
     if (g.dataset.go === "map") { view = { level: "map" }; show("map"); draw(); } else openBlock(view.L, view.b); });
 
   const bc = document.getElementById("block"), bx = bc.getContext("2d"), btip = document.createElement("div");
-  btip.className = "tip"; btip.hidden = true; document.getElementById("blockwrap").appendChild(btip);
+  btip.className = "tip"; btip.hidden = true; document.body.appendChild(btip);
   const BW = bc.width, BH = bc.height, bmL = 56, bmR = 8, bmT = 8, bmB = 22, cw = (BW - bmL - bmR) / COLS, ch = (BH - bmT - bmB) / ROWS;
   function openBlock(L, b) {
     L = Math.max(0, Math.min(L_N - 1, L)); b = Math.max(0, Math.min(N_N / BLK - 1, b));
@@ -366,9 +376,11 @@ td.n { font-family: var(--mono); text-align: right; }
     const col = Math.floor((x - bmL) / cw), row = Math.floor((y - bmT) / ch); if (col < 0 || col >= COLS || row < 0 || row >= ROWS) return null;
     return { n: view.b * BLK + row * COLS + col, pole: (y - bmT - row * ch) < ch / 2 ? "+" : "-", px: ev.clientX - r.left, py: ev.clientY - r.top }; };
   bc.addEventListener("mousemove", ev => { const h = bat(ev); if (!h) { btip.hidden = true; return; }
-    const r = byId[`bonsai1/L${view.L}/N${h.n}${h.pole}`]; btip.hidden = false; btip.style.left = h.px + "px"; btip.style.top = h.py + "px";
-    btip.innerHTML = `L${view.L}/N${h.n}${h.pole === "+" ? "+" : "−"} · ${r ? esc(r.status) + "<br>" + esc(r.short || r.label || "") : "unsurveyed"}`; });
+    const r = byId[`bonsai1/L${view.L}/N${h.n}${h.pole}`];
+    btip.innerHTML = `L${view.L}/N${h.n}${h.pole === "+" ? "+" : "−"} · ${r ? esc(r.status) + "<br>" + esc(r.short || r.label || "") : "unsurveyed"}`;
+    placeTip(btip, ev); });
   bc.addEventListener("mouseleave", () => { btip.hidden = true; });
+  window.addEventListener("scroll", () => { tip.hidden = true; btip.hidden = true; }, { passive: true });
   bc.addEventListener("click", ev => { const h = bat(ev); if (h) openNeuron(view.L, h.n, h.pole); });
   document.getElementById("found").addEventListener("click", ev => { const t = ev.target.closest("[data-n]"); if (t) openNeuron(view.L, +t.dataset.n, t.dataset.pole); });
   document.getElementById("bprev").onclick = () => openBlock(view.L, view.b - 1);
