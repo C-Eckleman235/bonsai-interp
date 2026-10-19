@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-19-moridinamael-e6525499",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N3250-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T17:11:34+00:00",
+ "roles": ["feeds bonsai1/L5/N4199+"],
+ "neighbours": [
+  {
+   "unit": "L3/N3250",
+   "pole": "-",
+   "label": "the English word ' too' in its excess-degree sense (too hot, far too cold, too young to), read from left context such as is/was/far/way; ' too' meaning 'also' stays weak (about 0.1-0.4, highest after motion verbs like 'came too'), and excess said without 'too' (overly, excessively, so ... that, not ... enough, German 'zu') is silent",
+   "short": "excess-degree ' too' (too hot), not 'too' = also",
+   "fire": [
+    "The box was too heavy to lift.",
+    "The soup is too hot to eat right now.",
+    "The shoes were too small, so I returned them.",
+    "It was far too cold outside for a walk.",
+    "That price is way too high for us.",
+    "The test was too difficult for most students.",
+    "The kids are too young to watch that film.",
+    "By the time we arrived it was too late to buy tickets."
+   ],
+   "quiet": [
+    "The box was heavy, and the bag was heavy too.",
+    "The soup is hot, and the bread is warm too.",
+    "The shoes were so small that I returned them.",
+    "It was cold outside, and it was windy too.",
+    "That price is excessively high for us.",
+    "The test was hard for the teachers too.",
+    "The kids are not old enough to watch that film.",
+    "By the time we arrived, our friends had come too."
+   ],
+   "confidence": "high",
+   "notes": "Step-out feeder of bonsai1/L5/N4199+ (zero-ablation drop 0.20). Near misses mix 'too' = also (same word, other sense) with excess said without 'too'. 'our friends had come too' is a deliberately hard near miss (probed about 0.4 beforehand). Inverse solver (globalMOO) found no leak; its silent on-concept text was German 'zu kalt' and 'excessively heavy', so the label is limited to the English word. Chat was quiet this mission, so the sentences are my own."
+  }
+ ],
+ "predictions": "8/8 fire at 0.6 or more; near misses mostly at or below 0.25, with 'had come too' the one near miss above 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "step-out",
+   "inverse-gmoo"
+  ]
+ }
+}
