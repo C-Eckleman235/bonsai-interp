@@ -1,0 +1,145 @@
+{
+ "id": "2026-10-18-moridinamael-5f80",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N1626-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T00:04:11+00:00",
+ "recipe": {
+  "toolchain_commit": "155217c",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N1626_neg/2026-10-18-moridinamael-5f80.tests.json"
+ },
+ "label": "Russian adjective ending '-ой' (достойный, правой, игровой) and similar inflection pieces; weak and broad",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L0_N1626_neg/2026-10-18-moridinamael-5f80.tests.json",
+   "prereg_commit": "155217c",
+   "author": "moridinamael",
+   "n_fire": 5,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.022,
+     "peak": "ой"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.898,
+     "peak": "ой"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 1.052,
+     "peak": "ой"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 1.047,
+     "peak": "ой"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.073,
+     "peak": "аж"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.074,
+     "peak": " рек"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.318,
+     "peak": "ой"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.209,
+     "peak": " другой"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.111,
+     "peak": "раж"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.154,
+     "peak": "аж"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.365,
+     "peak": "ее"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.078,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.073,
+     "peak": "аж"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.088,
+     "peak": " рек"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.209,
+     "peak": "но"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.063,
+     "peak": " вечер"
+    }
+   ],
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.766,
+    "median_fire": 0.608,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "155217c",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "Russian -ой ending (broad)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Card flags broad (5.8% of tokens > 0.1 max) and gate-closed regime dominant (85%); max only 0.35. Test of best guess; expected to fail on density."
+}
