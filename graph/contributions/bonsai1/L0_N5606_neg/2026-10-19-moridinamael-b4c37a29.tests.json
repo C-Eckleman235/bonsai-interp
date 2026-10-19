@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-19-moridinamael-b4c37a29",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N5606-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T17:04:56+00:00",
+ "roles": ["feeds bonsai1/L3/N5852+"],
+ "neighbours": [
+  {
+   "unit": "L0/N5606",
+   "pole": "-",
+   "label": "English name of a European country, as a whole-word token (strongest for central/eastern European and Benelux/Alpine countries: Slovenia, Lithuania, Croatia, Estonia, Romania, Belgium, Austria); non-European country names in the same frame stay low (India, Australia, Canada, Japan, Brazil under 0.15)",
+   "short": "European country name",
+   "fire": [
+    "My grandmother was born in a small village in Slovenia.",
+    "The basketball team flew home from Lithuania on Sunday.",
+    "Our tour guide grew up on the coast of Croatia.",
+    "The new trade agreement was signed in Serbia last spring.",
+    "They spent their honeymoon in the mountains of Romania.",
+    "The orchestra toured Austria for three weeks.",
+    "He works for a chocolate company in Belgium.",
+    "The ferry from Helsinki arrives in Estonia by noon."
+   ],
+   "quiet": [
+    "My grandmother was born in a small village in India.",
+    "The basketball team flew home from Australia on Sunday.",
+    "Our tour guide grew up on the coast of Japan.",
+    "The new trade agreement was signed in Brazil last spring.",
+    "They spent their honeymoon in the mountains of Nepal.",
+    "The orchestra toured Canada for three weeks.",
+    "He works for a chocolate company in Mexico.",
+    "The ferry from Bangkok arrives in Cambodia by noon."
+   ],
+   "unit_kind": "token / word class",
+   "confidence": "medium",
+   "notes": "Graded rather than binary: big western European names fire weaker (France 0.14, Germany 0.28) and some Latin American names fire mid (Colombia 0.53, Bolivia 0.31). Demonyms can fire (Croatian 0.64); non-English names stay quiet (German 'Polen' 0.07). European cities are weak (Vienna 0.22, Zagreb 0.27). The + pole is a broad, weak suffix pole (-ica/-ia/-able), not tested."
+  }
+ ],
+ "predictions": "8/8 fire above 0.5, 0 near misses above 0.30 (Cambodia and Nepal the closest, about 0.2-0.25)",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-out",
+   "card",
+   "probe",
+   "inverse-de",
+   "bank-solo"
+  ]
+ }
+}
