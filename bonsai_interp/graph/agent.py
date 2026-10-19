@@ -198,6 +198,7 @@ def brief(a):
         if a.kind == "step":
             out += [f"Stepping out from {nid} ({(rec or {}).get('short') or (rec or {}).get('label') or 'see its record'}).",
                     f"0. Find its strongest feeders: {py} -m bonsai_interp.graph.play step --neuron {nid}",
+                    f"   (or its readers, downstream: add --down; then the edge goes from {nid} to TARGET)",
                     "   Choose one that has NO record in graph/index.json yet (prefer the largest drop). Call it TARGET (full id with pole, e.g. bonsai1/L8/N1234+).",
                     "   Do every step below for TARGET instead of the original neuron, and in the tests file add",
                     f'   "roles": ["feeds {nid}"]. After `play run`, add to the results file an edge',

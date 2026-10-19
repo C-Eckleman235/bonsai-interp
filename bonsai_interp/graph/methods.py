@@ -24,6 +24,7 @@ SCREENS = {
     "quick-test": "pre-registered 8 + 8 sentence test (quick-8+8)",
     "second-round": "a further labelling round after a failed test",
     "step-out": "strongest feeders by attribution + single-unit zeroing (play step), edges recorded",
+    "step-down": "readers: later poles that lose activation in this pole's contexts when it is zeroed (play step --down), edges recorded",
     "bank-solo": "sentence bank with competing hypotheses, dose-response (probe.run solo)",
     "held-out": "pre-registered held-out set (held-out protocol)",
     "inverse-de": "text-level inverse with SciPy differential evolution (probe.run invert --solver de)",

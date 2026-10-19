@@ -302,6 +302,18 @@ def step(a):
     m = NEURON.match(a.neuron)
     limit_memory(0.8)
     model, tok, rec = load(m["model"])
+    if getattr(a, "down", False):
+        from bonsai_interp.probe.quick import one_forward
+        readers = one_forward(model, rec, int(m["L"]), int(m["n"]), 0 if m["pole"] == "+" else 1, k_show=a.k, k_cand=a.candidates)
+        for r in readers:
+            print(f"{r['unit']:<12} drop {r['drop']:.2f}  + peaks {r['peaks_pos']}  - peaks {r['peaks_neg']}  "
+                  f"(on at {r['level']:.2f} of its max in {r['n_on']} of this pole's top examples)")
+        if not readers:
+            print("no readers found (last layer, or no candidate lost activation)")
+        print(f"Pick one, then: python -m bonsai_interp.graph.play new interpret --neuron bonsai1/<unit> ... "
+              f"and record: python -m bonsai_interp.graph.play edge --from {a.neuron} --to bonsai1/<unit> --kind feeds --weight <drop> "
+              f"--method \"single-unit zero ablation, downstream (play step --down)\" --handle <you>")
+        return
     feeders = one_back(model, rec, int(m["L"]), int(m["n"]), 0 if m["pole"] == "+" else 1, k_show=a.k)
     for f in feeders:
         print(f"{f['unit']:<11} drop {f['drop']:.2f}  + peaks {f['peaks_pos']}  - peaks {f['peaks_neg']}")
@@ -400,9 +412,11 @@ def main():
     dr.add_argument("--seed", type=int, help="reproducible draw (default: random)")
     dr.add_argument("--layers", default="0-35")
     dr.add_argument("--handle", help="also write an interpret tests file for each drawn pole (play new), as a sweep does")
-    s = sub.add_parser("step")
+    s = sub.add_parser("step", help="the strongest feeders of a pole (upstream), or with --down its readers")
     s.add_argument("--neuron", required=True)
     s.add_argument("--k", type=int, default=4)
+    s.add_argument("--down", action="store_true", help="readers instead of feeders: later poles that lose activation when this one is zeroed")
+    s.add_argument("--candidates", type=int, default=24, help="--down: how many screened candidates to rank (default 24)")
     lk = sub.add_parser("look")
     lk.add_argument("--neuron", required=True)
     pr = sub.add_parser("probe", help="exploration: score sentences on a pole, nothing recorded")

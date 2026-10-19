@@ -52,6 +52,86 @@ def one_back(model, rec, L, n, pole, k_ex=6, k_cand=24, k_show=4):
     return out
 
 
+def one_forward(model, rec, L, n, pole, k_ex=6, layers_down=12, k_cand=24, k_show=4, window=3, min_level=0.1):
+    """The readers of a pole, the downstream mirror of one_back: in the contexts where THIS pole fires (its top k_ex
+    corpus examples), which later poles lose the most of their activation when it is zeroed.
+
+    For every neuron in the next `layers_down` layers, at the peak and the `window - 1` tokens after it:
+      screen  the signed change (clean - zeroed), normalised by the corpus max of the pole it moves toward; the k_cand
+              largest mean changes are the candidates, each with the pole this one pushes it toward;
+      drop    the share of that reader pole's activation lost when this neuron is zeroed, averaged over the examples
+              where the reader is actually on (>= min_level of its corpus max). The same quantity as a `feeds` weight
+              (share of the target's activation lost), measured in the source's contexts, which is where a sparse
+              source matters (on a reader's own top examples a sparse source is usually silent).
+    Only readers that are on in at least one example are kept; `level` is how strongly on (fraction of their max).
+    """
+    from bonsai_interp.env import DEVICE
+    from bonsai_interp.model import StopForward
+    s, toks = explore.scan("bonsai1"), explore.corpus()
+    layers = list(range(L + 1, min(L + 1 + layers_down, model.config.num_hidden_layers)))
+    if not layers:
+        return []
+
+    def forward(ids, ablate):
+        rec.mode, rec.layers, rec.stop_at = "act", set(layers), layers[-1]
+        rec.interventions = {L: (lambda a: _zero(a, n))} if ablate else {}
+        try:
+            with torch.no_grad():
+                model.model(torch.tensor(ids[None], device=DEVICE))
+        except StopForward:
+            pass
+        finally:
+            rec.mode, rec.stop_at, rec.interventions = None, None, {}
+        out = {l: rec.store.pop(l)[0] for l in layers}
+        rec.clear()
+        return out
+
+    pos_max = np.stack([s["top_val"][l, 0, 0] for l in layers]).astype(np.float64)        # (layers, N)
+    neg_max = np.abs(np.stack([s["top_val"][l, 1, 0] for l in layers]).astype(np.float64))
+    clean_w, abl_w = [], []  # per example: (layers, window, N), signed raw activations
+    for j in range(k_ex):
+        if not np.isfinite(s["top_val"][L, pole, j, n]):
+            continue
+        w, p = s["top_win"][L, pole, j, n], int(s["top_pos"][L, pole, j, n])
+        ids = toks[w][: p + window].astype(np.int64)
+        c, a_ = forward(ids, False), forward(ids, True)
+        clean_w.append(np.stack([c[l][p: p + window].float().cpu().numpy() for l in layers]))
+        abl_w.append(np.stack([a_[l][p: p + window].float().cpu().numpy() for l in layers]))
+    if not clean_w:
+        return []
+    C, A = np.stack(clean_w), np.stack(abl_w)                    # (ex, layers, window, N)
+    D = C - A
+    pick = np.abs(D).argmax(2)[:, :, None, :]                   # the window position of largest change, per example
+    d = np.take_along_axis(D, pick, 2)[:, :, 0, :]              # (ex, layers, N)
+    eff = np.mean(d / np.where(d >= 0, pos_max[None], neg_max[None]).clip(1e-6), 0)   # (layers, N)
+    N = eff.shape[1]
+    out = []
+    for i in np.argsort(-np.abs(eff), axis=None)[:k_cand]:
+        li, m = int(i // N), int(i % N)
+        rp = 0 if eff[li, m] > 0 else 1
+        sg, mx = (1.0, pos_max[li, m]) if rp == 0 else (-1.0, neg_max[li, m])
+        levels, losses = [], []
+        for e in range(C.shape[0]):
+            q = int(np.argmax(C[e, li, :, m] * sg))             # where the reader pole is most on in this example
+            clean, abl = C[e, li, q, m] * sg, A[e, li, q, m] * sg
+            if clean >= min_level * mx:
+                levels.append(clean / mx)
+                losses.append(1 - abl / clean)
+        if losses:
+            l = layers[li]
+            out.append({"unit": f"L{l}/N{m}{'+' if rp == 0 else '-'}", "L": l, "n": m, "pole": "+" if rp == 0 else "-",
+                        "drop": float(np.mean(losses)), "level": float(np.mean(levels)), "n_on": len(losses),
+                        "screen": float(eff[li, m]), "peaks_pos": peaks(l, m, 0), "peaks_neg": peaks(l, m, 1)})
+    out.sort(key=lambda r: -r["drop"])
+    return out[:k_show]
+
+
+def _zero(a, n):
+    a = a.clone()
+    a[..., n] = 0
+    return a
+
+
 def run(ws: Workspace, tests=("quick_tests.json",), out="quick.json", with_feeders=True, need_fire=None):
     spec = {"neighbours": [nb for t in tests for nb in ws.require(t, "write and commit the tests first")["neighbours"]]}
     limit_memory(0.8)
