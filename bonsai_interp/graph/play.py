@@ -447,7 +447,7 @@ def main():
     d = sub.add_parser("doctor", help="check this machine is ready to play")
     d.add_argument("--quick", action="store_true", help="skip loading the model")
     b = sub.add_parser("brief", help="print the full instructions for a mission (for an AI agent)")
-    b.add_argument("kind", choices=["interpret", "sweep", "qc", "step", "blind"])
+    b.add_argument("kind", choices=["interpret", "sweep", "qc", "step", "stepin", "blind"])
     b.add_argument("--neuron", help="the pole (every kind but sweep)")
     b.add_argument("--k", type=int, default=16, help="sweep: how many poles")
     b.add_argument("--handle", default="<your-github-handle>")

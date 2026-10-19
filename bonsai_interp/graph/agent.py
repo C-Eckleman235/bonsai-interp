@@ -194,11 +194,23 @@ def brief(a):
         return gm
     gm = cmds(nid, u, pole)
     out = [f"# Mission: {a.kind} {nid}", ""]
-    if a.kind in ("interpret", "step"):
-        if a.kind == "step":
+    if a.kind in ("interpret", "step", "stepin"):
+        if a.kind == "stepin":
+            out += [f"Stepping in from {nid} ({(rec or {}).get('short') or (rec or {}).get('label') or 'see its record'}): to a neuron that READS it.",
+                    f"0. Find its strongest readers: {py} -m bonsai_interp.graph.play step --neuron {nid} --down",
+                    "   (later poles that lose the most activation, in this pole's own contexts, when it is zeroed; drops are usually",
+                    "   small, 0.05-0.2, because a sparse pole contributes a little to many readers)",
+                    "   Choose one that has NO record in graph/index.json yet (prefer the largest drop). Call it TARGET (the full id",
+                    "   with the pole the line shows, e.g. bonsai1/L12/N6730+). Do every step below for TARGET instead, and in the tests",
+                    f'   file add "roles": ["reads {nid}"]. After `play run`, add to the results file the edge (the direction is from',
+                    f'   {nid} to TARGET: it feeds the reader)',
+                    f'   {{"from": "{nid}", "to": TARGET, "kind": "feeds", "weight": <drop>, "method": "single-unit zero ablation, downstream (play step --down)"}}.', ""]
+            target = "TARGET"
+            gm = cmds("TARGET", "<TARGET layer/index>", "<TARGET pole>")
+            u, folder = "<TARGET layer/index>", "graph/contributions/bonsai1/<TARGET folder>"
+        elif a.kind == "step":
             out += [f"Stepping out from {nid} ({(rec or {}).get('short') or (rec or {}).get('label') or 'see its record'}).",
                     f"0. Find its strongest feeders: {py} -m bonsai_interp.graph.play step --neuron {nid}",
-                    f"   (or its readers, downstream: add --down; then the edge goes from {nid} to TARGET)",
                     "   Choose one that has NO record in graph/index.json yet (prefer the largest drop). Call it TARGET (full id with pole, e.g. bonsai1/L8/N1234+).",
                     "   Do every step below for TARGET instead of the original neuron, and in the tests file add",
                     f'   "roles": ["feeds {nid}"]. After `play run`, add to the results file an edge',
