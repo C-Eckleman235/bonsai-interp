@@ -6,6 +6,11 @@ An open, testable map of what individual neurons do in **Bonsai-8B**, PrismML's 
 Every label in the graph comes with tests that were **committed before they were run**. Pull
 requests that add or relabel neurons are checked for that ordering in CI.
 
+**Explore the map:** https://moridinamael.github.io/bonsai-interp/ (every surveyed neuron, its label, tests and
+corpus card; updated after each merge). **Contribute:** the survey page gives you a prompt to paste into Claude Code
+or Codex, which sets your machine up and plays a mission. A sweep of 16 neurons takes about 5 minutes and costs
+about $1; [AGENTS.md](AGENTS.md) is what the agent follows.
+
 ## What is here
 
 | Path | What it is |
@@ -43,7 +48,7 @@ The worked example is **L9/N3688**, the "nerve" neuron:
 
 ```bash
 uv sync                                   # Python 3.11-3.13; CUDA 12.8 torch wheels (PyPI torch with MPS on macOS)
-bash scripts/download_models.sh           # Bonsai-8B into models/ (--all adds the ternary and Qwen3-8B ladder)
+bash scripts/download_models.sh           # Bonsai-8B as the 1.2 GB 1-bit GGUF into models/ (--all adds the precision ladder)
 bash scripts/fetch_data.sh                # corpus.npz + scan_bonsai1.npz from the GitHub release into data/
 uv run python -m bonsai_interp.explore --model bonsai1 --neuron 9/3688 --pole +
 uv run python -m bonsai_interp.graph.validate
