@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-19-moridinamael-cc7dc688",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N2546-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T21:15:47+00:00",
+ "recipe": {
+  "toolchain_commit": "2bc2c5d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L1_N2546_neg/2026-10-19-moridinamael-cc7dc688.tests.json"
+ },
+ "label": "the word 'Texas' itself (Texas, Texan, TEXAS, Arabic تكساس), in any meaning (the state, a university, a company, a poker game); Texas places named without the word (Dallas, the Alamo, TX), other state names and '-as' look-alikes stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L1_N2546_neg/2026-10-19-moridinamael-cc7dc688.tests.json",
+   "prereg_commit": "2bc2c5d",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.566,
+     "peak": " Texas"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.772,
+     "peak": " Texas"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.777,
+     "peak": "an"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.723,
+     "peak": " Texas"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.578,
+     "peak": "Texas"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.902,
+     "peak": "AS"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.727,
+     "peak": " Texas"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.731,
+     "peak": "اس"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.003,
+     "peak": " across"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.081,
+     "peak": " Kansas"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.004,
+     "peak": " farm"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.005,
+     "peak": " poker"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.002,
+     "peak": " Dallas"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.282,
+     "peak": "AS"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.005,
+     "peak": " Austin"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.008,
+     "peak": " العاص"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.729,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "inverse-gmoo",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "2bc2c5d",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-out from bonsai1/L6/N6776+ (Texas word neuron); this is its largest feeder by single-unit zero ablation (drop 0.18). Opposite (+) pole peaks on the 'Tax-/Такс' word start (taxi, Также). globalMOO inverse search over a sentence bank found no leak and no silent on-concept text. Chat was quiet; all sentences by the streamer.",
+ "roles": [
+  "feeds bonsai1/L6/N6776+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L1/N2546-",
+   "to": "bonsai1/L6/N6776+",
+   "kind": "feeds",
+   "weight": 0.18,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
