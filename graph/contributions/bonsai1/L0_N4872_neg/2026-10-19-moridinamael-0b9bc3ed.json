@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-19-moridinamael-0b9bc3ed",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N4872-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T19:12:44+00:00",
+ "recipe": {
+  "toolchain_commit": "087e7a2",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N4872_neg/2026-10-19-moridinamael-0b9bc3ed.tests.json"
+ },
+ "label": "a fixed list of capitalized, space-prefixed name tokens (surnames like ' Walsh', ' Murphy', ' Woodward', ' McConnell', ' Gregg', ' Baxter', ' Slater', ' Dawson' and some first names like ' Natalie', ' Jacques'), whether or not they name a person ('Murphy bed', 'Woodward Avenue'); very common names (' Smith', ' Brown', ' Taylor', ' Johnson', ' Emily') stay quiet, and the same name without the leading space or in lowercase does not fire",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L0_N4872_neg/2026-10-19-moridinamael-0b9bc3ed.tests.json",
+   "prereg_commit": "087e7a2",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.742,
+     "peak": " Walsh"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.803,
+     "peak": " Murphy"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.822,
+     "peak": " Woodward"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.626,
+     "peak": " McConnell"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.79,
+     "peak": " Gregg"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.635,
+     "peak": " Baxter"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.523,
+     "peak": " Slater"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.767,
+     "peak": " Natalie"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.129,
+     "peak": " Smith"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.073,
+     "peak": " Brown"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.118,
+     "peak": " Walker"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.117,
+     "peak": " Johnson"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.132,
+     "peak": " Chen"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.048,
+     "peak": " Taylor"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.181,
+     "peak": " Wilson"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.035,
+     "peak": " Emily"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.754,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "087e7a2",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L2/N10718+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L0/N4872-",
+   "to": "bonsai1/L2/N10718+",
+   "kind": "feeds",
+   "weight": 0.06,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
