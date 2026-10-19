@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-19-moridinamael-0f53b1e7",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N282+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T16:52:58+00:00",
+ "neighbours": [
+  {
+   "unit": "L0/N282",
+   "pole": "+",
+   "label": "the word ending '-ium' when it is its own token piece (hel|ium, Lil|ium, plut|onium, geran|ium), regardless of meaning",
+   "short": "'-ium' word ending",
+   "unit_kind": "token / subword",
+   "confidence": "high",
+   "roles": ["feeds bonsai1/L3/N5852+"],
+   "notes": "Spelling, not chemistry: made-up 'frobnium' and the flower Lilium fire strongly; elements without -ium (copper, phosphorus, neon) stay near zero. Weaker on -ium words the tokenizer keeps whole (' stadium' 0.16, ' uranium' 0.43, ' museum' 0.14) and some leak from other '-um' endings ('pendulum' 0.32), so near misses keep the stem and change the ending. Inverse solver run crashed (toolchain JSON bug); its partial result found no silent on-concept text. Chat was quiet; all sentences written by the agent.",
+   "fire": [
+    "Helium balloons floated over the fair.",
+    "The reactor fuel contained enriched plutonium.",
+    "Calcium helps build strong bones.",
+    "Titanium frames are light and strong.",
+    "The gardener planted Lilium bulbs by the fence.",
+    "Bacteria such as Clostridium can spoil canned food.",
+    "The geranium bloomed on the sunny balcony.",
+    "Pandemonium broke out when the lights went off."
+   ],
+   "quiet": [
+    "Helios statues stood over the fair.",
+    "The reactor fuel contained enriched plutonic rock.",
+    "Calcite helps build strong crystals.",
+    "Titanic frames are heavy and strong.",
+    "The gardener planted lilac bulbs by the fence.",
+    "Bacteria such as Clostridia can spoil canned food.",
+    "The geraniol smelled sweet on the sunny balcony.",
+    "Pandemonia broke out when the lights went off."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire above 0.5, all near misses under 0.1",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-out",
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "quick-test"
+  ]
+ }
+}
