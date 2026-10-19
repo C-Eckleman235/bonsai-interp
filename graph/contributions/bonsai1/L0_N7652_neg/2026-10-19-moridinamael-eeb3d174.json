@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-19-moridinamael-eeb3d174",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N7652-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T15:02:47+00:00",
+ "recipe": {
+  "toolchain_commit": "aed78b8",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N7652_neg/2026-10-19-moridinamael-eeb3d174.tests.json"
+ },
+ "label": "Short tokens spelled consonant + '-ate' (gate, mate, crate, plate, hate, skate, fate, Kate; also late, rate, the 'ate' piece of grate, 'gate' in Watergate); a spelling detector, not the sound: eight, wait, great, weight, bait, straight stay silent, and long -ate words (debate, donate, create) or date/state are weak",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L0_N7652_neg/2026-10-19-moridinamael-eeb3d174.tests.json",
+   "prereg_commit": "aed78b8",
+   "author": "moridinamael",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.664,
+     "peak": " gate"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.701,
+     "peak": " mate"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.551,
+     "peak": " crate"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.287,
+     "peak": " plate"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.324,
+     "peak": " hate"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.4,
+     "peak": " skate"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.382,
+     "peak": " fate"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.426,
+     "peak": "Kate"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.001,
+     "peak": " iron"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.102,
+     "peak": " great"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.027,
+     "peak": " apples"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.008,
+     "peak": " fishing"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.015,
+     "peak": " Mondays"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.006,
+     "peak": " went"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.046,
+     "peak": " great"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.033,
+     "peak": "Eight"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.413,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "aed78b8",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L4/N11028-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L0/N7652-",
+   "to": "bonsai1/L4/N11028-",
+   "kind": "feeds",
+   "weight": 0.11,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
