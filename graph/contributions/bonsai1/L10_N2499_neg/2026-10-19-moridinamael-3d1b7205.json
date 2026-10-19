@@ -1,0 +1,157 @@
+{
+ "id": "2026-10-19-moridinamael-3d1b7205",
+ "kind": "qc",
+ "neuron": "bonsai1/L10/N2499-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T23:50:47+00:00",
+ "recipe": {
+  "toolchain_commit": "f79e0de",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-3d1b7205.tests.json"
+ },
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-3d1b7205.tests.json",
+   "prereg_commit": "f79e0de",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.286,
+     "peak": " par"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.638,
+     "peak": " psychologist"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.479,
+     "peak": " memory"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.294,
+     "peak": " psychiatrist"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.405,
+     "peak": "iat"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.465,
+     "peak": " psychiatric"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.241,
+     "peak": " psychology"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.329,
+     "peak": " founder"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.29,
+     "peak": " tablets"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.145,
+     "peak": " for"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.14,
+     "peak": " studying"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.19,
+     "peak": " poor"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.123,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.079,
+     "peak": " maternity"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.002,
+     "peak": " community"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.235,
+     "peak": " lithium"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.367,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "f79e0de",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "Weak, dense hum that rises on a word NAMING the mental-health field or its professions (psychiatrist, psychiatric, psychiatry, psychologist, psychology, psychoanalysis, 'mental health'), even with no treatment in the scene (a research psychologist studying memory ~0.5). Mental-health care described without such a word stays low (ward doses of clozapine and lithium ~0.14, the same as insulin; inpatient anorexia clinic ~0.12), as do psych- lookalikes ('psychic', the film 'Psycho'); the same sentence with 'doctor' instead of 'psychiatrist' drops from ~0.46 to ~0.14. Known side channels kept from the earlier label: the '-therapy' family (speech therapy ~0.46), ' talking' and the 'Too Little too Late?' headline. Of its newly mapped neighbours only L8/N2771+ (weight-loss surgery) is medical: after a gastric bypass, 'referred to a psychologist' ~0.65, 'referred to a surgeon' ~0.17."
+ }
+}
