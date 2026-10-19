@@ -11,6 +11,21 @@ corpus card; updated after each merge). **Contribute:** the survey page gives yo
 or Codex, which sets your machine up and plays a mission. A sweep of 16 neurons takes about 5 minutes and costs
 about $1; [AGENTS.md](AGENTS.md) is what the agent follows.
 
+## Background
+
+This project tests a claim about neurons, so the two works it answers to come first:
+
+- **Nick Cammarata, [*Neural Networks Are Already Clean*](https://already-clean.goodfire.com/)** (Goodfire, 2026).
+  It argues that native MLP neurons in modern LLMs are far cleaner than their reputation, estimating that roughly
+  90% of neuron poles in Qwen3-32B have one main job, often with small related offshoots, when each neuron's positive
+  and negative poles are read as separate units. That is the hypothesis this survey tests on Bonsai-8B, one pole at a
+  time and with pre-registered tests.
+- **Trenton Bricken, Adly Templeton, Joshua Batson et al., [*Towards Monosemanticity: Decomposing Language Models
+  With Dictionary Learning*](https://transformer-circuits.pub/2023/monosemantic-features/index.html)** (Anthropic,
+  Transformer Circuits Thread, 2023). It found individual neurons largely polysemantic and recovered far more
+  interpretable features with sparse dictionary learning. That is the view the essay pushes back on, and the
+  standard our labels have to live up to.
+
 ## What is here
 
 | Path | What it is |
@@ -54,58 +69,17 @@ uv run python -m bonsai_interp.explore --model bonsai1 --neuron 9/3688 --pole +
 uv run python -m bonsai_interp.graph.validate
 ```
 
-Hardware: an 8 GB NVIDIA GPU is enough; a mission peaks at about 5 GB (the reference setup is Windows with an RTX 5080). The
-1-bit weights are stored packed and dequantized per layer. An Apple Silicon Mac also works (see
-below), and the CPU works for checks. `bonsai_interp/env.py` detects the OS, device, dtype,
-memory and agent CLIs in one place. `uv run python -m bonsai_interp.env` prints that report, and
-`play doctor` prints it too. On a CUDA machine the defaults are unchanged: CUDA, bfloat16 and
-the 0.8 memory cap. globalMOO is optional; it needs `GMOO_API_KEY` in `.env` (see
-`.env.example`).
+Hardware: an 8 GB NVIDIA GPU is enough; a mission peaks at about 5 GB (the reference setup is Windows with an
+RTX 5080). An Apple Silicon Mac also works (below), and the CPU is fine for checks.
+`uv run python -m bonsai_interp.env` reports the device it will use. globalMOO is optional; it needs `GMOO_API_KEY`
+in `.env` (see `.env.example`).
 
 ### Running on a Mac
 
-The toolchain runs on Apple Silicon through PyTorch's MPS backend, with the same 2-bit packed
-weights and the same bfloat16 arithmetic as on CUDA.
-
-- **Requirements.** An M1 or later Mac with macOS 14 or later. The macOS torch wheels need
-  macOS 14, and so does bfloat16 on MPS. We recommend 32 GB or more of unified memory. 16 GB
-  works but is tight: one process holds about 8 GB (the 4.5 GB model, the 1.1 GB scan and the
-  batches), next to macOS and the agent CLI. 8 GB is not enough. You also need about 8 GB of
-  disk.
-- **Install.** Use the same commands as above. `uv sync` takes torch from PyPI on macOS, and
-  that build includes MPS. The scripts run in the stock bash or zsh.
-- **Device.** The device is picked in this order: CUDA, then MPS, then the CPU. To force one,
-  set `BONSAI_DEVICE=mps` (or `cuda` or `cpu`) in `.env` or in the environment. If you set it
-  and that device is unavailable, the command stops with an error instead of falling back.
-  `BONSAI_DTYPE=float32` overrides the arithmetic precision. An op that MPS lacks runs on the
-  CPU (`PYTORCH_ENABLE_MPS_FALLBACK=1` is set for you).
-- **Check parity.** Run `uv run python -m bonsai_interp.graph.play doctor`, then run
-  `uv run python tests/test_device_parity.py`. The test compares four neuron readings, the
-  next-token distribution and the backward pass (attribution through the 1-bit layers) with
-  values recorded on the reference RTX 5080. It must print PARITY OK. If it does not, please
-  open an issue with its output.
-- **Speed.** Doctor prints the forward-pass throughput (batch 8 × 256) and how it compares
-  with the reference machine. Measured so far: an RTX 5080 does 3,600 tokens/s and loads the
-  model in 15 s. A 24-core Intel Core Ultra 9 CPU does 99 tokens/s, about 36 times slower. We
-  have not measured a Mac yet. From GPU compute and memory bandwidth, and allowing for MPS
-  being less efficient than CUDA, we expect missions to take about 4 to 6 times as long on an
-  M-series Max or Ultra, about 10 times as long on a Pro, and about 20 times as long on a base
-  chip. Only the model work scales by that factor; the agent's own reading and writing time
-  does not. Blind rooms suit a Mac better than live play, because nobody waits on them. Please
-  report what doctor prints on your Mac so we can replace these estimates.
-- **Clean-room missions on macOS.** The Windows handling in neuron-cleanroom stays, behind
-  platform checks. `build_room` links the weights and data into the room with junctions on
-  Windows and with symlinks on macOS and Linux. Clearing read-only git files when a room is
-  removed happens only on Windows. Codex gets its `[windows] sandbox = "unelevated"` setting
-  only on Windows. Elsewhere Codex runs inside its own sandbox in `workspace-write` mode, which
-  on macOS is Seatbelt. As on Windows, that sandbox blocks writes outside
-  the room and blocks the network, but it does not block reads, so the audit is still the check
-  on reads. We have not yet tested whether Metal is reachable inside the sandbox. Launch rooms
-  with `BONSAI_DEVICE=mps` exported, so that a room which cannot see the GPU fails at once
-  instead of running on the CPU for hours. Then run `play doctor` inside the room once.
-- **A dedicated Mac.** A Mac mini that runs blind rooms keeps them off your display GPU. The
-  rule of one GPU job at a time still applies, because unified memory is shared and two
-  model-loading processes will compete for it.
+Apple Silicon works through PyTorch's MPS backend with the same commands. You need an M1 or later on macOS 14+,
+with 16 GB of unified memory as a minimum (32 GB recommended). Run `play doctor`, then `tests/test_device_parity.py`,
+which must print PARITY OK. Device selection, speed, clean rooms on macOS and a dedicated-Mac setup are in
+[docs/MAC.md](docs/MAC.md).
 
 To rebuild the data instead of downloading it, run `python -m bonsai_interp.corpus` and then
 `python -m bonsai_interp.scan --model bonsai1` (about 1 GPU-hour for 8M tokens).
