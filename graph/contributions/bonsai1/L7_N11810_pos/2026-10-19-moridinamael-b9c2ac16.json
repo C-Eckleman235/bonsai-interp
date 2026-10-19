@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-19-moridinamael-b9c2ac16",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N11810+",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T13:07:57+00:00",
+ "recipe": {
+  "toolchain_commit": "be3f567",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L7_N11810_pos/2026-10-19-moridinamael-b9c2ac16.tests.json"
+ },
+ "label": "the token ' late' (any use; strongest in 'too late')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L7_N11810_pos/2026-10-19-moridinamael-b9c2ac16.tests.json",
+   "prereg_commit": "be3f567",
+   "author": "moridinamael",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.783,
+     "peak": " late"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.793,
+     "peak": " late"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.407,
+     "peak": " late"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.085,
+     "peak": " late"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.046,
+     "peak": " late"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.023,
+     "peak": " late"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.04,
+     "peak": " late"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.09,
+     "peak": " late"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.076,
+     "peak": " dark"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.222,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.033,
+     "peak": " for"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": " snow"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.0,
+     "peak": " was"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.002,
+     "peak": " early"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.001,
+     "peak": " up"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.02,
+     "peak": " overdue"
+    }
+   ],
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.859,
+    "median_fire": 0.087,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "be3f567",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "notes": "Feeder of bonsai1/L10/N2499- found by play step (drop 0.10). Label chosen by Twitch chat vote (default after no votes) over 'too late' context and 'missed chance' meaning. Inverse solver (DE) found no leak; near-miss ceiling 'a little late for that' 0.41; 'train arrived late' 0.06. Result: only 'too late' / 'a little late' fire (0.41-0.79); plain uses of late stay below 0.1, so the unit looks like ' late' marking lateness beyond an acceptable point, not the bare word. Edge (not recorded as an edge object because the target has no contribution yet): {from bonsai1/L7/N11810+, to bonsai1/L10/N2499-, kind feeds, weight 0.10, method single-unit zero ablation (play step)}.",
+ "roles": [
+  "feeds bonsai1/L10/N2499-"
+ ]
+}
