@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-19-moridinamael-83343f39",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N111+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T15:54:42+00:00",
+ "roles": ["feeds bonsai1/L1/N10078+"],
+ "neighbours": [
+  {
+   "unit": "L0/N111",
+   "pole": "+",
+   "label": "The CJK character 遮 (block/cover/shade) itself, in any word, Chinese or Japanese: 遮住, 遮阳, 遮掩, 遮断, 遮光, 遮る; not synonyms without it (挡, 掩盖, 防晒, 切断), not the kana spelling さえぎる; weak spill (~0.15-0.2) to 避, 障, 遅 and English ' camouflage' / ' obscured'",
+   "short": "the character 遮 (block/cover)",
+   "unit_kind": "token detector",
+   "confidence": "high",
+   "fire": [
+    "云层遮住了月亮。",
+    "她戴上帽子遮阳。",
+    "他试图遮掩自己的错误。",
+    "这棵树可以遮风挡雨。",
+    "踏切の遮断機が下りた。",
+    "寝室に遮光カーテンを付けた。",
+    "彼は私の話を遮った。",
+    "ファイアウォールが通信を遮断した。"
+   ],
+   "quiet": [
+    "云层挡住了月亮。",
+    "她戴上帽子防晒。",
+    "他试图掩盖自己的错误。",
+    "这棵树可以避风躲雨。",
+    "踏切の警報機が鳴った。",
+    "寝室に厚いカーテンを付けた。",
+    "彼は私の話をさえぎった。",
+    "ファイアウォールが通信を切断した。"
+   ],
+   "notes": "Minimal pairs: each near miss keeps the sentence and swaps 遮 for a synonym, the kana spelling, or the look-alike 避. Step-out feeder of the 遅 neuron (both kanji share the ⻌ radical). Chat was quiet this mission; the inverse solver round crashed (toolchain JSON error), so no solver evidence."
+  }
+ ],
+ "predictions": "8/8 fire above 0.7, all near misses below 0.25 (避 the highest)",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-out",
+   "card",
+   "look",
+   "probe",
+   "quick-test"
+  ]
+ }
+}
