@@ -1,0 +1,162 @@
+{
+ "id": "2026-10-19-moridinamael-e3510013",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N5894+",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T22:04:53+00:00",
+ "recipe": {
+  "toolchain_commit": "beb502c",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L28_N5894_pos/2026-10-19-moridinamael-e3510013.tests.json"
+ },
+ "label": "The connector word (of, with, for, a comma) just before a rare multi-word name (a syndrome, a species) that the text already named earlier is about to be repeated; the same slot before a name seen for the first time stays low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L28_N5894_pos/2026-10-19-moridinamael-e3510013.tests.json",
+   "prereg_commit": "beb502c",
+   "author": "moridinamael",
+   "n_fire": 4,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.305,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.26,
+     "peak": " operate"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.33,
+     "peak": " with"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.35,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.099,
+     "peak": "E"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.248,
+     "peak": " A"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.515,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.197,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.11,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.136,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.383,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.136,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.107,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.122,
+     "peak": " infection"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.081,
+     "peak": " very"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.135,
+     "peak": ","
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.797,
+    "median_fire": 0.282,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bands",
+   "card",
+   "inverse-gmoo",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bands",
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "beb502c",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "notes": "Step-in from bonsai1/L27/N7862- (re-typing an identifier already written in code); this reader takes the prose side of the same idea. Near misses are the same sentences with the earlier mention removed, so they keep topic, name and length. Fresh sentences, none scored before registration. Chat was quiet this mission; labels and sentences are the streamer's.",
+ "roles": [
+  "reads bonsai1/L27/N7862-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L27/N7862-", "to": "bonsai1/L28/N5894+", "kind": "feeds", "weight": 0.24, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
