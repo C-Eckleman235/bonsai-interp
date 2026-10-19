@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-19-moridinamael-9b61bafb",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N2624-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T16:40:47+00:00",
+ "recipe": {
+  "toolchain_commit": "eec5390",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N2624_neg/2026-10-19-moridinamael-9b61bafb.tests.json"
+ },
+ "label": "the token ' rain' / 'Rain' (incl. raincoat, rainforest) and the CJK character 雨, meaning-blind (weather, idiom 'rain praise' alike); wet weather without the word (drizzle, showers, umbrella, cloudy), other languages' rain words (pluie, regnet) and look-alikes (reign, terrain, train, brain) stay quiet; 'rained' is weak (tokenized r+ained)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L0_N2624_neg/2026-10-19-moridinamael-9b61bafb.tests.json",
+   "prereg_commit": "eec5390",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.731,
+     "peak": " rain"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.431,
+     "peak": "Rain"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.578,
+     "peak": " rain"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.613,
+     "peak": " rain"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.435,
+     "peak": "大雨"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.701,
+     "peak": "雨"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.552,
+     "peak": " rain"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.731,
+     "peak": " rain"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.097,
+     "peak": "izzle"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.015,
+     "peak": " forecast"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.01,
+     "peak": " umbrella"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.011,
+     "peak": "Crit"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.039,
+     "peak": "没有人"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.031,
+     "peak": "明日"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.023,
+     "peak": " reign"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.045,
+     "peak": " terrain"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.595,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "eec5390",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L3/N3226+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L0/N2624-",
+   "to": "bonsai1/L3/N3226+",
+   "kind": "feeds",
+   "weight": 0.26,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
