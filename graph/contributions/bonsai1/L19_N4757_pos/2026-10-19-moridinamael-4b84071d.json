@@ -1,0 +1,155 @@
+{
+ "id": "2026-10-19-moridinamael-4b84071d",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N4757+",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T20:25:04+00:00",
+ "recipe": {
+  "toolchain_commit": "8550087",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L19_N4757_pos/2026-10-19-moridinamael-4b84071d.tests.json"
+ },
+ "label": "Dense shorthand text, where abbreviations, codes and clipped numbers stand in for words (schedules like 'Mon-Fri 9 a.m.', citations like 'J. Appl. Phys. 95', dosages like 'p.o. b.i.d.', part numbers, 'A.D. 397', standards codes); peaks on tokens inside the shorthand, not on the abbreviation dot alone; the same content spelled out in plain prose stays low. Dense unit: ordinary prose idles at ~0.1-0.2 and stacked prose can creep to ~0.3",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L19_N4757_pos/2026-10-19-moridinamael-4b84071d.tests.json",
+   "prereg_commit": "8550087",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.357,
+     "peak": ":"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.31,
+     "peak": " J"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.421,
+     "peak": " d"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.38,
+     "peak": " no"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.321,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.471,
+     "peak": "m"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.463,
+     "peak": ".D"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.321,
+     "peak": " Section"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.106,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.114,
+     "peak": " ago"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.09,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.09,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.176,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.023,
+     "peak": " morning"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.2,
+     "peak": "7"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.127,
+     "peak": " it"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.368,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "8550087",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L18/N624+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L18/N624+", "to": "bonsai1/L19/N4757+", "kind": "feeds", "weight": 0.06, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
