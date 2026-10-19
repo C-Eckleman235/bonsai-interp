@@ -1,0 +1,162 @@
+{
+ "id": "2026-10-19-moridinamael-fa0cfa2c",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N6274+",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T17:54:05+00:00",
+ "recipe": {
+  "toolchain_commit": "45466e8",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N6274_pos/2026-10-19-moridinamael-fa0cfa2c.tests.json"
+ },
+ "label": "the token ' tan' (mid-sentence, lower-case) when the surrounding text is Spanish; English 'tan' alone is silent, but ' tan' after Spanish text fires whatever it means; weaker side triggers ' tales', ' ya', ' ampl', and ' gran' after 'una'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L0_N6274_pos/2026-10-19-moridinamael-fa0cfa2c.tests.json",
+   "prereg_commit": "45466e8",
+   "author": "moridinamael",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.556,
+     "peak": " tan"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.47,
+     "peak": " tan"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.59,
+     "peak": " tan"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.629,
+     "peak": " tan"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.362,
+     "peak": " tan"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.437,
+     "peak": " tan"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.516,
+     "peak": " tan"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.262,
+     "peak": " tan"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.133,
+     "peak": " muy"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.207,
+     "peak": " el"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.164,
+     "peak": " y"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.201,
+     "peak": " y"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.147,
+     "peak": " ti"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.226,
+     "peak": " muy"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.151,
+     "peak": "ie"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.108,
+     "peak": "ie"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.493,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "45466e8",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "notes": "Step-out feeder of bonsai1/L1/N1309- (single-unit ablation drop 0.07; the larger feeder L0/N6779+ was already mapped). Sentences written by the agent on stream; chat was quiet this mission. Exploration: English 'a nice tan', 'tan colour', 'Mr Tan', Portuguese 'tão', Italian 'tanto' all under 0.06. Inverse solver (DE) found a leak: English 'Compute tan of the angle' fires 0.62 when placed after a Spanish sentence, so the gate is Spanish context, not the Spanish meaning; folded into the label. 'un gran' is silent (0.10) while 'una gran' fires 0.48.",
+ "roles": [
+  "feeds bonsai1/L1/N1309-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L0/N6274+",
+   "to": "bonsai1/L1/N1309-",
+   "kind": "feeds",
+   "weight": 0.07,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
