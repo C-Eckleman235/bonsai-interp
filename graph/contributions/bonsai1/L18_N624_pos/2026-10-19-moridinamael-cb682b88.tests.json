@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-19-moridinamael-cb682b88",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N624+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T20:00:53+00:00",
+ "roles": ["reads bonsai1/L16/N5346+"],
+ "neighbours": [
+  {
+   "unit": "L18/N624",
+   "pole": "+",
+   "label": "the second mention of a rare multi-piece name or term (a surname, place name or technical word split into several tokens) that already appeared earlier in the same text; fires on its later pieces, weakly on a first mention",
+   "short": "repeat of a chopped-up rare name",
+   "fire": [
+    "Dr. Wölfler opened the clinic. Later, Wölfler became its curator.",
+    "The drug has a long half-life, and the two half-lives were compared.",
+    "The paper cites Hrabowski (2004). As Hrabowski showed, rates fell.",
+    "Tomlin praised Lebeau, and then Tomlin and Lebeau left together.",
+    "Der Ort Kirchhundem liegt im Sauerland; Kirchhundem hat einen Bahnhof.",
+    "We drove to Llanfyllin, and from Llanfyllin we walked north.",
+    "Professor Thistlewaite lectured first; then Thistlewaite took questions.",
+    "The village of Wrzosowo was quiet. By noon, Wrzosowo was full of tourists."
+   ],
+   "quiet": [
+    "The clinic opened in spring. Later, Wölfler became its curator.",
+    "The drug was compared and the two half-lives were measured.",
+    "The paper cites old work. As Hrabowski showed, rates fell.",
+    "Tomlin praised the staff, and then Tomlin and Lebeau left together.",
+    "Der Ort liegt im Sauerland; Kirchhundem hat einen Bahnhof.",
+    "We drove all day, and from Llanfyllin we walked north.",
+    "The professor lectured first; then Thistlewaite took questions.",
+    "The village was quiet at dawn. By noon, Wrzosowo was full of tourists."
+   ]
+  }
+ ],
+ "unit_kind": "contextual",
+ "confidence": "low",
+ "notes": "Reader of bonsai1/L16/N5346+ (drop 0.33 under zero ablation). Broad pole (3.2% of tokens reach 0.1 of max). Top examples are pieces of code identifiers and names that recur in context (cmd_err, File2, half-lives). Near misses are the same sentence with the name mentioned only once. Inverse solver (DE) found a leak (a first-mention Wölfler at 0.33 after unrelated text) and a silent repeat (Thistlewaite ~0.1 after other text), so the effect is a tilt, not a switch; magnitudes near the 0.20 bar. The feeder's own rare-word sentences do not fire this reader. Twitch chat was quiet; sentences are the streamer's own.",
+ "predictions": "repeats beat first mentions (AUROC >= 0.9); median fire near 0.20, borderline",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
