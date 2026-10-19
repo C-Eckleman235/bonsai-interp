@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-19-moridinamael-f3692f52",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N8049+",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T15:43:35+00:00",
+ "recipe": {
+  "toolchain_commit": "340c3a1",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N8049_pos/2026-10-19-moridinamael-f3692f52.tests.json"
+ },
+ "label": "the word tokens ' distract' (strongest), ' attract' and ' retract': spelling, not meaning; synonyms (divert, draw, withdraw) and other -tract words (' extract', ' contract', ' abstract', ' subtract') stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L0_N8049_pos/2026-10-19-moridinamael-f3692f52.tests.json",
+   "prereg_commit": "340c3a1",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.893,
+     "peak": " distract"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.977,
+     "peak": " distract"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.984,
+     "peak": " distract"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.582,
+     "peak": " attract"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.642,
+     "peak": " attract"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.591,
+     "peak": " attract"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.46,
+     "peak": " retract"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.48,
+     "peak": " retract"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.012,
+     "peak": "oud"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.007,
+     "peak": " bother"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.008,
+     "peak": " pull"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.027,
+     "peak": "Bright"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.012,
+     "peak": " mall"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.026,
+     "peak": " withdraw"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.056,
+     "peak": " extract"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.048,
+     "peak": " contract"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.617,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "340c3a1",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L1/N362+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L0/N8049+",
+   "to": "bonsai1/L1/N362+",
+   "kind": "feeds",
+   "weight": 0.2,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
