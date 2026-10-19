@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-19-moridinamael-817c9dc6",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N9961+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T21:24:16+00:00",
+ "roles": ["reads bonsai1/L24/N1091+"],
+ "neighbours": [
+  {
+   "unit": "L26/N9961",
+   "pole": "+",
+   "label": "Python call arguments that pass several fields of ONE object, one keyword per line (key=self.obj.key, key2=self.obj.key2, ...): fires on the object part as the copy is re-typed; the same layout with bare names, calls or different objects stays low",
+   "short": "arg list re-typing one object's fields",
+   "unit_kind": "context",
+   "confidence": "low",
+   "fire": [
+    "        resource = models.Resource(\n            name=self.request.name,\n            project=self.request.project,\n            offering=self.request.offering,\n            plan=self.request.plan,\n            limits=self.request.limits,\n            attributes=self.request.attributes,",
+    "        return Invoice(\n            customer=self.order.customer,\n            amount=self.order.amount,\n            currency=self.order.currency,\n            due_date=self.order.due_date,\n            notes=self.order.notes,\n            status=self.order.status,",
+    "        ticket = models.Ticket(\n            project=self.issue.project,\n            assignee=self.issue.assignee,\n            priority=self.issue.priority,\n            labels=self.issue.labels,\n            title=self.issue.title,\n            description=self.issue.description,",
+    "    trainer = Trainer(\n        model=cfg.model,\n        optimizer=cfg.optimizer,\n        scheduler=cfg.scheduler,\n        epochs=cfg.epochs,\n        batch_size=cfg.batch_size,\n        device=cfg.device,",
+    "        account = models.Account(\n            owner=self.signup.owner,\n            email=self.signup.email,\n            plan=self.signup.plan,\n            region=self.signup.region,\n            language=self.signup.language,\n            timezone=self.signup.timezone,",
+    "    profile = Profile.objects.create(\n        user=form.cleaned_data.user,\n        bio=form.cleaned_data.bio,\n        avatar=form.cleaned_data.avatar,\n        website=form.cleaned_data.website,\n        location=form.cleaned_data.location,\n        birthday=form.cleaned_data.birthday,",
+    "        line = models.Line(\n            project=self.order_line.project,\n            offering=self.order_line.offering,\n            plan=self.order_line.plan,\n            limits=self.order_line.limits,\n            quantity=self.order_line.quantity,",
+    "        order = Order(\n            customer=self.cart.customer,\n            items=self.cart.items,\n            total=self.cart.total,\n            coupon=self.cart.coupon,\n            shipping=self.cart.shipping,\n            currency=self.cart.currency,"
+   ],
+   "quiet": [
+    "        resource = models.Resource(\n            name=name,\n            project=project,\n            offering=offering,\n            plan=plan,\n            limits=limits,\n            attributes=attributes,",
+    "        return Invoice(\n            customer=find_customer(),\n            amount=compute_amount(),\n            currency='EUR',\n            due_date=today(),\n            notes='',\n            status=Status.OPEN,",
+    "        ticket = models.Ticket(\n            project=project,\n            assignee=assignee,\n            priority=priority,\n            labels=labels,\n            title=title,\n            description=description,",
+    "    trainer = Trainer(\n        model=build_model(),\n        optimizer=make_optimizer(),\n        scheduler=get_scheduler(),\n        epochs=10,\n        batch_size=32,\n        device='cuda',",
+    "        account = models.Account(\n            owner=request.user,\n            email=form.email,\n            plan=Plan.FREE,\n            region=geo.region,\n            language=settings.LANGUAGE,\n            timezone=tz.name,",
+    "    profile = Profile.objects.create(\n        user=request.user,\n    )",
+    "        line = models.Line(\n            project=self.order_line.project,\n        )",
+    "        order = Order(\n            customer=user.profile,\n            items=basket.lines,\n            total=prices.sum,\n            coupon=promo.code,\n            shipping=rates.cheapest,\n            currency=locale.currency,"
+   ]
+  }
+ ],
+ "predictions": "about 6/8 fire with median near 0.22; near misses mostly under 0.15. Risky: activation varies a lot between blocks (0.11-0.45 in probes)",
+ "notes": "Step-in reader of bonsai1/L24/N1091+ (drop 0.11 on zeroing it). Near misses keep the call, layout and keyword names and drop only the repeated object prefix. No sentences from Twitch chat (chat was quiet).",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "probe",
+   "inverse-de"
+  ]
+ }
+}
