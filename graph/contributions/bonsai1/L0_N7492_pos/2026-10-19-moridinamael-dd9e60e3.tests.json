@@ -1,0 +1,45 @@
+{
+ "contribution": "2026-10-19-moridinamael-dd9e60e3",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N7492+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T15:49:01+00:00",
+ "roles": ["feeds bonsai1/L1/N10078+"],
+ "neighbours": [
+  {
+   "unit": "L0/N7492",
+   "pole": "+",
+   "label": "The CJK character 故 as a standalone token, in any sense: 'therefore' (故/故に/是故), 'old/former' (故人, 故伎), 'the late/deceased' (Korean 고(故)), 'reason' (缘故, 无缘无故), 'why' (何故). Not 'therefore' without it (所以, 因此, ゆえに, 是以); not words where the tokenizer merges 故 into one token (故事, 故障); English 'Thus' only weakly (~0.18).",
+   "short": "the character 故 itself, any meaning",
+   "unit_kind": "token",
+   "confidence": "high",
+   "fire": [
+    "他生病了，故今天没来上班。",
+    "天色已晚，故我们决定明天再出发。",
+    "雨が強かった、故に試合は中止になった。",
+    "是故圣人不积。",
+    "고(故) 박영수 선생님의 명복을 빕니다.",
+    "故人の思い出を語り合った。",
+    "何故彼はそんなに怒っているの？",
+    "他无缘无故地哭了起来。"
+   ],
+   "quiet": [
+    "他生病了，所以今天没来上班。",
+    "天色已晚，因此我们决定明天再出发。",
+    "雨が強かった、ゆえに試合は中止になった。",
+    "是以圣人不积。",
+    "고 박영수 선생님의 명복을 빕니다.",
+    "亡き人の思い出を語り合った。",
+    "Thus the match was called off because of rain.",
+    "他讲了一个很长的故事。"
+   ]
+  }
+ ],
+ "predictions": "8/8 fire (0.6-0.98), 0 near misses at 0.30; 'Thus' is the highest near miss at ~0.18.",
+ "notes": "Step-out feeder of bonsai1/L1/N10078+ (遅), largest single-unit ablation drop (0.13). Headline question on stream: the character 故 whatever it means, or the idea 'therefore'? Probes say the character: 'therefore' written without 故 stays near 0. The inverse solver round crashed (toolchain JSON int64 error), so there's no solver evidence. Band scan skipped for stream pacing.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["step-out", "card", "look", "probe", "quick-test"]
+ }
+}
