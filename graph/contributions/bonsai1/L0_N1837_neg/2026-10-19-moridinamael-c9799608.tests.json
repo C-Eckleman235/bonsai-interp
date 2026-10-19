@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-19-moridinamael-c9799608",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N1837-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T18:45:08+00:00",
+ "roles": ["feeds bonsai1/L4/N1871-"],
+ "neighbours": [
+  {
+   "unit": "L0/N1837",
+   "pole": "-",
+   "label": "the 'end'/'pend' word piece when the tokenizer splits a word around it (pend-ulum, pend-iente, Vend-ée, Br-end-a, M-end, F-end, T-end, S-pend); whole-word tokens that contain 'end' (trend, send, depend, Wendy mid-sentence) stay weak",
+   "short": "split-off 'end'/'pend' word piece",
+   "unit_kind": "token / subword",
+   "confidence": "medium",
+   "fire": [
+    "The old clock's pendulum swung slowly.",
+    "Brenda painted the fence blue.",
+    "Grapes are harvested in the Vendée each fall.",
+    "Mend the hole in your sock tonight.",
+    "Fend off the geese with a stick.",
+    "Tend the tomatoes before it gets hot.",
+    "The road has a steep pendiente near the town.",
+    "Spend the morning with the tomatoes before it gets hot."
+   ],
+   "quiet": [
+    "The old clock's trend swung slowly downward.",
+    "My neighbor Wendy painted the fence blue.",
+    "Grapes depend on the weather each fall.",
+    "Send the sock to your aunt tonight.",
+    "He extended a stick toward the geese.",
+    "The road was independent of the town.",
+    "The vendor sold hot pretzels.",
+    "Please send me the file."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire above 0.20, no near miss above 0.30",
+ "notes": "Feeder of bonsai1/L4/N1871- found with play step (drop 0.05). The pole is a tokenizer-level detector: the same letters fire when 'end'/'pend' is a separate piece (pendulum 0.88, Mend 0.63) and stay weak as part of a whole-word token (' Wendy' mid-sentence 0.13 vs 'Wendy' sentence-initial 0.65). Known exceptions seen while exploring: some whole tokens still fire moderately to strongly (' lend' 0.59, 'Attend' 0.66, 'Blend' 0.35, ' pending'/' spend' ~0.32), so the boundary is token identity, not a clean split/whole rule. Inverse solver (globalMOO) found no leak. Chat was quiet; house sentences only.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "step-out"
+  ]
+ }
+}
