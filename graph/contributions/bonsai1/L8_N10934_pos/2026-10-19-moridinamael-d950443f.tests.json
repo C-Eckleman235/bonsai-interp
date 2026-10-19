@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-19-moridinamael-d950443f",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N10934+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T20:30:34+00:00",
+ "roles": ["feeds bonsai1/L10/N8330+"],
+ "neighbours": [
+  {
+   "unit": "L8/N10934",
+   "pole": "+",
+   "label": "Texas as a place: the state's name or a name that points to Texas (its cities, landmarks, history: Galveston, the Alamo, Juneteenth), peaking on the name's last piece, with or without the word 'Texas'; the same frames with places in other states stay quiet",
+   "short": "Texas the place, with or without the word",
+   "unit_kind": "concept",
+   "confidence": "high",
+   "fire": [
+    "The Gulf Coast refineries near Galveston are busy.",
+    "Remember the Alamo, they shouted.",
+    "Juneteenth is celebrated every June 19.",
+    "Austin is the capital and home to the legislature.",
+    "Fort Worth stockyards still host cattle drives.",
+    "We drove across Texas for two days.",
+    "The Lone Star State has wide open skies.",
+    "Hurricane season worries families in Corpus Christi."
+   ],
+   "quiet": [
+    "The Gulf Coast refineries near Mobile are busy.",
+    "Remember the Maine, they shouted.",
+    "Independence Day is celebrated every July 4.",
+    "Sacramento is the capital and home to the legislature.",
+    "Omaha stockyards still host cattle drives.",
+    "We drove across Oklahoma for two days.",
+    "The Golden State has wide open skies.",
+    "Hurricane season worries families in Pensacola."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire, 0 near misses at 0.30; Mobile the nearest miss (shared Gulf Coast frame)",
+ "notes": "Step-out feeder of bonsai1/L10/N8330+ (Texas place names), largest single-unit drop 0.33. Only one fire sentence contains the word 'Texas'; the rest test the concept without the word. Near misses are matched frames with a place in another state. globalMOO inverse search found one partial leak: the word in a non-place sense ('Texas hold'em') reached about 0.30 in the solver's scoring (0.07 in plain probe), so the bare word carries some charge; generic cowboy/rodeo text stays silent. Labelled live on the Twitch Let's Play stream.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-out",
+   "card",
+   "probe",
+   "inverse-gmoo",
+   "bank-solo"
+  ]
+ }
+}
