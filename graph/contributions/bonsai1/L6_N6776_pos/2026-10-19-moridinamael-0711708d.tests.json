@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-19-moridinamael-0711708d",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N6776+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T20:53:26+00:00",
+ "roles": ["feeds bonsai1/L8/N10934+"],
+ "neighbours": [
+  {
+   "unit": "L6/N6776",
+   "pole": "+",
+   "label": "the name 'Texas' as a word, in its spellings (Texas, Tex., Texan, Tex-Mex, TX), whatever it names (the state, a dog, a poker game, a company, a person called Tex); Texas places named without the word (Austin, the Alamo, El Paso, 'Lone Star State') stay quiet",
+   "short": "the word 'Texas'/'Tex' in any meaning",
+   "unit_kind": "token",
+   "confidence": "high",
+   "fire": [
+    "Our dog Texas chased the ball across the yard.",
+    "He lost all his chips at Texas hold'em last night.",
+    "My old Texas Instruments calculator still works.",
+    "The governor of Texas signed the bill on Monday.",
+    "Cartoonist Tex Avery created many famous characters.",
+    "My neighbor is a proud Texan.",
+    "We ordered Tex-Mex nachos for the party.",
+    "Smith v. Jones, 512 S.W.2d 88 (Tex. 1974)."
+   ],
+   "quiet": [
+    "Our dog Rusty chased the ball across the yard.",
+    "He lost all his chips at blackjack last night.",
+    "The governor of Oklahoma signed the bill on Monday.",
+    "Smith v. Jones, 512 P.2d 88 (Okla. 1974).",
+    "We spent a week in Austin eating barbecue.",
+    "The Alamo in San Antonio draws many tourists.",
+    "The Lone Star State has wide open skies.",
+    "El Paso sits right on the Mexican border."
+   ],
+   "notes": "Upstream of the L8 Texas-place neuron: this L6 unit is the word form, the L8 unit adds the meaning. Gray zone kept out of the test: 'maverick' (0.4-0.8 even for Top Gun), Houston (~0.25-0.34), Dallas (~0.45), 'TX' (globalMOO leak at 0.38 via TX-2). Sentences probed before registration. Twitch chat was quiet; label chosen on stream."
+  }
+ ],
+ "predictions": "8/8 fire above 0.5; no near miss above 0.15",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "bank-solo",
+   "inverse-gmoo",
+   "quick-test"
+  ]
+ }
+}
