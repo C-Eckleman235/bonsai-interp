@@ -13,9 +13,10 @@ derive the record.
 | **Structural** | edits or deletes anything, schema, protocols, fold rules, docs | review (the triage routine comments; the owner merges) |
 | **Tool** | adds one screen or analysis under `bonsai_interp/` plus its entry in `methods.py` | review, one tool per PR |
 
-The colour-in lane has no agent in the loop: the checks below are mechanical, and everything they
-cannot check (honest results, good near misses) is caught by QC missions and by sampled blind
-rooms, not by a reviewer reading every PR. The rest of this document is the procedure for the
+The colour-in lane has no agent in the loop. The checks below are mechanical, and `checks` also
+re-scores up to two of each PR's new results on a CPU runner (`bonsai_interp.graph.replicate`), so
+invented activations fail. What no check can judge (good near misses, honest labels) is caught by
+post-merge QC, QC missions and sampled blind rooms, not by a reviewer reading every PR. The rest of this document is the procedure for the
 review lanes, and what the workflow does for colour-in.
 
 ## For each PR

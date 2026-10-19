@@ -27,3 +27,70 @@ jobs:
       - name: Derived files match the contributions (circuit breaker)
         if: github.event_name == 'push'
         run: python -m bonsai_interp.graph.validate --strict
+  replicate:
+    # spot-replication: re-score up to 2 of the PR's new results files on a CPU runner (1-bit weights, ~1 min) and fail
+    # if the recorded activations or the outcome do not reproduce, so invented results cannot merge quietly
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      BONSAI_DEVICE: cpu
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+      - name: Any new results to re-score?
+        id: any
+        run: |
+          n=$(git diff --name-only --diff-filter=A origin/${{ github.base_ref }}...HEAD -- graph/contributions | grep -v '\.tests\.json$' | grep -c '\.json$' || true)
+          echo "n=$n" >> "$GITHUB_OUTPUT"
+      - name: Data (the release's corpus and scan, cached by the pages workflow)
+        if: steps.any.outputs.n != '0'
+        id: data
+        uses: actions/cache@v4
+        with:
+          path: |
+            data/corpus.npz
+            data/scan_bonsai1.npz
+          key: data-v1
+      - name: Download the data release
+        if: steps.any.outputs.n != '0' && steps.data.outputs.cache-hit != 'true'
+        run: gh release download data-v1 --repo ${{ github.repository }} --dir data --pattern corpus.npz --pattern scan_bonsai1.npz --clobber
+      - name: Model (the 1.2 GB 1-bit GGUF, cached)
+        if: steps.any.outputs.n != '0'
+        id: model
+        uses: actions/cache@v4
+        with:
+          path: models/Bonsai-8B
+          key: bonsai-8b-q1_0-gguf
+      - name: Toolchain (CPU only)
+        if: steps.any.outputs.n != '0'
+        run: |
+          pip install --quiet numpy torch --index-url https://download.pytorch.org/whl/cpu
+          pip install --quiet transformers safetensors gguf huggingface_hub
+      - name: Download the model
+        if: steps.any.outputs.n != '0' && steps.model.outputs.cache-hit != 'true'
+        run: |
+          python -c "from huggingface_hub import hf_hub_download as h; h('prism-ml/Bonsai-8B-gguf', 'Bonsai-8B-Q1_0.gguf', local_dir='models/Bonsai-8B'); [h('prism-ml/Bonsai-8B-unpacked', f, local_dir='models/Bonsai-8B') for f in ('config.json','generation_config.json','tokenizer.json','tokenizer_config.json','vocab.json','merges.txt','added_tokens.json','special_tokens_map.json')]"
+      - name: Re-score and compare
+        if: steps.any.outputs.n != '0'
+        run: python -m bonsai_interp.graph.replicate --pr-base origin/${{ github.base_ref }} --k 2 --seed ${{ github.event.pull_request.head.sha }}
+  warm-model-cache:
+    # PRs can only restore caches saved on main: keep the model cache there so spot-replication never re-downloads it
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - id: model
+        uses: actions/cache@v4
+        with:
+          path: models/Bonsai-8B
+          key: bonsai-8b-q1_0-gguf
+      - if: steps.model.outputs.cache-hit != 'true'
+        run: |
+          pip install --quiet huggingface_hub
+          python -c "from huggingface_hub import hf_hub_download as h; h('prism-ml/Bonsai-8B-gguf', 'Bonsai-8B-Q1_0.gguf', local_dir='models/Bonsai-8B'); [h('prism-ml/Bonsai-8B-unpacked', f, local_dir='models/Bonsai-8B') for f in ('config.json','generation_config.json','tokenizer.json','tokenizer_config.json','vocab.json','merges.txt','added_tokens.json','special_tokens_map.json')]"
