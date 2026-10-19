@@ -1,0 +1,153 @@
+{
+ "id": "2026-10-19-moridinamael-d7c9e142",
+ "kind": "qc",
+ "neuron": "bonsai1/L10/N2499-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T18:15:06+00:00",
+ "recipe": {
+  "toolchain_commit": "d0ecf0a",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-d7c9e142.tests.json"
+ },
+ "label": "Weak, dense hum (11% of tokens reach 0.1 of a small max) that rises on talk-based mental-health treatment: counselling and therapy sessions, psychiatrists, psychoanalysis, psychodynamic work, where people talk through their problems; speech therapy and the word 'talking' bump it a little. Symptom lists and CBT jargon, where the + pole takes over, stay near zero. Physical medicine (surgery, physio, pharmacy) hums at the 0.1-0.2 baseline. Lateness adds nothing: 'too late' scores like 'too early', and the feeders' foreign too/late/tan words (demasiado, zu spät, поздно) do not carry through, apart from a small bump on the headline 'Too Little too Late?'.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-d7c9e142.tests.json",
+   "prereg_commit": "d0ecf0a",
+   "author": "moridinamael",
+   "n_fire": 6,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.291,
+     "peak": "sell"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.359,
+     "peak": "apist"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.344,
+     "peak": " seeing"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.369,
+     "peak": " psycho"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.282,
+     "peak": " counselling"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.46,
+     "peak": " psychiatrist"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.365,
+     "peak": " talk"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.314,
+     "peak": "'s"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.121,
+     "peak": " Tuesday"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.139,
+     "peak": " surgeon"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.307,
+     "peak": " seeing"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.219,
+     "peak": " out"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.14,
+     "peak": " cyclist"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.187,
+     "peak": " la"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.088,
+     "peak": " his"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.267,
+     "peak": " stress"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.351,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "d0ecf0a",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Weak, dense hum that is somewhat stronger on clinical-psychology / talking-therapy text (psychotherapy, psychiatric symptoms, counselling sessions, psychodynamic or interpersonal treatment, ECT), the + pole's topic leaking through; lateness ('too late') adds little or nothing over matched text. Speech therapy also bumps it (solver)."
+ },
+ "notes": "Loop-back QC after mapping six feeders (L1/N1309-, L2/N10718+, L0/N6779+, L0/N6274+, L0/N1649-, L0/N8528+), several of them foreign 'too'/'late'/'tan' token detectors. Probes found they do not carry through to this pole: 'zu spät' 0.06, 'demasiado tarde' 0.18 vs 'muy temprano' 0.16, 'far too late' 0.15 vs 'too early' 0.13. Fresh sentences, not probed before pre-registration."
+}
