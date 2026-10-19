@@ -44,6 +44,9 @@ review lanes, and what the workflow does for colour-in.
    - **QC independence.** A QC's sentences are new and do not copy the original test.
    - **Label level.** The label claims no more than the test shows. A label about a meaning
      that was tested only with one word should be rephrased as a word-level label.
+   - **Noun lists.** A label that is a list of unrelated things ("cats and cars") is worth a QC
+     suggestion: is there one shared pattern, tested on new cases, that explains the list? (AGENTS.md,
+     "A verb, not a list of nouns.") This is a suggestion, never a reason to block.
    - **Artefacts.** Each URL resolves and its sha256 matches. If one does not, ask for a fix;
      it does not block the merge.
    - **Recipe.** It names a toolchain commit that exists on `main`.

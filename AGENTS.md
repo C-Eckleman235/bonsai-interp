@@ -106,6 +106,15 @@ it in order.
 
   Test the meaning without the word, and the word without the meaning, before you claim a
   meaning.
+- **A verb, not a list of nouns.** People and agents alike tend to label a neuron with a list of
+  things it fires on ("cats and cars", "nerve, strong, hit"). More often a neuron draws a *distinction*
+  that later neurons use: the shared pattern behind the list, with the opposite pole as the other side of
+  that distinction (Cammarata's "cat and car" neuron is a V-shape neuron, and its negative pole is an O).
+  Before you settle on a list, ask: *if I couldn't use groups of nouns, how would I describe what these
+  have in common?* Then test that pattern on NEW cases that were not in the top examples (for the V:
+  bullet trains, pool tables). If the pattern holds, it is the better label; if only the list holds,
+  keep the list and say so. Describe the negative pole as the other side of the same distinction when it
+  is one, not as an unrelated second meaning.
 - **Near misses carry the test.** They keep the topic, length and style, and drop only the
   claimed trigger. Easy near misses (unrelated filler) make a label look cleaner than it is.
 - **Neurons can be dense.** Some are on for most text, and an 8 + 8 test cannot pass for them.
