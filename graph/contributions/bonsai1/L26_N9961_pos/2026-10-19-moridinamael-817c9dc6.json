@@ -1,0 +1,155 @@
+{
+ "id": "2026-10-19-moridinamael-817c9dc6",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N9961+",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T21:25:12+00:00",
+ "recipe": {
+  "toolchain_commit": "16c2e6e",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L26_N9961_pos/2026-10-19-moridinamael-817c9dc6.tests.json"
+ },
+ "label": "Python call arguments that pass several fields of ONE object, one keyword per line (key=self.obj.key, key2=self.obj.key2, ...): fires on the object part as the copy is re-typed; the same layout with bare names, calls or different objects stays low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L26_N9961_pos/2026-10-19-moridinamael-817c9dc6.tests.json",
+   "prereg_commit": "16c2e6e",
+   "author": "moridinamael",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.367,
+     "peak": ".request"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.219,
+     "peak": ".order"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.302,
+     "peak": "=self"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.176,
+     "peak": "="
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.164,
+     "peak": "=self"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.13,
+     "peak": " website"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.414,
+     "peak": "_line"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.195,
+     "peak": "=self"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.122,
+     "peak": "="
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.025,
+     "peak": "='"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.143,
+     "peak": "="
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.071,
+     "peak": "_scheduler"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.068,
+     "peak": " timezone"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.02,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.044,
+     "peak": ".project"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.032,
+     "peak": "           "
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.207,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "16c2e6e",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-in reader of bonsai1/L24/N1091+ (drop 0.11 on zeroing it). Near misses keep the call, layout and keyword names and drop only the repeated object prefix. No sentences from Twitch chat (chat was quiet).",
+ "roles": [
+  "reads bonsai1/L24/N1091+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L24/N1091+", "to": "bonsai1/L26/N9961+", "kind": "feeds", "weight": 0.11, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
