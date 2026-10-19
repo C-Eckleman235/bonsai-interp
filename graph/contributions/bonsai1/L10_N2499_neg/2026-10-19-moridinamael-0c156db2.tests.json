@@ -1,0 +1,70 @@
+{
+ "contribution": "2026-10-19-moridinamael-0c156db2",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L10/N2499-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T15:59:51+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Dense / gate-leak background unit: the - pole is a weak leak (max 1.52, 11% of tokens above 0.1 of max, 99.6% '-g +u leak') that hums at about 0.1-0.3 of max on most prose. Its feeders ('late' in any sense, lateness words, 'belated', 'little', ambient-it predicates) add only a small bump, so 'too late' / 'too little, too late' does not separate from matched text without lateness; the slightly stronger pockets are clinical-psychology / talking-therapy text (the + pole's topic leaking through) and the headline 'Too Little too Late?'."
+ },
+ "neighbours": [
+  {
+   "unit": "L10/N2499",
+   "pole": "-",
+   "label": "Weak leak pole whose real driver is therapy / treatment text, strongest for mental-health treatment (talking therapy, counselling, psychotherapy, ECT, therapy groups at a clinic; speech therapy also counts). Lateness feeders ('late', 'too little, too late') add only a smaller second pocket in the fixed idiom; plain lateness does not fire it.",
+   "fire": [
+    "Counselling is a talking therapy offered free by many GP surgeries.",
+    "She started weekly psychotherapy sessions to work through her grief.",
+    "Cognitive behavioural therapy teaches patients to challenge anxious thoughts.",
+    "Electroconvulsive therapy is sometimes used when antidepressants fail.",
+    "The clinic runs a group therapy session for veterans every Thursday.",
+    "A speech therapist helped the boy pronounce his first words clearly.",
+    "Family therapy can help parents and teenagers communicate better.",
+    "Psychoanalysis grew out of Freud's early work with hysterical patients."
+   ],
+   "quiet": [
+    "Her doctor measured her blood pressure and weight at the checkup.",
+    "She started weekly piano lessons to fill her quiet evenings.",
+    "The hospital car park was full by nine o'clock on Monday.",
+    "The pharmacy closes early on Sundays and public holidays.",
+    "The library runs a book club for retirees every Thursday.",
+    "A football coach helped the boy improve his passing and shooting.",
+    "Family dinners can help parents and teenagers spend time together.",
+    "The nurse wrote the patient's temperature on the chart."
+   ]
+  }
+ ],
+ "predictions": "about 6/8 fire, at most 1 near miss; therapy text around 0.2-0.8 of max, near misses near the 0.05-0.15 background hum",
+ "notes": "Loop-back after feeders were mapped (L0/N4874+, L3/N3226+, L1/N362+, L0/N8049+, L0/N7492+, L0/N111+, mostly lateness / 'little' units). Probes showed plain lateness does not drive this pole ('arrived too late' 0.085 = 'just in time'; 'belated' 0.01), the idiom 'too little, too late' reaches ~0.27-0.35, and therapy text reaches 0.2-0.8 (ECT 0.75, talking therapy 0.81, speech therapy 0.46). Exposure-therapy line was a miss (0.05) and a 'talking parrot' line hit 0.29, so expect noise. Solver leak was a 'Coping with Depression' chapter list, i.e. on-topic.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "quick-test"
+  ],
+  "_screens_vocabulary": [
+   "atlas",
+   "bands",
+   "bank-solo",
+   "blind-room",
+   "card",
+   "disproof",
+   "held-out",
+   "induce",
+   "inverse-de",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round",
+   "step-out",
+   "which"
+  ]
+ }
+}
