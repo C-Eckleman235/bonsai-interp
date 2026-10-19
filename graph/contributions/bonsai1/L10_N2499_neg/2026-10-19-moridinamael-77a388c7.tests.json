@@ -1,0 +1,71 @@
+{
+ "contribution": "2026-10-19-moridinamael-77a388c7",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L10/N2499-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T16:34:32+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Weak, dense hum that is somewhat stronger on clinical-psychology / talking-therapy text (psychotherapy, psychiatric symptoms, counselling sessions, psychodynamic or interpersonal treatment, ECT), the + pole's topic leaking through; lateness ('too late') adds little or nothing over matched text. Speech therapy also bumps it (solver)."
+ },
+ "neighbours": [
+  {
+   "unit": "L10/N2499",
+   "pole": "-",
+   "label": "Weak, dense hum (gate-closed leak of the + pole) that is stronger on mental-health treatment by meaning, not by the word 'therapy': psychotherapy, psychiatry, counselling, ECT, psychiatric diagnosis (psychiatrist/psychologist sentences fire without 'therapy'; 'retail therapy' stays quiet; physical/speech therapy bump it partly). Narrow side branch: title-case ' Late' in 'Too ... Late' headlines ('Is It Too Late?' ~0.4, 'Too Little, Too Late' ~0.3), while lowercase 'too late' in prose stays at the hum (~0.14). The mapped feeders (L5/N4199+ 'too ADJ to', L0 故/遮 characters) do not lift ordinary too-late prose.",
+   "fire": [
+    "Her counsellor suggested cognitive behavioural therapy for the anxiety.",
+    "The psychiatrist diagnosed him with bipolar disorder and prescribed lithium.",
+    "Electroconvulsive therapy is sometimes used when severe depression resists medication.",
+    "In group psychotherapy, members talk openly about their grief.",
+    "The clinical psychologist assessed the teenager for post-traumatic stress symptoms.",
+    "Psychoanalysts explore unconscious conflicts rooted in early childhood.",
+    "Exposure therapy gradually reduced his fear of flying.",
+    "Antidepressants combined with talking therapy work better than either alone."
+   ],
+   "quiet": [
+    "Her dentist suggested a filling for the cracked molar.",
+    "The cardiologist diagnosed him with high blood pressure and prescribed tablets.",
+    "Radiation therapy is sometimes used when the tumour cannot be removed.",
+    "In the book club, members talk openly about their favourite novels.",
+    "The vet examined the puppy for signs of a broken leg.",
+    "Archaeologists explore ancient settlements buried under the desert.",
+    "A spa weekend was her favourite kind of retail therapy.",
+    "By the time the firefighters arrived, it was already too late to save the barn."
+   ]
+  }
+ ],
+ "predictions": "6-7/8 fire near 0.3-0.8; near misses mostly at the hum (0.1-0.25), radiation therapy the riskiest. Dense hum may cost the AUROC.",
+ "notes": "Loop-back QC after mapping feeders L0/N8049+, L0/N7492+, L0/N111+, L5/N4199+, L0/N407+, L0/N943+. Feeders point at the 'too late' branch; probes show it is only the title-case headline form. Stream played the house (chat quiet).",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "neighbors",
+   "quick-test"
+  ],
+  "_screens_vocabulary": [
+   "atlas",
+   "bands",
+   "bank-solo",
+   "blind-room",
+   "card",
+   "disproof",
+   "held-out",
+   "induce",
+   "inverse-de",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round",
+   "step-out",
+   "which"
+  ]
+ }
+}
