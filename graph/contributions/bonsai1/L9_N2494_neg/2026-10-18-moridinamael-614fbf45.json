@@ -1,0 +1,163 @@
+{
+ "id": "2026-10-18-moridinamael-614fbf45",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N2494-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T04:21:20+00:00",
+ "recipe": {
+  "toolchain_commit": "444d280",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L9_N2494_neg/2026-10-18-moridinamael-614fbf45.tests.json"
+ },
+ "label": "Animal sensory organs and specialised senses in natural-history/biology prose (electroreceptors, magnetoreception, lateral line, compound eyes, echolocation, heat pits); peaks on the sense-organ word. Weaker for non-sensory body anatomy (keratin, claws) and for smell via antennae; also fires on 'Journal of Comparative Physiology'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L9_N2494_neg/2026-10-18-moridinamael-614fbf45.tests.json",
+   "prereg_commit": "444d280",
+   "author": "moridinamael",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.412,
+     "peak": " sense"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.973,
+     "peak": " magnetic"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.809,
+     "peak": " line"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.634,
+     "peak": " compound"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.246,
+     "peak": "asonic"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.378,
+     "peak": " through"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.419,
+     "peak": " can"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.626,
+     "peak": "aviolet"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.132,
+     "peak": " without"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.076,
+     "peak": " fly"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.05,
+     "peak": " Mexico"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.116,
+     "peak": " their"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.018,
+     "peak": "ors"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.097,
+     "peak": " digest"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.008,
+     "peak": " lo"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.189,
+     "peak": "bed"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.522,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bands",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bands",
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "444d280",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "notes": "Step-out feeder of bonsai1/L10/N6901+ (drop 0.05 under single-unit zero ablation). The + pole is a held 'animals in casual text' label; this - pole is the sensory-physiology side. Inverse solver leak: 'A horse's hooves are made of keratin' (0.34); silent on-concept: moth antennae smell (0.07). Fresh sentences, written for this test; no chat sentences were sent.",
+ "roles": [
+  "feeds bonsai1/L10/N6901+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L9/N2494-",
+   "to": "bonsai1/L10/N6901+",
+   "kind": "feeds",
+   "weight": 0.05,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
