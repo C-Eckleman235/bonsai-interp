@@ -1,0 +1,69 @@
+{
+ "contribution": "2026-10-19-moridinamael-8068ac0d",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L10/N2499-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T15:13:29+00:00",
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "Dense / gate-leak background unit: the - pole is a weak leak (max 1.52, 11% of tokens above 0.1 of max, 99.6% '-g +u leak') that hums at about 0.1-0.3 of max on most prose. Its feeders ('late' in any sense, lateness words, 'belated', 'little', ambient-it predicates) add only a small bump, so 'too late' / 'too little, too late' does not separate from matched text without lateness; the slightly stronger pockets are clinical-psychology / talking-therapy text (the + pole's topic leaking through) and the headline 'Too Little too Late?'."
+ },
+ "neighbours": [
+  {
+   "unit": "L10/N2499",
+   "pole": "-",
+   "label": "Dense / gate-leak background unit: the - pole is a weak leak (max 1.52, 11% of tokens above 0.1 of max, 99.6% '-g +u leak') that hums at about 0.1-0.3 of max on most prose. Its feeders ('late' in any sense, lateness words, 'belated', 'little', ambient-it predicates) add only a small bump, so 'too late' / 'too little, too late' does not separate from matched text without lateness; the slightly stronger pockets are clinical-psychology / talking-therapy text (the + pole's topic leaking through) and the headline 'Too Little too Late?'.",
+   "unit_kind": "dense / positional",
+   "fire": [
+    "By the time the ambulance came, it was already too late.",
+    "The council's response was too little, too late for the flooded street.",
+    "She sent a belated birthday card with a long apology inside.",
+    "The late king's portrait still hangs in the great hall.",
+    "We stayed up late finishing the puzzle on the kitchen table.",
+    "The refund arrived three weeks late, long after the trip.",
+    "It's getting late, so the children should head to bed.",
+    "Too little help came too late for the stranded climbers."
+   ],
+   "quiet": [
+    "By the time the ambulance came, the patient was already sitting up.",
+    "The council's response was swift and generous for the flooded street.",
+    "She sent a cheerful birthday card with a long poem inside.",
+    "The young king's portrait still hangs in the great hall.",
+    "We stayed up together finishing the puzzle on the kitchen table.",
+    "The refund arrived three days early, long before the trip.",
+    "It's getting cold, so the children should head inside.",
+    "Plenty of help came quickly for the stranded climbers."
+   ]
+  }
+ ],
+ "predictions": "Loop-back after mapping the feeders (L4/N11028-, L3/N694+, L0/N3566+, L1/N10078+, L0/N7652- held; L0/N467- failed). Under the dense label, this lateness-in-the-feeders'-senses vs matched-twin test should FAIL: AUROC below 0.90, fire median near or below 0.20, twins humming at 0.05-0.20. A pass would mean the feeders' lateness signal does separate and the label should be refined. Exploratory probes this session: 'too little, too late' 0.35 vs 'too much, too soon' 0.15; 'far too late' 0.14 vs 'right on time' 0.13; therapy text 0.0-0.85, inconsistent; solver best single sentences 0.35-0.55 with a 0.55 leak in a depression-book chapter list.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "quick-test"
+  ],
+  "_screens_vocabulary": [
+   "atlas",
+   "bands",
+   "bank-solo",
+   "blind-room",
+   "card",
+   "disproof",
+   "held-out",
+   "induce",
+   "inverse-de",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round",
+   "step-out",
+   "which"
+  ]
+ }
+}
