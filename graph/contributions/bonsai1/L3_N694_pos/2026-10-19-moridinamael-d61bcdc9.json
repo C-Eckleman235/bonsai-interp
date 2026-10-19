@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-19-moridinamael-d61bcdc9",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N694+",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T14:37:15+00:00",
+ "recipe": {
+  "toolchain_commit": "bdeac28",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L3_N694_pos/2026-10-19-moridinamael-d61bcdc9.tests.json"
+ },
+ "label": "the letter string 'tard' inside a word, meaning-blind: tardy/tardiness, retard/retardant, French/Spanish tard/tarde, but also Tardis, tardigrade, bastard, petard; lateness or slowness phrased without 'tard' stays quiet, as do '-ard' words without the t (guard, standard, leopard) and 'tart'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L3_N694_pos/2026-10-19-moridinamael-d61bcdc9.tests.json",
+   "prereg_commit": "bdeac28",
+   "author": "moridinamael",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.5,
+     "peak": " tard"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.598,
+     "peak": " retard"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.525,
+     "peak": " retard"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.655,
+     "peak": "ard"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.719,
+     "peak": "ard"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.295,
+     "peak": " bastard"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.404,
+     "peak": " tard"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.338,
+     "peak": " tarde"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.001,
+     "peak": " job"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.007,
+     "peak": " slow"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.002,
+     "peak": " burning"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": " vacuum"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.002,
+     "peak": " police"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.002,
+     "peak": "ound"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.01,
+     "peak": " late"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.012,
+     "peak": "o"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.512,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "bdeac28",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L5/N6367-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L3/N694+", "to": "bonsai1/L5/N6367-", "kind": "feeds", "weight": 0.06, "method": "single-unit zero ablation (play step)"}
+ ]
+}
