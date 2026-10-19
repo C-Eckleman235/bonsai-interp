@@ -1,0 +1,155 @@
+{
+ "id": "2026-10-19-moridinamael-681c1601",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N1649-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T18:00:47+00:00",
+ "recipe": {
+  "toolchain_commit": "f256d79",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N1649_neg/2026-10-19-moridinamael-681c1601.tests.json"
+ },
+ "label": "the word-piece 'ain' / 'lain' split off at the end of surnames and rare words (McClain, Chamberlain, Blain, Twain, Fontainebleau, wainscoting); common whole words containing 'ain' (explain, captain, certain, fountain, again) stay quiet, and short whole words like rain, drain, vain fire only moderately (~0.4)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L0_N1649_neg/2026-10-19-moridinamael-681c1601.tests.json",
+   "prereg_commit": "f256d79",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.798,
+     "peak": "ain"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 1.014,
+     "peak": "lain"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.656,
+     "peak": "ain"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.622,
+     "peak": "ain"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.986,
+     "peak": "ain"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.871,
+     "peak": " Bain"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.925,
+     "peak": "ain"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.824,
+     "peak": "ain"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.018,
+     "peak": " road"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.073,
+     "peak": " Chambers"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.012,
+     "peak": " Quinn"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.039,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.024,
+     "peak": " Blake"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.027,
+     "peak": " finance"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.145,
+     "peak": " captain"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.013,
+     "peak": " explain"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.847,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-gmoo",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "f256d79",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L3/N3226+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L0/N1649-", "to": "bonsai1/L3/N3226+", "kind": "feeds", "weight": 0.20, "method": "single-unit zero ablation (play step)"}
+ ]
+}

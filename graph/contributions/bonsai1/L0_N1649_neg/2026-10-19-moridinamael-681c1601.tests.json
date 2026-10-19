@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-19-moridinamael-681c1601",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N1649-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T18:00:03+00:00",
+ "roles": ["feeds bonsai1/L3/N3226+"],
+ "neighbours": [
+  {
+   "unit": "L0/N1649",
+   "pole": "-",
+   "label": "the word-piece 'ain' / 'lain' split off at the end of surnames and rare words (McClain, Chamberlain, Blain, Twain, Fontainebleau, wainscoting); common whole words containing 'ain' (explain, captain, certain, fountain, again) stay quiet, and short whole words like rain, drain, vain fire only moderately (~0.4)",
+   "short": "'ain' piece in names (McClain, Chamberlain)",
+   "confidence": "high",
+   "fire": [
+    "Sheriff Tom McBlain closed the road at noon.",
+    "The letter was signed by Professor Ruth Chamberlain.",
+    "Our new neighbour, Mr. Quain, fixed the fence.",
+    "Coach Dana Swain called a timeout late in the game.",
+    "Detective Harold Blain reopened the old case.",
+    "The firm hired Greg Bain as its finance director.",
+    "Reporters waited outside for Senator Lisa McClain.",
+    "She read every novel by Mark Twain that summer."
+   ],
+   "quiet": [
+    "Sheriff Tom McBride closed the road at noon.",
+    "The letter was signed by Professor Ruth Chambers.",
+    "Our new neighbour, Mr. Quinn, fixed the fence.",
+    "Coach Dana Swann called a timeout late in the game.",
+    "Detective Harold Blake reopened the old case.",
+    "The firm hired Greg Baker as its finance director.",
+    "Reporters waited outside for the captain of the team.",
+    "She tried to explain every novel she read that summer."
+   ],
+   "notes": "Step-out feeder of the 'rain' neuron bonsai1/L3/N3226+ (zero-ablation drop 0.20). Near misses swap the surname for a similar one without 'ain', or use a common word containing 'ain' (captain, explain). Sentences drafted and probed on stream before this pre-registration; inverse solver found no leak, near-miss ceiling was short '-ain' words (drain 0.37, vain 0.41), kept out of the near misses."
+  }
+ ],
+ "predictions": "8/8 fire, 0 near misses above 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "bank-solo",
+   "inverse-gmoo",
+   "quick-test"
+  ]
+ }
+}
