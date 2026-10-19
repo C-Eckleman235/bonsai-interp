@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-19-moridinamael-dcc97911",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N8330+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T20:16:06+00:00",
+ "roles": ["feeds bonsai1/L14/N8520-"],
+ "neighbours": [
+  {
+   "unit": "L10/N8330",
+   "pole": "+",
+   "label": "Texas place names (cities, counties, towns, FM farm roads), peaking on the name's last piece ('Nacogdo|ches', 'Brown|sville', 'Bex|ar'); the same frames with places in other states stay quiet",
+   "short": "Texas place names",
+   "unit_kind": "context",
+   "confidence": "medium",
+   "notes": "Played on the Twitch letsplay stream (chat was quiet, so these are the agent's own sentences). Probes: other-state places (Boise, Spokane, Missoula, Duluth, Kenosha) stay under 0.1. Known word leak kept out of the test: 'Austin' as a person's name (Steve Austin 0.31, Austin Butler 0.38). The inverse solver found a 'June 19' (Juneteenth) leak at 0.40 and Lone Star State culture text at 0.36, so it carries a broader Texas signal that is strongest on place tokens. Ambiguous names (Victoria, Odessa) stay low.",
+   "fire": [
+    "The storm knocked out power across Nueces County.",
+    "He coached football in Nacogdoches for ten years.",
+    "We spent the weekend tubing near New Braunfels.",
+    "The plant is just off FM 2920 near Tomball.",
+    "The new hospital will open in Beaumont next fall.",
+    "She was born in Kerrville and studied in San Marcos.",
+    "He moved to Galveston, Texas in 1998.",
+    "Bexar County commissioners voted on the new sales tax."
+   ],
+   "quiet": [
+    "The storm knocked out power across Multnomah County.",
+    "He coached football in Muncie for ten years.",
+    "We spent the weekend tubing near Asheville.",
+    "The plant is just off Route 30 near Lancaster.",
+    "The new hospital will open in Duluth next fall.",
+    "She was born in Bozeman and studied in Missoula.",
+    "He moved to Spokane, Washington in 1998.",
+    "Maricopa County commissioners voted on the new sales tax."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire above 0.20, 0 near misses above 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-out",
+   "card",
+   "look",
+   "probe",
+   "inverse-de"
+  ]
+ }
+}
