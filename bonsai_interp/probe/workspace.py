@@ -11,6 +11,19 @@ from pathlib import Path
 from bonsai_interp.model import ROOT
 
 
+def _plain(o):
+    """json.dumps fallback for values solvers hand back: numpy scalars and arrays, sets, paths."""
+    if hasattr(o, "item") and getattr(o, "shape", None) == ():  # numpy scalar (int64, float32, bool_)
+        return o.item()
+    if hasattr(o, "tolist"):  # numpy array
+        return o.tolist()
+    if isinstance(o, (set, frozenset, tuple)):
+        return list(o)
+    if isinstance(o, Path):
+        return o.as_posix()
+    raise TypeError(f"Object of type {type(o).__name__} is not JSON serializable")
+
+
 class Workspace:
     def __init__(self, L: int, n: int, pole: str = "+", model: str = "bonsai1"):
         self.L, self.n, self.pole, self.model = L, n, pole, model
@@ -32,7 +45,9 @@ class Workspace:
         return json.loads(self.path(name).read_text(encoding="utf-8"))
 
     def save(self, name, obj):
-        self.path(name).write_text(json.dumps(obj, ensure_ascii=False, indent=1), encoding="utf-8")
+        # serialise first, so a bad value cannot leave a half-written file behind
+        text = json.dumps(obj, ensure_ascii=False, indent=1, default=_plain)
+        self.path(name).write_text(text, encoding="utf-8")
         return self.path(name)
 
     def require(self, name, how):
