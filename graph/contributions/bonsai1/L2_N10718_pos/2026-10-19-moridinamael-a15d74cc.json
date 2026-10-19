@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-19-moridinamael-a15d74cc",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N10718+",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T17:36:34+00:00",
+ "recipe": {
+  "toolchain_commit": "b6622e9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L2_N10718_pos/2026-10-19-moridinamael-a15d74cc.tests.json"
+ },
+ "label": "the 'late' stems of German and Russian: 'spät' in any word (spät, später, Verspätung, Spätschicht) and Russian 'поздн-/позже' (поздно, поздний, позже; the verb опоздать is weak), plus the surname token ' Slater'; 'late' in English, Dutch, French or Spanish and look-alikes (slate, Slade, Spaß) stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L2_N10718_pos/2026-10-19-moridinamael-a15d74cc.tests.json",
+   "prereg_commit": "b6622e9",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.815,
+     "peak": "ät"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.593,
+     "peak": "ä"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.712,
+     "peak": "ät"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.924,
+     "peak": "ät"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.473,
+     "peak": "озд"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.564,
+     "peak": "озд"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.601,
+     "peak": " Slater"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.805,
+     "peak": " Slater"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.015,
+     "peak": " schon"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.007,
+     "peak": "n"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.002,
+     "peak": " Stunden"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.023,
+     "peak": " früh"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.03,
+     "peak": " ран"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.01,
+     "peak": " вечер"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.004,
+     "peak": " Sl"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.057,
+     "peak": " late"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.656,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-gmoo",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "b6622e9",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L5/N6367-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L2/N10718+",
+   "to": "bonsai1/L5/N6367-",
+   "kind": "feeds",
+   "weight": 0.05,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
