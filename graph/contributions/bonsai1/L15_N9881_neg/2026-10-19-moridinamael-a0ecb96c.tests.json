@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-19-moridinamael-a0ecb96c",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N9881-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T19:19:53+00:00",
+ "roles": ["reads bonsai1/L14/N8520-"],
+ "neighbours": [
+  {
+   "unit": "L15/N9881",
+   "pole": "-",
+   "label": "a word that completes a well-known fixed name or set phrase (' Board' in 'Brown v. Board', ' X' in 'fragile X', ' Tower' in 'Leaning Tower of Pisa'); the same word used loosely stays low",
+   "short": "inside a famous fixed name",
+   "unit_kind": "dense / positional",
+   "confidence": "low",
+   "notes": "Weak leak pole (max 1.74 vs + pole 14.4) and dense: 22.9% of tokens reach 0.1 of max, so near misses idle at 0.1-0.2. The inverse solver (differential evolution) found a leak: the stock phrase 'world health' without the WHO name hit 0.36, while 'World Health Organization' reached only 0.19; 'interest rates' and a plain 'leaning tower' also fire, so set phrases count, not only capitalised names. Fire and near-miss sentences were chosen after exploratory probing. Reader of bonsai1/L14/N8520- found with play step --down at window=1 (the default window=3 crashed on a top example near a window end).",
+   "fire": [
+    "The case of Brown v. Board of Education changed American schools.",
+    "She was diagnosed with fragile X syndrome as a child.",
+    "Thousands of tourists visit the Leaning Tower of Pisa every summer.",
+    "Roe v. Wade was overturned by the Supreme Court in 2022.",
+    "She studied at the London School of Economics.",
+    "They watched Star Wars: The Empire Strikes Back.",
+    "Darwin wrote On the Origin of Species in 1859.",
+    "Miranda v. Arizona requires police to read suspects their rights."
+   ],
+   "quiet": [
+    "The school board met on Tuesday to discuss the budget.",
+    "Mark the spot on the map with a red X.",
+    "The old wooden bridge over the creek is painted orange.",
+    "The boat was tied to the dock near Wade's house.",
+    "She studied economics at a school in London.",
+    "The empire strikes back at its enemies in the story.",
+    "Darwin wrote about where species come from in 1859.",
+    "The suspect was read his rights in Arizona."
+   ]
+  }
+ ],
+ "predictions": "holds narrowly: fire median about 0.35, near misses 0.07-0.22, none at 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "bank-solo",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
