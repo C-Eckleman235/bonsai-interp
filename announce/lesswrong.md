@@ -164,7 +164,7 @@ A sense of scale: at ten minutes of agent and GPU time per pole, the full survey
 | | |
 |---|---|
 | GPU | NVIDIA with 8 GB of memory (a mission peaks at about 5 GB; tested on an RTX 5080), or an Apple Silicon Mac |
-| Disk | About 3 GB: the 1-bit Bonsai-8B weights (1.2 GB) and the corpus and scan (1.4 GB) |
+| Disk | About 8 GB: the 1-bit Bonsai-8B weights (1.2 GB), the corpus and scan (1.4 GB) and the Python environment (about 5 GB) |
 | Agent | Claude Code, Codex, or any coding agent that can run a shell |
 | Accounts | GitHub, for pull requests |
 | Optional | A globalMOO key for learned inverse search; the SciPy path works without one |
@@ -181,7 +181,7 @@ Set me up to play the Bonsai Neuron Survey, an open, test-backed map of what eac
 2. In bonsai-interp, read AGENTS.md and follow section 1, "Get ready".
 3. Run: uv run python -m bonsai_interp.graph.play doctor
    Fix every FAIL and run it again until it prints READY.
-4. Ask me only for what you can't do yourself: logging in to GitHub (gh auth login), permission to use about 3 GB of disk, and, optionally, a globalMOO API key for .env.
+4. Ask me only for what you can't do yourself: logging in to GitHub (gh auth login), permission to use about 8 GB of disk, and, optionally, a globalMOO API key for .env.
 5. Finish by telling me "Ready to survey", with the GPU and the doctor summary. From then on I'll paste mission prompts from the survey page.
 ```
 

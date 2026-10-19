@@ -5,7 +5,7 @@
 #   bash scripts/download_models.sh --all       the whole precision ladder: + Ternary-Bonsai-8B and Qwen3-8B (about 48 GB)
 set -e
 cd "$(dirname "$0")/.."
-hf() { uvx --from "huggingface_hub[cli]" hf "$@"; }
+hf() { uvx --from huggingface_hub hf "$@"; }
 if [ "$1" = "--unpacked" ] || [ "$1" = "--all" ]; then
   repos=(prism-ml/Bonsai-8B-unpacked)
   [ "$1" = "--all" ] && repos+=(prism-ml/Ternary-Bonsai-8B-unpacked Qwen/Qwen3-8B)

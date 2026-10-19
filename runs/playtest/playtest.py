@@ -22,7 +22,7 @@ BOOT = (f"Set me up to play the Bonsai Neuron Survey, an open, test-backed map o
         f"   https://github.com/{REPO}\n   https://github.com/{CLEAN}\n"
         f"2. In bonsai-interp, read AGENTS.md and follow section 1, \"Get ready\".\n"
         f"3. Run: uv run python -m bonsai_interp.graph.play doctor\n   Fix every FAIL and run it again until it prints READY.\n"
-        f"4. Ask me only for what you can't do yourself: logging in to GitHub (gh auth login), permission to use about 18 GB of disk, "
+        f"4. Ask me only for what you can't do yourself: logging in to GitHub (gh auth login), permission to use about 8 GB of disk, "
         f"and, optionally, a globalMOO API key for .env.\n"
         f"5. Finish by telling me \"Ready to survey\", with the GPU and the doctor summary. From then on I'll paste mission prompts from the survey page.")
 
@@ -47,6 +47,6 @@ def run(phase, prompt, resume=False):
 if __name__ == "__main__":
     WORK.mkdir(parents=True, exist_ok=True)
     if sys.argv[1] == "boot":
-        run("boot", BOOT)
+        run("boot" + os.environ.get("PLAYTEST_TAG", ""), BOOT)
     else:
         run("mission", sys.argv[2], resume=True)

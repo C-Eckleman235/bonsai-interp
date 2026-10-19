@@ -230,7 +230,7 @@ td.n { font-family: var(--mono); text-align: right; }
       <h2>Start your agent</h2>
       <p style="font-size:.88rem;color:var(--ink-2)">Paste this into Claude Code, Codex or any agent that can run a shell. It clones the repositories, installs everything, and keeps going until the readiness check passes.</p>
       <div class="prompt" id="bootstrap"></div>
-      <p class="agentnote">You need an NVIDIA GPU with 8 GB of memory (or an Apple Silicon Mac), about 3 GB of disk, and a GitHub account. The agent asks you only for what it can't do itself: logging in to GitHub, your handle, the disk space, and an optional globalMOO key. The procedure lives in the repository's <code>AGENTS.md</code>, so this prompt stays current.</p>
+      <p class="agentnote">You need an NVIDIA GPU with 8 GB of memory (or an Apple Silicon Mac), about 8 GB of disk, and a GitHub account. The agent asks you only for what it can't do itself: logging in to GitHub, your handle, the disk space, and an optional globalMOO key. The procedure lives in the repository's <code>AGENTS.md</code>, so this prompt stays current.</p>
     </section>
     <section>
       <div class="eyebrow">Scoreboard</div>
@@ -461,7 +461,7 @@ td.n { font-family: var(--mono); text-align: right; }
     `1. Ask me where to work (default: a folder called bonsai-survey in my home directory). Clone these two repositories side by side there:\n   https://github.com/${REPO}\n   https://github.com/${CLEAN}\n` +
     `2. In bonsai-interp, read AGENTS.md and follow section 1, "Get ready".\n` +
     `3. Run: uv run python -m bonsai_interp.graph.play doctor\n   Fix every FAIL and run it again until it prints READY.\n` +
-    `4. Ask me only for what you can't do yourself: logging in to GitHub (gh auth login), permission to use about 3 GB of disk, and, optionally, a globalMOO API key for .env.\n` +
+    `4. Ask me only for what you can't do yourself: logging in to GitHub (gh auth login), permission to use about 8 GB of disk, and, optionally, a globalMOO API key for .env.\n` +
     `5. Finish by telling me "Ready to survey", with the GPU and the doctor summary. From then on I'll paste mission prompts from the survey page.`;
   document.getElementById("bootstrap").innerHTML = cmd(BOOT);
   document.getElementById("bootstrap").addEventListener("click", ev => { const b = ev.target.closest("button[data-copy]"); if (!b) return;

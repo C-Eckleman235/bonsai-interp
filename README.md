@@ -70,7 +70,7 @@ weights and the same bfloat16 arithmetic as on CUDA.
 - **Requirements.** An M1 or later Mac with macOS 14 or later. The macOS torch wheels need
   macOS 14, and so does bfloat16 on MPS. We recommend 32 GB or more of unified memory. 16 GB
   works but is tight: one process holds about 8 GB (the 4.5 GB model, the 1.1 GB scan and the
-  batches), next to macOS and the agent CLI. 8 GB is not enough. You also need about 3 GB of
+  batches), next to macOS and the agent CLI. 8 GB is not enough. You also need about 8 GB of
   disk.
 - **Install.** Use the same commands as above. `uv sync` takes torch from PyPI on macOS, and
   that build includes MPS. The scripts run in the stock bash or zsh.

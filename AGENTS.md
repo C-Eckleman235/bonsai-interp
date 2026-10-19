@@ -11,8 +11,9 @@ Run every Python command through the project environment: `uv run python -m …`
 
 ## 1. Get ready (once per machine)
 
-You need about 3 GB of disk in total: 1.2 GB of weights and 1.4 GB of data. The scripts are
-bash; on Windows, Git Bash (which comes with Git for Windows) runs them.
+You need about 8 GB of disk in total: 1.2 GB of weights, 1.4 GB of data and about 5 GB for the Python
+environment (`uv sync` installs a CUDA build of torch). The scripts are bash. On Windows, run every command
+in Git Bash (it comes with Git for Windows), not only the scripts.
 
 Hardware: an NVIDIA GPU with 8 GB or more (a mission peaks at about 5 GB), or an Apple Silicon Mac (macOS 14 or later; 32 GB
 of unified memory recommended, 16 GB is tight). The toolchain picks the device itself (CUDA,
@@ -21,8 +22,8 @@ then Apple's MPS, then the CPU). To force one, put `BONSAI_DEVICE=cuda`, `mps` o
 under "Running on a Mac".
 
 1. Clone https://github.com/moridinamael/neuron-cleanroom next to this repository; blind
-   clean-room missions need it. Ask the person for their GitHub handle now, since every
-   mission uses it.
+   clean-room missions need it. Every mission needs the person's GitHub handle: read it with
+   `gh api user --jq .login` once gh is logged in, and ask only if that fails.
 2. Install the environment: `uv sync`. You need Python 3.11–3.13 and uv. If uv is missing,
    install it from https://docs.astral.sh/uv/.
 3. Get the model weights (Bonsai-8B only):
@@ -33,7 +34,7 @@ under "Running on a Mac".
      which holds exactly the same weights as the 16 GB unpacked release. A warning about unauthenticated Hugging Face requests is harmless.
 4. Fetch the data: `bash scripts/fetch_data.sh`. It downloads the corpus (120 MB), the full
    neuron scan (1.1 GB) and a band scan (0.2 GB), and needs `gh` to be logged in.
-5. Run `python -m bonsai_interp.graph.play doctor` and fix whatever it reports, until it says
+5. Run `uv run python -m bonsai_interp.graph.play doctor` and fix whatever it reports, until it says
    **READY**. Doctor checks every weight shard, then loads the model and reads one known neuron.
    It reports the device and its speed, and it compares the reading with the reference CUDA
    machine. On a device other than CUDA, also run `uv run python tests/test_device_parity.py`
