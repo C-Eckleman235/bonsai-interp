@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-19-moridinamael-dd9e60e3",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N7492+",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T15:49:56+00:00",
+ "recipe": {
+  "toolchain_commit": "c28251d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N7492_pos/2026-10-19-moridinamael-dd9e60e3.tests.json"
+ },
+ "label": "The CJK character 故 as a standalone token, in any sense: 'therefore' (故/故に/是故), 'old/former' (故人, 故伎), 'the late/deceased' (Korean 고(故)), 'reason' (缘故, 无缘无故), 'why' (何故). Not 'therefore' without it (所以, 因此, ゆえに, 是以); not words where the tokenizer merges 故 into one token (故事, 故障); English 'Thus' only weakly (~0.18).",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L0_N7492_pos/2026-10-19-moridinamael-dd9e60e3.tests.json",
+   "prereg_commit": "c28251d",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.983,
+     "peak": "故"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.866,
+     "peak": "故"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.904,
+     "peak": "故"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.854,
+     "peak": "故"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.837,
+     "peak": "故"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.885,
+     "peak": "故"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.734,
+     "peak": "故"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.599,
+     "peak": "故"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.084,
+     "peak": "所以"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.087,
+     "peak": "因此"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.017,
+     "peak": "かった"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.006,
+     "peak": "是以"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.06,
+     "peak": "고"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.024,
+     "peak": "亡"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.182,
+     "peak": "Thus"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.039,
+     "peak": "的故事"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.86,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "c28251d",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-out feeder of bonsai1/L1/N10078+ (遅), largest single-unit ablation drop (0.13). Headline question on stream: the character 故 whatever it means, or the idea 'therefore'? Probes say the character: 'therefore' written without 故 stays near 0. The inverse solver round crashed (toolchain JSON int64 error), so there's no solver evidence. Band scan skipped for stream pacing.",
+ "roles": [
+  "feeds bonsai1/L1/N10078+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L0/N7492+",
+   "to": "bonsai1/L1/N10078+",
+   "kind": "feeds",
+   "weight": 0.13,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
