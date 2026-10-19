@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-19-moridinamael-2a7e3472",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N3787+",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T18:33:32+00:00",
+ "recipe": {
+  "toolchain_commit": "a855ca1",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N3787_pos/2026-10-19-moridinamael-2a7e3472.tests.json"
+ },
+ "label": "a word or word-piece ending in '-ap' (the 'lap' rhyme), strongest for ' lap', ' clap', ' flap', ' slap', weaker for ' rap', ' nap', ' chap', ' trap', ' tap'; any meaning; a changed vowel (flip, clip, flop) or a synonym stays quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L0_N3787_pos/2026-10-19-moridinamael-2a7e3472.tests.json",
+   "prereg_commit": "a855ca1",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.802,
+     "peak": " lap"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.779,
+     "peak": " clap"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.856,
+     "peak": " flap"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.727,
+     "peak": " slap"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.694,
+     "peak": " rap"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.48,
+     "peak": " chap"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.576,
+     "peak": " nap"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.408,
+     "peak": " trap"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.065,
+     "peak": " asleep"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.008,
+     "peak": " up"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.013,
+     "peak": " flag"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.092,
+     "peak": " flip"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.01,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.016,
+     "peak": " us"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.004,
+     "peak": " baby"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.01,
+     "peak": " trench"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.71,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "a855ca1",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L1/N11257-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L0/N3787+",
+   "to": "bonsai1/L1/N11257-",
+   "kind": "feeds",
+   "weight": 0.08,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
