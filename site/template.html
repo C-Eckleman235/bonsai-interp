@@ -383,7 +383,7 @@ td.n { font-family: var(--mono); text-align: right; }
     if (!r) return `<div class="polecard">${head}<p class="lab" style="color:var(--ink-2)">Nobody has labelled this pole.</p>
       <div class="acts"><button type="button" data-act="interpret" data-id="${id}">Interpret it</button><button type="button" data-act="blind" data-id="${id}">Blind run</button></div></div>`;
     const col = o => o === "held" ? "held" : o === "failed" ? "failed" : "ink-3";
-    const tests = (r.t || []).map(t => `<li>${esc(t[0])} · <b style="color:var(--${col(t[1])})">${esc(t[1])}</b>${t[2] != null ? ` · fire ${t[2]}/8 · near misses ${t[3]}/8` : ""}${t[4] ? ` · by ${esc(t[4])}` : ""}</li>`).join("");
+    const tests = (r.t || []).map(t => `<li>${esc(t[0])} · <b style="color:var(--${col(t[1])})">${esc(t[1])}</b>${Number.isFinite(+t[2]) && t[2] != null ? ` · fire ${+t[2]}/8 · near misses ${+t[3] || 0}/8` : ""}${t[4] ? ` · by ${esc(t[4])}` : ""}</li>`).join("");
     const hist = (r.history || []).map(h => `<li>${esc(h[0])} <span class="mono">(${esc(h[1])})</span></li>`).join("");
     return `<div class="polecard">${head}<p class="lab">${esc(r.label || "–")}</p>
       <dl><dt>scrutiny</dt><dd><span style="color:var(--h${Math.max(1, lvl(r))});font-weight:600">${lvl(r)} ${esc(SCR[lvl(r)])}</span>${r.scrutiny && r.scrutiny.test_rounds ? ` · ${r.scrutiny.test_rounds} test round${r.scrutiny.test_rounds > 1 ? "s" : ""}` : ""}${r.scrutiny && r.scrutiny.sentences ? ` · ${r.scrutiny.sentences} test sentences` : ""}</dd><dt>kind</dt><dd>${esc(r.kind || "–")}</dd><dt>depth</dt><dd>${esc(r.depth)}</dd><dt>QC</dt><dd>${r.qc.confirm} confirm · ${r.qc.dispute} dispute · ${r.qc.refine} refine</dd>
