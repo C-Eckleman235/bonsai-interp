@@ -1,0 +1,154 @@
+{
+ "id": "2026-10-19-moridinamael-3da95e3a",
+ "kind": "qc",
+ "neuron": "bonsai1/L10/N2499-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T14:24:47+00:00",
+ "recipe": {
+  "toolchain_commit": "28e0dec",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-3da95e3a.tests.json"
+ },
+ "label": "Dense / gate-leak background unit: the - pole is a weak leak (max 1.52, 11% of tokens above 0.1 of max, 99.6% '-g +u leak') that hums at about 0.1-0.3 of max on most prose. Its feeders ('late' in any sense, lateness words, 'belated', 'little', ambient-it predicates) add only a small bump, so 'too late' / 'too little, too late' does not separate from matched text without lateness; the slightly stronger pockets are clinical-psychology / talking-therapy text (the + pole's topic leaking through) and the headline 'Too Little too Late?'.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-3da95e3a.tests.json",
+   "prereg_commit": "28e0dec",
+   "author": "moridinamael",
+   "n_fire": 3,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.323,
+     "peak": " flood"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.269,
+     "peak": " late"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.488,
+     "peak": " late"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.127,
+     "peak": " vaccine"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.224,
+     "peak": " late"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.252,
+     "peak": " late"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.111,
+     "peak": " late"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.473,
+     "peak": " late"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.35,
+     "peak": " flood"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.023,
+     "peak": " stadium"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.102,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.127,
+     "peak": " vaccine"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.108,
+     "peak": " bold"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.071,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.122,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.069,
+     "peak": " now"
+    }
+   ],
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.867,
+    "median_fire": 0.261,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "28e0dec",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "' late' in the phrase 'too late' (a missed chance); plain temporal 'late', 'too early/soon' and 'never too late' stay near background. Separate second trigger: therapy/psychology vocabulary (not covered by this test)"
+ },
+ "notes": "Loop-back QC after mapping six held feeders (L6/N8567+, L0/N10784+, L5/N6367-, L4/N1871-, L4/N9247-, L0/N8785-). Feeders explain the 'too little too late' top example, but probes put plain 'too late' (0.10-0.16) level with 'too early' (0.12) and finance prose (0.16). Inverse solver: strongest single texts were talking/speech-therapy sentences (0.38-0.55); a talking-parrot sentence hit 0.29 and an economics 'late 20th century' line 0.28. Chat was quiet; house sentences only."
+}

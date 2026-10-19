@@ -1,0 +1,71 @@
+{
+ "contribution": "2026-10-19-moridinamael-3da95e3a",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L10/N2499-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T14:23:49+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "' late' in the phrase 'too late' (a missed chance); plain temporal 'late', 'too early/soon' and 'never too late' stay near background. Separate second trigger: therapy/psychology vocabulary (not covered by this test)"
+ },
+ "neighbours": [
+  {
+   "unit": "L10/N2499",
+   "pole": "-",
+   "label": "Dense / gate-leak background unit: the - pole is a weak leak (max 1.52, 11% of tokens above 0.1 of max, 99.6% '-g +u leak') that hums at about 0.1-0.3 of max on most prose. Its feeders ('late' in any sense, lateness words, 'belated', 'little', ambient-it predicates) add only a small bump, so 'too late' / 'too little, too late' does not separate from matched text without lateness; the slightly stronger pockets are clinical-psychology / talking-therapy text (the + pole's topic leaking through) and the headline 'Too Little too Late?'.",
+   "unit_kind": "dense / positional",
+   "fire": [
+    "The rescue team reached the valley too late to stop the flood.",
+    "Too little, too late: the fans booed the club's last-minute signing.",
+    "She realised too late that the ticket was for the wrong day.",
+    "The vaccine order came too late for the first wave.",
+    "Critics called the climate pledge too little, too late.",
+    "By the time he called back, it was too late to fix the mistake.",
+    "The warning was issued too late for most residents to leave.",
+    "Is it too late to apologise to her now?"
+   ],
+   "quiet": [
+    "The rescue team reached the valley early and stopped the flood.",
+    "The fans cheered the club's new signing at the stadium.",
+    "She realised quickly that the ticket was for the wrong day.",
+    "The vaccine order arrived in time for the first wave.",
+    "Critics called the climate pledge bold and well funded.",
+    "When he called back, they fixed the mistake together.",
+    "The warning was issued in time for most residents to leave.",
+    "Is it a good time to call her now?"
+  ]
+  }
+ ],
+ "predictions": "Under the dense label this 'too late' vs matched-twin test should FAIL: AUROC well below 0.90, fire median near or below 0.20, and several twins in the 0.1-0.25 hum. A pass would refute the dense reading and support the original 'too late' label.",
+ "notes": "Loop-back QC after mapping six held feeders (L6/N8567+, L0/N10784+, L5/N6367-, L4/N1871-, L4/N9247-, L0/N8785-). Feeders explain the 'too little too late' top example, but probes put plain 'too late' (0.10-0.16) level with 'too early' (0.12) and finance prose (0.16). Inverse solver: strongest single texts were talking/speech-therapy sentences (0.38-0.55); a talking-parrot sentence hit 0.29 and an economics 'late 20th century' line 0.28. Chat was quiet; house sentences only.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "neighbors"
+  ],
+  "_screens_vocabulary": [
+   "atlas",
+   "bands",
+   "bank-solo",
+   "blind-room",
+   "card",
+   "disproof",
+   "held-out",
+   "induce",
+   "inverse-de",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round",
+   "step-out",
+   "which"
+  ]
+ }
+}
