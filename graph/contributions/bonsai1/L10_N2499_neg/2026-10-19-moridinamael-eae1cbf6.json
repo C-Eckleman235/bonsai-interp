@@ -1,0 +1,153 @@
+{
+ "id": "2026-10-19-moridinamael-eae1cbf6",
+ "kind": "qc",
+ "neuron": "bonsai1/L10/N2499-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T19:07:19+00:00",
+ "recipe": {
+  "toolchain_commit": "c57d07d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-eae1cbf6.tests.json"
+ },
+ "label": "Weak, dense hum (11% of tokens reach 0.1 of a small max) that rises (about 0.3-0.55) on the vocabulary and settings of talking therapies: counsellor/counselling, therapist, psychiatrist, psychologist, psychoanalyst, psychodynamic/psychotherapy, group therapy, support groups, and also speech therapy (0.33-0.46). A crisis followed by 'weekly sessions' already lifts it before any profession is named. A plain paraphrase of talking about feelings with no care words stays near baseline (0.16), as do 'retail therapy', physical medicine (surgery, dentistry, nursing, vets) and cardiology (0.06-0.2). Lateness: lowercase 'found out / realised / discovered too late that ...' stays at baseline (0.08-0.17, not peaking on ' late'), so the earlier discovered-too-late clause did not replicate; only the capitalised headline 'Too Little too Late?' (0.35) carries a late signal. The spelling-piece feeders (ap/ag/pend/sp|ät) leave no lateness meaning here: German 'Verspätung' is near zero.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-eae1cbf6.tests.json",
+   "prereg_commit": "c57d07d",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.396,
+     "peak": " sessions"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.536,
+     "peak": " psychiatrist"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.348,
+     "peak": " talk"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.377,
+     "peak": " psycho"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.318,
+     "peak": " therapist"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.544,
+     "peak": " counselling"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.404,
+     "peak": " relationships"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.339,
+     "peak": " meets"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.027,
+     "peak": " with"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.139,
+     "peak": " surgeon"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.079,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.089,
+     "peak": " dental"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.289,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.139,
+     "peak": " clinic"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.114,
+     "peak": " out"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.06,
+     "peak": " is"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.387,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "c57d07d",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Weak, dense hum (11% of tokens reach 0.1 of a small max) that rises on talk-based mental-health treatment and the writing around it: counselling, therapy sessions, psychiatrists, psychoanalysis, psychodynamic work, support groups where people talk through their problems (about 0.2-0.65); mental-health book outlines and speech therapy also lift it (inverse found 0.46-0.55). Physical medicine (surgery, dentistry, nursing, vets) hums at the 0.1-0.2 baseline. Lateness: plain 'too late' / 'ran late' stays near zero, BUT the feeders' late signal does carry through in the discovered-too-late construction ('noticed / realised / found out too late that ...', 0.2-0.45 peaking on ' late'), so 'lateness adds nothing' was too strong."
+ },
+ "notes": "Loop-back QC after mapping the neighbours (feeders are spelling-piece units: ap, ag, -ap rhyme, pend, sp|ät; readers include a famous-surnames unit). Sentences probed before pre-registration. A draft near miss 'After the divorce he booked weekly sessions with a personal trainer.' fired 0.39 on ' sessions' (crisis + weekly sessions reads as therapy before the trainer is named); it was swapped for the gym sentence and the finding is written into the label. Earlier probe: 'Cognitive behavioural therapy helps patients challenge their negative thoughts.' scored -0.08, an unexplained miss. The inverse solver (differential evolution) found speech therapy 0.46 and the capitalised 'Too Little too Late?' 0.35."
+}
