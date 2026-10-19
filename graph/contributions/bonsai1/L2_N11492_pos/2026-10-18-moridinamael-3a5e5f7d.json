@@ -1,0 +1,157 @@
+{
+ "id": "2026-10-18-moridinamael-3a5e5f7d",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N11492+",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T03:58:22+00:00",
+ "recipe": {
+  "toolchain_commit": "73bbeb2",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L2_N11492_pos/2026-10-18-moridinamael-3a5e5f7d.tests.json"
+ },
+ "label": "Spelling unit: the 'al'/'ual' word piece completing a '-cephal-' stem (encephalitis, encephalopathy, electroencephalogram, cephalic, cephalopod; also German Enzephal-, Russian энцефал-) or 'conceptual' (conceptually, conceptualize); meaning-independent, not 'concept' alone and not other -al/-ual words (actual, contextual, perceptual, spinal, neural)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L2_N11492_pos/2026-10-18-moridinamael-3a5e5f7d.tests.json",
+   "prereg_commit": "73bbeb2",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.803,
+     "peak": "al"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.779,
+     "peak": "al"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.62,
+     "peak": "hal"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.599,
+     "peak": "hal"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.805,
+     "peak": "al"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.623,
+     "peak": " conceptual"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.583,
+     "peak": "ually"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.876,
+     "peak": "hal"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.001,
+     "peak": "Doctors"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.004,
+     "peak": "i"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.001,
+     "peak": " from"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.005,
+     "peak": " clever"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.002,
+     "peak": " liver"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.003,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.002,
+     "peak": " are"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.001,
+     "peak": "agen"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.701,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [],
+  "toolchain_commit": "73bbeb2",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "notes": "Step-out feeder of bonsai1/L5/N5628- (play step drop 0.22; the larger feeder L2/N9319- already had a record). Exploratory probes: perceptual, contextual, actual, spinal, neural, 'concept' alone all ~0.00; cephalopod 0.58 shows it is spelling, not meaning. Twitch chat's 'neurotoxin' was 0.00 here (0.38 on the parent), so this feeder does not carry neuro- generally. The stream's inverse solver (differential evolution) was run on the parent L5/N5628-, not on this pole; it found no real leak there, and 'cephalic vein' stayed silent on the parent (0.02), so the parent gates this feeder's signal to encephal- words. Label option voted by Twitch chat.",
+ "roles": [
+  "feeds bonsai1/L5/N5628-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L2/N11492+",
+   "to": "bonsai1/L5/N5628-",
+   "kind": "feeds",
+   "weight": 0.22,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
