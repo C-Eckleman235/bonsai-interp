@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-18-moridinamael-c80c4e59",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N4006+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T04:37:13+00:00",
+ "roles": ["feeds bonsai1/L5/N9811+"],
+ "neighbours": [
+  {
+   "unit": "L0/N4006",
+   "pole": "+",
+   "label": "Tokens ending in the letters 'ib' / 'IB' (' rib', ' nib', ' bib', 'ib' in jib/squib, ' ib' in ibid, ' IB'); not tokens where ib is followed by more letters (ribbon, Tibet, IBM, Caribbean)",
+   "short": "tokens ending in 'ib'",
+   "unit_kind": "token / spelling",
+   "confidence": "high",
+   "notes": "Layer-0 spelling detector, very sparse (0.03% of tokens reach 0.3 of max). Fires on the token that ends in 'ib' regardless of meaning (pen nib, rib, fib, bib, glib, crib, Cariboo 'ib', base64 'IB'); ribbed splits as ' rib'+'bed' and fires. Whole-word tokens with ib inside (' ribbon', ' Tibet', ' IBM', ' Caribbean', ' library') stay near 0.1 or below. Strongest feeder of the rib neuron L5/N9811+ (drop 0.17). Chat voted for this label; Twitch chat sent no sentences this round. The inverse solver round crashed (toolchain JSON error), so no solver evidence.",
+   "fire": [
+    "The calligrapher replaced the worn nib on her dip pen.",
+    "He bruised a rib playing rugby on Saturday.",
+    "We shared a plate of prime rib at the steakhouse.",
+    "The toddler dribbled milk all down his bib.",
+    "The crew hoisted the jib as the wind picked up.",
+    "The big announcement turned out to be a damp squib.",
+    "She admitted she had told a little fib.",
+    "He is taking the IB exams in chemistry next month."
+   ],
+   "quiet": [
+    "The calligrapher replaced the worn tip on her dip pen.",
+    "He bruised a bone in his chest playing rugby on Saturday.",
+    "She tied a satin ribbon around the birthday present.",
+    "They spent two weeks trekking through Tibet.",
+    "He took a job at IBM straight out of college.",
+    "We spent our honeymoon on a Caribbean island.",
+    "The baby fell asleep in the wooden cradle.",
+    "The crew hoisted the mainsail as the wind picked up."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire above 0.3, no near miss above 0.2 (Tibet the likeliest at about 0.15)",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}

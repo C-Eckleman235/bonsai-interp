@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-18-moridinamael-c80c4e59",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N4006+",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T04:39:00+00:00",
+ "recipe": {
+  "toolchain_commit": "a9c6218",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N4006_pos/2026-10-18-moridinamael-c80c4e59.tests.json"
+ },
+ "label": "Tokens ending in the letters 'ib' / 'IB' (' rib', ' nib', ' bib', 'ib' in jib/squib, ' ib' in ibid, ' IB'); not tokens where ib is followed by more letters (ribbon, Tibet, IBM, Caribbean)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L0_N4006_pos/2026-10-18-moridinamael-c80c4e59.tests.json",
+   "prereg_commit": "a9c6218",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.712,
+     "peak": " nib"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.603,
+     "peak": " rib"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.717,
+     "peak": " rib"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.536,
+     "peak": " bib"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.8,
+     "peak": "ib"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.653,
+     "peak": "ib"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.574,
+     "peak": " fib"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.649,
+     "peak": " IB"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.063,
+     "peak": " dip"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.025,
+     "peak": " rugby"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.136,
+     "peak": " ribbon"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.153,
+     "peak": " Tibet"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.105,
+     "peak": " IBM"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.026,
+     "peak": " Caribbean"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.002,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.011,
+     "peak": "isted"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.651,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "a9c6218",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L5/N9811+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L0/N4006+",
+   "to": "bonsai1/L5/N9811+",
+   "kind": "feeds",
+   "weight": 0.17,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
