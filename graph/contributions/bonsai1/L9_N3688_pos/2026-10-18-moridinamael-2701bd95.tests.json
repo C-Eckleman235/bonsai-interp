@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-18-moridinamael-2701bd95",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L9/N3688+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T03:02:58+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "A lexical detector peaking on the psychological word 'nerve', with weaker reliable branches for 'strong' and hit/hurt words"
+ },
+ "neighbours": [
+  {
+   "unit": "L9/N3688",
+   "pole": "+",
+   "label": "The word 'nerve(s)' meaning composure under strain (nerve-racking, a test of nerve, strong nerves), in the psychological sense only; not anatomical nerves, and not composure described without the word",
+   "fire": [
+    "The final round of the quiz show was utterly nerve-racking for both teams.",
+    "Landing a plane in a storm is the ultimate test of nerve.",
+    "You need strong nerves to work as an air traffic controller.",
+    "The goalkeeper held his nerve and saved the last penalty.",
+    "All that waiting for the verdict was frying my nerves.",
+    "Sitting through the job interview was more nerve-wracking than I expected.",
+    "Climbers on that ridge need nerves of iron and a steady head.",
+    "After weeks of noise from the neighbours, his nerves were in tatters."
+   ],
+   "quiet": [
+    "The surgeon carefully moved the facial nerve aside during the operation.",
+    "A pinched nerve in his neck sent tingling down his arm.",
+    "The ulnar nerve runs along the inside of the elbow.",
+    "Diabetes can slowly damage the nerves in the feet.",
+    "The vagus nerve connects the brainstem to the heart and gut.",
+    "Local anaesthetic blocks the nerve so the tooth stops hurting.",
+    "The goalkeeper stayed calm and saved the last penalty.",
+    "Sitting through the job interview was more stressful than I expected."
+   ]
+  }
+ ],
+ "predictions": "Expect the label to FAIL: probes showed anatomical 'nerve' (tooth 0.47, sciatic 0.40) firing as strongly as the psychological sense, so several anatomical near misses should reach 0.30. Chat voted for this psychological-only label; it doubles as a test of the 'psychological' qualifier in the current label.",
+ "notes": "Loop-back after mapping feeders: L5/N5628- (nervous-system anatomy, medical sense) feeds this pole, which predicts the anatomical sense should also drive it. Label chosen by Twitch chat vote; sentences written by the agent.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "neighbors",
+   "quick-test"
+  ]
+ }
+}
