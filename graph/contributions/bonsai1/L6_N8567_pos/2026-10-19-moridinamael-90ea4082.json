@@ -1,0 +1,156 @@
+{
+ "id": "2026-10-19-moridinamael-90ea4082",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N8567+",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T13:45:15+00:00",
+ "recipe": {
+  "toolchain_commit": "dfee4b6",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L6_N8567_pos/2026-10-19-moridinamael-90ea4082.tests.json"
+ },
+ "label": "Lateness/delay words across languages (belated, tardy, late, behind schedule, en retard, опоздать, 遅れ, Verspätung, retraso), on the word itself; lateness paraphrased without such a word stays quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L6_N8567_pos/2026-10-19-moridinamael-90ea4082.tests.json",
+   "prereg_commit": "dfee4b6",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.765,
+     "peak": "озд"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.762,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.553,
+     "peak": "ät"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.72,
+     "peak": "tras"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 1.033,
+     "peak": "ated"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.484,
+     "peak": " late"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.571,
+     "peak": " behind"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.675,
+     "peak": "y"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.015,
+     "peak": " при"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.058,
+     "peak": "間に"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.005,
+     "peak": " company"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.017,
+     "peak": " pleased"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.028,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.027,
+     "peak": " sloppy"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.008,
+     "peak": " fires"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.007,
+     "peak": " station"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.698,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "dfee4b6",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Feeder of the 'too late' neuron L7/N11810+ (play step drop 0.12). Paraphrased lateness without a lateness word ('forty minutes after its scheduled time', 'trailed', 'postponed') was silent in probing, while 'late' in other senses (late grandmother, late afternoon) still fired 0.3-0.4, so the label is lexical. Spatial 'behind' is weak (0.07-0.14). Inverse solver (differential evolution) found no leak and no silent on-concept text. House-run on stream; chat was quiet.",
+ "roles": [
+  "feeds bonsai1/L7/N11810+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L6/N8567+", "to": "bonsai1/L7/N11810+", "kind": "feeds", "weight": 0.12, "method": "single-unit zero ablation (play step)"}
+ ]
+}
