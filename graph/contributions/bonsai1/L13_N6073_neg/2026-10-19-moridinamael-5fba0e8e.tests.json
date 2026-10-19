@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-19-moridinamael-5fba0e8e",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N6073-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T18:52:58+00:00",
+ "roles": ["reads bonsai1/L10/N2499-"],
+ "neighbours": [
+  {
+   "unit": "L13/N6073",
+   "pole": "-",
+   "label": "The closing piece of certain well-known full names, peaking on the surname or last sub-word chunk: Henry George, Alexander Mackenzie, Benny Hinn, Cheng Ho, Horatio Nelson, Billy Graham, Ivan Sutherland, and the moon Enceladus (about 0.27-0.46). It is an item list, not 'any name': equally famous Keynes, Turing, Jung, Freud, Lincoln, Titan and the Yukon stay near zero, and the same tokens in other uses (Lloyd George, Boy George, a girl called Mackenzie) are silent.",
+   "short": "closing piece of certain famous full names (Henry George, Mackenzie, Benny Hinn)",
+   "unit_kind": "entity list",
+   "confidence": "medium-low",
+   "fire": [
+    "The economist Henry George argued for a tax on land values.",
+    "The explorer Alexander Mackenzie crossed Canada to the Pacific.",
+    "The preacher Benny Hinn held a large healing crusade.",
+    "Saturn's moon Enceladus sprays water into space.",
+    "The computer pioneer Ivan Sutherland built Sketchpad.",
+    "Admiral Cheng Ho led a great fleet to Africa.",
+    "Admiral Horatio Nelson led a great fleet at Trafalgar.",
+    "The preacher Billy Graham held a large stadium crusade."
+   ],
+   "quiet": [
+    "The economist John Keynes argued for more public spending.",
+    "Saturn's moon Titan has a thick orange haze.",
+    "The computer pioneer Alan Turing built early machines.",
+    "The Yukon River flows west into the Bering Sea.",
+    "The psychiatrist Carl Jung wrote about dreams and symbols.",
+    "The prime minister David Lloyd George led Britain in the war.",
+    "Boy George sang with Culture Club in the eighties.",
+    "Mackenzie is my cousin's daughter and she is six."
+   ],
+   "notes": "Step-in reader of bonsai1/L10/N2499- (talk-therapy hum); its drop of 0.82 is unusually large for a reader, but the label has little to do with therapy: therapy text without names stays near 0.04. Fire and quiet sentences were all probed first, so this tests whether the item list holds, not whether it generalises. The solver found context sensitivity: a land-tax lead-in pushes Henry George to 0.96, while a long unrelated preamble mutes Cheng Ho to 0.07, and 'The Mackenzie River' at the start of a sentence gave only 0.07. Selkirk (0.20) and Grof (0.15) are weaker members. Mission played on the Twitch letsplay stream; chat was quiet, so the sentences are the agent's own."
+  }
+ ],
+ "predictions": "8/8 fire at 0.27-0.46, median about 0.33; no near miss above 0.15",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo"
+  ]
+ }
+}
