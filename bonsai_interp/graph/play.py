@@ -60,8 +60,12 @@ def new(a):
 
 def _new_one(a, nid):
     m = NEURON.match(nid)
-    cid = f"{dt.date.today().isoformat()}-{a.handle}-{secrets.token_hex(2)}"
     d = folder_for(nid)
+    taken = {q.name.split(".")[0] for q in d.glob("*.json")} if d.exists() else set()
+    while True:  # 8 hex digits (4 collided across poles within a day of sweeps); never reuse one in this folder
+        cid = f"{dt.date.today().isoformat()}-{a.handle}-{secrets.token_hex(4)}"
+        if cid not in taken:
+            break
     d.mkdir(parents=True, exist_ok=True)
     unit = f"L{m['L']}/N{m['n']}"
     current = None
@@ -247,9 +251,9 @@ def run(a):
             test["outcome"] = outcome(test)  # recorded for convenience; fold always recomputes it from per_sentence
             test["stats"] = {"auroc": round(auroc, 3), "median_fire": round(med, 3), "near_misses_at_0.3": fp}
             tests.append(test)
-            rows.append(f"| {t['neuron']} | {(t.get('short') or nb['label'])[:60]} | {t.get('unit_kind', '')} | {auroc:.2f} | {med:.2f} | {fp} | {test['outcome']} |")
+            rows.append(f"| {t['neuron']} | {(t.get('short') or nb['label'])[:60]} | {t.get('unit_kind', '')} | {auroc:.3f} | {med:.3f} | {fp} | {test['outcome']} |")
             fa = [r["act"] for r in fire]
-            print(f"{t['neuron']:<22} AUROC {auroc:.2f} (need >= 0.90), median fire {med:.2f} (need >= 0.20), "
+            print(f"{t['neuron']:<22} AUROC {auroc:.3f} (need >= 0.90), median fire {med:.3f} (need >= 0.20), "
                   f"near misses >= 0.30: {fp} (max 1); fire >= 0.30: {nf}/{len(fa)} -> {outcome(test).upper()} under {t['protocol']}"
                   if t["protocol"] == "quick-8+8@2" else
                   f"{t['neuron']:<22} {nb['unit']}{nb['pole']}: fire {nf}/{len(fire)}, near misses firing {fp}/{len(quiet)} "
