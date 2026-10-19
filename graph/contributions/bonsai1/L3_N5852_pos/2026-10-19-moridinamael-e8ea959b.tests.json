@@ -1,0 +1,45 @@
+{
+ "contribution": "2026-10-19-moridinamael-e8ea959b",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N5852+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T16:45:39+00:00",
+ "roles": ["feeds bonsai1/L6/N8567+"],
+ "neighbours": [
+  {
+   "unit": "L3/N5852",
+   "pole": "+",
+   "label": "Word-initial split-off piece 'bel-' (Belgium/Belgique/Belgian, belated, belabor, bellicose, belligerent, Belarus, beleaguered), on the bel- piece or its continuation; Belgium named without 'Bel' (Brussels, Flanders) stays quiet, as do 'bel' inside a word (rebel, Isabel, label) and whole-word tokens (belt, belly, belongs). Top examples also include Chinese 比利时 (Belgium), not tested here.",
+   "short": "word-start 'bel-' piece (Belgium, belated)",
+   "unit_kind": "token / subword",
+   "confidence": "high",
+   "fire": [
+    "Our team flew to Belgium for the final.",
+    "Nous habitons en Belgique depuis dix ans.",
+    "He finally sent me a belated thank-you note.",
+    "The lawyer belabored every minor detail.",
+    "The general gave a bellicose speech on television.",
+    "The drunk man became belligerent at the bar.",
+    "Belarus shares a long border with Poland.",
+    "The beleaguered mayor resigned on Friday."
+   ],
+   "quiet": [
+    "Our team flew to Brussels for the final.",
+    "Nous habitons en Flandre depuis dix ans.",
+    "He finally sent me a late thank-you note.",
+    "The rebel leader denied every minor detail.",
+    "Isabel gave a long speech on television.",
+    "The drunk man lost his belt at the bar.",
+    "The label shares a long border with the logo.",
+    "The tired mayor rubbed his belly on Friday."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire, 0 near misses; feeds the lateness neuron through 'belated'",
+ "notes": "Step-out feeder of bonsai1/L6/N8567+ (lateness words), found by play step (zero-ablation drop 0.08); the link is the shared ' bel' piece of 'belated'. Inverse solver round crashed (toolchain JSON error), so no solver evidence. Twitch chat was quiet this mission; all sentences by the agent.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["step-out", "card", "probe", "quick-test"]
+ }
+}
