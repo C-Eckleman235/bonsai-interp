@@ -1,0 +1,69 @@
+{
+ "contribution": "2026-10-19-moridinamael-380e3ecc",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L10/N2499-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T16:58:55+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Weak, dense hum that is somewhat stronger on clinical-psychology / talking-therapy text (psychotherapy, psychiatric symptoms, counselling sessions, psychodynamic or interpersonal treatment, ECT), the + pole's topic leaking through; lateness ('too late') adds little or nothing over matched text. Speech therapy also bumps it (solver)."
+ },
+ "neighbours": [
+  {
+   "unit": "L10/N2499",
+   "pole": "-",
+   "label": "Weak, dense hum (11% of tokens above 0.1 of max) that is clearly stronger on clinical-psychology / psychiatric / talk-therapy text (psychotherapy, psychiatric symptoms, psychodynamic or interpersonal treatment, ECT, speech therapy); on top of that a smaller lexical bump on the words ' late' (strongest in 'too late', consistent with its 'too' and 'too ADJ to' feeders L0/N943+ and L5/N4199+) and ' talking'. Other feeder words (rain, ret-, bel-) do not carry through. Matched physical-medicine text stays near the base hum. This test checks the topic part only.",
+   "fire": [
+    "The psychiatrist diagnosed her with major depressive disorder and recommended psychotherapy.",
+    "In psychodynamic treatment the analyst explores unconscious conflicts from childhood.",
+    "Patients with schizophrenia often report auditory hallucinations and paranoid delusions.",
+    "Electroconvulsive therapy is sometimes used when severe depression resists medication.",
+    "Interpersonal psychotherapy focuses on grief, role disputes and social isolation.",
+    "The clinical psychologist assessed him for obsessive-compulsive symptoms and panic attacks.",
+    "Cognitive behavioural therapy helps clients challenge distorted beliefs about themselves.",
+    "Bipolar disorder is marked by episodes of mania alternating with deep depression."
+   ],
+   "quiet": [
+    "The orthopaedic surgeon diagnosed a torn ligament and recommended an operation.",
+    "In cardiac surgery the team repairs damaged valves using a heart-lung machine.",
+    "Patients with eczema often report itchy skin and red, cracked patches on the hands.",
+    "Radiotherapy is sometimes used when a tumour cannot be removed by surgery.",
+    "Physiotherapy focuses on strength, balance and flexibility after a hip replacement.",
+    "The dentist examined her for gum disease and cavities in the back molars.",
+    "Insulin injections help patients keep their blood sugar within a safe range.",
+    "Asthma is marked by episodes of wheezing alternating with periods of normal breathing."
+   ]
+  }
+ ],
+ "predictions": "Expect 6-7/8 fire sentences above 0.20 and physical-medicine near misses mostly 0.10-0.20; risk: dense hum makes AUROC marginal, and therapy words in Radiotherapy/Physiotherapy may bump.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "neighbors"
+  ],
+  "_screens_vocabulary": [
+   "atlas",
+   "bands",
+   "bank-solo",
+   "blind-room",
+   "card",
+   "disproof",
+   "held-out",
+   "induce",
+   "inverse-de",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round",
+   "step-out",
+   "which"
+  ]
+ }
+}
