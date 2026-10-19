@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-19-moridinamael-b9c2ac16",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N11810+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T13:06:53+00:00",
+ "roles": ["feeds bonsai1/L10/N2499-"],
+ "neighbours": [
+  {
+   "unit": "L7/N11810",
+   "pole": "+",
+   "label": "the token ' late' (any use; strongest in 'too late')",
+   "short": "' late'",
+   "unit_kind": "token",
+   "confidence": "low",
+   "fire": [
+    "When the firefighters finally arrived, it was already too late.",
+    "He apologized, but by then it was too late to fix anything.",
+    "It was a little late for an apology, honestly.",
+    "The guests arrived late because of the heavy snow.",
+    "The late senator was remembered at a quiet service.",
+    "We met in the late afternoon near the old bridge.",
+    "The kids stayed up late to watch the meteor shower.",
+    "Her rent was late again this month."
+   ],
+   "quiet": [
+    "When the firefighters finally arrived, it was already too dark.",
+    "He apologized, but by then it was too soon to fix anything.",
+    "It was a little early for an apology, honestly.",
+    "The guests arrived early because of the heavy snow.",
+    "The former senator was remembered at a quiet service.",
+    "We met in the early afternoon near the old bridge.",
+    "The kids stayed up all night to watch the meteor shower.",
+    "Her rent was overdue again this month."
+   ]
+  }
+ ],
+ "predictions": "Chat's word-level pick. Probes suggest 'too late' / 'a little late' fire strongly (0.4-0.8) but plain uses of late (arrived late, the late senator) stay near 0.05, while 'too soon'/'too dark' reach ~0.1-0.25; expect this to FAIL on AUROC, showing the unit is 'too late' rather than the bare word.",
+ "notes": "Feeder of bonsai1/L10/N2499- found by play step (drop 0.10). Label chosen by Twitch chat vote (default after no votes) over 'too late' context and 'missed chance' meaning. Inverse solver (DE) found no leak; near-miss ceiling 'a little late for that' 0.41; 'train arrived late' 0.06.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
