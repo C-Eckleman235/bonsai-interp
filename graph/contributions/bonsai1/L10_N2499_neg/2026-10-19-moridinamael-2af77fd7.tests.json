@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-19-moridinamael-2af77fd7",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N2499-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T13:30:31+00:00",
+ "neighbours": [
+  {
+   "unit": "L10/N2499",
+   "pole": "-",
+   "label": "' talking' in 'talking therapy' within mental-health treatment text; the same topic without that phrase, and 'talking' in other senses, stay lower",
+   "short": "' talking' in 'talking therapy'",
+   "unit_kind": "dense (11% of tokens >0.1 of max); weak pole in gate-closed leak regime",
+   "confidence": "low",
+   "notes": "Label picked by a Twitch chat vote (stream default, no votes cast). Feeders L7/N11810+ and L0/N5956- are both ' late' units; this pole's 'Too Little too Late' top example matches them, but probes put plain 'too late' at only 0.27, and the solver also found leaks on depression chapter lists and 'speech therapy'. The near misses keep the mental-health framing on purpose (hard test).",
+   "fire": [
+    "Interpersonal therapy is another talking therapy for depression.",
+    "Depression is treated with antidepressants, counselling and talking therapies.",
+    "After the trauma she was offered a talking therapy on the NHS.",
+    "For mild depression, doctors often suggest a talking therapy first.",
+    "Talking therapies like counselling can ease grief and low mood.",
+    "Anxiety is usually treated with medication or a talking therapy.",
+    "Panic attacks often respond well to a short course of talking therapy.",
+    "Her psychiatrist combined lithium with weekly talking therapy sessions."
+   ],
+   "quiet": [
+    "Interpersonal conflict is another common trigger for depression.",
+    "Depression is treated with antidepressants, exercise and better sleep.",
+    "After the trauma she was given a sick note by her GP.",
+    "For mild depression, doctors often suggest regular exercise first.",
+    "Talking points like these can ease tension in a long meeting.",
+    "Anxiety is usually treated with medication or a sleeping tablet.",
+    "Panic attacks often stop after a short walk in fresh air.",
+    "Her psychiatrist kept talking about the weather during the visit."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.8; one or two depression near misses may reach 0.30 (context drives the pole); a fail is plausible",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "quick-test"
+  ]
+ }
+}
