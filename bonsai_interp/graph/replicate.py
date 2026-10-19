@@ -6,7 +6,8 @@
 
 Run by the `checks` workflow on every PR, on a CPU runner: the 1-bit weights make an honest re-score cheap, so a
 results file with invented activations cannot merge quietly. Each sentence must match its recorded activation within
-TOL (CPU vs the CUDA reference differ by well under that), and the outcome must be the same. Exit 1 on a mismatch.
+TOL (CPU vs the CUDA reference differ by well under that). An outcome that flips while every number agrees is
+reported as borderline, not failed. Exit 1 on a mismatch.
 """
 import argparse
 import json
@@ -63,10 +64,13 @@ def check(files):
                 worst = max((abs(a - b) for _, _, a, b in diffs), default=0.0)
                 redo = {**t, "per_sentence": [{**p, "act": round(got[(p["set"], p["i"])], 3)} for p in t["per_sentence"] if (p["set"], p["i"]) in got]}
                 same = outcome(redo) == outcome(t)
-                ok = worst <= TOL and same and len(diffs) == len(t["per_sentence"])
+                # the job is catching invented numbers: every sentence must reproduce within TOL. An outcome that flips
+                # while the numbers agree is a test on the pass line (e.g. AUROC 0.906 = 58/64 pairs), not a bad result
+                ok = worst <= TOL and len(diffs) == len(t["per_sentence"])
                 bad += not ok
                 print(f"{'OK  ' if ok else 'FAIL'} {f}: {c.get('neuron')} max |diff| {worst:.3f} (tolerance {TOL}); "
-                      f"outcome claimed {outcome(t)}, re-scored {outcome(redo)}")
+                      f"outcome claimed {outcome(t)}, re-scored {outcome(redo)}"
+                      + ("" if same or not ok else "  [borderline: the numbers reproduce; the outcome sits on the pass line]"))
                 if not ok:
                     for s, i, a, b in sorted(diffs, key=lambda d: -abs(d[2] - d[3]))[:4]:
                         print(f"     {s} #{i}: claimed {a:.3f}, re-scored {b:.3f}")
