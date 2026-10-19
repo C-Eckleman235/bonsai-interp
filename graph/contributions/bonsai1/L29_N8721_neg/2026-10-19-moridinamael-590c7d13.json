@@ -1,0 +1,163 @@
+{
+ "id": "2026-10-19-moridinamael-590c7d13",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N8721-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T22:30:21+00:00",
+ "recipe": {
+  "toolchain_commit": "4568be8",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L29_N8721_neg/2026-10-19-moridinamael-590c7d13.tests.json"
+ },
+ "label": "In a line of program code, the '=' or statement keyword (del, def, return) just before the value or name is filled in; plain-English prose describing the same code stays low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L29_N8721_neg/2026-10-19-moridinamael-590c7d13.tests.json",
+   "prereg_commit": "4568be8",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.105,
+     "peak": " len"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.167,
+     "peak": " compute"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.008,
+     "peak": " *"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": -0.002,
+     "peak": " cache"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.101,
+     "peak": " ="
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.062,
+     "peak": " not"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.113,
+     "peak": "['"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.005,
+     "peak": "):"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.05,
+     "peak": "Ex"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.133,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.035,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.062,
+     "peak": " computes"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.008,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.092,
+     "peak": " for"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.045,
+     "peak": " their"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.05,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.547,
+    "median_fire": 0.082,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bands",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bands",
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "4568be8",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "notes": "Step-in reader of bonsai1/L28/N5894+ (drop 0.16). Test written blind by a second author from the label only (solver leak texts placed by that author). Solver: indented 'self.x = None' stayed silent, so indentation alone is not the trigger.",
+ "roles": [
+  "reads bonsai1/L28/N5894+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L28/N5894+", "to": "bonsai1/L29/N8721-", "kind": "feeds", "weight": 0.16, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
