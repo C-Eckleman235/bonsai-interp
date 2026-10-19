@@ -444,6 +444,12 @@ def main():
     w.add_argument("--min-max", type=float, default=0.5, help="ignore poles whose corpus max is below this (fractions of a tiny max are noise)")
     w.add_argument("--keep-dense", action="store_true", help="also list dense / positional poles (hidden by default)")
     w.add_argument("--rebuild", action="store_true", help="--token: rebuild the token index from the scan")
+    wy = sub.add_parser("why", help="why did the model say that? the poles behind a prediction, with the map's labels")
+    wy.add_argument("prompt")
+    wy.add_argument("--target", help="the token to explain, e.g. ' Paris' (leading space matters); default: the model's own pick")
+    wy.add_argument("--k", type=int, default=20, help="poles to list")
+    wy.add_argument("--check", type=int, default=8, help="how many of the strongest to verify by zeroing")
+    wy.add_argument("--out", help="also write the result as JSON")
     d = sub.add_parser("doctor", help="check this machine is ready to play")
     d.add_argument("--quick", action="store_true", help="skip loading the model")
     b = sub.add_parser("brief", help="print the full instructions for a mission (for an AI agent)")
@@ -461,6 +467,9 @@ def main():
     if a.cmd == "card":
         from bonsai_interp.graph import card
         return card.main(a)
+    if a.cmd == "why":
+        from bonsai_interp.graph import why
+        return why.main(a)
     if a.cmd == "which":
         from bonsai_interp.graph import which
         return which.main(a)
