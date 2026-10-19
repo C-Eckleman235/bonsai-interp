@@ -1,0 +1,154 @@
+{
+ "id": "2026-10-19-moridinamael-3dd97796",
+ "kind": "qc",
+ "neuron": "bonsai1/L10/N2499-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T20:07:57+00:00",
+ "recipe": {
+  "toolchain_commit": "9139776",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-3dd97796.tests.json"
+ },
+ "label": "Weak, dense hum (about 0.1-0.3 on most text) that rises to about 0.35-0.7 on mental-health care and psychiatry as a topic (psychiatrist/psychologist, psychiatric ward, antidepressants, ECT, hearing voices, mania, psychodynamic), also in plain words (counsellor, mental health nurse). Physical-medicine twins with the same sentence shape (cardiology, burns, fractures, dialysis, antibiotics) stay at 0.05-0.25. A topic unit, not a word-form unit: psychodynamic 0.42 vs thermodynamic 0.08, and rare multi-piece words and split surnames stay at the hum, so the spelling-level traits of its mapped neighbours (surname tokens, 'George', -urge endings, multi-piece words, set-phrase completions) do not carry over. Side channels: the word 'talking' (from 'talking therapy'; 'the talking parrot' about 0.3), the -therapy family, and recovery/support-group framing (a knee-surgery support group reached 0.39).",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-3dd97796.tests.json",
+   "prereg_commit": "9139776",
+   "author": "moridinamael",
+   "n_fire": 6,
+   "n_false_pos": 3,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.517,
+     "peak": " psychiatrist"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.456,
+     "peak": " psychiatric"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.38,
+     "peak": " psychologist"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.113,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.703,
+     "peak": " voices"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.478,
+     "peak": " assessed"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.182,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.562,
+     "peak": " waiting"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.134,
+     "peak": " consultant"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.097,
+     "peak": " after"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.234,
+     "peak": " readings"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.235,
+     "peak": " high"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.344,
+     "peak": " hear"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.336,
+     "peak": " two"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.087,
+     "peak": " used"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.3,
+     "peak": " list"
+    }
+   ],
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.828,
+    "median_fire": 0.467,
+    "near_misses_at_0.3": 3
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "9139776",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Weak, dense hum that rises on mental-health care and psychiatry in general, not only talking therapy: psychiatrist/psychologist, psychiatric hospital, antidepressant prescriptions, ECT, hallucinations / hearing voices, clinical, bipolar and postnatal depression (about 0.3-0.65). Physical-medicine twins (cardiology, burns, chemotherapy, fractures, infections) stay lower (0.1-0.3). Side channels: the '-therapist/therapy' word family lifts it even off-topic (physiotherapist 0.35, speech therapy 0.46), and the 'Too Little too Late?' headline; some disorder names alone (OCD, PTSD, anorexia, delusions) stay near the hum (0.13-0.22)."
+ },
+ "notes": "Loop-back QC after mapping the neighbours (L0/N4872-, L15/N9881-, L3/N4822+, L16/N5346+, L0/N1627-, L18/N624+), which are mostly spelling/form units. Probes found the topic, not word form, drives this pole. The globalMOO inverse solver found a 'talking' leak (the talking parrot 0.29 solo, 0.46 assembled) and asthma treatment at 0.29; it found no silent on-concept text. No Twitch chat sentences used."
+}
