@@ -9,6 +9,7 @@ direction (final norm gain, then the unembedding; weights only, read on the CPU)
 8 + 8 test can't pass (dense, positional). No GPU and no model load: a card takes a few seconds.
 """
 import json
+from collections import Counter
 from functools import lru_cache
 
 import numpy as np
@@ -138,6 +139,13 @@ def card(neuron, k=6, logits=True, before=40, after=8):
         st["examples"] = [{"act": round(v, 3), "frac": round(v / st["max"] * (1 if p == "+" else -1), 3) if st["max"] else None,
                            "regime": r, "text": t} for v, r, w, pos, t in ex]
         st["flags"] = flags(st)
+        s = explore.scan(name)
+        pi = 0 if p == "+" else 1
+        ok = np.isfinite(s["top_val"][L, pi, :, n])
+        peaks = explore.corpus()[s["top_win"][L, pi, ok, n], s["top_pos"][L, pi, ok, n]]
+        tok = explore.tokenizer()
+        counts = Counter(tok.decode([int(t)]) for t in peaks)
+        st["peak_tokens"] = [[t, c] for t, c in counts.most_common(6)]
         out["poles"][p] = st
     if logits:
         try:
@@ -170,6 +178,10 @@ def render(c):
         lines.append(f"    record: {rec['status']}: {rec['label']}" if rec else "    record: none (unsurveyed)")
         for f in st["flags"]:
             lines.append(f"    FLAG {f}")
+        if st.get("peak_tokens"):
+            tot = sum(c for _, c in st["peak_tokens"])
+            lines.append("    peak tokens of the top 32: " + "  ".join(f"{t!r} x{c}" for t, c in st["peak_tokens"])
+                         + ("   (one token dominates)" if st["peak_tokens"][0][1] >= 16 else "   (no single token: look for a context)" if st["peak_tokens"][0][1] <= 4 else ""))
         for e in st["examples"]:
             lines.append(f"    {e['act']:8.2f} {e['regime']:>10} | {e['text'][-110:]}")
     d = c.get("direct")

@@ -156,6 +156,24 @@ def prbody(a):
         body = body.replace("## Sweep: <!-- N --> poles, <!-- held --> held", f"## Sweep: {total} poles, {held} held")
         body = body.replace("| <!-- bonsai1/L__/N____± --> | <!-- short label --> | <!-- lexical / contextual / … --> | | | | <!-- held / failed --> |",
                             "\n".join(rows))
+    # what the branch itself can tell: the pre-registration and results commits, the agent, what was explored
+    log = subprocess.run(["git", "log", "--reverse", "--format=%h %s", "origin/main..HEAD"], cwd=ROOT, capture_output=True, text=True).stdout.splitlines()
+    pre = next((ln.split()[0] for ln in log if "pre-register" in ln.lower()), None)
+    res = next((ln.split()[0] for ln in log if "result" in ln.lower()), None)
+    files = [ln.strip() for ln in (ROOT / ".sweep" / "latest.txt").read_text(encoding="utf-8").splitlines() if ln.strip()] \
+        if kind == "sweep" and (ROOT / ".sweep" / "latest.txt").exists() else []
+    meths = [json.loads((ROOT / f).read_text(encoding="utf-8")).get("methods", {}) for f in files if (ROOT / f).exists()]
+    agents = sorted({m.get("agent") for m in meths if m.get("agent")})
+    screens = sorted({x for m in meths for x in m.get("screens", [])})
+    if agents:
+        body = body.replace("- **Agent:** <!-- e.g. claude-code opus-5.5, codex, human -->", f"- **Agent:** {', '.join(agents)}")
+    if pre:
+        body = body.replace("- **Pre-registration commit:** <!-- hash: every tests file, committed together and alone -->", f"- **Pre-registration commit:** {pre}")
+    if res:
+        body = body.replace("- **Results commit:** <!-- hash, a LATER commit -->", f"- **Results commit:** {res}")
+    if screens:
+        body = body.replace("- **Explored before pre-registering:** <!-- e.g. cards only / probe --plan on 10 poles -->",
+                            f"- **Screens used:** {', '.join(screens)}")
     out = ROOT / ".pr" / f"{branch.replace('/', '-') or 'pr'}.md"
     out.parent.mkdir(exist_ok=True)
     out.write_text(body, encoding="utf-8", newline="\n")
