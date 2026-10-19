@@ -15,12 +15,14 @@ permissions:
   contents: read
   pages: write
   id-token: write
-concurrency:
-  group: pages
-  cancel-in-progress: true
 jobs:
   build:
     if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    # concurrency on the job, not the workflow: a skipped run (a merge workflow that did not merge) must not cancel a real
+    # build; builds queue rather than cancel, and each one builds the newest main anyway
+    concurrency:
+      group: pages-build
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
@@ -83,6 +85,9 @@ jobs:
           path: _site
   deploy:
     needs: build
+    concurrency:
+      group: pages-deploy
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     environment:
       name: github-pages
