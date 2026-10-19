@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-19-moridinamael-9d5cfc4b",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N4822+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T19:26:26+00:00",
+ "roles": ["feeds bonsai1/L13/N6073-"],
+ "neighbours": [
+  {
+   "unit": "L3/N4822",
+   "pole": "+",
+   "label": "the word 'George' itself, in any use (a person, a king, a place, a pet, a book character, DiGeorge), plus the sibling token 'Truman' (Harry Truman, The Truman Show, Truman Capote); other names (Gerald, Edward, Gordon, Hopkins) and lookalikes (Georgia, Georgetown, Georgian, gorge, Jorge) stay near zero",
+   "short": "the word 'George' (and 'Truman')",
+   "unit_kind": "token detector",
+   "confidence": "high",
+   "fire": [
+    "My neighbour George lent us his ladder on Saturday.",
+    "King George V opened the new bridge in 1928.",
+    "The ferry to George Town leaves at noon.",
+    "Our cat George sleeps on the radiator all winter.",
+    "Lake George freezes solid every January.",
+    "We read Curious George at bedtime again.",
+    "She graduated from George Mason University last spring.",
+    "Harry Truman ordered the airlift to Berlin."
+   ],
+   "quiet": [
+    "My neighbour Gerald lent us his ladder on Saturday.",
+    "King Edward V opened the new bridge in 1928.",
+    "The ferry to Georgetown leaves at noon.",
+    "Our cat Gordon sleeps on the radiator all winter.",
+    "Lake Geneva freezes solid every January.",
+    "We read Curious Kitten at bedtime again.",
+    "She graduated from Georgia State University last spring.",
+    "Harry Hopkins ordered the airlift to Berlin."
+   ],
+   "notes": "Strongest feeder of bonsai1/L13/N6073- (play step drop 0.08), which fires on 'Henry George' among other full names. Card: + pole extremely sparse (0.008% of tokens reach 0.1 of max), 25 of the top 32 peaks on ' George'. Probes: fame is not needed (goldfish, monkey, kid in class all ~0.5); kings slightly higher (~0.77). French 'Georges' reaches only ~0.26 and lowercase 'george' fires (0.66). globalMOO inverse solver found no leak and no silent on-concept text."
+  }
+ ],
+ "predictions": "8/8 fire at ~0.5-0.75, all near misses below 0.1",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-out",
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "bank-solo"
+  ]
+ }
+}

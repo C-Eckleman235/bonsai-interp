@@ -1,0 +1,155 @@
+{
+ "id": "2026-10-19-moridinamael-9d5cfc4b",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N4822+",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T19:27:11+00:00",
+ "recipe": {
+  "toolchain_commit": "d5130fd",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L3_N4822_pos/2026-10-19-moridinamael-9d5cfc4b.tests.json"
+ },
+ "label": "the word 'George' itself, in any use (a person, a king, a place, a pet, a book character, DiGeorge), plus the sibling token 'Truman' (Harry Truman, The Truman Show, Truman Capote); other names (Gerald, Edward, Gordon, Hopkins) and lookalikes (Georgia, Georgetown, Georgian, gorge, Jorge) stay near zero",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L3_N4822_pos/2026-10-19-moridinamael-9d5cfc4b.tests.json",
+   "prereg_commit": "d5130fd",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.504,
+     "peak": " George"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.766,
+     "peak": " George"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.472,
+     "peak": " George"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.542,
+     "peak": " George"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.742,
+     "peak": " George"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.629,
+     "peak": " George"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.513,
+     "peak": " George"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.66,
+     "peak": " Truman"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.004,
+     "peak": " neighbour"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.004,
+     "peak": " Edward"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.055,
+     "peak": " Georgetown"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.004,
+     "peak": " Geneva"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.002,
+     "peak": " Cur"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.001,
+     "peak": " last"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.002,
+     "peak": " airl"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.586,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-gmoo",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "d5130fd",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L13/N6073-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L3/N4822+", "to": "bonsai1/L13/N6073-", "kind": "feeds", "weight": 0.08, "method": "single-unit zero ablation (play step)"}
+ ]
+}
