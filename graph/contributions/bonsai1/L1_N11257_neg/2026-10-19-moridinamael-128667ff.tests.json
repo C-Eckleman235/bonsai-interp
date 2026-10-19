@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-19-moridinamael-128667ff",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N11257-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T18:21:40+00:00",
+ "neighbours": [
+  {
+   "unit": "L1/N11257",
+   "pole": "-",
+   "label": "the word-piece right after a split-off word-start 'ap'/'pap'/'sp' (ap|ag in apagar, Pap|agei, sp|ät in spät/Verspätung, ap|ical, pap|illary, ap|iclient); the same endings after other starts (capillary, topical, Hagel) and other ap/sp words (Spaten, Spaß, Apache, one-token 'später') stay quiet",
+   "short": "piece after split-off 'ap'/'sp' (ap-ag, sp-ät, ap-ical)",
+   "unit_kind": "token / subword",
+   "confidence": "high",
+   "roles": ["feeds bonsai1/L2/N10718+"],
+   "fire": [
+    "Por la noche apagamos todas las luces de la casa.",
+    "Mein Papagei kann drei Wörter sagen.",
+    "Der Zug kam leider sehr spät an.",
+    "Wegen der Verspätung verpassten wir den Anschluss.",
+    "The biopsy came from the apical part of the lung.",
+    "The surgeon removed a papillary growth from the thyroid.",
+    "The script imports apiclient to call the API.",
+    "Im Training übt sie jeden Tag den Spagat."
+   ],
+   "quiet": [
+    "Por la noche pagamos todas las cuentas de la casa.",
+    "Mein Hagel kann drei Wörter sagen.",
+    "Der Zug kam leider sehr früh an.",
+    "Wegen der Baustelle verpassten wir den Anschluss.",
+    "The biopsy came from the topical part of the lung.",
+    "The surgeon removed a capillary growth from the thyroid.",
+    "The script imports requests to call the API.",
+    "Im Training übt sie jeden Tag den Spaten."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire (Papagei weakest), 0 near misses at 0.30; pagamos the highest miss",
+ "notes": "Feeder of bonsai1/L2/N10718+ (the German/Russian 'late' stem pole), found with play step (drop 0.11); the sp|ät branch is presumably what it hands on. globalMOO inverse solver found no leak and no silent on-concept text. Twitch chat was quiet this round; all sentences written by the agent.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-out",
+   "card",
+   "look",
+   "probe",
+   "bank-solo",
+   "inverse-gmoo",
+   "quick-test"
+  ]
+ }
+}
