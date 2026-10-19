@@ -1,0 +1,70 @@
+{
+ "contribution": "2026-10-19-moridinamael-0ed80374",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L10/N2499-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T14:47:43+00:00",
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "Dense / gate-leak background unit: the - pole is a weak leak (max 1.52, 11% of tokens above 0.1 of max, 99.6% '-g +u leak') that hums at about 0.1-0.3 of max on most prose. Its feeders ('late' in any sense, lateness words, 'belated', 'little', ambient-it predicates) add only a small bump, so 'too late' / 'too little, too late' does not separate from matched text without lateness; the slightly stronger pockets are clinical-psychology / talking-therapy text (the + pole's topic leaking through) and the headline 'Too Little too Late?'."
+ },
+ "neighbours": [
+  {
+   "unit": "L10/N2499",
+   "pole": "-",
+   "label": "Dense / gate-leak background unit: the - pole is a weak leak (max 1.52, 11% of tokens above 0.1 of max, 99.6% '-g +u leak') that hums at about 0.1-0.3 of max on most prose. Its feeders ('late' in any sense, lateness words, 'belated', 'little', ambient-it predicates) add only a small bump, so 'too late' / 'too little, too late' does not separate from matched text without lateness; the slightly stronger pockets are clinical-psychology / talking-therapy text (the + pole's topic leaking through) and the headline 'Too Little too Late?'.",
+   "unit_kind": "dense / positional",
+   "fire": [
+    "In cognitive therapy the client learns to challenge negative automatic thoughts.",
+    "Her therapist suggested weekly counselling sessions to work through the grief.",
+    "Psychoanalysis asks the patient to speak freely about dreams and early memories.",
+    "Couples therapy helped them talk openly about years of resentment.",
+    "The clinical psychologist offered talking therapy for his obsessive-compulsive disorder.",
+    "Trauma-focused therapy is recommended for veterans with post-traumatic stress.",
+    "During the session the counsellor encouraged her to name the feelings behind her panic.",
+    "Behavioural activation therapy schedules small rewarding activities for depressed patients."
+   ],
+   "quiet": [
+    "In chess training the student learns to challenge hasty automatic moves.",
+    "Her coach suggested weekly running sessions to work through the marathon plan.",
+    "The interview asks the candidate to speak freely about goals and early jobs.",
+    "Couples dance classes helped them move together after years of practice.",
+    "The senior architect offered drawing lessons for his eager young apprentice.",
+    "Cold-weather gear is recommended for hikers crossing the high pass.",
+    "During the meeting the manager encouraged her to name the costs behind the delay.",
+    "The loyalty scheme schedules small rewarding offers for frequent shoppers."
+   ]
+  }
+ ],
+ "predictions": "Confirm-by-design test of the label's second claim (therapy text is only a slightly stronger pocket, not a reliable trigger). Fire = psychotherapy/talking-therapy sentences, quiet = same-shape twins without therapy. Under the dense label this should FAIL: several therapy sentences stay in the 0.05-0.25 hum (probes: exposure therapy 0.05, DBT 0.11, antidepressants+psychotherapy 0.18) so the median fire is near the 0.20 bar and AUROC is below 0.90. A clean pass would refute the dense reading and call for a therapy refine. Feeder map (L4/N1871-, L4/N9247-, L0/N8785-, L4/N11028-, L3/N694+, L0/N3566+ all held) explains the lateness bump but not the therapy pocket; the solver found a 0.55 leak (depression chapter list) and a 1.10 near-miss ceiling with no therapy content. All sentences written by the agent; Twitch chat was quiet and the label was the house pick.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "quick-test"
+  ],
+  "_screens_vocabulary": [
+   "atlas",
+   "bands",
+   "bank-solo",
+   "blind-room",
+   "card",
+   "disproof",
+   "held-out",
+   "induce",
+   "inverse-de",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round",
+   "step-out",
+   "which"
+  ]
+ }
+}
