@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-19-moridinamael-0ed80374",
+ "kind": "qc",
+ "neuron": "bonsai1/L10/N2499-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T14:49:00+00:00",
+ "recipe": {
+  "toolchain_commit": "140eb1c",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-0ed80374.tests.json"
+ },
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-0ed80374.tests.json",
+   "prereg_commit": "140eb1c",
+   "author": "moridinamael",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.288,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.506,
+     "peak": " counselling"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.454,
+     "peak": " speak"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.407,
+     "peak": " about"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.406,
+     "peak": " talking"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.145,
+     "peak": " recommended"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.338,
+     "peak": "sell"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.276,
+     "peak": " small"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.23,
+     "peak": " automatic"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.157,
+     "peak": " sessions"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.243,
+     "peak": " candidate"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.112,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.045,
+     "peak": " apprentice"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.153,
+     "peak": "ikers"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.096,
+     "peak": " meeting"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.296,
+     "peak": " frequent"
+    }
+   ],
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.891,
+    "median_fire": 0.372,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "140eb1c",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "Dense / gate-leak background unit: the - pole is a weak leak (max 1.52, 11% of tokens above 0.1 of max, 99.6% '-g +u leak') that hums at about 0.1-0.3 of max on most prose. Its feeders ('late' in any sense, lateness words, 'belated', 'little', ambient-it predicates) add only a small bump, so 'too late' / 'too little, too late' does not separate from matched text without lateness; the slightly stronger pockets are clinical-psychology / talking-therapy text (the + pole's topic leaking through) and the headline 'Too Little too Late?'."
+ }
+}
