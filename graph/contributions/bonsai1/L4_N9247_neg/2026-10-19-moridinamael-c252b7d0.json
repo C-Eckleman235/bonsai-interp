@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-19-moridinamael-c252b7d0",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N9247-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T14:13:37+00:00",
+ "recipe": {
+  "toolchain_commit": "bca3e7a",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N9247_neg/2026-10-19-moridinamael-c252b7d0.tests.json"
+ },
+ "label": "the predicate right after an ambient/dummy 'it' (it rained, it is snowing, it gets dark, it got cold, it took six weeks, what it takes); weather or nightfall phrased without the empty 'it', and referential 'it', stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L4_N9247_neg/2026-10-19-moridinamael-c252b7d0.tests.json",
+   "prereg_commit": "bca3e7a",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.766,
+     "peak": "ained"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 1.064,
+     "peak": " snow"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.8,
+     "peak": " dark"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.655,
+     "peak": " cold"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.791,
+     "peak": " takes"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.451,
+     "peak": " took"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.538,
+     "peak": " raining"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 1.011,
+     "peak": "ing"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": -0.001,
+     "peak": " was"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.001,
+     "peak": " reopened"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.0,
+     "peak": " before"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.158,
+     "peak": " cold"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.002,
+     "peak": "She"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": -0.0,
+     "peak": " crew"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": -0.001,
+     "peak": " was"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.001,
+     "peak": "."
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.778,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "bca3e7a",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L5/N6367-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L4/N9247-",
+   "to": "bonsai1/L5/N6367-",
+   "kind": "feeds",
+   "weight": 0.12,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
