@@ -1,0 +1,153 @@
+{
+ "id": "2026-10-19-moridinamael-23d720f6",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N9559+",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T17:18:19+00:00",
+ "recipe": {
+  "toolchain_commit": "1888281",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N9559_pos/2026-10-19-moridinamael-23d720f6.tests.json"
+ },
+ "label": "a word piece that ends in the letters 'oo' (Gent|oo, Kalamaz|oo, ig|loo, zoo, moo, boo); spelling, not sound: 'oo' mid-word (pool, food) and the oo sound spelled otherwise (true, blue, Ubuntu) stay silent; strongest when 'oo' is split off a longer or rarer word, weak on common whole words like ' too' and ' tattoo'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L0_N9559_pos/2026-10-19-moridinamael-23d720f6.tests.json",
+   "prereg_commit": "1888281",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.961,
+     "peak": "oo"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.809,
+     "peak": "oo"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.521,
+     "peak": "loo"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.517,
+     "peak": "oodoo"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.532,
+     "peak": " boo"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.611,
+     "peak": " moo"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.55,
+     "peak": " zoo"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.662,
+     "peak": "oo"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.013,
+     "peak": " Ubuntu"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.014,
+     "peak": " Michigan"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.029,
+     "peak": " snow"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.007,
+     "peak": " old"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.025,
+     "peak": " hello"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.02,
+     "peak": " chew"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.039,
+     "peak": " pool"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.043,
+     "peak": "oor"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.581,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "1888281",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "notes": "Step mission from bonsai1/L3/N3250- (play step zero-ablation drop 0.06, second-largest feeder after L0/N943+ which was already mapped). Played live on stream; Twitch chat was quiet, so sentences are the agent's own. Inverse solver (differential evolution over a bank) found no leak and no silent on-concept text; 'kangaroo' (0.56) also ends in 'oo'.",
+ "edges": [
+  {"from": "bonsai1/L0/N9559+", "to": "bonsai1/L3/N3250-", "kind": "feeds", "weight": 0.06, "method": "single-unit zero ablation (play step)"}
+ ]
+}
