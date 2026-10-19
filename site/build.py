@@ -18,7 +18,7 @@ ROOT = HERE.parent
 sys.path.insert(0, str(ROOT))
 
 
-def build_cards(idx, refresh=False):
+def build_cards(idx, refresh=False, logits=True):
     """{"L/n": compact card} for every neuron with at least one surveyed pole; new ones computed when the scan is here."""
     path = HERE / "cards.json"
     cache = {} if refresh or not path.exists() else json.loads(path.read_text(encoding="utf-8"))
@@ -31,7 +31,7 @@ def build_cards(idx, refresh=False):
         else:
             from bonsai_interp.graph import card
             for i, u in enumerate(todo):
-                cache[u] = card.compact(card.card(f"bonsai1/L{u.replace('/', '/N')}"))
+                cache[u] = card.compact(card.card(f"bonsai1/L{u.replace('/', '/N')}", logits=logits))
                 print(f"  card {i + 1}/{len(todo)} L{u}", end="\r", flush=True)
             print()
     cards = {u: cache[u] for u in want if u in cache}
@@ -42,9 +42,10 @@ def build_cards(idx, refresh=False):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--refresh-cards", action="store_true")
+    ap.add_argument("--no-logits", action="store_true", help="new cards without the logit effect (no model weights needed; the Pages build)")
     a = ap.parse_args()
     idx = json.loads((ROOT / "graph" / "index.json").read_text(encoding="utf-8"))
-    cards = build_cards(idx, a.refresh_cards)
+    cards = build_cards(idx, a.refresh_cards, logits=not a.no_logits)
     # U+FFFD (corpus text with broken characters) is written as a JSON escape, so the page source has none
     blob = lambda o: json.dumps(o, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/").replace("�", "\\ufffd")
     body = (HERE / "template.html").read_text(encoding="utf-8").replace("__INDEX__", blob(idx)).replace("__CARDS__", blob(cards))
