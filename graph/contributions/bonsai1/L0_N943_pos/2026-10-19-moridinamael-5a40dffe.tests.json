@@ -1,0 +1,72 @@
+{
+ "contribution": "2026-10-19-moridinamael-5a40dffe",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N943+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T16:28:20+00:00",
+ "neighbours": [
+  {
+   "unit": "L0/N943",
+   "pole": "+",
+   "label": "the token ' too' / 'Too' itself, in either sense (excess 'too hot' or additive 'me too'); not the idea of excess without the word",
+   "short": "the word 'too'",
+   "unit_kind": "token",
+   "confidence": "high",
+   "notes": "Layer-0 token detector. Probes: additive 'too' fires as strongly as excessive 'too'; excess without the word (overly, excessively, way more) stays below 0.2; look-alikes (to, two, tooth, Toothpaste) and all-caps 'TOO' (different tokenization) are silent. Inverse solver (differential evolution over a 38-sentence bank) found no leak; near-miss ceiling 0.20 on ' overly'. Strongest feeder of L5/N4199+ (play step drop 0.32).",
+   "roles": ["feeds bonsai1/L5/N4199+"],
+   "fire": [
+    "The coffee was too bitter for me to finish.",
+    "My little brother wants a slice of cake too.",
+    "We arrived too late to catch the last bus.",
+    "Too much rain fell on the garden this spring.",
+    "The kids were tired, and the parents were too.",
+    "This jacket is a bit too tight around the shoulders.",
+    "Our neighbours, too, complained about the noise.",
+    "She worries too much about what others think."
+   ],
+   "quiet": [
+    "The coffee was very bitter for me to finish.",
+    "My little brother wants a slice of cake also.",
+    "We arrived much later than the last bus.",
+    "Heavy rain fell on the garden this spring.",
+    "The kids were tired, and the parents were as well.",
+    "This jacket is a bit overly tight around the shoulders.",
+    "Our neighbours, likewise, complained about the noise.",
+    "She worries so much about what others think."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire above 0.6, all near misses below 0.2",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "bank-solo",
+   "inverse-de",
+   "quick-test"
+  ],
+  "_screens_vocabulary": [
+   "atlas",
+   "bands",
+   "bank-solo",
+   "blind-room",
+   "card",
+   "disproof",
+   "held-out",
+   "induce",
+   "inverse-de",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round",
+   "step-out",
+   "which"
+  ]
+ }
+}
