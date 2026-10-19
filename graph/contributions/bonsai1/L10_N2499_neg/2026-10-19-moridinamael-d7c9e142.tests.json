@@ -1,0 +1,70 @@
+{
+ "contribution": "2026-10-19-moridinamael-d7c9e142",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L10/N2499-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T18:14:06+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Weak, dense hum that is somewhat stronger on clinical-psychology / talking-therapy text (psychotherapy, psychiatric symptoms, counselling sessions, psychodynamic or interpersonal treatment, ECT), the + pole's topic leaking through; lateness ('too late') adds little or nothing over matched text. Speech therapy also bumps it (solver)."
+ },
+ "neighbours": [
+  {
+   "unit": "L10/N2499",
+   "pole": "-",
+   "label": "Weak, dense hum (11% of tokens reach 0.1 of a small max) that rises on talk-based mental-health treatment: counselling and therapy sessions, psychiatrists, psychoanalysis, psychodynamic work, where people talk through their problems; speech therapy and the word 'talking' bump it a little. Symptom lists and CBT jargon, where the + pole takes over, stay near zero. Physical medicine (surgery, physio, pharmacy) hums at the 0.1-0.2 baseline. Lateness adds nothing: 'too late' scores like 'too early', and the feeders' foreign too/late/tan words (demasiado, zu spät, поздно) do not carry through, apart from a small bump on the headline 'Too Little too Late?'.",
+   "fire": [
+    "Every Tuesday she sat with her counsellor and talked about the divorce.",
+    "The psychotherapist encouraged him to put his anger into words.",
+    "After the accident he started seeing a trauma therapist twice a month.",
+    "In psychoanalysis the patient lies on a couch and speaks freely.",
+    "Marriage counselling gave them a safe place to air old resentments.",
+    "Her psychiatrist spent the hour asking about her childhood and her moods.",
+    "Bereavement counselling helped the children talk about losing their mother.",
+    "Interpersonal therapy focuses on the patient's relationships and role changes."
+   ],
+   "quiet": [
+    "Every Tuesday she sat with her physiotherapist and stretched her shoulder.",
+    "The orthopaedic surgeon set the broken bone in his wrist.",
+    "After the accident he started seeing a dentist twice a month.",
+    "The pharmacist counted out thirty tablets and labelled the bottle.",
+    "The ambulance crew got there too late to help the cyclist.",
+    "Llegaron demasiado tarde para salvar la cosecha.",
+    "The nurse took a blood sample and checked his temperature.",
+    "The cardiologist read the ECG and ordered a stress test."
+   ]
+  }
+ ],
+ "predictions": "7-8/8 fire; at most 1 near miss at 0.30 (physiotherapy is the risk)",
+ "notes": "Loop-back QC after mapping six feeders (L1/N1309-, L2/N10718+, L0/N6779+, L0/N6274+, L0/N1649-, L0/N8528+), several of them foreign 'too'/'late'/'tan' token detectors. Probes found they do not carry through to this pole: 'zu spät' 0.06, 'demasiado tarde' 0.18 vs 'muy temprano' 0.16, 'far too late' 0.15 vs 'too early' 0.13. Fresh sentences, not probed before pre-registration.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "neighbors",
+   "quick-test"
+  ],
+  "_screens_vocabulary": [
+   "atlas",
+   "bands",
+   "bank-solo",
+   "blind-room",
+   "card",
+   "disproof",
+   "held-out",
+   "induce",
+   "inverse-de",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round",
+   "step-out",
+   "which"
+  ]
+ }
+}
