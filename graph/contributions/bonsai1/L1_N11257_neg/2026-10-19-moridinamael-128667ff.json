@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-19-moridinamael-128667ff",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N11257-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T18:22:25+00:00",
+ "recipe": {
+  "toolchain_commit": "1f3de2c",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L1_N11257_neg/2026-10-19-moridinamael-128667ff.tests.json"
+ },
+ "label": "the word-piece right after a split-off word-start 'ap'/'pap'/'sp' (ap|ag in apagar, Pap|agei, sp|ät in spät/Verspätung, ap|ical, pap|illary, ap|iclient); the same endings after other starts (capillary, topical, Hagel) and other ap/sp words (Spaten, Spaß, Apache, one-token 'später') stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L1_N11257_neg/2026-10-19-moridinamael-128667ff.tests.json",
+   "prereg_commit": "1f3de2c",
+   "author": "moridinamael",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.869,
+     "peak": "ag"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.263,
+     "peak": "age"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.735,
+     "peak": "ät"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.832,
+     "peak": "ät"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.713,
+     "peak": "ical"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.606,
+     "peak": "illary"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.861,
+     "peak": "ic"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.599,
+     "peak": "ag"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.145,
+     "peak": "amos"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.013,
+     "peak": "el"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.003,
+     "peak": "Der"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.023,
+     "peak": "uss"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.014,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.015,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.008,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.009,
+     "peak": "aten"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.724,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-gmoo",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "1f3de2c",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "edges": [
+  {
+   "from": "bonsai1/L1/N11257-",
+   "to": "bonsai1/L2/N10718+",
+   "kind": "feeds",
+   "weight": 0.11,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ],
+ "notes": "Feeder of bonsai1/L2/N10718+ (the German/Russian 'late' stem pole), found with play step (drop 0.11); the sp|ät branch is presumably what it hands on. globalMOO inverse solver found no leak and no silent on-concept text. Twitch chat was quiet this round; all sentences written by the agent."
+}
