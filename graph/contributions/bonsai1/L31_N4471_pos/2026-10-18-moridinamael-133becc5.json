@@ -1,0 +1,146 @@
+{
+ "id": "2026-10-18-moridinamael-133becc5",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N4471+",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T00:17:54+00:00",
+ "recipe": {
+  "toolchain_commit": "21a1d1f",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L31_N4471_pos/2026-10-18-moridinamael-133becc5.tests.json"
+ },
+ "label": "Turkish-language text: fires on word-internal subword pieces of Turkish words (sahibi, yayınları, tarihi, otogar)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L31_N4471_pos/2026-10-18-moridinamael-133becc5.tests.json",
+   "prereg_commit": "21a1d1f",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.384,
+     "peak": "mıştır"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 1.092,
+     "peak": " yayın"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 1.409,
+     "peak": "üyor"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 1.752,
+     "peak": "ler"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 1.061,
+     "peak": "ı"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 1.348,
+     "peak": "ıyor"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 1.302,
+     "peak": "lar"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 1.754,
+     "peak": "alar"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.001,
+     "peak": " owner"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.003,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.002,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": " bus"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.002,
+     "peak": " launched"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.001,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.002,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.001,
+     "peak": "The"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 1.366,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "look",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "21a1d1f",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "Turkish word pieces",
+ "unit_kind": "contextual",
+ "confidence": 0.7,
+ "notes": "Card top examples are all Turkish words or Turkish words in English text; logit effect promotes Turkish suffixes (-leri, -ını, -inin). Near misses are English translations of the same sentences."
+}

@@ -1,0 +1,146 @@
+{
+ "id": "2026-10-18-moridinamael-cd40d489",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N1814-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T00:18:02+00:00",
+ "recipe": {
+  "toolchain_commit": "21a1d1f",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L20_N1814_neg/2026-10-18-moridinamael-cd40d489.tests.json"
+ },
+ "label": "dense: punctuation and separators in code and citations (=, ':', ',' after identifiers or author names)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L20_N1814_neg/2026-10-18-moridinamael-cd40d489.tests.json",
+   "prereg_commit": "21a1d1f",
+   "author": "moridinamael",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.529,
+     "peak": " name"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.206,
+     "peak": "':"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.154,
+     "peak": " \""
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.906,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.338,
+     "peak": " id"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.424,
+     "peak": "':"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.192,
+     "peak": " ("
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.371,
+     "peak": " value"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.102,
+     "peak": " was"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.051,
+     "peak": " said"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.057,
+     "peak": " for"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.089,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.049,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.105,
+     "peak": " his"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.162,
+     "peak": " this"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.157,
+     "peak": " bread"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.355,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "look",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "21a1d1f",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "code separators (dense)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.2,
+ "notes": "Card flags broad: 9.9% of tokens reach 0.1 of max. Test records density; expected to fail."
+}
