@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-19-moridinamael-91571557",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N1091+",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T21:04:06+00:00",
+ "recipe": {
+  "toolchain_commit": "8802570",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L24_N1091_pos/2026-10-19-moridinamael-91571557.tests.json"
+ },
+ "label": "Re-typing a line of code seen just above: in the second or third copy of a call or attribute block (especially calls whose arguments are several fields of one object, e.g. f(args.a, args.b, ...)), it fires partway into the copy; the same layout with different calls and objects stays lower. Code with no repeats keeps a weak baseline (about 0.1-0.3); repeated prose barely moves it.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L24_N1091_pos/2026-10-19-moridinamael-91571557.tests.json",
+   "prereg_commit": "8802570",
+   "author": "moridinamael",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.571,
+     "peak": "(args"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.308,
+     "peak": " cfg"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.323,
+     "peak": " opts"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.376,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.445,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.207,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.33,
+     "peak": "window"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.241,
+     "peak": ")\n"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.23,
+     "peak": "(args"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.234,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.125,
+     "peak": "(opts"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.271,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.054,
+     "peak": ".face"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.113,
+     "peak": ".rad"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.133,
+     "peak": ")\n"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.083,
+     "peak": ".bias"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.327,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "8802570",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "unit_kind": "broad (3.8% of tokens reach 0.1 of max)",
+ "confidence": "medium-low",
+ "notes": "Step-in reader of bonsai1/L23/N11310+ (drop 0.18 under zero ablation), whose own label is re-typing an odd multi-piece string already seen earlier, so the reader looks like a code-specific continuation of the same copying signal. The inverse solver (differential evolution) found a leak: three different calls with string arguments reach about 0.3 with nothing repeated, so string literals are kept out of the near misses and the claim is relative to the code baseline. Silent case: an exact duplicate short print line only reached 0.10. Sentences were probed before pre-registration (exploration). Chat was quiet; house picks.",
+ "roles": [
+  "reads bonsai1/L23/N11310+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L23/N11310+", "to": "bonsai1/L24/N1091+", "kind": "feeds", "weight": 0.18, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}

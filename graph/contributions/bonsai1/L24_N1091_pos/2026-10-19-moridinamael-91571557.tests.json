@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-19-moridinamael-91571557",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N1091+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T21:02:50+00:00",
+ "roles": ["reads bonsai1/L23/N11310+"],
+ "neighbours": [
+  {
+   "unit": "L24/N1091",
+   "pole": "+",
+   "label": "Re-typing a line of code seen just above: in the second or third copy of a call or attribute block (especially calls whose arguments are several fields of one object, e.g. f(args.a, args.b, ...)), it fires partway into the copy; the same layout with different calls and objects stays lower. Code with no repeats keeps a weak baseline (about 0.1-0.3); repeated prose barely moves it.",
+   "short": "re-typing a code line seen just above",
+   "fire": [
+    "do_test(args.device, args.baudrate, args.mode)\ndo_test(args.device, args.baudrate, args.mode)\ndo_test(args.device, args.baudrate, args.flag)",
+    "run_job(cfg.queue, cfg.workers, cfg.retries)\nrun_job(cfg.queue, cfg.workers, cfg.retries)\nrun_job(cfg.queue, cfg.workers, cfg.retries)",
+    "connect(opts.host, opts.port, opts.user)\nconnect(opts.host, opts.port, opts.user)\nconnect(opts.host, opts.port, opts.key)",
+    "train(params.lr, params.epochs, params.batch)\ntrain(params.lr, params.epochs, params.batch)\ntrain(params.lr, params.epochs, params.seed)",
+    "draw_line(pen.x, pen.y, pen.width)\ndraw_line(pen.x, pen.y, pen.width)\ndraw_line(pen.x, pen.y, pen.color)",
+    "resize(img.width, img.height, img.mode)\nresize(img.width, img.height, img.mode)\nresize(img.width, img.height, img.depth)",
+    "self.rwindow.set_parent(None)\nself.rwindow.destroy()\nself.rwindow = None\nself.lwindow.set_parent(None)\nself.lwindow.destroy()\nself.lwindow = None",
+    "self.labelHistoryValue.setText(a)\nself.labelHistoryValue.setText(b)\nself.labelHistoryValue.setText(c)"
+   ],
+   "quiet": [
+    "do_test(args.device, args.baudrate, args.mode)\nreset(board.pins, board.clock)\nwait(timer.ms)",
+    "run_job(cfg.queue, cfg.workers, cfg.retries)\nstop_all(pool.size, pool.idle)\nflush(cache.keys)",
+    "connect(opts.host, opts.port, opts.user)\nparse(text.lines, text.sep)\nnotify(mail.to, mail.cc)",
+    "train(params.lr, params.epochs, params.batch)\nevaluate(scores.top, scores.mean)\nexport(path.dir, path.name)",
+    "draw_line(pen.x, pen.y, pen.width)\nfill_rect(box.left, box.right)\nset_font(style.size, style.face)",
+    "resize(img.width, img.height, img.mode)\nrotate(angle.deg, angle.rad)\ncrop(frame.top, frame.left)",
+    "self.rwindow.set_parent(None)\nself.dialog.destroy()\nself.cursor = None\nself.tabs.set_parent(None)\nself.scroll.hide()\nself.image = None",
+    "model.encoder.layers.norm.weight\nmodel.decoder.proj.bias\nmodel.head.dropout"
+   ]
+  }
+ ],
+ "predictions": "Tight: plain code has a 0.1-0.3 baseline. Expect AUROC about 0.9, median fire about 0.33, no near miss at 0.30. The two weakest fires (resize, setText) may sit near the top near misses.",
+ "unit_kind": "broad (3.8% of tokens reach 0.1 of max)",
+ "confidence": "medium-low",
+ "notes": "Step-in reader of bonsai1/L23/N11310+ (drop 0.18 under zero ablation), whose own label is re-typing an odd multi-piece string already seen earlier, so the reader looks like a code-specific continuation of the same copying signal. The inverse solver (differential evolution) found a leak: three different calls with string arguments reach about 0.3 with nothing repeated, so string literals are kept out of the near misses and the claim is relative to the code baseline. Silent case: an exact duplicate short print line only reached 0.10. Sentences were probed before pre-registration (exploration). Chat was quiet; house picks.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "quick-test"
+  ]
+ }
+}
