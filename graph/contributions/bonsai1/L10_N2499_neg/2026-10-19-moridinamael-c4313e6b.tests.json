@@ -1,0 +1,71 @@
+{
+ "contribution": "2026-10-19-moridinamael-c4313e6b",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L10/N2499-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T19:32:47+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Weak, dense hum (11% of tokens reach 0.1 of a small max) that rises (about 0.3-0.55) on the vocabulary and settings of talking therapies: counsellor/counselling, therapist, psychiatrist, psychologist, psychoanalyst, psychodynamic/psychotherapy, group therapy, support groups, and also speech therapy (0.33-0.46). A crisis followed by 'weekly sessions' already lifts it before any profession is named. A plain paraphrase of talking about feelings with no care words stays near baseline (0.16), as do 'retail therapy', physical medicine (surgery, dentistry, nursing, vets) and cardiology (0.06-0.2). Lateness: lowercase 'found out / realised / discovered too late that ...' stays at baseline (0.08-0.17, not peaking on ' late'), so the earlier discovered-too-late clause did not replicate; only the capitalised headline 'Too Little too Late?' (0.35) carries a late signal. The spelling-piece feeders (ap/ag/pend/sp|ät) leave no lateness meaning here: German 'Verspätung' is near zero."
+ },
+ "neighbours": [
+  {
+   "unit": "L10/N2499",
+   "pole": "-",
+   "label": "Weak, dense hum that rises on mental-health care and psychiatry in general, not only talking therapy: psychiatrist/psychologist, psychiatric hospital, antidepressant prescriptions, ECT, hallucinations / hearing voices, clinical, bipolar and postnatal depression (about 0.3-0.65). Physical-medicine twins (cardiology, burns, chemotherapy, fractures, infections) stay lower (0.1-0.3). Side channels: the '-therapist/therapy' word family lifts it even off-topic (physiotherapist 0.35, speech therapy 0.46), and the 'Too Little too Late?' headline; some disorder names alone (OCD, PTSD, anorexia, delusions) stay near the hum (0.13-0.22).",
+   "fire": [
+    "Her psychiatrist switched her to a different antidepressant when the first one caused insomnia.",
+    "The ward treated people in acute psychosis who were hearing voices.",
+    "Electroconvulsive therapy is still used for depression that resists every medication.",
+    "The clinic screens new mothers for postnatal depression at their six-week check.",
+    "She was sectioned and admitted to a psychiatric hospital during a manic episode.",
+    "The psychologist assessed him for clinical depression using a standard questionnaire.",
+    "Symptoms of schizophrenia include hallucinations and disordered thinking.",
+    "People with bipolar disorder can swing between mania and deep depression."
+   ],
+   "quiet": [
+    "Her cardiologist switched her to a different blood thinner when the first one caused bruising.",
+    "The ward treated people with severe burns who needed skin grafts.",
+    "Chemotherapy is still used for tumours that resist every other treatment.",
+    "The clinic screens new mothers for anaemia at their six-week check.",
+    "She was rushed into an orthopaedic hospital during a skiing trip.",
+    "He was diagnosed with a fractured hip after slipping on the ice.",
+    "Fever and a rash are common in the early stages of chickenpox.",
+    "Patients with rheumatoid arthritis often find their fingers stiff and swollen in the morning."
+   ]
+  }
+ ],
+ "predictions": "Expect a hold but narrow: fire median about 0.4, one near miss (burns ward) near 0.30. All sentences were probed during design on the resident model; the physiotherapist twin (0.35) was moved into the label as a side channel rather than tested as a near miss. Neighbour context: the mapped feeders/readers are name and spelling-piece units, which explain odd top hits (Sch|uh|mann, Frogg|att) but add no meaning.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "neighbors",
+   "inverse-de",
+   "quick-test"
+  ],
+  "_screens_vocabulary": [
+   "atlas",
+   "bands",
+   "bank-solo",
+   "blind-room",
+   "card",
+   "disproof",
+   "held-out",
+   "induce",
+   "inverse-de",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round",
+   "step-down",
+   "step-out",
+   "which"
+  ]
+ }
+}
