@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-19-moridinamael-0f53b1e7",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N282+",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T16:53:46+00:00",
+ "recipe": {
+  "toolchain_commit": "04a0b0a",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N282_pos/2026-10-19-moridinamael-0f53b1e7.tests.json"
+ },
+ "label": "the word ending '-ium' when it is its own token piece (hel|ium, Lil|ium, plut|onium, geran|ium), regardless of meaning",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L0_N282_pos/2026-10-19-moridinamael-0f53b1e7.tests.json",
+   "prereg_commit": "04a0b0a",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.72,
+     "peak": "ium"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.73,
+     "peak": "onium"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.513,
+     "peak": "ium"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.643,
+     "peak": "ium"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.838,
+     "peak": "ium"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.72,
+     "peak": "ium"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.728,
+     "peak": "anium"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.534,
+     "peak": "ium"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.008,
+     "peak": "Hel"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.01,
+     "peak": "onic"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.008,
+     "peak": " helps"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.009,
+     "peak": " heavy"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.01,
+     "peak": " bulbs"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.059,
+     "peak": "idia"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.027,
+     "peak": " balcony"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.027,
+     "peak": "ia"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.72,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-gmoo",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "04a0b0a",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "edges": [
+  {"from": "bonsai1/L0/N282+", "to": "bonsai1/L3/N5852+", "kind": "feeds", "weight": 0.07, "method": "single-unit zero ablation (play step)"}
+ ]
+}
