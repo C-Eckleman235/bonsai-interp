@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-19-moridinamael-d61bcdc9",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N694+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T14:36:31+00:00",
+ "roles": ["feeds bonsai1/L5/N6367-"],
+ "neighbours": [
+  {
+   "unit": "L3/N694",
+   "pole": "+",
+   "label": "the letter string 'tard' inside a word, meaning-blind: tardy/tardiness, retard/retardant, French/Spanish tard/tarde, but also Tardis, tardigrade, bastard, petard; lateness or slowness phrased without 'tard' stays quiet, as do '-ard' words without the t (guard, standard, leopard) and 'tart'",
+   "short": "the letter string 'tard' (tardy, retard, Tardis, bastard)",
+   "unit_kind": "token / spelling",
+   "confidence": "high",
+   "fire": [
+    "His tardiness at meetings cost him the job.",
+    "The new drug may retard the growth of the tumor.",
+    "Planes dropped fire retardant on the burning hills.",
+    "Tardigrades can survive in the vacuum of space.",
+    "The Doctor stepped back into the Tardis and vanished.",
+    "He was a lying bastard to everyone at work.",
+    "The bus was tardy again this morning.",
+    "Llegó tarde a la reunión otra vez."
+   ],
+   "quiet": [
+    "His lateness at meetings cost him the job.",
+    "The new drug may slow the growth of the tumor.",
+    "Planes dropped fire suppressant on the burning hills.",
+    "Water bears can survive in the vacuum of space.",
+    "The Doctor stepped back into the police box and vanished.",
+    "He was a lying scoundrel to everyone at work.",
+    "The bus was late again this morning.",
+    "Llegó con retraso a la reunión otra vez."
+   ],
+   "notes": "Step-out feeder of bonsai1/L5/N6367- (the 'late' / ' tard' neuron), single-unit zero-ablation drop 0.06. Near misses are minimal swaps that keep the meaning (lateness, slowing, the Doctor's ship, an insult) and drop only the letters 'tard', so the test separates spelling from meaning. Exploration: late/slow/delayed ~0.01, mustard 0.23, petard 0.26, dastardly 0.22, custard 0.04, tart/guard/standard ~0. The inverse solver round crashed (toolchain JSON serialization error), so no solver result. Chat was quiet; all sentences are my own."
+  }
+ ],
+ "predictions": "8/8 fire (median ~0.5), 0 near misses above 0.05",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-out",
+   "card",
+   "probe",
+   "quick-test"
+  ]
+ }
+}
