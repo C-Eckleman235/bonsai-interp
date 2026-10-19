@@ -4,10 +4,10 @@
  "layer": 10,
  "index": 2499,
  "pole": "-",
- "label": "Weak, dense hum that is somewhat stronger on clinical-psychology / talking-therapy text (psychotherapy, psychiatric symptoms, counselling sessions, psychodynamic or interpersonal treatment, ECT), the + pole's topic leaking through; lateness ('too late') adds little or nothing over matched text. Speech therapy also bumps it (solver).",
+ "label": "Weak, dense hum (11% of tokens reach 0.1 of a small max) that rises on talk-based mental-health treatment: counselling and therapy sessions, psychiatrists, psychoanalysis, psychodynamic work, where people talk through their problems; speech therapy and the word 'talking' bump it a little. Symptom lists and CBT jargon, where the + pole takes over, stay near zero. Physical medicine (surgery, physio, pharmacy) hums at the 0.1-0.2 baseline. Lateness adds nothing: 'too late' scores like 'too early', and the feeders' foreign too/late/tan words (demasiado, zu spät, поздно) do not carry through, apart from a small bump on the headline 'Too Little too Late?'.",
  "short": null,
  "kind": null,
- "status": "contested",
+ "status": "held",
  "depth": "quick",
  "tests": [
   {
@@ -1413,6 +1413,123 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-19-moridinamael-26284077"
+  },
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-d7c9e142.tests.json",
+   "prereg_commit": "d0ecf0a",
+   "author": "moridinamael",
+   "n_fire": 6,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.291,
+     "peak": "sell"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.359,
+     "peak": "apist"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.344,
+     "peak": " seeing"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.369,
+     "peak": " psycho"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.282,
+     "peak": " counselling"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.46,
+     "peak": " psychiatrist"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.365,
+     "peak": " talk"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.314,
+     "peak": "'s"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.121,
+     "peak": " Tuesday"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.139,
+     "peak": " surgeon"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.307,
+     "peak": " seeing"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.219,
+     "peak": " out"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.14,
+     "peak": " cyclist"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.187,
+     "peak": " la"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.088,
+     "peak": " his"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.267,
+     "peak": " stress"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.351,
+    "near_misses_at_0.3": 1
+   },
+   "contribution": "2026-10-19-moridinamael-d7c9e142"
   }
  ],
  "label_history": [
@@ -1450,6 +1567,11 @@
    "2026-10-19-moridinamael-380e3ecc",
    "Weak, dense hum (11% of tokens above 0.1 of max) that is clearly stronger on clinical-psychology / psychiatric / talk-therapy text (psychotherapy, psychiatric symptoms, psychodynamic or interpersonal treatment, ECT, speech therapy); on top of that a smaller lexical bump on the words ' late' (strongest in 'too late', consistent with its 'too' and 'too ADJ to' feeders L0/N943+ and L5/N4199+) and ' talking'. Other feeder words (rain, ret-, bel-) do not carry through. Matched physical-medicine text stays near the base hum. This test checks the topic part only.",
    "failed"
+  ],
+  [
+   "2026-10-19-moridinamael-d7c9e142",
+   "Weak, dense hum (11% of tokens reach 0.1 of a small max) that rises on talk-based mental-health treatment: counselling and therapy sessions, psychiatrists, psychoanalysis, psychodynamic work, where people talk through their problems; speech therapy and the word 'talking' bump it a little. Symptom lists and CBT jargon, where the + pole takes over, stay near zero. Physical medicine (surgery, physio, pharmacy) hums at the 0.1-0.2 baseline. Lateness adds nothing: 'too late' scores like 'too early', and the feeders' foreign too/late/tan words (demasiado, zu spät, поздно) do not carry through, apart from a small bump on the headline 'Too Little too Late?'.",
+   "held"
   ]
  ],
  "examples": [],
@@ -1470,20 +1592,21 @@
   "2026-10-19-moridinamael-77a388c7",
   "2026-10-19-moridinamael-380e3ecc",
   "2026-10-19-moridinamael-bb5a7975",
-  "2026-10-19-moridinamael-26284077"
+  "2026-10-19-moridinamael-26284077",
+  "2026-10-19-moridinamael-d7c9e142"
  ],
  "qc": {
   "confirm": 5,
   "dispute": 0,
-  "refine": 5
+  "refine": 6
  },
  "replications": [],
  "scrutiny": {
   "level": 2,
   "name": "re-tested",
-  "test_rounds": 12,
-  "sentences": 192,
+  "test_rounds": 13,
+  "sentences": 208,
   "contributors": 1,
-  "qc": 10
+  "qc": 11
  }
 }
