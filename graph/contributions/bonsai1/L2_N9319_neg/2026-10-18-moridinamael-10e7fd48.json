@@ -1,0 +1,156 @@
+{
+ "id": "2026-10-18-moridinamael-10e7fd48",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N9319-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T02:54:45+00:00",
+ "recipe": {
+  "toolchain_commit": "6238d8e",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L2_N9319_neg/2026-10-18-moridinamael-10e7fd48.tests.json"
+ },
+ "label": "Spelling unit: the 'ce'-initial word piece directly after an en-/em- prefix (en|ceph|al-, em|cee, em|ceed, Enc|eladus), regardless of meaning; not 'ceph' without en-, not en-/em- words without a ce- piece",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L2_N9319_neg/2026-10-18-moridinamael-10e7fd48.tests.json",
+   "prereg_commit": "6238d8e",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.682,
+     "peak": "ceph"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.796,
+     "peak": "ceph"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 1.032,
+     "peak": "cee"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.764,
+     "peak": "ceed"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.709,
+     "peak": "ad"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.744,
+     "peak": "ceph"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.71,
+     "peak": "ceph"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.58,
+     "peak": "ph"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": -0.0,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": -0.0,
+     "peak": " newborn"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": -0.0,
+     "peak": " crowd"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.0,
+     "peak": " garden"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.001,
+     "peak": "avenous"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": -0.0,
+     "peak": " h"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": -0.0,
+     "peak": " war"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.0,
+     "peak": " born"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.727,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [],
+  "toolchain_commit": "6238d8e",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L5/N5628-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L2/N9319-",
+   "to": "bonsai1/L5/N5628-",
+   "kind": "feeds",
+   "weight": 0.28,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
