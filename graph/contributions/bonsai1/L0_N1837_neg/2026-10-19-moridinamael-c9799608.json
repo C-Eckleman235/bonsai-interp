@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-19-moridinamael-c9799608",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N1837-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T18:45:52+00:00",
+ "recipe": {
+  "toolchain_commit": "0880fc0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N1837_neg/2026-10-19-moridinamael-c9799608.tests.json"
+ },
+ "label": "the 'end'/'pend' word piece when the tokenizer splits a word around it (pend-ulum, pend-iente, Vend-ée, Br-end-a, M-end, F-end, T-end, S-pend); whole-word tokens that contain 'end' (trend, send, depend, Wendy mid-sentence) stay weak",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L0_N1837_neg/2026-10-19-moridinamael-c9799608.tests.json",
+   "prereg_commit": "0880fc0",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.877,
+     "peak": " pend"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.562,
+     "peak": "rend"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.722,
+     "peak": " Vend"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.634,
+     "peak": "end"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.622,
+     "peak": "end"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.549,
+     "peak": "end"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.741,
+     "peak": " pend"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.506,
+     "peak": "pend"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.06,
+     "peak": " trend"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.131,
+     "peak": " Wendy"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.165,
+     "peak": " depend"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.14,
+     "peak": "Send"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.173,
+     "peak": " extended"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.004,
+     "peak": " road"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.153,
+     "peak": " vendor"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.141,
+     "peak": " send"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.628,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-gmoo",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "0880fc0",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Feeder of bonsai1/L4/N1871- found with play step (drop 0.05). The pole is a tokenizer-level detector: the same letters fire when 'end'/'pend' is a separate piece (pendulum 0.88, Mend 0.63) and stay weak as part of a whole-word token (' Wendy' mid-sentence 0.13 vs 'Wendy' sentence-initial 0.65). Known exceptions seen while exploring: some whole tokens still fire moderately to strongly (' lend' 0.59, 'Attend' 0.66, 'Blend' 0.35, ' pending'/' spend' ~0.32), so the boundary is token identity, not a clean split/whole rule. Inverse solver (globalMOO) found no leak. Chat was quiet; house sentences only.",
+ "roles": [
+  "feeds bonsai1/L4/N1871-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L0/N1837-",
+   "to": "bonsai1/L4/N1871-",
+   "kind": "feeds",
+   "weight": 0.05,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
