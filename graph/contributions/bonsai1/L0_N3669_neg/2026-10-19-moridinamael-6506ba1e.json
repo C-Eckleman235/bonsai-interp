@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-19-moridinamael-6506ba1e",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N3669-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T18:27:54+00:00",
+ "recipe": {
+  "toolchain_commit": "3a8712b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N3669_neg/2026-10-19-moridinamael-6506ba1e.tests.json"
+ },
+ "label": "the sub-word token 'ag' / 'agg' / 'AG' (and short 'wag'/'Wags') when it is split out as its own piece inside a word, e.g. h|agg|is, papag|ay|os, Fam|ag|usta, AG|H; whole-word tokens that merely contain 'ag' (swagger, bagel, exaggeration) stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L0_N3669_neg/2026-10-19-moridinamael-6506ba1e.tests.json",
+   "prereg_commit": "3a8712b",
+   "author": "moridinamael",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.529,
+     "peak": "agg"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.444,
+     "peak": "agg"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.499,
+     "peak": "agg"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.419,
+     "peak": "ag"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.421,
+     "peak": "ag"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.441,
+     "peak": "AG"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.487,
+     "peak": "agg"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.294,
+     "peak": "ag"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.045,
+     "peak": " swagger"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.133,
+     "peak": " bag"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.027,
+     "peak": "ation"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.024,
+     "peak": "ajar"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.201,
+     "peak": " Mag"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.005,
+     "peak": " phone"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.199,
+     "peak": " Bag"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.018,
+     "peak": " swallowed"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.443,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "3a8712b",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L1/N11257-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L0/N3669-",
+   "to": "bonsai1/L1/N11257-",
+   "kind": "feeds",
+   "weight": 0.08,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
