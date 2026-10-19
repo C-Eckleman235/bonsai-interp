@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-19-moridinamael-4b84071d",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N4757+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T20:24:11+00:00",
+ "roles": ["reads bonsai1/L18/N624+"],
+ "neighbours": [
+  {
+   "unit": "L19/N4757",
+   "pole": "+",
+   "label": "Dense shorthand text, where abbreviations, codes and clipped numbers stand in for words (schedules like 'Mon-Fri 9 a.m.', citations like 'J. Appl. Phys. 95', dosages like 'p.o. b.i.d.', part numbers, 'A.D. 397', standards codes); peaks on tokens inside the shorthand, not on the abbreviation dot alone; the same content spelled out in plain prose stays low. Dense unit: ordinary prose idles at ~0.1-0.2 and stacked prose can creep to ~0.3",
+   "short": "dense shorthand: abbreviations and codes",
+   "unit_kind": "context",
+   "confidence": "medium",
+   "fire": [
+    "Hours: Mon-Fri 9 a.m.-5 p.m.; Sat 10 a.m.-2 p.m.; Sun closed.",
+    "Smith, J. (2004). J. Appl. Phys. 95, 123-130.",
+    "Dosage: 500 mg p.o. b.i.d. x 7 d.",
+    "Order part no. 4471-B and part no. 4471-C today.",
+    "Approx. 5 kg vs. 7 lbs, cf. Fig. 3, p. 12.",
+    "The meeting is at 10:30 a.m. on Jan. 5 in Rm. 204.",
+    "The council of Carthage (A.D. 397) settled the list.",
+    "See Section 4.2.1 and Section 9.3 for details."
+   ],
+   "quiet": [
+    "The shop opens every weekday morning and closes early on weekends.",
+    "John Smith wrote an article about physics a while ago.",
+    "Take one tablet by mouth twice a day for a week.",
+    "Order the blue part and the red part today.",
+    "About five kilos against seven pounds, as the figure shows.",
+    "The meeting is in the morning next week in the big room.",
+    "The council of Carthage in the year 397 settled the list.",
+    "See the next section and the one after it for details."
+   ],
+   "notes": "Step-in reader of bonsai1/L18/N624+ (repeat mention of a rare multi-piece name); drop only 0.06, and the label has little to do with the feeder's: a single 'A.D.' fires as much as a repeated one, and a repeated surname barely moves it (0.17). Near misses are plain-prose twins of each fire sentence carrying the same meaning without shorthand. Ruled out while probing: 'the slot before a number' (Turn to page / Flight number < 0.14); abbreviations alone with no codes or numbers reach only ~0.2. Inverse solver (DE): no silent on-concept text; a 0.34 leak only from concatenated prose (each piece alone 0.12-0.18), consistent with the card's dense flag (14% of tokens >= 0.1 of max). Chat was quiet this mission."
+  }
+ ],
+ "predictions": "8/8 fire at 0.3-0.5, all near misses below 0.21",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "quick-test"
+  ]
+ }
+}
