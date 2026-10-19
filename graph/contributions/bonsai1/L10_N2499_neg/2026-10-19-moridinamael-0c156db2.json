@@ -1,0 +1,153 @@
+{
+ "id": "2026-10-19-moridinamael-0c156db2",
+ "kind": "qc",
+ "neuron": "bonsai1/L10/N2499-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T16:00:39+00:00",
+ "recipe": {
+  "toolchain_commit": "340f712",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-0c156db2.tests.json"
+ },
+ "label": "Weak leak pole whose real driver is therapy / treatment text, strongest for mental-health treatment (talking therapy, counselling, psychotherapy, ECT, therapy groups at a clinic; speech therapy also counts). Lateness feeders ('late', 'too little, too late') add only a smaller second pocket in the fixed idiom; plain lateness does not fire it.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-0c156db2.tests.json",
+   "prereg_commit": "340f712",
+   "author": "moridinamael",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.492,
+     "peak": " talking"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.493,
+     "peak": "therapy"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": -0.075,
+     "peak": "ognitive"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.266,
+     "peak": "ulsive"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.516,
+     "peak": " therapy"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.417,
+     "peak": " clearly"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.062,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.385,
+     "peak": " hyster"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.252,
+     "peak": "up"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.084,
+     "peak": " weekly"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.181,
+     "peak": " nine"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.155,
+     "peak": " Sundays"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.071,
+     "peak": " book"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.198,
+     "peak": " passing"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.102,
+     "peak": " time"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.071,
+     "peak": " temperature"
+    }
+   ],
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.75,
+    "median_fire": 0.401,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "340f712",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Dense / gate-leak background unit: the - pole is a weak leak (max 1.52, 11% of tokens above 0.1 of max, 99.6% '-g +u leak') that hums at about 0.1-0.3 of max on most prose. Its feeders ('late' in any sense, lateness words, 'belated', 'little', ambient-it predicates) add only a small bump, so 'too late' / 'too little, too late' does not separate from matched text without lateness; the slightly stronger pockets are clinical-psychology / talking-therapy text (the + pole's topic leaking through) and the headline 'Too Little too Late?'."
+ },
+ "notes": "Loop-back after feeders were mapped (L0/N4874+, L3/N3226+, L1/N362+, L0/N8049+, L0/N7492+, L0/N111+, mostly lateness / 'little' units). Probes showed plain lateness does not drive this pole ('arrived too late' 0.085 = 'just in time'; 'belated' 0.01), the idiom 'too little, too late' reaches ~0.27-0.35, and therapy text reaches 0.2-0.8 (ECT 0.75, talking therapy 0.81, speech therapy 0.46). Exposure-therapy line was a miss (0.05) and a 'talking parrot' line hit 0.29, so expect noise. Solver leak was a 'Coping with Depression' chapter list, i.e. on-topic."
+}
