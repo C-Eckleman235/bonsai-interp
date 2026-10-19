@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-18-moridinamael-38a75d74",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N9235+",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T03:32:24+00:00",
+ "recipe": {
+  "toolchain_commit": "2b55cba",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N9235_pos/2026-10-18-moridinamael-38a75d74.tests.json"
+ },
+ "label": "the word-piece token 'eno' / 'ena' / 'enos' inside a split word (ven|eno, ser|eno, hy|ena, Hel|ena), regardless of meaning",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L0_N9235_pos/2026-10-18-moridinamael-38a75d74.tests.json",
+   "prereg_commit": "2b55cba",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.869,
+     "peak": "eno"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 1.068,
+     "peak": "enos"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.455,
+     "peak": "eno"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.414,
+     "peak": "ena"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.339,
+     "peak": "ena"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.483,
+     "peak": "ena"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.459,
+     "peak": "en"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.365,
+     "peak": "enos"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.052,
+     "peak": " tiene"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.042,
+     "peak": " aquí"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.034,
+     "peak": " tranqu"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.001,
+     "peak": " laughed"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.065,
+     "peak": " lemon"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.005,
+     "peak": "ón"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.095,
+     "peak": "os"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.457,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bands",
+   "card",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bands"
+  ],
+  "toolchain_commit": "2b55cba",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L4/N11070-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L0/N9235+",
+   "to": "bonsai1/L4/N11070-",
+   "kind": "feeds",
+   "weight": 0.05,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
