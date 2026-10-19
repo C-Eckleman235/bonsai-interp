@@ -945,6 +945,123 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-19-moridinamael-0c156db2"
+  },
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-77a388c7.tests.json",
+   "prereg_commit": "468c15d",
+   "author": "moridinamael",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.129,
+     "peak": " suggested"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.409,
+     "peak": " psychiatrist"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.266,
+     "peak": "ulsive"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.59,
+     "peak": " psycho"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.26,
+     "peak": " psychologist"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.4,
+     "peak": "ysts"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.049,
+     "peak": "Ex"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.094,
+     "peak": " better"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.13,
+     "peak": "olar"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.123,
+     "peak": " tablets"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.133,
+     "peak": " is"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.057,
+     "peak": " favourite"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.171,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.083,
+     "peak": "ae"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.046,
+     "peak": " spa"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.23,
+     "peak": " late"
+    }
+   ],
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.75,
+    "median_fire": 0.263,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-19-moridinamael-77a388c7"
   }
  ],
  "label_history": [
@@ -972,6 +1089,11 @@
    "2026-10-19-moridinamael-0c156db2",
    "Weak leak pole whose real driver is therapy / treatment text, strongest for mental-health treatment (talking therapy, counselling, psychotherapy, ECT, therapy groups at a clinic; speech therapy also counts). Lateness feeders ('late', 'too little, too late') add only a smaller second pocket in the fixed idiom; plain lateness does not fire it.",
    "failed"
+  ],
+  [
+   "2026-10-19-moridinamael-77a388c7",
+   "Weak, dense hum (gate-closed leak of the + pole) that is stronger on mental-health treatment by meaning, not by the word 'therapy': psychotherapy, psychiatry, counselling, ECT, psychiatric diagnosis (psychiatrist/psychologist sentences fire without 'therapy'; 'retail therapy' stays quiet; physical/speech therapy bump it partly). Narrow side branch: title-case ' Late' in 'Too ... Late' headlines ('Is It Too Late?' ~0.4, 'Too Little, Too Late' ~0.3), while lowercase 'too late' in prose stays at the hum (~0.14). The mapped feeders (L5/N4199+ 'too ADJ to', L0 故/遮 characters) do not lift ordinary too-late prose.",
+   "failed"
   ]
  ],
  "examples": [],
@@ -988,20 +1110,21 @@
   "2026-10-19-moridinamael-0ed80374",
   "2026-10-19-moridinamael-8068ac0d",
   "2026-10-19-moridinamael-f928d9be",
-  "2026-10-19-moridinamael-0c156db2"
+  "2026-10-19-moridinamael-0c156db2",
+  "2026-10-19-moridinamael-77a388c7"
  ],
  "qc": {
   "confirm": 3,
   "dispute": 0,
-  "refine": 3
+  "refine": 4
  },
  "replications": [],
  "scrutiny": {
   "level": 2,
   "name": "re-tested",
-  "test_rounds": 8,
-  "sentences": 128,
+  "test_rounds": 9,
+  "sentences": 144,
   "contributors": 1,
-  "qc": 6
+  "qc": 7
  }
 }
