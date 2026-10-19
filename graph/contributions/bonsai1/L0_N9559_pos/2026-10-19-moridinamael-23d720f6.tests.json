@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-19-moridinamael-23d720f6",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N9559+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T17:17:27+00:00",
+ "neighbours": [
+  {
+   "unit": "L0/N9559",
+   "pole": "+",
+   "label": "a word piece that ends in the letters 'oo' (Gent|oo, Kalamaz|oo, ig|loo, zoo, moo, boo); spelling, not sound: 'oo' mid-word (pool, food) and the oo sound spelled otherwise (true, blue, Ubuntu) stay silent; strongest when 'oo' is split off a longer or rarer word, weak on common whole words like ' too' and ' tattoo'",
+   "short": "word piece ending in 'oo'",
+   "unit_kind": "token / spelling",
+   "confidence": "high",
+   "roles": ["feeds bonsai1/L3/N3250-"],
+   "fire": [
+    "I installed Gentoo on my old laptop last night.",
+    "Kalamazoo is a small city in Michigan.",
+    "The kids built an igloo in the backyard.",
+    "She practiced voodoo in the old house.",
+    "The ghost shouted boo from the dark closet.",
+    "The cow said moo and walked away.",
+    "We visited the zoo with our grandparents.",
+    "Woohoo, we finally won the big game!"
+   ],
+   "quiet": [
+    "I installed Ubuntu on my old laptop last night.",
+    "Lansing is a small city in Michigan.",
+    "The kids built a snowman in the backyard.",
+    "She practiced magic in the old house.",
+    "The ghost shouted hello from the dark closet.",
+    "The cow chewed grass and walked away.",
+    "We visited the pool with our grandparents.",
+    "Hooray, we finally won the big game!"
+   ]
+  }
+ ],
+ "predictions": "8/8 fire, 0 near misses (probed before writing; pairs matched sentence by sentence)",
+ "notes": "Step mission from bonsai1/L3/N3250- (play step zero-ablation drop 0.06, second-largest feeder after L0/N943+ which was already mapped). Played live on stream; Twitch chat was quiet, so sentences are the agent's own. Inverse solver (differential evolution over a bank) found no leak and no silent on-concept text; 'kangaroo' (0.56) also ends in 'oo'.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-out",
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "quick-test"
+  ]
+ }
+}
