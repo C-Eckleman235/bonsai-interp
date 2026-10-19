@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-19-moridinamael-f928d9be",
+ "kind": "qc",
+ "neuron": "bonsai1/L10/N2499-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T15:38:29+00:00",
+ "recipe": {
+  "toolchain_commit": "47e5488",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-f928d9be.tests.json"
+ },
+ "label": "Weak, dense hum that is somewhat stronger on clinical-psychology / talking-therapy text (psychotherapy, psychiatric symptoms, counselling sessions, psychodynamic or interpersonal treatment, ECT), the + pole's topic leaking through; lateness ('too late') adds little or nothing over matched text. Speech therapy also bumps it (solver).",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-f928d9be.tests.json",
+   "prereg_commit": "47e5488",
+   "author": "moridinamael",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.433,
+     "peak": " talk"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.735,
+     "peak": " conflicts"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.451,
+     "peak": " sessions"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.358,
+     "peak": " psychiatrist"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.549,
+     "peak": " attachment"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.288,
+     "peak": " were"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.254,
+     "peak": " psychologist"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.246,
+     "peak": " speak"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.13,
+     "peak": " shoulder"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.073,
+     "peak": "Orth"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.167,
+     "peak": " sk"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.221,
+     "peak": " red"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.173,
+     "peak": " diet"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.244,
+     "peak": " type"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.167,
+     "peak": " damage"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.067,
+     "peak": " veterans"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.395,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "47e5488",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Dense / gate-leak background unit: the - pole is a weak leak (max 1.52, 11% of tokens above 0.1 of max, 99.6% '-g +u leak') that hums at about 0.1-0.3 of max on most prose. Its feeders ('late' in any sense, lateness words, 'belated', 'little', ambient-it predicates) add only a small bump, so 'too late' / 'too little, too late' does not separate from matched text without lateness; the slightly stronger pockets are clinical-psychology / talking-therapy text (the + pole's topic leaking through) and the headline 'Too Little too Late?'."
+ }
+}
