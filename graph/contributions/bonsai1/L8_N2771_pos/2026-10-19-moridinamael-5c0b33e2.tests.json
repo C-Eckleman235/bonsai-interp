@@ -1,0 +1,44 @@
+{
+ "contribution": "2026-10-19-moridinamael-5c0b33e2",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N2771+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T21:53:02+00:00",
+ "roles": ["feeds bonsai1/L15/N9881-"],
+ "neighbours": [
+  {
+   "unit": "L8/N2771",
+   "pole": "+",
+   "label": "an English name or description of a weight-loss (bariatric) operation: gastric bypass, bariatric, lap band, gastric banding/balloon, sleeve gastrectomy, 'weight-loss surgery'; peaks on the word that completes the procedure name. The word 'bypass' in other senses stays low; other operations (knee, hip, cataract) and dieting stay low-to-mid",
+   "short": "weight-loss surgery names (gastric bypass, bariatric, lap band)",
+   "confidence": "high",
+   "fire": [
+    "After her gastric bypass she could only eat tiny portions.",
+    "The clinic offers bariatric procedures for patients with severe obesity.",
+    "He is on the waiting list for a lap band operation.",
+    "My aunt had a sleeve gastrectomy and lost half her body weight.",
+    "The surgeon recommended weight-loss surgery after years of failed diets.",
+    "Gastric banding is less invasive than other obesity operations.",
+    "A gastric balloon is placed in the stomach to help patients feel full.",
+    "Insurance finally approved his bariatric surgery."
+   ],
+   "quiet": [
+    "After her knee replacement she could only walk short distances.",
+    "The clinic offers physiotherapy for patients with severe back pain.",
+    "He is on the waiting list for a cataract operation.",
+    "My aunt had her gallbladder removed and felt better within a week.",
+    "The doctor recommended a low-calorie diet after years of weight gain.",
+    "Keyhole surgery is less invasive than other open operations.",
+    "A hearing aid is placed in the ear to help patients hear clearly.",
+    "Insurance finally approved his hip surgery."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire above 0.30, no near miss above 0.30 (hip surgery and knee replacement closest, about 0.2)",
+ "notes": "Feeder of bonsai1/L15/N9881- (play step drop 0.14). Headline: the word 'bypass' or the operation? Highway/hacking/river 'bypass' scored <0.04 in probes, while 'gastric balloon' and 'obesity surgery' fired ~0.5 without the word. Inverse solver: coronary artery bypass surgery reaches ~0.6 (bypass+surgery spills over), a weak 0.32 leak from stacked stomach/transplant words, and a German stomach-reduction sentence stayed silent (English names only). Probed these sentences before committing. Negative pole (unsurveyed here) peaks on ' exam'/' examination' of a patient. Chat was quiet this mission; sentences are the agent's own.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["step-out", "card", "look", "probe", "inverse-de", "bank-solo"]
+ }
+}
