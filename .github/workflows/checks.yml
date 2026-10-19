@@ -32,9 +32,12 @@ jobs:
     # if the recorded activations or the outcome do not reproduce, so invented results cannot merge quietly
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
+    timeout-minutes: 25
     env:
       GH_TOKEN: ${{ github.token }}
       BONSAI_DEVICE: cpu
+      # runner CPUs have no native bfloat16: float32 is many times faster there, and closer to the recorded values
+      BONSAI_DTYPE: float32
     steps:
       - uses: actions/checkout@v4
         with:

@@ -56,8 +56,9 @@ def check(files):
                 L, n = map(int, nb["unit"][1:].split("/N"))
                 pole = 0 if nb["pole"] == "+" else 1
                 ev = textinv.TextEvaluator(model, tok, rec, L, n, float(top_val[L, pole, 0, n]), float(top_val[L, 1 - pole, 0, n]),
-                                           1.0 if pole == 0 else -1.0)
-                got = {("fire", i): r["act"] for i, r in enumerate(ev(nb["fire"]))} | {("quiet", i): r["act"] for i, r in enumerate(ev(nb["quiet"]))}
+                                           1.0 if pole == 0 else -1.0, batch=32)
+                rs = ev(nb["fire"] + nb["quiet"])  # one batch per preamble: on a CPU the per-pass weight unpacking is the cost
+                got = {("fire", i): r["act"] for i, r in enumerate(rs[:len(nb["fire"])])} |                       {("quiet", i): r["act"] for i, r in enumerate(rs[len(nb["fire"]):])}
                 diffs = [(p["set"], p["i"], p["act"], got[(p["set"], p["i"])]) for p in t["per_sentence"] if (p["set"], p["i"]) in got]
                 worst = max((abs(a - b) for _, _, a, b in diffs), default=0.0)
                 redo = {**t, "per_sentence": [{**p, "act": round(got[(p["set"], p["i"])], 3)} for p in t["per_sentence"] if (p["set"], p["i"]) in got]}
