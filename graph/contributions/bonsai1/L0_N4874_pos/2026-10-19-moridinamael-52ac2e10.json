@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-19-moridinamael-52ac2e10",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N4874+",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T15:20:10+00:00",
+ "recipe": {
+  "toolchain_commit": "20bcf23",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N4874_pos/2026-10-19-moridinamael-52ac2e10.tests.json"
+ },
+ "label": "the split-off subword token 'ard' inside a name or word (Woodard, Chardonnay, Millard, Gerard, Bombardier, Tardis, lard), meaning-blind; whole-word tokens ending in -ard fire partly (' ward' ~0.7, ' bard' 0.6, ' guard' 0.45) or weakly (' hard', ' standard', ' toward' < 0.2), and pieces like 'ardy' less",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L0_N4874_pos/2026-10-19-moridinamael-52ac2e10.tests.json",
+   "prereg_commit": "20bcf23",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.811,
+     "peak": "ard"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.861,
+     "peak": "ard"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.613,
+     "peak": "ard"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.636,
+     "peak": "ard"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.647,
+     "peak": "ard"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.75,
+     "peak": "ard"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.748,
+     "peak": "ard"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.598,
+     "peak": "ard"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.16,
+     "peak": "ford"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.013,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.041,
+     "peak": " Pierce"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.105,
+     "peak": "erald"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.01,
+     "peak": "emens"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.003,
+     "peak": "ze"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.013,
+     "peak": " butter"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.022,
+     "peak": "do"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.698,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "20bcf23",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L3/N694+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L0/N4874+",
+   "to": "bonsai1/L3/N694+",
+   "kind": "feeds",
+   "weight": 0.2,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+{
+ "contribution": "2026-10-19-moridinamael-52ac2e10",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N4874+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T15:19:28+00:00",
+ "roles": ["feeds bonsai1/L3/N694+"],
+ "neighbours": [
+  {
+   "unit": "L0/N4874",
+   "pole": "+",
+   "label": "the split-off subword token 'ard' inside a name or word (Woodard, Chardonnay, Millard, Gerard, Bombardier, Tardis, lard), meaning-blind; whole-word tokens ending in -ard fire partly (' ward' ~0.7, ' bard' 0.6, ' guard' 0.45) or weakly (' hard', ' standard', ' toward' < 0.2), and pieces like 'ardy' less",
+   "short": "the word piece 'ard'",
+   "unit_kind": "token detector",
+   "confidence": "high",
+   "fire": [
+    "Alfre Woodard gave a moving speech.",
+    "The Chardonnay was crisp and cold.",
+    "Millard Fillmore was the thirteenth president.",
+    "Gerard waved from the balcony.",
+    "Bombardier delivered the new trains.",
+    "The Tardis vanished with a wheeze.",
+    "She fried the eggs in lard.",
+    "Depardieu starred in the film."
+   ],
+   "quiet": [
+    "Alfre Woodford gave a moving speech.",
+    "The Chablis was crisp and cold.",
+    "Franklin Pierce was the fourteenth president.",
+    "Gerald waved from the balcony.",
+    "Siemens delivered the new trains.",
+    "The spaceship vanished with a wheeze.",
+    "She fried the eggs in butter.",
+    "Belmondo starred in the film."
+   ],
+   "notes": "Strongest feeder of bonsai1/L3/N694+ ('tard' letter string), drop 0.20 by single-unit zero ablation. Near misses are twins with the 'ard' name or word swapped out, including close spellings (Woodford, Gerald). Inverse solver (DE) found no leak (best 0.18 on 'ford'); its near-miss ceiling was the whole word ' ward' (0.73), which the label scopes out. Chat was quiet; house picks."
+  }
+ ],
+ "predictions": "8/8 fire, 0 near misses above 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["step-out", "card", "probe", "bank-solo", "inverse-de", "quick-test"]
+ }
+}
