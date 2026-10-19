@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-19-moridinamael-0b9bc3ed",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N4872-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T19:12:02+00:00",
+ "roles": ["feeds bonsai1/L2/N10718+"],
+ "neighbours": [
+  {
+   "unit": "L0/N4872",
+   "pole": "-",
+   "label": "a fixed list of capitalized, space-prefixed name tokens (surnames like ' Walsh', ' Murphy', ' Woodward', ' McConnell', ' Gregg', ' Baxter', ' Slater', ' Dawson' and some first names like ' Natalie', ' Jacques'), whether or not they name a person ('Murphy bed', 'Woodward Avenue'); very common names (' Smith', ' Brown', ' Taylor', ' Johnson', ' Emily') stay quiet, and the same name without the leading space or in lowercase does not fire",
+   "short": "certain name tokens (' Walsh', ' Murphy', ' Woodward'), not names in general",
+   "unit_kind": "token",
+   "confidence": "high",
+   "fire": [
+    "\"We are not done yet,\" Walsh said after the game.",
+    "The report was written by Murphy and two colleagues.",
+    "The Woodward Avenue parade starts at noon on Sunday.",
+    "Senator McConnell blocked the vote on Tuesday.",
+    "The study by Gregg and colleagues was widely cited.",
+    "The sign on the old door simply read Baxter.",
+    "Coach Slater praised the defense after the win.",
+    "We waited for Natalie outside the cinema."
+   ],
+   "quiet": [
+    "\"We are not done yet,\" Smith said after the game.",
+    "The report was written by Brown and two colleagues.",
+    "The Walker Avenue parade starts at noon on Sunday.",
+    "Senator Johnson blocked the vote on Tuesday.",
+    "The study by Chen and colleagues was widely cited.",
+    "The sign on the old door simply read Taylor.",
+    "Coach Wilson praised the defense after the win.",
+    "We waited for Emily outside the cinema."
+   ],
+   "notes": "Step-out feeder of bonsai1/L2/N10718+ (the 'late' stems neuron, which also fires on ' Slater'); this layer-0 unit is likely its surname input. Near misses swap in an equally name-like but very common name in the same frame. Probed on stream; the inverse solver found no silent on-concept text, and its one 'leak' was ' Jacques', another name token, folded into the label."
+  }
+ ],
+ "predictions": "8/8 fire, 0 near misses above 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "step-out",
+   "inverse-de"
+  ]
+ }
+}
