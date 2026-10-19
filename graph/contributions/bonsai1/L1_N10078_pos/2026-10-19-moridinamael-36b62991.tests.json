@@ -1,0 +1,45 @@
+{
+ "contribution": "2026-10-19-moridinamael-36b62991",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N10078+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T15:07:44+00:00",
+ "roles": ["feeds bonsai1/L4/N11028-"],
+ "neighbours": [
+  {
+   "unit": "L1/N10078",
+   "pole": "+",
+   "label": "The Japanese kanji 遅 (late/slow) itself, in any word: 遅れ, 遅い, 遅く, 遅刻, 遅延, 遅かれ早かれ; not the same words in kana (おそい, チコク), not synonyms without it (延期, 間に合わない), not Chinese 迟/遲; English ' late' only weakly (~0.15)",
+   "short": "the kanji 遅 (late/slow)",
+   "unit_kind": "token",
+   "confidence": "high",
+   "fire": [
+    "バスが渋滞で三十分も遅れた。",
+    "このパソコンは起動がとても遅い。",
+    "寝坊して会社に遅刻してしまった。",
+    "台風の影響で新幹線に遅延が出ている。",
+    "昨日は仕事で帰りが遅くなった。",
+    "遅かれ早かれ真実は明らかになる。",
+    "手続きが遅れて申し訳ありません。",
+    "彼は遅咲きの作家として知られている。"
+   ],
+   "quiet": [
+    "バスが渋滞で三十分も止まった。",
+    "このパソコンは起動がとてものろい。",
+    "寝坊して会社にチコクしてしまった。",
+    "台風の影響で新幹線が運休になった。",
+    "昨日は仕事で帰りがおそくなった。",
+    "公交车因为堵车迟到了三十分钟。",
+    "The bus was thirty minutes late because of traffic.",
+    "会議は台風のため来週に延期された。"
+   ]
+  }
+ ],
+ "predictions": "8/8 fire above 0.5, all near misses below 0.2 (English late about 0.15)",
+ "notes": "Feeder of the English 'late' neuron L4/N11028-, found by play step (drop 0.03). The + pole is spelling-bound to the kanji 遅: kana spellings of the same words and other languages' 'late' stay near zero. Inverse solver (DE) found no leak and no silent on-concept text; near-miss ceiling was English ' late' at 0.16.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["card", "look", "probe", "step-out", "bank-solo", "inverse-de", "quick-test"]
+ }
+}

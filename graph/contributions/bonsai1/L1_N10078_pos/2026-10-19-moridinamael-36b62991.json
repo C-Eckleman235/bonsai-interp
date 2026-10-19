@@ -1,0 +1,162 @@
+{
+ "id": "2026-10-19-moridinamael-36b62991",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N10078+",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T15:08:33+00:00",
+ "recipe": {
+  "toolchain_commit": "fc34637",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L1_N10078_pos/2026-10-19-moridinamael-36b62991.tests.json"
+ },
+ "label": "The Japanese kanji 遅 (late/slow) itself, in any word: 遅れ, 遅い, 遅く, 遅刻, 遅延, 遅かれ早かれ; not the same words in kana (おそい, チコク), not synonyms without it (延期, 間に合わない), not Chinese 迟/遲; English ' late' only weakly (~0.15)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@2",
+   "tests_file": "graph/contributions/bonsai1/L1_N10078_pos/2026-10-19-moridinamael-36b62991.tests.json",
+   "prereg_commit": "fc34637",
+   "author": "moridinamael",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.815,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.76,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.821,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.784,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.746,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.667,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.746,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.845,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.047,
+     "peak": "滞"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.011,
+     "peak": "と"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": -0.0,
+     "peak": "して"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.007,
+     "peak": "影響"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.009,
+     "peak": "は"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.012,
+     "peak": "堵"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.156,
+     "peak": " late"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.033,
+     "peak": "延期"
+    }
+   ],
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.772,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "fc34637",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "notes": "Feeder of the English 'late' neuron L4/N11028-, found by play step (drop 0.03). The + pole is spelling-bound to the kanji 遅: kana spellings of the same words and other languages' 'late' stay near zero. Inverse solver (DE) found no leak and no silent on-concept text; near-miss ceiling was English ' late' at 0.16.",
+ "roles": [
+  "feeds bonsai1/L4/N11028-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L1/N10078+",
+   "to": "bonsai1/L4/N11028-",
+   "kind": "feeds",
+   "weight": 0.03,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
