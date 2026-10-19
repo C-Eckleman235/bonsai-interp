@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-18-moridinamael-2a530154",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N6901+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T03:22:29+00:00",
+ "neighbours": [
+  {
+   "unit": "L10/N6901",
+   "pole": "+",
+   "label": "the tokens ' motor' / ' speech' / ' locomotion' in any context",
+   "short": "motor / speech / locomotion tokens",
+   "unit_kind": "word",
+   "confidence": "low",
+   "fire": [
+    "He changed the motor oil in his truck before the long drive.",
+    "The electric motor in the old fan finally burned out.",
+    "She gave a short speech at the wedding reception last night.",
+    "The mayor's speech was interrupted by loud applause.",
+    "Robots use wheels or legs for locomotion across rough ground.",
+    "Signals from the brain's motor cortex travel down to the leg muscles.",
+    "Damage to the left frontal lobe can impair speech production.",
+    "The cerebellum coordinates balance and locomotion during walking."
+   ],
+   "quiet": [
+    "He changed the engine oil in his truck before the long drive.",
+    "The electric engine in the old fan finally burned out.",
+    "She gave a short toast at the wedding reception last night.",
+    "The mayor's address was interrupted by loud applause.",
+    "Robots use wheels or legs for movement across rough ground.",
+    "Signals from the brain's frontal cortex travel down to the leg muscles.",
+    "Damage to the left frontal lobe can impair word production.",
+    "The cerebellum coordinates balance and posture during walking."
+   ]
+  }
+ ],
+ "predictions": "Expect FAIL: exploratory probes put ' motor' in 'motor oil' and ' speech' at a wedding near 0.02, so the everyday-context fire sentences should not rank above the near misses. Label chosen by default from a Twitch chat vote (no votes cast); the context-level alternative (motor/speech function terms in brain descriptions) was not chosen.",
+ "notes": "Word-level test: fire sentences use the tokens in everyday and neuroscience contexts; each near miss swaps one synonym for the token and keeps the rest of the sentence. Probes suggested the pole needs a brain-description context and stays low for sensory functions (vision, smell, taste), which fits the sensory - pole.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe"
+  ]
+ }
+}
