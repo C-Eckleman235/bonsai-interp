@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-18-moridinamael-3a5e5f7d",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N11492+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T03:56:57+00:00",
+ "roles": ["feeds bonsai1/L5/N5628-"],
+ "neighbours": [
+  {
+   "unit": "L2/N11492",
+   "pole": "+",
+   "label": "Spelling unit: the 'al'/'ual' word piece completing a '-cephal-' stem (encephalitis, encephalopathy, electroencephalogram, cephalic, cephalopod; also German Enzephal-, Russian энцефал-) or 'conceptual' (conceptually, conceptualize); meaning-independent, not 'concept' alone and not other -al/-ual words (actual, contextual, perceptual, spinal, neural)",
+   "short": "'al' of -cephal- / 'ual' of conceptual",
+   "unit_kind": "spelling / word piece",
+   "confidence": "high",
+   "fire": [
+    "Doctors suspected viral encephalitis when the fever spiked.",
+    "The electroencephalogram recorded unusual spikes overnight.",
+    "Blood was drawn from the cephalic vein in her forearm.",
+    "The octopus is a clever cephalopod that can open jars.",
+    "Hepatic encephalopathy can cause confusion in liver patients.",
+    "The paper offers a conceptual framework for climate risk.",
+    "Conceptually, the two theories are very similar.",
+    "Die Enzephalitis wurde durch Zecken übertragen."
+   ],
+   "quiet": [
+    "Doctors suspected viral meningitis when the fever spiked.",
+    "The electrocardiogram recorded unusual spikes overnight.",
+    "Blood was drawn from the basilic vein in her forearm.",
+    "The octopus is a clever mollusc that can open jars.",
+    "Hepatic failure can cause confusion in liver patients.",
+    "The paper offers a contextual framework for climate risk.",
+    "Actually, the two theories are very similar.",
+    "Die Meningitis wurde durch Zecken übertragen."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire, 0 near misses reach 0.30",
+ "notes": "Step-out feeder of bonsai1/L5/N5628- (play step drop 0.22; the larger feeder L2/N9319- already had a record). Exploratory probes: perceptual, contextual, actual, spinal, neural, 'concept' alone all ~0.00; cephalopod 0.58 shows it is spelling, not meaning. Twitch chat's 'neurotoxin' was 0.00 here (0.38 on the parent), so this feeder does not carry neuro- generally. The stream's inverse solver (differential evolution) was run on the parent L5/N5628-, not on this pole; it found no real leak there, and 'cephalic vein' stayed silent on the parent (0.02), so the parent gates this feeder's signal to encephal- words. Label option voted by Twitch chat.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-out",
+   "card",
+   "look",
+   "probe"
+  ]
+ }
+}
