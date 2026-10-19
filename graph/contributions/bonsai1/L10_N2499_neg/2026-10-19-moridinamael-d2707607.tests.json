@@ -1,0 +1,70 @@
+{
+ "contribution": "2026-10-19-moridinamael-d2707607",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L10/N2499-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T18:38:30+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Weak, dense hum (11% of tokens reach 0.1 of a small max) that rises on talk-based mental-health treatment: counselling and therapy sessions, psychiatrists, psychoanalysis, psychodynamic work, where people talk through their problems; speech therapy and the word 'talking' bump it a little. Symptom lists and CBT jargon, where the + pole takes over, stay near zero. Physical medicine (surgery, physio, pharmacy) hums at the 0.1-0.2 baseline. Lateness adds nothing: 'too late' scores like 'too early', and the feeders' foreign too/late/tan words (demasiado, zu spät, поздно) do not carry through, apart from a small bump on the headline 'Too Little too Late?'."
+ },
+ "neighbours": [
+  {
+   "unit": "L10/N2499",
+   "pole": "-",
+   "label": "Weak, dense hum (11% of tokens reach 0.1 of a small max) that rises on talk-based mental-health treatment and the writing around it: counselling, therapy sessions, psychiatrists, psychoanalysis, psychodynamic work, support groups where people talk through their problems (about 0.2-0.65); mental-health book outlines and speech therapy also lift it (inverse found 0.46-0.55). Physical medicine (surgery, dentistry, nursing, vets) hums at the 0.1-0.2 baseline. Lateness: plain 'too late' / 'ran late' stays near zero, BUT the feeders' late signal does carry through in the discovered-too-late construction ('noticed / realised / found out too late that ...', 0.2-0.45 peaking on ' late'), so 'lateness adds nothing' was too strong.",
+   "fire": [
+    "Her therapist encouraged her to talk openly about the panic attacks.",
+    "After the funeral he started grief counselling to work through his loss.",
+    "In psychoanalysis the patient lies on a couch and speaks freely.",
+    "The couples counsellor asked each of them to describe the argument.",
+    "His psychiatrist recommended weekly talk therapy alongside medication.",
+    "The support group met on Thursdays to share their struggles with depression.",
+    "A psychodynamic therapist explores how early relationships shape adult feelings.",
+    "The school counsellor listened as the boy described being bullied."
+   ],
+   "quiet": [
+    "The orthopaedic surgeon set the broken bone and applied a cast.",
+    "The dentist filled two cavities and cleaned her teeth.",
+    "We got to the station too late and the train had gone.",
+    "The nurse changed the dressing on his leg wound twice a day.",
+    "The two friends talked for hours about football over coffee.",
+    "The radiologist examined the X-ray for signs of a fracture.",
+    "The meeting ran late, so dinner was cold by the time I got home.",
+    "The vet gave the dog a vaccine and checked its ears."
+   ],
+   "notes": "Loop-back QC after mapping the L0/L1 too/late feeders. Fire set tests the therapy core; near misses keep care/talk/lateness but drop talk-based mental-health treatment. The 'noticed too late that' bump was found in exploratory probes and is reported in the label but not scored here. Twitch chat was quiet; all sentences are the streamer's own."
+  }
+ ],
+ "predictions": "8/8 fire above the near misses (AUROC ~0.95+), median fire ~0.3, no near miss at 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "quick-test"
+  ],
+  "_screens_vocabulary": [
+   "atlas",
+   "bands",
+   "bank-solo",
+   "blind-room",
+   "card",
+   "disproof",
+   "held-out",
+   "induce",
+   "inverse-de",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round",
+   "step-down",
+   "step-out",
+   "which"
+  ]
+ }
+}
