@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-19-moridinamael-cbacc224",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N8268-",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T21:30:10+00:00",
+ "roles": ["feeds bonsai1/L1/N2546-"],
+ "neighbours": [
+  {
+   "unit": "L0/N8268",
+   "pole": "-",
+   "label": "the word piece 'las'/'ras' (weaker for other '-as' pieces such as 'olas', 'cas') split off inside a rare word or name: Las Vegas, Niklas, toxoplasmosis, Krasinski, idiosyncrasies; common whole words with the same letters (glass, class, grass, brass, plasma) stay quiet",
+   "short": "'las'/'ras' word piece inside rare words and names",
+   "unit_kind": "token",
+   "confidence": "high",
+   "notes": "Layer-0 token-piece detector. It feeds the Texas neuron L1/N2546- weakly through the '-as' ending (' Texas' 0.19, ' Dallas' 0.29). Solver round (differential evolution over a sentence bank) found no leak; near-miss ceiling was 'Nicholas' 0.37 via the 'olas' piece, so names with an '-as' piece were kept out of the near misses. Twitch chat was quiet this mission; all sentences are the streamer's own.",
+   "fire": [
+    "The festival moved to Las Palmas this summer.",
+    "Doctors tested her for toxoplasmosis after the cat scratch.",
+    "Niklas scored twice in the second half.",
+    "John Krasinski directed the horror film.",
+    "Vladislas signed the treaty in 1410.",
+    "Every family has its own idiosyncrasies.",
+    "The Krasnodar region grows sunflowers.",
+    "Lab tests measured ceruloplasmin levels in the blood."
+   ],
+   "quiet": [
+    "The festival moved to the brass band stage this summer.",
+    "Doctors tested her for an infection after the cat scratch.",
+    "Nathan scored twice in the second half.",
+    "John directed the horror film behind glass walls.",
+    "The king signed the treaty in 1410.",
+    "Every class has its own quirks and habits.",
+    "The southern region grows sunflowers in grassy plains.",
+    "Lab tests measured plasma levels in the blood."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire, 0 near misses above 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-out",
+   "look",
+   "probe",
+   "bank-solo",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
