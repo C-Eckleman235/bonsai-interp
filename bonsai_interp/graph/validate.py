@@ -21,9 +21,10 @@ def main():
     ids = {}
     for path, c in results:
         errs += contrib.check(path, c)
-        if c.get("id") in ids:
-            errs.append(f"duplicate contribution id {c['id']} ({ids[c['id']]} and {path.relative_to(ROOT).as_posix()})")
-        ids[c.get("id")] = path.relative_to(ROOT).as_posix()
+        key = (path.parent.name, c.get("id"))  # ids are unique per pole folder; every reference to one also names its pole
+        if key in ids:
+            errs.append(f"duplicate contribution id {c['id']} in {path.parent.name} ({ids[key]} and {path.relative_to(ROOT).as_posix()})")
+        ids[key] = path.relative_to(ROOT).as_posix()
     tests = sorted(contrib.C.glob("*/*/*.tests.json"))
     for p in tests:
         errs += contrib.check_tests_file(p)
