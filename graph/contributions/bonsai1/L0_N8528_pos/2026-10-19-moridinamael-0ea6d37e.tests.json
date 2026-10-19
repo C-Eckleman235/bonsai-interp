@@ -1,0 +1,45 @@
+{
+ "contribution": "2026-10-19-moridinamael-0ea6d37e",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N8528+",
+ "protocol": "quick-8+8@2",
+ "written": "2026-10-19T18:07:43+00:00",
+ "roles": ["feeds bonsai1/L4/N9247-"],
+ "neighbours": [
+  {
+   "unit": "L0/N8528",
+   "pole": "+",
+   "label": "the token 'snow' (' snow' / 'Snow', Chinese/Japanese 雪) in any sense: weather, names (Snow White, Selangor 雪兰莪), 'to snow someone', TV static; snowy weather without the word stays quiet",
+   "short": "the word 'snow' / 雪",
+   "unit_kind": "token detector",
+   "confidence": "high",
+   "notes": "Layer-0 token detector. Probes: 'snow' fires 0.5-0.85 across senses; flakes, blizzard, sleet, frost, German Schnee, Spanish nieve stay under 0.15; Snowden 0.15. Inverse search (globalMOO) found no leak; near-miss ceiling 0.07. Near misses swap only the snow word. Feeds the dummy-'it' unit L4/N9247- (step drop 0.10), presumably via 'it snowed'.",
+   "fire": [
+    "Fresh snow covered the parking lot by morning.",
+    "We shoveled snow off the driveway before work.",
+    "The kids threw snow at each other after school.",
+    "The forecast calls for snow on Friday.",
+    "Snow White lived with seven dwarfs in the forest.",
+    "The salesman tried to snow us with jargon.",
+    "昨天下雪了，路上很滑。",
+    "The mountain peaks were white with snow all year."
+   ],
+   "quiet": [
+    "Fresh frost covered the parking lot by morning.",
+    "We shoveled slush off the driveway before work.",
+    "The kids threw ice cubes at each other after school.",
+    "The forecast calls for sleet on Friday.",
+    "Sleeping Beauty lived with three fairies in the forest.",
+    "The salesman tried to dazzle us with jargon.",
+    "昨天下雨了，路上很滑。",
+    "The mountain peaks were white with ice all year."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire, 0 near misses above 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["step-out", "card", "probe", "inverse-gmoo", "quick-test"]
+ }
+}
