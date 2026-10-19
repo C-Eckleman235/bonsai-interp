@@ -1,0 +1,157 @@
+{
+ "id": "2026-10-19-moridinamael-ff447df1",
+ "kind": "qc",
+ "neuron": "bonsai1/L10/N2499-",
+ "contributor": "moridinamael",
+ "created": "2026-10-19T22:10:47+00:00",
+ "recipe": {
+  "toolchain_commit": "2e9534d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-ff447df1.tests.json"
+ },
+ "label": "Weak, dense hum that rises on a word NAMING the mental-health field or its professions (psychiatrist, psychiatric, psychiatry, psychologist, psychology, psychoanalysis, 'mental health'), even with no treatment in the scene (a research psychologist studying memory ~0.5). Mental-health care described without such a word stays low (ward doses of clozapine and lithium ~0.14, the same as insulin; inpatient anorexia clinic ~0.12), as do psych- lookalikes ('psychic', the film 'Psycho'); the same sentence with 'doctor' instead of 'psychiatrist' drops from ~0.46 to ~0.14. Known side channels kept from the earlier label: the '-therapy' family (speech therapy ~0.46), ' talking' and the 'Too Little too Late?' headline. Of its newly mapped neighbours only L8/N2771+ (weight-loss surgery) is medical: after a gastric bypass, 'referred to a psychologist' ~0.65, 'referred to a surgeon' ~0.17.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-ff447df1.tests.json",
+   "prereg_commit": "2e9534d",
+   "author": "moridinamael",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.425,
+     "peak": " psychiat"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.216,
+     "peak": " psychology"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.471,
+     "peak": " psychologist"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.52,
+     "peak": " psychiatric"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.265,
+     "peak": " services"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.519,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.533,
+     "peak": " psychologist"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.438,
+     "peak": " Friday"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.092,
+     "peak": " two"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.163,
+     "peak": " developmental"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.18,
+     "peak": " records"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.15,
+     "peak": " orth"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.037,
+     "peak": " dental"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.036,
+     "peak": "er"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.285,
+     "peak": "ants"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.291,
+     "peak": " Friday"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.455,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "2e9534d",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Weak, dense hum (the gate-closed leak of the strong psychiatric + pole) that rises when text is about treating or caring for mental illness: psychiatric wards and nurses, antipsychotics and antidepressants by name, ECT, eating-disorder and addiction clinics, asylums, community mental health teams. The same care scenes for physical illness stay lower (~0.1-0.25). Side channels that carry no mental-health meaning: the '-therapy' word family (speech therapy ~0.3-0.46) and the word ' talking' (from 'talking therapy': 'the talking parrot' ~0.29, found by the globalMOO inverse solver), plus the 'Too Little too Late?' headline. Its mapped neighbours (L23/N11310+, L6/N6776+, L24/N1091+, L1/N2546-, L26/N9961+, L0/N8268-) share no topic with it and do not change the label."
+ },
+ "notes": "Loop-back QC after mapping neighbours. Exploratory probes showed the psych- field words carry the rise rather than care scenes; test sentences written fresh and unscored. Twitch chat was quiet this round, so no chat sentences used."
+}
