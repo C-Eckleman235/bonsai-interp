@@ -1,0 +1,153 @@
+{
+ "id": "2026-10-20-C-Eckleman235-7a6fc268",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N6534+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-20T20:08:27+00:00",
+ "recipe": {
+  "toolchain_commit": "faf2d94",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L12_N6534_pos/2026-10-20-C-Eckleman235-7a6fc268.tests.json"
+ },
+ "label": "belonging to Louisiana: its places and parishes, people and culture (Baton Rouge, Acadiana, Cajun French, zydeco, Mardi Gras), while the same frames in neighbouring states stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L12_N6534_pos/2026-10-20-C-Eckleman235-7a6fc268.tests.json",
+   "prereg_commit": "faf2d94",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.66,
+     "peak": " Parish"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.258,
+     "peak": "as"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.35,
+     "peak": " Baton"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.389,
+     "peak": "co"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.551,
+     "peak": " Orleans"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.521,
+     "peak": "un"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.476,
+     "peak": "port"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 1.098,
+     "peak": "ux"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.034,
+     "peak": "e"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.007,
+     "peak": " outside"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.016,
+     "peak": " Wallace"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.077,
+     "peak": "dale"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.029,
+     "peak": "grounds"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.051,
+     "peak": "ullah"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.005,
+     "peak": " up"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.009,
+     "peak": " Fort"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.498,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "which"
+  ],
+  "detected": [],
+  "toolchain_commit": "faf2d94",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "short": "Louisiana-ness",
+ "unit_kind": "sparse feature",
+ "confidence": 0.55,
+ "notes": "Found by a concept screen for sibling units of the Texas pole bonsai1/L10/N8330+ (Louisiana passages vs matched Mississippi/Alabama passages): it fired >= 0.3 on 4 of 4 Louisiana passages and < 0.1 on every control. Card: ' Louisiana' x6, ' Parish' x4 (St. Martin Parish), Kenner. Probing: Lafayette, Louisiana 0.68 vs Lafayette, Indiana 0.30; Huey Long in Baton Rouge 0.34; Mardi Gras 0.38; a generic 'parish council' 0.09. Some leakage in the card (Anti-Lebanon, Burundi) is noted but not tested. Near misses keep each frame in Mississippi, Alabama, Tennessee or Georgia.",
+ "selection": "concept search: Texas sibling states (LA; branch 3)"
+}
