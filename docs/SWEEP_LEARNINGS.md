@@ -63,6 +63,18 @@ Entry format:
 - **A smaller helper model frees room.** The stream's chat screener on Bonsai-8B (1.9 GB) instead of Bonsai-27B
   (4.3 GB) returned 2.4 GB to the budget.
 
+**Caps must be enforced where the model loads, not where callers remember them** (2026-10-20, 12:23 reset)
+- About 20 modules loaded the model without calling `limit_memory()`. One was the stream's band scan, which
+  grew to 9 GB against a 5.7 GB budget.
+- An orphaned scan (left behind by a tool timeout) also kept its turn request alive for about 30 minutes. So
+  the batch yielded 70% of its run while the card sat above 15 of 16.3 GB, and the driver reset.
+- Fixes:
+  - `model.load()` applies the cap itself (861621a).
+  - Budget for at least 3 GB of free headroom.
+  - Make long scoring resumable, so a stop costs minutes, not hours.
+- **Transfers:** put resource limits and turn-taking in the one choke point every job passes through (the
+  model loader), and treat any process a timeout leaves behind as a resource leak.
+
 **From the stream side** (the Twitch session, 2026-10-20)
 - **A load gate checked at process start is too early.** Python imports take 10 s or more, so the gate
   passed before the batch had allocated. Check again immediately before the allocation, or hold a turn for
