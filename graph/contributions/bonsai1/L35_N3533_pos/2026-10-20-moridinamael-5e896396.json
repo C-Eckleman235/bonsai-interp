@@ -1,0 +1,156 @@
+{
+ "id": "2026-10-20-moridinamael-5e896396",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N3533+",
+ "contributor": "moridinamael",
+ "created": "2026-10-20T23:07:23+00:00",
+ "recipe": {
+  "toolchain_commit": "d2ab625",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N3533_pos/2026-10-20-moridinamael-5e896396.tests.json"
+ },
+ "edges": [
+  {"from": "bonsai1/L34/N1264+", "to": "bonsai1/L35/N3533+", "kind": "feeds", "weight": 0.74, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ],
+ "label": "the very first token of the text, whatever the word is (a positional unit: it fires at the opening position of a window that starts mid-text, e.g. a leading dash or a lowercase fragment); the same words later in a text stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N3533_pos/2026-10-20-moridinamael-5e896396.tests.json",
+   "prereg_commit": "d2ab625",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.015,
+     "peak": " finally"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.012,
+     "peak": " laptop"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.013,
+     "peak": "and"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.017,
+     "peak": " nearly"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.013,
+     "peak": " old"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.012,
+     "peak": " nobody"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.015,
+     "peak": " minutes"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.013,
+     "peak": " one"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.014,
+     "peak": " finally"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.012,
+     "peak": " laptop"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.013,
+     "peak": "Nobody"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.019,
+     "peak": " nearly"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.014,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.015,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.036,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.038,
+     "peak": ","
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.305,
+    "median_fire": 0.013,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-gmoo",
+   "probe",
+   "quick-test",
+   "step-down",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "d2ab625",
+  "minutes": 0,
+  "batch_size": 1
+ }
+}
