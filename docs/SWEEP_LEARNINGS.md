@@ -156,6 +156,15 @@ Entry format:
   and spend the human and agent effort on deep layers. The stream is A/B testing "feeders first" against
   cold deep targets.
 
+**Method notes for interpreting deep poles** (the stream's inverse lab, 2026-10-20; one lexical L20 pole so far)
+- **MLP feeders explain little:** the 20 most-attributed upstream MLP neurons carry only 27% of the pole's
+  activation; attention carries the rest. Gain-on-feeder inverses were inconclusive there. The context (token)
+  analysis was the informative one.
+- **Ablate embeddings by blending, not scaling:** scaling a token's embedding is mostly undone by RMSNorm, so blend
+  it toward the mean embedding.
+- **Transfers:** measure how much of a pole an input set can actually move ("authority") before reading any inverse
+  built on it. For deep poles, budget attention-path analysis, not only MLP feeders.
+
 **From the stream side** (the Twitch session, 2026-10-20)
 - **A load gate checked at process start is too early.** Python imports take 10 s or more, so the gate
   passed before the batch had allocated. Check again immediately before the allocation, or hold a turn for
