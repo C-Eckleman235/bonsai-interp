@@ -105,6 +105,7 @@ def _new_one(a, nid):
         current = json.loads(rec.read_text(encoding="utf-8")).get("label")
     t = {"contribution": cid, "contributor": a.handle, "kind": a.kind, "neuron": nid, "protocol": "quick-8+8@3",
          "written": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+         **({"selection": a.selection} if getattr(a, "selection", None) else {}),
          **({"qc": {"verdict": a.verdict, "label_under_test": current}} if a.kind == "qc" else {}),
          "neighbours": [{"unit": unit, "pole": m["pole"], "label": current if a.kind == "qc" and a.verdict != "refine" else "<your label>",
                          "fire": TEMPLATE_FIRE, "quiet": TEMPLATE_QUIET}],
@@ -129,7 +130,7 @@ def draw(a):
             out.append(nid)
     print(" ".join(out))
     if a.handle:  # write the tests files for exactly these poles, so the ids cannot drift between draw and new
-        a.neuron, a.kind, a.verdict = out, "interpret", "confirm"
+        a.neuron, a.kind, a.verdict, a.selection = out, "interpret", "confirm", "random draw"
         paths = new(a)
         lst = ROOT / ".sweep" / "latest.txt"  # gitignored; the list survives long output and later steps
         lst.parent.mkdir(exist_ok=True)
@@ -141,7 +142,8 @@ def draw(a):
 
 OPTIONAL = {"short": "a 2-5 word name for the map", "unit_kind": "lexical | contextual | sparse feature | dense / positional | unclear",
             "confidence": "a number 0-1 or low / medium / high", "notes": "free text (e.g. 'some sentences suggested by Twitch chat')",
-            "predictions": "what you expect, written before the run"}
+            "predictions": "what you expect, written before the run",
+            "selection": "how the pole was chosen: random draw | step-out from <id> | step-in from <id> | concept search: <concept> | picked"}
 
 
 def fill(a):
@@ -315,7 +317,7 @@ def run(a):
             c["qc"] = {"verdict": t["qc"]["verdict"], "label_under_test": t["qc"].get("label_under_test")}
             if t["qc"]["verdict"] != "refine":
                 c.pop("label")
-        for k in ("short", "unit_kind", "confidence", "notes", "roles", "via"):
+        for k in ("short", "unit_kind", "confidence", "notes", "roles", "via", "selection"):
             if t.get(k) is not None:
                 c[k] = t[k]
         out = p.with_name(p.name.replace(".tests.json", ".json"))
@@ -435,6 +437,8 @@ def main():
     n.add_argument("--handle", required=True, help="your GitHub handle")
     n.add_argument("--verdict", choices=["confirm", "dispute", "refine"], default="confirm",
                    help="qc only: confirm = re-test the label as is; refine = propose a better label")
+    n.add_argument("--selection", help="how this pole was chosen, e.g. 'random draw', 'step-out from <id>', 'step-in from <id>', "
+                                       "'concept search: <concept>', 'picked'; recorded so statistics can keep or exclude non-random picks")
     r = sub.add_parser("run", help="score one or more committed pre-registrations (one model load for all)")
     r.add_argument("tests_files", nargs="*")
     r.add_argument("--list", help="a file listing tests files, one per line (e.g. .sweep/latest.txt from play draw); works in any shell")
