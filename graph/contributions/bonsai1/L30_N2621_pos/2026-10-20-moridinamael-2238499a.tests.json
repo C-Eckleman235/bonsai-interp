@@ -1,0 +1,44 @@
+{
+ "contribution": "2026-10-20-moridinamael-2238499a",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N2621+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T17:11:53+00:00",
+ "roles": ["reads bonsai1/L29/N7718+"],
+ "neighbours": [
+  {
+   "unit": "L30/N2621",
+   "pole": "+",
+   "label": "in longer Python code, a variable name that repeats an earlier variable's name with only a short prefix swapped (h_cfrac then l_cfrac, lo_start then hi_start, today then tomorrow)",
+   "fire": [
+    "def split_range(data):\n    lo_start = 0\n    lo_end = len(data) // 2\n    hi_start = lo_end\n    hi_end = len(data)\n    return data[lo_start:lo_end], data[hi_start:hi_end]",
+    "for i in range(n):\n    h_cfrac = heights[i] / total_h\n    l_cfrac = lengths[i] / total_l\n    ratios.append(h_cfrac * l_cfrac)",
+    "import datetime\ntoday = datetime.date.today()\ntomorrow = today + datetime.timedelta(days=1)\nprint(f\"Report covers {today} to {tomorrow}\")",
+    "def bounds(points):\n    min_x = min(p[0] for p in points)\n    max_x = max(p[0] for p in points)\n    min_y = min(p[1] for p in points)\n    max_y = max(p[1] for p in points)\n    return min_x, max_x, min_y, max_y",
+    "train_loss = criterion(model(x_train), y_train)\nval_loss = criterion(model(x_val), y_val)\nif val_loss > train_loss * 1.5:\n    print('possible overfitting')",
+    "def resample(signal, rate):\n    src_rate = signal.sample_rate\n    dst_rate = rate\n    factor = dst_rate / src_rate\n    return signal.stretch(factor)",
+    "with open(path) as f:\n    lines = f.readlines()\nold_count = len(lines)\nlines = [l for l in lines if l.strip()]\nnew_count = len(lines)\nprint(old_count - new_count, 'blank lines removed')",
+    "def swap_cells(grid, r, c):\n    prev_val = grid[r][c - 1]\n    next_val = grid[r][c + 1]\n    grid[r][c - 1], grid[r][c + 1] = next_val, prev_val\n    return grid"
+   ],
+   "quiet": [
+    "def split_range(data):\n    start = 0\n    middle = len(data) // 2\n    finish = len(data)\n    return data[start:middle], data[middle:finish]",
+    "for i in range(n):\n    height = heights[i] / total_h\n    weight = lengths[i] / total_l\n    ratios.append(height * weight)",
+    "import datetime\ntoday = datetime.date.today()\ndelta = datetime.timedelta(days=1)\nprint(f\"Report covers {today} plus {delta}\")",
+    "def bounds(points):\n    xs = [p[0] for p in points]\n    ys = [p[1] for p in points]\n    box = (min(xs), max(xs), min(ys), max(ys))\n    return box",
+    "loss = criterion(model(x_train), y_train)\naccuracy = evaluate(model, x_val, y_val)\nif accuracy < 0.5:\n    print('model is underperforming')",
+    "def resample(signal, rate):\n    factor = rate / signal.sample_rate\n    stretched = signal.stretch(factor)\n    return stretched",
+    "with open(path) as f:\n    lines = f.readlines()\ncount = len(lines)\nlines = [l for l in lines if l.strip()]\nprint(count, 'lines read before cleaning')",
+    "def swap_cells(grid, r, c):\n    temp = grid[r][c - 1]\n    grid[r][c - 1] = grid[r][c + 1]\n    grid[r][c + 1] = temp\n    return grid"
+   ]
+  }
+ ],
+ "short": "swapped-prefix sibling variable name in code",
+ "confidence": "low",
+ "notes": "Step-in reader of bonsai1/L29/N7718+ (drop 0.40). Probes: h_cfrac/l_cfrac 0.28, tomorrow after today 0.23, lo/hi 0.14; left_child/right_child silent (solver). Sentences written blind by a label-only second author.",
+ "predictions": "expect a weak pass at best; medians may fall under 0.20",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["step-down", "card", "look", "probe", "inverse-gmoo", "blind-room"]
+ }
+}
