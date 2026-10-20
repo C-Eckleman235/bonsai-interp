@@ -70,7 +70,8 @@ uv run python -m bonsai_interp.graph.validate
 ```
 
 Hardware: an 8 GB NVIDIA GPU is enough; a mission peaks at about 5 GB (the reference setup is Windows with an
-RTX 5080). An Apple Silicon Mac also works (below), and the CPU is fine for checks.
+RTX 5080). An Apple Silicon Mac also works (below), and the CPU is fine for checks. No suitable GPU at all? A free
+Google Colab T4 runs every mission: see [docs/COLAB.md](docs/COLAB.md).
 `uv run python -m bonsai_interp.env` reports the device it will use. globalMOO is optional; it needs `GMOO_API_KEY`
 in `.env` (see `.env.example`).
 

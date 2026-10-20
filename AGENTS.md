@@ -19,7 +19,7 @@ Hardware: an NVIDIA GPU with 8 GB or more (a mission peaks at about 5 GB), or an
 of unified memory recommended, 16 GB is tight). The toolchain picks the device itself (CUDA,
 then Apple's MPS, then the CPU). To force one, put `BONSAI_DEVICE=cuda`, `mps` or `cpu` in
 `.env`. The CPU is fine for checks but too slow for missions. Mac details are in
-[docs/MAC.md](docs/MAC.md).
+[docs/MAC.md](docs/MAC.md). If the person has neither, a free Google Colab T4 works: see [docs/COLAB.md](docs/COLAB.md).
 
 1. Clone https://github.com/moridinamael/neuron-cleanroom next to this repository; blind
    clean-room missions need it. Every mission needs the person's GitHub handle: read it with
