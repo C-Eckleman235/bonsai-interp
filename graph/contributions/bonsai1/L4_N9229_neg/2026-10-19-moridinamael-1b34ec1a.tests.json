@@ -1,0 +1,44 @@
+{
+ "contribution": "2026-10-19-moridinamael-1b34ec1a",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N9229-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T01:04:04+00:00",
+ "roles": ["feeds bonsai1/L8/N8790-"],
+ "neighbours": [
+  {
+   "unit": "L4/N9229",
+   "pole": "-",
+   "label": "character stats and +/- bonus or penalty modifiers in tabletop game rules",
+   "fire": [
+    "Your fighter has a Strength of 16, which gives a +3 bonus to melee attack rolls.",
+    "Halflings gain +2 Dexterity but suffer a -1 penalty to Strength.",
+    "While blinded, the creature takes a -4 penalty on all attack rolls.",
+    "Add your Wisdom modifier (+2) to the Perception check.",
+    "The cursed ring imposes a -2 penalty to Armor Class until removed.",
+    "Elves receive a +1 racial bonus to Intelligence at character creation.",
+    "Flanking an enemy grants a +2 circumstance bonus to hit.",
+    "A Constitution score of 8 gives a -1 modifier to hit points per level."
+   ],
+   "quiet": [
+    "Humans should make the best use of given information at any time.",
+    "The dungeon master describes a dark, damp corridor.",
+    "Your fighter swings his sword at the orc and the blade bites deep into its shield.",
+    "The halfling was quick on her feet but not very strong, and she knew it.",
+    "The blinded creature stumbled around the cave, groping at the walls.",
+    "She paused, listened carefully, and heard footsteps coming from the hall.",
+    "The cursed ring glowed faintly before the wizard dropped it into the river.",
+    "The elves lived in a hidden city among the ancient trees."
+   ],
+   "short": "RPG stats & +/- modifiers",
+   "confidence": "medium",
+   "notes": "Feeder of bonsai1/L8/N8790- (drop 0.11). Test written blind by a second author from the label only; solver leak texts placed by that author. Exploration: everyday 'bonus', '-3 degrees' and plain-prose 'charisma' stayed low; the solver found game context can lift unrelated minus numbers (0.32)."
+  }
+ ],
+ "predictions": "most fire sentences above 0.3; the dungeon-master near miss is the riskiest quiet",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["card", "look", "probe", "inverse-de", "bank-solo", "blind-room", "step-out", "quick-test"]
+ }
+}
