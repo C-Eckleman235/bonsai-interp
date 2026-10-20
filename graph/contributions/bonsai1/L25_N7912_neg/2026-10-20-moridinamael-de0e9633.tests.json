@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-20-moridinamael-de0e9633",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N7912-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T15:29:25+00:00",
+ "roles": ["reads bonsai1/L24/N7195+"],
+ "neighbours": [
+  {
+   "unit": "L25/N7912",
+   "pole": "-",
+   "label": "In Python code: a line that starts with the same self. attribute or variable as the line just before it (self.items[...] repeated on consecutive lines)",
+   "fire": [
+    "self.items['apple'] = 3\nself.items['pear'] = 5",
+    "self.config['host'] = 'localhost'\nself.config['port'] = 8080",
+    "self.cache[key] = value\nself.cache[key + '_ts'] = time.time()",
+    "self.layers.append(nn.Linear(64, 32))\nself.layers.append(nn.ReLU())",
+    "self.grid[0][0] = 'X'\nself.grid[0][1] = 'O'",
+    "result['name'] = user.name\nresult['email'] = user.email",
+    "self.headers['Accept'] = 'application/json'\nself.headers['User-Agent'] = 'bot/1.0'",
+    "params['lr'] = 0.001\nparams['batch_size'] = 32"
+   ],
+   "quiet": [
+    "The self is a list of items we keep in a cache.",
+    "self.widgets['ok'] = Button(self, 'ok')",
+    "self.items['apple'] = 3\nself.prices['pear'] = 5",
+    "self.config['host'] = 'localhost'\nport = int(os.environ['PORT'])",
+    "self.cache[key] = value\nreturn value",
+    "self.layers.append(nn.Linear(64, 32))\nmodel = nn.Sequential(*self.layers)",
+    "self.grid[0][0] = 'X'\nturn = 'O'",
+    "result['name'] = user.name\nlogger.info('built result for %s', user.name)"
+   ],
+   "short": "Python: next line reuses the same self. attribute / variable",
+   "notes": "Step-in reader of bonsai1/L24/N7195+ (drop 0.05, small as usual for readers; its label has nothing to do with the feeder's comparison meaning). Sentences written blind by a second author from the label only. Solver: a long prose passage copied verbatim also fires strongly on the second copy (0.77), and PHP $config repeats stayed silent."
+  }
+ ],
+ "predictions": "Unindented blind sentences may run weaker than the indented corpus hits; expect fire > quiet but medians near 0.2.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}

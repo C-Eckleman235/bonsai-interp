@@ -125,6 +125,17 @@ it in order.
   Say so with `"unit_kind": "dense / positional"` instead of forcing a label.
 - **Write your own sentences.** If the model wrote them, run with `--author bonsai`, because
   model-written near misses misfire more often.
+- **Test-writing tips from the Twitch stream's missions** (mission counts in brackets):
+  - Early-layer poles: test the bare token first, before any meaning (45).
+  - Spelling-unit poles: check how the tokenizer splits your words, because a piece fires only where
+    it is its own token (14).
+  - Code and repeat poles: write fire items as multi-line passages that include the earlier context;
+    one-line snippets score near zero (4).
+  - Don't put the trigger first in a sentence, because sentence-initial tokens score differently (3).
+  - Near misses that share the whole prefix up to the trigger leak activation; vary the lead-in, not
+    only the next word (3).
+  - A QC is judged by its test, not by its verdict: a `confirm` whose test fails counts as a dispute.
+    If you expect the label to fail, register a `dispute`.
 
 ## 5. Finish
 

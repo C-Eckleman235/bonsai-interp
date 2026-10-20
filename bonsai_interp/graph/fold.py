@@ -85,10 +85,11 @@ def fold_neuron(neuron, contribs):
                                       "outcome": tests[-1]["outcome"] if tests else "recorded"})
             continue
         if kind == "qc" and verdict in ("confirm", "dispute"):
-            r["qc"][verdict] += 1
-            if res:  # a confirm whose own test failed counts as a dispute, and vice versa
-                since["confirm" if res == "held" else "dispute"] += 1
-            continue
+            if res:  # the test decides, not the verdict: a confirm whose own test failed counts as a dispute, and vice versa
+                got = "confirm" if res == "held" else "dispute"
+                r["qc"][got] += 1
+                since[got] += 1
+            continue  # an exploratory or unscored QC is recorded but confirms or disputes nothing
         if kind == "qc":
             r["qc"]["refine"] += 1
         if kind in ("interpret", "qc") and c.get("label"):

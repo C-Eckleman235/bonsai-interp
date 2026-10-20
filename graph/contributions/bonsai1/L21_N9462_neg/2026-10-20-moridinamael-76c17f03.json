@@ -1,0 +1,157 @@
+{
+ "id": "2026-10-20-moridinamael-76c17f03",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N9462-",
+ "contributor": "moridinamael",
+ "created": "2026-10-20T16:21:13+00:00",
+ "recipe": {
+  "toolchain_commit": "0b4e636",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L21_N9462_neg/2026-10-20-moridinamael-76c17f03.tests.json"
+ },
+ "label": "the word right after the person in 'allow / let / want / ask someone ___ do it' (usually ' to', also ' you' or ' into'): the slot where that person's permitted or requested action begins",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L21_N9462_neg/2026-10-20-moridinamael-76c17f03.tests.json",
+   "prereg_commit": "0b4e636",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.354,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.417,
+     "peak": " us"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.04,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.32,
+     "peak": " him"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.329,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.178,
+     "peak": " you"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.207,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.176,
+     "peak": " into"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.074,
+     "peak": " about"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.074,
+     "peak": " want"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.003,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.07,
+     "peak": " out"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.004,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.015,
+     "peak": " like"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.049,
+     "peak": " you"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.004,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.264,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "0b4e636",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Feeder of bonsai1/L23/N1015- found with one_back at max_ctx 160 (play step at 384 ran out of GPU memory beside the stream's resident model); drop 0.06, the largest of the screened feeders. No sentences were scored before registration (the resident probe and the solver were unavailable). Test sentences written blind by a second author from the label only.",
+ "roles": [
+  "feeds bonsai1/L23/N1015-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L21/N9462-", "to": "bonsai1/L23/N1015-", "kind": "feeds", "weight": 0.06, "method": "single-unit zero ablation (play step)"}
+ ]
+}

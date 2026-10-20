@@ -338,8 +338,9 @@ td.n { font-family: var(--mono); text-align: right; }
         for (let i = 0; i < t.length; i++) { const c = t.charCodeAt(i); if (c === 46) continue;
           const held = c < 97, g = held ? c - 65 : c - 97; if (screenOnly >= 0 && g !== screenOnly) continue;
           const col = sgColor(g); if (col !== last) { ctx.fillStyle = col; last = col; }
-          const y = yOf(L, i & 1 ? "-" : "+"), h = rowH * (held ? 0.36 : 0.22);
-          ctx.globalAlpha = held ? 1 : 0.55; ctx.fillRect(xOf(i >> 1) - 0.6, y - h / 2, 1.2, h); }
+          const faint = g === SCREEN.groups.length - 1 && screenOnly < 0;  // 'other': a word hit, no specific rule; background only
+          const y = yOf(L, i & 1 ? "-" : "+"), h = rowH * (held ? 0.36 : faint ? 0.12 : 0.22);
+          ctx.globalAlpha = held ? 1 : faint ? 0.18 : 0.55; ctx.fillRect(xOf(i >> 1) - 0.6, y - h / 2, 1.2, h); }
         ctx.globalAlpha = 1; }
     }
     for (const e of IDX.edges) { const a = byId[e[0]], b = byId[e[1]]; if (!a || !b) continue;
