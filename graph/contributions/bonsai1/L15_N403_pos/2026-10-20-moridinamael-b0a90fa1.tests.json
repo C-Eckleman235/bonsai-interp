@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-20-moridinamael-b0a90fa1",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L15/N403+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T15:15:55+00:00",
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "The author identifier 'priyag' inside Python TODO or NOTE comments."
+ },
+ "neighbours": [
+  {
+   "unit": "L15/N403",
+   "pole": "+",
+   "label": "The author identifier 'priyag' inside Python TODO or NOTE comments.",
+   "fire": [
+    "# TODO(priyag): Remove this fallback once the new distribution strategy API is stable.",
+    "# TODO(priyag): Support nested structures in the input pipeline here.",
+    "# NOTE(priyag): This assumes the batch size is divisible by the number of replicas.",
+    "# TODO(priyag): Add a test for the multi-worker case before enabling by default.",
+    "def _reduce(values):\n    # TODO(priyag): Use all-reduce instead of gathering to the host.\n    return sum(values)",
+    "# NOTE(priyag): Keep this in sync with the C++ implementation in collective_ops.cc.",
+    "# TODO(priyag): Make this configurable via a flag.",
+    "# TODO(priyag): Deprecate this function after the 2.x migration is complete."
+   ],
+   "quiet": [
+    "# TODO(joshl): Remove this fallback once the new distribution strategy API is stable.",
+    "# TODO(anjalis): Support nested structures in the input pipeline here.",
+    "# NOTE(rohanj): This assumes the batch size is divisible by the number of replicas.",
+    "# TODO: Add a test for the multi-worker case before enabling by default.",
+    "def _reduce(values):\n    # TODO(yuefengz): Use all-reduce instead of gathering to the host.\n    return sum(values)",
+    "# NOTE(sourabhb): Keep this in sync with the C++ implementation in collective_ops.cc.",
+    "# TODO(mdan): Make this configurable via a flag.",
+    "# TODO(b/123456): Deprecate this function after the 2.x migration is complete."
+   ]
+  }
+ ],
+ "predictions": "Blind label-only author; label previously passed a test whose sentences were all pre-scored.",
+ "notes": "probe-inflation re-test, seed 20261019, blind label-only author",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room"
+  ]
+ }
+}
