@@ -1,0 +1,168 @@
+{
+ "id": "2026-10-19-moridinamael-5fda06a2",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N4238-",
+ "contributor": "moridinamael",
+ "created": "2026-10-20T01:48:11+00:00",
+ "recipe": {
+  "toolchain_commit": "067b9b6",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N4238_neg/2026-10-19-moridinamael-5fda06a2.tests.json"
+ },
+ "label": "the ending '-ial' in rarer words (glacial, congenial, centennial, jovial, pictorial); weak on everyday -ial words like social, special, material, financial, and silent on look-alike endings like -ual, -eal, -al (ritual, ideal, tidal)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N4238_neg/2026-10-19-moridinamael-5fda06a2.tests.json",
+   "prereg_commit": "067b9b6",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.601,
+     "peak": "ial"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.867,
+     "peak": "acial"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.816,
+     "peak": "ial"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.83,
+     "peak": "ennial"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.603,
+     "peak": "ial"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.834,
+     "peak": "orial"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.561,
+     "peak": "odial"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.584,
+     "peak": "ial"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.128,
+     "peak": " ritual"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.006,
+     "peak": " slow"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.009,
+     "peak": " friendly"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.008,
+     "peak": " held"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.049,
+     "peak": " cheerful"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.005,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.128,
+     "peak": " ritual"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.19,
+     "peak": " casual"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 1,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.71,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "067b9b6",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "notes": "Step-out feeder of bonsai1/L1/N6425+ ('racial'), largest single-unit ablation drop (0.20). Test sentences written blind by a second author who saw only the label; the solver's 'leak' (jovial) is actually an -ial word and sits in the fire set.",
+ "roles": [
+  "feeds bonsai1/L1/N6425+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L0/N4238-",
+   "to": "bonsai1/L1/N6425+",
+   "kind": "feeds",
+   "weight": 0.2,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
