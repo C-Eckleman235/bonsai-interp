@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-20-moridinamael-0fd6bb6d",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N3702+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T19:39:26+00:00",
+ "roles": ["reads bonsai1/L25/N6793+"],
+ "neighbours": [
+  {
+   "unit": "L30/N3702",
+   "pole": "+",
+   "label": "the name of a major news wire agency or journalists' group (Associated Press, UPI, AFP, Reuters, Xinhua, Committee to Protect Journalists) named as a news source or award giver; fires as the name begins, not on newspapers, TV networks or reporters in general",
+   "short": "news wire agency / journalists' group named as source",
+   "fire": [
+    "The mayor confirmed the resignation in an interview with the Associated Press on Tuesday.",
+    "According to Reuters, the two companies are close to finalizing the merger.",
+    "The photograph of the flood was distributed by AFP and reprinted around the world.",
+    "Xinhua reported that the new rail line will open next spring.",
+    "The Committee to Protect Journalists said at least a dozen reporters remain in detention.",
+    "A UPI dispatch from the capital described long lines at polling stations.",
+    "She won an award from the Associated Press for her coverage of the wildfires.",
+    "Officials declined to comment when contacted by Reuters."
+   ],
+   "quiet": [
+    "She joined the Associated Builders and Contractors in May.",
+    "Established in 1960, UC San Diego has been shaped by exceptional scholars who aren’t afraid to take risks and redefine conventional wisdom.",
+    "The mayor confirmed the resignation in an interview with a local newspaper on Tuesday.",
+    "According to people familiar with the matter, the two companies are close to finalizing the merger.",
+    "The photograph of the flood was taken by a bystander and shared around the world.",
+    "State television reported that the new rail line will open next spring.",
+    "Press freedom advocates said at least a dozen reporters remain in detention.",
+    "A reporter in the capital described long lines at polling stations."
+   ],
+   "confidence": "medium",
+   "notes": "COLD step-in (labelled from the reader's own top examples and probes only). Test sentences written blind by a second author from the label alone. Solver leak 'Associated Builders' (0.32 when probed) placed as a near miss. Probes: Kyodo, DPA and Inter American Press Association stayed weak (<0.11)."
+  }
+ ],
+ "predictions": "Fire items with AP/Reuters/AFP in a credit slot should clear 0.20; sentence-initial 'Xinhua' and 'UPI' are at risk. The Associated Builders near miss may reach ~0.3.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
