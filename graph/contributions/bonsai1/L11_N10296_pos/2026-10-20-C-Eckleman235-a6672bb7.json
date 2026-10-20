@@ -1,0 +1,153 @@
+{
+ "id": "2026-10-20-C-Eckleman235-a6672bb7",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N10296+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-20T20:09:18+00:00",
+ "recipe": {
+  "toolchain_commit": "a91e097",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L11_N10296_pos/2026-10-20-C-Eckleman235-a6672bb7.tests.json"
+ },
+ "label": "belonging to New York State: its upstate places, landmarks and state government (Albany, the Adirondacks, the Finger Lakes, the Erie Canal, Saratoga), while the same frames in neighbouring states stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L11_N10296_pos/2026-10-20-C-Eckleman235-a6672bb7.tests.json",
+   "prereg_commit": "a91e097",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.453,
+     "peak": " Albany"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.587,
+     "peak": "ond"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.524,
+     "peak": "eca"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.751,
+     "peak": " Canal"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.554,
+     "peak": " Syracuse"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.539,
+     "peak": "kills"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.315,
+     "peak": "ego"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.204,
+     "peak": "oga"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.017,
+     "peak": "burg"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.037,
+     "peak": "up"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.017,
+     "peak": " Will"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.135,
+     "peak": " Canal"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.006,
+     "peak": " studied"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.095,
+     "peak": "sh"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.014,
+     "peak": " Lake"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.008,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.532,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "which"
+  ],
+  "detected": [],
+  "toolchain_commit": "a91e097",
+  "minutes": 2,
+  "batch_size": 1
+ },
+ "short": "New York State-ness",
+ "unit_kind": "sparse feature",
+ "confidence": 0.5,
+ "notes": "Found by a concept screen for sibling units of the Texas pole bonsai1/L10/N8330+ (upstate New York passages vs matched Pennsylvania/New Jersey passages): >= 0.3 on 4 of 4 New York passages, < 0.1 on every control. Card: ' York' x6, ' Canal' x4 (Erie Canal), 'state' x4, Seneca Falls, Albany, the Finger Lakes. Probing: Albany NY 0.59, the Adirondacks 0.61, Governor Cuomo in Albany 0.55; but shared names leak: Albany, Georgia 0.34 and Rochester, Minnesota 0.25. So the near misses avoid names shared with New York and keep each frame in Pennsylvania, Massachusetts, Michigan, Kentucky or Oregon.",
+ "selection": "concept search: Texas sibling states (NY; branch 3)"
+}
