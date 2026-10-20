@@ -253,6 +253,128 @@
     "near_misses_at_0.3": 1
    },
    "contribution": "2026-10-20-moridinamael-468a14a3"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L23_N1015_neg/2026-10-20-moridinamael-cc22ff7b.tests.json",
+   "prereg_commit": "89580a4",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.336,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.026,
+     "peak": " calls"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.213,
+     "peak": " is"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.079,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.145,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.133,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.311,
+     "peak": " him"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.184,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.018,
+     "peak": "lob"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.033,
+     "peak": " success"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.026,
+     "peak": " agree"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.032,
+     "peak": "ok"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.013,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.007,
+     "peak": " off"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.017,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.012,
+     "peak": "pa"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.961,
+    "median_fire": 0.164,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-20-moridinamael-cc22ff7b"
   }
  ],
  "label_history": [
@@ -265,6 +387,11 @@
    "2026-10-20-moridinamael-468a14a3",
    "A comeback in mutual labelling: in a passage whose earlier sentence introduces two people (My roommate and I clash constantly.), one labels the other (I see her as a slob) and the other labels the first back (and she sees me as a neat freak); it fires on the turned-back target and the word opening its label ('me', 'as', 'a'), with or without 'a'/'as'. Strongest when the narrator labelled first and is labelled back; weak without the lead-in sentence or when the narrator is the one answering back.",
    "held"
+  ],
+  [
+   "2026-10-20-moridinamael-cc22ff7b",
+   "A returned label between two individuals: after one person labels another (He sees her as a slob), the other labels the first back (and she sees him as a neat freak / and she sees me as a neat freak); it fires on the turned-back target and the word opening its label ('him', 'me', 'as', 'a'). Works for third-person pairs and for compliments as well as insults; weak when the narrator ('I') is the one answering back, when groups trade labels, or when the second person labels someone or something else.",
+   "failed"
   ]
  ],
  "examples": [],
@@ -275,20 +402,21 @@
  ],
  "contributions": [
   "2026-10-20-moridinamael-d967df99",
-  "2026-10-20-moridinamael-468a14a3"
+  "2026-10-20-moridinamael-468a14a3",
+  "2026-10-20-moridinamael-cc22ff7b"
  ],
  "qc": {
   "confirm": 0,
   "dispute": 0,
-  "refine": 1
+  "refine": 2
  },
  "replications": [],
  "scrutiny": {
   "level": 2,
   "name": "re-tested",
-  "test_rounds": 2,
-  "sentences": 32,
+  "test_rounds": 3,
+  "sentences": 48,
   "contributors": 1,
-  "qc": 1
+  "qc": 2
  }
 }
