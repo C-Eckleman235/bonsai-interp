@@ -115,3 +115,26 @@ Entry format:
     once, not the card filling up.
   - Stops are routine, so every long stage must checkpoint and report progress. Design both in from the start, not
     after a lost run.
+
+### 2026-10-20 fit check and L4 score (beside the live stream, cap 0.22)
+- measured:
+  - The fit check under BONSAI_GPU_FRACTION=0.22 (3.5 GiB): resident weights 2.88 GB with lm_head left off.
+  - Scoring peaks were 3.10–3.30 GB in every configuration.
+  - Chosen: the preamble-cached scorer at batch 16. Benchmark: 321 snippets/s at layer 4 and 80 at layer 20 (the
+    full scorer did 232 and 57). Peak 3.17 GB, about 0.3 GiB under the cap.
+  - L4 score: 476,571 sequences (10,088 tests × 16 snippets × 3 preambles) in 38.3 min wall at 207 snippets/s.
+    649 s was yielded, about 27 GPU minutes. No reset, no OOM, nothing lost.
+- bottleneck: per-batch Python overhead (copying the preamble cache, building tensors). The real run made 207
+  snippets/s against the benchmark's 321.
+- change before the next unit: none in scoring (it fits and runs). Next, measure the 1,024-token passes under
+  0.22 before registering the all-layer run.
+- gain of the previous changes:
+  - lm_head off the GPU: peak 5.78 → 3.17 GB at batch 16.
+  - The preamble cache: 1.38× (layer 4) to 1.4× (layer 20) in the benchmark.
+  - Resumable scoring: not exercised (no stop).
+  - The memory fixes on both sides: yield fell from 70% of wall time to 28%, and the card stayed under budget.
+- transfers:
+  - Load only what the job reads. An untied output matrix is the second-largest tensor in a small model, and
+    activation-only jobs never touch it.
+  - Cache what every sequence shares (the preambles).
+  - Size the memory cap from a measured peak (weights plus the batch), not a guess.
