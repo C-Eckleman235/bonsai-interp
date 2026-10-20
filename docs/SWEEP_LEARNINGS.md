@@ -153,3 +153,11 @@ Entry format:
   - Check which attention kernel actually runs (the warnings name the reason), not the one the config asks for.
   - "GQA support" in a library can silently mean the slowest kernel on a given platform.
   - Under a tight memory cap, kernel choice decides the usable batch size.
+
+### 2026-10-20 note during the all-layer stage 1 pass
+- measured: the pass ran at 1,619 tok/s (batch 1, 33 layers counted per forward). A CPU parity test running beside
+  it cut that to about 1,100 tok/s, a 30% loss. The pass is host-bound: per-layer thresholding, bincounts and
+  merges run on the CPU between kernels.
+- change: CPU-side work (tests, refits, prereg) runs only in the gaps between GPU passes, or limited to 2 threads.
+- transfers: a host-bound GPU pass loses about 30% to any concurrent CPU work. Schedule CPU jobs between passes, and
+  for the next model move more of the per-layer bookkeeping onto the device.
