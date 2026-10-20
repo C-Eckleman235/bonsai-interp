@@ -7,6 +7,13 @@
    "note": "Score L4's pinned tests (e1546fb) with the current code: per-layer cores shared with the all-layer passes, the preamble KV cache (identical token inputs), gpu_turn ticks, STOP at batch boundaries and resumable checkpoints. Used only for L4's score, export and backup; L4's stages 1-2 and its tests came from the registered code (13e20da).",
    "parity": "CPU, float32: single-layer stages vs the refactored all-layer passes on layers 2, 3, 5 gave identical tests files and scores; the cached scorer gave identical per-sentence activations to the full scorer; a stopped and resumed score equalled an uninterrupted one; scores while yielding to a simulated foreground were identical.",
    "written": "2026-10-20T18:29:59+00:00"
+  },
+  {
+   "code_sha256": "1532d2611bf0f60e39bc0e637916a128d0a5e6e6d4714c89485292d16129009b",
+   "toolchain_commit": "fec42f0",
+   "note": "Same as the previous amendment, plus: torch.cuda.empty_cache before yielding to a foreground, and a progress line every minute while scoring (no change to any computation).",
+   "parity": "CPU, float32: layer 3 smoke tests rescored with this code at batch 8 gave outcomes and per-sentence activations identical to the reference.",
+   "written": "2026-10-20T18:36:02+00:00"
   }
  ]
 }
