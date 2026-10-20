@@ -61,6 +61,29 @@ def test_table_only_features_are_never_a_rule():
         assert res["features"][feat]["eta2"] > 0.9  # still tabulated
 
 
+def test_rule_families_pick_the_bin():
+    assert ct.bin_of({"conditions": [["tok_repeat", "new"]]}) == "context"  # first appearance is not copying
+    for feat, v, b in [("tok_repeat", "repeat-near", "copy"), ("bigram_repeat", "bigram-repeat", "copy"), ("next_tok", "t5", "predictive"),
+                       ("pmi", "pmi 5+", "collocation"), ("ctx_mean", "0.1+", "topic"), ("win_pos", "512+", "positional"),
+                       ("prev_content", "w:eager", "context"), ("line_kind", "list-item", "format")]:
+        assert ct.bin_of({"conditions": [[feat, v]]}) == b, feat
+    assert ct.bin_of({"conditions": [["line_kind", "x"], ["tok_repeat", "repeat-far"]]}) == "copy"
+    assert ct.bin_of({"conditions": [["prev_tok", "x"], ["ctx_mean", "y"]]}) == "topic"  # untestable wins
+    assert set(ct.TESTED).isdisjoint(ct.UNTESTABLE)
+
+
+def test_copy_rule_from_planted_repetition():
+    f, rng = planted(seed=5)
+    f["tok_repeat"] = rng.choice(["new", "repeat-near"], len(f["line_pos"])).astype(object)
+    res, rule = ct.fit(f, np.where(f["tok_repeat"] == "repeat-near", 0.5, 0.0) + rng.normal(0, 0.02, len(f["line_pos"])))
+    assert res["bin"] == "copy", res
+
+
+def test_edit_distance_one():
+    assert ct._edit1("rain", "rein") and ct._edit1("rain", "brain") and ct._edit1("train", "rain")
+    assert not ct._edit1("rain", "rain") and not ct._edit1("rain", "tangent")
+
+
 def test_sparse_counter():
     import torch
     acc = ct._Acc()

@@ -567,9 +567,18 @@ auto-token@1 read a pole's 32 top examples and guessed "the token X". At layer 1
 - **A splitting rule wins over a high overall rate.** ' self' fired on 65% of occurrences and was binned lexical, though "in source code" split it 68% vs 0%.
 - **Window positions below 64 excluded,** following the 2026-10-18 clean-room finding.
 - **The smoke test scored snippets from windows 16000..16399,** so the testing split starts at 16400.
+- **More features, mined from the 284 held labels on main** (a survey by the coordinating session):
+  - where the token sits in its word; the nearest content word 1-3 tokens back; digit position; language of the preceding text; line kind; inside quotes
+  - repetition inside the snippet → a **copy** bin
+  - the next token → a testable **predictive** bin, since the test selects snippets by their continuation
+  - PMI with the previous token → a **collocation** bin
+  - the pole's own mean activation over the preceding snippet → a **topic** bin (untested, because a text-only test cannot select it)
+  - look-alike and inflection swaps for lexical hits; a look-alike that keeps firing is shown on the map as **spelling**
+  - Not added: the model's own token probability and entropy (they need the full forward pass), and the synonym, translation and other-sense controls (they need lexicons).
+- **A GPU smoke test at the real thresholds** (200 selection and 300 screening windows, tests from the burned block 16000..16399): 95 of 213 auto tests held (82 poles), and lexical hits held 27 of 28. Stage 1 ran at 6,000 tok/s. Like the CPU smoke test, this checked the plumbing and was not registered.
 - **Corpus domain is tabulated but never in a rule.** Rules like "' up' in web text" cannot be tested, because a snippet does not carry which corpus a window came from. Script and code-like text are the locally visible stand-ins. (This change came after the final smoke run, whose numbers above still allowed domain rules.)
 
-**Expected GPU cost per layer (RTX 5080, bf16; an estimate, not measured yet)**
+**Expected GPU cost per layer (RTX 5080, bf16; estimated before the GPU smoke test, which measured stage 1 at 6,000 tok/s, about 21 min per layer)**
 - Stage 1: 8.2M tokens to layer 20. At the 5-7k tok/s the full-window scans have shown (`bands.scan`: about 1,000 windows in 3-4 min), that is about 20-30 min.
 - Stage 2: at most 8,000 screening windows, each cut at its last needed occurrence: 15-25 min. The minimal pairs add at most about 5M tokens of 32-token snippets: 5-10 min.
 - Scoring: 16 snippets per test × 3 preambles × about 105 tokens, so about 5k tokens per test. For 1,000-5,000 tests that is 5-25M tokens, or 8-40 min (auto-token@1 scored about 1M short-snippet tokens per GPU minute at layer 12, which is shallower).
