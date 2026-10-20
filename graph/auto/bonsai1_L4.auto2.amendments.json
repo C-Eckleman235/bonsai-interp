@@ -14,6 +14,13 @@
    "note": "Same as the previous amendment, plus: torch.cuda.empty_cache before yielding to a foreground, and a progress line every minute while scoring (no change to any computation).",
    "parity": "CPU, float32: layer 3 smoke tests rescored with this code at batch 8 gave outcomes and per-sentence activations identical to the reference.",
    "written": "2026-10-20T18:36:02+00:00"
+  },
+  {
+   "code_sha256": "df308d216fe0b8d23426b981041d70ac33172bfc5638eff39bf6134046c661e4",
+   "toolchain_commit": "fe17bd1",
+   "note": "Same scoring, with the model loaded without its unused lm_head (model.load(lm_head=False)): the stages never compute logits.",
+   "parity": "CPU, float32: layer 5 smoke tests rescored without lm_head gave per-sentence activations identical to the reference.",
+   "written": "2026-10-20T18:41:46+00:00"
   }
  ]
 }
