@@ -118,6 +118,22 @@ Entry format:
   deepest one being read. On a larger-vocabulary or wider model (e.g. 27B), the saving grows with
   vocab × hidden.
 
+**On Windows, GPU memory also costs host commit** (2026-10-20, measured by the stream)
+- Under WDDM, every GiB torch allocates on the GPU adds about a GiB of host commit charge: Windows keeps
+  system-memory backing so the allocation can be evicted. Measured at +1.0/+2.0/+3.0 GiB of commit for 1/2/3 GiB
+  of device tensors.
+- **A torch process's CPU-side baggage:**
+  - torch itself: about 1.6 GiB
+  - transformers and other imports: about 0.9
+  - the CUDA context: about 0.5
+  - plus any data it loads, e.g. a 1 GiB corpus scan
+- **Freed host memory isn't returned to Windows,** so per-command copies become a permanent high-water mark.
+  The stream's probe loaded the scan once per command; it now shares one read-only copy.
+- **Budget:** host commit ≥ the GPU allocations + 2–4 GiB per torch process + its data. A full 16 GB card can
+  cost 16 GB of commit on its own.
+- **Transfers:** on Windows, watch the commit charge as closely as VRAM, and keep the number of torch processes
+  small.
+
 **Plan by depth: early layers are word-driven, deep layers are not** (2026-10-20, L4 vs L20)
 - **Auto tier:**
   - L4 binned 2,418 poles as lexical, against 171 at L20.
