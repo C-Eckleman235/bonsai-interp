@@ -79,6 +79,18 @@ Entry format:
   them, so a stop loses minutes, not a layer (parity check: a stopped and resumed score must equal an uninterrupted
   one).
 - gain of the previous change: the graceful stop worked as designed (STOP to exit in 3 s, the turn released).
+- memory: the card held more than 15 of 16.3 GB for 70 of the 99 minutes. The reset came at about 15.5 GB, with
+  turns on. Near-full memory on the display GPU is the leading suspect.
+- further changes before the next unit:
+  - Return the allocator's cached blocks (torch.cuda.empty_cache) before every yield, so the stream can use what
+    the batch is not holding.
+  - A progress line every minute (batches done / total, snippets/s, yield seconds). The trial printed nothing for
+    99 minutes.
+  - The cap gets sized from the benchmark instead of 0.35: the batch stays at or under about 4 GB, and the whole
+    card at or under 13 GB.
 - transfers:
   - On a shared display GPU, budget wall time by the foreground's duty cycle (here 70%), not by GPU minutes.
-  - Stops are routine, so every long stage must checkpoint. Design it in from the start, not after a lost run.
+  - Budget memory to leave real headroom on the card (at least 3 GB): a turn scheme stops two processes computing at
+    once, not the card filling up.
+  - Stops are routine, so every long stage must checkpoint and report progress. Design both in from the start, not
+    after a lost run.

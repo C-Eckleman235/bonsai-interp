@@ -645,9 +645,15 @@ YIELD = {"seconds": 0.0, "ticks": 0}
 
 
 def _tick(*_):
-    """Before every forward pass: honour STOP, then take the GPU turn (gpu_turn yields to a foreground such as the stream)."""
+    """Before every forward pass: honour STOP, then take the GPU turn (gpu_turn yields to a foreground such as the stream).
+    Before yielding, the allocator's cached blocks are returned, so the foreground can use what this process is not holding."""
     from bonsai_interp import gpu_turn
     _stop_requested()
+    if gpu_turn._live("want"):
+        import torch
+        if torch.cuda.is_available() and torch.cuda.is_initialized():
+            torch.cuda.synchronize()
+            torch.cuda.empty_cache()
     YIELD["seconds"] += gpu_turn.background_tick("auto2")
     YIELD["ticks"] += 1
 
@@ -1457,6 +1463,14 @@ def _score_layer(model, tok, rec, L, P, tests_sha, counts, prereg_commit, B, smo
         return x
 
     pad = tok.pad_token_id if tok.pad_token_id is not None else 0
+    n_total, t_last = len(PREAMBLES) * -(-len(texts) // B), [time.time()]
+
+    def progress():
+        if time.time() - t_last[0] >= 60:
+            t_last[0] = time.time()
+            el = time.time() - t0
+            print(f"  layer {L}: {n_done}/{n_total} batches this run, {n_done * B / max(el, 1e-9):.1f} snippets/s, "
+                  f"yielded {YIELD['seconds'] - y0:.0f} s of {el:.0f} s", flush=True)
     for pi, pre_text in enumerate(PREAMBLES):
         if pi < resume[0]:
             continue
@@ -1495,6 +1509,7 @@ def _score_layer(model, tok, rec, L, P, tests_sha, counts, prereg_commit, B, smo
                 save((pi, 0, b))
                 raise
             n_done += 1
+            progress()
             if n_done % 300 == 0:
                 save((pi, 0, b + B))
         for b in range(0, len(full), B):
@@ -1513,6 +1528,7 @@ def _score_layer(model, tok, rec, L, P, tests_sha, counts, prereg_commit, B, smo
                 save((pi, 1, b))
                 raise
             n_done += 1
+            progress()
             if n_done % 300 == 0:
                 save((pi, 1, b + B))
     rule = PROTOCOLS["quick-8+8@2"]["rule"]
