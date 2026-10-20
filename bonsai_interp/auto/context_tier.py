@@ -1270,6 +1270,10 @@ def export(a):
     tally = {}
     for r in poles.values():
         tally[r["bin"]] = tally.get(r["bin"], 0) + 1
+    if P["summary"].exists():  # the summary in git pins the screen file, which lives in a release
+        summ = json.loads(P["summary"].read_text(encoding="utf-8"))
+        summ.update({"screen_file": dst.name, "screen_sha256": hashlib.sha256(blob).hexdigest(), "screen_bins": tally})
+        P["summary"].write_text(json.dumps(summ, indent=1) + "\n", encoding="utf-8", newline="\n")
     print(f"{json.dumps(tally)} -> {dst} ({dst.stat().st_size / 1e6:.1f} MB; publish it in the auto-screens release, not in git)")
 
 
