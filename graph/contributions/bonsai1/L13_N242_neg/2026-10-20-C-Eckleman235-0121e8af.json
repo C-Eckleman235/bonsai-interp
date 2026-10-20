@@ -1,0 +1,165 @@
+{
+ "id": "2026-10-20-C-Eckleman235-0121e8af",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N242-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-20T19:53:55+00:00",
+ "recipe": {
+  "toolchain_commit": "d39ea1d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L13_N242_neg/2026-10-20-C-Eckleman235-0121e8af.tests.json"
+ },
+ "label": "Texas appellate courts: the court words of a Texas court-of-appeals citation or name ('Tex. Crim. App.', 'Tex. App.-Houston', the Texas Court of Criminal Appeals); the same citation formats and court names for other states stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L13_N242_neg/2026-10-20-C-Eckleman235-0121e8af.tests.json",
+   "prereg_commit": "d39ea1d",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.763,
+     "peak": " App"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.655,
+     "peak": " App"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.762,
+     "peak": " App"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.36,
+     "peak": " Criminal"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.796,
+     "peak": " App"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.01,
+     "peak": " Court"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.712,
+     "peak": " App"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.347,
+     "peak": " Criminal"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.032,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.111,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.065,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.059,
+     "peak": " Criminal"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.208,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.012,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.144,
+     "peak": " App"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.196,
+     "peak": " Criminal"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.875,
+    "median_fire": 0.683,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [],
+  "toolchain_commit": "d39ea1d",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "short": "Texas appellate courts",
+ "unit_kind": "contextual",
+ "confidence": 0.6,
+ "notes": "Step-in from the Texas pole bonsai1/L10/N8330+: play step --down lists four readers (L16/N8498- 0.88, L11/N11859- 0.77, L13/N242- 0.77, L20/N457+ 0.72), none with a record. This one was chosen over the larger-drop L16/N8498- because it is the only reader strongly ON in the anchor's own contexts (0.86 of its max in 2 of the anchor's top examples, vs 0.15-0.19 for the others), so its drop measures a real dependency rather than noise in an unrelated job. Card: Handbook-of-Texas header 'OLMOS CREEK (Uvalde County).' and '(Tex.Cr.App. 1996)' among scattered others. Probing: with the reporter held fixed (S.W.2d), Tex. Crim. App. 0.70 vs Ark./Mo./Ky. App. 0.04-0.10; 'Texas Court of Criminal Appeals' 0.36 vs 'Arkansas Court of Appeals' 0.02; Cal. App. (P.2d) 0.22; a Handbook-style header only 0.10 and plain Texas sentences <= 0.12. Unexplained second job: 'Aboriginal dreamtime' 0.57/0.35 (not tested here). Near misses use the same formats for other states, including Oklahoma's and Alabama's courts that share the name 'Court of Criminal Appeals'.",
+ "roles": [
+  "reads bonsai1/L10/N8330+"
+ ],
+ "selection": "step-in from bonsai1/L10/N8330+",
+ "edges": [
+  {
+   "from": "bonsai1/L10/N8330+",
+   "to": "bonsai1/L13/N242-",
+   "kind": "feeds",
+   "weight": 0.77,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
