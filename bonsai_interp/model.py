@@ -196,6 +196,8 @@ def load(name: str = "bonsai1"):
     """Returns (model, tokenizer, recorder). The model lives on DEVICE (bonsai_interp.env)."""
     import sys
     path = MODELS[name]
+    from bonsai_interp.env import limit_memory
+    limit_memory()  # every entry point is capped (BONSAI_GPU_FRACTION), not only the ones that remember to call it
     print(f"loading {name} from {path.name} onto {DEVICE.type} (15-30 s)...", flush=True)  # stdout: PowerShell treats stderr as failure
     cfg = AutoConfig.from_pretrained(path)
     cfg.dtype = COMPUTE_DTYPE
