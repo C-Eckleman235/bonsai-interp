@@ -116,7 +116,7 @@ are `L<layer>_N<index>_<pos|neg>.json`.
 | `neurons[id].label`, `.short` | string or null | Current label (see "How a record is folded") and its short form |
 | `neurons[id].kind` | string or null | `unit_kind`, e.g. `dense / positional`, `token/lexical` |
 | `neurons[id].depth` | string | `quick` or `full` |
-| `neurons[id].qc` | `{confirm, dispute, refine}` | QC counts |
+| `neurons[id].qc` | `{confirm, dispute, refine}` | QC counts by what the QC test showed (a confirm whose test failed counts as a dispute; exploratory QCs count for neither) |
 | `neurons[id].n_contrib` | int | Number of contributions |
 | `neurons[id].replicated` | bool | Has a blind clean-room replication |
 | `neurons[id].contributors` | `[handle]` | In order of first contribution |
