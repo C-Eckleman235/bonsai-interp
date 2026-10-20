@@ -10,8 +10,13 @@ contexts. This tier asks the corpus first and the top examples never:
   python -m bonsai_interp.auto.context_tier prereg   --layer 20   CPU: auto tests from windows 16400.. (commit the manifest ALONE)
   python -m bonsai_interp.auto.context_tier score    --layer 20   GPU: judge the auto tests
   python -m bonsai_interp.auto.context_tier export   --layer 20   CPU: the survey map's screen layer (site/screens.py)
+  python -m bonsai_interp.auto.context_tier backup   --layer 20   hash data/auto2 files into the summary, upload them to releases
+  python -m bonsai_interp.auto.context_tier refit    --layer 20   CPU: refit stage 2 from its per-occurrence store (new features)
   python -m bonsai_interp.auto.context_tier dossier  --neuron bonsai1/L20/N123+ [--links]   stage 3: input for an agent
   (--smoke DIR runs any stage without the manifest checks and writes to DIR: for CPU tests only)
+  Measured on an RTX 5080 at layer 20: hits 23 min (6,000 tok/s, batch 8, 9.6 GB uncapped), screen 28 min (8.3 GB at
+  batch 8), score 19 min (1,185 tests, batch 16, 5.8 GB). Under BONSAI_GPU_FRACTION=0.35 (5.6 GB) the model takes
+  about 3 GB, and attention over 1,024-token windows needs --batch 2 for hits and screen; score fits at --batch 16.
 
 Corpus windows are split three ways, so no stage reads the windows a later stage is judged on:
   0..7999      selection (the scan read these too): stage 1
@@ -123,7 +128,8 @@ def _paths(L, out=OUT, man=MANIFESTS):
     b = f"bonsai1_L{L}"
     return {"protocol": man / f"{b}.auto2.protocol.json", "prereg": man / f"{b}.auto2.prereg.json", "summary": man / f"{b}.auto2.summary.json",
             "hits": out / f"{b}.hits.npz", "table": out / f"{b}.hits.jsonl.gz", "screen": out / f"{b}.context.jsonl.gz",
-            "tests": out / f"{b}.auto2.tests.jsonl.gz", "results": out / f"{b}.auto2.results.jsonl.gz", "dossiers": out / "dossiers"}
+            "tests": out / f"{b}.auto2.tests.jsonl.gz", "results": out / f"{b}.auto2.results.jsonl.gz", "dossiers": out / "dossiers",
+            "occ": out / f"{b}.occ.npz", "refit": out / f"{b}.context.refit.jsonl.gz"}
 
 
 def _committed_alone_clean(p):
@@ -925,19 +931,55 @@ def screen(a):
             el = time.time() - t0
             print(f"  {min(i + B, len(need))}/{len(need)} windows  eta {el / min(i + B, len(need)) * (len(need) - i - B) / 60:.1f} min", flush=True)
     t_pass = time.time() - t0
-    # features once per trigger occurrence, shared by every pole with that trigger
+    save_store(P["occ"], hitlist, occ, frac, ctxm, w0)
+    rows, plans = screen_rows(hitlist, occ, frac, ctxm, toks, dom, w0, P, vb, L)
+    print(f"stage 2 pass {t_pass / 60:.1f} min, fit {(time.time() - t0 - t_pass) / 60:.1f} min", flush=True)
+    _templates(model, rec, L, rows, plans, pmax, nmax, a.batch * 32)
+    _write_gz(P["screen"], rows)
+    tally = {}
+    for r in rows:
+        tally[r["bin"]] = tally.get(r["bin"], 0) + 1
+    print(f"stage 2 bins: {json.dumps(tally)}; minutes {(time.time() - t0) / 60:.1f} -> {P['screen']}")
+
+
+def save_store(path, hitlist, occ, frac, ctxm, w0):
+    """Stage 2's per-occurrence activations, so a new context feature is a CPU-only refit (see `refit`).
+    Occurrences are stored once per trigger; frac and ctx_mean once per (hit, occurrence), hit-major in occurrence order."""
+    trig = np.array(sorted(occ), dtype=np.int64)
+    counts = np.array([len(occ[t][0]) for t in trig], dtype=np.int64)
+    np.savez_compressed(path, trigger=trig, occ_start=np.r_[0, np.cumsum(counts)],
+                        window=np.concatenate([occ[t][0] + w0 for t in trig]).astype(np.int32) if len(trig) else np.zeros(0, np.int32),
+                        position=np.concatenate([occ[t][1] for t in trig]).astype(np.int16) if len(trig) else np.zeros(0, np.int16),
+                        hit_neuron=np.array([nid for nid, _ in hitlist]), hit_trigger=np.array([t["token"] for _, t in hitlist], dtype=np.int64),
+                        hit_stage1=np.array([json.dumps(t) for _, t in hitlist]),
+                        frac=frac.astype(np.float16), ctx_mean=ctxm.astype(np.float16))
+
+
+def load_store(path):
+    """(hitlist, occ, frac, ctxm) as screen had them, from the store (occ windows relative to the screening split)."""
+    d = np.load(path)
+    occ = {}
+    for i, t in enumerate(d["trigger"]):
+        a, b = d["occ_start"][i], d["occ_start"][i + 1]
+        occ[int(t)] = (d["window"][a:b].astype(np.int64) - SCREEN[0], d["position"][a:b].astype(np.int64))
+    hitlist = [(str(n), json.loads(str(j))) for n, j in zip(d["hit_neuron"], d["hit_stage1"])]
+    return hitlist, occ, d["frac"].astype(np.float32), d["ctx_mean"].astype(np.float32)
+
+
+def screen_rows(hitlist, occ, frac, ctxm, toks, dom, w0, P, vb, L):
+    """Features, the fitted rule and the bin for every hit, from activations already read (stage 2 or the store)."""
+    R = RULE
+    counts = np.array([len(occ.get(t["token"], ([], []))[0]) for _, t in hitlist], dtype=np.int64)
+    hst = np.r_[0, np.cumsum(counts)]  # pairs are hit-major, in occurrence order
     feats, bt = {}, bigram_table()
     for t, (w, p) in occ.items():
         fs = [features(toks[wi], int(pi), dom[wi], vb, bt) for wi, pi in zip(w, p)]
         feats[t] = {f: np.array([x[f] for x in fs], dtype=object) for f in FEATURES + TABLE_ONLY}
-    by_hit = np.argsort(ph, kind="stable")
-    hst = np.searchsorted(ph[by_hit], np.arange(len(hitlist) + 1))
     rows, plans = [], []
     freq = np.bincount(np.asarray(toks, np.int64).ravel(), minlength=vb["V"])
     subs = Substitutes(freq + np.load(P["hits"])["freq"], vb) if P["hits"].exists() else Substitutes(freq, vb)
     for h, (nid, t) in enumerate(hitlist):
-        sel = by_hit[hst[h]:hst[h + 1]]
-        sel = sel[np.argsort(pslot[sel])]
+        sel = np.arange(hst[h], hst[h + 1])
         fr = frac[sel].astype(np.float64)
         fts = dict(feats.get(t["token"], {f: np.zeros(0, object) for f in FEATURES + TABLE_ONLY}))
         fts["ctx_mean"] = np.array([ctx_bucket(v) for v in ctxm[sel]], dtype=object)
@@ -950,13 +992,57 @@ def screen(a):
                             "weak": [[int(w[j]) + w0, int(p[j]), round(float(fr[j]), 3)] for j in weak]}}
         rows.append(row)
         plans.append(_template_plan(row, rule, fts, fr, w, p, toks, subs, L))
-    print(f"stage 2 pass {t_pass / 60:.1f} min, fit {(time.time() - t0 - t_pass) / 60:.1f} min", flush=True)
-    _templates(model, rec, L, rows, plans, pmax, nmax, a.batch * 32)
-    _write_gz(P["screen"], rows)
+    return rows, plans
+
+
+def refit(a):
+    """CPU only: refit stage 2 from the per-occurrence store (after a feature change), without the minimal pairs.
+    Writes .context.refit.jsonl.gz next to the registered stage 2 file, which it never touches."""
+    P, _ = _setup(a) if a.smoke else (_paths(a.layer), None)
+    if not P["occ"].exists():
+        sys.exit(f"no store {P['occ'].name}: stage 2 of this layer ran before the store existed; re-run `screen` to make one")
+    vb = vocab()
+    hitlist, occ, frac, ctxm = load_store(P["occ"])
+    toks, dom, w0 = _windows(SCREEN, a)
+    rows, _ = screen_rows(hitlist, occ, frac, ctxm, toks, dom, w0, P, vb, a.layer)
+    for r in rows:
+        r["template"] = {"check": "n/a (refit: minimal pairs need the GPU)"}
+    _write_gz(P["refit"], rows)
     tally = {}
     for r in rows:
         tally[r["bin"]] = tally.get(r["bin"], 0) + 1
-    print(f"stage 2 bins: {json.dumps(tally)}; minutes {(time.time() - t0) / 60:.1f} -> {P['screen']}")
+    print(f"refit bins: {json.dumps(tally)} -> {P['refit']}")
+
+
+def backup(a):
+    """Hash every data/auto2 file of a layer into its summary and upload them (and the map file) to GitHub releases."""
+    P = _paths(a.layer)
+    if not P["summary"].exists():
+        sys.exit("score the layer first: the summary records the artifacts")
+    names = ("hits", "table", "screen", "tests", "results", "occ")
+    files = [P[k] for k in names if P[k].exists()]
+    summ = json.loads(P["summary"].read_text(encoding="utf-8"))
+    summ["artifacts"] = [{"name": f.name, "sha256": hashlib.sha256(f.read_bytes()).hexdigest(), "bytes": f.stat().st_size,
+                          "release": "auto2-data"} for f in files]
+    screen_map = ROOT / "data" / "auto" / f"bonsai1_L{a.layer}.screen.json.gz"
+    if screen_map.exists():
+        summ["artifacts"].append({"name": screen_map.name, "sha256": hashlib.sha256(screen_map.read_bytes()).hexdigest(),
+                                  "bytes": screen_map.stat().st_size, "release": "auto-screens"})
+    P["summary"].write_text(json.dumps(summ, indent=1) + "\n", encoding="utf-8", newline="\n")
+    if a.no_upload:
+        print(f"recorded {len(summ['artifacts'])} artifacts in {P['summary'].name} (no upload)")
+        return
+    repo = "moridinamael/bonsai-interp"
+    for rel, notes, fs in (("auto2-data", "auto-token@2 data per layer (hits, stage 2 tables, per-occurrence store, tests, results); "
+                            "sha256 in graph/auto/bonsai1_L<L>.auto2.summary.json", files),
+                           ("auto-screens", "per-layer screen files for the survey map (site/screens.py)", [screen_map] if screen_map.exists() else [])):
+        if not fs:
+            continue
+        if subprocess.run(["gh", "release", "view", rel, "--repo", repo], capture_output=True).returncode != 0:
+            subprocess.run(["gh", "release", "create", rel, "--repo", repo, "--title", rel, "--notes", notes], check=True)
+        subprocess.run(["gh", "release", "upload", rel, *map(str, fs), "--repo", repo, "--clobber"], check=True)
+        print(f"uploaded {len(fs)} files to release {rel}")
+    print(f"recorded {len(summ['artifacts'])} artifacts in {P['summary'].relative_to(ROOT)}: commit it on its own")
 
 
 def _template_plan(row, rule, fts, fr, w, p, toks, subs, L):
@@ -1399,7 +1485,7 @@ def main():
             pass
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
-    for name in ("protocol", "hits", "rank", "screen", "prereg", "score", "export", "dossier"):
+    for name in ("protocol", "hits", "rank", "screen", "refit", "prereg", "score", "export", "backup", "dossier"):
         p = sub.add_parser(name)
         p.add_argument("--layer", type=int, required=True)
         p.add_argument("--batch", type=int, default=8)
@@ -1413,6 +1499,8 @@ def main():
             p.add_argument("--neuron", nargs="*")
             p.add_argument("--top", type=int, default=8, help="without --neuron: dossiers for the first N screened poles")
             p.add_argument("--links", action="store_true", help="add upstream feeders and downstream readers (loads the model)")
+        if name == "backup":
+            p.add_argument("--no-upload", action="store_true", help="only record the hashes in the summary")
     a = ap.parse_args()
     if a.threads:
         import torch
@@ -1422,7 +1510,7 @@ def main():
     for kv in a.rule:
         k, v = kv.split("=", 1)
         RULE[k] = type(RULE[k])(v)
-    {"protocol": protocol, "hits": hits, "rank": rank, "screen": screen, "prereg": prereg, "score": score, "export": export, "dossier": dossier_main}[a.cmd](a)
+    {"protocol": protocol, "hits": hits, "rank": rank, "screen": screen, "prereg": prereg, "score": score, "export": export, "dossier": dossier_main, "refit": refit, "backup": backup}[a.cmd](a)
 
 
 if __name__ == "__main__":

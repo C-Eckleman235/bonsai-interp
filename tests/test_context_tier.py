@@ -96,6 +96,21 @@ def test_sparse_counter():
     assert np.array_equal(acc.k, u) and np.array_equal(acc.c, c)
 
 
+def test_store_round_trip(tmp=Path(__file__).resolve().parent / "_store_check.npz"):
+    occ = {5: (np.array([0, 3, 3]), np.array([70, 80, 900])), 9: (np.array([1]), np.array([64]))}
+    hitlist = [("bonsai1/L20/N1+", {"token": 5, "via": "word"}), ("bonsai1/L20/N2-", {"token": 9, "via": "bigram", "prev": 4}),
+               ("bonsai1/L20/N3+", {"token": 5, "via": "word"})]
+    frac = np.array([0.5, 0.1, 0.0, 0.7, 0.25, 0.3, 0.2], np.float32)  # hit-major: 3 + 1 + 3
+    ctxm = np.linspace(0, 0.3, 7).astype(np.float32)
+    try:
+        ct.save_store(tmp, hitlist, occ, frac, ctxm, ct.SCREEN[0])
+        h2, o2, f2, c2 = ct.load_store(tmp)
+    finally:
+        tmp.unlink(missing_ok=True)
+    assert h2 == hitlist and all(np.array_equal(o2[t][i], occ[t][i]) for t in occ for i in (0, 1))
+    assert np.allclose(f2, frac, atol=1e-3) and np.allclose(c2, ctxm, atol=1e-3)
+
+
 def test_splits_disjoint():
     assert ct.SELECT[1] <= ct.SCREEN[0] and ct.SCREEN[1] <= ct.TEST[0]
 
