@@ -72,6 +72,7 @@ Rule (protocol auto-token@2; every number lives in RULE and is pinned by the pro
    sentence: an agent labels the pole from it and then writes a FRESH quick-8+8@3 test.
 """
 import argparse
+import copy
 import datetime as dt
 import gzip
 import hashlib
@@ -631,7 +632,8 @@ def _progress(done, total, t0, unit="windows", tokens=None):
 
 
 def _stop_requested():
-    """data/auto2/STOP ends a long pass between batches (nothing of the pass is written)."""
+    """data/auto2/STOP ends a GPU loop at the next batch boundary (nothing of the stage is written). Stopping this way leaves
+    the GPU idle; killing a CUDA process mid-kernel is a likely trigger of a display-driver reset (FINDINGS 2026-10-20)."""
     if (OUT / "STOP").exists():
         sys.exit("STOP file found: stopping before the pass finished (nothing written)")
 
@@ -650,6 +652,7 @@ def hits(a):
     t0, B = time.time(), a.batch
     print(f"stage 1, layer {L}: {len(toks)} windows x {toks.shape[1]} tokens, {int((counter.elig == 'eligible').sum())} eligible poles", flush=True)
     for b0 in range(0, len(toks), B):
+        _stop_requested()
         x = torch.from_numpy(toks[b0:b0 + B].astype(np.int64)).to(DEVICE)
         counter.add(_forward(model, rec, x, L), x)
         done = b0 + len(x)
@@ -1011,6 +1014,7 @@ def screen(a):
     model, tok, rec = load("bonsai1")
     t0, B = time.time(), a.batch
     for i in range(0, len(need), B):
+        _stop_requested()
         ws = need[i:i + B]
         sel = pairs.select(ws)
         T = int(pairs.pp[sel].max()) + 1
@@ -1200,6 +1204,7 @@ def _templates(model, rec, by_layer, B):
     pm = {L: _pole_max(L) for L in by_layer}
     vals = np.zeros(len(jobs))
     for b in range(0, len(jobs), B):
+        _stop_requested()
         ch = jobs[b:b + B]
         x = torch.from_numpy(np.stack([j[4] for j in ch])).to(DEVICE)
         layers = sorted({j[0] for j in ch})
@@ -1351,6 +1356,7 @@ def _score_layer(model, tok, rec, L, P, tests_sha, counts, prereg_commit, B, smo
     from bonsai_interp.graph.protocols import PROTOCOLS
     from bonsai_interp.model import StopForward
     from bonsai_interp.probe.textinv import PREAMBLES
+    from transformers import DynamicCache
     blob = gzip.open(P["tests"], "rb").read()
     if hashlib.sha256(blob).hexdigest() != tests_sha:
         sys.exit(f"layer {L}: the tests file does not match its pre-registered sha256")
@@ -1365,32 +1371,65 @@ def _score_layer(model, tok, rec, L, P, tests_sha, counts, prereg_commit, B, smo
     tok.padding_side = "right"
     t0, sums = time.time(), {}
     print(f"scoring layer {L}: {len(todo)} tests, {len(texts)} snippets x {len(PREAMBLES)} preambles", flush=True)
+    def add(chunk, at):
+        for j, t in enumerate(chunk):
+            for nid in want[t]:
+                n = int(nid.split("/N")[1][:-1])
+                v = at[j, n] / pmax[n] if nid.endswith("+") else -at[j, n] / nmax[n]
+                sums[(t, nid)] = sums.get((t, nid), 0.0) + float(v) / len(PREAMBLES)
+
+    def run(ids, mask, cache=None):
+        rec.mode, rec.layers, rec.stop_at = "act", {L}, L
+        try:
+            with torch.no_grad():
+                model.model(input_ids=ids, attention_mask=mask, past_key_values=cache, use_cache=cache is not None)
+        except StopForward:
+            pass
+        finally:
+            rec.mode, rec.stop_at = None, None
+        x = rec.store.pop(L)
+        rec.clear()
+        return x
+
+    pad = tok.pad_token_id if tok.pad_token_id is not None else 0
     for pre_text in PREAMBLES:
-        for b in range(0, len(texts), B):
-            if b // B % 200 == 0:
-                _stop_requested()
-            chunk = texts[b:b + B]
+        # the preamble's keys and values, computed once to this layer and reused for every snippet: the same token inputs
+        # as encoding preamble + snippet together; snippets whose joined encoding splits differently take the full path
+        pre_ids = tok(pre_text).input_ids
+        P_ = len(pre_ids)
+        cache = DynamicCache()
+        rec.mode, rec.stop_at = None, L
+        try:
+            with torch.no_grad():
+                model.model(input_ids=torch.tensor([pre_ids], device=DEVICE), past_key_values=cache, use_cache=True)
+        except StopForward:
+            pass
+        finally:
+            rec.stop_at = None
+        joined = {t: tok(pre_text + t).input_ids for t in texts}
+        cached = sorted((t for t in texts if joined[t][:P_] == pre_ids), key=lambda t: len(joined[t]))
+        full = [t for t in texts if joined[t][:P_] != pre_ids]
+        for b in range(0, len(cached), B):
+            _stop_requested()
+            chunk = cached[b:b + B]
+            suf = [joined[t][P_:] for t in chunk]
+            T = max(len(x) for x in suf)
+            ids = torch.tensor([x + [pad] * (T - len(x)) for x in suf], device=DEVICE)
+            m = torch.tensor([[1] * (P_ + len(x)) + [0] * (T - len(x)) for x in suf], device=DEVICE)
+            c = copy.deepcopy(cache)
+            c.batch_repeat_interleave(len(chunk))
+            x = run(ids, m, c)
+            last = torch.tensor([len(x_) - 1 for x_ in suf], device=x.device)  # read at the snippet's last token
+            add(chunk, x[torch.arange(len(chunk), device=x.device), last].float().cpu().numpy())
+        for b in range(0, len(full), B):
+            _stop_requested()
+            chunk = full[b:b + B]
             enc = tok([pre_text + t for t in chunk], return_tensors="pt", padding=True).to(DEVICE)
-            rec.mode, rec.layers, rec.stop_at = "act", {L}, L
-            try:
-                with torch.no_grad():
-                    model.model(input_ids=enc.input_ids, attention_mask=enc.attention_mask)
-            except StopForward:
-                pass
-            finally:
-                rec.mode, rec.stop_at = None, None
-            x = rec.store.pop(L)
-            rec.clear()
+            x = run(enc.input_ids, enc.attention_mask)
             # read at the snippet's last token (the trigger or its swap): the claim is about that position, and a max over
             # a long snippet would let a near miss fire elsewhere (on another place where the rule holds)
             last = enc.attention_mask.sum(1) - 1
-            at = x[torch.arange(len(chunk), device=x.device), last].float().cpu().numpy()
-            pos, neg = at, -at
-            for j, t in enumerate(chunk):
-                for nid in want[t]:
-                    n = int(nid.split("/N")[1][:-1])
-                    v = pos[j, n] / pmax[n] if nid.endswith("+") else neg[j, n] / nmax[n]
-                    sums[(t, nid)] = sums.get((t, nid), 0.0) + float(v) / len(PREAMBLES)
+            add(chunk, x[torch.arange(len(chunk), device=x.device), last].float().cpu().numpy())
     rule = PROTOCOLS["quick-8+8@2"]["rule"]
     out, tally, by_bin = [], {}, {}
     for r in rows:
@@ -1616,8 +1655,7 @@ def hits_all(a):
     t0, B = time.time(), a.batch
     print(f"stage 1, layers {layers}: {len(toks)} windows x {toks.shape[1]} tokens, one pass to layer {layers[-1]}", flush=True)
     for b0 in range(0, len(toks), B):
-        if (b0 // B) % 100 == 0:
-            _stop_requested()
+        _stop_requested()
         x = torch.from_numpy(toks[b0:b0 + B].astype(np.int64)).to(DEVICE)
         _hooked_pass(model, rec, x, {L: (lambda act, c=c: c.add(act, x)) for L, c in counters.items()}, layers[-1])
         done = b0 + len(x)
@@ -1648,8 +1686,7 @@ def screen_all(a):
     model, tok, rec = load("bonsai1")
     t0, B = time.time(), a.batch
     for i in range(0, len(need), B):
-        if (i // B) % 100 == 0:
-            _stop_requested()
+        _stop_requested()
         ws = need[i:i + B]
         sel = {L: pairs[L].select(ws) for L in layers}
         live = [L for L in layers if len(sel[L])]

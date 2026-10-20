@@ -654,7 +654,8 @@ auto-token@1 read a pole's 32 top examples and guessed "the token X". At layer 1
 | L20 | hits 23.3, screen 28.2, score 19.2 min (batch 8/8/16, mostly uncapped) | – | baseline | – |
 | L4 hits | 15.2 min to depth 4 at batch 2 under the 0.35 cap; 14.5k tok/s falling to 10.7k when the CPU was shared; GPU busy 17–63% | the sparse counter (a device-to-CPU copy every batch, frequent CPU re-sorts) and the batch-2 cap | the counter merges on the device and copies to the CPU every 16 batches | counts identical to the old counter on random key streams |
 | all-layer build | CPU smoke on layers 2, 3 and 5: 474 s for the passes vs 818 s single-layer | one forward per layer | one forward pass per batch reads every layer | identical outputs; stored activations within 1.9e-6 |
-| L4 score | crashed after 8 min | an NVIDIA driver reset (nvlddmkm 153 three times; LiveKernelEvent 117/141) with the stream on the GPU | none yet: the batch stops; it runs only while the stream is offline | – |
+| L4 score | stopped after 8 min | a driver reset at 10:20:24, during steady running with the stream's probe loaded, made the coordinator force-kill the score process; a second reset (TDR, video-engine timeout) followed about 3 s after the kill | every GPU loop now checks data/auto2/STOP at each batch boundary, so a stop never needs a kill; the batch runs only while the stream is offline | – |
+| scoring | – | a fixed per-forward cost plus about 34 preamble tokens of every ~82-token sequence | each preamble's KV cache is computed once per layer and reused, so sequences shrink by about 41% and a larger batch fits; joined encodings that split differently (0.9%) take the full path | CPU rescoring of the smoke tests: all outcomes and every activation identical |
 
 Not yet measured: batch size against attention backend under the cap. A 1 GiB fp32 allocation at batch 8 suggests SDPA falls back to its math kernel here.
 
