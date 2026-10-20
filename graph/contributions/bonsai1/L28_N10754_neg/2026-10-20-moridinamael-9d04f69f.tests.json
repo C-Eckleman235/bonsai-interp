@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-20-moridinamael-9d04f69f",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N10754-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T16:36:15+00:00",
+ "roles": ["reads bonsai1/L27/N6396-"],
+ "neighbours": [
+  {
+   "unit": "L28/N10754",
+   "pole": "-",
+   "label": "in Python code, a later line that calls the same library function an earlier line already called (requests.get(...), then requests.get(...) again)",
+   "fire": [
+    "a = requests.get(url_a)\nb = requests.get(url_b)",
+    "df1 = pd.read_csv('train.csv')\ndf2 = pd.read_csv('test.csv')",
+    "x = np.zeros((3, 3))\ny = np.zeros((5, 5))",
+    "with open('log.txt') as f:\n    first = json.loads(f.readline())\n    second = json.loads(f.readline())",
+    "start = time.time()\nrun_job()\nend = time.time()",
+    "os.makedirs('out/images', exist_ok=True)\nos.makedirs('out/labels', exist_ok=True)",
+    "m1 = re.search(r'\\d+', line)\nm2 = re.search(r'[a-z]+', line)",
+    "plt.plot(xs, ys)\nplt.plot(xs, zs, '--')"
+   ],
+   "quiet": [
+    "a = requests.get(url_a)\nb = parse_page(a.text)",
+    "df1 = pd.read_csv('train.csv')\ndf2 = df1.dropna()",
+    "x = np.zeros((3, 3))\ny = x + 1",
+    "with open('log.txt') as f:\n    first = json.loads(f.readline())\n    rest = f.read()",
+    "start = time.time()\nrun_job()\nprint('done')",
+    "os.makedirs('out/images', exist_ok=True)\nshutil.copy('a.png', 'out/images')",
+    "m1 = re.search(r'\\d+', line)\nwords = line.split()",
+    "plt.plot(xs, ys)\nplt.show()"
+   ],
+   "short": "repeated library call in Python",
+   "unit_kind": "broad code hum",
+   "confidence": "low",
+   "notes": "Reader of bonsai1/L27/N6396- (drop 0.07, small). Broad pole (1.9% of tokens >0.1 max). Probes: repeated requests.get 0.52 vs swapped second call 0.18, but other repeats (fetchall, client.get) stayed 0.05-0.13; globalMOO's best on-concept text reached only 0.19. Test sentences written blind from the label."
+  }
+ ],
+ "predictions": "likely weak: fire median near or below 0.20; near misses mostly below 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "step-down",
+   "inverse-gmoo",
+   "blind-room"
+  ]
+ }
+}
