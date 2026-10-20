@@ -77,7 +77,13 @@ DTYPE = _pick_dtype(DEVICE)
 
 
 def limit_memory(frac=0.8):
-    """Fail loudly instead of spilling into shared memory. CUDA only; a no-op elsewhere."""
+    """Fail loudly instead of spilling into shared memory. CUDA only; a no-op elsewhere.
+
+    BONSAI_GPU_FRACTION (environment or .env) lowers the cap for every process of a checkout, so jobs that share
+    the GPU (a stream and a batch run) each stay inside a budget: the caps must add up to less than the card."""
+    budget = _setting("BONSAI_GPU_FRACTION")
+    if budget:
+        frac = min(frac, float(budget))
     if DEVICE.type == "cuda":
         torch.cuda.set_per_process_memory_fraction(frac)
 
