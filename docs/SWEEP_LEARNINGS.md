@@ -26,6 +26,7 @@ abstraction pass. Each principle names its evidence and whether we have measured
 | 8 | **Load once, serve many.** One resident model per service, commands in-process. | `play why` 28 s → 3.3 s; every reload was a reset risk | 8× latency (measured) |
 | 9 | **One pre-registration for many units.** Pin the rule and the test sets before scoring; merge commits keep the hashes valid. | 1 protocol for 33 layers instead of 33 | fewer waits |
 | 10 | **Plan wall time by the foreground's duty cycle,** not by GPU minutes. | the stream held 28–70% of the GPU during scoring | planning |
+| 11 | **Pick the output format for the full model from the start:** per-layer columnar tables keyed by pole, words as token ids plus one vocab, lazy per-layer views. Check what the target machine allows (application control blocked Parquet here; Arrow IPC worked). | word hits for all 35 layers in about 65 MB (`atlas` release); one JSON file per pole would be gigabytes | scale (docs/SCALING.md) |
 
 **Open experiments** (the next speed and effectiveness questions):
 - stage 2's cost scales with hits × occurrences (847k × ≤ 256). Would capping occurrences per frequent trigger (e.g. 128) change any bins? It changes results, so it's the user's call; measure on one layer's occ store first
