@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-19-moridinamael-87ea2496",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N5481+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T02:27:18+00:00",
+ "neighbours": [
+  {
+   "unit": "L31/N5481",
+   "pole": "+",
+   "label": "a year from the 1800s written as a date, like 'in 1882' (not the same digits used as a count)",
+   "short": "1800s year as a date",
+   "roles": ["reads bonsai1/L22/N1146-"],
+   "fire": [
+    "The bridge over the river was completed in 1882 after years of delays.",
+    "My great-grandmother was born in 1857 in a small fishing village.",
+    "In 1869, the transcontinental railroad finally linked the two coasts.",
+    "The novel is set in London during the winter of 1843.",
+    "By 1890 the town had grown into a busy market center.",
+    "The letter, dated March 4, 1871, was found inside an old Bible.",
+    "Founded in 1824, the school still uses its original stone building.",
+    "The painting hung in the gallery from 1865 until it was sold."
+   ],
+   "quiet": [
+    "The bridge over the river cost 1882 dollars more than planned.",
+    "My great-grandmother knitted 1857 stitches before she ran out of yarn.",
+    "In total, 1869 workers signed up to build the railroad.",
+    "The novel runs to 1843 pages in its complete edition.",
+    "By the end of the season, 1890 visitors had come to the market.",
+    "The letter was one of 1871 documents found in the old archive.",
+    "The school currently enrolls 1824 students in its stone building.",
+    "The gallery received 1865 paintings in donations last year."
+   ],
+   "notes": "Step-in reader of bonsai1/L22/N1146- (drop 0.05). Test sentences written blind by a second author from the label only (blind:claude-opus-5-5 (label-only)). The - pole peaks before a count of years ('more than 200 years'); not tested here."
+  }
+ ],
+ "predictions": "Fire sentences peak on the space/'18' of the year; near misses use the same digits as counts and should stay low, though the period setting may lift a few.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "quick-test"
+  ]
+ }
+}
