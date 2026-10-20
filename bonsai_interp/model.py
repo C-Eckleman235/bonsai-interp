@@ -192,8 +192,11 @@ def _read_all(path: Path):
                 yield n, h.get_tensor(n)
 
 
-def load(name: str = "bonsai1"):
-    """Returns (model, tokenizer, recorder). The model lives on DEVICE (bonsai_interp.env)."""
+def load(name: str = "bonsai1", lm_head: bool = True):
+    """Returns (model, tokenizer, recorder). The model lives on DEVICE (bonsai_interp.env).
+    lm_head=False leaves the output matrix unloaded (on the meta device): for jobs that only run model.model (neuron
+    activations, never logits), it saves about 1.2 GB of GPU memory and the same off the load peak (Bonsai's lm_head
+    is untied and loads as a dense bf16 vocabulary matrix)."""
     import sys
     path = MODELS[name]
     from bonsai_interp.env import limit_memory
@@ -207,6 +210,9 @@ def load(name: str = "bonsai1"):
 
     modules = dict(model.named_modules())
     for n, t in _read_all(path):
+        if not lm_head and n == "lm_head.weight":
+            del t
+            continue
         mod_name, _, attr = n.rpartition(".")
         parent = modules[mod_name]
         if isinstance(parent, nn.Linear) and attr == "weight" and ".layers." in n:
@@ -215,7 +221,7 @@ def load(name: str = "bonsai1"):
         else:
             parent._parameters[attr] = nn.Parameter(t.to(COMPUTE_DTYPE).to(DEVICE), requires_grad=False)
         del t
-    if cfg.tie_word_embeddings:
+    if cfg.tie_word_embeddings and lm_head:
         model.lm_head.weight = model.model.embed_tokens.weight
 
     # rotary buffers were created on meta; rebuild them on the device

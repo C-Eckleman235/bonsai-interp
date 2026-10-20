@@ -666,11 +666,12 @@ def _gpu_idle(label=""):
         print(f"gpu_turn: {label}: yielded {YIELD['seconds']:.1f} s over {YIELD['ticks']} batches so far", flush=True)
 
 
-def _gpu_load():
-    """The model, with a gpu_turn tick before every forward pass (one per batch in every stage)."""
+def _gpu_load(lm_head=False):
+    """The model, with a gpu_turn tick before every forward pass (one per batch in every stage). The stages only run
+    model.model (activations, never logits), so the output matrix stays unloaded unless asked for (about 1.2 GB)."""
     from bonsai_interp.model import load
     _tick()
-    model, tok, rec = load("bonsai1")
+    model, tok, rec = load("bonsai1", lm_head=lm_head)
     model.model.register_forward_pre_hook(_tick)
     return model, tok, rec
 
@@ -1931,7 +1932,7 @@ def dossier_main(a):
     if a.links:
         from bonsai_interp.env import limit_memory
         limit_memory(0.8)
-        model = _gpu_load()
+        model = _gpu_load(lm_head=True)  # the feeder/reader probes may read logits
     P["dossiers"].mkdir(parents=True, exist_ok=True)
     for nid in ids:
         d = dossier(nid, P, vb, links=a.links, model=model)
