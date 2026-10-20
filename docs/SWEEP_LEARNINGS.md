@@ -75,6 +75,15 @@ Entry format:
 - **Transfers:** put resource limits and turn-taking in the one choke point every job passes through (the
   model loader), and treat any process a timeout leaves behind as a resource leak.
 
+**Don't load what the job never reads** (2026-10-20)
+- Bonsai-8B's untied lm_head expands to a dense 1.24 GB bf16 matrix. Activation screening never uses it, yet
+  it was 40% of the batch's 3.05 GB of weights.
+- `model.load(lm_head=False)` (fe17bd1) leaves it on the meta device: about 1.8 GB resident, with identical
+  scores. That let the batch fit a 3.6 GB budget beside a live stream.
+- **Transfers:** for activation-only sweeps, skip the unembedding, and also any layers deeper than the
+  deepest one being read. On a larger-vocabulary or wider model (e.g. 27B), the saving grows with
+  vocab × hidden.
+
 **From the stream side** (the Twitch session, 2026-10-20)
 - **A load gate checked at process start is too early.** Python imports take 10 s or more, so the gate
   passed before the batch had allocated. Check again immediately before the allocation, or hold a turn for
