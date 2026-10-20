@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-20-moridinamael-45aefce5",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N11508+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T19:13:19+00:00",
+ "roles": ["reads bonsai1/L34/N1441+"],
+ "neighbours": [
+  {
+   "unit": "L35/N11508",
+   "pole": "+",
+   "label": "In a multi-line Python code block, the function or method name of a call that repeats the same function already called on an earlier line (e.g. the second os.path.expanduser(...) in a row)",
+   "short": "repeated call's method name in a Python block",
+   "fire": [
+    "src = os.path.expanduser('~/data/in.csv')\ndst = os.path.expanduser('~/data/out.csv')",
+    "a = np.zeros((3, 3))\nb = np.zeros((4, 4))",
+    "print('Starting job')\nprint('Loading config')",
+    "x = int(input())\ny = int(input())",
+    "self.assertEqual(result, 4)\nself.assertEqual(count, 2)",
+    "parser.add_argument('--lr', type=float)\nparser.add_argument('--epochs', type=int)",
+    "items.append(first)\nitems.append(second)",
+    "logger.info('connected')\nlogger.info('sending payload')"
+   ],
+   "quiet": [
+    "if not found:\n            items = []\n            src = os.path.expanduser('~/data/in.csv')\n            dst = os.path.realpath('~/data/out.csv')",
+    "return self.assertTrue(repeated.value_eq(x, y))",
+    "src = os.path.expanduser('~/data/in.csv')\ndst = os.path.abspath('~/data/out.csv')",
+    "a = np.zeros((3, 3))\nb = np.ones((4, 4))",
+    "print('Starting job')\nlog('Loading config')",
+    "x = int(input())\ny = float(input())",
+    "self.assertEqual(result, 4)\nself.assertTrue(count > 2)",
+    "parser.add_argument('--lr', type=float)\nargs = parser.parse_args()"
+   ]
+  }
+ ],
+ "predictions": "Blind test written from the label only. Probes showed repeats need surrounding block context to fire strongly (short two-line snippets scored ~0.08), so the fire median may fall short of 0.20.",
+ "notes": "Step-in reader of bonsai1/L34/N1441+ (drop 0.03, tiny). Probes: second os.path.expanduser in an indented block 0.58 vs single call 0.06 vs swapped abspath 0.08; repeated numpy.array 0.37; stacked @app.route 0.37 (single 0.30). JS getElementById ~0.21 with or without repeat; Java-style list.add repeat 0.08 (solver silent case). The + pole also has some Korean word-start peaks not covered by this label.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-gmoo",
+   "bank-solo",
+   "blind-room"
+  ]
+ }
+}
