@@ -1,0 +1,153 @@
+{
+ "id": "2026-10-20-C-Eckleman235-f3999519",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N10474+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-20T20:37:34+00:00",
+ "recipe": {
+  "toolchain_commit": "a9b38da",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L9_N10474_pos/2026-10-20-C-Eckleman235-f3999519.tests.json"
+ },
+ "label": "the word ' Houston' in any of its senses: the Texas city, Sam Houston, Whitney Houston, Houston Street in Manhattan, Houston County; other names in the same frames stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L9_N10474_pos/2026-10-20-C-Eckleman235-f3999519.tests.json",
+   "prereg_commit": "a9b38da",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.563,
+     "peak": " Astros"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.378,
+     "peak": " Houston"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.726,
+     "peak": " Houston"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.602,
+     "peak": " Houston"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.662,
+     "peak": " Houston"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.295,
+     "peak": " Houston"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 1.067,
+     "peak": " Houston"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.834,
+     "peak": "Houston"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.048,
+     "peak": " Rangers"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.001,
+     "peak": " arena"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.059,
+     "peak": " Austin"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.041,
+     "peak": " Village"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.464,
+     "peak": "on"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.002,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.001,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.028,
+     "peak": " County"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.632,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "which"
+  ],
+  "detected": [],
+  "toolchain_commit": "a9b38da",
+  "minutes": 4,
+  "batch_size": 1
+ },
+ "short": "the word Houston",
+ "unit_kind": "lexical",
+ "confidence": 0.65,
+ "notes": "Found by a concept screen for single-city units inside Texas (Houston passages vs matched Dallas/Arlington/Fort Worth/San Antonio passages): >= 0.3 on 4 of 4, < 0.1 on every control. But probing shows it tracks the word, not the city: Houston Street in Lower Manhattan 0.83, Sam Houston 0.73, mission control in Houston 0.56, the Rockets 0.55, Whitney Houston 0.38. A useful contrast with the Texas pole bonsai1/L10/N8330+, which reads Whitney Houston ~0.01. Near misses keep each frame with another city or surname.",
+ "selection": "concept search: Texas branch 8 (Houston)"
+}
