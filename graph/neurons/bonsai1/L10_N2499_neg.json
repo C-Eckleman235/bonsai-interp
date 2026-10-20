@@ -2837,6 +2837,128 @@
     "near_misses_at_0.3": 2
    },
    "contribution": "2026-10-19-moridinamael-1c340101"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-f521276b.tests.json",
+   "prereg_commit": "39b7208",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 4,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.286,
+     "peak": " par"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.654,
+     "peak": " psychiatrist"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.202,
+     "peak": " training"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.542,
+     "peak": " teenagers"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.384,
+     "peak": " therapy"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.472,
+     "peak": " psychiatric"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.243,
+     "peak": " counselling"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.229,
+     "peak": " session"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.555,
+     "peak": " Internal"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.244,
+     "peak": " leak"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.06,
+     "peak": " ge"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.149,
+     "peak": " clinic"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.187,
+     "peak": " he"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.067,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.06,
+     "peak": " school"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.186,
+     "peak": " turns"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.844,
+    "median_fire": 0.335,
+    "near_misses_at_0.3": 1
+   },
+   "contribution": "2026-10-19-moridinamael-f521276b"
   }
  ],
  "label_history": [
@@ -2924,6 +3046,11 @@
    "2026-10-19-moridinamael-1c340101",
    "Weak preference for the words of the talking-cure professions: psychiatry/psychiatrist/psychiatric, psychology/psychologist, therapy/therapist and counselling/counsellor, even when the therapy is not for the mind (speech therapy). Ordinary medical scenes without these words (dentist, nurse, ER) stay low.",
    "failed"
+  ],
+  [
+   "2026-10-19-moridinamael-f521276b",
+   "Weak, dense hum that rises on mental-health care vocabulary: words naming the field or its professions (psychiatrist, psychiatric, psychologist, psychology, 'mental health') and words for talking-cure care (therapy, talk therapy, counselling, sharing feelings in group sessions). Plain diagnoses (depression, anxiety) and therapy acronyms (CBT) stay low. Known side channels: the word ' talking' even outside care (a talking parrot ~0.3) and ' therapy' in non-psychiatric senses (speech therapy ~0.45); ordinary medical scenes hum at 0.1-0.4, so it is a weak preference, not a clean switch.",
+   "failed"
   ]
  ],
  "examples": [],
@@ -2956,20 +3083,21 @@
   "2026-10-19-moridinamael-ff447df1",
   "2026-10-19-moridinamael-3d1b7205",
   "2026-10-19-moridinamael-3e4791d1",
-  "2026-10-19-moridinamael-1c340101"
+  "2026-10-19-moridinamael-1c340101",
+  "2026-10-19-moridinamael-f521276b"
  ],
  "qc": {
   "confirm": 7,
   "dispute": 0,
-  "refine": 15
+  "refine": 16
  },
  "replications": [],
  "scrutiny": {
   "level": 2,
   "name": "re-tested",
-  "test_rounds": 24,
-  "sentences": 384,
+  "test_rounds": 25,
+  "sentences": 400,
   "contributors": 1,
-  "qc": 22
+  "qc": 23
  }
 }
