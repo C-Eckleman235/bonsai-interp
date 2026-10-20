@@ -640,7 +640,7 @@ auto-token@1 read a pole's 32 top examples and guessed "the token X". At layer 1
 
 **Reading**
 - **A pole's commonest word is rarely its trigger.** 93% of word hits are unexplained: frequent tokens (indentation, ' ', ' =', digits, '\n', ' is', ' for') that the pole fires on in a median 0.4% of occurrences. They pass lift ≥ 10 only because the poles' base rates are tiny. These are sparse context poles whose context the 19 rule features do not capture. They are the dossier lane for agents: labelled for a context, not a word.
-- **Where a cheap rule exists, it holds about half the time on fresh text.** A lexical claim holds almost always. That is the opposite of auto-token@1, whose top-k "token" claims held 5% of the time: counting by frequency and screening the context first is what made the difference.
+- **Where a cheap rule exists, it holds about half the time on fresh text.** A lexical claim holds almost always. auto-token@1's top-k "token" claims held 5% of the time. The two runs are at different layers (12 and 20), so this is not a controlled comparison, but the gap is large. Running auto-token@1's rule at layer 20 would settle it.
 - **The map gets about 560 scrutiny-0 labels from this layer,** in bins (word, context, format, collocation, copy), plus a bin for every screened pole.
 
 **Stage 2's per-occurrence activations** are saved from the next layer on (`occ.npz`). A new context feature then becomes a CPU-only `refit`, which reproduced stage 2 exactly on a smoke run. Layer 20 predates the store. If a future filter needs it, that filter's first step re-runs layer 20's stage 2 with the store on (about 28 GPU min). That leaves the registered results untouched, because the stage is deterministic on the same windows.
