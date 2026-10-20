@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-20-moridinamael-3b60d2f4",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N1441+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T18:51:33+00:00",
+ "roles": ["reads bonsai1/L33/N7403+"],
+ "neighbours": [
+  {
+   "unit": "L34/N1441",
+   "pole": "+",
+   "label": "a method call like line.strip() inside a multi-line indented code block, not English describing the same step",
+   "short": "method call in a code block",
+   "notes": "Card flags the pole dense (53% of tokens >0.1 of max, 3% >0.3). Probes: calls inside indented multi-line blocks 0.55-0.65; the same call on a bare single line ~0.25; English describing the same operations 0.18-0.22; attribute reads in code (.shape, .length) hum ~0.37-0.47, so the call part is the weakest claim. Sentences written blind by a second author from the label only.",
+   "fire": [
+    "for line in f:\n    clean = line.strip()\n    rows.append(clean)",
+    "def load(path):\n    with open(path) as fh:\n        return fh.read().splitlines()",
+    "if user:\n    name = user.name.lower()\n    print(name)",
+    "while queue:\n    item = queue.pop()\n    seen.add(item)",
+    "for word in words:\n    counts[word] = counts.get(word, 0) + 1",
+    "try:\n    data = json.loads(raw)\n    result = data.get(\"id\")\nexcept ValueError:\n    pass",
+    "class Parser:\n    def run(self, text):\n        parts = text.split(\",\")\n        return parts",
+    "for row in reader:\n    key = row[0].upper()\n    table.update({key: row[1]})"
+   ],
+   "quiet": [
+    "For each line in the file, strip off the whitespace and add the cleaned line to the list of rows.",
+    "The load function opens the file at the given path, reads it, and splits the contents into separate lines.",
+    "If there is a user, convert their name to lowercase and then print it.",
+    "While the queue still has items, pop one off and add it to the set of seen items.",
+    "For every word, look up its current count, defaulting to zero, and increase it by one.",
+    "Try to parse the raw text as JSON and get the id field; if that fails, just ignore the error.",
+    "The parser's run step splits the text on commas and returns the resulting parts.",
+    "For each row in the reader, uppercase the first column and use it as the key when updating the table."
+   ]
+  }
+ ],
+ "predictions": "most code blocks fire above 0.30, English twins stay near 0.2; the risk is short blocks humming under 0.5",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
