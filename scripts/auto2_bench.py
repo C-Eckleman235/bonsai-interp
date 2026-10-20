@@ -1,6 +1,6 @@
 """Size auto-token@2's GPU footprint before a run: throughput and this process's peak memory per setting.
 
-  PYTHONPATH=. python scripts/auto2_bench.py [--quick]
+  PYTHONPATH=. python scripts/auto2_bench.py [--quick] [--scoring]
 
 A: the corpus passes (1,024-token windows, forward to a layer): batch x SDPA backend at layers 20 and 35.
 B: scoring (preamble + 48-token snippets, read at the last token): full vs preamble-cached x batch, at layers 4 and 20,
@@ -24,6 +24,7 @@ from bonsai_interp.model import StopForward
 from bonsai_interp.probe.textinv import PREAMBLES
 
 quick = "--quick" in sys.argv
+scoring_only = "--scoring" in sys.argv  # the fit check: scoring at layers 4 and 20 only
 limit_memory(0.8)
 model, tok, rec = ct._gpu_load()
 tok.padding_side = "right"
@@ -56,7 +57,7 @@ def timed(fn, n):
 print(f"weights resident: {torch.cuda.memory_allocated() / 2**30:.2f} GB", flush=True)
 from torch.nn.attention import SDPBackend, sdpa_kernel  # noqa: E402
 toks = explore.corpus()[:16].astype(np.int64)
-for L in ((20,) if quick else (20, 35)):
+for L in (() if scoring_only else (20,) if quick else (20, 35)):
     for name, be in (("default", None), ("efficient", SDPBackend.EFFICIENT_ATTENTION), ("flash", SDPBackend.FLASH_ATTENTION)):
         for B in (1, 2, 4, 8):
             x = torch.from_numpy(toks[:B]).to(DEVICE)
@@ -76,7 +77,7 @@ for L in (4, 20):
     pre_ids = tok(pre).input_ids
     joined = [tok(pre + t).input_ids for t in texts]
     texts_c = [j[len(pre_ids):] for j in joined if j[:len(pre_ids)] == pre_ids]
-    for B in (8, 16, 32, 64):
+    for B in ((4, 8, 16) if scoring_only else (8, 16, 32, 64)):
         chunk_full = [pre + t for t in texts[:B]]
 
         def full():
