@@ -99,6 +99,7 @@ RULE = {
     "lexical_rate": 0.5, "rule_precision": 0.5, "rule_recall": 0.3, "rule_margin": 0.3, "second_gain": 0.15,
     "template_n": 8, "template_ctx": 32, "template_move": 0.15,
     "snippet": 48, "n": 8, "n_rule_fail": 4,
+    "tests_per_pole": 0,  # 0: test every testable hit (up to triggers_per_pole); k: only each pole's k best (see TEST_PRIORITY)
     "judge": "quick-8+8@2 thresholds (AUROC >= 0.90, median fire >= 0.20, <= 1 near miss >= 0.30) on the activation at the "
              "snippet's last token, averaged over the three standard preambles",
 }
@@ -1282,6 +1283,25 @@ def _templates(model, rec, by_layer, B):
 
 # ---------------------------------------------------------------- auto tests (pre-registered) and scoring
 
+# the order in which a capped run keeps a pole's hits: layer 20's held rates per bin (lexical 97%, copy 67%, context 49%,
+# format 49%, predictive 47%, collocation 40%), then stage 1 coverage
+TEST_PRIORITY = ["lexical", "copy", "context", "format", "predictive", "collocation"]
+
+
+def cap_tests(rows, k):
+    """At most k testable hits per pole (k = 0: all), by TEST_PRIORITY then coverage; the rest stay screened, untested."""
+    if not k:
+        return rows
+    by = {}
+    for r in rows:
+        by.setdefault(r["neuron"], []).append(r)
+    keep = set()
+    for lst in by.values():
+        for r in sorted(lst, key=lambda r: (TEST_PRIORITY.index(r["bin"]), -r["stage1"]["coverage"]))[:k]:
+            keep.add(id(r))
+    return [r for r in rows if id(r) in keep]
+
+
 def label(row, vb):
     t = repr(vb["text"][row["trigger"]])
     if row["bin"] == "lexical":
@@ -1311,7 +1331,7 @@ def _prereg_layer(L, P, a):
     vb, tok = vocab(), explore.tokenizer()
     rows = _read_gz(P["screen"])
     toks, dom, w0 = _windows((16000, TEST[0]) if a.smoke else TEST, a)  # smoke tests stay out of the testing windows
-    todo = [r for r in rows if r["bin"] in TESTED]
+    todo = cap_tests([r for r in rows if r["bin"] in TESTED], R.get("tests_per_pole", 0))
     occ = _occurrences(toks, sorted({r["trigger"] for r in todo}), 4096, L, min_pos=max(R["snippet"], R["min_pos"]))
     d = np.load(P["hits"]) if P["hits"].exists() else None
     subs = Substitutes(d["freq"] if d is not None else np.bincount(toks.ravel().astype(np.int64), minlength=vb["V"]), vb)
