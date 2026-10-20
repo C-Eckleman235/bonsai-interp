@@ -1,0 +1,1138 @@
+"""The auto tier, version 2 (protocol auto-token@2): word hits by frequency, a context screen, dossiers.
+
+auto-token@1 labelled a pole by the commonest peak token of its 32 top examples and swapped that token out;
+at layer 12 only 34 of 644 such poles held, because most poles respond to their peak token only in particular
+contexts. This tier asks the corpus first and the top examples never:
+
+  python -m bonsai_interp.auto.context_tier protocol --layer 20   CPU: write the rule manifest (commit it ALONE, before any run)
+  python -m bonsai_interp.auto.context_tier hits     --layer 20   GPU, stage 1: strong activations by token over windows 0..7999
+  python -m bonsai_interp.auto.context_tier screen   --layer 20   GPU, stage 2: context model + minimal pairs on windows 8000..15999
+  python -m bonsai_interp.auto.context_tier prereg   --layer 20   CPU: auto tests from windows 16400.. (commit the manifest ALONE)
+  python -m bonsai_interp.auto.context_tier score    --layer 20   GPU: judge the auto tests
+  python -m bonsai_interp.auto.context_tier dossier  --neuron bonsai1/L20/N123+ [--links]   stage 3: input for an agent
+  (--smoke DIR runs any stage without the manifest checks and writes to DIR: for CPU tests only)
+
+Corpus windows are split three ways, so no stage reads the windows a later stage is judged on:
+  0..7999      selection (the scan read these too): stage 1
+  8000..15999  screening: stage 2 fits the context model and runs the minimal pairs here
+  16400..      testing: read only by `prereg` (texts, never activations) and `score`, after the tests are pinned
+  (16000..16399 are unused: the CPU smoke test of this code scored snippets from them at layer 20)
+
+Rule (protocol auto-token@2; every number lives in RULE and is pinned by the protocol manifest):
+1. Word hits. A pole is eligible when its corpus max >= min_max and the card would flag it neither dense nor
+   positional. Over the selection windows, from window position min_pos on (earlier positions are a window-start
+   artifact, FINDINGS 2026-10-18), an activation is strong when it reaches `strong` of the pole's corpus max. Per (pole, token) and (pole, previous token, token): n strong, precision = P(strong | token), lift =
+   precision / the pole's base rate, coverage = the share of the pole's strong activations the token explains.
+   A word hit has n >= min_strong, coverage >= min_coverage and lift >= min_lift. A pole's triggers are its
+   word hits, plus the token of any bigram hit whose token is not itself a word hit, at most triggers_per_pole,
+   by coverage.
+2. Context screen. For each (pole, trigger): up to occ_per_trigger occurrences of the trigger in the screening
+   windows, scored in their own context. Features: previous token, its word class, position in the line and the
+   sentence, position in the window, script, and code-like vs prose. Two more are tabulated but never enter a
+   rule: the following token (a correlate only: the model is causal, so it cannot cause the activation) and the
+   corpus domain (a property of the whole window, which a snippet does not carry, so a rule on it is untestable).
+   A rule of one or two (feature == value) conditions is fitted by information gain on strong. Bins:
+     rare         fewer than min_occ occurrences
+     context      the rule (previous token, word class or script) has precision >= rule_precision,
+                  recall >= rule_recall and beats the rate outside it by rule_margin
+     format       the same, on line position, sentence position or code-like text
+     positional   the same, on window position (not testable as a snippet)
+     lexical      no such rule, and strong on >= lexical_rate of all occurrences
+     unexplained  none of the above
+   (a rule that splits the occurrences wins over a high overall rate: it is the more specific claim)
+   Minimal pairs on screening snippets check the bin: lexical, swap the trigger for a same-shape word; context
+   on the previous token, swap that token out of (and into) the rule's context. Recorded, not a gate.
+3. Auto test (the protocol's own test), for lexical, context and format hits. Snippets of up to `snippet` tokens
+   from the testing windows that END on the trigger. Fire: 8 occurrences where the rule holds (any, for
+   lexical). Near misses: lexical, the same 8 with only the trigger swapped (as auto-token@1); context and
+   format, 4 occurrences of the trigger where the rule fails (the word without the context) and 4 fire snippets
+   with the trigger swapped (the context without the word), or 8 rule-fails when no substitute exists.
+   Each snippet is read at its last token (the trigger, or its swap), averaged over the three standard preambles,
+   and judged with the quick-8+8@2 thresholds. Scrutiny 0, like auto-token@1.
+4. Dossier (stage 3): the card, the stage 1 and 2 tables, screening examples and, with --links, the strongest
+   upstream feeders and downstream readers (play step / step --down). Nothing in it is scored on a test
+   sentence: an agent labels the pole from it and then writes a FRESH quick-8+8@3 test.
+"""
+import argparse
+import datetime as dt
+import gzip
+import hashlib
+import json
+import subprocess
+import sys
+import time
+import unicodedata
+from functools import lru_cache
+from pathlib import Path
+
+import numpy as np
+
+ROOT = Path(__file__).resolve().parents[2]
+OUT = ROOT / "data" / "auto2"
+MANIFESTS = ROOT / "graph" / "auto"
+PROTOCOL = "auto-token@2"
+N = 12288
+SELECT, SCREEN, TEST = (0, 8000), (8000, 16000), (16400, None)  # 16000..16399 were read by the CPU smoke test: never test windows
+RULE = {
+    "strong": 0.3, "min_max": 0.5, "min_pos": 64,
+    "min_strong": 8, "min_coverage": 0.05, "min_lift": 10.0, "triggers_per_pole": 3,
+    "occ_per_trigger": 256, "min_occ": 24, "min_support": 8,
+    "lexical_rate": 0.5, "rule_precision": 0.5, "rule_recall": 0.3, "rule_margin": 0.3, "second_gain": 0.15,
+    "template_n": 8, "template_ctx": 32, "template_move": 0.15,
+    "snippet": 48, "n": 8, "n_rule_fail": 4,
+    "judge": "quick-8+8@2 thresholds (AUROC >= 0.90, median fire >= 0.20, <= 1 near miss >= 0.30) on the activation at the "
+             "snippet's last token, averaged over the three standard preambles",
+}
+CONTEXT, FORMAT, POSITIONAL = ("prev_tok", "prev_class", "script"), ("line_pos", "sent_pos", "codeish"), ("win_pos",)
+FEATURES = CONTEXT + FORMAT + POSITIONAL
+TABLE_ONLY = ("domain", "next_class")  # tabulated, never in a rule (see the docstring)
+MODULE = Path(__file__).resolve()
+
+
+# ---------------------------------------------------------------- files, manifests, guards
+
+def _commit():
+    return subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, capture_output=True, text=True).stdout.strip()
+
+
+def _code_sha():
+    return hashlib.sha256(MODULE.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+
+
+def _paths(L, out=OUT, man=MANIFESTS):
+    b = f"bonsai1_L{L}"
+    return {"protocol": man / f"{b}.auto2.protocol.json", "prereg": man / f"{b}.auto2.prereg.json", "summary": man / f"{b}.auto2.summary.json",
+            "hits": out / f"{b}.hits.npz", "table": out / f"{b}.hits.jsonl.gz", "screen": out / f"{b}.screen.jsonl.gz",
+            "tests": out / f"{b}.auto2.tests.jsonl.gz", "results": out / f"{b}.auto2.results.jsonl.gz", "dossiers": out / "dossiers"}
+
+
+def _committed_alone_clean(p):
+    rel = p.relative_to(ROOT).as_posix()
+    log = subprocess.run(["git", "log", "--format=%H", "--", rel], cwd=ROOT, capture_output=True, text=True).stdout.split()
+    dirty = subprocess.run(["git", "status", "--porcelain", "--", rel], cwd=ROOT, capture_output=True, text=True).stdout.strip()
+    return (log[-1] if log else None), bool(dirty)
+
+
+def _setup(a):
+    """Output paths for this run. Real runs need the committed protocol manifest and this file unchanged since it."""
+    if a.smoke:
+        d = Path(a.smoke)
+        d.mkdir(parents=True, exist_ok=True)
+        return _paths(a.layer, d, d), {"rule": RULE}
+    P = _paths(a.layer)
+    if not P["protocol"].exists():
+        sys.exit(f"no protocol manifest: run `protocol --layer {a.layer}` and commit {P['protocol'].relative_to(ROOT)} on its own first")
+    first, dirty = _committed_alone_clean(P["protocol"])
+    if not first or dirty:
+        sys.exit(f"commit {P['protocol'].relative_to(ROOT)} on its own before running any stage (pre-registration)")
+    man = json.loads(P["protocol"].read_text(encoding="utf-8"))
+    if man["code_sha256"] != _code_sha():
+        sys.exit(f"{MODULE.name} changed since the protocol was registered: that is a new protocol version, not this one")
+    OUT.mkdir(parents=True, exist_ok=True)
+    return P, man
+
+
+def _write_gz(p, rows):
+    blob = "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows).encode("utf-8")
+    with gzip.GzipFile(p, "wb", mtime=0) as f:
+        f.write(blob)
+    return hashlib.sha256(blob).hexdigest()
+
+
+def _read_gz(p):
+    return [json.loads(x) for x in gzip.open(p, "rb").read().decode("utf-8").splitlines()]
+
+
+def _windows(span, a):
+    from bonsai_interp import explore
+    toks = explore.corpus()
+    lo, hi = span[0], span[1] if span[1] is not None else len(toks)
+    if getattr(a, "windows", None):
+        hi = min(hi, lo + a.windows)
+    t = getattr(a, "tokens", None) or toks.shape[1]
+    return toks[lo:hi, :t], _domains()[lo:hi], lo
+
+
+@lru_cache(None)
+def _domains():
+    return np.load(ROOT / "data" / "corpus.npz")["domain"]
+
+
+def pid(p, n, L):
+    return f"bonsai1/L{L}/N{n}{'+' if p == 0 else '-'}"
+
+
+# ---------------------------------------------------------------- vocabulary tables (byte-exact, no per-occurrence decode)
+
+def _bytes_to_unicode():
+    bs = list(range(ord("!"), ord("~") + 1)) + list(range(ord("¡"), ord("¬") + 1)) + list(range(ord("®"), ord("ÿ") + 1))
+    cs = bs[:]
+    n = 0
+    for b in range(256):
+        if b not in bs:
+            bs.append(b)
+            cs.append(256 + n)
+            n += 1
+    return dict(zip(bs, map(chr, cs)))
+
+
+_CLOSED = [  # first match wins
+    ("negation", "not never no n't nothing none nobody"),
+    ("intensifier", "very so too quite really extremely highly most more less rather pretty fairly incredibly particularly "
+                    "especially absolutely completely totally truly deeply"),
+    ("determiner", "the a an this that these those my your his her its our their some any every each another"),
+    ("preposition", "of in on at to for with from by about into over under between through after before without within "
+                    "during against among across upon"),
+    ("conjunction", "and or but nor yet because while although though if than whether"),
+    ("pronoun", "i you he she it we they me him us them who whom which what someone something"),
+    ("auxiliary", "is are was were be been being am has have had do does did will would can could should may might must shall "
+                  "'s 're 've 'll 'd"),
+]
+CLOSED = {w: c for c, ws in _CLOSED for w in ws.split()}
+PHRASE = {"negation": "a negation", "intensifier": "an intensifier (very, so, too, ...)", "determiner": "a determiner (the, a, this, ...)",
+          "preposition": "a preposition", "conjunction": "a conjunction", "pronoun": "a pronoun", "auxiliary": "an auxiliary verb",
+          "newline": "a line break", "comma": "a comma", "sentence-end": "a full stop or other sentence end", "open-bracket": "an opening bracket",
+          "close-bracket": "a closing bracket", "quote": "a quotation mark", "colon": "a colon or semicolon", "symbol": "a code symbol",
+          "number": "a number", "capitalized": "a capitalised word", "subword": "a word fragment", "adverb-ly": "an -ly adverb",
+          "verb-ing": "an -ing form", "verb-ed": "an -ed form", "noun-suffix": "a -tion/-ment/-ness noun",
+          "adjective-suffix": "an adjective (-ous, -ful, -ive, -al, ...)", "word": "an ordinary word", "space": "whitespace",
+          "non-latin": "a non-Latin-script word", "byte": "a byte fragment"}
+SCRIPTS = {"LATIN": "latin", "CYRILLIC": "cyrillic", "ARABIC": "arabic", "GREEK": "greek", "HEBREW": "hebrew", "DEVANAGARI": "devanagari",
+           "CJK": "cjk", "HIRAGANA": "cjk", "KATAKANA": "cjk", "HANGUL": "hangul", "THAI": "thai"}
+CODE_CHARS = set("{}()[];=<>_/\\|#$@*&^%~`")
+
+
+def _script_of(ch):
+    try:
+        return SCRIPTS.get(unicodedata.name(ch).split(" ")[0], "other")
+    except ValueError:
+        return "other"
+
+
+def _word_class(s):
+    if "\n" in s:
+        return "newline"
+    w = s.strip()
+    if not w:
+        return "space"
+    if "�" in s:
+        return "byte"
+    if all(unicodedata.category(c)[0] in "PS" for c in w):
+        if w in "([{" or w[-1] in "([{":
+            return "open-bracket"
+        if w[0] in ")]}":
+            return "close-bracket"
+        if w[0] in "\"'“”‘’`«»":
+            return "quote"
+        if w == ",":
+            return "comma"
+        if w[-1] in ".!?。！？":
+            return "sentence-end"
+        if w[-1] in ":;":
+            return "colon"
+        return "symbol"
+    if any(c.isalpha() and _script_of(c) != "latin" for c in w):
+        return "non-latin"
+    if any(c.isdigit() for c in w) and not any(c.isalpha() for c in w):
+        return "number"
+    if not s.startswith(" ") and w.isalpha():
+        return "subword"
+    lw = w.lower()
+    if lw in CLOSED:
+        return CLOSED[lw]
+    if w[:1].isupper():
+        return "capitalized"
+    for suf, c in (("ly", "adverb-ly"), ("ing", "verb-ing"), ("ed", "verb-ed")):
+        if lw.endswith(suf) and len(lw) > len(suf) + 2:
+            return c
+    if lw.endswith(("tion", "sion", "ment", "ness", "ity", "ism", "ance", "ence")):
+        return "noun-suffix"
+    if lw.endswith(("ous", "ful", "ive", "able", "ible", "al", "ic", "less", "ish")) and len(lw) > 4:
+        return "adjective-suffix"
+    return "word"
+
+
+@lru_cache(None)
+def vocab():
+    """Per token id: decoded text, raw bytes, word class, and newline / sentence-end flags."""
+    from bonsai_interp import explore
+    tok = explore.tokenizer()
+    V = len(tok)
+    b2u = {u: b for b, u in _bytes_to_unicode().items()}
+    pieces = tok.convert_ids_to_tokens(list(range(V)))
+    raw = []
+    for p in pieces:
+        try:
+            raw.append(bytes(b2u[c] for c in p))
+        except (KeyError, TypeError):
+            raw.append((p or "").encode("utf-8"))
+    text = [r.decode("utf-8", errors="replace") for r in raw]
+    cls = np.array([_word_class(t) for t in text], dtype=object)
+    nl = np.array(["\n" in t for t in text])
+    send = np.array([t.strip()[-1:] in tuple(".!?。！？") if t.strip() else False for t in text])
+    return {"V": V, "text": text, "raw": raw, "cls": cls, "nl": nl, "send": send}
+
+
+def features(ids, p, dom, vb):
+    """Context features of the token at position p of a window (ids), from what precedes it."""
+    prev = int(ids[p - 1]) if p > 0 else -1
+    f = {"prev_tok": f"t{prev}" if prev >= 0 else "none", "prev_class": vb["cls"][prev] if prev >= 0 else "none"}
+    k = 0
+    while k < 16 and p - 1 - k >= 0 and not vb["nl"][ids[p - 1 - k]]:
+        k += 1
+    f["line_pos"] = "line-start" if k == 0 else "1-3" if k <= 3 else "4-15" if k < 16 else "16+"
+    k = 0
+    while k < 5 and p - 1 - k >= 0 and not (vb["nl"][ids[p - 1 - k]] or vb["send"][ids[p - 1 - k]]):
+        k += 1
+    f["sent_pos"] = "first" if k == 0 else "2-5" if k < 5 else "6+"
+    f["win_pos"] = "64-255" if p < 256 else "256-511" if p < 512 else "512+"
+    ctx = b"".join(vb["raw"][int(t)] for t in ids[max(0, p - RULE["snippet"] + 1): p + 1]).decode("utf-8", errors="ignore")
+    sc = {}
+    for ch in ctx:
+        if ch.isalpha():
+            s = _script_of(ch)
+            sc[s] = sc.get(s, 0) + 1
+    f["script"] = max(sc, key=sc.get) if sc else "none"
+    f["domain"] = ["edu", "web", "multi", "code"][int(dom)] if dom is not None else "none"
+    sym = sum(ch in CODE_CHARS for ch in ctx)
+    f["codeish"] = "code-like" if ctx and (sym / len(ctx) >= 0.06 or "\n    " in ctx or "\t" in ctx) else "prose-like"
+    nxt = int(ids[p + 1]) if p + 1 < len(ids) else -1
+    f["next_class"] = vb["cls"][nxt] if nxt >= 0 else "none"
+    return f
+
+
+def value_text(feat, v, vb=None):
+    if feat == "prev_tok" and v.startswith("t"):
+        return repr((vb or vocab())["text"][int(v[1:])])
+    return v
+
+
+def condition_phrase(feat, v, vb):
+    if feat == "prev_tok":
+        return f"right after {value_text(feat, v, vb)}"
+    if feat == "prev_class":
+        return f"right after {PHRASE.get(v, v)}"
+    if feat == "line_pos":
+        return "at the start of a line" if v == "line-start" else f"{v} tokens into a line"
+    if feat == "sent_pos":
+        return "as the first word of a sentence" if v == "first" else f"{v} tokens into a sentence"
+    if feat == "win_pos":
+        return f"within window positions {v}"
+    if feat == "script":
+        return f"in {v}-script text"
+    if feat == "domain":
+        return {"multi": "in non-English (multilingual) text", "code": "in source code"}.get(v, f"in {v} text")
+    if feat == "codeish":
+        return "in code-like text" if v == "code-like" else "in prose"
+    return f"{feat} = {v}"
+
+
+# ---------------------------------------------------------------- model helpers
+
+def _forward(model, rec, x, L):
+    import torch
+    from bonsai_interp.model import StopForward
+    rec.mode, rec.layers, rec.stop_at = "act", {L}, L
+    try:
+        with torch.no_grad():
+            model.model(input_ids=x)
+    except StopForward:
+        pass
+    finally:
+        rec.mode, rec.stop_at = None, None
+    a = rec.store.pop(L)
+    rec.clear()
+    return a
+
+
+def _pole_max(L):
+    from bonsai_interp import explore
+    s = explore.scan("bonsai1")
+    return s["top_val"][L, 0, 0].astype(np.float64), s["top_val"][L, 1, 0].astype(np.float64)  # both positive magnitudes
+
+
+def eligibility(L):
+    """Per pole (2, N): 'eligible', 'weak', 'dense' or 'positional' (the card's flags, as auto-token@1)."""
+    from bonsai_interp import explore
+    from bonsai_interp.graph import card, which
+    ti, s = which.load_index(), explore.scan("bonsai1")
+    out = np.full((2, N), "eligible", dtype=object)
+    for p in (0, 1):
+        pos = s["top_pos"][L, p]  # (32, N)
+        share = np.array([np.unique(pos[:, n], return_counts=True)[1].max() / pos.shape[0] for n in range(N)])
+        early = ti["early"][L, p].astype(np.float64)
+        out[p][(early >= card.POSITIONAL) | (share >= card.POSITIONAL)] = "positional"
+        out[p][ti["dens10"][L, p] >= card.DENSE_10] = "dense"
+        out[p][ti["pole_max"][L, p] < RULE["min_max"]] = "weak"
+    return out
+
+
+class _Acc:
+    """Sparse counter of int64 keys: per-batch unique on the device, merged on the CPU."""
+
+    def __init__(self):
+        self.k, self.c, self.parts = np.zeros(0, np.int64), np.zeros(0, np.int64), []
+
+    def add(self, keys):
+        import torch
+        if keys.numel():
+            u, c = torch.unique(keys, return_counts=True)
+            self.parts.append((u.cpu().numpy(), c.cpu().numpy()))
+        if len(self.parts) >= 32:
+            self.merge()
+
+    def merge(self):
+        if not self.parts:
+            return
+        k = np.concatenate([self.k] + [p[0] for p in self.parts])
+        c = np.concatenate([self.c] + [p[1] for p in self.parts])
+        self.parts = []
+        o = np.argsort(k, kind="stable")
+        k, c = k[o], c[o]
+        first = np.flatnonzero(np.r_[True, k[1:] != k[:-1]])
+        self.k, self.c = k[first], np.add.reduceat(c, first)
+
+
+# ---------------------------------------------------------------- stage 1: word hits by frequency
+
+def hits(a):
+    import torch
+    from bonsai_interp.env import DEVICE, limit_memory
+    from bonsai_interp.model import load
+    P, man = _setup(a)
+    L = a.layer
+    toks, _, _ = _windows(SELECT, a)
+    vb = vocab()
+    V, NN, mp = vb["V"], 2 * N, RULE["min_pos"]
+    elig = eligibility(L)
+    pmax, nmax = _pole_max(L)
+    thr = np.stack([pmax, nmax]) * RULE["strong"]
+    thr[elig != "eligible"] = np.inf  # only eligible poles are counted (dense poles would swamp the counters)
+    thr_t = torch.tensor(thr, device=DEVICE, dtype=torch.float32)
+    limit_memory(0.8)
+    model, tok, rec = load("bonsai1")
+    uni, bi = _Acc(), _Acc()
+    total = torch.zeros(NN, dtype=torch.int64, device=DEVICE)
+    t0, B = time.time(), a.batch
+    print(f"stage 1, layer {L}: {len(toks)} windows x {toks.shape[1]} tokens, {int((elig == 'eligible').sum())} eligible poles", flush=True)
+    for b0 in range(0, len(toks), B):
+        x = torch.from_numpy(toks[b0:b0 + B].astype(np.int64)).to(DEVICE)
+        act = _forward(model, rec, x, L)[:, mp:]  # window starts are an artifact (FINDINGS 2026-10-18): not counted
+        for p in (0, 1):
+            v = act.float() if p == 0 else -act.float()
+            b, t, n = (v >= thr_t[p]).nonzero(as_tuple=True)
+            del v
+            pole = p * N + n
+            tk = x[b, t + mp]
+            uni.add(tk * NN + pole)
+            bi.add((x[b, t + mp - 1] * V + tk) * NN + pole)
+            total += torch.bincount(pole, minlength=NN)
+        del act
+        done = b0 + len(x)
+        if (b0 // B) % 25 == 0 or done == len(toks):
+            el = time.time() - t0
+            print(f"  {done}/{len(toks)} windows  {done * toks.shape[1] / el:,.0f} tok/s  eta {el / done * (len(toks) - done) / 60:.1f} min", flush=True)
+    uni.merge()
+    bi.merge()
+    keep = bi.c >= 3  # a bigram seen < 3 times strong can never be a hit (min_strong) and is noise in the tables
+    flat = toks.astype(np.int64)
+    freq = np.bincount(flat[:, mp:].ravel(), minlength=V)
+    bg, bgc = np.unique((flat[:, mp - 1:-1] * V + flat[:, mp:]).ravel(), return_counts=True)
+    bk = bi.k[keep] // NN
+    bfreq = bgc[np.clip(np.searchsorted(bg, bk), 0, len(bg) - 1)]
+    np.savez_compressed(P["hits"], layer=L, windows=len(toks), tokens_per_window=toks.shape[1], n_tokens=flat[:, mp:].size,
+                        uni_keys=uni.k, uni_counts=uni.c.astype(np.int32), bi_keys=bi.k[keep], bi_counts=bi.c[keep].astype(np.int32),
+                        bi_freq=bfreq.astype(np.int64), freq=freq, total=total.cpu().numpy(), elig=(elig == "eligible"),
+                        minutes=(time.time() - t0) / 60)
+    print(f"stage 1 pass {(time.time() - t0) / 60:.1f} min; {len(uni.k):,} (token, pole) and {int(keep.sum()):,} (bigram, pole) pairs -> {P['hits']}")
+    rank(a, P, elig)
+
+
+def rank(a, P=None, elig=None):
+    """The ranked word-hit table per pole and the triggers stage 2 screens (CPU, from the stage 1 counts)."""
+    if P is None:
+        P, _ = _setup(a)
+    L = a.layer
+    d = np.load(P["hits"])
+    vb = vocab()
+    V, NN = vb["V"], 2 * N
+    if elig is None:
+        elig = eligibility(L)
+    ntok, total, freq = int(d["n_tokens"]), d["total"], d["freq"]
+    pmax, nmax = _pole_max(L)
+    uk, uc = d["uni_keys"], d["uni_counts"]
+    bk, bc, bf = d["bi_keys"], d["bi_counts"], d["bi_freq"]
+
+    def groups(keys):
+        pole = keys % NN
+        o = np.argsort(pole, kind="stable")
+        starts = np.searchsorted(pole[o], np.arange(NN + 1))
+        return o, starts
+
+    uo, us = groups(uk)
+    bo, bs = groups(bk)
+    rows, counts = [], {}
+    R = RULE
+    for pp in range(NN):
+        p, n = divmod(pp, N)
+        cls = elig[p, n]
+        row = {"neuron": pid(p, n, L), "class": cls, "pole_max": round(float(pmax[n] if p == 0 else nmax[n]), 4)}
+        if cls == "eligible":
+            tot = int(total[pp])
+            base = tot / ntok
+            row["strong"] = tot
+            sel = uo[us[pp]:us[pp + 1]]
+            t_ids, cnt = uk[sel] // NN, uc[sel].astype(np.int64)
+            prec = cnt / np.maximum(freq[t_ids], 1)
+            lift = prec / base if base else np.zeros_like(prec)
+            cov = cnt / max(tot, 1)
+            o = np.argsort(-cnt, kind="stable")[:12]
+            row["words"] = [[int(t_ids[i]), int(cnt[i]), round(float(prec[i]), 4), round(float(lift[i]), 1), round(float(cov[i]), 4)] for i in o]
+            ok = (cnt >= R["min_strong"]) & (cov >= R["min_coverage"]) & (lift >= R["min_lift"])
+            trig = [{"token": int(t_ids[i]), "via": "word", "n": int(cnt[i]), "precision": round(float(prec[i]), 4),
+                     "lift": round(float(lift[i]), 1), "coverage": round(float(cov[i]), 4)}
+                    for i in np.flatnonzero(ok)[np.argsort(-cov[ok], kind="stable")]]
+            sel = bo[bs[pp]:bs[pp + 1]]
+            bkey, bcnt, bfr = bk[sel] // NN, bc[sel].astype(np.int64), bf[sel]
+            bprev, btok = bkey // V, bkey % V
+            bprec = bcnt / np.maximum(bfr, 1)
+            blift = bprec / base if base else np.zeros_like(bprec)
+            bcov = bcnt / max(tot, 1)
+            o = np.argsort(-bcnt, kind="stable")[:12]
+            row["bigrams"] = [[int(bprev[i]), int(btok[i]), int(bcnt[i]), round(float(bprec[i]), 4), round(float(blift[i]), 1),
+                               round(float(bcov[i]), 4)] for i in o]
+            ok = (bcnt >= R["min_strong"]) & (bcov >= R["min_coverage"]) & (blift >= R["min_lift"])
+            have = {t["token"] for t in trig}
+            for i in np.flatnonzero(ok)[np.argsort(-bcov[ok], kind="stable")]:
+                if int(btok[i]) not in have:
+                    have.add(int(btok[i]))
+                    trig.append({"token": int(btok[i]), "via": "bigram", "prev": int(bprev[i]), "n": int(bcnt[i]),
+                                 "precision": round(float(bprec[i]), 4), "lift": round(float(blift[i]), 1), "coverage": round(float(bcov[i]), 4)})
+            row["triggers"] = sorted(trig, key=lambda t: -t["coverage"])[:R["triggers_per_pole"]]
+            cls = "hit" if row["triggers"] else "no-hit"
+        counts[cls] = counts.get(cls, 0) + 1
+        rows.append(row)
+    _write_gz(P["table"], rows)
+    n_trig = sum(len(r.get("triggers", [])) for r in rows)
+    print(f"stage 1 table: {json.dumps(counts)}; {n_trig} (pole, trigger) hits -> {P['table']}")
+    return rows
+
+
+# ---------------------------------------------------------------- stage 2: context screen + minimal pairs
+
+def _entropy(p):
+    p = np.clip(p, 1e-12, 1 - 1e-12)
+    return -(p * np.log2(p) + (1 - p) * np.log2(1 - p))
+
+
+def _best_condition(enc, y, mask, exclude=()):
+    """Best (feature, value) by information gain on y within mask: (gain, feat, value index, support, positives)."""
+    best = None
+    yb = y[mask]
+    n = len(yb)
+    if n == 0:
+        return None
+    h0 = _entropy(yb.mean()) * n
+    for f, (u, inv) in enc.items():
+        if f in exclude:
+            continue
+        iv = inv[mask]
+        cnt = np.bincount(iv, minlength=len(u))
+        pos = np.bincount(iv, weights=yb, minlength=len(u))
+        for j in np.flatnonzero(cnt >= RULE["min_support"]):
+            if u[j] in ("other", "none"):
+                continue
+            c, k = cnt[j], pos[j]
+            if c == n:
+                continue
+            h = _entropy(k / c) * c + _entropy((yb.sum() - k) / (n - c)) * (n - c)
+            g = (h0 - h) / n
+            if k / c > (yb.sum() - k) / (n - c) and (best is None or g > best[0]):
+                best = (g, f, j, int(c), int(k))
+    return best
+
+
+def fit(feats, frac):
+    """The context model of one (pole, trigger) on its screening occurrences.
+    feats: {feature: array of values}; frac: activation at the trigger as a fraction of the pole's corpus max."""
+    R = RULE
+    y = (frac >= R["strong"]).astype(np.float64)
+    n = len(y)
+    out = {"n_occ": n, "strong_rate": round(float(y.mean()), 3) if n else 0.0, "median_frac": round(float(np.median(frac)), 3) if n else 0.0}
+    if n < R["min_occ"]:
+        out["bin"] = "rare"
+        return out, None
+    enc, table = {}, {}
+    tot_ss = float(((frac - frac.mean()) ** 2).sum()) or 1.0
+    for f, vals in feats.items():
+        vals = np.asarray(vals, dtype=object).astype(str)
+        u, inv = np.unique(vals, return_inverse=True)
+        cnt = np.bincount(inv)
+        vals = np.where(cnt[inv] >= R["min_support"], vals, "other")  # rare values pooled, so eta2 is not inflated
+        u, inv = np.unique(vals, return_inverse=True)
+        cnt = np.bincount(inv, minlength=len(u))
+        mean = np.bincount(inv, weights=frac, minlength=len(u)) / np.maximum(cnt, 1)
+        rate = np.bincount(inv, weights=y, minlength=len(u)) / np.maximum(cnt, 1)
+        eta2 = float((cnt * (mean - frac.mean()) ** 2).sum() / tot_ss)
+        top = np.argsort(-mean)[:4]
+        table[f] = {"eta2": round(eta2, 3), "top": [[str(u[j]), int(cnt[j]), round(float(mean[j]), 3), round(float(rate[j]), 3)] for j in top]}
+        if f not in TABLE_ONLY:
+            enc[f] = (u, inv)
+    out["features"] = table
+    all_mask = np.ones(n, bool)
+    c1 = _best_condition(enc, y, all_mask)
+    rule = None
+    if c1:
+        conds = [(c1[1], str(enc[c1[1]][0][c1[2]]))]
+        m = enc[c1[1]][1] == c1[2]
+        c2 = _best_condition(enc, y, m, exclude=(c1[1],))
+        if c2:
+            m2 = m & (enc[c2[1]][1] == c2[2])
+            prec1, prec2 = y[m].mean(), y[m2].mean()
+            if prec2 - prec1 >= R["second_gain"] and y[m2].sum() >= 0.5 * y[m].sum():
+                conds.append((c2[1], str(enc[c2[1]][0][c2[2]])))
+                m = m2
+        prec = float(y[m].mean())
+        rec_ = float(y[m].sum() / max(y.sum(), 1))
+        out_rate = float(y[~m].mean()) if (~m).any() else 0.0
+        rule = {"conditions": [list(c) for c in conds], "support": int(m.sum()), "precision": round(prec, 3), "recall": round(rec_, 3),
+                "rate_out": round(out_rate, 3)}
+        out["rule"] = rule
+    if rule and rule["precision"] >= R["rule_precision"] and rule["recall"] >= R["rule_recall"] \
+            and rule["precision"] - rule["rate_out"] >= R["rule_margin"]:  # the more specific claim first
+        fams = {c[0] for c in rule["conditions"]}
+        out["bin"] = "positional" if fams & set(POSITIONAL) else "context" if fams & set(CONTEXT) else "format"
+    elif out["strong_rate"] >= R["lexical_rate"]:
+        out["bin"] = "lexical"
+    else:
+        out["bin"] = "unexplained"
+    return out, rule
+
+
+def rule_mask(feats, rule):
+    m = np.ones(len(next(iter(feats.values()))), bool)
+    for f, v in rule["conditions"]:
+        m &= np.asarray(feats[f], dtype=object).astype(str) == v
+    return m
+
+
+class Substitutes:
+    """Same-shape words of similar frequency (the auto-token@1 swap), from non-test windows only."""
+
+    def __init__(self, freq, vb, seed=0):
+        self.freq, self.vb = freq, vb
+        text = vb["text"]
+        cands = [i for i in np.argsort(-freq)[:20000] if freq[i] >= 50 and text[i].strip().isalpha() and len(text[i].strip()) >= 3]
+        by = {}
+        for i in cands:
+            by.setdefault(self.shape(i), []).append(i)
+        self.ids = {sh: np.array(sorted(v, key=lambda i: freq[i])) for sh, v in by.items()}
+        self.lf = {sh: np.log(freq[v] + 1.0) for sh, v in self.ids.items()}
+
+    def shape(self, i):
+        s = self.vb["text"][i]
+        w = s.strip()
+        return (s[:1] == " ", w[:1].isupper(), w.isalpha())
+
+    def __call__(self, t, rng):
+        sh = self.shape(t)
+        if sh not in self.ids or not self.vb["text"][t].strip().isalpha():
+            return None
+        k = self.vb["text"][t].strip().lower()
+        ids, lf = self.ids[sh], self.lf[sh]
+        c = int(np.searchsorted(lf, np.log(self.freq[t] + 1.0)))
+        near = [int(i) for i in ids[max(0, c - 30): c + 30]
+                if (w := self.vb["text"][i].strip().lower()) != k and w[:4] != k[:4] and k[:4] not in w]
+        return near[rng.integers(len(near))] if near else None
+
+
+def _occurrences(toks, tokens, M, L, min_pos=1):
+    """{token: (windows, positions)}: up to M occurrences of each token in toks (seeded, spread over windows)."""
+    flat = toks.ravel()
+    T = toks.shape[1]
+    want = np.zeros(int(flat.max()) + 2 if flat.size else 1, bool)
+    tokens = [t for t in tokens if t < len(want)]
+    want[tokens] = True
+    idx = np.flatnonzero(want[flat])
+    idx = idx[(idx % T) >= min_pos]
+    o = np.argsort(flat[idx], kind="stable")
+    idx = idx[o]
+    st = np.searchsorted(flat[idx], np.arange(len(want) + 1))
+    out = {}
+    for t in tokens:
+        pos = idx[st[t]:st[t + 1]]
+        if len(pos) > M:
+            pos = np.sort(np.random.default_rng([L, t]).choice(pos, M, replace=False))
+        out[t] = (pos // T, pos % T)
+    return out
+
+
+def screen(a):
+    import torch
+    from bonsai_interp.env import DEVICE, limit_memory
+    from bonsai_interp.model import load
+    P, man = _setup(a)
+    L, R = a.layer, RULE
+    vb = vocab()
+    table = _read_gz(P["table"])
+    hitlist = [(r["neuron"], t) for r in table for t in r.get("triggers", [])]
+    if getattr(a, "limit_hits", None):  # smoke tests only
+        keep = np.random.default_rng(0).permutation(len(hitlist))[:a.limit_hits]
+        hitlist = [hitlist[i] for i in sorted(keep)]
+    toks, dom, w0 = _windows(SCREEN, a)
+    print(f"stage 2, layer {L}: {len(hitlist)} hits, {len(toks)} screening windows (from {w0})", flush=True)
+    occ = _occurrences(toks, sorted({t["token"] for _, t in hitlist}), R["occ_per_trigger"], L, min_pos=R["min_pos"])
+    pmax, nmax = _pole_max(L)
+    # one (occurrence, hit) pair per value to read: window, position, neuron, sign, hit index, slot
+    pw, pp, pn, ps, ph, pslot = [], [], [], [], [], []
+    for h, (nid, t) in enumerate(hitlist):
+        w, p = occ.get(t["token"], (np.zeros(0, int), np.zeros(0, int)))
+        n, sgn = int(nid.split("/N")[1][:-1]), 1.0 if nid.endswith("+") else -1.0
+        pw.append(w); pp.append(p); pn.append(np.full(len(w), n)); ps.append(np.full(len(w), sgn))
+        ph.append(np.full(len(w), h)); pslot.append(np.arange(len(w)))
+    pw, pp, pn, ps, ph, pslot = (np.concatenate(x) if x else np.zeros(0) for x in (pw, pp, pn, ps, ph, pslot))
+    pw, pp, pn, ph, pslot = (x.astype(np.int64) for x in (pw, pp, pn, ph, pslot))
+    mx = np.where(ps > 0, pmax[pn], nmax[pn])
+    frac = np.zeros(len(pw), np.float32)
+    order = np.argsort(pw, kind="stable")
+    pw_sorted = pw[order]
+    need = np.unique(pw)
+    limit_memory(0.8)
+    model, tok, rec = load("bonsai1")
+    t0, B = time.time(), a.batch
+    for i in range(0, len(need), B):
+        ws = need[i:i + B]
+        lo, hi = np.searchsorted(pw_sorted, [ws[0], ws[-1] + 1])
+        sel = order[lo:hi]
+        T = int(pp[sel].max()) + 1
+        x = torch.from_numpy(toks[ws, :T].astype(np.int64)).to(DEVICE)
+        act = _forward(model, rec, x, L)
+        row = torch.from_numpy(np.searchsorted(ws, pw[sel])).to(DEVICE)
+        v = act[row, torch.from_numpy(pp[sel]).to(DEVICE), torch.from_numpy(pn[sel]).to(DEVICE)].float().cpu().numpy()
+        frac[sel] = v * ps[sel] / mx[sel]
+        del act
+        if (i // B) % 25 == 0 or i + B >= len(need):
+            el = time.time() - t0
+            print(f"  {min(i + B, len(need))}/{len(need)} windows  eta {el / min(i + B, len(need)) * (len(need) - i - B) / 60:.1f} min", flush=True)
+    t_pass = time.time() - t0
+    # features once per trigger occurrence, shared by every pole with that trigger
+    feats = {}
+    for t, (w, p) in occ.items():
+        fs = [features(toks[wi], int(pi), dom[wi], vb) for wi, pi in zip(w, p)]
+        feats[t] = {f: np.array([x[f] for x in fs], dtype=object) for f in FEATURES + TABLE_ONLY}
+    by_hit = np.argsort(ph, kind="stable")
+    hst = np.searchsorted(ph[by_hit], np.arange(len(hitlist) + 1))
+    rows, plans = [], []
+    freq = np.bincount(np.asarray(toks, np.int64).ravel(), minlength=vb["V"])
+    subs = Substitutes(freq + np.load(P["hits"])["freq"], vb) if P["hits"].exists() else Substitutes(freq, vb)
+    for h, (nid, t) in enumerate(hitlist):
+        sel = by_hit[hst[h]:hst[h + 1]]
+        sel = sel[np.argsort(pslot[sel])]
+        fr = frac[sel].astype(np.float64)
+        fts = feats.get(t["token"], {f: np.zeros(0, object) for f in FEATURES + TABLE_ONLY})
+        res, rule = fit(fts, fr)
+        w, p = occ.get(t["token"], (np.zeros(0, int), np.zeros(0, int)))
+        o = np.argsort(-fr)
+        weak = [j for j in o[::-1] if fr[j] < R["strong"]][:3]
+        row = {"neuron": nid, "trigger": t["token"], "trigger_text": vb["text"][t["token"]], "via": t["via"], "stage1": t, **res,
+               "examples": {"strong": [[int(w[j]) + w0, int(p[j]), round(float(fr[j]), 3)] for j in o[:3] if fr[j] >= R["strong"]],
+                            "weak": [[int(w[j]) + w0, int(p[j]), round(float(fr[j]), 3)] for j in weak]}}
+        rows.append(row)
+        plans.append(_template_plan(row, rule, fts, fr, w, p, toks, subs, L))
+    print(f"stage 2 pass {t_pass / 60:.1f} min, fit {(time.time() - t0 - t_pass) / 60:.1f} min", flush=True)
+    _templates(model, rec, L, rows, plans, pmax, nmax, a.batch * 32)
+    _write_gz(P["screen"], rows)
+    tally = {}
+    for r in rows:
+        tally[r["bin"]] = tally.get(r["bin"], 0) + 1
+    print(f"stage 2 bins: {json.dumps(tally)}; minutes {(time.time() - t0) / 60:.1f} -> {P['screen']}")
+
+
+def _template_plan(row, rule, fts, fr, w, p, toks, subs, L):
+    """Minimal pairs for the bin the corpus model suggests: [(kind, original ids, edited ids)]."""
+    R, C = RULE, RULE["template_ctx"]
+    if row["bin"] not in ("lexical", "context"):
+        return None
+    rng = np.random.default_rng([L, row["trigger"], int(row["neuron"].split("/N")[1][:-1])])
+    ok = p >= C - 1
+    snip = lambda j: toks[w[j], p[j] - C + 1: p[j] + 1].astype(np.int64)
+    pairs = []
+    if row["bin"] == "lexical":
+        sub = subs(row["trigger"], rng)
+        if sub is None:
+            return None
+        for j in rng.permutation(np.flatnonzero(ok))[:R["template_n"]]:
+            s = snip(j)
+            e = s.copy()
+            e[-1] = sub
+            pairs.append(("swap-trigger", s, e))
+        return pairs
+    prev = [c for c in rule["conditions"] if c[0] in ("prev_tok", "prev_class")]
+    if not prev:
+        return None
+    f, v = prev[0]
+    rest = {"conditions": [c for c in rule["conditions"] if c != prev[0]]}
+    vals = np.asarray(fts[f], dtype=object).astype(str)
+    m_rest = rule_mask(fts, rest) if rest["conditions"] else np.ones(len(fr), bool)
+    in_m, out_m = m_rest & (vals == v) & ok, m_rest & (vals != v) & ok
+    prev_ids = np.array([int(toks[w[j], p[j] - 1]) for j in range(len(w))]) if len(w) else np.zeros(0, int)
+
+    def commonest(mask):
+        if not mask.any():
+            return None
+        u, c = np.unique(prev_ids[mask], return_counts=True)
+        return int(u[np.argmax(c)])
+    into = int(v[1:]) if f == "prev_tok" else commonest(in_m & (fr >= R["strong"]))
+    away = commonest(out_m & (fr < R["strong"]))
+    if into is None or away is None:
+        return None
+    for kind, mask, rep in (("leave-context", in_m, away), ("enter-context", out_m, into)):
+        for j in rng.permutation(np.flatnonzero(mask))[:R["template_n"]]:
+            s = snip(j)
+            e = s.copy()
+            e[-2] = rep
+            pairs.append((kind, s, e))
+    return pairs
+
+
+def _templates(model, rec, L, rows, plans, pmax, nmax, B):
+    """Score every minimal pair at the trigger (last) position and record the check in each row."""
+    import torch
+    from bonsai_interp.env import DEVICE
+    jobs = []  # (row index, kind, which, ids, n, sign)
+    for i, (r, pl) in enumerate(zip(rows, plans)):
+        if not pl:
+            r["template"] = {"check": "n/a"}
+            continue
+        n, sgn = int(r["neuron"].split("/N")[1][:-1]), 1.0 if r["neuron"].endswith("+") else -1.0
+        for kind, s, e in pl:
+            jobs += [(i, kind, 0, s, n, sgn), (i, kind, 1, e, n, sgn)]
+    vals = np.zeros(len(jobs))
+    for b in range(0, len(jobs), B):
+        ch = jobs[b:b + B]
+        x = torch.from_numpy(np.stack([j[3] for j in ch])).to(DEVICE)
+        act = _forward(model, rec, x, L)[:, -1].float().cpu().numpy()
+        for k, j in enumerate(ch):
+            vals[b + k] = act[k, j[4]] * j[5] / (pmax[j[4]] if j[5] > 0 else nmax[j[4]])
+    res = {}
+    for (i, kind, which, *_), v in zip(jobs, vals):
+        res.setdefault(i, {}).setdefault(kind, [[], []])[which].append(float(v))
+    mv = RULE["template_move"]
+    for i, kinds in res.items():
+        t = {}
+        for kind, (orig, edit) in kinds.items():
+            d = np.array(edit) - np.array(orig)
+            t[kind] = {"n": len(d), "orig_median": round(float(np.median(orig)), 3), "edit_median": round(float(np.median(edit)), 3),
+                       "median_change": round(float(np.median(d)), 3)}
+        if "swap-trigger" in t:
+            ok = t["swap-trigger"]["median_change"] <= -mv
+            t["check"] = "confirmed" if ok else "not confirmed"
+        else:
+            down = "leave-context" in t and t["leave-context"]["median_change"] <= -mv
+            up = "enter-context" in t and t["enter-context"]["median_change"] >= mv
+            t["check"] = "confirmed" if down and up else "partial" if down or up else "not confirmed"
+        rows[i]["template"] = t
+
+
+# ---------------------------------------------------------------- auto tests (pre-registered) and scoring
+
+def label(row, vb):
+    t = repr(vb["text"][row["trigger"]])
+    if row["bin"] == "lexical":
+        return f"the token {t} (auto: lexical; strong on {row['strong_rate']:.0%} of screening occurrences)"
+    cond = " and ".join(condition_phrase(f, v, vb) for f, v in row["rule"]["conditions"])
+    return f"the token {t} {cond} (auto: {row['bin']}; strong on {row['rule']['precision']:.0%} of such screening occurrences)"
+
+
+def prereg(a):
+    """Auto tests from the testing windows (texts only, nothing scored), pinned by sha256 in a manifest."""
+    from bonsai_interp import explore
+    P, man = _setup(a)
+    L, R = a.layer, RULE
+    vb, tok = vocab(), explore.tokenizer()
+    rows = _read_gz(P["screen"])
+    toks, dom, w0 = _windows((16000, TEST[0]) if a.smoke else TEST, a)  # smoke tests stay out of the testing windows
+    todo = [r for r in rows if r["bin"] in ("lexical", "context", "format")]
+    occ = _occurrences(toks, sorted({r["trigger"] for r in todo}), 4096, L, min_pos=max(R["snippet"], R["min_pos"]))
+    d = np.load(P["hits"]) if P["hits"].exists() else None
+    subs = Substitutes(d["freq"] if d is not None else np.bincount(toks.ravel().astype(np.int64), minlength=vb["V"]), vb)
+    feats_cache = {}
+    out, counts = [], {}
+    for r in rows:
+        counts[r["bin"]] = counts.get(r["bin"], 0) + 1
+    for r in todo:
+        n = int(r["neuron"].split("/N")[1][:-1])
+        rng = np.random.default_rng([L, r["trigger"], n, 2])
+        w, p = occ.get(r["trigger"], (np.zeros(0, int), np.zeros(0, int)))
+        if r["trigger"] not in feats_cache:
+            fs = [features(toks[wi], int(pi), dom[wi], vb) for wi, pi in zip(w, p)]
+            feats_cache[r["trigger"]] = {f: np.array([x[f] for x in fs], dtype=object) for f in FEATURES}
+        fts = feats_cache[r["trigger"]]
+        m = rule_mask(fts, r["rule"]) if r["bin"] != "lexical" and len(w) else np.ones(len(w), bool)
+
+        def pick(mask, k):
+            got, seen = [], set()
+            for j in rng.permutation(np.flatnonzero(mask)):
+                if w[j] not in seen:
+                    seen.add(w[j]); got.append(j)
+                if len(got) == k:
+                    break
+            return got
+        snip = lambda j: toks[w[j], p[j] - R["snippet"] + 1: p[j] + 1].astype(np.int64)
+        fire_j = pick(m, R["n"])
+        sub = subs(r["trigger"], rng)
+        fire, quiet, kinds = [tok.decode(snip(j)) for j in fire_j], [], []
+        swap = lambda j: tok.decode(np.concatenate([snip(j)[:-1], [sub]]))
+        if r["bin"] == "lexical":
+            if sub is not None:
+                quiet, kinds = [swap(j) for j in fire_j], ["swap-trigger"] * len(fire_j)
+        else:
+            k_fail = R["n_rule_fail"] if sub is not None else R["n"]
+            fail_j = pick(~m, k_fail)
+            quiet = [tok.decode(snip(j)) for j in fail_j]
+            kinds = ["rule-fails"] * len(fail_j)
+            if sub is not None:
+                quiet += [swap(j) for j in fire_j[:R["n"] - k_fail]]
+                kinds += ["swap-trigger"] * (R["n"] - k_fail)
+        base = {"neuron": r["neuron"], "trigger": r["trigger"], "bin": r["bin"], "template": r.get("template", {}).get("check")}
+        if len(fire) < R["n"] or len(quiet) < R["n"]:
+            counts["untestable"] = counts.get("untestable", 0) + 1
+            out.append({**base, "class": "untestable", "why": f"{len(fire)} fire, {len(quiet)} near misses available"})
+            continue
+        counts["tested"] = counts.get("tested", 0) + 1
+        out.append({**base, "class": "tested", "label": label(r, vb), "fire": fire, "quiet": quiet, "quiet_kind": kinds})
+    sha = _write_gz(P["tests"], out)
+    pre = {"protocol": PROTOCOL, "layer": L, "written": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+           "toolchain_commit": _commit(), "protocol_manifest": P["protocol"].relative_to(ROOT).as_posix() if not a.smoke else None,
+           "tests_file": P["tests"].relative_to(ROOT).as_posix() if not a.smoke else str(P["tests"]), "tests_sha256": sha,
+           "test_windows": f"{TEST[0]}..", "counts": counts}
+    P["prereg"].write_text(json.dumps(pre, indent=1) + "\n", encoding="utf-8", newline="\n")
+    print(json.dumps(counts))
+    print(f"wrote {P['tests']} and {P['prereg']}\nCommit the manifest ALONE before scoring.")
+
+
+def score(a):
+    import torch
+    from bonsai_interp.env import DEVICE, limit_memory
+    from bonsai_interp.graph.protocols import PROTOCOLS
+    from bonsai_interp.model import StopForward, load
+    from bonsai_interp.probe.textinv import PREAMBLES
+    P, man = _setup(a)
+    L = a.layer
+    pre = json.loads(P["prereg"].read_text(encoding="utf-8"))
+    blob = gzip.open(P["tests"], "rb").read()
+    if hashlib.sha256(blob).hexdigest() != pre["tests_sha256"]:
+        sys.exit("the tests file does not match its pre-registered sha256")
+    first = None
+    if not a.smoke:
+        first, dirty = _committed_alone_clean(P["prereg"])
+        if not first or dirty:
+            sys.exit(f"commit {P['prereg'].relative_to(ROOT)} on its own before scoring (pre-registration)")
+    rows = [json.loads(x) for x in blob.decode("utf-8").splitlines()]
+    todo = [r for r in rows if r["class"] == "tested"]
+    texts = sorted({t for r in todo for t in r["fire"] + r["quiet"]})
+    want = {}
+    for r in todo:
+        for t in r["fire"] + r["quiet"]:
+            want.setdefault(t, set()).add(r["neuron"])
+    pmax, nmax = _pole_max(L)
+    limit_memory(0.8)
+    model, tok, rec = load("bonsai1")
+    tok.padding_side = "right"
+    t0, B, sums = time.time(), a.batch, {}
+    print(f"scoring layer {L}: {len(todo)} tests, {len(texts)} snippets x {len(PREAMBLES)} preambles", flush=True)
+    for pre_text in PREAMBLES:
+        for b in range(0, len(texts), B):
+            chunk = texts[b:b + B]
+            enc = tok([pre_text + t for t in chunk], return_tensors="pt", padding=True).to(DEVICE)
+            rec.mode, rec.layers, rec.stop_at = "act", {L}, L
+            try:
+                with torch.no_grad():
+                    model.model(input_ids=enc.input_ids, attention_mask=enc.attention_mask)
+            except StopForward:
+                pass
+            finally:
+                rec.mode, rec.stop_at = None, None
+            x = rec.store.pop(L)
+            rec.clear()
+            # read at the snippet's last token (the trigger or its swap): the claim is about that position, and a max over
+            # a long snippet would let a near miss fire elsewhere (on another place where the rule holds)
+            last = enc.attention_mask.sum(1) - 1
+            at = x[torch.arange(len(chunk), device=x.device), last].float().cpu().numpy()
+            pos, neg = at, -at
+            for j, t in enumerate(chunk):
+                for nid in want[t]:
+                    n = int(nid.split("/N")[1][:-1])
+                    v = pos[j, n] / pmax[n] if nid.endswith("+") else neg[j, n] / nmax[n]
+                    sums[(t, nid)] = sums.get((t, nid), 0.0) + float(v) / len(PREAMBLES)
+    rule = PROTOCOLS["quick-8+8@2"]["rule"]
+    out, tally, by_bin = [], {}, {}
+    for r in rows:
+        if r["class"] == "tested":
+            per = [{"set": "fire", "text": t, "act": round(sums[(t, r["neuron"])], 4)} for t in r["fire"]] + \
+                  [{"set": "quiet", "text": t, "act": round(sums[(t, r["neuron"])], 4), "kind": k} for t, k in zip(r["quiet"], r["quiet_kind"])]
+            res = rule({"per_sentence": per})
+            r = {**r, "per_sentence": per, "outcome": res, "median_fire": round(float(np.median([q["act"] for q in per if q["set"] == "fire"])), 3)}
+            tally[res] = tally.get(res, 0) + 1
+            key = f"{r['bin']}/{r['template'] or 'n/a'}"
+            by_bin.setdefault(key, {}).setdefault(res, 0)
+            by_bin[key][res] += 1
+        out.append(r)
+    sha = _write_gz(P["results"], out)
+    summ = {"layer": L, "protocol": PROTOCOL, "scored": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+            "toolchain_commit": _commit(), "prereg_commit": first[:12] if first else None, "counts": pre["counts"], "outcomes": tally,
+            "outcomes_by_bin_and_template": by_bin, "poles_held": len({r["neuron"] for r in out if r.get("outcome") == "held"}),
+            "minutes": round((time.time() - t0) / 60, 1), "results_file": P["results"].relative_to(ROOT).as_posix() if not a.smoke else str(P["results"]),
+            "results_sha256": sha}
+    P["summary"].write_text(json.dumps(summ, indent=1) + "\n", encoding="utf-8", newline="\n")
+    print(json.dumps(summ, indent=1))
+
+
+# ---------------------------------------------------------------- stage 3: dossiers
+
+def _context(w, p, before=40, after=8):
+    from bonsai_interp import explore
+    toks, tok = explore.corpus(), explore.tokenizer()
+    ids = toks[w]
+    return (tok.decode(ids[max(0, p - before):p]) + "⟦" + tok.decode(ids[p:p + 1]) + "⟧" + tok.decode(ids[p + 1:p + 1 + after])).replace("\n", "⏎")
+
+
+def dossier(neuron, P, vb, links=False, model=None, max_bytes=64000):
+    """Everything an agent needs to label one pole, from selection and screening windows only (never a test window)."""
+    from bonsai_interp.graph import card
+    name, L, n, pole = card.parse(neuron)
+    nid = f"bonsai1/L{L}/N{n}{pole}"
+    t1 = next((r for r in _read_gz(P["table"]) if r["neuron"] == nid), None)
+    t2 = [r for r in _read_gz(P["screen"]) if r["neuron"] == nid] if P["screen"].exists() else []
+    show = lambda t: vb["text"][t]
+    d = {"neuron": nid, "protocol": PROTOCOL, "about": "input for labelling; NOT a test. Write a fresh quick-8+8@3 test after reading it. "
+         "Fractions are of the pole's corpus max; stage 1 read windows 0..7999, stage 2 windows 8000..15999.",
+         "card": card.card(nid, k=6)}
+    if t1:
+        d["stage1"] = {"class": t1["class"], "strong": t1.get("strong"),
+                       "words": [{"token": show(t), "n": c, "precision": pr, "lift": li, "coverage": co} for t, c, pr, li, co in t1.get("words", [])],
+                       "bigrams": [{"prev": show(a_), "token": show(t), "n": c, "precision": pr, "lift": li, "coverage": co}
+                                   for a_, t, c, pr, li, co in t1.get("bigrams", [])],
+                       "triggers": [{**t, "token": show(t["token"]), **({"prev": show(t["prev"])} if "prev" in t else {})} for t in t1.get("triggers", [])]}
+    d["stage2"] = []
+    for r in t2:
+        e = {k: r[k] for k in ("trigger_text", "via", "n_occ", "strong_rate", "median_frac", "bin") if k in r}
+        if "rule" in r:
+            e["rule"] = {**r["rule"], "reads": " and ".join(condition_phrase(f, v, vb) for f, v in r["rule"]["conditions"])}
+        if "features" in r:
+            e["features"] = {f: {"eta2": x["eta2"], "top": [[value_text(f, v, vb), c, m, s] for v, c, m, s in x["top"]]}
+                             for f, x in sorted(r["features"].items(), key=lambda kv: -kv[1]["eta2"])}
+        e["template"] = r.get("template")
+        e["examples"] = {k: [{"frac": fr, "text": _context(w, p)} for w, p, fr in v] for k, v in r.get("examples", {}).items()}
+        d["stage2"].append(e)
+    if links and model is not None:
+        from bonsai_interp.probe.quick import one_back, one_forward
+        rec = model[2]
+        d["upstream"] = one_back(model[0], rec, L, n, 0 if pole == "+" else 1, k_show=6)
+        d["downstream"] = one_forward(model[0], rec, L, n, 0 if pole == "+" else 1, k_show=6)
+        rec_idx = ROOT / "graph" / "index.json"
+        idx = json.loads(rec_idx.read_text(encoding="utf-8"))["neurons"] if rec_idx.exists() else {}
+        for side in ("upstream", "downstream"):
+            for u in d[side]:
+                for sfx in ("+", "-"):
+                    r_ = idx.get(f"bonsai1/{u['unit'].rstrip('+-')}{sfx}")
+                    if r_:
+                        u.setdefault("map", {})[sfx] = f"{r_['status']}: {r_.get('short') or r_.get('label')}"
+    else:
+        d["links"] = "not computed (run with --links on a GPU: play step / step --down)"
+    blob = json.dumps(d, ensure_ascii=False)
+    for k in (6, 4, 2, 1):  # trim card examples, then stage 2 examples, to stay under the 64 KB data-policy cap
+        if len(blob.encode("utf-8")) <= max_bytes:
+            break
+        for p_ in d["card"]["poles"].values():
+            p_["examples"] = p_["examples"][:k]
+        for e in d["stage2"]:
+            e["examples"] = {kk: v[:max(1, k // 2)] for kk, v in e["examples"].items()}
+            for f in e.get("features", {}).values():
+                f["top"] = f["top"][:max(2, k // 2)]
+        blob = json.dumps(d, ensure_ascii=False)
+    return d
+
+
+def dossier_main(a):
+    P, _ = _setup(a) if a.smoke else (_paths(a.layer), None)
+    vb = vocab()
+    if a.neuron:
+        ids = a.neuron
+    else:
+        rows = _read_gz(P["screen"])
+        ids = list(dict.fromkeys(r["neuron"] for r in rows if r["bin"] != "rare"))[:a.top]
+    model = None
+    if a.links:
+        from bonsai_interp.env import limit_memory
+        from bonsai_interp.model import load
+        limit_memory(0.8)
+        model = load("bonsai1")
+    P["dossiers"].mkdir(parents=True, exist_ok=True)
+    for nid in ids:
+        d = dossier(nid, P, vb, links=a.links, model=model)
+        f = P["dossiers"] / (nid.replace("bonsai1/", "bonsai1_").replace("/", "_").replace("+", "_pos").replace("-", "_neg") + ".json")
+        f.write_text(json.dumps(d, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
+        print(f"wrote {f} ({f.stat().st_size / 1024:.1f} KB)")
+
+
+# ---------------------------------------------------------------- the protocol manifest
+
+def protocol(a):
+    """The rule, pinned before stage 1 runs on this layer: commit this file ALONE, then run the stages."""
+    P = _paths(a.layer)
+    rel = MODULE.relative_to(ROOT).as_posix()
+    if subprocess.run(["git", "status", "--porcelain", "--", rel], cwd=ROOT, capture_output=True, text=True).stdout.strip():
+        sys.exit(f"commit {rel} first: the manifest pins the committed code by sha256")
+    man = {"protocol": PROTOCOL, "layer": a.layer, "written": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+           "toolchain_commit": _commit(), "code": rel, "code_sha256": _code_sha(),
+           "windows": {"selection": f"{SELECT[0]}..{SELECT[1] - 1}", "screening": f"{SCREEN[0]}..{SCREEN[1] - 1}", "testing": f"{TEST[0]}.."},
+           "rule": RULE, "features": list(FEATURES), "table_only": list(TABLE_ONLY), "bins": {"context": list(CONTEXT), "format": list(FORMAT), "positional": list(POSITIONAL)},
+           "expectations": [
+               "more poles at this layer get a held auto label than auto-token@1 found at layer 12 (34 of 24,576)",
+               "lexical hits hold at a higher rate than context hits, and context hits at a higher rate than format hits",
+               "among context and lexical hits, those whose minimal pairs confirm the bin hold at a higher rate than the rest",
+               "most eligible poles have at least one word hit, and most hits land in context or unexplained, not lexical"],
+           "note": "expectations are recorded before the run and reported either way; they are not gates"}
+    MANIFESTS.mkdir(parents=True, exist_ok=True)
+    P["protocol"].write_text(json.dumps(man, indent=1) + "\n", encoding="utf-8", newline="\n")
+    print(f"wrote {P['protocol'].relative_to(ROOT)}\nCommit it ALONE before running any stage: git add {P['protocol'].relative_to(ROOT).as_posix()} "
+          f"&& git commit -m \"Pre-register auto-token@2, layer {a.layer}\"")
+
+
+def main():
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(encoding="utf-8")
+        except (AttributeError, ValueError):
+            pass
+    ap = argparse.ArgumentParser()
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    for name in ("protocol", "hits", "rank", "screen", "prereg", "score", "dossier"):
+        p = sub.add_parser(name)
+        p.add_argument("--layer", type=int, required=True)
+        p.add_argument("--batch", type=int, default=8)
+        p.add_argument("--smoke", help="run without the manifest checks, writing everything to this folder (CPU tests)")
+        p.add_argument("--windows", type=int, help="read at most this many windows of each split (smoke tests)")
+        p.add_argument("--tokens", type=int, help="read only the first this-many tokens of each window (smoke tests)")
+        p.add_argument("--threads", type=int, help="torch CPU threads")
+        p.add_argument("--rule", nargs="*", default=[], help="smoke only: override RULE entries, e.g. min_strong=3")
+        p.add_argument("--limit-hits", type=int, help="smoke only: screen a random subset of this many hits")
+        if name == "dossier":
+            p.add_argument("--neuron", nargs="*")
+            p.add_argument("--top", type=int, default=8, help="without --neuron: dossiers for the first N screened poles")
+            p.add_argument("--links", action="store_true", help="add upstream feeders and downstream readers (loads the model)")
+    a = ap.parse_args()
+    if a.threads:
+        import torch
+        torch.set_num_threads(a.threads)
+    if not a.smoke and (a.windows or a.tokens or a.rule or a.limit_hits):
+        sys.exit("--windows, --tokens, --rule and --limit-hits are for --smoke runs only: a registered run reads the whole split")
+    for kv in a.rule:
+        k, v = kv.split("=", 1)
+        RULE[k] = type(RULE[k])(v)
+    {"protocol": protocol, "hits": hits, "rank": rank, "screen": screen, "prereg": prereg, "score": score, "dossier": dossier_main}[a.cmd](a)
+
+
+if __name__ == "__main__":
+    main()
