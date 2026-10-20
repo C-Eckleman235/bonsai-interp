@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-20-moridinamael-7946f56f",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N2005-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T23:49:48+00:00",
+ "neighbours": [
+  {
+   "unit": "L34/N2005",
+   "pole": "-",
+   "label": "Inside a block of several ALL-CAPS constant definitions (lines like SCREEN_WIDTH_PX = 800 or #define NAME value), the second and later parts of each multi-word name; not single-word caps names, the same names in lowercase snake_case, or ALL-CAPS constants used inside an expression",
+   "short": "inner parts of ALL-CAPS constant names in a definition block",
+   "roles": ["reads bonsai1/L33/N8029-"],
+   "fire": [
+    "SCREEN_WIDTH_PX = 800\nSCREEN_HEIGHT_PX = 600\nFRAME_RATE_CAP = 60",
+    "#define MAX_BUFFER_SIZE 4096\n#define DEFAULT_TIMEOUT_MS 250\n#define RETRY_LIMIT_COUNT 5",
+    "const API_BASE_URL = 'https://example.com/v1';\nconst REQUEST_TIMEOUT_SECONDS = 30;\nconst MAX_RETRY_ATTEMPTS = 3;",
+    "public static final int PLAYER_START_HEALTH = 100;\npublic static final int ENEMY_SPAWN_RATE = 4;\npublic static final double GRAVITY_ACCEL_MPS = 9.81;",
+    "const TILE_SIZE_PIXELS: u32 = 32;\nconst MAP_GRID_COLUMNS: u32 = 64;\nconst MAP_GRID_ROWS: u32 = 48;",
+    "LEARNING_RATE_INITIAL = 0.001\nBATCH_SIZE_TRAIN = 64\nNUM_EPOCHS_TOTAL = 20\nWEIGHT_DECAY_FACTOR = 1e-4",
+    "#define LED_PIN_RED 9\n#define LED_PIN_GREEN 10\n#define LED_PIN_BLUE 11\n#define SERIAL_BAUD_RATE 9600",
+    "export DATABASE_HOST_NAME=localhost\nexport DATABASE_PORT_NUMBER=5432\nexport CACHE_EXPIRY_SECONDS=600"
+   ],
+   "quiet": [
+    "WIDTH = 800\nHEIGHT = 600\nFPS = 60",
+    "#define BUFFER 4096\n#define TIMEOUT 250\n#define RETRIES 5",
+    "if (player.health > PLAYER_START_HEALTH / 2) { enemy.rate = ENEMY_SPAWN_RATE * 2; }",
+    "tile_size_pixels = 32\nmap_grid_columns = 64\nmap_grid_rows = 48",
+    "LR = 0.001\nBATCH = 64\nEPOCHS = 20\nDECAY = 1e-4",
+    "analogWrite(LED_PIN_RED, brightness + LED_PIN_GREEN - offset);",
+    "export HOST=localhost\nexport PORT=5432\nexport TTL=600",
+    "pages := (total + DEFAULT_PAGE_SIZE - 1) / DEFAULT_PAGE_SIZE"
+   ],
+   "confidence": "medium",
+   "notes": "Cold arm of the deep-cell experiment: labelled from this pole's own card, top examples and probes only. Reader of bonsai1/L33/N8029- (drop 0.02, small). Fire and near-miss sentences written blind by a second author from the label only. Probes: camelCase definition blocks reached 0.16-0.27 (soft edge, left out of the label); the + pole is the lowercase snake_case counterpart."
+  }
+ ],
+ "predictions": "Most ALL-CAPS definition blocks fire above 0.20; single-word, lowercase and in-expression near misses stay under 0.30, with in-expression uses the likeliest to leak.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
