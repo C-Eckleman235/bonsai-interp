@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-19-moridinamael-b05d2a36",
+ "kind": "qc",
+ "neuron": "bonsai1/L10/N2499-",
+ "contributor": "moridinamael",
+ "created": "2026-10-20T03:01:35+00:00",
+ "recipe": {
+  "toolchain_commit": "a42d8f0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-b05d2a36.tests.json"
+ },
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-b05d2a36.tests.json",
+   "prereg_commit": "a42d8f0",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.286,
+     "peak": " par"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.531,
+     "peak": " psychiatrist"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.202,
+     "peak": " training"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.301,
+     "peak": " exam"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.256,
+     "peak": " away"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.171,
+     "peak": " Tuesday"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.465,
+     "peak": " psychiatric"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.562,
+     "peak": " sessions"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.293,
+     "peak": " tablets"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.118,
+     "peak": " curtains"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.068,
+     "peak": "or"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.138,
+     "peak": " season"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.159,
+     "peak": " Fridays"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.171,
+     "peak": " Tuesday"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.128,
+     "peak": " beds"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.097,
+     "peak": "olar"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.93,
+    "median_fire": 0.293,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "a42d8f0",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "Weak, dense hum that rises on mental-health care vocabulary: words naming the field or its professions (psychiatrist, psychiatric, psychologist, psychology, 'mental health') and words for talking-cure care (therapy, talk therapy, counselling, sharing feelings in group sessions). Plain diagnoses (depression, anxiety) and therapy acronyms (CBT) stay low. Known side channel: the word ' talking' even outside care (a talking parrot ~0.3); ordinary medical scenes hum at 0.1-0.4, so it is a weak preference, not a clean switch."
+ }
+}
