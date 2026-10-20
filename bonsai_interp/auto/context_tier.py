@@ -133,7 +133,7 @@ def _paths(L, out=OUT, man=MANIFESTS):
     return {"protocol": man / f"{b}.auto2.protocol.json", "prereg": man / f"{b}.auto2.prereg.json", "summary": man / f"{b}.auto2.summary.json",
             "hits": out / f"{b}.hits.npz", "table": out / f"{b}.hits.jsonl.gz", "screen": out / f"{b}.context.jsonl.gz",
             "tests": out / f"{b}.auto2.tests.jsonl.gz", "results": out / f"{b}.auto2.results.jsonl.gz", "dossiers": out / "dossiers",
-            "occ": out / f"{b}.occ.npz", "refit": out / f"{b}.context.refit.jsonl.gz"}
+            "occ": out / f"{b}.occ.npz", "refit": out / f"{b}.context.refit.jsonl.gz", "amend": man / f"{b}.auto2.amendments.json"}
 
 
 def _committed_alone_clean(p):
@@ -156,8 +156,9 @@ def _setup(a):
     if not first or dirty:
         sys.exit(f"commit {P['protocol'].relative_to(ROOT)} on its own before running any stage (pre-registration)")
     man = json.loads(P["protocol"].read_text(encoding="utf-8"))
-    if man["code_sha256"] != _code_sha():
-        sys.exit(f"{MODULE.name} changed since the protocol was registered: that is a new protocol version, not this one")
+    if _code_sha() not in _allowed_shas({"amend": P["amend"]}, man):
+        sys.exit(f"{MODULE.name} changed since the protocol was registered and the change is not a committed speed amendment "
+                 f"(amend --layer {a.layer}): that is a new protocol version, not this one")
     OUT.mkdir(parents=True, exist_ok=True)
     return P, man
 
@@ -1419,6 +1420,21 @@ def _score_layer(model, tok, rec, L, P, tests_sha, counts, prereg_commit, B, smo
     pmax, nmax = _pole_max(L)
     tok.padding_side = "right"
     t0, sums, y0 = time.time(), {}, YIELD["seconds"]
+    # checkpoint: partial sums and the next batch to run, so a stop (STOP, a reset, a crash) loses minutes, not the layer
+    ck = P["results"].with_name(f"bonsai1_L{L}.score.ckpt")
+    resume, n_done = (-1, -1, -1), 0
+    if ck.exists():
+        import pickle
+        st = pickle.loads(ck.read_bytes())
+        if st["tests_sha"] == tests_sha and st["B"] == B:
+            sums, resume = st["sums"], tuple(st["pos"])
+            print(f"resuming layer {L} from its checkpoint at {resume} ({len(sums)} partial sums)", flush=True)
+
+    def save(pos):
+        import pickle
+        tmp = ck.with_suffix(".tmp")
+        tmp.write_bytes(pickle.dumps({"tests_sha": tests_sha, "B": B, "pos": pos, "sums": sums}))
+        tmp.replace(ck)
     print(f"scoring layer {L}: {len(todo)} tests, {len(texts)} snippets x {len(PREAMBLES)} preambles", flush=True)
     def add(chunk, at):
         for j, t in enumerate(chunk):
@@ -1441,7 +1457,9 @@ def _score_layer(model, tok, rec, L, P, tests_sha, counts, prereg_commit, B, smo
         return x
 
     pad = tok.pad_token_id if tok.pad_token_id is not None else 0
-    for pre_text in PREAMBLES:
+    for pi, pre_text in enumerate(PREAMBLES):
+        if pi < resume[0]:
+            continue
         # the preamble's keys and values, computed once to this layer and reused for every snippet: the same token inputs
         # as encoding preamble + snippet together; snippets whose joined encoding splits differently take the full path
         pre_ids = tok(pre_text).input_ids
@@ -1459,26 +1477,44 @@ def _score_layer(model, tok, rec, L, P, tests_sha, counts, prereg_commit, B, smo
         cached = sorted((t for t in texts if joined[t][:P_] == pre_ids), key=lambda t: len(joined[t]))
         full = [t for t in texts if joined[t][:P_] != pre_ids]
         for b in range(0, len(cached), B):
-            _stop_requested()
-            chunk = cached[b:b + B]
-            suf = [joined[t][P_:] for t in chunk]
-            T = max(len(x) for x in suf)
-            ids = torch.tensor([x + [pad] * (T - len(x)) for x in suf], device=DEVICE)
-            m = torch.tensor([[1] * (P_ + len(x)) + [0] * (T - len(x)) for x in suf], device=DEVICE)
-            c = copy.deepcopy(cache)
-            c.batch_repeat_interleave(len(chunk))
-            x = run(ids, m, c)
-            last = torch.tensor([len(x_) - 1 for x_ in suf], device=x.device)  # read at the snippet's last token
-            add(chunk, x[torch.arange(len(chunk), device=x.device), last].float().cpu().numpy())
+            if (pi, 0, b) < resume:
+                continue
+            try:
+                _stop_requested()
+                chunk = cached[b:b + B]
+                suf = [joined[t][P_:] for t in chunk]
+                T = max(len(x) for x in suf)
+                ids = torch.tensor([x + [pad] * (T - len(x)) for x in suf], device=DEVICE)
+                m = torch.tensor([[1] * (P_ + len(x)) + [0] * (T - len(x)) for x in suf], device=DEVICE)
+                c = copy.deepcopy(cache)
+                c.batch_repeat_interleave(len(chunk))
+                x = run(ids, m, c)
+                last = torch.tensor([len(x_) - 1 for x_ in suf], device=x.device)  # read at the snippet's last token
+                add(chunk, x[torch.arange(len(chunk), device=x.device), last].float().cpu().numpy())
+            except SystemExit:  # STOP before or during this batch: nothing of it was added
+                save((pi, 0, b))
+                raise
+            n_done += 1
+            if n_done % 300 == 0:
+                save((pi, 0, b + B))
         for b in range(0, len(full), B):
-            _stop_requested()
-            chunk = full[b:b + B]
-            enc = tok([pre_text + t for t in chunk], return_tensors="pt", padding=True).to(DEVICE)
-            x = run(enc.input_ids, enc.attention_mask)
-            # read at the snippet's last token (the trigger or its swap): the claim is about that position, and a max over
-            # a long snippet would let a near miss fire elsewhere (on another place where the rule holds)
-            last = enc.attention_mask.sum(1) - 1
-            add(chunk, x[torch.arange(len(chunk), device=x.device), last].float().cpu().numpy())
+            if (pi, 1, b) < resume:
+                continue
+            try:
+                _stop_requested()
+                chunk = full[b:b + B]
+                enc = tok([pre_text + t for t in chunk], return_tensors="pt", padding=True).to(DEVICE)
+                x = run(enc.input_ids, enc.attention_mask)
+                # read at the snippet's last token (the trigger or its swap): the claim is about that position, and a max
+                # over a long snippet would let a near miss fire elsewhere (on another place where the rule holds)
+                last = enc.attention_mask.sum(1) - 1
+                add(chunk, x[torch.arange(len(chunk), device=x.device), last].float().cpu().numpy())
+            except SystemExit:
+                save((pi, 1, b))
+                raise
+            n_done += 1
+            if n_done % 300 == 0:
+                save((pi, 1, b + B))
     rule = PROTOCOLS["quick-8+8@2"]["rule"]
     out, tally, by_bin = [], {}, {}
     for r in rows:
@@ -1494,6 +1530,7 @@ def _score_layer(model, tok, rec, L, P, tests_sha, counts, prereg_commit, B, smo
         out.append(r)
     _gpu_idle(f"score, layer {L}")
     sha = _write_gz(P["results"], out)
+    ck.unlink(missing_ok=True)
     summ = {"layer": L, "protocol": PROTOCOL, "scored": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
             "toolchain_commit": _commit(), "prereg_commit": prereg_commit[:12] if prereg_commit else None, "counts": counts, "outcomes": tally,
             "outcomes_by_bin_and_template": by_bin, "poles_held": len({r["neuron"] for r in out if r.get("outcome") == "held"}),
@@ -1635,8 +1672,9 @@ def _allowed_shas(M, man):
 
 
 def amend_all(a):
-    """Record the current code as a speed-only amendment of the multi-layer protocol (then commit the file ALONE)."""
-    M = _multi_paths()
+    """Record the current code as a speed-only amendment of the multi-layer protocol, or with `amend --layer L` of one
+    layer's protocol (then commit the file ALONE)."""
+    M = _multi_paths() if a.layer is None else {"amend": _paths(a.layer)["amend"]}
     rel = MODULE.relative_to(ROOT).as_posix()
     if subprocess.run(["git", "status", "--porcelain", "--", rel], cwd=ROOT, capture_output=True, text=True).stdout.strip():
         sys.exit(f"commit {rel} first: the amendment pins the committed code by sha256")
@@ -1920,17 +1958,18 @@ def main():
             pass
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
-    for name in ("protocol", "hits", "rank", "screen", "refit", "prereg", "score", "export", "backup", "dossier",
+    for name in ("protocol", "amend", "hits", "rank", "screen", "refit", "prereg", "score", "export", "backup", "dossier",
                  "protocol-all", "amend-all", "hits-all", "screen-all", "prereg-all", "score-all", "export-all"):
         p = sub.add_parser(name)
         if name.endswith("-all"):
             p.add_argument("--layers", required=True, help="comma-separated layers, e.g. 0,1,2,3")
             p.add_argument("--rescore", action="store_true", help="score-all: score layers that already have a summary again")
-            p.add_argument("--note", help="amend-all: what changed and why it is speed-only")
-            p.add_argument("--parity", help="amend-all: the parity check (same outcomes on the same inputs)")
             p.set_defaults(layer=None)
         else:
             p.add_argument("--layer", type=int, required=True)
+        if name in ("amend", "amend-all"):
+            p.add_argument("--note", help="what changed and why it is speed-only")
+            p.add_argument("--parity", help="the parity check (same outcomes on the same inputs)")
         p.add_argument("--batch", type=int, default=8)
         p.add_argument("--smoke", help="run without the manifest checks, writing everything to this folder (CPU tests)")
         p.add_argument("--windows", type=int, help="read at most this many windows of each split (smoke tests)")
@@ -1954,7 +1993,7 @@ def main():
         k, v = kv.split("=", 1)
         RULE[k] = type(RULE[k])(v)
     {"protocol": protocol, "hits": hits, "rank": rank, "screen": screen, "prereg": prereg, "score": score, "export": export, "dossier": dossier_main, "refit": refit, "backup": backup,
-     "protocol-all": protocol_all, "amend-all": amend_all, "hits-all": hits_all, "screen-all": screen_all, "prereg-all": prereg_all, "score-all": score_all,
+     "protocol-all": protocol_all, "amend-all": amend_all, "amend": amend_all, "hits-all": hits_all, "screen-all": screen_all, "prereg-all": prereg_all, "score-all": score_all,
      "export-all": export_all}[a.cmd](a)
 
 

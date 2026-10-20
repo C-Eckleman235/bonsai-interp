@@ -63,3 +63,22 @@ Entry format:
 - **Keep per-occurrence activations from the screen** (`occ.npz`). A new context filter is then a CPU refit
   instead of another GPU pass.
 - **Merge with merge commits, never squash or rebase,** so the registration hashes cited in summaries stay valid.
+
+## Run log
+
+### 2026-10-20 L4 score trial (beside the live stream, gpu_turn on)
+- measured: 99 min of wall time for 25,054 of about 29,800 batches (84%), at batch 16, BelowNormal priority, the
+  0.35 cap and L4's registered (uncached) scorer. 4,187 s (70%) was yielded to the stream's foreground turns, so
+  about 29 GPU minutes did 84% of the work: a full L4 score is about 35 GPU minutes.
+- bottleneck:
+  - The stream held the GPU 70% of the time.
+  - A driver event (nvlddmkm 153, 12:23:29 local) made the watcher create STOP. The scorer exited at the next batch
+    boundary, 3 s later, with no kill and no follow-on reset.
+  - Scoring writes nothing until a layer ends, so 29 GPU minutes were lost.
+- change before the next unit: scoring checkpoints its partial sums every few hundred batches and resumes from
+  them, so a stop loses minutes, not a layer (parity check: a stopped and resumed score must equal an uninterrupted
+  one).
+- gain of the previous change: the graceful stop worked as designed (STOP to exit in 3 s, the turn released).
+- transfers:
+  - On a shared display GPU, budget wall time by the foreground's duty cycle (here 70%), not by GPU minutes.
+  - Stops are routine, so every long stage must checkpoint. Design it in from the start, not after a lost run.
