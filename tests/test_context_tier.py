@@ -111,6 +111,16 @@ def test_store_round_trip(tmp=Path(__file__).resolve().parent / "_store_check.np
     assert np.allclose(f2, frac, atol=1e-3) and np.allclose(c2, ctxm, atol=1e-3)
 
 
+def test_test_cap_keeps_the_best_hit_per_pole():
+    rows = [{"neuron": "a", "bin": "context", "stage1": {"coverage": 0.5}}, {"neuron": "a", "bin": "lexical", "stage1": {"coverage": 0.1}},
+            {"neuron": "a", "bin": "context", "stage1": {"coverage": 0.6}}, {"neuron": "b", "bin": "collocation", "stage1": {"coverage": 0.2}}]
+    assert ct.cap_tests(rows, 0) == rows
+    one = ct.cap_tests(rows, 1)
+    assert [(r["neuron"], r["bin"]) for r in one] == [("a", "lexical"), ("b", "collocation")]
+    two = ct.cap_tests(rows, 2)
+    assert [(r["neuron"], r["bin"], r["stage1"]["coverage"]) for r in two] == [("a", "lexical", 0.1), ("a", "context", 0.6), ("b", "collocation", 0.2)]
+
+
 def test_splits_disjoint():
     assert ct.SELECT[1] <= ct.SCREEN[0] and ct.SCREEN[1] <= ct.TEST[0]
 
