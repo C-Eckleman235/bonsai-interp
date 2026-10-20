@@ -646,3 +646,18 @@ auto-token@1 read a pole's 32 top examples and guessed "the token X". At layer 1
 **Stage 2's per-occurrence activations** are saved from the next layer on (`occ.npz`). A new context feature then becomes a CPU-only `refit`, which reproduced stage 2 exactly on a smoke run. Layer 20 predates the store. If a future filter needs it, that filter's first step re-runs layer 20's stage 2 with the store on (about 28 GPU min). That leaves the registered results untouched, because the stage is deterministic on the same windows.
 
 **Backup:** the layer's data files are in the `auto2-data` release and its map file in `auto-screens`, with sha256 and sizes in the summary's `artifacts`.
+
+**Speed log (auto-token@2 run)**
+
+| unit | measured | bottleneck | change | parity |
+|---|---|---|---|---|
+| L20 | hits 23.3, screen 28.2, score 19.2 min (batch 8/8/16, mostly uncapped) | – | baseline | – |
+| L4 hits | 15.2 min to depth 4 at batch 2 under the 0.35 cap; 14.5k tok/s falling to 10.7k when the CPU was shared; GPU busy 17–63% | the sparse counter (a device-to-CPU copy every batch, frequent CPU re-sorts) and the batch-2 cap | the counter merges on the device and copies to the CPU every 16 batches | counts identical to the old counter on random key streams |
+| all-layer build | CPU smoke on layers 2, 3 and 5: 474 s for the passes vs 818 s single-layer | one forward per layer | one forward pass per batch reads every layer | identical outputs; stored activations within 1.9e-6 |
+| L4 score | crashed after 8 min | an NVIDIA driver reset (nvlddmkm 153 three times; LiveKernelEvent 117/141) with the stream on the GPU | none yet: the batch stops; it runs only while the stream is offline | – |
+
+Not yet measured: batch size against attention backend under the cap. A 1 GiB fp32 allocation at batch 8 suggests SDPA falls back to its math kernel here.
+
+Two scale facts for the plan:
+- Layer 4 made 10,088 auto tests (layer 20 made 1,185), about 160k snippets × 3 preambles. Scoring dominates the early layers.
+- L4 is registered (13e20da) and its tests are pinned (e1546fb). Its scoring will be rerun with its registered code, from a worktree at 6d2fb42, once the GPU is free.
