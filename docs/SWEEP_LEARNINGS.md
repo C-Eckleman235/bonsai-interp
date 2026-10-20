@@ -127,10 +127,15 @@ Entry format:
   - transformers and other imports: about 0.9
   - the CUDA context: about 0.5
   - plus any data it loads, e.g. a 1 GiB corpus scan
-- **Freed host memory isn't returned to Windows,** so per-command copies become a permanent high-water mark.
-  The stream's probe loaded the scan once per command; it now shares one read-only copy.
-- **Budget:** host commit ≥ the GPU allocations + 2–4 GiB per torch process + its data. A full 16 GB card can
+  - plus about 2–3 GiB that Python can't see: CUDA libraries such as cuBLAS, loaded lazily on first use, and
+    native load-time leftovers. This grows over the first hours of use.
+- **A measured resident service:** the stream's probe commits about 11 GiB.
+  - Accounted for: the GPU backing 4.2, torch 1.6, imports 0.9, the scan 1.1, the CUDA context 0.5, the corpus 0.2.
+  - Unaccounted: about 2.6.
+- **Budget:** host commit ≥ the GPU allocations + 4–6 GiB per torch process + its data. A full 16 GB card can
   cost 16 GB of commit on its own.
+- *Withdrawn* (an earlier entry was wrong): freed host memory IS returned to Windows; a freed 1 GiB array drops
+  commit by 1 GiB. An apparent high-water mark was an `lru_cache` keeping the scan alive.
 - **Transfers:** on Windows, watch the commit charge as closely as VRAM, and keep the number of torch processes
   small.
 
