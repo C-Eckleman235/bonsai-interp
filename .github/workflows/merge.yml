@@ -34,6 +34,11 @@ jobs:
           # a first-time contributor's first PR waits for a maintainer; once one of theirs has merged, GitHub calls them
           # CONTRIBUTOR and their conforming PRs merge automatically
           assoc=$(gh api "repos/$REPO/pulls/$n" --jq .author_association)
+          # a PR opened before its author's first merge keeps the stale FIRST_TIME association, so also ask GitHub
+          # whether this author has any merged PR here
+          author=$(gh api "repos/$REPO/pulls/$n" --jq .user.login)
+          merged=$(gh pr list --repo "$REPO" --author "$author" --state merged --limit 1 --json number --jq 'length')
+          [ "$merged" -gt 0 ] && assoc=CONTRIBUTOR
           case "$assoc" in OWNER|MEMBER|COLLABORATOR|CONTRIBUTOR) ;; *)
             echo "lane=first-time" >> "$GITHUB_OUTPUT"
             gh pr comment "$n" --repo "$REPO" --body "Checks pass. This is your first contribution here, so a maintainer will look before it merges; after that, conforming PRs from you merge automatically. Thanks!"
