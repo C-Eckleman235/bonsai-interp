@@ -1,0 +1,46 @@
+{
+ "contribution": "2026-10-20-C-Eckleman235-c3791619",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N4445-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T13:56:29+00:00",
+ "neighbours": [
+  {
+   "unit": "L33/N4445",
+   "pole": "-",
+   "label": "a word-start fragment (' Se', '-st', ' sc', ' Stre') that begins a severity or injury word in medical text (Se|vere, blood-st|reaked, sc|arring, Stre|ptococcus); the same words as single tokens or the same fragments in non-medical words stay quiet",
+   "fire": [
+    "The patient arrived with blood-streaked vomit after the fall.",
+    "Severe dehydration can follow days of diarrhea in infants.",
+    "Severe burns on the hands need specialist wound care.",
+    "His saliva was blood-stained and he complained of chest pain.",
+    "Streptococcal pharyngitis is treated with penicillin.",
+    "Severe allergic reactions can close the airway within minutes.",
+    "The nurse noted blood-streaked urine on the second day.",
+    "Severe anemia left her pale and short of breath."
+   ],
+   "quiet": [
+    "The patient arrived with mild bruising after the fall.",
+    "Untreated, severe dehydration can follow days of diarrhea.",
+    "Burns on the hands can be severe and need wound care.",
+    "His saliva was clear and he complained of chest pain.",
+    "Stochastic models of pharyngitis outbreaks guide planning.",
+    "In rare cases, severe allergic reactions close the airway.",
+    "The nurse noted clear urine on the second day.",
+    "Severn Valley clinics treat anemia in pale, tired patients."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "medical word-start fragment",
+ "unit_kind": "contextual",
+ "confidence": 0.55,
+ "notes": "The + pole fires on the same s-fragments in neutral words (St|ochastic, _st|ations, ст|ерео), so the two poles split one fragment by medical vs neutral continuation. Probing: '-st' (streaked) 0.92, ' Se' (Severe) 0.59, ' sc' (scarring) 0.16; 'stations' 0.003. Near misses: lowercase ' severe' is a single token, or the fragment starts a non-medical word."
+}

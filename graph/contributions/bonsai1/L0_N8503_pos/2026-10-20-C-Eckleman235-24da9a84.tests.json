@@ -1,0 +1,46 @@
+{
+ "contribution": "2026-10-20-C-Eckleman235-24da9a84",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N8503+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T13:56:29+00:00",
+ "neighbours": [
+  {
+   "unit": "L0/N8503",
+   "pole": "+",
+   "label": "byte-fragment tokens of the rare character 彿 in 彷彿 ('as if'), split by the tokenizer into bytes; the same sentence without it stays quiet",
+   "fire": [
+    "他站在窗前，彷彿看見了故鄉的山。",
+    "那一刻，彷彿時間停止了。",
+    "她的聲音彷彿從很遠的地方傳來。",
+    "月光下的湖面彷彿一面鏡子。",
+    "老人笑了，彷彿想起了年輕的時候。",
+    "這座城市彷彿一夜之間變了樣。",
+    "孩子們的笑聲彷彿春天的風。",
+    "他沉默不語，彷彿什麼都沒聽見。"
+   ],
+   "quiet": [
+    "他站在窗前，看見了故鄉的山。",
+    "那一刻，時間停止了。",
+    "她的聲音從很遠的地方傳來。",
+    "月光下的湖面很安靜。",
+    "老人笑了，想起了年輕的時候。",
+    "這座城市一夜之間變了樣。",
+    "孩子們的笑聲很響亮。",
+    "他沉默不語，什麼都沒聽見。"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "rare-CJK byte fragments",
+ "unit_kind": "lexical",
+ "confidence": 0.3,
+ "notes": "Max is only 0.46 and the gate-closed echo regime (-x-) dominates (95%). Top 32: '�' byte tokens x31. Probing: 彷彿 0.68, but 珀 in another sentence 0.03, and common characters 0.008, so it is selective among rare characters. Near misses use only common, whole-token characters. The card's top examples span many rare characters; this test covers only 彿, the one that replicated."
+}
