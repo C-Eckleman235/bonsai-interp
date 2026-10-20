@@ -154,6 +154,35 @@ def card(neuron, k=6, logits=True, before=40, after=8):
             out["direct"] = {"error": f"weights unavailable: {e.__class__.__name__}"}
     rec = record(name, L, n)
     out["records"] = {p: {"status": r["status"], "label": r.get("label"), "short": r.get("short")} for p, r in rec.items()}
+    atlas_rows = atlas_poles(name, L, n)
+    for p, row in atlas_rows.items():
+        out["poles"][p]["atlas"] = row
+    return out
+
+
+_ATLAS = {}
+
+
+def atlas_poles(name, L, n):
+    """The two poles' atlas rows (corpus word hits, and the auto screen where the layer has one), if data/atlas is here."""
+    if name != "bonsai1":
+        return {}
+    from bonsai_interp import atlas
+    if L not in _ATLAS:
+        t = atlas.load(L)
+        _ATLAS[L] = (t, atlas.vocab()) if t is not None else None
+    if not _ATLAS[L]:
+        return {}
+    t, vocab = _ATLAS[L]
+    out = {}
+    for p in ("+", "-"):
+        pole = 2 * n + (p == "-")
+        r = t.slice(pole, 1).to_pylist()[0] if t["pole"][pole].as_py() == pole else None  # rows are sorted by pole
+        if not r:
+            continue
+        out[p] = {"words": [[vocab.get(w, f"#{w}"), lift, round(cov, 3), trig] for w, lift, cov, trig
+                            in zip(r["hit_tok"], r["hit_lift"], r["hit_coverage"], r["hit_trigger"])],
+                  "bin": r["bin"], "context": r["context"], "test": r["test"], "auroc": r["auroc"]}
     return out
 
 
@@ -182,6 +211,13 @@ def render(c):
             tot = sum(c for _, c in st["peak_tokens"])
             lines.append("    peak tokens of the top 32: " + "  ".join(f"{t!r} x{c}" for t, c in st["peak_tokens"])
                          + ("   (one token dominates)" if st["peak_tokens"][0][1] >= 16 else "   (no single token: look for a context)" if st["peak_tokens"][0][1] <= 4 else ""))
+        at = st.get("atlas")
+        if at and at["words"]:
+            lines.append("    word hits (corpus statistics, selection windows): " + "  ".join(
+                f"{w!r} lift {lift:,.0f} cov {cov:.0%}{' *' if trig else ''}" for w, lift, cov, trig in at["words"]) + "   (* screened trigger)")
+        if at and at.get("bin"):
+            lines.append(f"    auto screen: {at['bin']}" + (f", auto test {at['test']}" if at.get("test") else "")
+                         + (f" (AUROC {at['auroc']:.2f})" if at.get("auroc") is not None else "") + (f": {at['context']}" if at.get("context") else ""))
         for e in st["examples"]:
             lines.append(f"    {e['act']:8.2f} {e['regime']:>10} | {e['text'][-110:]}")
     d = c.get("direct")

@@ -22,6 +22,13 @@ Each contribution is at most two files and **64 KB per file**. A PR adds at most
 Neuron records (`graph/neurons/`), `graph/edges.json` and `graph/index.json` are **derived** by
 `python -m bonsai_interp.graph.fold`. Nobody edits them by hand.
 
+## 1b. The atlas: per-pole machine evidence, in releases
+
+The auto tier's per-pole statistics are one Arrow IPC table per layer (zstd): word hits, auto screens and auto tests,
+keyed by pole. They are published in the `atlas` release, not in git, and downloaded with
+`bash scripts/fetch_data.sh atlas`. They are corpus statistics and automatic tests at scrutiny 0, and never change a
+pole's status. See [docs/SCALING.md](docs/SCALING.md) for how the formats are meant to grow to all 884,736 poles.
+
 ## 2. In the library: bulky, optional, referenced by hash
 
 Put large or numerous artefacts in the library and list them in your contribution's `artifacts`:

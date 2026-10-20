@@ -272,26 +272,41 @@ td.n { font-family: var(--mono); text-align: right; }
   const lvl = r => (r.scrutiny ? r.scrutiny.level : 1);
   const colorOf = r => colorBy === "status" ? (css("--" + r.status) || css("--ink-3")) : colorBy === "screen" ? css("--ink-2") : css("--h" + Math.max(1, lvl(r)));
 
-  // auto screens (scrutiny 0): hypotheses from the auto tier, never labels. bins.json holds one character per pole
-  // (index 2n for +, 2n+1 for -): '.' unscreened, a-h a map group, A-H the same group with a held auto test.
-  let SCREEN = null, screenMsg = "loading the auto screens…", screenOnly = -1;
-  const SDET = {}, SPROM = {};
-  const sgColor = g => g === 7 ? css("--dense") : css("--s" + (g + 1));
+  // the atlas on the map (scrutiny 0): corpus word hits for every layer, plus the auto-token@2 screen where a layer has
+  // been screened. Hypotheses, never labels. bins.json holds one character per pole (index 2n for +, 2n+1 for -):
+  // '.' nothing, a-i a map group, A-I the same group with a held auto test. L<L>.json is columnar, vocab.json maps ids.
+  let SCREEN = null, screenMsg = "loading the atlas…", screenOnly = -1, VOCAB = null, VPROM = null;
+  const SDET = {}, SPROM = {}, TOPW = 5;
+  const sgColor = g => g === 7 ? css("--dense") : g === 8 ? css("--ink-3") : css("--s" + (g + 1));
   const sCode = (L, n, pole) => { const t = SCREEN && SCREEN.layers[L]; if (!t) return null; const c = t.charCodeAt(2 * n + (pole === "-" ? 1 : 0));
     return c === 46 ? null : c >= 97 ? { g: c - 97, held: false } : { g: c - 65, held: true }; };
-  const sDetail = (L, n, pole) => (SDET[L] || {})[`N${n}${pole}`];
+  const vtext = id => (VOCAB && VOCAB[id] != null ? VOCAB[id] : `#${id}`);
+  function sDetail(L, n, pole) {
+    const D = SDET[L]; if (!D || !D.pole) return null;
+    const i = D.at.get(2 * n + (pole === "-" ? 1 : 0)); if (i === undefined) return null;
+    const words = [];
+    for (let k = i * TOPW; k < i * TOPW + TOPW; k++) if (D.w[k] >= 0) words.push({ t: vtext(D.w[k]), lift: D.lift[k], cov: D.cov[k], trig: !!D.trig[k] });
+    return { words, bin: D.bin ? D.bin[i] : null, context: D.context ? D.context[i] : null, test: D.test ? D.test[i] : null, auroc: D.auroc ? D.auroc[i] : null };
+  }
   function loadLayer(L) { if (!SCREEN || !SCREEN.layers[L]) return Promise.resolve(null);
-    return SPROM[L] || (SPROM[L] = fetch(`screens/L${L}.json`).then(r => r.ok ? r.json() : null).catch(() => null).then(j => (SDET[L] = j || {}))); }
+    VPROM = VPROM || fetch("screens/vocab.json").then(r => r.ok ? r.json() : {}).catch(() => ({})).then(v => (VOCAB = v));
+    return SPROM[L] || (SPROM[L] = Promise.all([VPROM, fetch(`screens/L${L}.json`).then(r => r.ok ? r.json() : null).catch(() => null)])
+      .then(([, j]) => { if (j && j.pole) j.at = new Map(j.pole.map((p, i) => [p, i])); return (SDET[L] = j || {}); })); }
+  const showTok = t => esc(JSON.stringify(t ?? "").slice(1, -1));
   function screenHTML(L, n, pole) {
-    const c = SCREEN && sCode(L, n, pole); if (!c) return "";
-    const d = sDetail(L, n, pole), name = SCREEN.groups[c.g];
-    const head = `<div class="eyebrow">Auto screen · scrutiny 0</div><div><span class="sw" style="background:${sgColor(c.g)}"></span><b>${esc(name)}</b>${d && d[0] && d[0] !== name ? ` <span class="mono">(${esc(d[0])})</span>` : ""}`;
-    if (!d) return `<div class="screen">${head}</div><div class="hint" style="margin:0">loading details…</div></div>`;
-    const test = d[3] === "held" ? `auto test <b style="color:var(--held)">held</b>` : d[3] === "failed" ? `auto test <span style="color:var(--failed)">failed</span>` : "not auto-tested";
-    return `<div class="screen">${head} · ${test}${d[4] != null ? ` (AUROC ${(+d[4]).toFixed(2)})` : ""}</div>
-      ${d[1] && d[1].length ? `<div class="toks">Fires most on ${d[1].map(h => `<span title="lift ${esc(h[1])} · explains ${Math.round(100 * h[2])}% of strong activations">${esc(JSON.stringify(h[0] ?? "").slice(1, -1))}</span>`).join("")}</div>` : ""}
-      ${d[2] ? `<div>Context: ${esc(d[2])}</div>` : ""}
-      <div class="hint" style="margin:0">A starting point from the corpus statistics, not a label: test it with fresh sentences.</div></div>`;
+    if (!SCREEN || !SCREEN.layers[L]) return "";
+    const c = sCode(L, n, pole), d = sDetail(L, n, pole);
+    if (!d && !SDET[L]) return `<div class="screen"><div class="eyebrow">Atlas · scrutiny 0</div><div class="hint" style="margin:0">loading…</div></div>`;
+    if (!d) return "";
+    const screened = (SCREEN.screened || []).includes(L);
+    const name = c ? SCREEN.groups[c.g] : null;
+    const head = c && screened ? `<div><span class="sw" style="background:${sgColor(c.g)}"></span><b>${esc(name)}</b>${d.bin && d.bin !== name ? ` <span class="mono">(${esc(d.bin)})</span>` : ""}`
+      + ` · ${d.test === "held" ? `auto test <b style="color:var(--held)">held</b>` : d.test === "failed" ? `auto test <span style="color:var(--failed)">failed</span>` : "not auto-tested"}`
+      + `${d.auroc != null ? ` (AUROC ${(+d.auroc).toFixed(2)})` : ""}</div>` : `<div class="hint" style="margin:0">Layer ${L} not screened yet: word statistics only.</div>`;
+    const words = d.words.length ? `<div class="toks">Word hits ${d.words.map(w => `<span title="lift ${w.lift.toLocaleString()} · ${w.cov}% of strong activations${w.trig ? " · screened as a trigger" : ""}"${w.trig ? ' style="border-color:var(--ink-3)"' : ""}>${showTok(w.t)}</span>`).join("")}</div>` : "";
+    return `<div class="screen"><div class="eyebrow">Atlas · scrutiny 0</div>${head}${words}
+      ${d.context ? `<div>Context: ${esc(d.context)}</div>` : ""}
+      <div class="hint" style="margin:0">Corpus statistics, not a label: a starting point to test with fresh sentences.</div></div>`;
   }
 
   // tally
@@ -301,7 +316,8 @@ td.n { font-family: var(--mono); text-align: right; }
     `<div><b>${N.length}</b><span>poles surveyed</span></div>` +
     `<div><b>${held}</b><span>labels holding</span></div>` +
     `<div><b>${(100 * N.length / (2 * L_N * N_N)).toFixed(4)}%</b><span>of the map</span></div>` +
-    `<div id="tally-screen" hidden><b></b><span>poles screened (auto)</span></div>`;
+    `<div id="tally-screen" hidden><b></b><span>poles screened (auto)</span></div>` +
+    `<div id="tally-hits" hidden><b></b><span>poles with word hits</span></div>`;
 
   // map
   const cv = document.getElementById("map"), ctx = cv.getContext("2d"), tip = document.createElement("div");
@@ -338,7 +354,7 @@ td.n { font-family: var(--mono); text-align: right; }
         for (let i = 0; i < t.length; i++) { const c = t.charCodeAt(i); if (c === 46) continue;
           const held = c < 97, g = held ? c - 65 : c - 97; if (screenOnly >= 0 && g !== screenOnly) continue;
           const col = sgColor(g); if (col !== last) { ctx.fillStyle = col; last = col; }
-          const faint = g === SCREEN.groups.length - 1 && screenOnly < 0;  // 'other': a word hit, no specific rule; background only
+          const faint = g >= 7 && screenOnly < 0;  // 'other' and 'word hit': statistics without a specific rule; background only
           const y = yOf(L, i & 1 ? "-" : "+"), h = rowH * (held ? 0.36 : faint ? 0.12 : 0.22);
           ctx.globalAlpha = held ? 1 : faint ? 0.18 : 0.55; ctx.fillRect(xOf(i >> 1) - 0.6, y - h / 2, 1.2, h); }
         ctx.globalAlpha = 1; }
@@ -359,7 +375,7 @@ td.n { font-family: var(--mono); text-align: right; }
   function legend() { document.getElementById("legend").innerHTML = (colorBy === "status" ? STATUS.map(s => `<span><i style="background:var(--${s})"></i>${s}</span>`).join("")
     : colorBy === "screen" ? (SCREEN ? SCREEN.groups.map((s, g) => { const k = Object.values(SCREEN.counts).reduce((a, c) => a + (c[g] || 0), 0);
         return `<button type="button" data-g="${g}" aria-pressed="${screenOnly === g}" title="show only this group"><i style="background:${sgColor(g)}"></i>${esc(s)} <span class="mono">${k.toLocaleString()}</span></button>`; }).join("") +
-        `<span>taller tick = auto test held · dots = surveyed poles · layers ${Object.keys(SCREEN.layers).map(Number).sort((a, b) => a - b).join(", ")} screened</span>`
+        `<span>taller tick = auto test held · dots = surveyed poles · screened: layers ${(SCREEN.screened || []).join(", ") || "none yet"} · "word hit" = corpus word statistics (other layers)</span>`
       : `<span>${esc(screenMsg)}</span>`)
     : SCR.slice(1).map((s, i) => `<span><i style="background:var(--h${i + 1})"></i>${i + 1} ${s}</span>`).join("")) +
     `<span><i style="background:none;border:1px solid var(--ink-3)"></i>upper half of a row = + pole, lower = − pole</span>`; }
@@ -377,8 +393,8 @@ td.n { font-family: var(--mono); text-align: right; }
     return { L, n: Math.max(0, Math.min(N_N - 1, n)), pole, near, sn, px: (ev.clientX - b.left), py: (ev.clientY - b.top), ok: L >= 0 && L < L_N && x >= mL }; };
   const screenTip = (L, n, pole) => { const c = sCode(L, n, pole), d = sDetail(L, n, pole);
     if (!d && SCREEN.layers[L]) loadLayer(L);
-    return `L${L}/N${n}${pole === "+" ? "+" : "−"} · screen: ${esc(SCREEN.groups[c.g])}${c.held ? " · auto test held" : ""}` +
-      (d ? `${d[1] && d[1].length ? "<br>fires most on " + d[1].map(h => esc(JSON.stringify(h[0] ?? "").slice(1, -1))).join(" · ") : ""}${d[2] ? "<br>" + esc(d[2]) : ""}` : "<br>…"); };
+    return `L${L}/N${n}${pole === "+" ? "+" : "−"} · ${c ? esc(SCREEN.groups[c.g]) : "word statistics"}${c && c.held ? " · auto test held" : ""}` +
+      (d ? `${d.words.length ? "<br>word hits: " + d.words.map(w => showTok(w.t)).join(" · ") : ""}${d.context ? "<br>" + esc(d.context) : ""}` : "<br>…"); };
   cv.addEventListener("mousemove", ev => { const p = at(ev); if (!p.ok) { tip.hidden = true; return; }
     document.getElementById("cursor").textContent = `L${p.L} · N${p.n} · ${p.pole === "+" ? "+ pole" : "− pole"}`;
     if (p.near) { tip.innerHTML = `${esc(p.near.id)} · ${esc(p.near.status)} · scrutiny ${lvl(p.near)}<br>${esc(p.near.short || p.near.label || "")}`;
@@ -634,10 +650,11 @@ td.n { font-family: var(--mono); text-align: right; }
   else sweepMission();
   const redraw = () => { draw(view.sel); if (view.level === "block") drawBlock(); };
   fetch("screens/bins.json").then(r => r.ok ? r.json() : Promise.reject()).then(j => { SCREEN = j;
-    const k = Object.values(j.counts).reduce((a, c) => a + c.reduce((x, y) => x + y, 0), 0), el = document.getElementById("tally-screen");
-    el.querySelector("b").textContent = k.toLocaleString(); el.hidden = false; legend(); redraw();
+    const k = Object.values(j.counts).reduce((a, c) => a + c.slice(0, 8).reduce((x, y) => x + y, 0), 0), el = document.getElementById("tally-screen");
+    const h = Object.values(j.counts).reduce((a, c) => a + c.reduce((x, y) => x + y, 0), 0), eh = document.getElementById("tally-hits");
+    el.querySelector("b").textContent = k.toLocaleString(); el.hidden = false; eh.querySelector("b").textContent = h.toLocaleString(); eh.hidden = false; legend(); redraw();
     if (view.level === "neuron") openNeuron(view.L, view.n); })
-    .catch(() => { screenMsg = "No auto screens are published yet (they appear on the hosted map once the auto tier runs)."; legend(); });
+    .catch(() => { screenMsg = "The atlas is not published here (it appears on the hosted map)."; legend(); });
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", redraw);
   new MutationObserver(redraw).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 })();

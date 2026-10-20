@@ -47,8 +47,10 @@ jobs:
       - name: Download the data release
         if: steps.data.outputs.cache-hit != 'true'
         run: gh release download data-v1 --repo ${{ github.repository }} --dir data --pattern corpus.npz --pattern scan_bonsai1.npz --clobber
-      - name: Auto screens (the auto-screens release, when there is one)
-        run: gh release download auto-screens --repo ${{ github.repository }} --dir data/auto --pattern '*.screen.json.gz' --clobber || echo "no auto-screens release yet"
+      - name: The atlas (per-layer pole tables, the atlas release)
+        run: |
+          mkdir -p data/atlas
+          gh release download atlas --repo ${{ github.repository }} --dir data/atlas --pattern '*.arrow' --clobber || echo "no atlas release yet"
       - name: Cards built by earlier runs (added to the committed cards)
         uses: actions/cache/restore@v4
         with:
@@ -58,7 +60,7 @@ jobs:
       - name: Toolchain (CPU only) and the tokenizer
         run: |
           pip install --quiet numpy torch --index-url https://download.pytorch.org/whl/cpu
-          pip install --quiet transformers safetensors huggingface_hub
+          pip install --quiet transformers safetensors huggingface_hub pyarrow
           python -c "from huggingface_hub import hf_hub_download as h; [h('prism-ml/Bonsai-8B-unpacked', f, local_dir='models/Bonsai-8B') for f in ('config.json','tokenizer.json','tokenizer_config.json','vocab.json','merges.txt','added_tokens.json','special_tokens_map.json')]"
       - name: Build the site
         run: |
