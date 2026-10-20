@@ -1,0 +1,166 @@
+{
+ "id": "2026-10-19-moridinamael-6c556bab",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N11413-",
+ "contributor": "moridinamael",
+ "created": "2026-10-20T02:49:36+00:00",
+ "recipe": {
+  "toolchain_commit": "0db8def",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N11413_neg/2026-10-19-moridinamael-6c556bab.tests.json"
+ },
+ "label": "the spot right before the word 'solutions' is expected, especially when counting an equation's solutions (e.g. 'has infinitely many', 'has two real')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N11413_neg/2026-10-19-moridinamael-6c556bab.tests.json",
+   "prereg_commit": "0db8def",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 6,
+   "n_false_pos": 5,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.92,
+     "peak": " no"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.467,
+     "peak": " infinitely"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.933,
+     "peak": " real"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.289,
+     "peak": "?"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.623,
+     "peak": " has"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.535,
+     "peak": " infinitely"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.623,
+     "peak": " three"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.254,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.72,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.413,
+     "peak": " has"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.512,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.246,
+     "peak": " y"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.685,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.501,
+     "peak": " be"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.277,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.269,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.656,
+    "median_fire": 0.579,
+    "near_misses_at_0.3": 5
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "0db8def",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "short": "just before 'solutions' (counting an equation's solutions)",
+ "notes": "Step-in from bonsai1/L31/N5481+ (1800s year as a date); reader drop 0.84 under zero ablation, but in only 2 of the feeder's top examples, and the label has little to do with dates. The - pole's output promotes 'solution(s)/solve/solvent'. Test sentences written blind by a second author from the label only. The inverse solver timed out (no leak search).",
+ "roles": [
+  "reads bonsai1/L31/N5481+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L31/N5481+",
+   "to": "bonsai1/L34/N11413-",
+   "kind": "feeds",
+   "weight": 0.84,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
