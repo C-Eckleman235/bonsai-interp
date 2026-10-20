@@ -1,0 +1,168 @@
+{
+ "id": "2026-10-19-moridinamael-0841ba5e",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N8790-",
+ "contributor": "moridinamael",
+ "created": "2026-10-20T00:47:32+00:00",
+ "recipe": {
+  "toolchain_commit": "0da220f",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L8_N8790_neg/2026-10-19-moridinamael-0841ba5e.tests.json"
+ },
+ "label": "Rule terms in tabletop RPG or wargame rules text (the rest of the Scene, the Movement phase, a dice Pool, your Character's stats); the same words in everyday senses stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L8_N8790_neg/2026-10-19-moridinamael-0841ba5e.tests.json",
+   "prereg_commit": "0da220f",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.194,
+     "peak": " rolls"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.306,
+     "peak": " phase"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.354,
+     "peak": " successes"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.276,
+     "peak": " Momentum"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.329,
+     "peak": "lication"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.283,
+     "peak": " phase"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.357,
+     "peak": " Points"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.18,
+     "peak": " Attributes"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.029,
+     "peak": " scene"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.009,
+     "peak": " civil"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.011,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.05,
+     "peak": " stats"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.008,
+     "peak": " was"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.057,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.006,
+     "peak": " hike"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.021,
+     "peak": " him"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.294,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-gmoo",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "0da220f",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "unit_kind": "context",
+ "notes": "Strongest feeder of bonsai1/L9/N8883+ (play step drop 0.47). Very sparse pole (0.018% of tokens above 0.1 max). Blind test written label-only by a second author; globalMOO solver found no leak.",
+ "roles": [
+  "feeds bonsai1/L9/N8883+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L8/N8790-",
+   "to": "bonsai1/L9/N8883+",
+   "kind": "feeds",
+   "weight": 0.47,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
