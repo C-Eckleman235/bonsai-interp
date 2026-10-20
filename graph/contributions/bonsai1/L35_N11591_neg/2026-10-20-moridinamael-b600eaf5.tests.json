@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-20-moridinamael-b600eaf5",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N11591-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T21:12:47+00:00",
+ "roles": ["reads bonsai1/L33/N7403+"],
+ "neighbours": [
+  {
+   "unit": "L35/N11591",
+   "pole": "-",
+   "label": "In text that repeats an earlier passage word for word, the first chunk of a rare, multi-token name as it is copied again (e.g. ' Mo' when a sentence naming 'Movento' recurs verbatim)",
+   "short": "rare name re-copied in a verbatim repeat",
+   "confidence": "low",
+   "notes": "Weak pole (max 45). Probes: rare names fire mainly when re-mentioned (C. decomposita 0.01 single vs 0.55 repeated; Unwerth 0.15 vs 0.32), but many repeated rare names stayed silent (Quercus robur, Wenzelbauer, Zwettlbach). The DE solver's strongest texts were whole passages pasted twice (Arabic top example 0.03 -> 1.16, Movento 0.01 -> 0.82). Test sentences written blind by a second author from the label only.",
+   "fire": [
+    "The ship Movento left port at dawn. The ship Movento left port at dawn.",
+    "Dr. Zelbrinax published the findings in March. Again: Dr. Zelbrinax published the findings in March.",
+    "Quote: \"Kavrolund is the oldest village in the valley.\" Repeat after me: \"Kavrolund is the oldest village in the valley.\"",
+    "Line 1: Ostrevani signed the treaty. Line 2: Ostrevani signed the treaty.",
+    "She typed it twice by mistake: Mrs. Thalvorne will arrive on Friday. Mrs. Thalvorne will arrive on Friday.",
+    "The password hint read 'my cat Quibbleton likes fish', and the backup hint read 'my cat Quibbleton likes fish'.",
+    "Original: The river Ylvarseth floods every spring. Copy: The river Ylvarseth floods every spring.",
+    "Chorus: Oh Marindovar, come sail with me. Chorus: Oh Marindovar, come sail with me."
+   ],
+   "quiet": [
+    "The ship Movento left port at dawn, and the crew waved from the deck.",
+    "Dr. Zelbrinax published the findings in March, a full year ahead of schedule.",
+    "Quote: \"Kavrolund is the oldest village in the valley.\" Few visitors ever find it.",
+    "Line 1: John signed the treaty. Line 2: John signed the treaty.",
+    "She typed it twice by mistake: Mrs. Smith will arrive on Friday. Mrs. Smith will arrive on Friday.",
+    "The password hint read 'my cat likes fish', and the backup hint read 'my cat likes fish'.",
+    "Original: The river floods every spring. Copy: The river floods every spring.",
+    "Chorus: Oh Mary, come sail with me. Chorus: Oh Mary, come sail with me."
+   ]
+  }
+ ],
+ "predictions": "Uncertain: repeated passages should lift the fire set, but several repeated rare names stayed silent in probes; expect 4-5/8 fire",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "blind-room"
+  ]
+ }
+}
