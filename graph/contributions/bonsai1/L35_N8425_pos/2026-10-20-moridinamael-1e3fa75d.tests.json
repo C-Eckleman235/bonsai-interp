@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-20-moridinamael-1e3fa75d",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N8425+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T22:36:42+00:00",
+ "roles": ["reads bonsai1/L34/N1264+"],
+ "neighbours": [
+  {
+   "unit": "L35/N8425",
+   "pole": "+",
+   "label": "the first piece of a multi-piece name in two families: the 'Me' of the hashtag #MeToo, and names of library research/news databases (e.g. ProQuest, EBSCO), strongest in a list of such databases",
+   "short": "#MeToo / research-database names",
+   "unit_kind": "sparse feature",
+   "confidence": 0.5,
+   "notes": "Step-in reader of bonsai1/L34/N1264+ (drop 0.61), COLD arm: labelled from its own top examples and probes only. The largest-drop reader L35/N3533+ (0.74) was skipped: its + pole's top examples all sit at window position 0 and none reproduce in probes (all <= 0.04). Probes: '#Me' after 'the' 0.59-0.85, 'Posts tagged #Me' 0.13, MeToo/Me Too unhashed and #metoo ~0; other hashtags ~0; PlayStation/YouTube/SpongeBob/ProBook ~0. Solver leak ProQuest in a database list 0.99; database lists 0.26-1.13. Code CamelCase pieces (assertFail 0.83, DynamoDB 0.73 in blocks) are patchy and not in the label. Test written blind from the label only.",
+   "fire": [
+    "NewsRx also is available at LexisNexis, Gale, ProQuest, Factiva, Dialog, Thomson Reuters, News",
+    "The article is indexed in ProQuest, EBSCO, JSTOR and Web of Science.",
+    "Thousands of women shared their stories using the hashtag #MeToo in 2017.",
+    "Students can search LexisNexis, Factiva and ProQuest through the campus library portal.",
+    "The #MeToo movement changed how many workplaces handle complaints.",
+    "Full text is available via EBSCOhost and ProQuest Central.",
+    "She found the old newspaper clipping by searching ProQuest Historical Newspapers.",
+    "Our library subscribes to JSTOR, EBSCO, Gale, ProQuest and ScienceDirect."
+   ],
+   "quiet": [
+    "conn.set_listener(\"testlistener\", testlistener)",
+    "The article is indexed by several major academic services.",
+    "Thousands of women shared their stories on social media in 2017.",
+    "Students can search many news archives through the campus library portal.",
+    "The movement against workplace harassment changed how complaints are handled.",
+    "Full text is available from the publisher's own website.",
+    "She found the old newspaper clipping in the town archive's basement.",
+    "Our library subscribes to dozens of journals and magazines."
+   ]
+  }
+ ],
+ "predictions": "most database-list fire items high; the two #MeToo items moderate; near misses quiet",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "blind-room"
+  ]
+ }
+}
