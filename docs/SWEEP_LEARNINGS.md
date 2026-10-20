@@ -9,6 +9,40 @@ display and a live Twitch stream. After every run unit (a layer, an all-layer pa
 
 After the sweep this becomes the source for a write-up on re-sweeping a network fast.
 
+## The docket: principles for re-sweeping a network
+
+Distilled from the run log below. Ranked by how much each changed the cost of a sweep, and revised at every
+abstraction pass. Each principle names its evidence and whether we have measured the gain.
+
+| # | principle | evidence | gain |
+|---|---|---|---|
+| 1 | **Share work across layers.** Read every layer in one forward pass. Only per-layer test scoring is inherently separate. | per-layer stages 1–2 cost about 30–50 GPU min each × 34; all-layer stage 1 costs about 105 min for 33 layers | ~10× on stages 1–2 (measured, stage 1) |
+| 2 | **Compute only what is read.** Skip the unembedding and layers past the deepest one read. Reuse shared prefixes: preambles, and near misses that differ in their last token. | lm_head off: 3.05 → 1.8 GB weights; preamble cache: 57 → 80 snippets/s at L20 | 1.4× scoring (measured); prefix sharing pending |
+| 3 | **Find the real bottleneck before optimising.** Check utilisation, host vs device, and which kernel runs. | L4 stage 1 at 17–63% GPU (CPU-bound counter); SDPA math fallback for GQA on Windows; 321 vs 207 snippets/s from host overhead; a CPU test cut a GPU pass by 30% | 1.25× attention (measured); others pending |
+| 4 | **Budget cost by depth.** Early layers are word-driven and test-heavy; deep layers need context and human effort. | lexical poles L4 2,418 vs L20 171; tests 10,088 vs 1,185; labels hold 86–88% at L0–9 vs 24–50% at L20+ | planning |
+| 5 | **Enforce limits at the choke point.** The model loader applies memory caps; every GPU client (helper servers too) takes compute turns. | 20 uncapped modules; a 9 GB band scan; 5 resets with concurrent compute clients | 0 resets since the fixes (measured) |
+| 6 | **Leave real headroom on a shared display GPU,** at least 3 GB free. | reset at 15.5 / 16.3 GB with turns on; stable at 12.4–12.9 GB | stability |
+| 7 | **Design for stops.** Checkpoint every long stage, stop only at batch boundaries, report progress every minute. | 29 GPU min lost to an un-checkpointed stop; a force-kill followed by a reset | minutes lost per stop instead of hours |
+| 8 | **Load once, serve many.** One resident model per service, commands in-process. | `play why` 28 s → 3.3 s; every reload was a reset risk | 8× latency (measured) |
+| 9 | **One pre-registration for many units.** Pin the rule and the test sets before scoring; merge commits keep the hashes valid. | 1 protocol for 33 layers instead of 33 | fewer waits |
+| 10 | **Plan wall time by the foreground's duty cycle,** not by GPU minutes. | the stream held 28–70% of the GPU during scoring | planning |
+
+**Open experiments** (the next speed and effectiveness questions):
+- prefix sharing and batch 32 for scoring (GPU benchmark after stage 2)
+- the scoring tokens per held pole by depth (a paper metric; L4 about 24.5k, L20 about 172k layer-tokens)
+- feeders-first versus cold deep targets for human and agent labels (stream A/B)
+- float16 on T4-class GPUs (a parity study task)
+- caps on tests per pole versus evidence of multiple jobs per pole (the user's decision; uncapped for now)
+
+**Speed ledger** (one row per unit; the same work should get cheaper each time)
+
+| unit | wall | GPU min | rate | key change since the previous unit |
+|---|---|---|---|---|
+| L20, per layer (uncapped, alone) | about 75 min | about 75 | stage 1: 6,000 tok/s | (baseline) |
+| L4 stages 1–2, per layer | 31 min | about 31 | stage 1: 9,300 tok/s (shallower) | GPU-side counter merge |
+| L4 scoring (0.22 cap, beside the stream) | 38 min | about 27 | 207 snippets/s | preamble KV cache, lm_head off, resumable |
+| all-layer stage 1 (33 layers, batch 1) | about 105 min | – | about 1,300 tok/s × 33 layers | one pass for all layers; memory-efficient attention |
+
 Entry format:
 
 ```
