@@ -63,6 +63,21 @@ Entry format:
 - **A smaller helper model frees room.** The stream's chat screener on Bonsai-8B (1.9 GB) instead of Bonsai-27B
   (4.3 GB) returned 2.4 GB to the budget.
 
+**From the stream side** (the Twitch session, 2026-10-20)
+- **A load gate checked at process start is too early.** Python imports take 10 s or more, so the gate
+  passed before the batch had allocated. Check again immediately before the allocation, or hold a turn for
+  the process's whole life.
+- **A loader swapped in for an in-process command can pin the model.** It stayed bound in a module that was
+  first imported during that command. Restore every loader binding after the run, and check the freed memory
+  with the allocator's own count.
+- **Keep secrets out of resident services.** The solver that needs an API key (globalMOO) stays a
+  subprocess, which holds a GPU turn for its whole life. The long-lived service an agent can reach never
+  holds the key.
+- **Watchers must survive log rewrites.** A supervisor that rewrites its log on restart breaks a watcher that
+  reads only new bytes. Re-read the whole file and take the last marker.
+- **Turn-taking in practice:** with a background holding the GPU, a foreground `play why` waited less than
+  one background batch, and the background yielded for the whole call (1.9 s).
+
 **Process**
 - **One registration for many layers is as valid as one per layer,** and much faster: fewer commits and fewer
   waits. What matters is that the rule and the test sets are pinned before scoring.
