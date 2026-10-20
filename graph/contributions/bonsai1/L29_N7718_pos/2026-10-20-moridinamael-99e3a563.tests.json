@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-20-moridinamael-99e3a563",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N7718+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T16:48:27+00:00",
+ "roles": ["reads bonsai1/L28/N10754-"],
+ "neighbours": [
+  {
+   "unit": "L29/N7718",
+   "pole": "+",
+   "label": "the '=' of a variable assignment a few statements into a Python or JavaScript function body (not '=' in math, SQL, or prose)",
+   "fire": [
+    "def load(path):\n    f = open(path)\n    data = f.read()\n    lines = data.splitlines()\n    count = len(lines)",
+    "function render(items) {\n  const list = document.createElement('ul');\n  list.className = 'menu';\n  let total = items.length;",
+    "def train(model, loader):\n    model.train()\n    losses = []\n    for batch in loader:\n        loss = model(batch)",
+    "async function fetchUser(id) {\n  const res = await fetch(`/api/users/${id}`);\n  const json = await res.json();\n  const name = json.name;",
+    "def parse_args():\n    parser = argparse.ArgumentParser()\n    parser.add_argument('--n')\n    args = parser.parse_args()\n    n = int(args.n)",
+    "function sum(arr) {\n  let s = 0;\n  for (const x of arr) s += x;\n  const avg = s / arr.length;",
+    "def area(r):\n    pi = 3.14159\n    r2 = r * r\n    result = pi * r2\n    return result",
+    "const handler = (event) => {\n  event.preventDefault();\n  const form = event.target;\n  const value = form.elements.email.value;"
+   ],
+   "quiet": [
+    "Solve for x: 2x + 3 = 11, so x = 4.",
+    "SELECT name FROM users WHERE id = 42 AND active = 1;",
+    "In the recipe, one cup = 240 millilitres, roughly.",
+    "The theorem states that a^2 + b^2 = c^2 for any right triangle.",
+    "UPDATE orders SET status = 'shipped' WHERE order_id = 7;",
+    "The sign said 'Price = $5' in big red letters.",
+    "E = mc^2 is the most famous equation in physics.",
+    "Let f(x) = 3x - 1; then f(2) = 5."
+   ]
+  }
+ ],
+ "predictions": "Uncertain: broad pole (1.3% of tokens reach 0.1 of max); probes of Python/JS assignment blocks ranged 0.05-0.34, and C code was silent. Expect good ranking but the median fire may miss 0.20.",
+ "notes": "Step-in from bonsai1/L28/N10754- (drop only 0.06). Test sentences written blind by a second author who saw only the label. Solver (globalMOO) found no leak: non-code '=' text peaked at 0.18.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "bank-solo",
+   "blind-room"
+  ]
+ }
+}

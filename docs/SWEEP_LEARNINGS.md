@@ -42,12 +42,18 @@ Entry format:
     matrix lands on top of 4.0 GB), while it holds 4.1 GB loaded.
   - What failed: five NVIDIA driver resets (nvlddmkm 153) in two days.
     - Four came as a second process started or loaded the model while another was computing.
-    - One came in steady running with two processes computing at once.
+    - One (10:20:24) came with NO stream model on the card. Only the batch was computing, beside the
+      stream's llama-server chat screen, the NVENC video encoder and a captured browser page.
+    - Two resets on the first night had no batch at all, just the screen, NVENC and a stream model job.
+    - So the common factor is heavy torch work beside *any* other GPU compute client, helper servers
+      included, not two copies of the model.
 - **What makes sharing safe: turn-taking on compute, not just budgets on memory.**
   `bonsai_interp/gpu_turn.py`:
   - Both models stay loaded.
   - The foreground (the stream) takes the GPU, and the batch yields at its next batch boundary.
   - Only one process runs kernels at a time.
+  - Every compute client belongs in it, including helper servers such as a llama.cpp screen: wrap their
+    calls from the client side if the server itself can't take part.
 - **Load once.** Every subprocess that reloads the model is a reset risk and costs about 25 s. Serving commands
   from one resident model per session removed both. The stream's `play why` dropped from about 28 s to 3.3 s.
 - **Never force-kill a GPU process mid-kernel.** A Stop-Process during scoring was followed 3 s later by another
@@ -56,6 +62,21 @@ Entry format:
   holding 4.4 GB. A stale model reference meant a second copy loaded beside it.
 - **A smaller helper model frees room.** The stream's chat screener on Bonsai-8B (1.9 GB) instead of Bonsai-27B
   (4.3 GB) returned 2.4 GB to the budget.
+
+**From the stream side** (the Twitch session, 2026-10-20)
+- **A load gate checked at process start is too early.** Python imports take 10 s or more, so the gate
+  passed before the batch had allocated. Check again immediately before the allocation, or hold a turn for
+  the process's whole life.
+- **A loader swapped in for an in-process command can pin the model.** It stayed bound in a module that was
+  first imported during that command. Restore every loader binding after the run, and check the freed memory
+  with the allocator's own count.
+- **Keep secrets out of resident services.** The solver that needs an API key (globalMOO) stays a
+  subprocess, which holds a GPU turn for its whole life. The long-lived service an agent can reach never
+  holds the key.
+- **Watchers must survive log rewrites.** A supervisor that rewrites its log on restart breaks a watcher that
+  reads only new bytes. Re-read the whole file and take the last marker.
+- **Turn-taking in practice:** with a background holding the GPU, a foreground `play why` waited less than
+  one background batch, and the background yielded for the whole call (1.9 s).
 
 **Process**
 - **One registration for many layers is as valid as one per layer,** and much faster: fewer commits and fewer

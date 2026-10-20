@@ -1,0 +1,166 @@
+{
+ "id": "2026-10-20-C-Eckleman235-40145695",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N3159+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-20T15:20:56+00:00",
+ "recipe": {
+  "toolchain_commit": "7da01a3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L9_N3159_pos/2026-10-20-C-Eckleman235-40145695.tests.json"
+ },
+ "label": "the buildings and institutions of a 19th-century American frontier settlement in local-history writing (its one-room school, general store, mission, mill, log cabin, adobe); the same nouns in modern settings stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L9_N3159_pos/2026-10-20-C-Eckleman235-40145695.tests.json",
+   "prereg_commit": "7da01a3",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.838,
+     "peak": " school"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.685,
+     "peak": " school"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.61,
+     "peak": " store"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.503,
+     "peak": " mission"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.438,
+     "peak": "mill"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.285,
+     "peak": " log"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.505,
+     "peak": " stores"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.676,
+     "peak": "house"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.079,
+     "peak": " nail"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.008,
+     "peak": " church"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.017,
+     "peak": " cases"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.01,
+     "peak": " last"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.034,
+     "peak": " mill"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.062,
+     "peak": " cabin"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.088,
+     "peak": " shopping"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.014,
+     "peak": " with"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.557,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [
+   "bands"
+  ],
+  "toolchain_commit": "7da01a3",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "short": "frontier-town buildings",
+ "unit_kind": "contextual",
+ "confidence": 0.7,
+ "notes": "Found by stepping out from bonsai1/L10/N8330+ (Texas place names): play step ranks L9/N3159 as a feeder (single-unit zero ablation drop 0.10, third of four), and its + pole is the active one on Texas place names ('Nacogdo|ches' 0.16, the - pole 0.02). Card and look: one-room school, stores, Mission, pioneer, adobe, sawmill, log cabin, store/tavern/stage station on the Oregon Trail, a Handbook of Texas entry. Probing: 1885 settlement's 'one-room school' 1.10 vs 'my daughter's school' 0.01; 1900 village 'three stores' 0.70 vs a mall's stores 0.03; Spanish mission 0.44 vs company mission 0.03; ghost-town saloon 0.41 vs hotel lobby 0.02. Near misses keep the same nouns in a present-day setting. The brief's band scan (probe.bands, 1000 windows) did not finish on the free Colab T4 (killed after 20 min, then 300 windows also unfinished after 20 min), so the weak/middle bands were not sampled; the probes of the same nouns in modern settings stand in for that check.",
+ "roles": [
+  "feeds bonsai1/L10/N8330+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L9/N3159+",
+   "to": "bonsai1/L10/N8330+",
+   "kind": "feeds",
+   "weight": 0.1,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}

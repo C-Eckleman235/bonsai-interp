@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-20-C-Eckleman235-9098d5a9",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N6085-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-20T14:32:51+00:00",
+ "recipe": {
+  "toolchain_commit": "121bd6f",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L9_N6085_neg/2026-10-20-C-Eckleman235-9098d5a9.tests.json"
+ },
+ "label": "the physical building blocks of quantum-computing hardware: qubits and what they are made of (trapped ions, superconducting circuits, silicon wafers); quantum theory without hardware, and ordinary classical electronics, stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L9_N6085_neg/2026-10-20-C-Eckleman235-9098d5a9.tests.json",
+   "prereg_commit": "121bd6f",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.078,
+     "peak": " q"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 1.709,
+     "peak": " trapped"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 1.081,
+     "peak": " circuits"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.456,
+     "peak": "ution"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 1.514,
+     "peak": " silicon"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 1.419,
+     "peak": " q"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.463,
+     "peak": "ubits"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 2.162,
+     "peak": " ions"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.02,
+     "peak": " ordinary"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.036,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.033,
+     "peak": " fifty"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.034,
+     "peak": " quantum"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.021,
+     "peak": "als"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.007,
+     "peak": " batteries"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.028,
+     "peak": "ists"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.012,
+     "peak": " we"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 1.25,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "121bd6f",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "short": "quantum hardware substrate",
+ "unit_kind": "sparse feature",
+ "confidence": 0.65,
+ "notes": "Card: ' silicon' x5 in photonics/chip text, microelectromech'anical', quantum 'dots', 'semiconductor'; very sparse (0.012% of tokens reach 0.1 of max). Probing moved the label off the element silicon: qubit 1.05-1.29, 'trapped ions' in a quantum processor 1.27, 'superconducting circuits' 1.10, silicon substrate/wafer 0.32-0.52, but silicon in sand or plants ~0.01, 'quantum mechanics describes electrons' 0.04, CMOS sensor 0.02, transistor 0.12, vacuum tubes 0.01. Near misses split: four keep quantum physics but drop the hardware, four keep hardware but make it classical. The + pole is also physics (Bose-Einstein condensates, SQUID interference, Josephson junctions, pyscf), not yet tested."
+}

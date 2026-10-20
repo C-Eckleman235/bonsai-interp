@@ -1,0 +1,46 @@
+{
+ "contribution": "2026-10-20-C-Eckleman235-f2cafd64",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N7713-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T13:56:29+00:00",
+ "neighbours": [
+  {
+   "unit": "L19/N7713",
+   "pole": "-",
+   "label": "broad and weak: the first piece of a CamelCase identifier in Python import lines (Handler|Util)",
+   "fire": [
+    "from handlers import RequestHandlerBase",
+    "from utils import FileHandlerUtil",
+    "from core.events import EventHandlerRegistry",
+    "from app.models import UserProfileManager",
+    "from network import SocketHandlerFactory",
+    "from logging_utils import StreamHandlerConfig",
+    "from parsers import ConfigParserHelper",
+    "from tasks import JobHandlerQueue"
+   ],
+   "quiet": [
+    "from handlers import base",
+    "from utils import files",
+    "from core.events import registry",
+    "from app.models import profile",
+    "from network import sockets",
+    "from logging_utils import config",
+    "from parsers import helpers",
+    "from tasks import queue"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "CamelCase in imports",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "The card flags this pole broad: 4.4% of tokens reach 0.1 of max, and the top 32 share no token or context (Korean, Python, word salad, Arabic, Japanese). Probing: 'from utils import HandlerUtil' 0.29, Korean 0.16, everything else about 0.09. Recorded as dense; the test is a best guess and is expected to fail."
+}

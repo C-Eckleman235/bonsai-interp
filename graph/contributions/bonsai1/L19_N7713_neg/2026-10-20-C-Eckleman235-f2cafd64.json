@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-20-C-Eckleman235-f2cafd64",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N7713-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-20T14:19:04+00:00",
+ "recipe": {
+  "toolchain_commit": "06c9197",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L19_N7713_neg/2026-10-20-C-Eckleman235-f2cafd64.tests.json"
+ },
+ "label": "broad and weak: the first piece of a CamelCase identifier in Python import lines (Handler|Util)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L19_N7713_neg/2026-10-20-C-Eckleman235-f2cafd64.tests.json",
+   "prereg_commit": "06c9197",
+   "author": "C-Eckleman235",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.149,
+     "peak": " Request"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.03,
+     "peak": " File"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.262,
+     "peak": " EventHandler"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.05,
+     "peak": " UserProfile"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.026,
+     "peak": " import"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.063,
+     "peak": " logging"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.053,
+     "peak": " Config"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.106,
+     "peak": " Job"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.105,
+     "peak": " handlers"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.207,
+     "peak": " files"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.153,
+     "peak": " registry"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.09,
+     "peak": " profile"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.089,
+     "peak": " sockets"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.041,
+     "peak": " logging"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.194,
+     "peak": " helpers"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.07,
+     "peak": " queue"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.328,
+    "median_fire": 0.058,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "06c9197",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "CamelCase in imports",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "The card flags this pole broad: 4.4% of tokens reach 0.1 of max, and the top 32 share no token or context (Korean, Python, word salad, Arabic, Japanese). Probing: 'from utils import HandlerUtil' 0.29, Korean 0.16, everything else about 0.09. Recorded as dense; the test is a best guess and is expected to fail."
+}

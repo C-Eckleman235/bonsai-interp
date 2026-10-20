@@ -290,8 +290,12 @@ def brief(a):
                 f"4. python -m cleanroom.audit --run {run}; python -m cleanroom.collect --run {run}; score your predictions in {run}/scored.json;",
                 f"   python -m cleanroom.remove_room ../rooms/L{L}_N{n}   (never delete a room by hand: it links to the model weights)",
                 "5. Open a PR to neuron-cleanroom with the run record, and add a 'replicate' contribution to bonsai-interp that points at it."]
+    if a.kind in ("step", "stepin") and a.depth == "quick":  # opt-in: the band scan is ~1M tokens, slow on small GPUs
+        out = [ln for ln in out if not any(k in ln for k in ("bands scan", "bands sample", "Look past the top examples"))]
+        out.insert(2, "Depth: QUICK. Find TARGET as below, then look, probe a handful of sentences, pre-register one test and run it. "
+                      "Skip the band scan.")
     if a.kind in ("interpret", "qc"):
-        if a.depth == "quick":  # ~5-10 minutes: top examples, a few probes, one pre-registered test
+        if (a.depth or "quick") == "quick":  # ~5-10 minutes: top examples, a few probes, one pre-registered test
             out = [ln for ln in out if not any(k in ln for k in ("bands scan", "bands sample", "Look past the top examples"))]
             out.insert(2, f"Depth: QUICK (about 5-10 minutes). Look, probe a handful of sentences, pre-register one test, run it. "
                           f"Skip band scans and step-outs. Batch several neurons in one `play run a.tests.json b.tests.json ...` to load the model once.")
