@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-20-moridinamael-c8b38052",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N1264+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T22:24:17+00:00",
+ "roles": ["reads bonsai1/L32/N6614-"],
+ "neighbours": [
+  {
+   "unit": "L34/N1264",
+   "pole": "+",
+   "label": "the first element symbol of a chemical formula written without spaces, when that symbol has two letters (the metal symbol right before a glued-on second element, as in a nitride, oxide or chloride formula); the element's name spelled out, or its symbol standing alone, stays quiet",
+   "short": "start of a chemical formula (Ti in TiN)",
+   "confidence": 0.6,
+   "notes": "Blind test: sentences written by a second author who saw only the label. Exploration also found the pole on prefixes repeated from earlier glued names when the tokenizer splits them (fooBar/fooBaz, KingSlayer/KingMaker, self.colorRed/colorGreen ~0.4-0.6), and on CamelCase code names in its top examples (PythonWin, WebAgg, LoggerRx); single invented CamelCase names and one-token names (marginTop) stay low. The output suppresses space-prefixed capitals, consistent with predicting a glued-on capital next. Feeders step (play step, no --down) hit CUDA OOM, so this mission ran without the feeders-first arm.",
+   "fire": [
+    "Blue LEDs became practical once researchers learned to grow high-quality GaN films on sapphire.",
+    "The wafer was coated with a thin layer of AlN to improve heat dissipation.",
+    "Most white paint gets its brightness from TiO2 pigment.",
+    "Add 5 mL of FeCl3 solution to the beaker and watch the color change.",
+    "Sunscreens often contain ZnO as a mineral UV blocker.",
+    "Table salt is mostly NaCl, with small amounts of anti-caking agents.",
+    "The crucible was lined with MgO because it tolerates extreme temperatures.",
+    "Heating the copper wire in air left a black coating of CuO on its surface."
+   ],
+   "quiet": [
+    "Further development of these concepts led to Ivan Sutherland's groundbreaking Sketchpad program on the TX-2.",
+    "The Avon Longitudinal Study of Parents and Children enrolled pregnant women who were due to deliver between April 1991 and December 1992.",
+    "Blue LEDs became practical once researchers learned to grow high-quality gallium nitride films on sapphire.",
+    "The wafer was coated with a thin layer of aluminum nitride to improve heat dissipation.",
+    "Most white paint gets its brightness from titanium dioxide pigment.",
+    "Add 5 mL of the iron chloride solution to the beaker and watch the color change.",
+    "Sunscreens often contain zinc oxide as a mineral UV blocker.",
+    "Table salt is mostly sodium chloride, with small amounts of anti-caking agents."
+   ]
+  }
+ ],
+ "predictions": "most formulas fire (GaN and ZnO the riskiest), spelled-out names quiet",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "blind-room"
+  ]
+ }
+}
