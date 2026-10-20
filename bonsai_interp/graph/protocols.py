@@ -76,6 +76,10 @@ PROTOCOLS = {
     "auto-token@1": {"rule": _quick_8_8_v2, "required": ["per_sentence"],
                      "about": "the auto tier (bonsai_interp.auto.token_tier): a token hypothesis from the scan's top peaks, tested on 8 held-out "
                               "snippets ending on the token vs the same snippets with only that token swapped; judged like quick-8+8@2. Scrutiny 0"},
+    "auto-token@2": {"rule": _quick_8_8_v2, "required": ["per_sentence"],
+                     "about": "the auto tier v2 (bonsai_interp.auto.context_tier): word hits by corpus frequency, a context screen on "
+                              "separate windows, then 8 held-out snippets where the fitted rule holds vs the word without the context and the "
+                              "context without the word, each read at its last token; judged with quick-8+8@2's thresholds. Scrutiny 0"},
     "cleanroom@1": {"rule": _cleanroom_v1, "required": ["outcome"],
                     "about": "a blind clean-room run (neuron-cleanroom); outcome agrees / partly / disagrees, judged by the reviewer"},
 }

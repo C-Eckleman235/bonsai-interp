@@ -522,3 +522,57 @@ Headless agents played the survey page's sweep prompt in an ordinary player chec
   - branch names collided
   - long output was truncated
   - the PR body file sat inside the repo
+
+## 2026-10-20: auto-token@2, a staged corpus screen for the auto tier (`bonsai_interp/auto/context_tier.py`; built and smoke-tested on CPU, layer 20 run not yet registered)
+
+auto-token@1 read a pole's 32 top examples and guessed "the token X". At layer 12 that guess held for 34 of 644 poles, because most poles respond to their peak token only in some contexts. auto-token@2 asks the corpus first, and the top examples never.
+
+**Pipeline (no LLM until the dossier)**
+- **Three window splits, so no stage reads what a later stage is judged on:**
+  - 0..7999 selection (stage 1)
+  - 8000..15999 screening (stage 2)
+  - 16400.. testing (the auto test only)
+- **Stage 1, word hits by frequency.** One streaming pass over the selection windows: threshold on the GPU, bincount the (token, pole) and (previous token, token, pole) pairs. A strong activation reaches 0.3 of the pole's corpus max; positions below 64 are not counted (the window-start artifact, 2026-10-18). Per pair: precision P(strong | token), lift over the pole's base rate, coverage of the pole's strong activations. A hit needs n ≥ 8, coverage ≥ 0.05 and lift ≥ 10; each pole keeps up to 3.
+- **Stage 2, a context screen.** Up to 256 occurrences of each trigger in the screening windows, scored in their own context. A rule of one or two (feature = value) conditions is fitted by information gain on "strong". The features are the previous token, its word class (a heuristic tagger), line and sentence position, window position, script and code-like text. Bins:
+  - context or format: a rule with precision ≥ 0.5, recall ≥ 0.3 and a margin of 0.3 over the rate outside it
+  - positional: the same, on window position
+  - lexical: no such rule, but strong on ≥ 50% of occurrences
+  - unexplained or rare: the rest
+  - Two features are tabulated but never used in a rule. The following token can only be a correlate, because the model is causal. The corpus domain is not carried by a snippet.
+- **Minimal pairs check the bin:** swap the trigger (lexical), or swap the previous token out of and into the rule's context. The result is recorded; it does not gate.
+- **The auto test.** 48-token snippets from the testing windows that end on the trigger:
+  - Fire: 8 where the rule holds.
+  - Near misses: 4 of the word without the context (the rule fails), plus 4 of the context without the word (the trigger swapped). Lexical hits get the auto-token@1 swap.
+  - Each snippet is read at its last token, after the three preambles, and judged with quick-8+8@2's thresholds.
+- **Stage 3, a dossier per pole (≤ 64 KB, nothing from a test window).** It holds the card, both tables, screening examples, and with `--links` the feeders and readers (`play step`, `step --down`). An agent labels the pole from it and then writes a fresh quick-8+8@3 test.
+- **The map layer.** `export` writes one record per pole to `data/auto/bonsai1_L<L>.screen.json.gz`: its bin, top hits, context rule and auto-test outcome. That file feeds `site/screens.py` ("colour by Screen"), through the auto-screens release rather than git.
+
+**CPU smoke test (layer 20, fp32, 8 threads; thresholds lowered for a tiny corpus, so the numbers only show the plumbing)**
+- **Setup:** each split read 128 windows × 256 tokens, with n ≥ 3, at least 12 occurrences and support ≥ 4.
+- **Stage 1** took 5.6 min at about 95 tok/s.
+  - 24,330 poles were eligible (178 dense, 68 positional).
+  - 2,283 poles had at least one hit, 2,950 hits in all.
+  - The commonest triggers are whitespace, punctuation and function words (' ', ',', '.', ' =', '\n', ' and', ' of'). The top-32 view underweights exactly these.
+- **Stage 2,** on 400 random hits: 273 unexplained, 117 rare, 9 context, 1 format.
+- **Auto tests: 2 of 8 held.**
+  - ' I' as the first word of a sentence (format; AUROC 0.91, median 0.24).
+  - An indentation run right after ':\n' (context; AUROC 1.00, median 0.45).
+  - Typical failure: clean separation but weak firing at the trigger after a preamble ("'0' after '5'": AUROC 0.98, median 0.07).
+- **The design catches context poles.** In an earlier run, the near misses for "' def' in code-like text" that keep the context but swap the word fired at 0.36-0.43. That pole marks a position in code, not the word.
+- **Dossiers** were 10-16 KB. With `--links`, one takes about 25 min on the CPU.
+
+**Changed before registration, because of the smoke test** (no L20 result exists yet)
+- **Snippets 24 → 48 tokens.** Context tests separated well but fell just under the median-fire bar. For example, ' that' after a preposition reached AUROC 0.98 with median 0.19: a 24-token snippet loses the context the rule was fitted in.
+- **Read at the trigger, not the max over the snippet.** With longer snippets, near misses fired elsewhere in the snippet: another '. A' in a near miss for "' A' after '.'". The claim is about the trigger position.
+- **A splitting rule wins over a high overall rate.** ' self' fired on 65% of occurrences and was binned lexical, though "in source code" split it 68% vs 0%.
+- **Window positions below 64 excluded,** following the 2026-10-18 clean-room finding.
+- **The smoke test scored snippets from windows 16000..16399,** so the testing split starts at 16400.
+- **Corpus domain is tabulated but never in a rule.** Rules like "' up' in web text" cannot be tested, because a snippet does not carry which corpus a window came from. Script and code-like text are the locally visible stand-ins. (This change came after the final smoke run, whose numbers above still allowed domain rules.)
+
+**Expected GPU cost per layer (RTX 5080, bf16; an estimate, not measured yet)**
+- Stage 1: 8.2M tokens to layer 20. At the 5-7k tok/s the full-window scans have shown (`bands.scan`: about 1,000 windows in 3-4 min), that is about 20-30 min.
+- Stage 2: at most 8,000 screening windows, each cut at its last needed occurrence: 15-25 min. The minimal pairs add at most about 5M tokens of 32-token snippets: 5-10 min.
+- Scoring: 16 snippets per test × 3 preambles × about 105 tokens, so about 5k tokens per test. For 1,000-5,000 tests that is 5-25M tokens, or 8-40 min (auto-token@1 scored about 1M short-snippet tokens per GPU minute at layer 12, which is shallower).
+- **Total about 1-2 h per layer,** depending mostly on how many hits reach a test, with a peak of about 5 GB of GPU memory. The CPU parts (ranking, features, fitting, prereg) take minutes.
+
+**Next:** commit the protocol manifest for layer 20 on its own, then run the stages on the GPU (one job at a time).
