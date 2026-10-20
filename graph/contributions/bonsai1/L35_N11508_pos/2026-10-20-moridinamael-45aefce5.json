@@ -1,0 +1,168 @@
+{
+ "id": "2026-10-20-moridinamael-45aefce5",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N11508+",
+ "contributor": "moridinamael",
+ "created": "2026-10-20T19:13:47+00:00",
+ "recipe": {
+  "toolchain_commit": "a3f37c3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N11508_pos/2026-10-20-moridinamael-45aefce5.tests.json"
+ },
+ "label": "In a multi-line Python code block, the function or method name of a call that repeats the same function already called on an earlier line (e.g. the second os.path.expanduser(...) in a row)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N11508_pos/2026-10-20-moridinamael-45aefce5.tests.json",
+   "prereg_commit": "a3f37c3",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.354,
+     "peak": "user"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.102,
+     "peak": ".zeros"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.07,
+     "peak": "print"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.046,
+     "peak": " int"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.069,
+     "peak": ".assertEqual"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.312,
+     "peak": "_argument"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.041,
+     "peak": ".append"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.139,
+     "peak": ".info"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.076,
+     "peak": ".realpath"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.032,
+     "peak": ".assertTrue"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.131,
+     "peak": "user"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.1,
+     "peak": ".ones"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": -0.013,
+     "peak": " job"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.087,
+     "peak": " float"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.072,
+     "peak": ".assertTrue"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.037,
+     "peak": "_argument"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.672,
+    "median_fire": 0.086,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-gmoo",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "a3f37c3",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-in reader of bonsai1/L34/N1441+ (drop 0.03, tiny). Probes: second os.path.expanduser in an indented block 0.58 vs single call 0.06 vs swapped abspath 0.08; repeated numpy.array 0.37; stacked @app.route 0.37 (single 0.30). JS getElementById ~0.21 with or without repeat; Java-style list.add repeat 0.08 (solver silent case). The + pole also has some Korean word-start peaks not covered by this label.",
+ "roles": [
+  "reads bonsai1/L34/N1441+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L34/N1441+",
+   "to": "bonsai1/L35/N11508+",
+   "kind": "feeds",
+   "weight": 0.03,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
