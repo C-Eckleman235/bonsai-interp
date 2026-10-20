@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-19-moridinamael-3e4791d1",
+ "kind": "qc",
+ "neuron": "bonsai1/L10/N2499-",
+ "contributor": "moridinamael",
+ "created": "2026-10-20T00:23:32+00:00",
+ "recipe": {
+  "toolchain_commit": "a02e48d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-3e4791d1.tests.json"
+ },
+ "label": "Weak, dense hum that rises on mental-health care vocabulary: words naming the field or its professions (psychiatrist, psychiatric, psychologist, psychology, 'mental health') and words for talking-cure care (therapy, talk therapy, counselling, sharing feelings in group sessions). Plain diagnoses (depression, anxiety) and therapy acronyms (CBT) stay low. Known side channel: the word ' talking' even outside care (a talking parrot ~0.3); ordinary medical scenes hum at 0.1-0.4, so it is a weak preference, not a clean switch.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-3e4791d1.tests.json",
+   "prereg_commit": "a02e48d",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.286,
+     "peak": " par"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.531,
+     "peak": " psychiatrist"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.35,
+     "peak": " think"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.542,
+     "peak": " teenagers"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.474,
+     "peak": " words"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.271,
+     "peak": " counselling"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.26,
+     "peak": " each"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.397,
+     "peak": " psychologist"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.293,
+     "peak": " tablets"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.135,
+     "peak": " appointment"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.148,
+     "peak": " major"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.135,
+     "peak": " clinic"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.12,
+     "peak": " quiet"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.082,
+     "peak": " wait"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.197,
+     "peak": " turn"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.021,
+     "peak": " thirty"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.953,
+    "median_fire": 0.373,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-gmoo",
+   "look",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "a02e48d",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Weak, dense hum that rises on a word NAMING the mental-health field or its professions (psychiatrist, psychiatric, psychiatry, psychologist, psychology, psychoanalysis, 'mental health'), even with no treatment in the scene (a research psychologist studying memory ~0.5). Mental-health care described without such a word stays low (ward doses of clozapine and lithium ~0.14, the same as insulin; inpatient anorexia clinic ~0.12), as do psych- lookalikes ('psychic', the film 'Psycho'); the same sentence with 'doctor' instead of 'psychiatrist' drops from ~0.46 to ~0.14. Known side channels kept from the earlier label: the '-therapy' family (speech therapy ~0.46), ' talking' and the 'Too Little too Late?' headline. Of its newly mapped neighbours only L8/N2771+ (weight-loss surgery) is medical: after a gastric bypass, 'referred to a psychologist' ~0.65, 'referred to a surgeon' ~0.17."
+ }
+}
