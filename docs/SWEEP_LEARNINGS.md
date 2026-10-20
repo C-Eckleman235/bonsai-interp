@@ -28,6 +28,7 @@ abstraction pass. Each principle names its evidence and whether we have measured
 | 10 | **Plan wall time by the foreground's duty cycle,** not by GPU minutes. | the stream held 28–70% of the GPU during scoring | planning |
 
 **Open experiments** (the next speed and effectiveness questions):
+- stage 2's cost scales with hits × occurrences (847k × ≤ 256). Would capping occurrences per frequent trigger (e.g. 128) change any bins? It changes results, so it's the user's call; measure on one layer's occ store first
 - prefix sharing and batch 32 for scoring (GPU benchmark after stage 2)
 - the scoring tokens per held pole by depth (a paper metric; L4 about 24.5k, L20 about 172k layer-tokens)
 - feeders-first versus cold deep targets for human and agent labels (stream A/B)
@@ -42,6 +43,7 @@ abstraction pass. Each principle names its evidence and whether we have measured
 | L4 stages 1–2, per layer | 31 min | about 31 | stage 1: 9,300 tok/s (shallower) | GPU-side counter merge |
 | L4 scoring (0.22 cap, beside the stream) | 38 min | about 27 | 207 snippets/s | preamble KV cache, lm_head off, resumable |
 | all-layer stage 1 (33 layers, batch 1, beside the stream) | 115.7 min (31 yielded) | about 85 (vs 500–760 one layer at a time) | about 1,300 tok/s × 33 layers | one pass for all layers; memory-efficient attention; +15 min CPU table write |
+| all-layer stage 2, attempt 1 | stopped at window 1 of 8,000 (4 min) | – | planned 393 min for 847,211 hits | built 191M (hit, occurrence) pairs on the host at once (11–23 GB of RAM) on a machine at 59 / 88 GB committed; driver reset; rebuilding lean and chunked |
 
 Entry format:
 
