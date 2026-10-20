@@ -1,0 +1,110 @@
+{
+ "protocol": "auto-token@2",
+ "layer": 20,
+ "written": "2026-10-20T13:56:20+00:00",
+ "toolchain_commit": "8d6868b",
+ "code": "bonsai_interp/auto/context_tier.py",
+ "code_sha256": "f870f7fc03e820e01836f7f87c9239cb30c95848346f6f9c434351c631d67f10",
+ "windows": {
+  "selection": "0..7999",
+  "screening": "8000..15999",
+  "testing": "16400.."
+ },
+ "rule": {
+  "strong": 0.3,
+  "min_max": 0.5,
+  "min_pos": 64,
+  "min_strong": 8,
+  "min_coverage": 0.05,
+  "min_lift": 10.0,
+  "triggers_per_pole": 3,
+  "occ_per_trigger": 256,
+  "min_occ": 24,
+  "min_support": 8,
+  "lexical_rate": 0.5,
+  "rule_precision": 0.5,
+  "rule_recall": 0.3,
+  "rule_margin": 0.3,
+  "second_gain": 0.15,
+  "template_n": 8,
+  "template_ctx": 32,
+  "template_move": 0.15,
+  "snippet": 48,
+  "n": 8,
+  "n_rule_fail": 4,
+  "judge": "quick-8+8@2 thresholds (AUROC >= 0.90, median fire >= 0.20, <= 1 near miss >= 0.30) on the activation at the snippet's last token, averaged over the three standard preambles"
+ },
+ "features": [
+  "prev_tok",
+  "prev_class",
+  "prev_content",
+  "piece",
+  "num_pos",
+  "script",
+  "lang",
+  "line_pos",
+  "sent_pos",
+  "codeish",
+  "line_kind",
+  "in_quotes",
+  "tok_repeat",
+  "bigram_repeat",
+  "next_tok",
+  "next_class",
+  "pmi",
+  "win_pos"
+ ],
+ "table_only": [
+  "domain"
+ ],
+ "bins": {
+  "context": [
+   "prev_tok",
+   "prev_class",
+   "prev_content",
+   "piece",
+   "num_pos",
+   "script",
+   "lang"
+  ],
+  "format": [
+   "line_pos",
+   "sent_pos",
+   "codeish",
+   "line_kind",
+   "in_quotes"
+  ],
+  "copy": [
+   "tok_repeat",
+   "bigram_repeat"
+  ],
+  "predictive": [
+   "next_tok",
+   "next_class"
+  ],
+  "collocation": [
+   "pmi"
+  ],
+  "topic": [
+   "ctx_mean"
+  ],
+  "positional": [
+   "win_pos"
+  ]
+ },
+ "tested_bins": [
+  "lexical",
+  "context",
+  "format",
+  "copy",
+  "predictive",
+  "collocation"
+ ],
+ "expectations": [
+  "more poles at this layer get a held auto label than auto-token@1 found at layer 12 (34 of 24,576)",
+  "lexical hits hold at a higher rate than context hits, and context hits at a higher rate than format hits",
+  "among context and lexical hits, those whose minimal pairs confirm the bin hold at a higher rate than the rest",
+  "most eligible poles have at least one word hit, and most hits land in context or unexplained, not lexical"
+ ],
+ "note": "expectations are recorded before the run and reported either way; they are not gates"
+}

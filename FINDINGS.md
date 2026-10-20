@@ -523,7 +523,7 @@ Headless agents played the survey page's sweep prompt in an ordinary player chec
   - long output was truncated
   - the PR body file sat inside the repo
 
-## 2026-10-20: auto-token@2, a staged corpus screen for the auto tier (`bonsai_interp/auto/context_tier.py`; built and smoke-tested on CPU, layer 20 run not yet registered)
+## 2026-10-20: auto-token@2, a staged corpus screen for the auto tier (`bonsai_interp/auto/context_tier.py`; layer 20 pre-registered in ee6a89a and be402bc)
 
 auto-token@1 read a pole's 32 top examples and guessed "the token X". At layer 12 that guess held for 34 of 644 poles, because most poles respond to their peak token only in some contexts. auto-token@2 asks the corpus first, and the top examples never.
 
@@ -567,12 +567,82 @@ auto-token@1 read a pole's 32 top examples and guessed "the token X". At layer 1
 - **A splitting rule wins over a high overall rate.** ' self' fired on 65% of occurrences and was binned lexical, though "in source code" split it 68% vs 0%.
 - **Window positions below 64 excluded,** following the 2026-10-18 clean-room finding.
 - **The smoke test scored snippets from windows 16000..16399,** so the testing split starts at 16400.
+- **More features, mined from the 284 held labels on main** (a survey by the coordinating session):
+  - where the token sits in its word; the nearest content word 1-3 tokens back; digit position; language of the preceding text; line kind; inside quotes
+  - repetition inside the snippet → a **copy** bin
+  - the next token → a testable **predictive** bin, since the test selects snippets by their continuation
+  - PMI with the previous token → a **collocation** bin
+  - the pole's own mean activation over the preceding snippet → a **topic** bin (untested, because a text-only test cannot select it)
+  - look-alike and inflection swaps for lexical hits; a look-alike that keeps firing is shown on the map as **spelling**
+  - Not added: the model's own token probability and entropy (they need the full forward pass), and the synonym, translation and other-sense controls (they need lexicons).
+- **A GPU smoke test at the real thresholds** (200 selection and 300 screening windows, tests from the burned block 16000..16399): 95 of 213 auto tests held (82 poles), and lexical hits held 27 of 28. Stage 1 ran at 6,000 tok/s. Like the CPU smoke test, this checked the plumbing and was not registered.
 - **Corpus domain is tabulated but never in a rule.** Rules like "' up' in web text" cannot be tested, because a snippet does not carry which corpus a window came from. Script and code-like text are the locally visible stand-ins. (This change came after the final smoke run, whose numbers above still allowed domain rules.)
 
-**Expected GPU cost per layer (RTX 5080, bf16; an estimate, not measured yet)**
+**Expected GPU cost per layer (RTX 5080, bf16; estimated before the GPU smoke test, which measured stage 1 at 6,000 tok/s, about 21 min per layer)**
 - Stage 1: 8.2M tokens to layer 20. At the 5-7k tok/s the full-window scans have shown (`bands.scan`: about 1,000 windows in 3-4 min), that is about 20-30 min.
 - Stage 2: at most 8,000 screening windows, each cut at its last needed occurrence: 15-25 min. The minimal pairs add at most about 5M tokens of 32-token snippets: 5-10 min.
 - Scoring: 16 snippets per test × 3 preambles × about 105 tokens, so about 5k tokens per test. For 1,000-5,000 tests that is 5-25M tokens, or 8-40 min (auto-token@1 scored about 1M short-snippet tokens per GPU minute at layer 12, which is shallower).
 - **Total about 1-2 h per layer,** depending mostly on how many hits reach a test, with a peak of about 5 GB of GPU memory. The CPU parts (ranking, features, fitting, prereg) take minutes.
 
-**Next:** commit the protocol manifest for layer 20 on its own, then run the stages on the GPU (one job at a time).
+**Layer 20 results** (protocol ee6a89a, tests pinned be402bc, scored at be402bc; `graph/auto/bonsai1_L20.auto2.summary.json`)
+- **Stage 1:**
+  - 11,343 of 24,330 eligible poles have at least one word hit, 20,740 hits in all.
+  - 178 poles were excluded as dense and 68 as positional.
+- **Stage 2 bins** (of 20,740 hits):
+
+  | bin | hits |
+  |---|---|
+  | unexplained | 19,315 |
+  | context | 520 |
+  | predictive | 300 |
+  | lexical | 251 |
+  | format | 128 |
+  | topic | 79 |
+  | collocation | 69 |
+  | rare | 45 |
+  | positional | 27 |
+  | copy | 6 |
+
+- **Auto tests: 682 of 1,185 held (58%), covering 562 poles.** auto-token@1 managed 34 of 644 at layer 12. The median AUROC was 0.95.
+
+  | bin | held |
+  |---|---|
+  | lexical | 222 / 228 (97%) |
+  | context | 242 / 491 (49%) |
+  | format | 53 / 108 (49%) |
+  | predictive | 134 / 285 (47%) |
+  | collocation | 27 / 67 (40%) |
+  | copy | 4 / 6 |
+
+- **Why the 503 failures failed** (a test can fail on several counts):
+  - 445 had AUROC < 0.90
+  - 244 had more than one near miss at ≥ 0.30
+  - 106 had a median fire below 0.20
+- **Examples that held:**
+  - lexical: ' provides', ' plug', ' looked'
+  - context: ' whose' right after a preposition; ' get' shortly after the word 'def'
+  - predictive: ' area' right before a preposition
+  - collocation: ' ©' and ' عليه' in fixed pairs (PMI ≥ 5)
+  - format: ' return' in code-like text
+  - copy: ' django' repeating an earlier pair
+- **The pre-registered expectations:**
+  1. More held poles than auto-token@1: **yes**, 562 against 34.
+  2. Lexical > context > format: **lexical yes** (97%). Context and format **tie** (49.3% vs 49.1%).
+  3. Hits whose minimal pairs confirm the bin hold more often: **yes, within context**. Confirmed held 31/54 (57%), partial 73/113 (65%), not confirmed 46/111 (41%), no check possible 92/213 (43%).
+  4. "Most eligible poles have a word hit": **no**, only 47% do. "Most hits land in context or unexplained, not lexical": **yes**, 93% unexplained and 1.2% lexical.
+- **Measured cost on the RTX 5080:**
+  - hits: 23.3 min at 6,000 tok/s, about 9.6 GB uncapped
+  - screen: 28.2 min, of which 25.1 forward, 1.7 fit, and the rest minimal pairs; 8.3 GB
+  - prereg: about 3 min on the CPU
+  - score: 19.2 min, 5.8 GB under BONSAI_GPU_FRACTION=0.35. A first try at batch 64 ran out of memory and wrote nothing; the rerun used batch 16.
+  - export: seconds
+  - So about 75 GPU minutes per layer. With the cap, use `--batch 2` for hits and screen.
+
+**Reading**
+- **A pole's commonest word is rarely its trigger.** 93% of word hits are unexplained: frequent tokens (indentation, ' ', ' =', digits, '\n', ' is', ' for') that the pole fires on in a median 0.4% of occurrences. They pass lift ≥ 10 only because the poles' base rates are tiny. These are sparse context poles whose context the 19 rule features do not capture. They are the dossier lane for agents: labelled for a context, not a word.
+- **Where a cheap rule exists, it holds about half the time on fresh text.** A lexical claim holds almost always. auto-token@1's top-k "token" claims held 5% of the time. The two runs are at different layers (12 and 20), so this is not a controlled comparison, but the gap is large. Running auto-token@1's rule at layer 20 would settle it.
+- **The map gets about 560 scrutiny-0 labels from this layer,** in bins (word, context, format, collocation, copy), plus a bin for every screened pole.
+
+**Stage 2's per-occurrence activations** are saved from the next layer on (`occ.npz`). A new context feature then becomes a CPU-only `refit`, which reproduced stage 2 exactly on a smoke run. Layer 20 predates the store. If a future filter needs it, that filter's first step re-runs layer 20's stage 2 with the store on (about 28 GPU min). That leaves the registered results untouched, because the stage is deterministic on the same windows.
+
+**Backup:** the layer's data files are in the `auto2-data` release and its map file in `auto-screens`, with sha256 and sizes in the summary's `artifacts`.
