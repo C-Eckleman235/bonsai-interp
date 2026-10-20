@@ -12,6 +12,8 @@ contexts. This tier asks the corpus first and the top examples never:
   python -m bonsai_interp.auto.context_tier export   --layer 20   CPU: the survey map's screen layer (site/screens.py)
   python -m bonsai_interp.auto.context_tier backup   --layer 20   hash data/auto2 files into the summary, upload them to releases
   python -m bonsai_interp.auto.context_tier refit    --layer 20   CPU: refit stage 2 from its per-occurrence store (new features)
+  python -m bonsai_interp.auto.context_tier protocol-all|hits-all|screen-all|prereg-all|score-all|export-all --layers 0,1,2
+      the same stages for many layers under ONE registration: one forward pass per batch reads every layer (hits, screen)
   python -m bonsai_interp.auto.context_tier dossier  --neuron bonsai1/L20/N123+ [--links]   stage 3: input for an agent
   (--smoke DIR runs any stage without the manifest checks and writes to DIR: for CPU tests only)
   Measured on an RTX 5080 at layer 20: hits 23 min (6,000 tok/s, batch 8, 9.6 GB uncapped), screen 28 min (8.3 GB at
@@ -526,32 +528,113 @@ def eligibility(L):
 
 
 class _Acc:
-    """Sparse counter of int64 keys: per-batch unique on the device, merged on the CPU."""
+    """Sparse counter of int64 keys. Each batch's keys are uniqued on the device; every `flush` batches those are merged
+    on the device (counts summed per key) and moved to the CPU once; the CPU merges its parts now and then. Exact counts."""
 
-    def __init__(self):
+    def __init__(self, flush=16):
         self.k, self.c, self.parts = np.zeros(0, np.int64), np.zeros(0, np.int64), []
+        self.dk, self.dc, self.flush, self.n = [], [], flush, 0
 
     def add(self, keys):
         import torch
         if keys.numel():
             u, c = torch.unique(keys, return_counts=True)
-            self.parts.append((u.cpu().numpy(), c.cpu().numpy()))
-        if len(self.parts) >= 32:
-            self.merge()
+            self.dk.append(u)
+            self.dc.append(c)
+        self.n += 1
+        if self.n % self.flush == 0:
+            self._to_cpu()
 
-    def merge(self):
+    def _to_cpu(self):
+        import torch
+        if not self.dk:
+            return
+        k, c = torch.cat(self.dk), torch.cat(self.dc)
+        self.dk, self.dc = [], []
+        u, inv = torch.unique(k, return_inverse=True)
+        sums = torch.zeros(len(u), dtype=c.dtype, device=c.device).scatter_add_(0, inv, c)
+        self.parts.append((u.cpu().numpy(), sums.cpu().numpy()))
+        if len(self.parts) >= 32:
+            self._merge_parts()
+
+    def _merge_parts(self):
         if not self.parts:
             return
         k = np.concatenate([self.k] + [p[0] for p in self.parts])
         c = np.concatenate([self.c] + [p[1] for p in self.parts])
         self.parts = []
+        if not len(k):
+            self.k, self.c = k, c
+            return
         o = np.argsort(k, kind="stable")
         k, c = k[o], c[o]
         first = np.flatnonzero(np.r_[True, k[1:] != k[:-1]])
         self.k, self.c = k[first], np.add.reduceat(c, first)
 
+    def merge(self):
+        self._to_cpu()
+        self._merge_parts()
+
 
 # ---------------------------------------------------------------- stage 1: word hits by frequency
+
+class _HitCounter:
+    """Stage 1's counters for one layer: strong activations by (token, pole) and (bigram, pole), thresholded on the device."""
+
+    def __init__(self, L, V, device):
+        import torch
+        self.L, self.V = L, V
+        self.elig = eligibility(L)
+        pmax, nmax = _pole_max(L)
+        thr = np.stack([pmax, nmax]) * RULE["strong"]
+        thr[self.elig != "eligible"] = np.inf  # only eligible poles are counted (dense poles would swamp the counters)
+        self.thr = torch.tensor(thr, device=device, dtype=torch.float32)
+        self.uni, self.bi = _Acc(), _Acc()
+        self.total = torch.zeros(2 * N, dtype=torch.int64, device=device)
+
+    def add(self, act, x):
+        import torch
+        mp, NN, V = RULE["min_pos"], 2 * N, self.V
+        act = act[:, mp:]  # window starts are an artifact (FINDINGS 2026-10-18): not counted
+        for p in (0, 1):
+            v = act.float() if p == 0 else -act.float()
+            b, t, n = (v >= self.thr[p]).nonzero(as_tuple=True)
+            del v
+            pole = p * N + n
+            tk = x[b, t + mp]
+            self.uni.add(tk * NN + pole)
+            self.bi.add((x[b, t + mp - 1] * V + tk) * NN + pole)
+            self.total += torch.bincount(pole, minlength=NN)
+
+    def save(self, P, toks, minutes):
+        mp, NN, V = RULE["min_pos"], 2 * N, self.V
+        uni, bi = self.uni, self.bi
+        uni.merge()
+        bi.merge()
+        keep = bi.c >= 3  # a bigram seen < 3 times strong can never be a hit (min_strong) and is noise in the tables
+        flat = toks.astype(np.int64)
+        freq = np.bincount(flat[:, mp:].ravel(), minlength=V)
+        bg, bgc = np.unique((flat[:, mp - 1:-1] * V + flat[:, mp:]).ravel(), return_counts=True)
+        bk = bi.k[keep] // NN
+        bfreq = bgc[np.clip(np.searchsorted(bg, bk), 0, len(bg) - 1)]
+        np.savez_compressed(P["hits"], layer=self.L, windows=len(toks), tokens_per_window=toks.shape[1], n_tokens=flat[:, mp:].size,
+                            uni_keys=uni.k, uni_counts=uni.c.astype(np.int32), bi_keys=bi.k[keep], bi_counts=bi.c[keep].astype(np.int32),
+                            bi_freq=bfreq.astype(np.int64), freq=freq, total=self.total.cpu().numpy(), elig=(self.elig == "eligible"),
+                            minutes=minutes)
+        print(f"layer {self.L}: {len(uni.k):,} (token, pole) and {int(keep.sum()):,} (bigram, pole) pairs -> {P['hits']}")
+
+
+def _progress(done, total, t0, unit="windows", tokens=None):
+    el = time.time() - t0
+    rate = f"  {done * tokens / el:,.0f} tok/s" if tokens else ""
+    print(f"  {done}/{total} {unit}{rate}  eta {el / max(done, 1) * (total - done) / 60:.1f} min", flush=True)
+
+
+def _stop_requested():
+    """data/auto2/STOP ends a long pass between batches (nothing of the pass is written)."""
+    if (OUT / "STOP").exists():
+        sys.exit("STOP file found: stopping before the pass finished (nothing written)")
+
 
 def hits(a):
     import torch
@@ -561,56 +644,27 @@ def hits(a):
     L = a.layer
     toks, _, _ = _windows(SELECT, a)
     vb = vocab()
-    V, NN, mp = vb["V"], 2 * N, RULE["min_pos"]
-    elig = eligibility(L)
-    pmax, nmax = _pole_max(L)
-    thr = np.stack([pmax, nmax]) * RULE["strong"]
-    thr[elig != "eligible"] = np.inf  # only eligible poles are counted (dense poles would swamp the counters)
-    thr_t = torch.tensor(thr, device=DEVICE, dtype=torch.float32)
+    counter = _HitCounter(L, vb["V"], DEVICE)
     limit_memory(0.8)
     model, tok, rec = load("bonsai1")
-    uni, bi = _Acc(), _Acc()
-    total = torch.zeros(NN, dtype=torch.int64, device=DEVICE)
     t0, B = time.time(), a.batch
-    print(f"stage 1, layer {L}: {len(toks)} windows x {toks.shape[1]} tokens, {int((elig == 'eligible').sum())} eligible poles", flush=True)
+    print(f"stage 1, layer {L}: {len(toks)} windows x {toks.shape[1]} tokens, {int((counter.elig == 'eligible').sum())} eligible poles", flush=True)
     for b0 in range(0, len(toks), B):
         x = torch.from_numpy(toks[b0:b0 + B].astype(np.int64)).to(DEVICE)
-        act = _forward(model, rec, x, L)[:, mp:]  # window starts are an artifact (FINDINGS 2026-10-18): not counted
-        for p in (0, 1):
-            v = act.float() if p == 0 else -act.float()
-            b, t, n = (v >= thr_t[p]).nonzero(as_tuple=True)
-            del v
-            pole = p * N + n
-            tk = x[b, t + mp]
-            uni.add(tk * NN + pole)
-            bi.add((x[b, t + mp - 1] * V + tk) * NN + pole)
-            total += torch.bincount(pole, minlength=NN)
-        del act
+        counter.add(_forward(model, rec, x, L), x)
         done = b0 + len(x)
         if (b0 // B) % 25 == 0 or done == len(toks):
-            el = time.time() - t0
-            print(f"  {done}/{len(toks)} windows  {done * toks.shape[1] / el:,.0f} tok/s  eta {el / done * (len(toks) - done) / 60:.1f} min", flush=True)
-    uni.merge()
-    bi.merge()
-    keep = bi.c >= 3  # a bigram seen < 3 times strong can never be a hit (min_strong) and is noise in the tables
-    flat = toks.astype(np.int64)
-    freq = np.bincount(flat[:, mp:].ravel(), minlength=V)
-    bg, bgc = np.unique((flat[:, mp - 1:-1] * V + flat[:, mp:]).ravel(), return_counts=True)
-    bk = bi.k[keep] // NN
-    bfreq = bgc[np.clip(np.searchsorted(bg, bk), 0, len(bg) - 1)]
-    np.savez_compressed(P["hits"], layer=L, windows=len(toks), tokens_per_window=toks.shape[1], n_tokens=flat[:, mp:].size,
-                        uni_keys=uni.k, uni_counts=uni.c.astype(np.int32), bi_keys=bi.k[keep], bi_counts=bi.c[keep].astype(np.int32),
-                        bi_freq=bfreq.astype(np.int64), freq=freq, total=total.cpu().numpy(), elig=(elig == "eligible"),
-                        minutes=(time.time() - t0) / 60)
-    print(f"stage 1 pass {(time.time() - t0) / 60:.1f} min; {len(uni.k):,} (token, pole) and {int(keep.sum()):,} (bigram, pole) pairs -> {P['hits']}")
-    rank(a, P, elig)
+            _progress(done, len(toks), t0, tokens=toks.shape[1])
+    counter.save(P, toks, (time.time() - t0) / 60)
+    print(f"stage 1 pass {(time.time() - t0) / 60:.1f} min")
+    rank(a, P, counter.elig)
 
 
-def rank(a, P=None, elig=None):
+def rank(a, P=None, elig=None, L=None):
     """The ranked word-hit table per pole and the triggers stage 2 screens (CPU, from the stage 1 counts)."""
     if P is None:
         P, _ = _setup(a)
-    L = a.layer
+    L = a.layer if L is None else L
     d = np.load(P["hits"])
     vb = vocab()
     V, NN = vb["V"], 2 * N
@@ -877,6 +931,69 @@ def _occurrences(toks, tokens, M, L, min_pos=1):
     return out
 
 
+def _hitlist(P, a):
+    table = _read_gz(P["table"])
+    hitlist = [(r["neuron"], t) for r in table for t in r.get("triggers", [])]
+    if getattr(a, "limit_hits", None):  # smoke tests only
+        keep = np.random.default_rng(0).permutation(len(hitlist))[:a.limit_hits]
+        hitlist = [hitlist[i] for i in sorted(keep)]
+    return hitlist
+
+
+class _Pairs:
+    """Stage 2's reads for one layer: one (occurrence, hit) pair per value, hit-major in occurrence order, with the
+    activation at the trigger (frac) and the pole's mean activation over the preceding snippet (ctx_mean) filled in."""
+
+    def __init__(self, L, hitlist, occ):
+        pmax, nmax = _pole_max(L)
+        pw, pp, pn, ps = [], [], [], []
+        for nid, t in hitlist:
+            w, p = occ.get(t["token"], (np.zeros(0, int), np.zeros(0, int)))
+            n, sgn = int(nid.split("/N")[1][:-1]), 1.0 if nid.endswith("+") else -1.0
+            pw.append(w); pp.append(p); pn.append(np.full(len(w), n)); ps.append(np.full(len(w), sgn))
+        cat = lambda x, t: np.concatenate(x).astype(t) if x else np.zeros(0, t)
+        self.L, self.pw, self.pp, self.pn, self.ps = L, cat(pw, np.int64), cat(pp, np.int64), cat(pn, np.int64), cat(ps, np.float64)
+        self.mx = np.where(self.ps > 0, pmax[self.pn], nmax[self.pn])
+        self.frac = np.zeros(len(self.pw), np.float32)
+        self.ctxm = np.zeros(len(self.pw), np.float32)
+        self.order = np.argsort(self.pw, kind="stable")
+        self.pw_sorted = self.pw[self.order]
+
+    def select(self, ws):
+        """Pairs whose window is in ws (a sorted array of windows)."""
+        lo, hi = np.searchsorted(self.pw_sorted, [ws[0], ws[-1] + 1])
+        sel = self.order[lo:hi]
+        return sel[np.isin(self.pw[sel], ws)]
+
+    def read(self, act, ws, sel):
+        import torch
+        if not len(sel):
+            return
+        dev = act.device
+        back = torch.arange(1, RULE["snippet"], device=dev)
+        row = torch.from_numpy(np.searchsorted(ws, self.pw[sel])).to(dev)
+        pos_t, n_t = torch.from_numpy(self.pp[sel]).to(dev), torch.from_numpy(self.pn[sel]).to(dev)
+        v = act[row, pos_t, n_t].float().cpu().numpy()
+        self.frac[sel] = v * self.ps[sel] / self.mx[sel]
+        win = act[row[:, None], (pos_t[:, None] - back).clamp_min(0), n_t[:, None]].float()
+        scale = torch.from_numpy(self.ps[sel] / self.mx[sel]).to(dev).float()[:, None]
+        self.ctxm[sel] = (win * scale).clamp_min(0).mean(1).cpu().numpy()
+
+
+def _finish_screen(P, L, hitlist, occ, pairs, toks, dom, w0, vb):
+    """Store, features, fit and bins for one layer (minimal pairs come after, batched across layers when many)."""
+    save_store(P["occ"], hitlist, occ, pairs.frac, pairs.ctxm, w0)
+    return screen_rows(hitlist, occ, pairs.frac, pairs.ctxm, toks, dom, w0, P, vb, L)
+
+
+def _write_screen(P, L, rows, t0):
+    _write_gz(P["screen"], rows)
+    tally = {}
+    for r in rows:
+        tally[r["bin"]] = tally.get(r["bin"], 0) + 1
+    print(f"stage 2 bins, layer {L}: {json.dumps(tally)}; minutes {(time.time() - t0) / 60:.1f} -> {P['screen']}")
+
+
 def screen(a):
     import torch
     from bonsai_interp.env import DEVICE, limit_memory
@@ -884,62 +1001,28 @@ def screen(a):
     P, man = _setup(a)
     L, R = a.layer, RULE
     vb = vocab()
-    table = _read_gz(P["table"])
-    hitlist = [(r["neuron"], t) for r in table for t in r.get("triggers", [])]
-    if getattr(a, "limit_hits", None):  # smoke tests only
-        keep = np.random.default_rng(0).permutation(len(hitlist))[:a.limit_hits]
-        hitlist = [hitlist[i] for i in sorted(keep)]
+    hitlist = _hitlist(P, a)
     toks, dom, w0 = _windows(SCREEN, a)
     print(f"stage 2, layer {L}: {len(hitlist)} hits, {len(toks)} screening windows (from {w0})", flush=True)
     occ = _occurrences(toks, sorted({t["token"] for _, t in hitlist}), R["occ_per_trigger"], L, min_pos=R["min_pos"])
-    pmax, nmax = _pole_max(L)
-    # one (occurrence, hit) pair per value to read: window, position, neuron, sign, hit index, slot
-    pw, pp, pn, ps, ph, pslot = [], [], [], [], [], []
-    for h, (nid, t) in enumerate(hitlist):
-        w, p = occ.get(t["token"], (np.zeros(0, int), np.zeros(0, int)))
-        n, sgn = int(nid.split("/N")[1][:-1]), 1.0 if nid.endswith("+") else -1.0
-        pw.append(w); pp.append(p); pn.append(np.full(len(w), n)); ps.append(np.full(len(w), sgn))
-        ph.append(np.full(len(w), h)); pslot.append(np.arange(len(w)))
-    pw, pp, pn, ps, ph, pslot = (np.concatenate(x) if x else np.zeros(0) for x in (pw, pp, pn, ps, ph, pslot))
-    pw, pp, pn, ph, pslot = (x.astype(np.int64) for x in (pw, pp, pn, ph, pslot))
-    mx = np.where(ps > 0, pmax[pn], nmax[pn])
-    frac = np.zeros(len(pw), np.float32)
-    ctxm = np.zeros(len(pw), np.float32)  # mean of the pole's activation (>= 0, fraction of max) over the snippet before the trigger
-    back = torch.arange(1, R["snippet"], device=DEVICE)
-    order = np.argsort(pw, kind="stable")
-    pw_sorted = pw[order]
-    need = np.unique(pw)
+    pairs = _Pairs(L, hitlist, occ)
+    need = np.unique(pairs.pw)
     limit_memory(0.8)
     model, tok, rec = load("bonsai1")
     t0, B = time.time(), a.batch
     for i in range(0, len(need), B):
         ws = need[i:i + B]
-        lo, hi = np.searchsorted(pw_sorted, [ws[0], ws[-1] + 1])
-        sel = order[lo:hi]
-        T = int(pp[sel].max()) + 1
+        sel = pairs.select(ws)
+        T = int(pairs.pp[sel].max()) + 1
         x = torch.from_numpy(toks[ws, :T].astype(np.int64)).to(DEVICE)
-        act = _forward(model, rec, x, L)
-        row = torch.from_numpy(np.searchsorted(ws, pw[sel])).to(DEVICE)
-        pos_t, n_t = torch.from_numpy(pp[sel]).to(DEVICE), torch.from_numpy(pn[sel]).to(DEVICE)
-        v = act[row, pos_t, n_t].float().cpu().numpy()
-        frac[sel] = v * ps[sel] / mx[sel]
-        win = act[row[:, None], (pos_t[:, None] - back).clamp_min(0), n_t[:, None]].float()
-        scale = torch.from_numpy(ps[sel] / mx[sel]).to(DEVICE).float()[:, None]
-        ctxm[sel] = (win * scale).clamp_min(0).mean(1).cpu().numpy()
-        del act
+        pairs.read(_forward(model, rec, x, L), ws, sel)
         if (i // B) % 25 == 0 or i + B >= len(need):
-            el = time.time() - t0
-            print(f"  {min(i + B, len(need))}/{len(need)} windows  eta {el / min(i + B, len(need)) * (len(need) - i - B) / 60:.1f} min", flush=True)
+            _progress(min(i + B, len(need)), len(need), t0)
     t_pass = time.time() - t0
-    save_store(P["occ"], hitlist, occ, frac, ctxm, w0)
-    rows, plans = screen_rows(hitlist, occ, frac, ctxm, toks, dom, w0, P, vb, L)
+    rows, plans = _finish_screen(P, L, hitlist, occ, pairs, toks, dom, w0, vb)
     print(f"stage 2 pass {t_pass / 60:.1f} min, fit {(time.time() - t0 - t_pass) / 60:.1f} min", flush=True)
-    _templates(model, rec, L, rows, plans, pmax, nmax, a.batch * 32)
-    _write_gz(P["screen"], rows)
-    tally = {}
-    for r in rows:
-        tally[r["bin"]] = tally.get(r["bin"], 0) + 1
-    print(f"stage 2 bins: {json.dumps(tally)}; minutes {(time.time() - t0) / 60:.1f} -> {P['screen']}")
+    _templates(model, rec, {L: (rows, plans)}, a.batch * 32)
+    _write_screen(P, L, rows, t0)
 
 
 def save_store(path, hitlist, occ, frac, ctxm, w0):
@@ -1098,30 +1181,51 @@ def _template_plan(row, rule, fts, fr, w, p, toks, subs, L):
     return pairs
 
 
-def _templates(model, rec, L, rows, plans, pmax, nmax, B):
-    """Score every minimal pair at the trigger (last) position and record the check in each row."""
+def _templates(model, rec, by_layer, B):
+    """Score every minimal pair at the trigger (last) position and record the check in each row.
+    by_layer: {L: (rows, plans)}. One forward per batch, to the deepest layer in it, reading each layer in a hook."""
     import torch
     from bonsai_interp.env import DEVICE
-    jobs = []  # (row index, kind, which, ids, n, sign)
-    for i, (r, pl) in enumerate(zip(rows, plans)):
-        if not pl:
-            r["template"] = {"check": "n/a"}
-            continue
-        n, sgn = int(r["neuron"].split("/N")[1][:-1]), 1.0 if r["neuron"].endswith("+") else -1.0
-        for kind, s, e in pl:
-            jobs += [(i, kind, 0, s, n, sgn), (i, kind, 1, e, n, sgn)]
+    from bonsai_interp.model import StopForward
+    jobs = []  # (layer, row index, kind, which, ids, n, sign)
+    for L in sorted(by_layer):
+        rows, plans = by_layer[L]
+        for i, (r, pl) in enumerate(zip(rows, plans)):
+            if not pl:
+                r["template"] = {"check": "n/a"}
+                continue
+            n, sgn = int(r["neuron"].split("/N")[1][:-1]), 1.0 if r["neuron"].endswith("+") else -1.0
+            for kind, s_, e in pl:
+                jobs += [(L, i, kind, 0, s_, n, sgn), (L, i, kind, 1, e, n, sgn)]
+    pm = {L: _pole_max(L) for L in by_layer}
     vals = np.zeros(len(jobs))
     for b in range(0, len(jobs), B):
         ch = jobs[b:b + B]
-        x = torch.from_numpy(np.stack([j[3] for j in ch])).to(DEVICE)
-        act = _forward(model, rec, x, L)[:, -1].float().cpu().numpy()
+        x = torch.from_numpy(np.stack([j[4] for j in ch])).to(DEVICE)
+        layers = sorted({j[0] for j in ch})
+        got = {}
+
+        def grab(L):
+            def f(act):
+                got[L] = act[:, -1].float().cpu().numpy()
+                return act
+            return f
+        rec.mode, rec.interventions, rec.stop_at = None, {L: grab(L) for L in layers}, layers[-1]
+        try:
+            with torch.no_grad():
+                model.model(input_ids=x)
+        except StopForward:
+            pass
+        finally:
+            rec.interventions, rec.stop_at = {}, None
         for k, j in enumerate(ch):
-            vals[b + k] = act[k, j[4]] * j[5] / (pmax[j[4]] if j[5] > 0 else nmax[j[4]])
+            pmax, nmax = pm[j[0]]
+            vals[b + k] = got[j[0]][k, j[5]] * j[6] / (pmax[j[5]] if j[6] > 0 else nmax[j[5]])
     res = {}
-    for (i, kind, which, *_), v in zip(jobs, vals):
-        res.setdefault(i, {}).setdefault(kind, [[], []])[which].append(float(v))
+    for (L, i, kind, which, *_), v in zip(jobs, vals):
+        res.setdefault((L, i), {}).setdefault(kind, [[], []])[which].append(float(v))
     mv = RULE["template_move"]
-    for i, kinds in res.items():
+    for (L, i), kinds in res.items():
         t = {}
         for kind, (orig, edit) in kinds.items():
             d = np.array(edit) - np.array(orig)
@@ -1138,7 +1242,7 @@ def _templates(model, rec, L, rows, plans, pmax, nmax, B):
             down = "leave-context" in t and t["leave-context"]["median_change"] <= -mv
             up = "enter-context" in t and t["enter-context"]["median_change"] >= mv
             t["check"] = "confirmed" if down and up else "partial" if down or up else "not confirmed"
-        rows[i]["template"] = t
+        by_layer[L][0][i]["template"] = t
 
 
 # ---------------------------------------------------------------- auto tests (pre-registered) and scoring
@@ -1153,9 +1257,22 @@ def label(row, vb):
 
 def prereg(a):
     """Auto tests from the testing windows (texts only, nothing scored), pinned by sha256 in a manifest."""
-    from bonsai_interp import explore
     P, man = _setup(a)
-    L, R = a.layer, RULE
+    L = a.layer
+    counts, sha = _prereg_layer(L, P, a)
+    pre = {"protocol": PROTOCOL, "layer": L, "written": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+           "toolchain_commit": _commit(), "protocol_manifest": P["protocol"].relative_to(ROOT).as_posix() if not a.smoke else None,
+           "tests_file": P["tests"].relative_to(ROOT).as_posix() if not a.smoke else str(P["tests"]), "tests_sha256": sha,
+           "test_windows": f"{TEST[0]}..", "counts": counts}
+    P["prereg"].write_text(json.dumps(pre, indent=1) + "\n", encoding="utf-8", newline="\n")
+    print(json.dumps(counts))
+    print(f"wrote {P['tests']} and {P['prereg']}\nCommit the manifest ALONE before scoring.")
+
+
+def _prereg_layer(L, P, a):
+    """One layer's auto tests (texts only), written to its tests file: (counts, sha256 of the file's content)."""
+    from bonsai_interp import explore
+    R = RULE
     vb, tok = vocab(), explore.tokenizer()
     rows = _read_gz(P["screen"])
     toks, dom, w0 = _windows((16000, TEST[0]) if a.smoke else TEST, a)  # smoke tests stay out of the testing windows
@@ -1208,33 +1325,35 @@ def prereg(a):
             continue
         counts["tested"] = counts.get("tested", 0) + 1
         out.append({**base, "class": "tested", "label": label(r, vb), "fire": fire, "quiet": quiet, "quiet_kind": kinds})
-    sha = _write_gz(P["tests"], out)
-    pre = {"protocol": PROTOCOL, "layer": L, "written": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
-           "toolchain_commit": _commit(), "protocol_manifest": P["protocol"].relative_to(ROOT).as_posix() if not a.smoke else None,
-           "tests_file": P["tests"].relative_to(ROOT).as_posix() if not a.smoke else str(P["tests"]), "tests_sha256": sha,
-           "test_windows": f"{TEST[0]}..", "counts": counts}
-    P["prereg"].write_text(json.dumps(pre, indent=1) + "\n", encoding="utf-8", newline="\n")
-    print(json.dumps(counts))
-    print(f"wrote {P['tests']} and {P['prereg']}\nCommit the manifest ALONE before scoring.")
+    return counts, _write_gz(P["tests"], out)
 
 
 def score(a):
-    import torch
-    from bonsai_interp.env import DEVICE, limit_memory
-    from bonsai_interp.graph.protocols import PROTOCOLS
-    from bonsai_interp.model import StopForward, load
-    from bonsai_interp.probe.textinv import PREAMBLES
+    from bonsai_interp.env import limit_memory
+    from bonsai_interp.model import load
     P, man = _setup(a)
     L = a.layer
     pre = json.loads(P["prereg"].read_text(encoding="utf-8"))
-    blob = gzip.open(P["tests"], "rb").read()
-    if hashlib.sha256(blob).hexdigest() != pre["tests_sha256"]:
-        sys.exit("the tests file does not match its pre-registered sha256")
     first = None
     if not a.smoke:
         first, dirty = _committed_alone_clean(P["prereg"])
         if not first or dirty:
             sys.exit(f"commit {P['prereg'].relative_to(ROOT)} on its own before scoring (pre-registration)")
+    limit_memory(0.8)
+    model, tok, rec = load("bonsai1")
+    _score_layer(model, tok, rec, L, P, pre["tests_sha256"], pre["counts"], first, a.batch, a.smoke)
+
+
+def _score_layer(model, tok, rec, L, P, tests_sha, counts, prereg_commit, B, smoke):
+    """Judge one layer's pinned auto tests: results file and summary."""
+    import torch
+    from bonsai_interp.env import DEVICE
+    from bonsai_interp.graph.protocols import PROTOCOLS
+    from bonsai_interp.model import StopForward
+    from bonsai_interp.probe.textinv import PREAMBLES
+    blob = gzip.open(P["tests"], "rb").read()
+    if hashlib.sha256(blob).hexdigest() != tests_sha:
+        sys.exit(f"layer {L}: the tests file does not match its pre-registered sha256")
     rows = [json.loads(x) for x in blob.decode("utf-8").splitlines()]
     todo = [r for r in rows if r["class"] == "tested"]
     texts = sorted({t for r in todo for t in r["fire"] + r["quiet"]})
@@ -1243,13 +1362,13 @@ def score(a):
         for t in r["fire"] + r["quiet"]:
             want.setdefault(t, set()).add(r["neuron"])
     pmax, nmax = _pole_max(L)
-    limit_memory(0.8)
-    model, tok, rec = load("bonsai1")
     tok.padding_side = "right"
-    t0, B, sums = time.time(), a.batch, {}
+    t0, sums = time.time(), {}
     print(f"scoring layer {L}: {len(todo)} tests, {len(texts)} snippets x {len(PREAMBLES)} preambles", flush=True)
     for pre_text in PREAMBLES:
         for b in range(0, len(texts), B):
+            if b // B % 200 == 0:
+                _stop_requested()
             chunk = texts[b:b + B]
             enc = tok([pre_text + t for t in chunk], return_tensors="pt", padding=True).to(DEVICE)
             rec.mode, rec.layers, rec.stop_at = "act", {L}, L
@@ -1287,12 +1406,13 @@ def score(a):
         out.append(r)
     sha = _write_gz(P["results"], out)
     summ = {"layer": L, "protocol": PROTOCOL, "scored": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
-            "toolchain_commit": _commit(), "prereg_commit": first[:12] if first else None, "counts": pre["counts"], "outcomes": tally,
+            "toolchain_commit": _commit(), "prereg_commit": prereg_commit[:12] if prereg_commit else None, "counts": counts, "outcomes": tally,
             "outcomes_by_bin_and_template": by_bin, "poles_held": len({r["neuron"] for r in out if r.get("outcome") == "held"}),
-            "minutes": round((time.time() - t0) / 60, 1), "results_file": P["results"].relative_to(ROOT).as_posix() if not a.smoke else str(P["results"]),
+            "minutes": round((time.time() - t0) / 60, 1), "results_file": P["results"].relative_to(ROOT).as_posix() if not smoke else str(P["results"]),
             "results_sha256": sha}
     P["summary"].write_text(json.dumps(summ, indent=1) + "\n", encoding="utf-8", newline="\n")
-    print(json.dumps(summ, indent=1))
+    print(json.dumps({k: summ[k] for k in ("layer", "outcomes", "poles_held", "minutes")}))
+    return summ
 
 
 # ---------------------------------------------------------------- the map's screen layer (site/screens.py)
@@ -1310,7 +1430,10 @@ def export(a):
     A pole's bin is that of its best hit (a held test first, then the order of BIN_ORDER); poles without a word hit
     are 'unexplained' (no token explains a twentieth of their strong activations), and ineligible ones keep their class."""
     P, _ = _setup(a)
-    L = a.layer
+    _export_layer(a.layer, P, a.smoke)
+
+
+def _export_layer(L, P, smoke):
     vb = vocab()
     table = _read_gz(P["table"])
     screened = {}
@@ -1346,9 +1469,9 @@ def export(a):
             if auroc is not None:
                 rec["auroc"] = auroc
         poles[key] = rec
-    dst = (P["hits"].parent if a.smoke else ROOT / "data" / "auto") / f"bonsai1_L{L}.screen.json.gz"
+    dst = (P["hits"].parent if smoke else ROOT / "data" / "auto") / f"bonsai1_L{L}.screen.json.gz"
     dst.parent.mkdir(parents=True, exist_ok=True)
-    first = None if a.smoke or not P["prereg"].exists() else _committed_alone_clean(P["prereg"])[0]
+    first = None if smoke or not P["prereg"].exists() else _committed_alone_clean(P["prereg"])[0]
     blob = json.dumps({"layer": L, "protocol": PROTOCOL, "prereg_commit": first[:12] if first else None, "poles": poles},
                       ensure_ascii=False, separators=(",", ":")).encode("utf-8")
     with gzip.GzipFile(dst, "wb", mtime=0) as f:
@@ -1361,6 +1484,232 @@ def export(a):
         summ.update({"screen_file": dst.name, "screen_sha256": hashlib.sha256(blob).hexdigest(), "screen_bins": tally})
         P["summary"].write_text(json.dumps(summ, indent=1) + "\n", encoding="utf-8", newline="\n")
     print(f"{json.dumps(tally)} -> {dst} ({dst.stat().st_size / 1e6:.1f} MB; publish it in the auto-screens release, not in git)")
+
+
+# ---------------------------------------------------------------- all-layer passes (one registration for many layers)
+# hits-all and screen-all read every layer in ONE forward pass per batch (hooks threshold or gather each layer and keep
+# nothing else); score-all loads the model once and runs each layer's tests to that layer. Per-layer outputs are the same
+# files as the single-layer stages write. One protocol manifest lists the layers; one prereg manifest pins every tests file.
+
+def _multi_paths(out=OUT, man=MANIFESTS):
+    return {"protocol": man / "bonsai1_multi.auto2.protocol.json", "prereg": man / "bonsai1_multi.auto2.prereg.json",
+            "amend": man / "bonsai1_multi.auto2.amendments.json"}
+
+
+def _layers(a):
+    layers = sorted({int(x) for x in a.layers.split(",") if x.strip()})
+    if 12 in layers:
+        sys.exit("layer 12 was used to look: it cannot be registered")
+    return layers
+
+
+def _setup_multi(a, need_prereg=False):
+    """Per-layer paths for an all-layer pass, with the guard: the multi protocol manifest committed alone and clean,
+    this file unchanged since, the layers registered there (and, to score, the prereg manifest committed alone too)."""
+    layers = _layers(a)
+    if a.smoke:
+        d = Path(a.smoke)
+        d.mkdir(parents=True, exist_ok=True)
+        M = _multi_paths(d, d)
+        Ps = {L: {**_paths(L, d, d), "protocol": M["protocol"], "prereg": M["prereg"]} for L in layers}
+        return layers, Ps, M, {"rule": RULE, "layers": layers}
+    M = _multi_paths()
+    if not M["protocol"].exists():
+        sys.exit(f"no protocol manifest: run `protocol-all --layers ...` and commit {M['protocol'].relative_to(ROOT)} on its own first")
+    first, dirty = _committed_alone_clean(M["protocol"])
+    if not first or dirty:
+        sys.exit(f"commit {M['protocol'].relative_to(ROOT)} on its own before running any stage (pre-registration)")
+    man = json.loads(M["protocol"].read_text(encoding="utf-8"))
+    if _code_sha() not in _allowed_shas(M, man):
+        sys.exit(f"{MODULE.name} changed since the protocol was registered and the change is not a committed speed amendment "
+                 f"(amend-all): that is a new protocol version, not this one")
+    if set(layers) - set(man["layers"]):
+        sys.exit(f"layers {sorted(set(layers) - set(man['layers']))} are not in {M['protocol'].name}")
+    if need_prereg:
+        first, dirty = _committed_alone_clean(M["prereg"])
+        if not first or dirty:
+            sys.exit(f"commit {M['prereg'].relative_to(ROOT)} on its own before scoring (pre-registration)")
+    OUT.mkdir(parents=True, exist_ok=True)
+    Ps = {L: {**_paths(L), "protocol": M["protocol"], "prereg": M["prereg"]} for L in layers}
+    return layers, Ps, M, man
+
+
+def _allowed_shas(M, man):
+    """The registered code, plus speed-only amendments (same outcomes on the same inputs, parity checked), each added to
+    the amendments file and committed alone. A change that alters results is a new protocol, never an amendment."""
+    ok = {man["code_sha256"]}
+    if M["amend"].exists():
+        first, dirty = _committed_alone_clean(M["amend"])
+        if first and not dirty:
+            ok |= {x["code_sha256"] for x in json.loads(M["amend"].read_text(encoding="utf-8"))["amendments"]}
+    return ok
+
+
+def amend_all(a):
+    """Record the current code as a speed-only amendment of the multi-layer protocol (then commit the file ALONE)."""
+    M = _multi_paths()
+    rel = MODULE.relative_to(ROOT).as_posix()
+    if subprocess.run(["git", "status", "--porcelain", "--", rel], cwd=ROOT, capture_output=True, text=True).stdout.strip():
+        sys.exit(f"commit {rel} first: the amendment pins the committed code by sha256")
+    if not a.note or not a.parity:
+        sys.exit("give --note (what changed, and why it is speed-only) and --parity (the check that outcomes are unchanged)")
+    doc = json.loads(M["amend"].read_text(encoding="utf-8")) if M["amend"].exists() else {"protocol": PROTOCOL, "amendments": []}
+    doc["amendments"].append({"code_sha256": _code_sha(), "toolchain_commit": _commit(), "note": a.note, "parity": a.parity,
+                              "written": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")})
+    M["amend"].write_text(json.dumps(doc, indent=1) + "\n", encoding="utf-8", newline="\n")
+    print(f"wrote {M['amend'].relative_to(ROOT)}: commit it ALONE before the next stage")
+
+
+def protocol_all(a):
+    """The rule for many layers at once, pinned before any of them runs: commit this file ALONE, then run the passes."""
+    layers = _layers(a)
+    M = _multi_paths()
+    rel = MODULE.relative_to(ROOT).as_posix()
+    if subprocess.run(["git", "status", "--porcelain", "--", rel], cwd=ROOT, capture_output=True, text=True).stdout.strip():
+        sys.exit(f"commit {rel} first: the manifest pins the committed code by sha256")
+    done = [L for L in layers if _paths(L)["protocol"].exists()]
+    if done:
+        sys.exit(f"layers {done} already have their own protocol manifests")
+    man = {"protocol": PROTOCOL, "layers": layers, "written": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+           "toolchain_commit": _commit(), "code": rel, "code_sha256": _code_sha(),
+           "windows": {"selection": f"{SELECT[0]}..{SELECT[1] - 1}", "screening": f"{SCREEN[0]}..{SCREEN[1] - 1}", "testing": f"{TEST[0]}.."},
+           "rule": RULE, "features": list(FEATURES), "table_only": list(TABLE_ONLY),
+           "bins": {"context": list(CONTEXT), "format": list(FORMAT), "copy": list(COPY), "predictive": list(PREDICTIVE),
+                    "collocation": list(COLLOCATION), "topic": list(TOPIC), "positional": list(POSITIONAL)},
+           "tested_bins": list(TESTED),
+           "passes": "hits-all and screen-all read every layer in one forward pass per batch; score-all runs each layer's tests "
+                     "to that layer; the outputs per layer are the files the single-layer stages write",
+           "expectations": [
+               "held rates per bin are similar to layer 20's (lexical about 95%, context, format and predictive about 50%)",
+               "lexical and spelling hits are commoner in early layers, copy and topic hits in late ones",
+               "most word hits are unexplained at every layer"],
+           "note": "expectations are recorded before the run and reported either way; they are not gates"}
+    MANIFESTS.mkdir(parents=True, exist_ok=True)
+    M["protocol"].write_text(json.dumps(man, indent=1) + "\n", encoding="utf-8", newline="\n")
+    print(f"wrote {M['protocol'].relative_to(ROOT)} for {len(layers)} layers: commit it ALONE before running any pass")
+
+
+def _hooked_pass(model, rec, x, hooks, top):
+    """One forward to layer `top`, calling hooks[L](act) at every hooked layer (the activations are not stored)."""
+    import torch
+    from bonsai_interp.model import StopForward
+    rec.mode, rec.interventions, rec.stop_at = None, {L: (lambda act, f=f: (f(act), act)[1]) for L, f in hooks.items()}, top
+    try:
+        with torch.no_grad():
+            model.model(input_ids=x)
+    except StopForward:
+        pass
+    finally:
+        rec.interventions, rec.stop_at = {}, None
+
+
+def hits_all(a):
+    import torch
+    from bonsai_interp.env import DEVICE, limit_memory
+    from bonsai_interp.model import load
+    layers, Ps, M, man = _setup_multi(a)
+    toks, _, _ = _windows(SELECT, a)
+    vb = vocab()
+    counters = {L: _HitCounter(L, vb["V"], DEVICE) for L in layers}
+    limit_memory(0.8)
+    model, tok, rec = load("bonsai1")
+    t0, B = time.time(), a.batch
+    print(f"stage 1, layers {layers}: {len(toks)} windows x {toks.shape[1]} tokens, one pass to layer {layers[-1]}", flush=True)
+    for b0 in range(0, len(toks), B):
+        if (b0 // B) % 100 == 0:
+            _stop_requested()
+        x = torch.from_numpy(toks[b0:b0 + B].astype(np.int64)).to(DEVICE)
+        _hooked_pass(model, rec, x, {L: (lambda act, c=c: c.add(act, x)) for L, c in counters.items()}, layers[-1])
+        done = b0 + len(x)
+        if (b0 // B) % 100 == 0 or done == len(toks):
+            _progress(done, len(toks), t0, tokens=toks.shape[1])
+    minutes = (time.time() - t0) / 60
+    print(f"stage 1 pass {minutes:.1f} min for {len(layers)} layers", flush=True)
+    for L, c in counters.items():
+        c.save(Ps[L], toks, minutes)
+        rank(a, Ps[L], c.elig, L=L)
+
+
+def screen_all(a):
+    import torch
+    from bonsai_interp.env import DEVICE, limit_memory
+    from bonsai_interp.model import load
+    layers, Ps, M, man = _setup_multi(a)
+    R, vb = RULE, vocab()
+    toks, dom, w0 = _windows(SCREEN, a)
+    hl, occ, pairs = {}, {}, {}
+    for L in layers:
+        hl[L] = _hitlist(Ps[L], a)
+        occ[L] = _occurrences(toks, sorted({t["token"] for _, t in hl[L]}), R["occ_per_trigger"], L, min_pos=R["min_pos"])
+        pairs[L] = _Pairs(L, hl[L], occ[L])
+    need = np.unique(np.concatenate([pairs[L].pw for L in layers])) if layers else np.zeros(0, np.int64)
+    print(f"stage 2, layers {layers}: {sum(len(hl[L]) for L in layers)} hits, {len(need)} screening windows needed (from {w0})", flush=True)
+    limit_memory(0.8)
+    model, tok, rec = load("bonsai1")
+    t0, B = time.time(), a.batch
+    for i in range(0, len(need), B):
+        if (i // B) % 100 == 0:
+            _stop_requested()
+        ws = need[i:i + B]
+        sel = {L: pairs[L].select(ws) for L in layers}
+        live = [L for L in layers if len(sel[L])]
+        if not live:
+            continue
+        T = max(int(pairs[L].pp[sel[L]].max()) for L in live) + 1
+        x = torch.from_numpy(toks[ws, :T].astype(np.int64)).to(DEVICE)
+        _hooked_pass(model, rec, x, {L: (lambda act, L=L: pairs[L].read(act, ws, sel[L])) for L in live}, live[-1])
+        if (i // B) % 100 == 0 or i + B >= len(need):
+            _progress(min(i + B, len(need)), len(need), t0)
+    t_pass = time.time() - t0
+    print(f"stage 2 pass {t_pass / 60:.1f} min for {len(layers)} layers", flush=True)
+    done = {}
+    for L in layers:
+        done[L] = _finish_screen(Ps[L], L, hl[L], occ[L], pairs[L], toks, dom, w0, vb)
+    print(f"fit {(time.time() - t0 - t_pass) / 60:.1f} min", flush=True)
+    t1 = time.time()
+    _stop_requested()
+    _templates(model, rec, done, a.batch * 32)
+    print(f"minimal pairs {(time.time() - t1) / 60:.1f} min", flush=True)
+    for L in layers:
+        _write_screen(Ps[L], L, done[L][0], t0)
+
+
+def prereg_all(a):
+    layers, Ps, M, man = _setup_multi(a)
+    tests = {}
+    for L in layers:
+        counts, sha = _prereg_layer(L, Ps[L], a)
+        tests[str(L)] = {"tests_file": Ps[L]["tests"].relative_to(ROOT).as_posix() if not a.smoke else str(Ps[L]["tests"]),
+                         "tests_sha256": sha, "counts": counts}
+        print(f"layer {L}: {json.dumps(counts)}", flush=True)
+    pre = {"protocol": PROTOCOL, "layers": layers, "written": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+           "toolchain_commit": _commit(), "protocol_manifest": M["protocol"].relative_to(ROOT).as_posix() if not a.smoke else None,
+           "test_windows": f"{TEST[0]}..", "tests": tests}
+    M["prereg"].write_text(json.dumps(pre, indent=1) + "\n", encoding="utf-8", newline="\n")
+    print(f"wrote {M['prereg']}: commit it ALONE before scoring")
+
+
+def score_all(a):
+    from bonsai_interp.env import limit_memory
+    from bonsai_interp.model import load
+    layers, Ps, M, man = _setup_multi(a, need_prereg=True)
+    pre = json.loads(M["prereg"].read_text(encoding="utf-8"))
+    first = None if a.smoke else _committed_alone_clean(M["prereg"])[0]
+    limit_memory(0.8)
+    model, tok, rec = load("bonsai1")
+    for L in layers:
+        if Ps[L]["summary"].exists() and not a.rescore:
+            print(f"layer {L} already scored ({Ps[L]['summary'].name}): skipped", flush=True)
+            continue
+        t = pre["tests"][str(L)]
+        _score_layer(model, tok, rec, L, Ps[L], t["tests_sha256"], t["counts"], first, a.batch, a.smoke)
+
+
+def export_all(a):
+    layers, Ps, M, man = _setup_multi(a)
+    for L in layers:
+        if Ps[L]["summary"].exists() or a.smoke:
+            _export_layer(L, Ps[L], a.smoke)
 
 
 # ---------------------------------------------------------------- stage 3: dossiers
@@ -1485,9 +1834,17 @@ def main():
             pass
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
-    for name in ("protocol", "hits", "rank", "screen", "refit", "prereg", "score", "export", "backup", "dossier"):
+    for name in ("protocol", "hits", "rank", "screen", "refit", "prereg", "score", "export", "backup", "dossier",
+                 "protocol-all", "amend-all", "hits-all", "screen-all", "prereg-all", "score-all", "export-all"):
         p = sub.add_parser(name)
-        p.add_argument("--layer", type=int, required=True)
+        if name.endswith("-all"):
+            p.add_argument("--layers", required=True, help="comma-separated layers, e.g. 0,1,2,3")
+            p.add_argument("--rescore", action="store_true", help="score-all: score layers that already have a summary again")
+            p.add_argument("--note", help="amend-all: what changed and why it is speed-only")
+            p.add_argument("--parity", help="amend-all: the parity check (same outcomes on the same inputs)")
+            p.set_defaults(layer=None)
+        else:
+            p.add_argument("--layer", type=int, required=True)
         p.add_argument("--batch", type=int, default=8)
         p.add_argument("--smoke", help="run without the manifest checks, writing everything to this folder (CPU tests)")
         p.add_argument("--windows", type=int, help="read at most this many windows of each split (smoke tests)")
@@ -1510,7 +1867,9 @@ def main():
     for kv in a.rule:
         k, v = kv.split("=", 1)
         RULE[k] = type(RULE[k])(v)
-    {"protocol": protocol, "hits": hits, "rank": rank, "screen": screen, "prereg": prereg, "score": score, "export": export, "dossier": dossier_main, "refit": refit, "backup": backup}[a.cmd](a)
+    {"protocol": protocol, "hits": hits, "rank": rank, "screen": screen, "prereg": prereg, "score": score, "export": export, "dossier": dossier_main, "refit": refit, "backup": backup,
+     "protocol-all": protocol_all, "amend-all": amend_all, "hits-all": hits_all, "screen-all": screen_all, "prereg-all": prereg_all, "score-all": score_all,
+     "export-all": export_all}[a.cmd](a)
 
 
 if __name__ == "__main__":
