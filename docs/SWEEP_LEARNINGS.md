@@ -138,3 +138,18 @@ Entry format:
     activation-only jobs never touch it.
   - Cache what every sequence shares (the preambles).
   - Size the memory cap from a measured peak (weights plus the batch), not a guess.
+
+### 2026-10-20 benchmark of the 1,024-token passes (cap 0.22)
+- measured: at layer 20, batch 1, 3,481 tok/s with a 3.35 GB peak. Batch 2 runs out of memory under 3.5 GiB.
+- bottleneck: SDPA fell back to its math kernel, which materialises the 32 × 1,024² attention matrix.
+  - Transformers passes grouped-query attention as `enable_gqa=True` with 8 KV heads against 32 query heads.
+  - This PyTorch build (Windows, CUDA) refuses its fused kernels for unequal head counts and has no flash attention.
+- change before the next unit: repeat the KV heads before SDPA (`use_gqa_in_sdpa` → False, inside the auto tier
+  only). The memory-efficient kernel then runs: 4,347 tok/s (+25%), peak 3.25 GB. Batch 2 still does not fit, so the
+  all-layer passes run at batch 1.
+  (parity: CPU counts identical; on the GPU the kernel change can move bf16 rounding. The run is not registered yet,
+  so this is part of its registered code rather than an amendment.)
+- transfers:
+  - Check which attention kernel actually runs (the warnings name the reason), not the one the config asks for.
+  - "GQA support" in a library can silently mean the slowest kernel on a given platform.
+  - Under a tight memory cap, kernel choice decides the usable batch size.

@@ -668,8 +668,13 @@ def _gpu_idle(label=""):
 
 def _gpu_load(lm_head=False):
     """The model, with a gpu_turn tick before every forward pass (one per batch in every stage). The stages only run
-    model.model (activations, never logits), so the output matrix stays unloaded unless asked for (about 1.2 GB)."""
+    model.model (activations, never logits), so the output matrix stays unloaded unless asked for (about 1.2 GB).
+    Attention repeats the KV heads instead of passing SDPA enable_gqa: with enable_gqa this PyTorch build refuses its fused
+    kernels and falls back to the math kernel, which materialises the attention matrix (RTX 5080, 1,024-token windows:
+    4,347 vs 3,481 tok/s at layer 20, batch 1; masked scoring already took the repeat path)."""
+    import transformers.integrations.sdpa_attention as sdpa
     from bonsai_interp.model import load
+    sdpa.use_gqa_in_sdpa = lambda *a, **k: False
     _tick()
     model, tok, rec = load("bonsai1", lm_head=lm_head)
     model.model.register_forward_pre_hook(_tick)

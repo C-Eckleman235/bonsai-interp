@@ -25,6 +25,9 @@ from bonsai_interp.probe.textinv import PREAMBLES
 
 quick = "--quick" in sys.argv
 scoring_only = "--scoring" in sys.argv  # the fit check: scoring at layers 4 and 20 only
+if "--repeat-kv" in sys.argv:  # repeat the KV heads instead of SDPA's enable_gqa, so a fused attention kernel can run
+    import transformers.integrations.sdpa_attention as _sa
+    _sa.use_gqa_in_sdpa = lambda *a, **k: False
 limit_memory(0.8)
 model, tok, rec = ct._gpu_load()
 tok.padding_side = "right"
