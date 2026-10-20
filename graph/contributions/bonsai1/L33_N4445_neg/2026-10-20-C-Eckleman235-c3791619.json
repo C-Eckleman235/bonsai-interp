@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-20-C-Eckleman235-c3791619",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N4445-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-20T14:20:24+00:00",
+ "recipe": {
+  "toolchain_commit": "06c9197",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L33_N4445_neg/2026-10-20-C-Eckleman235-c3791619.tests.json"
+ },
+ "label": "a word-start fragment (' Se', '-st', ' sc', ' Stre') that begins a severity or injury word in medical text (Se|vere, blood-st|reaked, sc|arring, Stre|ptococcus); the same words as single tokens or the same fragments in non-medical words stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L33_N4445_neg/2026-10-20-C-Eckleman235-c3791619.tests.json",
+   "prereg_commit": "06c9197",
+   "author": "C-Eckleman235",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.804,
+     "peak": "-st"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.003,
+     "peak": " diarrhea"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.007,
+     "peak": " care"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.893,
+     "peak": "-st"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.08,
+     "peak": "ary"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.001,
+     "peak": "way"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.935,
+     "peak": "-st"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.02,
+     "peak": " pale"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.104,
+     "peak": " bru"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.005,
+     "peak": " dehydration"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.028,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": " he"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.078,
+     "peak": "ary"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.004,
+     "peak": " close"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.003,
+     "peak": " urine"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.002,
+     "peak": " patients"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.672,
+    "median_fire": 0.05,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "06c9197",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "medical word-start fragment",
+ "unit_kind": "contextual",
+ "confidence": 0.55,
+ "notes": "The + pole fires on the same s-fragments in neutral words (St|ochastic, _st|ations, ст|ерео), so the two poles split one fragment by medical vs neutral continuation. Probing: '-st' (streaked) 0.92, ' Se' (Severe) 0.59, ' sc' (scarring) 0.16; 'stations' 0.003. Near misses: lowercase ' severe' is a single token, or the fragment starts a non-medical word."
+}

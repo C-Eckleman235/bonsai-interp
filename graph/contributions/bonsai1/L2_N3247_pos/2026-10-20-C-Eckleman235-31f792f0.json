@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-20-C-Eckleman235-31f792f0",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N3247+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-20T14:20:04+00:00",
+ "recipe": {
+  "toolchain_commit": "06c9197",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L2_N3247_pos/2026-10-20-C-Eckleman235-31f792f0.tests.json"
+ },
+ "label": "nouns naming formal business and legal instruments or events (agreement, licence, lawsuit, press release, webinar)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L2_N3247_pos/2026-10-20-C-Eckleman235-31f792f0.tests.json",
+   "prereg_commit": "06c9197",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.714,
+     "peak": " agreement"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.583,
+     "peak": " licence"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.642,
+     "peak": " lawsuit"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.846,
+     "peak": " release"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.43,
+     "peak": " agreement"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.601,
+     "peak": " action"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.734,
+     "peak": " webinar"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.788,
+     "peak": " approved"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.084,
+     "peak": " companies"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.159,
+     "peak": " shop"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.043,
+     "peak": " claim"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.328,
+     "peak": " video"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.032,
+     "peak": "ants"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.269,
+     "peak": " shares"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.143,
+     "peak": " for"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.408,
+     "peak": " approved"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.678,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "06c9197",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "legal/business document nouns",
+ "unit_kind": "sparse feature",
+ "confidence": 0.5,
+ "notes": "Echo regime (-x-) carries 100% of this pole and the card flags it broad (4% of tokens reach 0.1). Probing: Agreement 0.80, webinar 0.74, lawsuit 0.64, release 0.55, unrelated sentence -0.03. Near misses keep the sentence frame with an everyday noun."
+}
