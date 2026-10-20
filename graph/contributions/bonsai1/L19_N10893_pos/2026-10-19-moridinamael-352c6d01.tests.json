@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-19-moridinamael-352c6d01",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N10893+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T01:41:05+00:00",
+ "roles": ["reads bonsai1/L16/N4591-"],
+ "neighbours": [
+  {
+   "unit": "L19/N10893",
+   "pole": "+",
+   "label": "the digits of a publication year inside a bibliographic citation or DOI",
+   "short": "citation year digits",
+   "unit_kind": "dense / positional",
+   "confidence": "low",
+   "notes": "Card flags the + pole dense (19% of tokens reach 0.1 of max, 100% gate-closed echo regime). Top examples peak on year digits in citations/DOIs, but exploratory probes of re-typed citations scored about 0.16, the same as plain prose. globalMOO found no leak at 0.30; its strongest text ('last spring', no year) reached 0.23. Test sentences written blind from the label only.",
+   "fire": [
+    "Smith, J. and Patel, R. (2017). Soil moisture dynamics in semi-arid grasslands. Journal of Hydrology, 548, 112–125.",
+    "As shown in earlier work (Okafor et al., 2009), the effect disappears at low temperatures.",
+    "The dataset is available at https://doi.org/10.1016/j.cell.2021.04.015 for anyone who wants to replicate it.",
+    "[12] L. Moreau, \"Graph sparsification revisited,\" Proc. SODA, pp. 44–58, 2014.",
+    "Lindqvist, A. 1998. The Shipbuilders of the Baltic Coast. Uppsala: Nordic Press.",
+    "This contradicts the model proposed by Herrera and Kim (2023), who assumed constant demand.",
+    "Cite as: Tanaka, M. (2005). Rice terrace ecology. Asian Geography Review, 12(3), 201–219. doi:10.1080/2005.11234",
+    "Brown, K., Ellis, T., & Novak, P. (2011). Learning rates in juvenile songbirds. Animal Behaviour, 81(2), 377–384."
+   ],
+   "quiet": [
+    "Smith and Patel spent the summer measuring soil moisture in semi-arid grasslands near the ranch.",
+    "As shown in earlier work by Okafor and colleagues, the effect disappears at low temperatures.",
+    "The dataset is available on the lab's website for anyone who wants to replicate it.",
+    "Moreau gave a talk on graph sparsification that ran about fifteen minutes over time.",
+    "Lindqvist wrote a long book about the shipbuilders of the Baltic coast, published in Uppsala.",
+    "This contradicts the model proposed by Herrera and Kim, who assumed constant demand.",
+    "Tanaka has studied rice terrace ecology in the mountains for most of her career.",
+    "Brown, Ellis and Novak watched juvenile songbirds learn their songs over many weeks."
+   ]
+  }
+ ],
+ "predictions": "Likely fail: the pole is dense and probes showed citations and prose both near 0.16.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "blind-room"
+  ]
+ }
+}
