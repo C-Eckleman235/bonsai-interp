@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-20-moridinamael-5e896396",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N3533+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T23:06:35+00:00",
+ "neighbours": [
+  {
+   "unit": "L35/N3533",
+   "pole": "+",
+   "label": "the very first token of the text, whatever the word is (a positional unit: it fires at the opening position of a window that starts mid-text, e.g. a leading dash or a lowercase fragment); the same words later in a text stay quiet",
+   "short": "first token of a window (positional)",
+   "unit_kind": "dense / positional",
+   "confidence": "low",
+   "roles": ["reads bonsai1/L34/N1264+"],
+   "notes": "Card flags the + pole positional: 100% of top-32 peaks at window position 0, on unrelated tokens (' –', ' just', 'j', ' indicate'). The three strongest feeders (L34/N11893-, L17/N11819+, L34/N8776+) peak on the same position-0 tokens, so this is a position-0 chain. Exploratory probes of the top examples as standalone sentences, of mid-word starts, of an <|endoftext|> break and of 16 chemical formulas (the feeder's concept) all stayed at or below 0.07; the globalMOO inverse found no leak (max 0.03). Expect the test to fail because the scorer's sentences cannot reach absolute window position 0; recorded to mark the unit positional. Test sentences written blind from the label only.",
+   "fire": [
+    "- and then the rain finally stopped over the harbor.",
+    "ing the results before lunch, she closed her laptop.",
+    "and so the committee voted to postpone the decision.",
+    "tion of the bridge took nearly four years to complete.",
+    "the old map was folded into the back of the drawer.",
+    "— which is why nobody answered the phone that night.",
+    "ly, the train arrived ten minutes ahead of schedule.",
+    "of the three candidates, only one had any experience."
+   ],
+   "quiet": [
+    "The forecast was wrong - and then the rain finally stopped over the harbor.",
+    "After finishing the results before lunch, she closed her laptop.",
+    "Nobody agreed, and so the committee voted to postpone the decision.",
+    "Construction of the bridge took nearly four years to complete.",
+    "Inside the desk, the old map was folded into the back of the drawer.",
+    "The line was busy — which is why nobody answered the phone that night.",
+    "Surprisingly, the train arrived ten minutes ahead of schedule.",
+    "In the end, of the three candidates, only one had any experience."
+   ]
+  }
+ ],
+ "predictions": "fail: fire sentences near 0.02, like every probe; the opening slot of a scored sentence is not window position 0",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "step-down",
+   "step-out",
+   "inverse-gmoo"
+  ]
+ }
+}
