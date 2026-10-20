@@ -18,7 +18,7 @@ ROOT = HERE.parent
 OUT = HERE / "screens"
 N_N = 12288
 # map groups, in the categorical palette's order; each pole's bin folds into one
-GROUPS = [("spelling", ["spelling"]), ("word", ["lexical"]), ("meaning", ["sense", "concept"]), ("context", ["collocation", "context"]),
+GROUPS = [("spelling", ["spelling"]), ("word", ["lexical"]), ("meaning", ["sense", "concept"]), ("context", ["collocation", "context", "predictive"]),
           ("format", ["format"]), ("topic", ["topic"]), ("copy", ["copy"]), ("other", ["dense", "positional", "unexplained", "rare"])]
 GROUP_OF = {b: i for i, (_, bins) in enumerate(GROUPS) for b in bins}
 OTHER = len(GROUPS) - 1
@@ -42,6 +42,8 @@ def main(src=ROOT / "data" / "auto"):
         protocols.add(s.get("protocol", "?"))
         chars, detail, c = ["."] * (2 * N_N), {}, [0] * len(GROUPS)
         for key, r in s["poles"].items():
+            if r.get("bin") == "weak" or (r.get("bin") in ("unexplained", "rare", None) and not r.get("hits")):
+                continue  # no word hit: nothing to show (the export lists every pole)
             n, pole = int(key[1:-1]), key[-1]
             g = GROUP_OF.get(r.get("bin"), OTHER)
             held = r.get("test") == "held"
