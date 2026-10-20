@@ -1,0 +1,153 @@
+{
+ "id": "2026-10-20-C-Eckleman235-9150c5da",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N10854-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-20T20:35:56+00:00",
+ "recipe": {
+  "toolchain_commit": "317f816",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L9_N10854_neg/2026-10-20-C-Eckleman235-9150c5da.tests.json"
+ },
+ "label": "places in British Columbia (Vancouver and its suburbs, Whistler, Kelowna, Kamloops, the Fraser River); nearby places in Washington State stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L9_N10854_neg/2026-10-20-C-Eckleman235-9150c5da.tests.json",
+   "prereg_commit": "317f816",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.69,
+     "peak": "assen"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.386,
+     "peak": " Vancouver"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.639,
+     "peak": "a"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.525,
+     "peak": "ler"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.352,
+     "peak": "aby"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.654,
+     "peak": "loops"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.469,
+     "peak": " Vancouver"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.32,
+     "peak": " Fraser"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.178,
+     "peak": " Harbor"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.111,
+     "peak": "rows"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.003,
+     "peak": "ards"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.07,
+     "peak": " Pass"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.04,
+     "peak": "ue"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.009,
+     "peak": " Ch"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.014,
+     "peak": " Si"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.044,
+     "peak": " River"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.497,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "which"
+  ],
+  "detected": [],
+  "toolchain_commit": "317f816",
+  "minutes": 2,
+  "batch_size": 1
+ },
+ "short": "British Columbia places",
+ "unit_kind": "sparse feature",
+ "confidence": 0.55,
+ "notes": "Found by a concept screen (British Columbia passages vs matched Washington State passages): >= 0.3 on 4 of 4 BC passages (Nanaimo, Whistler, Kamloops, Penticton), < 0.1 on every control. Probing: Vancouver to Surrey 0.73, Stanley Park 0.52, Vancouver Island 0.46, but Seattle 0.003 and 'Victoria is the capital of British Columbia' only 0.26. Near misses keep each frame across the border in Washington.",
+ "selection": "concept search: Texas branch 9 (British Columbia)"
+}
