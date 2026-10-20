@@ -47,6 +47,8 @@ jobs:
       - name: Download the data release
         if: steps.data.outputs.cache-hit != 'true'
         run: gh release download data-v1 --repo ${{ github.repository }} --dir data --pattern corpus.npz --pattern scan_bonsai1.npz --clobber
+      - name: Auto screens (the auto-screens release, when there is one)
+        run: gh release download auto-screens --repo ${{ github.repository }} --dir data/auto --pattern '*.screen.json.gz' --clobber || echo "no auto-screens release yet"
       - name: Cards built by earlier runs (added to the committed cards)
         uses: actions/cache/restore@v4
         with:
@@ -75,6 +77,8 @@ jobs:
           cp site/index.html _site/survey.html
           cp site/cards.json _site/cards.json
           cp graph/index.json _site/index.json
+          python site/screens.py
+          if [ -d site/screens ]; then cp -r site/screens _site/screens; fi
           touch _site/.nojekyll
       - uses: actions/cache/save@v4
         with:

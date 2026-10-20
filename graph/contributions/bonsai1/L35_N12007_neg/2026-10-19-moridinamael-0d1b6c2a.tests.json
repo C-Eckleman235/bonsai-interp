@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-19-moridinamael-0d1b6c2a",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N12007-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T03:23:36+00:00",
+ "roles": ["reads bonsai1/L34/N11413-"],
+ "neighbours": [
+  {
+   "unit": "L35/N12007",
+   "pole": "-",
+   "label": "the spot right before the word 'solution', where 'solution' is the expected next word (any sense: problem-solving, business, chemistry, math)",
+   "short": "just before 'solution' (predicting it)",
+   "fire": [
+    "After weeks of debate, the committee finally agreed on a workable solution.",
+    "Dissolve the salt in water to make a saline solution.",
+    "There is no easy solution to the housing crisis.",
+    "The teacher asked us to show every step of the solution.",
+    "Our company offers a complete software solution for small businesses.",
+    "Mix two tablespoons of vinegar into a cleaning solution before scrubbing the tiles.",
+    "Every quadratic equation with a positive discriminant has two real solutions, and this one has a unique solution.",
+    "We need to think outside the box and come up with a creative solution."
+   ],
+   "quiet": [
+    "After weeks of debate, the committee finally agreed to postpone the vote.",
+    "Dissolve the salt in water and stir until the grains disappear.",
+    "There is no easy way to explain the housing crisis to children.",
+    "The teacher asked us to show every step of our reasoning.",
+    "Our company offers a complete range of laptops for small businesses.",
+    "Mix two tablespoons of vinegar into the bucket before scrubbing the tiles.",
+    "Every quadratic equation can be graphed as a parabola on the plane.",
+    "We need to think outside the box and try something unusual."
+   ],
+   "notes": "Top examples are Arabic/Japanese/Russian tokens just before a word for 'solution'; probing showed it fires on the slot before the word (e.g. 'find a' fires whatever follows), not on 'solution' itself. Weak in French. Output direction is about 'solution' tokens. Test sentences written blind by a second author who saw only the label."
+  }
+ ],
+ "predictions": "most fire sentences above 0.20, near misses low",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-gmoo",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
