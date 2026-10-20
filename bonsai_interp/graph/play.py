@@ -498,8 +498,9 @@ def main():
     b.add_argument("--k", type=int, default=16, help="sweep: how many poles")
     b.add_argument("--handle", default="<your-github-handle>")
     b.add_argument("--gmoo", action="store_true", help="include the optional globalMOO step")
-    b.add_argument("--depth", choices=["quick", "standard", "deep"], default="quick",
-                   help="quick (~5-10 min, the default), standard (~30-45 min) or deep (hours)")
+    b.add_argument("--depth", choices=["quick", "standard", "deep"],
+                   help="quick (~5-10 min, the default for interpret and qc), standard (~30-45 min) or deep (hours); "
+                        "step/stepin accept quick, which drops the band scan")
     a = ap.parse_args()
     if a.cmd in ("doctor", "brief"):
         from bonsai_interp.graph import agent
