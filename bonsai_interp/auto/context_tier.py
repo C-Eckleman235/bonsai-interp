@@ -635,20 +635,48 @@ def _stop_requested():
     """data/auto2/STOP ends a GPU loop at the next batch boundary (nothing of the stage is written). Stopping this way leaves
     the GPU idle; killing a CUDA process mid-kernel is a likely trigger of a display-driver reset (FINDINGS 2026-10-20)."""
     if (OUT / "STOP").exists():
+        _gpu_idle("stop")
         sys.exit("STOP file found: stopping before the pass finished (nothing written)")
+
+
+YIELD = {"seconds": 0.0, "ticks": 0}
+
+
+def _tick(*_):
+    """Before every forward pass: honour STOP, then take the GPU turn (gpu_turn yields to a foreground such as the stream)."""
+    from bonsai_interp import gpu_turn
+    _stop_requested()
+    YIELD["seconds"] += gpu_turn.background_tick("auto2")
+    YIELD["ticks"] += 1
+
+
+def _gpu_idle(label=""):
+    """Give the GPU up for a CPU stretch or at exit (the next forward pass takes it back)."""
+    from bonsai_interp import gpu_turn
+    gpu_turn.release()
+    if label and label != "stop":
+        print(f"gpu_turn: {label}: yielded {YIELD['seconds']:.1f} s over {YIELD['ticks']} batches so far", flush=True)
+
+
+def _gpu_load():
+    """The model, with a gpu_turn tick before every forward pass (one per batch in every stage)."""
+    from bonsai_interp.model import load
+    _tick()
+    model, tok, rec = load("bonsai1")
+    model.model.register_forward_pre_hook(_tick)
+    return model, tok, rec
 
 
 def hits(a):
     import torch
     from bonsai_interp.env import DEVICE, limit_memory
-    from bonsai_interp.model import load
     P, man = _setup(a)
     L = a.layer
     toks, _, _ = _windows(SELECT, a)
     vb = vocab()
     counter = _HitCounter(L, vb["V"], DEVICE)
     limit_memory(0.8)
-    model, tok, rec = load("bonsai1")
+    model, tok, rec = _gpu_load()
     t0, B = time.time(), a.batch
     print(f"stage 1, layer {L}: {len(toks)} windows x {toks.shape[1]} tokens, {int((counter.elig == 'eligible').sum())} eligible poles", flush=True)
     for b0 in range(0, len(toks), B):
@@ -658,6 +686,7 @@ def hits(a):
         done = b0 + len(x)
         if (b0 // B) % 25 == 0 or done == len(toks):
             _progress(done, len(toks), t0, tokens=toks.shape[1])
+    _gpu_idle(f"stage 1, layer {L}")
     counter.save(P, toks, (time.time() - t0) / 60)
     print(f"stage 1 pass {(time.time() - t0) / 60:.1f} min")
     rank(a, P, counter.elig)
@@ -1000,7 +1029,6 @@ def _write_screen(P, L, rows, t0):
 def screen(a):
     import torch
     from bonsai_interp.env import DEVICE, limit_memory
-    from bonsai_interp.model import load
     P, man = _setup(a)
     L, R = a.layer, RULE
     vb = vocab()
@@ -1011,7 +1039,7 @@ def screen(a):
     pairs = _Pairs(L, hitlist, occ)
     need = np.unique(pairs.pw)
     limit_memory(0.8)
-    model, tok, rec = load("bonsai1")
+    model, tok, rec = _gpu_load()
     t0, B = time.time(), a.batch
     for i in range(0, len(need), B):
         _stop_requested()
@@ -1023,9 +1051,11 @@ def screen(a):
         if (i // B) % 25 == 0 or i + B >= len(need):
             _progress(min(i + B, len(need)), len(need), t0)
     t_pass = time.time() - t0
+    _gpu_idle(f"stage 2 pass, layer {L}")
     rows, plans = _finish_screen(P, L, hitlist, occ, pairs, toks, dom, w0, vb)
     print(f"stage 2 pass {t_pass / 60:.1f} min, fit {(time.time() - t0 - t_pass) / 60:.1f} min", flush=True)
     _templates(model, rec, {L: (rows, plans)}, a.batch * 32)
+    _gpu_idle(f"stage 2 minimal pairs, layer {L}")
     _write_screen(P, L, rows, t0)
 
 
@@ -1335,7 +1365,6 @@ def _prereg_layer(L, P, a):
 
 def score(a):
     from bonsai_interp.env import limit_memory
-    from bonsai_interp.model import load
     P, man = _setup(a)
     L = a.layer
     pre = json.loads(P["prereg"].read_text(encoding="utf-8"))
@@ -1345,7 +1374,7 @@ def score(a):
         if not first or dirty:
             sys.exit(f"commit {P['prereg'].relative_to(ROOT)} on its own before scoring (pre-registration)")
     limit_memory(0.8)
-    model, tok, rec = load("bonsai1")
+    model, tok, rec = _gpu_load()
     _score_layer(model, tok, rec, L, P, pre["tests_sha256"], pre["counts"], first, a.batch, a.smoke)
 
 
@@ -1369,7 +1398,7 @@ def _score_layer(model, tok, rec, L, P, tests_sha, counts, prereg_commit, B, smo
             want.setdefault(t, set()).add(r["neuron"])
     pmax, nmax = _pole_max(L)
     tok.padding_side = "right"
-    t0, sums = time.time(), {}
+    t0, sums, y0 = time.time(), {}, YIELD["seconds"]
     print(f"scoring layer {L}: {len(todo)} tests, {len(texts)} snippets x {len(PREAMBLES)} preambles", flush=True)
     def add(chunk, at):
         for j, t in enumerate(chunk):
@@ -1443,14 +1472,15 @@ def _score_layer(model, tok, rec, L, P, tests_sha, counts, prereg_commit, B, smo
             by_bin.setdefault(key, {}).setdefault(res, 0)
             by_bin[key][res] += 1
         out.append(r)
+    _gpu_idle(f"score, layer {L}")
     sha = _write_gz(P["results"], out)
     summ = {"layer": L, "protocol": PROTOCOL, "scored": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
             "toolchain_commit": _commit(), "prereg_commit": prereg_commit[:12] if prereg_commit else None, "counts": counts, "outcomes": tally,
             "outcomes_by_bin_and_template": by_bin, "poles_held": len({r["neuron"] for r in out if r.get("outcome") == "held"}),
             "minutes": round((time.time() - t0) / 60, 1), "results_file": P["results"].relative_to(ROOT).as_posix() if not smoke else str(P["results"]),
-            "results_sha256": sha}
+            "results_sha256": sha, "yield_seconds": round(YIELD["seconds"] - y0, 1)}
     P["summary"].write_text(json.dumps(summ, indent=1) + "\n", encoding="utf-8", newline="\n")
-    print(json.dumps({k: summ[k] for k in ("layer", "outcomes", "poles_held", "minutes")}))
+    print(json.dumps({k: summ[k] for k in ("layer", "outcomes", "poles_held", "minutes", "yield_seconds")}))
     return summ
 
 
@@ -1645,13 +1675,12 @@ def _hooked_pass(model, rec, x, hooks, top):
 def hits_all(a):
     import torch
     from bonsai_interp.env import DEVICE, limit_memory
-    from bonsai_interp.model import load
     layers, Ps, M, man = _setup_multi(a)
     toks, _, _ = _windows(SELECT, a)
     vb = vocab()
     counters = {L: _HitCounter(L, vb["V"], DEVICE) for L in layers}
     limit_memory(0.8)
-    model, tok, rec = load("bonsai1")
+    model, tok, rec = _gpu_load()
     t0, B = time.time(), a.batch
     print(f"stage 1, layers {layers}: {len(toks)} windows x {toks.shape[1]} tokens, one pass to layer {layers[-1]}", flush=True)
     for b0 in range(0, len(toks), B):
@@ -1662,6 +1691,7 @@ def hits_all(a):
         if (b0 // B) % 100 == 0 or done == len(toks):
             _progress(done, len(toks), t0, tokens=toks.shape[1])
     minutes = (time.time() - t0) / 60
+    _gpu_idle("stage 1, all layers")
     print(f"stage 1 pass {minutes:.1f} min for {len(layers)} layers", flush=True)
     for L, c in counters.items():
         c.save(Ps[L], toks, minutes)
@@ -1671,7 +1701,6 @@ def hits_all(a):
 def screen_all(a):
     import torch
     from bonsai_interp.env import DEVICE, limit_memory
-    from bonsai_interp.model import load
     layers, Ps, M, man = _setup_multi(a)
     R, vb = RULE, vocab()
     toks, dom, w0 = _windows(SCREEN, a)
@@ -1683,7 +1712,7 @@ def screen_all(a):
     need = np.unique(np.concatenate([pairs[L].pw for L in layers])) if layers else np.zeros(0, np.int64)
     print(f"stage 2, layers {layers}: {sum(len(hl[L]) for L in layers)} hits, {len(need)} screening windows needed (from {w0})", flush=True)
     limit_memory(0.8)
-    model, tok, rec = load("bonsai1")
+    model, tok, rec = _gpu_load()
     t0, B = time.time(), a.batch
     for i in range(0, len(need), B):
         _stop_requested()
@@ -1698,6 +1727,7 @@ def screen_all(a):
         if (i // B) % 100 == 0 or i + B >= len(need):
             _progress(min(i + B, len(need)), len(need), t0)
     t_pass = time.time() - t0
+    _gpu_idle("stage 2 pass, all layers")
     print(f"stage 2 pass {t_pass / 60:.1f} min for {len(layers)} layers", flush=True)
     done = {}
     for L in layers:
@@ -1706,6 +1736,7 @@ def screen_all(a):
     t1 = time.time()
     _stop_requested()
     _templates(model, rec, done, a.batch * 32)
+    _gpu_idle("minimal pairs, all layers")
     print(f"minimal pairs {(time.time() - t1) / 60:.1f} min", flush=True)
     for L in layers:
         _write_screen(Ps[L], L, done[L][0], t0)
@@ -1728,12 +1759,11 @@ def prereg_all(a):
 
 def score_all(a):
     from bonsai_interp.env import limit_memory
-    from bonsai_interp.model import load
     layers, Ps, M, man = _setup_multi(a, need_prereg=True)
     pre = json.loads(M["prereg"].read_text(encoding="utf-8"))
     first = None if a.smoke else _committed_alone_clean(M["prereg"])[0]
     limit_memory(0.8)
-    model, tok, rec = load("bonsai1")
+    model, tok, rec = _gpu_load()
     for L in layers:
         if Ps[L]["summary"].exists() and not a.rescore:
             print(f"layer {L} already scored ({Ps[L]['summary'].name}): skipped", flush=True)
@@ -1826,9 +1856,8 @@ def dossier_main(a):
     model = None
     if a.links:
         from bonsai_interp.env import limit_memory
-        from bonsai_interp.model import load
         limit_memory(0.8)
-        model = load("bonsai1")
+        model = _gpu_load()
     P["dossiers"].mkdir(parents=True, exist_ok=True)
     for nid in ids:
         d = dossier(nid, P, vb, links=a.links, model=model)
