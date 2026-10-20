@@ -19,7 +19,7 @@ OUT = HERE / "screens"
 N_N = 12288
 # map groups, in the categorical palette's order; each pole's bin folds into one
 GROUPS = [("spelling", ["spelling"]), ("word", ["lexical"]), ("meaning", ["sense", "concept"]), ("context", ["collocation", "context"]),
-          ("format", ["format"]), ("topic", ["topic"]), ("copy", ["copy"]), ("dense / other", ["dense", "positional"])]
+          ("format", ["format"]), ("topic", ["topic"]), ("copy", ["copy"]), ("other", ["dense", "positional", "unexplained", "rare"])]
 GROUP_OF = {b: i for i, (_, bins) in enumerate(GROUPS) for b in bins}
 OTHER = len(GROUPS) - 1
 
