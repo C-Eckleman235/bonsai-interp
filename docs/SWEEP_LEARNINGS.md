@@ -84,6 +84,20 @@ Entry format:
   deepest one being read. On a larger-vocabulary or wider model (e.g. 27B), the saving grows with
   vocab × hidden.
 
+**Plan by depth: early layers are word-driven, deep layers are not** (2026-10-20, L4 vs L20)
+- **Auto tier:**
+  - L4 binned 2,418 poles as lexical, against 171 at L20.
+  - L4 held auto tests on 4,670 poles, against 562 at L20.
+  - L4's lexical tests held 96% of the time.
+- **Human and agent labels on the map:** they hold 86–88% at L0–9, against 24–50% at L20 and deeper.
+- **Cost:** the auto tier's test count, and so its scoring cost, peaks in early layers (L4: 10,088 tests).
+  Deep layers need richer context features (or upstream feeders) instead.
+- **GPU share:** a live agent stream held the foreground for about 28% of a scoring run (649 s of 38 min),
+  so budget about 1.4× wall time for a background job sharing with it.
+- **Transfers:** on a new model, budget scoring time by depth, aim the cheap lexical screen at early layers,
+  and spend the human and agent effort on deep layers. The stream is A/B testing "feeders first" against
+  cold deep targets.
+
 **From the stream side** (the Twitch session, 2026-10-20)
 - **A load gate checked at process start is too early.** Python imports take 10 s or more, so the gate
   passed before the batch had allocated. Check again immediately before the allocation, or hold a turn for
