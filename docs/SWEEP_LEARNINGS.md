@@ -16,7 +16,7 @@ abstraction pass. Each principle names its evidence and whether we have measured
 
 | # | principle | evidence | gain |
 |---|---|---|---|
-| 1 | **Share work across layers.** Read every layer in one forward pass. Only per-layer test scoring is inherently separate. | per-layer stages 1–2 cost about 30–50 GPU min each × 34; all-layer stage 1 costs about 105 min for 33 layers | ~10× on stages 1–2 (measured, stage 1) |
+| 1 | **Share work across layers.** Read every layer in one forward pass. Only per-layer test scoring is inherently separate. | stage 1 one layer at a time: 15–23 GPU min each × 33; all layers in one pass: about 85 GPU min | 6–9× on stage 1 (measured) |
 | 2 | **Compute only what is read.** Skip the unembedding and layers past the deepest one read. Reuse shared prefixes: preambles, and near misses that differ in their last token. | lm_head off: 3.05 → 1.8 GB weights; preamble cache: 57 → 80 snippets/s at L20 | 1.4× scoring (measured); prefix sharing pending |
 | 3 | **Find the real bottleneck before optimising.** Check utilisation, host vs device, and which kernel runs. | L4 stage 1 at 17–63% GPU (CPU-bound counter); SDPA math fallback for GQA on Windows; 321 vs 207 snippets/s from host overhead; a CPU test cut a GPU pass by 30% | 1.25× attention (measured); others pending |
 | 4 | **Budget cost by depth.** Early layers are word-driven and test-heavy; deep layers need context and human effort. | lexical poles L4 2,418 vs L20 171; tests 10,088 vs 1,185; labels hold 86–88% at L0–9 vs 24–50% at L20+ | planning |
@@ -41,7 +41,7 @@ abstraction pass. Each principle names its evidence and whether we have measured
 | L20, per layer (uncapped, alone) | about 75 min | about 75 | stage 1: 6,000 tok/s | (baseline) |
 | L4 stages 1–2, per layer | 31 min | about 31 | stage 1: 9,300 tok/s (shallower) | GPU-side counter merge |
 | L4 scoring (0.22 cap, beside the stream) | 38 min | about 27 | 207 snippets/s | preamble KV cache, lm_head off, resumable |
-| all-layer stage 1 (33 layers, batch 1) | about 105 min | – | about 1,300 tok/s × 33 layers | one pass for all layers; memory-efficient attention |
+| all-layer stage 1 (33 layers, batch 1, beside the stream) | 115.7 min (31 yielded) | about 85 (vs 500–760 one layer at a time) | about 1,300 tok/s × 33 layers | one pass for all layers; memory-efficient attention; +15 min CPU table write |
 
 Entry format:
 
