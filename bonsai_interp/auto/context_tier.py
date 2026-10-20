@@ -9,6 +9,7 @@ contexts. This tier asks the corpus first and the top examples never:
   python -m bonsai_interp.auto.context_tier screen   --layer 20   GPU, stage 2: context model + minimal pairs on windows 8000..15999
   python -m bonsai_interp.auto.context_tier prereg   --layer 20   CPU: auto tests from windows 16400.. (commit the manifest ALONE)
   python -m bonsai_interp.auto.context_tier score    --layer 20   GPU: judge the auto tests
+  python -m bonsai_interp.auto.context_tier export   --layer 20   CPU: the survey map's screen layer (site/screens.py)
   python -m bonsai_interp.auto.context_tier dossier  --neuron bonsai1/L20/N123+ [--links]   stage 3: input for an agent
   (--smoke DIR runs any stage without the manifest checks and writes to DIR: for CPU tests only)
 
@@ -102,7 +103,7 @@ def _code_sha():
 def _paths(L, out=OUT, man=MANIFESTS):
     b = f"bonsai1_L{L}"
     return {"protocol": man / f"{b}.auto2.protocol.json", "prereg": man / f"{b}.auto2.prereg.json", "summary": man / f"{b}.auto2.summary.json",
-            "hits": out / f"{b}.hits.npz", "table": out / f"{b}.hits.jsonl.gz", "screen": out / f"{b}.screen.jsonl.gz",
+            "hits": out / f"{b}.hits.npz", "table": out / f"{b}.hits.jsonl.gz", "screen": out / f"{b}.context.jsonl.gz",
             "tests": out / f"{b}.auto2.tests.jsonl.gz", "results": out / f"{b}.auto2.results.jsonl.gz", "dossiers": out / "dossiers"}
 
 
@@ -988,6 +989,63 @@ def score(a):
     print(json.dumps(summ, indent=1))
 
 
+# ---------------------------------------------------------------- the map's screen layer (site/screens.py)
+
+BIN_ORDER = ["lexical", "context", "format", "positional", "unexplained", "rare"]
+
+
+def export(a):
+    """One record per pole for the survey map: data/auto/bonsai1_L<L>.screen.json.gz (scrutiny 0, never a label).
+    A pole's bin is that of its best hit (a held test first, then the order of BIN_ORDER); poles without a word hit
+    are 'unexplained' (no token explains a twentieth of their strong activations), and ineligible ones keep their class."""
+    P, _ = _setup(a)
+    L = a.layer
+    vb = vocab()
+    table = _read_gz(P["table"])
+    screened = {}
+    for r in _read_gz(P["screen"]) if P["screen"].exists() else []:
+        screened.setdefault(r["neuron"], []).append(r)
+    tested = {}
+    if P["results"].exists():
+        from bonsai_interp.graph.protocols import v2_stats
+        for r in _read_gz(P["results"]):
+            if r.get("outcome"):
+                tested[(r["neuron"], r["trigger"])] = (r["outcome"], round(v2_stats(r)[0], 3))
+    poles = {}
+    for t in table:
+        key = t["neuron"].split("/")[-1]
+        rec = {"bin": t["class"] if t["class"] in ("dense", "positional", "weak") else "unexplained",
+               "hits": [{"token": vb["text"][h["token"]], "lift": h["lift"], "coverage": h["coverage"], "precision": h["precision"]}
+                        for h in t.get("triggers", [])]}
+        best = None
+        for r in screened.get(t["neuron"], []):
+            out, auroc = tested.get((r["neuron"], r["trigger"]), (None, None))
+            rank_ = (out != "held", BIN_ORDER.index(r["bin"]))
+            if best is None or rank_ < best[0]:
+                best = (rank_, r, out, auroc)
+        if best:
+            _, r, out, auroc = best
+            rec["bin"] = r["bin"]
+            if "rule" in r and r["bin"] in ("context", "format", "positional"):
+                rec["context"] = (f"{vb['text'][r['trigger']]!r} " + " and ".join(condition_phrase(f, v, vb) for f, v in r["rule"]["conditions"])
+                                  + f" (strong on {r['rule']['precision']:.0%} there, {r['rule']['rate_out']:.0%} elsewhere)")
+            elif r["bin"] == "lexical":
+                rec["context"] = f"{vb['text'][r['trigger']]!r} in any context (strong on {r['strong_rate']:.0%} of occurrences)"
+            rec["test"] = out or "untested"
+            if auroc is not None:
+                rec["auroc"] = auroc
+        poles[key] = rec
+    dst = (P["hits"].parent if a.smoke else ROOT / "data" / "auto") / f"bonsai1_L{L}.screen.json.gz"
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    blob = json.dumps({"layer": L, "protocol": PROTOCOL, "poles": poles}, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    with gzip.GzipFile(dst, "wb", mtime=0) as f:
+        f.write(blob)
+    tally = {}
+    for r in poles.values():
+        tally[r["bin"]] = tally.get(r["bin"], 0) + 1
+    print(f"{json.dumps(tally)} -> {dst} ({dst.stat().st_size / 1e6:.1f} MB; publish it in the auto-screens release, not in git)")
+
+
 # ---------------------------------------------------------------- stage 3: dossiers
 
 def _context(w, p, before=40, after=8):
@@ -1108,7 +1166,7 @@ def main():
             pass
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
-    for name in ("protocol", "hits", "rank", "screen", "prereg", "score", "dossier"):
+    for name in ("protocol", "hits", "rank", "screen", "prereg", "score", "export", "dossier"):
         p = sub.add_parser(name)
         p.add_argument("--layer", type=int, required=True)
         p.add_argument("--batch", type=int, default=8)
@@ -1131,7 +1189,7 @@ def main():
     for kv in a.rule:
         k, v = kv.split("=", 1)
         RULE[k] = type(RULE[k])(v)
-    {"protocol": protocol, "hits": hits, "rank": rank, "screen": screen, "prereg": prereg, "score": score, "dossier": dossier_main}[a.cmd](a)
+    {"protocol": protocol, "hits": hits, "rank": rank, "screen": screen, "prereg": prereg, "score": score, "export": export, "dossier": dossier_main}[a.cmd](a)
 
 
 if __name__ == "__main__":

@@ -545,6 +545,7 @@ auto-token@1 read a pole's 32 top examples and guessed "the token X". At layer 1
   - Near misses: 4 of the word without the context (the rule fails), plus 4 of the context without the word (the trigger swapped). Lexical hits get the auto-token@1 swap.
   - Each snippet is read at its last token, after the three preambles, and judged with quick-8+8@2's thresholds.
 - **Stage 3, a dossier per pole (≤ 64 KB, nothing from a test window).** It holds the card, both tables, screening examples, and with `--links` the feeders and readers (`play step`, `step --down`). An agent labels the pole from it and then writes a fresh quick-8+8@3 test.
+- **The map layer.** `export` writes one record per pole to `data/auto/bonsai1_L<L>.screen.json.gz`: its bin, top hits, context rule and auto-test outcome. That file feeds `site/screens.py` ("colour by Screen"), through the auto-screens release rather than git.
 
 **CPU smoke test (layer 20, fp32, 8 threads; thresholds lowered for a tiny corpus, so the numbers only show the plumbing)**
 - **Setup:** each split read 128 windows × 256 tokens, with n ≥ 3, at least 12 occurrences and support ≥ 4.
