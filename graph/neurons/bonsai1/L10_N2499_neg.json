@@ -3081,6 +3081,128 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-19-moridinamael-6d84304b"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L10_N2499_neg/2026-10-19-moridinamael-45540470.tests.json",
+   "prereg_commit": "df673a7",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.555,
+     "peak": " Internal"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.062,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.325,
+     "peak": " psychiatrist"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.319,
+     "peak": " counselling"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.909,
+     "peak": "CT"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.675,
+     "peak": " attachment"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.252,
+     "peak": " psychologist"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.704,
+     "peak": " practise"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.286,
+     "peak": " par"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.187,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.187,
+     "peak": " factors"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.207,
+     "peak": " system"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.041,
+     "peak": " fabric"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.187,
+     "peak": " retail"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.21,
+     "peak": " watching"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.169,
+     "peak": " pads"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.875,
+    "median_fire": 0.44,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-19-moridinamael-45540470"
   }
  ],
  "label_history": [
@@ -3173,6 +3295,11 @@
    "2026-10-19-moridinamael-f521276b",
    "Weak, dense hum that rises on mental-health care vocabulary: words naming the field or its professions (psychiatrist, psychiatric, psychologist, psychology, 'mental health') and words for talking-cure care (therapy, talk therapy, counselling, sharing feelings in group sessions). Plain diagnoses (depression, anxiety) and therapy acronyms (CBT) stay low. Known side channels: the word ' talking' even outside care (a talking parrot ~0.3) and ' therapy' in non-psychiatric senses (speech therapy ~0.45); ordinary medical scenes hum at 0.1-0.4, so it is a weak preference, not a clean switch.",
    "failed"
+  ],
+  [
+   "2026-10-19-moridinamael-45540470",
+   "Weak, dense context hum for clinical writing about the mind and its treatment (psychotherapy, psychiatry, psychology, counselling): once a passage is in that frame, ordinary words inside it (sensation, external factors, issues, feel, ECT) rise too, often more than the care words themselves. The same ordinary words in non-mental contexts stay low; lay descriptions of distress without a clinical frame and casual uses like 'retail therapy' stay low. Speech therapy and the phrase 'too late' also hum (side channels).",
+   "failed"
   ]
  ],
  "examples": [],
@@ -3207,20 +3334,21 @@
   "2026-10-19-moridinamael-3e4791d1",
   "2026-10-19-moridinamael-1c340101",
   "2026-10-19-moridinamael-f521276b",
-  "2026-10-19-moridinamael-6d84304b"
+  "2026-10-19-moridinamael-6d84304b",
+  "2026-10-19-moridinamael-45540470"
  ],
  "qc": {
   "confirm": 8,
   "dispute": 0,
-  "refine": 16
+  "refine": 17
  },
  "replications": [],
  "scrutiny": {
   "level": 2,
   "name": "re-tested",
-  "test_rounds": 26,
-  "sentences": 416,
+  "test_rounds": 27,
+  "sentences": 432,
   "contributors": 1,
-  "qc": 24
+  "qc": 25
  }
 }
