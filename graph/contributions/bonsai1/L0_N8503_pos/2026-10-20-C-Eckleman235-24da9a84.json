@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-20-C-Eckleman235-24da9a84",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N8503+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-20T14:18:07+00:00",
+ "recipe": {
+  "toolchain_commit": "06c9197",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N8503_pos/2026-10-20-C-Eckleman235-24da9a84.tests.json"
+ },
+ "label": "byte-fragment tokens of the rare character 彿 in 彷彿 ('as if'), split by the tokenizer into bytes; the same sentence without it stays quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N8503_pos/2026-10-20-C-Eckleman235-24da9a84.tests.json",
+   "prereg_commit": "06c9197",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.721,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.601,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.733,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.817,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.763,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.723,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.672,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.75,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.07,
+     "peak": "站在"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.049,
+     "peak": "那一刻"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.01,
+     "peak": "從"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.032,
+     "peak": "靜"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.013,
+     "peak": "年輕"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.055,
+     "peak": "城市"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.032,
+     "peak": "響"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.056,
+     "peak": "沒"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.728,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "06c9197",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "rare-CJK byte fragments",
+ "unit_kind": "lexical",
+ "confidence": 0.3,
+ "notes": "Max is only 0.46 and the gate-closed echo regime (-x-) dominates (95%). Top 32: '�' byte tokens x31. Probing: 彷彿 0.68, but 珀 in another sentence 0.03, and common characters 0.008, so it is selective among rare characters. Near misses use only common, whole-token characters. The card's top examples span many rare characters; this test covers only 彿, the one that replicated."
+}
