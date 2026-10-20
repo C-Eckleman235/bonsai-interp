@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-20-moridinamael-96bcf116",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N8029-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T23:25:12+00:00",
+ "roles": ["reads bonsai1/L32/N6614-"],
+ "neighbours": [
+  {
+   "unit": "L33/N8029",
+   "pole": "-",
+   "label": "inside a multi-word ALL_CAPS constant name (SCREAMING_SNAKE_CASE, e.g. in code, config or tech docs), not shouted all-caps prose, acronyms like NASA, or the same words written as ordinary lowercase English",
+   "short": "inside ALL_CAPS constant names",
+   "confidence": "medium",
+   "notes": "Cold deep-cell arm: labelled from card, look and probes only. Probes: ALL_CAPS constants 0.40-0.67 (also in prose), shouted prose/licence caps 0.13-0.18, acronyms ~0, lowercase paraphrase 0.03-0.13. Grey zone: lowercase snake_case / glued code names hum 0.26-0.51 (solver leak 'testlistener' 0.51). Test sentences written blind from the label only.",
+   "fire": [
+    "Set MAX_RETRY_COUNT to 5 before deploying the service.",
+    "if (status == HTTP_NOT_FOUND) { return null; }",
+    "export DATABASE_CONNECTION_URL=postgres://localhost:5432/app",
+    "The DEFAULT_TIMEOUT_SECONDS constant controls how long the client waits.",
+    "const API_BASE_PATH = \"/v2/resources\";",
+    "Remember to add SECRET_ACCESS_KEY to your .env file, never to the repo.",
+    "#define BUFFER_SIZE_LIMIT 4096",
+    "In settings.py, change DEBUG_TOOLBAR_ENABLED to False for production."
+   ],
+   "quiet": [
+    "conn.set_listener(\"testlistener\", testlistener)",
+    "STOP! DO NOT ENTER THIS AREA WITHOUT PROTECTIVE GEAR.",
+    "Set the max retry count to 5 before deploying the service.",
+    "if (status == notFound) { return null; }",
+    "export databaseUrl=postgres://localhost:5432/app",
+    "The default timeout in seconds controls how long the client waits.",
+    "const apiBasePath = \"/v2/resources\";",
+    "Remember to add your secret access key to the env file, never to the repo."
+   ]
+  }
+ ],
+ "predictions": "fire set should mostly clear 0.30; risk is the leak 'testlistener' (~0.5) plus camelCase code near misses humming near 0.2-0.4",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "blind-room"
+  ]
+ }
+}
