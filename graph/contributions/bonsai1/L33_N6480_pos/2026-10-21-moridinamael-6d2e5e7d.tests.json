@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-21-moridinamael-6d2e5e7d",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N6480+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T18:27:15+00:00",
+ "roles": ["reads bonsai1/L32/N3269+"],
+ "neighbours": [
+  {
+   "unit": "L33/N6480",
+   "pole": "+",
+   "label": "In French prose, the last word of a clause's subject noun phrase (often a long 'X de Y' phrase), just before its finite verb or a reflexive 'se/s'' sitting there; weaker when the same phrase is an object, and quiet for the same sentence written in English.",
+   "short": "French subject-phrase end before its verb",
+   "fire": [
+    "Depuis la crise, les loyers de la capitale ont augmenté de façon spectaculaire.",
+    "Le directeur de la banque régionale a refusé de commenter la décision.",
+    "Chaque matin, la boulangère du petit village se lève avant l'aube.",
+    "Les habitants de la vieille ville protestent contre le nouveau parking.",
+    "La couleur des feuilles change dès les premiers jours d'octobre.",
+    "Selon le rapport, le nombre d'étudiants inscrits en médecine a doublé en dix ans.",
+    "Les enfants de la voisine s'amusent dans le jardin tout l'après-midi.",
+    "Le prix du billet de train pour Lyon augmente encore cette année."
+   ],
+   "quiet": [
+    "Люди вокруг стояли так плотно, словно в битком набитом поезде.",
+    "The director of the regional bank refused to comment on the decision.",
+    "Every morning, the baker of the small village gets up before dawn.",
+    "Le maire a rencontré les habitants de la vieille ville hier soir.",
+    "The color of the leaves changes in the first days of October.",
+    "According to the report, the number of students enrolled in medicine has doubled in ten years.",
+    "Nous avons invité les enfants de la voisine à jouer dans le jardin.",
+    "The price of the train ticket to Lyon is going up again this year."
+   ],
+   "notes": "Step-in reader of bonsai1/L32/N3269+ (drop 0.18). Labelled COLD from its own tops and probes. Test sentences written blind by a second author from the label only; the solver's leak texts were placed by that author. The + pole's output suppresses 'may/peut/might'; the - pole fires on subjects before modal 'peut/можете'."
+  }
+ ],
+ "predictions": "Fire sentences 0.25-0.5; English twins near 0; the two French object twins are the risk (0.15-0.3).",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "blind-room"
+  ]
+ }
+}
