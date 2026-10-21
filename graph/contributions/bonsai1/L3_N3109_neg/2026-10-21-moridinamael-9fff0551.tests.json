@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-21-moridinamael-9fff0551",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N3109-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T09:09:21+00:00",
+ "roles": ["feeds bonsai1/L7/N5686+"],
+ "neighbours": [
+  {
+   "unit": "L3/N3109",
+   "pole": "-",
+   "label": "words opening with the letters 'fur' or 'gur', in any language or script (Latin or Cyrillic), including invented names; some rare words where an F or G is followed by an 'l' or 'il' piece also fire; silent for 'ur' after other letters (b, t, n, p, th)",
+   "short": "'fur'/'gur' word openings",
+   "unit_kind": "token / spelling piece",
+   "fire": [
+    "We bought new furniture for the living room last weekend.",
+    "The old furnace in the basement finally broke down in January.",
+    "Furthermore, the committee rejected the second proposal.",
+    "The baby laughed at the gurgling sound of the stream.",
+    "He spent ten years studying meditation with a guru in the mountains.",
+    "The cat's thick fur kept it warm all winter.",
+    "The factory workers were furloughed for three weeks.",
+    "She was furious when the train was cancelled again."
+   ],
+   "quiet": [
+    "During the summer season, interdisciplinary investigations of periglacial phenomena took place in the areas surrounding the stations/bases",
+    "She finally figured out the answer.",
+    "We bought new chairs for the living room last weekend.",
+    "The old boiler in the basement finally broke down in January.",
+    "In addition, the committee rejected the second proposal.",
+    "The baby laughed at the bubbling sound of the stream.",
+    "He spent ten years studying meditation with a teacher in the mountains.",
+    "The cat's thick coat kept it warm all winter."
+   ],
+   "notes": "Test written blind by a second author from the label only (blind:claude-opus-5-5 label-only), copied unedited. Feeder found by resident attribution (play step OOM'd on a shared GPU), so no ablation drop and no feeds edge. Low-amplitude broad pole (max 1.12, gate-closed leak regime); the + pole is a strong 'figur' detector."
+  }
+ ],
+ "predictions": "most fur/gur fire items around 0.25-0.6; the periglacial near miss (solver leak) likely exceeds 0.30, so the test hinges on the other near misses staying low",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "blind-room",
+   "quick-test",
+   "step-out"
+  ]
+ }
+}
