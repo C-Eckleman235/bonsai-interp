@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-ChopinDavid-6cc66bf8",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N1951+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T22:30:21+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N1951",
+   "pole": "+",
+   "label": "The space-initial byte token that starts a katakana (or hangul) word after a space, where the tokenizer has to split the first character into bytes, not text made only of whole-character tokens.",
+   "fire": [
+    "週末は友達と サッカー をしました。",
+    "新しい ゲーム をダウンロードしました。",
+    "駅前の カフェ で待ち合わせしましょう。",
+    "彼は毎朝 バス で会社に行きます。",
+    "来月 ロンドン に出張する予定です。",
+    "この店の パン はとてもおいしいです。",
+    "19세기 독일에서 새로운 음악이 시작되었다.",
+    "昨日 テレビ で古い映画を見ました。"
+   ],
+   "quiet": [
+    "週末は友達と山に行きました。",
+    "新しい本を図書館で借りました。",
+    "駅前で待ち合わせしましょう。",
+    "彼は毎朝電車で会社に行きます。",
+    "来月大阪に出張する予定です。",
+    "この店の料理はとてもおいしいです。",
+    "We went skiing with friends at the weekend.",
+    "昨日家で古い映画を見ました。"
+   ]
+  }
+ ],
+ "predictions": "7-8/8 fire >= 0.30 (probes 0.63-0.81 whenever a space precedes a byte-split katakana or hangul word); whole-token Japanese 0.009-0.010, English 0.002.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "space + katakana byte token",
+ "unit_kind": "lexical",
+ "confidence": 0.8,
+ "notes": "Probes (fraction of max 458): ' マトロスカ' 0.812, ' ホラーゲーム' 0.767, ' ヤフー' 0.659, Korean ' 네덜란드' 0.638, ' オムニ ホテル' 0.632, all peaking on the space-initial byte token ' �'. Quiet: whole-token Japanese 0.009-0.010, English 0.002. Each fire item was checked to contain a space-initial byte token and each near miss to contain none."
+}

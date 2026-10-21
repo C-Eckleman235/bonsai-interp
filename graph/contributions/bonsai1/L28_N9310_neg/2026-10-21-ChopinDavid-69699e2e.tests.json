@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-ChopinDavid-69699e2e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N9310-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T22:30:21+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N9310",
+   "pole": "-",
+   "label": "The piece ' co'/'co'/'Co' when it is the first piece of a word the tokenizer split (co|-ordination, co|agulation, Co|conuts, co|existence, (co|oking), not whole-token co- words such as company, cook, cost or code.",
+   "fire": [
+    "The paper lists her as co-author alongside two colleagues from Leeds.",
+    "Small droplets slowly coalesce into larger ones as the emulsion ages.",
+    "The village has a long tradition of peaceful coexistence between the two faiths.",
+    "The captain handed control to the co-pilot during the descent.",
+    "After weeks of pleading, she finally coaxed the cat out from under the porch.",
+    "Many couples now cohabit for several years before they marry.",
+    "We split the bills for internet, electricity and (cooking) gas each month.",
+    "Patients on blood thinners are tested for slow coagulation before surgery."
+   ],
+   "quiet": [
+    "The paper lists her as the lead author alongside two colleagues from Leeds.",
+    "Small droplets slowly merge into larger ones as the emulsion ages.",
+    "The village has a long tradition of peaceful contact between the two faiths.",
+    "The captain handed control to the first officer during the descent.",
+    "After weeks of pleading, she finally lured the cat out with some cold chicken.",
+    "Many couples now share a flat for several years before they marry.",
+    "We split the cost of internet, electricity and gas each month with the company.",
+    "Patients on blood thinners are tested for slow clotting before their code review."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire >= 0.30 (probes 0.76-0.89 for every split co- word); whole-token co- words 0.001-0.07, so 0 near misses >= 0.30.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-word piece 'co'",
+ "unit_kind": "lexical",
+ "confidence": 0.85,
+ "notes": "Probes (fraction of max 290): co|-ordination 0.862, co|agulation 0.762, co|conuts 0.822, co|ot|ie 0.825, (co|oking 0.887, co|exist 0.806, all peaking on the co piece. Quiet: ' company' 0.001, ' cook' 0.072, plain prose 0.003. Card: 30/32 top peaks are a co piece. The + pole fires on ' Coch'/' cob' pieces."
+}

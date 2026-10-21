@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-ChopinDavid-5ad8d28f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N8811+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T22:30:21+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L11/N8811",
+   "pole": "+",
+   "label": "In Python, the attribute-name token right after a dot in attribute access (node.parent, widget.label, ax.title), not a method call such as .get( and not the same word in prose.",
+   "fire": [
+    "    root = tree.parent\n    while root.parent:\n        root = root.parent",
+    "    title = page.label\n    print(title)",
+    "    owner = folder.parent\n    print(owner.name)",
+    "    text = button.label\n    button.label = text.upper()",
+    "    if item.parent is None:\n        roots.append(item)",
+    "    caption = chart.label\n    caption.visible = False",
+    "    up = current.parent\n    depth += 1",
+    "    name = field.label\n    fields.append(name)"
+   ],
+   "quiet": [
+    "    root = tree.get('root')\n    while root:\n        root = None",
+    "    title = page.get('title')\n    print(title)",
+    "    owner = folder.get('owner')\n    print(owner)",
+    "    text = button.get('text')\n    print(text.upper())",
+    "    if item.get('parent') is None:\n        roots.append(item)",
+    "    caption = chart.get('caption')\n    print(caption)",
+    "    up = lookup(current)\n    depth += 1",
+    "The label on the parent folder says the files are from last year."
+   ]
+  }
+ ],
+ "predictions": "6-8/8 fire >= 0.30 (probes: .parent 0.58, .label 0.56; .title 0.23 and .parent_id 0.27 are weaker); .get( calls 0.03-0.05, prose 0.006.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Python attribute access",
+ "unit_kind": "contextual",
+ "confidence": 0.6,
+ "notes": "Probes (fraction of max 8.5): 'node.parent' 0.577, 'widget.label' 0.560, '.parent_id' 0.267, 'ax.title.set_color' 0.234. Quiet: 'config.get(' 0.029, 'record.get(' 0.046, prose 'The parent of the child' 0.006, a loop 0.034. The - pole fires on '.get': the neuron separates attribute reads from get calls."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-ChopinDavid-4624827b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N12055+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T22:30:21+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N12055",
+   "pole": "+",
+   "label": "In Russian (and Korean), a verb stem piece just before its infinitive or verbal ending (н|азв|ать, объ|ясн|ить, по|сет|ить, 시작|하기), i.e. a predictor of the verb ending, not Russian words that are not split infinitives.",
+   "fire": [
+    "Трудно назвать это решение удачным.",
+    "Попробуй объяснить ребёнку, почему нельзя трогать плиту.",
+    "Летом мы хотим посетить родственников в Казани.",
+    "Хлеб лучше разрезать острым ножом.",
+    "Как назвать нового щенка, мы пока не решили.",
+    "Учитель не смог объяснить задачу понятнее.",
+    "Обязательно стоит посетить этот музей хотя бы раз.",
+    "Пирог нужно разрезать на восемь кусков."
+   ],
+   "quiet": [
+    "Это решение оказалось очень удачным.",
+    "Ребёнку нельзя трогать горячую плиту.",
+    "Летом мы были у родственников в Казани.",
+    "Хлеб лежит на столе рядом с ножом.",
+    "Наш новый щенок очень любит играть.",
+    "Учитель дал нам новую задачу на дом.",
+    "Этот музей открыт каждый день кроме понедельника.",
+    "Пирог стоит на окне и остывает."
+   ]
+  }
+ ],
+ "predictions": "5-8/8 fire >= 0.30 (probes 0.25-0.38, so several items sit near the line); median ~0.3. Russian sentences with no split infinitive 0.006-0.009.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "verb stem before ending",
+ "unit_kind": "contextual",
+ "confidence": 0.5,
+ "notes": "Probes (fraction of max 318): 'азв' in назвать 0.384, Korean ' 시작' before 하기 0.318, 'ясн' in объяснить 0.294, 'сет' in посетить 0.291, 'рез' in разрезать 0.272, 'ени' in переоценивать 0.252. Quiet: Russian without split infinitives 0.006-0.009, English 0.002. The logit effect promotes infinitive endings ('ать', 'ировать', 'овать'), so this is a next-piece predictor."
+}
