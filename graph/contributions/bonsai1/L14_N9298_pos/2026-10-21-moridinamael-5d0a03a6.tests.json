@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-21-moridinamael-5d0a03a6",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N9298+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T13:23:18+00:00",
+ "roles": ["feeds bonsai1/L16/N9455+"],
+ "neighbours": [
+  {
+   "unit": "L14/N9298",
+   "pole": "+",
+   "label": "In English code docstrings or comments, the word 'order' in 'in order' / 'in the same order' when it says the items of one collection line up position by position with the items of another collection named just before; the same description ending some other way (a type, a unit, a format) stays quiet, and so does 'in order' about a single collection on its own.",
+   "short": "'in (the same) order' aligning two collections in code docs",
+   "confidence": "medium",
+   "fire": [
+    "labels: list of class names, in the same order as the columns of `logits`.",
+    "# weights must be given in the same order as the layers listed above",
+    "\"\"\"Returns the scores for each candidate, in order matching `candidates`.\"\"\"",
+    "offsets (List[int]): Byte offsets, one per token in `tokens`, in the same order.",
+    "// values[] holds the parsed numbers, in order corresponding to keys[]",
+    "names: Display names for the series in `data`, in the same order.",
+    "@param colors  fill colors, listed in the same order as the bars in `series`",
+    "# ys: targets for the inputs in xs, in order (ys[i] belongs to xs[i])"
+   ],
+   "quiet": [
+    "labels: list of class names, as strings of the `logits` dtype.",
+    "# weights must be given as float32 tensors for the layers listed above",
+    "\"\"\"Returns the scores for each candidate, as a float between 0 and 1.\"\"\"",
+    "offsets (List[int]): Byte offsets, one per token in `tokens`, in UTF-8 bytes.",
+    "// values[] holds the parsed numbers, in ascending order",
+    "names: Display names for the series in `data`, in JSON format.",
+    "@param colors  fill colors, listed as hex strings like #ff8800",
+    "# Sort the list in order to speed up the binary search below"
+   ],
+   "notes": "Test sentences written blind by a second author who saw only the label. play step ran out of GPU memory on the stream machine (resident model loaded), so the feeder was chosen as the top attribution feeder from the resident model, and no ablation drop or feeds edge is recorded. In probing, the pole was much stronger when the aligned collection was named first (keys then vals 'in order' ~1.0 vs a single collection ~0.1); prose was weaker (~0.26) and Spanish/French weak (~0.11)."
+  }
+ ],
+ "predictions": "most fire items 0.2-0.6; one-line fragments without a def signature may score lower than the probes did",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "step-out",
+   "blind-room"
+  ]
+ }
+}
