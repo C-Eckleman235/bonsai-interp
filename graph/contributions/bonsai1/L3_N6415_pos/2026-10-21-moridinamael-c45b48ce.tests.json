@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-21-moridinamael-c45b48ce",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N6415+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T15:29:58+00:00",
+ "roles": ["feeds bonsai1/L4/N12-"],
+ "neighbours": [
+  {
+   "unit": "L3/N6415",
+   "pole": "+",
+   "label": "An opening parenthesis in code that starts a value (a tuple or a grouped expression) and stands after a space, as after '= ', ', ', 'in ' or 'return '; a function call's own argument parenthesis, an if/while condition, a square-bracket list, a parenthesis glued to another bracket or to '=' with no space, and parentheses in prose stay quiet.",
+   "short": "space-led '(' that opens a tuple or grouped value in code, not a call",
+   "unit_kind": "syntax",
+   "fire": [
+    "point = (3, 4)",
+    "return (a + b) * c",
+    "for x, y in (pairs[0], pairs[1]):",
+    "coords = [(0, 0), (1, 2)]",
+    "total = (price * qty) - discount",
+    "return (left, right)",
+    "dims = (width, height, depth)",
+    "result = foo(a, (b, c))"
+   ],
+   "quiet": [
+    "point = make_point(3, 4)",
+    "return add(a, b) * c",
+    "for x, y in zip(xs, ys):",
+    "coords = [[0, 0], [1, 2]]",
+    "if (price > 100) and ready:",
+    "while (count < limit):",
+    "dims=(width,height,depth)",
+    "result = foo(a, [b, c])"
+   ]
+  }
+ ],
+ "predictions": "Most fire items hold; coords = [(0, 0) glues the paren to '[' and may fire weak; one-liners without lead-in context may score lower than multi-line probes.",
+ "notes": "Test sentences written blind by a second author from the label only (stream blind_test). Feeder role from resident attribution (chat feeders tool, top MLP feeder of bonsai1/L4/N12-); play step OOMed on stream, so no ablation drop and no feeds edge.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "step-out",
+   "blind-room"
+  ]
+ }
+}
