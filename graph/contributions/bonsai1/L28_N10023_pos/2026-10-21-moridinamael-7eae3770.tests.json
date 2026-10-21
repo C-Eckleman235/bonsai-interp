@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-21-moridinamael-7eae3770",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N10023+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T17:25:56+00:00",
+ "neighbours": [
+  {
+   "unit": "L28/N10023",
+   "pole": "+",
+   "label": "In English, the subject (strongest when it is a pronoun) that opens a purpose clause introduced by 'so', 'so that' or 'in order that', just before its can/could/would; quiet for a result 'so' after a comma, for degree 'so', and for clauses after 'because' or 'in case'.",
+   "short": "subject of a purpose 'so (that)' clause",
+   "fire": [
+    "She left the porch light on so that he could find the house in the dark.",
+    "Speak slowly so they can follow every step of the recipe.",
+    "We packed extra sandwiches so we would not have to stop on the highway.",
+    "The teacher wrote the answers on the board so that everyone could check their work.",
+    "I saved a little each month in order that I could buy a bicycle by summer.",
+    "He lowered the shelf so she could reach the cereal without a stool.",
+    "Leave the door unlocked so that I can get in after my shift.",
+    "They built a ramp beside the stairs so it would be easier for wheelchairs."
+   ],
+   "quiet": [
+    "She left the porch light on, so he found the house easily in the dark.",
+    "Speak slowly because they are still learning the language.",
+    "We packed extra sandwiches in case we got hungry on the highway.",
+    "The teacher was so tired that she forgot to write the answers on the board.",
+    "I saved a little each month, so I bought a bicycle by summer.",
+    "He lowered the shelf because she could not reach the cereal.",
+    "Leave the door unlocked in case I come home after my shift.",
+    "The ramp beside the stairs was so steep that nobody used it."
+   ],
+   "confidence": "medium",
+   "notes": "Step-in from bonsai1/L27/N6013- (tip 'you'), but play step --down crashed (ValueError: all input arrays must have the same shape; a top example of N6013- peaks within 3 tokens of its window end), so the reader was chosen with play why on a tip prompt ending at ', so you': L28/N10023+ fires on ' you' there and its zeroing lowers ' can' by 0.17 log-prob. No feeds edge or reads role recorded because the drop was not measured. Strongest feeders (attribution) include three machine-guessed 'so' cells (L25/N4650+, L22/N2694+, L21/N1229+). Output promotes ' can'. Test sentences written blind by a second author from the label only."
+  }
+ ],
+ "predictions": "most fire items 0.25-0.6; risk: comma-result twins sharing the lead-in reached ~0.24 in probing",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "look",
+   "card",
+   "probe",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
