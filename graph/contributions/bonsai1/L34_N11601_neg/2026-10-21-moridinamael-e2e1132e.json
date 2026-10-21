@@ -1,0 +1,168 @@
+{
+ "id": "2026-10-21-moridinamael-e2e1132e",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N11601-",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T18:42:49+00:00",
+ "recipe": {
+  "toolchain_commit": "13bbe18",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N11601_neg/2026-10-21-moridinamael-e2e1132e.tests.json"
+ },
+ "label": "In health or safety advice, the subject word (usually 'you', sometimes 'there') of a clause about a condition or risk someone only suspects or might have, e.g. right after 'if you think/suspect/feel' or 'when there is a chance'; fires on the subject before its verb, quiet for the same subject in plain statements or ordinary if/when conditions",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N11601_neg/2026-10-21-moridinamael-e2e1132e.tests.json",
+   "prereg_commit": "13bbe18",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.114,
+     "peak": " you"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.274,
+     "peak": " you"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.565,
+     "peak": " you"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.065,
+     "peak": " you"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.034,
+     "peak": " you"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.308,
+     "peak": " that"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.59,
+     "peak": " you"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.237,
+     "peak": " you"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.015,
+     "peak": " any"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.069,
+     "peak": " you"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.001,
+     "peak": " broken"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.001,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.047,
+     "peak": " doctor"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": -0.0,
+     "peak": " mon"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.051,
+     "peak": " will"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.0,
+     "peak": " fitted"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 1,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.256,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "13bbe18",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-in reader of bonsai1/L33/N6480+ (French subject end before its verb); the downstream drop was only 0.01, and this reader's label is about English health advice, not French syntax. Feeders-first arm: top feeders were unlabelled (L9/N6716- question marks in FAQ text; L32/N7539+ subject before 'may', suppresses 'possibly/likely'). The pole's output promotes ' may'/' might'. Solver: a third-party subject after 'if you think your ...' was silent in one bank text.",
+ "roles": [
+  "reads bonsai1/L33/N6480+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L33/N6480+",
+   "to": "bonsai1/L34/N11601-",
+   "kind": "feeds",
+   "weight": 0.01,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
