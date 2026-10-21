@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-C-Eckleman235-a343edd1",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N8300-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-21T20:25:24+00:00",
+ "recipe": {
+  "toolchain_commit": "04e4dfb",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N8300_neg/2026-10-21-C-Eckleman235-a343edd1.tests.json"
+ },
+ "label": "a year of the 1880s or 1890s written in digits (18|8|x, 18|9|x); the same digits in other centuries and the 1850s-1860s (this neuron's other pole) stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N8300_neg/2026-10-21-C-Eckleman235-a343edd1.tests.json",
+   "prereg_commit": "04e4dfb",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.365,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.313,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.347,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.609,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.448,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.507,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.549,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.522,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.019,
+     "peak": "8"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.045,
+     "peak": "8"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.013,
+     "peak": "8"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.176,
+     "peak": "8"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.044,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.058,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.007,
+     "peak": "8"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.04,
+     "peak": "9"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.478,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "04e4dfb",
+  "minutes": 8,
+  "batch_size": 1
+ },
+ "short": "the 1880s-1890s (in digits)",
+ "unit_kind": "token/lexical",
+ "confidence": 0.6,
+ "notes": "Found by a concept screen with year-only pairs (branch 16): 6/6 for the 1880s (best 1.07) and the 1890s (1.24). Probes (exploratory, run on a separate Kaggle T4, so this checkout's probe log does not hold them; none is reused): a sweep of every fifth year 1600-2020 in one frame read >= 0.3 on 1880-1895, 0.15-0.30 on 1900-1905, nothing else; its + pole read 1850-1865. Near misses keep each frame and change the century, or move to the other pole's 1850s. Scoring runs on a Kaggle T4.",
+ "selection": "concept search: years and periods (branch 16)"
+}
