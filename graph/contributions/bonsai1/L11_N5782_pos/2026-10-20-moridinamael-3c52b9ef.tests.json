@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-20-moridinamael-3c52b9ef",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N5782+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T05:59:20+00:00",
+ "roles": ["feeds bonsai1/L18/N2711+"],
+ "neighbours": [
+  {
+   "unit": "L11/N5782",
+   "pole": "+",
+   "label": "In Python code, the sub-module or member name written right after the dot when the name before the dot is a coined, non-English package name (e.g. a made-up library like zolvex.errors); the peak is on the piece after the dot, inside a call, raise, assignment or type hint. Weaker in import lines. Quiet when the name before the dot is an ordinary variable (user.profile, self.config) or a plain English word (client.handlers, queue, math), and in prose.",
+   "fire": [
+    "raise zolvex.errors.TimeoutError(\"handshake took too long\")",
+    "result = quarnix.tensors.stack(batch, axis=0)",
+    "def load(path: str) -> vellopy.frames.Frame:",
+    "cfg = drezzik.settings.load_defaults()",
+    "except plumtora.exceptions.AuthFailed as exc:",
+    "model = kravona.layers.Dense(128, activation=\"relu\")",
+    "session = yexlo.net.open_session(host, port=8080)",
+    "logger = brimzat.logging.get_logger(__name__)"
+   ],
+   "quiet": [
+    "raise self.errors.TimeoutError(\"handshake took too long\")",
+    "result = batch.tensors.stack(axis=0)",
+    "def load(path: str) -> user.profile:",
+    "cfg = self.config.load_defaults()",
+    "except client.handlers.AuthFailed as exc:",
+    "model = network.layers.Dense(128, activation=\"relu\")",
+    "session = queue.net.open_session(host, port=8080)",
+    "logger = math.floor(value / 2)"
+   ]
+  }
+ ],
+ "predictions": "Blind test written by a label-only author. Expect most fire items above 0.30 and the variable/plain-word twins near zero.",
+ "notes": "Step out from bonsai1/L18/N2711+. play step hit CUDA OOM (GPU shared with a batch job), so this feeder was chosen as the top MLP feeder by resident attribution on the parent's top examples; no ablation drop, so no feeds edge is recorded.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "step-out"
+  ]
+ }
+}
