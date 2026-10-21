@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-C-Eckleman235-824be5f1",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N812+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T17:28:47+00:00",
+ "selection": "concept search: the Confederacy (branch 12)",
+ "neighbours": [
+  {
+   "unit": "L9/N812",
+   "pole": "+",
+   "label": "Virginia's place names and the word 'Virginia' (Roanoke, Charlottesville, Shenandoah, Richmond, Blacksburg), firing on the name even when it means something else (Virginia Woolf, Roanoke Island in North Carolina, Richmond, Indiana); places in neighbouring states stay quiet",
+   "fire": [
+    "My aunt retired to a farm outside Lynchburg.",
+    "The Roanoke Times ran the story on its front page.",
+    "Traffic on I-81 backed up near Harrisonburg.",
+    "Thomas Jefferson's home at Monticello overlooks Charlottesville.",
+    "The Virginia General Assembly meets in Richmond each January.",
+    "Virginia Slims sponsored women's tennis in the 1970s.",
+    "The Shenandoah River floods its valley towns every few years.",
+    "Fans in Blacksburg celebrated the Hokies' win."
+   ],
+   "quiet": [
+    "My aunt retired to a farm outside Asheville.",
+    "The Knoxville News ran the story on its front page.",
+    "Traffic on I-81 backed up near Hagerstown.",
+    "Andrew Jackson's home at the Hermitage overlooks Nashville.",
+    "The Maryland General Assembly meets in Annapolis each January.",
+    "Marlboro Lights sponsored car racing in the 1970s.",
+    "The Susquehanna River floods its valley towns every few years.",
+    "Fans in Chapel Hill celebrated the Tar Heels' win."
+   ]
+  }
+ ],
+ "predictions": "7/8 fire; Lynchburg and Harrisonburg are the least certain; near misses under 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Virginia place names",
+ "unit_kind": "lexical",
+ "confidence": 0.6,
+ "notes": "Found by a concept screen for the Confederacy (branch 12 of a concept map around the Texas pole bonsai1/L10/N8330+): 4/6 Confederacy passages (peaks Jefferson Davis, Virginia, Stonewall Jackson), controls < 0.1. Card: peak tokens ' Virginia' x14, Roan|oke x10; word hits ' Virginia' cov 49%, ' Va', ' Richmond'. Triage probes (exploratory, not reused): Blue Ridge above Roanoke 0.95, Charlottesville 0.57, Shenandoah 0.44, Hampden-Sydney 0.30, Danville 0.37, Virginia Tech 0.75; the name without the place also fires (Roanoke Island NC 0.74, Virginia Woolf 0.40, Richmond IN 0.37), so the label is at the level of the names; quiet on Charlotte NC 0.01 and, notably, West Virginia's coal towns 0.10; Norfolk only 0.17. Near misses keep each frame in a neighbouring state (NC, TN, MD, PA). Scoring runs on a Colab T4."
+}

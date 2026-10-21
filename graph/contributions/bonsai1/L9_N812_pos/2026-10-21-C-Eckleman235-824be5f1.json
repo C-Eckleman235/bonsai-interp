@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-C-Eckleman235-824be5f1",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N812+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-21T17:31:55+00:00",
+ "recipe": {
+  "toolchain_commit": "91c09a3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L9_N812_pos/2026-10-21-C-Eckleman235-824be5f1.tests.json"
+ },
+ "label": "Virginia's place names and the word 'Virginia' (Roanoke, Charlottesville, Shenandoah, Richmond, Blacksburg), firing on the name even when it means something else (Virginia Woolf, Roanoke Island in North Carolina, Richmond, Indiana); places in neighbouring states stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L9_N812_pos/2026-10-21-C-Eckleman235-824be5f1.tests.json",
+   "prereg_commit": "91c09a3",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.938,
+     "peak": "burg"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.796,
+     "peak": "oke"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.554,
+     "peak": "burg"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.766,
+     "peak": " Charlottesville"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.45,
+     "peak": " Virginia"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.396,
+     "peak": "Virginia"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.454,
+     "peak": "ah"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.5,
+     "peak": "burg"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.035,
+     "peak": " Asheville"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.002,
+     "peak": " page"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.027,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.063,
+     "peak": "mit"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.068,
+     "peak": "nap"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.017,
+     "peak": "l"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.019,
+     "peak": " Sus"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.103,
+     "peak": " Hill"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.527,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "91c09a3",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "short": "Virginia place names",
+ "unit_kind": "lexical",
+ "confidence": 0.6,
+ "notes": "Found by a concept screen for the Confederacy (branch 12 of a concept map around the Texas pole bonsai1/L10/N8330+): 4/6 Confederacy passages (peaks Jefferson Davis, Virginia, Stonewall Jackson), controls < 0.1. Card: peak tokens ' Virginia' x14, Roan|oke x10; word hits ' Virginia' cov 49%, ' Va', ' Richmond'. Triage probes (exploratory, not reused): Blue Ridge above Roanoke 0.95, Charlottesville 0.57, Shenandoah 0.44, Hampden-Sydney 0.30, Danville 0.37, Virginia Tech 0.75; the name without the place also fires (Roanoke Island NC 0.74, Virginia Woolf 0.40, Richmond IN 0.37), so the label is at the level of the names; quiet on Charlotte NC 0.01 and, notably, West Virginia's coal towns 0.10; Norfolk only 0.17. Near misses keep each frame in a neighbouring state (NC, TN, MD, PA). Scoring runs on a Colab T4.",
+ "selection": "concept search: the Confederacy (branch 12)"
+}
