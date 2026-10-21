@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-C-Eckleman235-e347db8c",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N3905+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-21T18:46:01+00:00",
+ "recipe": {
+  "toolchain_commit": "8d63736",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L24_N3905_pos/2026-10-21-C-Eckleman235-e347db8c.tests.json"
+ },
+ "label": "a year of the 1940s written in digits (19|4|x), peaking on the decade digit '4'; the same digits in another century or decade (1846, 1914, 1957, 2042) stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L24_N3905_pos/2026-10-21-C-Eckleman235-e347db8c.tests.json",
+   "prereg_commit": "8d63736",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.642,
+     "peak": "4"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.478,
+     "peak": "4"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.563,
+     "peak": "4"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.368,
+     "peak": "4"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.725,
+     "peak": "4"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.446,
+     "peak": "4"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.613,
+     "peak": "4"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.498,
+     "peak": "4"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.01,
+     "peak": " burned"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.002,
+     "peak": " bought"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.001,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": " were"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.02,
+     "peak": " flooded"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.003,
+     "peak": " changed"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.026,
+     "peak": "4"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.002,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.53,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "8d63736",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "short": "the 1940s (in digits)",
+ "unit_kind": "token/lexical",
+ "confidence": 0.7,
+ "notes": "Found by a concept screen for years and periods (branch 14 of a concept map around the Texas pole bonsai1/L10/N8330+): 3/6 Second World War passages, all year-only pairs, peaks on the '4' of 194x; controls (1952, 1954, 1961) < 0.1. Card: peak token '4' x32 of the top 32, all in 194x (19|4|0, 19|4|5, 19|4|8); word hits '4' cov 52%. Triage probes (exploratory, not reused): 1943 0.57, 'the 1940s' 0.66, 1949 0.29; quiet on 1843 0.001, 2045 0.05, 1914 0.002, 1951 0.001, 'the forties' spelled out 0.02, '49 dollars' 0.003; one leak: a phone number 194-2210 0.31. Near misses keep each frame and change only the century, the decade or the digit's place. Scoring runs on a Colab T4.",
+ "selection": "concept search: years and periods (branch 14)"
+}
