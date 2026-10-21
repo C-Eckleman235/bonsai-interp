@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-C-Eckleman235-8fa8ad66",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N5927-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-21T20:24:38+00:00",
+ "recipe": {
+  "toolchain_commit": "e5d48df",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L26_N5927_neg/2026-10-21-C-Eckleman235-8fa8ad66.tests.json"
+ },
+ "label": "a year of the 1990s written in digits (19|9|x); the same digits in other centuries (1891, 1694, 1896) and the 1980s stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L26_N5927_neg/2026-10-21-C-Eckleman235-8fa8ad66.tests.json",
+   "prereg_commit": "e5d48df",
+   "author": "C-Eckleman235",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.322,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.266,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.281,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.525,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.326,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.375,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.397,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.417,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.028,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.127,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.062,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.065,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.057,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.141,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.036,
+     "peak": " arrived"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.059,
+     "peak": "9"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.351,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "e5d48df",
+  "minutes": 8,
+  "batch_size": 1
+ },
+ "short": "the 1990s (in digits)",
+ "unit_kind": "token/lexical",
+ "confidence": 0.6,
+ "notes": "Found by a concept screen with year-only pairs (branch 16): 5/6 for the 1990s (peaks '9'). Probes (exploratory, run on a separate Kaggle T4, so this checkout's probe log does not hold them; none is reused): a sweep of every fifth year 1600-2020 in one frame read >= 0.3 on 1990-1995, 0.15-0.30 on 1790-1795, nothing else. Near misses keep each frame and change the century, or move to the 1980s. Scoring runs on a Kaggle T4.",
+ "selection": "concept search: years and periods (branch 16)"
+}
