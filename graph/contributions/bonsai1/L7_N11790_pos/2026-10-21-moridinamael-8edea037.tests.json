@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-21-moridinamael-8edea037",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N11790+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T14:25:04+00:00",
+ "roles": ["feeds bonsai1/L11/N9487-"],
+ "neighbours": [
+  {
+   "unit": "L7/N11790",
+   "pole": "+",
+   "label": "In code, after an opening curly brace that holds bare items rather than key: value pairs, the comma or ' for' that follows the first item (Python set literals and set comprehensions); dicts with colons, square-bracket lists, set() calls, import or destructuring braces, and math set notation in prose stay quiet",
+   "short": "Python set braces: first ',' or ' for' inside { }",
+   "fire": [
+    "colors = {\"red\", \"green\", \"blue\"}",
+    "squares = {x * x for x in range(10)}",
+    "seen = {first, second}\nif item in seen: return",
+    "VALID_MODES = {'read', 'write', 'append'}",
+    "unique_names = {user.name for user in users if user.active}",
+    "allowed = {200, 201, 204}\nif response.status not in allowed: raise Error",
+    "vowels = {'a', 'e', 'i', 'o', 'u'}",
+    "lengths = {len(word) for word in sentence.split()}"
+   ],
+   "quiet": [
+    "colors = {\"red\": 1, \"green\": 2, \"blue\": 3}",
+    "primes = [2, 3, 5, 7, 11]",
+    "squares = {x: x * x for x in range(10)}",
+    "seen = set([first, second])\nif item in seen: return",
+    "VALID_MODES = ('read', 'write', 'append')",
+    "unique_names = [user.name for user in users if user.active]",
+    "const { name, age } = user;",
+    "Let A = {1, 2, 3} be a finite set of integers."
+   ],
+   "unit_kind": "syntax",
+   "confidence": "medium",
+   "notes": "Sentences written blind by a second author who saw only the label. Feeder chosen by attribution (stream feeders tool): play step hit CUDA OOM, so no ablation drop and no feeds edge. Probes: JS object shorthand {x, y} also fires (~0.7) though not a set; set(...) generator ~0.2; dict comprehension ~0.1."
+  }
+ ],
+ "predictions": "most fire sentences above 0.3; near misses below 0.2, the dict comprehension the likeliest to leak",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "step-out"
+  ]
+ }
+}
