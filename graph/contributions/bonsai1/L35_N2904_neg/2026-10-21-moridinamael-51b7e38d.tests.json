@@ -1,0 +1,43 @@
+{
+ "contribution": "2026-10-21-moridinamael-51b7e38d",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N2904-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T20:19:26+00:00",
+ "roles": ["reads bonsai1/L34/N11601-"],
+ "neighbours": [
+  {
+   "unit": "L35/N2904",
+   "pole": "-",
+   "label": "The adverb 'all' opening a stretch of distance or time right after a verb or preposition ('all the way to/back to', 'all over the world', 'all across', 'all along', 'all night'), peaking on 'all' itself; quiet for determiner 'all' before a noun, for 'all alone', for 'it was all over' meaning finished, and for the same stretch said without 'all' ('throughout', 'the whole way', 'across'). Known leak: the verb 'work' in 'work your way up/through'.",
+   "fire": [
+    "We drove all the way to the coast without stopping once.",
+    "She walked all the way back to the station in the rain.",
+    "Fans traveled from all over the world to see the final.",
+    "The news spread all across the country within hours.",
+    "I knew all along that the key was in my coat pocket.",
+    "The baby cried all night, so nobody got any sleep.",
+    "He ran all the way home after school.",
+    "Wildflowers bloomed all along the riverbank this spring."
+   ],
+   "quiet": [
+    "He gave all his savings to charity.",
+    "The old dog sat all alone by the door.",
+    "We drove the whole way to the coast without stopping once.",
+    "She walked back to the station in the rain.",
+    "Fans traveled from around the world to see the final.",
+    "The news spread across the country within hours.",
+    "I suspected from the start that the key was in my coat pocket.",
+    "The baby cried throughout the night, so nobody got any sleep."
+   ]
+  }
+ ],
+ "unit_kind": "dense pole with a sharp top: 38% of tokens reach 0.1 of max, 4% reach 0.3",
+ "notes": "Step-in reader of bonsai1/L34/N11601- (drop 0.04). Labelled cold from its own tops and probes. Test written blind by a second author who saw only the label; the solver's leak texts were placed as near misses by that author.",
+ "predictions": "fire items mostly 0.4-0.8 on 'all'; near misses near the dense background of 0.2-0.35, which risks the at-most-1-above-0.30 rule",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["card", "look", "probe", "step-down", "inverse-de", "blind-room"]
+ }
+}
