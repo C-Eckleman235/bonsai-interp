@@ -1961,6 +1961,128 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-20-moridinamael-0ca95183"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L23_N1015_neg/2026-10-21-moridinamael-8c089d8a.tests.json",
+   "prereg_commit": "eff01b0",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 6,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.466,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.463,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.6,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.135,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.308,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.135,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.487,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.341,
+     "peak": " as"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.406,
+     "peak": " bit"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.062,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.179,
+     "peak": " as"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.013,
+     "peak": " hero"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.041,
+     "peak": " themselves"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.032,
+     "peak": " calls"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.156,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.023,
+     "peak": "ors"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.875,
+    "median_fire": 0.402,
+    "near_misses_at_0.3": 1
+   },
+   "contribution": "2026-10-21-moridinamael-8c089d8a"
   }
  ],
  "label_history": [
@@ -2008,6 +2130,11 @@
    "2026-10-20-moridinamael-557a152f",
    "A second labelling clause that turns the label around: after one clause labels a person (sees, treats, calls or considers someone as something), a following clause has someone label either the first labeller in return (two named people or he/she swapping roles) or me, us or you; it fires on the 'as' or 'a' right after that second object, most strongly with 'sees/treats someone as' and when a sentence of setting comes first. Weak: a second clause that labels a third person or the same person again, a one-way label with no earlier labelling clause, a return label where I am the one labelling back, a return gesture with no labelling verb, and group nouns (the rebels, the king) swapping roles.",
    "failed"
+  ],
+  [
+   "2026-10-21-moridinamael-8c089d8a",
+   "In English, a second casting clause aimed at the speaker or listener: after a first clause has cast someone as something with 'sees/treats/regards X as' (I regard my boss as a mentor), a following clause with the same kind of verb casts me, us or you (but she regards me as a burden, and they treat us as outsiders); it fires on the 'as' or the 'a' right after the pronoun. The same casting on its own, with no earlier casting clause, is weak, and so is a second clause aimed at him, her or them. Verbs without 'as' (calls me a clown, considers us a threat) are weaker.",
+   "failed"
   ]
  ],
  "examples": [],
@@ -2032,20 +2159,21 @@
   "2026-10-20-moridinamael-557a152f",
   "2026-10-20-moridinamael-ec94514d",
   "2026-10-20-moridinamael-bd8782cb",
-  "2026-10-20-moridinamael-0ca95183"
+  "2026-10-20-moridinamael-0ca95183",
+  "2026-10-21-moridinamael-8c089d8a"
  ],
  "qc": {
   "confirm": 2,
   "dispute": 5,
-  "refine": 8
+  "refine": 9
  },
  "replications": [],
  "scrutiny": {
   "level": 2,
   "name": "re-tested",
-  "test_rounds": 16,
-  "sentences": 256,
+  "test_rounds": 17,
+  "sentences": 272,
   "contributors": 1,
-  "qc": 15
+  "qc": 16
  }
 }
