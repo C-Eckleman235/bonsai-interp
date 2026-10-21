@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-21-moridinamael-1af2251a",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N4273-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T09:53:13+00:00",
+ "roles": ["feeds bonsai1/L28/N10754-"],
+ "neighbours": [
+  {
+   "unit": "L26/N4273",
+   "pole": "-",
+   "label": "Python code: the spot where a variable or parameter named a few lines earlier is about to be typed again (return value, assigned value or call argument); strongest when several earlier names share its first part (mock_conn, mock_cursor)",
+   "fire": [
+    "conn = MagicMock()\nconn.cursor.return_value = 5",
+    "def f(x):\n    return x * 2",
+    "mock_conn = MagicMock()\nmock_cursor = MagicMock()\nmock_conn.cursor.return_value = mock_cursor",
+    "def load(path):\n    data = read_file(path)\n    return data",
+    "user_name = input()\nuser_id = lookup(user_name)\nsave(user_id, user_name)",
+    "def scale(value, factor):\n    result = value * factor\n    return result",
+    "mock_session = Mock()\nmock_response = Mock()\nmock_session.get.return_value = mock_response",
+    "config_path = 'settings.yaml'\nconfig_data = parse(config_path)\nvalidate(config_data)"
+   ],
+   "quiet": [
+    "mock = MagicMock()\nMagicMock.reset_all()\nprint('setup done')",
+    "def load():\n    return read_file('config.txt')",
+    "name = input()\nprint('Hello, world')",
+    "def scale():\n    return 3 * 4",
+    "session = Mock()\nprint('starting test run')",
+    "import os\nimport sys\nfrom pathlib import Path",
+    "The mock connection and the mock cursor were both set up before the test ran.",
+    "def build():\n    return Box(10, 20, 200)"
+   ],
+   "unit_kind": "code",
+   "confidence": "medium",
+   "notes": "Feeder of bonsai1/L28/N10754- picked with the stream's resident feeders tool (rank 1) because play step hit CUDA OOM; no ablation drop, so no feeds edge. Test sentences written blind by a second author from the label only; the solver's leak texts were placed by that author."
+  }
+ ],
+ "predictions": "Shared-prefix reuse items (mock_, config_) fire strongly; plain reuse is weaker and conn.cursor.return_value = 5 may stay low.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "step-out"
+  ]
+ }
+}
