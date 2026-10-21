@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-C-Eckleman235-5d4433b6",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N7053-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-21T18:47:48+00:00",
+ "recipe": {
+  "toolchain_commit": "f504cbe",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N7053_neg/2026-10-21-C-Eckleman235-5d4433b6.tests.json"
+ },
+ "label": "a year of the 1770s or 1780s written in digits (the era of the American Revolution), peaking on the decade digit; the same digits in other centuries (1875, 1978, 1684) stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N7053_neg/2026-10-21-C-Eckleman235-5d4433b6.tests.json",
+   "prereg_commit": "f504cbe",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.8,
+     "peak": "7"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.438,
+     "peak": "7"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.276,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.471,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.72,
+     "peak": "7"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.564,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.38,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.561,
+     "peak": "7"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.005,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.006,
+     "peak": "8"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.135,
+     "peak": "8"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": "Their"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": -0.0,
+     "peak": " mill"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.002,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.44,
+     "peak": "8"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.0,
+     "peak": "0"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.953,
+    "median_fire": 0.516,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "f504cbe",
+  "minutes": 3,
+  "batch_size": 1
+ },
+ "short": "the 1770s-1780s (in digits)",
+ "unit_kind": "token/lexical",
+ "confidence": 0.65,
+ "notes": "Found by a concept screen for years and periods (branch 14 of a concept map around the Texas pole bonsai1/L10/N8330+): 3/6 Revolutionary War passages, all year-only pairs (1777, 1781, 1776; controls 1807, 1831, 1796 < 0.1). Card: peak tokens '7' x28, '8' x4 (17|7|6, 1769-17|7|4, 1609-17|7|0); word hits '7' cov 39%, '8' 36%. Triage probes (exploratory, not reused): 1774 0.55, 'the 1770s' 0.82, 1779 0.57, 1783 0.73 (peak '8', so the 1780s too); quiet on 1874 0.002, 1977 0.009, 1717 0.06, 'Flight 177' 0.007, '77 dollars' 0.06; 'the seventeen-seventies' spelled out 0.10. Near misses keep each frame and change the century. Scoring runs on a Colab T4.",
+ "selection": "concept search: years and periods (branch 14)"
+}
