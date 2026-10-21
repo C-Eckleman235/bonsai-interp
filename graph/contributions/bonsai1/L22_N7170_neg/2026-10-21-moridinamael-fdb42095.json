@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-21-moridinamael-fdb42095",
+ "kind": "qc",
+ "neuron": "bonsai1/L22/N7170-",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T18:49:05+00:00",
+ "recipe": {
+  "toolchain_commit": "12c7bb8",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L22_N7170_neg/2026-10-21-moridinamael-fdb42095.tests.json"
+ },
+ "label": "In code (Python, JavaScript, TypeScript, Java, C++ and similar) and technical prose, a value that is a list or array, whether it is being built or only used: strongest for an empty list or array literal about to be filled and for a list/array type or type hint, but it also fires on adding an item to a list, on expressions or calls that produce a list, on reading, passing or looping over a variable that holds a list (often a plural name), and on prose saying something returns or holds a list or array. The same code with a dict, set, tuple, string or single number or object stays quiet. The word 'list' alone (in everyday prose, or in a variable name whose value is not a list) fires weakly to moderately.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N7170_neg/2026-10-21-moridinamael-fdb42095.tests.json",
+   "prereg_commit": "12c7bb8",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.191,
+     "peak": " list"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.253,
+     "peak": "_list"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.49,
+     "peak": " []\n"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.586,
+     "peak": " list"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.744,
+     "peak": " [];\n"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.575,
+     "peak": "[]"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.399,
+     "peak": ">"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.56,
+     "peak": ";\n"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.233,
+     "peak": " rows"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.018,
+     "peak": " ->"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.085,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.009,
+     "peak": "4"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.031,
+     "peak": "<>();\n"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.008,
+     "peak": "value"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.012,
+     "peak": "(f"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.027,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 2,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.525,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "12c7bb8",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "In code (Python, JavaScript, Java, C++ and similar), a list or array being started, typed or grown: strongest for an empty list literal or empty list constructor that is about to be filled, a List/ArrayList/vector type or type hint, or adding one item to the end of it (append, push); a list literal that already holds items fires more weakly, and so does technical prose saying something returns a list or array. Dicts, sets, tuples, plain numbers and 'list' in everyday prose stay quiet; a variable only named with 'list' can fire weakly."
+ }
+}
