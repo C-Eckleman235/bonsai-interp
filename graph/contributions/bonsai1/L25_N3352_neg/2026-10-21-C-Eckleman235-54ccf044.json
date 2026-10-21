@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-C-Eckleman235-54ccf044",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N3352-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-21T18:46:54+00:00",
+ "recipe": {
+  "toolchain_commit": "5e4b775",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N3352_neg/2026-10-21-C-Eckleman235-54ccf044.tests.json"
+ },
+ "label": "a year from about 1910 to 1939 written in digits, strongest in the 1920s, peaking on the decade digit; the same digits in other centuries (1826, 2021) and later decades (1956, 1977) stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N3352_neg/2026-10-21-C-Eckleman235-54ccf044.tests.json",
+   "prereg_commit": "5e4b775",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.596,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.516,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.53,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.444,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.479,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.403,
+     "peak": "3"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.605,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.546,
+     "peak": "2"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.003,
+     "peak": "6"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.017,
+     "peak": "2"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.001,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.001,
+     "peak": " spring"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.005,
+     "peak": "8"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.026,
+     "peak": "2"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.028,
+     "peak": "2"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.022,
+     "peak": " from"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.523,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "5e4b775",
+  "minutes": 2,
+  "batch_size": 1
+ },
+ "short": "the 1910s-1930s, mostly the 1920s (in digits)",
+ "unit_kind": "token/lexical",
+ "confidence": 0.55,
+ "notes": "Found by a concept screen for years and periods (branch 14 of a concept map around the Texas pole bonsai1/L10/N8330+): 4/6 1920s passages (peaks the '2' of 192x), controls (1955, 1973, 1947, 1987) < 0.1. Card: peak tokens '2' x27, '3' x3, '1' x2 (19|2|9, the 19|2|0s); word hits '2' cov 34%, '3' 31%, '1' 29%. Triage probes (exploratory, not reused): 1923 0.67, 'the 1920s' 0.72, 1928 0.46, and also 1912 0.37 and 1931 0.55, so the label covers the 1910s-1930s; quiet on 1823 0.01, 2025 0.02, 'Room 192' 0.01, 'page 29' 0.001; 'the roaring twenties' spelled out 0.29. Near misses keep each frame and change the century or move to a later decade. Scoring runs on a Colab T4.",
+ "selection": "concept search: years and periods (branch 14)"
+}
