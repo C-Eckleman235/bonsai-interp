@@ -1,0 +1,55 @@
+{
+ "contribution": "2026-10-20-moridinamael-14233ef6",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N5133+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T03:32:14+00:00",
+ "roles": ["reads bonsai1/L33/N8382+"],
+ "neighbours": [
+  {
+   "unit": "L35/N5133",
+   "pole": "+",
+   "label": "text written in Chinese, Japanese or Korean characters (other non-Latin scripts such as Thai or Arabic also light it, more weakly); the same content written in Latin letters (English, romanized words) stays low",
+   "short": "CJK script text",
+   "unit_kind": "dense script detector",
+   "confidence": "medium",
+   "notes": "Step-in reader of L33/N8382+ (Twisted from-import) with a tiny drop (0.03); its label is unrelated to the feeder. Pole is dense (21.7% of tokens >0.1 max), idling at 0.1-0.2 on English. Strongest feeder L0/N4077+ fires on the first byte of two-character Japanese words. Test sentences written blind by a label-only author.",
+   "fire": [
+    "เมื่อวานเราไปสวนสาธารณะและเห็นนกมากมาย",
+    "今天天气很好，我们去公园散步吧。",
+    "我昨天在图书馆借了三本书。",
+    "这家餐厅的饺子非常好吃。",
+    "東京駅で友達と待ち合わせをしました。",
+    "明日は雨が降るかもしれません。",
+    "猫が窓のそばで寝ています。",
+    "오늘 저녁에 친구들과 영화를 보러 가요."
+   ],
+   "quiet": [
+    "We visited the village of Llanfairpwllgwyngyll last summer.",
+    "Jintian tianqi hen hao, women qu gongyuan sanbu ba.",
+    "I borrowed three books from the library yesterday.",
+    "The dumplings at this restaurant are very tasty.",
+    "Tokyo-eki de tomodachi to machiawase o shimashita.",
+    "It might rain tomorrow.",
+    "The cat is sleeping by the window.",
+    "Oneul jeonyeoge chingudeulgwa yeonghwareul boreo gayo."
+   ]
+  }
+ ],
+ "predictions": "7-8/8 fire; Welsh place name near miss may reach 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "neighbors",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}

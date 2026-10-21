@@ -29,8 +29,8 @@ merging the same contribution twice changes nothing, and new information never o
 | `contribution`, `contributor`, `kind`, `neuron`, `protocol` | Who is testing which pole, and under which test protocol (e.g. `quick-8+8@1`) |
 | `neighbours` | `[{"unit": "L12/N5397", "pole": "-", "label": …, "fire": [8], "quiet": [8]}]` |
 | `qc` | For QC: `{"verdict": "confirm", "dispute" or "refine", "label_under_test": …}` |
-| `predictions`, `short`, `unit_kind`, `confidence`, `notes`, `roles`, `via`, `selection` | Optional. They are copied into the results |
-| `selection` | How the pole was chosen: `random draw` (written by `play draw`), `step-out from <id>`, `step-in from <id>`, `concept search: <concept>` or `picked` (`play new --selection …`). Statistics about the share of clean poles should use random draws only; absent means not recorded |
+| `predictions`, `short`, `unit_kind`, `confidence`, `notes`, `roles`, `via` | Optional. They are copied into the results |
+| `selection` | Optional, copied into the results. How the pole was chosen: `random draw` (written by `play draw`), `step-out from <id>`, `step-in from <id>`, `concept search: <concept>` or `picked` (`play new --selection …`). Statistics about the share of clean poles should use random draws only; absent means not recorded |
 
 ### `<id>.json` (the results)
 

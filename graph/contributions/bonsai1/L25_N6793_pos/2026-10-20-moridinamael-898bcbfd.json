@@ -1,0 +1,168 @@
+{
+ "id": "2026-10-20-moridinamael-898bcbfd",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N6793+",
+ "contributor": "moridinamael",
+ "created": "2026-10-20T19:26:40+00:00",
+ "recipe": {
+  "toolchain_commit": "ce0393e",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N6793_pos/2026-10-20-moridinamael-898bcbfd.tests.json"
+ },
+ "label": "the last word of a newspaper or news agency's name, e.g. Associated Press, Washington Post, Daily Mail (not the same word in ordinary use)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N6793_pos/2026-10-20-moridinamael-898bcbfd.tests.json",
+   "prereg_commit": "ce0393e",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 2,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.46,
+     "peak": " Press"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.319,
+     "peak": " Post"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.142,
+     "peak": " design"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.3,
+     "peak": " Times"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.232,
+     "peak": "Reuters"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.284,
+     "peak": " Journal"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.132,
+     "peak": " Times"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.293,
+     "peak": " Telegraph"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.779,
+     "peak": " Walk"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.269,
+     "peak": " -"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.078,
+     "peak": " it"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.045,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.211,
+     "peak": " mail"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.085,
+     "peak": " wonderful"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.165,
+     "peak": "'s"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.089,
+     "peak": "She"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.766,
+    "median_fire": 0.288,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "ce0393e",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-in reader of bonsai1/L23/N1015- (drop 0.08); the label has nothing to do with the feeder's comeback concept. Pole is dense (11.6% of tokens >0.1 max). Test written blind by a second author from the label only; the solver's leak (charity-event name 'Angel Baby Walk', 0.78) is placed as a near miss.",
+ "roles": [
+  "reads bonsai1/L23/N1015-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L23/N1015-",
+   "to": "bonsai1/L25/N6793+",
+   "kind": "feeds",
+   "weight": 0.08,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}

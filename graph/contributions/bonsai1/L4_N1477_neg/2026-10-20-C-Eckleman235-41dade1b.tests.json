@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-20-C-Eckleman235-41dade1b",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N1477-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T19:46:04+00:00",
+ "selection": "step-out from bonsai1/L10/N8330+",
+ "neighbours": [
+  {
+   "unit": "L4/N1477",
+   "pole": "-",
+   "label": "a split-off word piece ending in '-che(s)' (che, iche, uche, anche, ches) that completes a rare or foreign word or name the tokenizer breaks into pieces (ly|che|e, Nam|che, J|uche, Bl|anche, Nacogdo|ches); common words stored as one token (niche, Apache) stay quiet",
+   "fire": [
+    "The pharmaceutical giant Roche reported strong quarterly sales.",
+    "Blanche DuBois arrives at her sister's apartment in New Orleans.",
+    "The Ardèche river cuts a deep gorge through the limestone.",
+    "The ferry crossed La Manche in heavy fog.",
+    "North Korea's Juche ideology stresses national self-reliance.",
+    "Fresh lychee tastes sweet and slightly floral.",
+    "Sherpas in Namche Bazaar sell supplies to climbers.",
+    "The county seat of Nacogdoches dates back to 1779."
+   ],
+   "quiet": [
+    "The pharmaceutical giant Pfizer reported strong quarterly sales.",
+    "Stella Kowalski arrives at her sister's apartment in New Orleans.",
+    "The Verdon river cuts a deep gorge through the limestone.",
+    "The ferry crossed the Channel in heavy fog.",
+    "North Korea's state ideology stresses national self-reliance.",
+    "Fresh papaya tastes sweet and slightly floral.",
+    "Sherpas in Lukla sell supplies to climbers.",
+    "The county seat of Lufkin dates back to 1882."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "step-out"
+  ]
+ },
+ "short": "split-off '-che' word piece",
+ "unit_kind": "lexical",
+ "confidence": 0.7,
+ "notes": "Step-out from the Texas pole bonsai1/L10/N8330+: play step ranks L4/N1477 as a feeder (single-unit zero ablation drop 0.08, fourth of four; the three above it already have records). The - pole is the active one on Texas text (Nacogdo|ches 0.38; the + pole 0.14, and the + pole is a broad echo-dominated unit). Card: peak token 'che' x22, 'iche' x3, 'uche' x1 (Myche, Michele, lychee, Juche, Namche). Probing: ly|che|e 0.73, Nam|che 0.78, Natch|it|och|es 0.46, qu|iche 0.31, Com|anche 0.28, but whole-token ' niche' 0.003, ' Apache' 0.005, mach|ete 0.02; one exception, whole-token ' Michele' 0.33. Near misses keep each frame with an ordinary word (no '-che' piece); one is Lufkin, another Texas town, to check that this unit is about spelling, not Texas.",
+ "roles": [
+  "feeds bonsai1/L10/N8330+"
+ ]
+}

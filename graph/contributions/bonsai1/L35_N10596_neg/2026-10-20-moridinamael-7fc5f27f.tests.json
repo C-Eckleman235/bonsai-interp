@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-20-moridinamael-7fc5f27f",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N10596-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T20:35:21+00:00",
+ "roles": ["reads bonsai1/L33/N5132-"],
+ "neighbours": [
+  {
+   "unit": "L35/N10596",
+   "pole": "-",
+   "label": "the no-space tokens 'Dr' and 'Prof' opening a line or a quote: the titles Dr./Prof. before a name, or the first piece of a word the tokenizer splits (Dr|inks, Dr|astic, Prof|its); not whole-word tokens like Driving, Draft or Professional, and not other titles (Mr., Rev., Gen.)",
+   "short": "line-opening 'Dr' / 'Prof' tokens",
+   "unit_kind": "token",
+   "confidence": "medium",
+   "notes": "Cold step-in from bonsai1/L33/N5132- (drop 0.00: this reader barely depends on the Apache-license feeder, and its label is unrelated). Probes: 'Dr' line-initial 0.79-0.95, after a quote 0.64, mid-sentence ' Dr' 0.14-0.33; split words Drinks/Drums/Drastic 0.71-0.84, whole-word Driving/Dragons/Draft/Drops 0.06-0.13; Doctor/Physician 0.13; solver leak 'Prof.' line-initial 0.64 and Profits 0.63, other titles (Mr., Rev., Gen., Sen., St.) 0.09-0.19. Broad pole: background hum about 0.18 in these frames. Fire and quiet sentences written blind by a label-only second author.",
+   "fire": [
+    "The trial results came in last week.\nProf. Hannah Weiss called them encouraging.",
+    "The conference opened at nine.\nDr. Amara Okafor gave the keynote on coastal erosion.",
+    "The museum guide paused by the portrait.\nProf. Leonard Hayes donated this painting in 1952.",
+    "She looked up from the chart and said, \"Dr. Patel will see you in a moment.\"",
+    "He read the byline aloud: \"Prof. Elena Marquez, Department of Linguistics.\"",
+    "The menu listed several options.\nDrinks were included with every meal.",
+    "The board reviewed the budget.\nDrastic cuts were proposed for the next quarter.",
+    "The quarterly report was released on Monday.\nProfits rose by twelve percent."
+   ],
+   "quiet": [
+    "The clinic was busy all day.\nPhysicians worked double shifts.",
+    "The conference opened at nine.\nMr. Amara Okafor gave the keynote on coastal erosion.",
+    "The museum guide paused by the portrait.\nRev. Leonard Hayes donated this painting in 1952.",
+    "She looked up from the chart and said, \"The doctor will see you in a moment.\"",
+    "He read the byline aloud: \"Professional writer, Department of Linguistics.\"",
+    "The menu listed several options.\nBeverages were included with every meal.",
+    "The board reviewed the budget.\nSevere cuts were proposed for the next quarter.",
+    "The quarterly report was released on Monday.\nEarnings rose by twelve percent."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire above 0.20; near misses near the 0.18 hum, none above 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "step-down",
+   "inverse-de"
+  ]
+ }
+}

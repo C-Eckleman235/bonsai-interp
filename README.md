@@ -65,6 +65,7 @@ The worked example is **L9/N3688**, the "nerve" neuron:
 uv sync                                   # Python 3.11-3.13; CUDA 12.8 torch wheels (PyPI torch with MPS on macOS)
 bash scripts/download_models.sh           # Bonsai-8B as the 1.2 GB 1-bit GGUF into models/ (--all adds the precision ladder)
 bash scripts/fetch_data.sh                # corpus.npz + scan_bonsai1.npz from the GitHub release into data/
+bash scripts/fetch_data.sh atlas          # optional: every pole's word hits and auto screens (data/atlas/, about 70 MB; see docs/SCALING.md)
 uv run python -m bonsai_interp.explore --model bonsai1 --neuron 9/3688 --pole +
 uv run python -m bonsai_interp.graph.validate
 ```

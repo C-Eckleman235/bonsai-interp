@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-20-moridinamael-4cee0506",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N6623+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T04:15:53+00:00",
+ "roles": ["reads bonsai1/L31/N3680-"],
+ "neighbours": [
+  {
+   "unit": "L34/N6623",
+   "pole": "+",
+   "label": "A word inside a title or term enclosed in Chinese book-title brackets 《…》 or French guillemets « … », before the closing mark (titles of laws, books, newspapers, form sections, quoted coinages); weaker inside English quotation marks, silent for the same words without the marks and inside parentheses. Known leak, not claimed: plain Chinese prose without brackets can reach about 0.3 on the sentence-final 。.",
+   "fire": [
+    "他昨晚读完了《红楼梦》的前二十回。",
+    "根据《中华人民共和国劳动合同法》第十条，用人单位应当订立书面合同。",
+    "这篇评论最早发表在《人民日报》上。",
+    "请在《申请人基本信息》一栏填写您的姓名和住址。",
+    "Il a cité un passage de « Les Misérables » pendant son discours.",
+    "L'article est paru dans « Le Monde » la semaine dernière.",
+    "Le ministre a présenté la « loi sur la transition énergétique » devant l'Assemblée.",
+    "Les jeunes appellent ça la « fatigue numérique », un mot inventé l'an dernier."
+   ],
+   "quiet": [
+    "See the full licence text at http://www.gnu.org/licenses/>.",
+    "政府去年颁布了环境保护法的修正案。",
+    "他昨晚读完了红楼梦的前二十回。",
+    "根据中华人民共和国劳动合同法第十条，用人单位应当订立书面合同。",
+    "这篇评论最早发表在人民日报上。",
+    "请在申请人基本信息一栏填写您的姓名和住址。",
+    "Il a cité un passage de Les Misérables pendant son discours.",
+    "L'article est paru dans Le Monde la semaine dernière."
+   ]
+  }
+ ],
+ "predictions": "Blind test written by a second author from the label only. Expect most fire sentences 0.3-0.6; risk is the unbracketed Chinese near misses sitting near 0.2-0.3.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "probe",
+   "neighbors",
+   "inverse-de",
+   "blind-room"
+  ]
+ }
+}

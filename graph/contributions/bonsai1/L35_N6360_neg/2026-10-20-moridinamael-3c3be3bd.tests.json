@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-20-moridinamael-3c3be3bd",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6360-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T05:01:34+00:00",
+ "roles": ["reads bonsai1/L34/N6623+"],
+ "neighbours": [
+  {
+   "unit": "L35/N6360",
+   "pole": "-",
+   "label": "Chinese characters set inside an English or French sentence after a space (a Chinese word, name or a number followed by a Chinese character, inside Latin-script text); peaks on the first Chinese character, though some very common characters stay quiet. Near background for the same sentence written in English or in romanized pinyin. Known weaker leaks, not claimed: long plain Chinese, Korean or Arabic prose can reach about 0.3-0.4.",
+   "short": "Chinese characters inside a Latin-script sentence",
+   "confidence": "medium",
+   "notes": "Step-in reader of L34/N6623+ (drop 0.00 at single-unit zero ablation; on in 1 of its top examples). Probes: CJK after a space following a digit or Latin word 0.3-0.7, same text glued without a space ~0.16; which single characters fire depends on whether the tokenizer splits them into bytes (店 城 村 中 人 silent, 面 市 倍 fire). Feeders include byte-piece cells (machine guess '<0xE5>'). Test sentences written blind by a label-only author.",
+   "fire": [
+    "My grandmother always called the dumplings 饺子 when she served them at New Year.",
+    "The sign above the shop simply read 茶馆, which means teahouse.",
+    "We took the train to 杭州 and walked around West Lake all afternoon.",
+    "Le restaurant s'appelle 龙凤楼 et il se trouve près de la gare.",
+    "In class we learned that 谢谢 is how you say thank you.",
+    "The package was labeled 3 箱 so we expected three boxes.",
+    "His favorite poet is 李白, whose verses about the moon are famous.",
+    "Elle m'a offert un pinceau et un livre de 书法 pour mon anniversaire."
+   ],
+   "quiet": [
+    "Divide the total ÷ 3 to get each share.",
+    "Weitere Informationen über das Reisen mit Kindern",
+    "My grandmother always called the dumplings jiaozi when she served them at New Year.",
+    "The sign above the shop simply read teahouse in large red letters.",
+    "We took the train to Hangzhou and walked around West Lake all afternoon.",
+    "Le restaurant s'appelle Long Feng Lou et il se trouve près de la gare.",
+    "In class we learned that xiexie is how you say thank you.",
+    "The package was labeled 3 boxes so we expected three boxes."
+   ]
+  }
+ ],
+ "predictions": "about 6/8 fire (some common characters may stay whole tokens and quiet), 0 near misses",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "neighbors",
+   "inverse-de",
+   "blind-room"
+  ]
+ }
+}

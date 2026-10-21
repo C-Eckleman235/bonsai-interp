@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-20-moridinamael-47fee43c",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N9350+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T21:52:39+00:00",
+ "roles": ["reads bonsai1/L30/N2621+"],
+ "neighbours": [
+  {
+   "unit": "L31/N9350",
+   "pole": "+",
+   "label": "the hex digits of a character's code point written as an escape in code or markup (a \\u or \\U escape, chr(0x...), or an &#x...; entity), not other hex or digit strings such as hashes, addresses or IDs",
+   "short": "hex digits of a character-code escape in code or markup",
+   "confidence": "low",
+   "notes": "Blind test, written by a second author from the label only (sentences copied unedited). Three fire items (the JavaScript \"é\", JSON \"José\" and Java 'Ω' ones) reached the tests file with the escape already rendered as the character, so they contain no hex code point. Feeders-first step (play step without --down) hit CUDA OOM twice, so the label comes from card, look, probes and the inverse solver only. Probes: \\U0001d51c entity-dict escapes 0.51, chr(0x1F600) list 0.50, '\\U0001F680' 0.31, &#x1F600; 0.25, U+00E9 in prose 0.26; hashes, UUIDs, crash addresses, part numbers under 0.1; ptr = 0x0001F680 leaked at 0.22. Weak pole (max 34 vs 312 on the - pole).",
+   "fire": [
+    "In JavaScript, \"é\" gives you a lowercase e with an acute accent.",
+    "The Python string '\\U0001F600' prints a grinning face emoji.",
+    "Use chr(0x41) if you need the letter A from its code point.",
+    "In the HTML she wrote &#x2014; to get an em dash between the clauses.",
+    "The JSON file stored the name as \"José\" so the parser would accept it.",
+    "To show a copyright sign, the template uses &#xA9; right after the year.",
+    "Java lets you write a char literal like 'Ω' for the Greek capital omega.",
+    "The script builds the snowman with chr(0x2603) and appends it to the title."
+   ],
+   "quiet": [
+    "Agent 007 walked into the casino.",
+    "Suica&N'EX套票從2007年3月開賣以來就一直很受歡迎，原本是限機場出發的單程套票(3500円)。",
+    "The commit hash 3f9a2c1e was the last one before the release.",
+    "Use the letter A directly if you need it in the string.",
+    "In the HTML she wrote a plain hyphen between the clauses.",
+    "The JSON file stored the user ID as 0x7FFE4A20 in the log field.",
+    "The background color in the stylesheet is #00A9E0 for the header.",
+    "Java lets you write a char literal like 'Z' for a capital letter."
+   ]
+  }
+ ],
+ "predictions": "5/8 fire (the three rendered-character items likely low), 0-1 near misses at 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}

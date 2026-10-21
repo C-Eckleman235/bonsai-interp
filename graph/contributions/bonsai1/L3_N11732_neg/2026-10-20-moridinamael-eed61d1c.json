@@ -1,0 +1,162 @@
+{
+ "id": "2026-10-20-moridinamael-eed61d1c",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N11732-",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T03:21:38+00:00",
+ "recipe": {
+  "toolchain_commit": "1142d13",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L3_N11732_neg/2026-10-20-moridinamael-eed61d1c.tests.json"
+ },
+ "label": "a double s right after a, u or o inside a word or name (not after e); the same words with e before the ss stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L3_N11732_neg/2026-10-20-moridinamael-eed61d1c.tests.json",
+   "prereg_commit": "1142d13",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 0,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.075,
+     "peak": " glasses"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.098,
+     "peak": " boss"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.05,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.289,
+     "peak": "oss"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.098,
+     "peak": "He"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.032,
+     "peak": " class"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.238,
+     "peak": "asso"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.065,
+     "peak": " over"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.681,
+     "peak": "ER"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.066,
+     "peak": " lesson"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.055,
+     "peak": "She"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.017,
+     "peak": " called"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.042,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.04,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.098,
+     "peak": "He"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.03,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.688,
+    "median_fire": 0.086,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "1142d13",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "short": "a/u/o + ss mid-word",
+ "unit_kind": "lexical",
+ "confidence": "low",
+ "notes": "Feeder of bonsai1/L23/N1015- picked from resident attribution (play step hit CUDA OOM; no ablation drop measured, so no feeds edge). Blind test: sentences written by a second author who saw only the label; the solver's leak (caps YESTERDAY, an e+st island of this pole) placed as a near miss. Probes before the draw: a/u/o+ss in split names/words fired 0.2-0.6 (Hussain, Husserl, Gassman, tussle, Hossam); e+ss stayed under 0.1 (lesson, mess, Kessler); single-s Hasan leaked 0.34; whole-token Massachusetts 0.06.",
+ "roles": [
+  "feeds bonsai1/L23/N1015-"
+ ]
+}

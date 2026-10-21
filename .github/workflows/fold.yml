@@ -1,0 +1,41 @@
+name: fold
+# Regenerates the derived graph files (graph/neurons, edges.json, index.json) after any push to main that adds
+# contributions: a maintainer's manual merge, or a coordinator's merge of a batch run. The merge workflow folds its
+# own auto-merges; its fold commit is pushed with the workflow token, which does not trigger push events, so this
+# never loops. Nothing to do when the derived files already match.
+on:
+  push:
+    branches: [main]
+    paths: ["graph/contributions/**"]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: fold
+  cancel-in-progress: false
+jobs:
+  fold:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fold on main and push (validate --strict is the circuit breaker)
+        run: |
+          git config user.name "bonsai-survey-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            python -m bonsai_interp.graph.fold
+            python -m bonsai_interp.graph.validate --strict
+            git add graph/neurons graph/edges.json graph/index.json
+            git diff --cached --quiet && { echo "nothing to fold"; exit 0; }
+            git commit -q -m "fold after push ${GITHUB_SHA::7}"
+            git push -q origin HEAD:main && { echo "folded"; exit 0; }
+            sleep 5
+          done
+          echo "could not push the fold after 3 attempts"; exit 1

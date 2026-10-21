@@ -1,0 +1,165 @@
+{
+ "id": "2026-10-20-C-Eckleman235-41dade1b",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N1477-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-20T19:47:11+00:00",
+ "recipe": {
+  "toolchain_commit": "6633b17",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N1477_neg/2026-10-20-C-Eckleman235-41dade1b.tests.json"
+ },
+ "label": "a split-off word piece ending in '-che(s)' (che, iche, uche, anche, ches) that completes a rare or foreign word or name the tokenizer breaks into pieces (ly|che|e, Nam|che, J|uche, Bl|anche, Nacogdo|ches); common words stored as one token (niche, Apache) stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N1477_neg/2026-10-20-C-Eckleman235-41dade1b.tests.json",
+   "prereg_commit": "6633b17",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.425,
+     "peak": "che"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.324,
+     "peak": "anche"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.506,
+     "peak": "che"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.405,
+     "peak": "che"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.775,
+     "peak": "uche"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.687,
+     "peak": "che"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.721,
+     "peak": "che"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.442,
+     "peak": "ches"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.005,
+     "peak": " giant"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.005,
+     "peak": " sister"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.005,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.005,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.007,
+     "peak": " self"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.003,
+     "peak": "Fresh"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.004,
+     "peak": "pas"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.005,
+     "peak": "The"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.474,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [],
+  "toolchain_commit": "6633b17",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "short": "split-off '-che' word piece",
+ "unit_kind": "lexical",
+ "confidence": 0.7,
+ "notes": "Step-out from the Texas pole bonsai1/L10/N8330+: play step ranks L4/N1477 as a feeder (single-unit zero ablation drop 0.08, fourth of four; the three above it already have records). The - pole is the active one on Texas text (Nacogdo|ches 0.38; the + pole 0.14, and the + pole is a broad echo-dominated unit). Card: peak token 'che' x22, 'iche' x3, 'uche' x1 (Myche, Michele, lychee, Juche, Namche). Probing: ly|che|e 0.73, Nam|che 0.78, Natch|it|och|es 0.46, qu|iche 0.31, Com|anche 0.28, but whole-token ' niche' 0.003, ' Apache' 0.005, mach|ete 0.02; one exception, whole-token ' Michele' 0.33. Near misses keep each frame with an ordinary word (no '-che' piece); one is Lufkin, another Texas town, to check that this unit is about spelling, not Texas.",
+ "roles": [
+  "feeds bonsai1/L10/N8330+"
+ ],
+ "selection": "step-out from bonsai1/L10/N8330+",
+ "edges": [
+  {
+   "from": "bonsai1/L4/N1477-",
+   "to": "bonsai1/L10/N8330+",
+   "kind": "feeds",
+   "weight": 0.08,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}

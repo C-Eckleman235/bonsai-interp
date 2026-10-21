@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-20-C-Eckleman235-b8c5d67f",
+ "kind": "qc",
+ "neuron": "bonsai1/L10/N8330+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-20T19:41:01+00:00",
+ "recipe": {
+  "toolchain_commit": "2624afe",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N8330_pos/2026-10-20-C-Eckleman235-b8c5d67f.tests.json"
+ },
+ "label": "belonging to Texas, as a meaning: Texas places and also the people and events of Texas history (Sam Houston, Jim Bowie, Santa Anna, the Alamo, San Jacinto), while the same names outside Texas (Whitney Houston, David Bowie) and frontier history elsewhere stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L10_N8330_pos/2026-10-20-C-Eckleman235-b8c5d67f.tests.json",
+   "prereg_commit": "2624afe",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.555,
+     "peak": " Houston"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.289,
+     "peak": " Travis"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.595,
+     "peak": " Bowie"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.52,
+     "peak": " Anna"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.523,
+     "peak": " Austin"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.59,
+     "peak": "amo"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.802,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.795,
+     "peak": "ad"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.008,
+     "peak": " Houston"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.008,
+     "peak": "el"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.004,
+     "peak": " character"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.005,
+     "peak": " ex"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.007,
+     "peak": " Washington"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.007,
+     "peak": " Bast"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.077,
+     "peak": " rebels"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.032,
+     "peak": " a"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.573,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "2624afe",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Texas place names (cities, counties, towns, FM farm roads), peaking on the name's last piece ('Nacogdo|ches', 'Brown|sville', 'Bex|ar'); the same frames with places in other states stay quiet"
+ },
+ "short": "Texas-ness (places, founders, revolution)",
+ "unit_kind": "sparse feature",
+ "confidence": 0.65,
+ "notes": "QC refine from a concept-map project (branches 1-2). Disclosure: the author read the original test while planning, before drafting these sentences; none of its sentences or frames are reused. Exploration (play probe, two rounds, none of these 16 sentences): Spanish-origin places outside Texas stay quiet (Albuquerque, Santa Fe, San Diego, Tucson 0.03-0.04), Lubbock 0.32, Nuevo Laredo 0.31 (Laredo is also a Texas city), Natchitoches LA 0.20. Texas-history people and events fire without any place name: Sam Houston 0.57/0.56 vs Whitney Houston 0.01, Jim Bowie 0.60, Santa Anna 0.48, Stephen F. Austin 0.52, Republic of Texas 0.50, San Jacinto 0.44, Alamo 0.36; frontier history elsewhere stays quiet (Lincoln 0.01, Boone 0.04, Lee 0.15). One wrinkle: the first name Austin (Austin Butler) reads 0.38, so the word carries some Texas-ness by itself. The near misses here keep each fire sentence's frame and swap in a non-Texas referent, several with the same surname.",
+ "selection": "concept search: Texas (branches 1-2, QC of the anchor)"
+}

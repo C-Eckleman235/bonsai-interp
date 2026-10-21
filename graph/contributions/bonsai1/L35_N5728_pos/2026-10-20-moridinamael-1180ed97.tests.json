@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-20-moridinamael-1180ed97",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N5728+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T01:52:48+00:00",
+ "roles": ["reads bonsai1/L34/N2005-"],
+ "neighbours": [
+  {
+   "unit": "L35/N5728",
+   "pole": "+",
+   "label": "The split-off word piece 'пр' inside the Russian adverb 'по-прежнему' (still, as before) and inside capitalised 'Распространение' (spread); firing most on 'по-прежнему' mid-sentence. Not the meaning 'as before' in other words (прежде, прежний, всё ещё), not other Рас- words (Распродажа, Распределение), not lowercase 'распространения'.",
+   "short": "the piece 'пр' in по-прежнему / Распространение",
+   "unit_kind": "token",
+   "fire": [
+    "Он по-прежнему живёт в том же доме на окраине города.",
+    "Цены на хлеб по-прежнему остаются высокими, несмотря на урожай.",
+    "Мы по-прежнему ждём ответа от поставщика.",
+    "Погода по-прежнему холодная, хотя уже наступил май.",
+    "Команда по-прежнему лидирует в турнирной таблице.",
+    "Она по-прежнему любит читать стихи перед сном.",
+    "Дорога в деревню по-прежнему закрыта из-за ремонта.",
+    "Распространение слухов в маленьком городке происходит очень быстро."
+   ],
+   "quiet": [
+    "Он всё ещё живёт в том же доме на окраине города.",
+    "Цены на хлеб остаются высокими, как и прежде, несмотря на урожай.",
+    "Мы всё ещё ждём ответа от поставщика.",
+    "Погода такая же холодная, как в прежние годы, хотя уже май.",
+    "Команда, как и раньше, лидирует в турнирной таблице.",
+    "Она прежде любила читать стихи перед сном.",
+    "Дорога в деревню всё ещё закрыта из-за ремонта.",
+    "Распродажа в магазине на углу началась очень рано."
+   ]
+  }
+ ],
+ "predictions": "Fire scores vary a lot by frame (0.09-0.48 in probes); expect a narrow pass or a median-fire miss. Near misses should stay under 0.1.",
+ "notes": "Step-in reader of bonsai1/L34/N2005- with a near-zero drop (0.00); the label has nothing to do with the feeder's ALL-CAPS constants. + pole is tiny (max 19.9 vs 884 on -) and 95% gate-closed echo. Feeders first: the top feeder L34/N7654- is positional; L3/N10004+ and L2/N12092+ fire on Arabic mid-word pieces. Sentences written blind by a label-only author.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "neighbors",
+   "inverse-gmoo",
+   "blind-room"
+  ]
+ }
+}

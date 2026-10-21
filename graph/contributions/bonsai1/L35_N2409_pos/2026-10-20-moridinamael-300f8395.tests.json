@@ -1,0 +1,42 @@
+{
+ "contribution": "2026-10-20-moridinamael-300f8395",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N2409+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-20T20:50:30+00:00",
+ "roles": ["reads bonsai1/L34/N1441+"],
+ "neighbours": [
+  {
+   "unit": "L35/N2409",
+   "pole": "+",
+   "label": "In Python code, the name of an object or class that something is used from (self.logger, config, cache, session, DataFrame), not a plain value variable like count or total",
+   "fire": [
+    "class StringTests(ValueTestCase):",
+    "self.logger.info(\"Starting the worker process\")",
+    "value = config.get(\"timeout\", 30)",
+    "cache.set(key, result, expire=600)",
+    "response = session.get(url, headers=headers)",
+    "df = pd.DataFrame.from_records(rows)",
+    "user = db.query(User).filter_by(id=user_id).first()",
+    "if request.method == \"POST\":"
+   ],
+   "quiet": [
+    "We couldn't find the keys anywhere in the house.",
+    "count = count + 1",
+    "total = price * quantity",
+    "timeout = 30",
+    "result = x + y",
+    "for i in range(10):",
+    "if total > limit:",
+    "return count"
+   ]
+  }
+ ],
+ "predictions": "Risky: one-line snippets; probes peaked 0.1-0.26 inside multi-line blocks, so the median fire may fall short of 0.20.",
+ "notes": "Step-in reader of bonsai1/L34/N1441+ (drop 0.03). Feeders-first arm attempted but play step (upstream) hit CUDA OOM twice; label from card, look, probes and the inverse solver. Test sentences written blind by a label-only author.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["card", "look", "probe", "step-down", "inverse-de", "blind-room"]
+ }
+}

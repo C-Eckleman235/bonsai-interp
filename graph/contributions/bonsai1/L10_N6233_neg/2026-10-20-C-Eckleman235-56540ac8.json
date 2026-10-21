@@ -1,0 +1,153 @@
+{
+ "id": "2026-10-20-C-Eckleman235-56540ac8",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N6233-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-20T20:36:45+00:00",
+ "recipe": {
+  "toolchain_commit": "530b0d2",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N6233_neg/2026-10-20-C-Eckleman235-56540ac8.tests.json"
+ },
+ "label": "places in Utah (Salt Lake City, the Great Salt Lake, Moab, Park City, Provo, St. George, Bryce Canyon); places in the neighbouring states stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L10_N6233_neg/2026-10-20-C-Eckleman235-56540ac8.tests.json",
+   "prereg_commit": "530b0d2",
+   "author": "C-Eckleman235",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.414,
+     "peak": " Lake"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.782,
+     "peak": "ab"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.317,
+     "peak": " Lake"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.508,
+     "peak": " City"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.132,
+     "peak": " George"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.562,
+     "peak": "vo"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.432,
+     "peak": " Bryce"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.018,
+     "peak": "bird"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.03,
+     "peak": " Strip"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.073,
+     "peak": " rock"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.032,
+     "peak": " Mono"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.227,
+     "peak": "ide"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.047,
+     "peak": " Henderson"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.009,
+     "peak": " university"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.062,
+     "peak": "os"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.015,
+     "peak": " Aspen"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.891,
+    "median_fire": 0.423,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "which"
+  ],
+  "detected": [],
+  "toolchain_commit": "530b0d2",
+  "minutes": 3,
+  "batch_size": 1
+ },
+ "short": "Utah places",
+ "unit_kind": "sparse feature",
+ "confidence": 0.45,
+ "notes": "Found by a concept screen (Utah passages vs matched Nevada/Arizona/California passages): >= 0.3 on 3 of 4 Utah passages (Salt Lake, Moab, Salt Lake City), < 0.1 on every control; it sits in layer 10 beside the Texas pole. Probing: Moab 1.06, Great Salt Lake 0.49, Salt Lake City 0.30, Brigham Young 0.19, Lake Tahoe 0.01. Places only: people read low. Near misses keep each frame in Nevada, Arizona, California, Colorado or Alberta.",
+ "selection": "concept search: Texas branch 9 (Utah)"
+}

@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-20-moridinamael-12f949be",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N10511+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T04:33:01+00:00",
+ "neighbours": [
+  {
+   "unit": "L35/N10511",
+   "pole": "+",
+   "label": "Dense unit, about 0.3 of max on most ordinary text; rises higher on a non-final piece of a long or rare word that the tokenizer splits into several pieces (e.g. French, Spanish, Russian or technical words, compound identifiers), peaking on the piece before the word ends. Short common whole words stay near the background.",
+   "short": "dense; higher inside a split long word",
+   "unit_kind": "dense / positional",
+   "confidence": "low",
+   "roles": ["reads bonsai1/L34/N6623+"],
+   "notes": "Step-in reader of L34/N6623+ (downstream drop 0.00: all four L35 readers round to zero). Card: 78% of tokens reach 0.1 of max. Probes: non-English text sits near 0.5-0.6 on any token; split rare words beat whole-word twins by a small margin. Solver leak: Japanese list / plain English filler reaches 0.42. Test sentences written blind by a second author from the label only.",
+   "fire": [
+    "無料駐車場 ルームサービス シャトル バス サービス プール バリアフリー",
+    "The committee rejected the proposal as anticonstitutionnellement drafted.",
+    "Elle a parlé de l'internationalisation des échanges économiques.",
+    "El ayuntamiento anunció la desestabilización de las negociaciones.",
+    "Он изучал достопримечательности старого города.",
+    "The patient was diagnosed with pneumonoultramicroscopicsilicovolcanoconiosis last spring.",
+    "Call getUserAuthenticationTokenFromCache before the request is sent.",
+    "The enzyme methylenetetrahydrofolate reductase regulates folate metabolism."
+   ],
+   "quiet": [
+    "The cat sat on the mat.",
+    "The committee turned down the plan as badly written.",
+    "She talked about how trade has grown across the world.",
+    "The town said the talks had gone bad.",
+    "He went to see the old parts of the town.",
+    "The man was sick with a lung disease last spring.",
+    "Call the get token step before you send it.",
+    "This one enzyme helps the body use food."
+   ]
+  }
+ ],
+ "predictions": "Likely fail: dense background near 0.3 puts plain near misses at the 0.30 bar.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
