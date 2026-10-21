@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-21-moridinamael-8838059d",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N7170-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T12:39:43+00:00",
+ "neighbours": [
+  {
+   "unit": "L22/N7170",
+   "pole": "-",
+   "label": "In code, a list or array value being made or typed (an empty or filled [] literal, list(), or a List, ArrayList or vector type, in Python, JavaScript, Java or C++), and docs saying a function returns a list; dicts, sets, tuples and plain numbers stay quiet, and so does 'list' in everyday prose.",
+   "short": "list/array values in code",
+   "roles": ["feeds bonsai1/L23/N9972-"],
+   "fire": [
+    "results = []\nfor x in data:\n    results.append(x * 2)",
+    "const colors = ['red', 'green', 'blue'];",
+    "std::vector<int> scores = {90, 85, 77};",
+    "items = list(range(10))",
+    "def get_users():\n    \"\"\"Returns a list of user names.\"\"\"\n    return names",
+    "let queue = [];\nqueue.push(task);",
+    "ArrayList<Integer> ids = new ArrayList<Integer>();",
+    "matrix = [[0, 0], [0, 0]]"
+   ],
+   "quiet": [
+    "The guest list for the wedding was very long.",
+    "my_list = 5\nprint(my_list)",
+    "results = {}\nfor x in data:\n    results[x] = x * 2",
+    "const color = 'red';",
+    "Map<String, Integer> names = new HashMap<>();",
+    "int score = 90;",
+    "items = set(range(10))",
+    "def get_user():\n    \"\"\"Returns the user's name as a string.\"\"\"\n    return name"
+   ],
+   "notes": "Test written blind by a second author from the label only (solver leak texts placed by that author). Feeder chosen from resident-model attribution (top MLP feeder of L23/N9972-) because play step hit CUDA OOM on the shared GPU; no ablation drop measured, so no feeds edge is claimed."
+  }
+ ],
+ "predictions": "Most fire sentences above 0.4; the my_list = 5 near miss is the riskiest (about 0.25 in probing).",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
