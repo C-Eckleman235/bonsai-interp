@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-moridinamael-adeb586f",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N7858+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T20:46:01+00:00",
+ "roles": ["feeds bonsai1/L3/N5697+"],
+ "neighbours": [
+  {
+   "unit": "L0/N7858",
+   "pole": "+",
+   "label": "In code, the closing single quote of a string item that has another item after it: the quote-then-comma in a list, tuple or argument list (Python, JS, SQL IN, R c(), Perl), peaking on the quote-comma token. Double-quoted items fire weaker. Quiet: the same quoted string closing before ), ], ; or : (a lone item, end of statement, dict key), a comma inside the string, quote-comma in standalone prose, and possessive apostrophes.",
+   "short": "quote-then-comma ending a string item in a code list or call",
+   "fire": [
+    "SELECT * FROM users WHERE status IN ('active', 'pending');",
+    "const fruits = ['apple', 'banana', 'cherry'];",
+    "point = ('x', 'y', 'z')",
+    "df <- data.frame(name = c('Ann', 'Bob', 'Cy'))",
+    "my @days = ('Mon', 'Tue', 'Wed');",
+    "open('data.csv', 'r') as f:",
+    "plt.plot(x, y, 'o', label='trend')",
+    "cursor.execute('UPDATE items SET qty = 0', params)"
+   ],
+   "quiet": [
+    "colors = ['red']",
+    "SELECT * FROM users WHERE status = 'active';",
+    "const fruit = 'apple';",
+    "point = ('x')",
+    "config = {'name': value}",
+    "my $day = 'Mon';",
+    "open(path)",
+    "label = 'trend, upward'"
+   ]
+  }
+ ],
+ "predictions": "8/8 fire above 0.20, no near miss above 0.30 (dict key closest)",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "blind-room",
+   "step-out"
+  ]
+ }
+}
