@@ -181,6 +181,17 @@ Entry format:
 - **Transfers:** on Windows, watch the commit charge as closely as VRAM, and keep the number of torch processes
   small.
 
+**Helper servers grow silently: check their defaults** (2026-10-20, 23:47)
+- llama-server's host-RAM prompt cache defaults to 8 GiB. The stream's 1-bit 8B screen grew from 5.8 to 7.4 GB of
+  commit over the day, and with the batch's stage 2 on top, commit reached 88% with a 96% spike. The guard stopped
+  the batch cleanly.
+- `--cache-ram 0` (the slots still reuse the system prompt's KV) plus one probe restart took baseline commit from
+  79% to 65%.
+- Stage 2 in 250-window chunks instead of 500 cut the batch's RSS from 5.6 to 4.2 GB, and commit held at about
+  80–82% with the batch running.
+- **Transfers:** before a long shared run, read every helper server's memory defaults (caches, slots, context),
+  and set a per-process commit budget alongside the GPU one.
+
 **Plan by depth: early layers are word-driven, deep layers are not** (2026-10-20, L4 vs L20)
 - **Auto tier:**
   - L4 binned 2,418 poles as lexical, against 171 at L20.
