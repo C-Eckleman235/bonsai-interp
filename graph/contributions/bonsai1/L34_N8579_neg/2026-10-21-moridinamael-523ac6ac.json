@@ -1,0 +1,162 @@
+{
+ "id": "2026-10-21-moridinamael-523ac6ac",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N8579-",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T08:05:30+00:00",
+ "recipe": {
+  "toolchain_commit": "ccbcfd1",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N8579_neg/2026-10-21-moridinamael-523ac6ac.tests.json"
+ },
+ "label": "In a text that opens mid-sentence (a lowercase fragment starting in the middle of a clause, with no complete sentence before it), the word that fills the phrase's last open slot: a verb after 'before' or 'to', a participle after 'be' or 'keep', or the object noun that completes a verb phrase. The same phrase-finishing words stay low when the text opens with a complete, capitalized sentence.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N8579_neg/2026-10-21-moridinamael-523ac6ac.tests.json",
+   "prereg_commit": "ccbcfd1",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.004,
+     "peak": " we"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.199,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.03,
+     "peak": "so"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.095,
+     "peak": " entertained"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.036,
+     "peak": " engine"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.034,
+     "peak": "because"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.12,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.043,
+     "peak": " means"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.003,
+     "peak": "You"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.085,
+     "peak": "Scheduled"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.016,
+     "peak": " kitchen"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.005,
+     "peak": " files"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.067,
+     "peak": " So"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.033,
+     "peak": " out"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": -0.0,
+     "peak": " finally"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.002,
+     "peak": " all"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 2,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.781,
+    "median_fire": 0.039,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "ccbcfd1",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L33/N261+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L33/N261+", "to": "bonsai1/L34/N8579-", "kind": "feeds", "weight": 0.17, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ],
+ "selection": "step-in from bonsai1/L33/N261+"
+}
