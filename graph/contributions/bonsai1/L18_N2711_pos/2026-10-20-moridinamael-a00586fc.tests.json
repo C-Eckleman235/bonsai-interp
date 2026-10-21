@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-20-moridinamael-a00586fc",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N2711+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T05:32:36+00:00",
+ "roles": ["feeds bonsai1/L19/N5446+"],
+ "neighbours": [
+  {
+   "unit": "L18/N2711",
+   "pole": "+",
+   "label": "In Python code, the name of a standard-library module whose name is a coined compound rather than an everyday English word (or a dotted sub-module of one), written right before the dot to reach one of its classes or functions inside an assignment or call (x = <module>.<member>(...)); the peak is on the module name. Weak: stdlib modules named by a plain English word (queue, math, socket, random), third-party packages, attributes of ordinary variables (self.client.get), module names inside import lines, and the same names in prose.",
+   "short": "coined stdlib module name before a dot (pathlib., tempfile.)",
+   "unit_kind": "code",
+   "confidence": "medium",
+   "notes": "Feeder found by resident attribution (top MLP feeder of L19/N5446+); play step ablation hit CUDA OOM, so no ablation drop and no feeds edge. Test sentences written blind by a second author from the label only.",
+   "fire": [
+    "result = subprocess.run([\"ls\", \"-l\"], capture_output=True)",
+    "pairs = itertools.combinations(items, 2)",
+    "parser = argparse.ArgumentParser(description=\"Process some files.\")",
+    "digest = hashlib.sha256(data).hexdigest()",
+    "base = pathlib.Path(__file__).parent",
+    "shutil.copyfile(src, dst)",
+    "tmp = tempfile.NamedTemporaryFile(delete=False)",
+    "query = urllib.parse.urlencode({\"q\": term, \"page\": 2})"
+   ],
+   "quiet": [
+    "result = random.choice([\"ls\", \"-l\"])",
+    "root = math.sqrt(items)",
+    "jobs = queue.Queue(maxsize=10)",
+    "sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)",
+    "arr = numpy.zeros((3, 3))",
+    "resp = requests.get(url, timeout=5)",
+    "data = self.client.get(\"/api/items\")",
+    "import subprocess, itertools, argparse"
+   ]
+  }
+ ],
+ "predictions": "most stdlib compound names fire; shutil may be weak; requests is the riskiest near miss",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "blind-room",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
