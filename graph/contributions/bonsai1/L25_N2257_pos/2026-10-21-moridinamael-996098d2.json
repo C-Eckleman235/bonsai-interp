@@ -1,0 +1,155 @@
+{
+ "id": "2026-10-21-moridinamael-996098d2",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N2257+",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T11:38:28+00:00",
+ "recipe": {
+  "toolchain_commit": "824271a",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N2257_pos/2026-10-21-moridinamael-996098d2.tests.json"
+ },
+ "label": "Code or prose that first names a group of several items and then sets up singling out ONE of them by position or rank (first, last, eldest, lowest, [0], [-1], pop): it lights up on the word just before the pick, so a setup that reaches that slot fires even if no pick follows; mentioning a group and using it whole (counting, sorting, printing all of it) stays quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N2257_pos/2026-10-21-moridinamael-996098d2.tests.json",
+   "prereg_commit": "824271a",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.045,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.171,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.083,
+     "peak": "(names"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.173,
+     "peak": " last"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.021,
+     "peak": " lowest"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.246,
+     "peak": " ="
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.23,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.38,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.002,
+     "peak": " should"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.177,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.083,
+     "peak": "(names"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.15,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.027,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.104,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.055,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.2,
+     "peak": "print"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.664,
+    "median_fire": 0.172,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "824271a",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-out feeder of bonsai1/L27/N9067-. play step hit CUDA OOM (resident stream model shares the GPU), so the feeder was chosen as the top MLP cell from the resident attribution tool (chat feeders); no ablation drop measured, so no feeds edge is recorded. Logit effect promotes ' last', ' first', ' oldest', ' youngest', ' smallest'."
+}
