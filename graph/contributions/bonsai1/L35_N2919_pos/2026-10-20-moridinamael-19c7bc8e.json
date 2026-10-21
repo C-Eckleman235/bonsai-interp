@@ -1,0 +1,157 @@
+{
+ "id": "2026-10-20-moridinamael-19c7bc8e",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N2919+",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T03:10:56+00:00",
+ "recipe": {
+  "toolchain_commit": "965b26e",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N2919_pos/2026-10-20-moridinamael-19c7bc8e.tests.json"
+ },
+ "label": "Next-word prediction of an uncommon verb starting with 'd', above all 'dined': fires on the word just before the slot when the context makes such a verb likely (people about to dine out or sit down to an evening or formal meal; also someone about to have dabbled in a hobby or dangled something). It sits on the slot, not on the d-verb itself, and stays low where the likely next verb is an everyday one or does not start with d (ate quickly, fed a baby, ducked, dozed).",
+ "edges": [
+  {"from": "bonsai1/L33/N8382+", "to": "bonsai1/L35/N2919+", "kind": "feeds", "weight": 0.04, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ],
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N2919_pos/2026-10-20-moridinamael-19c7bc8e.tests.json",
+   "prereg_commit": "965b26e",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 6,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.276,
+     "peak": " couple"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.585,
+     "peak": " guests"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.804,
+     "peak": " d"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.163,
+     "peak": " d"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.375,
+     "peak": " finally"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.512,
+     "peak": " d"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.566,
+     "peak": " d"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.489,
+     "peak": " briefly"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.074,
+     "peak": " quickly"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.989,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.071,
+     "peak": " she"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.585,
+     "peak": " guests"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.088,
+     "peak": " at"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.019,
+     "peak": "We"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.017,
+     "peak": " toward"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.024,
+     "peak": " by"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.773,
+    "median_fire": 0.5,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-gmoo",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "965b26e",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "selection": "step-in from bonsai1/L33/N8382+"
+}

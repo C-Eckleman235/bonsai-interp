@@ -1,0 +1,70 @@
+{
+ "contribution": "2026-10-20-moridinamael-19c7bc8e",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N2919+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T03:10:03+00:00",
+ "selection": "step-in from bonsai1/L33/N8382+",
+ "neighbours": [
+  {
+   "unit": "L35/N2919",
+   "pole": "+",
+   "label": "Next-word prediction of an uncommon verb starting with 'd', above all 'dined': fires on the word just before the slot when the context makes such a verb likely (people about to dine out or sit down to an evening or formal meal; also someone about to have dabbled in a hobby or dangled something). It sits on the slot, not on the d-verb itself, and stays low where the likely next verb is an everyday one or does not start with d (ate quickly, fed a baby, ducked, dozed).",
+   "short": "slot before an expected 'dined'-type d-verb",
+   "roles": ["reads bonsai1/L33/N8382+"],
+   "fire": [
+    "On the evening of their anniversary, the couple dined by candlelight at a quiet restaurant overlooking the harbor.",
+    "After the opera, the ambassador and his guests dined in the grand hall of the embassy.",
+    "We dressed in our finest clothes and dined at the captain's table on the last night of the cruise.",
+    "The king and queen dined with the visiting delegation beneath crystal chandeliers.",
+    "Having booked a table weeks in advance, they finally dined at the famous chef's restaurant downtown.",
+    "Every Saturday night, my grandparents dined out at the same little Italian place on Main Street.",
+    "Before the gala began, the board members dined together in a private room upstairs.",
+    "In his twenties he briefly dabbled in watercolor painting before turning to sculpture."
+   ],
+   "quiet": [
+    "Every morning before work I quickly swallow a bowl of cereal.",
+    "A bishop’s church is called a cathedral because the Bishop teaches sitting in a large throne-like, called a cathedra in Latin.",
+    "Running late for the bus, she gulped down a granola bar on the sidewalk.",
+    "After the opera, the ambassador and his guests walked back to the embassy in the rain.",
+    "The nurse fed the baby a warm bottle of milk at three in the morning.",
+    "We grabbed a slice of pizza from the corner shop on our way to the game.",
+    "When the ball flew toward him, the boy ducked behind the fence.",
+    "Tired after lunch, grandpa dozed in his armchair by the window."
+   ],
+   "notes": "Blind test: sentences written by a second author who saw only the label (blind:claude-opus-5-5, label-only); the two quiet items 'Every morning...' and 'A bishop's church...' are the globalMOO solver's leak text, placed by that author. Cold arm of the deep-cell experiment: labelled from own tops and probes only. Step-in drop from the feeder is tiny (0.04)."
+  }
+ ],
+ "predictions": "Fire items should mostly reach 0.3+; the cathedra leak near miss is expected to fire high, and 'ambassador and his guests walked' may leak on the shared prefix, so a fail on the near-miss rule is likely.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "step-down",
+   "inverse-gmoo",
+   "bank-solo"
+  ],
+  "_screens_vocabulary": [
+   "atlas",
+   "bands",
+   "bank-solo",
+   "blind-room",
+   "card",
+   "disproof",
+   "held-out",
+   "induce",
+   "inverse-de",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round",
+   "step-down",
+   "step-out",
+   "which"
+  ]
+ }
+}
