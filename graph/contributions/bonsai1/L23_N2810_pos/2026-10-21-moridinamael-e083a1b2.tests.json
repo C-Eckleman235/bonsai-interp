@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-21-moridinamael-e083a1b2",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N2810+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T21:02:01+00:00",
+ "neighbours": [
+  {
+   "unit": "L23/N2810",
+   "pole": "+",
+   "label": "In code (Python, JavaScript and similar), the point inside a list literal where its next item is about to start: the line break and indent right after a '[' that opens a multi-line list, or the closing '},' / '),' / '],' of one bracketed item (a dict, object, tuple or inner list) when another item follows inside a list. Inline lists of plain strings or numbers are weak, and C-style '{' arrays weaker; dicts and objects on their own, function-call arguments, append/push calls, '[' used for indexing or type hints, and lists in prose stay quiet.",
+   "short": "next item about to start inside a code list",
+   "roles": ["feeds bonsai1/L24/N7206+"],
+   "fire": [
+    "users = [\n    {\"name\": \"Ana\", \"age\": 31},\n    {\"name\": \"Ben\", \"age\": 27},\n]",
+    "const routes = [\n  { path: '/', component: Home },\n  { path: '/about', component: About },\n];",
+    "points = [\n    (0, 0),\n    (3, 4),\n    (6, 8),\n]",
+    "matrix = [\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9],\n]",
+    "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('blog/', include('blog.urls')),\n]",
+    "const columns = [\n  { key: 'id', label: 'ID' },\n  { key: 'email', label: 'Email' },\n];",
+    "EDGES = [\n    ('a', 'b', 3),\n    ('b', 'c', 1),\n    ('a', 'c', 5),\n]",
+    "let todos = [\n  { id: 1, text: 'Buy milk', done: false },\n  { id: 2, text: 'Walk dog', done: true },\n];"
+   ],
+   "quiet": [
+    "user = {\n    \"name\": \"Ana\",\n    \"age\": 31,\n}",
+    "const route = {\n  path: '/',\n  component: Home,\n};",
+    "point = make_point(\n    x=3,\n    y=4,\n)",
+    "value = matrix[1][2] + matrix[0][0]",
+    "def load(paths: list[str]) -> dict[str, int]:\n    return {p: len(p) for p in paths}",
+    "columns.push({ key: 'id', label: 'ID' });\ncolumns.push({ key: 'email', label: 'Email' });",
+    "edges.append(('a', 'b', 3))\nedges.append(('b', 'c', 1))",
+    "For the trip we need a list: tents, stoves, maps and plenty of water."
+   ],
+   "confidence": "medium",
+   "notes": "Test written blind by a second author from the label only. play step OOMed (resident model shares the GPU); target picked as top MLP feeder by resident attribution, so no feeds edge with a measured drop. Probes all had a line of code before the list; these fire items open the list on line 1."
+  }
+ ],
+ "predictions": "8/8 fire above near misses; near misses under 0.20 except possibly the push/append pair",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "bank-solo",
+   "inverse-de",
+   "step-out",
+   "blind-room"
+  ]
+ }
+}
