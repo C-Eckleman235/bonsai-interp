@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-21-moridinamael-9539d4c2",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N469+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T17:54:49+00:00",
+ "roles": ["feeds bonsai1/L17/N6421+"],
+ "neighbours": [
+  {
+   "unit": "L13/N469",
+   "pole": "+",
+   "label": "In Python code, the token right before a call's separate bundle of values is passed: the comma after the SQL in cursor.execute(sql, ...), the % after a format string with several placeholders, or args= in a Thread/Process call (not modulo %, .format() or f-strings)",
+   "short": "Python: about to pass a bundle of values (SQL params, % format args, args=)",
+   "fire": [
+    "cursor.execute(\"SELECT * FROM users WHERE id = %s\", (user_id,))",
+    "cur.execute(\"INSERT INTO orders (item, qty) VALUES (?, ?)\", (item, qty))",
+    "msg = \"%s has %d new messages\" % (name, count)",
+    "print(\"Point: (%d, %d)\" % (x, y))",
+    "t = threading.Thread(target=worker, args=(queue, 5))",
+    "p = multiprocessing.Process(target=download, args=(url, path))",
+    "db.execute(\"UPDATE accounts SET balance = ? WHERE id = ?\", [new_balance, acct_id])",
+    "log_line = \"[%s] %s: %s\" % (timestamp, level, text)"
+   ],
+   "quiet": [
+    "cursor.execute(\"SELECT * FROM users WHERE active = 1\")",
+    "cur.execute(\"DELETE FROM temp_orders\")",
+    "msg = f\"{name} has {count} new messages\"",
+    "print(\"Point: ({}, {})\".format(x, y))",
+    "t = threading.Thread(target=worker)",
+    "p = multiprocessing.Process(target=download, daemon=True)",
+    "db.commit()",
+    "is_even = index % 2 == 0"
+   ],
+   "confidence": "medium",
+   "notes": "Test sentences written blind by a second author from the label only. Probing: fires predictively (cur.execute(query, params) 0.87 with no tuple following); modulo %, .format, f-strings, PHP/Java/C equivalents and prose quiet; single-placeholder % format weaker (~0.27). Inverse solver (DE) found no leak; near-miss ceiling 0.25."
+  }
+ ],
+ "predictions": "7/8 fire, 0 near misses above 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "blind-room",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
