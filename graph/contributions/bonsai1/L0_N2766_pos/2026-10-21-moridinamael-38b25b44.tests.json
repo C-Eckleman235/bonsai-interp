@@ -1,0 +1,56 @@
+{
+ "contribution": "2026-10-21-moridinamael-38b25b44",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N2766+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T15:52:13+00:00",
+ "neighbours": [
+  {
+   "unit": "L0/N2766",
+   "pole": "+",
+   "label": "In code, an opening parenthesis glued directly to an opening quote mark (a string literal starting right after '(' as in a function call), strongest when the string begins with a symbol such as '%', '<', '-', '#' or '/'; a quote after '[' or '{', a space between '(' and the quote, a '(' with no quote, and parentheses in prose stay quiet.",
+   "fire": [
+    "conn.set_listener(\"testlistener\", testlistener)",
+    "printf(\"%d items loaded\\n\", count);",
+    "html.append(\"<div class='row'>\")",
+    "parser.add_argument(\"--verbose\", action=\"store_true\")",
+    "lines = text.split(\"#\")",
+    "app.route(\"/api/users\")",
+    "log.info('%s connected', user)",
+    "if line.startswith(\"-\"): continue"
+   ],
+   "quiet": [
+    "Type a dash (-) between the words.",
+    "printf( \"%d items loaded\\n\", count);",
+    "html = [\"<div class='row'>\"]",
+    "parser.add_argument(verbose_flag, action=store_true)",
+    "lines = text.split( \"#\" )",
+    "routes = {\"/api/users\": handler}",
+    "log.info(fmt, user)",
+    "Skip any line that starts with a dash (the minus sign)."
+   ]
+  }
+ ],
+ "predictions": "expect >=6/8 fire (symbol-first strings strongest, the letter-first listener line weaker), 0-1 near misses",
+ "short": "( glued to an opening quote, esp. a symbol-first string",
+ "unit_kind": "token/lexical",
+ "confidence": 0.6,
+ "roles": [
+  "feeds bonsai1/L3/N6415+"
+ ],
+ "notes": "Step-out from bonsai1/L3/N6415+. play step hit CUDA OOM (resident stream model holds the GPU), so TARGET is the top feeder by resident attribution (feeders tool), not by ablation drop; no feeds edge recorded. Peaks on fused tokens like (' + symbol; letter-first strings fire about half as strongly. Test sentences written blind by a second author from the label only.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
