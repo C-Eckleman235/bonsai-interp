@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-21-moridinamael-6f990e21",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N10850+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T08:40:05+00:00",
+ "roles": ["reads bonsai1/L34/N8579-"],
+ "neighbours": [
+  {
+   "unit": "L35/N10850",
+   "pole": "+",
+   "label": "In English, the last word of a sentence's subject when that subject sets up a reveal (an abstract head noun like problem, goal, truth or worry, or a 'what I wanted / all I knew' clause), at the point just before 'is/was' introduces the answer. The same nouns used as objects stay near zero, and ordinary subjects that perform an action (a person or thing doing something) fire only weakly (weaker).",
+   "short": "end of a set-up subject before 'is/was' + the answer",
+   "fire": [
+    "The problem is that nobody remembered to lock the back door.",
+    "Our main goal was to finish the bridge before the rains came.",
+    "The truth is, I never liked that song in the first place.",
+    "My biggest worry was that the train would leave without us.",
+    "What I wanted was a quiet weekend with no phone calls.",
+    "All I knew was that the lights had gone out across the whole street.",
+    "The real question is whether the budget can cover a second trial.",
+    "The good news is that the patient is breathing on her own again."
+   ],
+   "quiet": [
+    "Nobody remembered to lock the back door, so we had a problem.",
+    "We set a clear goal before the rains came and finished the bridge.",
+    "She finally told him the truth about the song after dinner.",
+    "He shared his biggest worry with us while we waited for the train.",
+    "I wanted a quiet weekend with no phone calls.",
+    "I knew the lights had gone out across the whole street.",
+    "The committee asked a real question about the budget for a second trial.",
+    "The nurse brought good news to the family this morning."
+   ]
+  }
+ ],
+ "predictions": "Most fire sentences above 0.3; the action-subject near misses (committee, nurse) may reach about 0.2. Fire sentences that open with the trigger are a risk.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
