@@ -1,0 +1,167 @@
+{
+ "id": "2026-10-21-moridinamael-daa99f3d",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N3732-",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T08:28:04+00:00",
+ "recipe": {
+  "toolchain_commit": "010810d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N3732_neg/2026-10-21-moridinamael-daa99f3d.tests.json"
+ },
+ "label": "Fires on the word just BEFORE the noun 'can' (a tin or metal container, including the idiom about kicking one down the road), when the context makes 'can' the obvious next word; it fires on that slot whatever word actually follows. The 'can' token itself, the modal verb 'can', and slots expecting other containers (jar, jug, bottle) stay low; other can- words (canal, Spanish cancha) are weaker triggers.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N3732_neg/2026-10-21-moridinamael-daa99f3d.tests.json",
+   "prereg_commit": "010810d",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 3,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.383,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.258,
+     "peak": " soda"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.095,
+     "peak": " trash"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.363,
+     "peak": " watering"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.037,
+     "peak": "I"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.347,
+     "peak": " garbage"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.143,
+     "peak": " cold"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.015,
+     "peak": " from"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.427,
+     "peak": " و"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.048,
+     "peak": " manager"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.016,
+     "peak": " keeps"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.26,
+     "peak": " soda"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.096,
+     "peak": " trash"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.122,
+     "peak": "ma"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.037,
+     "peak": "I"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.005,
+     "peak": " rac"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.633,
+    "median_fire": 0.201,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "010810d",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L34/N8579-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L34/N8579-",
+   "to": "bonsai1/L35/N3732-",
+   "kind": "feeds",
+   "weight": 0.5,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
