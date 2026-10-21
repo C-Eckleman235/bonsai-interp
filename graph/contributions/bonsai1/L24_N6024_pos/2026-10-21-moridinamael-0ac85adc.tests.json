@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-21-moridinamael-0ac85adc",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N6024+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T12:00:23+00:00",
+ "roles": ["feeds bonsai1/L25/N2257+"],
+ "neighbours": [
+  {
+   "unit": "L24/N6024",
+   "pole": "+",
+   "label": "In code, a plural variable name for a list or collection when it is read mid-line (on the right of =, inside a call, or after 'in'), whether one item is picked from it or the whole list is used; the singular form of the same name, and plural words in plain prose, stay quiet",
+   "short": "plural collection name read in code",
+   "unit_kind": "code / context",
+   "confidence": "medium",
+   "notes": "Test sentences written blind by a second author who saw only the label (stream blind_test). Feeder found by resident attribution (top MLP feeder of bonsai1/L25/N2257+); play step ran out of GPU memory (batch job sharing the GPU), so no ablation drop or feeds edge is recorded. Probing: singular twins ~0, prose plurals ~0.04, a pick-one setup boosts but whole-list uses also fire ~0.4; line-initial plurals and a Go range loop were weak.",
+   "fire": [
+    "for item in items:\n    print(item)",
+    "print(len(names))",
+    "selected = random.choice(colors)",
+    "for row in rows: process(row)",
+    "result = sorted(scores, reverse=True)",
+    "if token in tokens: count += 1",
+    "last_file = files[-1]",
+    "emails = [u.email for u in customers]"
+   ],
+   "quiet": [
+    "first = user.id",
+    "item = get_next()\nprint(item)",
+    "total = sum_price(price)",
+    "print(len(name))",
+    "selected = random.choice(color.options)",
+    "row = fetch(); process(row)",
+    "result = sorted(score, reverse=True)",
+    "if token == target: count += 1"
+   ]
+  }
+ ],
+ "predictions": "most fire items 0.2-0.5; near misses under 0.1",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "quick-test"
+  ]
+ }
+}
