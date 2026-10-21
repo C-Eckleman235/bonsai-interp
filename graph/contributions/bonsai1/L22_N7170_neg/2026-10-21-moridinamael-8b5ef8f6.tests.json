@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-21-moridinamael-8b5ef8f6",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L22/N7170-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T17:17:28+00:00",
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "In code (Python, JavaScript, Java, C++ and similar), a list or array being started, typed or grown: strongest for an empty list literal or empty list constructor that is about to be filled, a List/ArrayList/vector type or type hint, or adding one item to the end of it (append, push); a list literal that already holds items fires more weakly, and so does technical prose saying something returns a list or array. Dicts, sets, tuples, plain numbers and 'list' in everyday prose stay quiet; a variable only named with 'list' can fire weakly."
+ },
+ "neighbours": [
+  {
+   "unit": "L22/N7170",
+   "pole": "-",
+   "label": "In code (Python, JavaScript, Java, C++ and similar), a list or array being started, typed or grown: strongest for an empty list literal or empty list constructor that is about to be filled, a List/ArrayList/vector type or type hint, or adding one item to the end of it (append, push); a list literal that already holds items fires more weakly, and so does technical prose saying something returns a list or array. Dicts, sets, tuples, plain numbers and 'list' in everyday prose stay quiet; a variable only named with 'list' can fire weakly.",
+   "fire": [
+    "results = []\nfor row in rows:\n    results.append(row.id)",
+    "const queue = [];\nqueue.push(task);",
+    "List<String> names = new ArrayList<>();\nnames.add(\"Ada\");",
+    "std::vector<int> scores;\nscores.push_back(42);",
+    "def collect(paths: list[str]) -> list[str]:\n    out = []\n    return out",
+    "let items = new Array();\nitems.push({ id: 7 });",
+    "buffer = list()\nbuffer.append(chunk)",
+    "from typing import List\n\ndef load(ids: List[int]) -> None: ..."
+   ],
+   "quiet": [
+    "The guest list for the wedding was very long.",
+    "my_list = 5\nprint(my_list)",
+    "results = {}\nfor row in rows:\n    results[row.id] = row",
+    "const total = 0;\ncount += task.size;",
+    "Map<String, Integer> ages = new HashMap<>();\nages.put(\"Ada\", 36);",
+    "int score = 0;\nscore += 42;",
+    "def collect(path: str) -> int:\n    out = 0\n    return out",
+    "let config = {};\nconfig.id = 7;"
+   ]
+  }
+ ],
+ "predictions": "Loop-back confirm after mapping neighbours (feeders are []-literal and 'list'-word cells, consistent with the label). Blind label-only test. Expect 8/8 fire; the my_list variable near miss may reach ~0.3 (solver leak), others quiet.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "neighbors",
+   "inverse-de",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
