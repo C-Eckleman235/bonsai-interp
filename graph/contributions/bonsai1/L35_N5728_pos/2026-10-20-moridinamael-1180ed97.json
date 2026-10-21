@@ -1,0 +1,168 @@
+{
+ "id": "2026-10-20-moridinamael-1180ed97",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N5728+",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T01:53:18+00:00",
+ "recipe": {
+  "toolchain_commit": "b95cfea",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N5728_pos/2026-10-20-moridinamael-1180ed97.tests.json"
+ },
+ "label": "The split-off word piece 'пр' inside the Russian adverb 'по-прежнему' (still, as before) and inside capitalised 'Распространение' (spread); firing most on 'по-прежнему' mid-sentence. Not the meaning 'as before' in other words (прежде, прежний, всё ещё), not other Рас- words (Распродажа, Распределение), not lowercase 'распространения'.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N5728_pos/2026-10-20-moridinamael-1180ed97.tests.json",
+   "prereg_commit": "b95cfea",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.385,
+     "peak": "пр"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.15,
+     "peak": "пр"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.299,
+     "peak": "пр"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.278,
+     "peak": "пр"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.212,
+     "peak": "пр"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.372,
+     "peak": "пр"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.388,
+     "peak": "пр"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.21,
+     "peak": "пр"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.064,
+     "peak": " ок"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.036,
+     "peak": " оста"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.011,
+     "peak": " ответ"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.004,
+     "peak": " преж"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.061,
+     "peak": " таблиц"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.044,
+     "peak": " с"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.037,
+     "peak": "ог"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.029,
+     "peak": " ран"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.288,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "b95cfea",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-in reader of bonsai1/L34/N2005- with a near-zero drop (0.00); the label has nothing to do with the feeder's ALL-CAPS constants. + pole is tiny (max 19.9 vs 884 on -) and 95% gate-closed echo. Feeders first: the top feeder L34/N7654- is positional; L3/N10004+ and L2/N12092+ fire on Arabic mid-word pieces. Sentences written blind by a label-only author.",
+ "roles": [
+  "reads bonsai1/L34/N2005-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L34/N2005-",
+   "to": "bonsai1/L35/N5728+",
+   "kind": "feeds",
+   "weight": 0.0,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
