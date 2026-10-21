@@ -42,6 +42,9 @@ abstraction pass. Each principle names its evidence and whether we have measured
   - an auditor that compares actual per-process GPU compute with the named holder
 - **Transfers:** design GPU sharing as one arbiter from day one, with an audit of reality rather than trust in
   callers.
+- **Audit caveat:** per-process engine counters average over about 1 s, while a screen call lasts about 0.3 s, so
+  single-sample flags can be timing artifacts. Act only on repeated flags, or log turn start and end times and
+  compare intervals.
 
 **Reset record** (nvlddmkm 153, 2026-10-19/20): 8 resets with heavy compute on either side alone, during model loads, and with the probe and the llama.cpp screen overlapping. No bugcheck and no unexpected shutdown in 14 days, including 1,593 driver events on 10-10, so recovery has been reliable on this machine. The crash risk to guard is host-commit exhaustion; resets cost a process.
 
