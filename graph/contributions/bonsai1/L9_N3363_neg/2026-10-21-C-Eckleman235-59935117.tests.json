@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-21-C-Eckleman235-59935117",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N3363-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T17:12:57+00:00",
+ "selection": "step-out from bonsai1/L12/N6534+",
+ "neighbours": [
+  {
+   "unit": "L9/N3363",
+   "pole": "-",
+   "label": "Louisiana as a place and culture: its towns and parishes, its teams and schools, and Cajun/Creole things (bayous, gumbo, the French Quarter), with or without the word 'Louisiana'; neighbouring states' places in the same frames stay low",
+   "fire": [
+    "Our flight landed in Shreveport just before the thunderstorm.",
+    "Saints fans packed the Superdome for the playoff game.",
+    "He grew up fishing for redfish near Grand Isle.",
+    "A new refinery opened outside Lake Charles last spring.",
+    "Her gumbo used andouille from a smokehouse in Breaux Bridge.",
+    "The Ragin' Cajuns of UL Lafayette beat Arkansas State on Saturday.",
+    "Creole cottages line the streets of the Marigny.",
+    "The swamp tour in the Atchafalaya Basin showed us alligators and cypress knees."
+   ],
+   "quiet": [
+    "Our flight landed in Little Rock just before the thunderstorm.",
+    "Titans fans packed Nissan Stadium for the playoff game.",
+    "He grew up fishing for redfish near Rockport.",
+    "A new refinery opened outside Tulsa last spring.",
+    "Her chili used brisket from a smokehouse in Lockhart.",
+    "The Razorbacks of Arkansas beat Mississippi State on Saturday.",
+    "Victorian cottages line the streets of the Haight.",
+    "The swamp tour in the Okefenokee showed us alligators and cypress knees."
+   ]
+  }
+ ],
+ "predictions": "7/8 fire at >= 0.2; near misses mostly under 0.15, with Rockport (Texas Gulf Coast) the likeliest to leak",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "step-out"
+  ]
+ },
+ "short": "Louisiana places and culture",
+ "unit_kind": "meaning",
+ "confidence": 0.65,
+ "notes": "Step-out from Louisiana-ness bonsai1/L12/N6534+: play step ranks L9/N3363 first (single-unit zero ablation drop 0.44), then L11/N4167 (0.24), L8/N6649 (0.16), L4/N5631 (0.16, + pole peaks on ' parish'); none has a record. The - pole is the active one (card: peak tokens ' Orleans' x9, ' Louisiana' x9, Mardi ' Gr'as, 'lsu', ' Parish'; the + pole is broad and echo-dominated). Probing (exploratory, not reused): Baton Rouge 0.45, Houma 0.34, Plaquemines 0.56, Acadiana 0.55, LSU 0.72, French Quarter 0.57, bayou country 0.63, Hurricane Katrina 0.43; the word in other senses also fires (Louisiana, Missouri 0.67; USS Louisiana 0.29); quiet on Orleans, France (0.05-0.13), a person named Katrina 0.13, Rio's carnival 0.06, Jefferson buying the territory from Napoleon without the word 0.12. Known leaks: Mardi Gras in Mobile, Alabama 0.60, Biloxi's Gulf Coast 0.34, so Gulf South carnival culture may sit inside this unit; one near miss (Rockport, Texas Gulf Coast) keeps that risk in the test. Scoring runs on a Colab T4.",
+ "roles": [
+  "feeds bonsai1/L12/N6534+"
+ ]
+}

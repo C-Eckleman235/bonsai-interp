@@ -1,0 +1,165 @@
+{
+ "id": "2026-10-21-C-Eckleman235-59935117",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N3363-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-21T17:14:24+00:00",
+ "recipe": {
+  "toolchain_commit": "543838a",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L9_N3363_neg/2026-10-21-C-Eckleman235-59935117.tests.json"
+ },
+ "label": "Louisiana as a place and culture: its towns and parishes, its teams and schools, and Cajun/Creole things (bayous, gumbo, the French Quarter), with or without the word 'Louisiana'; neighbouring states' places in the same frames stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L9_N3363_neg/2026-10-21-C-Eckleman235-59935117.tests.json",
+   "prereg_commit": "543838a",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.385,
+     "peak": "reve"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.38,
+     "peak": "ome"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.282,
+     "peak": " Isle"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.751,
+     "peak": " Charles"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.605,
+     "peak": "ux"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.506,
+     "peak": "uns"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.397,
+     "peak": "ole"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.31,
+     "peak": "aya"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.018,
+     "peak": " Little"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.01,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.13,
+     "peak": "fish"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.045,
+     "peak": " Tulsa"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.058,
+     "peak": "et"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.149,
+     "peak": " State"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.004,
+     "peak": " cott"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.286,
+     "peak": "ypress"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.391,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [],
+  "toolchain_commit": "543838a",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "short": "Louisiana places and culture",
+ "unit_kind": "meaning",
+ "confidence": 0.65,
+ "notes": "Step-out from Louisiana-ness bonsai1/L12/N6534+: play step ranks L9/N3363 first (single-unit zero ablation drop 0.44), then L11/N4167 (0.24), L8/N6649 (0.16), L4/N5631 (0.16, + pole peaks on ' parish'); none has a record. The - pole is the active one (card: peak tokens ' Orleans' x9, ' Louisiana' x9, Mardi ' Gr'as, 'lsu', ' Parish'; the + pole is broad and echo-dominated). Probing (exploratory, not reused): Baton Rouge 0.45, Houma 0.34, Plaquemines 0.56, Acadiana 0.55, LSU 0.72, French Quarter 0.57, bayou country 0.63, Hurricane Katrina 0.43; the word in other senses also fires (Louisiana, Missouri 0.67; USS Louisiana 0.29); quiet on Orleans, France (0.05-0.13), a person named Katrina 0.13, Rio's carnival 0.06, Jefferson buying the territory from Napoleon without the word 0.12. Known leaks: Mardi Gras in Mobile, Alabama 0.60, Biloxi's Gulf Coast 0.34, so Gulf South carnival culture may sit inside this unit; one near miss (Rockport, Texas Gulf Coast) keeps that risk in the test. Scoring runs on a Colab T4.",
+ "roles": [
+  "feeds bonsai1/L12/N6534+"
+ ],
+ "selection": "step-out from bonsai1/L12/N6534+",
+ "edges": [
+  {
+   "from": "bonsai1/L9/N3363-",
+   "to": "bonsai1/L12/N6534+",
+   "kind": "feeds",
+   "weight": 0.44,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
