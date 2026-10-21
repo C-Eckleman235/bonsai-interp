@@ -662,3 +662,28 @@ Not yet measured: batch size against attention backend under the cap. A 1 GiB fp
 Two scale facts for the plan:
 - Layer 4 made 10,088 auto tests (layer 20 made 1,185), about 160k snippets × 3 preambles. Scoring dominates the early layers.
 - L4 is registered (13e20da) and its tests are pinned (e1546fb). Its scoring will be rerun with its registered code, from a worktree at 6d2fb42, once the GPU is free.
+
+## 2026-10-20: What a quick-8+8@3 pass is worth, a null baseline (the Twitch stream; lets-play `scripts/null_baseline.py`, `logs/null-baseline.jsonl`)
+
+**Method**
+- Held poles were sampled across depths: 13 per arm.
+- For each, a fresh blind author that sees only a label wrote 8 + 8 sentences from (a) the pole's own label and (b) another held pole's label from the same depth band.
+- Both were scored on the target pole with the resident model, using the same evaluator as `play run`, and judged by the quick-8+8@3 rule.
+- Nothing was committed to the map. The display screen withheld 4 of 30 labels.
+
+**Result**
+- **Wrong labels passed 0 / 13** (95% CI 0–23%).
+- **True labels passed 11 / 13 on re-test** (85%, CI 58–96%).
+
+| depth band | true labels passed | wrong labels passed |
+|---|---|---|
+| shallow | 3 / 4 | 0 / 3 |
+| middle | 4 / 4 | 0 / 5 |
+| deep | 4 / 5 | 0 / 5 |
+
+- **The median-fire bar does the work.** Wrong labels had a median fire of 0.00–0.10; true labels 0.20–1.04. AUROC alone would have passed one wrong label (0.95 on L25/N6966-).
+
+**Reading**
+- A held quick test reliably means "not an unrelated label" (false-pass rate likely under about 20%).
+- It does not yet show that the label is *precise*. A random wrong label is the easy null.
+- **Next:** the harder null, distinguishing a label from a nearby, broader or narrower one, or from a sibling pole's label.

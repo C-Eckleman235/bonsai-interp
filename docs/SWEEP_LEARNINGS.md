@@ -54,6 +54,7 @@ abstraction pass. Each principle names its evidence and whether we have measured
 **Reset record** (nvlddmkm 153, 2026-10-19/20): 8 resets with heavy compute on either side alone, during model loads, and with the probe and the llama.cpp screen overlapping. No bugcheck and no unexpected shutdown in 14 days, including 1,593 driver events on 10-10, so recovery has been reliable on this machine. The crash risk to guard is host-commit exhaustion; resets cost a process.
 
 **Open experiments** (the next speed and effectiveness questions):
+- label precision: a held quick test rejects unrelated labels (0 / 13 wrong passed; FINDINGS 2026-10-20 null baseline). Does it also reject a nearby, broader or narrower label? That decides how much a held label says.
 - stage 2's cost scales with hits × occurrences (847k × ≤ 256). Would capping occurrences per frequent trigger (e.g. 128) change any bins? It changes results, so it's the user's call; measure on one layer's occ store first
 - prefix sharing and batch 32 for scoring (GPU benchmark after stage 2)
 - the scoring tokens per held pole by depth (a paper metric; L4 about 24.5k, L20 about 172k layer-tokens)
