@@ -1,0 +1,44 @@
+{
+ "contribution": "2026-10-21-moridinamael-e6b82c8e",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N1494-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T21:32:20+00:00",
+ "roles": ["reads bonsai1/L34/N8520+"],
+ "neighbours": [
+  {
+   "unit": "L35/N1494",
+   "pole": "-",
+   "label": "In property, rental or cloud-hosting text, the hyphen of a compound where '-tenant', '-tenancy' or '-tenured' fits next (co-, sub-, multi-, single-, long-): the model expecting a word starting 'ten'. Quiet for the same prefixes outside such talk or when another word is clearly expected (co-workers, long-term, a single-family home), for the number ten and for 'tennis'; weaker when 'tenant' follows a plain spaced word. Known leak: an opening quote before 'Tennis Elbow'.",
+   "fire": [
+    "The lease allows the original renter to bring in a sub-tenant for the summer months.",
+    "Our cloud platform uses a multi-tenant architecture so each customer's data stays isolated.",
+    "Both names appear on the agreement because she is a co-tenant of the flat.",
+    "The landlord prefers long-tenured residents and offers them renewal discounts.",
+    "Switching to a single-tenant deployment gave the bank its own dedicated servers.",
+    "Under the joint lease, each co-tenancy holder is liable for the full rent.",
+    "Any sub-tenancy must be approved in writing by the property manager.",
+    "Multi-tenancy in the database means one schema serves hundreds of client accounts."
+   ],
+   "quiet": [
+    "The landlord raised the rent on the downtown apartment.",
+    "二十一、增加一条，作为第三十四条：“国务院环境保护行政主管部门统一发布国家环境综合性报告和重大环境信息。",
+    "The lease allows the original renter to bring in a roommate for the summer months.",
+    "Our cloud platform uses a multi-region architecture so each customer's data stays available.",
+    "Both names appear on the agreement because she is a co-worker of the owner.",
+    "The landlord prefers long-term residents and offers them renewal discounts.",
+    "They bought a single-family home with a large garden on the edge of town.",
+    "The team scheduled the co-op meeting for ten o'clock on Monday."
+   ],
+   "short": "hyphen before an expected '-tenant/-tenancy' (model expecting 'ten')",
+   "confidence": "medium",
+   "notes": "Step-in reader of bonsai1/L34/N8520+ (drop 0.11), labelled COLD from its own tops and probes. Logit effect of the - pole promotes ' ten', ' six', ' twelve' etc.; tops include Chinese text before numerals (二〇〇|九, 启示|录十章). Strongest probes: hyphens in co-/single-/sub-tenant (0.56-0.65), joint| tenancy 0.46, opening quote before Tennis Elbow 0.99. Solver leak: Chinese law-text '：“' at 0.38 in a mix. Test sentences written blind from the label only."
+  }
+ ],
+ "predictions": "7/8 fire; the two solver-leak near misses are the risk",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["card", "look", "probe", "step-down", "inverse-de", "bank-solo", "blind-room"]
+ }
+}
