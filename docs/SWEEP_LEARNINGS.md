@@ -42,6 +42,9 @@ abstraction pass. Each principle names its evidence and whether we have measured
   - an auditor that compares actual per-process GPU compute with the named holder
 - **Transfers:** design GPU sharing as one arbiter from day one, with an audit of reality rather than trust in
   callers.
+- **Make the queue the only way in:** two side tools built their own screen client without a ticket. The fix: one
+  factory function that always attaches the turn, plus a test that fails if anything constructs a client directly
+  (lets-play bdbd9a8).
 - **Audit caveat:** per-process engine counters average over about 1 s, while a screen call lasts about 0.3 s, so
   single-sample flags can be timing artifacts. Act only on repeated flags, or log turn start and end times and
   compare intervals.
