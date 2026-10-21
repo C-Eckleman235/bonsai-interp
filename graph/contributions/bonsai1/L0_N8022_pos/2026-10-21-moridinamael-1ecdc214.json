@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-21-moridinamael-1ecdc214",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N8022+",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T09:29:37+00:00",
+ "recipe": {
+  "toolchain_commit": "8df5ed9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N8022_pos/2026-10-21-moridinamael-1ecdc214.tests.json"
+ },
+ "label": "The word piece right after a lone F/f that the tokenizer splits off as its own token, in Latin, Cyrillic (Ф) or Arabic (ف) script, including invented names and code identifiers; silent when another letter stands in F's place, or when F is merged with the following letters (e.g. 'Fl', 'fj').",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N8022_pos/2026-10-21-moridinamael-1ecdc214.tests.json",
+   "prereg_commit": "8df5ed9",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 3,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.574,
+     "peak": "z"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.123,
+     "peak": " f"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.176,
+     "peak": " f"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.506,
+     "peak": "q"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.101,
+     "peak": " f"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.155,
+     "peak": "ро"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.328,
+     "peak": "ё"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.051,
+     "peak": " فقط"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.059,
+     "peak": " for"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.536,
+     "peak": "unn"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.069,
+     "peak": " wizard"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.031,
+     "peak": " direction"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.07,
+     "peak": "Factor"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.121,
+     "peak": " refused"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.026,
+     "peak": " passed"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.032,
+     "peak": "вали"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.812,
+    "median_fire": 0.165,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "8df5ed9",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-out from bonsai1/L3/N3109-. play step OOMed (resident stream model on the GPU), so TARGET is the top resident attribution feeder; no ablation drop, no feeds edge. Test written blind by a second author from the label only.",
+ "roles": [
+  "feeds bonsai1/L3/N3109-"
+ ]
+}
