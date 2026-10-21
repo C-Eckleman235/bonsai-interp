@@ -97,6 +97,7 @@ abstraction pass. Each principle names its evidence and whether we have measured
 | all-layer stage 2, attempt 5 finished | L13–L35 (22 layers) in 186 min (06:47–09:53) with no stop | – | about 8.5 min per layer: L13–L19 2–4 min, L21–L28 10–15 min, L29–L35 about 8–14 min; 52 min yielded to the stream across the run | stage 2 is done for every layer. From the takeover relaunch (about 23:40 on 10-20) it took about 10 h of wall time, including the 70-min pass redo, a guard stop and a low-RAM stop; before that, attempt 1 (15:39) and an 8-h frozen session |
 | prereg-all (33 layers) | 98 min on one CPU core (09:57–11:35), committed alone as 078ce12 | 0 | 1–3 min per layer, scaling with tests | 148,256 tests: L0 20,381, falling to about 500 at L15–L18, rising again to 4,000–4,600 at L24–L29 and 6,234 at L35 |
 | all-layer scoring, first minutes (L8) | – | – | about 91 snippets/s beside the stream at batch 16 (L4: 207 at depth 4); 42 snippets per test | the scorer stops the forward at the scored layer, so cost grows with depth: an estimated 30 h for all 33 layers beside the stream (first chunk L8/16/24/28/32 about 5 h; L35 alone about 3 h). Deep layers with many tests dominate |
+| scoring L8, L16 | L8 57.2 min (25 yielded), L16 7.3 min (2 yielded) | L8 about 32 | L8: 96,539 snippets × 3 preambles, about 150 snippets/s unyielded; L24 starts at 19.6/s with half its time yielded | held: L8 3,700 / 6,141 (60%, 2,997 poles), L16 237 / 468 (51%, 215 poles). The estimate held for L8; the stream's duty cycle (25–50%) is the biggest swing factor |
 
 Entry format:
 
