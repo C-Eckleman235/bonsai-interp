@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-21-moridinamael-c15d5caa",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N9447+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T21:16:53+00:00",
+ "roles": ["reads bonsai1/L34/N8520+"],
+ "neighbours": [
+  {
+   "unit": "L35/N9447",
+   "pole": "+",
+   "label": "The German word 'inzwischen' (meanwhile / by now), firing on its 'zw' piece anywhere in German prose; quiet for its synonyms (mittlerweile, unterdessen, seitdem), for other German words with 'zw' (zwischen, dazwischen, zwischendurch, zwar, zwei) and for 'meanwhile' in English or Spanish. Known leak: inside some real surnames that the tokenizer splits into short fragments.",
+   "short": "German 'inzwischen' (its 'zw' piece)",
+   "fire": [
+    "Die Bäckerei an der Ecke hat inzwischen geschlossen.",
+    "Inzwischen weiß jeder im Dorf, dass der Bürgermeister zurücktreten will.",
+    "Wir haben inzwischen drei Katzen und einen Hund.",
+    "Das Wasser kochte, und inzwischen schnitt sie das Gemüse klein.",
+    "Der Zug hat inzwischen über eine Stunde Verspätung.",
+    "Meine Schwester wohnt inzwischen in Hamburg und arbeitet dort als Ärztin.",
+    "Ich habe mich inzwischen an das kalte Wetter gewöhnt.",
+    "Die Firma beschäftigt inzwischen mehr als tausend Mitarbeiter weltweit."
+   ],
+   "quiet": [
+    "Shi'ite radical Moqtada al-Sadr's Mahdi Army is cranking up the heat on the government of Prime Minister Nouri al-Maliki with a new program.",
+    "The Needles battery was used as the site for testing and development of the Black Arrow and Black Knight space rockets, subsequently launched from Woomera in Australia.",
+    "Die Bäckerei an der Ecke hat mittlerweile geschlossen.",
+    "Mittlerweile weiß jeder im Dorf, dass der Bürgermeister zurücktreten will.",
+    "Wir haben zwei Katzen und einen Hund.",
+    "Das Wasser kochte, und unterdessen schnitt sie das Gemüse klein.",
+    "Der Zug steht zwischen Köln und Bonn auf freier Strecke.",
+    "Meine Schwester wohnt seitdem in Hamburg und arbeitet dort als Ärztin."
+   ],
+   "notes": "Step-in reader of bonsai1/L34/N8520+ (drop 0.13); the label has little to do with the feeder's French/Spanish amount-phrase slot. Feeders first: L22/N5723+ (rare-surname onsets like ' Za') and L31/N4955+ (promotes 'between'/'zwischen') match the two families. Test written blind from the label (blind:claude-opus-5-5, label-only); the solver's surname leak was placed as a near miss by the blind author."
+  }
+ ],
+ "predictions": "8/8 fire around 0.4-0.5; the al-Maliki near miss likely reaches 0.30 (the one allowed), the rest quiet",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "neighbors",
+   "bank-solo",
+   "inverse-de",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
