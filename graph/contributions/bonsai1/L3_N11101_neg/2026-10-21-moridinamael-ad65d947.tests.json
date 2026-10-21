@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-21-moridinamael-ad65d947",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N11101-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T07:33:39+00:00",
+ "roles": ["feeds bonsai1/L6/N10846+"],
+ "neighbours": [
+  {
+   "unit": "L3/N11101",
+   "pole": "-",
+   "label": "The opening 'ur' of rare, foreign or coined words that the tokenizer splits into pieces: German Ur- words (Urteil, Urheberrecht, Ursprung), names such as Urdu, Urquhart, Urhobo and the city of Ur, and the Python module urllib. Common English ur- words that are single tokens (urban, urge, urgent, URL) and look-alikes (your, pure, Uber) stay quiet.",
+   "fire": [
+    "The ursine creature lumbered through the snow.",
+    "Der Ursprung des Flusses liegt in den Alpen.",
+    "Das Gericht verkündete gestern das Urteil im langen Prozess.",
+    "Das Urheberrecht schützt Werke bis siebzig Jahre nach dem Tod des Autors.",
+    "Niemand kennt den genauen Ursprung dieser alten Legende.",
+    "She grew up speaking Urdu at home and English at school.",
+    "The ruins of Urquhart Castle overlook the dark waters of Loch Ness.",
+    "Many Urhobo families live in the Delta region of Nigeria."
+   ],
+   "quiet": [
+    "The court announced its decision yesterday in the long trial.",
+    "Copyright protects works until seventy years after the author's death.",
+    "Urban planners redesigned the downtown area last spring.",
+    "She felt a strong urge to call her sister.",
+    "The ruins of the old castle overlook the dark waters of the lake.",
+    "This is an urgent message for your manager.",
+    "Please paste the URL into your browser's address bar.",
+    "Your package will arrive by Friday afternoon."
+   ],
+   "short": "word-start 'ur' piece of rare/foreign words",
+   "unit_kind": "spelling piece",
+   "notes": "Test sentences written blind by a second author who saw only the label. Feeder found by attribution (mcp feeders) because play step ran out of GPU memory; no ablation drop measured."
+  }
+ ],
+ "predictions": "Most German Ur- and name sentences fire; ursine may be weaker; near misses quiet.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "inverse-gmoo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
