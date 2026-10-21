@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-21-moridinamael-88f24228",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N12-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T15:13:35+00:00",
+ "roles": ["feeds bonsai1/L5/N1705+"],
+ "neighbours": [
+  {
+   "unit": "L4/N12",
+   "pole": "-",
+   "label": "The token where an opening parenthesis runs straight into an opening square bracket or curly brace ('([' or '({'), when that parenthesis is NOT a function call's argument list; strongest inside regular-expression patterns, weaker but present in plain prose, math and string literals. Function calls taking a list or dict (sum([...]), f({...})), regex groups without a bracket like (\\w+), and a bracket or parenthesis on its own stay quiet.",
+   "short": "'([' / '({' as a grouping paren (not a call), strongest in regex",
+   "unit_kind": "token / syntax",
+   "fire": [
+    "The pattern r\"([A-Z]+)-\\d+\" matches ticket IDs like ABC-123.",
+    "Use the regex /([0-9a-f]{2})+/ to capture each hex byte.",
+    "pattern = re.compile(r'([^\\s]+)@example\\.com')",
+    "In JavaScript, const re = /({\\w+})/g; finds placeholder tokens.",
+    "The grep expression '([[:alpha:]]+)' extracts every word from the log.",
+    "The interval is written as ([0, 1]) in some older textbooks.",
+    "Let S be the set ({1, 2, 3}) under addition modulo four.",
+    "She scribbled a note in the margin ([see appendix]) and moved on."
+   ],
+   "quiet": [
+    "The pattern r\"(\\w+)-\\d+\" matches ticket IDs like ABC-123.",
+    "Use the regex /[0-9a-f]{2}/ to capture each hex byte.",
+    "total = sum([price for price in prices])",
+    "In JavaScript, render({ title: 'Home' }); draws the page.",
+    "The grep expression '(\\w+)' extracts every word from the log.",
+    "The interval is written as [0, 1] in most modern textbooks.",
+    "Let S be the set {1, 2, 3} under addition modulo four.",
+    "She scribbled a note in the margin (see appendix) and moved on."
+   ]
+  }
+ ],
+ "predictions": "Blind test (label-only author). Expect most fire items >= 0.2 with the regex ones highest; the prose/math ([ and ({ items may sit near 0.2-0.4.",
+ "notes": "Step-out feeder of bonsai1/L5/N1705+ chosen by the resident attribution feeders tool (top MLP feeder); play step OOM'd on the stream GPU, so no ablation drop and no feeds edge is recorded.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "step-out"
+  ]
+ }
+}
