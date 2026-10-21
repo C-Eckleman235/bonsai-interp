@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-21-moridinamael-01f2b566",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N3269+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T18:04:46+00:00",
+ "roles": ["reads bonsai1/L29/N1766+"],
+ "neighbours": [
+  {
+   "unit": "L32/N3269",
+   "pole": "+",
+   "label": "In English prose, the noun 'focus' or 'priority' (singular or plural) as the subject of a clause, peaking on that noun just before its verb (a stated focus or priority, e.g. \"the focus of X will be ...\"); quiet when 'focus' is an object or a verb, for the camera/lens sense, and for other abstract subject nouns in the same slot (goal, size, color, cost, problem).",
+   "fire": [
+    "The focus of this year's conference will be renewable energy storage.",
+    "Our main priority is getting every patient seen within an hour.",
+    "For the new mayor, the top priorities are housing and public transit.",
+    "The focus of the second chapter shifts to the author's childhood in Ohio.",
+    "Safety remains the company's first priority, the spokesperson said.",
+    "During the next quarter, the team's focus will be on reducing customer churn.",
+    "Her priorities have changed since the baby was born.",
+    "The primary focus of the study was how sleep affects memory in teenagers."
+   ],
+   "quiet": [
+    "Fernández, además, dijo que lleva adelante “una propuesta amplia que pretende incluir a cada sector de la sociedad, porque no hay proyecto posible si algún sector queda afuera, por eso ‘San Martín de",
+    "No hacen política, tan sólo aparentan hacerla mediante la exaltación",
+    "The goal of this year's conference will be to promote renewable energy storage.",
+    "We need to focus on getting every patient seen within an hour.",
+    "For the new mayor, the biggest problems are housing and public transit.",
+    "The second chapter shifts its focus to the author's childhood in Ohio.",
+    "The photographer adjusted the focus until the bird's feathers looked sharp.",
+    "During the next quarter, the team will concentrate on reducing customer churn."
+   ]
+  }
+ ],
+ "predictions": "Most English fire items above 0.20; the Spanish solver leak (a subject noun before its verb in Spanish) will likely exceed 0.30, so the test may fail on near misses.",
+ "notes": "Step-in reader of bonsai1/L29/N1766+ (drop 0.28). Feeders-first arm of the deep-cell experiment: top feeders L24/N12023+ (promotes must/need, suppresses can/may) and L24/N3965+ (suppresses modals) are unlabelled; the pole itself suppresses can/could/may. In Spanish, subject nouns and relative 'que' before a verb fire broadly; English is narrower. Test sentences written blind by a label-only author.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "neighbors",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
