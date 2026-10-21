@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-21-moridinamael-59ac0dd2",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N2543+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T12:09:13+00:00",
+ "roles": ["reads bonsai1/L28/N10850-"],
+ "neighbours": [
+  {
+   "unit": "L31/N2543",
+   "pole": "+",
+   "label": "Arabic words that begin with the glued-on prefix ب ('with/by'): the pole lights on the prefix or the word piece right after it, while the same Arabic words without the prefix stay dark",
+   "short": "Arabic 'with/by' prefix ب",
+   "confidence": "low",
+   "notes": "Weak, broad pole (max 11.8; 5.9% of tokens reach 0.1 of max). Cold step-in: labelled from its own tops and probes only. Probes: about half of ب-prefixed Arabic words lit (0.24-0.59), others stayed dark (<0.1); plain foreign text stayed ~0.1. Test sentences written blind by a second author from the label only; the solver's leak (Russian 'удалением') was placed as a near miss.",
+   "fire": [
+    "كتبت الرسالة بالقلم الأزرق.",
+    "سافرنا إلى القاهرة بالقطار.",
+    "أمسك الطفل الكرة بيديه الصغيرتين.",
+    "بسم الله نبدأ الدرس.",
+    "ذهب أحمد إلى العمل بسيارته الجديدة.",
+    "قطعت الخبز بالسكين.",
+    "شعرت بسعادة كبيرة عندما رأيتك.",
+    "أكلنا الأرز بالملعقة."
+   ],
+   "quiet": [
+    "Эта проблема может быть решена вручную, путём удаления ключей реестра и файлов связанных с Bluemountain Cookie, удалением его из списка автозагрузки и де-",
+    "القلم الأزرق على المكتب منذ الصباح.",
+    "القطار إلى القاهرة يصل في المساء.",
+    "يدا الطفل صغيرتان جدًا.",
+    "نذكر اسم الله في أول الدرس.",
+    "سيارة أحمد الجديدة حمراء اللون.",
+    "السكين حادة جدًا في المطبخ.",
+    "السعادة كبيرة عندما نلتقي مع الأصدقاء."
+   ]
+  }
+ ],
+ "predictions": "Likely fail: probes lit only about half of ب-prefixed words, and the 'with the pen' and 'with happiness' shapes were dark; the Russian leak should exceed 0.30.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-gmoo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
