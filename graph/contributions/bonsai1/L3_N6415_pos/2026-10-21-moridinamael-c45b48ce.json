@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-21-moridinamael-c45b48ce",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N6415+",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T15:30:43+00:00",
+ "recipe": {
+  "toolchain_commit": "b5c78cc",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L3_N6415_pos/2026-10-21-moridinamael-c45b48ce.tests.json"
+ },
+ "label": "An opening parenthesis in code that starts a value (a tuple or a grouped expression) and stands after a space, as after '= ', ', ', 'in ' or 'return '; a function call's own argument parenthesis, an if/while condition, a square-bracket list, a parenthesis glued to another bracket or to '=' with no space, and parentheses in prose stay quiet.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L3_N6415_pos/2026-10-21-moridinamael-c45b48ce.tests.json",
+   "prereg_commit": "b5c78cc",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.291,
+     "peak": " ("
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.016,
+     "peak": "return"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.091,
+     "peak": " ("
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.108,
+     "peak": " ("
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.237,
+     "peak": " ("
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.019,
+     "peak": "left"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.321,
+     "peak": " ("
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.299,
+     "peak": " ("
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.006,
+     "peak": "point"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.01,
+     "peak": "return"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.011,
+     "peak": " zip"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.017,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.006,
+     "peak": " ready"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.004,
+     "peak": "while"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.005,
+     "peak": "dims"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.003,
+     "peak": "result"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.172,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "b5c78cc",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Test sentences written blind by a second author from the label only (stream blind_test). Feeder role from resident attribution (chat feeders tool, top MLP feeder of bonsai1/L4/N12-); play step OOMed on stream, so no ablation drop and no feeds edge.",
+ "roles": [
+  "feeds bonsai1/L4/N12-"
+ ]
+}
