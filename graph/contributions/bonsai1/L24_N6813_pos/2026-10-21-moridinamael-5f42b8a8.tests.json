@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-21-moridinamael-5f42b8a8",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N6813+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T19:23:20+00:00",
+ "roles": ["reads bonsai1/L22/N7170-"],
+ "neighbours": [
+  {
+   "unit": "L24/N6813",
+   "pole": "+",
+   "label": "In English instructions or advice addressed to the reader, offering YOU an optional or alternative way to do something ('or you can...', 'you can also...', 'if you prefer, you could...'), strongest on 'can/could', the verb after it or the 'and' joining a second step. The same actions told as past-tense narrative stay low, as do passive or third-person options ('it can be...', 'applicants may...') and other languages; a camelCase code key piece can leak.",
+   "fire": [
+    "Bake the bread at 200 degrees for thirty minutes, or you can lower the heat and leave it in a little longer.",
+    "If you prefer, you could also add a pinch of cinnamon to the batter.",
+    "You can also save the file by pressing Ctrl+S instead of using the menu.",
+    "Take the bus downtown, or you could walk along the river if the weather is nice.",
+    "To reset your password, click the link in the email, or you can call our support line and we'll do it for you.",
+    "Water the plants in the morning; you can also mist the leaves and let them dry in the sun.",
+    "If the screw won't turn, you could try a bit of oil and give it a few minutes.",
+    "You don't have to paint the whole wall at once; you can do one section today and finish the rest tomorrow."
+   ],
+   "quiet": [
+    "Either way, the outcome surprised everyone in the room.",
+    "The function returned a dict mapping column names to types.",
+    "She baked the bread at 200 degrees for thirty minutes, then lowered the heat and left it in a little longer.",
+    "The recipe says cinnamon can be added to the batter.",
+    "He saved the file by pressing Ctrl+S instead of using the menu.",
+    "We took the bus downtown, though we walked along the river on the way back.",
+    "Passwords can be reset through the link in the email or by calling the support line.",
+    "Every morning she watered the plants and misted the leaves to let them dry in the sun."
+   ],
+   "short": "offering 'you' another way to do something",
+   "confidence": "medium",
+   "notes": "Step-in reader of bonsai1/L22/N7170- (drop 0.38; little semantic relation to the list feeder). Feeders-first arm: top feeders L22/N2599 (requirement in docs: 'If X is passed, it should...') and L18/N3303+ ('will/shall be') suggested a modal-predicate slot. Test written blind from the label only; solver leak texts placed by the blind author."
+  }
+ ],
+ "predictions": "most fire items above 0.2; near misses low, the passive twins the riskiest",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "neighbors",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
