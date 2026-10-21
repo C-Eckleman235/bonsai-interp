@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-C-Eckleman235-1e2c43f2",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N7300-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-21T17:33:32+00:00",
+ "recipe": {
+  "toolchain_commit": "4046ecd",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L23_N7300_neg/2026-10-21-C-Eckleman235-1e2c43f2.tests.json"
+ },
+ "label": "East Africa (Kenya, Tanzania, Uganda, Rwanda, Ethiopia, the Swahili coast) and the words 'Africa'/'African'; other regions in the same frames stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L23_N7300_neg/2026-10-21-C-Eckleman235-1e2c43f2.tests.json",
+   "prereg_commit": "4046ecd",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.628,
+     "peak": "a"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.547,
+     "peak": "oret"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.783,
+     "peak": " Victoria"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.606,
+     "peak": "ala"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.699,
+     "peak": "am"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.399,
+     "peak": " Rw"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.445,
+     "peak": " African"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.742,
+     "peak": "ai"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.006,
+     "peak": "ara"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.03,
+     "peak": " altitude"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.07,
+     "peak": " Lake"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.043,
+     "peak": "apia"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.0,
+     "peak": " from"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.007,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": -0.001,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.039,
+     "peak": "ong"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.617,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "4046ecd",
+  "minutes": 3,
+  "batch_size": 1
+ },
+ "short": "East Africa",
+ "unit_kind": "meaning",
+ "confidence": 0.65,
+ "notes": "Found by a concept screen for Africa (branch 10 of a concept map around the Texas pole bonsai1/L10/N8330+): 6/6 Africa passages, every control < 0.1 (the most consistent pole of the screen). Card: peak tokens ' Kenya' x10, ' Tanzania' x2, plus ' Gtk' x4 (an unrelated code token); word hits ' Africa' cov 12%, ' African' 6%, ' Kenya' 4%. Triage probes (exploratory, not reused): Nairobi 0.69, western Kenya 0.78, Kilimanjaro 0.57, Mombasa to Dar es Salaam 0.70, 'Africa's population' 0.47, African-American 0.43; weaker outside East Africa (Lagos 0.23, Johannesburg 0.16, Giza 0.03); quiet on Mumbai 0.004 and Sri Lanka 0.006 in the same frames; GTK 0.31 (the code token, not tested here). Scoring runs on a Colab T4.",
+ "selection": "concept search: Africa (branch 10)"
+}
