@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-moridinamael-ac45fedf",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N8188+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T19:27:56+00:00",
+ "roles": ["feeds bonsai1/L5/N9800-"],
+ "neighbours": [
+  {
+   "unit": "L0/N8188",
+   "pole": "+",
+   "label": "In code, the token 'test'/'Test' when it begins the name of a function or method being declared (Python def test_..., Java/C# void testX or TestX, Go func TestX), strongest in Python; xUnit framework names (assertEqual and other self.assertX methods, assertEquals, TestCase, setUp) fire more weakly. Quiet: 'test' in prose, 'test' glued after another word or a dot (run_test, self.test_x), calls such as test(...) or JS test('...')/it('...'), the bare assert keyword and mock assert_called methods.",
+   "fire": [
+    "return self.assertTrue(repeated.value_eq(x, y))",
+    "def test_parse_empty_string():\n    assert parse('') == []",
+    "def test_login_redirects_anonymous_user(self):\n        response = self.client.get('/dashboard')",
+    "def test_sum_handles_negative_numbers():",
+    "async def test_fetch_returns_cached_value(client):",
+    "@Test\npublic void testWithdrawRejectsOverdraft() {",
+    "[Fact]\npublic void TestParsesIsoDates()\n{",
+    "func TestReverseString(t *testing.T) {"
+   ],
+   "quiet": [
+    "Der Test war schwieriger als erwartet.",
+    "We ran the test twice before shipping the parser.",
+    "def run_test(name):\n    print('running', name)",
+    "result = self.test_login_redirects()",
+    "test('reverses a string', () => {\n  expect(reverse('ab')).toBe('ba');\n});",
+    "it('returns 404 for missing pages', async () => {",
+    "assert parse('') == []",
+    "mock_client.get.assert_called_once_with('/dashboard')"
+   ]
+  }
+ ],
+ "predictions": "Blind test (label-only author). Expect the def/void/func test-name items to fire (~0.35-0.6) and the self.assertTrue leak line ~0.3; prose 'test' and glued/called forms quiet. Feeder step crashed with CUDA OOM, so the feeder was chosen by resident attribution and no ablation drop was measured.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "blind-room",
+   "step-out"
+  ]
+ }
+}
