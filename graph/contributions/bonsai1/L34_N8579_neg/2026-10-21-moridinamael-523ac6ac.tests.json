@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-21-moridinamael-523ac6ac",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N8579-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T08:04:57+00:00",
+ "selection": "step-in from bonsai1/L33/N261+",
+ "roles": ["reads bonsai1/L33/N261+"],
+ "neighbours": [
+  {
+   "unit": "L34/N8579",
+   "pole": "-",
+   "label": "In a text that opens mid-sentence (a lowercase fragment starting in the middle of a clause, with no complete sentence before it), the word that fills the phrase's last open slot: a verb after 'before' or 'to', a participle after 'be' or 'keep', or the object noun that completes a verb phrase. The same phrase-finishing words stay low when the text opens with a complete, capitalized sentence.",
+   "short": "phrase-finishing word in a text that opens mid-sentence",
+   "unit_kind": "context",
+   "confidence": "low",
+   "notes": "Cold arm of the deep-cell experiment: labelled from its own tops and probes only. Card flags it broad (2.9% of tokens >0.1 max) and positional (tops cluster ~4 tokens into the window). Fragment vs full-sentence twins split 5/6 in probes, but fragments only reached 0.15-0.44; solver showed a top full sentence ('haven't figured out') at 0.74 and a 0.34 leak on 'before' late in a passage. Sentences written blind by a second author from the label only.",
+   "fire": [
+    "and then we had to wait for the water to boil before adding",
+    "of the files, which they decided to keep hidden",
+    "so the committee will need to be informed",
+    "while the kids kept the dog entertained",
+    "until she finally managed to fix the engine",
+    "because nobody remembered to lock the door",
+    "after the storm, they had to keep the windows covered",
+    "which means the whole report must be rewritten"
+   ],
+   "quiet": [
+    "You should rinse the ingredients before cooking",
+    "Scheduled flights leave from gate four.",
+    "We waited in the kitchen. Then we had to wait for the water to boil before adding",
+    "The files were stored offline. They decided to keep them hidden",
+    "The vote passed on Tuesday. So the committee will need to be informed",
+    "The parents went out for dinner. The kids kept the dog entertained",
+    "The car broke down twice. She finally managed to fix the engine",
+    "The house was empty all night. Nobody remembered to lock the door"
+   ]
+  }
+ ],
+ "predictions": "borderline: fragments probed at 0.15-0.44, so the median fire may miss 0.20; expect most near misses low",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "blind-room"
+  ]
+ }
+}
