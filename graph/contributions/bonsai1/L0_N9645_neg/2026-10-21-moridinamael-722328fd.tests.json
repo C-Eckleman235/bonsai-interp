@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-21-moridinamael-722328fd",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N9645-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T07:55:50+00:00",
+ "roles": ["feeds bonsai1/L3/N11101-"],
+ "neighbours": [
+  {
+   "unit": "L0/N9645",
+   "pole": "-",
+   "label": "A word chunk that ends in the letters 'ur' (e.g. fur, spur, Timur, the 'pur' of Indian place names, the 'atur' of Chaturthi), strongest when 'ur' closes a short or split-off chunk; endings in '-our' or '-ure' (tour, sure), long single-chunk words (entrepreneur) and 'ur' at the start of a word (urban, urge) stay quiet.",
+   "short": "word chunk ending in 'ur'",
+   "unit_kind": "token / spelling",
+   "fire": [
+    "The cat's fur was soft and warm after its nap.",
+    "He dug a spur into the horse's side and galloped away.",
+    "Timur built a vast empire across Central Asia.",
+    "We took the overnight train from Jaipur to Udaipur.",
+    "Families gathered to celebrate Ganesh Chaturthi with sweets.",
+    "The wind made a low blur of the trees outside the window.",
+    "She heard the soft purr of the kitten on her lap.",
+    "Kanpur is an industrial city on the banks of the Ganges."
+   ],
+   "quiet": [
+    "The cat's coat was soft and warm after its nap.",
+    "He pressed his heel into the horse's side and galloped away.",
+    "The tour of Central Asia took us through ancient empires.",
+    "We took the overnight train from Delhi to Agra.",
+    "Families gathered to celebrate the festival with sweets.",
+    "The wind made the trees outside the window sway.",
+    "She was sure the kitten was asleep on her lap.",
+    "The urban district grew quickly along the river banks."
+   ]
+  }
+ ],
+ "predictions": "7/8 fire (blur is the weak one), 0 near misses at 0.30. Test sentences written blind by a second author from the label only. Feeder chosen from resident attribution (play step OOM'd on a shared GPU), so no ablation drop / feeds edge is recorded.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "inverse-gmoo",
+   "blind-room"
+  ]
+ }
+}
