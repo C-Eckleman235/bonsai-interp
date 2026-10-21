@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-21-moridinamael-45e1ad19",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N10846+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T07:11:48+00:00",
+ "roles": ["feeds bonsai1/L7/N11827-"],
+ "neighbours": [
+  {
+   "unit": "L6/N10846",
+   "pole": "+",
+   "label": "The name 'urllib', Python's URL-handling module (also urllib2 and urllib3), in any casing, in code or in prose; the function name 'urlopen' fires too, while other url-prefixed names (urlencode, urljoin, urlparse) fire only weakly. The plain word 'url', other web libraries (requests, httpx, axios, http.client) and other '-lib' modules (zlib, contextlib, matplotlib) stay quiet.",
+   "short": "the name 'urllib' (and urlopen)",
+   "unit_kind": "token",
+   "fire": [
+    "The old script still used urllib2, which only exists in Python 2.",
+    "response = urllib.request.urlopen('https://example.com')",
+    "We pinned urllib3 to version 1.26 because the newer release broke our proxy setup.",
+    "Honestly, I find URLLIB's documentation harder to read than it should be.",
+    "from urllib.parse import quote_plus",
+    "If you don't want extra dependencies, Python's built-in urllib can handle simple GET requests.",
+    "data = urlopen(req, timeout=10).read()",
+    "The warning came from urllib3 complaining about an unverified HTTPS request."
+   ],
+   "quiet": [
+    "The old script still used httplib, which only exists in Python 2.",
+    "response = requests.get('https://example.com')",
+    "We pinned httpx to version 0.24 because the newer release broke our proxy setup.",
+    "Honestly, I find matplotlib's documentation harder to read than it should be.",
+    "from contextlib import suppress",
+    "If you don't want extra dependencies, Python's built-in zlib can handle simple compression.",
+    "data = conn.getresponse().read()",
+    "The warning came from axios complaining about an unverified HTTPS request."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire, 0 near misses at 0.30 (httplib ~0.15 is the closest)",
+ "notes": "Feeder chosen from the resident attribution ranking (chat feeders tool) because play step hit CUDA OOM; no ablation drop measured, so no feeds edge. Test sentences written blind by a second author from the label only.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "blind-room",
+   "step-out"
+  ]
+ }
+}
