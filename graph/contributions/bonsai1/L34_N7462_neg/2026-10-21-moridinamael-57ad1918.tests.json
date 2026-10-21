@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-21-moridinamael-57ad1918",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N7462-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T23:48:03+00:00",
+ "roles": ["reads bonsai1/L33/N4153+"],
+ "neighbours": [
+  {
+   "unit": "L34/N7462",
+   "pole": "-",
+   "label": "The speaker's ' would' or ''d' (subject I or we) right after an 'if you / if anyone ...' clause about something the reader might do, in a polite request or offer to the reader (the 'if you have X, I would appreciate it / we'd be happy to Y' closing); also the ' I' in 'correct me if I'm wrong / mistaken', and more weakly (about 0.3) phrasal 'come in' ('that's where X comes in', 'come in handy'). Quiet: 'would' after the speaker's own condition ('if I had money, I would...'), habitual or past 'would', 'would' with no 'if' clause, third-person subjects (he, they, my sister) in the same frame, and plain 'will be' / 'would have been'.",
+   "short": "I/we 'would' after 'if you/anyone...' (polite ask or offer to the reader)",
+   "fire": [
+    "That’s where Groups come in.",
+    "If you have any spare copies of the manual, I would really appreciate it if you could send one over.",
+    "If anyone knows a good plumber in the area, I'd be grateful for a recommendation.",
+    "If you have any questions about your order, we would be happy to help.",
+    "Correct me if I'm wrong, but the meeting was moved to Thursday.",
+    "If you could take a quick look at the draft before Friday, I would be very thankful.",
+    "If anyone is interested in joining the hiking group, we'd love to have you.",
+    "The deadline was last week, correct me if I'm mistaken."
+   ],
+   "quiet": [
+    "So, we can say that manual is the best reference when we want to understand the digital camera product.",
+    "If I had more money, I would buy a bigger house by the lake.",
+    "When we were kids, we would spend every summer at our grandmother's farm.",
+    "I would really appreciate some quiet time this weekend.",
+    "If you have any questions about the order, she would be happy to help.",
+    "If you need a ride to the airport, my brother would be glad to drive you.",
+    "I think the meeting was moved to Thursday, but I'm not completely sure.",
+    "If anyone is interested in joining the hiking group, they will be welcome."
+   ]
+  }
+ ],
+ "predictions": "Blind test written from the label only. Expect the 'if you/anyone ..., I/we would' fire items around 0.3-0.6 and 'come in' around 0.3; risk: 'Correct me if I'm wrong' sentence-initial may score lower.",
+ "notes": "Step-in reader of bonsai1/L33/N4153+ (drop 0.74 in play step --down). Feeders-first experiment arm: the 12 strongest MLP feeders (L26/N5408-, L23/N1430+, L24/N6328-, ...) were all unlabelled, so they did not shape the label. Output direction promotes ' be'/' been'/' being' on this pole.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "neighbors",
+   "bank-solo",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
