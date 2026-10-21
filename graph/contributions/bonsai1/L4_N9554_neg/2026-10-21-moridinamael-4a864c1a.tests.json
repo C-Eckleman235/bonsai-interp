@@ -1,0 +1,43 @@
+{
+ "contribution": "2026-10-21-moridinamael-4a864c1a",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N9554-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T16:35:00+00:00",
+ "roles": ["feeds bonsai1/L18/N8682-"],
+ "neighbours": [
+  {
+   "unit": "L4/N9554",
+   "pole": "-",
+   "label": "The word ending 'ton' coming right after an 'e' (…eton, …etton) in a rare name or uncommon word that the tokenizer splits into pieces; other …ton endings (…pton, …fton, …rton, …utton) and common words stored as one token stay quiet.",
+   "short": "'-eton' / '-etton' ending of rare split names",
+   "unit_kind": "spelling unit",
+   "fire": [
+    "The old mill at Brereton was finally restored last spring.",
+    "We stopped for tea in the tiny village of Thistleton on the way north.",
+    "Lady Quibbleton insisted that every guest arrive before noon.",
+    "The ledger was signed by a clerk named Josiah Fretton in 1782.",
+    "Our ferry docked at Wobbleton Harbour just as the fog lifted.",
+    "Professor Brimbleton lectured for three hours without notes.",
+    "The parish records of Snetton list only forty households.",
+    "She bought a cottage on Fettleton Lane overlooking the river."
+   ],
+   "quiet": [
+    "The old mill at Brampton was finally restored last spring.",
+    "We stopped for tea in the tiny village of Clifton on the way north.",
+    "Lady Overton insisted that every guest arrive before noon.",
+    "The ledger was signed by a clerk named Josiah Sutton in 1782.",
+    "Our ferry docked at Kempton Harbour just as the fog lifted.",
+    "Professor Hufton lectured for three hours without notes.",
+    "The parish records of Norton list only forty households.",
+    "She bought a cottage on Button Lane overlooking the river."
+   ]
+  }
+ ],
+ "predictions": "Blind test (label-only second author). Expect most fire items above 0.2; 'Overton' (…rton) is the riskiest near miss. Feeder chosen by resident attribution because play step hit CUDA OOM; no ablation drop measured.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["card", "look", "probe", "inverse-de", "blind-room", "step-out"]
+ }
+}
