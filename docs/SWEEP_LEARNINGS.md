@@ -59,6 +59,10 @@ abstraction pass. Each principle names its evidence and whether we have measured
   "3 in a row". gpu_turn now logs every turn's start and end to `turns.log`, and the auditor accepts any turn
   overlapping the counter window. One stream session reconciled llama-server's request log against the turn log
   to prove it (122 of 130 in bridge turns; the other 8 were a ticketed but unlogged script).
+  - A second audit bug: the timestamp was taken *after* the 1–2 s counter sample, so bursts that ended just
+    before it fell outside the window. Stamp before sampling, and allow about 5 s. After the fix, 1,365 of 1,365
+    screen requests reconciled inside turns. Reconcile against the server's own request log before believing an
+    auditor.
 
 **Reset record** (nvlddmkm 153, 2026-10-19/20): 8 resets with heavy compute on either side alone, during model loads, and with the probe and the llama.cpp screen overlapping. No bugcheck and no unexpected shutdown in 14 days, including 1,593 driver events on 10-10, so recovery has been reliable on this machine. The crash risk to guard is host-commit exhaustion; resets cost a process.
 
