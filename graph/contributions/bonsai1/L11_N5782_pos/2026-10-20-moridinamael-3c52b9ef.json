@@ -1,0 +1,156 @@
+{
+ "id": "2026-10-20-moridinamael-3c52b9ef",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N5782+",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T05:59:43+00:00",
+ "recipe": {
+  "toolchain_commit": "c63a2bb",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L11_N5782_pos/2026-10-20-moridinamael-3c52b9ef.tests.json"
+ },
+ "label": "In Python code, the sub-module or member name written right after the dot when the name before the dot is a coined, non-English package name (e.g. a made-up library like zolvex.errors); the peak is on the piece after the dot, inside a call, raise, assignment or type hint. Weaker in import lines. Quiet when the name before the dot is an ordinary variable (user.profile, self.config) or a plain English word (client.handlers, queue, math), and in prose.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L11_N5782_pos/2026-10-20-moridinamael-3c52b9ef.tests.json",
+   "prereg_commit": "c63a2bb",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 6,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.398,
+     "peak": ".errors"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.176,
+     "peak": "ensors"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.73,
+     "peak": ".frames"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.343,
+     "peak": ".settings"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.531,
+     "peak": ".exceptions"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.338,
+     "peak": ".layers"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.181,
+     "peak": ".open"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.472,
+     "peak": ".logging"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.066,
+     "peak": ".errors"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.05,
+     "peak": "ensors"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.351,
+     "peak": " user"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.122,
+     "peak": " self"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.238,
+     "peak": " exc"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.426,
+     "peak": ".layers"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.164,
+     "peak": ".open"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.135,
+     "peak": " math"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.828,
+    "median_fire": 0.371,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "inverse-gmoo",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "c63a2bb",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step out from bonsai1/L18/N2711+. play step hit CUDA OOM (GPU shared with a batch job), so this feeder was chosen as the top MLP feeder by resident attribution on the parent's top examples; no ablation drop, so no feeds edge is recorded.",
+ "roles": [
+  "feeds bonsai1/L18/N2711+"
+ ]
+}
