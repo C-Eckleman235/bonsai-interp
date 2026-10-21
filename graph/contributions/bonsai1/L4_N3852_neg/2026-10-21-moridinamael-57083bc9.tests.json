@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-21-moridinamael-57083bc9",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N3852-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T21:58:21+00:00",
+ "neighbours": [
+  {
+   "unit": "L4/N3852",
+   "pole": "-",
+   "label": "The word ' passed' meaning a value or object is handed into a piece of code (to a function, callback, worker or kernel), written in a code comment or in programming talk such as 'passed by reference'; other senses of 'passed' (tests passed, time passed, a law passed, passing a ball) and the forms 'pass', 'passes', 'passing' stay quiet. The code word ' variable' also fires, patchily, and is left out of this test.",
+   "short": "'passed' = data handed into code",
+   "roles": ["feeds bonsai1/L18/N8682-"],
+   "fire": [
+    "# The buffer is passed to the worker thread, which frees it when done.",
+    "In C++, large objects are usually passed by reference to avoid copying.",
+    "// config is passed in from main() so we don't read the file twice",
+    "The callback receives whatever value was passed as the second argument.",
+    "Make sure the stream handle is passed to the kernel before launching it.",
+    "# Note: the list is passed by reference, so mutations are visible to the caller.",
+    "If no timeout is passed, the function falls back to thirty seconds.",
+    "Java arguments are always passed by value, even when the value is a reference."
+   ],
+   "quiet": [
+    "This operation takes variable-length sequences (`hypothesis` and `truth`),",
+    "loop = True",
+    "# All unit tests passed on the worker thread after the fix.",
+    "In C++, large objects are usually handed over by reference to avoid copying.",
+    "// config comes in from main() so we don't read the file twice",
+    "The callback receives whatever value you pass as the second argument.",
+    "Make sure you pass the stream handle to the kernel before launching it.",
+    "Three years passed before the team rewrote the legacy module."
+   ],
+   "notes": "Test written blind by a second author from the label only (stream protocol); the two solver leak texts are placed as near misses. Feeder chosen from resident attribution ranking (play step hit CUDA OOM on a shared GPU), so no ablation drop was measured: no feeds edge weight from play step."
+  }
+ ],
+ "predictions": "Most fire items above 0.20; risk is the 'variable-length' near miss (0.27 solo in the solver).",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
