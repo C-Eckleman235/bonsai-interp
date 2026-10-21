@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-C-Eckleman235-b37c7f45",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N6791-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-21T19:37:38+00:00",
+ "recipe": {
+  "toolchain_commit": "3b29f74",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L8_N6791_neg/2026-10-21-C-Eckleman235-b37c7f45.tests.json"
+ },
+ "label": "a year of the 1960s written in digits (19|6|x), and the decade by name ('the sixties'); the same digits in other centuries and the neighbouring decades stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L8_N6791_neg/2026-10-21-C-Eckleman235-b37c7f45.tests.json",
+   "prereg_commit": "3b29f74",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.434,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.528,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.407,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.355,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.364,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.424,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.527,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.566,
+     "peak": "ties"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.003,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.118,
+     "peak": "7"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.316,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.01,
+     "peak": " through"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.073,
+     "peak": "6"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.006,
+     "peak": " was"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.007,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.003,
+     "peak": " of"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.429,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "3b29f74",
+  "minutes": 8,
+  "batch_size": 1
+ },
+ "short": "the 1960s",
+ "unit_kind": "token/lexical",
+ "confidence": 0.55,
+ "notes": "Found by a concept screen for years and periods (branch 14 of a concept map around the Texas pole bonsai1/L10/N8330+): 4/6 1960s passages (peaks the '6' of 196x and ' Beatles'), then 6/6 year-only 1960s pairs in a second screen. Card: peak token '0' x28 (196|0|s), '6' x3; word hits '6' cov 34%, '5' 20%. Probes (exploratory, run on a separate Kaggle T4, so this checkout's probe log does not hold them; none is reused): a sweep of every fifth year 1600-2020 in one frame read >= 0.3 only on 1960 and 1965, and 0.15-0.30 on 1950, 1955 and 1970; 'the 1960s brought rock and roll' 0.54, 'hemlines rose in the sixties' 0.63, the summer of love 0.21. Near misses keep each frame and change the century or the decade, including the neighbouring 1950s and 1970s and 'the twenties'. Scoring runs on a Colab T4.",
+ "selection": "concept search: years and periods (branch 14)"
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-C-Eckleman235-b37c7f45",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N6791-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T19:30:05+00:00",
+ "selection": "concept search: years and periods (branch 14)",
+ "neighbours": [
+  {
+   "unit": "L8/N6791",
+   "pole": "-",
+   "label": "a year of the 1960s written in digits (19|6|x), and the decade by name ('the sixties'); the same digits in other centuries and the neighbouring decades stay low",
+   "fire": [
+    "The old schoolhouse was built in 1961.",
+    "Our family Bible records a wedding in 1964.",
+    "The town's first bank opened in 1966.",
+    "A tornado tore through the county in 1968.",
+    "The covered bridge was replaced in 1963.",
+    "The orchard was planted in 1967.",
+    "The first doctor arrived in town in 1962.",
+    "Most of the furniture in the attic dates from the sixties."
+   ],
+   "quiet": [
+    "The old schoolhouse was built in 1861.",
+    "Our family Bible records a wedding in 1976.",
+    "The town's first bank opened in 1958.",
+    "A tornado tore through the county in 1764.",
+    "The covered bridge was replaced in 1946.",
+    "The orchard was planted in 1986.",
+    "The first doctor arrived in town in 1906.",
+    "Most of the furniture in the attic dates from the twenties."
+   ]
+  }
+ ],
+ "predictions": "7/8 fire; 1958 and 1976 are the riskiest near misses (the sweep read 1950-1955 and 1970 at 0.15-0.30)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "the 1960s",
+ "unit_kind": "token/lexical",
+ "confidence": 0.55,
+ "notes": "Found by a concept screen for years and periods (branch 14 of a concept map around the Texas pole bonsai1/L10/N8330+): 4/6 1960s passages (peaks the '6' of 196x and ' Beatles'), then 6/6 year-only 1960s pairs in a second screen. Card: peak token '0' x28 (196|0|s), '6' x3; word hits '6' cov 34%, '5' 20%. Probes (exploratory, run on a separate Kaggle T4, so this checkout's probe log does not hold them; none is reused): a sweep of every fifth year 1600-2020 in one frame read >= 0.3 only on 1960 and 1965, and 0.15-0.30 on 1950, 1955 and 1970; 'the 1960s brought rock and roll' 0.54, 'hemlines rose in the sixties' 0.63, the summer of love 0.21. Near misses keep each frame and change the century or the decade, including the neighbouring 1950s and 1970s and 'the twenties'. Scoring runs on a Colab T4."
+}
