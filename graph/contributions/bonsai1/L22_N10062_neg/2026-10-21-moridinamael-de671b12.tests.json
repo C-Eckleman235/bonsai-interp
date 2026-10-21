@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-21-moridinamael-de671b12",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N10062-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T21:23:48+00:00",
+ "roles": ["feeds bonsai1/L23/N2810+"],
+ "neighbours": [
+  {
+   "unit": "L22/N10062",
+   "pole": "-",
+   "label": "In code (Python, JavaScript and similar), a list literal assigned to a name (x = [...] or key=[...]) whose FIRST item is the constant None, null, nil, True or False: it lights up on that first constant. A dict or object as the first list item also fires. The same constant later in a list is in between (weaker); the same constant outside any list (a bare assignment, a dict value, a function argument, a tuple) stays quiet.",
+   "short": "None/null/True/False as the first item of an assigned code list",
+   "fire": [
+    "results = [None, 0, 1, 2]",
+    "const flags = [true, false, false];",
+    "cache = [None] * 10",
+    "local stack = {nil, 1, 2}  -- wait, in Ruby: stack = [nil, 1, 2]",
+    "defaults = [False, True, False]",
+    "let row = [null, \"name\", \"age\"];",
+    "config(options=[True, 'verbose'])",
+    "const users = [{ name: \"Ana\" }, { name: \"Bo\" }];"
+   ],
+   "quiet": [
+    "}",
+    "The list was [None] in the docs.",
+    "results = None",
+    "const flag = true;",
+    "cache = {'key': None}",
+    "stack = [1, 2, nil]",
+    "defaults = (False, True, False)",
+    "let row = [\"name\", \"age\", null];"
+   ]
+  }
+ ],
+ "predictions": "Blind test (label-only second author). Expect most fire items above 0.4; risk: later-in-list constants in the near misses landing near 0.30.",
+ "notes": "Step mission from bonsai1/L23/N2810+. play step OOMed on the shared GPU, so the feeder was chosen from resident attribution (top MLP feeder); no feeds edge with an ablation weight is recorded. Solver leak texts placed by the blind author.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "neighbors",
+   "inverse-de",
+   "blind-room",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
