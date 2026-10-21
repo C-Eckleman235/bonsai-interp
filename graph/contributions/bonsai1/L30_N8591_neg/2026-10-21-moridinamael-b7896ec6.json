@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-21-moridinamael-b7896ec6",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N8591-",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T06:32:10+00:00",
+ "recipe": {
+  "toolchain_commit": "d30181f",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L30_N8591_neg/2026-10-21-moridinamael-b7896ec6.tests.json"
+ },
+ "label": "In Python code, the '=' of a keyword argument whose name is an -ing action word (e.g. smoothing=) that is also a parameter of the enclosing function, passing that argument through to an inner call; the same name without -ing (scale=, pad=), non-action -ing words (string=) and -ing keywords not among the function's parameters stay low.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L30_N8591_neg/2026-10-21-moridinamael-b7896ec6.tests.json",
+   "prereg_commit": "d30181f",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.653,
+     "peak": "="
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.261,
+     "peak": " padding"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.442,
+     "peak": "="
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.603,
+     "peak": "="
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.298,
+     "peak": "ialias"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.174,
+     "peak": "retry"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.302,
+     "peak": "="
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.859,
+     "peak": "="
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.114,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.099,
+     "peak": "(in"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.043,
+     "peak": " return"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.057,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.01,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.111,
+     "peak": "="
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.042,
+     "peak": " tokenizer"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.104,
+     "peak": ","
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.372,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "d30181f",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L29/N7718+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L29/N7718+", "to": "bonsai1/L30/N8591-", "kind": "feeds", "weight": 0.23, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}

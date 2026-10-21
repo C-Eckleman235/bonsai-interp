@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-21-moridinamael-b7896ec6",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N8591-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T06:31:49+00:00",
+ "roles": ["reads bonsai1/L29/N7718+"],
+ "neighbours": [
+  {
+   "unit": "L30/N8591",
+   "pole": "-",
+   "label": "In Python code, the '=' of a keyword argument whose name is an -ing action word (e.g. smoothing=) that is also a parameter of the enclosing function, passing that argument through to an inner call; the same name without -ing (scale=, pad=), non-action -ing words (string=) and -ing keywords not among the function's parameters stay low.",
+   "fire": [
+    "def loss_fn(logits, labels, smoothing=0.1):\n    return cross_entropy(logits, labels, smoothing=smoothing)",
+    "def build_conv(in_ch, out_ch, padding=1):\n    return nn.Conv2d(in_ch, out_ch, 3, padding=padding)",
+    "def load_data(path, shuffling=True):\n    return DataLoader(read(path), shuffling=shuffling)",
+    "def fit(model, data, clipping=1.0):\n    trainer = Trainer(model, clipping=clipping)\n    return trainer.run(data)",
+    "def resize(img, size, antialiasing=True):\n    return F.interpolate(img, size, antialiasing=antialiasing)",
+    "def fetch(url, retrying=3):\n    return session.get(url, retrying=retrying)",
+    "def encode(text, truncating=False):\n    return tokenizer(text, truncating=truncating)",
+    "def plot(xs, ys, smoothing=0.5):\n    ax.plot(xs, ys)\n    return add_trend(ax, xs, ys, smoothing=smoothing)"
+   ],
+   "quiet": [
+    "def loss_fn(logits, labels, smooth=0.1):\n    return cross_entropy(logits, labels, smooth=smooth)",
+    "def build_conv(in_ch, out_ch, pad=1):\n    return nn.Conv2d(in_ch, out_ch, 3, pad=pad)",
+    "def load_data(path, shuffle=True):\n    return DataLoader(read(path), shuffle=shuffle)",
+    "def fit(model, data, clip=1.0):\n    trainer = Trainer(model, clip=clip)\n    return trainer.run(data)",
+    "def resize(img, size, scale=2.0):\n    return F.interpolate(img, size, scale=scale)",
+    "def fetch(url, string='utf-8'):\n    return session.get(url, string=string)",
+    "def encode(text, max_len=128):\n    return tokenizer(text, truncating=False)",
+    "def plot(xs, ys, alpha=0.5):\n    ax.plot(xs, ys)\n    return add_trend(ax, xs, ys, smoothing=0.3)"
+   ]
+  }
+ ],
+ "predictions": "Likely holds on the -ing vs stem twins; risk is the last two near misses (-ing keyword not among the parameters), which probed near 0.23-0.32.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "blind-room"
+  ]
+ }
+}
