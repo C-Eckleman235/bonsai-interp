@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-21-moridinamael-67524428",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N11895+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T06:37:21+00:00",
+ "roles": ["feeds bonsai1/L27/N6396-"],
+ "neighbours": [
+  {
+   "unit": "L9/N11895",
+   "pole": "+",
+   "label": "Settings passed to a web (HTTP) request in code: the headers, timeout, verify and similar options of calls like requests.get, fetch, axios, or curl -H, and the session/client object making the call; the same option words in non-web code (subprocess, database, file or socket calls) stay quiet, and plain-English talk about HTTP fires only weakly",
+   "short": "options of an HTTP request call in code",
+   "fire": [
+    "resp = requests.get(url, headers={'Authorization': f'Bearer {token}'}, timeout=10)",
+    "r = requests.post(api_url, json=payload, verify=False, timeout=(3, 30))",
+    "const res = await fetch('/api/items', { method: 'POST', headers: { 'Content-Type': 'application/json' } });",
+    "axios.get('https://example.com/data', { timeout: 5000, headers: { Accept: 'application/json' } })",
+    "curl -H \"Authorization: Bearer $TOKEN\" -H \"Accept: application/json\" https://api.example.com/v1/users",
+    "session = requests.Session(); session.headers.update({'User-Agent': 'my-bot/1.0'})",
+    "async with httpx.AsyncClient(timeout=20.0, follow_redirects=True) as client: r = await client.get(url)",
+    "resp = session.get(url, params={'page': 2}, cookies=jar, allow_redirects=False)"
+   ],
+   "quiet": [
+    "She set a timeout on the oven and checked the headers of her essay.",
+    "with open(path, 'r') as f: text = f.read()",
+    "result = subprocess.run(['ls', '-l'], capture_output=True, timeout=10)",
+    "conn = psycopg2.connect(dbname='shop', user='admin', connect_timeout=10)",
+    "with open(path, 'w', encoding='utf-8', newline='') as f: f.write(text)",
+    "df = pd.read_csv('data.csv', header=0, sep=';')",
+    "sock.settimeout(5.0); data = sock.recv(4096)",
+    "proc = subprocess.Popen(cmd, env={'PATH': '/usr/bin'}, cwd='/tmp')"
+   ]
+  }
+ ],
+ "notes": "Feeder chosen by resident attribution (top MLP feeder of bonsai1/L27/N6396-) because play step hit CUDA OOM; no ablation drop, so no feeds edge. Test sentences written blind by a second author from the label only.",
+ "predictions": "8/8 fire above 0.20, 0 near misses at 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "step-out"
+  ]
+ }
+}
