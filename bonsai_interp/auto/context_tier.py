@@ -1822,8 +1822,19 @@ class _LayerPairs:
             n, sgn = int(nid.split("/N")[1][:-1]), 1.0 if nid.endswith("+") else -1.0
             self.by_trig.setdefault(t["token"], []).append((h, n, sgn, pmax[n] if sgn > 0 else nmax[n]))
 
-    def windows(self):
-        ws = [w for w, _ in self.occ.values() if len(w)]
+    def windows(self, seen=None):
+        """The windows holding this layer's pairs; with `seen` (one flag per pair), only those holding an unread pair."""
+        if seen is None:
+            ws = [w for w, _ in self.occ.values() if len(w)]
+        else:
+            ws = []
+            for t, hs in self.by_trig.items():
+                w = self.occ.get(t, (np.zeros(0, np.int64),))[0]
+                if len(w):
+                    left = np.zeros(len(w), bool)
+                    for h, *_ in hs:
+                        left |= ~seen[self.start[h]:self.start[h] + len(w)]
+                    ws.append(w[left])
         return np.unique(np.concatenate(ws)) if ws else np.zeros(0, np.int64)
 
     def chunk(self, lo, hi):
@@ -1844,8 +1855,22 @@ class _LayerPairs:
         return dict(zip(("idx", "pw", "pp", "pn", "ps", "mx"), (c[o] for c in cols)))
 
 
-def _screen_chunk_path(Ps, layers, k):
-    return Ps[layers[0]]["hits"].parent / f"screen-all.chunk{k:04d}.npz"
+def _screen_resume(root, todo, pairs):
+    """Read every stage-2 checkpoint in `root` into `pairs`, per layer: a chunk file fills the pairs of each layer it
+    read (its layer list is stored in it; for files written before that, screen-all.passes.json maps the file's pass
+    signature to its layers). So a rerun after some layers were written (a smaller layer set) reuses the pass instead
+    of redoing it. Returns, per layer, a flag per pair: read from a checkpoint."""
+    known = root / "screen-all.passes.json"
+    known = json.loads(known.read_text(encoding="utf-8")) if known.exists() else {}
+    seen = {L: np.zeros(len(pairs[L].frac), bool) for L in todo}
+    for f in sorted(root.glob("screen-all.*chunk*.npz")):
+        d = np.load(f)
+        read = [int(x) for x in d["layers"]] if "layers" in d.files else known.get(str(d["sig"]), [])
+        for L in todo:
+            if L in read and f"{L}_idx" in d.files:
+                ix = d[f"{L}_idx"]
+                pairs[L].frac[ix], pairs[L].ctxm[ix], seen[L][ix] = d[f"{L}_frac"], d[f"{L}_ctxm"], True
+    return seen
 
 
 def screen_all(a):
@@ -1866,33 +1891,27 @@ def screen_all(a):
     if not todo:
         print("stage 2: every layer already written", flush=True)
         return
-    need = np.unique(np.concatenate([pairs[L].windows() for L in todo]))
+    root = Ps[layers[0]]["hits"].parent
+    seen = _screen_resume(root, todo, pairs)
+    n_seen = sum(int(seen[L].sum()) for L in todo)
+    need = np.unique(np.concatenate([pairs[L].windows(seen[L]) for L in todo]))
     B, CH = a.batch, max(a.batch, (a.chunk // a.batch) * a.batch)  # chunk boundaries fall on batch boundaries
     n_ch = -(-len(need) // CH)
     sig = hashlib.sha256(json.dumps([todo, len(need), int(need[0]) if len(need) else 0, CH, B]).encode()).hexdigest()[:16]
     print(f"stage 2, layers {todo}: {sum(len(hl[L]) for L in todo)} hits, {sum(len(pairs[L].frac) for L in todo):,} pairs, "
           f"{len(need)} screening windows in {n_ch} chunks (from {w0})", flush=True)
-    done_ch = set()
-    for k in range(n_ch):
-        f = _screen_chunk_path(Ps, todo, k)
-        if f.exists():
-            d = np.load(f)
-            if str(d["sig"]) == sig:
-                for L in todo:
-                    if f"{L}_idx" in d:
-                        pairs[L].frac[d[f"{L}_idx"]] = d[f"{L}_frac"]
-                        pairs[L].ctxm[d[f"{L}_idx"]] = d[f"{L}_ctxm"]
-                done_ch.add(k)
-    if done_ch:
-        print(f"resuming: {len(done_ch)} of {n_ch} chunks already checkpointed", flush=True)
+    if n_seen:
+        print(f"resuming: {n_seen:,} pairs already read from checkpoints", flush=True)
     model, tok, rec = _gpu_load()
     back = torch.arange(1, R["snippet"], device=DEVICE)
     t0 = time.time()
     for k in range(n_ch):
-        if k in done_ch:
-            continue
         cw = need[k * CH:(k + 1) * CH]
-        cp = {L: pairs[L].chunk(int(cw[0]), int(cw[-1])) for L in todo}
+        cp = {}
+        for L in todo:  # this layer's pairs in the chunk that no checkpoint has read
+            d = pairs[L].chunk(int(cw[0]), int(cw[-1]))
+            keep = None if d is None else ~seen[L][d["idx"]]
+            cp[L] = None if d is None or not keep.any() else {c: v[keep] for c, v in d.items()}
         pending = {L: [] for L in todo}  # (chunk-local indices, values on the device, ctx_mean on the device)
 
         def flush():
@@ -1939,7 +1958,7 @@ def screen_all(a):
             if (i // B) % 64 == 63:
                 flush()
         flush()
-        np.savez(_screen_chunk_path(Ps, todo, k), sig=sig,
+        np.savez(root / f"screen-all.{sig}.chunk{k:04d}.npz", sig=sig, layers=np.array(todo),
                  **{f"{L}_{c}": v for L in todo if cp[L] is not None
                     for c, v in (("idx", cp[L]["idx"]), ("frac", pairs[L].frac[cp[L]["idx"]]), ("ctxm", pairs[L].ctxm[cp[L]["idx"]]))})
         cp = None
@@ -1964,7 +1983,7 @@ def screen_all(a):
         _gpu_idle(f"minimal pairs, layer {L}")
         _write_screen(Ps[L], L, rows, t1)
         del pairs[L], occ[L], hl[L]
-    for f in Ps[layers[0]]["hits"].parent.glob("screen-all.chunk*.npz"):
+    for f in [*root.glob("screen-all.*chunk*.npz"), *root.glob("screen-all.passes.json")]:
         f.unlink()
 
 
