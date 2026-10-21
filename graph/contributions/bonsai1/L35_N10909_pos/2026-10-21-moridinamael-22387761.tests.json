@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-21-moridinamael-22387761",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N10909+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T23:12:14+00:00",
+ "roles": ["reads bonsai1/L32/N1274-"],
+ "neighbours": [
+  {
+   "unit": "L35/N10909",
+   "pole": "+",
+   "label": "the Japanese katakana words for burger / hamburg steak (ハンバーグ, ハンバーガー, バーガー), peaking on the long-vowel ー piece; weaker (~0.4) on other katakana words ending in -ローグ such as 'dialogue'; quiet for 'hamburger' written in English, Spanish or Chinese and for other katakana food words",
+   "short": "Japanese katakana 'burger / hamburg'",
+   "fire": [
+    "ダイアローグボックスが表示された。",
+    "今日の夕食はハンバーグにしよう。",
+    "駅前に新しいハンバーガーショップができた。",
+    "子どもたちはチーズバーガーが大好きです。",
+    "母の作るハンバーグはデミグラスソースが絶品だ。",
+    "昼休みにハンバーガーとポテトを買った。",
+    "このお店のテリヤキバーガーは甘くておいしい。",
+    "I ordered ハンバーグ定食 at the little diner in Kyoto."
+   ],
+   "quiet": [
+    "conn.set_listener(\"testlistener\", testlistener)",
+    "今日の夕食はカレーにしよう。",
+    "駅前に新しいラーメン屋ができた。",
+    "子どもたちはオムライスが大好きです。",
+    "母の作るコロッケはソースが絶品だ。",
+    "昼休みにサンドイッチとポテトを買った。",
+    "I ate a hamburger with fries at the diner in Kyoto.",
+    "Pedí una hamburguesa con queso en el restaurante."
+   ],
+   "confidence": "medium",
+   "notes": "Step-in reader of bonsai1/L32/N1274- (drop 0.22); the label has nothing to do with the feeder's comparative-correlative meaning. Top examples are a mix of split word pieces in many languages (Spanish 'mismos', homoglyph 's', Arabic tanween); the katakana burger words are the only family that fired consistently in probes. Test sentences were written blind by a second author from the label only; the solver's leak texts were placed by that author. Feeders (mcp feeders) were all unlabeled."
+  }
+ ],
+ "predictions": "most burger sentences fire; the -ローグ sentence is borderline; English/Spanish hamburger quiet",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "neighbors",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
