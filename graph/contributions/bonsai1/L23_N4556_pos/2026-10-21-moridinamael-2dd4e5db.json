@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-21-moridinamael-2dd4e5db",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N4556+",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T22:56:49+00:00",
+ "recipe": {
+  "toolchain_commit": "8f9df1f",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L23_N4556_pos/2026-10-21-moridinamael-2dd4e5db.tests.json"
+ },
+ "label": "In English text that defines a network, graph, data structure, map or model, the linking word right after an element noun that says what each element is or stands for ('the nodes are ...', 'each X represents ...', 'every dot stands for ...'). Quiet: the same element nouns described without a mapping (their colour, position or state), symbolism in stories and poems, a person representing a client or country. Elected members representing districts can also light up partly.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L23_N4556_pos/2026-10-21-moridinamael-2dd4e5db.tests.json",
+   "prereg_commit": "8f9df1f",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.547,
+     "peak": " represent"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.552,
+     "peak": " for"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.335,
+     "peak": " for"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.42,
+     "peak": " represents"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.126,
+     "peak": " correspond"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.509,
+     "peak": " represents"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.398,
+     "peak": " individual"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.519,
+     "peak": " for"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.496,
+     "peak": " are"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.022,
+     "peak": " corner"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.167,
+     "peak": " are"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.065,
+     "peak": " are"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.014,
+     "peak": " three"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.012,
+     "peak": " green"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.152,
+     "peak": " for"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.006,
+     "peak": " its"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.906,
+    "median_fire": 0.465,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "8f9df1f",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "short": "what each element of a graph/model is",
+ "unit_kind": "context/semantic",
+ "notes": "Step-out from bonsai1/L25/N10696-. play step hit CUDA OOM (resident stream model holds the GPU), so TARGET is the top feeder by resident attribution (feeders tool), not by ablation drop; no feeds edge recorded. Inverse solver (DE over a bank) found no leak; weaker in French/Spanish, silent in one German probe, senators 'represent' states 0.43. Test sentences written blind by a second author from the label only.",
+ "roles": [
+  "feeds bonsai1/L25/N10696-"
+ ]
+}
