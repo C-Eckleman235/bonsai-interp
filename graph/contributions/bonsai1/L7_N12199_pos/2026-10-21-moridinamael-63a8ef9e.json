@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-21-moridinamael-63a8ef9e",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N12199+",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T10:08:49+00:00",
+ "recipe": {
+  "toolchain_commit": "5d4ae6f",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L7_N12199_pos/2026-10-21-moridinamael-63a8ef9e.tests.json"
+ },
+ "label": "The word piece right after a split-off 'un' prefix in a rare or made-up un-word (the model has to build the word from pieces); strongest in code function names, also in prose and German 'uner-' words. Common one-chunk un-words (unhappy) and other prefixes (dis-, re-) stay dark.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L7_N12199_pos/2026-10-21-moridinamael-63a8ef9e.tests.json",
+   "prereg_commit": "5d4ae6f",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.01,
+     "peak": " un"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.125,
+     "peak": " unregister"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.467,
+     "peak": "flatten"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.08,
+     "peak": "All"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.098,
+     "peak": "map"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.072,
+     "peak": "able"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.28,
+     "peak": "ish"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.585,
+     "peak": "er"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.012,
+     "peak": " request"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.024,
+     "peak": "Listener"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.004,
+     "peak": "Config"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.003,
+     "peak": " valley"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.014,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.061,
+     "peak": " unhappy"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.021,
+     "peak": "haft"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.922,
+    "median_fire": 0.112,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "5d4ae6f",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-out from bonsai1/L26/N4273-. play step hit CUDA OOM (resident stream model holds the GPU), so the feeder was picked as the top MLP cell of the resident attribution feeders tool; no ablation drop available, so no feeds-edge weight is claimed. globalMOO inverse search found no leak (near-miss ceiling 0.02).",
+ "roles": [
+  "feeds bonsai1/L26/N4273-"
+ ]
+}
