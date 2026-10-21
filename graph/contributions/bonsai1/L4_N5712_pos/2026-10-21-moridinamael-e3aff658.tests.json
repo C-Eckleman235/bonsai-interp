@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-21-moridinamael-e3aff658",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N5712+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T23:39:35+00:00",
+ "neighbours": [
+  {
+   "unit": "L4/N5712",
+   "pole": "+",
+   "label": "two families: (1) node/edge/vertex words in Python graph-library code after a graph object is created (networkx or igraph calls such as adding nodes or edges, counting nodes); the same calls on a tree, JavaScript camelCase graph code and graphviz node() stay quiet; (2) the words 'overt' and 'covert' (also covertly, upper-case OVERT) and surnames ending in '-ertz'; not convert, divert, concert, expert, overtime, or lymph/cluster nodes",
+   "fire": [
+    "G = nx.Graph()\nG.add_node(1)\nG.add_edge(1, 2)",
+    "import networkx as nx\nG = nx.DiGraph()\nG.add_edges_from([(0, 1), (1, 2)])\nprint(G.number_of_nodes())",
+    "g = igraph.Graph()\ng.add_vertices(5)\ng.add_edges([(0, 1), (2, 3)])",
+    "G = nx.Graph()\nfor u, v in pairs:\n    G.add_edge(u, v, weight=1.0)\nprint(len(G.nodes))",
+    "g = ig.Graph(directed=True)\nprint(g.vcount(), g.ecount())\nfor v in g.vs:\n    print(v.index)",
+    "The agency ran both overt and covert operations during the war.",
+    "She covertly slipped the note under the door while the guard looked away.",
+    "His hostility was never overt, but everyone in the room could feel it."
+   ],
+   "quiet": [
+    "WILL OVERTAKE TREES OR SHRUBS NEARBY, PL",
+    "The overture opened the second act of the opera.",
+    "tree = Tree()\ntree.add_child(1)\ntree.add_child(2)",
+    "const graph = new Graph();\ngraph.addNode('a');\ngraph.addEdge('a', 'b');",
+    "dot = graphviz.Digraph()\ndot.node('A', 'Start')\ndot.node('B', 'End')",
+    "data = []\nfor u, v in pairs:\n    data.append((u, v, 1.0))\nprint(len(data))",
+    "The surgeon removed two swollen lymph nodes from the patient's neck.",
+    "The agency ran both public and secret operations during the war."
+   ],
+   "roles": ["feeds bonsai1/L10/N10791+"]
+  }
+ ],
+ "predictions": "6/8 fire (the igraph vcount item may stay low); the OVERTAKE near miss was a known solver leak at ~0.56, so 1 near miss above 0.30",
+ "unit_kind": "polysemantic: graph-code node/edge tokens plus an 'ert'-piece spelling echo",
+ "notes": "Step-out from bonsai1/L10/N10791+. play step OOMed (resident model holds the GPU), so the feeder was chosen from resident attribution (chat feeders tool); no ablation drop measured. Blind test: sentences written by a second author who saw only the label.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "step-out"
+  ]
+ }
+}
