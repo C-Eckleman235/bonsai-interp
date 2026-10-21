@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-21-moridinamael-8a04fcfa",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N5837-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T08:33:04+00:00",
+ "roles": ["feeds bonsai1/L20/N1068+"],
+ "neighbours": [
+  {
+   "unit": "L8/N5837",
+   "pole": "-",
+   "label": "a person or pronoun right after a conjugated 'have' (has/have/had/'ve got), whatever 'have' means, strongest when a state or action follows (has you covered, had me remove); weak after infinitive 'to have', after other verbs (made, let, saw, keep), and for things after 'have'",
+   "short": "person/pronoun right after conjugated 'have'",
+   "fire": [
+    "Don't worry about the snacks, this new insurance plan has you covered for everything.",
+    "She has him wrapped around her little finger.",
+    "My manager had us rewrite the entire report before Friday.",
+    "That movie really had me crying by the end.",
+    "We've got you scheduled for the early shift tomorrow.",
+    "The teacher has them reading two chapters every night.",
+    "He had her sign the papers in front of a witness.",
+    "This weather has everyone staying indoors."
+   ],
+   "quiet": [
+    "Don't worry about the snacks, this new insurance plan covers everything for you.",
+    "The coach made me run five extra laps after practice.",
+    "She keeps him wrapped around her little finger.",
+    "My manager wants to have us rewrite the entire report before Friday.",
+    "That movie really made me cry by the end.",
+    "We've got a schedule for the early shift tomorrow.",
+    "The teacher lets them read two chapters every night.",
+    "He saw her sign the papers in front of a witness."
+   ],
+   "unit_kind": "token-in-context",
+   "notes": "Test written blind by a second author from the label only. Feeder found with the resident attribution tool (play step hit CUDA OOM on a shared GPU), so no feeds edge with an ablation drop is recorded. + pole: 'any' after 'have' in questions (have you got any questions), the other side of what follows 'have'."
+  }
+ ],
+ "predictions": "most fires above 0.3; the 'keeps him wrapped around' near miss is the risk",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "blind-room",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
