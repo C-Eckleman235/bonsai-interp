@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-21-moridinamael-fdb42095",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L22/N7170-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T18:48:43+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "In code (Python, JavaScript, Java, C++ and similar), a list or array being started, typed or grown: strongest for an empty list literal or empty list constructor that is about to be filled, a List/ArrayList/vector type or type hint, or adding one item to the end of it (append, push); a list literal that already holds items fires more weakly, and so does technical prose saying something returns a list or array. Dicts, sets, tuples, plain numbers and 'list' in everyday prose stay quiet; a variable only named with 'list' can fire weakly."
+ },
+ "neighbours": [
+  {
+   "unit": "L22/N7170",
+   "pole": "-",
+   "label": "In code (Python, JavaScript, TypeScript, Java, C++ and similar) and technical prose, a value that is a list or array, whether it is being built or only used: strongest for an empty list or array literal about to be filled and for a list/array type or type hint, but it also fires on adding an item to a list, on expressions or calls that produce a list, on reading, passing or looping over a variable that holds a list (often a plural name), and on prose saying something returns or holds a list or array. The same code with a dict, set, tuple, string or single number or object stays quiet. The word 'list' alone (in everyday prose, or in a variable name whose value is not a list) fires weakly to moderately.",
+   "fire": [
+    "The guest list for the wedding was very long.",
+    "my_list = 5\nprint(my_list)",
+    "results = []\nfor row in rows:\n    results.append(row * 2)",
+    "def get_names(users: list[str]) -> list[str]:\n    return [u.upper() for u in users]",
+    "const items = [];\nitems.push(newItem);",
+    "let scores: number[] = [];\nscores.push(42);",
+    "List<String> names = new ArrayList<>();\nnames.add(\"Alice\");",
+    "std::vector<int> values;\nvalues.push_back(7);"
+   ],
+   "quiet": [
+    "results = {}\nfor row in rows:\n    results[row.id] = row * 2",
+    "def get_name(user: str) -> str:\n    return user.upper()",
+    "const item = {};\nitem.name = newName;",
+    "let score: number = 0;\nscore += 42;",
+    "Map<String, Integer> ages = new HashMap<>();\nages.put(\"Alice\", 30);",
+    "int value = 0;\nvalue += 7;",
+    "with open(filename) as f:\n    print(f.read())",
+    "The function returns the total size of the matching file in bytes."
+   ]
+  }
+ ],
+ "predictions": "6/8 fire (the two plain-'list' items weak), 0-1 near misses at 0.30; blind test written from the label only",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "neighbors",
+   "inverse-de",
+   "blind-room"
+  ]
+ }
+}
