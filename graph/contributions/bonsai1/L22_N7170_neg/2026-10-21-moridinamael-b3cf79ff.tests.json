@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-21-moridinamael-b3cf79ff",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L22/N7170-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T16:21:55+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "In code, a list or array value being made or typed (an empty or filled [] literal, list(), or a List, ArrayList or vector type, in Python, JavaScript, Java or C++), and docs saying a function returns a list; dicts, sets, tuples and plain numbers stay quiet, and so does 'list' in everyday prose."
+ },
+ "neighbours": [
+  {
+   "unit": "L22/N7170",
+   "pole": "-",
+   "label": "In code (Python, JavaScript, Java, C++ and similar), a list or array being made or typed (an empty or filled [] literal, list(), or a List, ArrayList, Array or vector type or type hint) or grown by adding an item to it (append, push), plus technical text saying something returns a list. Removing items (pop), dicts, sets, tuples and plain numbers stay quiet, and so does 'list' in everyday prose; a variable that is only named with 'list' can fire weakly.",
+   "fire": [
+    "results = []\nfor x in data:\n    results.append(x * 2)",
+    "const items = [1, 2, 3];\nitems.push(4);",
+    "List<String> names = new ArrayList<>();\nnames.add(\"Ana\");",
+    "std::vector<int> scores;\nscores.push_back(42);",
+    "def get_ids(rows) -> list[int]:\n    return [r.id for r in rows]",
+    "The function returns a list of all matching file paths.",
+    "buffer = list()\nbuffer.append(line.strip())",
+    "let queue: Array<number> = [];\nqueue.push(job.id);"
+   ],
+   "quiet": [
+    "The guest list for the wedding was very long.",
+    "my_list = 5\nprint(my_list)",
+    "results = {}\nfor x in data:\n    results[x] = x * 2",
+    "const total = 1 + 2 + 3;\nconsole.log(total);",
+    "Map<String, Integer> ages = new HashMap<>();\nages.put(\"Ana\", 30);",
+    "int score = 0;\nscore += 42;",
+    "def get_count(rows) -> int:\n    return len(rows)",
+    "The function returns the number of matching file paths."
+   ]
+  }
+ ],
+ "predictions": "Blind test written from the label only (second author, claude-opus-5-5). Expect most fire items at 0.4+; the solver's name leak (my_list = 5) and the prose guest list are the riskiest near misses, around 0.2-0.3.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "neighbors",
+   "inverse-de",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
