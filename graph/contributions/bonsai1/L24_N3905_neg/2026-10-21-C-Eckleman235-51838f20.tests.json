@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-C-Eckleman235-51838f20",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N3905-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T19:30:07+00:00",
+ "selection": "concept search: years and periods (branch 14), the other pole of bonsai1/L24/N3905+",
+ "neighbours": [
+  {
+   "unit": "L24/N3905",
+   "pole": "-",
+   "label": "a year of the 1950s written in digits (19|5|x), peaking on the decade digit '5'; the neighbouring 1940s (this neuron's other pole), other centuries and other decades stay quiet",
+   "fire": [
+    "The old schoolhouse was built in 1951.",
+    "Our family Bible records a wedding in 1954.",
+    "The town's first bank opened in 1956.",
+    "A tornado tore through the county in 1958.",
+    "The covered bridge was replaced in 1953.",
+    "The orchard was planted in 1957.",
+    "The first doctor arrived in town in 1952.",
+    "Most of the furniture in the attic dates from the 1950s."
+   ],
+   "quiet": [
+    "The old schoolhouse was built in 1851.",
+    "Our family Bible records a wedding in 1944.",
+    "The town's first bank opened in 1756.",
+    "A tornado tore through the county in 1968.",
+    "The covered bridge was replaced in 1853.",
+    "The orchard was planted in 1987.",
+    "The first doctor arrived in town in 1925.",
+    "Most of the furniture in the attic dates from the 1850s."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire; near misses under 0.05, including 1944 (the + pole's decade)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "the 1950s (in digits)",
+ "unit_kind": "token/lexical",
+ "confidence": 0.65,
+ "notes": "The other pole of bonsai1/L24/N3905+ (the 1940s, held in #379). Card: peak token '5' x32 of the top 32 (word hits '5' cov 99%). Probes (exploratory, run on a separate Kaggle T4, so this checkout's probe log does not hold them; none is reused): a sweep of every fifth year 1600-2020 read >= 0.3 only on 1950 and 1955, and < 0.15 everywhere else, while the + pole read only 1940 and 1945; the − pole stays at <= 0.02 on 1943 in every context. So one neuron holds two neighbouring decades, one per pole. Scoring runs on a Colab T4."
+}
