@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-20-moridinamael-693b264b",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N5699-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T02:15:12+00:00",
+ "roles": ["reads bonsai1/L33/N8029-"],
+ "neighbours": [
+  {
+   "unit": "L35/N5699",
+   "pole": "-",
+   "label": "the Russian adjective иностранный 'foreign' in the forms иностранный / иностранные / иностранных, mid-sentence in Russian prose (peaks on its middle piece 'стр'); not the forms иностранную / иностранному, the noun иностранец, or synonyms like зарубежный",
+   "short": "Russian 'foreign' (иностранн-ый/-ые/-ых)",
+   "confidence": "low",
+   "notes": "Weak, dense pole (max 16, 17% of tokens reach 0.1 of max, ~0.11 hum on most text). Its top examples are scattered CJK mid-word spikes (営業, 鉄, 鉛) that did not generalise in probes; the Russian 'стр' piece of иностранн- was the one island that held in fresh frames. Sentences written blind by a second author from the label only; the solver's leak (Japanese 営業 top line) is placed among the near misses. Reader of L33/N8029- by step --down, drop -0.01: unrelated to the feeder's constant-name label.",
+   "fire": [
+    "Многие иностранные студенты приезжают в Казань учиться на инженеров.",
+    "В библиотеке есть отдельный зал, где хранятся иностранные журналы прошлого века.",
+    "Количество иностранных туристов в городе выросло вдвое за последние пять лет.",
+    "Он долго работал переводчиком и знал три иностранных языка.",
+    "На выставке был представлен иностранный автомобиль редкой модели.",
+    "Компания привлекла иностранный капитал для строительства нового завода.",
+    "В школе ввели второй иностранный язык с пятого класса.",
+    "Правительство обсуждает новые правила для иностранных инвесторов."
+   ],
+   "quiet": [
+    "この商品はご注文から約3〜5営業日程納期をいただきます",
+    "비둘기의 꽁지깃은 보통 12장이지만, 이 품종은 20∼30개나 되고 이것을 부채꼴로 펴는 것이 공작과 닮았다.",
+    "Многие зарубежные студенты приезжают в Казань учиться на инженеров.",
+    "В библиотеке есть отдельный зал, где хранятся старые журналы прошлого века.",
+    "Количество туристов из-за границы в городе выросло вдвое за последние пять лет.",
+    "Он долго работал переводчиком и знал три языка, кроме родного.",
+    "На выставке был представлен иностранцем автомобиль редкой модели.",
+    "Компания привлекла зарубежный капитал для строительства нового завода."
+   ]
+  }
+ ],
+ "predictions": "most fire sentences 0.2-0.5 on 'стр'; the Japanese leak near miss above 0.30, other near misses near the ~0.12 hum",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
