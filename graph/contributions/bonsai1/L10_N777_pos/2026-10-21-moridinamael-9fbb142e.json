@@ -1,0 +1,167 @@
+{
+ "id": "2026-10-21-moridinamael-9fbb142e",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N777+",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T18:54:55+00:00",
+ "recipe": {
+  "toolchain_commit": "5bf2f74",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N777_pos/2026-10-21-moridinamael-9fbb142e.tests.json"
+ },
+ "label": "In test code after at least one earlier code line, a call to an assertion method whose name joins 'assert' to a further word (assert + Contains, assert + NumQueries, assert_called_with style), strongest on that added word. Plain assertEqual or bare assert statements are weaker. Not other method calls, prints or hand-written if/raise checks, and not the words 'assert' or 'contains' in prose.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L10_N777_pos/2026-10-21-moridinamael-9fbb142e.tests.json",
+   "prereg_commit": "5bf2f74",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 5,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.666,
+     "peak": "Contains"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.728,
+     "peak": "Queries"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.448,
+     "peak": " ANY"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.203,
+     "peak": ".assertIn"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.528,
+     "peak": ".assertAlmostEqual"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.449,
+     "peak": ".assert"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.282,
+     "peak": ".assertIs"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.294,
+     "peak": ".assertRaises"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.112,
+     "peak": " response"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.048,
+     "peak": "with"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.252,
+     "peak": "(mock"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.016,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.037,
+     "peak": " round"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.05,
+     "peak": "_mock"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.4,
+     "peak": " assert"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.011,
+     "peak": "())"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.449,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "5bf2f74",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L11/N11348-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L10/N777+",
+   "to": "bonsai1/L11/N11348-",
+   "kind": "feeds",
+   "weight": 0.21,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
