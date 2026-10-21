@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-21-moridinamael-d9de37a1",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L16/N9455+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T13:04:36+00:00",
+ "neighbours": [
+  {
+   "unit": "L16/N9455",
+   "pole": "+",
+   "label": "In Python code, the empty-list literal [] used as a fallback or starting value (after 'or', as the default of a get/pop lookup, or assigned to an attribute in a constructor); the same slot holding {}, set(), a number, None or a filled list stays quiet.",
+   "fire": [
+    "items = response.get(\"items\", [])",
+    "tags = user_tags or []",
+    "self.children = []",
+    "names = config.pop(\"names\", [])",
+    "def __init__(self):\n        self.history = []",
+    "results = cache.get(key) or []",
+    "for row in data.get(\"rows\", []):\n    print(row)",
+    "self._listeners = []\nself._name = name"
+   ],
+   "quiet": [
+    "items = response.get(\"items\", {})",
+    "tags = user_tags or set()",
+    "self.children = None",
+    "names = config.pop(\"names\", None)",
+    "def __init__(self):\n        self.history = {}",
+    "results = cache.get(key) or 0",
+    "for row in data.get(\"rows\", [1, 2, 3]):\n    print(row)",
+    "self._listeners = set()\nself._name = name"
+   ]
+  }
+ ],
+ "roles": ["feeds bonsai1/L22/N7170-"],
+ "predictions": "Near misses stay low (dict/set/None twins probed ~0.02); risk is the 0.20 median, since short context-free one-liners scored lower than class/function-framed probes.",
+ "notes": "Blind test: sentences written by a second author who saw only the label. TARGET chosen as the top MLP feeder of bonsai1/L22/N7170- by resident attribution (chat feeders tool) because play step hit CUDA OOM; no ablation drop was measured, so no feeds edge is recorded.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "blind-room",
+   "step-out"
+  ]
+ }
+}
