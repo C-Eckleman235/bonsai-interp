@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-21-moridinamael-750cccff",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N2424-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T19:48:08+00:00",
+ "neighbours": [
+  {
+   "unit": "L6/N2424",
+   "pole": "-",
+   "label": "In code, a variable being set to a blank starting value: an empty container (empty brackets or braces, or a constructor that builds an empty collection), 0, an empty string, None or False; it peaks at the end of that assignment line or the indent after it. Assignments of real values (a nonzero number, a function result, another variable, a filled literal), empty literals that are returned, compared or printed rather than assigned, and prose about zero or emptiness stay quiet.",
+   "short": "variable initialised to a blank start (empty container, 0, '', None, False)",
+   "fire": [
+    "results = []\nfor item in data:",
+    "counts = {}\nfor word in words:\n    counts[word] = counts.get(word, 0) + 1",
+    "total = 0\nfor price in prices:\n    total += price",
+    "buffer = \"\"\nwhile True:\n    chunk = stream.read()",
+    "self.cache = None\nself.ready = False",
+    "found = False\nfor row in grid:",
+    "seen = set()\nqueue = deque()",
+    "let items = [];\nfor (const x of xs) {"
+   ],
+   "quiet": [
+    "results = load_results(path)\nfor item in data:",
+    "counts = {'a': 1, 'b': 2}\nfor word in words:",
+    "total = 42\nfor price in prices:\n    total += price",
+    "buffer = header\nwhile True:\n    chunk = stream.read()",
+    "self.cache = build_cache(config)\nself.ready = True",
+    "if not found:\n    return []",
+    "seen = set(initial_nodes)\nqueue = deque(start)",
+    "let items = getItems();\nfor (const x of xs) {"
+   ],
+   "confidence": "medium",
+   "notes": "Test sentences written blind by a second author from the label only. Feeder chosen from resident attribution ranking (rank 2; rank 1 L18/N8682- already mapped) because play step OOM'd on the shared GPU; no ablation drop measured, so no feeds edge. Inverse solver (differential evolution) found no leak; near-miss ceiling 0.21."
+  }
+ ],
+ "roles": ["feeds bonsai1/L19/N2494-"],
+ "predictions": "fire items 0.3-0.6 (trigger-first lines may be a bit weaker); quiet items below 0.2",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "step-out"
+  ]
+ }
+}
