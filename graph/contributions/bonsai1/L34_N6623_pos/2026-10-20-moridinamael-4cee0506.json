@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-20-moridinamael-4cee0506",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N6623+",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T04:16:15+00:00",
+ "recipe": {
+  "toolchain_commit": "0d78917",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N6623_pos/2026-10-20-moridinamael-4cee0506.tests.json"
+ },
+ "label": "A word inside a title or term enclosed in Chinese book-title brackets 《…》 or French guillemets « … », before the closing mark (titles of laws, books, newspapers, form sections, quoted coinages); weaker inside English quotation marks, silent for the same words without the marks and inside parentheses. Known leak, not claimed: plain Chinese prose without brackets can reach about 0.3 on the sentence-final 。.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N6623_pos/2026-10-20-moridinamael-4cee0506.tests.json",
+   "prereg_commit": "0d78917",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.49,
+     "peak": "红楼梦"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.303,
+     "peak": "。"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.102,
+     "peak": "这篇"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.204,
+     "peak": "一"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.337,
+     "peak": " «"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.254,
+     "peak": " «"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.321,
+     "peak": " «"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.27,
+     "peak": " «"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.211,
+     "peak": "/>."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.238,
+     "peak": "。"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.264,
+     "peak": "他"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.28,
+     "peak": "订"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.101,
+     "peak": "这篇"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.248,
+     "peak": "一"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.03,
+     "peak": "Il"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.048,
+     "peak": " Le"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.797,
+    "median_fire": 0.286,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "0d78917",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L31/N3680-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L31/N3680-", "to": "bonsai1/L34/N6623+", "kind": "feeds", "weight": 0.03, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
