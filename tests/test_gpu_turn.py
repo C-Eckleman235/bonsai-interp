@@ -1,4 +1,5 @@
-"""gpu_turn: a background yields to a foreground within one batch, and never computes while it holds the GPU."""
+"""gpu_turn: one queue, one holder. A background yields to the stream within one batch; foregrounds of different
+processes never overlap; a dead holder's lock is freed by the OS."""
 import os
 import subprocess
 import sys
@@ -15,9 +16,9 @@ log = open(sys.argv[1], "a")
 end = time.time() + float(sys.argv[2])
 while time.time() < end:
     gpu_turn.background_tick("test")
-    log.write(f"B {time.time():.4f} start\n"); log.flush()
+    log.write(f"B {time.time():.4f} start" + chr(10)); log.flush()
     time.sleep(0.2)                       # one 'batch'
-    log.write(f"B {time.time():.4f} end\n"); log.flush()
+    log.write(f"B {time.time():.4f} end" + chr(10)); log.flush()
 gpu_turn.release()
 """
 
@@ -25,83 +26,95 @@ FG = r"""
 import sys, time
 from bonsai_interp import gpu_turn
 log = open(sys.argv[1], "a")
-for _ in range(3):
-    time.sleep(0.5)
+who, n, hold = sys.argv[2], int(sys.argv[3]), float(sys.argv[4])
+for _ in range(n):
+    time.sleep(0.05)
     t = time.time()
-    with gpu_turn.foreground("test"):
-        log.write(f"F {time.time():.4f} start wait={time.time() - t:.3f}\n"); log.flush()
-        time.sleep(0.4)
-        log.write(f"F {time.time():.4f} end\n"); log.flush()
+    with gpu_turn.turn(who):
+        log.write(f"{who} {time.time():.4f} start wait={time.time() - t:.3f}" + chr(10)); log.flush()
+        time.sleep(hold)
+        log.write(f"{who} {time.time():.4f} end" + chr(10)); log.flush()
+"""
+
+HOLD_AND_DIE = r"""
+import os, sys, time
+from bonsai_interp import gpu_turn
+cm = gpu_turn.turn("doomed"); cm.__enter__()
+open(sys.argv[1], "w").write("held")
+time.sleep(30)
 """
 
 
-def test_turns():
+def _env(d):
+    return {**os.environ, "BONSAI_GPU_TURN": str(Path(d) / "turn"), "BONSAI_DEVICE": "cpu", "PYTHONPATH": str(ROOT)}
+
+
+def _spans(lines, who):
+    out, cur = [], None
+    for e in lines:
+        if e[0] != who:
+            continue
+        if e[2] == "start":
+            cur = float(e[1])
+        elif cur is not None:
+            out.append((cur, float(e[1])))
+            cur = None
+    return out
+
+
+def _disjoint(a, b):
+    for a0, a1 in a:
+        for b0, b1 in b:
+            assert a1 <= b0 + 1e-3 or b1 <= a0 + 1e-3, (a0, a1, b0, b1)
+
+
+def test_stream_vs_batch():
     with tempfile.TemporaryDirectory() as d:
-        env = {**os.environ, "BONSAI_GPU_TURN": str(Path(d) / "turn"), "BONSAI_DEVICE": "cpu", "PYTHONPATH": str(ROOT)}
         log = Path(d) / "log.txt"
-        bg = subprocess.Popen([sys.executable, "-c", BG, str(log), "4"], env=env)
+        bg = subprocess.Popen([sys.executable, "-c", BG, str(log), "4"], env=_env(d))
         time.sleep(1.0)
-        fg = subprocess.run([sys.executable, "-c", FG, str(log)], env=env, timeout=60)
+        fg = subprocess.run([sys.executable, "-c", FG, str(log), "F", "3", "0.4"], env=_env(d), timeout=60)
         bg.wait(timeout=60)
         assert fg.returncode == 0 and bg.returncode == 0
         ev = [l.split() for l in log.read_text().splitlines()]
-        # intervals of each side; no background interval may overlap a foreground interval
-        def spans(who):
-            out, cur = [], None
-            for e in ev:
-                if e[0] != who:
-                    continue
-                if e[2] == "start":
-                    cur = float(e[1])
-                elif cur is not None:
-                    out.append((cur, float(e[1])))
-                    cur = None
-            return out
-        F, B = spans("F"), spans("B")
+        F, B = _spans(ev, "F"), _spans(ev, "B")
         assert len(F) == 3 and len(B) > 5
-        for a0, a1 in F:
-            for b0, b1 in B:
-                assert b1 <= a0 + 1e-3 or b0 >= a1 - 1e-3, (a0, a1, b0, b1)
+        _disjoint(F, B)
         waits = [float(e[3].split("=")[1]) for e in ev if e[0] == "F" and e[2] == "start"]
         assert max(waits) < 0.6, waits  # at most about one background batch
 
 
-FG2 = r"""
-import sys, time
-from bonsai_interp import gpu_turn
-log = open(sys.argv[1], "a")
-for _ in range(4):
-    with gpu_turn.foreground(sys.argv[2]):
-        log.write(f"{sys.argv[2]} {time.time():.4f} start" + chr(10)); log.flush()
-        time.sleep(0.15)
-        log.write(f"{sys.argv[2]} {time.time():.4f} end" + chr(10)); log.flush()
-    time.sleep(0.02)
-"""
-
-
 def test_foregrounds_exclusive():
     with tempfile.TemporaryDirectory() as d:
-        env = {**os.environ, "BONSAI_GPU_TURN": str(Path(d) / "turn"), "BONSAI_DEVICE": "cpu", "PYTHONPATH": str(ROOT)}
         log = Path(d) / "log.txt"
-        a = subprocess.Popen([sys.executable, "-c", FG2, str(log), "A"], env=env)
-        b = subprocess.Popen([sys.executable, "-c", FG2, str(log), "B"], env=env)
+        a = subprocess.Popen([sys.executable, "-c", FG, str(log), "A", "5", "0.12"], env=_env(d))
+        b = subprocess.Popen([sys.executable, "-c", FG, str(log), "S", "5", "0.12"], env=_env(d))
         assert a.wait(timeout=60) == 0 and b.wait(timeout=60) == 0
         ev = [l.split() for l in log.read_text().splitlines()]
-        spans = {w: [] for w in "AB"}
-        cur = {}
-        for who, t, kind in ev:
-            if kind == "start":
-                cur[who] = float(t)
-            else:
-                spans[who].append((cur.pop(who), float(t)))
-        assert len(spans["A"]) == 4 and len(spans["B"]) == 4
-        for a0, a1 in spans["A"]:
-            for b0, b1 in spans["B"]:
-                assert a1 <= b0 + 1e-3 or b1 <= a0 + 1e-3, (a0, a1, b0, b1)
-        assert not (Path(d) / "turn" / "fg.lock").exists()
+        A, S = _spans(ev, "A"), _spans(ev, "S")
+        assert len(A) == 5 and len(S) == 5
+        _disjoint(A, S)
+        assert not list((Path(d) / "turn").glob("ticket-*"))
+
+
+def test_dead_holder_frees_the_gpu():
+    with tempfile.TemporaryDirectory() as d:
+        flag = Path(d) / "held.txt"
+        p = subprocess.Popen([sys.executable, "-c", HOLD_AND_DIE, str(flag)], env=_env(d))
+        for _ in range(200):
+            if flag.exists():
+                break
+            time.sleep(0.05)
+        p.kill()
+        p.wait(timeout=10)
+        log = Path(d) / "log.txt"
+        t = time.time()
+        r = subprocess.run([sys.executable, "-c", FG, str(log), "N", "1", "0.01"], env=_env(d), timeout=60)
+        assert r.returncode == 0 and time.time() - t < 20
 
 
 if __name__ == "__main__":
-    test_turns()
+    test_stream_vs_batch()
     test_foregrounds_exclusive()
+    test_dead_holder_frees_the_gpu()
     print("ok")
