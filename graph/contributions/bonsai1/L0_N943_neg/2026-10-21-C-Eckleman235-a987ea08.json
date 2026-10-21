@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-C-Eckleman235-a987ea08",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N943-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-21T20:22:12+00:00",
+ "recipe": {
+  "toolchain_commit": "994b620",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N943_neg/2026-10-21-C-Eckleman235-a987ea08.tests.json"
+ },
+ "label": "the second ' as' of 'as well as' (meaning 'and also'); other uses of 'as' (as tall as, as soon as, as a warning, such as) and the additive 'too' stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N943_neg/2026-10-21-C-Eckleman235-a987ea08.tests.json",
+   "prereg_commit": "994b620",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.609,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.523,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.568,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.642,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.643,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.555,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.531,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.611,
+     "peak": " as"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.012,
+     "peak": " sculpture"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.009,
+     "peak": " his"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.035,
+     "peak": " as"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.014,
+     "peak": " covers"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.068,
+     "peak": " with"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.033,
+     "peak": " as"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.022,
+     "peak": " sells"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.016,
+     "peak": " visited"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.589,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "994b620",
+  "minutes": 6,
+  "batch_size": 1
+ },
+ "short": "'as well as'",
+ "unit_kind": "lexical",
+ "confidence": 0.65,
+ "notes": "The other pole of bonsai1/L0/N943+ (held: the token ' too' in either sense, excess or additive), found by carding the unrecorded opposite pole of every held pole. Card: peak token ' as' x32, all in 'as well as'. Probes (exploratory, run on a separate Kaggle T4, so this checkout's probe log does not hold them; none is reused): 'French as well as Spanish' 0.54, 'costs as well as benefits' 0.55; 'as tall as' 0.004, 'As I walked home' 0.07, 'treat this as a warning' 0.01, 'me too' 0.01, 'too hot' 0.01, 'both apples and pears' 0.02. So one layer-0 neuron holds 'too' on one pole and 'as well as' on the other: two ways of saying 'also'. Scoring runs on a Kaggle T4.",
+ "selection": "the other pole of bonsai1/L0/N943+ (opposite-pole card sweep)"
+}
