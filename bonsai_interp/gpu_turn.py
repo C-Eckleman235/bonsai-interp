@@ -28,7 +28,7 @@ Kept for existing callers:
 - `release()`: drops the background's turn.
 
 The directory is shared by every checkout on the machine: BONSAI_GPU_TURN (environment or .env), else
-%LOCALAPPDATA%/bonsai-gpu-turn on Windows and ~/.cache/bonsai-gpu-turn elsewhere.
+%USERPROFILE%/bonsai-gpu-turn on Windows (never AppData: see _dir) and ~/.cache/bonsai-gpu-turn elsewhere.
 """
 import json
 import os
@@ -57,7 +57,10 @@ def _dir():
     if d:
         p = Path(d)
     elif sys.platform == "win32":
-        p = Path(os.environ.get("LOCALAPPDATA", Path.home())) / "bonsai-gpu-turn"
+        # NOT under AppData: processes started inside an MSIX-packaged app (e.g. the Claude desktop app) get AppData
+        # writes redirected to a private copy, so their tickets and lock were invisible to everyone outside the
+        # package (2026-10-20). The user profile root is not redirected; a lock there excludes across the boundary.
+        p = Path(os.environ.get("USERPROFILE", Path.home())) / "bonsai-gpu-turn"
     else:
         p = Path.home() / ".cache" / "bonsai-gpu-turn"
     p.mkdir(parents=True, exist_ok=True)
