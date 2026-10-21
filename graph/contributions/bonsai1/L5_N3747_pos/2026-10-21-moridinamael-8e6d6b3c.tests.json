@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-21-moridinamael-8e6d6b3c",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N3747+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T20:04:05+00:00",
+ "roles": ["feeds bonsai1/L6/N2424-"],
+ "neighbours": [
+  {
+   "unit": "L5/N3747",
+   "pole": "+",
+   "label": "An empty pair of quotes or brackets with nothing between them ('' or \"\" or [] or {}, () used as a value, or an empty tag like <b></b>), in code or written out in prose, in any role (assigned, passed, returned, compared); it peaks on the closing mark. Empty constructor calls like list() or set() are weaker; ordinary calls like close(), None, 0, False, a string holding a space, filled literals and prose that only talks about emptiness stay quiet.",
+   "short": "an empty quote or bracket pair ('' [] {} <b></b>)",
+   "fire": [
+    "Set the default to \"\" so the field starts blank.",
+    "if name == '':\n    raise ValueError(\"missing name\")",
+    "return ()",
+    "She typed <b></b> by mistake, leaving the bold tag with nothing inside.",
+    "The function call process(items=[]) uses a mutable default argument.",
+    "In JavaScript, const options = {}; is a common way to start an object.",
+    "He wrote the empty string as '' in his notes and moved on.",
+    "while stack != []:\n    stack.pop()"
+   ],
+   "quiet": [
+    "result = None",
+    "Set the default to \" \" so the field starts with a space.",
+    "if name is None:\n    raise ValueError(\"missing name\")",
+    "return 0",
+    "She typed <b>Note</b> to make the heading bold.",
+    "The function call process(items=[1, 2]) passes two values.",
+    "In JavaScript, const options = {verbose: true}; turns on logging.",
+    "He wrote the empty string down in his notes and moved on."
+   ],
+   "confidence": "medium",
+   "notes": "Blind test: sentences written by a second author who saw only the label. Feeder found by resident attribution (play step hit CUDA OOM), so no ablation edge weight."
+  }
+ ],
+ "predictions": "7/8 fire; the space string near miss is the riskiest quiet item",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "step-out",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
