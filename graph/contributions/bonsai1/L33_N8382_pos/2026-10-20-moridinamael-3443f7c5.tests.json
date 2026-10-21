@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-20-moridinamael-3443f7c5",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N8382+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T02:45:36+00:00",
+ "roles": ["reads bonsai1/L31/N9350+"],
+ "neighbours": [
+  {
+   "unit": "L33/N8382",
+   "pole": "+",
+   "label": "the ' import' keyword in a Python 'from twisted.<module> import <name>' line of the Twisted networking library, written as a code line after at least one earlier line of code or comment (not the first line of the text, not quoted inside a prose sentence); from-imports of other libraries (asyncio, tornado, collections, requests) and plain 'import twisted' stay low",
+   "short": "' import' in a 'from twisted... import' code line",
+   "confidence": 0.75,
+   "notes": "Step-in reader of bonsai1/L31/N9350+ (drop 0.12); label unrelated to the feeder's unicode-escape hex. Feeders-first: top feeders are 'twisted'/'Internet' word cells (L2/N515+, L3/N8877-, L6/N1253+) and L29/N933+ (' twisted', 'Doctor Who'). Weaker side families in tops: clarifying 'I (do not) mean', ' at' before a university. Test written blind (label-only author).",
+   "fire": [
+    "# server setup\nfrom twisted.internet import reactor",
+    "import sys\nfrom twisted.web import server, resource",
+    "#!/usr/bin/env python\nfrom twisted.python import log",
+    "import os\nimport json\nfrom twisted.internet.protocol import Factory, Protocol",
+    "# -*- coding: utf-8 -*-\nfrom twisted.trial import unittest",
+    "from __future__ import print_function\nfrom twisted.internet import defer",
+    "import logging\nfrom twisted.application import service, internet\nlogging.basicConfig()",
+    "\"\"\"Simple echo client.\"\"\"\nfrom twisted.internet.endpoints import TCP4ClientEndpoint"
+   ],
+   "quiet": [
+    "# server setup\nfrom asyncio import get_event_loop",
+    "import sys\nfrom tornado.web import Application, RequestHandler",
+    "#!/usr/bin/env python\nfrom collections import defaultdict",
+    "import os\nimport json\nfrom requests.adapters import HTTPAdapter",
+    "# -*- coding: utf-8 -*-\nimport twisted",
+    "from __future__ import print_function\nfrom tornado import gen",
+    "import logging\nfrom asyncio import Protocol, Future\nlogging.basicConfig()",
+    "\"\"\"Simple echo client.\"\"\"\nimport twisted.internet"
+   ]
+  }
+ ],
+ "predictions": "most twisted from-imports fire (twisted.trial may be weakest); near misses stay low",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "neighbors",
+   "probe",
+   "inverse-gmoo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
