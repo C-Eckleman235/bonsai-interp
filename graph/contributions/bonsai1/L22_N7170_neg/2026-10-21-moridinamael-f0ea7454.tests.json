@@ -1,0 +1,70 @@
+{
+ "contribution": "2026-10-21-moridinamael-f0ea7454",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L22/N7170-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T19:15:26+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "In code (Python, JavaScript, TypeScript, Java, C++ and similar) and technical prose, a value that is a list or array, whether it is being built or only used: strongest for an empty list or array literal about to be filled and for a list/array type or type hint, but it also fires on adding an item to a list, on expressions or calls that produce a list, on reading, passing or looping over a variable that holds a list (often a plural name), and on prose saying something returns or holds a list or array. The same code with a dict, set, tuple, string or single number or object stays quiet. The word 'list' alone (in everyday prose, or in a variable name whose value is not a list) fires weakly to moderately."
+ },
+ "neighbours": [
+  {
+   "unit": "L22/N7170",
+   "pole": "-",
+   "label": "In code (Python, JavaScript/TypeScript, Java, C++ and similar) and technical prose, a list or array value being created, declared or grown: strongest for an empty list or array literal about to be filled, a list or array type or type hint, a list-producing constructor, and appending or pushing an item onto a list; prose stating that something returns or holds a list or array also fires. Merely reading an existing list (indexing one element, taking its length, passing it along) stays weak, and looping over it is moderate. The same code with a dict, map, set, tuple or NumPy array stays quiet, and the word 'list' with no list value behind it (everyday prose, or a variable named like a list that holds something else) fires only weakly.",
+   "fire": [
+    "results = []\nfor row in rows:\n    results.append(row.id)",
+    "const queue = [];\nqueue.push(task);",
+    "def get_names(users: list[str]) -> list[str]:",
+    "List<Integer> scores = new ArrayList<>();\nscores.add(42);",
+    "std::vector<int> ids;\nids.push_back(7);",
+    "items = list(range(10))",
+    "The function returns a list of all matching file paths.",
+    "let buffer: string[] = [];"
+   ],
+   "quiet": [
+    "The guest list for the wedding was very long.",
+    "my_list = 5\nprint(my_list)",
+    "results = {}\nfor row in rows:\n    results[row.id] = row",
+    "const queue = new Map();\nqueue.set(id, task);",
+    "def get_names(users: dict[str, int]) -> set[str]:",
+    "Map<String, Integer> scores = new HashMap<>();\nscores.put(\"a\", 42);",
+    "std::map<int, int> ids;\nids[7] = 1;",
+    "items = np.zeros(10)"
+   ]
+  }
+ ],
+ "predictions": "Blind label-only test. Expect most fire items above 0.3; risk is the dict-hinted plural parameter, since a plural parameter name fired before its type in probes.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "blind-room",
+   "quick-test"
+  ],
+  "_screens_vocabulary": [
+   "atlas",
+   "bands",
+   "bank-solo",
+   "blind-room",
+   "card",
+   "disproof",
+   "held-out",
+   "induce",
+   "inverse-de",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round",
+   "step-down",
+   "step-out",
+   "which"
+  ]
+ }
+}
