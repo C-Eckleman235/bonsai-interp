@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-21-moridinamael-186b4d85",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N8697+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T14:39:13+00:00",
+ "neighbours": [
+  {
+   "unit": "L29/N8697",
+   "pole": "+",
+   "label": "In code, the start of a multi-piece variable name (snake_case, two or more parts) being typed again when that same name already appeared three or more times earlier in the snippet; one-piece names and a name's first uses stay quiet",
+   "fire": [
+    "total_count = 0; total_count += 1; print(total_count); total_count = total_count * 2",
+    "user_name = input(); user_name = user_name.strip(); if user_name: print(user_name.upper())",
+    "max_retry_count = 5\nif attempts < max_retry_count: log(max_retry_count)\nwhile max_retry_count > 0: max_retry_count -= 1",
+    "file_path = get_path(); check(file_path); open(file_path); os.remove(file_path)",
+    "let page_size = 20; fetch(page_size); render(page_size); return offset + page_size;",
+    "row_index = 0\nfor cell in rows[row_index]: print(row_index)\nrow_index += 1\nreturn row_index",
+    "def scale(input_value):\n    if input_value < 0: input_value = -input_value\n    return input_value * 2",
+    "learning_rate = 0.01\noptimizer = SGD(lr=learning_rate)\nprint(learning_rate)\nlearning_rate *= 0.9"
+   ],
+   "quiet": [
+    "count = 0; count += 1; print(count); count = count * 2",
+    "name = input(); name = name.strip(); if name: print(name.upper())",
+    "max_retry_count = 5\nif attempts < limit: log(attempts)",
+    "path = get_path(); check(path); open(path); os.remove(path)",
+    "let size = 20; fetch(size); render(size); return offset + size;",
+    "row_index = 0\nfor cell in rows: print(cell)",
+    "def scale(value):\n    if value < 0: value = -value\n    return value * 2",
+    "learning_rate = 0.01\noptimizer = SGD(lr=learning_rate)"
+   ]
+  }
+ ],
+ "roles": ["reads bonsai1/L26/N4273-"],
+ "unit_kind": "code",
+ "confidence": "medium",
+ "notes": "Step-in reader of bonsai1/L26/N4273- (drop 0.52, the largest reader). Feeders-first arm: top feeder L28/N11341+ (unlabeled) fires on the first piece of a reused multi-part name. Probes: reused snake_case names fire once the name has ~3 earlier mentions (0.36-0.39), in line-start and argument slots alike; one-token names (incl. camelCase that tokenizes as one piece) stay ~0.01. Solver (DE): no leak, near-miss ceiling 0.23. Test sentences written blind by a label-only author.",
+ "predictions": "Most fire items above 0.20; one-line semicolon snippets are the risk, since probes used multi-line blocks.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "step-down",
+   "neighbors",
+   "probe",
+   "inverse-de",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
