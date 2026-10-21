@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-20-moridinamael-26ca7f74",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N3884+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T04:21:52+00:00",
+ "neighbours": [
+  {
+   "unit": "L0/N3884",
+   "pole": "+",
+   "label": "the word 'mark' as a word of its own, in any meaning (a sign or stain, a grade, a target, a currency, 'to mark', 'marks' an anniversary, the name Mark), including marks/marked/marking; longer words built on it (marker, markings, bookmark) fire more weakly, and words that merely contain the letters (market, trademark, benchmark, Denmark, Marx) or synonyms without the word (stain, grade, sign, target) stay low",
+   "short": "the word 'mark', any sense",
+   "unit_kind": "token",
+   "roles": ["feeds bonsai1/L3/N10745+"],
+   "fire": [
+    "The coffee left a dark mark on the white tablecloth.",
+    "She got full marks on her chemistry exam.",
+    "His first shot missed the mark by a few inches.",
+    "Before the euro, Germans paid for bread in marks.",
+    "Please mark the boxes that contain fragile items.",
+    "This year marks the fiftieth anniversary of the bridge's opening.",
+    "Mark said he would bring the tent and the camping stove.",
+    "The teacher spent the whole weekend marking essays."
+   ],
+   "quiet": [
+    "The coffee left a dark stain on the white tablecloth.",
+    "She got a perfect grade on her chemistry exam.",
+    "His first shot missed the target by a few inches.",
+    "Before the euro, Germans bought bread at the local market.",
+    "Please label the boxes that contain fragile items.",
+    "This year is the fiftieth anniversary of the bridge's opening.",
+    "Luke said he would bring the tent and the camping stove.",
+    "The teacher spent the whole weekend grading essays."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire, 0 near misses at 0.30 (market the likeliest near miss to rise, ~0.1)",
+ "notes": "Sentences written blind by a second author who saw only the label. Feeder of bonsai1/L3/N10745+ by resident attribution (top MLP cell); the play step ablation hit CUDA OOM, so no feeds edge with a drop is recorded.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "bank-solo",
+   "quick-test"
+  ]
+ }
+}
