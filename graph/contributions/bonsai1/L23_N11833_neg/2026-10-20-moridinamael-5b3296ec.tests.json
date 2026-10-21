@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-20-moridinamael-5b3296ec",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N11833-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T04:48:19+00:00",
+ "roles": ["feeds bonsai1/L25/N7912-"],
+ "neighbours": [
+  {
+   "unit": "L23/N11833",
+   "pole": "-",
+   "label": "In a multi-line code block, a variable name that begins a later (indented) line right before it is updated in place (+=, -=, name[key] = ..., name.append/update/clear(...)); the same name used mid-line, in a comment, in prose, or as the snippet's first line stays weak.",
+   "short": "variable starting a later code line, about to be updated in place",
+   "unit_kind": "context",
+   "confidence": "medium",
+   "notes": "Test sentences written blind by a second author who saw only the label (letsplay stream). Feeder of bonsai1/L25/N7912- by attribution (chat feeders tool); play step ran out of GPU memory, so no ablation drop and no feeds edge recorded. globalMOO inverse found no leak.",
+   "fire": [
+    "def total_price(items):\n    total = 0\n    for item in items:\n        total += item.price\n    return total",
+    "for word in text.split():\n    if word not in counts:\n        counts[word] = 0\n    counts[word] += 1",
+    "results = []\nfor row in rows:\n    if row.valid:\n        results.append(row.id)",
+    "def drain(tank, rate):\n    while tank.level > 0:\n        remaining -= rate\n        tank.level = remaining",
+    "config = load_defaults()\nif args.verbose:\n    config.update({'log_level': 'debug'})\nrun(config)",
+    "function tally(votes) {\n  let score = 0;\n  for (const v of votes) {\n    score -= v.penalty;\n  }\n  return score;\n}",
+    "cache = {}\ndef fetch(key):\n    if key not in cache:\n        cache[key] = download(key)\n    return cache[key]",
+    "seen = set()\nfor node in graph:\n    if node.reset:\n        seen.clear()\n    visit(node)"
+   ],
+   "quiet": [
+    "def total_price(items):\n    total = 0\n    for item in items:\n        print(item.price, total)\n    return total",
+    "for word in text.split():\n    if word not in counts:\n        print('new word')\n    log(counts)",
+    "results = []\nfor row in rows:\n    if row.valid:\n        print(len(results), row.id)",
+    "The variable remaining is decremented by the drain rate each time the loop runs, until the tank is empty.",
+    "config.update({'log_level': 'debug'})\nif args.verbose:\n    print('verbose mode')\nrun()",
+    "function tally(votes) {\n  let score = 0;\n  for (const v of votes) {\n    report(v.penalty, score);\n  }\n}",
+    "cache = {}\ndef fetch(key):\n    # cache[key] is filled on first download\n    return download(key)",
+    "seen = set()\nfor node in graph:\n    if node.reset:\n        print('reset at', node, seen)\n    visit(node)"
+   ]
+  }
+ ],
+ "predictions": "Most fire items above 0.30; near misses near 0.2, with the line-1 assignments the riskiest.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "quick-test"
+  ]
+ }
+}
