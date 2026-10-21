@@ -216,6 +216,11 @@ Entry format:
   one background batch, and the background yielded for the whole call (1.9 s).
 
 **Process**
+- **Every wait needs a timeout and a structured marker.** One agent waited 5 h (15:34–20:51) on
+  `until grep "screen windows needed"` while the log said "screening windows needed". The session sat blocked behind
+  it, with seven coordinator messages queued, and the batch stood idle. Write explicit markers (`=== stage2 done`,
+  `=== failed`) and wait on those, with a deadline that reports instead of looping. A coordinator should check that
+  each worker is actually progressing (last commit and activity time), not just "running".
 - **One registration for many layers is as valid as one per layer,** and much faster: fewer commits and fewer
   waits. What matters is that the rule and the test sets are pinned before scoring.
 - **Keep per-occurrence activations from the screen** (`occ.npz`). A new context filter is then a CPU refit
