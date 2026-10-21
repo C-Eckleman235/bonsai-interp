@@ -497,6 +497,128 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-21-moridinamael-8b5ef8f6"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N7170_neg/2026-10-21-moridinamael-985361b6.tests.json",
+   "prereg_commit": "c6bcf26",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.253,
+     "peak": "_list"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.49,
+     "peak": " []\n"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.428,
+     "peak": " List"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.474,
+     "peak": " [];\n"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.639,
+     "peak": " list"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.586,
+     "peak": ";\n"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.454,
+     "peak": " for"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.435,
+     "peak": "()\n"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.191,
+     "peak": " list"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.233,
+     "peak": " rows"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.007,
+     "peak": "<String"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.031,
+     "peak": ".users"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.022,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.059,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.029,
+     "peak": ";\n"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.078,
+     "peak": " ="
+    }
+   ],
+   "probed_before": {
+    "fire": 3,
+    "quiet": 1,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "exploratory",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.464,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-21-moridinamael-985361b6"
   }
  ],
  "label_history": [
@@ -514,6 +636,11 @@
    "2026-10-21-moridinamael-4ee4b24e",
    "In code (Python, JavaScript, Java, C++ and similar), a list or array being started, typed or grown: strongest for an empty list literal or empty list constructor that is about to be filled, a List/ArrayList/vector type or type hint, or adding one item to the end of it (append, push); a list literal that already holds items fires more weakly, and so does technical prose saying something returns a list or array. Dicts, sets, tuples, plain numbers and 'list' in everyday prose stay quiet; a variable only named with 'list' can fire weakly.",
    "held"
+  ],
+  [
+   "2026-10-21-moridinamael-985361b6",
+   "In code or technical writing, the list data type: an empty list being created ([] or list(), ArrayList, vector, a JavaScript array), an item appended or pushed onto a list, a List type hint, a list comprehension, or prose saying a function is or returns a list (the word 'array' in prose fires more weakly). The word 'list' in everyday or non-programming senses (a ship listing, a stock listing, shopping or guest lists) stays quiet, as do dicts, sets and tuples in the same code. A variable whose name contains 'list' fires moderately even when it does not hold a list.",
+   "recorded"
   ]
  ],
  "examples": [],
@@ -526,20 +653,21 @@
   "2026-10-21-moridinamael-8838059d",
   "2026-10-21-moridinamael-b3cf79ff",
   "2026-10-21-moridinamael-4ee4b24e",
-  "2026-10-21-moridinamael-8b5ef8f6"
+  "2026-10-21-moridinamael-8b5ef8f6",
+  "2026-10-21-moridinamael-985361b6"
  ],
  "qc": {
   "confirm": 1,
   "dispute": 0,
-  "refine": 2
+  "refine": 3
  },
  "replications": [],
  "scrutiny": {
   "level": 2,
   "name": "re-tested",
-  "test_rounds": 4,
-  "sentences": 64,
+  "test_rounds": 5,
+  "sentences": 80,
   "contributors": 1,
-  "qc": 3
+  "qc": 4
  }
 }
