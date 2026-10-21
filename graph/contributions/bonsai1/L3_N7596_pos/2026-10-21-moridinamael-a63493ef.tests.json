@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-21-moridinamael-a63493ef",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N7596+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T22:19:47+00:00",
+ "roles": ["feeds bonsai1/L4/N3852-"],
+ "neighbours": [
+  {
+   "unit": "L3/N7596",
+   "pole": "+",
+   "label": "The word 'convertible' / 'convertibles' (noun or adjective) in any sense: the open-top car, a sofa or bed that converts, convertible bonds, notes or shares, a convertible seat or stroller. It is weak when an adverb sits right before it ('fully convertible', 'freely convertible'), so fire cases have no adverb there. Quiet: other '-ible' words (compatible, reversible, collectibles, deductible), 'convert', 'converted', 'conversion', and open-top cars described without the word (roadster, cabriolet, 'top down'). Left out of this test: Spanish, French and Portuguese words starting with 'vari-' (e.g. variedad, variété) and the word 'invaluable' also fire.",
+   "short": "the word 'convertible' in any sense",
+   "unit_kind": "token",
+   "fire": [
+    "dpa<|endoftext|>Il existe une variété de commissions scolaires financées par les fonds public",
+    "“The cargo is invaluable and part of a secret trade in fissile materials between the likes of the UK and US.",
+    "She drove a red convertible along the coast all summer.",
+    "Our guest room has a convertible sofa that opens into a queen bed.",
+    "The startup raised two million dollars through convertible notes.",
+    "Investors snapped up the company's convertible bonds within hours.",
+    "We bought a convertible car seat that grows with the baby.",
+    "Classic convertibles from the 1960s fetch high prices at auction."
+   ],
+   "quiet": [
+    "She drove a red roadster along the coast all summer.",
+    "Our guest room has a pull-out sofa that opens into a queen bed.",
+    "The startup raised two million dollars through a seed round.",
+    "Investors snapped up the company's corporate bonds within hours.",
+    "We bought a compatible car seat that fits the new stroller.",
+    "Classic cabriolets from the 1960s fetch high prices at auction.",
+    "The reversible stroller faces forward or back in seconds.",
+    "He converted his old garage into a small workshop."
+   ],
+   "notes": "Test written blind by a second author who saw only the label; the two solver leak texts (vari- piece, 'invaluable') were placed as fire items by that author. The + pole is weak and broad (max 1.43, 8% of tokens reach 0.1); the - pole is the word 'variable'. Feeder found via resident attribution (play step OOMed on the stream GPU); no single-unit ablation drop measured, so no feeds edge recorded."
+  }
+ ],
+ "predictions": "6 convertible fire items above 0.3; the 'invaluable' leak item near 0.25; near misses below 0.2",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "quick-test"
+  ]
+ }
+}
