@@ -1,0 +1,166 @@
+{
+ "id": "2026-10-21-moridinamael-59ac0dd2",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N2543+",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T12:09:35+00:00",
+ "recipe": {
+  "toolchain_commit": "a0a11d2",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L31_N2543_pos/2026-10-21-moridinamael-59ac0dd2.tests.json"
+ },
+ "label": "Arabic words that begin with the glued-on prefix ب ('with/by'): the pole lights on the prefix or the word piece right after it, while the same Arabic words without the prefix stay dark",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L31_N2543_pos/2026-10-21-moridinamael-59ac0dd2.tests.json",
+   "prereg_commit": "a0a11d2",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 0,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.015,
+     "peak": "زر"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.281,
+     "peak": "قط"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.045,
+     "peak": "غير"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.009,
+     "peak": "ب"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.046,
+     "peak": "ار"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.08,
+     "peak": "قط"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.029,
+     "peak": "تك"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.056,
+     "peak": "رز"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.495,
+     "peak": "ением"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.022,
+     "peak": " على"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.027,
+     "peak": " القاهرة"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.023,
+     "peak": "ا"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.006,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.084,
+     "peak": "ارة"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.058,
+     "peak": "د"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.001,
+     "peak": "صد"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.578,
+    "median_fire": 0.045,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-gmoo",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "a0a11d2",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L28/N10850-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L28/N10850-",
+   "to": "bonsai1/L31/N2543+",
+   "kind": "feeds",
+   "weight": 0.01,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
