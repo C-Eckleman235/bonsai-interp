@@ -1,0 +1,72 @@
+{
+ "contribution": "2026-10-21-moridinamael-cbaa0e1a",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N3175+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T12:32:24+00:00",
+ "neighbours": [
+  {
+   "unit": "L35/N3175",
+   "pole": "+",
+   "label": "The Arabic article 'al-' (or 'lil-') fused with a following alef/hamza as its own word-piece (الأ, الإ, للأ) at the start of a less common Arabic word; 'al-' words that begin with another letter, and very common al-+alef words the tokenizer keeps whole, stay dark.",
+   "fire": [
+    "سبح الأخطبوط ببطء بين الصخور في قاع البحر.",
+    "وضعت جدتي الإبريق النحاسي على النار لتحضير الشاي.",
+    "اكتشف البحارة الأرخبيل بعد رحلة طويلة في المحيط.",
+    "استخدم الفلكيون القدماء الإسطرلاب لتحديد مواقع النجوم.",
+    "تفتحت زهور الأقحوان البيضاء في الحقل مع بداية الربيع.",
+    "نحت الفنان التمثال بعناية مستخدمًا الإزميل والمطرقة.",
+    "ركب الأطفال الأفعوانية في مدينة الملاهي وصرخوا من الحماس.",
+    "تم إرسال الوثائق القديمة للأرشفة في مكتبة الجامعة."
+   ],
+   "quiet": [
+    "سبح الحبار ببطء بين الصخور في قاع البحر.",
+    "وضعت جدتي الوعاء النحاسي على النار لتحضير الشاي.",
+    "اكتشف البحارة الجزر الصغيرة بعد رحلة طويلة في المحيط.",
+    "استخدم الفلكيون القدماء المنظار لتحديد مواقع النجوم.",
+    "تفتحت زهور النرجس البيضاء في الحقل مع بداية الربيع.",
+    "نحت الفنان التمثال بعناية مستخدمًا المطرقة والمبرد.",
+    "ركب الأطفال الدوامة في مدينة الملاهي وصرخوا من الحماس.",
+    "تم إرسال الوثائق القديمة للحفظ في مكتبة الجامعة."
+   ],
+   "short": "Arabic al-/lil- + alef/hamza word-piece (الأ, الإ, للأ)",
+   "confidence": "medium",
+   "notes": "Stepped in from bonsai1/L31/N2543+ (play step --down): N3175 was listed with drop 0.00 on its - pole, which is dense (51.6% of tokens >0.1 max, max 3.2) and untestable; this test labels the sparse + pole of the same cell instead. Feeders-first: top feeders L29/N12050- (alef-hamza piece after clitics) and L27/N3526+ (split-off Arabic word-opening pieces). Test sentences written blind by a label-only author."
+  }
+ ],
+ "roles": ["reads bonsai1/L31/N2543+"],
+ "predictions": "Most fire sentences 0.5-0.7; plain 'al-' near misses around 0.1-0.4, risk from other clitic pieces (لل, بال) and the shared الأطفال.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "neighbors",
+   "probe",
+   "inverse-gmoo",
+   "blind-room",
+   "quick-test"
+  ],
+  "_screens_vocabulary": [
+   "atlas",
+   "bands",
+   "bank-solo",
+   "blind-room",
+   "card",
+   "disproof",
+   "held-out",
+   "induce",
+   "inverse-de",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round",
+   "step-down",
+   "step-out",
+   "which"
+  ]
+ }
+}
