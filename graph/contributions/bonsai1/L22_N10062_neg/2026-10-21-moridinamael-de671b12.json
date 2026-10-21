@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-21-moridinamael-de671b12",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N10062-",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T21:24:10+00:00",
+ "recipe": {
+  "toolchain_commit": "6109de9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L22_N10062_neg/2026-10-21-moridinamael-de671b12.tests.json"
+ },
+ "label": "In code (Python, JavaScript and similar), a list literal assigned to a name (x = [...] or key=[...]) whose FIRST item is the constant None, null, nil, True or False: it lights up on that first constant. A dict or object as the first list item also fires. The same constant later in a list is in between (weaker); the same constant outside any list (a bare assignment, a dict value, a function argument, a tuple) stays quiet.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N10062_neg/2026-10-21-moridinamael-de671b12.tests.json",
+   "prereg_commit": "6109de9",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.784,
+     "peak": "None"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.565,
+     "peak": "true"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.673,
+     "peak": "None"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.267,
+     "peak": "nil"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.619,
+     "peak": "False"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.654,
+     "peak": "null"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.475,
+     "peak": "True"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.634,
+     "peak": " },"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.028,
+     "peak": "}"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.15,
+     "peak": "None"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.063,
+     "peak": " None"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.033,
+     "peak": " true"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.279,
+     "peak": " None"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.278,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.373,
+     "peak": "False"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.197,
+     "peak": " null"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 1,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.953,
+    "median_fire": 0.627,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "6109de9",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step mission from bonsai1/L23/N2810+. play step OOMed on the shared GPU, so the feeder was chosen from resident attribution (top MLP feeder); no feeds edge with an ablation weight is recorded. Solver leak texts placed by the blind author.",
+ "roles": [
+  "feeds bonsai1/L23/N2810+"
+ ]
+}
