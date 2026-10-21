@@ -7,6 +7,13 @@
    "note": "lean, chunk-checkpointed screen-all (no all-pairs host arrays; per-chunk checkpoints; RAM guard; STOP at batch boundaries); scorer prefix groups, equal-length batches, one tokenizer call per preamble, empty_cache only when the card is short; gpu_turn.waiting() for the one-queue gpu_turn",
    "parity": "CPU, layers 2/3/5 (24 windows x 256 tokens, 150 hits, a STOP and resume in between): context rows, templates, occ frac and ctx_mean identical 150/150 vs the registered screen-all; scorer: 48 L4 tests across every bin, all 768 per-sentence values identical vs the registered scorer",
    "written": "2026-10-21T05:38:55+00:00"
+  },
+  {
+   "code_sha256": "3d0848a47b6ceed27c27ab4b550439d66797db6b303c74d6cf6b3a71da81bc42",
+   "toolchain_commit": "5243a0a",
+   "note": "screen-all checkpoints count per layer (stored layer list per chunk file, or screen-all.passes.json for older files; files named by pass signature): a rerun with fewer layers left reads every checkpointed pair instead of redoing the pass, and runs only windows with an unread pair. A fresh run is unchanged (no checkpoint read: every pair is computed exactly as before).",
+   "parity": "Without the model, against the live pass's checkpoints (pass e114f753, layers 2..35 at batch 1, chunks of 250): for L2 and L35 the resume read exactly the 2750 windows of chunks 0-10 (1,253,282 and 2,537,768 pairs, all with values), ignored the stale files of the earlier pass, left no window half-read, and listed the unread windows exactly; synthetic files: embedded layer lists honoured, layers outside a file's list and unknown-signature files ignored. Values read are the bytes the pass wrote.",
+   "written": "2026-10-21T10:43:31+00:00"
   }
  ]
 }
