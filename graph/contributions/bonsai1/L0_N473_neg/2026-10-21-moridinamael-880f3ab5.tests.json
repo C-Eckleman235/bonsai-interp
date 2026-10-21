@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-21-moridinamael-880f3ab5",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N473-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T16:55:48+00:00",
+ "neighbours": [
+  {
+   "unit": "L0/N473",
+   "pole": "-",
+   "label": "The letters 'ton' when the tokenizer cuts them out as their own piece: the weight word ton/tons/tonne, 'Ton' at the start of a word or name, or a 'ton' piece ending or inside a rare name or foreign word that gets split up; common English words stored whole that contain 'ton' (inside or at the end) stay low.",
+   "fire": [
+    "The truck was carrying nearly a ton of gravel up the mountain road.",
+    "Each container on the ship can hold about twenty tons of grain.",
+    "The new bridge was tested with loads of up to forty tonnes.",
+    "Tonga declared a national holiday after the team's victory.",
+    "We read about the history of Tonkin in our geography class.",
+    "Our guide, Tonatiuh, explained the meaning of the old carvings.",
+    "The village of Kretonvaal sits at the edge of the marsh.",
+    "She bought a ton of snacks for the long road trip."
+   ],
+   "quiet": [
+    "The truck was carrying a heavy load of gravel up the mountain road.",
+    "He sewed a new button onto his winter coat.",
+    "The shirt was made of soft organic cotton.",
+    "We flew to Boston for the conference last spring.",
+    "The museum in Washington was crowded on Saturday.",
+    "The singer had a warm, gentle tone in her voice.",
+    "Are you coming to the party tonight?",
+    "The new bridge was tested with very heavy loads."
+   ]
+  }
+ ],
+ "predictions": "Most fire items strong on ' ton'/' tons'; Tonga/Tonkin may split as Tong+a/Ton+kin and run weaker; 'tone' and 'cotton' near misses are the riskiest quiets (probed ~0.2-0.35).",
+ "short": "'ton' as its own token piece",
+ "unit_kind": "token/lexical",
+ "roles": [
+  "feeds bonsai1/L4/N9554-"
+ ],
+ "notes": "Step-out from bonsai1/L4/N9554-. play step hit CUDA OOM (resident stream model holds the GPU), so TARGET is the top feeder by resident attribution (feeders tool), not by ablation drop; no feeds edge recorded. Test sentences written blind by a second author from the label only.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "step-out",
+   "blind-room"
+  ]
+ }
+}
