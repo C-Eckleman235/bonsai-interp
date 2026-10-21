@@ -1,0 +1,55 @@
+{
+ "contribution": "2026-10-21-moridinamael-05e23679",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N9487-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T14:09:59+00:00",
+ "roles": [
+  "feeds bonsai1/L12/N1253-"
+ ],
+ "neighbours": [
+  {
+   "unit": "L11/N9487",
+   "pole": "-",
+   "label": "In code or code comments, the ordering semantics of a collection: whether a dict, set, map or list keeps or loses its items' order (insertion order, order not guaranteed), and building sets of unique items; sorting a list, SQL ORDER BY and other senses of 'order' (in order to, a purchase order) stay quiet.",
+   "short": "code: whether a collection keeps its items' order; building sets",
+   "fire": [
+    "# Since Python 3.7, dicts preserve insertion order, so iterating keys gives them back as added.",
+    "// Note: HashMap does not guarantee iteration order; use LinkedHashMap if order matters.",
+    "seen = set(items)  # build a set of unique ids; order is lost",
+    "# Sets are unordered, so don't rely on the position of elements when printing them.",
+    "// Map in JavaScript remembers the original insertion order of its keys.",
+    "unique_tags = list(dict.fromkeys(tags))  # dedupe while keeping first-seen order",
+    "/* The order of entries returned by keySet() is not guaranteed and may change between runs. */",
+    "# OrderedDict keeps items in the order they were inserted, unlike plain dicts in old Python."
+   ],
+   "quiet": [
+    "# Sort the list of scores in descending order before printing the top ten.",
+    "SELECT name, total FROM sales ORDER BY total DESC;",
+    "# In order to reduce latency, we cache the response for five minutes.",
+    "// Create a new purchase order record and send it to the supplier.",
+    "results.sort(key=lambda r: r.date)  # sort records by date",
+    "# The order_id field references the customers table.",
+    "// Call init() first in order to load the configuration file.",
+    "# Reverse the list so the newest comments appear first."
+   ],
+   "unit_kind": "code",
+   "confidence": "medium",
+   "notes": "Blind test: sentences written by a second author who saw only the label. Feeder chosen by attribution (chat feeders tool) because play step ran out of GPU memory, so no feeds edge is recorded. Probes: order-of-collection comments peaked 0.9-1.4 of max (HashMap, dict, insertion order); set comprehensions 0.5-0.7; list code 0.3-0.65 (a weaker baseline); sorting, 'in order to', purchase order near 0."
+  }
+ ],
+ "predictions": "most fire sentences above 0.3; near misses low, apart from perhaps the sort/reverse ones",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "blind-room",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
