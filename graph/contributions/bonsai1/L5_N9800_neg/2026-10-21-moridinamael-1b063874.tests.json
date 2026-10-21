@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-21-moridinamael-1b063874",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N9800-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T19:09:26+00:00",
+ "roles": ["feeds bonsai1/L10/N777+"],
+ "neighbours": [
+  {
+   "unit": "L5/N9800",
+   "pole": "-",
+   "label": "In test code (a test_ function, @Test method or it()/test() block, after at least one earlier line), the check line: unit-test assertion calls (self.assertX methods, JUnit assertEquals, mock assert_called_with, pytest.raises, expect(...).toBe/toEqual) and bare assert statements, peaking on the assert or matcher token. The framework names pytest/unittest also fire, even in prose. Not assert statements in ordinary non-test functions, not other calls, prints or setup lines inside tests, not 'assert' in everyday prose.",
+   "short": "unit-test check lines (assertX, expect().toBe, pytest.raises)",
+   "fire": [
+    "def test_add():\n    result = add(2, 3)\n    assert result == 5",
+    "def test_user_name(self):\n    user = User('ana')\n    self.assertEqual(user.name, 'ana')",
+    "@Test\npublic void totalIsSummed() {\n    Cart cart = new Cart(10, 20);\n    assertEquals(30, cart.total());\n}",
+    "it('returns the sum', () => {\n  const total = sum([1, 2, 3]);\n  expect(total).toBe(6);\n});",
+    "def test_divide_by_zero():\n    calc = Calculator()\n    with pytest.raises(ZeroDivisionError):\n        calc.divide(1, 0)",
+    "def test_sends_email(self):\n    notifier.send('hi')\n    mock_smtp.send.assert_called_with('hi')",
+    "test('parses config', () => {\n  const cfg = parse('a=1');\n  expect(cfg).toEqual({ a: 1 });\n});",
+    "def test_empty_list(self):\n    items = load_items()\n    self.assertTrue(len(items) == 0)"
+   ],
+   "quiet": [
+    "def add_numbers(a, b):\n    result = a + b\n    return result",
+    "def test_user_name(self):\n    user = User('ana')\n    print(user.name)",
+    "public int total() {\n    int sum = first + second;\n    return sum;\n}",
+    "it('returns the sum', () => {\n  const total = sum([1, 2, 3]);\n  console.log(total);\n});",
+    "def divide(a, b):\n    check_inputs(a, b)\n    assert b != 0\n    return a / b",
+    "def test_sends_email(self):\n    notifier = Notifier(mock_smtp)\n    notifier.send('hi')",
+    "function parseConfig(text) {\n  const cfg = parse(text);\n  return cfg;\n}",
+    "def setUp(self):\n    self.items = load_items()\n    self.count = 0"
+   ]
+  }
+ ],
+ "predictions": "most fire items 0.4-0.8; near misses mostly under 0.15, with the test_ print/send lines the likeliest to rise toward 0.25",
+ "notes": "Step-out feeder of bonsai1/L10/N777+. play step hit CUDA OOM (GPU shared with a batch job), so the feeder was chosen by the resident attribution tool (top MLP feeder), not by a measured zero-ablation drop. Test written blind by a label-only second author.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test",
+   "step-out"
+  ]
+ }
+}
