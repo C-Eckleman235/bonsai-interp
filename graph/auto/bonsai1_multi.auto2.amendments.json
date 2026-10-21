@@ -14,6 +14,13 @@
    "note": "screen-all checkpoints count per layer (stored layer list per chunk file, or screen-all.passes.json for older files; files named by pass signature): a rerun with fewer layers left reads every checkpointed pair instead of redoing the pass, and runs only windows with an unread pair. A fresh run is unchanged (no checkpoint read: every pair is computed exactly as before).",
    "parity": "Without the model, against the live pass's checkpoints (pass e114f753, layers 2..35 at batch 1, chunks of 250): for L2 and L35 the resume read exactly the 2750 windows of chunks 0-10 (1,253,282 and 2,537,768 pairs, all with values), ignored the stale files of the earlier pass, left no window half-read, and listed the unread windows exactly; synthetic files: embedded layer lists honoured, layers outside a file's list and unknown-signature files ignored. Values read are the bytes the pass wrote.",
    "written": "2026-10-21T10:43:31+00:00"
+  },
+  {
+   "code_sha256": "f437bd6573e34e3e4b62cb04bbdf398da8d8e78f84998b0a7fee18dfd0d946db",
+   "toolchain_commit": "cc56dab",
+   "note": "scorer: a CUDA out-of-memory error on a batch reruns that batch in halves (recursively, down to one prefix group or one padded snippet) instead of failing the layer; values are added only after the whole batch, so a STOP adds none of a split batch. Without an out-of-memory error the code path is unchanged.",
+   "parity": "CPU, fake model (activations a fixed function of each snippet's last token), the real L16 pre-registered tests (468 tests, 3 preambles, batch 16): forcing out-of-memory on every multi-group prefix batch over 2 groups and every padded batch over 4 (7,434 forced splits) gave all 7,394 per-sentence values identical to the unforced run, and the same outcomes.",
+   "written": "2026-10-21T20:54:14+00:00"
   }
  ]
 }
