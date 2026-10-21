@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-21-moridinamael-e8ed2b84",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N6421+",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T17:34:30+00:00",
+ "recipe": {
+  "toolchain_commit": "7c82d75",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L17_N6421_pos/2026-10-21-moridinamael-e8ed2b84.tests.json"
+ },
+ "label": "In Python code, a variable first set to a list (an empty list [] or a list literal) that comes back a few lines later to be appended to, typically inside an if branch; the same shape with a dict, set, string or number variable stays quiet.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L17_N6421_pos/2026-10-21-moridinamael-e8ed2b84.tests.json",
+   "prereg_commit": "7c82d75",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.214,
+     "peak": ")"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.091,
+     "peak": " []\n"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.305,
+     "peak": " names"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.209,
+     "peak": "))"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.263,
+     "peak": ")\n"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.029,
+     "peak": " queue"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.335,
+     "peak": " warnings"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.137,
+     "peak": " []\n"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.117,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.027,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.241,
+     "peak": " names"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.06,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.082,
+     "peak": "\n"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.009,
+     "peak": " limit"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.131,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.047,
+     "peak": "()\n"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.812,
+    "median_fire": 0.211,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "7c82d75",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "short": "Python list variable re-used to append (vs dict/set/str/num)",
+ "confidence": 0.5,
+ "notes": "Step from bonsai1/L21/N10295+. play step OOMed (resident model on GPU); feeder chosen by the stream's attribution feeders tool (top MLP feeder). Test sentences written blind by a second author who saw only the label. Secondary + branch seen but not tested: a few abbreviated journal names in reference lists (Afr Health Sci, Nat Rev Genet).",
+ "roles": [
+  "feeds bonsai1/L21/N10295+"
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-21-moridinamael-e8ed2b84",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N6421+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T17:34:00+00:00",
+ "roles": ["feeds bonsai1/L21/N10295+"],
+ "neighbours": [
+  {
+   "unit": "L17/N6421",
+   "pole": "+",
+   "label": "In Python code, a variable first set to a list (an empty list [] or a list literal) that comes back a few lines later to be appended to, typically inside an if branch; the same shape with a dict, set, string or number variable stays quiet.",
+   "fire": [
+    "errors = []\nfor line in lines:\n    if not line.strip():\n        errors.append(line)",
+    "results = []\nfor n in range(10):\n    if n % 2 == 0:\n        results.append(n * n)",
+    "names = ['alice', 'bob']\nfor user in users:\n    if user.active:\n        names.append(user.name)",
+    "matches = []\nfor path in os.listdir(root):\n    if path.endswith('.txt'):\n        matches.append(os.path.join(root, path))",
+    "def collect(items):\n    keep = []\n    for item in items:\n        if item.score > 0.5:\n            keep.append(item)\n    return keep",
+    "queue = [start]\nwhile queue:\n    node = queue.pop(0)\n    if node.left:\n        queue.append(node.left)",
+    "warnings = []\nif temperature > 40:\n    warnings.append('too hot')\nif humidity > 90:\n    warnings.append('too humid')",
+    "tokens = []\nfor ch in text:\n    if ch.isalnum():\n        tokens.append(ch)"
+   ],
+   "quiet": [
+    "errors = {}\nfor line in lines:\n    if not line.strip():\n        errors[line] = True",
+    "results = 0\nfor n in range(10):\n    if n % 2 == 0:\n        results += n * n",
+    "names = set()\nfor user in users:\n    if user.active:\n        names.add(user.name)",
+    "matches = ''\nfor path in os.listdir(root):\n    if path.endswith('.txt'):\n        matches += path + ';'",
+    "def collect(items):\n    keep = {}\n    for item in items:\n        if item.score > 0.5:\n            keep[item.id] = item\n    return keep",
+    "count = 0\nwhile count < limit:\n    node = next_node()\n    if node.left:\n        count += 1",
+    "warnings = ''\nif temperature > 40:\n    warnings += 'too hot; '\nif humidity > 90:\n    warnings += 'too humid; '",
+    "tokens = set()\nfor ch in text:\n    if ch.isalnum():\n        tokens.add(ch)"
+   ]
+  }
+ ],
+ "short": "Python list variable re-used to append (vs dict/set/str/num)",
+ "confidence": 0.5,
+ "notes": "Step from bonsai1/L21/N10295+. play step OOMed (resident model on GPU); feeder chosen by the stream's attribution feeders tool (top MLP feeder). Test sentences written blind by a second author who saw only the label. Secondary + branch seen but not tested: a few abbreviated journal names in reference lists (Afr Health Sci, Nat Rev Genet).",
+ "predictions": "Lists beat their dict/set/str/num twins; for-loop appends may sit near 0.15-0.25.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "step-out",
+   "blind-room"
+  ]
+ }
+}
