@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-21-moridinamael-87ba2a9d",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N11348-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T18:33:33+00:00",
+ "roles": ["feeds bonsai1/L12/N7279+"],
+ "neighbours": [
+  {
+   "unit": "L11/N11348",
+   "pole": "-",
+   "label": "A line of code that checks a result with an assertion (assert statements, assertEqual-style calls, expect(...).toBe), in any programming language, after at least one earlier line of code; strongest inside test functions. Not code lines that only compute, store or print without a check, and not the word 'assert' in English prose.",
+   "fire": [
+    "def test_add():\n    result = add(2, 3)\n    assert result == 5",
+    "def test_upper(self):\n    s = 'hello'.upper()\n    self.assertEqual(s, 'HELLO')",
+    "test('sums array', () => {\n  const total = sum([1, 2, 3]);\n  expect(total).toBe(6);\n});",
+    "@Test\nvoid parsesInt() {\n    int n = Integer.parseInt(\"42\");\n    assertEquals(42, n);\n}",
+    "#[test]\nfn reverses() {\n    let v = reverse(vec![1, 2]);\n    assert_eq!(v, vec![2, 1]);\n}",
+    "func TestLen(t *testing.T) {\n    got := Len(\"abc\")\n    if got != 3 { t.Errorf(\"got %d\", got) }\n}",
+    "it('returns null for empty input', () => {\n  const out = parse('');\n  expect(out).toBeNull();\n});",
+    "users = load_users()\nassert len(users) > 0, 'no users loaded'"
+   ],
+   "quiet": [
+    "def test_add():\n    result = add(2, 3)\n    print(result)",
+    "def test_upper(self):\n    s = 'hello'.upper()\n    self.cache['s'] = s",
+    "test('sums array', () => {\n  const total = sum([1, 2, 3]);\n  console.log(total);\n});",
+    "@Test\nvoid parsesInt() {\n    int n = Integer.parseInt(\"42\");\n    results.add(n);\n}",
+    "fn reverses() {\n    let v = reverse(vec![1, 2]);\n    println!(\"{:?}\", v);\n}",
+    "func Len(s string) int {\n    n := len(s)\n    return n\n}",
+    "function parseAll(items) {\n  const out = items.map(parse);\n  return out.filter(Boolean);\n}",
+    "users = load_users()\ncount = len(users)"
+   ]
+  }
+ ],
+ "predictions": "Most fire items above 0.3; risk: the self.cache line inside a test method may leak, since line-start ' self' in a test fired during probing. Test sentences written blind by a label-only second author.",
+ "notes": "Step-out feeder of bonsai1/L12/N7279+. play step OOMed on the shared stream GPU, so the feeder was chosen by resident attribution (top MLP feeder); no ablation drop measured.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "step-out"
+  ]
+ }
+}
