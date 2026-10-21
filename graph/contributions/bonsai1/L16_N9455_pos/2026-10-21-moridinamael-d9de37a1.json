@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-21-moridinamael-d9de37a1",
+ "kind": "interpret",
+ "neuron": "bonsai1/L16/N9455+",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T13:05:20+00:00",
+ "recipe": {
+  "toolchain_commit": "9f5f45b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L16_N9455_pos/2026-10-21-moridinamael-d9de37a1.tests.json"
+ },
+ "label": "In Python code, the empty-list literal [] used as a fallback or starting value (after 'or', as the default of a get/pop lookup, or assigned to an attribute in a constructor); the same slot holding {}, set(), a number, None or a filled list stays quiet.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L16_N9455_pos/2026-10-21-moridinamael-d9de37a1.tests.json",
+   "prereg_commit": "9f5f45b",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 0,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.085,
+     "peak": " [])"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.047,
+     "peak": " []"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.058,
+     "peak": " []"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.177,
+     "peak": " [])"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.059,
+     "peak": " []"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.039,
+     "peak": "(key"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.189,
+     "peak": " []"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.048,
+     "peak": "name"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.021,
+     "peak": "items"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.027,
+     "peak": "tags"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.008,
+     "peak": "self"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.02,
+     "peak": "names"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.017,
+     "peak": "def"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.027,
+     "peak": "(key"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.306,
+     "peak": " ["
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.022,
+     "peak": "name"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.875,
+    "median_fire": 0.058,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "9f5f45b",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Blind test: sentences written by a second author who saw only the label. TARGET chosen as the top MLP feeder of bonsai1/L22/N7170- by resident attribution (chat feeders tool) because play step hit CUDA OOM; no ablation drop was measured, so no feeds edge is recorded.",
+ "roles": [
+  "feeds bonsai1/L22/N7170-"
+ ]
+}
