@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-21-moridinamael-d76e6914",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N3459-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T13:55:31+00:00",
+ "roles": ["reads bonsai1/L34/N5579+"],
+ "neighbours": [
+  {
+   "unit": "L35/N3459",
+   "pole": "-",
+   "label": "month names inside a written date (with a day or year number beside them); month names in ordinary prose stay quiet",
+   "fire": [
+    "The contract was signed on March 14, 2019, in the company's main office.",
+    "Her birthday is 3 July, so we're planning a picnic.",
+    "The museum reopened on 22 October 2021 after the renovations.",
+    "Please submit your application no later than January 31.",
+    "On September 1, 1939, the war began in Europe.",
+    "The invoice dated 5 February 2024 is still unpaid.",
+    "We arrived in Lisbon on August 9 and stayed a week.",
+    "The letter was postmarked December 24, 1987."
+   ],
+   "quiet": [
+    "The train leaves at 7 every morning.",
+    "The cat slept on the warm windowsill all afternoon.",
+    "The contract was signed last spring in the company's main office.",
+    "Her birthday is in July, so we're planning a picnic.",
+    "The museum reopened in the autumn after the renovations.",
+    "Please submit your application before the end of January.",
+    "Every September, the leaves begin to turn along the river.",
+    "The invoice from last week is still unpaid."
+   ]
+  }
+ ],
+ "predictions": "Blind test written by a second author from the label only (solver leak placed by that author). Expect most dates to fire 0.3-0.45; the 'at 7' leak near miss may reach ~0.3; 'in July' / 'in the autumn' could leak weakly on ' in'.",
+ "unit_kind": "feature",
+ "confidence": 0.6,
+ "notes": "Step-in reader of bonsai1/L34/N5579+ (SQL query text); drop 0.35 but active in only 1 of that pole's top examples, so the label has little to do with SQL. Feeders first: L34/N590+ (unlabelled) peaks on month names in dates, matching this pole; top feeder L34/N1691+ spikes on split words like ' iced', explaining the odd ' making iced tea' top. Probes: months in dates 0.30-0.49, months in prose 0.03-0.10; time prepositions before a time ('at', 'in', 'by') fire ~0.3 regardless of what follows (the solver's leak).",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "blind-room"
+  ]
+ }
+}
