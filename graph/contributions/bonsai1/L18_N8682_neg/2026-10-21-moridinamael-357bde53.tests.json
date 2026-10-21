@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-21-moridinamael-357bde53",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N8682-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T16:15:30+00:00",
+ "neighbours": [
+  {
+   "unit": "L18/N8682",
+   "pole": "-",
+   "label": "In code, the spot where the collection of returned items is taken out of the result of an earlier list, search or range call (its items or results field, the page's value, all the rows). Reading a single field such as a status or id from a one-item call stays quiet, and plain prose is weak.",
+   "fire": [
+    "users = client.list_users(limit=50).items",
+    "response = s3.list_objects_v2(Bucket=bucket)\nfor obj in response['Contents']:",
+    "hits = es.search(index='logs', body=query)['hits']['hits']",
+    "const rows = (await pool.query('SELECT * FROM orders')).rows;",
+    "blobs = list(container.list_blobs()); vms = compute.virtual_machines.list_all().value",
+    "results = service.files().list(q=query).execute().get('files', [])",
+    "records = cursor.execute(sql).fetchall()",
+    "for page in paginator.paginate(TableName='events'): items.extend(page['Items'])"
+   ],
+   "quiet": [
+    "The knowledge base of the Vocational Rehabilitation profession is divided into a number of domains which reflect major areas of knowledge.",
+    "The endpoint returns the matching record's id as a string.",
+    "user = client.get_user(user_id).id",
+    "response = s3.head_object(Bucket=bucket, Key=key)\nprint(response['ContentLength'])",
+    "status = es.cluster.health()['status']",
+    "const name = (await pool.query('SELECT name FROM orders WHERE id=$1', [id])).rowCount;",
+    "blob = container.get_blob_client(name); vm = compute.virtual_machines.get(rg, name).location",
+    "file_id = service.files().create(body=meta).execute().get('id')"
+   ],
+   "short": "unpacking the items from a list/search result",
+   "unit_kind": "code context",
+   "confidence": "medium",
+   "notes": "Test sentences written blind by a second author from the label only (and the solver's leak texts). Feeder chosen from resident attribution ranking because play step OOM'd on the shared GPU; no ablation drop measured."
+  }
+ ],
+ "roles": ["feeds bonsai1/L19/N2494-"],
+ "predictions": "most fire items above 0.20; quiet items low, though single-row fetches may give a weak signal",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "blind-room",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
