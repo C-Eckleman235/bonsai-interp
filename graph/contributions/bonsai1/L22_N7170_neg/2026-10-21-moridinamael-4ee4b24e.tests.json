@@ -1,0 +1,72 @@
+{
+ "contribution": "2026-10-21-moridinamael-4ee4b24e",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L22/N7170-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T16:49:36+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "In code (Python, JavaScript, Java, C++ and similar), a list or array being made or typed (an empty or filled [] literal, list(), or a List, ArrayList, Array or vector type or type hint) or grown by adding an item to it (append, push), plus technical text saying something returns a list. Removing items (pop), dicts, sets, tuples and plain numbers stay quiet, and so does 'list' in everyday prose; a variable that is only named with 'list' can fire weakly."
+ },
+ "neighbours": [
+  {
+   "unit": "L22/N7170",
+   "pole": "-",
+   "label": "In code (Python, JavaScript, Java, C++ and similar), a list or array being started, typed or grown: strongest for an empty list literal or empty list constructor that is about to be filled, a List/ArrayList/vector type or type hint, or adding one item to the end of it (append, push); a list literal that already holds items fires more weakly, and so does technical prose saying something returns a list or array. Dicts, sets, tuples, plain numbers and 'list' in everyday prose stay quiet; a variable only named with 'list' can fire weakly.",
+   "fire": [
+    "results = []\nfor row in rows:\n    results.append(row.strip())",
+    "const names = [];\nusers.forEach(u => names.push(u.name));",
+    "List<String> titles = new ArrayList<>();\ntitles.add(book.getTitle());",
+    "std::vector<int> scores;\nscores.push_back(42);",
+    "def load_ids(path: str) -> list[int]:\n    ids = []",
+    "errors = list()\nerrors.append(\"missing field\")",
+    "let queue = new Array();\nqueue.push(task);",
+    "ArrayList<Integer> evens = new ArrayList<Integer>();"
+   ],
+   "quiet": [
+    "The guest list for the wedding was very long.",
+    "my_list = 5\nprint(my_list)",
+    "results = {}\nfor row in rows:\n    results[row.id] = row.strip()",
+    "const total = 0;\nusers.forEach(u => total += u.age);",
+    "Map<String, String> titles = new HashMap<>();\ntitles.put(key, book.getTitle());",
+    "int score = 0;\nscore += 42;",
+    "def load_id(path: str) -> int:\n    count = 0",
+    "errors = set()\nerrors.add(\"missing field\")"
+   ]
+  }
+ ],
+ "predictions": "Blind-authored test (label-only author). Expect most fire items >= 0.4 (empty list starts, List types, push/append); the leak text 'my_list = 5' is the riskiest near miss (~0.25 solo).",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "neighbors",
+   "inverse-de",
+   "blind-room",
+   "quick-test"
+  ],
+  "_screens_vocabulary": [
+   "atlas",
+   "bands",
+   "bank-solo",
+   "blind-room",
+   "card",
+   "disproof",
+   "held-out",
+   "induce",
+   "inverse-de",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round",
+   "step-down",
+   "step-out",
+   "which"
+  ]
+ }
+}
