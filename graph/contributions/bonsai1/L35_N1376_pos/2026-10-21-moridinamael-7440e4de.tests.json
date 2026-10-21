@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-21-moridinamael-7440e4de",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N1376+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T10:01:33+00:00",
+ "roles": ["reads bonsai1/L34/N4571+"],
+ "neighbours": [
+  {
+   "unit": "L35/N1376",
+   "pole": "+",
+   "label": "on the token right before a 6 that the text makes predictable: the digit 6 (also as a digit inside a longer number) or the word 'six', expected from a number repeated earlier, a counting sequence or pattern, or a well-known fact; it stays silent before a 6 that comes as a surprise and where some other number is expected next",
+   "short": "a 6 is the predictable next token",
+   "fire": [
+    "Multiples of four: 4, 8, 12, 16, 20.",
+    "Count with me: one, two, three, four, five, six.",
+    "The sequence goes 2, 4, 6, 8, 10.",
+    "An insect has six legs, so the beetle in the jar had six legs too.",
+    "Her locker code is 3476, and she repeated it out loud: 3476.",
+    "A cube has six faces.",
+    "Room 16 is down the hall; please report to room 16 by noon.",
+    "The pattern 1, 3, 5 repeats with 2, 4, 6."
+   ],
+   "quiet": [
+    "Her flight number was 1958 and the board listed 1958 as delayed.",
+    "Count with me: one, two, three, four, five.",
+    "The sequence goes 1, 3, 5, 7, 9.",
+    "A spider has eight legs, so the one in the jar had eight legs too.",
+    "Her locker code is 3471, and she repeated it out loud: 3471.",
+    "A pyramid with a square base has five faces.",
+    "Room 14 is down the hall; please report to room 14 by noon.",
+    "The pattern 1, 3, 5 repeats with 1, 3, 5."
+   ],
+   "unit_kind": "deep / next-token",
+   "confidence": "medium",
+   "notes": "Cold step-in reader of L34/N4571+ (drop 0.77). Output direction suppresses '6', ' six', ' sixth'. Test written blind by a label-only author (stream protocol); solver leak sentences placed by that author."
+  }
+ ],
+ "predictions": "most copied/counting fires clear 0.20; 'A cube has six faces' may stay low (six not cued before it)",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
