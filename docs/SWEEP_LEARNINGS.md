@@ -27,6 +27,7 @@ abstraction pass. Each principle names its evidence and whether we have measured
 | 9 | **One pre-registration for many units.** Pin the rule and the test sets before scoring; merge commits keep the hashes valid. | 1 protocol for 33 layers instead of 33 | fewer waits |
 | 10 | **Plan wall time by the foreground's duty cycle,** not by GPU minutes. | the stream held 28–70% of the GPU during scoring | planning |
 | 11 | **Pick the output format for the full model from the start:** per-layer columnar tables keyed by pole, words as token ids plus one vocab, lazy per-layer views. Check what the target machine allows (application control blocked Parquet here; Arrow IPC worked). | word hits for all 35 layers in about 65 MB (`atlas` release); one JSON file per pole would be gigabytes | scale (docs/SCALING.md) |
+| 12 | **Keep the GPU fed: overlap CPU stages with GPU stages.** Run one layer's CPU work (the stage-2 fit, the test pre-registration) while the GPU works on another layer, and spread single-threaded CPU stages across cores within the RAM budget. | stage 2 spends about 3 min per layer on a CPU fit with the batch's GPU share idle (about 1.6 h over 33 layers); prereg-all runs on one core for about 1 h (1–3 min per layer, scaling with tests) before any scoring starts | up to 2.5 h per sweep (estimated) |
 
 **One queue, not many locks** (2026-10-20, after 8 resets and 4 partial fixes)
 - Each partial mechanism closed one gap and left another:
