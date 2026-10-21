@@ -64,7 +64,7 @@ if ! git log --format=%H -- graph/auto/bonsai1_multi.auto2.protocol.json | grep 
   commit_alone graph/auto/bonsai1_multi.auto2.protocol.json "Pre-register auto-token@2 for layers $LAYERS (one manifest)"
 fi
 [ -e data/auto2/.hits-all.done ] || { run_pass hits-all hits-all "$HB" --layers "$LAYERS"; touch data/auto2/.hits-all.done; }
-[ -e data/auto2/.screen-all.done ] || { run_pass screen-all screen-all "$HB" --layers "$LAYERS"; touch data/auto2/.screen-all.done; }
+[ -e data/auto2/.screen-all.done ] || { run_pass screen-all screen-all "$HB" --layers "$LAYERS" ${SCREEN_ARGS:-}; touch data/auto2/.screen-all.done; }
 if ! git log --format=%H -- graph/auto/bonsai1_multi.auto2.prereg.json | grep -q .; then
   stop_check "prereg-all"
   $CT prereg-all --layers "$LAYERS" | tee "$LOGDIR/prereg-all.log"
