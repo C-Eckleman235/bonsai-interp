@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-C-Eckleman235-0c2de1ec",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N8300+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T20:17:00+00:00",
+ "selection": "concept search: years and periods (branch 16)",
+ "neighbours": [
+  {
+   "unit": "L25/N8300",
+   "pole": "+",
+   "label": "a year of the 1850s or 1860s written in digits (18|5|x, 18|6|x); the same digits in other centuries and the 1880s (this neuron's other pole) stay quiet",
+   "fire": [
+    "The old schoolhouse was built in 1851.",
+    "Our family Bible records a wedding in 1854.",
+    "The town's first bank opened in 1857.",
+    "A tornado tore through the county in 1859.",
+    "The covered bridge was replaced in 1862.",
+    "The orchard was planted in 1865.",
+    "The first doctor arrived in town in 1868.",
+    "Most of the furniture in the attic dates from the 1850s."
+   ],
+   "quiet": [
+    "The old schoolhouse was built in 1951.",
+    "Our family Bible records a wedding in 1754.",
+    "The town's first bank opened in 1957.",
+    "A tornado tore through the county in 1559.",
+    "The covered bridge was replaced in 1962.",
+    "The orchard was planted in 1765.",
+    "The first doctor arrived in town in 1888.",
+    "Most of the furniture in the attic dates from the 1950s."
+   ]
+  }
+ ],
+ "predictions": "7/8 fire; near misses under 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "the 1850s-1860s (in digits)",
+ "unit_kind": "token/lexical",
+ "confidence": 0.55,
+ "notes": "Found by a concept screen with year-only pairs (branch 16): 6/6 for the 1850s (peaks '5'). Probes (exploratory, run on a separate Kaggle T4, so this checkout's probe log does not hold them; none is reused): a sweep of every fifth year 1600-2020 in one frame read >= 0.3 on 1850-1865, 0.15-0.30 on 1650-1655, 1810-1825, 1840-1845; its − pole read 1880-1895. Near misses keep each frame and change the century, or move to the other pole's 1880s. Scoring runs on a Kaggle T4."
+}
