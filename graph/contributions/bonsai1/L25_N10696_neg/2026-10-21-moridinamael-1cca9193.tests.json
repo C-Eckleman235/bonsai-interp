@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-21-moridinamael-1cca9193",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N10696-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T16:29:32+00:00",
+ "roles": ["reads bonsai1/L24/N7206+"],
+ "neighbours": [
+  {
+   "unit": "L25/N10696",
+   "pole": "-",
+   "label": "The English word 'each' as the subject of a clause ('Each X ...' or 'Each of the X ...'): lights up on the verb or count right after it that says what every single member has or does. Quiet: the same clause with 'the X', 'every', 'both' or 'all', 'per' and 'apiece', an object 'each' (after a verb), and 'each' in other languages.",
+   "short": "subject 'each' (distributive)",
+   "fire": [
+    "Each student has a locker near the gym.",
+    "Each of the boxes weighs about ten kilograms.",
+    "At the festival, each booth sells a different kind of pastry.",
+    "Each player receives seven cards at the start of the game.",
+    "Each of the rooms contains two beds and a small desk.",
+    "In this village, each house has a red door.",
+    "Each team gets three timeouts per half.",
+    "The recipe is simple: each layer needs twenty minutes in the oven."
+   ],
+   "quiet": [
+    "The students have lockers near the gym.",
+    "Both of the boxes weigh about ten kilograms.",
+    "At the festival, every booth sells a different kind of pastry.",
+    "All players receive seven cards at the start of the game.",
+    "The rooms contain two beds and a small desk apiece.",
+    "In this village, the houses have red doors.",
+    "Teams get three timeouts per half.",
+    "The recipe is simple: bake the layers for twenty minutes each."
+   ],
+   "unit_kind": "context",
+   "confidence": 0.55,
+   "notes": "Cold step-in reader of bonsai1/L24/N7206+ (labelled from its own tops and probes only). Test written blind by a label-only second author. Probes: 'Each X has/costs/consists of' ~0.2-0.37 vs 'The X ...' ~0.03; 'every' ~0.08; object 'each' and Spanish 'cada' quiet. Solver found no leak."
+  }
+ ],
+ "predictions": "most fire sentences 0.15-0.35 peaking on the verb after 'each X'; mid-sentence 'each' weaker; near misses under 0.1",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
