@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-21-moridinamael-dc2ea945",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N7279+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T18:11:51+00:00",
+ "roles": ["feeds bonsai1/L13/N469+"],
+ "neighbours": [
+  {
+   "unit": "L12/N7279",
+   "pole": "+",
+   "label": "The word 'assert' in code, in any language: assert statements and assert-named test calls (assertEqual, assert_allclose, console.assert), with at least one line of code before it; not 'assert' in English prose",
+   "short": "'assert' in code",
+   "unit_kind": "token",
+   "confidence": "medium",
+   "notes": "Probes: Python assert 0.53-0.97, self.assertX 0.58-0.71, Go assert.True 0.76, Rust assert! 0.60, JS console.assert 1.34, C assert() 0.30; assert as the very first token of the text ~0.12. Value checks without the word stay low (verify 0.03, check() 0.05, ensure 0.17, if/raise 0.18, expect 0.13). Prose 'assert' 0.02-0.13, but 'assert' in a code comment 0.59 and an identifier assertion_count 0.37. Known second trigger outside this label: fill-with-a-value constructors (np.full 0.61-0.93, tf.constant 0.76, tf.fill 0.60; np.zeros/ones ~0.15, np.array 0.03). Feeder chosen by resident attribution (play step OOM'd on a shared GPU), so no ablation drop or feeds edge is recorded. Test sentences written blind by a label-only second author.",
+   "fire": [
+    "x = compute_total(items)\nassert x == 42",
+    "def test_add(self):\n    result = add(2, 3)\n    self.assertEqual(result, 5)",
+    "arr = np.linspace(0, 1, 10)\nnp.testing.assert_allclose(arr.sum(), 5.0)",
+    "const user = getUser(id);\nconsole.assert(user !== null, 'user missing');",
+    "let v = vec![1, 2, 3];\nassert_eq!(v.len(), 3);",
+    "int *p = malloc(sizeof(int) * n);\nassert(p != NULL);",
+    "response = client.get('/api/health')\nself.assertTrue(response.ok)",
+    "String name = parser.readName();\nassertNotNull(name);"
+   ],
+   "quiet": [
+    "putpixel((x, y), (v, v, v))",
+    "Thyroid disorders in primary care, Postgraduate Medical Journal 85 (1010).",
+    "The witness tried to assert that she had never seen the defendant before.",
+    "x = compute_total(items)\nif x != 42: raise ValueError('bad total')",
+    "def test_add(self):\n    result = add(2, 3)\n    print(result)",
+    "arr = np.linspace(0, 1, 10)\nprint(np.isclose(arr.sum(), 5.0))",
+    "const user = getUser(id);\nconsole.log(user, 'user loaded');",
+    "Critics assert that the new policy will raise costs for small businesses."
+   ]
+  }
+ ],
+ "predictions": "most of the 8 fire above 0.3; near misses below 0.2 (the if/raise twin may sit near 0.2)",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "blind-room",
+   "step-out"
+  ]
+ }
+}
