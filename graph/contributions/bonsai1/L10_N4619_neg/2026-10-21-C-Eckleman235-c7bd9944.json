@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-C-Eckleman235-c7bd9944",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N4619-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-21T17:34:21+00:00",
+ "recipe": {
+  "toolchain_commit": "f795445",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N4619_neg/2026-10-21-C-Eckleman235-c7bd9944.tests.json"
+ },
+ "label": "space missions that send people or craft to the Moon and beyond (Apollo, Artemis, 'a man on the moon', crews to Mars, the first satellites and cosmonauts); the moon as a sky object (full moon, tides, honeymoon) stays quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L10_N4619_neg/2026-10-21-C-Eckleman235-c7bd9944.tests.json",
+   "prereg_commit": "f795445",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.583,
+     "peak": " Armstrong"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.483,
+     "peak": " moon"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.369,
+     "peak": "'e"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.539,
+     "peak": " moon"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.37,
+     "peak": " on"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.397,
+     "peak": " V"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.264,
+     "peak": " human"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.445,
+     "peak": " land"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.068,
+     "peak": "year"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.057,
+     "peak": "'s"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.146,
+     "peak": " side"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.029,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.004,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.003,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.048,
+     "peak": " first"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.031,
+     "peak": " pole"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.421,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "f795445",
+  "minutes": 4,
+  "batch_size": 1
+ },
+ "short": "missions to the Moon",
+ "unit_kind": "meaning",
+ "confidence": 0.6,
+ "notes": "Found by a concept screen for the space program (branch 12 of a concept map around the Texas pole bonsai1/L10/N8330+): 4/6 space passages (peaks Space, astronaut, Apollo), controls < 0.1. Card: peak tokens ' moon' x5, ' man' x4 ('put a man on the moon'), ' Lunar'/' lunar'; word hits ' moon' cov 10%. Triage probes (exploratory, not reused): Apollo 11 0.65, Kennedy's 'man on the moon' 0.68, Artemis 0.58, lunar surface 0.42, a crew to Mars 0.33, the first satellite 0.33, moon craters 0.31, 'shoot for the moon' 0.36; quiet on the full moon 0.01, honeymoon 0.002, tides 0.001, a Mars rover 0.07. Near misses keep the frames and two keep the word 'moon' in its sky sense. Scoring runs on a Colab T4.",
+ "selection": "concept search: the space program (branch 12)"
+}
