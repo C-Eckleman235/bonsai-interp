@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-21-moridinamael-bdd7cc4c",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N5842+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T21:42:53+00:00",
+ "roles": ["feeds bonsai1/L22/N10062-"],
+ "neighbours": [
+  {
+   "unit": "L0/N5842",
+   "pole": "+",
+   "label": "An opening square bracket fused into one token with the symbol right after it (a quote mark, #, @, minus sign, ( or {), in code or prose, strongest with a space before the bracket; it lights up on that bracket token. A square bracket standing alone (followed by a letter, a digit or a space) stays weak, and a quote after ( or { stays quiet.",
+   "short": "square bracket glued to a following symbol ([\" [# [@ [-)",
+   "unit_kind": "token",
+   "confidence": "high",
+   "fire": [
+    "The config uses tags = ['red', 'blue'] for filtering.",
+    "Click the link [#section-3] to jump ahead.",
+    "She replied to the thread [@moderator] with a short note.",
+    "offsets = [-1, 0, 1]",
+    "points = [(0, 0), (1, 2), (3, 4)]",
+    "records = [{\"id\": 1}, {\"id\": 2}]",
+    "The footnote read [\"citation needed\"] in small print.",
+    "Set the range to [-5, 5] before plotting."
+   ],
+   "quiet": [
+    "names = [alice, bob, carol]",
+    "The config uses tags = [red, blue] for filtering.",
+    "Click the link [section 3] to jump ahead.",
+    "She replied to the thread [moderator] with a short note.",
+    "offsets = [1, 0, 2]",
+    "points = (0, 0), (1, 2), (3, 4)",
+    "records = {\"id\": 1}, {\"id\": 2}",
+    "The footnote read [citation needed] in small print."
+   ],
+   "notes": "Step feeder of bonsai1/L22/N10062- chosen by resident attribution (play step hit CUDA OOM, so no ablation drop and no feeds edge). Test sentences written blind by a second author from the label only; solver (inverse-de) found no leak, near-miss ceiling 0.23 from a lone bracket."
+  }
+ ],
+ "predictions": "8/8 fire above 0.30; lone-bracket near misses around 0.15-0.20, none at 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "step-out",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
