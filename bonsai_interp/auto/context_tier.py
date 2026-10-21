@@ -1497,6 +1497,22 @@ def _score_layer(model, tok, rec, L, P, tests_sha, counts, prereg_commit, B, smo
             el = time.time() - t0
             print(f"  layer {L}: {n_done}/{n_total} batches this run, {n_done * B / max(el, 1e-9):.1f} snippets/s, "
                   f"yielded {YIELD['seconds'] - y0:.0f} s of {el:.0f} s", flush=True)
+    def split_on_oom(items, f):
+        """f(items) -> [(texts, values)]; on a CUDA out-of-memory error, run the items again in halves instead of
+        failing the layer (each text's value is read at its own last token, whatever it is batched with). Nothing is
+        added to the sums here, so a STOP part-way through a split batch adds none of it."""
+        try:
+            return f(items)
+        except torch.OutOfMemoryError:
+            if len(items) == 1:
+                raise
+        rec.clear()
+        rec.mode, rec.stop_at = None, None
+        torch.cuda.empty_cache()
+        h = len(items) // 2
+        print(f"  layer {L}: out of GPU memory on a batch of {len(items)}: running it in halves", flush=True)
+        return split_on_oom(items[:h], f) + split_on_oom(items[h:], f)
+
     for pi, pre_text in enumerate(PREAMBLES):
         if pi < resume[0]:
             continue
@@ -1520,8 +1536,7 @@ def _score_layer(model, tok, rec, L, P, tests_sha, counts, prereg_commit, B, smo
         for b, batch in enumerate(batches):
             if (pi, 0, b) < resume:
                 continue
-            try:
-                _stop_requested()
+            def groups(batch):
                 c = copy.deepcopy(cache)
                 c.batch_repeat_interleave(len(batch))
                 if batch[0][0]:  # the shared prefix (everything but the last token), once per group
@@ -1537,7 +1552,11 @@ def _score_layer(model, tok, rec, L, P, tests_sha, counts, prereg_commit, B, smo
                 c.batch_select_indices(torch.tensor([i for i, (_, mem) in enumerate(batch) for _ in mem], device=DEVICE))
                 chunk = [t for _, mem in batch for t, _ in mem]
                 x = run(torch.tensor([[tk] for _, mem in batch for _, tk in mem], device=DEVICE), None, c)
-                add(chunk, x[:, -1].float().cpu().numpy())  # each text's last token: the trigger or its swap
+                return [(chunk, x[:, -1].float().cpu().numpy())]  # each text's last token: the trigger or its swap
+            try:
+                _stop_requested()
+                for chunk, v in split_on_oom(batch, groups):
+                    add(chunk, v)
             except SystemExit:  # STOP before or during this batch: nothing of it was added
                 save((pi, 0, b))
                 raise
@@ -1548,15 +1567,17 @@ def _score_layer(model, tok, rec, L, P, tests_sha, counts, prereg_commit, B, smo
         for b in range(0, len(full), B):
             if (pi, 1, b) < resume:
                 continue
-            try:
-                _stop_requested()
-                chunk = full[b:b + B]
+            def padded(chunk):
                 enc = tok([pre_text + t for t in chunk], return_tensors="pt", padding=True).to(DEVICE)
                 x = run(enc.input_ids, enc.attention_mask)
                 # read at the snippet's last token (the trigger or its swap): the claim is about that position, and a max
                 # over a long snippet would let a near miss fire elsewhere (on another place where the rule holds)
                 last = enc.attention_mask.sum(1) - 1
-                add(chunk, x[torch.arange(len(chunk), device=x.device), last].float().cpu().numpy())
+                return [(chunk, x[torch.arange(len(chunk), device=x.device), last].float().cpu().numpy())]
+            try:
+                _stop_requested()
+                for chunk, v in split_on_oom(full[b:b + B], padded):
+                    add(chunk, v)
             except SystemExit:
                 save((pi, 1, b))
                 raise
