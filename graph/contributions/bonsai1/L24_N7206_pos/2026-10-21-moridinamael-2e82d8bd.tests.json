@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-21-moridinamael-2e82d8bd",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N7206+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T16:08:15+00:00",
+ "neighbours": [
+  {
+   "unit": "L24/N7206",
+   "pole": "+",
+   "label": "In code (Python, JavaScript, Java or C++), the opening of a list or array literal that has items in it (the '[' or the start of its first item, on one line or across several, after at least one earlier line of code), or a call that puts one item into a list (append, push, add); an empty [], and dicts, tuples, sets or function calls opened the same way, stay quiet.",
+   "short": "opening of a filled list/array literal, or append/push of one item",
+   "fire": [
+    "import os\nfiles = ['a.txt', 'b.txt', 'c.txt']",
+    "const x = 5;\nconst nums = [1, 2, 3, x];",
+    "def build():\n    items = [\n        'apple',\n        'banana',\n    ]",
+    "results = []\nresults.append(score)",
+    "let stack = [];\nstack.push(node.left);",
+    "List<String> names = new ArrayList<>();\nnames.add(\"Alice\");",
+    "int n = 4;\nint primes[] = {2, 3, 5, 7};",
+    "std::vector<int> v;\nv.push_back(42);"
+   ],
+   "quiet": [
+    "By one estimate, this burden amounts to $80 billion per year.",
+    "config = {\n    'name': 'a',\n    'size': 3,\n}",
+    "import os\nfiles = []",
+    "const x = 5;\nconst opts = {a: 1, b: 2};",
+    "def build():\n    items = (\n        'apple',\n        'banana',\n    )",
+    "results = {}\nresults.update(score)",
+    "let stack = new Map();\nstack.set(node.left, 1);",
+    "Map<String, Integer> ages = new HashMap<>();\nages.put(\"Alice\", 30);"
+   ],
+   "roles": ["reads bonsai1/L22/N7170-"]
+  }
+ ],
+ "predictions": "Blind test (sentences written by a label-only second author). Expect most fire items 0.3-0.7; C array initializer and push_back are unprobed and may be weaker.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "neighbors",
+   "probe",
+   "inverse-de",
+   "blind-room"
+  ]
+ }
+}
