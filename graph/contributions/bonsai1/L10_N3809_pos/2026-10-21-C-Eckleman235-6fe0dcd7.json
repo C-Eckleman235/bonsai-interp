@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-C-Eckleman235-6fe0dcd7",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N3809+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-21T18:10:18+00:00",
+ "recipe": {
+  "toolchain_commit": "b61d2fb",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N3809_pos/2026-10-21-C-Eckleman235-6fe0dcd7.tests.json"
+ },
+ "label": "West Virginia and Kentucky: their towns, rivers and bluegrass culture (Kanawha, Wheeling, Huntington, Louisville, the Tug Fork); neighbouring Ohio, Pennsylvania and Tennessee places in the same frames stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L10_N3809_pos/2026-10-21-C-Eckleman235-6fe0dcd7.tests.json",
+   "prereg_commit": "b61d2fb",
+   "author": "C-Eckleman235",
+   "n_fire": 6,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.587,
+     "peak": "ha"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.043,
+     "peak": " Huntington"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.541,
+     "peak": " Lexington"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.573,
+     "peak": "grass"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.39,
+     "peak": " Louisville"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.609,
+     "peak": " River"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.156,
+     "peak": "fields"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 1.067,
+     "peak": "burg"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.14,
+     "peak": "ong"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.012,
+     "peak": "cats"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.003,
+     "peak": " from"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.098,
+     "peak": " songs"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.004,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.582,
+     "peak": " River"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.089,
+     "peak": "ch"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.149,
+     "peak": "burg"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.859,
+    "median_fire": 0.557,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "b61d2fb",
+  "minutes": 3,
+  "batch_size": 1
+ },
+ "short": "West Virginia and Kentucky",
+ "unit_kind": "meaning",
+ "confidence": 0.5,
+ "notes": "Found by a concept screen fanning out from the Virginia pole bonsai1/L9/N812+ (branch 13 of a concept map around the Texas pole bonsai1/L10/N8330+): 4/6 West Virginia passages (peaks ' coal', Morgant|own, Harpers ' Ferry'), controls < 0.1. Card: peak tokens ' WV' x3, ' KY' x3, ' Va' x2, Blue|grass, ' Louisville'; word hits ' Kentucky' cov 15%, ' Virginia' 12%, ' Louisville' 6%. Triage probes (exploratory, not reused): Charleston WV on the Kanawha 0.83, Louisville Slugger 0.51, bluegrass fiddlers 0.46, the Kentucky Derby 0.28, Bardstown bourbon 0.26, McDowell County hollers 0.25; leaks: Scranton coal 0.24, Pittsburgh steel 0.24, Wyoming coal 0.30; quiet on Gatlinburg TN 0.04, Asheville 0.15. Near misses keep the frames in neighbouring states, including one coal barge (Pittsburgh) and the other Ohio River suspension bridge (Cincinnati). Scoring runs on a Colab T4.",
+ "selection": "concept search: Virginia fan-out, West Virginia (branch 13)"
+}
