@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-21-moridinamael-996098d2",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N2257+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T11:38:02+00:00",
+ "neighbours": [
+  {
+   "unit": "L25/N2257",
+   "pole": "+",
+   "label": "Code or prose that first names a group of several items and then sets up singling out ONE of them by position or rank (first, last, eldest, lowest, [0], [-1], pop): it lights up on the word just before the pick, so a setup that reaches that slot fires even if no pick follows; mentioning a group and using it whole (counting, sorting, printing all of it) stays quiet",
+   "short": "set-up to pick the first/last one of a group",
+   "roles": ["feeds bonsai1/L27/N9067-"],
+   "fire": [
+    "Simon is the fourth from the left in the centre row.",
+    "Of the five sisters, the eldest became a doctor.",
+    "names = ['Ana', 'Ben', 'Cara']\nprint(names[0])",
+    "We tried three restaurants on the trip, and the last one was by far the best.",
+    "Among all the candidates who applied, the lowest bid came from a small local firm.",
+    "stack = [4, 8, 15, 16]\ntop = stack.pop()",
+    "The team ran four laps, and on the final lap Maria finally pulled ahead.",
+    "scores = sorted(results)\nworst = scores[-1]"
+   ],
+   "quiet": [
+    "Humans should make the best use of given information at any time.",
+    "The five sisters all gathered for dinner on Sunday.",
+    "names = ['Ana', 'Ben', 'Cara']\nprint(names)",
+    "We tried three restaurants on the trip and enjoyed every one of them.",
+    "All the candidates who applied submitted bids before the deadline.",
+    "stack = [4, 8, 15, 16]\ntotal = sum(stack)",
+    "The team ran four laps together and then stretched on the grass.",
+    "scores = sorted(results)\nprint(len(scores))"
+   ]
+  }
+ ],
+ "predictions": "Blind test (label-only author). Expect most code fires to clear 0.20; prose fires weaker; the 'fourth from the left' fire item resembles the - pole's top examples and will likely miss.",
+ "notes": "Step-out feeder of bonsai1/L27/N9067-. play step hit CUDA OOM (resident stream model shares the GPU), so the feeder was chosen as the top MLP cell from the resident attribution tool (chat feeders); no ablation drop measured, so no feeds edge is recorded. Logit effect promotes ' last', ' first', ' oldest', ' youngest', ' smallest'.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "inverse-de",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
