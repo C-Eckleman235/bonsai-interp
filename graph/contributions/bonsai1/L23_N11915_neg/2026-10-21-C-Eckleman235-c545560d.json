@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-C-Eckleman235-c545560d",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N11915-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-21T19:37:46+00:00",
+ "recipe": {
+  "toolchain_commit": "a6fb09d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L23_N11915_neg/2026-10-21-C-Eckleman235-c545560d.tests.json"
+ },
+ "label": "a year from about 1890 to 1915 written in digits (the turn of the twentieth century up to the First World War); the same decades in other centuries and the 1950s stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L23_N11915_neg/2026-10-21-C-Eckleman235-c545560d.tests.json",
+   "prereg_commit": "a6fb09d",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.448,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.512,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.447,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.592,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.534,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.557,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.54,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.533,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.039,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.048,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.057,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.02,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.018,
+     "peak": " covered"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.033,
+     "peak": "2"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.099,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.03,
+     "peak": " attic"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.534,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "a6fb09d",
+  "minutes": 8,
+  "batch_size": 1
+ },
+ "short": "1890-1915 (in digits)",
+ "unit_kind": "token/lexical",
+ "confidence": 0.5,
+ "notes": "Found by a concept screen for years and periods (branch 14 of a concept map around the Texas pole bonsai1/L10/N8330+): 5/6 1920s passages (peaks the '2' of 192x, fl|appers, Pro|hibition). Card: peak tokens '0' x9, '9' x7, '1' x7, '8' x6, ' World' x2 (the First World War, 19|0|6). Probes (exploratory, run on a separate Kaggle T4, so this checkout's probe log does not hold them; none is reused): a sweep of every fifth year 1600-2020 read >= 0.3 on 1890-1915, 0.15-0.30 on 1870-1885 and 1920-1930; it also fires on era words (flappers 0.46, the WWI armistice 0.50), which this test does not claim. Near misses keep each frame and move the year a century, or to the 1950s. Scoring runs on a Colab T4.",
+ "selection": "concept search: years and periods (branch 14)"
+}
