@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-21-moridinamael-028b4261",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N1253-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T13:46:09+00:00",
+ "roles": ["feeds bonsai1/L14/N9298+"],
+ "neighbours": [
+  {
+   "unit": "L12/N1253",
+   "pole": "-",
+   "label": "In code or code comments, text saying a collection keeps or preserves an existing order of its items (an ordered dict or map, insertion order, results returned in the same order as the inputs, item i lining up with item i of another list); rearranging items (sorting, reversing, SQL ORDER BY) and other senses of 'order' (in order to, a purchase order, an Order model) stay quiet.",
+   "short": "code: items keep their existing order",
+   "fire": [
+    "# Use an OrderedDict so the keys keep their insertion order when we serialize.",
+    "// Results are returned in the same order as the input URLs.",
+    "# Since Python 3.7, dict preserves insertion order, so iterating gives keys as they were added.",
+    "/* LinkedHashMap maintains the order in which entries were inserted. */",
+    "# scores[i] corresponds to names[i]; the two lists stay aligned.",
+    "// Promise.all resolves to an array whose values line up with the input promises, index for index.",
+    "# dedupe() removes duplicates while preserving the original order of first appearance.",
+    "-- Note: the output rows keep the same order as the ids passed in."
+   ],
+   "quiet": [
+    "# Use a plain dict here; we sort the keys before we serialize.",
+    "// Results are sorted by response time before being returned.",
+    "# We reverse the list so the newest entries come first.",
+    "/* HashMap gives no guarantee about the order of its entries. */",
+    "# scores is sorted in descending order to build the leaderboard.",
+    "-- Fetch the rows with ORDER BY created_at DESC.",
+    "# In order to avoid a race condition, acquire the lock first.",
+    "// Create a new purchase order and email it to the supplier."
+   ],
+   "notes": "Test sentences written blind by a second author who saw only the label. Probes: preserving an existing order fired 0.37-0.80 (insertion order, OrderedDict, same order as requests, outputs[i] vs inputs[i]); sort/reverse/ORDER BY stayed under 0.07; purchase/court order and 'in order to' near 0. Regex capture groups also fire (0.42-0.71) and are not covered by this label. Feeder found with the resident attribution tool because play step ran out of GPU memory (shared GPU), so no ablation drop is recorded."
+  }
+ ],
+ "predictions": "7/8 fire; the HashMap 'no guarantee about the order' near miss is the likeliest leak",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
