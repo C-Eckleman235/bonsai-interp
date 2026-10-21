@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-21-moridinamael-6832e50d",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N10850-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T11:45:17+00:00",
+ "roles": ["reads bonsai1/L27/N6396-"],
+ "neighbours": [
+  {
+   "unit": "L28/N10850",
+   "pole": "-",
+   "label": "the end of a line, statement or block of text: the line break, or the closing bracket or punctuation that ends it (a dense, weak pole)",
+   "short": "end of a line / statement / block (dense)",
+   "unit_kind": "dense / positional",
+   "confidence": "low",
+   "notes": "Card flags dense (49% of tokens reach 0.1 of max). Probes: twins with and without line breaks scored about the same (0.44-0.60), so the line-break effect is small. Feeders L22/N10663+ (sentence end + newline) and L25/N627+ (code block end + blank line) shaped the label. The globalMOO solver found no leak; its strongest text peaked on a closing \"')\" (0.75). Test sentences written blind by a label-only author.",
+   "fire": [
+    "The meeting is over.\nEveryone can go home now.",
+    "if (count > 10) {\n    reset();\n}",
+    "She finally answered the question (after a long pause).",
+    "Roses are red,\nviolets are blue.",
+    "Please send the report by Friday!",
+    "print(\"Hello, world\")",
+    "The list contained three items: apples, pears, and plums.",
+    "Is this the right train to Boston?"
+   ],
+   "quiet": [
+    "The meeting is over and everyone can go home now and then we",
+    "if (count > 10) { reset",
+    "She finally answered the question (after a long",
+    "Roses are red, violets are",
+    "Please send the report by Friday and also the",
+    "print(\"Hello, world",
+    "The list contained three items: apples, pears, and",
+    "Is this the right train to"
+   ]
+  }
+ ],
+ "predictions": "Likely fail: the pole is dense, so the cut-off near misses probably still reach 0.30 on some token.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "probe",
+   "neighbors",
+   "inverse-gmoo",
+   "blind-room"
+  ]
+ }
+}
