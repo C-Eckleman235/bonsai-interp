@@ -649,7 +649,7 @@ def _tick(*_):
     Before yielding, the allocator's cached blocks are returned, so the foreground can use what this process is not holding."""
     from bonsai_interp import gpu_turn
     _stop_requested()
-    if gpu_turn._live("want"):
+    if gpu_turn.waiting(0):  # the stream wants the GPU: this tick will step back into the queue
         import torch
         if torch.cuda.is_available() and torch.cuda.is_initialized():
             torch.cuda.synchronize()
