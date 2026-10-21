@@ -1,0 +1,162 @@
+{
+ "id": "2026-10-21-moridinamael-c15d5caa",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N9447+",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T21:17:18+00:00",
+ "recipe": {
+  "toolchain_commit": "f829b35",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N9447_pos/2026-10-21-moridinamael-c15d5caa.tests.json"
+ },
+ "label": "The German word 'inzwischen' (meanwhile / by now), firing on its 'zw' piece anywhere in German prose; quiet for its synonyms (mittlerweile, unterdessen, seitdem), for other German words with 'zw' (zwischen, dazwischen, zwischendurch, zwar, zwei) and for 'meanwhile' in English or Spanish. Known leak: inside some real surnames that the tokenizer splits into short fragments.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N9447_pos/2026-10-21-moridinamael-c15d5caa.tests.json",
+   "prereg_commit": "f829b35",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.381,
+     "peak": "zw"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.542,
+     "peak": "zw"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.446,
+     "peak": "zw"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.32,
+     "peak": "zw"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.349,
+     "peak": "zw"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.439,
+     "peak": "zw"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.523,
+     "peak": "zw"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.512,
+     "peak": "zw"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.657,
+     "peak": "al"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.142,
+     "peak": " W"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.017,
+     "peak": "ler"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.027,
+     "peak": "itt"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.041,
+     "peak": " Kat"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.004,
+     "peak": " unter"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.032,
+     "peak": " St"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.008,
+     "peak": " seit"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 1,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.875,
+    "median_fire": 0.443,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "f829b35",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L34/N8520+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L34/N8520+", "to": "bonsai1/L35/N9447+", "kind": "feeds", "weight": 0.13, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
