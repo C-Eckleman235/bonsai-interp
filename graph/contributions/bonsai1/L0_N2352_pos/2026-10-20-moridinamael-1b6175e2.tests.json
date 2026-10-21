@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-20-moridinamael-1b6175e2",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N2352+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T02:54:46+00:00",
+ "roles": ["feeds bonsai1/L1/N9045+"],
+ "neighbours": [
+  {
+   "unit": "L0/N2352",
+   "pole": "+",
+   "label": "the character 爱/愛 (simplified or traditional/Japanese) when it stands on its own rather than fused into a common two-character word, in any sense: love as verb or noun, or just its sound in transliterated names; fused words (可爱, 恋爱, 爱好, 爱情, 爱尔兰) and love said without the character (喜欢, 情, 恋, English 'love') stay low",
+   "short": "the lone character 爱/愛, any sense",
+   "unit_kind": "token",
+   "confidence": "high",
+   "notes": "Test written blind by a second author from the label only (stream blind_test). Probes: standalone 爱/愛 0.62-0.89 incl. transliterations (爱因斯坦, 爱丁堡); tokenizer-fused 爱尔兰/爱好/可爱的/恋爱/愛情/爱吃 0.02-0.18; 喜欢/情/恋/사랑/aime <=0.04, English 'love' 0.21. DE solver on a 40-sentence bank: no leak (near-miss ceiling 0.28). Feeder found with the resident attribution tool (play step OOM on a shared GPU), so no zero-ablation feeds edge is recorded.",
+   "fire": [
+    "我爱你，从第一天见面就是这样。",
+    "妈妈说她永远爱我们，不管发生什么。",
+    "他特别爱吃辣，每顿饭都要加辣椒。",
+    "我们都爱这座城市的秋天。",
+    "她爱他，可是他从来不知道。",
+    "愛してるって、なかなか言えないよね。",
+    "這份愛讓我撐過了最難的日子。",
+    "孩子们爱在河边玩水，一玩就是一下午。"
+   ],
+   "quiet": [
+    "我喜欢你，从第一天见面就是这样。",
+    "这只小猫真可爱，大家都想抱它。",
+    "他们恋爱三年后终于结婚了。",
+    "我的爱好是周末去爬山。",
+    "这部电影讲的是一段感人的爱情故事。",
+    "他去年夏天去爱尔兰旅行了两个星期。",
+    "恋は突然やってくるものだ。",
+    "他特别喜欢吃辣，每顿饭都要加辣椒。"
+   ]
+  }
+ ],
+ "predictions": "7/8 fire (爱吃 may fuse into one token and stay low), 0 near misses at 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "bank-solo",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
