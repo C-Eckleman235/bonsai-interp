@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-21-moridinamael-806addba",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N5884+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T11:30:43+00:00",
+ "roles": ["reads bonsai1/L33/N10401-"],
+ "neighbours": [
+  {
+   "unit": "L35/N5884",
+   "pole": "+",
+   "label": "In Arabic text, the first chopped-off piece of a long word that begins with the article 'al-' and a derived-noun stem (al-must..., al-munt..., al-ist...); short everyday Arabic words, Persian, and the same words in English or French stay quiet",
+   "fire": [
+    "ذهب أبي إلى المستشفى صباح اليوم لإجراء الفحوصات.",
+    "فاز المنتخب الوطني بالمباراة النهائية أمس.",
+    "تسعى الحكومة إلى زيادة الاستثمار في قطاع الطاقة.",
+    "نحن نفكر دائمًا في المستقبل وما يحمله لنا.",
+    "أعلنت الشركة عن الاستراتيجية الجديدة للسنوات الخمس القادمة.",
+    "يشتكي المستخدمون من بطء التطبيق بعد التحديث الأخير.",
+    "ارتفعت أسعار المنتجات الغذائية هذا الشهر.",
+    "احتفل الشعب بعيد الاستقلال في الساحات العامة."
+   ],
+   "quiet": [
+    "امروز با دوستانم به رستوران رفتیم و غذا خوردیم",
+    "from app import db\n\nclass Order(db.Model):\n    id = db.Column(db.Integer, primary_key=True)",
+    "ذهب أبي إلى الطبيب صباح اليوم.",
+    "فاز فريقنا أمس.",
+    "My father went to the hospital this morning for some tests.",
+    "Nous pensons toujours à l'avenir et à ce qu'il nous réserve.",
+    "قالت الشركة إن لها خطة جديدة.",
+    "Users complain that the app is slow after the latest update."
+   ]
+  }
+ ],
+ "unit_kind": "token / sub-word piece",
+ "confidence": "medium",
+ "notes": "Cold step-in reader (labelled from its own tops and probes only). Card flags the + pole as positional (88% of top peaks at window position 0); in-context probes put the real signal on Arabic 'al-' + derived-noun stem pieces (' المنت' up to 1.2 of max, ' المست' 0.22-0.53). Solver leak: Python 'class X(db.Model)' '(db' at ~0.30. Test sentences written blind by a label-only author.",
+ "predictions": "Most fires above 0.20; the (db.Model) near miss near 0.30 is the main risk.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "blind-room"
+  ]
+ }
+}
