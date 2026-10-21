@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-moridinamael-88302fdd",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N645-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T09:23:35+00:00",
+ "roles": ["reads bonsai1/L28/N10754-"],
+ "neighbours": [
+  {
+   "unit": "L32/N645",
+   "pole": "-",
+   "label": "tokens several lines deep inside a multi-line Python block of assignment and function/method-call statements (not prose about code, not one-line snippets, not blocks of plain constants)",
+   "fire": [
+    "import pandas as pd\ndf = pd.read_csv(\"sales.csv\")\ndf = df.dropna(subset=[\"region\"])\ntotals = df.groupby(\"region\")[\"amount\"].sum()\ntotals.plot(kind=\"bar\")\nplt.savefig(\"totals.png\")",
+    "def train(model, loader, optimizer):\n    model.train()\n    for batch in loader:\n        optimizer.zero_grad()\n        loss = model(batch).loss\n        loss.backward()\n        optimizer.step()",
+    "client = boto3.client(\"s3\")\nresponse = client.list_objects_v2(Bucket=bucket_name)\nkeys = [obj[\"Key\"] for obj in response.get(\"Contents\", [])]\nfor key in keys:\n    client.download_file(bucket_name, key, os.path.join(out_dir, key))",
+    "parser = argparse.ArgumentParser()\nparser.add_argument(\"--epochs\", type=int, default=10)\nparser.add_argument(\"--lr\", type=float, default=1e-3)\nargs = parser.parse_args()\nmodel = build_model(args)\nrun(model, epochs=args.epochs)",
+    "conn = sqlite3.connect(\"app.db\")\ncur = conn.cursor()\ncur.execute(\"SELECT id, name FROM users\")\nrows = cur.fetchall()\nnames = [r[1] for r in rows]\nconn.close()",
+    "class Inventory:\n    def add(self, item, qty):\n        current = self.items.get(item, 0)\n        self.items[item] = current + qty\n        self.log.append((item, qty))\n        self.save()",
+    "fig, ax = plt.subplots(figsize=(8, 4))\nx = np.linspace(0, 10, 200)\ny = np.sin(x) * np.exp(-x / 5)\nax.plot(x, y, label=\"damped\")\nax.legend()\nfig.tight_layout()",
+    "session = requests.Session()\nsession.headers.update({\"User-Agent\": \"bot\"})\nresp = session.get(url, timeout=10)\nresp.raise_for_status()\ndata = resp.json()\nprocess(data[\"items\"])"
+   ],
+   "quiet": [
+    "To analyze sales, we load the CSV with pandas, drop rows missing a region, sum the amounts per region and then save a bar chart of the totals.",
+    "In the training loop, you reset the gradients, compute the loss from the model, call backward on it and then let the optimizer take a step.",
+    "Run `client.download_file(bucket, key, path)` to fetch one object.",
+    "The script accepts an epochs flag and a learning-rate flag, which are parsed at startup and passed along when the model is built.",
+    "MAX_USERS = 100\nDEFAULT_NAME = \"guest\"\nDB_PATH = \"app.db\"\nTIMEOUT = 30\nRETRIES = 3\nDEBUG = False",
+    "Our inventory class keeps a dictionary of items; adding stock increases the count, writes an entry to the log and saves everything to disk.",
+    "The figure shows a damped sine wave drawn over the range zero to ten, with a legend and tightened layout.",
+    "Use `resp = requests.get(url, timeout=10)` for a quick request."
+   ]
+  }
+ ],
+ "predictions": "Cold deep-cell label from tops and probes only; probes were noisy (code blocks 0.03-0.47), so the 0.20 median bar is the main risk.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-gmoo",
+   "blind-room"
+  ]
+ }
+}
