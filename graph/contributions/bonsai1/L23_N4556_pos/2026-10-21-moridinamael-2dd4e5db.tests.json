@@ -1,0 +1,55 @@
+{
+ "contribution": "2026-10-21-moridinamael-2dd4e5db",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N4556+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T22:56:24+00:00",
+ "neighbours": [
+  {
+   "unit": "L23/N4556",
+   "pole": "+",
+   "label": "In English text that defines a network, graph, data structure, map or model, the linking word right after an element noun that says what each element is or stands for ('the nodes are ...', 'each X represents ...', 'every dot stands for ...'). Quiet: the same element nouns described without a mapping (their colour, position or state), symbolism in stories and poems, a person representing a client or country. Elected members representing districts can also light up partly.",
+   "fire": [
+    "In this graph, the nodes represent cities and the edges represent direct flights between them.",
+    "Each vertex stands for a user account, and an edge connects two users who follow each other.",
+    "On the map, every red dot stands for a weather station that reported data last year.",
+    "In the neural network diagram, each circle represents a single neuron in the hidden layer.",
+    "The rows of the adjacency matrix correspond to source nodes, and each entry indicates whether a link exists.",
+    "In our model, each agent represents a household deciding how much water to use.",
+    "Here the leaves of the tree are the individual words, and each internal node denotes a phrase.",
+    "Every square on the grid stands for one hectare of farmland in the simulation."
+   ],
+   "quiet": [
+    "In this graph, the nodes are drawn in blue and the edges are slightly thicker than usual.",
+    "The vertex in the upper left corner has turned red after the last update.",
+    "On the map, the red dots are clustered near the coast and fade toward the mountains.",
+    "In the neural network diagram, the circles in the hidden layer are arranged in two neat columns.",
+    "The adjacency matrix was printed on three pages because it was too wide for one.",
+    "In the novel, the green light across the bay represents Gatsby's longing for the future.",
+    "In her poem, the falling leaves stand for the passing of youth.",
+    "The lawyer represents a small bakery in its dispute with the landlord."
+   ]
+  }
+ ],
+ "predictions": "Expect most fire sentences 0.3-0.7 on the mapping verb; near misses mostly below 0.15. Risk: 'nodes are drawn in blue' may leak on ' are' in a graph frame.",
+ "short": "what each element of a graph/model is",
+ "unit_kind": "context/semantic",
+ "notes": "Step-out from bonsai1/L25/N10696-. play step hit CUDA OOM (resident stream model holds the GPU), so TARGET is the top feeder by resident attribution (feeders tool), not by ablation drop; no feeds edge recorded. Inverse solver (DE over a bank) found no leak; weaker in French/Spanish, silent in one German probe, senators 'represent' states 0.43. Test sentences written blind by a second author from the label only.",
+ "roles": [
+  "feeds bonsai1/L25/N10696-"
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
