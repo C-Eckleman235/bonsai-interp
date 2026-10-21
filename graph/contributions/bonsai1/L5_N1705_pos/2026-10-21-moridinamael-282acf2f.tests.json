@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-21-moridinamael-282acf2f",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N1705+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T14:45:09+00:00",
+ "neighbours": [
+  {
+   "unit": "L5/N1705",
+   "pole": "+",
+   "label": "In code, the separator right after the first bare item where curly braces are involved: the comma, ' for' or '|' after the first item of a set literal or brace comprehension, and the '}, {' junction between consecutive dicts in a list of dicts; dict key colons, a single dict, square-bracket lists, tuples, set() calls and set notation in prose stay quiet.",
+   "short": "separator after first bare item in curly-brace code (sets, brace comprehensions, dict lists)",
+   "unit_kind": "code syntax",
+   "roles": ["feeds bonsai1/L7/N11790+"],
+   "notes": "Step-out from bonsai1/L7/N11790+. play step hit CUDA OOM (resident model shares the GPU), so the feeder was chosen from resident attribution (top MLP feeder); no ablation drop, so no feeds edge. - pole: the colon after a dict key. Test sentences written blind by a label-only author.",
+   "fire": [
+    "payload = {'networks': [{'name': 'meh_1'}, {'name': 'meh_2'}]}",
+    "vowels = {'a', 'e', 'i', 'o', 'u'}",
+    "allowed_ports = {80, 443, 8080}",
+    "squares = {x * x for x in range(10)}",
+    "users = [{'id': 1, 'name': 'Ana'}, {'id': 2, 'name': 'Ben'}]",
+    "if status in {'pending', 'queued', 'running'}:\n    wait()",
+    "unique_words = {w.lower() for w in text.split()}",
+    "rows = [{\"city\": \"Oslo\"}, {\"city\": \"Lima\"}, {\"city\": \"Pune\"}]"
+   ],
+   "quiet": [
+    "conn.set_listener(\"testlistener\", testlistener)",
+    "vowels = ['a', 'e', 'i', 'o', 'u']",
+    "allowed_ports = (80, 443, 8080)",
+    "user = {'id': 1, 'name': 'Ana'}",
+    "if status in ('pending', 'queued', 'running'):\n    wait()",
+    "unique_words = set(w.lower() for w in text.split())",
+    "rows = [[\"Oslo\", 1], [\"Lima\", 2], [\"Pune\", 3]]",
+    "PRIMES = set([2, 3, 5, 7, 11, 13])"
+   ]
+  }
+ ],
+ "predictions": "7-8/8 fire; the single dict near miss is the likeliest to reach 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
