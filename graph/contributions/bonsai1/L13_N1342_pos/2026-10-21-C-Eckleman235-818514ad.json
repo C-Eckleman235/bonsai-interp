@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-C-Eckleman235-818514ad",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N1342+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-21T18:08:44+00:00",
+ "recipe": {
+  "toolchain_commit": "c3b2d0b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L13_N1342_pos/2026-10-21-C-Eckleman235-818514ad.tests.json"
+ },
+ "label": "the American Civil War era as a time: the years 1861-1865 (peaking on the decade digit '6' of 186x) and Lincoln as wartime president; other wars, other decades and other Lincolns stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L13_N1342_pos/2026-10-21-C-Eckleman235-818514ad.tests.json",
+   "prereg_commit": "c3b2d0b",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.705,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.731,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.543,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.72,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.832,
+     "peak": " Lincoln"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.679,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.258,
+     "peak": "coln"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.68,
+     "peak": "6"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.017,
+     "peak": "4"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.039,
+     "peak": "Race"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.015,
+     "peak": "ton"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.255,
+     "peak": " Amendment"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.071,
+     "peak": "ca"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.02,
+     "peak": "me"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.064,
+     "peak": " inaugural"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.09,
+     "peak": " president"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.693,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "c3b2d0b",
+  "minutes": 2,
+  "batch_size": 1
+ },
+ "short": "Civil War years (1861-65)",
+ "unit_kind": "meaning",
+ "confidence": 0.6,
+ "notes": "Found by a concept screen for the Confederacy (branch 12 of a concept map around the Texas pole bonsai1/L10/N8330+): 5/6 Confederacy passages (peaks the '6' of 186x, ' Confeder', ' Union'), controls < 0.1. Card: peak tokens ' Lincoln' x12, '6' x6, ' Civil' x4; word hits ' Civil' cov 13%, ' Lincoln' 12%, '6' 10%. Probes (exploratory, run on a separate Kaggle T4, so this checkout's probe log does not hold them; none is reused): Gettysburg Address 1863 0.60, Fort Sumter 1861 0.58, Emancipation Proclamation 1863 0.82, Grant and Sherman 1865 0.64, Reconstruction 1876 0.23; War of 1812 0.03; Lincoln, Nebraska 0.13; the Lincoln Navigator 0.21. Near misses keep each frame with another war, decade or president; the 1963 assassination keeps a '6' in the decade place. Scoring runs on a Colab T4.",
+ "selection": "concept search: the Confederacy (branch 12)"
+}
