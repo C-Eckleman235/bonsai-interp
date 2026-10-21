@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-21-moridinamael-6ebb61f9",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N9972-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T12:17:12+00:00",
+ "roles": [
+  "feeds bonsai1/L24/N6024+"
+ ],
+ "neighbours": [
+  {
+   "unit": "L23/N9972",
+   "pole": "-",
+   "label": "In code, a variable that holds a collection (list, dict or set): it lights up where the container is created, where it is later grown or read, and on a name being looped over after 'in'; a variable holding a single number, string or None stays quiet even when its name sounds plural, and so does prose about lists.",
+   "fire": [
+    "users = 0\nfor x in data:\n    users += 1",
+    "names = []\nnames.append(\"Ada\")",
+    "for item in cart_items:\n    total += item.price",
+    "scores = {\"alice\": 3, \"bob\": 5}\nprint(scores[\"bob\"])",
+    "seen = set()\nseen.add(node_id)",
+    "results = [x * 2 for x in values]",
+    "config = {}\nconfig[\"debug\"] = True",
+    "for key in settings:\n    print(key, settings[key])"
+   ],
+   "quiet": [
+    "conn.set_listener(\"testlistener\", testlistener)",
+    "names = \"Ada Lovelace\"\nprint(names.upper())",
+    "total = 0\ntotal += price",
+    "scores = 5\nprint(scores + 1)",
+    "seen = None\nif seen is None:\n    seen = False",
+    "results = x * 2",
+    "config_path = \"settings.yaml\"\nprint(config_path)",
+    "A list in Python is an ordered collection that you can grow with append."
+   ]
+  }
+ ],
+ "predictions": "Blind test (label-only author). Expect the ranking to hold but the median fire to sit near 0.20: short two-line snippets scored 0.2-0.35 in probes, and bare loop-over names ~0.2. Likely borderline.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "blind-room",
+   "quick-test",
+   "step-out"
+  ]
+ }
+}
