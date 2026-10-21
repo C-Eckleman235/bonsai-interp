@@ -17,8 +17,9 @@ locks each closed one gap. This is the single mechanism every GPU client uses:
 - **Re-entrant within a process:** nested or concurrent turns of the same process (e.g. a server's request threads)
   share one hold.
 - **Short holds:** hold one model call per turn, not a whole analysis, so others interleave.
-- **Visible:** the holder writes `holder.json` (pid, tag, priority, since), so an auditor can compare it with the
-  processes actually using the GPU.
+- **Visible:** the holder writes `holder.json` (pid, tag, priority, since), and every finished turn appends
+  {pid, tag, priority, start, end} to `turns.log`, so an auditor can match the processes actually using the GPU against
+  turn intervals.
 
 Kept for existing callers:
 - `foreground(tag)`: the same as `turn(tag, priority=0)`.
@@ -168,7 +169,7 @@ def _acquire(tag, prio, timeout):
             print(f"gpu_turn: '{tag}' has waited {timeout:.0f} s for the GPU (holder: {holder()})", file=sys.stderr)
             warned = True
         time.sleep(POLL)
-    _state.update(prio=prio, ticket=ticket)
+    _state.update(prio=prio, ticket=ticket, tag=tag, start=time.time())
     try:
         (_dir() / "holder.json").write_text(json.dumps({"pid": os.getpid(), "tag": tag, "priority": prio, "since": time.time()}))
     except OSError:
@@ -185,9 +186,16 @@ def _release_hold():
     except (OSError, ValueError):
         pass
     _state["lock"].release()
+    end = time.time()
     if _state["ticket"] is not None:
         _state["ticket"].unlink(missing_ok=True)
-    _state.update(prio=None, ticket=None)
+    try:  # one line per turn, machine-wide, so an auditor can match GPU use to turn intervals, not to snapshots
+        with open(_dir() / "turns.log", "a", encoding="utf-8") as f:
+            f.write(json.dumps({"pid": os.getpid(), "tag": _state.get("tag"), "priority": _state["prio"],
+                                "start": round(_state.get("start") or end, 3), "end": round(end, 3)}) + "\n")
+    except OSError:
+        pass
+    _state.update(prio=None, ticket=None, tag=None, start=None)
 
 
 def _enter(tag, prio, timeout):
