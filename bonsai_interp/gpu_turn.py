@@ -10,7 +10,7 @@ memory caps. Both can keep their model loaded; what they must not do is run kern
       gpu_turn.background_tick("auto2")      # yields at once if a foreground wants the GPU
 
 The background holds a busy file while it computes. A foreground writes a want file, then waits until no busy file
-is left. The background checks for want files before each batch: it finishes its in-flight kernels
+is left and no other process holds the foreground lock (fg.lock): foregrounds of different processes take turns too. The background checks for want files before each batch: it finishes its in-flight kernels
 (cuda.synchronize), removes its busy file, waits until the wants are gone, and takes the GPU back. So a foreground
 waits at most one background batch. Files carry the owner's pid; a dead owner's files are removed.
 
@@ -20,6 +20,7 @@ The directory is shared by every checkout on the machine: BONSAI_GPU_TURN (envir
 import atexit
 import os
 import sys
+import threading
 import time
 from contextlib import contextmanager
 from pathlib import Path
@@ -100,14 +101,57 @@ def _mine(kind, tag):
     return _dir() / f"{kind}-{os.getpid()}-{tag}"
 
 
+_fg_depth = 0  # re-entrant within one process: nested or concurrent foregrounds of the same process share its lock
+_fg_mutex = threading.Lock()
+
+
+def _fg_lock_path():
+    return _dir() / "fg.lock"
+
+
+def _try_fg_lock():
+    """Exclusive between processes: one foreground process computes at a time (2026-10-20: the stream's probe and its
+    llama.cpp screen computing together preceded a driver reset). A dead owner's lock is removed."""
+    p = _fg_lock_path()
+    try:
+        fd = os.open(p, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        os.write(fd, str(os.getpid()).encode())
+        os.close(fd)
+        return True
+    except FileExistsError:
+        try:
+            owner = int(p.read_text().strip() or 0)
+        except (OSError, ValueError):
+            return False
+        if owner == os.getpid():
+            return True
+        if owner and not _alive(owner):
+            p.unlink(missing_ok=True)
+        return False
+
+
 @contextmanager
 def foreground(tag="fg", timeout=300.0):
-    """Wait until no background holds the GPU, keep it for the block, then release. After `timeout` seconds of
-    waiting it goes ahead anyway, with a warning: a foreground (the live stream) must not hang forever."""
+    """Wait until no background holds the GPU and no other process's foreground is computing, keep the GPU for the
+    block, then release. After `timeout` seconds of waiting it goes ahead anyway, with a warning: a foreground (the
+    live stream) must not hang forever. Hold it per model call (a forward pass, a screen request), not per analysis,
+    so other foregrounds interleave in short turns."""
+    global _fg_depth
     want = _mine("want", tag)
     want.write_text(str(time.time()))
+    t0, locked = time.time(), False
     try:
-        t0 = time.time()
+        while True:
+            with _fg_mutex:
+                if _fg_depth > 0 or _try_fg_lock():
+                    _fg_depth += 1
+                    locked = True
+            if locked:
+                break
+            if time.time() - t0 > timeout:
+                print(f"gpu_turn: another foreground still computes after {timeout:.0f} s; going ahead", file=sys.stderr)
+                break
+            time.sleep(POLL)
         while [f for f in _live("busy") if f.name != _mine("busy", tag).name]:
             if time.time() - t0 > timeout:
                 print(f"gpu_turn: a background still holds the GPU after {timeout:.0f} s; going ahead", file=sys.stderr)
@@ -117,6 +161,11 @@ def foreground(tag="fg", timeout=300.0):
     finally:
         _sync()
         want.unlink(missing_ok=True)
+        if locked:
+            with _fg_mutex:
+                _fg_depth -= 1
+                if _fg_depth == 0:
+                    _fg_lock_path().unlink(missing_ok=True)
 
 
 _held = None
