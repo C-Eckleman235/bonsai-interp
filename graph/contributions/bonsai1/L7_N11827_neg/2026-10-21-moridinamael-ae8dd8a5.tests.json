@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-21-moridinamael-ae8dd8a5",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N11827-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T06:58:16+00:00",
+ "roles": ["feeds bonsai1/L9/N11895+"],
+ "neighbours": [
+  {
+   "unit": "L7/N11827",
+   "pole": "-",
+   "label": "Names of libraries and tools that send web (HTTP) requests, in code or in text about code: Python's requests, urllib/urllib2/urllib3, http.client, httpx, aiohttp, and their kin in other languages (axios, okhttp, Go's http.Client, Ruby's net/http, curl). Server-side web code (Flask's request object, request handlers, web frameworks), other libraries (numpy, subprocess, sqlite3, smtplib, selenium) and everyday English 'request(s)' or 'curl' stay quiet; an everyday word like 'curl' can fire weakly only when it comes right after code.",
+   "short": "HTTP client library names (requests, urllib, axios, curl)",
+   "fire": [
+    "import requests\nresp = requests.get(\"https://api.example.com/items\")",
+    "from urllib.request import urlopen\ndata = urlopen(url).read()",
+    "I switched the scraper from urllib2 to urllib3 because of connection pooling.",
+    "conn = http.client.HTTPSConnection(\"example.org\")",
+    "async with httpx.AsyncClient() as client:\n    r = await client.get(url)",
+    "async with aiohttp.ClientSession() as session:\n    async with session.get(url) as resp:",
+    "const res = await axios.post('/api/login', payload);",
+    "We use OkHttp on Android to call the backend REST endpoints."
+   ],
+   "quiet": [
+    "import json\nimport subprocess\nimport os",
+    "The curl of her hair caught the light.",
+    "import numpy as np\narr = np.zeros((3, 3))",
+    "from subprocess import run\nout = run([\"ls\", \"-l\"]).stdout",
+    "I switched the database layer from sqlite3 to SQLAlchemy because of connection pooling.",
+    "server = smtplib.SMTP(\"mail.example.org\")",
+    "from flask import request\nname = request.args.get('name')",
+    "@app.route('/login', methods=['POST'])\ndef login_handler():"
+   ]
+  }
+ ],
+ "predictions": "Blind test written by a label-only second author. Expect 8/8 fire above the bar; near misses all under 0.30 (Flask request and the curl-hair leak the riskiest).",
+ "notes": "Step out from bonsai1/L9/N11895+. play step hit CUDA OOM (shared GPU), so TARGET is the top resident attribution feeder (chat feeders tool); no ablation drop measured, so no feeds edge is recorded.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "blind-room",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
