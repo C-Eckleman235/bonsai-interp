@@ -22,7 +22,7 @@ abstraction pass. Each principle names its evidence and whether we have measured
 | 4 | **Budget cost by depth.** Early layers are word-driven and test-heavy; deep layers need context and human effort. | lexical poles L4 2,418 vs L20 171; tests 10,088 vs 1,185; labels hold 86–88% at L0–9 vs 24–50% at L20+ | planning |
 | 5 | **Enforce limits at the choke point.** The model loader applies memory caps; every GPU client (helper servers too) takes compute turns, and ONE process computes at a time: foregrounds exclude each other too (fg.lock), holding per model call. | 20 uncapped modules; a 9 GB band scan; 5 resets with concurrent compute clients | 0 resets since the fixes (measured) |
 | 6 | **Leave real headroom on the GPU and on the host:** at least 3 GB of GPU memory free, and system commit charge well under its limit. Never build all-pairs index arrays on the host. | reset at 15.5 / 16.3 GB with turns on; stable at 12.4–12.9 GB. The 15:39 reset came with the GPU at 10.6 GB but stage 2 allocating 11–23 GB of host arrays (191M pairs) on a machine already at 59 / 88 GB committed | stability |
-| 7 | **Design for stops.** Checkpoint every long stage, stop only at batch boundaries, report progress every minute. | 29 GPU min lost to an un-checkpointed stop; a force-kill followed by a reset | minutes lost per stop instead of hours |
+| 7 | **Design for stops.** Checkpoint every long stage, stop only at batch boundaries, report progress every minute. Key each checkpoint by what it holds (which layers, which windows), never by the run's settings, so any later run that needs those values can use it. | 29 GPU min lost to an un-checkpointed stop; a force-kill followed by a reset; stage 2's checkpoints hashed the layer set, so a restart after L0 and L1 were written redid the whole 70-min pass | minutes lost per stop instead of hours |
 | 8 | **Load once, serve many.** One resident model per service, commands in-process. | `play why` 28 s → 3.3 s; every reload was a reset risk | 8× latency (measured) |
 | 9 | **One pre-registration for many units.** Pin the rule and the test sets before scoring; merge commits keep the hashes valid. | 1 protocol for 33 layers instead of 33 | fewer waits |
 | 10 | **Plan wall time by the foreground's duty cycle,** not by GPU minutes. | the stream held 28–70% of the GPU during scoring | planning |
@@ -73,6 +73,7 @@ abstraction pass. Each principle names its evidence and whether we have measured
 - label precision: a held quick test rejects unrelated labels (0 / 13 wrong passed; FINDINGS 2026-10-20 null baseline). Does it also reject a nearby, broader or narrower label? That decides how much a held label says.
 - stage 2's cost scales with hits × occurrences (847k × ≤ 256). Would capping occurrences per frequent trigger (e.g. 128) change any bins? It changes results, so it's the user's call; measure on one layer's occ store first
 - prefix sharing and batch 32 for scoring (GPU benchmark after stage 2)
+- the all-layer passes run at forward batch 1 (the driver's hits batch, chosen for memory under the 0.22 cap). Benchmark batch 2–4 for stage 2's 8,000 windows: likely the biggest remaining lever on the 70-minute pass
 - the scoring tokens per held pole by depth (a paper metric; L4 about 24.5k, L20 about 172k layer-tokens)
 - feeders-first versus cold deep targets for human and agent labels (stream A/B)
 - float16 on T4-class GPUs (a parity study task)
@@ -89,6 +90,8 @@ abstraction pass. Each principle names its evidence and whether we have measured
 | all-layer stage 2, attempt 1 | stopped at window 1 of 8,000 (4 min) | – | planned 393 min for 847,211 hits | built 191M (hit, occurrence) pairs on the host at once (11–23 GB of RAM) on a machine at 59 / 88 GB committed; driver reset; rebuilding lean and chunked |
 | all-layer stage 2, attempt 2 (500-window chunks) | stopped by the guard at 96% commit after chunk 1 | – | 6.0 min per chunk | llama-server's 8 GiB prompt cache plus the batch; then `--cache-ram 0` and 250-window chunks |
 | all-layer stage 2, attempt 3 (250-window chunks) | 21 of 32 chunks in 57 min (18 min yielded) | about 39 | about 2.7 min per chunk | stopped itself at < 2 GB free RAM; resumes from checkpoints under a supervisor |
+| all-layer stage 2, attempt 3 resumed | pass done at about 03:41 (chunks 22–32); L0 written in 11.9 min, L1 in 10.0 min | – | fits and minimal pairs about 11 min per layer at template batch 32 | a guard stop at 90% commit (03:18) and one low-RAM relaunch on the way |
+| all-layer stage 2, attempt 4 (template batch 64) | pass redone for the 31 layers left: 12 of 32 chunks in 35 min (13 min yielded) | – | about 2.1 min per chunk unyielded, at forward batch 1 | restarted at a layer boundary to double the minimal-pair batch; the checkpoint signature hashed the layer set, so the finished pass didn't count (about 70 min lost). Since 5243a0a (speed amendment 1335006) checkpoints count per layer, so a later stop costs at most one chunk |
 
 Entry format:
 
