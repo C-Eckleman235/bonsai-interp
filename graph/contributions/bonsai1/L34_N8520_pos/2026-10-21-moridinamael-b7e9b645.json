@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-21-moridinamael-b7e9b645",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N8520+",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T20:55:06+00:00",
+ "recipe": {
+  "toolchain_commit": "1fb3ec3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N8520_pos/2026-10-21-moridinamael-b7e9b645.tests.json"
+ },
+ "label": "In French or Spanish prose, the word just before an upcoming number in an amount phrase (a comparator, approximator, range or age phrase such as 'more than', 'about', 'at least', 'between five and', 'at the age of', followed by a numeral): the slot where a quantity is about to be stated. Weaker for vague amounts with no number (many, a lot of); quiet for the same prepositions when no number follows (a possessive 'de', 'near' + a place), and for English text; known weak leak on French recipe instruction steps.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N8520_pos/2026-10-21-moridinamael-b7e9b645.tests.json",
+   "prereg_commit": "1fb3ec3",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 4,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.137,
+     "peak": " au"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.574,
+     "peak": " de"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.475,
+     "peak": "é"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.21,
+     "peak": " moins"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.166,
+     "peak": " entre"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.176,
+     "peak": " ins"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.616,
+     "peak": " de"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.395,
+     "peak": "adamente"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.088,
+     "peak": "a"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.209,
+     "peak": " é"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.109,
+     "peak": " au"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.286,
+     "peak": " était"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.475,
+     "peak": "é"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.136,
+     "peak": " sur"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.063,
+     "peak": " dé"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.111,
+     "peak": " r"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 1,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.805,
+    "median_fire": 0.302,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "1fb3ec3",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L32/N3269+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L32/N3269+", "to": "bonsai1/L34/N8520+", "kind": "feeds", "weight": 0.09, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
