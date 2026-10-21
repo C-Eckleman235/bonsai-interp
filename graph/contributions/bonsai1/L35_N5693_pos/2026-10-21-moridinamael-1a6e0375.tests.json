@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-21-moridinamael-1a6e0375",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N5693+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T07:27:40+00:00",
+ "roles": ["reads bonsai1/L34/N4510+"],
+ "neighbours": [
+  {
+   "unit": "L35/N5693",
+   "pole": "+",
+   "label": "The character 駐 at the start of 駐車場 (parking lot) inside a full Japanese or Chinese sentence saying a hotel, inn, hospital or similar place has a parking lot. 駐 in other words (駐在 'stationed', 駐留, 駐車 as the verb 'to park', as in 'no parking'), other places' facilities without 駐車場, other first characters of two-character words, and a bare one-line list item '無料駐車場' stay low. Known weaker leak: 吉 in 唐吉訶德 (Don Quixote).",
+   "short": "駐 starting 駐車場 (parking lot) as a facility a place has",
+   "fire": [
+    "鑑於大文豪莎士比亞是於1564年4月23日出生，而名著《唐吉訶德》的作者塞萬提斯．薩",
+    "このホテルには宿泊者専用の駐車場があり、無料でご利用いただけます。",
+    "当旅館は駅から徒歩五分で、敷地内に二十台分の駐車場もございます。",
+    "市立病院の裏手には広い駐車場があるので、車での来院も便利です。",
+    "這家飯店設有地下駐車場，房客可以免費停車。",
+    "民宿旁邊有一個小型駐車場，自駕遊的旅客非常方便。",
+    "温泉宿の正面に駐車場があり、到着してすぐに荷物を下ろせました。",
+    "该医院新建了一座多层駐車場，缓解了周边的停车难问题。"
+   ],
+   "quiet": [
+    "Weitere Informationen über das Reisen mit Kindern",
+    "父は商社の駐在員として、長年ロンドンに住んでいました。",
+    "米軍の駐留について、地元では様々な意見があります。",
+    "ホテルの前は駐車禁止なので、少し離れた場所に停めてください。",
+    "這位外交官曾經駐在東京多年。",
+    "旅館の玄関前に車を駐車しないでください。",
+    "このホテルには屋外プールとフィットネスジムがあります。",
+    "当旅館は駅から徒歩五分で、大浴場と露天風呂もございます。"
+   ],
+   "confidence": "low",
+   "notes": "Weak sparse + pole of a dense unit (- pole is Arabic function words, 15.8% density). Probes: 駐車場 in hotel/inn/hospital sentences 0.21-0.37, supermarket 0.03, store 'paid parking' -0.26; 駐在/駐留/駐車 verb -0.3 to -1.0. Test sentences written blind by a second author from the label only."
+  }
+ ],
+ "predictions": "Unsure: probe hits were only 0.15-0.37, so the 0.20 median is borderline; expect near misses to stay low.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "blind-room"
+  ]
+ }
+}
