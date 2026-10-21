@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-21-moridinamael-1b063874",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N9800-",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T19:09:51+00:00",
+ "recipe": {
+  "toolchain_commit": "e96cc69",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N9800_neg/2026-10-21-moridinamael-1b063874.tests.json"
+ },
+ "label": "In test code (a test_ function, @Test method or it()/test() block, after at least one earlier line), the check line: unit-test assertion calls (self.assertX methods, JUnit assertEquals, mock assert_called_with, pytest.raises, expect(...).toBe/toEqual) and bare assert statements, peaking on the assert or matcher token. The framework names pytest/unittest also fire, even in prose. Not assert statements in ordinary non-test functions, not other calls, prints or setup lines inside tests, not 'assert' in everyday prose.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N9800_neg/2026-10-21-moridinamael-1b063874.tests.json",
+   "prereg_commit": "e96cc69",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.391,
+     "peak": " assert"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.654,
+     "peak": ".assertEqual"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.508,
+     "peak": " assertEquals"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.427,
+     "peak": "toBe"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.687,
+     "peak": " pytest"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.39,
+     "peak": ".assert"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.518,
+     "peak": " expect"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.538,
+     "peak": ".assertTrue"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": -0.0,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.122,
+     "peak": " test"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.001,
+     "peak": "public"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.057,
+     "peak": " {\n"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.19,
+     "peak": " assert"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.235,
+     "peak": "(mock"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.0,
+     "peak": " cfg"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.162,
+     "peak": " setUp"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.513,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "e96cc69",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-out feeder of bonsai1/L10/N777+. play step hit CUDA OOM (GPU shared with a batch job), so the feeder was chosen by the resident attribution tool (top MLP feeder), not by a measured zero-ablation drop. Test written blind by a label-only second author.",
+ "roles": [
+  "feeds bonsai1/L10/N777+"
+ ]
+}
