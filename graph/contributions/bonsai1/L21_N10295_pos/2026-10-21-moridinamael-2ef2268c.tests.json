@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-21-moridinamael-2ef2268c",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N10295+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T17:11:51+00:00",
+ "roles": ["feeds bonsai1/L22/N7170-"],
+ "neighbours": [
+  {
+   "unit": "L21/N10295",
+   "pole": "+",
+   "label": "In code (Python, JavaScript, Java, C++ and similar), a later mention of a variable that already holds a list or array (made earlier by a list literal, a split() call, sorted(), a list comprehension, an ArrayList or a vector) where it is appended to, indexed, measured or passed on; the same variable holding a string, number, dict, tuple or set stays quiet, and a variable merely named like a list does not fire. Secondary: in medical or statistical prose, the decimal point inside the upper bound of a range written 'X to Y' (such as a confidence interval) when that bound is 1 or more; plain decimals and percentages stay quiet.",
+   "short": "a code variable that holds a list, used again",
+   "fire": [
+    "items = [3, 1, 2]\nitems.append(4)",
+    "words = line.split(\",\")\nprint(words[0])",
+    "ranked = sorted(scores)\ntop = ranked[-1]",
+    "squares = [x * x for x in range(10)]\ntotal = len(squares)",
+    "List<String> names = new ArrayList<>();\nnames.add(\"Ana\");",
+    "std::vector<int> v;\nv.push_back(7);",
+    "const queue = [];\nqueue.push(task);",
+    "parts = path.split(\"/\")\nprocess(parts)"
+   ],
+   "quiet": [
+    "By one estimate, this burden amounts to $80 billion per year.",
+    "The Avon Longitudinal Study of Parents and Children enrolled pregnant women who were due to deliver between April 1991 and December 1992.",
+    "count = 3\ncount += 4",
+    "line = text.strip()\nprint(line[0])",
+    "ranked = {\"a\": 1, \"b\": 2}\ntop = ranked[\"a\"]",
+    "squares = (1, 4, 9)\ntotal = len(squares)",
+    "String names = \"Ana\";\nint n = names.length();",
+    "int v = 0;\nv += 7;"
+   ],
+   "notes": "Step-out feeder of bonsai1/L22/N7170- found by resident attribution (play step ran out of GPU memory, so no ablation drop and no feeds edge). Test written blind by a second author from the label only; the solver's leak texts were placed as near misses."
+  }
+ ],
+ "predictions": "Code fire items at 0.15-0.5; near misses under 0.15.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "inverse-de",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
