@@ -1,0 +1,153 @@
+{
+ "id": "2026-10-21-C-Eckleman235-f05b4dd5",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N7053-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-21T19:38:45+00:00",
+ "recipe": {
+  "toolchain_commit": "28f260d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N7053_neg/2026-10-21-C-Eckleman235-f05b4dd5.tests.json"
+ },
+ "label": "a year written in digits in the 1500s, 1600s or 1700s whose decade is the 70s or 80s (1587, 1673, 1684, 1776, 1782): the same two decades across three centuries, while the 1800s and 1900s versions stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N7053_neg/2026-10-21-C-Eckleman235-f05b4dd5.tests.json",
+   "prereg_commit": "28f260d",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.279,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.45,
+     "peak": "7"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.522,
+     "peak": "7"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.41,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.429,
+     "peak": "7"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.614,
+     "peak": "7"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.496,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.37,
+     "peak": "7"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.001,
+     "peak": "house"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": -0.0,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.002,
+     "peak": "8"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.0,
+     "peak": " county"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": -0.0,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.012,
+     "peak": "6"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": -0.0,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.001,
+     "peak": "9"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.44,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "28f260d",
+  "minutes": 9,
+  "batch_size": 1
+ },
+ "short": "the 70s-80s of the 1500s-1700s",
+ "unit_kind": "token/lexical",
+ "confidence": 0.55,
+ "notes": "Second round on a pole I labelled 'the 1770s-1780s' in #381 (held, with one near miss, 1684, at 0.44). Reason, written in the concept map's ledger before this test: Probes (exploratory, run on a separate Kaggle T4, so this checkout's probe log does not hold them; none is reused), a sweep of every fifth year 1600-2020 read >= 0.3 on 1670-1685 and 1770-1775 and 0.15-0.30 on 1650-1665, 1750-1765 and 1780-1785, nothing in the 1800s or 1900s; 'The ship sailed in 1588' read 0.45 while 1484, 1886 and 1984 read <= 0.001. So the leak is a pattern: the same decades in the 1500s-1700s. Bare '1774.' 0.39; as a head count 0.06; as a price 0.13. Near misses keep each frame with the same last two digits in the 1800s or 1900s. Same author as #381, so this is a second round, not an independent replication. Scoring runs on a Colab T4.",
+ "selection": "concept search: years and periods (branch 14), second round"
+}

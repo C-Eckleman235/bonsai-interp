@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-C-Eckleman235-f05b4dd5",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N7053-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T19:30:15+00:00",
+ "selection": "concept search: years and periods (branch 14), second round",
+ "neighbours": [
+  {
+   "unit": "L25/N7053",
+   "pole": "-",
+   "label": "a year written in digits in the 1500s, 1600s or 1700s whose decade is the 70s or 80s (1587, 1673, 1684, 1776, 1782): the same two decades across three centuries, while the 1800s and 1900s versions stay quiet",
+   "fire": [
+    "The old schoolhouse was built in 1587.",
+    "Our family Bible records a wedding in 1673.",
+    "The town's first bank opened in 1678.",
+    "A tornado tore through the county in 1684.",
+    "The covered bridge was replaced in 1771.",
+    "The orchard was planted in 1776.",
+    "The first doctor arrived in town in 1782.",
+    "Most of the furniture in the attic dates from the 1670s."
+   ],
+   "quiet": [
+    "The old schoolhouse was built in 1887.",
+    "Our family Bible records a wedding in 1973.",
+    "The town's first bank opened in 1978.",
+    "A tornado tore through the county in 1984.",
+    "The covered bridge was replaced in 1871.",
+    "The orchard was planted in 1976.",
+    "The first doctor arrived in town in 1982.",
+    "Most of the furniture in the attic dates from the 1970s."
+   ]
+  }
+ ],
+ "predictions": "7/8 fire (1587 the least certain); near misses under 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "the 70s-80s of the 1500s-1700s",
+ "unit_kind": "token/lexical",
+ "confidence": 0.55,
+ "notes": "Second round on a pole I labelled 'the 1770s-1780s' in #381 (held, with one near miss, 1684, at 0.44). Reason, written in the concept map's ledger before this test: Probes (exploratory, run on a separate Kaggle T4, so this checkout's probe log does not hold them; none is reused), a sweep of every fifth year 1600-2020 read >= 0.3 on 1670-1685 and 1770-1775 and 0.15-0.30 on 1650-1665, 1750-1765 and 1780-1785, nothing in the 1800s or 1900s; 'The ship sailed in 1588' read 0.45 while 1484, 1886 and 1984 read <= 0.001. So the leak is a pattern: the same decades in the 1500s-1700s. Bare '1774.' 0.39; as a head count 0.06; as a price 0.13. Near misses keep each frame with the same last two digits in the 1800s or 1900s. Same author as #381, so this is a second round, not an independent replication. Scoring runs on a Colab T4."
+}
