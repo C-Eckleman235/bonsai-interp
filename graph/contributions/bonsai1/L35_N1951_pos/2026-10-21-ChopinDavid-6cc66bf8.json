@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-ChopinDavid-6cc66bf8",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N1951+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-21T22:40:14+00:00",
+ "recipe": {
+  "toolchain_commit": "94ba7fc",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N1951_pos/2026-10-21-ChopinDavid-6cc66bf8.tests.json"
+ },
+ "label": "The space-initial byte token that starts a katakana (or hangul) word after a space, where the tokenizer has to split the first character into bytes, not text made only of whole-character tokens.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N1951_pos/2026-10-21-ChopinDavid-6cc66bf8.tests.json",
+   "prereg_commit": "94ba7fc",
+   "author": "ChopinDavid",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.278,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.384,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.401,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.674,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.808,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.607,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.055,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.779,
+     "peak": " �"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.009,
+     "peak": "週"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.014,
+     "peak": "りました"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.117,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.144,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.022,
+     "peak": "定"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.018,
+     "peak": "の"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.006,
+     "peak": "We"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.01,
+     "peak": "ました"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.504,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "94ba7fc",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "space + katakana byte token",
+ "unit_kind": "lexical",
+ "confidence": 0.8,
+ "notes": "Probes (fraction of max 458): ' マトロスカ' 0.812, ' ホラーゲーム' 0.767, ' ヤフー' 0.659, Korean ' 네덜란드' 0.638, ' オムニ ホテル' 0.632, all peaking on the space-initial byte token ' �'. Quiet: whole-token Japanese 0.009-0.010, English 0.002. Each fire item was checked to contain a space-initial byte token and each near miss to contain none.",
+ "selection": "random draw"
+}

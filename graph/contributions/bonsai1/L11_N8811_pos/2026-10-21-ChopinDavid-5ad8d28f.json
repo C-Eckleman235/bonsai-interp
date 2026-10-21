@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-ChopinDavid-5ad8d28f",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N8811+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-21T22:39:00+00:00",
+ "recipe": {
+  "toolchain_commit": "94ba7fc",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L11_N8811_pos/2026-10-21-ChopinDavid-5ad8d28f.tests.json"
+ },
+ "label": "In Python, the attribute-name token right after a dot in attribute access (node.parent, widget.label, ax.title), not a method call such as .get( and not the same word in prose.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L11_N8811_pos/2026-10-21-ChopinDavid-5ad8d28f.tests.json",
+   "prereg_commit": "94ba7fc",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.426,
+     "peak": ".parent"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.279,
+     "peak": ".label"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.26,
+     "peak": ".parent"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.445,
+     "peak": ".label"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.321,
+     "peak": ".parent"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.576,
+     "peak": ".label"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.193,
+     "peak": ".parent"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.317,
+     "peak": ".label"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.066,
+     "peak": " root"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.141,
+     "peak": "title"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.085,
+     "peak": " folder"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.042,
+     "peak": " button"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.14,
+     "peak": "parent"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.005,
+     "peak": "(c"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.025,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.007,
+     "peak": " label"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.319,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "94ba7fc",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "Python attribute access",
+ "unit_kind": "contextual",
+ "confidence": 0.6,
+ "notes": "Probes (fraction of max 8.5): 'node.parent' 0.577, 'widget.label' 0.560, '.parent_id' 0.267, 'ax.title.set_color' 0.234. Quiet: 'config.get(' 0.029, 'record.get(' 0.046, prose 'The parent of the child' 0.006, a loop 0.034. The - pole fires on '.get': the neuron separates attribute reads from get calls.",
+ "selection": "random draw"
+}

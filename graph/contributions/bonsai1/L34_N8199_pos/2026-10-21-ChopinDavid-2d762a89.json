@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-ChopinDavid-2d762a89",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N8199+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-21T22:39:17+00:00",
+ "recipe": {
+  "toolchain_commit": "94ba7fc",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N8199_pos/2026-10-21-ChopinDavid-2d762a89.tests.json"
+ },
+ "label": "A single-letter piece ('-l', ' s', ' L') that starts a word the tokenizer split letter-first (pro-|l|ifers, s|pro|cket, L|eland, L|aver|ne), not whole-token words starting with the same letter.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N8199_pos/2026-10-21-ChopinDavid-2d762a89.tests.json",
+   "prereg_commit": "94ba7fc",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.839,
+     "peak": "-l"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.823,
+     "peak": "-l"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.484,
+     "peak": " s"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.032,
+     "peak": " L"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.249,
+     "peak": " L"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.704,
+     "peak": "-l"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.512,
+     "peak": " s"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.109,
+     "peak": " L"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.004,
+     "peak": " supporters"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.0,
+     "peak": " with"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.078,
+     "peak": " chains"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.007,
+     "peak": " taught"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.023,
+     "peak": " by"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.113,
+     "peak": " church"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.052,
+     "peak": " worn"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.013,
+     "peak": " Lowell"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.498,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "94ba7fc",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "letter-first split piece",
+ "unit_kind": "lexical",
+ "confidence": 0.6,
+ "notes": "Probes (fraction of max 180): 'pro-lifers' 1.026 ('-l'), 'sprocket' 0.807 (' s'), 'Leland' 0.598 (' L'), 'L.A.' 0.226, 'Lemony' 0.183. Quiet: whole-token ' Laura' 0.082, ' Lisbon' 0.010, ' metal' 0.081, plain 0.010. Every fire item was tokenizer-checked to split letter-first.",
+ "selection": "random draw"
+}
