@@ -87,6 +87,8 @@ abstraction pass. Each principle names its evidence and whether we have measured
 | L4 scoring (0.22 cap, beside the stream) | 38 min | about 27 | 207 snippets/s | preamble KV cache, lm_head off, resumable |
 | all-layer stage 1 (33 layers, batch 1, beside the stream) | 115.7 min (31 yielded) | about 85 (vs 500–760 one layer at a time) | about 1,300 tok/s × 33 layers | one pass for all layers; memory-efficient attention; +15 min CPU table write |
 | all-layer stage 2, attempt 1 | stopped at window 1 of 8,000 (4 min) | – | planned 393 min for 847,211 hits | built 191M (hit, occurrence) pairs on the host at once (11–23 GB of RAM) on a machine at 59 / 88 GB committed; driver reset; rebuilding lean and chunked |
+| all-layer stage 2, attempt 2 (500-window chunks) | stopped by the guard at 96% commit after chunk 1 | – | 6.0 min per chunk | llama-server's 8 GiB prompt cache plus the batch; then `--cache-ram 0` and 250-window chunks |
+| all-layer stage 2, attempt 3 (250-window chunks) | 21 of 32 chunks in 57 min (18 min yielded) | about 39 | about 2.7 min per chunk | stopped itself at < 2 GB free RAM; resumes from checkpoints under a supervisor |
 
 Entry format:
 
@@ -234,6 +236,11 @@ Entry format:
   one background batch, and the background yielded for the whole call (1.9 s).
 
 **Process**
+- **A self-stopping job needs a supervisor that restarts it.** Stage 2's RAM guard stopped it cleanly at chunk 21 of
+  32 when free RAM fell under 2 GB (00:55). Nothing was watching the driver, so the GPU sat idle for 2 h. Now a
+  supervisor relaunches after a low-RAM stop once 6 GB is free again; the run resumes from its chunk checkpoint. It
+  wakes the coordinator on finish, on STOP, or on any other failure. Physical RAM (31.7 GB, about 7 GB free beside the
+  stream) is the binding limit, not GPU memory or commit.
 - **Every wait needs a timeout and a structured marker.** One agent waited 5 h (15:34–20:51) on
   `until grep "screen windows needed"` while the log said "screening windows needed". The session sat blocked behind
   it, with seven coordinator messages queued, and the batch stood idle. Write explicit markers (`=== stage2 done`,
