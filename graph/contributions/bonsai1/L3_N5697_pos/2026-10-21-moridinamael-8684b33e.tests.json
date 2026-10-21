@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-21-moridinamael-8684b33e",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N5697+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T20:24:51+00:00",
+ "roles": ["feeds bonsai1/L5/N3747+"],
+ "neighbours": [
+  {
+   "unit": "L3/N5697",
+   "pole": "+",
+   "label": "An empty string literal in code written directly after an opening bracket, as the only argument of a call with single quotes (f('')), the only item of a list ([''] or [\"\"]) or a dictionary key ({'': ...} or {\"\": ...}); it peaks on the closing quote. Quiet: empty strings after a space or = (x = '', a later argument after a comma, a comparison at the end of a line), double-quoted f(\"\"), filled strings and prose about empty quotes.",
+   "short": "empty string right after an opening bracket",
+   "unit_kind": "token / spelling",
+   "fire": [
+    "parts = line.split('')",
+    "result = ''.join(words)",
+    "names = ['']",
+    "buffer = [\"\"]",
+    "counts = {'': 0, 'a': 1}",
+    "lookup = {\"\": None}",
+    "self.assertEqual(clean(''), None)",
+    "path = os.path.join('', 'data')"
+   ],
+   "quiet": [
+    "parts = line.split(' ')",
+    "result = sep.join(words, '')",
+    "names = ['', 'bob']",
+    "buffer = \"\"",
+    "counts = {'a': 1, 'b': ''}",
+    "lookup = {\"key\": None}",
+    "self.assertEqual(clean(x), '')",
+    "path = ''"
+   ]
+  }
+ ],
+ "predictions": "Blind test (sentences written by a label-only author). Expect most bracket-opened fire items to hold; ''.join after a space and ('', 'data') may fuse into one token and stay quiet.",
+ "notes": "Feeder of bonsai1/L5/N3747+ chosen by resident attribution (play step hit CUDA OOM on the stream GPU), so no feeds edge weight is recorded. Fires only where the tokenizer cuts the closing quote out with the following ) ] : or , ; fused forms like \" ''\", \" '':\\n\", \"('',\" and \"(\\\"\\\")\" stay near zero.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
