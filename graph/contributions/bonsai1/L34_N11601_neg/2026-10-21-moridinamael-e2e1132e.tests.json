@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-21-moridinamael-e2e1132e",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N11601-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T18:42:16+00:00",
+ "roles": ["reads bonsai1/L33/N6480+"],
+ "neighbours": [
+  {
+   "unit": "L34/N11601",
+   "pole": "-",
+   "label": "In health or safety advice, the subject word (usually 'you', sometimes 'there') of a clause about a condition or risk someone only suspects or might have, e.g. right after 'if you think/suspect/feel' or 'when there is a chance'; fires on the subject before its verb, quiet for the same subject in plain statements or ordinary if/when conditions",
+   "fire": [
+    "If you think you may have broken a bone, keep the limb still and seek medical help.",
+    "If you suspect you have food poisoning, drink plenty of fluids and rest.",
+    "Call your doctor right away if you feel you might be having an allergic reaction.",
+    "If you think you have been exposed to carbon monoxide, get outside into fresh air immediately.",
+    "When there is a chance you could be pregnant, avoid taking this medication without advice.",
+    "If you suspect you might have a concussion, do not drive or return to sports that day.",
+    "Seek emergency care if you think you are having a heart attack.",
+    "If you feel you may be dehydrated, sip water slowly and stay out of the sun."
+   ],
+   "quiet": [
+    "Spit out any excess mucus that enters your mouth as a result.",
+    "We know you are in danger, so stay inside.",
+    "You have broken a bone, so keep the limb still and seek medical help.",
+    "You have food poisoning, so drink plenty of fluids and rest.",
+    "Call your doctor right away if you need a refill of your prescription.",
+    "If you are going camping, pack a carbon monoxide detector for the heater.",
+    "When you are pregnant, your doctor will review your medications with you.",
+    "If you play contact sports, wear a properly fitted helmet."
+   ]
+  }
+ ],
+ "predictions": "Blind test written from the label only. Expect most fire items to peak on the second 'you' (0.4-0.6); quiet items near 0, the solver's mucus/danger leak texts below 0.1 on their own.",
+ "notes": "Step-in reader of bonsai1/L33/N6480+ (French subject end before its verb); the downstream drop was only 0.01, and this reader's label is about English health advice, not French syntax. Feeders-first arm: top feeders were unlabelled (L9/N6716- question marks in FAQ text; L32/N7539+ subject before 'may', suppresses 'possibly/likely'). The pole's output promotes ' may'/' might'. Solver: a third-party subject after 'if you think your ...' was silent in one bank text.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "blind-room"
+  ]
+ }
+}
