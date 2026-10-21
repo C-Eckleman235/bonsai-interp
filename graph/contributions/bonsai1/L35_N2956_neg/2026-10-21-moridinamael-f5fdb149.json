@@ -1,0 +1,166 @@
+{
+ "id": "2026-10-21-moridinamael-f5fdb149",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N2956-",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T13:39:50+00:00",
+ "recipe": {
+  "toolchain_commit": "ffe0d63",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N2956_neg/2026-10-21-moridinamael-f5fdb149.tests.json"
+ },
+ "label": "In English text, the word right after which a number is the expected next token: a month name or 'founded in' before a year, a US state abbreviation before a ZIP code, or 'and' between the two parts of a compound amount (hours and minutes, dollars and cents); the number itself need not follow, and words where no number is expected stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N2956_neg/2026-10-21-moridinamael-f5fdb149.tests.json",
+   "prereg_commit": "ffe0d63",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.356,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.522,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.466,
+     "peak": " March"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.378,
+     "peak": " IL"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.024,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.036,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.13,
+     "peak": " hours"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.196,
+     "peak": " September"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": -0.012,
+     "peak": "Humans"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.035,
+     "peak": " founded"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.066,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.03,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": -0.013,
+     "peak": " long"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.022,
+     "peak": " expected"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.023,
+     "peak": " happy"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.009,
+     "peak": " renovations"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.953,
+    "median_fire": 0.276,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "ffe0d63",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L34/N5579+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L34/N5579+",
+   "to": "bonsai1/L35/N2956-",
+   "kind": "feeds",
+   "weight": 0.37,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
