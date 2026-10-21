@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-21-moridinamael-8eddf56f",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N9106+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T12:50:18+00:00",
+ "neighbours": [
+  {
+   "unit": "L35/N9106",
+   "pole": "+",
+   "label": "Dense, graded pole that is low on plain everyday English prose and higher on text that departs from it; this test checks one part: multi-line program code in any language (statements calling functions and methods on named variables) lights it up, while ordinary English prose, including English prose that describes what the same code does, stays low.",
+   "short": "code vs plain English prose (dense, graded)",
+   "unit_kind": "dense / positional",
+   "roles": ["reads bonsai1/L31/N2543+"],
+   "fire": [
+    "items = load_items(path)\nfor item in items:\n    cache.put(item.id, item)",
+    "const user = await db.findUser(id);\nif (!user) { res.status(404).send(); }",
+    "df = pd.read_csv('sales.csv')\ndf = df.dropna()\nprint(df.groupby('region').sum())",
+    "List<String> names = new ArrayList<>();\nnames.add(person.getName());\nCollections.sort(names);",
+    "let mut queue = VecDeque::new();\nqueue.push_back(start);\nwhile let Some(node) = queue.pop_front() { visit(&node); }",
+    "conn = sqlite3.connect('app.db')\ncur = conn.cursor()\ncur.execute('SELECT * FROM users')",
+    "button.addEventListener('click', () => {\n  counter.increment();\n  label.textContent = counter.value;\n});",
+    "file, err := os.Open(name)\nif err != nil { log.Fatal(err) }\ndefer file.Close()"
+   ],
+   "quiet": [
+    "The queue outside the bakery grew longer as each customer popped in for bread.",
+    "People in Greece used kelp to feed their cattle around the first century B.C.",
+    "The program loads the items from a file and then stores each one in the cache under its own id.",
+    "The server looks up the user in the database, and if nobody is found it replies that the page is missing.",
+    "We read the sales spreadsheet, threw away the incomplete rows, and added up the totals for each region.",
+    "She made a list of everyone's names, added the new person, and sorted the list alphabetically.",
+    "The search starts at one node, puts it in a line, and keeps visiting whichever node is at the front.",
+    "The app opens its database file and asks for every user stored in it."
+   ],
+   "notes": "Cold step-in reader of bonsai1/L31/N2543+ (drop ~0.00 in play step --down; label unrelated to the feeder). Card: + max 4.09, 34.7% of tokens >0.1 max, gate-closed echo regime. Probes: code blocks in Python/JS/Java/Ruby 0.39-0.55; English prose 0.10-0.24 (prose about code ~0.2). Not code-specific: German, Russian, Turkish, Arabic, Chinese, Japanese, Korean prose 0.42-0.57; Dutch/Polish ~0.33; Spanish/Italian/French/Hindi 0.20-0.29; English with long rare words 0.41. Solver leak: Chinese travel text 0.59. Sentences written blind by a label-only author."
+  }
+ ],
+ "predictions": "Code fires ~0.35-0.55, English prose near misses ~0.1-0.25; expect a hold.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "quick-test"
+  ]
+ }
+}
