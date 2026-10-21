@@ -1,0 +1,167 @@
+{
+ "id": "2026-10-21-moridinamael-1b52306d",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N2169-",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T19:04:32+00:00",
+ "recipe": {
+  "toolchain_commit": "364ea57",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N2169_neg/2026-10-21-moridinamael-1b52306d.tests.json"
+ },
+ "label": "In a run of two or more dates in the month of May, the word just before the next 'May' is due (a comma, 'and', 'through', 'of'), once an earlier May date has already appeared; quiet for the same date lists in other months and for a lone May date",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N2169_neg/2026-10-21-moridinamael-1b52306d.tests.json",
+   "prereg_commit": "364ea57",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 5,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.41,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.394,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.275,
+     "peak": " through"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.404,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.082,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.351,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.393,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.245,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.454,
+     "peak": " by"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.13,
+     "peak": " you"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.075,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.145,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.324,
+     "peak": " through"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.02,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.039,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.087,
+     "peak": "6"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.781,
+    "median_fire": 0.372,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "364ea57",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L34/N11601-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L34/N11601-",
+   "to": "bonsai1/L35/N2169-",
+   "kind": "feeds",
+   "weight": 0.25,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
