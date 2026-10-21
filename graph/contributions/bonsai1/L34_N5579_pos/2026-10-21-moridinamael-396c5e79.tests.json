@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-21-moridinamael-396c5e79",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N5579+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T13:14:29+00:00",
+ "roles": ["reads bonsai1/L28/N10850-"],
+ "neighbours": [
+  {
+   "unit": "L34/N5579",
+   "pole": "+",
+   "label": "text inside an SQL database query, in any layout (multi-line, one line, or inside a code string); ordinary non-SQL code and prose about databases fire only weakly, though a dangling comma right after a closed call in code (as in '...]),') can also fire",
+   "short": "inside an SQL query",
+   "confidence": "medium",
+   "notes": "Step-in reader of L28/N10850- (drop -0.01: a very weak link). Feeders first: top feeders L29/N2307-, L33/N3770+, L23/N10435+ are whitespace-run detectors in code, but probes showed indented YAML/Python stay low (0.10-0.23) while SQL in any layout reaches 0.4-0.68. Solver leak: a trailing comma after a closed call ('...]),') reaches 0.3-0.66 with no SQL. Test sentences written blind by a second author from the label only.",
+   "fire": [
+    "pairwise([a, b, c, d]),",
+    "SELECT id, name, email FROM users WHERE active = 1 ORDER BY name;",
+    "cursor.execute(\"SELECT * FROM orders WHERE customer_id = %s AND status = 'shipped'\")",
+    "UPDATE inventory\nSET quantity = quantity - 1\nWHERE product_id = 42;",
+    "INSERT INTO employees (first_name, last_name, hire_date) VALUES ('Ana', 'Lopez', '2024-03-01');",
+    "DELETE FROM sessions WHERE last_seen < NOW() - INTERVAL '30 days';",
+    "SELECT d.name, COUNT(e.id) AS headcount\nFROM departments d\nLEFT JOIN employees e ON e.dept_id = d.id\nGROUP BY d.name\nHAVING COUNT(e.id) > 5;",
+    "CREATE TABLE books (id INTEGER PRIMARY KEY, title TEXT NOT NULL, year INT);"
+   ],
+   "quiet": [
+    "server:\n    host: localhost\n    port: 8080\n    debug: true",
+    "The users table stores each person's id, name and email, and inactive accounts are kept separately.",
+    "orders = [o for o in orders if o.customer_id == cid and o.status == 'shipped']",
+    "inventory[product_id] -= 1",
+    "employees.append({'first_name': 'Ana', 'last_name': 'Lopez', 'hire_date': '2024-03-01'})",
+    "Old sessions are cleaned up automatically after about thirty days of inactivity.",
+    "Our database groups employees by department, and only large departments appear in the report.",
+    "A relational database organizes data into tables with rows, columns and primary keys."
+   ]
+  }
+ ],
+ "predictions": "Most SQL items fire 0.3-0.6; risk: the Python filter comprehension and the append call near misses may reach 0.3, and sentence-initial SELECT items may score lower.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "neighbors",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
