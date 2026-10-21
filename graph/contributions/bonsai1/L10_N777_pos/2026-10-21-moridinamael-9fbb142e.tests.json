@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-21-moridinamael-9fbb142e",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N777+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T18:54:28+00:00",
+ "roles": ["feeds bonsai1/L11/N11348-"],
+ "neighbours": [
+  {
+   "unit": "L10/N777",
+   "pole": "+",
+   "label": "In test code after at least one earlier code line, a call to an assertion method whose name joins 'assert' to a further word (assert + Contains, assert + NumQueries, assert_called_with style), strongest on that added word. Plain assertEqual or bare assert statements are weaker. Not other method calls, prints or hand-written if/raise checks, and not the words 'assert' or 'contains' in prose.",
+   "fire": [
+    "response = self.client.get('/home/')\nself.assertContains(response, 'Welcome back')",
+    "user = User.objects.create(name='ana')\nwith self.assertNumQueries(2):\n    user.refresh_from_db()",
+    "service.send_email('hi@example.com')\nmock_smtp.assert_called_with('hi@example.com', ANY)",
+    "items = parse_list('a,b,c')\nself.assertIn('b', items)",
+    "result = compute_total(cart)\nself.assertAlmostEqual(result, 19.99, places=2)",
+    "handler.process(event)\nmock_logger.assert_called_once()",
+    "data = load_config('settings.yaml')\nself.assertIsNone(data.get('missing_key'))",
+    "with self.assertRaises(ValueError):\n    parse_int('abc')"
+   ],
+   "quiet": [
+    "response = self.client.get('/home/')\nif 'Welcome back' not in response.content.decode():\n    raise AssertionError('missing greeting')",
+    "user = User.objects.create(name='ana')\nwith connection.cursor() as cursor:\n    user.refresh_from_db()",
+    "service.send_email('hi@example.com')\nprint(mock_smtp.call_args)",
+    "items = parse_list('a,b,c')\nitems.append('d')",
+    "result = compute_total(cart)\nresult = round(result, 2)",
+    "handler.process(event)\nmock_logger.reset_mock()",
+    "The test should assert that the config contains no missing keys before deployment.",
+    "data = load_config('settings.yaml')\nkeys = list(data.keys())"
+   ]
+  }
+ ],
+ "predictions": "Blind-authored test (label-only second author). Expect most fire items above 0.30; risk: items 8 (assertRaises first line, no earlier code) and the unindented, no-test-function format.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
