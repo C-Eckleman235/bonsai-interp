@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-21-moridinamael-129c6d75",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N4510+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T07:06:44+00:00",
+ "neighbours": [
+  {
+   "unit": "L34/N4510",
+   "pole": "+",
+   "label": "The ending piece (-AL, -ICAL, -AN, -AR, -INE) of an adjective written in ALL CAPS and split into several tokens, typically in an all-caps title or heading; the related all-caps noun (the place or field the adjective comes from), the same adjective in normal case, and other caps words in the heading stay low.",
+   "short": "ending piece of a split ALL-CAPS adjective (NA|VAL, TROP|ICAL)",
+   "roles": ["reads bonsai1/L33/N261+"],
+   "confidence": "low",
+   "notes": "Step-in reader of L33/N261+ (drop only -0.01, the only reader found; the label has little to do with the feeder's mis/over prefix). Top examples mix ALL-CAPS title words with split lowercase participle prefixes (un|grazed, electro|cuted after was/been), which are not claimed here. The - pole also fires inside ALL-CAPS notices, on function words. Test sentences written blind by a label-only author.",
+   "fire": [
+    "CHAPTER FOUR: THE HISTORICAL ROOTS OF THE CONFLICT",
+    "ANNUAL REPORT ON AGRICULTURAL PRODUCTION IN THE MIDWEST",
+    "THE MEXICAN REVOLUTION AND ITS AFTERMATH",
+    "SECTION 3: MOLECULAR BIOLOGY OF THE CELL",
+    "A GUIDE TO VOLCANIC LANDSCAPES OF ICELAND",
+    "WELCOME TO THE NATIONAL MUSEUM OF NATURAL HISTORY",
+    "BREAKING: ALPINE VILLAGES CUT OFF BY HEAVY SNOW",
+    "PART II: THE ITALIAN RENAISSANCE"
+   ],
+   "quiet": [
+    "CHAPTER FOUR: THE HISTORY OF THE CONFLICT",
+    "ANNUAL REPORT ON AGRICULTURE IN THE MIDWEST",
+    "Chapter one covers the Mexican revolution and its aftermath.",
+    "SECTION 3: BIOLOGY OF THE CELL",
+    "A GUIDE TO THE VOLCANOES OF ICELAND",
+    "Welcome to the national museum of natural history.",
+    "BREAKING: MOUNTAIN VILLAGES CUT OFF BY HEAVY SNOW",
+    "PART II: RENAISSANCE ART IN ITALY"
+   ]
+  }
+ ],
+ "predictions": "uncertain: caps adjectives fired 0.2-0.66 in probes but some (COASTAL, SOLAR) stayed low",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "neighbors",
+   "inverse-gmoo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
