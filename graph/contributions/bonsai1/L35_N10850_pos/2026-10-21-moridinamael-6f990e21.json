@@ -1,0 +1,166 @@
+{
+ "id": "2026-10-21-moridinamael-6f990e21",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N10850+",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T08:40:31+00:00",
+ "recipe": {
+  "toolchain_commit": "d1a66bc",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N10850_pos/2026-10-21-moridinamael-6f990e21.tests.json"
+ },
+ "label": "In English, the last word of a sentence's subject when that subject sets up a reveal (an abstract head noun like problem, goal, truth or worry, or a 'what I wanted / all I knew' clause), at the point just before 'is/was' introduces the answer. The same nouns used as objects stay near zero, and ordinary subjects that perform an action (a person or thing doing something) fire only weakly (weaker).",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N10850_pos/2026-10-21-moridinamael-6f990e21.tests.json",
+   "prereg_commit": "d1a66bc",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.334,
+     "peak": " problem"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.47,
+     "peak": " goal"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.506,
+     "peak": " truth"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.513,
+     "peak": " worry"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.474,
+     "peak": " wanted"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.66,
+     "peak": " knew"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.456,
+     "peak": " question"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.394,
+     "peak": " news"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.136,
+     "peak": "Nobody"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.008,
+     "peak": "We"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.207,
+     "peak": "She"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.274,
+     "peak": " worry"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.135,
+     "peak": "I"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.135,
+     "peak": "I"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.216,
+     "peak": " committee"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.159,
+     "peak": " nurse"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.472,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-gmoo",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "d1a66bc",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L34/N8579-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L34/N8579-",
+   "to": "bonsai1/L35/N10850+",
+   "kind": "feeds",
+   "weight": 0.2,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
