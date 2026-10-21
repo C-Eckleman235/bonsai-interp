@@ -45,9 +45,11 @@ abstraction pass. Each principle names its evidence and whether we have measured
 - **Make the queue the only way in:** two side tools built their own screen client without a ticket. The fix: one
   factory function that always attaches the turn, plus a test that fails if anything constructs a client directly
   (lets-play bdbd9a8).
-- **Audit caveat:** per-process engine counters average over about 1 s, while a screen call lasts about 0.3 s, so
-  single-sample flags can be timing artifacts. Act only on repeated flags, or log turn start and end times and
-  compare intervals.
+- **Audit against intervals, not snapshots:** per-process engine counters average over about 1 s, while a screen call
+  lasts about 0.2 s. A snapshot of the holder therefore flagged legitimate calls, and periodic calls even made
+  "3 in a row". gpu_turn now logs every turn's start and end to `turns.log`, and the auditor accepts any turn
+  overlapping the counter window. One stream session reconciled llama-server's request log against the turn log
+  to prove it (122 of 130 in bridge turns; the other 8 were a ticketed but unlogged script).
 
 **Reset record** (nvlddmkm 153, 2026-10-19/20): 8 resets with heavy compute on either side alone, during model loads, and with the probe and the llama.cpp screen overlapping. No bugcheck and no unexpected shutdown in 14 days, including 1,593 driver events on 10-10, so recovery has been reliable on this machine. The crash risk to guard is host-commit exhaustion; resets cost a process.
 
