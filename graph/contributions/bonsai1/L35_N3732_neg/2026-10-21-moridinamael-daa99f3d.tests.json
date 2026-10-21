@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-21-moridinamael-daa99f3d",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N3732-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T08:27:35+00:00",
+ "roles": [
+  "reads bonsai1/L34/N8579-"
+ ],
+ "neighbours": [
+  {
+   "unit": "L35/N3732",
+   "pole": "-",
+   "label": "Fires on the word just BEFORE the noun 'can' (a tin or metal container, including the idiom about kicking one down the road), when the context makes 'can' the obvious next word; it fires on that slot whatever word actually follows. The 'can' token itself, the modal verb 'can', and slots expecting other containers (jar, jug, bottle) stay low; other can- words (canal, Spanish cancha) are weaker triggers.",
+   "short": "slot before a tin 'can' is due",
+   "fire": [
+    "Congress keeps kicking the can down the road on the budget.",
+    "She crushed the empty soda can and tossed it into the recycling bin.",
+    "He took out the trash can before the garbage truck arrived.",
+    "Grandma filled the watering can and headed to the tomato plants.",
+    "I need a can opener to get at these beans.",
+    "The raccoon knocked over the garbage can again last night.",
+    "He cracked open a cold beer can on the porch.",
+    "Please hand me that paint can from the garage shelf."
+   ],
+   "quiet": [
+    "وكانت أسعار أسهم الشركات الأميركية الكبرى قد انخفضت أكثر من النصف بين كانون الثاني/يناير 2008 وآذار/مارس 2009.",
+    "The new manager has a real can-do attitude.",
+    "Congress keeps delaying a decision on the budget.",
+    "She crushed the empty soda bottle and tossed it into the recycling bin.",
+    "He took out the trash before the garbage truck arrived.",
+    "Grandma filled the jug with water and headed to the tomato plants.",
+    "I need a jar opener to get at these pickles.",
+    "The raccoon knocked over the flower pot again last night."
+   ],
+   "notes": "Step-in reader of L34/N8579- (drop 0.50). Feeders-first: top feeders L34/N2814+ (before noun 'can') and L34/N3999- (before can-/kan- words across languages) are both 'can' forecasters. Test written blind from the label only; solver leak (Arabic before kanun) placed by the blind author."
+  }
+ ],
+ "predictions": "5/8 fire; near misses 'took out the trash' and the Arabic leak may reach 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "neighbors",
+   "probe",
+   "bank-solo",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
