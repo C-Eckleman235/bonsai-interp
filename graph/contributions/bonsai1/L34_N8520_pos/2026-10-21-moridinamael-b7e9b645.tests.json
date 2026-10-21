@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-21-moridinamael-b7e9b645",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N8520+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T20:54:42+00:00",
+ "roles": ["reads bonsai1/L32/N3269+"],
+ "neighbours": [
+  {
+   "unit": "L34/N8520",
+   "pole": "+",
+   "label": "In French or Spanish prose, the word just before an upcoming number in an amount phrase (a comparator, approximator, range or age phrase such as 'more than', 'about', 'at least', 'between five and', 'at the age of', followed by a numeral): the slot where a quantity is about to be stated. Weaker for vague amounts with no number (many, a lot of); quiet for the same prepositions when no number follows (a possessive 'de', 'near' + a place), and for English text; known weak leak on French recipe instruction steps.",
+   "fire": [
+    "Plus de 300 personnes ont assisté au concert hier soir.",
+    "Il a commencé à jouer du piano à l'âge de 6 ans.",
+    "La réunion a duré environ 45 minutes.",
+    "Il faut au moins 3 jours pour traverser la région à pied.",
+    "Le prix varie entre 10 et 20 euros selon la saison.",
+    "Más de 2.000 estudiantes se inscribieron este año.",
+    "Murió a la edad de 87 años en su pueblo natal.",
+    "El viaje dura aproximadamente 4 horas en autobús."
+   ],
+   "quiet": [
+    "La receta lleva harina, azúcar y un poco de sal.",
+    "- Épluchez puis émincez les oign",
+    "Beaucoup de personnes ont assisté au concert hier soir.",
+    "Il a commencé à jouer du piano quand il était enfant.",
+    "La réunion a duré tout l'après-midi.",
+    "Le livre de mon frère est posé sur la table.",
+    "Le prix dépend surtout de la saison.",
+    "La casa de mi abuela está junto al río."
+   ]
+  }
+ ],
+ "predictions": "Most fire items above 0.30 on the word before the number; near misses mostly under 0.25, the recipe leak and 'Beaucoup de' the riskiest.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "step-down",
+   "quick-test"
+  ]
+ }
+}
