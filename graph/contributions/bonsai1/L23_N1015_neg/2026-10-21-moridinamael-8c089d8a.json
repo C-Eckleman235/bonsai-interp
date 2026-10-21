@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-21-moridinamael-8c089d8a",
+ "kind": "qc",
+ "neuron": "bonsai1/L23/N1015-",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T06:22:15+00:00",
+ "recipe": {
+  "toolchain_commit": "eff01b0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L23_N1015_neg/2026-10-21-moridinamael-8c089d8a.tests.json"
+ },
+ "label": "In English, a second casting clause aimed at the speaker or listener: after a first clause has cast someone as something with 'sees/treats/regards X as' (I regard my boss as a mentor), a following clause with the same kind of verb casts me, us or you (but she regards me as a burden, and they treat us as outsiders); it fires on the 'as' or the 'a' right after the pronoun. The same casting on its own, with no earlier casting clause, is weak, and so is a second clause aimed at him, her or them. Verbs without 'as' (calls me a clown, considers us a threat) are weaker.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L23_N1015_neg/2026-10-21-moridinamael-8c089d8a.tests.json",
+   "prereg_commit": "eff01b0",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 6,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.466,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.463,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.6,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.135,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.308,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.135,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.487,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.341,
+     "peak": " as"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.406,
+     "peak": " bit"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.062,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.179,
+     "peak": " as"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.013,
+     "peak": " hero"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.041,
+     "peak": " themselves"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.032,
+     "peak": " calls"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.156,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.023,
+     "peak": "ors"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.875,
+    "median_fire": 0.402,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "eff01b0",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "A second, mirrored labelling clause that casts the speaker or the listener: after one clause casts someone as something (sees him as a hero, calls her a liar), a following clause casts me, us or you (and she sees me as a nuisance, they treat us as outsiders, and he calls you a snob); it fires on the 'as' or 'a' right after 'me'/'us'/'you'. 'You' fires when you did the first labelling (you treat them as family, and they treat you as staff); after 'I see him as...', a second clause casting you stays weak. The same second clause aimed at him, her or them is weak, as is a one-way label of me or you with no earlier labelling clause, or me labelled in the first clause and answering back. Strongest when a sentence of setting comes first."
+ }
+}
