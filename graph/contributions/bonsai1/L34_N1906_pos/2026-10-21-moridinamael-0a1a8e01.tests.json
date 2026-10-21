@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-21-moridinamael-0a1a8e01",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N1906+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T15:46:58+00:00",
+ "roles": ["reads bonsai1/L30/N3237-"],
+ "neighbours": [
+  {
+   "unit": "L34/N1906",
+   "pole": "+",
+   "label": "Ordinary English prose sentences on any topic (no special trigger word needed; it peaks on the first few words); stays dark on code, JSON, SQL, math formulas and bare number strings",
+   "short": "plain English prose, dark on code/data",
+   "unit_kind": "dense / positional",
+   "fire": [
+    "The old lighthouse keeper walked down to the shore every morning before sunrise.",
+    "My sister finally learned how to bake bread without burning the crust.",
+    "Rain fell steadily over the valley, and the farmers were grateful for it.",
+    "After the meeting ended, everyone went out for lunch at the corner café.",
+    "Scientists believe the comet will pass close to Earth next spring.",
+    "She forgot her umbrella on the train and got soaked walking home.",
+    "The museum reopened last week with a new exhibit on ancient pottery.",
+    "Our dog barks at the mail carrier every single afternoon."
+   ],
+   "quiet": [
+    "def walk(shore): return [t for t in range(5) if t < sunrise]",
+    "{\"recipe\": \"bread\", \"crust\": \"burnt\", \"attempts\": 3}",
+    "SELECT rainfall FROM valley WHERE month = 'April' AND farmer_id = 12;",
+    "lunch_count = sum(p.attended for p in meeting.people)",
+    "d(t) = sqrt((x_c - x_e)^2 + (y_c - y_e)^2)",
+    "if (umbrella == null) { soaked = true; walkHome(); }",
+    "{\"museum\": \"reopened\", \"exhibit\": \"pottery\", \"week\": 42}",
+    "4417 0923 1180 5562 3301"
+   ],
+   "confidence": "low",
+   "notes": "Cold step-in reader of bonsai1/L30/N3237- (drop 0.14). Card flags it dense (10% of tokens >0.1 max) and positional (top peaks in the first 16 tokens). Probes: plain English sentences 0.18-0.33 with no special word (twins with/without complement-taking words tied); code, JSON, SQL, math 0.04-0.19; Spanish prose ~0.26, German/French ~0.08. Solver found no leak. Test sentences written blind by a second author from the label only."
+  }
+ ],
+ "predictions": "fires rank above code/data, but median fire near 0.20 makes the strength bar a coin flip",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "blind-room"
+  ]
+ }
+}
