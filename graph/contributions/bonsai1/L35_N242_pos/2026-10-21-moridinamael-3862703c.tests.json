@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-21-moridinamael-3862703c",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N242+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T22:30:20+00:00",
+ "roles": ["reads bonsai1/L34/N3918-"],
+ "neighbours": [
+  {
+   "unit": "L35/N242",
+   "pole": "+",
+   "label": "The Arabic 'and' (و) written as a separate word after a comma in a running list of three or more sheikhs (الشيخ + name, then \", و الشيخ\" + name, repeated), strongest from the second 'و' on; the same list with other titles (doctor, prince, imam, professor), cities or books, two-item lists, or with 'و' glued to the next word stays weak. Separately and more weakly, it also fires on the indentation just before a bracket that closes a multi-line call or list in code.",
+   "short": "standalone Arabic 'و' continuing a list of sheikhs (+ code closing-bracket indent)",
+   "confidence": "medium",
+   "notes": "Step-in reader of bonsai1/L34/N3918- (drop 0.01, tiny: a late sparse pole feeds little into the last layer; this reader's label has nothing to do with hockey). Feeders first: L33/N9606- (space before inline code comment; its + pole is indentation before a closing bracket) and L22/N9377- (Arabic 'و' prefix) match the two triggers. Probes: sheikh lists 0.74-0.91; same frame with doctor/prince/professor/imam 0.10-0.26, cities/books 0.07-0.21, glued 'والشيخ' 0.16, two-item list 0.11. Code dedent before closing bracket 0.22-0.59 (solver leak). Blind test uses the Arabic comma '،'; probes mostly used ','. Test written blind by a second author from the label only.",
+   "fire": [
+    "values = [\n        10,\n        20,\n    ]",
+    "حضر الندوة الشيخ محمد، و الشيخ أحمد، و الشيخ عبد الله، و الشيخ صالح.",
+    "ومن أبرز علماء المدينة الشيخ عبد العزيز، و الشيخ محمد بن صالح، و الشيخ عبد الرحمن.",
+    "تتلمذ على يد الشيخ ناصر، و الشيخ علي، و الشيخ يوسف، و الشيخ إبراهيم.",
+    "وقد أفتى بذلك الشيخ عبد الله بن باز، و الشيخ محمد العثيمين، و الشيخ صالح الفوزان.",
+    "شارك في المؤتمر كل من الشيخ خالد، و الشيخ سعيد، و الشيخ حمد.",
+    "استقبل الوزير الشيخ عمر، و الشيخ عثمان، و الشيخ مصطفى، و الشيخ حسن في مكتبه.",
+    "ومن مشايخه الشيخ أحمد شاكر، و الشيخ محمود، و الشيخ عبد الرزاق."
+   ],
+   "quiet": [
+    "Delight your colleagues this year with cookie pops, or make your own cookies with our fantastic cookie cutter kits, or cakes with our wonderful village cake pans.",
+    "حضر الندوة الدكتور محمد، و الدكتور أحمد، و الدكتور عبد الله، و الدكتور صالح.",
+    "ومن أبرز مدن المملكة الرياض، و جدة، و مكة، و الدمام.",
+    "تتلمذ على يد الأستاذ ناصر، و الأستاذ علي، و الأستاذ يوسف.",
+    "وقد أفتى بذلك الشيخ عبد الله بن باز و الشيخ محمد العثيمين.",
+    "شارك في المؤتمر كل من الشيخ خالد، والشيخ سعيد، والشيخ حمد.",
+    "استقبل الوزير الأمير عمر، و الأمير عثمان، و الأمير مصطفى في مكتبه.",
+    "ومن كتبه صحيح البخاري، و صحيح مسلم، و سنن أبي داود."
+   ]
+  }
+ ],
+ "predictions": "Uncertain: sheikh lists should fire 0.4-0.9 if the Arabic comma behaves like ','; the doctor/professor near misses may reach ~0.25. Expect a narrow hold or a fail on the comma.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "neighbors",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
