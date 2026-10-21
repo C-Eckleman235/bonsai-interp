@@ -22,13 +22,18 @@ weights and the same bfloat16 arithmetic as on CUDA.
   open an issue with its output.
 - **Speed.** Doctor prints the forward-pass throughput (batch 8 × 256) and how it compares
   with the reference machine. Measured so far: an RTX 5080 does 3,600 tokens/s and loads the
-  model in 15 s. A 24-core Intel Core Ultra 9 CPU does 99 tokens/s, about 36 times slower. We
-  have not measured a Mac yet. From GPU compute and memory bandwidth, and allowing for MPS
-  being less efficient than CUDA, we expect missions to take about 4 to 6 times as long on an
-  M-series Max or Ultra, about 10 times as long on a Pro, and about 20 times as long on a base
-  chip. Only the model work scales by that factor; the agent's own reading and writing time
-  does not. Blind rooms suit a Mac better than live play, because nobody waits on them. Please
-  report what doctor prints on your Mac so we can replace these estimates.
+  model in 15 s. A 24-core Intel Core Ultra 9 CPU does 99 tokens/s, about 36 times slower. A
+  base Apple M5 with 16 GB (macOS 27, torch 2.14.1) does 417 tokens/s and loads the model in
+  9 s, about 9 times slower than the reference, and passes `tests/test_device_parity.py`
+  (L9/N3688+ reads 0.495 against 0.497). On that M5, a card for 16 poles took 11 s, and
+  `play run` for a 16-pole sweep took about 2.5 minutes including the model load. 16 GB was
+  enough with one model-loading process at a time.
+  That is about twice as fast as we estimated for a base chip, so the other estimates are
+  probably pessimistic too: we expected about 4 to 6 times as long on an M-series Max or
+  Ultra and about 10 times as long on a Pro, but have not measured those. Only the model work
+  scales by that factor; the agent's own reading and writing time does not. Blind rooms suit a
+  Mac better than live play, because nobody waits on them. Please report what doctor prints
+  on your Mac so we can replace the remaining estimates.
 - **Clean-room missions on macOS.** The Windows handling in neuron-cleanroom stays, behind
   platform checks. `build_room` links the weights and data into the room with junctions on
   Windows and with symlinks on macOS and Linux. Clearing read-only git files when a room is
