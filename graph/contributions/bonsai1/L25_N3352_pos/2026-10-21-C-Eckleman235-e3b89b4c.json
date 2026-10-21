@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-C-Eckleman235-e3b89b4c",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N3352+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-21T19:39:31+00:00",
+ "recipe": {
+  "toolchain_commit": "b931d02",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N3352_pos/2026-10-21-C-Eckleman235-e3b89b4c.tests.json"
+ },
+ "label": "a year of the 1810s or 1820s written in digits (18|1|x, 18|2|x): the same decades one century before this neuron's other pole (the 1910s-1930s); those 1900s years and the 1700s stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N3352_pos/2026-10-21-C-Eckleman235-e3b89b4c.tests.json",
+   "prereg_commit": "b931d02",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.437,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.311,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.402,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.708,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.308,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.348,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.373,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.42,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.004,
+     "peak": " school"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.033,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.002,
+     "peak": " opened"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.01,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.001,
+     "peak": " planted"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.004,
+     "peak": "8"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.001,
+     "peak": " in"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.388,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "b931d02",
+  "minutes": 9,
+  "batch_size": 1
+ },
+ "short": "the 1810s-1820s (in digits)",
+ "unit_kind": "token/lexical",
+ "confidence": 0.5,
+ "notes": "The other pole of bonsai1/L25/N3352- (the 1910s-1930s, held in #380). Card: peak token '1' x30, '2' x2; word hits '1' cov 47%, '2' 24%, '3' 23%. Concept screen: 6/6 year-only 1810s pairs (best 1.03). Probes (exploratory, run on a separate Kaggle T4, so this checkout's probe log does not hold them; none is reused): a sweep of every fifth year 1600-2020 read >= 0.3 on 1810 and 1815 and 0.15-0.30 on 1820-1835, nothing in the 1900s (where the − pole fires) or the 1700s. Near misses keep each frame and move the year one century later (the − pole's decades) or earlier. Scoring runs on a Colab T4.",
+ "selection": "concept search: years and periods (branch 14), the other pole of bonsai1/L25/N3352-"
+}
