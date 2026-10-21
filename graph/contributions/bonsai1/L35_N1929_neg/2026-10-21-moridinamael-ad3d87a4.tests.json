@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-21-moridinamael-ad3d87a4",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N1929-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T06:09:31+00:00",
+ "roles": ["reads bonsai1/L33/N8827-"],
+ "neighbours": [
+  {
+   "unit": "L35/N1929",
+   "pole": "-",
+   "label": "The comma right after a keyword argument (name=value,) in a one-line Python function call, strongest in calls that launch a process or shell command (shell=True, cwd=, env=); weak after positional arguments",
+   "short": "comma after a keyword argument in a Python call",
+   "unit_kind": "broad",
+   "confidence": "low",
+   "notes": "Cold step-in reader of bonsai1/L33/N8827- (drop 0.00; no apparent relation to the feeder's 'in force' meaning). Broad pole (1.4% of tokens >0.1 max); a floor of about 0.2 on indentation in multi-line Python. Probes: comma after a positional argument 0.12-0.15, after a keyword argument 0.26-0.48, highest for shell=/cmd calls; a keyword-only nn.Conv2d call was 0.12 in the solver bank. Test written blind from the label only.",
+   "fire": [
+    "result = subprocess.run(cmd, shell=True, capture_output=True)",
+    "proc = subprocess.Popen(args, cwd=repo_dir, env=env)",
+    "subprocess.check_call(\"make install\", shell=True, cwd=build_path)",
+    "out = subprocess.check_output(['git', 'status'], cwd=root, text=True)",
+    "p = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)",
+    "os.makedirs(path, exist_ok=True, mode=0o755)",
+    "plt.plot(x, y, color='red', linewidth=2)",
+    "df.to_csv('out.csv', index=False, encoding='utf-8')"
+   ],
+   "quiet": [
+    "table = pandas.concat([left, right, extra])",
+    "ipc_density = 'most'",
+    "result = subprocess.run(cmd)",
+    "proc = subprocess.Popen(args)",
+    "subprocess.check_call(\"make install\")",
+    "out = subprocess.check_output(['git', 'status'])",
+    "p = subprocess.Popen(command, stdin, stdout)",
+    "os.makedirs(path)"
+   ]
+  }
+ ],
+ "predictions": "Most subprocess fire items above 0.3; plain kwarg calls (plt.plot, to_csv) near 0.2; quiet items mostly below 0.2, with Popen(command, stdin, stdout) the riskiest.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
