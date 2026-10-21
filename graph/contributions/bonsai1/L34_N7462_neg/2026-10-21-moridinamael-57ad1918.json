@@ -1,0 +1,162 @@
+{
+ "id": "2026-10-21-moridinamael-57ad1918",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N7462-",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T23:48:27+00:00",
+ "recipe": {
+  "toolchain_commit": "9b8bc2c2",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N7462_neg/2026-10-21-moridinamael-57ad1918.tests.json"
+ },
+ "label": "The speaker's ' would' or ''d' (subject I or we) right after an 'if you / if anyone ...' clause about something the reader might do, in a polite request or offer to the reader (the 'if you have X, I would appreciate it / we'd be happy to Y' closing); also the ' I' in 'correct me if I'm wrong / mistaken', and more weakly (about 0.3) phrasal 'come in' ('that's where X comes in', 'come in handy'). Quiet: 'would' after the speaker's own condition ('if I had money, I would...'), habitual or past 'would', 'would' with no 'if' clause, third-person subjects (he, they, my sister) in the same frame, and plain 'will be' / 'would have been'.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N7462_neg/2026-10-21-moridinamael-57ad1918.tests.json",
+   "prereg_commit": "9b8bc2c2",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.068,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.426,
+     "peak": " would"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.428,
+     "peak": "'d"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.343,
+     "peak": " would"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.586,
+     "peak": " I"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.267,
+     "peak": " would"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.226,
+     "peak": "'d"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.583,
+     "peak": " I"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.048,
+     "peak": " we"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.007,
+     "peak": " had"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.012,
+     "peak": " we"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.019,
+     "peak": "I"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.043,
+     "peak": " would"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.099,
+     "peak": " would"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.053,
+     "peak": " I"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.0,
+     "peak": " interested"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.385,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "9b8bc2c2",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-in reader of bonsai1/L33/N4153+ (drop 0.74 in play step --down). Feeders-first experiment arm: the 12 strongest MLP feeders (L26/N5408-, L23/N1430+, L24/N6328-, ...) were all unlabelled, so they did not shape the label. Output direction promotes ' be'/' been'/' being' on this pole.",
+ "roles": [
+  "reads bonsai1/L33/N4153+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L33/N4153+", "to": "bonsai1/L34/N7462-", "kind": "feeds", "weight": 0.74, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
