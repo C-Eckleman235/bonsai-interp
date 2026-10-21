@@ -42,6 +42,15 @@ abstraction pass. Each principle names its evidence and whether we have measured
   - an auditor that compares actual per-process GPU compute with the named holder
 - **Transfers:** design GPU sharing as one arbiter from day one, with an audit of reality rather than trust in
   callers.
+- **Check that the arbiter's files are really shared** (the root cause, found 2026-10-20 by the stream session):
+  - Processes started inside an MSIX-packaged app (the Claude desktop app) have their writes to AppData
+    redirected to a private copy, while reads fall through to the real files.
+  - So the batch, started from a Claude session, saw the stream's tickets and yielded. But the stream, started by a
+    supervisor outside the package, never saw the batch's tickets or lock: exclusion only ever worked one way.
+  - The fix: put the queue under the user profile root, which isn't redirected. Tested: an in-app holder's lock
+    blocks an outside process.
+  - **Transfers:** test cross-process locks across every launch path that will use them (app, terminal,
+    supervisor), not only between two processes from the same shell.
 - **Make the queue the only way in:** two side tools built their own screen client without a ticket. The fix: one
   factory function that always attaches the turn, plus a test that fails if anything constructs a client directly
   (lets-play bdbd9a8).
