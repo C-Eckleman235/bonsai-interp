@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-21-moridinamael-88f24228",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N12-",
+ "contributor": "moridinamael",
+ "created": "2026-10-21T15:14:01+00:00",
+ "recipe": {
+  "toolchain_commit": "518e8aa",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N12_neg/2026-10-21-moridinamael-88f24228.tests.json"
+ },
+ "label": "The token where an opening parenthesis runs straight into an opening square bracket or curly brace ('([' or '({'), when that parenthesis is NOT a function call's argument list; strongest inside regular-expression patterns, weaker but present in plain prose, math and string literals. Function calls taking a list or dict (sum([...]), f({...})), regex groups without a bracket like (\\w+), and a bracket or parenthesis on its own stay quiet.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N12_neg/2026-10-21-moridinamael-88f24228.tests.json",
+   "prereg_commit": "518e8aa",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.476,
+     "peak": "(["
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.949,
+     "peak": "(["
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.566,
+     "peak": "(["
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.529,
+     "peak": "({"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.758,
+     "peak": "(["
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.519,
+     "peak": " (["
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.251,
+     "peak": " ({"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.395,
+     "peak": " (["
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.003,
+     "peak": "\""
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.303,
+     "peak": " /["
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.025,
+     "peak": " sum"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.026,
+     "peak": " '"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.019,
+     "peak": "(\\"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.067,
+     "peak": " ["
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.015,
+     "peak": " under"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.003,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.524,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "518e8aa",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-out feeder of bonsai1/L5/N1705+ chosen by the resident attribution feeders tool (top MLP feeder); play step OOM'd on the stream GPU, so no ablation drop and no feeds edge is recorded.",
+ "roles": [
+  "feeds bonsai1/L5/N1705+"
+ ]
+}
