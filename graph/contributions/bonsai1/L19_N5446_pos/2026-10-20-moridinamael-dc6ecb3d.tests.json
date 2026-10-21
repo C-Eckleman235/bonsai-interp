@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-20-moridinamael-dc6ecb3d",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N5446+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T05:09:17+00:00",
+ "roles": ["feeds bonsai1/L23/N11833-"],
+ "neighbours": [
+  {
+   "unit": "L19/N5446",
+   "pole": "+",
+   "label": "In code, the name (its last word-piece) of a module, package or tool/service object inside a dotted attribute or import path, e.g. a parser, driver, session, pool, tracker or settings module whose members are accessed; names of plain data values in the same position (a width, fee, count, total, string) and the same words in prose stay weak.",
+   "fire": [
+    "result = self.parser.parse_args(argv)",
+    "conn = db.driver.connect(host, port)",
+    "from django.conf import settings; timeout = settings.REQUEST_TIMEOUT",
+    "resp = self.session.get(url, timeout=5)",
+    "with app.pool.acquire() as conn: conn.execute(query)",
+    "self.tracker.update(detections)",
+    "import myapp.utils.logger as log",
+    "client = boto3.session.Session().client('s3')"
+   ],
+   "quiet": [
+    "result = self.width * scale",
+    "fee_total = order.fee + order.tax",
+    "if self.count > limit: return",
+    "label = item.name.strip()",
+    "print(invoice.total)",
+    "msg = record.text.upper()",
+    "The parser reads each line and returns a tree.",
+    "We installed a new driver for the printer yesterday."
+   ]
+  }
+ ],
+ "predictions": "Blind test (label-only second author). Expect most fire lines around 0.25-0.45; risk: short one-piece names (self.parser) sit nearer the ~0.2 code background, and plain-value code lines may reach 0.2.",
+ "notes": "Feeder chosen from resident attribution (play step OOMed on the stream GPU), so no ablation drop / feeds edge is recorded. Solver (globalMOO) found no leak; nearest 0.28 on an object name (repeated.value_eq).",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "inverse-gmoo",
+   "blind-room"
+  ]
+ }
+}
