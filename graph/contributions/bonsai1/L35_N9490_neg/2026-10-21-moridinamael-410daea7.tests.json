@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-21-moridinamael-410daea7",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N9490-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T11:05:03+00:00",
+ "roles": ["reads bonsai1/L33/N10401-"],
+ "neighbours": [
+  {
+   "unit": "L35/N9490",
+   "pole": "-",
+   "label": "A vowel-marked ṣād (صَ, with fatha) beginning the word that directly follows النبي ('the Prophet') or رسول الله ('the Messenger of God') mid-sentence in Arabic, such as the blessing صَلَّى or any other صَ-word; not after other people or names, not an unvowelled ص, not other vowelled letters",
+   "short": "vowelled صَ right after 'the Prophet'",
+   "unit_kind": "context",
+   "confidence": "medium",
+   "notes": "Weak pole (max 11 vs 378 on the + pole; gate-closed leak regime). Probes: النبي/رسول الله + صَلَّى, صَادِقًا, صَبْرًا fire 0.55-0.72; same slot after الملك, الشيخ, الرجل, محمد, or with unvowelled ص, or other vowelled letters (قَ, بَ, مُ) stays below 0.1. Solver leak: the Latin genus 'Lagopus' in a citation (0.45 solo). Top feeders L32/N140+ (reverent honorifics) and L34/N670+ (Hebrew/Arabic word-start letters). Little relation to the French-prose feeder (drop 0.10). Sentences written blind by a label-only author.",
+   "fire": [
+    "قال النبي صَلَّى الله عليه وسلم إن الأعمال بالنيات.",
+    "وكان رسول الله صَلَّى الله عليه وسلم يحب التيامن في شأنه كله.",
+    "روى الصحابة أن النبي صَلَّى في هذا المسجد ركعتين.",
+    "وقد خرج رسول الله صَلَّى الله عليه وسلم إلى المدينة مهاجرًا.",
+    "وفي الحديث أن النبي صَامَ يوم عاشوراء وأمر بصيامه.",
+    "ثم إن رسول الله صَعِدَ المنبر فخطب الناس.",
+    "ذكر الرواة أن النبي صَبَرَ على أذى قومه سنين طويلة.",
+    "وعن أبي هريرة أن رسول الله صَلَّى الله عليه وسلم قال: الدين النصيحة."
+   ],
+   "quiet": [
+    "هذا صَفٌّ طويل من الكراسي في القاعة",
+    "\"Brood defence in a precocial species: Variations in the distraction displays of red grouse, Lagopus lagopus scoticus\".",
+    "قال النبي صلى الله عليه وسلم إن الأعمال بالنيات.",
+    "وكان رسول الله عَلَيْهِ السلام يحب التيامن في شأنه كله.",
+    "روى الصحابة أن الإمام صَلَّى في هذا المسجد ركعتين.",
+    "وقد خرج رسول الله صلى الله عليه وسلم إلى المدينة مهاجرًا.",
+    "وفي الحديث أن الرجل صَامَ يوم عاشوراء وأمر بصيامه.",
+    "ثم إن رسول الله قَامَ على المنبر فخطب الناس."
+   ]
+  }
+ ],
+ "predictions": "most fire sentences above 0.2; the Lagopus leak is the one near miss likely over 0.3",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "neighbors",
+   "inverse-de",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
