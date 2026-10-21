@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-21-moridinamael-f5fdb149",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N2956-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T13:39:30+00:00",
+ "roles": ["reads bonsai1/L34/N5579+"],
+ "neighbours": [
+  {
+   "unit": "L35/N2956",
+   "pole": "-",
+   "label": "In English text, the word right after which a number is the expected next token: a month name or 'founded in' before a year, a US state abbreviation before a ZIP code, or 'and' between the two parts of a compound amount (hours and minutes, dollars and cents); the number itself need not follow, and words where no number is expected stay quiet",
+   "short": "slot where a number is expected next",
+   "fire": [
+    "Established in 1960, UC San Diego has been shaped by exceptional scholars.",
+    "The bakery was founded in 1952 by two brothers from Naples.",
+    "Our first child was born in March 2019, just before the storm.",
+    "Please mail the form to 400 Elm Street, Springfield, IL 62704.",
+    "The flight lasted three hours and 45 minutes.",
+    "The total came to twelve dollars and 50 cents.",
+    "She finished the marathon in four hours and twelve minutes.",
+    "The museum reopened on September 14 after renovations."
+   ],
+   "quiet": [
+    "Humans should make the best use of given information at any time.",
+    "The bakery was founded by two brothers from Naples.",
+    "Our first child was born in the spring, just before the storm.",
+    "Please mail the form to our main office on Elm Street.",
+    "The flight felt long and tiring for everyone.",
+    "The total came to more than we had expected.",
+    "She finished the marathon tired but happy.",
+    "The museum reopened after lengthy renovations."
+   ],
+   "notes": "Step-in reader of bonsai1/L34/N5579+ (SQL query text; drop 0.37). Cold deep-cell mission: labelled from own top examples and probes only. Test written blind by a second author from the label alone; solver leak texts placed by that author."
+  }
+ ],
+ "predictions": "fire items peak on the slot before the number (' in', ' March', ' IL', ' and'); spelled-out amounts ('three hours and') are the riskiest",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
