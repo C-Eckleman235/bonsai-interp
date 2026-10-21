@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-21-moridinamael-5c629316",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N3429+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T07:42:07+00:00",
+ "roles": ["reads bonsai1/L34/N4510+"],
+ "neighbours": [
+  {
+   "unit": "L35/N3429",
+   "pole": "+",
+   "label": "A non-final piece inside a rare or long word that the tokenizer splits into several pieces (rare English words, long compounds, long foreign or misspelled words), in any language; the same sentence with a common short word in that spot, and plain text made of common whole words, stays low.",
+   "short": "inside a rare word split into pieces",
+   "fire": [
+    "The professor described the theory as antidisestablishmentarianism in disguise.",
+    "She suffers from hippopotomonstrosesquippedaliophobia, the fear of long words.",
+    "The doctor diagnosed pneumonoultramicroscopicsilicovolcanoconiosis after the mine collapse.",
+    "In German, a speed limit sign might mention Geschwindigkeitsbegrenzung.",
+    "The old law was called the Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz.",
+    "He wrote that the plan was definately unneccessary and embarassing.",
+    "Our hike passed the village of Llanfairpwllgwyngyll in Wales.",
+    "The chemist synthesized a sample of dichlorodifluoromethane in the lab."
+   ],
+   "quiet": [
+    "D E S C R I P C I Ó N",
+    "My friend works at a bank in the city center.",
+    "The professor described the theory as an old idea in disguise.",
+    "She suffers from a fear of long words.",
+    "The doctor diagnosed a lung disease after the mine collapse.",
+    "In German, a speed limit sign might mention the top speed.",
+    "The old law was called the beef label act.",
+    "He wrote that the plan was surely not needed and a bit sad."
+   ],
+   "notes": "Test sentences written blind by a second author from the label only (stream blind_test). The + pole is broad (40.7% of tokens reach 0.1 of max); plain sentences probed at 0.13-0.24, split-word twins at 0.31-0.67. Feeders L33/N10909+ (mid-piece of misspelled/split words) and L28/N11592- (a 'c' piece glued after punctuation) are word-fragment cells."
+  }
+ ],
+ "predictions": "Most fire sentences 0.3-0.7; near misses mostly 0.1-0.25, with the sentence-initial ones the risk.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "probe",
+   "neighbors",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
