@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-20-moridinamael-eed61d1c",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N11732-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T03:20:31+00:00",
+ "roles": ["feeds bonsai1/L23/N1015-"],
+ "neighbours": [
+  {
+   "unit": "L3/N11732",
+   "pole": "-",
+   "label": "a double s right after a, u or o inside a word or name (not after e); the same words with e before the ss stay low",
+   "fire": [
+    "She left her glasses on the kitchen table again.",
+    "The boss called a meeting for Monday morning.",
+    "We need to discuss the budget before Friday.",
+    "Moss covered the north side of the old stone wall.",
+    "He walked across the bridge in the rain.",
+    "The class ended early because of the fire drill.",
+    "Picasso painted it during his blue period.",
+    "Don't make such a fuss over a small scratch."
+   ],
+   "quiet": [
+    "STOCKS HAVE RISEN A BIT SINCE YESTERDAY with our International Index having gained a marginal 1",
+    "The kids learned a hard lesson about sharing.",
+    "She left her reading lenses on the kitchen table again.",
+    "The manager called a meeting for Monday morning.",
+    "We need to address the budget before Friday.",
+    "Lichen covered the north side of the old stone wall.",
+    "He walked over the bridge in the rain, still dressed for work.",
+    "The lesson ended early because of the fire drill."
+   ]
+  }
+ ],
+ "short": "a/u/o + ss mid-word",
+ "unit_kind": "lexical",
+ "confidence": "low",
+ "notes": "Feeder of bonsai1/L23/N1015- picked from resident attribution (play step hit CUDA OOM; no ablation drop measured, so no feeds edge). Blind test: sentences written by a second author who saw only the label; the solver's leak (caps YESTERDAY, an e+st island of this pole) placed as a near miss. Probes before the draw: a/u/o+ss in split names/words fired 0.2-0.6 (Hussain, Husserl, Gassman, tussle, Hossam); e+ss stayed under 0.1 (lesson, mess, Kessler); single-s Hasan leaked 0.34; whole-token Massachusetts 0.06.",
+ "predictions": "Uncertain: common whole-token words (glasses, boss, class) may stay low.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test",
+   "step-out"
+  ]
+ }
+}
