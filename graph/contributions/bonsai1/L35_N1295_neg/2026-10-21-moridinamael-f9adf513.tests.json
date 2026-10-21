@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-21-moridinamael-f9adf513",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N1295-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T14:19:00+00:00",
+ "neighbours": [
+  {
+   "unit": "L35/N1295",
+   "pole": "-",
+   "label": "Two specific word pieces: the second '权利' (rights) inside the Chinese title of the International Covenant on Civil and Political Rights (公民权利和政治权利国际公约), and the ' def' piece of the Spanish noun 'defensa' (defence); English 'defense', French 'défense', Portuguese 'defesa', the Spanish verb 'defender' and '权利' outside that title stay weak",
+   "fire": [
+    "中国于1998年签署了《公民权利和政治权利国际公约》。",
+    "根据《公民权利和政治权利国际公约》第十九条，人人有自由发表意见的权利。",
+    "联合国人权事务委员会负责监督《公民权利和政治权利国际公约》的执行情况。",
+    "许多学者呼吁尽快批准公民权利和政治权利国际公约。",
+    "La defensa del acusado presentó nuevas pruebas ante el tribunal.",
+    "El ministro de Defensa anunció un aumento del presupuesto militar.",
+    "El equipo mejoró mucho su defensa en el segundo tiempo del partido.",
+    "Escribió un ensayo en defensa de la educación pública."
+   ],
+   "quiet": [
+    "TimePeriod(period['start'], period['end']), booking_requests",
+    "Debemos ser fuertes en la definición de la libertad.",
+    "每个公民都享有受教育的权利。",
+    "中国于2001年批准了《经济、社会及文化权利国际公约》。",
+    "工人们正在争取自己的合法权利。",
+    "联合国大会于1966年通过了这项人权公约。",
+    "The defense attorney presented new evidence to the court.",
+    "Le ministre de la Défense a annoncé une hausse du budget militaire."
+   ]
+  }
+ ],
+ "roles": ["reads bonsai1/L27/N9067-"],
+ "short": "Chinese ICCPR-title '权利' and Spanish 'defensa'",
+ "unit_kind": "lexical",
+ "confidence": "low",
+ "notes": "Step-in reader of bonsai1/L27/N9067- (drop 1.02, but on at only 0.14 of its max in one of the feeder's top examples; the label has nothing to do with the feeder's code-assignment meaning). COLD run: labelled from own tops and probes only. Blind test written by a second author from the label only; the solver's leak texts were placed as near misses.",
+ "predictions": "Chinese covenant-title items fire strongly; 'defensa' items around 0.1-0.45; the capitalised 'Defensa' is uncertain; near misses quiet except possibly the code leak near 0.3.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "quick-test"
+  ]
+ }
+}
