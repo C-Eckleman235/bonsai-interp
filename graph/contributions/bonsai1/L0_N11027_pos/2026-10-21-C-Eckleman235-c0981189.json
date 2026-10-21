@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-C-Eckleman235-c0981189",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N11027+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-21T17:32:38+00:00",
+ "recipe": {
+  "toolchain_commit": "b85a9ca",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N11027_pos/2026-10-21-C-Eckleman235-c0981189.tests.json"
+ },
+ "label": "Chinese province and big-city names written in Chinese characters (四川, 山西, 河南, 浙江, 上海, 北京), and the English tokens ' Texas' and ' California'; Japanese and Korean place names, other Chinese words and most other English state names stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N11027_pos/2026-10-21-C-Eckleman235-c0981189.tests.json",
+   "prereg_commit": "b85a9ca",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.88,
+     "peak": "河南"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.634,
+     "peak": "浙江"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.627,
+     "peak": "云南"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.638,
+     "peak": "湖南"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.32,
+     "peak": "上海"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.79,
+     "peak": "江苏"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.345,
+     "peak": " Texas"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.321,
+     "peak": " California"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.054,
+     "peak": "东京"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.028,
+     "peak": "京都"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.09,
+     "peak": "泰国"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.055,
+     "peak": "韩国"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.009,
+     "peak": "他在"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.067,
+     "peak": "日本"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.096,
+     "peak": " Ohio"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.089,
+     "peak": " Oregon"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.631,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "b85a9ca",
+  "minutes": 2,
+  "batch_size": 1
+ },
+ "short": "Chinese province names (and ' Texas')",
+ "unit_kind": "lexical",
+ "confidence": 0.55,
+ "notes": "Found by a concept screen for Chinese places (branch 10 of a concept map around the Texas pole bonsai1/L10/N8330+): 4/6 Chinese-script passages (peaks 四川 广东 新疆 云南), controls (Japanese/Korean places in Chinese) < 0.1. Card: peak tokens ' Texas' x15, 山西, 浙江, 北京, 河南, 江苏; word hits ' Texas' cov 58%, ' California' 10%, 北京 8%, ' Florida' 5%, 上海 5%. Triage probes (exploratory, not reused): 四川 0.69, 山西 0.61, 北京 0.31, ' Texas' 0.35 (also in Texas hold'em 0.35), ' California' 0.22, Ohio 0.09; the same places in English stay low (Sichuan 0.03, Beijing 0.18), so this is a token unit, not a cross-script place unit; 大阪 0.04, Germany 0.05. Scoring runs on a Colab T4.",
+ "selection": "concept search: Chinese places in Chinese script (branch 10)"
+}
