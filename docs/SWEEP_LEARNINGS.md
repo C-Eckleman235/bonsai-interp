@@ -63,6 +63,9 @@ abstraction pass. Each principle names its evidence and whether we have measured
     before it fell outside the window. Stamp before sampling, and allow about 5 s. After the fix, 1,365 of 1,365
     screen requests reconciled inside turns. Reconcile against the server's own request log before believing an
     auditor.
+  - A third: turns are logged when they *end*, so a turn in progress at the sample isn't in the log yet. The rule
+    that works: read the holder before AND after the counter sample, and accept any logged turn overlapping
+    [t_before − 1 s, t_after]. Handovers between holders take 2–16 ms.
 
 **Reset record** (nvlddmkm 153, 2026-10-19/20): 8 resets with heavy compute on either side alone, during model loads, and with the probe and the llama.cpp screen overlapping. No bugcheck and no unexpected shutdown in 14 days, including 1,593 driver events on 10-10, so recovery has been reliable on this machine. The crash risk to guard is host-commit exhaustion; resets cost a process.
 
