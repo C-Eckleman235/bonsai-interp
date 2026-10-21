@@ -4,7 +4,7 @@
  "layer": 22,
  "index": 7170,
  "pole": "-",
- "label": "In code (Python, JavaScript, Java, C++ and similar), a list or array being made or typed (an empty or filled [] literal, list(), or a List, ArrayList, Array or vector type or type hint) or grown by adding an item to it (append, push), plus technical text saying something returns a list. Removing items (pop), dicts, sets, tuples and plain numbers stay quiet, and so does 'list' in everyday prose; a variable that is only named with 'list' can fire weakly.",
+ "label": "In code (Python, JavaScript, Java, C++ and similar), a list or array being started, typed or grown: strongest for an empty list literal or empty list constructor that is about to be filled, a List/ArrayList/vector type or type hint, or adding one item to the end of it (append, push); a list literal that already holds items fires more weakly, and so does technical prose saying something returns a list or array. Dicts, sets, tuples, plain numbers and 'list' in everyday prose stay quiet; a variable only named with 'list' can fire weakly.",
  "short": null,
  "kind": null,
  "status": "held",
@@ -253,6 +253,128 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-21-moridinamael-b3cf79ff"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N7170_neg/2026-10-21-moridinamael-4ee4b24e.tests.json",
+   "prereg_commit": "414b6e3",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.49,
+     "peak": " []\n"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.844,
+     "peak": " [];\n"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.401,
+     "peak": ">"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.586,
+     "peak": ";\n"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.721,
+     "peak": " []"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.408,
+     "peak": "()\n"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.435,
+     "peak": "();\n"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.309,
+     "peak": ">();"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.191,
+     "peak": " list"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.253,
+     "peak": "_list"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.233,
+     "peak": " rows"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.277,
+     "peak": ".forEach"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.033,
+     "peak": "<>();\n"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.005,
+     "peak": "4"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.023,
+     "peak": ")"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.117,
+     "peak": " ="
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 2,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.463,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-21-moridinamael-4ee4b24e"
   }
  ],
  "label_history": [
@@ -265,6 +387,11 @@
    "2026-10-21-moridinamael-b3cf79ff",
    "In code (Python, JavaScript, Java, C++ and similar), a list or array being made or typed (an empty or filled [] literal, list(), or a List, ArrayList, Array or vector type or type hint) or grown by adding an item to it (append, push), plus technical text saying something returns a list. Removing items (pop), dicts, sets, tuples and plain numbers stay quiet, and so does 'list' in everyday prose; a variable that is only named with 'list' can fire weakly.",
    "held"
+  ],
+  [
+   "2026-10-21-moridinamael-4ee4b24e",
+   "In code (Python, JavaScript, Java, C++ and similar), a list or array being started, typed or grown: strongest for an empty list literal or empty list constructor that is about to be filled, a List/ArrayList/vector type or type hint, or adding one item to the end of it (append, push); a list literal that already holds items fires more weakly, and so does technical prose saying something returns a list or array. Dicts, sets, tuples, plain numbers and 'list' in everyday prose stay quiet; a variable only named with 'list' can fire weakly.",
+   "held"
   ]
  ],
  "examples": [],
@@ -275,20 +402,21 @@
  ],
  "contributions": [
   "2026-10-21-moridinamael-8838059d",
-  "2026-10-21-moridinamael-b3cf79ff"
+  "2026-10-21-moridinamael-b3cf79ff",
+  "2026-10-21-moridinamael-4ee4b24e"
  ],
  "qc": {
   "confirm": 0,
   "dispute": 0,
-  "refine": 1
+  "refine": 2
  },
  "replications": [],
  "scrutiny": {
   "level": 2,
   "name": "re-tested",
-  "test_rounds": 2,
-  "sentences": 32,
+  "test_rounds": 3,
+  "sentences": 48,
   "contributors": 1,
-  "qc": 1
+  "qc": 2
  }
 }
