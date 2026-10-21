@@ -1,0 +1,55 @@
+{
+ "contribution": "2026-10-21-moridinamael-a0cdb7b8",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N4702-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T22:40:32+00:00",
+ "neighbours": [
+  {
+   "unit": "L0/N4702",
+   "pole": "-",
+   "label": "The parameter tag in code documentation: lowercase 'param' written right after '@', ':' or a backslash ('@param', ':param', '\\param') before an argument name, in Javadoc, JSDoc, PHPDoc, Doxygen or Sphinx comments, or when such a tag is mentioned in prose. Strongest inside a doc comment, weaker when the tag opens the text. Quiet: 'param' after a space in plain prose, 'Param', 'params', 'parameter', '_param', 'paramedic'. Other doc tags ('@return', '@throws', ':returns:') fire weakly, around a third of the peak.",
+   "fire": [
+    "/**\n * Resizes the image.\n * @param width the new width in pixels\n */",
+    ":param timeout: number of seconds to wait before giving up",
+    "/// \\param buffer pointer to the output buffer",
+    "/**\n * @param {string} name - The user's display name.\n */",
+    "/**\n * @param int $count How many rows to fetch.\n */",
+    "def connect(host, port):\n    \"\"\"Open a socket.\n\n    :param host: the server address\n    \"\"\"",
+    "/*! \\brief Sets the speed.\n *  \\param value new speed in metres per second\n */",
+    "Remember to add an @param line for every argument the method takes."
+   ],
+   "quiet": [
+    ":returns: seconds waited before giving up",
+    "* @return the new height in pixels",
+    "/**\n * Resizes the image.\n * The width is given in pixels.\n */",
+    "Wait this many seconds before giving up on the request.",
+    "/// Pointer to the output buffer that receives the data.",
+    "/**\n * The user's display name, as a string.\n */",
+    "/**\n * How many rows to fetch from the table.\n */",
+    "def connect(host, port):\n    \"\"\"Open a socket.\n\n    The host is the server address.\n    \"\"\""
+   ]
+  }
+ ],
+ "predictions": "Doc-comment @param/\\param items strong (0.6-0.95); ':param' opening the text weaker (~0.4); the two leak quiets (@return, :returns:) are the riskiest near misses at ~0.25-0.33.",
+ "short": "the '@param' doc tag",
+ "unit_kind": "token/lexical",
+ "notes": "Step-out from bonsai1/L3/N7596+. play step hit CUDA OOM (resident stream model holds the GPU), so TARGET is the top feeder by resident attribution (feeders tool), not by ablation drop; no feeds edge recorded. Test sentences written blind by a second author from the label only.",
+ "roles": [
+  "feeds bonsai1/L3/N7596+"
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
