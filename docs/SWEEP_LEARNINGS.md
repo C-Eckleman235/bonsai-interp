@@ -28,6 +28,21 @@ abstraction pass. Each principle names its evidence and whether we have measured
 | 10 | **Plan wall time by the foreground's duty cycle,** not by GPU minutes. | the stream held 28–70% of the GPU during scoring | planning |
 | 11 | **Pick the output format for the full model from the start:** per-layer columnar tables keyed by pole, words as token ids plus one vocab, lazy per-layer views. Check what the target machine allows (application control blocked Parquet here; Arrow IPC worked). | word hits for all 35 layers in about 65 MB (`atlas` release); one JSON file per pole would be gigabytes | scale (docs/SCALING.md) |
 
+**One queue, not many locks** (2026-10-20, after 8 resets and 4 partial fixes)
+- Each partial mechanism closed one gap and left another:
+  - batch vs stream turns
+  - the stream's private lock
+  - the screen server outside both
+  - the yield-before-subprocess rule
+- What holds is a single machine-wide queue (`gpu_turn`):
+  - tickets ordered by (priority, time)
+  - an OS file lock, so exactly one holder, freed by the OS if it dies
+  - one model call per hold
+  - every GPU client in it, helper servers included (wrapped at the client)
+  - an auditor that compares actual per-process GPU compute with the named holder
+- **Transfers:** design GPU sharing as one arbiter from day one, with an audit of reality rather than trust in
+  callers.
+
 **Reset record** (nvlddmkm 153, 2026-10-19/20): 8 resets with heavy compute on either side alone, during model loads, and with the probe and the llama.cpp screen overlapping. No bugcheck and no unexpected shutdown in 14 days, including 1,593 driver events on 10-10, so recovery has been reliable on this machine. The crash risk to guard is host-commit exhaustion; resets cost a process.
 
 **Open experiments** (the next speed and effectiveness questions):
