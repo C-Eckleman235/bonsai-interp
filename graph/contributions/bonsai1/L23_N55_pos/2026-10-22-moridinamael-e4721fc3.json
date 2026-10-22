@@ -1,0 +1,156 @@
+{
+ "id": "2026-10-22-moridinamael-e4721fc3",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N55+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T22:52:16+00:00",
+ "recipe": {
+  "toolchain_commit": "64af1e41",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L23_N55_pos/2026-10-22-moridinamael-e4721fc3.tests.json"
+ },
+ "label": "The opening piece of a katakana word that the tokenizer splits into several pieces, loanword or native (e.g. ア in アドレナリン, ト in トンボ), in Japanese or mixed text. Quiet for common katakana words that are a single whole token (e.g. テレビ), and for hiragana or kanji words in the same slot. Weaker (about 0.2-0.45 of max) on English loanwords spelled in Korean Hangul.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L23_N55_pos/2026-10-22-moridinamael-e4721fc3.tests.json",
+   "prereg_commit": "64af1e41",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.465,
+     "peak": " 스"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.684,
+     "peak": "ア"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.387,
+     "peak": "トン"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.56,
+     "peak": "フィ"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.513,
+     "peak": "ブ"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.467,
+     "peak": "シ"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.466,
+     "peak": "パ"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.173,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.055,
+     "peak": "定"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.054,
+     "peak": "選"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.008,
+     "peak": "、"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.027,
+     "peak": "京"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.129,
+     "peak": "テレビ"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.104,
+     "peak": "ふ"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.047,
+     "peak": "新しい"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.006,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.467,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "64af1e41",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Target chosen from the resident feeders ranking (top MLP feeder of bonsai1/L24/N5483+); play step ran out of GPU memory, so no ablation drop was measured and no edge is recorded. Test sentences written blind by a label-only second author.",
+ "roles": [
+  "feeds bonsai1/L24/N5483+"
+ ]
+}
