@@ -1,0 +1,44 @@
+{
+ "contribution": "2026-10-22-moridinamael-46f06a2e",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N2972-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T15:36:07+00:00",
+ "neighbours": [
+  {
+   "unit": "L3/N2972",
+   "pole": "-",
+   "label": "The katakana character ヨ (yo) at the start of a katakana word, full- or half-width; not hiragana よ, not other kana such as ユ or ヤ, and not ヨ in the middle of a word. One stray exception: the English name Boyd also fires.",
+   "short": "katakana ヨ starting a word",
+   "unit_kind": "token",
+   "roles": ["feeds bonsai1/L4/N11339-"],
+   "fire": [
+    "At Lucas Oil (Can Boyd) Stadium in downtown Indianapolis.",
+    "夏休みに家族でヨーロッパを旅行しました。",
+    "毎朝ヨーグルトにはちみつをかけて食べています。",
+    "週末は友達とヨットで湾を一周した。",
+    "彼女は駅前のスタジオでヨガを習っている。",
+    "子どもの頃、ヨーヨーの技を何時間も練習した。",
+    "ヨルダンの砂漠は夜になると驚くほど寒い。",
+    "アルプスの山小屋でヨーデルを聞いた。"
+   ],
+   "quiet": [
+    "L’espace intérieur y est accueillant.",
+    "夏休みに家族でアジアを旅行しました。",
+    "毎朝よーぐるとにはちみつをかけて食べています。",
+    "週末は友達とボートで湾を一周した。",
+    "彼女は駅前のスタジオでユニークな体操を習っている。",
+    "子どもの頃、ヤンマの羽を何時間も眺めていた。",
+    "トヨタの工場は夜になっても明かりがついている。",
+    "アルプスの山小屋でサヨナラの歌を聞いた。"
+   ]
+  }
+ ],
+ "predictions": "Blind test written from the label only. Expect the 7 word-initial ヨ items near 0.4-0.5; risks are sentence-initial ヨルダン and Boyd (0.24-0.69 in probes).",
+ "notes": "Step mission from bonsai1/L4/N11339- (ML letter variables). play step hit CUDA OOM, so the feeder was chosen from the resident feeders attribution ranking (top MLP feeder) and no ablation edge weight is recorded. Thai โย fired 0.35 once in probing (not claimed). Half-width ﾖ fires when attached to its word, not after a space.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["card", "probe", "inverse-de", "blind-room", "step-out", "quick-test"]
+ }
+}
