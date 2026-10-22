@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-22-moridinamael-95dd95b0",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N2426-",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T07:13:44+00:00",
+ "recipe": {
+  "toolchain_commit": "817ed4c0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L11_N2426_neg/2026-10-22-moridinamael-95dd95b0.tests.json"
+ },
+ "label": "The comma right after a stock linking or comment opener at the start of a sentence ('However,' 'Of course,' 'Honestly,' 'In my opinion,' 'Yes,' 'Oh,'), whatever the opener's length. Quiet: commas after scene-setting phrases ('In the kitchen,' 'Tired and hungry,'), after full clauses ('Because the bus was late,'), after names, and list commas. A weaker side trigger is the space typed before a number.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L11_N2426_neg/2026-10-22-moridinamael-95dd95b0.tests.json",
+   "prereg_commit": "817ed4c0",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.317,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.493,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.497,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.423,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.51,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.314,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.353,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.471,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.099,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.02,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.072,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.083,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.128,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.117,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.074,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.083,
+     "peak": ","
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.447,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "817ed4c0",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L12/N7269-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L11/N2426-", "to": "bonsai1/L12/N7269-", "kind": "feeds", "weight": 0.08, "method": "single-unit zero ablation (play step)"}
+ ],
+ "notes": "Step-out from bonsai1/L12/N7269-: the largest-drop feeder (0.08) from play step. Test sentences written blind by a label-only second author; the inverse solver (DE) found no leak, and its near-miss ceiling was a hedging opener ('By one estimate,' 0.34)."
+}
