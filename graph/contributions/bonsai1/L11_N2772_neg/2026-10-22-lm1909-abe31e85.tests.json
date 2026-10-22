@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-abe31e85",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N2772-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T17:23:41+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L11/N2772",
+   "pole": "-",
+   "label": "book-shop listing context: '.amazon' in a www URL and 'Paperback'/'Hardcover' book-format metadata",
+   "fire": [
+    "The novel is out now, and you can buy it at https://www.amazon.com/dp/0451526538 today.",
+    "Order a signed copy here: http://www.amazon.co.uk/dp/1908434120 while stocks last.",
+    "Her new cookbook is listed at https://www.amazon.de/dp/3831035172 in both editions.",
+    "To read more reviews, visit http://www.amazon.ca/dp/0771038763 and leave your own.",
+    "Product details\nPaperback: 248 pages\nPublisher: Riverbend Books (March 2011)",
+    "Book information\nHardcover: 416 pages\nISBN-10: 0393347095\nLanguage: English",
+    "This title is also available as a Paperback edition with a new afterword.",
+    "Details\nPaperback: 190 pages\nDimensions: 6 x 0.5 x 9 inches"
+   ],
+   "quiet": [
+    "The novel is out now, and you can buy it at https://www.riverbendbooks.com/titles/538 today.",
+    "Order a signed copy here: http://www.waterstones.com/book/1908434120 while stocks last.",
+    "Her new cookbook is listed at https://www.publisher-site.de/books/3831035172 in both editions.",
+    "To read more reviews, visit http://www.goodreads.com/book/show/77103 and leave your own.",
+    "Product details\nLength: 248 sheets of cardboard\nMaker: Riverbend Crafts (March 2011)",
+    "Item information\nWeight: 416 grams\nModel number: 0393347095\nColour: blue",
+    "This kettle is also available as a stainless steel model with a new handle.",
+    "Details\nCapacity: 190 litres\nDimensions: 60 x 50 x 90 centimetres"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Amazon book listing",
+ "unit_kind": "contextual",
+ "confidence": 0.55,
+ "notes": "Card: '.amazon' x4 in book URLs, 'Paperback: 266 pages\\n', 'Trade Paperback'. Probe: amazon.com/dp 0.93, amazon.co.uk/dp 0.92, 'Paperback: 312 pages' block 0.70, 'Hardcover edition' 0.54; other www URLs 0.03-0.04, 'Amazon river' 0.06, 'bought a kettle on Amazon' 0.07. Near misses keep URLs and spec-list format but drop amazon and Paperback/Hardcover (some keep the book topic, some keep only the format)."
+}

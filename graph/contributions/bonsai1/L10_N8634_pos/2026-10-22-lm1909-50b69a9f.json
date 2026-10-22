@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-50b69a9f",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N8634+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:45:18+00:00",
+ "recipe": {
+  "toolchain_commit": "5ec87ba3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N8634_pos/2026-10-22-lm1909-50b69a9f.tests.json"
+ },
+ "label": "the copula (is/are/was) after a fronted predicate phrase, with the subject following it (inversion: 'New to the menu is X', 'Rounding out the list are Y')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L10_N8634_pos/2026-10-22-lm1909-50b69a9f.tests.json",
+   "prereg_commit": "5ec87ba3",
+   "author": "lm1909",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.548,
+     "peak": " is"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.489,
+     "peak": " are"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.324,
+     "peak": " is"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.559,
+     "peak": " are"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.688,
+     "peak": " is"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.176,
+     "peak": " were"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.576,
+     "peak": " was"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.057,
+     "peak": " are"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.03,
+     "peak": " corner"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.044,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.16,
+     "peak": " that"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.049,
+     "peak": "-time"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.016,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.029,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.068,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.033,
+     "peak": " cup"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.518,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "5ec87ba3",
+  "minutes": 6,
+  "batch_size": 16
+ },
+ "short": "copula in inverted clause",
+ "unit_kind": "contextual",
+ "confidence": 0.6,
+ "notes": "Card + pole: ' is' x18 in inversions ('In attendance ... was Rob Lewis', 'Rounding out Curiosity's cameras are', 'What is less evident, though, is', 'New to the site this month is'); - pole is 'which are'. Probe: 'What is less obvious, though, is' 0.65, 'New to the menu this month is' 0.57, 'Rounding out the lineup are' 0.47, 'In attendance ... was' 0.27; canonical rewrites 0.02-0.04, 'which are' 0.02, short 'Most important of all is' 0.01 (so the fronted phrase needs some length). Near misses keep content in canonical order.",
+ "selection": "random draw"
+}

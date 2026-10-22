@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-6bfdf96c",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N8535-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:45:33+00:00",
+ "recipe": {
+  "toolchain_commit": "5ec87ba3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L2_N8535_neg/2026-10-22-lm1909-6bfdf96c.tests.json"
+ },
+ "label": "the letter string 'act'/'akt' inside a word, strongest in tr-act words (Traktor, tracts, tractor, detractors, distraction)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L2_N8535_neg/2026-10-22-lm1909-6bfdf96c.tests.json",
+   "prereg_commit": "5ec87ba3",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.049,
+     "peak": "akt"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.709,
+     "peak": " tractor"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.893,
+     "peak": "acts"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.64,
+     "peak": "actors"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.442,
+     "peak": " distraction"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.421,
+     "peak": " attraction"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.56,
+     "peak": " actors"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.423,
+     "peak": " acts"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.043,
+     "peak": "ato"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.406,
+     "peak": " truck"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.066,
+     "peak": " printed"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.045,
+     "peak": " critics"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.033,
+     "peak": " drivers"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.054,
+     "peak": " park"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.085,
+     "peak": " cast"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.001,
+     "peak": " simple"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.6,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "5ec87ba3",
+  "minutes": 6,
+  "batch_size": 16
+ },
+ "short": "'act' letter string",
+ "unit_kind": "lexical",
+ "confidence": 0.45,
+ "notes": "Card: broad (1.7% >0.1 max), gate-closed leak regime; peaks tr|acts, Tr|akt|or, tractor, アトラク|ション. Probe: Traktor 1.00, tracts 0.71, tractor 0.69, detr|actors 0.62, distraction 0.56, actors 0.51, attraction 0.48, acts 0.48, facts 0.42, contract 0.38 -> not specific to the Latin tract stem, it is the act letter string generally, stronger in tr-act words. Near misses swap in words with no 'act'.",
+ "selection": "random draw"
+}

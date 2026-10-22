@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-90020e07",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N7958-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:45:21+00:00",
+ "recipe": {
+  "toolchain_commit": "5ec87ba3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L1_N7958_neg/2026-10-22-lm1909-90020e07.tests.json"
+ },
+ "label": "the Korean piece '겨' in 남겨 ('leave [a message/comment]') (dense unit, best guess)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L1_N7958_neg/2026-10-22-lm1909-90020e07.tests.json",
+   "prereg_commit": "5ec87ba3",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.695,
+     "peak": "겨"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.894,
+     "peak": "겨"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.813,
+     "peak": "겨"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.844,
+     "peak": "겨"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.726,
+     "peak": "겨"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.749,
+     "peak": "겨"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.644,
+     "peak": "겨"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.912,
+     "peak": "겨"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.12,
+     "peak": "하겠습니다"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.129,
+     "peak": "명"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.116,
+     "peak": "락"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.156,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.098,
+     "peak": " 공간"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.328,
+     "peak": "려"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.209,
+     "peak": "기"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.085,
+     "peak": "문"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.781,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "5ec87ba3",
+  "minutes": 6,
+  "batch_size": 16
+ },
+ "short": "Korean 남겨 (leave)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.3,
+ "notes": "Card flags DENSE (10.1% of tokens >0.1 max), max only 0.46, top 32 dominated by <|endoftext|>. Probe: 남겨 0.83/0.80, Japanese '2粒' 0.79, 号码 0.29, English 0.13-0.27, Korean 비워 0.07. Test is Korean 남겨 vs Korean sentences with other verbs; recorded as dense / positional, expected to struggle on the near-miss bar.",
+ "selection": "random draw"
+}
