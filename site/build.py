@@ -48,7 +48,12 @@ def main():
     cards = build_cards(idx, a.refresh_cards, logits=not a.no_logits)
     # U+FFFD (corpus text with broken characters) is written as a JSON escape, so the page source has none
     blob = lambda o: json.dumps(o, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/").replace("�", "\\ufffd")
-    body = (HERE / "template.html").read_text(encoding="utf-8").replace("__INDEX__", blob(idx)).replace("__CARDS__", blob(cards))
+    # what the page shows is masked (graph/index.json stays the raw data API): labels, history and card text
+    from bonsai_interp.sensitive import mask, masked
+    shown = {**idx, "neurons": {k: {**r, "label": mask(r.get("label")), "short": mask(r.get("short")),
+                                    "history": [[mask(h[0]), *h[1:]] for h in r.get("history", [])]}
+                                for k, r in idx["neurons"].items()}}
+    body = (HERE / "template.html").read_text(encoding="utf-8").replace("__INDEX__", blob(shown)).replace("__CARDS__", blob(masked(cards)))
     (HERE / "survey.html").write_text(body, encoding="utf-8", newline="\n")
     doc = ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
            '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'

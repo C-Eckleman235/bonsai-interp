@@ -125,6 +125,9 @@ it in order.
   Say so with `"unit_kind": "dense / positional"` instead of forcing a label.
 - **Write your own sentences.** If the model wrote them, run with `--author bonsai`, because
   model-written near misses misfire more often.
+- **Sensitive triggers.** If a pole's trigger is a slur or other content that should not be shown or tested live,
+  don't write a test for it. File `play withhold --reason slur --label "<what kind of trigger, masked>"` instead
+  (graph/SCHEMA.md, "Sensitive triggers"). The pole shows as `withheld` on the map, and edges to it still work.
 - **Test-writing tips from the Twitch stream's missions** (mission counts in brackets):
   - Early-layer poles: test the bare token first, before any meaning (45).
   - Spelling-unit poles: check how the tokenizer splits your words, because a piece fires only where

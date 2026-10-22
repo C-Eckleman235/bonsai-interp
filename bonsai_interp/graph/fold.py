@@ -14,6 +14,8 @@ Rules (per neuron pole, contributions in (created, id) order):
     the label last changed makes a held pole 'contested'.
   - replicate: appended to 'replications'; never changes the label.
   - unit_kind containing 'dense' makes the pole 'dense'; depth 'full' makes it 'probed'.
+  - a 'withhold' contribution (sensitive trigger) makes the pole 'withheld', above every other status; its masked
+    label and short replace any other, so the content never reaches the index, the map or the stream.
   - list fields (roles, evidence, examples) are unions in order; scalar extras: latest wins.
 """
 import argparse
@@ -80,6 +82,10 @@ def fold_neuron(neuron, contribs):
         counted = [t for t in tests if t.get("counts_for_status", True) and t["outcome"] in ("held", "failed")]
         res = counted[-1]["outcome"] if counted else None
         kind, verdict = c["kind"], (c.get("qc") or {}).get("verdict")
+        if kind == "withhold":
+            r["withheld"] = {"reason": c["withheld"]["reason"], "label": c["label"], "short": c.get("short"), "contribution": c["id"]}
+            r["label_history"].append([c["id"], c["label"], "withheld"])
+            continue
         if kind == "replicate":
             r["replications"].append({"contribution": c["id"], **{k: c[k] for k in ("label", "verdict", "confidence", "notes") if k in c},
                                       "outcome": tests[-1]["outcome"] if tests else "recorded"})
@@ -100,7 +106,11 @@ def fold_neuron(neuron, contribs):
                 r["label"] = c["label"]
                 failed_rounds += res == "failed"
     r["scrutiny"] = scrutiny(r, contribs)
-    if r["kind"] and "dense" in r["kind"]:
+    if r.get("withheld"):
+        w = r["withheld"]
+        r["status"], r["label"], r["short"] = "withheld", w["label"], w["short"]
+        r["withheld"] = {"reason": w["reason"], "contribution": w["contribution"]}
+    elif r["kind"] and "dense" in r["kind"]:
         r["status"] = "dense"
     elif r["depth"] == "full":
         r["status"] = "probed"
@@ -115,6 +125,15 @@ def fold_neuron(neuron, contribs):
     elif r["label"]:
         r["status"] = "probed"  # labelled, but only exploratory or unscored tests so far
     return r
+
+
+def _history(r):
+    """The last six labels tried; on a withheld pole every earlier label is masked too (they may name the content)."""
+    h = [x[1:] for x in r["label_history"]][-6:]
+    if r.get("withheld"):
+        from bonsai_interp.sensitive import mask
+        h = [[mask(lab), out] for lab, out in h]
+    return h
 
 
 def fold():
@@ -139,14 +158,15 @@ def fold():
     points = defaultdict(int)
     for cs in by_neuron.values():
         for c in cs:
-            points[c["contributor"]] += {"interpret": 10, "qc": 6, "replicate": 15, "map": 3}.get(c["kind"], 1)
+            points[c["contributor"]] += {"interpret": 10, "qc": 6, "replicate": 15, "map": 3, "withhold": 3}.get(c["kind"], 1)
     idx = {"neurons": {n: {k: r[k] for k in ("status", "short", "label", "kind", "depth")} | {"qc": r["qc"], "n_contrib": len(r["contributions"]),
                                                                                             "replicated": bool(r["replications"]),
                                                                                             "contributors": r["contributors"],
                                                                                             "t": [[t.get("protocol"), t["outcome"], t.get("n_fire"), t.get("n_false_pos"), t.get("author"), t["contribution"]]
                                                                                                   for t in r["tests"]],
-                                                                                            "history": [h[1:] for h in r["label_history"]][-6:],
+                                                                                            "history": _history(r),
                                                                                             "scrutiny": r["scrutiny"]}
+                       | ({"withheld": r["withheld"]["reason"]} if r.get("withheld") else {})
                        for n, r in sorted(records.items())},
            "edges": [[e["from"], e["to"], e["kind"]] for e in E],
            "contributors": dict(sorted(points.items(), key=lambda t: (-t[1], t[0]))),

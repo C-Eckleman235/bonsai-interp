@@ -30,6 +30,8 @@ import json
 import sys
 from pathlib import Path
 
+from bonsai_interp.sensitive import mask, mask_token
+
 ROOT = Path(__file__).resolve().parents[1]
 ATLAS = ROOT / "data" / "atlas"
 N = 12288
@@ -94,7 +96,7 @@ def build_layer(hits_path, screen_path=None, out_dir=ATLAS):
             cols["hit_coverage"].append([float(x[4]) for x in w])
             cols["hit_trigger"].append([int(x[0]) in trig for x in w])
             cols["bin"].append(s.get("bin"))
-            cols["context"].append(s.get("context"))
+            cols["context"].append(mask(s.get("context")))  # sensitive words never reach the public atlas
             cols["test"].append(s.get("test"))
             cols["auroc"].append(s.get("auroc"))
     schema = _schema()
@@ -141,7 +143,7 @@ def build_vocab(ids, out_dir=ATLAS):
         return "".join(out)
 
     ids = sorted(ids)
-    t = pa.table({"tok": pa.array(ids, pa.int32()), "text": pa.array([text(i) for i in ids], pa.string())})
+    t = pa.table({"tok": pa.array(ids, pa.int32()), "text": pa.array([mask_token(text(i)) for i in ids], pa.string())})
     out = out_dir / "vocab.arrow"
     _write(t, out)
     return out

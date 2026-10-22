@@ -32,6 +32,7 @@ OTHER, HIT = 7, 8
 
 def main(src=ROOT / "data" / "atlas"):
     from bonsai_interp.atlas import _read
+    from bonsai_interp.sensitive import mask, mask_token  # an older atlas may predate the masking
     src = Path(src)
     files = sorted(src.glob("bonsai1_L*.arrow"), key=lambda p: int(p.name.split("_L")[1].split(".")[0]))
     if not files:
@@ -67,7 +68,7 @@ def main(src=ROOT / "data" / "atlas"):
             cols["cov"] += [round(100 * x, 1) for x in t["hit_coverage"][i]] + [0] * pad
             cols["trig"] += [int(x) for x in trig] + [0] * pad
             cols["bin"].append(t["bin"][i])
-            cols["context"].append(t["context"][i])
+            cols["context"].append(mask(t["context"][i]))
             cols["test"].append(t["test"][i])
             cols["auroc"].append(None if t["auroc"][i] is None else round(t["auroc"][i], 3))
             used.update(words)
@@ -77,7 +78,7 @@ def main(src=ROOT / "data" / "atlas"):
         layers[str(L)] = "".join(chars)
         counts[str(L)] = c
         (OUT / f"L{L}.json").write_text(json.dumps(cols, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8", newline="\n")
-    (OUT / "vocab.json").write_text(json.dumps({str(k): vocab.get(k, "") for k in sorted(used)}, ensure_ascii=False, separators=(",", ":")) + "\n",
+    (OUT / "vocab.json").write_text(json.dumps({str(k): mask_token(vocab.get(k, "")) for k in sorted(used)}, ensure_ascii=False, separators=(",", ":")) + "\n",
                                     encoding="utf-8", newline="\n")
     bins = {"protocol": ["auto-token@2"], "groups": [g for g, _ in GROUPS], "layers": layers, "counts": counts,
             "screened": sorted(int(L) for L, cc in counts.items() if sum(cc[:HIT]) > 0)}

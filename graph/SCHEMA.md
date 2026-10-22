@@ -36,7 +36,7 @@ merging the same contribution twice changes nothing, and new information never o
 
 | Field | Meaning |
 |---|---|
-| `id`, `kind`, `neuron`, `contributor`, `created` | `kind` is one of `interpret`, `qc`, `replicate` (a blind clean-room run) or `map` (edges only) |
+| `id`, `kind`, `neuron`, `contributor`, `created` | `kind` is one of `interpret`, `qc`, `replicate` (a blind clean-room run), `map` (edges only) or `withhold` (a sensitive trigger, below) |
 | `label` | For `interpret` and `qc` refine: the label that was tested |
 | `qc` | `{"verdict": "confirm" or "dispute" or "refine", "label_under_test": …}` |
 | `tests` | `[{protocol, tests_file, prereg_commit, author, …numbers…, per_sentence}]`. `counts_for_status: false` excludes a test from the status (used for model-written test sentences) |
@@ -81,6 +81,7 @@ The record keeps the earlier fields: `id`, `label`, `short`, `kind`, `status`, `
 | `failed` | no label has held yet; one or two failed rounds |
 | `unresolved` | no label has held after three failed rounds |
 | `dense` | a contribution set `unit_kind` to a dense kind |
+| `withheld` | a `withhold` contribution: the trigger is sensitive content, recorded with a masked description (takes precedence over every other status) |
 | `probed` | a full probe (`depth: full`) |
 | `replicated` | only blind replications so far |
 
@@ -91,6 +92,26 @@ More rules:
 - `replicate` contributions never change the label.
 - For list fields, the record holds the union of all contributions, in order. For scalar fields,
   the latest contribution wins.
+
+## Sensitive triggers: `withhold`
+
+Some poles fire on slurs or other content that should not be shown on the public map or the Twitch stream, or
+tested live. Such a pole gets a `withhold` contribution instead of an `interpret` round:
+
+```
+uv run python -m bonsai_interp.graph.play withhold --neuron bonsai1/L1/N362+ --handle <you> --reason slur     --label "a slur token (masked), any context" --short "slur token (masked)" --agent "claude-code opus-5.5" --screens card atlas
+```
+
+- `label` (and `short`) describe the kind of trigger without the content; the check rejects a label that contains a
+  word on the denylist (`bonsai_interp/sensitive.py`, stored as hashes).
+- `withheld.reason` is one of `slur`, `sexual`, `personal data`, `violence`, `other`.
+- There is no test to pre-register, so it is one file in one commit. Unmasked evidence, if any, goes to the library and
+  is listed under `artifacts` by hash, never in git.
+- The fold makes the pole `withheld`, above every other status, shows only the withhold's masked label and short, and
+  masks the pole's earlier labels in `history`. Edges may point at a withheld pole like any other.
+
+Separately, everything the map and the atlas release display (labels, word hits, screen rules, card examples) passes
+through the same denylist mask; `graph/index.json` and the records stay the raw data.
 
 ## Read API
 

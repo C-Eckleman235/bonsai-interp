@@ -9,7 +9,8 @@ Layout (one folder per neuron pole):
 or deleted; a correction is a new contribution. Neuron records under graph/neurons/ are derived
 from contributions by `fold` and are never edited by hand.
 
-Kinds: interpret (label a pole), qc (re-test a label), replicate (blind clean-room run), map (edges only).
+Kinds: interpret (label a pole), qc (re-test a label), replicate (blind clean-room run), map (edges only),
+withhold (the pole's trigger is sensitive content: a masked description instead of a live test).
 """
 import json
 import re
@@ -19,7 +20,8 @@ from bonsai_interp.graph.protocols import LEGACY, PROTOCOLS
 
 ROOT = Path(__file__).resolve().parents[2]
 C = ROOT / "graph" / "contributions"
-KINDS = {"interpret", "qc", "replicate", "map"}
+KINDS = {"interpret", "qc", "replicate", "map", "withhold"}
+WITHHELD_REASONS = {"slur", "sexual", "personal data", "violence", "other"}
 QC_VERDICTS = {"confirm", "dispute", "refine"}
 ID = re.compile(r"^\d{4}-\d{2}-\d{2}-[A-Za-z0-9-]+-[A-Za-z0-9]{4,}$|^core-[a-z0-9-]+$")
 NEURON = re.compile(r"^(?P<model>[a-z0-9_]+)/L(?P<L>\d+)/N(?P<n>\d+)(?P<pole>[+-])$")
@@ -73,6 +75,16 @@ def check(path: Path, c: dict):
         say(f"{rel}: an {c['kind']} contribution needs at least one pre-registered test")
     if c["kind"] == "interpret" and not c.get("label"):
         say(f"{rel}: an interpret contribution needs a 'label'")
+    if c["kind"] == "withhold":
+        from bonsai_interp.sensitive import mask
+        if not c.get("label"):
+            say(f"{rel}: a withhold contribution needs a masked 'label' (what kind of trigger, without the content)")
+        elif mask(c["label"]) != c["label"] or mask(c.get("short") or "") != (c.get("short") or ""):
+            say(f"{rel}: a withhold label must not contain the sensitive word itself; describe it masked")
+        if (c.get("withheld") or {}).get("reason") not in WITHHELD_REASONS:
+            say(f"{rel}: withheld.reason must be one of {sorted(WITHHELD_REASONS)}")
+        if not (c.get("methods") or {}).get("agent"):
+            say(f"{rel}: needs a 'methods' block with 'agent'")
     if c["kind"] == "qc":
         q = c.get("qc") or {}
         if q.get("verdict") not in QC_VERDICTS:

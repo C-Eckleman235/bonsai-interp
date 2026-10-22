@@ -89,6 +89,40 @@ def new(a):
     return rel
 
 
+def withhold(a):
+    """Record that a pole's trigger is sensitive content: a masked description instead of a live test. One file, one
+    commit (there is no test to pre-register). The pole shows as 'withheld' on the map and edges may point at it."""
+    from bonsai_interp.graph.contrib import WITHHELD_REASONS, check
+    from bonsai_interp.sensitive import mask
+    if not NEURON.match(a.neuron):
+        sys.exit("neuron must look like bonsai1/L1/N362+ (model/layer/index and pole)")
+    if a.reason not in WITHHELD_REASONS:
+        sys.exit(f"--reason must be one of {sorted(WITHHELD_REASONS)}")
+    if mask(a.label) != a.label:
+        sys.exit("the label names the sensitive word itself: describe it masked, e.g. 'a slur token (masked), any context'")
+    d = folder_for(a.neuron)
+    d.mkdir(parents=True, exist_ok=True)
+    taken = {q.name.split(".")[0] for q in d.glob("*.json")}
+    while (cid := f"{dt.date.today().isoformat()}-{a.handle}-{secrets.token_hex(4)}") in taken:
+        pass
+    c = {"id": cid, "kind": "withhold", "neuron": a.neuron, "contributor": a.handle,
+         "created": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "label": a.label,
+         **({"short": a.short} if a.short else {}), "withheld": {"reason": a.reason},
+         **({"notes": a.notes} if a.notes else {}), "methods": {"agent": a.agent, "screens": a.screens or ["card"]},
+         **({"artifacts": [{"name": "unmasked evidence", "url": a.evidence_url, "sha256": a.evidence_sha256}]}
+            if a.evidence_url and a.evidence_sha256 else {})}
+    p = d / f"{cid}.json"
+    p.write_text(json.dumps(c, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
+    errs = check(p, c)
+    if errs:
+        p.unlink()
+        sys.exit("\n".join(errs))
+    rel = p.relative_to(ROOT).as_posix()
+    print(f"wrote {rel}\ncommit it (one commit is enough, there is no test to pre-register):\n"
+          f"  git add {rel} && git commit -m \"Withhold {a.neuron}: sensitive trigger ({a.reason})\"")
+    return rel
+
+
 def _new_one(a, nid):
     m = NEURON.match(nid)
     d = folder_for(nid)
@@ -439,6 +473,17 @@ def main():
                    help="qc only: confirm = re-test the label as is; refine = propose a better label")
     n.add_argument("--selection", help="how this pole was chosen, e.g. 'random draw', 'step-out from <id>', 'step-in from <id>', "
                                        "'concept search: <concept>', 'picked'; recorded so statistics can keep or exclude non-random picks")
+    wh = sub.add_parser("withhold", help="a pole whose trigger is sensitive content (e.g. a slur): masked record, no live test")
+    wh.add_argument("--neuron", required=True)
+    wh.add_argument("--handle", required=True, help="your GitHub handle")
+    wh.add_argument("--reason", required=True, help="slur, sexual, personal data, violence or other")
+    wh.add_argument("--label", required=True, help="what kind of trigger, masked: e.g. 'a slur token (masked), any context'")
+    wh.add_argument("--short", help="a short masked label for the map")
+    wh.add_argument("--notes", help="masked notes, e.g. which screen showed it")
+    wh.add_argument("--agent", default="human", help="who did the work, e.g. 'claude-code opus-5.5'")
+    wh.add_argument("--screens", nargs="*", help="the analyses that showed it (bonsai_interp/graph/methods.py)")
+    wh.add_argument("--evidence-url", help="unmasked evidence in the library (never in git)")
+    wh.add_argument("--evidence-sha256")
     r = sub.add_parser("run", help="score one or more committed pre-registrations (one model load for all)")
     r.add_argument("tests_files", nargs="*")
     r.add_argument("--list", help="a file listing tests files, one per line (e.g. .sweep/latest.txt from play draw); works in any shell")
@@ -518,7 +563,7 @@ def main():
     if a.cmd == "which":
         from bonsai_interp.graph import which
         return which.main(a)
-    {"new": new, "draw": draw, "fill": fill, "prbody": prbody, "run": run, "step": step, "look": look, "edge": edge, "probe": probe}[a.cmd](a)
+    {"new": new, "withhold": withhold, "draw": draw, "fill": fill, "prbody": prbody, "run": run, "step": step, "look": look, "edge": edge, "probe": probe}[a.cmd](a)
 
 
 if __name__ == "__main__":
