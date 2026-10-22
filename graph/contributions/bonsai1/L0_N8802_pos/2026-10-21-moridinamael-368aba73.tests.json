@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-21-moridinamael-368aba73",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N8802+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T01:30:55+00:00",
+ "roles": ["feeds bonsai1/L23/N1876-"],
+ "neighbours": [
+  {
+   "unit": "L0/N8802",
+   "pole": "+",
+   "label": "The split-off word piece 'ache' or 'ene' inside a longer word broken into pieces (moustache, mustache, toothache, stomachache, trachea, kerosene, toluene, benzene), with the word mid-sentence. Quiet on words that are one whole token (headache, ache, cache, scene, serene) and on graphene, styrene, gangrene. Also fires, more weakly, on the German word 'Sachen'.",
+   "short": "split-off 'ache' / 'ene' word piece",
+   "unit_kind": "token / spelling",
+   "fire": [
+    "Ich habe eine große Tasse und andere Sachen gekauft.",
+    "My grandfather trimmed his thick moustache every Sunday morning before church.",
+    "The actor grew a bushy mustache for his role as a frontier sheriff.",
+    "She stayed home from school with a terrible toothache and a swollen cheek.",
+    "After eating three slices of pie, he complained of a stomachache all evening.",
+    "The doctor explained that the trachea carries air down to the lungs.",
+    "We filled the old lantern with kerosene before the power came back on.",
+    "The lab technician measured the toluene carefully under the fume hood."
+   ],
+   "quiet": [
+    "\"We have been preparing for years for a successful landing by Curiosity, and all signs are good,\" Dave Lavery, MSL programme executive, said.",
+    "My grandfather trimmed his thick beard every Sunday morning before church.",
+    "She stayed home from school with a terrible headache and a sore throat.",
+    "After eating three slices of pie, his muscles began to ache all evening.",
+    "The browser stored the images in its cache to load the page faster.",
+    "The doctor explained that the windpipe carries air down to the lungs.",
+    "We filled the old lantern with oil before the power came back on.",
+    "Researchers praised graphene for its remarkable strength and conductivity."
+   ]
+  }
+ ],
+ "predictions": "Blind test (label-only author). Expect 7-8/8 fire, 0 near misses; the Sachen item is the weakest fire (~0.35-0.4).",
+ "notes": "Step from bonsai1/L23/N1876-. play step OOMed on the GPU (resident model loaded); feeder chosen from the resident attribution ranking (top MLP feeder), so no edge weight is recorded. Chat was quiet; house picks. Inverse solver (DE) found a leak on German 'Sachen' (' Sach' ~0.4), named in the label as weaker firing.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
