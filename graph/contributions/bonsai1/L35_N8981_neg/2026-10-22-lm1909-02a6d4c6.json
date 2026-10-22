@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-02a6d4c6",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N8981-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:45:52+00:00",
+ "recipe": {
+  "toolchain_commit": "a809e7d0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N8981_neg/2026-10-22-lm1909-02a6d4c6.tests.json"
+ },
+ "label": "byte-fallback pieces of a CJK word written after a space in Latin-script text whose UTF-8 starts E9 9B (the U+96C0-96FF block), strongest for ' 集' as in ' 集合'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N8981_neg/2026-10-22-lm1909-02a6d4c6.tests.json",
+   "prereg_commit": "a809e7d0",
+   "author": "lm1909",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.823,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.124,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.401,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.424,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.107,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 1.032,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.31,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 1.133,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.023,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.001,
+     "peak": "For"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.003,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.001,
+     "peak": "def"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.003,
+     "peak": " property"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.001,
+     "peak": " 字"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.007,
+     "peak": " this"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.043,
+     "peak": "的"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.412,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "a809e7d0",
+  "minutes": 7,
+  "batch_size": 16
+ },
+ "short": "space + 集合 byte pieces",
+ "unit_kind": "sparse feature",
+ "confidence": 0.3,
+ "notes": "Card: max 924 on 'Mandelbrot 集合'; word hits ' <0xE9>' and '<0x9B>'. Tokenizer: ' 集合', ' 電話', ' 雪', ' 雲' all split into ' é','Ľ' (E9 9B) + byte; ' 字典', ' 漢字', ' 書' do not start with E9 9B. Probe: ' 集合' 0.44, ' 電話' 0.13; ' 字典' 0.00, ' 漢字' 0.00, '集合' without space 0.03. Fire items use ' 集' words; very sparse, may fail median.",
+ "selection": "random draw"
+}

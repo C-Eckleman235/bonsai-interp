@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-a8065ab5",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N907+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:45:48+00:00",
+ "recipe": {
+  "toolchain_commit": "a809e7d0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N907_pos/2026-10-22-lm1909-a8065ab5.tests.json"
+ },
+ "label": "'T' split off as the first piece of an all-caps word or acronym (' T'+'WE'+'ET' in an all-caps call to action, '(T'+'ENS)'); lowercase ' t' fragments and mixed-case T-words stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N907_pos/2026-10-22-lm1909-a8065ab5.tests.json",
+   "prereg_commit": "a809e7d0",
+   "author": "lm1909",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.813,
+     "peak": " T"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.231,
+     "peak": "T"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.548,
+     "peak": " T"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.004,
+     "peak": " do"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.224,
+     "peak": " T"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.005,
+     "peak": " ("
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.905,
+     "peak": " T"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.001,
+     "peak": " levels"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.014,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.002,
+     "peak": " back"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.005,
+     "peak": " QUEST"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": " do"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.012,
+     "peak": " BO"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.003,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.007,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.001,
+     "peak": " hormone"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.766,
+    "median_fire": 0.228,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "a809e7d0",
+  "minutes": 7,
+  "batch_size": 16
+ },
+ "short": "split-off capital T piece",
+ "unit_kind": "sparse feature",
+ "confidence": 0.45,
+ "notes": "Card: ' T'/'T'/'Т' fragments (TWEET, TENS, ZERO-TIME, TANSIDCO); - pole is lowercase ' t' fragments. Probe: 'FOLLOW US AND TWEET US' 0.74, '(TENS)' 0.42; but ZERO-TIME 0.01, TANSIDCO 0.003, Ticehurst 0.007, T-shirt 0.006, lowercase t-fragments ~0.01. So only the TWEET and parenthesised-acronym frames replicated; fire items stay close to those (tokenizer checked: TWEET -> ' T','WE','ET'; (TMS)/(TBI)/(TSH) -> ' (','T',...).",
+ "selection": "random draw"
+}

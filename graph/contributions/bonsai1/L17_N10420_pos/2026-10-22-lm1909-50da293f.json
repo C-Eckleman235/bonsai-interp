@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-50da293f",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N10420+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:45:29+00:00",
+ "recipe": {
+  "toolchain_commit": "a809e7d0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L17_N10420_pos/2026-10-22-lm1909-50da293f.tests.json"
+ },
+ "label": "dense punctuation unit: sentence-final '.' or '!' (best guess: end of an exclamatory or reported-speech sentence)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L17_N10420_pos/2026-10-22-lm1909-50da293f.tests.json",
+   "prereg_commit": "a809e7d0",
+   "author": "lm1909",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.174,
+     "peak": " clothes"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.075,
+     "peak": " before"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.046,
+     "peak": "The"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.065,
+     "peak": "Tell"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.06,
+     "peak": "She"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.068,
+     "peak": "!\""
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.057,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.053,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.059,
+     "peak": "Say"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.027,
+     "peak": "He"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.039,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.064,
+     "peak": "Tell"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.083,
+     "peak": " deer"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.039,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.022,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.036,
+     "peak": "The"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.781,
+    "median_fire": 0.062,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "a809e7d0",
+  "minutes": 7,
+  "batch_size": 16
+ },
+ "short": "sentence-end punctuation (dense)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.1,
+ "notes": "Card flags broad (3.4% of tokens >0.1 max); peak is '.' on both poles. Probe: all items 0.03-0.21; the top was an excited quoted command ending '!' 0.21. Registered to record the density honestly; expected to fail.",
+ "selection": "random draw"
+}

@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-518771d6",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N6600-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:45:35+00:00",
+ "recipe": {
+  "toolchain_commit": "a809e7d0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L21_N6600_neg/2026-10-22-lm1909-518771d6.tests.json"
+ },
+ "label": "citation and comparison scaffolding: punctuation in bibliographic references (pp., quoted titles) and the token before a second compared year/quantity",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L21_N6600_neg/2026-10-22-lm1909-518771d6.tests.json",
+   "prereg_commit": "a809e7d0",
+   "author": "lm1909",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.264,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.076,
+     "peak": "Colon"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.288,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.142,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.1,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.115,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.072,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.2,
+     "peak": " between"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.026,
+     "peak": " while"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.009,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.013,
+     "peak": " years"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.009,
+     "peak": " local"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.004,
+     "peak": " carried"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.006,
+     "peak": " each"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.006,
+     "peak": " during"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.01,
+     "peak": " students"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.129,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "a809e7d0",
+  "minutes": 7,
+  "batch_size": 16
+ },
+ "short": "citation/comparison scaffold",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card peaks are mixed ('.', ' ', ' the', ' between'). Probe: nothing above 0.20 of max: book citation 0.20, notes citation 0.13, '2019 figure' 0.12, '1950 maps' 0.11, 'gap between' 0.10; plain prose 0.01-0.03. Best guess, expected to fail the median bar.",
+ "selection": "random draw"
+}
