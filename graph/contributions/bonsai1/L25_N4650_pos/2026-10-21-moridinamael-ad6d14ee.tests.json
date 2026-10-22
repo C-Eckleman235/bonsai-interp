@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-21-moridinamael-ad6d14ee",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N4650+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T04:50:06+00:00",
+ "roles": ["feeds bonsai1/L28/N10023+"],
+ "neighbours": [
+  {
+   "unit": "L25/N4650",
+   "pole": "+",
+   "label": "In English, the word ' so' when it opens a purpose clause right after an action and its object, with no comma before it ('hid the key so they couldn't find it', 'so that we could'); it fires on 'so' itself, so a degree 'so' straight after a verb and its object ('fixed it so quickly') can also fire. Quiet for ', so' after a comma, 'and so', 'so on', sentence-initial 'So', degree 'so' after is/was/felt, 'I think so', and for purpose said without 'so' ('in order to', 'lest', 'because').",
+   "short": "purpose 'so' right after an action, no comma",
+   "fire": [
+    "She hid the key under the mat so the kids couldn't find it.",
+    "We moved the meeting to Friday so that everyone could attend.",
+    "He left the porch light on so his sister would see the house.",
+    "Please print the report so we can review it tonight.",
+    "They painted the fence green so it would blend with the hedge.",
+    "I wrapped the vase in newspaper so it wouldn't break in the van.",
+    "The coach changed the lineup so that the younger players got more time.",
+    "Turn the volume down so the baby can sleep."
+   ],
+   "quiet": [
+    "She hid the key under the mat, so the kids couldn't find it.",
+    "We moved the meeting to Friday in order to let everyone attend.",
+    "He left the porch light on because his sister was coming home late.",
+    "So we printed the report and reviewed it tonight.",
+    "They painted the fence green, and so it blended with the hedge.",
+    "I wrapped the vase in newspaper lest it break in the van.",
+    "The coach said the younger players need more time, and I think so too.",
+    "The baby was so tired that she fell asleep at once."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire above 0.20, no near miss at 0.30 (comma-so twin is the riskiest)",
+ "unit_kind": "token/lexical",
+ "notes": "Step-out from bonsai1/L28/N10023+. play step hit CUDA OOM (resident stream model holds the GPU), so TARGET is the top feeder by resident attribution (feeders tool), not by ablation drop; no feeds edge weight recorded. Resident probe peaks one token late on this cell; play probe peaks on ' so' (~0.6 on purpose so). Test sentences written blind by a second author from the label only.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "inverse-de",
+   "bank-solo",
+   "quick-test"
+  ]
+ }
+}
