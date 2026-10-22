@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-99c9c690",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N4858+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:43:03+00:00",
+ "recipe": {
+  "toolchain_commit": "41675569",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L23_N4858_pos/2026-10-22-lm1909-99c9c690.tests.json"
+ },
+ "label": "the verb slot right after a modal: 'be' after would/can/may/could, and 'to' after 'would/will have'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L23_N4858_pos/2026-10-22-lm1909-99c9c690.tests.json",
+   "prereg_commit": "41675569",
+   "author": "lm1909",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.239,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.388,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.41,
+     "peak": " be"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.038,
+     "peak": " be"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.2,
+     "peak": " difficult"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.505,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.277,
+     "peak": " be"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.459,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.039,
+     "peak": " was"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.028,
+     "peak": "He"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.029,
+     "peak": "Officials"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.031,
+     "peak": " photographs"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.032,
+     "peak": " mayor"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.039,
+     "peak": "ysts"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.029,
+     "peak": "Crit"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.034,
+     "peak": "Fans"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.333,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "41675569",
+  "minutes": 5,
+  "batch_size": 16
+ },
+ "short": "verb after modal",
+ "unit_kind": "contextual",
+ "confidence": 0.55,
+ "notes": "Probe: 'would have to' 0.59, 'quisiera' 0.44, 'can be no' 0.44, 'would be' 0.36, 'may be' 0.25. 'were able to' 0.02, 'must not' 0.02, 'bee' 0.01, 'has two' 0.04. So it is modal + be/have-to, not 'to' or 'able' in general. Near misses state the same facts without a modal.",
+ "selection": "random draw"
+}
