@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-b984606a",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N8635+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T05:30:19+00:00",
+ "recipe": {
+  "toolchain_commit": "e228ae0a",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L11_N8635_pos/2026-10-22-ChopinDavid-b984606a.tests.json"
+ },
+ "label": "Fires on verbs and predicates that say a rule, law or principle is applicable or in force (apply, applies, hold, remain in force, gilt); quiet on the same verbs in their physical or request senses (apply paint, apply for a job, hold a cup).",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L11_N8635_pos/2026-10-22-ChopinDavid-b984606a.tests.json",
+   "prereg_commit": "e228ae0a",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.36,
+     "peak": " apply"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.943,
+     "peak": " hold"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.624,
+     "peak": " applies"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.878,
+     "peak": " apply"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.475,
+     "peak": " for"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.441,
+     "peak": " apply"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.476,
+     "peak": " applies"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.915,
+     "peak": " gilt"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.013,
+     "peak": " board"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.005,
+     "peak": " heavy"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.469,
+     "peak": " applies"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.023,
+     "peak": " staff"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.009,
+     "peak": " hand"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.332,
+     "peak": " apply"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.059,
+     "peak": " applies"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.022,
+     "peak": " gibt"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.55,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "e228ae0a",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "rule is applicable",
+ "unit_kind": "contextual",
+ "confidence": 0.75,
+ "notes": "Probes (fraction of max 22.5): 'laws of physics apply' 1.14, 'regulations could apply' 0.84, 'rules continue to hold' 0.79, 'Gleiches gilt' 0.98, 'remains valid' 0.30; 'Apply a coat of paint' 0.05, 'apply for the nursing job' 0.03, 'Hold the ladder' 0.01, 'rules are printed' 0.19. Near misses avoid any rule/law subject.",
+ "selection": "random draw"
+}

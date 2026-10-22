@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-e610f82c",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N7578-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T05:29:50+00:00",
+ "recipe": {
+  "toolchain_commit": "e228ae0a",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L28_N7578_neg/2026-10-22-ChopinDavid-e610f82c.tests.json"
+ },
+ "label": "Fires on the possessive or article that attaches a name to an elite research university or laboratory (MIT's, Stanford's, 'Director of the' before a lab name in a scientist's title); quiet on possessives of companies, towns and sports clubs.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L28_N7578_neg/2026-10-22-ChopinDavid-e610f82c.tests.json",
+   "prereg_commit": "e228ae0a",
+   "author": "ChopinDavid",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.241,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.071,
+     "peak": " computer"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.452,
+     "peak": " for"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.756,
+     "peak": " Media"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.199,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.015,
+     "peak": " research"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.118,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.145,
+     "peak": " for"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.004,
+     "peak": "'s"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.008,
+     "peak": " six"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.011,
+     "peak": "'s"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.009,
+     "peak": "'s"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.008,
+     "peak": " was"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.006,
+     "peak": " repair"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.011,
+     "peak": " shop"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.011,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.172,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "e228ae0a",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "elite research-institution slot",
+ "unit_kind": "contextual",
+ "confidence": 0.35,
+ "notes": "Probes (fraction of max 58.8): \"MIT's\" 0.82 and still 0.61 when followed by 'hockey team', so the token responds to the institution name itself; 'Director of the' (Stanford lab) 0.52; Whitehead Institute 0.04; Little League 0.02. Researcher first names in citations 0.19-0.32 (not tested).",
+ "selection": "random draw"
+}

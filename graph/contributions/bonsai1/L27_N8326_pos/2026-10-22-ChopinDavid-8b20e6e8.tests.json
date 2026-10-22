@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-8b20e6e8",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N8326+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T05:20:23+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L27/N8326",
+   "pole": "+",
+   "label": "Fires on the token 'Go'/'go' when it is the first piece of a longer word or name (Goethe, Goths, gothic, GoPro, go-kart) or an imperative link 'Go here'; much weaker on the ordinary verb 'go' and quiet on other G-words.",
+   "fire": [
+    "Many students read Goethe in their second year of German.",
+    "The family started a GoFundMe page to pay the hospital bills.",
+    "Our church still keeps its gothic arches and stained glass.",
+    "He bought a used go-kart and fixed the engine himself.",
+    "Every surfer on the beach seemed to wear a GoPro on a strap.",
+    "The poet admired Goethe more than any other writer of his age.",
+    "Rome was sacked by the Goths in the fifth century.",
+    "She loves gothic novels full of ruined abbeys and storms."
+   ],
+   "quiet": [
+    "Many students want to go abroad in their second year of German.",
+    "The family started a fundraising page to pay the hospital bills.",
+    "Our church still keeps its rounded arches and stained glass.",
+    "He bought a used bicycle and fixed the gears himself.",
+    "Every surfer on the beach seemed to wear a camera on a strap.",
+    "The poet admired Gogol more than any other writer of his age.",
+    "Rome was sacked by the Vandals in the fifth century.",
+    "She loves to go hiking in ruined abbeys during storms."
+   ]
+  }
+ ],
+ "predictions": "7-8/8 fire >= 0.4 (probes 0.65-0.87); near misses <= 0.2 (verb 'go' 0.19, 'Gobi' 0.02, 'Good' 0.01).",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'Go' as a word piece",
+ "unit_kind": "lexical",
+ "confidence": 0.65,
+ "notes": "Probes (fraction of max 282): Goethe 0.87, gothic 0.78, Goths 0.74, GoPro 0.68, go-kart 0.66, 'Go here' 0.65; verb 'go to the beach' 0.19; Gobi (split ' G'+'obi') 0.02. Fire items use words that split as ' Go'/' go' + rest (checked with the tokenizer)."
+}
