@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-1c3a8530",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N8496-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:44:38+00:00",
+ "recipe": {
+  "toolchain_commit": "a61e8c37",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L33_N8496_neg/2026-10-22-lm1909-1c3a8530.tests.json"
+ },
+ "label": "formal Spanish administrative prose: 'la' + -ción nominalisation (and its stem piece)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L33_N8496_neg/2026-10-22-lm1909-1c3a8530.tests.json",
+   "prereg_commit": "a61e8c37",
+   "author": "lm1909",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.401,
+     "peak": " la"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.237,
+     "peak": " la"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.683,
+     "peak": "estruct"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.38,
+     "peak": " la"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.619,
+     "peak": " susp"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.469,
+     "peak": " circ"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.323,
+     "peak": " la"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.464,
+     "peak": " la"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.001,
+     "peak": "yer"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.0,
+     "peak": "Mi"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.003,
+     "peak": " calor"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.004,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.004,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.003,
+     "peak": " restructuring"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.008,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.002,
+     "peak": "Me"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.432,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "a61e8c37",
+  "minutes": 6,
+  "batch_size": 16
+ },
+ "short": "formal Spanish nominalisation",
+ "unit_kind": "contextual",
+ "confidence": 0.55,
+ "notes": "Probe: Spanish government/legal sentences 0.24-0.57 (peaks on ' la', ' re', ' adec', ' em'), even without split nouns ('la obra' 0.36); casual Spanish 0.02, French 0.004, English 0.004. + pole is French.",
+ "selection": "random draw"
+}

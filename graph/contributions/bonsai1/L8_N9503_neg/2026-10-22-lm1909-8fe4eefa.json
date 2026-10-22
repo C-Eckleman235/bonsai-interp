@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-8fe4eefa",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N9503-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:44:41+00:00",
+ "recipe": {
+  "toolchain_commit": "a61e8c37",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L8_N9503_neg/2026-10-22-lm1909-8fe4eefa.tests.json"
+ },
+ "label": "Title-Case words in headings and paper titles (capitalised content words where running prose would be lower case)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L8_N9503_neg/2026-10-22-lm1909-8fe4eefa.tests.json",
+   "prereg_commit": "a61e8c37",
+   "author": "lm1909",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.355,
+     "peak": " Your"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.377,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.218,
+     "peak": " Is"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.392,
+     "peak": " is"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.2,
+     "peak": " Can"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.285,
+     "peak": " Your"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.176,
+     "peak": " Is"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.507,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.003,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.006,
+     "peak": " interesting"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.006,
+     "peak": " that"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.018,
+     "peak": " tah"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.0,
+     "peak": " may"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.022,
+     "peak": " from"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.011,
+     "peak": "Lee"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.008,
+     "peak": " shall"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.32,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "a61e8c37",
+  "minutes": 6,
+  "batch_size": 16
+ },
+ "short": "Title-Case heading words",
+ "unit_kind": "contextual",
+ "confidence": 0.4,
+ "notes": "Probe: 'First, Ghee is' 0.63, 'Origin and Etymology of' 0.55, 'Preparing Your Home' 0.46, Title-Case paper title 0.35, 'Studying History can' 0.34; 'Chapter 4: Choosing Your Garden Tools' only 0.07; sentence-case prose versions ~0.",
+ "selection": "random draw"
+}

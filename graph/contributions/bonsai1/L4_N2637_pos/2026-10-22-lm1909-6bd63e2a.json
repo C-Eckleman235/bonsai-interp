@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-6bd63e2a",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N2637+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:44:38+00:00",
+ "recipe": {
+  "toolchain_commit": "a61e8c37",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N2637_pos/2026-10-22-lm1909-6bd63e2a.tests.json"
+ },
+ "label": "the mid-word pieces 'op' / 'opp' / 'pp' (gal|op, B|opp, St|opp|ard, Hö|pp|ner); tiny, broad activation",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N2637_pos/2026-10-22-lm1909-6bd63e2a.tests.json",
+   "prereg_commit": "a61e8c37",
+   "author": "lm1909",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.153,
+     "peak": "ard"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.907,
+     "peak": "op"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.049,
+     "peak": " York"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.037,
+     "peak": " sleep"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.262,
+     "peak": "stein"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.322,
+     "peak": "pp"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.764,
+     "peak": "pp"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.76,
+     "peak": "opp"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.014,
+     "peak": " Miller"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.107,
+     "peak": " lively"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.049,
+     "peak": " York"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.014,
+     "peak": " sleep"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.094,
+     "peak": "ikers"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.086,
+     "peak": " dorsal"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.221,
+     "peak": " spr"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.043,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.82,
+    "median_fire": 0.292,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "a61e8c37",
+  "minutes": 6,
+  "batch_size": 16
+ },
+ "short": "'op'/'pp' word pieces",
+ "unit_kind": "dense / positional",
+ "confidence": 0.35,
+ "notes": "Card flags broad (5.8% of tokens >0.1 max) and gate-closed 100%, max only 0.70, so recorded as dense / positional. Probe: galop 1.00, Bopp 0.93, Höppner 0.61, Joppa 0.60, stop/top 0.39, opposite 0.22; plain sentences without these pieces -0.01 to -0.06.",
+ "selection": "random draw"
+}
