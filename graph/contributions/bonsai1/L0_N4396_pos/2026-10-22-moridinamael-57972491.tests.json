@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-22-moridinamael-57972491",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N4396+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T20:23:36+00:00",
+ "roles": ["feeds bonsai1/L1/N4078+"],
+ "neighbours": [
+  {
+   "unit": "L0/N4396",
+   "pole": "+",
+   "label": "Cyrillic д starting a new word-piece right after an и, as in идти/идём/иди, идентичность, СПИД and nouns in -ид (цианид); weak (under ~0.25) when д follows other letters (МВД, оду, люди), and quiet when и and д sit inside one longer piece (вид, сидеть, президент)",
+   "short": "д piece right after и",
+   "unit_kind": "word-piece",
+   "fire": [
+    "Мне пора идти домой, уже поздно.",
+    "Иди сюда, посмотри на этот закат!",
+    "Завтра мы идём в театр всей семьёй.",
+    "Вопрос национальной идентичности обсуждали весь вечер.",
+    "Всемирный день борьбы со СПИДом отмечают первого декабря.",
+    "Цианид калия считается очень сильным ядом.",
+    "Детектив понял, что жертву отравили цианидом.",
+    "Идите прямо, а потом поверните налево."
+   ],
+   "quiet": [
+    "Мне пора ехать домой, уже поздно.",
+    "Посмотри, какой вид открывается с балкона!",
+    "Завтра мы будем сидеть в театре в первом ряду.",
+    "Президент выступил с речью о будущем страны.",
+    "Люди собрались на площади к вечеру.",
+    "Заявление для прессы опубликовало МВД.",
+    "Детектив понял, что яд был очень сильным.",
+    "Ода была написана в честь великой победы."
+   ]
+  }
+ ],
+ "predictions": "blind test written by a second author from the label only; expect most fire items to clear 0.20, sentence-initial Иди/Идите the riskiest",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "bank-solo",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
