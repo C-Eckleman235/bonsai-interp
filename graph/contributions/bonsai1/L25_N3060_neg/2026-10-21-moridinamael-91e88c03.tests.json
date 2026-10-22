@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-moridinamael-91e88c03",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N3060-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T02:51:00+00:00",
+ "roles": ["feeds bonsai1/L26/N7891-"],
+ "neighbours": [
+  {
+   "unit": "L25/N3060",
+   "pole": "-",
+   "label": "The word ' of' right after 'several' (strongest) or 'many' in mid-sentence object position (rain ruined several of our photos); quiet for 'some of', 'most of', 'all of', 'a few of', 'each of' and for other uses of 'of' (made of, afraid of, the roof of). Also fires weaker on ' achievement' in 'breadth of achievement'.",
+   "fire": [
+    "The storm last night ruined several of our photos from the trip.",
+    "She invited several of her old classmates to the reunion.",
+    "We lost many of the seedlings to the early frost.",
+    "The coach benched several of the starting players after the loss.",
+    "He had read many of the books on the reading list before class began.",
+    "The museum lent several of its rarest paintings to the exhibition.",
+    "Thieves broke into the shed and took several of my tools.",
+    "The flood damaged many of the houses along the river."
+   ],
+   "quiet": [
+    "Uncle John LeVake was the last one of the old",
+    "Control of the glue line is another consideration, and the thickness and uniformity of spread should be given constant attention.",
+    "The storm last night ruined some of our photos from the trip.",
+    "She invited most of her old classmates to the reunion.",
+    "We lost all of the seedlings to the early frost.",
+    "The coach benched a few of the starting players after the loss.",
+    "He had read each of the books on the reading list before class began.",
+    "The museum lent several rare paintings to the exhibition."
+   ]
+  }
+ ],
+ "predictions": "Borderline: 'several of' beat matched 'some of' in every probe but ranged 0.06-0.47; expect AUROC to pass and the median-fire bar (0.20) to be the risk, since 'many of' items run weaker.",
+ "notes": "Feeder chosen from the resident attribution ranking (mcp feeders, top MLP cell) because play step hit CUDA OOM on the shared stream GPU; no ablation edge weight recorded. Test sentences written blind by a second author who saw only the label.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "step-out"
+  ]
+ }
+}
