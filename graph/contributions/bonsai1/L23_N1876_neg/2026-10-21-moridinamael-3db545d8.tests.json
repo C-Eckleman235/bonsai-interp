@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-21-moridinamael-3db545d8",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N1876-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T01:00:23+00:00",
+ "roles": ["feeds bonsai1/L24/N11621-"],
+ "neighbours": [
+  {
+   "unit": "L23/N1876",
+   "pole": "-",
+   "label": "A reporting verb (says, said, asked, replied, wrote, warns, admits; declara, erklärte, explique, يقول) placed after the quote or reported statement and before its speaker ('The road is closed, confirms the sheriff'; '\"Too late,\" sighed the porter'); fires on the verb. Quiet for the same verbs in normal speaker-first order ('The sheriff confirms…', '\"…,\" the porter sighed') and for 'according to'. Also fires, more weakly, on a motion verb placed after a fronted place phrase and before its subject ('Through the gate trotted a pony'), so that is not a near miss.",
+   "short": "reporting verb before its speaker (inverted speech tag)",
+   "fire": [
+    "Across the meadow galloped a grey horse.",
+    "\"Too late,\" sighed the porter.",
+    "The road is closed until Friday, confirms the sheriff.",
+    "\"Where are my keys?\" asked the old man.",
+    "\"Not today,\" replied the clerk without looking up.",
+    "Prices will rise again next spring, warns the central bank.",
+    "We made mistakes in the first season, admits the coach.",
+    "\"The soup is cold,\" complained the guest at table four."
+   ],
+   "quiet": [
+    "Люди вокруг стояли так плотно, словно в битком набитом поезде.",
+    "\"Too late,\" the porter sighed.",
+    "The sheriff confirms the road is closed until Friday.",
+    "The old man asked where his keys were.",
+    "\"Not today,\" the clerk replied without looking up.",
+    "According to the central bank, prices will rise again next spring.",
+    "The coach admits they made mistakes in the first season.",
+    "The guest at table four complained that the soup was cold."
+   ],
+   "notes": "Test written blind by a second author from the label only (and the solver's leak). play step ran out of GPU memory on stream, so this feeder was chosen from the resident attribution ranking (top MLP feeder of L24/N11621-); no ablation edge weight recorded."
+  }
+ ],
+ "predictions": "7/8 fire (the motion-verb item may sit near 0.2-0.35), 0 near misses at 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "blind-room",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
