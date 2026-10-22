@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-22-moridinamael-617a94f2",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N11393+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:26:18+00:00",
+ "roles": ["reads bonsai1/L34/N7651+"],
+ "neighbours": [
+  {
+   "unit": "L35/N11393",
+   "pole": "+",
+   "label": "In passages of several lines that each end in a semicolon (code statements, bulleted or numbered lists, verse), the last word of a line just before its ';', written attached to the word (not French-style ' ;'). Quiet or weak for the same lines ending in '.', ',' or nothing, and for semicolons inside one running sentence. Exception: the French piece ' rel' in relâchés also fires.",
+   "short": "last word before a line-ending ';' in semicolon-ended lines",
+   "fire": [
+    "Ces derniers ont été arrêtés pour sabotage et actes de violence contre les forces armées, mais tous ont été relâchés faute de preuves au bout de",
+    "int x = 0;\nint y = 10;\nx = x + y;\nreturn x;",
+    "Packing list:\n- two warm sweaters;\n- a rain jacket;\n- hiking boots;\n- a small flashlight;",
+    "The committee will:\n1. review the budget;\n2. approve the schedule;\n3. elect a new chair;",
+    "let name = \"Ada\";\nlet age = 36;\nconsole.log(name);\nconsole.log(age);",
+    "The river runs beneath the hill;\nThe willows bend and then are still;\nThe evening settles, soft and slow;",
+    "Tenant obligations:\n(a) keep the premises clean;\n(b) report any damage promptly;\n(c) pay rent on the first;",
+    "$total = 0;\n$count = 5;\n$avg = $total / $count;\necho $avg;"
+   ],
+   "quiet": [
+    "Rules of the club:\n1. members must pay their dues.\n2. guests must sign the book.\n3. no shoes on the mat.",
+    "int x = 0\nint y = 10\nx = x + y\nreturn x",
+    "Packing list:\n- two warm sweaters.\n- a rain jacket.\n- hiking boots.\n- a small flashlight.",
+    "The committee will:\n1. review the budget,\n2. approve the schedule,\n3. elect a new chair.",
+    "let name = \"Ada\"\nlet age = 36\nconsole.log(name)\nconsole.log(age)",
+    "The river runs beneath the hill,\nThe willows bend and then are still,\nThe evening settles, soft and slow.",
+    "Tenant obligations:\n(a) keep the premises clean\n(b) report any damage promptly\n(c) pay rent on the first",
+    "I wanted to stay home; however, my friends insisted that we go out to the new restaurant downtown."
+   ]
+  }
+ ],
+ "predictions": "Blind test written by a second author from the label only. Expect most code and list fire items to clear 0.20; comma-ended verse is the riskiest near miss.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "bank-solo",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
