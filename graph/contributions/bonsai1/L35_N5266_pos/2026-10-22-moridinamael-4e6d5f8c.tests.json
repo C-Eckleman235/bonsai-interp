@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-22-moridinamael-4e6d5f8c",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N5266+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T10:42:25+00:00",
+ "roles": ["reads bonsai1/L34/N4384-"],
+ "neighbours": [
+  {
+   "unit": "L35/N5266",
+   "pole": "+",
+   "label": "In English, a digit right after 'a', 'an', 'the' or a possessive, in the describing slot of a number-hyphen compound ('a 20-minute wait', 'an 18-year-old'). Quiet for the same numbers after verbs or prepositions ('waited 20 minutes', 'for 18 years'), years and plain counts. Spelled-out numbers are unreliable; words inside long hyphen chains (URL slugs) also fire.",
+   "short": "a digit in a number-hyphen compound after a determiner",
+   "confidence": "medium",
+   "notes": "Step-in reader of bonsai1/L34/N4384- (its top feeder). Tops peak on the last piece of a word about to be hyphen-joined (jackal|-headed, diabetes|-related, tenth|-most); output suppresses '-based', '-related', '-like'. Probes: digits after a/an 0.28-0.41, after the/possessive ~0.16-0.19; 'ever' (ever-greater) 0.40, 'a once' 0.37, 'ninth-largest and tenth' 0.57; plain nouns ~0.05. Solver leak: Spanish URL slug 0.65. Blind test written from the label only.",
+   "fire": [
+    "pe/2012/12/04/zona-maritima-de-participacion-bilateral-solucion-a-la-controversia",
+    "We sat through a 20-minute wait before the doctor called us in.",
+    "An 18-year-old won the regional chess title this weekend.",
+    "The 5-page report was due on Friday morning.",
+    "She signed a 3-year lease on the apartment downtown.",
+    "My 12-hour shift finally ended at dawn.",
+    "The town built a 40-foot statue near the harbor.",
+    "He ran a 10-kilometer race in under an hour."
+   ],
+   "quiet": [
+    "line['tree-info'] = {'lb' : {}}",
+    "We waited 20 minutes before the doctor called us in.",
+    "She has lived in the village for 18 years.",
+    "The report was 5 pages long and due on Friday.",
+    "She signed the lease in 2019 and moved downtown.",
+    "My shift lasted 12 hours and ended at dawn.",
+    "The statue near the harbor stands 40 feet tall.",
+    "He ran 10 kilometers in under an hour."
+   ]
+  }
+ ],
+ "predictions": "Most 'a'-led fire items above 0.25; 'The 5' and 'My 12' closer to 0.2; near misses under 0.1.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "blind-room"
+  ]
+ }
+}
