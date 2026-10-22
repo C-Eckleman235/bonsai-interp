@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-2eaf4090",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N3311+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T06:20:15+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N3311",
+   "pole": "+",
+   "label": "Fires on the word piece 'ored' where it is its own token (lab+ored, flo+ored, ad+ored, sn+ored, mo+ored); quiet on -ored words that are single tokens (ignored, anchored, colored).",
+   "fire": [
+    "The old horse labored up the steep hill with its heavy cart.",
+    "Her grandfather snored loudly through the whole film.",
+    "The fishing boats were moored in the harbor overnight.",
+    "Everyone adored the new puppy from the very first day.",
+    "The final score left the young coach completely floored.",
+    "Please do not repeat belabored points in a short essay.",
+    "By the last mile the runner's breathing was labored and loud.",
+    "The kids drew uncolored outlines and filled them in later."
+   ],
+   "quiet": [
+    "The old horse ignored the steep hill and kept pulling the cart.",
+    "Her grandfather scored twice in the old film of the match.",
+    "The fishing boats were anchored in the harbor overnight.",
+    "Everyone favored the new puppy from the very first day.",
+    "The final score left the young coach feeling honored.",
+    "Please do not repeat points already explored in a short essay.",
+    "By the last mile the runner's breathing was monitored closely.",
+    "The kids drew colored outlines and filled them in later."
+   ]
+  }
+ ],
+ "predictions": "median fire ~0.4 (probes: labored 0.96, floored 0.45, adored 0.35); near misses < 0.15 (tailored 0.07, restored 0.13, stored 0.07); risk: snored/moored/uncolored untested.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'ored' word piece",
+ "unit_kind": "lexical",
+ "confidence": 0.7,
+ "notes": "Layer-0 spelling unit: card peaks 'ored' x13. Splits checked with tok.py."
+}

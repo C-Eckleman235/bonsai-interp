@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-cb6498b3",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N10556+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T06:28:59+00:00",
+ "recipe": {
+  "toolchain_commit": "dd30b6c0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N10556_pos/2026-10-22-ChopinDavid-cb6498b3.tests.json"
+ },
+ "label": "Fires on a quantifier right after an existential or copula that singles out members of a set ('there are some tools', 'stamina is one worth...'); quiet when the same idea is said without that selecting quantifier.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N10556_pos/2026-10-22-ChopinDavid-cb6498b3.tests.json",
+   "prereg_commit": "dd30b6c0",
+   "author": "ChopinDavid",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.621,
+     "peak": " things"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.145,
+     "peak": " some"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.133,
+     "peak": " old"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.135,
+     "peak": " some"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.299,
+     "peak": " habits"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.071,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.117,
+     "peak": " steps"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.341,
+     "peak": " one"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.045,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.005,
+     "peak": " neighborhoods"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.096,
+     "peak": " old"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.007,
+     "peak": " books"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.006,
+     "peak": " should"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.019,
+     "peak": " three"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.005,
+     "peak": " guide"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.055,
+     "peak": ","
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.14,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dd30b6c0",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "selecting quantifier after copula",
+ "unit_kind": "contextual",
+ "confidence": 0.5,
+ "notes": "Promotes ' that', ' ones', ' which': the quantifier sets up a relative clause picking items. Numerals after copula were weak, so fire items use 'some' and 'one'.",
+ "selection": "random draw"
+}

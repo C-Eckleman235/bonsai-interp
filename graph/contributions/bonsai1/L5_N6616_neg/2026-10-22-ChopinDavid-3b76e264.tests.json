@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-3b76e264",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N6616-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T06:20:15+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N6616",
+   "pole": "-",
+   "label": "Fires on the period after a number in German ordinal dates and thousands ('bis zum 31. August', '1. FC', '10.000'); quiet on German sentences giving the same dates and amounts without a numeral-dot.",
+   "fire": [
+    "Der Vertrag des Trainers läuft bis zum 30. Juni des nächsten Jahres.",
+    "Die Messe findet vom 4. bis 7. Mai in Leipzig statt.",
+    "Rund 25.000 Fans feierten die Mannschaft auf dem Marktplatz.",
+    "Beim Heimspiel gegen den 1. FC Nürnberg fielen drei Tore.",
+    "Anmeldungen sind noch bis zum 15. Oktober möglich.",
+    "Die Stadt hat inzwischen mehr als 80.000 Einwohner.",
+    "Am 9. November erinnern viele Menschen an den Mauerfall.",
+    "Das Konzert am 12. Dezember ist bereits ausverkauft."
+   ],
+   "quiet": [
+    "Der Vertrag des Trainers läuft bis Mitte Juni des nächsten Jahres.",
+    "Die Messe findet Anfang Mai in Leipzig statt.",
+    "Viele tausend Fans feierten die Mannschaft auf dem Marktplatz.",
+    "Beim Heimspiel gegen Nürnberg fielen in der zweiten Hälfte drei Tore.",
+    "Anmeldungen sind noch bis Mitte Oktober möglich.",
+    "Die Stadt hat inzwischen deutlich mehr Einwohner als früher.",
+    "Im November erinnern viele Menschen an den Mauerfall.",
+    "Das Konzert um 20 Uhr ist bereits ausverkauft."
+   ]
+  }
+ ],
+ "predictions": "median fire ~0.8 (probes: '31. August' 0.94, '10.000' 0.92, '1. FC' 0.79); '21. Jahrhundert' only 0.12, so fire items are dates and thousands; near misses < 0.15.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "German ordinal / thousands dot",
+ "unit_kind": "lexical",
+ "confidence": 0.75,
+ "notes": "All 32 top examples are '.' after a digit in German text. English 'August 31.' 0.009, decimal 3.14 0.011."
+}

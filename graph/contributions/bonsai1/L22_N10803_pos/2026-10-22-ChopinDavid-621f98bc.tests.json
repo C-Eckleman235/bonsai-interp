@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-621f98bc",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N10803+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T06:20:15+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N10803",
+   "pole": "+",
+   "label": "Fires on digits inside long reference numbers (ISBN, DOI, phone numbers, RFC numbers, years), strongest on a 9 after a 4; quiet on single small quantities in the same topics.",
+   "fire": [
+    "The catalogue lists the novel under ISBN 978-0-494-21873-5.",
+    "For reservations call our hotel desk at +44 20 7493 1188.",
+    "The article is available online at DOI 10.2493/jms.2011.04.",
+    "According to the record, the charter was signed in 1491 at Toledo.",
+    "Order the textbook with ISBN 0-495-38216-X from the campus store.",
+    "Please dial the branch office at (02) 4921 7745 during business hours.",
+    "These socket extensions are described in RFC 3493 from the IETF.",
+    "The second edition, ISBN 978-1-4496-0712-2, adds new chapters."
+   ],
+   "quiet": [
+    "The catalogue lists the novel among 9 new releases this spring.",
+    "For reservations call our hotel desk any time after 9 in the morning.",
+    "The article is available online for 9 dollars a month.",
+    "According to the record, the charter was signed by 9 nobles at Toledo.",
+    "Order the textbook from the campus store for about twenty dollars.",
+    "Please dial the branch office before 5 in the afternoon.",
+    "These socket extensions are described in a document from the IETF.",
+    "The second edition has 9 new chapters and 3 appendices."
+   ]
+  }
+ ],
+ "predictions": "median fire ~0.6 (probes: ISBN 1.27, phone 1.27, year 1495 0.60, 499 0.53; ISBN with 485 0.91 so not 9-specific); near misses < 0.05 ('9 apples' 0.003); risk: years without 4-9 only 0.18.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "digits in reference numbers",
+ "unit_kind": "contextual",
+ "confidence": 0.6,
+ "notes": "Card peaks '9' x23, mostly after '4' in ISBNs, DOIs, phone numbers and years."
+}

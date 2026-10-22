@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-54b70730",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N595-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T06:20:15+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N595",
+   "pole": "-",
+   "label": "Fires on a bare word-initial 'f' / 'ф' piece that opens a word the tokenizer splits (f+útbol, ф+лоте, f+eds, Ф+он); quiet on the same sentences with an unsplit word in its place.",
+   "fire": [
+    "Los niños de la fábrica jugaban al fútbol cada tarde.",
+    "Мой брат три года служил на флоте в Мурманске.",
+    "Los ejercicios del libro son fáciles para principiantes.",
+    "Эта картина теперь хранится во французской галерее.",
+    "Over the winter the town's stray cats had gone feral.",
+    "Он много лет работал на фабрике у реки.",
+    "The detective worried that the feds would take over the case.",
+    "Деньги на ремонт выделил Фонд поддержки культуры."
+   ],
+   "quiet": [
+    "Los niños del barrio jugaban al tenis cada tarde.",
+    "Мой брат три года служил в армии в Мурманске.",
+    "Los ejercicios del libro son sencillos para principiantes.",
+    "Эта картина теперь хранится в немецкой галерее.",
+    "Over the winter the town's stray cats had grown thin.",
+    "Он много лет работал на заводе у реки.",
+    "The detective worried that the police would take over the case.",
+    "Деньги на ремонт выделил город для поддержки культуры."
+   ]
+  }
+ ],
+ "predictions": "median fire ~0.6 (probes: fútbol 0.73, флоте 0.65, feds 0.50, ФЗ 0.75); near misses < 0.07 (tenis 0.05, армии 0.06, police 0.00).",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split word-initial f / ф",
+ "unit_kind": "lexical",
+ "confidence": 0.7,
+ "notes": "Card peaks ' f', ' ф', 'Ф' across Russian, Spanish and English; the + pole peaks on '_f', '-f'. Splits checked with tok.py."
+}

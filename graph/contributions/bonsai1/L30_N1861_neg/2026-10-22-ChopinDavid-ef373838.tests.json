@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-ef373838",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N1861-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T06:20:15+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L30/N1861",
+   "pole": "-",
+   "label": "Fires on a modifier that predicts an effort word next ('concerted', 'hard' before work, 'diligent', 'how hard ... have' before 'to work'); quiet on the same sentences with modifiers that do not set up effort, including physical 'hard'.",
+   "fire": [
+    "The two parties made a concerted attempt to pass the bill.",
+    "Our volunteers deserve credit for months of hard work on the shelter.",
+    "The museum launched a concerted campaign to recover stolen art.",
+    "Her degree was the reward for years of hard work and sacrifice.",
+    "Given how hard the teachers have to work, the strike made sense.",
+    "After a diligent search, the clerk finally found the missing deed.",
+    "Despite a strenuous effort, the climbers turned back below the summit.",
+    "The firm thanked its staff for all their hard work this year."
+   ],
+   "quiet": [
+    "The two parties made a quick decision to pass the bill.",
+    "Our volunteers laid a hard wooden floor in the shelter.",
+    "The museum launched a new website to display its art.",
+    "Her degree was framed and hung on the wall of her office.",
+    "Given how cold the teachers' rooms are, the strike made sense.",
+    "After a short delay, the clerk finally found the missing deed.",
+    "Despite the thick fog, the climbers turned back below the summit.",
+    "The firm thanked its staff for attending the party this year."
+   ]
+  }
+ ],
+ "predictions": "median fire ~0.35 (probes: 'concerted' 0.60, 'how hard ... have' 0.50, 'hard work' 0.37); near misses < 0.1 ('hard wooden bench' 0.005); risk: 'strenuous' untested; 'in an' avoided since 'in an hour' also fired 0.17.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predicts effort/work",
+ "unit_kind": "contextual",
+ "confidence": 0.6,
+ "notes": "Promotes ' effort', ' efforts', ' exert', ' endeavor': a next-token predictor for effort words."
+}

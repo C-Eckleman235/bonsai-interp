@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-cb6498b3",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N10556+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T06:20:15+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L25/N10556",
+   "pole": "+",
+   "label": "Fires on a quantifier right after an existential or copula that singles out members of a set ('there are some tools', 'stamina is one worth...'); quiet when the same idea is said without that selecting quantifier.",
+   "fire": [
+    "Before a long hike, there are some things you should always pack.",
+    "In every big city there are some neighborhoods worth exploring.",
+    "Among the old recipes, this soup is one my grandmother loved.",
+    "For new parents there are some books that really help.",
+    "If you ask me, there are some habits nobody should give up.",
+    "Of the three candidates, Patel is one the board trusts.",
+    "In this guide there are some steps you can safely skip.",
+    "Of all his films, the western is one critics still praise."
+   ],
+   "quiet": [
+    "Before a long hike, I always pack water and a paper map.",
+    "In every big city the old neighborhoods deserve exploring.",
+    "Among the old recipes, this soup was my grandmother's favorite.",
+    "New parents often find books about sleep really helpful.",
+    "If you ask me, nobody should give up good habits.",
+    "Of the three candidates, Patel has the board's trust.",
+    "In this guide you can safely skip the third step.",
+    "Of all his films, critics still praise the western."
+   ]
+  }
+ ],
+ "predictions": "median fire ~0.35 (probes: 'there are some' 0.63, 'is one worth' 0.41; 'are two players' only 0.09); near misses < 0.1; risk: 'is the hardest' leaked 0.25, so near misses avoid 'is the'.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "selecting quantifier after copula",
+ "unit_kind": "contextual",
+ "confidence": 0.5,
+ "notes": "Promotes ' that', ' ones', ' which': the quantifier sets up a relative clause picking items. Numerals after copula were weak, so fire items use 'some' and 'one'."
+}
