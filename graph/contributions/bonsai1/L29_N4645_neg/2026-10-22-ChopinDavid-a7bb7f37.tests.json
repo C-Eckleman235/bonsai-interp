@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-a7bb7f37",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N4645-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T19:20:06+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N4645",
+   "pole": "-",
+   "label": "text about gene and genome structure (coding vs non-coding regions of DNA/RNA), strongest just before '-coding'",
+   "fire": [
+    "Each gene in the virus is flanked by short non-coding regions that control expression.",
+    "Most of the human genome is non-coding DNA, and only a small fraction encodes proteins.",
+    "The chloroplast genome holds about 80 protein-coding genes and many non-coding spacers.",
+    "Long non-coding RNAs can regulate nearby genes without being translated.",
+    "In yeast, a large share of the genome consists of coding sequences with few introns.",
+    "The transcript has a long 3' untranslated region after the stop codon of the ORF.",
+    "Mutations in non-coding regulatory DNA can still change how a gene is expressed.",
+    "Researchers compared exons and introns across the coding sequence of the gene."
+   ],
+   "quiet": [
+    "Each cell in the tissue is flanked by thin membranes that control nutrient flow.",
+    "Most of the human body is water, and only a small fraction is bone mineral.",
+    "The chloroplast contains stacks of thylakoids and many small starch grains.",
+    "Certain hormones can regulate nearby cells without entering the bloodstream.",
+    "In yeast, a large share of the cell volume is taken up by vacuoles with few granules.",
+    "The engine has a long exhaust pipe after the second chamber of the turbine.",
+    "Changes in soil acidity can still change how a crop grows in the field.",
+    "Researchers compared leaves and roots across the life cycle of the plant."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-1.5 on genome-structure sentences; near misses outside sequence biology near 0",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "gene-structure text (non-coding)",
+ "unit_kind": "topic / meaning",
+ "confidence": 0.6,
+ "notes": "Card peaks on function words inside sentences about coding DNA, UTRs, ORFs, non-coding RNAs; logit effect of the + pole suppresses ' coding', ' non', ' untranslated'. Probe: 'short non-coding control region' 1.543 (peak ' non'), 'proportion of coding DNA and few' 0.872, 'non-protein-coding RNA' 0.723, UTR/ORF 0.501, mtDNA phylogenies 0.343; parallel non-genetic sentences 0.002-0.003. Near misses keep the sentence shapes and scientific register (cell biology, physiology, engineering) but drop gene/sequence structure."
+}

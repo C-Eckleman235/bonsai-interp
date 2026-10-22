@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-b7ceb59a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N1559-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T19:20:06+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L30/N1559",
+   "pole": "-",
+   "label": "bit-level packing in code: the ' bit' piece of bitorder/bitarray/bitfield and '.pack' in struct/numpy packing calls",
+   "fire": [
+    "    flags = np.packbits(mask, axis=0, bitorder='big')\n    out.write(flags.tobytes())",
+    "    record = struct.pack('<HHI', version, flags, length)\n    f.write(record)",
+    "import struct\nfrom bitarray import bitarray\n\nbuf = bitarray(endian='little')",
+    "    bits = np.unpackbits(data, axis=-1, bitorder='little')\n    return bits[:n]",
+    "def encode(msg):\n    head = struct.pack('>BH', msg.kind, len(msg.body))\n    return head + msg.body",
+    "    payload = struct.pack('<f', reading)\n    sock.send(payload)",
+    "class Header:\n    def to_bytes(self):\n        return struct.pack('<II', self.size, self.crc)",
+    "    stream = BitStream(raw)\n    width = stream.read(bitorder='big', count=12)"
+   ],
+   "quiet": [
+    "    flags = json.dumps(mask.tolist())\n    out.write(flags.encode())",
+    "    record = f'{version},{flags},{length}'\n    f.write(record)",
+    "import json\nfrom collections import OrderedDict\n\nbuf = OrderedDict()",
+    "    rows = np.loadtxt(data, delimiter=',')\n    return rows[:n]",
+    "def encode(msg):\n    head = json.dumps({'kind': msg.kind, 'len': len(msg.body)})\n    return head + msg.body",
+    "    payload = str(reading)\n    sock.send(payload.encode())",
+    "class Header:\n    def to_text(self):\n        return f'{self.size}:{self.crc}'",
+    "    stream = io.StringIO(raw)\n    width = stream.readline().strip()"
+   ]
+  }
+ ],
+ "predictions": "packing code 0.3-0.9; the same code using json/text serialisation and prose 'a bit' near 0",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "bit packing in code (' bit', '.pack')",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card peaks ' bit' x8 (bitfield, bitorder, BitStream, bitarray), '.pack'/'.unpack' x7, ' struct'. Probe: 'np.unpackbits(..., bitorder=...)' 0.861, 'struct.pack('<II', ...)' 0.399, 'from bitarray import' 0.303, comment 'bitfield' 0.186, prose '8-bit microcontroller' 0.321; 'json.dumps' 0.040, prose 'a bit of time' 0.007. Near misses are the same code with non-binary serialisation, and no '-bit' in prose."
+}

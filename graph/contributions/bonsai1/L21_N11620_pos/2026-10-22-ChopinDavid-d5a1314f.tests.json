@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-d5a1314f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N11620+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T19:20:06+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L21/N11620",
+   "pole": "+",
+   "label": "a dash or semicolon that ends a complete clause and opens a loosely attached aside",
+   "fire": [
+    "We had planned to repaint the kitchen for weeks and kept putting it off — then the landlord did it for us.",
+    "Nobody had warned me how loud the ferry engines would be — I barely slept the whole crossing.",
+    "The sequel is slower and more confusing than the original — still, the soundtrack is wonderful.",
+    "My grandmother kept every letter she ever received — some date back to the 1940s.",
+    "The new bakery on our street sells out by ten every morning — get there early if you can.",
+    "I finally fixed the squeaky hinge on the garden gate — it only took a drop of oil.",
+    "The museum was nearly empty on a rainy Tuesday afternoon — we had whole rooms to ourselves.",
+    "Our team lost the first three matches of the season — morale was low by October."
+   ],
+   "quiet": [
+    "We had planned to repaint the kitchen for weeks and kept putting it off, but then the landlord did it for us.",
+    "Nobody had warned me how loud the ferry engines would be, so I barely slept the whole crossing.",
+    "The sequel is slower and more confusing than the original, though the soundtrack is wonderful.",
+    "My grandmother kept every letter she ever received, and some date back to the 1940s.",
+    "The new bakery on our street is open 7–10 on weekdays and sells bread and pastries.",
+    "I finally fixed the squeaky hinge on the garden gate with a drop of oil.",
+    "The museum was nearly empty on a rainy Tuesday afternoon, so we had whole rooms to ourselves.",
+    "Our team lost matches 1-3 of the season and morale was low by October."
+   ]
+  }
+ ],
+ "predictions": "em-dash after a full clause 0.3-0.6; comma+conjunction near 0.2; dashes inside ranges near 0",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "clause-ending dash opening an aside",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card peaks ' —', ' -', ';', ' ...' right after a complete clause in informal prose. Probe: em-dash aside 0.602, spaced hyphen aside 0.338, semicolon 0.435; same sentences with ', and' / ', so' 0.215 each; number-range dashes ('9 - 10', '12 - 18') 0.017. Near misses keep the same clauses and replace the dash with a comma plus conjunction, or use a dash inside a range."
+}
