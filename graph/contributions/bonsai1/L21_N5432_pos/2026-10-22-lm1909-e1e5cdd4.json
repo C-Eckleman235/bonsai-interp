@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-e1e5cdd4",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N5432+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:42:46+00:00",
+ "recipe": {
+  "toolchain_commit": "1c8826f6",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L21_N5432_pos/2026-10-22-lm1909-e1e5cdd4.tests.json"
+ },
+ "label": "'and'/'or' joining two predicates or nouns that share the complement after them, usually a to-infinitive ('willing and able to', 'the right and the duty to', 'permits or even encourages')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L21_N5432_pos/2026-10-22-lm1909-e1e5cdd4.tests.json",
+   "prereg_commit": "1c8826f6",
+   "author": "lm1909",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.562,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.67,
+     "peak": " even"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.728,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.23,
+     "peak": "and"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.679,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.446,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.533,
+     "peak": " or"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.736,
+     "peak": "and"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.003,
+     "peak": " food"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.006,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.001,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": " through"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.003,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.026,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.004,
+     "peak": " each"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.006,
+     "peak": " and"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.616,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "1c8826f6",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "coordination before shared complement",
+ "unit_kind": "contextual",
+ "confidence": 0.75,
+ "notes": "Probe: opportunity and the responsibility to 0.76, right and the duty to 0.74, permits or even encourages 0.69, willing and able to 0.65, ready (and eager!) to 0.47; plain coordination ~0 (apples and oranges 0.004, walked and made 0.003, card or cash 0.005, cold and windy 0.004).",
+ "selection": "random draw"
+}

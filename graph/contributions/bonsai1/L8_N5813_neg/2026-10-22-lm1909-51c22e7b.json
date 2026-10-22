@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-51c22e7b",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N5813-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:43:15+00:00",
+ "recipe": {
+  "toolchain_commit": "1c8826f6",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L8_N5813_neg/2026-10-22-lm1909-51c22e7b.tests.json"
+ },
+ "label": "residents, homes and businesses as the people affected by a local hazard (nearby residents told to stay indoors, homes and businesses flooded)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L8_N5813_neg/2026-10-22-lm1909-51c22e7b.tests.json",
+   "prereg_commit": "1c8826f6",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.376,
+     "peak": " indoors"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.622,
+     "peak": " businesses"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.406,
+     "peak": " residents"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.672,
+     "peak": " ranch"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.571,
+     "peak": " business"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.375,
+     "peak": " drink"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.599,
+     "peak": " businesses"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.537,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.058,
+     "peak": " smoke"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.02,
+     "peak": " storm"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.084,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.237,
+     "peak": " grass"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.051,
+     "peak": " turned"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.029,
+     "peak": " its"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.037,
+     "peak": " line"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.04,
+     "peak": " water"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.554,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "1c8826f6",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "affected local residents",
+ "unit_kind": "contextual",
+ "confidence": 0.45,
+ "notes": "Probe: nearby residents/smoke 0.56, homes and businesses flooded 0.43, townspeople forced from farms 0.40, homeowners and shop owners 0.20; factory smoke with no people 0.04, medical residency 0.03. Also fired on 'residents of the nursing home' 0.37 and the card-like 'stood on the surface of Jupiter' 0.51 and 'set your clock by it' 0.34, so the label is narrower than everything the pole does. Quiet items describe the same hazards without affected people.",
+ "selection": "random draw"
+}
