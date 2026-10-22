@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-21-moridinamael-6bfd2ade",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6770+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T02:43:33+00:00",
+ "recipe": {
+  "toolchain_commit": "ce291e53",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N6770_pos/2026-10-21-moridinamael-6bfd2ade.tests.json"
+ },
+ "label": "A word in the middle of a multi-word Title Case title or headline (book and film names, news headlines, how-to and listicle headings such as 'Ten Tips for Keeping Your Kitchen Clean'); quiet for the same words in ordinary lowercase prose and for very short titles of two or three words. Side case: the second half of the Japanese word 運営 (operation) also fires.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N6770_pos/2026-10-21-moridinamael-6bfd2ade.tests.json",
+   "prereg_commit": "ce291e53",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.875,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.409,
+     "peak": " Year"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.316,
+     "peak": " Too"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.286,
+     "peak": " Riverside"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": -0.064,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.373,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.33,
+     "peak": " Students"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.473,
+     "peak": " Went"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": -0.076,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": -0.087,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": -0.171,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.033,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": -0.228,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": -0.165,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": -0.041,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.265,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.352,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "ce291e53",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L33/N1814+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L33/N1814+", "to": "bonsai1/L35/N6770+", "kind": "feeds", "weight": 0.0, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
