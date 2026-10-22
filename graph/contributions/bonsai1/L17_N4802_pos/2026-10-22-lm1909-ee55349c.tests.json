@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-ee55349c",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N4802+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:21:58+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N4802",
+   "pole": "+",
+   "label": "the subject/auxiliary of a clause saying a disease will be detected by a medical test ('the chance that it will be found')",
+   "fire": [
+    "If a lump is present, a mammogram raises the odds that it will be found in time.",
+    "Should the cancer return, the yearly scan means it will probably be detected quickly.",
+    "If there is a polyp, a colonoscopy makes it likely that it will be spotted and removed.",
+    "When a tumour is small, an MRI increases the chance that it will be seen at all.",
+    "If the infection has spread, a blood culture makes it more likely that it will show up.",
+    "Where a fracture exists, a CT scan improves the chance that it will be picked up early.",
+    "If any disease is lurking, routine screening means it will usually be caught at stage one.",
+    "If a clot has formed, an ultrasound makes it far more likely that it will be identified."
+   ],
+   "quiet": [
+    "If you exercise often, a healthy diet raises the odds that you will live longer.",
+    "Should the pain return, the clinic recommends rest and a warm compress at home.",
+    "If there is a queue, the receptionist makes sure everyone gets a numbered ticket.",
+    "When a patient is small, the nurse uses a child-sized cuff for the blood pressure.",
+    "If the weather is fine, the hospital garden is open to visitors in the afternoon.",
+    "Where a ward is busy, extra staff are brought in from the neighbouring hospital.",
+    "If any forms are missing, the office will post them to your home address.",
+    "If a bed is free, the patient can stay overnight and go home in the morning."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "disease will be detected",
+ "unit_kind": "contextual",
+ "confidence": 0.3,
+ "notes": "Card: broad (1.5%), peaks on ' test', ' diagnostic', ' will' in cancer-detection text. Probe: only 'a bone scan makes it more likely that it will be found early' fired strongly (0.71, peak ' it'); 'blood test is a check of how well...' 0.30; ' diagnostic' 0.17; 'test of patience', screening/'caught', interviews all <0.10. So the test targets the narrow detection frame 'test -> it will be found'. Near misses keep the hospital setting and the conditional frame but drop detection."
+}

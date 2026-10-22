@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-cb515f2e",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N10678+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:21:58+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N10678",
+   "pole": "+",
+   "label": "the final subword of a multi-token Spanish/Italian surname in a person's full name (Bermude|z, Ramazz|ini)",
+   "fire": [
+    "The water project was led by Dr Elena Gutierrez, who later joined the ministry.",
+    "\"The results are encouraging\", said Professor Marco Bianchini, the lead author.",
+    "The prize was presented to Sister Ana Valenzuela at a small ceremony.",
+    "In 1910, Father Luis Carrasco founded the first school in the valley.",
+    "The new exhibition was curated by Giulia Pellegrini, a historian from Bologna.",
+    "Funding came from a grant awarded to Rosa Montalvo, who studies rivers.",
+    "\"We will rebuild\", declared Mayor Tomas Echeverria, speaking to reporters.",
+    "The article quotes Andrea Bianchini, a doctor working in the north."
+   ],
+   "quiet": [
+    "The water project was led by Dr Maria Lopez, who later joined the ministry.",
+    "\"The results are encouraging\", said Professor Carlos Garcia, the lead author.",
+    "The prize was presented to the local nursing school at a small ceremony.",
+    "In 1910, Father John Smith founded the first school in the valley.",
+    "The new exhibition was curated by Anna Martinez, a historian from Bologna.",
+    "Funding came from a grant awarded to the regional council, which studies rivers.",
+    "\"We will rebuild\", declared the mayor, speaking to reporters.",
+    "The article quotes Peter Jones, a doctor working in the north."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "surname final subword",
+ "unit_kind": "lexical",
+ "confidence": 0.45,
+ "notes": "Card: broad (5.9% above 0.1·max); the + pole peaks on surname endings (Bermude|z, Ramazz|ini, Lore|nte, Hook|er) and on list-opening ':\\n'/'.\\n'. Probe: 'Bermudez' 0.77, 'Ramazzini' 0.60, 'Lorente' 0.50, 'Hooker' 0.31, Args block 0.35, 'with support from the city council' 0.19, list colon 0.13, filler 0.03. The tokenizer confirms the fire surnames split into several pieces (Gut|ierrez, Bian|ch|ini, Val|enz|uela, Carr|asco, P|elle|gr|ini, Mont|al|vo, E|che|ver|ria). The quiet names are single tokens (Lopez, Garcia, Smith, Martinez, Jones) or institutions. Broad unit, so near misses may fire weakly."
+}

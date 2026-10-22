@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-868d07c2",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N4478-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:21:58+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N4478",
+   "pole": "-",
+   "label": "' for' opening an inner (nested, indented) loop in Python code",
+   "fire": [
+    "cells = []\nfor y, row in enumerate(board):\n    for x, value in enumerate(row):\n        cells.append((x, y, value))",
+    "pairs = []\nfor a in names:\n    for b in names:\n        if a != b:\n            pairs.append((a, b))",
+    "count = 0\nfor i, line in enumerate(lines):\n    for j, word in enumerate(line.split()):\n        count += 1",
+    "matrix = load()\nfor r in range(rows):\n    for c in range(cols):\n        matrix[r][c] *= 2",
+    "edges = []\nfor u, nbrs in graph.items():\n    for v, w in nbrs.items():\n        edges.append((u, v, w))",
+    "result = {}\nfor key, group in groups.items():\n    for item in group:\n        result[item] = key",
+    "def flatten(grid):\n    out = []\n    for row in grid:\n        for cell in row:\n            out.append(cell)\n    return out",
+    "seen = set()\nfor k, block in enumerate(blocks):\n    for idx, val in enumerate(block):\n        seen.add((k, idx))"
+   ],
+   "quiet": [
+    "cells = []\nfor y, row in enumerate(board):\n    cells.append((y, len(row)))\nprint(cells)",
+    "pairs = []\nwhile names:\n    a = names.pop()\n    if a:\n        pairs.append(a)",
+    "count = 0\nfor line in lines:\n    count += len(line.split())\nprint(count)",
+    "matrix = load()\nmatrix = [[v * 2 for v in row] for row in matrix]",
+    "edges = []\nfor u in graph:\n    edges.append(u)\nprint(len(edges))",
+    "result = {}\nif groups:\n    while queue:\n        result[queue.pop()] = True",
+    "def flatten(grid):\n    out = list(grid)\n    out.sort()\n    return out",
+    "We waited for an hour and then searched for the keys for a while."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "nested inner for-loop",
+ "unit_kind": "contextual",
+ "confidence": 0.6,
+ "notes": "Card: ' for' x12 at the start of indented inner loops ('for j in np.arange', 'for m, val in enumerate(row)'), plus tuple-unpacking commas. Probe: nested for with enumerate 0.61, nested range loops 0.36. Single loop 0.11, nested while 0.13, comprehension 0.01, English 'for' 0.02, 'a, b, c, d = ...' unpacking 0.21. Fire items are multi-line nested loops; quiet items keep the code style with single loops, comprehensions or while loops and no tuple unpacking."
+}

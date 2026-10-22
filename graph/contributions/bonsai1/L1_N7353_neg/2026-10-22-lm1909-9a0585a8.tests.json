@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-9a0585a8",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N7353-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:21:58+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N7353",
+   "pole": "-",
+   "label": "the standalone Japanese token 'な' (adjectival な as in 有名な, 行なう, なきゃ)",
+   "fire": [
+    "この町には有名な神社があります。",
+    "彼はいつも元気な声で挨拶します。",
+    "週末までに宿題を出さなきゃいけない。",
+    "来月、工事を行なう予定です。",
+    "駅前にきれいな花屋ができた。",
+    "毎年秋に祭りを行なっている。",
+    "ここは便利な場所だと思います。",
+    "それはかなり結構な値段でした。"
+   ],
+   "quiet": [
+    "この町には有名だった神社があります。",
+    "彼はいつも元気で、明るく挨拶します。",
+    "週末までに宿題を出すつもりです。",
+    "来月、工事をする予定です。",
+    "駅前に花屋ができたそうだ。",
+    "毎年秋に祭りがあると聞いた。",
+    "その夜はとても静かだった。",
+    "そんなことは聞いていません。"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "token 'な'",
+ "unit_kind": "lexical",
+ "confidence": 0.85,
+ "notes": "Card: one token dominates (な x32, lift 17,534). Probe: standalone な fired 0.38-0.86 in every frame (簡単な, 便利な, 起きなきゃ, 行なって, 結構な). Merged forms (そんな 0.13, ない, かな) and the だ/で rewrites stayed <=0.13. Tokenizer checked: な is its own token in every fire item. Quiet items use only merged forms (かな, そんな, ない) or no な."
+}
