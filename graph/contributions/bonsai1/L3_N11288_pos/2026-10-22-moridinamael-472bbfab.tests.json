@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-22-moridinamael-472bbfab",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N11288+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T13:19:30+00:00",
+ "roles": ["feeds bonsai1/L4/N5323+"],
+ "neighbours": [
+  {
+   "unit": "L3/N11288",
+   "pole": "+",
+   "label": "'!' placed right after a dangling preposition or article (for, of, with, the) at the end of a long run of garbled keyword-spam text (strings of shopping/travel/ad keywords with no grammar). Quiet: the same '!' ending a fluent sentence even when it is cut off after a preposition, spam that ends on a complete content word before '!', and '?' or '.' in that slot; '...' fires only weakly.",
+   "short": "'!' after a dangling for/of/with/the in keyword spam",
+   "unit_kind": "context",
+   "confidence": "low",
+   "notes": "Very sparse pole (0.001% of tokens). Probes: spam ending on 'can for!' 0.35, '1 in!' after a long number 0.31; fluent cut-offs ('talk about!') ~0.00; spam ending on a content word ~0.00; '.' or '?' in the slot <=0.05. Firing is patchy across spam lead-ins (one '... shop now at!' read 0.005). Test sentences written blind by a second author from the label only. Feeder chosen from the resident attribution ranking because play step ran out of GPU memory; no edge weight recorded.",
+   "fire": [
+    "cheap flights hotels deals best price booking discount travel vacation packages online for!",
+    "buy shoes online cheap sale women men sneakers running free shipping outlet store of!",
+    "hotel deals paris rome london cheap booking last minute discount rooms best rates with!",
+    "car rental cheap airport discount compare prices book now deals rental cars the!",
+    "best laptop deals cheap gaming laptops sale discount computers buy online store for!",
+    "cruise vacation packages caribbean cheap deals all inclusive resorts booking offers of!",
+    "wedding dresses cheap bridal gowns sale online shop discount lace dresses best with!",
+    "cheap watches replica luxury sale men women discount brand watches buy online the!"
+   ],
+   "quiet": [
+    "We finally found a cozy little cabin that was perfect for!",
+    "She opened the box and could not believe what it was full of!",
+    "I have no idea who he is going to the dance with!",
+    "cheap flights hotels deals best price booking discount travel vacation packages online tickets!",
+    "buy shoes online cheap sale women men sneakers running free shipping outlet store sneakers!",
+    "hotel deals paris rome london cheap booking last minute discount rooms best rates hotels!",
+    "car rental cheap airport discount compare prices book now deals rental cars the?",
+    "best laptop deals cheap gaming laptops sale discount computers buy online store for."
+   ]
+  }
+ ],
+ "predictions": "5-6/8 fire above 0.2, 0 near misses above 0.3; risk: patchy firing across spam lead-ins",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "neighbors",
+   "inverse-de",
+   "bank-solo",
+   "quick-test"
+  ]
+ }
+}
