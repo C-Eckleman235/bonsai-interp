@@ -1,0 +1,55 @@
+{
+ "contribution": "2026-10-22-moridinamael-c4120669",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N4078+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T20:01:31+00:00",
+ "roles": ["feeds bonsai1/L2/N10492+"],
+ "neighbours": [
+  {
+   "unit": "L1/N4078",
+   "pole": "+",
+   "label": "the closing word-piece of a name whose first piece ends in -y (Lay|ne, Pay|ne, Roy|ce, Hay|nes, Boy|ne, Gay|lord), in any case or use (person, river, brand, username), plus the whole names Lloyd and Boyd; not common words built on -ay/-oy (player, cowboy, joyful, daylight), and weak on names kept as one token (Doyle, Joyce, Floyd)",
+   "short": "name ending after a -y first piece (Lay|ne, Roy|ce)",
+   "unit_kind": "word-piece",
+   "confidence": "medium",
+   "notes": "Test sentences written blind by a second author who saw only the label. Feeder found with the resident attribution ranking (play step hit CUDA OOM), so no ablation edge weight.",
+   "fire": [
+    "Detective Marcus Layne walked into the precinct with a cold coffee.",
+    "The Boyne flows quietly past the old stone abbey.",
+    "Our new neighbor, Mrs. Payne, brought over a lemon cake.",
+    "Sir Gaylord tipped his hat and rode off toward the castle.",
+    "The engine was built by a firm called Royce & Sons in 1912.",
+    "Ask Lloyd whether he finished the quarterly report.",
+    "Coach Boyd blew the whistle and the team ran another lap.",
+    "Her username was raynor_88 and she posted every morning."
+   ],
+   "quiet": [
+    "The detective walked into the precinct with a cold coffee.",
+    "The river flows quietly past the old stone abbey.",
+    "Our new neighbor, the player, brought over a lemon cake.",
+    "The cowboy tipped his hat and rode off toward the castle.",
+    "The engine was built by a joyful family firm in 1912.",
+    "Ask the employee whether he finished the quarterly report.",
+    "The coach blew the whistle and the team ran another lap in daylight.",
+    "Her playlist was long and she posted every morning."
+   ]
+  }
+ ],
+ "predictions": "7/8 fire (raynor_88 uncertain), 0 near misses",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "neighbors",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test",
+   "step-out"
+  ]
+ }
+}
