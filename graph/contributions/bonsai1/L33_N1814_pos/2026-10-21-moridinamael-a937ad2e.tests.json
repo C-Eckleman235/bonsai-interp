@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-21-moridinamael-a937ad2e",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N1814+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T02:21:17+00:00",
+ "neighbours": [
+  {
+   "unit": "L33/N1814",
+   "pole": "+",
+   "label": "The piece ' Ste' at the start of a surname, where the tokenizer splits it off, usually after a first name or title (Tom Steyer, Dr. Stecher, Jan Stepanovic, Ruth Steiner, Andreas Steinhofel); quiet for lowercase ste- words (steep, steady, steam), for surnames read whole or split as ' St' (Stein, Steven, Stewart, Stenger, Stelter), for places like Sault Ste. Marie, and for other surnames. Side case: the capitalized first word of Kurosawa's film title High and Low also fires.",
+   "short": "surname piece ' Ste' (Steyer, Steiner)",
+   "roles": ["reads bonsai1/L29/N3065+"],
+   "fire": [
+    "Tom Steyer announced a new climate fund on Tuesday.",
+    "The paper was reviewed by Dr. Stecher before publication.",
+    "Coach Jan Stepanovic praised the defense after the match.",
+    "Ruth Steiner has taught violin at the conservatory for thirty years.",
+    "According to Andreas Steinhofel, the bridge design needed reinforcement.",
+    "Professor Stegmann opened the lecture with a short quiz.",
+    "The award went to Maria Stefanescu for her work on soil chemistry.",
+    "Mayor Lisa Stebbins cut the ribbon at the new library."
+   ],
+   "quiet": [
+    "Launch crews at Cape Canaveral worked overnight.",
+    "\"We have been preparing for years for a successful landing by Curiosity, and all signs are good,\" Dave Lavery, MSL programme executive, said.",
+    "The trail became steep after the second bridge.",
+    "She kept a steady pace through the final mile.",
+    "Steam rose from the kettle on the stove.",
+    "Professor Stein opened the lecture with a short quiz.",
+    "The award went to Maria Stewart for her work on soil chemistry.",
+    "Coach Steven Marsh praised the defense after the match."
+   ]
+  }
+ ],
+ "predictions": "Test written blind (label-only second author). Expect most surname ' Ste' items at 0.2-0.6; Stegmann/Stefanescu may split as ' St'/' Stef' and miss.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "blind-room"
+  ]
+ }
+}
