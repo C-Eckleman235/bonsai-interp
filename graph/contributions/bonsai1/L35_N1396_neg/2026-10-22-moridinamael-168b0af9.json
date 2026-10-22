@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-22-moridinamael-168b0af9",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N1396-",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T23:17:25+00:00",
+ "recipe": {
+  "toolchain_commit": "ad62b358",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N1396_neg/2026-10-22-moridinamael-168b0af9.tests.json"
+ },
+ "label": "The first piece of an n't contraction, cut before the apostrophe (the 'didn' of didn't, 'shouldn' of shouldn't, also 'won' of won't), and the word 'according' before 'to', anywhere in a sentence; more weakly, the space before a number the tokenizer splits into digits (a year like 1987) and the first digit of a 'mid-19xx' decade. Quiet on spelled-out 'not' or 'never', on 'Don' as a name, on 'dont' without an apostrophe and on other fixed pairs ('due to', 'each other'); ordinary text sits at a low background of about 0.3.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N1396_neg/2026-10-22-moridinamael-168b0af9.tests.json",
+   "prereg_commit": "ad62b358",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 5,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.691,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.916,
+     "peak": " didn"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.913,
+     "peak": " shouldn"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.939,
+     "peak": "According"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.921,
+     "peak": " won"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.939,
+     "peak": " couldn"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.883,
+     "peak": " according"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.919,
+     "peak": " haven"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.275,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.314,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.276,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.331,
+     "peak": " all"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.373,
+     "peak": " I"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.532,
+     "peak": " looked"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.304,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.291,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.917,
+    "near_misses_at_0.3": 5
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "ad62b358",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-in reader of bonsai1/L34/N2247+ (COLD: labelled from its own tops and probes only). The - pole is dense (79.7% of tokens above 0.1 of max) with a ~0.3 floor on ordinary text. Test sentences written blind by a label-only second author; the solver's leak (a year after a month name) is placed in the fire set.",
+ "roles": [
+  "reads bonsai1/L34/N2247+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L34/N2247+", "to": "bonsai1/L35/N1396-", "kind": "feeds", "weight": 2.26, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
