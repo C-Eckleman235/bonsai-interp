@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-21-moridinamael-9944db2d",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N2694+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T05:14:32+00:00",
+ "recipe": {
+  "toolchain_commit": "875bbc04",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L22_N2694_pos/2026-10-21-moridinamael-9944db2d.tests.json"
+ },
+ "label": "In English, a connector that opens a purpose clause after an action, with or without a comma before it: ' so' / 'so that' / 'so as to' ('saved every month so she could buy a car'), and ' order' in 'in order to' / 'in order that'. It fires on the connector word itself, so the phrase 'so that' can fire even when it means result, and a degree 'so' straight after an action ('fixed it so quickly') can fire. Quiet for result 'so' after a stated fact ('it rained, so we stayed home'), sentence-initial 'So', degree 'so' after is/was, 'I think so', 'and so on', 'in order of' or 'in order' meaning tidy, and for purpose said with plain 'to', 'lest' or 'for the purpose of'.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N2694_pos/2026-10-21-moridinamael-9944db2d.tests.json",
+   "prereg_commit": "875bbc04",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.438,
+     "peak": " so"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.534,
+     "peak": " so"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.377,
+     "peak": " so"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.267,
+     "peak": " order"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.622,
+     "peak": " so"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.54,
+     "peak": " that"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.607,
+     "peak": " that"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.381,
+     "peak": " so"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.005,
+     "peak": "ained"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.019,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.003,
+     "peak": " was"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": " train"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.057,
+     "peak": " so"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.03,
+     "peak": " order"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.004,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.098,
+     "peak": " to"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.486,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "875bbc04",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Test sentences written blind by a second author from the label only. play step OOMed on the stream GPU, so the feeder was picked from the resident attribution ranking (top MLP feeder of L25/N4650+) and no ablation weight is recorded. Solver (differential evolution) found no leak (best unrelated 0.17) and no silent on-concept text.",
+ "roles": [
+  "feeds bonsai1/L25/N4650+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L22/N2694+", "to": "bonsai1/L25/N4650+", "kind": "feeds", "weight": null, "method": "attribution rank 1 of 12 MLP feeders on the target's top 4 examples (resident feeders tool; play step ablation hit CUDA OOM)"}
+ ]
+}
