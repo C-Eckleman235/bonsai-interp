@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-ChopinDavid-7c873eba",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N6154+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T02:28:28+00:00",
+ "recipe": {
+  "toolchain_commit": "20639a5",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L26_N6154_pos/2026-10-21-ChopinDavid-7c873eba.tests.json"
+ },
+ "label": "Tokens inside the names of pop-culture media (radio stations, song titles, TV show titles) in entertainment news, such as 'Hot' in 'Hot 97' or 'Que|er' in 'Queer as Folk'; not the same words used in ordinary, non-entertainment senses.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L26_N6154_pos/2026-10-21-ChopinDavid-7c873eba.tests.json",
+   "prereg_commit": "20639a5",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.636,
+     "peak": " rapper"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.79,
+     "peak": "er"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.347,
+     "peak": " by"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.783,
+     "peak": " Power"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.74,
+     "peak": "er"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.208,
+     "peak": " singer"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.186,
+     "peak": " Rush"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.197,
+     "peak": " by"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.008,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.013,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.012,
+     "peak": " was"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.012,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.019,
+     "peak": " buy"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.011,
+     "peak": "In"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.011,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.022,
+     "peak": " for"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.491,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "20639a5",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "inside pop-media titles in entertainment news",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Probes (fraction of max 35.0): 'on Hot 97 about his new album' 0.637, 'Queer as Folk' 0.887 on 'er', 'Boys by Ashley' 0.467 on ' by', 'A fan made a trailer' 0.169. Same words outside entertainment: 'hot … 97 degrees' 0.012, 'written by Ashley, a junior analyst' 0.053, 'ceiling fan made a noise' 0.013. Fire items place a title word mid-sentence in music/TV news; near misses keep the words in a literal sense.",
+ "selection": "random draw"
+}

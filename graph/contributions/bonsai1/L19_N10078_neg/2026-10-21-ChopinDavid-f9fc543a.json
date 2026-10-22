@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-ChopinDavid-f9fc543a",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N10078-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T02:27:51+00:00",
+ "recipe": {
+  "toolchain_commit": "20639a5",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L19_N10078_neg/2026-10-21-ChopinDavid-f9fc543a.tests.json"
+ },
+ "label": "The line break inside a sentence that wraps across several code-comment or docstring lines (the newline and the continuation '#' that carry an unfinished sentence onto the next comment line), not a newline that ends a complete comment sentence or a line of code.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L19_N10078_neg/2026-10-21-ChopinDavid-f9fc543a.tests.json",
+   "prereg_commit": "20639a5",
+   "author": "ChopinDavid",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.287,
+     "peak": " #"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.408,
+     "peak": " #"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.277,
+     "peak": "\n"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.166,
+     "peak": "\n"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.294,
+     "peak": " #"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.409,
+     "peak": "\n"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.299,
+     "peak": " #"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.382,
+     "peak": " #"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.019,
+     "peak": "write"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.13,
+     "peak": " Put"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.018,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.035,
+     "peak": " value"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.022,
+     "peak": "(s"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.025,
+     "peak": " cutoff"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.024,
+     "peak": " form"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.018,
+     "peak": " "
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.296,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "20639a5",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "newline mid-sentence in wrapped code comment",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Probes (fraction of max 12.44): wrapped comment 'queue is\\n    # empty' 0.337 peaking on ' #', wrapped docstring 0.264 on '\\n', another wrapped comment 0.099. Each-line-a-full-sentence comment 0.018, plain code 0.019, wrapped prose outside code 0.056, a poem 0.021. Weak pole overall; fire items wrap a comment mid-clause, near misses keep the same code with one complete sentence per comment line.",
+ "selection": "random draw"
+}

@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-ChopinDavid-22230100",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N9558+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T02:29:30+00:00",
+ "recipe": {
+  "toolchain_commit": "20639a5",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N9558_pos/2026-10-21-ChopinDavid-22230100.tests.json"
+ },
+ "label": "An extent adverb that says how fully a state holds ('largely', 'almost completely', 'entirely'), not manner, time or frequency adverbs in the same slot.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N9558_pos/2026-10-21-ChopinDavid-22230100.tests.json",
+   "prereg_commit": "20639a5",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.304,
+     "peak": " largely"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.562,
+     "peak": " completely"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.047,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.064,
+     "peak": " entirely"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.329,
+     "peak": " largely"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.212,
+     "peak": " completely"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.322,
+     "peak": " entirely"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.602,
+     "peak": " largely"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.032,
+     "peak": " destroyed"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.249,
+     "peak": " often"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.009,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": " economy"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.02,
+     "peak": " rejected"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.018,
+     "peak": " cleared"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.06,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.038,
+     "peak": " in"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.313,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "20639a5",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "extent adverbs ('largely', 'almost completely')",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Probes (fraction of max 45.0): 'remained largely unchanged' 0.631, 'almost completely incompatible' 0.409, 'was largely ignored' 0.297, '70 percent of' 0.178, 'partly based' 0.105. Manner 'quickly ignored' 0.022, 'appear in the same chapter' 0.096; 'remained quiet' 0.190 (peak on ' remained'), so near misses avoid 'remained'. Fire items use largely/almost completely/entirely/almost entirely.",
+ "selection": "random draw"
+}

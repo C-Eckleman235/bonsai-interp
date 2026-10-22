@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-ChopinDavid-2c5dbaaa",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N4797-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T02:28:52+00:00",
+ "recipe": {
+  "toolchain_commit": "20639a5",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L24_N4797_neg/2026-10-21-ChopinDavid-2c5dbaaa.tests.json"
+ },
+ "label": "The hyphen piece inside a hyphenated compound where the tokenizer breaks the second word ('Long|-T|erm', 'high|-|temperature'), marking a word that continues across the hyphen; not the same phrase written without a hyphen.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L24_N4797_neg/2026-10-21-ChopinDavid-2c5dbaaa.tests.json",
+   "prereg_commit": "20639a5",
+   "author": "ChopinDavid",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.245,
+     "peak": "-T"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.141,
+     "peak": "-T"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.11,
+     "peak": "-B"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.096,
+     "peak": "-S"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.263,
+     "peak": "or"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.279,
+     "peak": "-"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.375,
+     "peak": "-T"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.273,
+     "peak": "-"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.008,
+     "peak": " tax"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.002,
+     "peak": " Monday"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.018,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.012,
+     "peak": " school"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.014,
+     "peak": " last"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.009,
+     "peak": " take"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.006,
+     "peak": " miners"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.013,
+     "peak": " tested"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.254,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "20639a5",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "hyphen piece splitting a compound",
+ "unit_kind": "spelling",
+ "confidence": 0.45,
+ "notes": "Probes (fraction of max 35.5): 'Long-Term Effects' 0.329 on '-T', 'high-temperature' 0.314 on '-', all-caps 'THE GOVERNING COUNCIL' 0.176 on ' C'. Unhyphenated controls 0.015 and 0.044; code identifiers ATTR_AVERAGE and register(Variant 0.011-0.014 (lower than the card examples). Fire items use compounds whose split was checked to put the hyphen in its own piece or a '-X' piece.",
+ "selection": "random draw"
+}
