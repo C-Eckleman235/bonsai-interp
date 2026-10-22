@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-52c54865",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N2026+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T17:23:40+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N2026",
+   "pole": "+",
+   "label": "the first token inside an opening parenthesis when it starts a list label or a name, most strongly enumerators like (a), (b), (1)",
+   "fire": [
+    "Applicants must provide (a) a passport, (b) two photographs and (c) a signed form.",
+    "The fund supports projects in (a) housing, (b) transport and (c) public health.",
+    "The board shall consist of (a) the mayor, (b) two councillors and (c) one resident.",
+    "The term has two senses: (1) a formal promise and (2) a written guarantee.",
+    "Students are graded on (a) attendance, (b) homework and (c) the final exam.",
+    "The treaty covers (a) fishing rights, (b) shipping lanes and (c) border patrols.",
+    "Each kit contains (a) a compass, (b) a whistle and (c) a small first-aid pouch.",
+    "Members are drawn from (1) industry, (2) academia and (3) the civil service."
+   ],
+   "quiet": [
+    "Applicants must provide a passport, two photographs and a signed form at the desk.",
+    "The fund supports projects in housing, transport and public health across the city.",
+    "The board shall consist of the mayor, two councillors and one resident (normally).",
+    "The term has two senses, a formal promise and a written guarantee, in modern usage.",
+    "Students are graded on attendance, homework and (mostly) the final exam.",
+    "The treaty covers fishing rights, shipping lanes and border patrols in the north.",
+    "Each kit contains a compass, a whistle and a small first-aid pouch for emergencies.",
+    "Members are drawn from industry, academia and the civil service (in equal numbers)."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "(a)/(1) enumerator labels",
+ "unit_kind": "contextual",
+ "confidence": 0.55,
+ "notes": "Probe: (a)/(b)/(c) 0.69, (1)/(2) 0.42, capitalised name starts inside parentheses 0.29-0.31; lowercase adverb parenthetical 0.03, '(see appendix' 0.004; the same lists without parentheses <=0.09. The + pole is not flagged (the - pole is positional). Fire items use enumerators only; quiet items keep the same lists and use lowercase parentheticals or none."
+}

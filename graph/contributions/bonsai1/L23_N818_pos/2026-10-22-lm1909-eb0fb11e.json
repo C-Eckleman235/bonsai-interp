@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-eb0fb11e",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N818+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:40:54+00:00",
+ "recipe": {
+  "toolchain_commit": "940ee6b0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L23_N818_pos/2026-10-22-lm1909-eb0fb11e.tests.json"
+ },
+ "label": "a first-person narrative action verb right after 'I' in a past-tense story (I asked, I went, I told)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L23_N818_pos/2026-10-22-lm1909-eb0fb11e.tests.json",
+   "prereg_commit": "940ee6b0",
+   "author": "lm1909",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.251,
+     "peak": " asked"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.164,
+     "peak": " asked"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.108,
+     "peak": " asked"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.089,
+     "peak": " asked"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.113,
+     "peak": " went"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.171,
+     "peak": " asked"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.081,
+     "peak": " asked"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.14,
+     "peak": " asked"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.04,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.07,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.033,
+     "peak": " shop"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.044,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.039,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.044,
+     "peak": " warm"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.055,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.056,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.127,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "940ee6b0",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "'I asked' in narrative",
+ "unit_kind": "contextual",
+ "confidence": 0.25,
+ "notes": "Weak pole (max 12.6). Probe: only 'I asked him' scored (0.25); 'swore' 0.09; third-person action verbs ('went', 'said nothing') <=0.03; descriptive sentences <=0.05. The label is narrowed to first-person 'I asked'-type verbs (one fire item uses 'I went'). The median-fire bar is at risk.",
+ "selection": "random draw"
+}

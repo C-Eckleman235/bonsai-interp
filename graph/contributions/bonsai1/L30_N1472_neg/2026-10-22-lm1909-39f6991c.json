@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-39f6991c",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N1472-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:41:06+00:00",
+ "recipe": {
+  "toolchain_commit": "940ee6b0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L30_N1472_neg/2026-10-22-lm1909-39f6991c.tests.json"
+ },
+ "label": "a concrete object named as the thing you need, own or use to do something ('all you need is a ___', 'if you own a ___', 'works on any ___')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L30_N1472_neg/2026-10-22-lm1909-39f6991c.tests.json",
+   "prereg_commit": "940ee6b0",
+   "author": "lm1909",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.817,
+     "peak": " computer"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.464,
+     "peak": " smartphone"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.309,
+     "peak": " machine"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.357,
+     "peak": " tent"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.532,
+     "peak": " laptop"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.408,
+     "peak": " printer"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.353,
+     "peak": " pot"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.23,
+     "peak": " canoe"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.003,
+     "peak": "To"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.004,
+     "peak": " was"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.016,
+     "peak": " workshop"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.007,
+     "peak": " passed"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.046,
+     "peak": " cards"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.067,
+     "peak": " kitchen"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.008,
+     "peak": "If"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.382,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "940ee6b0",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "object as required tool",
+ "unit_kind": "contextual",
+ "confidence": 0.4,
+ "notes": "Card: devices (computer, radio, TV, smartphone). Probe refuted 'electronic device': laptop 0.87, pan 0.69, television 0.56, backpack 0.45, tablet 0.37, bicycle 0.27, but 'listens on an old transistor radio' 0.16 and 'phone calls'/'heart' (+ pole triggers) ~0.01. So the frame matters more than the device. Quiet items keep the requirement frames but name abstract requirements or none.",
+ "selection": "random draw"
+}

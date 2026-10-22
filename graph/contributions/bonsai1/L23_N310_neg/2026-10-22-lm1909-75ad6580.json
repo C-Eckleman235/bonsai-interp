@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-75ad6580",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N310-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:40:52+00:00",
+ "recipe": {
+  "toolchain_commit": "940ee6b0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L23_N310_neg/2026-10-22-lm1909-75ad6580.tests.json"
+ },
+ "label": "a repeated clause frame in a chain (A leads to B, B leads to C; if they X him, they will Y him), firing where the repeated frame is copied",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L23_N310_neg/2026-10-22-lm1909-75ad6580.tests.json",
+   "prereg_commit": "940ee6b0",
+   "author": "lm1909",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.26,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.224,
+     "peak": " trust"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.496,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.519,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.021,
+     "peak": " call"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.48,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.159,
+     "peak": " talk"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.236,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.012,
+     "peak": " good"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.01,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.008,
+     "peak": " by"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.008,
+     "peak": " fades"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.011,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.007,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.004,
+     "peak": " train"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.018,
+     "peak": "Saving"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.248,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "940ee6b0",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "repeated chain frame",
+ "unit_kind": "contextual",
+ "confidence": 0.35,
+ "notes": "Card: no single token; peaks at points where text repeats an earlier chain or sequence. Probe: chain 'A leads to B, B leads to C' 0.41, 'if they trust him, they will follow him; if they follow him' 0.38; a repeated model number 0.11, chiasmus 0.03; non-repeating versions <=0.05.",
+ "selection": "random draw"
+}

@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-ce013c19",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N12046+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:41:10+00:00",
+ "recipe": {
+  "toolchain_commit": "940ee6b0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L32_N12046_pos/2026-10-22-lm1909-ce013c19.tests.json"
+ },
+ "label": "a verb for a life-course ending or turning point, mainly dying ('died', 'die', 'passed away'), also resigning or starting treatment",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L32_N12046_pos/2026-10-22-lm1909-ce013c19.tests.json",
+   "prereg_commit": "940ee6b0",
+   "author": "lm1909",
+   "n_fire": 4,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.522,
+     "peak": " die"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.242,
+     "peak": " died"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.456,
+     "peak": " died"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.373,
+     "peak": " away"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.133,
+     "peak": " resigned"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.189,
+     "peak": " died"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.331,
+     "peak": " died"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.237,
+     "peak": " die"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.02,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.138,
+     "peak": " Chicago"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.425,
+     "peak": " ill"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.031,
+     "peak": " husband"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.007,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.013,
+     "peak": " songs"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.016,
+     "peak": " mother"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.052,
+     "peak": " quickly"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.891,
+    "median_fire": 0.286,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "940ee6b0",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "died / passed away",
+ "unit_kind": "contextual",
+ "confidence": 0.5,
+ "notes": "Card: ' died' lift 1,998 among the top tokens, with peaks on events before a time phrase. Probe: 'die a few weeks later' 0.44, 'passed away / died two years later' 0.37, 'began chemotherapy' 0.31 with or without a time phrase, 'resigned his seat' 0.27; matched non-event versions 0.03-0.10. So the time adjunct is not needed; the event verb drives it. Quiet items keep the biographical narratives without a death or ending.",
+ "selection": "random draw"
+}

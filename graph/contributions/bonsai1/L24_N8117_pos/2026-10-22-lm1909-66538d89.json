@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-66538d89",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N8117+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:41:00+00:00",
+ "recipe": {
+  "toolchain_commit": "940ee6b0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L24_N8117_pos/2026-10-22-lm1909-66538d89.tests.json"
+ },
+ "label": "the noun ' subject' (also ' topic', ' site') naming what something is about or where it happened, as in 'the subject of'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L24_N8117_pos/2026-10-22-lm1909-66538d89.tests.json",
+   "prereg_commit": "940ee6b0",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.859,
+     "peak": " subject"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.939,
+     "peak": " subject"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.602,
+     "peak": " topic"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.851,
+     "peak": " subject"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.927,
+     "peak": " subject"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.875,
+     "peak": " topic"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.739,
+     "peak": " subject"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.717,
+     "peak": " site"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.007,
+     "peak": " two"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.003,
+     "peak": " latest"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.017,
+     "peak": " debated"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.015,
+     "peak": " court"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.025,
+     "peak": " causes"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.019,
+     "peak": " concern"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.004,
+     "peak": " drug"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.005,
+     "peak": " valley"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.855,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "940ee6b0",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "'the subject of'",
+ "unit_kind": "lexical",
+ "confidence": 0.7,
+ "notes": "Probe: 'the subject of' 0.86-0.96, 'the site of' 0.69, 'the topic of' 0.57; other senses of ' subject' are weaker ('subject to change' 0.22, grammatical subject 0.23, school subject 0.34); paraphrases without the noun <=0.03. Quiet items drop the noun and keep the meaning, so this tests the word rather than the topic.",
+ "selection": "random draw"
+}
