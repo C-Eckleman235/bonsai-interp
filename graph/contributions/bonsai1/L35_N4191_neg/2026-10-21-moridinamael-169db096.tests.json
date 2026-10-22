@@ -1,0 +1,56 @@
+{
+ "contribution": "2026-10-21-moridinamael-169db096",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N4191-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T03:21:22+00:00",
+ "neighbours": [
+  {
+   "unit": "L35/N4191",
+   "pole": "-",
+   "label": "In Python code, the 'st'/'ST' piece that opens a file-status field read from a stat result: os.stat(...).st_size / .st_mtime / .st_mode / .st_ino (also via Path(...).stat()) and stat.ST_MODE / stat.ST_SIZE, strongest when chained right after .stat(); quiet for os.path.getsize / getmtime, the stat.S_ISDIR / S_IRUSR permission helpers, other code constants like tm_year or AF_INET, and the words 'stat' or 'status' in prose.",
+   "fire": [
+    "mtime = Path(\"log.txt\").stat().st_mtime",
+    "info = os.stat(filename)\nprint(info.st_mode)",
+    "if os.stat(src).st_ino == os.stat(dst).st_ino:\n    return True",
+    "total += entry.stat().st_size",
+    "mode = os.stat(fname)[stat.ST_MODE]",
+    "nbytes = os.lstat(link).st_size",
+    "age = time.time() - p.stat().st_mtime",
+    "files.sort(key=lambda f: os.stat(f).st_mtime)"
+   ],
+   "quiet": [
+    "font = QtGui.QFont()\n        font.setBold(True)",
+    "The orchestra played Tchaikovsky until late in the evening.",
+    "mtime = os.path.getmtime(\"log.txt\")",
+    "if stat.S_ISDIR(mode):\n    print(\"directory\")",
+    "year = time.localtime().tm_year",
+    "files.sort(key=os.path.getmtime)",
+    "Check the file status before uploading the report.",
+    "The stat on page three shows a rise in sales."
+   ]
+  }
+ ],
+ "predictions": "expect >=6/8 fire (chained .stat().st_x strongest), the QtGui.QFont leak near miss may reach ~0.4, other near misses quiet",
+ "short": "the st_ / ST_ prefix of Python stat-result fields",
+ "unit_kind": "token/lexical",
+ "confidence": 0.6,
+ "roles": [
+  "reads bonsai1/L29/N3065+"
+ ],
+ "notes": "Step-in from bonsai1/L29/N3065+ (only two readers found; L33/N1814+ already mapped). Drop is tiny (0.03) and the label has nothing to do with the feeder's 'since X, you can Y' meaning. Feeders-first: top feeders L31/N6062- (file-system/stat code: S_IS, ).st) and L26/N8691- (icon/image paths) are code cells. Also fires more weakly on Qt's QtGui.Q class prefix (0.3-0.4, patchy) and on odd name pieces (Rud-yard Kipling, Jose-y Wales) but not on most split names (Schwarzenegger, Tchaikovsky). + pole is dense (30% of tokens). Test sentences written blind by a second author from the label only; the solver's leak (QtGui.QFont) was placed by that author.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
