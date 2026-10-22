@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-5d13b1f3",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N2502-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:22:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N2502",
+   "pole": "-",
+   "label": "the ':' (or ' vim') of a linter/editor directive in a code comment (# noqa:, # pylint:, # vim:)",
+   "fire": [
+    "import json\n\n\nclass Loader:  # pylint: disable=too-few-public-methods\n    pass\n",
+    "#!/usr/bin/env python\n# noqa: D100\n\nimport os\n",
+    "from setuptools import setup  # noqa: F401\n\nsetup(name='demo')\n",
+    "def handler(event, context):  # pylint: disable=unused-argument\n    return {'ok': True}\n",
+    "import re\n\nPATTERN = re.compile(r'[0-9]+')\n\n# vim: tabstop=4 shiftwidth=4\n",
+    "import os\nimport sys  # noqa: E402\n\nprint(os.getcwd())\n",
+    "    def _helper(self):\n        # pylint: disable=protected-access\n        return self._cache\n",
+    "import argparse\n\nparser = argparse.ArgumentParser()\n# vim: set expandtab\n"
+   ],
+   "quiet": [
+    "import json\n\n\nclass Loader:  # simple container for settings\n    pass\n",
+    "#!/usr/bin/env python\n# Helper script for the build\n\nimport os\n",
+    "from setuptools import setup  # needed for packaging\n\nsetup(name='demo')\n",
+    "def handler(event, context):  # Note: context is unused here\n    return {'ok': True}\n",
+    "import re\n\nPATTERN = re.compile(r'[0-9]+')\n\n# matches one or more digits\n",
+    "import os\nimport sys  # TODO: remove later\n\nprint(os.getcwd())\n",
+    "    def _helper(self):\n        # return the cached value\n        return self._cache\n",
+    "import argparse\n\nparser = argparse.ArgumentParser()  # type: ignore\n"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "linter directive colon",
+ "unit_kind": "lexical",
+ "confidence": 0.7,
+ "notes": "Probe: '# noqa: E265' 0.99, '# vim: set' 0.70, '# pylint: disable' 0.47; '# type: ignore' 0.07, '# -*- coding' 0.11, '# Note:' 0.03, '# TODO:' 0.01, dict colon 0.02."
+}
