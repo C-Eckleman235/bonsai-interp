@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-9eb534d9",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N228+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T19:18:42+00:00",
+ "recipe": {
+  "toolchain_commit": "13e9a2dd",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L8_N228_pos/2026-10-22-lm1909-9eb534d9.tests.json"
+ },
+ "label": "the second '0' of ':00' in an on-the-hour clock time (8:00, 9:00), as in opening hours",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L8_N228_pos/2026-10-22-lm1909-9eb534d9.tests.json",
+   "prereg_commit": "13e9a2dd",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.819,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.489,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.536,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.844,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 1.059,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.585,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.798,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.461,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.115,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.1,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.022,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.069,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.02,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.048,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.083,
+     "peak": " bells"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.022,
+     "peak": " meters"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.692,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "13e9a2dd",
+  "minutes": 11,
+  "batch_size": 16
+ },
+ "short": "':00' clock time",
+ "unit_kind": "lexical",
+ "confidence": 0.6,
+ "notes": "Probe: 8:00/5:00 0.68, 9:00/6:00 0.59, 9:00 am 0.74; 10:30 0.06, 7:05 0.06, 2000 0.10; $7.00 0.36 (left out of near misses).",
+ "selection": "random draw"
+}

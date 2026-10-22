@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-a76d9b93",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N5358+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T19:18:39+00:00",
+ "recipe": {
+  "toolchain_commit": "13e9a2dd",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L3_N5358_pos/2026-10-22-lm1909-a76d9b93.tests.json"
+ },
+ "label": "the compass word 'east' (south-east, north-east, southeast, the east); weaker on '-west'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L3_N5358_pos/2026-10-22-lm1909-a76d9b93.tests.json",
+   "prereg_commit": "13e9a2dd",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.943,
+     "peak": "-east"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.829,
+     "peak": "-east"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.991,
+     "peak": "-east"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.626,
+     "peak": "-east"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.488,
+     "peak": " southeast"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.408,
+     "peak": " east"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.856,
+     "peak": "-east"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.711,
+     "peak": "-east"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.464,
+     "peak": " southern"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.193,
+     "peak": " northern"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.343,
+     "peak": " Europe"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.196,
+     "peak": " north"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.126,
+     "peak": " central"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.114,
+     "peak": " river"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.139,
+     "peak": "R"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.054,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.77,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "13e9a2dd",
+  "minutes": 10,
+  "batch_size": 16
+ },
+ "short": "'east' compass word",
+ "unit_kind": "dense / positional",
+ "confidence": 0.2,
+ "notes": "Card flags broad (9.6% of tokens reach 0.1 of max), gate-closed echo regime 100%, max 1.2: recorded as dense. Probe: -east 0.70-0.97, east 0.73, southeast 0.76, but -west 0.44-0.47, so near misses with west will likely leak.",
+ "selection": "random draw"
+}
