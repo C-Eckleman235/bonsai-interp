@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-21-moridinamael-1aec7a56",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N911-",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T00:09:22+00:00",
+ "recipe": {
+  "toolchain_commit": "fef3f4e5",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N911_neg/2026-10-21-moridinamael-1aec7a56.tests.json"
+ },
+ "label": "The possessive 's when a person's name or 'my/your/his + family word or friend' (my dad's, your mother's, his father's) or 'the + titled person' (the king's, the president's, the captain's) opens a clause's subject, before its verb ('My dad's truck broke down', 'When we arrived, my uncle's boat had left'); about 0.2-0.35 of max. Quiet: the same 's inside an object or after a preposition ('I borrowed my sister's bike', 'the door of the queen's carriage'), 'it's / he's / let's' contractions, and weaker (about 0.1) for non-person owners (the company's, the dog's, the teacher's).",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N911_neg/2026-10-21-moridinamael-1aec7a56.tests.json",
+   "prereg_commit": "fef3f4e5",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.22,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.225,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.156,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.261,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.218,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.306,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.258,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.218,
+     "peak": "'s"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.015,
+     "peak": "'s"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.283,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": -0.002,
+     "peak": " couch"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.001,
+     "peak": " uncle"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.084,
+     "peak": "'s"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": -0.001,
+     "peak": " smell"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.0,
+     "peak": " feast"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.016,
+     "peak": "'s"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.891,
+    "median_fire": 0.223,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "fef3f4e5",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L34/N7462-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L34/N7462-", "to": "bonsai1/L35/N911-", "kind": "feeds", "weight": 0.22, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
