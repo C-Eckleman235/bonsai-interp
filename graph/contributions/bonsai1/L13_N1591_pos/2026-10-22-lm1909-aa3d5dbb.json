@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-aa3d5dbb",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N1591+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:46:40+00:00",
+ "recipe": {
+  "toolchain_commit": "56c604c2",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L13_N1591_pos/2026-10-22-lm1909-aa3d5dbb.tests.json"
+ },
+ "label": "size/shape adjective right after a preposition in botanical descriptions of plant parts ('on slender stalks', 'covered in tiny scales')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L13_N1591_pos/2026-10-22-lm1909-aa3d5dbb.tests.json",
+   "prereg_commit": "56c604c2",
+   "author": "lm1909",
+   "n_fire": 7,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.133,
+     "peak": " slender"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.758,
+     "peak": " slender"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.62,
+     "peak": " tiny"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.798,
+     "peak": " slender"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.6,
+     "peak": " tiny"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.567,
+     "peak": " slender"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.151,
+     "peak": " long"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.478,
+     "peak": " slender"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.178,
+     "peak": "ding"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.035,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.059,
+     "peak": " green"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.068,
+     "peak": " many"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.256,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.057,
+     "peak": " July"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.477,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.059,
+     "peak": " popular"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.953,
+    "median_fire": 0.61,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "56c604c2",
+  "minutes": 7,
+  "batch_size": 16
+ },
+ "short": "plant-part size adjective",
+ "unit_kind": "contextual",
+ "confidence": 0.35,
+ "notes": "Probe: 'on slender stalks' 1.17, 'covered in tiny scales' 0.60, 'on long stalks' 0.44, 'spikes of pale pink' 0.41, 'tall and slender,' 0.47; predicate colour/texture adjectives ('oval, glossy and dark green') 0.04; 'slender woman' 0.22; one off-topic hit ('U.S.' 0.48). Diffuse pole (card density 0.58%, max 8.3), low confidence. Near misses keep the plant description and replace the prep + size/shape adjective with predicate colour/scent/texture.",
+ "selection": "random draw"
+}

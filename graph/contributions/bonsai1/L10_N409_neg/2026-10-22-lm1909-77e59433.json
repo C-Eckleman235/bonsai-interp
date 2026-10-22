@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-77e59433",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N409-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:46:39+00:00",
+ "recipe": {
+  "toolchain_commit": "56c604c2",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N409_neg/2026-10-22-lm1909-77e59433.tests.json"
+ },
+ "label": "quantity adjective in 'in large / small / great / high amounts, quantities, doses' (how much of something is taken or present)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L10_N409_neg/2026-10-22-lm1909-77e59433.tests.json",
+   "prereg_commit": "56c604c2",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 3,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.821,
+     "peak": " large"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.815,
+     "peak": " small"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.789,
+     "peak": " large"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.608,
+     "peak": " great"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.742,
+     "peak": " high"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.828,
+     "peak": " large"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.771,
+     "peak": " small"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.702,
+     "peak": " large"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.056,
+     "peak": " large"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.008,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.032,
+     "peak": " whole"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.36,
+     "peak": " large"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.05,
+     "peak": " amount"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.425,
+     "peak": " big"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.314,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.005,
+     "peak": " disease"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.78,
+    "near_misses_at_0.3": 3
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "56c604c2",
+  "minutes": 7,
+  "batch_size": 16
+ },
+ "short": "in large amounts",
+ "unit_kind": "contextual",
+ "confidence": 0.6,
+ "notes": "Probe: 'in large doses' 0.83, 'in great quantities' 0.61, 'in small amounts' 0.56, 'in high concentrations' 0.54, 'in large numbers' 0.46, 'in droves' 0.38; locative 'in large cities' 0.09, 'a large amount of' 0.01, 'a large dog' 0.005. Near misses keep the substance/health topic and the adjectives in other frames (a large cup, a small amount of, in large forests) but drop the 'in <adj> amounts' construction.",
+ "selection": "random draw"
+}

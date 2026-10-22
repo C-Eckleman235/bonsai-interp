@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-28519f9e",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N5599+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:46:49+00:00",
+ "recipe": {
+  "toolchain_commit": "56c604c2",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L21_N5599_pos/2026-10-22-lm1909-28519f9e.tests.json"
+ },
+ "label": "relative pronoun ' who' / ' where' (also 'whoever') opening a relative clause right after its head noun",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L21_N5599_pos/2026-10-22-lm1909-28519f9e.tests.json",
+   "prereg_commit": "56c604c2",
+   "author": "lm1909",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.245,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.429,
+     "peak": " who"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.283,
+     "peak": " driver"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.247,
+     "peak": " who"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.275,
+     "peak": " where"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.128,
+     "peak": " met"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.1,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.07,
+     "peak": " qui"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.183,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.133,
+     "peak": " surgeon"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.146,
+     "peak": " crash"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.068,
+     "peak": " judge"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.064,
+     "peak": " school"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.006,
+     "peak": " apart"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.063,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.068,
+     "peak": "ie"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.859,
+    "median_fire": 0.246,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "56c604c2",
+  "minutes": 7,
+  "batch_size": 16
+ },
+ "short": "relative who/where",
+ "unit_kind": "contextual",
+ "confidence": 0.4,
+ "notes": "Probe (fraction of max): 'the nurse who answered' 0.37, 'village where' 0.22, 'Whoever' 0.21, relative 'that' after 'printer' only 0.15 (peak elsewhere), complementizer 'said that' 0.07, demonstrative 'that movie' 0.08. Label narrowed to who/where after a head noun because relative 'that' scored low in probe despite top card example. Fire items follow the 'the <person noun> who <verb>' frame that scored highest; near misses keep topic and drop the relative clause.",
+ "selection": "random draw"
+}
