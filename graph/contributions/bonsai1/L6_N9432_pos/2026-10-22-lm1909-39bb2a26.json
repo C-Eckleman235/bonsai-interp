@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-39bb2a26",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N9432+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:44:39+00:00",
+ "recipe": {
+  "toolchain_commit": "a61e8c37",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L6_N9432_pos/2026-10-22-lm1909-39bb2a26.tests.json"
+ },
+ "label": "the surname tail piece after ' Gra' ('aff' / 'af' / 'ff' in Van de Graaff, De Graaf, Graff)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L6_N9432_pos/2026-10-22-lm1909-39bb2a26.tests.json",
+   "prereg_commit": "a61e8c37",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.906,
+     "peak": "aff"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.831,
+     "peak": "aff"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.797,
+     "peak": "aff"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.605,
+     "peak": "af"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.703,
+     "peak": "af"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.803,
+     "peak": "ff"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.855,
+     "peak": "aff"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.651,
+     "peak": "aff"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.015,
+     "peak": " science"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.005,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.023,
+     "peak": " South"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.021,
+     "peak": " dissertation"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.019,
+     "peak": " scored"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.004,
+     "peak": " Grant"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.007,
+     "peak": " by"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.007,
+     "peak": " finally"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.8,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "a61e8c37",
+  "minutes": 6,
+  "batch_size": 16
+ },
+ "short": "Gra-aff surname tail",
+ "unit_kind": "lexical",
+ "confidence": 0.75,
+ "notes": "Probe: Graaff 0.90, Graaf 0.69, Graff 1.07; static-generator paraphrase 0.004, Graham 0.03, Graf 0.04, paraffin 'aff' 0.01 (so not 'aff' alone). Secondary Arabic mode on 'جي' in أجيال (0.41) not tested here.",
+ "selection": "random draw"
+}

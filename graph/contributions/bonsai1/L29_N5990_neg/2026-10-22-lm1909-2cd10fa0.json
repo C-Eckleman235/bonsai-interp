@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-2cd10fa0",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N5990-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:44:27+00:00",
+ "recipe": {
+  "toolchain_commit": "a61e8c37",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L29_N5990_neg/2026-10-22-lm1909-2cd10fa0.tests.json"
+ },
+ "label": "pronoun/idiom slot right after a fronted result clause: French ', il y a' after 'de là à ...', 'so X you don't need', and 'state of affairs'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L29_N5990_neg/2026-10-22-lm1909-2cd10fa0.tests.json",
+   "prereg_commit": "a61e8c37",
+   "author": "lm1909",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.424,
+     "peak": " il"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.253,
+     "peak": " il"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.352,
+     "peak": " il"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.35,
+     "peak": " you"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.134,
+     "peak": " you"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.004,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.182,
+     "peak": " affairs"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.331,
+     "peak": " you"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.105,
+     "peak": "ison"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.193,
+     "peak": "isation"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.042,
+     "peak": " nuit"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.076,
+     "peak": " seasoning"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.0,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.008,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.075,
+     "peak": " situation"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.072,
+     "peak": " sauce"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.859,
+    "median_fire": 0.292,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "a61e8c37",
+  "minutes": 6,
+  "batch_size": 16
+ },
+ "short": "il-y-a / so-X-you / affairs",
+ "unit_kind": "contextual",
+ "confidence": 0.35,
+ "notes": "Probe: French 'de là ..., il y a loin' 0.68, 'state of affairs' 0.38, 'so rich and creamy you don't need' 0.33; object pronouns ~0, 'estimates that it' 0.09, 'If ... doesn't work you' 0.04. No single shared pattern found; label is a list of the three frames that scored. + pole is addressee 'you' in instructions.",
+ "selection": "random draw"
+}

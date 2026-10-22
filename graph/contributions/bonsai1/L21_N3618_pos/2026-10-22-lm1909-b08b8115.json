@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-b08b8115",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N3618+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:44:15+00:00",
+ "recipe": {
+  "toolchain_commit": "a61e8c37",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L21_N3618_pos/2026-10-22-lm1909-b08b8115.tests.json"
+ },
+ "label": "unclear: best guess a head word opening a complement slot ('the time to', 'to find a', 'the bill for', 'passage of')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L21_N3618_pos/2026-10-22-lm1909-b08b8115.tests.json",
+   "prereg_commit": "a61e8c37",
+   "author": "lm1909",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.199,
+     "peak": " time"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.091,
+     "peak": " would"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.097,
+     "peak": " fall"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.097,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.065,
+     "peak": " reality"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.05,
+     "peak": " fixed"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.088,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.005,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.066,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.022,
+     "peak": " soup"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.018,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.019,
+     "peak": "Energy"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.008,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.014,
+     "peak": "These"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.014,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.022,
+     "peak": " simple"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.844,
+    "median_fire": 0.089,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "a61e8c37",
+  "minutes": 6,
+  "batch_size": 16
+ },
+ "short": "complement-slot head (unclear)",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Probe: every sentence <= 0.084 of max, including close paraphrases of the card's top contexts (time to 0.08, bill for 0.08, find a 0.02, passage of 0.01). No hypothesis found; registered as a best guess that is expected to fail.",
+ "selection": "random draw"
+}
