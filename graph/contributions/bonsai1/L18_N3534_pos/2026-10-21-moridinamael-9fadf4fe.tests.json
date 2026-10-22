@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-21-moridinamael-9fadf4fe",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N3534+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T05:54:39+00:00",
+ "roles": ["feeds bonsai1/L21/N1229+"],
+ "neighbours": [
+  {
+   "unit": "L18/N3534",
+   "pole": "+",
+   "label": "The word ' so' placed right after an action (a verb or its object) or a noun and leading into what follows from it: purpose or result ('she tied the boat up so it would not drift', 'the boiler failed so the school shut'), and also 'so ADJ that' straight after a noun ('a cliff so steep that'). Strongest with no comma before 'so'. Weak (under about 0.3) for 'so' meaning 'very' after is/was/felt ('the tea is so sweet'), weaker for ', so' after an is/was clause, and quiet for fixed phrases ('if so', 'or so', 'even so', 'and so on', 'so-called') and for the same link made without 'so' ('therefore', 'because', 'in order to').",
+   "short": "' so' (so that / as a result) right after an action",
+   "unit_kind": "context",
+   "confidence": "medium",
+   "notes": "Test sentences written blind by a second author from the label only. Probing: purpose/result 'so' glued to an action read 0.40-0.82, 'so' meaning 'very' after is/was 0.17-0.26, ', so' after a was-ADJ clause 0.13-0.19, fixed phrases 0.02-0.15. Solver (DE) leak: 'Our llama is so fluffy' (0.26 solo, 0.31 assembled). play step ran out of GPU memory; feeder picked from the resident attribution ranking, so no ablation drop was measured.",
+   "fire": [
+    "She tied the boat up so it would not drift away overnight.",
+    "The boiler failed so the school shut for the rest of the week.",
+    "He left the porch light on so his sister could find the house.",
+    "They built a wall so high that nobody could see the garden.",
+    "We packed extra blankets so the children would stay warm on the train.",
+    "The road was blocked by a fallen tree so the bus took the long way round.",
+    "It was a cliff so steep that even the goats avoided it.",
+    "Mark the boxes clearly so the movers know which room they belong in."
+   ],
+   "quiet": [
+    "Even so, the kazoo band played on.",
+    "Is the ferry late? If so, we walk.",
+    "She tied the boat up to stop it drifting away overnight.",
+    "The boiler failed, and therefore the school shut for the rest of the week.",
+    "He left the porch light on in order that his sister could find the house.",
+    "They built a very high wall, and nobody could see the garden.",
+    "We packed extra blankets because the train is always cold.",
+    "The road was blocked by a fallen tree; the bus took the long way round."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire above 0.20, no near miss above 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "bank-solo",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
