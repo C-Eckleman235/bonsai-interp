@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-b56204b3",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N11674+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:19:58+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N11674",
+   "pole": "+",
+   "label": "dense layer-1 unit with a tiny maximum; strongest on a few word pieces (Russian 'рю' in Брюссель, 'ely' in Nicely, ' Milwaukee'), weakly on much other text",
+   "fire": [
+    "Летом мы поехали в Брюссель и гуляли по старому городу.",
+    "The team flew to Milwaukee for the second game of the series.",
+    "It was a nicely made chair, and Nicely was the carpenter's name too.",
+    "Штаб-квартира находится в Брюсселе, недалеко от парка.",
+    "Her cousin moved to Milwaukee after college and opened a bakery.",
+    "The menu read: Nicely grilled fish with lemon and herbs.",
+    "Переговоры в Брюсселе продолжались до позднего вечера.",
+    "The old brewery in Milwaukee now houses a small museum."
+   ],
+   "quiet": [
+    "Летом мы поехали в Париж и гуляли по старому городу.",
+    "The team flew to Denver for the second game of the series.",
+    "It was a well made chair, and Smith was the carpenter's name too.",
+    "Штаб-квартира находится в Лондоне, недалеко от парка.",
+    "Her cousin moved to Denver after college and opened a bakery.",
+    "The menu read: Grilled fish with lemon and herbs.",
+    "Переговоры в Вене продолжались до позднего вечера.",
+    "The old brewery in Denver now houses a small museum."
+   ]
+  }
+ ],
+ "predictions": "likely to fail as a dense unit; 'рю' 0.859, Nicely 'ely' 0.867, Milwaukee 0.645, Concurrently 0.180; controls 0.071-0.181, near misses will fire weakly",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense: 'рю', 'ely', Milwaukee",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Card: dense (20.5% of tokens at 0.1 of max), max 0.20, gate-closed echo regime; peaks 'рю', 'art', 'et', 'ly'. Probe: Брюсселе 0.859, Nicely 0.867, Milwaukee 0.645; English Brussels 0.071, dog-by-fire control 0.181."
+}
