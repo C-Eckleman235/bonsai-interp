@@ -1,0 +1,46 @@
+{
+ "contribution": "2026-10-21-moridinamael-c46e4489",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N11883+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T03:44:18+00:00",
+ "roles": ["reads bonsai1/L27/N6013-"],
+ "neighbours": [
+  {
+   "unit": "L35/N11883",
+   "pole": "+",
+   "label": "Arabic على ('on') followed by the split-off first letter of a noun right after a verb of taking, carrying or sitting: أخذ على عاتقه (took upon his shoulders), حمل على كتفه (carried on his shoulder), جلس على عرشه (sat on his throne). Quiet for the same nouns after other verbs (ألقى/يقع على عاتق), for whole words after على (على علم, على كرسيه), for ع-words after other prepositions (إلى عمله, عن عمل), and in English or Greek.",
+   "fire": [
+    "أخذ الوزير على عاتقه مهمة إصلاح التعليم في البلاد.",
+    "حمل الأب طفله الصغير على كتفه وسار به إلى السوق.",
+    "جلس الملك على عرشه واستقبل الوفود القادمة من الشرق.",
+    "أخذت المعلمة على عاتقها تدريب الطلاب الجدد.",
+    "حمل الجندي حقيبته على ظهره وانطلق في الطريق الجبلي.",
+    "بعد وفاة والده، جلس الأمير الشاب على عرشه لأول مرة.",
+    "حملت المرأة جرة الماء على رأسها وعادت إلى القرية.",
+    "قررت الجمعية أن تأخذ على عاتقها رعاية الأيتام في الحي."
+   ],
+   "quiet": [
+    "ألقى الوزير على عاتق اللجنة مهمة إصلاح التعليم في البلاد.",
+    "تقع مسؤولية الأمن على عاتق الحكومة وحدها.",
+    "كان الأب على علم بأن طفله ينتظره في السوق.",
+    "جلس الملك على كرسيه واستقبل الوفود القادمة من الشرق.",
+    "ذهبت المعلمة إلى عملها مبكرًا لتدريب الطلاب الجدد.",
+    "سأل الجندي عن عمل جديد قبل أن ينطلق في الطريق الجبلي.",
+    "The father carried his small child on his shoulder to the market.",
+    "The king sat on his throne and received the delegations."
+   ]
+  }
+ ],
+ "predictions": "COLD arm (reader labelled from its own tops and probes only). Expect the عاتق/عرش/كتف items to fire; ظهره/رأسها are unprobed and may be whole tokens.",
+ "notes": "Step-in reader of bonsai1/L27/N6013- (generic tip 'you'). play step --down crashed (ValueError, same shape; see .stream note), so the reader was found with play why 'If the paint is still wet, you' -> ' can', where this pole sat on ' you' (zeroing it: -0.69 logprob). Tip 'you' itself reads only ~0.11 of max; the label is about the reader's own tops and has little to do with the feeder. Logit effect suppresses 'should' in many languages. Japanese/Korean/Chinese tops (店|舗, 応|答, 응|답, 政|府) did not reproduce in short probes. Solver round timed out.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe"
+  ]
+ }
+}
