@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-21-moridinamael-368aba73",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N8802+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T01:31:19+00:00",
+ "recipe": {
+  "toolchain_commit": "8386e5a6",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N8802_pos/2026-10-21-moridinamael-368aba73.tests.json"
+ },
+ "label": "The split-off word piece 'ache' or 'ene' inside a longer word broken into pieces (moustache, mustache, toothache, stomachache, trachea, kerosene, toluene, benzene), with the word mid-sentence. Quiet on words that are one whole token (headache, ache, cache, scene, serene) and on graphene, styrene, gangrene. Also fires, more weakly, on the German word 'Sachen'.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N8802_pos/2026-10-21-moridinamael-368aba73.tests.json",
+   "prereg_commit": "8386e5a6",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.407,
+     "peak": " Sach"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.571,
+     "peak": "ache"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.292,
+     "peak": "ache"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.558,
+     "peak": "ache"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.554,
+     "peak": "ache"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.537,
+     "peak": "ache"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.843,
+     "peak": "ene"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.768,
+     "peak": "ene"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.08,
+     "peak": "iosity"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.091,
+     "peak": " his"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.031,
+     "peak": " sore"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.039,
+     "peak": " three"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.047,
+     "peak": " stored"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.071,
+     "peak": "pipe"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.03,
+     "peak": " came"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.021,
+     "peak": " praised"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.556,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "8386e5a6",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step from bonsai1/L23/N1876-. play step OOMed on the GPU (resident model loaded); feeder chosen from the resident attribution ranking (top MLP feeder), so no edge weight is recorded. Chat was quiet; house picks. Inverse solver (DE) found a leak on German 'Sachen' (' Sach' ~0.4), named in the label as weaker firing.",
+ "roles": [
+  "feeds bonsai1/L23/N1876-"
+ ]
+}
