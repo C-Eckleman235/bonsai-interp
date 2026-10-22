@@ -1,0 +1,153 @@
+{
+ "id": "2026-10-22-lm1909-f2267e65",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N3829-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:24:00+00:00",
+ "recipe": {
+  "toolchain_commit": "265a0bc5",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L28_N3829_neg/2026-10-22-lm1909-f2267e65.tests.json"
+ },
+ "label": "the connective (' to' / ' and') right before a step up to a higher level in two narrow settings: an electron jumping or moving to a higher energy level, and the purpose ' to' after needing to lose weight ('need to lose 10% of their weight to get ...'); a list of two contexts, not a general 'change of state' detector",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L28_N3829_neg/2026-10-22-lm1909-f2267e65.tests.json",
+   "prereg_commit": "265a0bc5",
+   "author": "lm1909",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.398,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.302,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.21,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.406,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.307,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.23,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.271,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.198,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.006,
+     "peak": " stays"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.004,
+     "peak": " charge"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.007,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.006,
+     "peak": " laboratory"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.003,
+     "peak": " often"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.004,
+     "peak": " sugar"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.005,
+     "peak": " they"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.007,
+     "peak": "He"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.286,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [],
+  "toolchain_commit": "265a0bc5",
+  "minutes": 2,
+  "batch_size": 1
+ },
+ "short": "step up: excited electrons, weight-loss 'to'",
+ "unit_kind": "contextual",
+ "confidence": 0.3,
+ "notes": "Step-out from the + pole (#567). Three probe rounds, 56 sentences. Card: max 97, very sparse (0.075% > 0.1 max), peaks on ' to' x11. Fires: 'may need to lose 10% of their weight to get the same benefit' 0.51, 'need to lose a lot of weight to reduce' 0.30, 'electrons jump to a higher shell and then fall back' 0.30, 'absorbs a photon and moves up to a higher energy level' 0.27, 'causing electrons to move into higher orbits' 0.22, 'this little startup will be recognised as a giant' 0.27. Does not generalise to other upward changes: promotion 0.00, 'moved up to the next grade' 0.01, 'turns into steam' 0.03, 'practise for weeks to get the same results' 0.06, 'cut back by half to see the same drop' 0.02, plain purpose 'to' (to swim, to buy) < 0.02. So the label is a list of two contexts; the shared idea (stepping up to a higher level) is only a guess. The 'will' after a change event lead from #567 was weak here (0.03-0.13).",
+ "selection": "step-out from bonsai1/L28/N3829+"
+}
