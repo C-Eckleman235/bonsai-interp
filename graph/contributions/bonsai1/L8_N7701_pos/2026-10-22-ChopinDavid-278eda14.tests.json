@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-278eda14",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N7701+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T22:20:06+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L8/N7701",
+   "pole": "+",
+   "label": "separators between aligned keys and values in code tables (padded ':' and '=' columns)",
+   "fire": [
+    "config = {\n    \"host\"      : \"localhost\",\n    \"port\"      : 8080,\n    \"workers\"   : 4,\n}",
+    "class Color(Enum):\n    RED     = 1\n    GREEN   = 2\n    BLUE    = 3",
+    "DEFAULTS = {\n    'width'  : 640,\n    'height' : 480,\n    'depth'  : 24,\n}",
+    "ERR_NONE        = 0,\nERR_TIMEOUT     = 1,\nERR_NO_MEMORY   = 2,\nERR_BAD_INPUT   = 3,",
+    "params = dict(\n    lr        = 0.001,\n    momentum  = 0.9,\n    decay     = 1e-4,\n)",
+    "ENTITIES = {'amp;': '&', 'lt;': '<', 'gt;': '>', 'quot;': '\"', 'apos;': \"'\"}",
+    "LEVELS = ['Low',     # under 10\n          'Medium',  # 10 to 50\n          'High',    # over 50\n]",
+    "opts = {\n    \"verbose\"    : True,\n    \"dry_run\"    : False,\n    \"retries\"    : 3,\n}"
+   ],
+   "quiet": [
+    "The recipe needs three things: flour, water and a pinch of salt.",
+    "Note: the office will be closed on Friday for the holiday.",
+    "Our plan for the weekend is simple: hike in the morning and rest after lunch.",
+    "She wrote the total at the bottom of the page and underlined it twice.",
+    "The meeting agenda covered budgets, hiring and the new office lease.",
+    "Ingredients: two eggs, a cup of milk and some butter for the pan.",
+    "He paused, looked at the list again, and crossed out the last item.",
+    "The scoreboard showed the home team ahead by three points at halftime."
+   ]
+  }
+ ],
+ "predictions": "Weak pole: padded dict and enum tables may reach 0.15-0.3; prose with colons and single assignments stay near zero. Likely fails on median.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "aligned key/value separators",
+ "unit_kind": "unclear",
+ "confidence": "low",
+ "notes": "Probe: padded dict '\"timeout\"   : ...' 0.318, '# comment' list 0.191, enum 'JOB_ERROR = 35' 0.153, 'x = 5' -0.001, prose 0.014. Max is small (19); card peaks on ' =', \"':\", ' #', newlines."
+}
