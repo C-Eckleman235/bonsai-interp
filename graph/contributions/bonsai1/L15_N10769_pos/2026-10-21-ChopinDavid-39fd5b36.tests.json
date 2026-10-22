@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-ChopinDavid-39fd5b36",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N10769+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T04:20:18+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L15/N10769",
+   "pole": "+",
+   "label": "a calendar or time-unit token right after a number in Chinese text (日, 月份, 周五, 年前): the date slot of a sentence",
+   "fire": [
+    "警方表示，嫌疑人于3月12日晚上被捕。",
+    "这家公司计划在明年五月份上市。",
+    "法院定于周三开庭审理此案。",
+    "考古学家发现，这座城市约在两千年前被废弃。",
+    "据报道，总统将于10月8日访问北京。",
+    "学校通知学生们，下周一正式开学。",
+    "她说自己在2015年6月20日离开了家乡。",
+    "研究人员认为这些化石形成于约一万年前。"
+   ],
+   "quiet": [
+    "警方表示，嫌疑人在家中被捕。",
+    "这家公司计划扩大海外市场。",
+    "法院决定公开审理此案。",
+    "考古学家发现，这座城市曾经非常繁荣。",
+    "据报道，总统将访问北京并发表演讲。",
+    "学校通知学生们，必须穿校服上课。",
+    "她说自己很早就离开了家乡。",
+    "研究人员认为这些化石保存得很好。"
+   ]
+  }
+ ],
+ "predictions": "Fires on 日/月/周X/年前 after a numeral in Chinese sentences; weaker on the same kind of Chinese sentence with no date.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "CJK date unit after number",
+ "unit_kind": "dense / positional",
+ "confidence": 0.35,
+ "notes": "Card flags dense (25.9% of tokens >0.1 max) and gate-closed echo regime. Probes: '8月5日' 0.71, '三月份' 0.59, '周五' 0.62, '7千年前' 0.50; Chinese sentence without a date 0.14; English '12 or older' 0.52 on the digit (so not CJK-only). Dense: near misses will sit near 0.1-0.2."
+}

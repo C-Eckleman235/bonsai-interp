@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-ChopinDavid-39fd5b36",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N10769+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T04:27:02+00:00",
+ "recipe": {
+  "toolchain_commit": "25de1ab",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L15_N10769_pos/2026-10-21-ChopinDavid-39fd5b36.tests.json"
+ },
+ "label": "a calendar or time-unit token right after a number in Chinese text (日, 月份, 周五, 年前): the date slot of a sentence",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L15_N10769_pos/2026-10-21-ChopinDavid-39fd5b36.tests.json",
+   "prereg_commit": "25de1ab",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 3,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.596,
+     "peak": "日晚"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.727,
+     "peak": "五"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.551,
+     "peak": "周三"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.387,
+     "peak": "年前"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.497,
+     "peak": "月"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.405,
+     "peak": "周一"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.551,
+     "peak": "月"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.25,
+     "peak": "人"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.347,
+     "peak": "家中"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.181,
+     "peak": "这家公司"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.113,
+     "peak": "公开"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.338,
+     "peak": "学家"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.32,
+     "peak": "总统"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.161,
+     "peak": "通知"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.216,
+     "peak": "她说"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.295,
+     "peak": "保存"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.524,
+    "near_misses_at_0.3": 3
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "25de1ab",
+  "minutes": 0,
+  "batch_size": 16
+ },
+ "short": "CJK date unit after number",
+ "unit_kind": "dense / positional",
+ "confidence": 0.35,
+ "notes": "Card flags dense (25.9% of tokens >0.1 max) and gate-closed echo regime. Probes: '8月5日' 0.71, '三月份' 0.59, '周五' 0.62, '7千年前' 0.50; Chinese sentence without a date 0.14; English '12 or older' 0.52 on the digit (so not CJK-only). Dense: near misses will sit near 0.1-0.2.",
+ "selection": "random draw"
+}
