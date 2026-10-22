@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-22-moridinamael-98e3f78f",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6129+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T11:49:53+00:00",
+ "roles": ["reads bonsai1/L31/N8934+"],
+ "neighbours": [
+  {
+   "unit": "L35/N6129",
+   "pole": "+",
+   "label": "pieces of an uncommon or foreign word that the tokenizer splits into several chunks, in any language (rare English nouns and surnames, Japanese/Chinese/Korean/Russian words); sentences made only of common whole words stay quiet, even in French or German",
+   "short": "pieces of rare or foreign split words",
+   "unit_kind": "dense / positional",
+   "fire": [
+    "People in Greece used kelp to feed their cattle around the first century B.C.",
+    "The museum's newest exhibit features a carved ichthyosaur skeleton found near the cliffs.",
+    "Professor Wojciechowski handed back the exams on Thursday morning.",
+    "We ordered okonomiyaki and takoyaki at the little stall by the station.",
+    "Her grandmother always said 'nichevo' whenever something went wrong.",
+    "The garden was overrun with knotweed and a strange lichen called Xanthoria.",
+    "He studied the palimpsest under ultraviolet light for hours.",
+    "In Seoul we tried tteokbokki from a street vendor near Myeongdong."
+   ],
+   "quiet": [
+    "The meeting was long and it ended very late.",
+    "The museum's newest exhibit features a large fish skeleton found near the cliffs.",
+    "The teacher handed back the exams on Thursday morning.",
+    "We ordered noodles and soup at the little stall by the station.",
+    "Her grandmother always said it was fine whenever something went wrong.",
+    "The garden was overrun with weeds and some green moss on the rocks.",
+    "He studied the old page under a bright light for hours.",
+    "Le petit chat dort sur la chaise près de la fenêtre."
+   ]
+  }
+ ],
+ "predictions": "Blind test written by a second author from the label only. Expect most fire items 0.2-0.4 and near misses near 0.07; the kelp sentence (solver leak, solo 0.10) likely misses. Pole is dense (19.5% of tokens at 0.1 of max), so the median bar is the risk.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "blind-room"
+  ]
+ }
+}
