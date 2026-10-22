@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-21-moridinamael-caed0365",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N3481+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T02:12:24+00:00",
+ "recipe": {
+  "toolchain_commit": "fb356eaa",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N3481_pos/2026-10-21-moridinamael-caed0365.tests.json"
+ },
+ "label": "the exact tokens ' pours', ' piss', ' SDK' and all-caps ' BUY' mid-sentence (weaker: ' ten', ' on', Korean 추, Chinese 戈); other forms (pour, poured, pouring, pissed, buy, Buy) and synonyms (purchase, urine, library) stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N3481_pos/2026-10-21-moridinamael-caed0365.tests.json",
+   "prereg_commit": "fb356eaa",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.752,
+     "peak": "戈"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.647,
+     "peak": " pours"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.46,
+     "peak": " pours"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.511,
+     "peak": " pours"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.56,
+     "peak": " SDK"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.717,
+     "peak": " SDK"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.52,
+     "peak": " SDK"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.745,
+     "peak": " BUY"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.311,
+     "peak": " 인"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.017,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.235,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.416,
+     "peak": "ten"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.107,
+     "peak": " makes"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.046,
+     "peak": " latest"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.082,
+     "peak": " version"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.145,
+     "peak": " in"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.604,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "fb356eaa",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L2/N11855-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L0/N3481+", "to": "bonsai1/L2/N11855-", "kind": "feeds", "weight": null, "method": "attribution rank 1 of 12 MLP feeders on the target's top 4 examples (resident feeders tool; play step ablation hit CUDA OOM)"}
+ ]
+}
