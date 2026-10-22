@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-22-moridinamael-3c2a0b62",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N7991-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T23:29:26+00:00",
+ "roles": ["feeds bonsai1/L23/N55+"],
+ "neighbours": [
+  {
+   "unit": "L21/N7991",
+   "pole": "-",
+   "label": "The opening piece of a katakana word that the tokenizer splits into several pieces, loanword, name or native/onomatopoeia (e.g. ワ in ワクワク, ア in アドレナリン, スペ in スペイン, カ in カマキリ), in Japanese or mixed text. Weaker (about 0.2-0.5 of max) on common katakana words that are one whole token (テレビ, バス, コーヒー) and on Korean Hangul text of any kind; kanji and hiragana words in the same slot stay low (about 0.1-0.3).",
+   "short": "opening piece of a split katakana word",
+   "fire": [
+    "明日の遠足が楽しみで、子どもたちはワクワクしている。",
+    "試合の最後の瞬間、アドレナリンが一気に出た。",
+    "夏休みにスペインとポルトガルを旅行しました。",
+    "庭の草むらで大きなカマキリを見つけた。",
+    "新しいスマートフォンのアプリケーションをダウンロードした。",
+    "彼はシェイクスピアの作品を原文で読むのが好きだ。",
+    "週末はキャンプ場でバーベキューをする予定です。",
+    "雨がザーザー降っていて、外に出られない。"
+   ],
+   "quiet": [
+    "Kīlauea is pronounced [kiːlaʊˈeɪ.ə] in English.",
+    "And since 2008 Mammoth has been host to Mammoth Pow-Wow a yearly music and camp festival held in Yamanashi Japan that brings the various aspects of Mammoth under a single sky.",
+    "明日の遠足が楽しみで、子どもたちは心が躍っている。",
+    "試合の最後の瞬間、体中に力がみなぎった。",
+    "夏休みに韓国と中国を旅行しました。",
+    "庭の草むらで大きな蛙を見つけた。",
+    "新しい携帯電話に便利な道具を入れた。",
+    "彼は夏目漱石の作品を原文で読むのが好きだ。"
+   ]
+  }
+ ],
+ "predictions": "8/8 fire above 0.5; near misses mostly 0.1-0.3, the kanji/hiragana twins the closest",
+ "notes": "Step from bonsai1/L23/N55+. play step ran out of GPU memory on stream, so the feeder was chosen from the resident attribution ranking (chat feeders tool, top MLP feeder); no ablation drop measured, so no edge weight is recorded. Test sentences written blind by a second author from the label only; the solver's leak texts were placed by that author.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
