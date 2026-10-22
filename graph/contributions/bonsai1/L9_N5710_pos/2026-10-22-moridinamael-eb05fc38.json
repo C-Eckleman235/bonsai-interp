@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-22-moridinamael-eb05fc38",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N5710+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T17:11:16+00:00",
+ "recipe": {
+  "toolchain_commit": "349e2a52",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L9_N5710_pos/2026-10-22-moridinamael-eb05fc38.tests.json"
+ },
+ "label": "In English, the preposition (in, with, at, by, through) directly after a noun for manner, speed or method (way, manner, order, speed, pace, rate, frequency, ease, method, means, mechanism, process), as in 'the speed with which'; it fires on the preposition itself. Quiet for the same prepositions after place, time or situation nouns (a village in which, the year in which), after style or fashion, and for these nouns in ordinary phrases ('with ease', 'at speed', 'in a strange manner').",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L9_N5710_pos/2026-10-22-moridinamael-eb05fc38.tests.json",
+   "prereg_commit": "349e2a52",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.378,
+     "peak": " with"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.442,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.864,
+     "peak": " at"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.709,
+     "peak": " with"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.486,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.754,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.858,
+     "peak": " by"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.464,
+     "peak": " at"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.044,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.061,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.024,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.004,
+     "peak": " surprising"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.031,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.004,
+     "peak": " haste"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.031,
+     "peak": " at"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.006,
+     "peak": " making"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.732,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "349e2a52",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "short": "preposition after a manner/speed/method noun ('the speed with')",
+ "notes": "Step-out feeder of L11/N6709+. play step ran out of GPU memory on stream, so the feeder was picked from the resident attribution ranking (top MLP feeder); no ablation drop measured, so no edge weight recorded. Test written blind by a second author from the label only. Inverse solver (DE) found no leak; near-miss ceiling 0.12 (place/time nouns before 'in which').",
+ "roles": [
+  "feeds bonsai1/L11/N6709+"
+ ]
+}
