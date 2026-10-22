@@ -1,0 +1,166 @@
+{
+ "id": "2026-10-22-moridinamael-4c8303d3",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N11457+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T16:27:57+00:00",
+ "recipe": {
+  "toolchain_commit": "5b283b1e",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N11457_pos/2026-10-22-moridinamael-4c8303d3.tests.json"
+ },
+ "label": "Inside a rare multi-piece name (on its later word-pieces) that is copied again on line after line of an English list, table, schedule or reference list (strongest with 4+ repeated lines), or a long identifier reused in code. Quiet for a list of different names, for the same name repeated in ordinary prose sentences, for a single line, and for a short common word repeated (milk, gym).",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N11457_pos/2026-10-22-moridinamael-4c8303d3.tests.json",
+   "prereg_commit": "5b283b1e",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 4,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.382,
+     "peak": "ka"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.323,
+     "peak": ")."
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": -0.054,
+     "peak": " |"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.371,
+     "peak": "and"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": -0.062,
+     "peak": "Velocity"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.178,
+     "peak": "ky"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.061,
+     "peak": ":"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.586,
+     "peak": "water"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.068,
+     "peak": " Pike"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": -0.075,
+     "peak": "ka"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.306,
+     "peak": ")."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.423,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": -0.185,
+     "peak": ":"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": -0.482,
+     "peak": " scale"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": -0.24,
+     "peak": "-"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.119,
+     "peak": ":"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.891,
+    "median_fire": 0.251,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "5b283b1e",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L34/N10493+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L34/N10493+",
+   "to": "bonsai1/L35/N11457+",
+   "kind": "feeds",
+   "weight": 0.02,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
