@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-21-moridinamael-fdfed4ee",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N11621-",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T00:43:48+00:00",
+ "recipe": {
+  "toolchain_commit": "5e0bfcf2",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L24_N11621_neg/2026-10-21-moridinamael-fdfed4ee.tests.json"
+ },
+ "label": "A helper verb that jumps ahead of its subject after a fronted place or source phrase, mainly passive inversion in French or English ('Dans ce rapport sont décrites les causes', 'In this report are described the causes', 'Along the river can be found orchids', 'Au sommet se trouve un moulin'); fires on the helper (are/is/can be/sont/est/se). Quiet for the same helper in normal subject-first order, in yes/no questions, and in German verb-second order.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L24_N11621_neg/2026-10-21-moridinamael-fdfed4ee.tests.json",
+   "prereg_commit": "5e0bfcf2",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.663,
+     "peak": " are"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.424,
+     "peak": " be"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.36,
+     "peak": " se"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.017,
+     "peak": " were"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.439,
+     "peak": " taken"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.201,
+     "peak": " sont"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.034,
+     "peak": " director"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.385,
+     "peak": " se"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.01,
+     "peak": " described"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.024,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.03,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.036,
+     "peak": "Are"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.007,
+     "peak": " is"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.014,
+     "peak": "és"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.015,
+     "peak": "?"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.022,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.922,
+    "median_fire": 0.372,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "5e0bfcf2",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "notes": "Step-out feeder of bonsai1/L26/N338-, chosen from the resident attribution ranking (top MLP feeder) because play step hit CUDA OOM; no ablation drop measured. Solver (DE): no leak; 'There waits my' (top) 0.98.",
+ "roles": [
+  "feeds bonsai1/L26/N338-"
+ ]
+}
