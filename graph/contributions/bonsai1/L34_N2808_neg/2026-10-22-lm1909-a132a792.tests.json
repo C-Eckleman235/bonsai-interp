@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-a132a792",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N2808-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:24:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N2808",
+   "pole": "-",
+   "label": "single-letter onset piece ' h' / ' H' / ' N' that begins a word split into several tokens (h+opped, H+anoi, N+amp+ula)",
+   "fire": [
+    "The brewers said the new ale is heavily hopped with citrus varieties.",
+    "This lager is lightly hopped, so it tastes smooth and a little sweet.",
+    "A small frog hopped onto the lily pad and sat very still.",
+    "Our flight from Bangkok landed in Hanoi just after midnight.",
+    "The old quarter of Hanoi is full of narrow streets and street food.",
+    "Aid trucks reached the province of Nampula after the cyclone.",
+    "Fishermen on the shores of Lake Nyanza sell their catch at dawn.",
+    "From the airport in Hilo we drove up toward the volcano."
+   ],
+   "quiet": [
+    "The brewers said the new ale is brewed with plenty of citrus hops.",
+    "This lager is lightly filtered, so it tastes smooth and a little sweet.",
+    "A small frog jumped onto the lily pad and sat very still.",
+    "Our flight from Bangkok landed in Houston just after midnight.",
+    "The old quarter of Havana is full of narrow streets and street food.",
+    "Aid trucks reached the outskirts of Nairobi after the floods.",
+    "Fishermen on the shores of the lake in Nepal sell their catch at dawn.",
+    "From the airport in Hamilton we drove up toward the hills."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-word H/h/N onset",
+ "unit_kind": "lexical",
+ "confidence": 0.5,
+ "notes": "Probe: ' h' in 'heavily hopped' 0.81, 'rabbit hopped' 0.36, ' H' in Hanoi 0.42, ' N' in Nampula 0.24, Hikaru 0.21, HDFS 0.11, Hmong only 0.04; whole-token Hamburg/Helsinki 0.002. Tokenizer checked: hopped=h+opped, Hanoi=H+anoi, Nampula=N+amp+ula, Nyanza=N+yan+za, Hilo=H+ilo; near-miss words (hops, hopping, Houston, Havana, Nairobi, Nepal, Hamilton, jumped) are single tokens. Late-layer spelling-continuation pole; fire weighted toward the frames that scored highest (hopped, Hanoi)."
+}
