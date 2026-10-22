@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-22-moridinamael-3af08c29",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N3976-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T09:20:45+00:00",
+ "neighbours": [
+  {
+   "unit": "L35/N3976",
+   "pole": "-",
+   "label": "the piece ' д' that starts the Russian word for 'door' (дверь, двери, дверью, дверца; tokenized ' д' + 'верь'), mid-sentence after an adjective, preposition or verb (входную дверь, постучал в дверь); quiet on other Russian д- words (двор, дача, дыня), on 'door' in English, French or German, and when the door word opens the sentence",
+   "short": "' д' starting Russian 'door' (дверь)",
+   "unit_kind": "token",
+   "confidence": "medium",
+   "notes": "Step-in reader of bonsai1/L32/N8965+ (non-English split word pieces), drop 0.04. Far narrower than its feeder: probes put door words at 0.17-0.58 and other д- words (дыни, детскую, даче, двор, дворник) at or below 0.1. Feeders-first arm: top feeders are ' Im' surname pieces (L25/N8666+) and 'при' cells, consistent with word-start pieces. Solver timed out; no leak report. Blind test written by a label-only author.",
+   "roles": ["reads bonsai1/L32/N8965+"],
+   "fire": [
+    "Он тихо закрыл входную дверь и пошёл спать.",
+    "Мама попросила меня открыть дверь гостям.",
+    "За тяжёлой дубовой дверью слышались голоса.",
+    "Ключ никак не поворачивался в замке старой двери.",
+    "Она толкнула дверцу шкафа, и та со скрипом отворилась.",
+    "Кот сидел у двери и ждал, когда его выпустят.",
+    "Мы покрасили все двери в доме в белый цвет.",
+    "Не забудь запереть дверь, когда будешь уходить."
+   ],
+   "quiet": [
+    "Он тихо закрыл входное окно и пошёл спать.",
+    "Кто-то громко постучал в ворота посреди ночи.",
+    "Мама попросила меня подмести двор перед приходом гостей.",
+    "За высоким забором дачи слышались голоса.",
+    "Ключ никак не поворачивался в замке старого сундука.",
+    "Она купила спелую дыню, и та оказалась очень сладкой.",
+    "Дверь была приоткрыта, и кот выскользнул наружу.",
+    "He quietly closed the front door and went to bed."
+   ]
+  }
+ ],
+ "predictions": "most door sentences fire around 0.2-0.5; near misses under 0.1; median fire near the 0.20 bar is the main risk",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "neighbors",
+   "quick-test"
+  ]
+ }
+}
