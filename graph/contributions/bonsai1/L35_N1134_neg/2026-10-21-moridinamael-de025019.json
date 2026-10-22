@@ -1,0 +1,170 @@
+{
+ "id": "2026-10-21-moridinamael-de025019",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N1134-",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T05:24:55+00:00",
+ "recipe": {
+  "toolchain_commit": "f62efc21",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N1134_neg/2026-10-21-moridinamael-de025019.tests.json"
+ },
+ "label": "The first letter or two of a less common proper name (surname, place, drug brand) when the earlier words already give away who or what it is, so the model is recalling the rest of the name (e.g. 'the deputy PM in the Lib Dem coalition, Nick C|legg'); the same name with no identifying context stays quiet, and very common names that are one chunk (Jobs, Merkel, Ferguson) stay quiet.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N1134_neg/2026-10-21-moridinamael-de025019.tests.json",
+   "prereg_commit": "f62efc21",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 3,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.545,
+     "peak": " C"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.641,
+     "peak": " S"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.027,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.05,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.333,
+     "peak": " M"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.113,
+     "peak": " S"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.175,
+     "peak": " Ni"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": -0.02,
+     "peak": " jailed"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": -0.002,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.404,
+     "peak": " S"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.038,
+     "peak": "aj"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.017,
+     "peak": "ei"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.029,
+     "peak": " M"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.065,
+     "peak": " S"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.007,
+     "peak": "em"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.02,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.742,
+    "median_fire": 0.144,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "f62efc21",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "short": "opening piece of a name the context gives away",
+ "confidence": "low",
+ "notes": "Step-in reader of bonsai1/L33/N1660- (drop 0.29, found with --candidates 96). Feeders first: top feeders L33/N11485- and L34/N10311- are number-word / multi-piece numeral cells (unlabelled). Resident probe read ~0.1 on verbatim tops where play probe read 0.78-1.04, so all probing used play probe. Test written blind by a label-only author.",
+ "roles": [
+  "reads bonsai1/L33/N1660-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L33/N1660-",
+   "to": "bonsai1/L35/N1134-",
+   "kind": "feeds",
+   "weight": 0.29,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}

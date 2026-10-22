@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-21-moridinamael-de025019",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N1134-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T05:24:33+00:00",
+ "roles": ["reads bonsai1/L33/N1660-"],
+ "neighbours": [
+  {
+   "unit": "L35/N1134",
+   "pole": "-",
+   "label": "The first letter or two of a less common proper name (surname, place, drug brand) when the earlier words already give away who or what it is, so the model is recalling the rest of the name (e.g. 'the deputy PM in the Lib Dem coalition, Nick C|legg'); the same name with no identifying context stays quiet, and very common names that are one chunk (Jobs, Merkel, Ferguson) stay quiet.",
+   "fire": [
+    "The deputy prime minister in the Lib Dem coalition government, Nick Clegg, later took a job at Meta.",
+    "The Finnish composer who wrote Finlandia and seven symphonies, Jean Sibelius, stopped composing in his final decades.",
+    "In 2010 European air travel was grounded by ash from the Icelandic volcano Eyjafjallajökull.",
+    "The Soviet cosmonaut who made the first spacewalk in 1965, Alexei Leonov, was also a talented painter.",
+    "The Norwegian painter of The Scream, Edvard Munch, made several versions of the picture.",
+    "The self-taught Indian mathematician who wrote letters to G. H. Hardy at Cambridge, Srinivasa Ramanujan, died at just 32.",
+    "The Brazilian modernist architect who designed the curved buildings of Brasília, Oscar Niemeyer, lived to 104.",
+    "The dissident playwright who became the first president of the Czech Republic, Václav Havel, was jailed several times under communism."
+   ],
+   "quiet": [
+    "Nick Clegg was one of several names listed on the conference programme.",
+    "The playlist ended with a short piece by Jean Sibelius.",
+    "A friend of mine wrote the word Eyjafjallajökull on a sticky note.",
+    "The book's dedication page simply read: for Alexei Leonov.",
+    "Someone named Edvard Munch appeared on the old shipping register.",
+    "The library card in the drawer belonged to a Srinivasa Ramanujan.",
+    "Oscar Niemeyer was printed on a name tag left at the front desk.",
+    "The letter was signed at the bottom by Václav Havel."
+   ]
+  }
+ ],
+ "short": "opening piece of a name the context gives away",
+ "confidence": "low",
+ "predictions": "about 4-5/8 fire; probes hit only about half of fresh context-given names (Clegg 0.78, Mendoza 0.68, Remicade 0.86, Zelensky 0.27; Gorbachev, Merkel, Kubrick ~0), so the median fire may fall short of 0.20",
+ "notes": "Step-in reader of bonsai1/L33/N1660- (drop 0.29, found with --candidates 96). Feeders first: top feeders L33/N11485- and L34/N10311- are number-word / multi-piece numeral cells (unlabelled). Resident probe read ~0.1 on verbatim tops where play probe read 0.78-1.04, so all probing used play probe. Test written blind by a label-only author.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
