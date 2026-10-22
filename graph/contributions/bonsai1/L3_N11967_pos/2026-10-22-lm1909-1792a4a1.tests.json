@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-1792a4a1",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N11967+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:37:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L3/N11967",
+   "pole": "+",
+   "label": "the short word-initial fragment (often one capital letter) of a word the tokenizer splits into pieces, typically in ALL-CAPS names and headings (' M'ESTRE, ' O'BLIGATIONS, ' ir'ons)",
+   "fire": [
+    "Byline: STORY AND PHOTOS BY ELENA MORALES, STAFF WRITER",
+    "Under the treaty, DUTIES AND OBLIGATIONS OF STATES are listed in Part II.",
+    "Visitors can still see the leg irons once used on prisoners in the cellar.",
+    "Column: WRITTEN BY GORDON MENDOZA FOR THE EVENING NEWS",
+    "Tonight's special at CAFE CON LECHE is a spicy bean stew.",
+    "Credits: LUCIA FERNANDEZ AND URSULA NICOLAS, PRODUCERS",
+    "Section 4 sets out the RIGHTS AND OBLIGATIONS OF TENANTS in plain terms.",
+    "The article is cited as 22 HARV. J. INT'L L. 45 in the footnotes."
+   ],
+   "quiet": [
+    "Byline: story and photos by Elena Morales, staff writer",
+    "Under the treaty, the duties and obligations of states are listed in Part II.",
+    "Visitors can still see the iron chains once used on prisoners in the cellar.",
+    "Column: written by Gordon Mendoza for the Evening News",
+    "Tonight's special at the corner cafe is a spicy bean stew.",
+    "Credits: Lucia Fernandez and Ursula Nicolas, producers",
+    "Section 4 sets out the rights and duties of tenants in plain terms.",
+    "The article is cited in the footnotes as a Harvard law journal piece."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-word initial fragment",
+ "unit_kind": "sparse feature",
+ "confidence": 0.5,
+ "notes": "The card flags it as broad and gate-closed (echo), with a max of 1.02. In the probe, split ALL-CAPS words and 'leg irons' scored 0.61-0.78 of max, the mixed-case twins 0.14 and an unsplit ALL-CAPS heading 0.26. I checked the tokenizer: every fire item contains a single-letter or 'ir' initial piece. Near misses are the mixed-case or unsplit versions."
+}

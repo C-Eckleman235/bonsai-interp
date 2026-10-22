@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-aa5bcde5",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N11186-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T19:06:11+00:00",
+ "recipe": {
+  "toolchain_commit": "535c27bc",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L29_N11186_neg/2026-10-22-lm1909-aa5bcde5.tests.json"
+ },
+ "label": "' degree' meaning an academic qualification, used as a modifier (degree programs, degree plan, degree requirements); not temperature, angle, severity or 'a degree of'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L29_N11186_neg/2026-10-22-lm1909-aa5bcde5.tests.json",
+   "prereg_commit": "535c27bc",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.644,
+     "peak": " degree"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.389,
+     "peak": " degree"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.675,
+     "peak": " degree"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.784,
+     "peak": " degree"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.6,
+     "peak": " degree"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.684,
+     "peak": " degree"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.474,
+     "peak": " submit"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.672,
+     "peak": " degree"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.003,
+     "peak": " degrees"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.001,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.002,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": " was"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.08,
+     "peak": " accreditation"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.038,
+     "peak": " timetable"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.126,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.102,
+     "peak": " campus"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.658,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "535c27bc",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "academic 'degree' modifier",
+ "unit_kind": "lexical",
+ "confidence": 0.7,
+ "notes": "In the probe, 'degree programs' and 'degree audit' scored about 0.66-0.72 of max, while 'master's degree in' scored only 0.16 and temperature, angle, burns and 'high degree of' scored about 0. 'certificate programs' reached 0.35, so the slot before 'programs' matters; near misses avoid other program modifiers.",
+ "selection": "random draw"
+}

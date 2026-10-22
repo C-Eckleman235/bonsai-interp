@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-4233b162",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N9752+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T19:05:55+00:00",
+ "recipe": {
+  "toolchain_commit": "535c27bc",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L20_N9752_pos/2026-10-22-lm1909-4233b162.tests.json"
+ },
+ "label": "contrast / comparison markers (\"this is not the case\", \"unlike\", \"in contrast to\", \"by contrast\"), the other side of the - pole's additive markers (\"in addition\", \"plus\", \"alongside\")",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L20_N9752_pos/2026-10-22-lm1909-4233b162.tests.json",
+   "prereg_commit": "535c27bc",
+   "author": "lm1909",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.087,
+     "peak": " this"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.059,
+     "peak": " port"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.023,
+     "peak": " contrast"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.18,
+     "peak": " contrast"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.332,
+     "peak": " case"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.011,
+     "peak": "Our"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.33,
+     "peak": " contrast"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.293,
+     "peak": " is"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.021,
+     "peak": " now"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.02,
+     "peak": " port"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.026,
+     "peak": " are"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.024,
+     "peak": "New"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.083,
+     "peak": " fans"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.034,
+     "peak": " as"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.12,
+     "peak": "Prices"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.04,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.734,
+    "median_fire": 0.134,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "535c27bc",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "contrast vs addition",
+ "unit_kind": "contextual",
+ "confidence": 0.45,
+ "notes": "In the probe, 'not the case' scored 0.39 of max, 'Unlike' 0.26, 'by/in contrast' 0.18-0.19, 'similar to' 0.10 and 'Otherwise' 0.03, while the additive twins scored 0.02-0.06. The fire median is borderline. Near misses swap in additive connectives.",
+ "selection": "random draw"
+}

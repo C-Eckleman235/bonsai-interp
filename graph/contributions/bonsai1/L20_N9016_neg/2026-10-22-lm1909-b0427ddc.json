@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-b0427ddc",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N9016-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T19:05:53+00:00",
+ "recipe": {
+  "toolchain_commit": "535c27bc",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L20_N9016_neg/2026-10-22-lm1909-b0427ddc.tests.json"
+ },
+ "label": "punctuation inside Python code (string-key brackets and quotes, colons and commas ending a line or argument)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L20_N9016_neg/2026-10-22-lm1909-b0427ddc.tests.json",
+   "prereg_commit": "535c27bc",
+   "author": "lm1909",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.105,
+     "peak": " {}\n"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.158,
+     "peak": ":\n"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.152,
+     "peak": "(\n"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.338,
+     "peak": "_id"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.359,
+     "peak": "')\n"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.234,
+     "peak": " None"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.499,
+     "peak": "\"]"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.235,
+     "peak": ":"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.04,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.037,
+     "peak": " it"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.174,
+     "peak": " runs"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.122,
+     "peak": " row"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.064,
+     "peak": " reads"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.147,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.06,
+     "peak": " gets"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.093,
+     "peak": " is"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.922,
+    "median_fire": 0.234,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "535c27bc",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "Python code punctuation",
+ "unit_kind": "contextual",
+ "confidence": 0.4,
+ "notes": "The card flags it as broad (4.4% of tokens). In the probe, code passages scored 0.14-0.32 of max and prose describing the same code 0.07-0.12. The fire median may fall short of 0.20. Near misses are prose paraphrases of the same code.",
+ "selection": "random draw"
+}
