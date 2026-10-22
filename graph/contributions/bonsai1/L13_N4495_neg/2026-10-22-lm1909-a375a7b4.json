@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-a375a7b4",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N4495-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:36:01+00:00",
+ "recipe": {
+  "toolchain_commit": "d71b11c1",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L13_N4495_neg/2026-10-22-lm1909-a375a7b4.tests.json"
+ },
+ "label": "the '.encode' method call in code (best guess; the card shows no shared token or context)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L13_N4495_neg/2026-10-22-lm1909-a375a7b4.tests.json",
+   "prereg_commit": "d71b11c1",
+   "author": "lm1909",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.018,
+     "peak": " ="
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.022,
+     "peak": "')"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.045,
+     "peak": "',"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.118,
+     "peak": ".encode"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.025,
+     "peak": "sock"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.035,
+     "peak": "h"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.041,
+     "peak": "out"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.085,
+     "peak": ".encode"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.018,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.034,
+     "peak": "claims"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.034,
+     "peak": " buf"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.032,
+     "peak": "6"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.021,
+     "peak": " sock"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.035,
+     "peak": "h"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.041,
+     "peak": "out"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.045,
+     "peak": "')"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.625,
+    "median_fire": 0.038,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "d71b11c1",
+  "minutes": 13,
+  "batch_size": 16
+ },
+ "short": ".encode call",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Card: mixed top examples ('.encode' in jwt.encode, ' No' after 'Vaccine:', ' end' in '## end license', ' One' in League One, 'ynes'), no single token. Probe: everything weak; best was jwt.encode 0.095 vs jwt.decode 0.025, text.encode 0.03, alkynes 0.07; other contrasts ~0.02. Best-guess test, expected to fail.",
+ "selection": "random draw"
+}

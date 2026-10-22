@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-ef214b12",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N8422+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:36:15+00:00",
+ "recipe": {
+  "toolchain_commit": "d71b11c1",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L24_N8422_pos/2026-10-22-lm1909-ef214b12.tests.json"
+ },
+ "label": "' my' or ' our' opening a vocative address mid-sentence (', my friends,' / ', my lord,'), not an ordinary possessive",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L24_N8422_pos/2026-10-22-lm1909-ef214b12.tests.json",
+   "prereg_commit": "d71b11c1",
+   "author": "lm1909",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.525,
+     "peak": " my"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.257,
+     "peak": " my"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.493,
+     "peak": " my"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.804,
+     "peak": " my"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.008,
+     "peak": " what"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.013,
+     "peak": "Remember"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.087,
+     "peak": " gather"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.165,
+     "peak": " my"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.012,
+     "peak": " this"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.012,
+     "peak": "ive"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.007,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.009,
+     "peak": " children"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.01,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.011,
+     "peak": "Remember"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.014,
+     "peak": " gathered"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.108,
+     "peak": " my"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.844,
+    "median_fire": 0.211,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "d71b11c1",
+  "minutes": 13,
+  "batch_size": 16
+ },
+ "short": "vocative my/our",
+ "unit_kind": "contextual",
+ "confidence": 0.6,
+ "notes": "Card: top 32 peak on ' my' (x20) and ' our' in direct address ('Consider, my brethren'). Probe: vocative 'my friends' 0.44, 'my lady' 0.30, 'our Father' 0.29, but 'my dear' only 0.07; plain possessive 'my umbrella'/'my kitchen' <0.01; the same vocative without 'my' 0.01.",
+ "selection": "random draw"
+}
