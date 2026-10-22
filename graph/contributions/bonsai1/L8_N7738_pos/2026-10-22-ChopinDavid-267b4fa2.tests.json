@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-267b4fa2",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N7738+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T14:20:06+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L8/N7738",
+   "pole": "+",
+   "label": "math-library calls and products inside numeric Python formulas (np.exp, m.factorial(...) * m.factorial(...))",
+   "fire": [
+    "    weight = amp * np.exp(-(r - r0)**2 / width)",
+    "    p = norm_const * np.exp(-0.5 * z**2)",
+    "    binom = m.factorial(total) / (m.factorial(hits) * m.factorial(total - hits))",
+    "    decay = A0 * numpy.exp(-k * t)",
+    "    rate = gamma * np.exp(-energy / (kB * temp))",
+    "    x = r * np.sin(theta) * np.cos(phi)",
+    "    ways = math.factorial(n) / (math.factorial(r) * math.factorial(n - r))",
+    "    signal = np.exp(1j * omega * t) * envelope"
+   ],
+   "quiet": [
+    "    message = greeting + \", \" + user_name",
+    "    rows = [row.strip() for row in lines if row]",
+    "    config = load_config(path) or default_config",
+    "    subtotal = unit_price * count + shipping",
+    "    logger.info(\"saved %s records\", len(items))",
+    "    result = client.get(url, timeout=timeout)",
+    "    labels = sorted(set(tags), key=str.lower)",
+    "    total_cost = hours * hourly_rate + fees"
+   ]
+  }
+ ],
+ "predictions": "Fires on '.exp'/'.sin' or the '*' joining math calls in scientific Python expressions; quiet on ordinary non-numeric Python lines and on plain arithmetic of business variables.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "numeric formula ops in Python",
+ "unit_kind": "context",
+ "confidence": "medium",
+ "notes": "Probe: np.exp 0.47, math.exp 0.31, '*' between factorials 0.51, np.cos 0.25; print 0.02, list comprehension 0.01, 'price * quantity' 0.04, English 'exponential' 0.01."
+}
