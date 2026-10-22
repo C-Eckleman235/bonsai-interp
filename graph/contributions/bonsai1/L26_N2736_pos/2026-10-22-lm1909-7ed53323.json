@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-7ed53323",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N2736+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:59:48+00:00",
+ "recipe": {
+  "toolchain_commit": "98c83068",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L26_N2736_pos/2026-10-22-lm1909-7ed53323.tests.json"
+ },
+ "label": "a one- or two-letter consonant piece inside a rare surname (Oh|g|oshi, Sok|h|na, O|sg|anian, Oh|l|man), mostly in author lists",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L26_N2736_pos/2026-10-22-lm1909-7ed53323.tests.json",
+   "prereg_commit": "98c83068",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.399,
+     "peak": "k"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.362,
+     "peak": " Oh"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.405,
+     "peak": "n"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.93,
+     "peak": "g"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.607,
+     "peak": "h"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.507,
+     "peak": "l"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.744,
+     "peak": "k"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.667,
+     "peak": "sg"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.009,
+     "peak": " T"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.015,
+     "peak": " Mori"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.016,
+     "peak": "man"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.145,
+     "peak": " Abe"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.013,
+     "peak": " M"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.018,
+     "peak": " Miller"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.01,
+     "peak": ":"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.005,
+     "peak": " J"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.557,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "98c83068",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "consonant piece in rare surname",
+ "unit_kind": "sparse feature",
+ "confidence": 0.55,
+ "notes": "Probe: Ohgoshi 1.07, Sokhna 0.71, Osganian 0.67, Ohlman in prose 0.58, hex escape 0.26. Polish names that split into multi-letter pieces scored 0.08 and a Smith/Brown list 0.02. Quiet items keep the author-list format with names that are whole tokens or split into longer pieces.",
+ "selection": "random draw"
+}

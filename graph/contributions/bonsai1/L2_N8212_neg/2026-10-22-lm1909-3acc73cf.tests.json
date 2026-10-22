@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-3acc73cf",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N8212-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T17:38:25+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L2/N8212",
+   "pole": "-",
+   "label": "dense unit; best guess: subword pieces inside non-English (CJK/Korean/French) or misspelled words",
+   "fire": [
+    "Les visiteurs apprécient l'interprétation des paysages du parc.",
+    "Elle a présenté une sculpture monumentale à l'exposition.",
+    "彫刻家は公園に新しい作品を設置した。",
+    "정부는 새로운 경제 정책을 발표했다.",
+    "Nous avons aperçu un orignal près du lac.",
+    "The students tried to interprete the poem without any help.",
+    "그 건물은 지진으로 붕괴되었다.",
+    "Ce projet d'interprétation s'adresse aux familles."
+   ],
+   "quiet": [
+    "The visitors enjoy the guided tour of the park's landscapes.",
+    "She presented a monumental sculpture at the exhibition.",
+    "The sculptor installed a new work in the park.",
+    "The government announced a new economic policy.",
+    "We spotted a moose near the lake.",
+    "The students tried to understand the poem without any help.",
+    "The building collapsed during the earthquake.",
+    "This project for visitors is designed for families."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "foreign word pieces (dense)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.3,
+ "notes": "Card flags dense (24.9% of tokens above 0.1 of max, leak regime). Probe: Japanese, Korean, French and misspelled 'interprete' pieces scored 0.56-0.69, plain English 0.12-0.15. Each quiet item is the English translation of a fire item. Likely to fail on density."
+}

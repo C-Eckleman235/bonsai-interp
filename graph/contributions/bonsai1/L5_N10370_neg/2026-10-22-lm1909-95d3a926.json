@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-95d3a926",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N10370-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:00:09+00:00",
+ "recipe": {
+  "toolchain_commit": "98c83068",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N10370_neg/2026-10-22-lm1909-95d3a926.tests.json"
+ },
+ "label": "citation-style tokens: ' APA', ' MLA' and ' citation'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N10370_neg/2026-10-22-lm1909-95d3a926.tests.json",
+   "prereg_commit": "98c83068",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.766,
+     "peak": " APA"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.792,
+     "peak": " MLA"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.522,
+     "peak": " citation"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.656,
+     "peak": " APA"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.536,
+     "peak": " citation"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.714,
+     "peak": " APA"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.681,
+     "peak": " MLA"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.55,
+     "peak": " citation"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.01,
+     "peak": " journals"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.003,
+     "peak": " that"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.002,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.004,
+     "peak": " write"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.022,
+     "peak": " number"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.151,
+     "peak": " address"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.014,
+     "peak": " use"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.019,
+     "peak": " sentence"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.669,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "98c83068",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "APA/MLA/citation",
+ "unit_kind": "lexical",
+ "confidence": 0.75,
+ "notes": "Probe: APA 1.04, MLA 0.89, citation 0.64. ' cited' (0.26) and ' Harvard' (0.22) were weaker. Spelling out 'American Psychological Association' gave 0.04 and formatting talk without the tokens gave ≤0.11, so the label is lexical rather than about meaning.",
+ "selection": "random draw"
+}

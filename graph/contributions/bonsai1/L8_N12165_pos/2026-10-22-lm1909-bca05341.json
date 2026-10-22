@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-bca05341",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N12165+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:00:11+00:00",
+ "recipe": {
+  "toolchain_commit": "98c83068",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L8_N12165_pos/2026-10-22-lm1909-bca05341.tests.json"
+ },
+ "label": "social-science policy fields as academic disciplines: ' policy' in social/public/housing policy and ' justice' in criminal justice",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L8_N12165_pos/2026-10-22-lm1909-bca05341.tests.json",
+   "prereg_commit": "98c83068",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.522,
+     "peak": " policy"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.512,
+     "peak": " policy"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.589,
+     "peak": " justice"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.605,
+     "peak": " policy"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.689,
+     "peak": " management"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.495,
+     "peak": " justice"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.572,
+     "peak": " policy"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.418,
+     "peak": " policy"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.039,
+     "peak": " health"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.017,
+     "peak": " social"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.006,
+     "peak": " department"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.007,
+     "peak": " Europe"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.252,
+     "peak": " management"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.004,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.008,
+     "peak": " account"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.007,
+     "peak": " flood"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.547,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "98c83068",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "policy/justice as fields",
+ "unit_kind": "contextual",
+ "confidence": 0.65,
+ "notes": "Probe: public policy 0.62, social policy 0.52, education policy 0.31, 'sociology and criminal justice' 0.76 (peak on ' justice'). Privacy and insurance policy were ≤0.005, foreign policy 0.03, social history 0.01 and public health 0.09. So it is the policy-studies field, not the token alone.",
+ "selection": "random draw"
+}
