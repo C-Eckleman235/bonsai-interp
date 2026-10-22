@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-22-moridinamael-5bbee7e6",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N10703+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T10:10:33+00:00",
+ "recipe": {
+  "toolchain_commit": "1a2e14eb",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L22_N10703_pos/2026-10-22-moridinamael-5bbee7e6.tests.json"
+ },
+ "label": "numbers that point to a place in scripture or a classic text, or to a date in older history: chapter/verse or act/scene references (e.g. Mark 4:35-41, Psalm 91, King Lear 1:2), peaking on the first digit or the colon/dash while more of the reference follows, and pre-modern years or year ranges (e.g. 1453, 1337-1453); quiet on clock times, ratios, scores, prices, scholarly page cites (Author 2004:16) and modern years in everyday sentences",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N10703_pos/2026-10-22-moridinamael-5bbee7e6.tests.json",
+   "prereg_commit": "1a2e14eb",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.787,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.657,
+     "peak": "-"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.281,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.3,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.358,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.366,
+     "peak": "3"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.557,
+     "peak": ":"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.37,
+     "peak": "-"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.399,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.006,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.03,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.006,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.058,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.012,
+     "peak": "2"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.015,
+     "peak": " $"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.037,
+     "peak": "6"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.922,
+    "median_fire": 0.368,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "1a2e14eb",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L23/N10221+"
+ ],
+ "notes": "Step-out from bonsai1/L23/N10221+. play step hit CUDA OOM (resident stream model holds the GPU), so TARGET is the top feeder by resident attribution (feeders tool), not by ablation drop; no feeds edge recorded. Test sentences written blind by a second author from the label only; the solver's leak (medieval year ranges) is named in the label, and its modern-year line (Avon 1991-1992, 0.40) was placed as a near miss and is the one near miss over 0.30."
+}
