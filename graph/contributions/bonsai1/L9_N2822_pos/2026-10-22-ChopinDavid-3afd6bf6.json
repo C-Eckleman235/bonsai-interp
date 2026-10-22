@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-3afd6bf6",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N2822+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T12:27:43+00:00",
+ "recipe": {
+  "toolchain_commit": "c8f62d9f",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L9_N2822_pos/2026-10-22-ChopinDavid-3afd6bf6.tests.json"
+ },
+ "label": "Russian text in Cyrillic script, highest on word-initial Cyrillic pieces of multi-token words, not the same content written in English or Spanish.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L9_N2822_pos/2026-10-22-ChopinDavid-3afd6bf6.tests.json",
+   "prereg_commit": "c8f62d9f",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.393,
+     "peak": "У"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.306,
+     "peak": "От"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.43,
+     "peak": "Про"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.409,
+     "peak": "Об"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.357,
+     "peak": "С"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.237,
+     "peak": "П"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.31,
+     "peak": "Пр"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.393,
+     "peak": "У"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.007,
+     "peak": " agriculture"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.039,
+     "peak": " nue"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.005,
+     "peak": " electronics"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.028,
+     "peak": " el"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.005,
+     "peak": " help"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.014,
+     "peak": " la"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.006,
+     "peak": " students"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.026,
+     "peak": " recib"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.375,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "c8f62d9f",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "Russian (Cyrillic) text",
+ "unit_kind": "lexical",
+ "confidence": 0.55,
+ "notes": "Probes (max 26.38): Russian sentences 0.26-0.37 ('Он сказал, что это хорошо' 0.37 on 'О', 'продолжаются' 0.30, 'частоты' 0.29), 'Мы пили чай и ели хлеб' 0.18; English 0.009, Spanish 0.013. Card top examples are Cyrillic stem pieces (' част', ' производ', ' случа').",
+ "selection": "random draw"
+}
