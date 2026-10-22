@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-fcf45103",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N11889-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T17:23:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L3/N11889",
+   "pole": "-",
+   "label": "dense / positional; best guess: a suffix piece split off a word or number (Edward|ian, conserv|ancy, 7|0|s, 500|+)",
+   "fire": [
+    "The Edwardian terraces near the park were restored last year.",
+    "Many Bostonian families spent their summers on Cape Cod.",
+    "The Parisian café on the corner serves excellent croissants.",
+    "Engineers tested the buoyancy of the new lifeboat in the harbour.",
+    "The river conservancy manages the footpaths along the water.",
+    "Over 70s are entitled to a free flu jab at the local surgery.",
+    "The theory is often described as Darwinian in its view of markets.",
+    "More than 500+ volunteers joined the clean-up on Saturday."
+   ],
+   "quiet": [
+    "The old terraces near the park were restored last year.",
+    "Many local families spent their summers on Cape Cod.",
+    "The small café on the corner serves excellent croissants.",
+    "Engineers tested the strength of the new lifeboat in the harbour.",
+    "The river trust manages the footpaths along the water.",
+    "Older patients are entitled to a free flu jab at the local surgery.",
+    "The theory is often described as harsh in its view of markets.",
+    "Hundreds of volunteers joined the clean-up on Saturday."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "suffix pieces (dense)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.2,
+ "notes": "FLAG dense (20.8% of tokens reach 0.1 of max; gate-closed regime dominates). Probe: 'Edwardian' 0.75, 'conservancy' 0.48, 'Over 60s' 0.22, '300+' 0.26 (peak elsewhere); suffix-free rewrites 0.05-0.22. Recorded to document the density; expected to fail. Tokenizer checked for each fire word."
+}

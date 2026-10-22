@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-fcf45103",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N11889-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:44:30+00:00",
+ "recipe": {
+  "toolchain_commit": "65e7c356",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L3_N11889_neg/2026-10-22-lm1909-fcf45103.tests.json"
+ },
+ "label": "dense / positional; best guess: a suffix piece split off a word or number (Edward|ian, conserv|ancy, 7|0|s, 500|+)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L3_N11889_neg/2026-10-22-lm1909-fcf45103.tests.json",
+   "prereg_commit": "65e7c356",
+   "author": "lm1909",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.267,
+     "peak": "ian"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.088,
+     "peak": " summers"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.142,
+     "peak": " café"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.052,
+     "peak": " harbour"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.366,
+     "peak": "ancy"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.197,
+     "peak": "s"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.057,
+     "peak": " Darwin"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.236,
+     "peak": "+"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.042,
+     "peak": " last"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.082,
+     "peak": " families"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.18,
+     "peak": " café"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.077,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.214,
+     "peak": " along"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.152,
+     "peak": " jab"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.055,
+     "peak": " often"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.088,
+     "peak": "-up"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.68,
+    "median_fire": 0.169,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "65e7c356",
+  "minutes": 4,
+  "batch_size": 16
+ },
+ "short": "suffix pieces (dense)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.2,
+ "notes": "FLAG dense (20.8% of tokens reach 0.1 of max; gate-closed regime dominates). Probe: 'Edwardian' 0.75, 'conservancy' 0.48, 'Over 60s' 0.22, '300+' 0.26 (peak elsewhere); suffix-free rewrites 0.05-0.22. Recorded to document the density; expected to fail. Tokenizer checked for each fire word.",
+ "selection": "random draw"
+}
