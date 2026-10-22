@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-21-moridinamael-8820d792",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N237+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T04:19:48+00:00",
+ "roles": ["reads bonsai1/L28/N8608+"],
+ "neighbours": [
+  {
+   "unit": "L32/N237",
+   "pole": "+",
+   "label": "Two specific word pieces in non-English text: Russian 'по горизонтали' (horizontally, along the horizontal) and the stem 'inaugur-' in Spanish/Italian participles and nouns (inaugurado, inaugurada, inaugurato, inauguración, inaugurazione). Quiet for горизонт, горизонтальный/горизонтальную, 'horizontal' in other languages, the infinitives inaugurar/inaugurer, and English horizontally/inaugurated.",
+   "short": "Russian 'по горизонтали' + Spanish/Italian 'inaugur-' participles",
+   "unit_kind": "broad (1.1% of tokens >0.1 max); label covers only its two context-robust triggers",
+   "confidence": "low",
+   "notes": "Cold step-in reader (drop 0.03 when the feeder is zeroed); label has nothing to do with the feeder's 'today'. Pole is broad: many tops are mid-word pieces in long Russian/Spanish/French passages that do not reproduce in fresh frames. Test written blind from the label alone.",
+   "fire": [
+    "Расположите изображения по горизонтали, чтобы они поместились на одной странице.",
+    "Сдвиньте окно по горизонтали на десять пикселей влево.",
+    "Таблица выровнена по горизонтали и по вертикали.",
+    "Кроссворд: слово из пяти букв по горизонтали — «река».",
+    "El nuevo puente fue inaugurado ayer por el alcalde.",
+    "La biblioteca municipal quedó inaugurada en marzo de 2019.",
+    "Il museo è stato inaugurato dal presidente della regione.",
+    "La inauguración del estadio atrajo a miles de aficionados."
+   ],
+   "quiet": [
+    "- DOCUMENTAL: EL CONCILIO VATICANO II CINCUENTA AÑOS DESPUÉS",
+    "- 70% rayon, 30% lyocell, lavable en machine.",
+    "Солнце медленно опускалось за горизонт.",
+    "Нарисуйте горизонтальную линию через центр листа.",
+    "Горизонтальный режим экрана удобнее для видео.",
+    "Ставки по вертикали не совпадают с данными таблицы.",
+    "El alcalde va a inaugurar el nuevo puente mañana.",
+    "La biblioteca municipal abrió sus puertas en marzo de 2019."
+   ]
+  }
+ ],
+ "predictions": "7/8 fire; 1 near miss (the DESPUÉS leak) above 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "blind-room"
+  ]
+ }
+}
