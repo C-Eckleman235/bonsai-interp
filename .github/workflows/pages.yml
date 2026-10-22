@@ -81,6 +81,7 @@ jobs:
           cp graph/index.json _site/index.json
           python site/screens.py
           if [ -d site/screens ]; then cp -r site/screens _site/screens; fi
+          python site/circuits.py _site/circuits.html
           touch _site/.nojekyll
       - uses: actions/cache/save@v4
         with:

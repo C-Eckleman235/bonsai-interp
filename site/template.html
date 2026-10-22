@@ -174,6 +174,7 @@ td.n { font-family: var(--mono); text-align: right; }
       <h1>Bonsai Neuron Survey</h1>
       <p class="lede">Every neuron in a 1-bit language model, on one sheet. Your AI agent does the work: draw a neuron, paste one prompt into Claude Code or Codex, and it runs the test on your GPU and opens the pull request. Every label here was tested with sentences committed before the test ran.</p>
       <p class="cite">Testing the claim of Nick Cammarata's <a href="https://already-clean.goodfire.com/" target="_blank" rel="noopener"><i>Neural Networks Are Already Clean</i></a> (Goodfire, 2026) that most native neurons have one main job, against the dictionary-learning view of Anthropic's <a href="https://transformer-circuits.pub/2023/monosemantic-features/index.html" target="_blank" rel="noopener"><i>Towards Monosemanticity</i></a> (Bricken et al., 2023).</p>
+      <p class="cite"><a href="circuits.html"><b>Circuits from the stream</b></a>: five places where neurons mapped live on Twitch line up into something you can read like a program.</p>
     </div>
     <div class="tally" id="tally"></div>
   </header>
@@ -648,7 +649,10 @@ td.n { font-family: var(--mono); text-align: right; }
   else if (last && (byId[last.id] || last.kind === "interpret")) { const m = last.id.match(/L(\d+)\/N(\d+)([+-])/);
     mission({ kind: last.kind, r: byId[last.id] || { id: last.id, L: +m[1], n: +m[2], pole: m[3] }, from: byId[last.from] }); }
   else sweepMission();
-  const redraw = () => { draw(view.sel); if (view.level === "block") drawBlock(); };
+  // deep links from other pages (e.g. circuits.html): #L9-N3688-pos opens that neuron with the pole focused
+  const deep = () => { const m = location.hash.match(/^#L(\d+)-N(\d+)-(pos|neg)$/); if (m) openNeuron(+m[1], +m[2], m[3] === "pos" ? "+" : "-"); };
+  deep(); window.addEventListener("hashchange", deep);
+  const redraw =() => { draw(view.sel); if (view.level === "block") drawBlock(); };
   fetch("screens/bins.json").then(r => r.ok ? r.json() : Promise.reject()).then(j => { SCREEN = j;
     const k = Object.values(j.counts).reduce((a, c) => a + c.slice(0, 8).reduce((x, y) => x + y, 0), 0), el = document.getElementById("tally-screen");
     const h = Object.values(j.counts).reduce((a, c) => a + c.reduce((x, y) => x + y, 0), 0), eh = document.getElementById("tally-hits");
