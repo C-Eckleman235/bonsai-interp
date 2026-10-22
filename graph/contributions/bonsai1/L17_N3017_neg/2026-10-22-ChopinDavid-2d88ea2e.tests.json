@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-2d88ea2e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N3017-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T13:20:03+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N3017",
+   "pole": "-",
+   "label": "numbers and operators inside arithmetic expressions and bracketed numeric literals (sums, arrays, coordinate tuples), not numbers in prose",
+   "fire": [
+    "Notice that 4 + 9 + 16 = 29, and 2 + 27 = 29 as well.",
+    "grid = np.array([\n    [1, 0, 2],\n    [0, 3, 1],\n])",
+    "Check the sum: 7 + 8 + 12 + 3 = 30, which is even.",
+    "points = [(2, 3), (4, 1), (5, 5)]",
+    "We found 11 + 19 = 30 and 13 + 17 = 30 for that total.",
+    "weights = np.array([\n    [0.5, 1.5],\n    [2.0, 0.5],\n])",
+    "edges = [[0, 1], [1, 2], [2, 3], [3, 0]]",
+    "The proof uses 3 + 5 + 7 = 15 and 1 + 6 + 8 = 15."
+   ],
+   "quiet": [
+    "Notice that four friends and nine cousins came to the party.",
+    "grid = load_grid('level_one.txt')\nname = grid.title",
+    "She checked the bill and paid 30 dollars in cash.",
+    "points = ['north', 'south', 'east']",
+    "We found 11 shells on the beach and 19 in the dunes.",
+    "weights = read_weights('model.bin')\nlabel = 'small'",
+    "The train leaves at 2 and arrives at 3 in the afternoon.",
+    "The proof is short and fits on a single page."
+   ]
+  }
+ ],
+ "predictions": "Fire on digits, '+' and commas within sums and code number lists; quiet on counts and times in ordinary prose and on code with string literals.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "numeric expressions",
+ "unit_kind": "context",
+ "confidence": "medium",
+ "notes": "Probe: '2 + 3 + 5 + 17 = 29' 0.82, np.array of pairs 0.54, tuple list 0.39, factors list 0.24; '6 apples and 4 pears' 0.04, 'from 3 to 5' 0.006, string assignments 0.035."
+}
