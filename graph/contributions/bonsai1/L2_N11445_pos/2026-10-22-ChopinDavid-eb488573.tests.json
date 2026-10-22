@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-eb488573",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N11445+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T21:20:07+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L2/N11445",
+   "pole": "+",
+   "label": "dense early unit, near half-on for most tokens, a little higher on commas",
+   "fire": [
+    "For the trip we bought maps, snacks, sunscreen, and two hats.",
+    "When the bell rang, the students closed their books.",
+    "The soup is simmered for an hour, then blended until smooth.",
+    "My uncle, who lives in Lisbon, sends us postcards every spring.",
+    "Before sunrise, the fishermen pushed their boats into the bay.",
+    "With a sigh, she put down the phone and stared at the wall.",
+    "The garden has roses, tulips, daisies, and a small pond.",
+    "After lunch, we walked to the harbor, then took a ferry home."
+   ],
+   "quiet": [
+    "For the trip we bought maps and snacks and two hats.",
+    "The students closed their books when the bell rang.",
+    "The soup is simmered for an hour and then blended until smooth.",
+    "My uncle lives in Lisbon and sends us postcards every spring.",
+    "The fishermen pushed their boats into the bay before sunrise.",
+    "She put down the phone with a sigh and stared at the wall.",
+    "The garden has roses and tulips and a small pond.",
+    "We walked to the harbor after lunch and took a ferry home."
+   ]
+  }
+ ],
+ "predictions": "expected to fail: probes put commas at 0.47-0.57 and non-comma peaks ('the', 'and') at 0.43-0.48",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense comma unit",
+ "unit_kind": "dense / positional",
+ "confidence": 0.1,
+ "notes": "Card: dense (13.5% of tokens reach 0.1 of max; 5.7% reach 0.3), 100% gate-closed echo, top 32 all ','. Probe: comma sentences 0.462-0.570, comma-free sentences 0.433-0.479. Best-guess test: comma-rich sentences vs the same content without commas."
+}

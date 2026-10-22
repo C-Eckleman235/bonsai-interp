@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-ffbe36a5",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N6084-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T21:20:07+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N6084",
+   "pole": "-",
+   "label": "dense layer-1 unit, on for most tokens, slightly higher on ' owner(s)'",
+   "fire": [
+    "The new owners of the bakery kept the old recipes.",
+    "Last year the farm's owners sold half of their cattle.",
+    "Pet owners must keep dogs on a leash in the park.",
+    "The hotel's owner greeted every guest at the door.",
+    "Many small business owners struggled during the winter.",
+    "After the storm, the owners of the house repaired the roof.",
+    "The team's owner promised fans a new stadium.",
+    "Car owners in the city pay a yearly parking fee."
+   ],
+   "quiet": [
+    "The new bakers at the bakery kept the old recipes.",
+    "Last year the farm's workers sold half of their cattle.",
+    "Visitors must keep dogs on a leash in the park.",
+    "The hotel's manager greeted every guest at the door.",
+    "Many small shops struggled during the winter.",
+    "After the storm, the tenants of the house repaired the roof.",
+    "The team's coach promised fans a new stadium.",
+    "Drivers in the city pay a yearly parking fee."
+   ]
+  }
+ ],
+ "predictions": "expected to fail: probes give 0.49-0.89 on every sentence, 'owners' only marginally higher",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense unit (owners)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.1,
+ "notes": "Card: dense (79.7% of tokens reach 0.1 of max), max 0.25, gate-closed leak 100%; ' owners' x8 among peaks. Probe: 'owners' 0.886, 'owner' 0.820, '_axes' 0.825, but 'The weather was cold' 0.688, Spanish 0.553, 'the meeting' 0.514, 'cat slept' 0.491. Best-guess test: owner(s) vs the same sentence with another noun."
+}

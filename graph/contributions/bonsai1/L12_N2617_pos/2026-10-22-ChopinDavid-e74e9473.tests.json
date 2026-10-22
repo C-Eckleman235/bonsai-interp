@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-e74e9473",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N2617+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T21:20:07+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N2617",
+   "pole": "+",
+   "label": "tokens inside names of legal codes, statutes and tribunals (Uniform Commercial Code, labour tribunal, Code of Civil Procedure)",
+   "fire": [
+    "The buyer argued that the contract was governed by the Uniform Commercial Code rather than common law.",
+    "Her complaint was transferred to the employment tribunal in Leeds last month.",
+    "The case went before the Court of Arbitration for Sport in Lausanne.",
+    "In the end the Convention on Contracts for the International Sale of Goods applied to the shipment.",
+    "Lawyers cited the Administrative Procedure Act in their challenge to the new rule.",
+    "The firm sells templates for wills, trusts, and Uniform Commercial Code filings.",
+    "Workers may bring wage claims before the industrial relations tribunal within six months.",
+    "Under the Code of Criminal Procedure, a suspect must be brought before a judge within two days."
+   ],
+   "quiet": [
+    "The buyer argued that the price was too high and walked out of the shop.",
+    "Her painting was moved to the gallery in Leeds last month.",
+    "The team went to the training camp in Lausanne for a week of practice.",
+    "In the end the convention center hosted a large sale of used books and records.",
+    "Programmers cited the style guide in their review of the new module.",
+    "The firm sells templates for birthday cards, posters, and wedding invitations.",
+    "Workers may bring their lunch to the break room before noon.",
+    "Under the old oak tree, a fox waited quietly for the rabbits to come out."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.8 on statute/tribunal names; same-shaped sentences with ordinary institutions or 'code' below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "names of legal codes and tribunals",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: max 8.62, peaks inside legal names ('争议' of 劳资争议法庭, 'U⟦CC⟧', 'Bundesaufs⟦icht⟧samt', 'Convention on⟦ Contracts⟧'). Probe: 'Uniform Commercial Code' 0.789, 'labour tribunal' 0.550, 'Code of Civil Procedure' 0.309, 'labour law' 0.205, BaFin (German) 0.162, Financial Supervisory Authority 0.135; 'dispute settled over dinner' 0.082, treasure-map 'code' 0.021, floor 0.018. Near misses keep the sentence frame but replace the legal name with a non-legal institution."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-db599d8d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N10141+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T21:20:07+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N10141",
+   "pole": "+",
+   "label": "weak, outlier-dominated unit on the slot just before 'protein' (a ___ protein, '-pro' of low-protein)",
+   "fire": [
+    "Patients with kidney disease are often put on a low-protein diet by their doctors.",
+    "The virus sheds its coat-protein shell once it enters the host cell.",
+    "Scientists found that cells lacking the gene made less of a protein called p53.",
+    "The malaria parasite produces a sticky protein that clings to blood vessel walls.",
+    "Bodybuilders often follow a high-protein meal plan during the off season.",
+    "The study showed that the large MG protein can fold in two different ways.",
+    "A shortage of a key protein in the liver can cause the disease in children.",
+    "肌肉生长需要足够的蛋白质和充足的休息。"
+   ],
+   "quiet": [
+    "Patients with kidney disease are often put on a low-salt diet by their doctors.",
+    "The virus sheds its outer shell once it enters the host cell.",
+    "Scientists found that cells lacking the gene made less of a hormone called insulin.",
+    "The malaria parasite produces a sticky coating that clings to blood vessel walls.",
+    "Bodybuilders often follow a strict meal plan during the off season.",
+    "The study showed that the large molecule can fold in two different ways.",
+    "A shortage of a key vitamin in the diet can cause the disease in children.",
+    "肌肉生长需要足够的睡眠和充足的休息。"
+   ]
+  }
+ ],
+ "predictions": "likely fails: the card max (1568) is one Chinese outlier; probes before 'protein' scored 0.02-0.06, same as controls",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "slot before 'protein' (unclear)",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card: max 1568 on one Chinese text, the rest of the top 10 at 230-290 sit before ' protein' (' a', ' sticky', '-pro', ' MG'). The + output suppresses ' protein' (a late anti-overconfidence unit). Probe: 'membrane protein' 0.019 vs 'membrane lipid' 0.019; 'dietary protein' 0.043 vs 'dietary fiber' 0.043; 'whey protein' 0.063; amino-acid chain sentence 0.067; floor 0.001. No probe separated. Best-guess test uses '-protein' compounds and 'a ___ protein' as in the card."
+}
