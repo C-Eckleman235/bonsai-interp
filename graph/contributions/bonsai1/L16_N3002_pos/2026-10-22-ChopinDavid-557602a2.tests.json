@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-557602a2",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L16/N3002+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T13:50:17+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L16/N3002",
+   "pole": "+",
+   "label": "Fires at the end of a fronted viewpoint adverbial that says from which angle the rest is judged (Visually, | To collectors, | Environmentally, | Design-wise, | To the naked eye,), not at the end of fronted time or contrast adverbials.",
+   "fire": [
+    "The bridge took ten years to build. Structurally, it is a marvel of steel.",
+    "Most tourists walk past the stone. To geologists, it tells the whole story of the valley.",
+    "The phone is cheap. Performance-wise, it beats many flagship models.",
+    "The soup looked simple. To an expert palate, it had a dozen layers of flavour.",
+    "The town is small. Economically, it depends on a single factory.",
+    "The film was a box-office flop. Artistically, it was years ahead of its time.",
+    "The paint looks dry. To the untrained eye, the two colours are identical.",
+    "The law sounds harmless. Legally, it gives the police enormous power."
+   ],
+   "quiet": [
+    "The bridge took ten years to build. Finally, it opened in the spring of 1932.",
+    "Most tourists walk past the stone. On Sundays, the square is full of markets.",
+    "The phone is cheap. Last month, it sold out in two days.",
+    "The soup looked simple. Nevertheless, we ordered a second bowl.",
+    "The town is small. In winter, it is often cut off by snow.",
+    "The film was a box-office flop. Two years later, it was released on video.",
+    "The paint looks dry. Even so, wait another hour before touching it.",
+    "The law sounds harmless. In 2019, it was passed without debate."
+   ]
+  }
+ ],
+ "predictions": "Fire 0.45-0.8, median ~0.6. Time/contrast/place near misses <= 0.07. AUROC ~1.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "end of a fronted viewpoint adverbial",
+ "unit_kind": "token-in-context",
+ "confidence": 0.75,
+ "notes": "Probes: 'To collectors,' 0.78; 'To the naked eye,' 0.70 (' eye'); 'Environmentally,' 0.57; 'Visually,' 0.55; 'Design-wise,' 0.48 ('-wise'); matched near misses 'Yesterday,' 0.06, 'After dinner,' 0.04, 'However,' 0.01. The - pole peaks on sentence-initial ' Also'. Each fire item has a lead-in sentence so the adverbial is mid-document."
+}

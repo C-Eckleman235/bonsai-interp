@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-d036fe08",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N480+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T13:50:17+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L23/N480",
+   "pole": "+",
+   "label": "Fires on a word that names a range or a two-way choice a thing can vary along (level of, degree of, presence or absence, whether or not, a flag indicating how), not on the same words used for a fixed physical fact.",
+   "fire": [
+    "Patients reported varying levels of pain after the operation.",
+    "Schools differ widely in their level of funding.",
+    "The form records the presence or absence of a fever.",
+    "Voters must decide whether or not to approve the new tax.",
+    "a flag indicating whether the cache should be cleared",
+    "Employees can choose whether or not to join the pension scheme.",
+    "Cities vary in their level of air pollution.",
+    "Doctors check for the presence or absence of a pulse in the foot."
+   ],
+   "quiet": [
+    "Patients reported to the third floor after the operation.",
+    "Schools received their funding in March.",
+    "The form records the name and address of the patient.",
+    "Voters must bring an ID card to approve their registration.",
+    "a flag hanging from the window of the cache office",
+    "Employees can join the pension scheme in their first month.",
+    "Cities are covered in smog during the winter.",
+    "Doctors check the foot for cuts and bruises after a long walk."
+   ]
+  }
+ ],
+ "predictions": "Fire 0.4-0.85, median ~0.65. Near misses <= 0.05. AUROC ~1. Risk: 'degree of skill' scored 0.009 in the probe, so degree items may be low.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dimension of variation / binary choice",
+ "unit_kind": "meaning",
+ "confidence": 0.65,
+ "notes": "Probes: 'whether or not to share' 0.83 (' not'); 'presence or absence' 0.75; 'varying levels of success' 0.70; 'their level of sophistication' 0.69; 'variable indicating how' 0.54; lows: 'three levels and a basement' 0.008, 'was absent from school' 0.008, 'a high degree of skill' 0.009 (so 'degree' is avoided), floor 0.015. Card top also includes code arguments and ', optional'."
+}

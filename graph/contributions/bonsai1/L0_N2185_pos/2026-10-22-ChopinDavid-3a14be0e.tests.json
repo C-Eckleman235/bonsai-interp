@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-3a14be0e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N2185+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T13:50:17+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N2185",
+   "pole": "+",
+   "label": "Fires on the word piece 'ost' when the tokenizer splits it out of a word (T|ost|itos, R|ost|ock, j|ost|led), not on words where 'ost' sits inside a whole token (most, post, host, cost).",
+   "fire": [
+    "For lunch we ordered two Tostada plates and a bowl of soup.",
+    "The ferry from Rostock arrives in Denmark just before noon.",
+    "In the crowded market, shoppers jostled for the last fresh fish.",
+    "Our neighbour Kostas grows tomatoes and figs on his balcony.",
+    "Fostering young musicians has always been the school's main goal.",
+    "The old sailor was accosted by a stranger near the docks.",
+    "My cousin brought a big bag of Tostitos to the picnic.",
+    "The striker jostled past two defenders and scored."
+   ],
+   "quiet": [
+    "For lunch we ordered two lobster plates and a bowl of soup.",
+    "The ferry from the coast almost arrives in Denmark before noon.",
+    "In the crowded market, shoppers were hostile to the new prices.",
+    "Our neighbour's host family grows tomatoes and figs on the balcony.",
+    "Most young musicians need a teacher who believes in them.",
+    "The old sailor bought a costume from a stranger near the docks.",
+    "My cousin brought a big post card to the picnic.",
+    "The striker received a boost from the crowd and scored."
+   ]
+  }
+ ],
+ "predictions": "Fire 0.35-1.0, median ~0.6. Whole-token near misses <= 0.1 (broad layer-0 unit, so floors around 0.05-0.1). AUROC ~1.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-out word piece 'ost'",
+ "unit_kind": "spelling unit",
+ "confidence": 0.6,
+ "notes": "Probes (fraction of max 0.49): 'accosted' 1.00, 'Tostitos' 0.80, 'Fostering' 0.64, 'Tosteson' 0.35 (all peak 'ost'); 'Pekoe' 0.57 ('ek', a second piece the card also lists); whole-token words: 'cost' 0.065, 'lost' 0.07, 'ghost' 0.03; floor 0.08. Card flags broad (2.3% of tokens >= 0.1 of max). Tokenizer: Tostada, Kostas, Rostock, jostled, Fostering split out 'ost'; most, post, host, boost, almost, roster, costume, hostile are whole tokens."
+}

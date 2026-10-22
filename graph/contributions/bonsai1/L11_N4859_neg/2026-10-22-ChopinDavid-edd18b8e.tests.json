@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-edd18b8e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N4859-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T13:50:17+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L11/N4859",
+   "pole": "-",
+   "label": "Fires on the letter ' B' of 'hepatitis B' and on a few other designators in medical or chemical text (the 'chlor' piece of 'hydrochloric', the name ' Kirk'), not on ' B' as a plan or vitamin letter, nor on whole-word chlorine.",
+   "fire": [
+    "Most adults in the clinic were vaccinated against hepatitis B before starting work on the ward.",
+    "The blood bank screens every donation for hepatitis B and two other viruses.",
+    "Health workers explained that hepatitis B is often silent for many years.",
+    "A simple test showed that the patient had chronic hepatitis B infection.",
+    "On the bridge of the Enterprise, Kirk turned to Spock and frowned.",
+    "In the final episode, Kirk must decide whether to save his ship.",
+    "The students slowly diluted the hydrochloric solution with distilled water.",
+    "Concentrated hydrochloric fumes can damage the lungs within minutes."
+   ],
+   "quiet": [
+    "Most adults in the clinic were given vitamin B tablets before starting work on the ward.",
+    "If the bridge is closed, we will switch to plan B and take the ferry.",
+    "Health workers explained that measles is often spread through coughing.",
+    "A simple test showed that the patient had low levels of vitamin D.",
+    "On the bridge of the ferry, Captain Smith turned to the pilot and frowned.",
+    "In the final episode, the captain must decide whether to save his ship.",
+    "The students slowly diluted the salt solution with distilled water.",
+    "Strong chlorine fumes from the pool can sting the eyes within minutes."
+   ]
+  }
+ ],
+ "predictions": "Hepatitis B items ~0.4-0.6, Kirk ~0.3, hydrochloric ~0.2; median fire ~0.3. Near misses (Plan B, vitamin B, chlorine, Captain Smith) <= 0.05. AUROC ~0.9 if hydrochloric does not drop below the near misses.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "hepatitis 'B' and odd chem/name pieces",
+ "unit_kind": "unclear",
+ "confidence": 0.3,
+ "notes": "Probes (fraction of max): 'hepatitis B can be passed' 0.53 (' B'); 'Captain Kirk ordered' 0.35 (' Kirk'); 'hydrochloric acid' 0.24 ('chlor'); lows: 'Plan B' 0.03, 'Vitamin B' 0.03, H2S 0.03, C-H 0.06, 'treated with chlorine' 0.03, floor 0.009. The card's top examples are a mixed list (hepatitis B, chlorine, H2S, Hodgkin, Zoroark, Kirk, halogenid); the probes only reproduce hepatitis B, Kirk and hydrochloric, so the label is a list, low confidence."
+}
