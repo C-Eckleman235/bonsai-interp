@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-dce7ed50",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N6902+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:21:59+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N6902",
+   "pole": "+",
+   "label": "dense / positional: weakly on for most tokens; best guess is word-internal pieces of rare or non-English words (ful, lla, ahl, Arabic)",
+   "fire": [
+    "Wonderful little café with cheerful staff and colourful décor.",
+    "Begonia microphylla grows well in shaded tropical gardens.",
+    "Die Zahlung wurde gestern vollständig verbucht.",
+    "Peperomia rotundifolia is a small creeping houseplant.",
+    "Sie bezahlte die Rechnung gestern mit der Karte.",
+    "row = name + '|' + str(count) + '|' + str(total)",
+    "نحن نريد تقديم أفضل الخدمات للعملاء",
+    "Graceful dancers moved across the beautiful stage."
+   ],
+   "quiet": [
+    "The bus was late and the station was cold this morning.",
+    "We bought some apples and a loaf of bread at the shop.",
+    "My brother works at the bank near the river.",
+    "The dog slept by the door all afternoon.",
+    "They watched a film and went to bed early.",
+    "It rained all day so we stayed inside.",
+    "The teacher handed out the tests after lunch.",
+    "Our neighbours painted their fence last week."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense, rare word pieces",
+ "unit_kind": "dense / positional",
+ "confidence": 0.1,
+ "notes": "The card flags it dense (42.6% of tokens reach 0.1 of max) and gate-closed (-x- echo 100%). Probe: every sentence fired 0.25-0.91, plain English included (0.25-0.28). Rare or foreign pieces were higher (ful 0.91, lla 0.80, ahl 0.78). This test records the density and is expected to fail on near misses."
+}

@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-e9703418",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N10321+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:21:59+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N10321",
+   "pole": "+",
+   "label": "natural-language text inside a string literal passed to a call in code (log, error and help messages, SQL), not comments or prose",
+   "fire": [
+    "parser.add_argument(\n    '--output',\n    help='Directory for the results, e.g. '\n         './build/output')",
+    "cur.execute(\n    'CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name TEXT)')",
+    "logger.warning('\\nThe cache file has been deleted. '\n               'Please restart the server.')",
+    "print('The following files have been removed. '\n      'Run the build again to regenerate them.')",
+    "raise RuntimeError(\n    'Set the API_TOKEN environment variable, e.g. '\n    'export API_TOKEN=abc123')",
+    "db.execute(\n    'INSERT INTO books (title, author) VALUES (?, ?)', (title, author))",
+    "sys.stderr.write('The configuration file could not be found. '\n                 'Using default settings instead.\\n')",
+    "self.log.info('\\nThe report has been generated. '\n              'Please review it before sending.')"
+   ],
+   "quiet": [
+    "# Directory for the results, e.g. ./build/output\noutput_dir = args.output",
+    "-- Create a users table with an id and a name\n-- before running the import script",
+    "# The cache file has been deleted; restart the server\nrestart()",
+    "The following files have been removed. Run the build again to regenerate them.",
+    "Set the API_TOKEN environment variable, for example in your shell profile.",
+    "# Insert each book's title and author into the table\nfor title, author in books:",
+    "If the configuration file cannot be found, the program uses default settings.",
+    "# The report has been generated; review it before sending\nsend(report)"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "prose inside code strings",
+ "unit_kind": "contextual",
+ "confidence": 0.5,
+ "notes": "Probe: multi-line single-quoted message or SQL strings in calls 0.29-0.36; double-quoted ValueError 0.12, a one-line msg= string 0.11. The same text as a comment 0.004 and as prose 0.005; numeric code 0.02. Fire items copy the high-scoring frame: a call with continued single-quoted strings."
+}

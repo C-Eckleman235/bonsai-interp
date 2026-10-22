@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-33759f3a",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N7666-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:21:59+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N7666",
+   "pole": "-",
+   "label": "best guess: a separator (',' or '=') between items in code data listings (string tuples, aligned assignments, key=value strings)",
+   "fire": [
+    "class Hive(Action):\n    PARAM_FIELDS = ('files', 'archives', 'job_xml', 'params', 'prepares', 'script')",
+    "class Shell(Action):\n    FIELDS = ('command', 'arguments', 'env_vars', 'files', 'capture_output')",
+    "        self.time_values = time_values\n        self.score_values = score_values\n\n        self.ax1.set_title('Scores')",
+    "grid = [\n    [[], [], 10.0, 10.0, 10.0, 10.0],\n    [[], [], 10.0, 10.0, 10.0, 10.0],\n]",
+    "cases = [\n    \"x platform=test os=linux\",\n    \"x os=fe platform=test target=fe os=fe\",\n]",
+    "        elif path:\n            with open(path, 'r') as fh:\n                event = json.loads(fh.read())",
+    "REQUIRED_KEYS = ['user_id', 'session_token', 'created_at', 'expires_at', 'scope']",
+    "        self.input_array = input_array\n        self.output_array = output_array\n        self.weight_array = weight_array"
+   ],
+   "quiet": [
+    "The action needs several files, some archives, a job file and a few parameters.",
+    "To run a shell command, give it the arguments and any environment settings.",
+    "We plotted the scores over time and then gave the chart a title.",
+    "The grid had two empty cells followed by four cells of ten each.",
+    "The test platform ran Linux, and the target machine ran something else.",
+    "If a path is given, the program opens the file and reads the event from it.",
+    "Each session has a user, a token, a creation time, an expiry time and a scope.",
+    "The model takes an input, produces an output and stores its weights."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "code list separator (guess)",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Very sparse pole (0.04%). Probe: close copies of the card's code frames scored 0.02-0.04; the best was 0.115 at '=' in \"platform=test\" strings. The prose list scored 0.01. The test records the card's best guess and is expected to fail."
+}
