@@ -1,0 +1,155 @@
+{
+ "id": "2026-10-21-moridinamael-a52a5be6",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N8273+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T01:14:24+00:00",
+ "recipe": {
+  "toolchain_commit": "a9f1fef9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L3_N8273_pos/2026-10-21-moridinamael-a52a5be6.tests.json"
+ },
+ "label": "the letters 'on' as a word piece: the little word 'on' (on the table, on Monday) fires, and the '-on' piece ending a rare name the tokenizer splits (e.g. Quillathon, Mr. Brevison) fires even more strongly; other prepositions (in, at, under, about), the same rare names with other endings (-an, -en, -ar) and everyday -on words stored whole (season, person, Washington) stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L3_N8273_pos/2026-10-21-moridinamael-a52a5be6.tests.json",
+   "prereg_commit": "a9f1fef9",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.971,
+     "peak": "on"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.622,
+     "peak": "theon"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.323,
+     "peak": " on"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.291,
+     "peak": " on"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.587,
+     "peak": "athon"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.813,
+     "peak": "on"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.26,
+     "peak": " on"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.721,
+     "peak": "thon"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.008,
+     "peak": " kitchen"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.13,
+     "peak": " noon"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.13,
+     "peak": "athan"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.026,
+     "peak": "en"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": -0.001,
+     "peak": " here"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.01,
+     "peak": "ar"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.003,
+     "peak": " under"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.06,
+     "peak": "Captain"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.605,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "a9f1fef9",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "notes": "Chat voted for 'the little word on itself'; the inverse solver (DE) found a leak on split-name '-on' endings (Aethon 0.97, Vortheon 0.62), so the label was tightened to name them as firing. play step OOMed on the GPU (resident model loaded); feeder chosen from the resident attribution ranking, so no edge weight is recorded.",
+ "roles": [
+  "feeds bonsai1/L4/N9554-"
+ ]
+}
