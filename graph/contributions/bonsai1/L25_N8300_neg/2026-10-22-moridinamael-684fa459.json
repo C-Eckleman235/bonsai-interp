@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-22-moridinamael-684fa459",
+ "kind": "qc",
+ "neuron": "bonsai1/L25/N8300-",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T07:35:36+00:00",
+ "recipe": {
+  "toolchain_commit": "c01f4137",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N8300_neg/2026-10-22-moridinamael-684fa459.tests.json"
+ },
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N8300_neg/2026-10-22-moridinamael-684fa459.tests.json",
+   "prereg_commit": "c01f4137",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.481,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.727,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.383,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.586,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.542,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.803,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.37,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.65,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.011,
+     "peak": " late"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.003,
+     "peak": " century"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.013,
+     "peak": "8"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.0,
+     "peak": " street"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.003,
+     "peak": "She"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.007,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.038,
+     "peak": "3"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.051,
+     "peak": "8"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.564,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "c01f4137",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "a year of the 1880s or 1890s written in digits (peaks on the decade digit: 18|8|x, 18|9|x, and '1890s'); years 1900-1909 fire about half as strongly; years before 1880 (including the 1850s-1860s, this neuron's other pole), the 1910s-1990s, 2000-2079 and earlier centuries stay quiet (under about 0.15); future years 2080-2099 used as years (and 'the 2090s') fire weakly (about 0.2-0.35), but a 20xx count does not; 1880s-1890s years spelled out in words ('eighteen ninety-two') fire weakly (about 0.2-0.3); a non-year 188x/189x number (a count, a distance, a code, even written 1,896) is weak to middling on its own (about 0.15-0.3) but fires more strongly once an earlier year appears in the text"
+ }
+}
