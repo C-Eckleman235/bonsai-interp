@@ -1,0 +1,72 @@
+{
+ "contribution": "2026-10-21-moridinamael-7df20065",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L22/N7170-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T03:32:35+00:00",
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "In code (Python, JavaScript/TypeScript, Java, C++ and similar) and technical prose, a list or array value being created, declared or grown: strongest for an empty list or array literal about to be filled, a list or array type or type hint, a list-producing constructor, and appending or pushing an item onto a list; prose stating that something returns or holds a list or array also fires. Merely reading an existing list (indexing one element, taking its length, passing it along) stays weak, and looping over it is moderate. The same code with a dict, map, set, tuple or NumPy array stays quiet, and the word 'list' in everyday prose with no list value behind it fires only weakly; a variable merely named like a list that holds something else (a number, string or None) sits in between, weaker than a real list but not quiet."
+ },
+ "neighbours": [
+  {
+   "unit": "L22/N7170",
+   "pole": "-",
+   "label": "In code (Python, JavaScript/TypeScript, Java, C++ and similar) and technical prose, a list or array value being created, declared or grown: strongest for an empty list or array literal about to be filled, a list or array type or type hint, a list-producing constructor, and appending or pushing an item onto a list; prose stating that something returns or holds a list or array also fires. Merely reading an existing list (indexing one element, taking its length, passing it along) stays weak, and looping over it is moderate. The same code with a dict, map, set, tuple or NumPy array stays quiet, and the word 'list' in everyday prose with no list value behind it fires only weakly; a variable merely named like a list that holds something else (a number, string or None) sits in between, weaker than a real list but not quiet.",
+   "fire": [
+    "results = []\nfor row in rows:\n    results.append(row.strip())",
+    "const items = [];\nitems.push(newItem);",
+    "def get_names(users: list[str]) -> list[str]:",
+    "List<Integer> scores = new ArrayList<>();\nscores.add(42);",
+    "std::vector<int> values;\nvalues.push_back(7);",
+    "The function returns a list of all matching file paths.",
+    "let queue: string[] = [];",
+    "squares = list(range(10))"
+   ],
+   "quiet": [
+    "The guest list for the wedding was very long.",
+    "my_list = 5\nprint(my_list)",
+    "results = {}\nfor row in rows:\n    results[row.id] = row.strip()",
+    "const items = new Map();\nitems.set(key, newItem);",
+    "def get_names(users: dict[str, int]) -> set[str]:",
+    "Map<String, Integer> scores = new HashMap<>();\nscores.put(\"a\", 42);",
+    "std::unordered_set<int> values;\nvalues.insert(7);",
+    "The function returns the number of matching file paths."
+   ]
+  }
+ ],
+ "predictions": "Loop-back after mapping neighbours; label kept verbatim. Expect 7-8/8 fire, the two solver-leak near misses (guest list, my_list = 5) the strongest quiet items but under 0.30.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "neighbors",
+   "probe",
+   "inverse-de",
+   "blind-room",
+   "quick-test"
+  ],
+  "_screens_vocabulary": [
+   "atlas",
+   "bands",
+   "bank-solo",
+   "blind-room",
+   "card",
+   "disproof",
+   "held-out",
+   "induce",
+   "inverse-de",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round",
+   "step-down",
+   "step-out",
+   "which"
+  ]
+ }
+}
