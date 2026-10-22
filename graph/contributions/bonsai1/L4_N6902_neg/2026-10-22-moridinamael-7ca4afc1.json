@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-22-moridinamael-7ca4afc1",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N6902-",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T19:25:15+00:00",
+ "recipe": {
+  "toolchain_commit": "81cbccd2",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N6902_neg/2026-10-22-moridinamael-7ca4afc1.tests.json"
+ },
+ "label": "the joined letters 'boyd' in any case or use (surname, first name, place, brand, username), not look-alikes such as Floyd, Lloyd, Boyle, Boyden or the word 'boy'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N6902_neg/2026-10-22-moridinamael-7ca4afc1.tests.json",
+   "prereg_commit": "81cbccd2",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.475,
+     "peak": " Boyd"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.893,
+     "peak": "yd"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.55,
+     "peak": " Boyd"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.573,
+     "peak": " Boyd"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.893,
+     "peak": "d"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.563,
+     "peak": " Boyd"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.488,
+     "peak": " Boyd"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.733,
+     "peak": "D"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.004,
+     "peak": " at"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.004,
+     "peak": " used"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.009,
+     "peak": " inning"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.005,
+     "peak": " invoice"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.025,
+     "peak": "rd"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.004,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.075,
+     "peak": "ce"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.01,
+     "peak": " hym"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.568,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "81cbccd2",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L5/N1810-"
+ ],
+ "notes": "Step-out from bonsai1/L5/N1810-. play step hit CUDA OOM (resident stream model holds the GPU), so TARGET is the top MLP feeder by resident attribution (feeders tool), not by ablation drop; no feeds edge recorded. Split forms (Bo|yd, BO|YD, boy|d) fire hardest (0.73-0.89); ' Boyd' as one token 0.47-0.57. Test sentences written blind by a second author from the label only."
+}
