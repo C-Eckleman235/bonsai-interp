@@ -1,0 +1,42 @@
+{
+ "contribution": "2026-10-22-moridinamael-6d0d5fdd",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N8104+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:59:10+00:00",
+ "roles": ["reads bonsai1/L30/N3336+"],
+ "neighbours": [
+  {
+   "unit": "L33/N8104",
+   "pole": "+",
+   "label": "In English text, a mid-sentence word right before a number or numbered code is expected next: count and size hedges (over, nearly, at least, aged) and labels that take a number (chromosome, type, version, platform, extension, World War). It fires before the number appears. Quiet for the same words when no number can follow (jumped over the fence, at least he tried, this type of music) and at the start of a sentence.",
+   "short": "the word right before an expected number",
+   "fire": [
+    "The museum received over 4,000 visitors during the first weekend of the exhibit.",
+    "We waited nearly 45 minutes before the bus finally arrived at the station.",
+    "Applicants must have at least 3 years of experience in a related field.",
+    "The study followed volunteers aged 18 to 65 across several cities.",
+    "Researchers found the gene variant on chromosome 17 in most of the samples.",
+    "My grandfather served as a radio operator during World War 2 in the Pacific.",
+    "The patient was diagnosed with type 2 diabetes after a routine checkup.",
+    "Please update the app to version 3.1 before the next login."
+   ],
+   "quiet": [
+    "The museum's new exhibit drew crowds of curious visitors all weekend long.",
+    "We waited at the corner until the bus finally arrived at the station.",
+    "He didn't win the race, but at least he tried his best the whole way.",
+    "The study followed volunteers from many backgrounds across several cities.",
+    "Researchers found the gene variant in most of the samples they collected.",
+    "My grandfather served as a radio operator in the navy during the war.",
+    "She has always loved this type of music since she was a teenager.",
+    "Please update the app before the next login to keep your data safe."
+   ]
+  }
+ ],
+ "predictions": "Blind test written by a second author from the label only. Expect most fire items to clear 0.20; risk: 'type 2 diabetes' and 'World War 2' may peak lower, and 'but at least he tried' may leak.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["card", "look", "probe", "step-down", "inverse-de", "bank-solo", "blind-room"]
+ }
+}
