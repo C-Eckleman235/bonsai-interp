@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-ce4d6838",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N9518-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T08:19:58+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N9518",
+   "pole": "-",
+   "label": "Predicts 'cap' or 'lid' next: fires on the word just before a cap (baseball, polar ice, lens, screw-on, bottle), regardless of what actually follows; quiet where nothing sets up a cap.",
+   "fire": [
+    "For the hike, my brother packed sunscreen and his favourite baseball cap.",
+    "Satellite images show the Greenland ice cap losing mass every summer.",
+    "The jars come with screw-on lids that keep the sauce fresh.",
+    "Every player on the team got a signed baseball hat after the final.",
+    "Climate models predict the polar ice will keep thinning this century.",
+    "He lost the lens cap somewhere on the beach.",
+    "She pried off the bottle cap with the edge of a spoon.",
+    "The containers have screw-top lids and fit neatly in the fridge."
+   ],
+   "quiet": [
+    "For the hike, my brother packed sunscreen and his favourite wool socks.",
+    "Satellite images show the Greenland coastline changing every summer.",
+    "The jars come with printed labels that list the ingredients.",
+    "Every player on the team got a signed football shirt after the final.",
+    "Climate models predict the ocean currents will keep shifting this century.",
+    "He lost his sandals somewhere on the beach.",
+    "She sliced the bread with the edge of a knife.",
+    "The containers are made of glass and fit neatly in the fridge."
+   ]
+  }
+ ],
+ "predictions": "median fire ~0.45 (probes: baseball 0.69, screw-on 0.51, polar ice 0.40, lens 0.31); near misses < 0.15 (ice cream bowl 0.06, budget 0.003). 'baseball glove' still fired 0.46 at ' baseball', so near misses drop the cap-predicting word itself.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predicts 'cap'/'lid'",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Logit effect of the + pole suppresses ' cap'/' lid'; the - pole is the cap predictor. Causal: it reads the setup word, not the cap."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-f6a13b3d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N882+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T08:19:58+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L11/N882",
+   "pole": "+",
+   "label": "A colon and line break that introduce a quoted excerpt from a named source ('The Times reports:\\n', 'From the article:\\n'); quiet on colons that introduce lists, steps, letters or code.",
+   "fire": [
+    "The ruling was covered widely. The Washington Post reports:\nJudges said the law could not be enforced.",
+    "The minister finally spoke about the strike. From the Reuters article:\nUnion leaders rejected the offer on Monday.",
+    "Analysts were not impressed by the merger. The Financial Times notes:\nInvestors have grown wary of the deal.",
+    "The study drew attention abroad. From the Guardian's report:\nResearchers found the drug reduced symptoms.",
+    "There is a good summary of the dispute here. As the BBC reports:\nTalks broke down late on Friday.",
+    "The scandal deepened this week. From the Associated Press story:\nThe mayor declined to comment on the charges.",
+    "The company admitted the flaw. The Wall Street Journal writes:\nEngineers had warned about the problem for months.",
+    "Critics pounced on the speech. From Politico's coverage:\nAides said the remarks were taken out of context."
+   ],
+   "quiet": [
+    "The cake is easy to make. You will need the following:\nthree eggs, flour and a cup of milk.",
+    "The setup takes a few minutes. Follow these steps:\n1. Open the box.\n2. Plug in the cable.",
+    "The form was due last week. Dear Ms. Carter:\nPlease find my application enclosed.",
+    "The script is very short. Here is the code:\nfor i in range(3):\n    print(i)",
+    "The trip needs some planning. Things to pack:\nboots, a tent and a warm jacket.",
+    "The meeting had three topics. Agenda:\nbudget, hiring and the new office.",
+    "The shop opens early. Opening hours:\nMonday to Friday, eight to six.",
+    "The course has two parts. Requirements:\na laptop and a notebook."
+   ]
+  }
+ ],
+ "predictions": "median fire ~0.25 (probes: 'NYT reported...:\\n' 0.375, press release 0.20, speech snippet 0.12); near misses < 0.05 (items list 0.03, install steps 0.01, code 0.004, Dear Sir 0.007).",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "':\\n' before a quoted excerpt",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: 30 of top 32 on ':\\n' after blog-style quote introductions ('The New York Times reports:', 'From TZ's article:'). Pole max is small (9.06)."
+}
