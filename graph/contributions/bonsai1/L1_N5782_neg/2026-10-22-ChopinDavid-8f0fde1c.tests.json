@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-8f0fde1c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N5782-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T07:20:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N5782",
+   "pole": "-",
+   "label": "Dense layer-1 unit: weakly on for most text, highest on ' valuable' (and ' simple'); an 8 + 8 test is unlikely to pass because filler sits near 0.4 of max.",
+   "fire": [
+    "The museum received a valuable collection of old maps last year.",
+    "Her mentor gave her valuable advice before the interview.",
+    "These surveys provide valuable data for city planners.",
+    "The volunteers donated valuable time to the food bank.",
+    "Thieves took several valuable paintings from the gallery.",
+    "The trip gave the students valuable practice in a new language.",
+    "Fresh water is a valuable resource in the desert.",
+    "The scouts gathered valuable clues about the enemy's position."
+   ],
+   "quiet": [
+    "The museum received a large collection of old maps last year.",
+    "Her mentor gave her kind advice before the interview.",
+    "These surveys provide new data for city planners.",
+    "The volunteers donated their weekends to the food bank.",
+    "Thieves took several framed paintings from the gallery.",
+    "The trip gave the students daily practice in a new language.",
+    "Fresh water is a scarce resource in the desert.",
+    "The scouts gathered fresh clues about the enemy's position."
+   ]
+  }
+ ],
+ "predictions": "fire median ~0.8 (probes: valuable 0.74-0.86); near misses ~0.4 (useful 0.39, filler 0.47-0.48), so expect several near misses over 0.30 and a fail.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense ('valuable' highest)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.2,
+ "notes": "Card flags dense: 30% of tokens reach 0.1 of a tiny max (0.26), gate-closed leak regime 100%. ' valuable' x17 of the top 32. Testing 'valuable' vs a synonym to record the separation honestly."
+}

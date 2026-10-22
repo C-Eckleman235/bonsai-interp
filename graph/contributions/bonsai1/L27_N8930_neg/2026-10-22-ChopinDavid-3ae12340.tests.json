@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-3ae12340",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N8930-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T07:20:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L27/N8930",
+   "pole": "-",
+   "label": "' abdominal' in anatomical and clinical text (abdominal wall, cavity, organs); quiet on the same clinical sentences about other body regions.",
+   "fire": [
+    "On the scan, a large cyst was visible inside the abdominal cavity.",
+    "The hernia pushed through a weak spot in the abdominal muscles.",
+    "During the operation, the abdominal wall was opened along the midline.",
+    "Nurses checked the child for abdominal swelling every few hours.",
+    "Blunt trauma from the crash caused serious abdominal bleeding.",
+    "The doctor pressed gently on the abdominal region to find the tender spot.",
+    "Ultrasound is the first test for most abdominal masses in adults.",
+    "After the surgery, the patient wore a binder to support the abdominal incision."
+   ],
+   "quiet": [
+    "On the scan, a large cyst was visible inside the skull near the ear.",
+    "The fracture ran through a weak spot in the forearm bone.",
+    "During the operation, the knee joint was opened from the front.",
+    "Nurses checked the child for neck stiffness every few hours.",
+    "Blunt trauma from the crash caused serious facial bruising.",
+    "The doctor pressed gently on the ankle to find the tender spot.",
+    "X-ray is the first test for most wrist injuries in adults.",
+    "After the surgery, the patient wore a sling to support the shoulder incision."
+   ]
+  }
+ ],
+ "predictions": "median fire ~0.45 (probes: abdominal wall 0.64, pain 0.46, cavity 0.45, crunches 0.32); near misses < 0.2 (thoracic 0.19, garden wall 0.01); risk: anatomy near the belly fires without the word ('belly wall' 0.30, bowel 0.49), so near misses use head and limbs.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'abdominal' (anatomy)",
+ "unit_kind": "lexical",
+ "confidence": 0.6,
+ "notes": "Card: ' abdominal' x10 of the top 32, plus 'rupture of' bowels. Probes show the anatomical abdomen, not only the word, drives it: bowel 0.49, 'the' before belly wall 0.30."
+}

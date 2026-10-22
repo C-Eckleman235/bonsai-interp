@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-1b41bfbb",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N1232-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T07:20:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L6/N1232",
+   "pole": "-",
+   "label": "Misspellings that drop a letter, at the misspelled piece (acess, neces-ary, acces-ory, prog-am-er, sucess, acept, recomend); quiet on the correct spellings of the same words.",
+   "fire": [
+    "Make sure the building is acessible to people in wheelchairs.",
+    "He argued that a new law was a necesity for small farmers.",
+    "Our store sells phone cases and other accesories at low prices.",
+    "The junior progammer fixed the bug in less than an hour.",
+    "The function cannot acess the database without a password.",
+    "Hard work is not necesarily the same as good work.",
+    "The launch was a huge sucess for the small company.",
+    "I would recomend this hotel to anyone visiting the city."
+   ],
+   "quiet": [
+    "Make sure the new building is accessible to people in wheelchairs.",
+    "He argued that a new law was a necessity for small farmers.",
+    "Our store sells phone cases and other accessories at low prices.",
+    "The junior programmer fixed the bug in less than an hour.",
+    "The function cannot access the database without a password.",
+    "Hard work is not necessarily the same as good work.",
+    "The launch was a huge success for the small company.",
+    "I would recommend this hotel to anyone visiting the city."
+   ]
+  }
+ ],
+ "predictions": "median fire ~0.4 (probes: acess 0.78, neces 0.59, progamers 0.52, goverment 0.22, seperated 0.22, recieve 0.07); near misses < 0.05 (correct spellings 0.01-0.03); risk: sucess/acept/recomend are single tokens not probed and may stay low.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "misspelling (dropped letter)",
+ "unit_kind": "lexical",
+ "confidence": 0.45,
+ "notes": "Card top: acess, neces, acces, apro, COM-ENT-ED, prog-am-ers, se-per-ated, or-iet-ated, apl-habetically. Distinction is spelled-wrong vs spelled-right; dropped letters fired more than swapped ones in probes."
+}

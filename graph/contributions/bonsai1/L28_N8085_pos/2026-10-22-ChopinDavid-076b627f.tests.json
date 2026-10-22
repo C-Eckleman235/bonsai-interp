@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-076b627f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N8085+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T07:20:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N8085",
+   "pole": "+",
+   "label": "The indentation token before a keyword argument on its own line in a multi-line Python signature or call (input_ids=None, split=None); quiet on indented Python lines that are statements, not keyword arguments.",
+   "fire": [
+    "    def __init__(\n        self,\n        vocab_size=30522,\n        hidden_size=768,\n        num_layers=12,\n        dropout=0.1,\n    ):",
+    "        logits = self.head(\n            hidden_states=sequence_output,\n            labels=labels,\n            return_dict=True,\n        )",
+    "model.fit(\n    x_train,\n    y_train,\n    epochs=10,\n    batch_size=32,\n    validation_split=0.2,\n)",
+    "    def generate(\n        self,\n        prompt=None,\n        max_length=50,\n        temperature=1.0,\n        top_k=None,\n    ):",
+    "loader = DataLoader(\n    dataset,\n    batch_size=64,\n    shuffle=True,\n    num_workers=4,\n)",
+    "        out = self.attention(\n            query=q,\n            key=k,\n            value=v,\n            mask=attention_mask,\n        )",
+    "parser.add_argument(\n    '--lr',\n    type=float,\n    default=0.001,\n    help='learning rate',\n)",
+    "    def __call__(\n        self,\n        text=None,\n        padding=False,\n        truncation=None,\n        max_length=None,\n    ):"
+   ],
+   "quiet": [
+    "    for i in range(10):\n        total += i\n        if total > 20:\n            break\n    print(total)",
+    "        if logits is None:\n            logits = self.head(output)\n        loss = criterion(logits, labels)\n        return loss",
+    "for epoch in range(epochs):\n    loss = train_one_epoch()\n    scores.append(loss)\n    print(epoch, loss)",
+    "    while queue:\n        node = queue.pop()\n        seen.add(node)\n        queue.extend(children[node])",
+    "try:\n    data = load(path)\n    rows = parse(data)\nexcept IOError:\n    rows = []",
+    "        with open(path) as f:\n            text = f.read()\n            words = text.split()\n            count = len(words)",
+    "if args.verbose:\n    print('starting')\n    start = time.time()\n    run()",
+    "    while running:\n        event = poll()\n        handle(event)\n        frames += 1"
+   ]
+  }
+ ],
+ "predictions": "median fire ~0.5 (probes: forward(...) kwargs 1.23, encoder call 0.56, split=None 0.59); near misses < 0.15 (one-line def 0.002); risk: indentation in loop/if bodies untested; ' red' (0.33-0.51) is a second, untested slice.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "indent before kwarg line",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: indentation tokens in HF transformers signatures 49, 45; ' split=None' 40, 38; also ' red' x4 (red and black, redness), but 'green' control scored 0.32 too, so colour is left out."
+}
