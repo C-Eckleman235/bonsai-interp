@@ -647,6 +647,46 @@ auto-token@1 read a pole's 32 top examples and guessed "the token X". At layer 1
 
 **Backup:** the layer's data files are in the `auto2-data` release and its map file in `auto-screens`, with sha256 and sizes in the summary's `artifacts`.
 
+**Layer 4 results** (protocol 13e20da, tests pinned e1546fb; scored with speed-only amendments e1b3ee8, a043447 and 897b2fb; `graph/auto/bonsai1_L4.auto2.summary.json`)
+- **Stage 1:** 14,421 of 19,880 eligible poles have a word hit, 33,137 hits in all.
+  - Excluded: 2,207 dense, 2,269 weak and 220 positional poles.
+  - At layer 20, 47% of eligible poles had a hit. At layer 4, 73% do.
+- **Stage 2 bins:**
+
+  | bin | hits |
+  |---|---|
+  | unexplained | 17,852 |
+  | context | 4,986 |
+  | lexical | 3,352 |
+  | rare | 3,026 |
+  | predictive | 1,469 |
+  | format | 1,042 |
+  | collocation | 794 |
+  | topic | 301 |
+  | positional | 260 |
+  | copy | 55 |
+
+- **Auto tests: 6,337 of 10,088 held (63%), covering 4,670 poles.** The median AUROC was 1.00.
+
+  | bin | held |
+  |---|---|
+  | lexical | 2,946 / 3,076 (96%) |
+  | context | 2,311 / 4,133 (56%) |
+  | predictive | 540 / 1,242 (43%) |
+  | collocation | 256 / 741 (35%) |
+  | format | 272 / 851 (32%) |
+  | copy | 12 / 45 (27%) |
+
+- **Examples that held:**
+  - lexical: 'RT', ' ihr', ' ت'
+  - context: ' again' shortly after the word 'once'; ' edge' right after an ordinary word
+  - predictive: ' charged' right before ' with'
+  - collocation: ' 입' in a fixed pair
+- **Reading:**
+  - Layer 4 is far more lexical than layer 20: 3,352 lexical hits against 251, and 4,670 held poles against 562.
+  - Lexical claims hold at 96% in both layers. Context claims hold at 56% (49% at layer 20).
+  - Format and copy hold less often early. Line-position and repetition rules are weaker claims at layer 4.
+
 **Speed log (auto-token@2 run)**
 
 | unit | measured | bottleneck | change | parity |

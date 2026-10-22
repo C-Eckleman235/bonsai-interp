@@ -294,3 +294,49 @@ Entry format:
     once, not the card filling up.
   - Stops are routine, so every long stage must checkpoint and report progress. Design both in from the start, not
     after a lost run.
+
+### 2026-10-20 fit check and L4 score (beside the live stream, cap 0.22)
+- measured:
+  - The fit check under BONSAI_GPU_FRACTION=0.22 (3.5 GiB): resident weights 2.88 GB with lm_head left off.
+  - Scoring peaks were 3.10–3.30 GB in every configuration.
+  - Chosen: the preamble-cached scorer at batch 16. Benchmark: 321 snippets/s at layer 4 and 80 at layer 20 (the
+    full scorer did 232 and 57). Peak 3.17 GB, about 0.3 GiB under the cap.
+  - L4 score: 476,571 sequences (10,088 tests × 16 snippets × 3 preambles) in 38.3 min wall at 207 snippets/s.
+    649 s was yielded, about 27 GPU minutes. No reset, no OOM, nothing lost.
+- bottleneck: per-batch Python overhead (copying the preamble cache, building tensors). The real run made 207
+  snippets/s against the benchmark's 321.
+- change before the next unit: none in scoring (it fits and runs). Next, measure the 1,024-token passes under
+  0.22 before registering the all-layer run.
+- gain of the previous changes:
+  - lm_head off the GPU: peak 5.78 → 3.17 GB at batch 16.
+  - The preamble cache: 1.38× (layer 4) to 1.4× (layer 20) in the benchmark.
+  - Resumable scoring: not exercised (no stop).
+  - The memory fixes on both sides: yield fell from 70% of wall time to 28%, and the card stayed under budget.
+- transfers:
+  - Load only what the job reads. An untied output matrix is the second-largest tensor in a small model, and
+    activation-only jobs never touch it.
+  - Cache what every sequence shares (the preambles).
+  - Size the memory cap from a measured peak (weights plus the batch), not a guess.
+
+### 2026-10-20 benchmark of the 1,024-token passes (cap 0.22)
+- measured: at layer 20, batch 1, 3,481 tok/s with a 3.35 GB peak. Batch 2 runs out of memory under 3.5 GiB.
+- bottleneck: SDPA fell back to its math kernel, which materialises the 32 × 1,024² attention matrix.
+  - Transformers passes grouped-query attention as `enable_gqa=True` with 8 KV heads against 32 query heads.
+  - This PyTorch build (Windows, CUDA) refuses its fused kernels for unequal head counts and has no flash attention.
+- change before the next unit: repeat the KV heads before SDPA (`use_gqa_in_sdpa` → False, inside the auto tier
+  only). The memory-efficient kernel then runs: 4,347 tok/s (+25%), peak 3.25 GB. Batch 2 still does not fit, so the
+  all-layer passes run at batch 1.
+  (parity: CPU counts identical; on the GPU the kernel change can move bf16 rounding. The run is not registered yet,
+  so this is part of its registered code rather than an amendment.)
+- transfers:
+  - Check which attention kernel actually runs (the warnings name the reason), not the one the config asks for.
+  - "GQA support" in a library can silently mean the slowest kernel on a given platform.
+  - Under a tight memory cap, kernel choice decides the usable batch size.
+
+### 2026-10-20 note during the all-layer stage 1 pass
+- measured: the pass ran at 1,619 tok/s (batch 1, 33 layers counted per forward). A CPU parity test running beside
+  it cut that to about 1,100 tok/s, a 30% loss. The pass is host-bound: per-layer thresholding, bincounts and
+  merges run on the CPU between kernels.
+- change: CPU-side work (tests, refits, prereg) runs only in the gaps between GPU passes, or limited to 2 threads.
+- transfers: a host-bound GPU pass loses about 30% to any concurrent CPU work. Schedule CPU jobs between passes, and
+  for the next model move more of the per-layer bookkeeping onto the device.

@@ -641,7 +641,7 @@ def _stop_requested():
         sys.exit("STOP file found: stopping before the pass finished (nothing written)")
 
 
-YIELD = {"seconds": 0.0, "ticks": 0}
+YIELD = {"seconds": 0.0, "ticks": 0, "emptied": 0, "kept": 0}
 
 
 def _tick(*_):
@@ -649,11 +649,15 @@ def _tick(*_):
     Before yielding, the allocator's cached blocks are returned, so the foreground can use what this process is not holding."""
     from bonsai_interp import gpu_turn
     _stop_requested()
-    if gpu_turn._live("want"):
+    if gpu_turn.waiting(0):  # the stream wants the GPU: this tick will step back into the queue
         import torch
         if torch.cuda.is_available() and torch.cuda.is_initialized():
             torch.cuda.synchronize()
-            torch.cuda.empty_cache()
+            if torch.cuda.mem_get_info()[0] < 3 * 2**30:  # return cached blocks only when the card is short of memory
+                torch.cuda.empty_cache()
+                YIELD["emptied"] += 1
+            else:
+                YIELD["kept"] += 1
     YIELD["seconds"] += gpu_turn.background_tick("auto2")
     YIELD["ticks"] += 1
 
@@ -663,13 +667,19 @@ def _gpu_idle(label=""):
     from bonsai_interp import gpu_turn
     gpu_turn.release()
     if label and label != "stop":
-        print(f"gpu_turn: {label}: yielded {YIELD['seconds']:.1f} s over {YIELD['ticks']} batches so far", flush=True)
+        print(f"gpu_turn: {label}: yielded {YIELD['seconds']:.1f} s over {YIELD['ticks']} batches so far "
+              f"(cache emptied at {YIELD['emptied']} yields, kept at {YIELD['kept']})", flush=True)
 
 
 def _gpu_load(lm_head=False):
     """The model, with a gpu_turn tick before every forward pass (one per batch in every stage). The stages only run
-    model.model (activations, never logits), so the output matrix stays unloaded unless asked for (about 1.2 GB)."""
+    model.model (activations, never logits), so the output matrix stays unloaded unless asked for (about 1.2 GB).
+    Attention repeats the KV heads instead of passing SDPA enable_gqa: with enable_gqa this PyTorch build refuses its fused
+    kernels and falls back to the math kernel, which materialises the attention matrix (RTX 5080, 1,024-token windows:
+    4,347 vs 3,481 tok/s at layer 20, batch 1; masked scoring already took the repeat path)."""
+    import transformers.integrations.sdpa_attention as sdpa
     from bonsai_interp.model import load
+    sdpa.use_gqa_in_sdpa = lambda *a, **k: False
     _tick()
     model, tok, rec = load("bonsai1", lm_head=lm_head)
     model.model.register_forward_pre_hook(_tick)
@@ -1406,6 +1416,22 @@ def score(a):
     _score_layer(model, tok, rec, L, P, pre["tests_sha256"], pre["counts"], first, a.batch, a.smoke)
 
 
+def _prefix_batches(suffixes, B):
+    """Texts grouped by everything but their last token (a fire snippet and its swapped near misses share a group);
+    batches of up to B groups whose prefixes have equal length, so no padding. Deterministic order."""
+    groups = {}
+    for t, s_ in suffixes.items():
+        groups.setdefault(tuple(s_[:-1]), []).append((t, s_[-1]))
+    by_len = {}
+    for g, mem in groups.items():
+        by_len.setdefault(len(g), []).append((g, sorted(mem)))
+    out = []
+    for n in sorted(by_len):
+        gs = sorted(by_len[n])
+        out += [gs[i:i + B] for i in range(0, len(gs), B)]
+    return out
+
+
 def _score_layer(model, tok, rec, L, P, tests_sha, counts, prereg_commit, B, smoke):
     """Judge one layer's pinned auto tests: results file and summary."""
     import torch
@@ -1463,8 +1489,7 @@ def _score_layer(model, tok, rec, L, P, tests_sha, counts, prereg_commit, B, smo
         rec.clear()
         return x
 
-    pad = tok.pad_token_id if tok.pad_token_id is not None else 0
-    n_total, t_last = len(PREAMBLES) * -(-len(texts) // B), [time.time()]
+    n_total, t_last = len(PREAMBLES) * -(-len(texts) // B), [time.time()]  # an upper bound (prefix groups need fewer)
 
     def progress():
         if time.time() - t_last[0] >= 60:
@@ -1472,6 +1497,22 @@ def _score_layer(model, tok, rec, L, P, tests_sha, counts, prereg_commit, B, smo
             el = time.time() - t0
             print(f"  layer {L}: {n_done}/{n_total} batches this run, {n_done * B / max(el, 1e-9):.1f} snippets/s, "
                   f"yielded {YIELD['seconds'] - y0:.0f} s of {el:.0f} s", flush=True)
+    def split_on_oom(items, f):
+        """f(items) -> [(texts, values)]; on a CUDA out-of-memory error, run the items again in halves instead of
+        failing the layer (each text's value is read at its own last token, whatever it is batched with). Nothing is
+        added to the sums here, so a STOP part-way through a split batch adds none of it."""
+        try:
+            return f(items)
+        except torch.OutOfMemoryError:
+            if len(items) == 1:
+                raise
+        rec.clear()
+        rec.mode, rec.stop_at = None, None
+        torch.cuda.empty_cache()
+        h = len(items) // 2
+        print(f"  layer {L}: out of GPU memory on a batch of {len(items)}: running it in halves", flush=True)
+        return split_on_oom(items[:h], f) + split_on_oom(items[h:], f)
+
     for pi, pre_text in enumerate(PREAMBLES):
         if pi < resume[0]:
             continue
@@ -1488,43 +1529,55 @@ def _score_layer(model, tok, rec, L, P, tests_sha, counts, prereg_commit, B, smo
             pass
         finally:
             rec.stop_at = None
-        joined = {t: tok(pre_text + t).input_ids for t in texts}
-        cached = sorted((t for t in texts if joined[t][:P_] == pre_ids), key=lambda t: len(joined[t]))
+        enc_all = tok([pre_text + t for t in texts]).input_ids  # one call for every snippet of this preamble
+        joined = dict(zip(texts, enc_all))
         full = [t for t in texts if joined[t][:P_] != pre_ids]
-        for b in range(0, len(cached), B):
+        batches = _prefix_batches({t: joined[t][P_:] for t in texts if joined[t][:P_] == pre_ids}, B)
+        for b, batch in enumerate(batches):
             if (pi, 0, b) < resume:
                 continue
+            def groups(batch):
+                c = copy.deepcopy(cache)
+                c.batch_repeat_interleave(len(batch))
+                if batch[0][0]:  # the shared prefix (everything but the last token), once per group
+                    rec.mode, rec.stop_at = None, L
+                    try:
+                        with torch.no_grad():
+                            model.model(input_ids=torch.tensor([list(g) for g, _ in batch], device=DEVICE), past_key_values=c,
+                                        use_cache=True)
+                    except StopForward:
+                        pass
+                    finally:
+                        rec.stop_at = None
+                c.batch_select_indices(torch.tensor([i for i, (_, mem) in enumerate(batch) for _ in mem], device=DEVICE))
+                chunk = [t for _, mem in batch for t, _ in mem]
+                x = run(torch.tensor([[tk] for _, mem in batch for _, tk in mem], device=DEVICE), None, c)
+                return [(chunk, x[:, -1].float().cpu().numpy())]  # each text's last token: the trigger or its swap
             try:
                 _stop_requested()
-                chunk = cached[b:b + B]
-                suf = [joined[t][P_:] for t in chunk]
-                T = max(len(x) for x in suf)
-                ids = torch.tensor([x + [pad] * (T - len(x)) for x in suf], device=DEVICE)
-                m = torch.tensor([[1] * (P_ + len(x)) + [0] * (T - len(x)) for x in suf], device=DEVICE)
-                c = copy.deepcopy(cache)
-                c.batch_repeat_interleave(len(chunk))
-                x = run(ids, m, c)
-                last = torch.tensor([len(x_) - 1 for x_ in suf], device=x.device)  # read at the snippet's last token
-                add(chunk, x[torch.arange(len(chunk), device=x.device), last].float().cpu().numpy())
+                for chunk, v in split_on_oom(batch, groups):
+                    add(chunk, v)
             except SystemExit:  # STOP before or during this batch: nothing of it was added
                 save((pi, 0, b))
                 raise
             n_done += 1
             progress()
             if n_done % 300 == 0:
-                save((pi, 0, b + B))
+                save((pi, 0, b + 1))
         for b in range(0, len(full), B):
             if (pi, 1, b) < resume:
                 continue
-            try:
-                _stop_requested()
-                chunk = full[b:b + B]
+            def padded(chunk):
                 enc = tok([pre_text + t for t in chunk], return_tensors="pt", padding=True).to(DEVICE)
                 x = run(enc.input_ids, enc.attention_mask)
                 # read at the snippet's last token (the trigger or its swap): the claim is about that position, and a max
                 # over a long snippet would let a near miss fire elsewhere (on another place where the rule holds)
                 last = enc.attention_mask.sum(1) - 1
-                add(chunk, x[torch.arange(len(chunk), device=x.device), last].float().cpu().numpy())
+                return [(chunk, x[torch.arange(len(chunk), device=x.device), last].float().cpu().numpy())]
+            try:
+                _stop_requested()
+                for chunk, v in split_on_oom(full[b:b + B], padded):
+                    add(chunk, v)
             except SystemExit:
                 save((pi, 1, b))
                 raise
@@ -1773,48 +1826,186 @@ def hits_all(a):
         rank(a, Ps[L], c.elig, L=L)
 
 
+class _LayerPairs:
+    """Stage 2's reads for one layer of an all-layer pass, without materialising every (hit, occurrence) pair:
+    occurrences stay stored once per trigger, and the values (frac, ctx_mean) sit in flat float32 arrays, hit-major in
+    occurrence order (the layout of _Pairs and save_store). Pairs are built per window chunk."""
+
+    def __init__(self, L, hitlist, occ):
+        pmax, nmax = _pole_max(L)
+        self.L, self.occ = L, occ
+        counts = np.array([len(occ.get(t["token"], ((), ()))[0]) for _, t in hitlist], dtype=np.int64)
+        self.start = np.r_[0, np.cumsum(counts)].astype(np.int64)
+        self.frac = np.zeros(int(self.start[-1]), np.float32)
+        self.ctxm = np.zeros(int(self.start[-1]), np.float32)
+        self.by_trig = {}
+        for h, (nid, t) in enumerate(hitlist):
+            n, sgn = int(nid.split("/N")[1][:-1]), 1.0 if nid.endswith("+") else -1.0
+            self.by_trig.setdefault(t["token"], []).append((h, n, sgn, pmax[n] if sgn > 0 else nmax[n]))
+
+    def windows(self, seen=None):
+        """The windows holding this layer's pairs; with `seen` (one flag per pair), only those holding an unread pair."""
+        if seen is None:
+            ws = [w for w, _ in self.occ.values() if len(w)]
+        else:
+            ws = []
+            for t, hs in self.by_trig.items():
+                w = self.occ.get(t, (np.zeros(0, np.int64),))[0]
+                if len(w):
+                    left = np.zeros(len(w), bool)
+                    for h, *_ in hs:
+                        left |= ~seen[self.start[h]:self.start[h] + len(w)]
+                    ws.append(w[left])
+        return np.unique(np.concatenate(ws)) if ws else np.zeros(0, np.int64)
+
+    def chunk(self, lo, hi):
+        """This layer's pairs whose window is in [lo, hi], sorted by window (stable): a dict of arrays, or None."""
+        parts = []
+        for t, hs in self.by_trig.items():
+            w, p = self.occ.get(t, (np.zeros(0, np.int64), np.zeros(0, np.int64)))
+            a, b = np.searchsorted(w, [lo, hi + 1])
+            if a == b:
+                continue
+            slots = np.arange(a, b)
+            for h, n, sgn, mx in hs:
+                parts.append((self.start[h] + slots, w[a:b], p[a:b], np.full(b - a, n), np.full(b - a, sgn), np.full(b - a, mx)))
+        if not parts:
+            return None
+        cols = [np.concatenate([q[i] for q in parts]) for i in range(6)]
+        o = np.argsort(cols[1], kind="stable")
+        return dict(zip(("idx", "pw", "pp", "pn", "ps", "mx"), (c[o] for c in cols)))
+
+
+def _screen_resume(root, todo, pairs):
+    """Read every stage-2 checkpoint in `root` into `pairs`, per layer: a chunk file fills the pairs of each layer it
+    read (its layer list is stored in it; for files written before that, screen-all.passes.json maps the file's pass
+    signature to its layers). So a rerun after some layers were written (a smaller layer set) reuses the pass instead
+    of redoing it. Returns, per layer, a flag per pair: read from a checkpoint."""
+    known = root / "screen-all.passes.json"
+    known = json.loads(known.read_text(encoding="utf-8")) if known.exists() else {}
+    seen = {L: np.zeros(len(pairs[L].frac), bool) for L in todo}
+    for f in sorted(root.glob("screen-all.*chunk*.npz")):
+        d = np.load(f)
+        read = [int(x) for x in d["layers"]] if "layers" in d.files else known.get(str(d["sig"]), [])
+        for L in todo:
+            if L in read and f"{L}_idx" in d.files:
+                ix = d[f"{L}_idx"]
+                pairs[L].frac[ix], pairs[L].ctxm[ix], seen[L][ix] = d[f"{L}_frac"], d[f"{L}_ctxm"], True
+    return seen
+
+
 def screen_all(a):
+    """Stage 2 for many layers: one forward pass per batch reads every layer. Pairs are built per window chunk (RAM stays
+    bounded), gathered values stay on the device until a flush, each finished chunk is checkpointed (a rerun skips it),
+    and each layer's screen file is written as soon as its minimal pairs are done (a rerun skips that layer)."""
     import torch
-    from bonsai_interp.env import DEVICE, limit_memory
+    from bonsai_interp.env import DEVICE
     layers, Ps, M, man = _setup_multi(a)
     R, vb = RULE, vocab()
     toks, dom, w0 = _windows(SCREEN, a)
+    todo = [L for L in layers if not (Ps[L]["screen"].exists() and Ps[L]["occ"].exists())]
     hl, occ, pairs = {}, {}, {}
-    for L in layers:
+    for L in todo:
         hl[L] = _hitlist(Ps[L], a)
         occ[L] = _occurrences(toks, sorted({t["token"] for _, t in hl[L]}), R["occ_per_trigger"], L, min_pos=R["min_pos"])
-        pairs[L] = _Pairs(L, hl[L], occ[L])
-    need = np.unique(np.concatenate([pairs[L].pw for L in layers])) if layers else np.zeros(0, np.int64)
-    print(f"stage 2, layers {layers}: {sum(len(hl[L]) for L in layers)} hits, {len(need)} screening windows needed (from {w0})", flush=True)
-    limit_memory(0.8)
+        pairs[L] = _LayerPairs(L, hl[L], occ[L])
+    if not todo:
+        print("stage 2: every layer already written", flush=True)
+        return
+    root = Ps[layers[0]]["hits"].parent
+    seen = _screen_resume(root, todo, pairs)
+    n_seen = sum(int(seen[L].sum()) for L in todo)
+    need = np.unique(np.concatenate([pairs[L].windows(seen[L]) for L in todo]))
+    B, CH = a.batch, max(a.batch, (a.chunk // a.batch) * a.batch)  # chunk boundaries fall on batch boundaries
+    n_ch = -(-len(need) // CH)
+    sig = hashlib.sha256(json.dumps([todo, len(need), int(need[0]) if len(need) else 0, CH, B]).encode()).hexdigest()[:16]
+    print(f"stage 2, layers {todo}: {sum(len(hl[L]) for L in todo)} hits, {sum(len(pairs[L].frac) for L in todo):,} pairs, "
+          f"{len(need)} screening windows in {n_ch} chunks (from {w0})", flush=True)
+    if n_seen:
+        print(f"resuming: {n_seen:,} pairs already read from checkpoints", flush=True)
     model, tok, rec = _gpu_load()
-    t0, B = time.time(), a.batch
-    for i in range(0, len(need), B):
-        _stop_requested()
-        ws = need[i:i + B]
-        sel = {L: pairs[L].select(ws) for L in layers}
-        live = [L for L in layers if len(sel[L])]
-        if not live:
-            continue
-        T = max(int(pairs[L].pp[sel[L]].max()) for L in live) + 1
-        x = torch.from_numpy(toks[ws, :T].astype(np.int64)).to(DEVICE)
-        _hooked_pass(model, rec, x, {L: (lambda act, L=L: pairs[L].read(act, ws, sel[L])) for L in live}, live[-1])
-        if (i // B) % 100 == 0 or i + B >= len(need):
-            _progress(min(i + B, len(need)), len(need), t0)
+    back = torch.arange(1, R["snippet"], device=DEVICE)
+    t0 = time.time()
+    for k in range(n_ch):
+        cw = need[k * CH:(k + 1) * CH]
+        cp = {}
+        for L in todo:  # this layer's pairs in the chunk that no checkpoint has read
+            d = pairs[L].chunk(int(cw[0]), int(cw[-1]))
+            keep = None if d is None else ~seen[L][d["idx"]]
+            cp[L] = None if d is None or not keep.any() else {c: v[keep] for c, v in d.items()}
+        pending = {L: [] for L in todo}  # (chunk-local indices, values on the device, ctx_mean on the device)
+
+        def flush():
+            for L in todo:
+                if pending[L]:
+                    sl = np.concatenate([q[0] for q in pending[L]])
+                    v = torch.cat([q[1] for q in pending[L]]).cpu().numpy()
+                    c = torch.cat([q[2] for q in pending[L]]).cpu().numpy()
+                    d = cp[L]
+                    pairs[L].frac[d["idx"][sl]] = v * d["ps"][sl] / d["mx"][sl]
+                    pairs[L].ctxm[d["idx"][sl]] = c
+                    pending[L] = []
+        for i in range(0, len(cw), B):
+            _stop_requested()
+            ws = cw[i:i + B]
+            sel = {}
+            for L in todo:
+                d = cp[L]
+                if d is None:
+                    continue
+                lo, hi = np.searchsorted(d["pw"], [ws[0], ws[-1] + 1])
+                ss = np.arange(lo, hi)
+                ss = ss[np.isin(d["pw"][ss], ws)]
+                if len(ss):
+                    sel[L] = ss
+            if not sel:
+                continue
+            live = sorted(sel)
+            T = max(int(cp[L]["pp"][sel[L]].max()) for L in live) + 1
+            x = torch.from_numpy(toks[ws, :T].astype(np.int64)).to(DEVICE)
+
+            def grab(L):
+                def f(act):
+                    d, ss = cp[L], sel[L]
+                    dev = act.device
+                    row = torch.from_numpy(np.searchsorted(ws, d["pw"][ss])).to(dev)
+                    pos_t, n_t = torch.from_numpy(d["pp"][ss]).to(dev), torch.from_numpy(d["pn"][ss]).to(dev)
+                    v = act[row, pos_t, n_t].float()
+                    win = act[row[:, None], (pos_t[:, None] - back).clamp_min(0), n_t[:, None]].float()
+                    scale = torch.from_numpy(d["ps"][ss] / d["mx"][ss]).to(dev).float()[:, None]
+                    pending[L].append((ss, v, (win * scale).clamp_min(0).mean(1)))
+                return f
+            _hooked_pass(model, rec, x, {L: grab(L) for L in live}, live[-1])
+            if (i // B) % 64 == 63:
+                flush()
+        flush()
+        np.savez(root / f"screen-all.{sig}.chunk{k:04d}.npz", sig=sig, layers=np.array(todo),
+                 **{f"{L}_{c}": v for L in todo if cp[L] is not None
+                    for c, v in (("idx", cp[L]["idx"]), ("frac", pairs[L].frac[cp[L]["idx"]]), ("ctxm", pairs[L].ctxm[cp[L]["idx"]]))})
+        cp = None
+        try:
+            import psutil
+            vm, rss = psutil.virtual_memory(), psutil.Process().memory_info().rss
+            ram = f"; RSS {rss / 2**30:.1f} GB, free RAM {vm.available / 2**30:.1f} GB"
+            if vm.available < 2 * 2**30:
+                _gpu_idle("low RAM")
+                sys.exit(f"free RAM under 2 GB after chunk {k}: stopping at a chunk boundary (checkpointed; rerun to resume)")
+        except ImportError:
+            ram = ""
+        el = time.time() - t0
+        print(f"  chunk {k + 1}/{n_ch}  {el / 60:.1f} min  yielded {YIELD['seconds']:.0f} s{ram}", flush=True)
     t_pass = time.time() - t0
     _gpu_idle("stage 2 pass, all layers")
-    print(f"stage 2 pass {t_pass / 60:.1f} min for {len(layers)} layers", flush=True)
-    done = {}
-    for L in layers:
-        done[L] = _finish_screen(Ps[L], L, hl[L], occ[L], pairs[L], toks, dom, w0, vb)
-    print(f"fit {(time.time() - t0 - t_pass) / 60:.1f} min", flush=True)
-    t1 = time.time()
-    _stop_requested()
-    _templates(model, rec, done, a.batch * 32)
-    _gpu_idle("minimal pairs, all layers")
-    print(f"minimal pairs {(time.time() - t1) / 60:.1f} min", flush=True)
-    for L in layers:
-        _write_screen(Ps[L], L, done[L][0], t0)
+    print(f"stage 2 pass {t_pass / 60:.1f} min for {len(todo)} layers", flush=True)
+    for L in todo:  # fit, minimal pairs and write, one layer at a time (a rerun skips the written ones)
+        t1 = time.time()
+        rows, plans = _finish_screen(Ps[L], L, hl[L], occ[L], pairs[L], toks, dom, w0, vb)
+        _templates(model, rec, {L: (rows, plans)}, a.template_batch)
+        _gpu_idle(f"minimal pairs, layer {L}")
+        _write_screen(Ps[L], L, rows, t1)
+        del pairs[L], occ[L], hl[L]
+    for f in [*root.glob("screen-all.*chunk*.npz"), *root.glob("screen-all.passes.json")]:
+        f.unlink()
 
 
 def prereg_all(a):
@@ -1981,6 +2172,8 @@ def main():
         if name.endswith("-all"):
             p.add_argument("--layers", required=True, help="comma-separated layers, e.g. 0,1,2,3")
             p.add_argument("--rescore", action="store_true", help="score-all: score layers that already have a summary again")
+            p.add_argument("--chunk", type=int, default=500, help="screen-all: windows per checkpointed chunk")
+            p.add_argument("--template-batch", type=int, default=128, help="screen-all: snippets per minimal-pair batch")
             p.set_defaults(layer=None)
         else:
             p.add_argument("--layer", type=int, required=True)

@@ -256,6 +256,11 @@ def background_tick(tag="bg"):
     return waited
 
 
+def waiting(priority=0):
+    """True when another process holds a live ticket at this priority (e.g. the stream wants the GPU)."""
+    return any(p == priority and pid != os.getpid() for p, _, pid, _ in _tickets())
+
+
 def release():
     """A background that stops, or pauses for CPU work, gives the GPU up."""
     if _bg["held"]:
