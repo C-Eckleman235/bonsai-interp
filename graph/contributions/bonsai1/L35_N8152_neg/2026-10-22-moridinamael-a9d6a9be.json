@@ -1,0 +1,168 @@
+{
+ "id": "2026-10-22-moridinamael-a9d6a9be",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N8152-",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T12:13:33+00:00",
+ "recipe": {
+  "toolchain_commit": "1e9f4440",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N8152_neg/2026-10-22-moridinamael-a9d6a9be.tests.json"
+ },
+ "label": "Sentences written in a language other than English: strongest in Chinese, Japanese, Korean, Russian, Greek, Thai and Vietnamese (about 0.4-0.8 of max), weaker in German, Spanish and French (about 0.2-0.3); quiet on everyday English prose, though a rare English word the tokenizer splits into odd pieces can reach about 0.3, and a single foreign word dropped into an English sentence is unreliable",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N8152_neg/2026-10-22-moridinamael-a9d6a9be.tests.json",
+   "prereg_commit": "1e9f4440",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.146,
+     "peak": "一起去"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.394,
+     "peak": "京"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.391,
+     "peak": " 아"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.386,
+     "peak": " г"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.388,
+     "peak": "υ"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.224,
+     "peak": "ท"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.308,
+     "peak": " cho"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.191,
+     "peak": "九"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.101,
+     "peak": "-pro"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.242,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.03,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.02,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.068,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.053,
+     "peak": "ank"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.034,
+     "peak": " Sunday"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.036,
+     "peak": " fried"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.953,
+    "median_fire": 0.347,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "1e9f4440",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L31/N8934+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L31/N8934+",
+   "to": "bonsai1/L35/N8152-",
+   "kind": "feeds",
+   "weight": 0.0,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
