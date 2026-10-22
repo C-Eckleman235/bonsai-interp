@@ -1,0 +1,168 @@
+{
+ "id": "2026-10-21-moridinamael-cd6bc555",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N7107+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T01:26:17+00:00",
+ "recipe": {
+  "toolchain_commit": "73e384d7",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N7107_pos/2026-10-21-moridinamael-cd6bc555.tests.json"
+ },
+ "label": "French subject pronouns il, elle, vous, nous (and the elided n' as in n'est, n'ont) mid-sentence, right before the conjugated verb; weaker for ils and on; near-quiet for French noun subjects and for pronoun subjects in English, Spanish, German or Italian",
+ "edges": [
+  {
+   "from": "bonsai1/L34/N7716+",
+   "to": "bonsai1/L35/N7107+",
+   "kind": "feeds",
+   "weight": 0.26,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ],
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N7107_pos/2026-10-21-moridinamael-cd6bc555.tests.json",
+   "prereg_commit": "73e384d7",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.513,
+     "peak": " il"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.525,
+     "peak": "'elle"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.498,
+     "peak": " vous"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.544,
+     "peak": " nous"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.623,
+     "peak": " il"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.524,
+     "peak": "'"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.549,
+     "peak": "'elle"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.281,
+     "peak": " nous"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.104,
+     "peak": " arrow"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.188,
+     "peak": " Kind"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.608,
+     "peak": "ie"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.139,
+     "peak": "My"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.128,
+     "peak": " usted"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.092,
+     "peak": " Kan"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.295,
+     "peak": "ée"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.215,
+     "peak": "The"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.875,
+    "median_fire": 0.524,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "73e384d7",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-in reader of bonsai1/L34/N7716+ (downstream drop 0.26). Feeders-first arm: top feeders L34/N7189+ (French noun subject before verb), L33/N55+ (French vous/nous subject), L31/N6513+ (Russian subject before verb).",
+ "roles": [
+  "reads bonsai1/L34/N7716+"
+ ]
+}
