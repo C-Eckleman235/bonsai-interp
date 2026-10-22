@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-22-moridinamael-6b5d2aed",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N2864-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T07:57:12+00:00",
+ "roles": ["reads bonsai1/L27/N11297-"],
+ "neighbours": [
+  {
+   "unit": "L29/N2864",
+   "pole": "-",
+   "label": "Crime and police scenes told concretely (someone caught carrying drugs, a prisoner serving time, fingerprints matched, a victim's body found); also lists of wrongs to guard against like 'loss, misuse, or alteration'; second trigger the senior age '65' (over 65). Quiet: the same sentence shapes with innocent content (cheese at the airport, years in Paris, a leaf's veins matched).",
+   "short": "concrete crime/police scenes; 'loss, misuse, or' lists; age 65",
+   "confidence": "medium",
+   "notes": "Step-in reader of bonsai1/L27/N11297- (drop 0.11). Feeders first: strongest feeder L28/N2717+ (machine guess ' law' before ' enforcement'); L6/N2927- and L4/N9277+ read ' Institute'. The resident probe read ~10x lower than play probe on this cell; exploration used play probe. Test written blind from the label only.",
+   "fire": [
+    "Retirees over 65 can ride the ferry for half price.",
+    "Customs officers caught the man carrying two kilos of cocaine in his suitcase.",
+    "He is serving eight years in the state prison for armed robbery.",
+    "Detectives said the fingerprints on the window matched those of the suspect.",
+    "Hikers found the victim's body in a shallow grave near the river.",
+    "The policy protects your records against loss, misuse, or alteration.",
+    "Residents over 65 are eligible for a free flu shot at the clinic.",
+    "Police arrested the driver after finding stolen jewelry in the trunk."
+   ],
+   "quiet": [
+    "The Avon Longitudinal Study of Parents and Children enrolled pregnant women who were due to deliver between April 1991 and December 1992.",
+    "Customs officers caught the man carrying two wheels of cheese in his suitcase.",
+    "He is spending eight years in Paris studying architecture.",
+    "The botanist said the veins on the leaf matched those of the oak sample.",
+    "Hikers found a rare orchid growing near the river.",
+    "The policy explains how your records are stored, sorted, and updated.",
+    "Residents over 40 are welcome to join the morning walking club.",
+    "The mechanic found a spare tire and a blanket in the trunk."
+   ]
+  }
+ ],
+ "predictions": "Crime fires should beat their innocent twins; the weakest fires are likely the softer crime items (~0.2).",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "neighbors",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
