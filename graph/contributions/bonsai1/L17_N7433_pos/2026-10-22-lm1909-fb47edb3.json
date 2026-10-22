@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-fb47edb3",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N7433+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:27:20+00:00",
+ "recipe": {
+  "toolchain_commit": "164ad5f9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L17_N7433_pos/2026-10-22-lm1909-fb47edb3.tests.json"
+ },
+ "label": "a specific named natural entity (planet, animal kind, natural disaster) as what a scientific 'in X' phrase is about",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L17_N7433_pos/2026-10-22-lm1909-fb47edb3.tests.json",
+   "prereg_commit": "164ad5f9",
+   "author": "lm1909",
+   "n_fire": 1,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.247,
+     "peak": " Mars"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.274,
+     "peak": " Saturn"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.195,
+     "peak": "orks"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.123,
+     "peak": "ises"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.128,
+     "peak": "-hit"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.066,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.031,
+     "peak": " loss"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.384,
+     "peak": " Venus"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.501,
+     "peak": " planet"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.015,
+     "peak": " water"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.025,
+     "peak": " migration"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.114,
+     "peak": " young"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.012,
+     "peak": " flooded"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.03,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.051,
+     "peak": " loss"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.048,
+     "peak": " hemisphere"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.812,
+    "median_fire": 0.162,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "164ad5f9",
+  "minutes": 6,
+  "batch_size": 16
+ },
+ "short": "named natural entity",
+ "unit_kind": "contextual",
+ "confidence": 0.45,
+ "notes": "Probe: 'in cranes' 0.68, 'In Earth's' 0.53, 'in Mercury's' 0.37, 'quake-hit' 0.31, 'gecko's' 0.30. Generic 'the planet' 0.05 and 'the flock' 0.04. 'Jupiter' as the first word gave 0.01, possibly because it was sentence-initial, so in the tests the entity always follows 'in'.",
+ "selection": "random draw"
+}

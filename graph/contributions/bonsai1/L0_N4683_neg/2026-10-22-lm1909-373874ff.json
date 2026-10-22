@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-373874ff",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N4683-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:27:12+00:00",
+ "recipe": {
+  "toolchain_commit": "164ad5f9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N4683_neg/2026-10-22-lm1909-373874ff.tests.json"
+ },
+ "label": "the token ' are' in existential 'there are' (weaker for ' were' and for plain ' are')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N4683_neg/2026-10-22-lm1909-373874ff.tests.json",
+   "prereg_commit": "164ad5f9",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.705,
+     "peak": " are"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.696,
+     "peak": " are"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.696,
+     "peak": " are"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.671,
+     "peak": " are"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.572,
+     "peak": " are"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.674,
+     "peak": " are"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.675,
+     "peak": " are"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.671,
+     "peak": " are"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.182,
+     "peak": " are"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.166,
+     "peak": " are"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.198,
+     "peak": " are"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.215,
+     "peak": " is"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.149,
+     "peak": " are"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.16,
+     "peak": " are"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.218,
+     "peak": " are"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.225,
+     "peak": " is"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.675,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "164ad5f9",
+  "minutes": 6,
+  "batch_size": 16
+ },
+ "short": "there are",
+ "unit_kind": "lexical",
+ "confidence": 0.55,
+ "notes": "Card flags the pole as broad (1.2%) with the gate-closed regime at 60%. Probe: 'there are' 0.67, 'there were' 0.31, 'there is' 0.26, plain 'are' 0.12-0.16, 'area' 0.07. 'there is' sits near the 0.30 near-miss bar, so only two near misses use it.",
+ "selection": "random draw"
+}
