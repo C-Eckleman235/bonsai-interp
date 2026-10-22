@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-22-moridinamael-b28071c5",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N7743+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T16:11:44+00:00",
+ "recipe": {
+  "toolchain_commit": "455fa2ed",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L13_N7743_pos/2026-10-22-moridinamael-b28071c5.tests.json"
+ },
+ "label": "The word ' one' when it describes a person or thing just named as a member of a group, right after a linking verb (is / was / became / remains / considered) or after a comma ('X is one of the ...', 'X, one of the ...', 'X is one who ...'); side trigger: ' or' straight after 'whether' ('whether or not'). Quiet for counting 'one' (one + noun, a number as an answer), 'the one that ...', clause-opening 'one of them' after 'and', and other uses of 'or' (either/or, sooner or later, A or B).",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L13_N7743_pos/2026-10-22-moridinamael-b28071c5.tests.json",
+   "prereg_commit": "455fa2ed",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.891,
+     "peak": " one"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.814,
+     "peak": " one"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.463,
+     "peak": " one"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.564,
+     "peak": " one"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.622,
+     "peak": " one"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.679,
+     "peak": " or"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.775,
+     "peak": " one"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.658,
+     "peak": " or"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.025,
+     "peak": "L"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.006,
+     "peak": " won"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.002,
+     "peak": " hard"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": " river"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.002,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.0,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.003,
+     "peak": " play"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.002,
+     "peak": " museum"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.669,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "455fa2ed",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L28/N8579+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L13/N7743+", "to": "bonsai1/L28/N8579+", "kind": "feeds", "weight": null, "method": "attribution rank 1 of 12 MLP feeders on the target's top 4 examples (resident feeders tool; play step ablation hit CUDA OOM)"}
+ ]
+}
