@@ -1,0 +1,45 @@
+{
+ "contribution": "2026-10-21-moridinamael-22a10c7a",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N1660-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T04:41:32+00:00",
+ "roles": ["reads bonsai1/L32/N237+"],
+ "neighbours": [
+  {
+   "unit": "L33/N1660",
+   "pole": "-",
+   "label": "Writing in non-Latin scripts (Chinese, Japanese, Korean, Thai, Arabic, Hebrew, Hindi, Russian), strongest in Chinese/Japanese/Thai; quiet for Latin-alphabet languages (English, German, Vietnamese, romanized Chinese or Japanese); Greek is weak. Side trigger: Python module names before a dot, like os.path.",
+   "fire": [
+    "ฉันชอบกินข้าวผัดกับไข่ดาว",
+    "waves = [os.",
+    "我今天早上在公园里跑步，天气非常好。",
+    "这本书讲的是一个小女孩寻找她失散多年的父亲的故事。",
+    "明日は雨が降るそうなので、傘を持って行ってください。",
+    "東京駅で友達と待ち合わせをしました。",
+    "วันนี้อากาศร้อนมาก เราไปว่ายน้ำกันเถอะ",
+    "ร้านกาแฟนี้เปิดตั้งแต่เจ็ดโมงเช้า"
+   ],
+   "quiet": [
+    "Wǒ jīntiān zǎoshang zài gōngyuán lǐ pǎobù, tiānqì fēicháng hǎo.",
+    "This book tells the story of a little girl searching for her long-lost father.",
+    "Ashita wa ame ga furu sou nanode, kasa o motte itte kudasai.",
+    "I met my friend at Tokyo Station this afternoon.",
+    "Hôm nay trời rất nóng, chúng ta đi bơi đi.",
+    "Dieses Café öffnet jeden Morgen um sieben Uhr.",
+    "Jeo-neun jumal-mada doseogwan-eseo chaeg-eul ilgeoyo.",
+    "He bought a new bicycle and rode out into the countryside."
+   ],
+   "short": "non-Latin-script writing (CJK, Thai strongest)",
+   "unit_kind": "script / language",
+   "confidence": "medium",
+   "notes": "Step-in reader of L32/N237+ (drop 0.05; the feeder's words inaugurado / po gorizontali read only 0.07-0.19 here, so the link is a small spillover). Feeders first: top feeders were example-specific word cells (leak cells L3/N9866+, L0/N8316- for 漏; weekday-piece cell L6/N7550- for 목요일), no single concept. Tops peak on the first half of fixed pairs (漏掉, 忙于, 个案, os.path) but free uses of the same characters still read 0.25-0.45, so the testable level is the script. Solver leak: Thai and Arabic (not in the first label), widened. Test written blind from the label only."
+  }
+ ],
+ "predictions": "fire items in CJK/Thai at 0.2-0.5, the os. snippet weak (~0.1); romanized and English near misses ~0.1",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["step-down", "card", "look", "probe", "neighbors", "inverse-de", "bank-solo", "blind-room"]
+ }
+}
