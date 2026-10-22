@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-41058296",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N8281-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:39:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L19/N8281",
+   "pole": "-",
+   "label": "Python code: the ' print' call inside a function body and the ',' after self in a method signature",
+   "fire": [
+    "def report(rows):\n    total = 0\n    for row in rows:\n        total += row.value\n        print(row.label, row.value)\n    return total\n",
+    "class Cache:\n    def __init__(self, size):\n        self.size = size\n        self.items = {}\n",
+    "class Parser:\n    def __init__(self):\n        self.tokens = []\n\n    def feed(self, text):\n        self.tokens.extend(text.split())\n",
+    "def show_status(job):\n    if job.done:\n        print('finished:', job.name)\n    else:\n        print('running:', job.name)\n",
+    "class Timer:\n    def start(self):\n        self.t0 = now()\n\n    def stop(self, label):\n        return now() - self.t0\n",
+    "import sys\n\ndef main(args):\n    for arg in args:\n        print(arg.upper())\n\nmain(sys.argv[1:])\n",
+    "class Queue:\n    def __init__(self):\n        self.data = []\n\n    def push(self, item):\n        self.data.append(item)\n",
+    "def debug_dump(config):\n    keys = sorted(config)\n    for key in keys:\n        print(key, '=', config[key])\n"
+   ],
+   "quiet": [
+    "def report(rows):\n    total = 0\n    for row in rows:\n        total += row.value\n        out.append(row.label)\n    return total\n",
+    "class Cache:\n    def __init__(self):\n        self.size = 0\n        self.items = {}\n",
+    "class Parser:\n    def __init__(self):\n        self.tokens = []\n\n    def reset(self):\n        self.tokens.clear()\n",
+    "def show_status(job):\n    if job.done:\n        return 'finished'\n    else:\n        return 'running'\n",
+    "Remember to print the boarding passes before we leave for the airport.",
+    "import sys\n\ndef main():\n    names = sys.argv[1:]\n    return len(names)\n\nmain()\n",
+    "The printer in the library ran out of toner during the exam week.",
+    "def debug_dump(config):\n    keys = sorted(config)\n    return [config[k] for k in keys]\n"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Python print / self, args",
+ "unit_kind": "contextual",
+ "confidence": 0.45,
+ "notes": "Weak pole (max 6.9). Probe: print( in loop 0.52, def write(self, msg) 0.41, self-only signature 0.15, log( 0.18, prose print 0.02. Code quiet items may leak ~0.15."
+}
