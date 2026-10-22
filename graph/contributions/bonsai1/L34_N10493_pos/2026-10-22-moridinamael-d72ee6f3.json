@@ -1,0 +1,162 @@
+{
+ "id": "2026-10-22-moridinamael-d72ee6f3",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N10493+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T16:05:03+00:00",
+ "recipe": {
+  "toolchain_commit": "e871d383",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N10493_pos/2026-10-22-moridinamael-d72ee6f3.tests.json"
+ },
+ "label": "Commas and connecting words inside a formal English list of specialist terms (academic fields or courses, drug names, medical specialties), e.g. a curriculum, a clinical treatment list or a services list. Quiet for lists of everyday things (fruit, groceries, car parts, common symptoms), for the same specialist list in a casual chatty voice, for jargon sentences that are not lists, and for such lists in other languages. Weaker (about 0.2-0.4) on scholarly reference-list entries.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N10493_pos/2026-10-22-moridinamael-d72ee6f3.tests.json",
+   "prereg_commit": "e871d383",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.403,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.458,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.462,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.556,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.318,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.391,
+     "peak": " provides"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.401,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.581,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.182,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.156,
+     "peak": "with"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.206,
+     "peak": " list"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.218,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.185,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.217,
+     "peak": "ie"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.191,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.174,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.43,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "e871d383",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L33/N3279+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L33/N3279+", "to": "bonsai1/L34/N10493+", "kind": "feeds", "weight": 0.18, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
