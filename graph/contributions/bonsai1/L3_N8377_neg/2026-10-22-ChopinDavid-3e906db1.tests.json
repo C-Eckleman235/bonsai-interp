@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-3e906db1",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N8377-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T12:20:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L3/N8377",
+   "pole": "-",
+   "label": "Dense, very weak pole (max 0.40, on for 57% of tokens) whose strongest probe responses were on words ending in a '-age'/'-ank' sound (garbage, baggage, zooplankton) and on 'Swinging'; best guess: the '-age' noun ending, tested on single-token -age nouns.",
+   "fire": [
+    "The city collects garbage from our street every Thursday morning.",
+    "Please place your luggage on the belt before passing security.",
+    "She made a soup with cabbage, carrots and potatoes.",
+    "The grilled sausage was served with mustard and bread.",
+    "Heavy rain caused damage to the roof of the barn.",
+    "The ship's cargo included coffee, sugar and cotton.",
+    "Their marriage lasted more than fifty happy years.",
+    "Leave a message after the tone and I will call back."
+   ],
+   "quiet": [
+    "The city collects trash from our street every Thursday morning.",
+    "Please place your suitcase on the belt before passing security.",
+    "She made a soup with onions, carrots and potatoes.",
+    "The grilled chicken was served with mustard and bread.",
+    "Heavy rain caused leaks in the roof of the barn.",
+    "The ship's hold contained coffee, sugar and cotton.",
+    "Their friendship lasted more than fifty happy years.",
+    "Leave a note on the desk and I will call back."
+   ]
+  }
+ ],
+ "predictions": "Fire ~0.5-0.7 if the -age guess holds; near misses ~0.2-0.3 because the pole is dense ('The cat sat on the mat' scored 0.26). Expect a fail.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense; '-age' nouns guess",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Probes (max 0.40): 'zooplankton' 0.73 ('ank'), 'garbage collection' 0.70, 'Swinging' 0.67, 'baggage counter' 0.55; 'coach' 0.24, 'The cat sat on the mat' 0.26, 'Extract' 0.26, 'about' 0.17. Card flags dense and gate-closed leak regime. Best-guess test only."
+}
