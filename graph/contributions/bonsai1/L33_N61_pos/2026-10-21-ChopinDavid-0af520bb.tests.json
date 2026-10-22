@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-ChopinDavid-0af520bb",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N61+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T03:20:18+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N61",
+   "pole": "+",
+   "label": "a digit that is about to be followed by a percent sign, most strongly in a threshold or limit ('below the 3%', '> 10%')",
+   "fire": [
+    "The rules require the deficit to fall below the 3% ceiling by next year.",
+    "We reject the null hypothesis if p > 10% in the sample of voters.",
+    "The central bank aims to keep inflation under the 2% target.",
+    "Loans with an interest rate above the 5% cap were banned.",
+    "If a firm owns more than 20% of the shares, it must report them.",
+    "Turnout must exceed the 40% threshold for the vote to count.",
+    "The fund promised returns of at least 7% a year after fees.",
+    "Bonuses are paid only when sales beat the 15% growth goal."
+   ],
+   "quiet": [
+    "The rules require the truck to stay below the 3 metre bridge clearance.",
+    "We reject the shipment if more than 10 boxes in the sample are damaged.",
+    "The central bank meets on the 2nd of every month.",
+    "Loans with a term above 5 years need extra paperwork.",
+    "If a firm has more than 20 employees, it must report them.",
+    "Turnout must exceed 40 thousand people for the vote to count.",
+    "The fund opened at least 7 new offices after the merger.",
+    "Bonuses are paid only when sales beat the 15 million mark."
+   ]
+  }
+ ],
+ "predictions": "Fires on the last digit of a percentage used as a threshold or limit; quiet on digits in counts, years and measures with no percent.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "digit before %",
+ "unit_kind": "context",
+ "confidence": "low",
+ "notes": "Probe was weak: 'below the 3% limit' 0.28, '2.4%' 0.10, 'About 7% of respondents' 0.007; non-percent digits 0.001-0.02. Card top examples are all percent figures or numeric coefficients (max 262 on a LaTeX coefficient). Activation is on the digit, so it can only use preceding context. Expect a likely fail on median fire."
+}
