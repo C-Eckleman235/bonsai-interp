@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-c43e8337",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N2504+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T05:28:50+00:00",
+ "recipe": {
+  "toolchain_commit": "e228ae0a",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L28_N2504_pos/2026-10-22-ChopinDavid-c43e8337.tests.json"
+ },
+ "label": "Fires on word pieces inside abnormally tokenized words: dictionary pronunciation respellings, syllable-dotted entries, Cyrillic look-alike letters inside English words, and misspellings; quiet when the same words are spelled normally.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L28_N2504_pos/2026-10-22-ChopinDavid-c43e8337.tests.json",
+   "prereg_commit": "e228ae0a",
+   "author": "ChopinDavid",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.708,
+     "peak": "f"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.68,
+     "peak": "-s"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.505,
+     "peak": "-j"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.475,
+     "peak": "о"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.101,
+     "peak": " dye"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.305,
+     "peak": "-s"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.381,
+     "peak": "о"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.11,
+     "peak": "ore"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.052,
+     "peak": " dictionary"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.015,
+     "peak": " Greek"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.023,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.019,
+     "peak": " free"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.101,
+     "peak": " dye"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.045,
+     "peak": " with"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.021,
+     "peak": " every"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.016,
+     "peak": "is"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.992,
+    "median_fire": 0.428,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "e228ae0a",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "pieces of mis-split words",
+ "unit_kind": "contextual",
+ "confidence": 0.45,
+ "notes": "Probes (fraction of max 38): 'lithography (lĭthŏgˈrəfē)' 1.04 on 'g'; 'Chromatogrpahy' 0.55; 'so·cial·i·za·tion' 0.48; Cyrillic homoglyph 'уоur' 0.45; the same words spelled normally 0.02-0.16. Near misses use the same words spelled normally.",
+ "selection": "random draw"
+}
