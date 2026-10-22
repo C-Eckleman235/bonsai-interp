@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-22-moridinamael-3d820c75",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N4920-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T21:45:10+00:00",
+ "roles": ["feeds bonsai1/L27/N5995-"],
+ "neighbours": [
+  {
+   "unit": "L25/N4920",
+   "pole": "-",
+   "label": "A space directly followed by a character the tokenizer splits into raw byte pieces (uncommon emoji and symbols, chess pieces, katakana, Korean syllables, polytonic Greek), and the long mark ー before a split katakana; weaker inside fully vowel-marked Arabic or Hebrew. Quiet when the same character is glued to a word, at text start, and for characters kept as whole tokens (€, →, hiragana, everyday Chinese, Cyrillic, unmarked Arabic, accented Latin).",
+   "short": "space before a byte-split rare character",
+   "unit_kind": "token class",
+   "fire": [
+    "White answered with ♞f3 and the crowd went quiet.",
+    "The sign on the shop door read ヴィンテージ in bright red paint.",
+    "My friend wrote 괜찮아 at the bottom of the card.",
+    "The inscription begins with ὦ ἄνδρες Ἀθηναῖοι, a classic opening.",
+    "He reacted to the photo with 🦩 and nothing else.",
+    "The menu listed ポーク カツ next to the curry.",
+    "Grandma signed her letter 할머니 with a little heart.",
+    "Black resigned after ♛h4 left no defense."
+   ],
+   "quiet": [
+    "We drank coffee and talked about the weather for an hour.",
+    "She whispered ありがとう and left the room.",
+    "White answered with Nf3 and the crowd went quiet.",
+    "The sign on the shop door read VINTAGE in bright red paint.",
+    "My friend wrote okay at the bottom of the card.",
+    "The inscription begins with a greeting to the men of Athens, a classic opening.",
+    "He reacted to the photo with a laugh and nothing else.",
+    "The menu listed pork cutlet next to the curry."
+   ]
+  }
+ ],
+ "predictions": "Blind test written by a label-only second author. Expect most fire items above 0.20; the two solver-placed near misses (plain English, whole-token hiragana) silent. GPU step OOMed, so the feeder was picked from the resident attribution ranking (top feeder of L27/N5995-) and no ablation weight is recorded.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "inverse-de",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
