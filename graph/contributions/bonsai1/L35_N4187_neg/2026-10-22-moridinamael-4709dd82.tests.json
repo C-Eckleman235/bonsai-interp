@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-22-moridinamael-4709dd82",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N4187-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T21:32:13+00:00",
+ "neighbours": [
+  {
+   "unit": "L35/N4187",
+   "pole": "-",
+   "label": "The Russian word 'мультфильм' (cartoon, any case or plural; Ukrainian/Bulgarian forms weaker, Belarusian not) and the Russian verb form 'пришлось' ('had to / never got to'); not мультик, мультсериал, мультиварка, кинофильм, плain 'фильм' or other-language words for cartoon.",
+   "short": "Russian 'мультфильм' (cartoon) and 'пришлось'",
+   "roles": ["reads bonsai1/L33/N9603+"],
+   "fire": [
+    "Ответом ему стала такая же гаденькая улыбочка, но любоваться ею ему не пришлось.",
+    "Ему так и не пришлось увидеть море.",
+    "Вечером мы всей семьёй смотрели старый советский мультфильм про Винни-Пуха.",
+    "Этот мультфильм получил премию на международном фестивале анимации.",
+    "Дети обожают мультфильмы про динозавров и космос.",
+    "В детстве я знал наизусть все реплики из этого мультфильма.",
+    "Студия выпустила новый полнометражный мультфильм к Новому году.",
+    "Мне пришлось вернуться домой за забытыми ключами."
+   ],
+   "quiet": [
+    "Вечером мы всей семьёй смотрели старый советский мультик про Винни-Пуха.",
+    "Этот фильм получил премию на международном фестивале кино.",
+    "Дети обожают мультсериалы про динозавров и космос.",
+    "В детстве я знал наизусть все реплики из этого кинофильма.",
+    "Мама приготовила кашу в новой мультиварке к Новому году.",
+    "Мне нужно было вернуться домой за забытыми ключами.",
+    "Из-за дождя мы решили отменить пикник.",
+    "Ей пришлют посылку на следующей неделе."
+   ],
+   "confidence": "medium",
+   "notes": "Step-in reader of bonsai1/L33/N9603+ ('Mexican'), but the downstream drop is -0.02: zeroing the Mexican cell barely moves this pole, so its label has nothing to do with the feeder's. Feeders-first arm: the top feeders (L25/N4744-, L23/N8193-) are mid-word fragment cells, which fits the tops being word pieces. Probes showed the trigger is lexical, not 'any fragment'. Test written blind from the label only (blind:claude-opus-5-5); the two solver leak sentences ('пришлось') were placed by the blind author. The label has a typo ('плain' = 'plain' with Cyrillic letters), kept verbatim because the blind draw is locked to it."
+  }
+ ],
+ "predictions": "мультфильм items 0.4-0.6, пришлось items 0.2-0.4; near misses under 0.15",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "neighbors",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
