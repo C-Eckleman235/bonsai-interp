@@ -21,8 +21,9 @@ LOGDIR="${LOGDIR:-data/auto2/logs}"
 mkdir -p "$LOGDIR"
 
 stop_check() { if [ -e data/auto2/STOP ]; then echo "=== STOP file found before $1: stopping cleanly"; exit 0; fi; }
-push_branch() { for i in 1 2 3; do git push -q origin HEAD && return 0; sleep 30; done; echo "=== push failed (continuing)"; }
-commit_alone() { git add "$1"; git commit -q -m "$2
+push_branch() { local i; for i in 1 2 3; do git push -q origin HEAD && return 0; sleep 30; done; echo "=== push failed (continuing)"; }
+# helpers keep their loop counters local: the chunk loop below uses a global i
+commit_alone() { git add "$1"; git diff --cached --quiet && { echo "=== $1 unchanged: nothing to commit"; return 0; }; git commit -q -m "$2
 
 $TRAILER"; push_branch; }
 
@@ -47,6 +48,7 @@ run_pass() {
 
 merge_main() {  # in a separate worktree, so the running checkout's code never changes mid-run
   [ -n "${MERGE_WT:-}" ] || return 0
+  local i
   for i in 1 2 3 4 5; do
     if (cd "$MERGE_WT" && git fetch -q origin && git checkout -q --detach origin/main \
         && git merge -q --no-ff "$BRANCH" -m "Merge auto-token@2 $1 ($BRANCH)" && git push -q origin HEAD:main); then
