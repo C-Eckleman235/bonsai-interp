@@ -1,0 +1,155 @@
+{
+ "id": "2026-10-22-moridinamael-8b1baa5b",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N12129+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T14:17:43+00:00",
+ "recipe": {
+  "toolchain_commit": "71e8ec69",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L9_N12129_pos/2026-10-22-moridinamael-8b1baa5b.tests.json"
+ },
+ "label": "The lone space token that the tokenizer splits off by itself, mid-sentence: the space in front of a number written in digits (e.g. 'hikers counted| |27 deer'), or the extra space of a double space between words ('the  garden'). Quiet on numbers spelled out in words, on '$5'-style amounts (the space merges into the symbol), and on text with single spaces only.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L9_N12129_pos/2026-10-22-moridinamael-8b1baa5b.tests.json",
+   "prereg_commit": "71e8ec69",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.207,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.275,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.353,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.216,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.34,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.149,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.362,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.42,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.041,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.034,
+     "peak": " about"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.041,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.005,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.062,
+     "peak": "We"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.037,
+     "peak": "My"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.041,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.042,
+     "peak": "The"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.307,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "71e8ec69",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L12/N7269+"
+ ]
+}
