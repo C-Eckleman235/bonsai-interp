@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-c6b29f35",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N8137+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T17:38:24+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L3/N8137",
+   "pole": "+",
+   "label": "Dense, weak pole; best guess: a standalone apostrophe token in French elision (l'Œuvre, l'Opéra) and the separate Cyrillic 'ё' piece (Ещё, Всё)",
+   "fire": [
+    "The essays appeared in l'Œuvre complète, printed in Lyon.",
+    "Critics praised d'Œuvres choisies, his last collection.",
+    "We had tickets for l'Opéra Garnier on Saturday night.",
+    "The painter called his studio l'Œil ouvert.",
+    "Ещё одна неделя прошла без дождя.",
+    "Всё было готово к празднику.",
+    "Мы ещё раз проверили билеты, и Всё было в порядке.",
+    "The museum guide spoke about l'Œuvre of the sculptor."
+   ],
+   "quiet": [
+    "The essays appeared in a complete edition, printed in Lyon.",
+    "Critics praised his selected works, his last collection.",
+    "We had tickets for the Hôtel de Ville tour on Saturday night.",
+    "The painter called his studio the open eye.",
+    "Одна неделя прошла без дождя.",
+    "Дом был готов к празднику.",
+    "Мы снова проверили билеты, и дом был в порядке.",
+    "The museum guide spoke about the work of the sculptor."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense: elision apostrophe",
+ "unit_kind": "dense / positional",
+ "confidence": 0.2,
+ "notes": "Card flags broad (5.7% of tokens >0.1 max) and gate-closed (86%). Probe: l'Œuvre apostrophe 0.63 (tokenized as a standalone \"'\"), 'Ещё' 0.40; l'Hôtel only 0.08 because \"'H\" merges; ordinary filler sentences 0.06-0.11. Near misses use merged elisions or no elision."
+}

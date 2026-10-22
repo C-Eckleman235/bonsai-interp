@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-4b7baf93",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N272+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:58:53+00:00",
+ "recipe": {
+  "toolchain_commit": "56642227",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L33_N272_pos/2026-10-22-lm1909-4b7baf93.tests.json"
+ },
+ "label": "Tokens in 'spun' SEO prose (synonym-swapped, ungrammatical marketing text such as 'at this time's competitive world', 'in a timely, cost-effective method')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L33_N272_pos/2026-10-22-lm1909-4b7baf93.tests.json",
+   "prereg_commit": "56642227",
+   "author": "lm1909",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.022,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.08,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.091,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.207,
+     "peak": " timely"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.027,
+     "peak": " long"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.058,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.204,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.029,
+     "peak": " all"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.003,
+     "peak": " for"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.007,
+     "peak": " using"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.006,
+     "peak": " A"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.004,
+     "peak": " hour"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.004,
+     "peak": " set"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.006,
+     "peak": " you"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.004,
+     "peak": " should"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.069,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "56642227",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "spun SEO prose",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Probe refuted the fixed-idiom hypothesis: 'in the first instance', 'in a timely manner', 'in a position', 'second stage' all scored <=0.011 in fluent sentences. Re-reading the card, both poles' top examples come from synonym-spun SEO/marketing text, so this tests that guess with spun fire items against fluent rewrites. Untested, low confidence.",
+ "selection": "random draw"
+}

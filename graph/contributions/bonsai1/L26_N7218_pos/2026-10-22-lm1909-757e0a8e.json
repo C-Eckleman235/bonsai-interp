@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-757e0a8e",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N7218+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:58:43+00:00",
+ "recipe": {
+  "toolchain_commit": "56642227",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L26_N7218_pos/2026-10-22-lm1909-757e0a8e.tests.json"
+ },
+ "label": "The word right after 'for' / 'pour' / 'por' that opens a fixed adverbial phrase (for the time being, for the most part, for good reason, pour une fois, por lo tanto); the - pole is ' for' itself",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L26_N7218_pos/2026-10-22-lm1909-757e0a8e.tests.json",
+   "prereg_commit": "56642227",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.391,
+     "peak": " time"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.614,
+     "peak": " pour"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.42,
+     "peak": " good"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.537,
+     "peak": " lo"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.449,
+     "peak": " most"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.621,
+     "peak": " time"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.641,
+     "peak": " une"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.478,
+     "peak": " most"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.01,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.005,
+     "peak": " rang"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.004,
+     "peak": " angry"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.004,
+     "peak": "pr"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.005,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.003,
+     "peak": " see"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.001,
+     "peak": " s"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.089,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.508,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "56642227",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "word after adverbial 'for'",
+ "unit_kind": "contextual",
+ "confidence": 0.65,
+ "notes": "Card auto-test held for ' lo' after 'por'. Probe: 'for the time being' 0.69, 'pour une fois' 0.62, 'for good reason' 0.60, 'por lo tanto' 0.49, 'for the most part' 0.42, 'for a long time' 0.18; but sentence-final 'closed for good' only 0.02, and argument 'for my sister' 0.04, 'good for your health' 0.02.",
+ "selection": "random draw"
+}
