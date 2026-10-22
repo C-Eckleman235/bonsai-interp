@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-70ef0198",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N3873-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T05:20:23+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L9/N3873",
+   "pole": "-",
+   "label": "Fires on the letter piece ' X' (and the piece right after it) at the start of a transliterated foreign name split into several tokens (Xhosa, Xerxes, Xuanzang, Xochimilco); quiet on foreign names that start with other letters.",
+   "fire": [
+    "The museum holds beadwork made by Xhosa artisans in the Eastern Cape.",
+    "Historians still debate why Xerxes burned the temples of Athens.",
+    "The travelers stopped in Xalapa before heading to the coast.",
+    "The journals of Xuanzang describe the monasteries of central Asia.",
+    "Boats painted in bright colors carry families through Xochimilco.",
+    "The striker Xhaka signed a new contract with the club.",
+    "The ruins of Xanadu sit on the grasslands of Inner Mongolia.",
+    "The factory moved its main plant to Xiamen in the nineties."
+   ],
+   "quiet": [
+    "The museum holds beadwork made by Tswana artisans in the Northern Cape.",
+    "Historians still debate why Pericles rebuilt the temples of Athens.",
+    "The travelers stopped in Puebla before heading to the coast.",
+    "The journals of Marco Polo describe the cities of central Asia.",
+    "Boats painted in bright colors carry families through Tlacotalpan.",
+    "The striker Kane signed a new contract with the club.",
+    "The ruins of Karakorum sit on the grasslands of Mongolia.",
+    "The factory moved its main plant to Busan in the nineties."
+   ]
+  }
+ ],
+ "predictions": "6/8 fire >= 0.3 (probes 0.33-0.85); near misses mostly < 0.1, but Zanzibar scored 0.28, so one Z/Q-initial name near miss may leak; this test avoids Z names.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "X-initial foreign names",
+ "unit_kind": "lexical",
+ "confidence": 0.55,
+ "notes": "Probes (fraction of max 16.6): Xhosa 0.85, Xochimilco 0.48, Xanadu 0.41, Xerxes 0.39, 'X hour' 0.35, Xuanzang 0.33; Zanzibar 0.28, Kilimanjaro 0.01. Fire names were checked to split as ' X' + pieces; near misses use similarly split names starting with K, T, M, B, P."
+}

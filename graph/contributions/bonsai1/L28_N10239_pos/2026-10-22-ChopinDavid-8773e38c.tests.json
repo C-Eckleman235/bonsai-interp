@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-8773e38c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N10239+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T05:20:23+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N10239",
+   "pole": "+",
+   "label": "Fires on string-typed field and value declarations in code (SQL VARCHAR/CHAR(n), ORM String(n) columns, string methods like rstrip/strip), at the opening of the length or argument; quiet on numeric or date declarations in the same code shape.",
+   "fire": [
+    "CREATE TABLE orders (\n  order_id INT,\n  customer_name VARCHAR(80),\n  city VARCHAR(40)\n);",
+    "class Account(Base):\n    email = Column(String(120), unique=True)\n    nickname = Column(String(30))",
+    "line = raw.decode('utf-8').strip('\\n')\nfields = line.split(',')",
+    "ALTER TABLE products\n  ADD COLUMN sku CHAR(12),\n  ADD COLUMN title VARCHAR(255);",
+    "class Device(db.Model):\n    serial = db.Column(db.String(32))\n    label = db.Column(db.String(50))",
+    "token = header.replace('Bearer', '').lstrip(' ')\nprint(token)",
+    "CREATE TABLE staff (\n  staff_id INT PRIMARY KEY,\n  surname NVARCHAR(60) NOT NULL\n);",
+    "name_col = sa.Column('name', sa.String(length=64), nullable=False)\nmeta.create_all(engine)"
+   ],
+   "quiet": [
+    "CREATE TABLE orders (\n  order_id INT,\n  quantity INT,\n  price DECIMAL(8, 2)\n);",
+    "class Account(Base):\n    balance = Column(Integer, default=0)\n    created = Column(DateTime)",
+    "value = raw[0] + raw[1]\nfields = value * 2",
+    "ALTER TABLE products\n  ADD COLUMN stock INT,\n  ADD COLUMN weight FLOAT;",
+    "class Device(db.Model):\n    port = db.Column(db.Integer)\n    voltage = db.Column(db.Float)",
+    "total = int(count) + offset\nprint(total)",
+    "CREATE TABLE staff (\n  staff_id INT PRIMARY KEY,\n  hired DATE NOT NULL\n);",
+    "age_col = sa.Column('age', sa.Integer, nullable=False)\nmeta.create_all(engine)"
+   ]
+  }
+ ],
+ "predictions": "6/8 fire >= 0.3 (probes: VARCHAR( 0.60, db.String( 0.52, .rstrip(' ') 0.53); near misses < 0.1 (INT/DECIMAL 0.02, IntegerField 0.02); risk: Django CharField scored only 0.16, so it is avoided.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "string type declarations in code",
+ "unit_kind": "contextual",
+ "confidence": 0.55,
+ "notes": "Probes (fraction of max 57.8): SQL VARCHAR table 0.60 on '(', SQLAlchemy db.String(64) 0.52, decode().rstrip(' ') 0.53; Django CharField(max_length=50) only 0.16; numeric columns 0.02. The - pole suppresses '.strip', 'string', \"='\", which fits a string-type axis."
+}

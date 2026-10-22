@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-e610f82c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N7578-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T05:20:23+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N7578",
+   "pole": "-",
+   "label": "Fires on the possessive or article that attaches a name to an elite research university or laboratory (MIT's, Stanford's, 'Director of the' before a lab name in a scientist's title); quiet on possessives of companies, towns and sports clubs.",
+   "fire": [
+    "A team at Caltech's Jet Propulsion Laboratory designed the rover.",
+    "Last year Stanford's computer science department hired six professors.",
+    "The paper came from Harvard's Wyss Institute for biologically inspired engineering.",
+    "Several engineers from MIT's Media Lab joined the startup.",
+    "The prototype was built by Princeton's plasma physics group.",
+    "Funding for Berkeley's artificial intelligence research lab doubled.",
+    "Graduate students at Carnegie Mellon's Robotics Institute tested the arm.",
+    "She was later named director of the Max Planck Institute for Intelligent Systems."
+   ],
+   "quiet": [
+    "A team at Walmart's distribution center designed the new schedule.",
+    "Last year Denver's public works department hired six plumbers.",
+    "The pie came from Grandma's kitchen on the farm outside town.",
+    "Several fans from Leeds's supporters club joined the march.",
+    "The float was built by Springfield's parade committee.",
+    "Funding for the county's road repair program doubled.",
+    "Volunteers at Main Street's thrift shop sorted the coats.",
+    "She was later named manager of the downtown branch of the bakery."
+   ]
+  }
+ ],
+ "predictions": "5/8 fire >= 0.2 (probes: \"MIT's Computer Science...\" 0.82, \"MIT's hockey team\" 0.61, 'Director of the Stanford AI Lab' 0.52); near misses < 0.15 (Little League director 0.02); risk: company possessives may fire too.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "elite research-institution slot",
+ "unit_kind": "contextual",
+ "confidence": 0.35,
+ "notes": "Probes (fraction of max 58.8): \"MIT's\" 0.82 and still 0.61 when followed by 'hockey team', so the token responds to the institution name itself; 'Director of the' (Stanford lab) 0.52; Whitehead Institute 0.04; Little League 0.02. Researcher first names in citations 0.19-0.32 (not tested)."
+}

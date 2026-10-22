@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-c43e8337",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N2504+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T05:20:23+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N2504",
+   "pole": "+",
+   "label": "Fires on word pieces inside abnormally tokenized words: dictionary pronunciation respellings, syllable-dotted entries, Cyrillic look-alike letters inside English words, and misspellings; quiet when the same words are spelled normally.",
+   "fire": [
+    "The dictionary lists photography (fə·tŏgˈrə·fē) as a noun.",
+    "In the glossary, metamorphosis (mĕt′ə-môrˈfə-sĭs) is marked as Greek.",
+    "The entry reads: anthropology (ăn′thrə-pŏlˈə-jē), the study of humans.",
+    "The spam message said: Сlick hеre tо claim уоur free prize today.",
+    "The lab notebook recorded a careful spectophotometry reading of the dye.",
+    "Students struggled with the word hy·poth·e·sis (hī-pŏthˈĭ-sĭs) on the quiz.",
+    "The flyer promised that every customer wоuld rеceive а discount.",
+    "His report described the procces of electrophoreisis in detail."
+   ],
+   "quiet": [
+    "The dictionary lists photography as a common noun.",
+    "In the glossary, metamorphosis is marked as a Greek loanword.",
+    "The entry reads: anthropology, the study of human societies.",
+    "The spam message said: click here to claim your free prize today.",
+    "The lab notebook recorded a careful spectrophotometry reading of the dye.",
+    "Students struggled with the word hypothesis on the science quiz.",
+    "The flyer promised that every customer would receive a discount.",
+    "His report described the process of electrophoresis in detail."
+   ]
+  }
+ ],
+ "predictions": "5-6/8 fire >= 0.2 (probes: respelling 1.04, misspelling 0.55, dotted syllables 0.48, homoglyphs 0.45); near misses mostly < 0.2, but the pole is broad (1.9% of tokens >0.1·max), so one near miss may leak.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "pieces of mis-split words",
+ "unit_kind": "contextual",
+ "confidence": 0.45,
+ "notes": "Probes (fraction of max 38): 'lithography (lĭthŏgˈrəfē)' 1.04 on 'g'; 'Chromatogrpahy' 0.55; 'so·cial·i·za·tion' 0.48; Cyrillic homoglyph 'уоur' 0.45; the same words spelled normally 0.02-0.16. Near misses use the same words spelled normally."
+}
