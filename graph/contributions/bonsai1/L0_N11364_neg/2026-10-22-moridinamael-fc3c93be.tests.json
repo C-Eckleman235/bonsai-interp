@@ -1,0 +1,45 @@
+{
+ "contribution": "2026-10-22-moridinamael-fc3c93be",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N11364-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T13:40:13+00:00",
+ "roles": ["feeds bonsai1/L3/N11288+"],
+ "neighbours": [
+  {
+   "unit": "L0/N11364",
+   "pole": "-",
+   "label": "'!' (or a run of plain dots like '..', '...', '....') that comes later in a passage which earlier used the one-character '…' ellipsis; strongest in longer passages with several earlier '…' and '!' marks. Quiet: the same '!' with no earlier '…' (plain commas or three ASCII dots instead), a '!' placed before the '…', and '?' or '.' in that final slot.",
+   "short": "'!' after an earlier '…' ellipsis",
+   "unit_kind": "context",
+   "confidence": "medium",
+   "notes": "One-swap twins in probing: the same closing '!' reads ~0.01 without an earlier '…' and 0.05-0.16 with one; earlier ASCII '...' does not prime it; earlier '!' primes weakly (~0.05). Short single sentences rarely pass 0.20; the solver reached 0.37 by stacking several passages. Test sentences written blind by a label-only second author.",
+   "fire": [
+    "Well… I waited all afternoon for the bus… and then it finally came!",
+    "She opened the box slowly… peeked inside… and screamed with joy!",
+    "Hmm… let me think… yes, I remember now!",
+    "The lights flickered… the door creaked… and then the cat jumped out!",
+    "I tried the recipe twice… it failed both times… but the third try worked!",
+    "So… you're telling me… we won the whole tournament!",
+    "Wait… wait for it… now!",
+    "The rain kept falling… and falling… and we just kept walking...."
+   ],
+   "quiet": [
+    "Well, I waited all afternoon for the bus, and then it finally came!",
+    "She opened the box slowly... peeked inside... and screamed with joy!",
+    "Hmm... let me think... yes, I remember now!",
+    "The lights flickered, the door creaked, and then the cat jumped out!",
+    "I tried the recipe twice… it failed both times… but did the third try work?",
+    "So… you're telling me… we won the whole tournament?",
+    "Wait! Wait for it… now…",
+    "The rain kept falling… and falling… and we just kept walking."
+   ]
+  }
+ ],
+ "predictions": "Ranking should be clean (AUROC >= 0.90), but short single sentences probed at 0.05-0.16, so the median-fire 0.20 strength bar is the likely failure point.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["step-out", "card", "look", "probe", "inverse-de", "bank-solo", "blind-room"]
+ }
+}
