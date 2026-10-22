@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-d482c6a2",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N9750-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:38:50+00:00",
+ "recipe": {
+  "toolchain_commit": "adbd12b8",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L21_N9750_neg/2026-10-22-lm1909-d482c6a2.tests.json"
+ },
+ "label": "the end of a warning or instruction clause about failing to act, or following rules ('If we fail to act now,', 'Follow them and')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L21_N9750_neg/2026-10-22-lm1909-d482c6a2.tests.json",
+   "prereg_commit": "adbd12b8",
+   "author": "lm1909",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.322,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.242,
+     "peak": " now"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.197,
+     "peak": " them"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.352,
+     "peak": " now"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.187,
+     "peak": " them"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.245,
+     "peak": " soon"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.073,
+     "peak": " them"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.381,
+     "peak": " now"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.004,
+     "peak": " climate"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.021,
+     "peak": "Experts"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.014,
+     "peak": " workers"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.018,
+     "peak": " city"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.005,
+     "peak": " by"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.009,
+     "peak": " river"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.013,
+     "peak": " doctor"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.017,
+     "peak": "'s"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.243,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "adbd12b8",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "fail-to-act / follow-rules clause",
+ "unit_kind": "contextual",
+ "confidence": 0.2,
+ "notes": "Probe: 'If we fail to act now,' 0.36 (on ' now') and 'Follow them and you'll do fine' 0.21 ('them'). 'If those requirements are met' was only 0.05 and 'Through your purchases' 0.12. A weak, diffuse pole (max 27). Fire items copy the two frames that scored; near misses keep the topic without the warning or instruction.",
+ "selection": "random draw"
+}

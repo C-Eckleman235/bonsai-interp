@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-2160692e",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N11094+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:38:41+00:00",
+ "recipe": {
+  "toolchain_commit": "adbd12b8",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L14_N11094_pos/2026-10-22-lm1909-2160692e.tests.json"
+ },
+ "label": "enumeration and example markers inside a definition: the ')' of '(a)' and the '.,' of 'e.g.,'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L14_N11094_pos/2026-10-22-lm1909-2160692e.tests.json",
+   "prereg_commit": "adbd12b8",
+   "author": "lm1909",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.056,
+     "peak": " another"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.308,
+     "peak": ".,"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.066,
+     "peak": " limit"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.133,
+     "peak": ".g"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.1,
+     "peak": " ("
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.153,
+     "peak": ".g"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.048,
+     "peak": " congr"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.072,
+     "peak": ".,"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.058,
+     "peak": " whole"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.078,
+     "peak": " as"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.064,
+     "peak": " limit"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.09,
+     "peak": " like"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.137,
+     "peak": " when"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.046,
+     "peak": " as"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.028,
+     "peak": " congr"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.049,
+     "peak": " are"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.703,
+    "median_fire": 0.086,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "adbd12b8",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "(a) and e.g., markers",
+ "unit_kind": "contextual",
+ "confidence": 0.2,
+ "notes": "Probe: '(a)' 0.33 (on ')'), 'e.g.,' 0.27, code ' if hasattr' 0.18. The repeated 'rewrite' frame was 0.12, and 'involves' and 'based on' were at or below 0.06. A weak pole (max 6.5); low confidence. Near misses use the same sentences with plain words in place of the markers.",
+ "selection": "random draw"
+}

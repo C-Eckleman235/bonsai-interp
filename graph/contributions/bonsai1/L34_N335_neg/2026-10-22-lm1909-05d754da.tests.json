@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-05d754da",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N335-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:22:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N335",
+   "pole": "-",
+   "label": "' (' opening the spelled-out expansion right after an acronym, e.g. 'MRI (magnetic resonance imaging)'",
+   "fire": [
+    "The hospital will arrange a CT (computed tomography) scan of your chest.",
+    "Your heart rhythm can be checked with an ECG (electrocardiogram) in a few minutes.",
+    "Patients may need a PET (positron emission tomography) scan before surgery.",
+    "The study used fMRI (functional magnetic resonance imaging) to watch the brain at work.",
+    "Doctors measured her BMI (body mass index) at every visit.",
+    "Severe cases may be treated with ECMO (extracorporeal membrane oxygenation) in intensive care.",
+    "The nurse took a sample for a CBC (complete blood count) before the operation.",
+    "An EEG (electroencephalogram) records the electrical activity of the brain."
+   ],
+   "quiet": [
+    "The hospital will arrange a CT scan of your chest next week (if a slot is free).",
+    "Your heart rhythm can be checked with an ECG in a few minutes at the clinic.",
+    "Patients may need a PET scan before surgery (see the leaflet for details).",
+    "The study used fMRI to watch the brain at work during simple tasks.",
+    "Doctors measured her BMI at every visit (about once a month).",
+    "Severe cases may be treated with ECMO in intensive care for several days.",
+    "The nurse took a sample for a CBC before the operation began.",
+    "An EEG records the electrical activity of the brain through the scalp."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "acronym expansion paren",
+ "unit_kind": "contextual",
+ "confidence": 0.55,
+ "notes": "Probe: 'MRI (magnetic resonance imaging)' 0.97 on ' ('. A non-gloss parenthesis ('(see Figure 2)', '(Ganymede)', '(about 70 percent)') stayed at or below 0.03, and the chemical formula ' Ca' was 0.23. Near misses keep the acronym and either drop the parenthesis or use a non-expansion one."
+}

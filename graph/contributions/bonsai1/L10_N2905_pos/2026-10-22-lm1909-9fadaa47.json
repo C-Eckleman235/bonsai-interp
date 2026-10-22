@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-9fadaa47",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N2905+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:38:39+00:00",
+ "recipe": {
+  "toolchain_commit": "adbd12b8",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N2905_pos/2026-10-22-lm1909-9fadaa47.tests.json"
+ },
+ "label": "names of sexually transmitted infections (gonorrhoea, herpes, syphilis)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L10_N2905_pos/2026-10-22-lm1909-9fadaa47.tests.json",
+   "prereg_commit": "adbd12b8",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.649,
+     "peak": "a"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.494,
+     "peak": "orrh"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.333,
+     "peak": " herpes"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.477,
+     "peak": "phil"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.438,
+     "peak": " herpes"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.53,
+     "peak": "orr"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.385,
+     "peak": "phil"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.565,
+     "peak": " men"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.199,
+     "peak": " over"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.04,
+     "peak": " influenza"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.191,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.232,
+     "peak": "p"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.072,
+     "peak": " fever"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.158,
+     "peak": " young"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.228,
+     "peak": " simple"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.38,
+     "peak": " men"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.485,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "adbd12b8",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "STI names",
+ "unit_kind": "sparse feature",
+ "confidence": 0.45,
+ "notes": "Probe: gonorrhoea 0.61-0.70 (on 'orrh' or the final 'a'), herpes 0.57, syphilis 0.35. Influenza 0.10 and cholesterol 0.11. An off-topic 'BMI is a calculation of body fat' reached 0.40, so the pole is not purely about STIs; a weak pole (max 3.8). Near misses use other diseases in the same frames.",
+ "selection": "random draw"
+}
