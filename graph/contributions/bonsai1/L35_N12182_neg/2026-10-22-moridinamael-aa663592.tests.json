@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-22-moridinamael-aa663592",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N12182-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T06:05:32+00:00",
+ "roles": ["reads bonsai1/L34/N3570-"],
+ "neighbours": [
+  {
+   "unit": "L35/N12182",
+   "pole": "-",
+   "label": "Words meaning 'more than / nearly / almost' just before a number, in French, German, Arabic or Chinese prose (plus de, presque, près de, mehr als, أكثر من, 近, 将近); the same sentence with an exact number stays lower, English 'more than / nearly' stays quiet, and Portuguese 'quase' and Italian 'più di' are weak. Side trigger: odd mid-word pieces in French prose.",
+   "short": "'more than / nearly' before a number, non-English prose",
+   "confidence": "medium",
+   "notes": "Step-in reader of bonsai1/L34/N3570- (drop 0.09). Feeders-first: strongest feeder L33/N6844+ fires on prepositions in Romance/German prose and writes against une/un/eine. Output of this pole promotes un/une/una/eine. Test written blind from the label only; the solver's leak lines were placed by the blind author.",
+   "fire": [
+    "La ville compte aujourd'hui plus de 40 000 habitants, selon le dernier recensement.",
+    "Il a attendu presque deux heures devant la mairie avant d'être reçu.",
+    "Près de 300 bénévoles ont participé au nettoyage de la plage dimanche dernier.",
+    "Le pont a été construit il y a plus de cent ans par des ouvriers italiens.",
+    "Die Firma beschäftigt inzwischen mehr als 5000 Mitarbeiter in ganz Europa.",
+    "Wir haben fast drei Stunden im Stau gestanden, bevor wir endlich ankamen.",
+    "Der Marathon zog beinahe 20 000 Zuschauer an die Strecke.",
+    "حضر المؤتمر أكثر من 500 باحث من مختلف الدول العربية."
+   ],
+   "quiet": [
+    "谈起珍品，大家可能会想起郑板桥的作品，或是一把珍贵的军刀……，而我家有一件",
+    "Cette année, pour cette troisième édition, c’est le thème du diabète et de sa prise en charge pluridisciplinaire qui a été retenu.",
+    "La ville compte aujourd'hui 40 000 habitants, selon le dernier recensement.",
+    "Il a attendu deux heures devant la mairie avant d'être reçu.",
+    "Exactement 300 bénévoles ont participé au nettoyage de la plage dimanche dernier.",
+    "The bridge was built more than a hundred years ago by Italian workers.",
+    "Die Firma beschäftigt inzwischen 5000 Mitarbeiter in ganz Europa.",
+    "We were stuck in traffic for nearly three hours before we finally arrived."
+   ]
+  }
+ ],
+ "predictions": "Most fire items 0.2-0.5; the pluridisciplinaire leak (a named side trigger, placed as a near miss by the blind author) likely fires above 0.3.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "probe",
+   "neighbors",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}

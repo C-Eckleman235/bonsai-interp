@@ -1,0 +1,162 @@
+{
+ "id": "2026-10-22-moridinamael-aa663592",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N12182-",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T06:05:57+00:00",
+ "recipe": {
+  "toolchain_commit": "a7071ee1",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N12182_neg/2026-10-22-moridinamael-aa663592.tests.json"
+ },
+ "label": "Words meaning 'more than / nearly / almost' just before a number, in French, German, Arabic or Chinese prose (plus de, presque, près de, mehr als, أكثر من, 近, 将近); the same sentence with an exact number stays lower, English 'more than / nearly' stays quiet, and Portuguese 'quase' and Italian 'più di' are weak. Side trigger: odd mid-word pieces in French prose.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N12182_neg/2026-10-22-moridinamael-aa663592.tests.json",
+   "prereg_commit": "a7071ee1",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 1,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.124,
+     "peak": " de"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.183,
+     "peak": "u"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.211,
+     "peak": "ès"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.479,
+     "peak": " plus"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.115,
+     "peak": " mehr"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.136,
+     "peak": "au"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.055,
+     "peak": "he"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.006,
+     "peak": "حضر"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.151,
+     "peak": "我家"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.948,
+     "peak": "id"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.112,
+     "peak": " aujourd"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.168,
+     "peak": "u"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.108,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.004,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.039,
+     "peak": " Mitarbeiter"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.002,
+     "peak": "We"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.641,
+    "median_fire": 0.13,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "a7071ee1",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L34/N3570-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L34/N3570-", "to": "bonsai1/L35/N12182-", "kind": "feeds", "weight": 0.09, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
