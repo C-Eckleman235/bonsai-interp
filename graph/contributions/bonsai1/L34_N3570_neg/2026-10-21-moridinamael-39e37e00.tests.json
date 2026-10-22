@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-21-moridinamael-39e37e00",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N3570-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T05:47:13+00:00",
+ "roles": ["reads bonsai1/L32/N237+"],
+ "neighbours": [
+  {
+   "unit": "L34/N3570",
+   "pole": "-",
+   "label": "Prepositions and linking words in the middle of Spanish, French or Russian prose (de, con, en, desde, sous, avec, dont, 'ещё и'); the same sentences translated into English stay quiet, as do 'ещё не' (not yet) and a sentence-initial preposition.",
+   "fire": [
+    "El precio final del viaje dependerá sobre todo de la aerolínea elegida.",
+    "Mi abuela vivía en una casa pequeña con un jardín lleno de flores.",
+    "Llevamos esperando desde las ocho de la mañana y nadie nos ha dicho nada.",
+    "Le chat dormait tranquillement sous la table de la cuisine.",
+    "Elle est partie avec son frère pour visiter la ville de Lyon.",
+    "C'est un livre dont tout le monde parle depuis des semaines.",
+    "Он опоздал на поезд, да ещё и забыл дома паспорт.",
+    "Мы долго гуляли по парку с друзьями после занятий."
+   ],
+   "quiet": [
+    "المسألة في حقيقة الأمر مسألة تحقيق الحكم ولا بد ان نعي تماما ان الأغاني والموسيقى فيها نقطتان:",
+    "The final cost of the trip will depend above all on the chosen airline.",
+    "My grandmother lived in a small house with a garden full of flowers.",
+    "We have been waiting since eight in the morning and nobody has told us anything.",
+    "The cat was sleeping quietly under the kitchen table.",
+    "She left with her brother to visit the city of Lyon.",
+    "It is a book that everyone has been talking about for weeks.",
+    "He missed the train, and on top of that he forgot his passport at home."
+   ]
+  }
+ ],
+ "predictions": "Blind test (label-only author). Expect most fire items 0.2-0.5 and English twins near 0; the Arabic colon line (solver leak, 0.41 solo) is the likely near-miss risk.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
