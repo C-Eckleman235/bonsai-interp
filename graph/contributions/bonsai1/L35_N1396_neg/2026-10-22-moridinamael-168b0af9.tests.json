@@ -1,0 +1,43 @@
+{
+ "contribution": "2026-10-22-moridinamael-168b0af9",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N1396-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T23:16:59+00:00",
+ "roles": ["reads bonsai1/L34/N2247+"],
+ "neighbours": [
+  {
+   "unit": "L35/N1396",
+   "pole": "-",
+   "label": "The first piece of an n't contraction, cut before the apostrophe (the 'didn' of didn't, 'shouldn' of shouldn't, also 'won' of won't), and the word 'according' before 'to', anywhere in a sentence; more weakly, the space before a number the tokenizer splits into digits (a year like 1987) and the first digit of a 'mid-19xx' decade. Quiet on spelled-out 'not' or 'never', on 'Don' as a name, on 'dont' without an apostrophe and on other fixed pairs ('due to', 'each other'); ordinary text sits at a low background of about 0.3.",
+   "short": "n't-contraction stem (didn|'t) and 'according'",
+   "fire": [
+    "The Avon Longitudinal Study of Parents and Children enrolled pregnant women who were due to deliver between April 1991 and December 1992.",
+    "She didn't hear the phone ring while she was in the garden.",
+    "You shouldn't leave the oven on when you go out.",
+    "According to the forecast, it will rain all weekend.",
+    "The door won't open no matter how hard I push it.",
+    "He couldn't find his keys anywhere in the apartment.",
+    "The results, according to the lead researcher, were surprising.",
+    "We haven't seen the new museum exhibit yet."
+   ],
+   "quiet": [
+    "The radio was broken when the storm hit the coast.",
+    "She did not hear the phone ring while she was in the garden.",
+    "You should never leave the oven on when you go out.",
+    "The forecast says it will rain all weekend.",
+    "The door is stuck no matter how hard I push it.",
+    "Don looked for his keys everywhere in the apartment.",
+    "The results, due to a calibration error, were surprising.",
+    "We dont have tickets for the new museum exhibit yet."
+   ]
+  }
+ ],
+ "predictions": "Fire sentences near 0.9 except the year line (~0.65); risk is the ~0.3 background pushing 2+ near misses over 0.30.",
+ "notes": "Step-in reader of bonsai1/L34/N2247+ (COLD: labelled from its own tops and probes only). The - pole is dense (79.7% of tokens above 0.1 of max) with a ~0.3 floor on ordinary text. Test sentences written blind by a label-only second author; the solver's leak (a year after a month name) is placed in the fire set.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["card", "look", "probe", "step-down", "inverse-de", "bank-solo", "quick-test"]
+ }
+}
