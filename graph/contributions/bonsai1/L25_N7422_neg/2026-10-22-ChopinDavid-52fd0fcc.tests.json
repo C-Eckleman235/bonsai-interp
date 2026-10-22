@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-52fd0fcc",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N7422-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T11:20:03+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L25/N7422",
+   "pole": "-",
+   "label": "Unclear; best guess: the indentation token that opens a code line right after a comment line, with a weaker response to contrastive 'but/although' in descriptions",
+   "fire": [
+    "def distance(p, q):\n    # convert both points to radians first\n    lat1, lon1 = radians(p[0]), radians(p[1])",
+    "for step in range(n):\n    # update the velocity before the position\n    v = v + a * dt",
+    "if total is None:\n    # nothing was counted, fall back to zero\n    total = 0",
+    "def load(path):\n    # read the whole file into memory\n    data = open(path).read()",
+    "while queue:\n    # take the oldest item first\n    item = queue.pop(0)",
+    "class Grid:\n    def __init__(self, nx, ny):\n        # store the grid size\n        self.nx = nx",
+    "Both birds are brown above, but the male has a bright red throat.",
+    "The twins look nearly identical, although one is slightly taller."
+   ],
+   "quiet": [
+    "Convert both points to radians first, then compute the distance between them.",
+    "Update the velocity before the position at every step of the simulation.",
+    "If nothing was counted, the total falls back to zero.",
+    "The function reads the whole file into memory and returns it.",
+    "Take the oldest item from the queue first.",
+    "The grid stores its size in two fields called nx and ny.",
+    "Both birds are brown above, and the male has a short tail.",
+    "The twins look nearly identical and were born in May."
+   ]
+  }
+ ],
+ "predictions": "4/8 fire above 0.3 (code items); contrast items near 0.2; test may fail",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "indent after code comment (unclear)",
+ "unit_kind": "unclear",
+ "confidence": "low",
+ "notes": "Probe: indentation after '# convert degrees to radians' 0.49; 'but the female is usually smaller' 0.23, 'although' 0.19, 'but the northern one' 0.18; same sentence with 'and' 0.008. Top examples mix code indentation and contrast conjunctions."
+}
