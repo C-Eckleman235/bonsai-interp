@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-22-moridinamael-5a37962f",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N8965+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T08:19:06+00:00",
+ "roles": [
+  "reads bonsai1/L29/N2864-"
+ ],
+ "neighbours": [
+  {
+   "unit": "L32/N8965",
+   "pole": "+",
+   "label": "word pieces in non-English text: lights up on the first piece of a word the tokenizer splits, in any language but English (strongest on Japanese katakana words like ゴルフ 'golf', also Thai, Hindi, Korean, German and French words); quiet on English text and on short words kept whole",
+   "fire": [
+    "週末は友達とゴルフに行きました。",
+    "新しいコンピューターを買ったので、プログラミングを始めます。",
+    "このレストランのハンバーガーはとても美味しいです。",
+    "ฉันชอบไปเที่ยวทะเลกับครอบครัวในช่วงฤดูร้อน",
+    "मुझे सुबह जल्दी उठकर व्यायाम करना पसंद है।",
+    "도서관에서 친구와 함께 시험 공부를 했습니다.",
+    "Die Bundesregierung hat gestern die Geschwindigkeitsbegrenzung auf Autobahnen diskutiert.",
+    "Das Krankenhaus sucht dringend neue Krankenschwestern für die Nachtschicht."
+   ],
+   "quiet": [
+    "Quantum computing is a much stranger affair, relying instead on the qubit as its unit of information.",
+    "The library in Chiang Mai shuts early on Thursdays.",
+    "I went golfing with friends over the weekend.",
+    "I bought a new computer, so I'm going to start programming.",
+    "The hamburgers at this restaurant are really delicious.",
+    "I like going to the beach with my family in the summer.",
+    "I like to wake up early and exercise in the morning.",
+    "I studied for the exam with a friend at the library."
+   ]
+  }
+ ],
+ "predictions": "Most non-English fire sentences at 0.2-0.4, English near misses under 0.15; weakest fire items likely the hamburger and Korean ones.",
+ "unit_kind": "spelling / script",
+ "confidence": "medium",
+ "notes": "Step-in reader of bonsai1/L29/N2864- (drop 0.08), labelled COLD from its own tops and probes only. Broad pole (2.5% of tokens reach 0.1 of max). Whole-token katakana words (ホテル, パソコン) stayed quiet in probes; English splits (photosynthesis, Przybylski) quiet. Test written blind from the label by a second author.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "blind-room"
+  ]
+ }
+}
