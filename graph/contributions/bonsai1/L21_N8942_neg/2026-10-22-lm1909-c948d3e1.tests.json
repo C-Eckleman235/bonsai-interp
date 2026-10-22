@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-c948d3e1",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N8942-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:22:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L21/N8942",
+   "pole": "-",
+   "label": "Python code-structure tokens: the ' global' statement inside a function and the ' %' string-formatting operator after a string literal",
+   "fire": [
+    "counter = 0\n\ndef increment(step=1):\n    global counter\n    counter += step\n    return counter",
+    "config = None\n\ndef load_config(path):\n    global config\n    config = read_file(path)\n    return config",
+    "message = \"\"\"Hello %(user)s, you have %(count)d new messages\"\"\" % vars()\nprint(message)",
+    "def reset_cache():\n    global cache, hits\n    cache = {}\n    hits = 0",
+    "template = \"\"\"SELECT * FROM %(table)s WHERE id = %(id)s\"\"\" % locals()\nrun(template)",
+    "_logger = None\n\ndef get_logger():\n    global _logger\n    if _logger is None:\n        _logger = make_logger()\n    return _logger",
+    "line = '%s: %d items' % (name, len(items))\nprint(line)",
+    "def stop_worker(worker_id, force=False):\n    global running\n    running = False\n    log('stopped')"
+   ],
+   "quiet": [
+    "counter = 0\n\ndef increment(counter, step=1):\n    counter += step\n    return counter",
+    "config = None\n\ndef load_config(path):\n    config = read_file(path)\n    return config",
+    "message = f\"Hello {user}, you have {count} new messages\"\nprint(message)",
+    "def reset_cache(cache):\n    cache.clear()\n    return 0",
+    "template = \"SELECT * FROM {} WHERE id = ?\".format(table)\nrun(template)",
+    "class LoggerHolder:\n    def get_logger(self):\n        if self.logger is None:\n            self.logger = make_logger()\n        return self.logger",
+    "line = name + ': ' + str(len(items)) + ' items'\nprint(line)",
+    "def stop_worker(worker_id, force=False):\n    worker = workers[worker_id]\n    worker.running = False\n    log('stopped')"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Python global / % formatting",
+ "unit_kind": "contextual",
+ "confidence": 0.25,
+ "notes": "Probe: ' global' in a function 0.27 and `\"\"\" % vars()` 0.24. The prose cases from the card ('does not contain', 'happen to be') stayed at or below 0.03, and `{'` in args was 0.06. The label is narrowed to the two code cases that hit. Weak, low confidence. Near misses are similar Python without global or %."
+}

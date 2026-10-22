@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-84eef9d8",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N1439-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:22:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L27/N1439",
+   "pole": "-",
+   "label": "the package size after a price in a deal listing ('$1.97 for a 26.4 oz bag')",
+   "fire": [
+    "Deal of the day: organic oats are $2.49 for a 32 oz canister.",
+    "Grab peanut butter at $3.19 for a 40 oz jar while it lasts.",
+    "This week the store has coffee beans for $6.99 for a 12 oz bag.",
+    "Frozen blueberries are on sale, $4.50 for a 48 oz bag, through Sunday.",
+    "Laundry detergent is down to $8.97 for a 150 oz bottle at the warehouse store.",
+    "Today only: almonds for $5.79 for a 16 oz pack.",
+    "Shoppers can get olive oil at $9.99 for a 51 oz tin this weekend.",
+    "Cereal is $2.88 for an 18.6 oz box with the store card."
+   ],
+   "quiet": [
+    "Deal of the day: organic oats are on sale in a big canister.",
+    "Grab peanut butter at a discount while it lasts.",
+    "This week the store has fresh coffee beans from Colombia.",
+    "Frozen blueberries are on sale through Sunday at most branches.",
+    "Laundry detergent is cheaper than usual at the warehouse store.",
+    "Today only: almonds and cashews at a lower price.",
+    "Shoppers can get olive oil from Spain at the market this weekend.",
+    "Cereal is cheaper with the store card this week."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "price-for-size deals",
+ "unit_kind": "contextual",
+ "confidence": 0.2,
+ "notes": "The card suggested the token before a number or quantity, but the probe mostly missed: Fig. 3b 0.02, 'Over 2,800' 0.04, '$500,000 over 5 years' 0.13, 'across 50,000 square metres' 0.10. Only the granola deal '$1.97 for a 26.4 oz bag' reached 0.42 (on '2'). The test is narrowed to that frame; low confidence. Near misses keep the deal topic without the price and size."
+}

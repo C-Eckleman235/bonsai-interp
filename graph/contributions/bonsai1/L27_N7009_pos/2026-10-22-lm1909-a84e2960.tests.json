@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-a84e2960",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N7009+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:22:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L27/N7009",
+   "pole": "+",
+   "label": "bibliographic reference entries: the venue part ('Journal of X', an academy name) after a paper title in a formatted citation",
+   "fire": [
+    "Brown T, Garcia M. Patient portals and record access in rural clinics. Journal of Health Informatics. 2017;9:112-120.",
+    "Nguyen P, Ortiz R. Text messaging reminders for vaccination. Journal of Public Health Policy. 2014;35:201-209.",
+    "Weber A, Klein S. Data sharing across hospital networks. Journal of Medical Systems. 2016;40:77-85.",
+    "Patel R, Moore J. Social media use among nurses: a survey of attitudes. Journal of Nursing Management. 2013;21:560-567.",
+    "Hansen L, Berg K. Online forums for chronic illness. Journal of Medical Internet Research. 2012;14:e88.",
+    "The calculations were carried out at a computing centre run by the Bavarian Academy of Sciences in Garching.",
+    "Kim S, Park H. Electronic prescriptions and medication errors. Journal of the American Pharmacists Association. 2011;51:23-30.",
+    "Rossi F, Bianchi G. Privacy concerns about wearable devices. Journal of Consumer Health. 2018;6:44-52."
+   ],
+   "quiet": [
+    "In 2017, Brown and Garcia studied how patients in rural clinics use online portals to read their records.",
+    "Nguyen and Ortiz found that text message reminders raised vaccination rates in their 2014 study.",
+    "Weber and Klein looked at how hospital networks share data, and they published their results in 2016.",
+    "Patel and Moore asked hundreds of nurses how they use social media at work and at home.",
+    "Hansen and Berg spent a year reading online forums where people with chronic illness talk to each other.",
+    "The calculations were carried out at a large computing centre near Munich over several weeks.",
+    "Kim and Park counted medication errors before and after their hospital switched to electronic prescriptions.",
+    "Rossi and Bianchi interviewed people about their privacy worries when they wear fitness trackers."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "citation venue names",
+ "unit_kind": "contextual",
+ "confidence": 0.35,
+ "notes": "Probe: a formatted reference 'Title. Journal of Medical Informatics. 2015' gave 0.66 (peak ' of') and 'Bavarian Academy' gave 0.56 ('arian'). Prose mentions of journals ('the journal Nature Medicine', 'Science Advances', 'Proceedings of the National Academy') gave about 0, and 'Health IT' 0.08. So the label is the formatted-citation frame, not journal names in general. Near misses describe the same studies in prose."
+}
