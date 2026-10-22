@@ -1,0 +1,163 @@
+{
+ "id": "2026-10-22-moridinamael-699f947a",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6855+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T11:07:34+00:00",
+ "recipe": {
+  "toolchain_commit": "af3ba73d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N6855_pos/2026-10-22-moridinamael-699f947a.tests.json"
+ },
+ "label": "A weak, broad pole. In English it peaks on the capital 'S' that begins 'Syndrome' (or 'Sickness') right after a named illness, such as Chronic Fatigue S-, Irritable Bowel S-, Down S-, Acute Mountain S-, scored on the S itself (text after it does not count). Second trigger: some Japanese text, e.g. the particle right after a number. Quiet: 'Disorder' or 'Disease' after an illness name, 'Sleeping Sickness', and capital S starting a place, shop name or surname.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N6855_pos/2026-10-22-moridinamael-699f947a.tests.json",
+   "prereg_commit": "af3ba73d",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.741,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.018,
+     "peak": " un"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.026,
+     "peak": " Bow"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.015,
+     "peak": " Down"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.296,
+     "peak": " S"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.017,
+     "peak": " Legs"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.021,
+     "peak": "yc"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.037,
+     "peak": " Shock"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.074,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.024,
+     "peak": " Dep"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.027,
+     "peak": "el"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.009,
+     "peak": " region"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.024,
+     "peak": " signs"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.012,
+     "peak": " worry"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.046,
+     "peak": " Kid"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.025,
+     "peak": " tick"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.547,
+    "median_fire": 0.024,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "af3ba73d",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "unit_kind": "sparse, weak pole (max 16 vs - pole 576)",
+ "confidence": "low",
+ "notes": "Step-in reader of bonsai1/L32/N10058+ (drop 0.00, the second-strongest reader; the strongest, L34/N4384-, was already mapped). Labelled COLD from its own tops and probes; little to do with the feeder's list-marker label. Test written blind by a label-only author.",
+ "roles": [
+  "reads bonsai1/L32/N10058+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L32/N10058+", "to": "bonsai1/L35/N6855+", "kind": "feeds", "weight": 0.0, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
