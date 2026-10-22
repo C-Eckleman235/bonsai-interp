@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-22-moridinamael-ceff9f92",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N6575-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T12:41:48+00:00",
+ "roles": ["feeds bonsai1/L7/N3780+"],
+ "neighbours": [
+  {
+   "unit": "L5/N6575",
+   "pole": "-",
+   "label": "Inside a person or place name that the tokenizer splits into pieces, the piece right after an opening 'Nir'/'Nar'/'Ner' or 'M'/'Am' chunk (Nir|upa, Nar|ita, Nari|ño, Ner|issa, M|ina, Am|ina); weaker after 'Sar'/'Har'/'Par' (Sar|ita, Har|ini). Patchy by spelling: many look-alike names stay quiet (Narges, Nuria, Norbu, Narendra, Lalitha, Karina), and the same letters inside ordinary words (margarita, senorita, nervous, nursery) stay quiet.",
+   "short": "name piece after Nir/Nar/Ner/M (Nir|upa, M|ina)",
+   "unit_kind": "spelling",
+   "fire": [
+    "Nirupa handed the keys to her neighbor before leaving for the airport.",
+    "We landed at Narita late in the evening and took the train into Tokyo.",
+    "The coffee farms of Nariño, in southern Colombia, are known for their bright flavor.",
+    "Nerissa laughed and said she had never seen the sea so calm.",
+    "Mina finished the crossword before anyone else at the table.",
+    "Amina is studying engineering at the university in Kano.",
+    "My aunt Sarita sends us mangoes every summer.",
+    "Harini played the violin solo at the school concert."
+   ],
+   "quiet": [
+    "She handed the keys to her neighbor before leaving for the airport.",
+    "We landed at the airport late in the evening and took the train into Tokyo.",
+    "The coffee farms of southern Colombia are known for their bright flavor.",
+    "She laughed and said she had never seen the sea so calm.",
+    "My sister finished the crossword before anyone else at the table.",
+    "Narges is studying engineering at the university in Tehran.",
+    "My aunt sends us margaritas every summer.",
+    "Karina played the violin solo at the school concert."
+   ]
+  }
+ ],
+ "predictions": "Blind test written by a label-only second author. Risk: four fire names are sentence-initial.",
+ "notes": "Feeder of bonsai1/L7/N3780+ picked from the resident attribution ranking (play step ran out of GPU memory, so no ablation drop was measured). The + pole of this unit fires on ' minutes'/' Min' in reading-time lines, which may be the main route into the byline reader.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "look",
+   "probe",
+   "inverse-de",
+   "blind-room",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
