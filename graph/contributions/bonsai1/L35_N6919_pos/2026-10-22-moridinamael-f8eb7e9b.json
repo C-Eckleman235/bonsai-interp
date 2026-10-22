@@ -1,0 +1,168 @@
+{
+ "id": "2026-10-22-moridinamael-f8eb7e9b",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6919+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T16:43:56+00:00",
+ "recipe": {
+  "toolchain_commit": "8acb82a9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N6919_pos/2026-10-22-moridinamael-f8eb7e9b.tests.json"
+ },
+ "label": "In English text, the word just before an expected ringing or whistling sound verb (e.g. 'the alarm clock began to' before 'ring', 'your phone' before 'rings', 'the kettle began to' before 'whistle'), and the first piece 'par' of a body part being physically paralysed. Also fires on 'lé' in French 'blessés légers'. Quiet for predictable words in general, when nothing is about to ring or whistle (the truck began to move), for figurative paralysis (a committee paralysed by debate), and for ringing in other languages.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N6919_pos/2026-10-22-moridinamael-f8eb7e9b.tests.json",
+   "prereg_commit": "8acb82a9",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.611,
+     "peak": " lé"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.431,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.043,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.22,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.085,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.237,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.089,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.082,
+     "peak": "As"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.116,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.159,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.06,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.104,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.083,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.058,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.104,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.156,
+     "peak": " to"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 1,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.625,
+    "median_fire": 0.154,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "8acb82a9",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L34/N10493+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L34/N10493+",
+   "to": "bonsai1/L35/N6919+",
+   "kind": "feeds",
+   "weight": 0.09,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
