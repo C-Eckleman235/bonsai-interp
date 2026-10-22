@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-moridinamael-3cb57ecb",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N9387+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T14:38:27+00:00",
+ "roles": ["feeds bonsai1/L9/N12129+"],
+ "neighbours": [
+  {
+   "unit": "L8/N9387",
+   "pole": "+",
+   "label": "The second space of a two-space gap after a full stop that ends a complete sentence ('the dog barked.  Then it slept'). Weaker after ? or !; low on double spaces mid-sentence or after a comma, after abbreviations like 'Dr.', and on a single space after a full stop.",
+   "short": "two spaces after a sentence-ending full stop",
+   "fire": [
+    "The dog barked.  Then it slept by the fire.",
+    "We missed the last train.  Nobody seemed surprised.",
+    "The report was finished on Friday.  It goes to the board next week.",
+    "She planted tomatoes in the spring.  By August the vines had covered the fence.",
+    "Preheat the oven to 200 degrees.  Grease the pan while you wait.",
+    "The meeting ended early.  Everyone went home.",
+    "Rain fell all night.  In the morning the river had risen two feet.",
+    "I checked the logs twice.  The error only appears after midnight."
+   ],
+   "quiet": [
+    "The report was finished on Friday,  and it goes to the board next week.",
+    "She planted tomatoes in the  spring and by August the vines had covered the fence.",
+    "Preheat the oven to 200 degrees and grease the pan while you wait.",
+    "Dr.  Patel ended the meeting early and everyone went home.",
+    "Rain fell all  night, and in the morning the river had risen two feet.",
+    "I checked the logs twice, and the error only appears after midnight.",
+    "The museum opens at nine, and tickets are sold at the front desk.",
+    "Mr.  Hale closed the book and sighed after a long chapter."
+   ]
+  }
+ ],
+ "predictions": "Most fire sentences around 0.3 of max; mid-sentence and comma double spaces up to ~0.2; abbreviation cases ~0.1; single-space lines near 0.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
