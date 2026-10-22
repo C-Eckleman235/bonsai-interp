@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-22-moridinamael-20debfb4",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N10678-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T19:56:29+00:00",
+ "neighbours": [
+  {
+   "unit": "L35/N10678",
+   "pole": "-",
+   "label": "ALL-CAPS headings or titles set inside normal prose (any language), firing on pieces partway through the capitalised words; ALL-CAPS code constants stay quiet, and a few lowercase words split mid-word (e.g. 'concreta', 'academically') can also reach it",
+   "short": "ALL-CAPS headings inside prose",
+   "roles": ["reads bonsai1/L34/N3508-"],
+   "confidence": "low",
+   "notes": "Weak, dense pole (max 4.9; card flags 42% of tokens above 0.1 of max; plain text reads 0.12-0.18). Feeders-first: L27/N5995- (first byte of a split CJK/katakana character) fits the 'unfinished word piece' idea; L34/N7654+ (space before a date number) did not. Downstream drop from the feeder is ~0.00, so this reader barely reads L34/N3508-. Test sentences written blind by a second author from the label only.",
+   "fire": [
+    "The report opened with a section titled INTRODUCTION AND BACKGROUND, followed by three pages of history.",
+    "Chapter two, THE LONG WINTER, describes how the village survived the famine.",
+    "Under the heading RECOMMENDATIONS, the committee listed five changes to the budget.",
+    "El documento comienza con el apartado CONCLUSIONES GENERALES y luego presenta los anexos.",
+    "She skipped straight to the part marked FREQUENTLY ASKED QUESTIONS before reading anything else.",
+    "The menu had a new box labelled SEASONAL SPECIALITIES next to the desserts.",
+    "Das Kapitel ERGEBNISSE UND DISKUSSION fasst die wichtigsten Befunde zusammen.",
+    "In the manual, the warning under SAFETY INSTRUCTIONS tells you to unplug the device first."
+   ],
+   "quiet": [
+    "She ordered a large pizza with extra cheese for dinner.",
+    "('331', '承継承諾書送付'),",
+    "The report opened with a section on the introduction and background, followed by three pages of history.",
+    "Under the heading on recommendations, the committee listed five changes to the budget.",
+    "El documento comienza con las conclusiones generales y luego presenta los anexos.",
+    "She skipped straight to the frequently asked questions before reading anything else.",
+    "Set MAX_RETRY_COUNT = 5 and TIMEOUT_SECONDS = 30 in the config file.",
+    "Das Kapitel über Ergebnisse und Diskussion fasst die wichtigsten Befunde zusammen."
+   ]
+  }
+ ],
+ "predictions": "borderline: CAPS headings read 0.24-0.54 in probes against a 0.12-0.18 baseline; expect the median near the 0.20 bar",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
