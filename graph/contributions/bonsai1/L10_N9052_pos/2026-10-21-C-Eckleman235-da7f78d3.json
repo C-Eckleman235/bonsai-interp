@@ -1,0 +1,164 @@
+{
+ "id": "2026-10-21-C-Eckleman235-da7f78d3",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N9052+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-21T20:30:57+00:00",
+ "recipe": {
+  "toolchain_commit": "908b7c6",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N9052_pos/2026-10-21-C-Eckleman235-da7f78d3.tests.json"
+ },
+ "label": "the post-Civil War South: Reconstruction and its end, freedmen, the Reconstruction amendments, carpetbaggers, the Klan and Jim Crow; other postwar rebuildings and other eras' reforms stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L10_N9052_pos/2026-10-21-C-Eckleman235-da7f78d3.tests.json",
+   "prereg_commit": "908b7c6",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.858,
+     "peak": " troops"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.796,
+     "peak": "men"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.698,
+     "peak": " vote"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.537,
+     "peak": "bag"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.5,
+     "peak": "ipation"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 1.28,
+     "peak": "7"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.619,
+     "peak": "7"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.275,
+     "peak": " South"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.018,
+     "peak": " Marshall"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.012,
+     "peak": " children"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.178,
+     "peak": " vote"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.004,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.005,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.076,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.087,
+     "peak": " admitted"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.007,
+     "peak": "theid"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.658,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "908b7c6",
+  "minutes": 11,
+  "batch_size": 1
+ },
+ "short": "Reconstruction and the postwar South",
+ "unit_kind": "meaning",
+ "confidence": 0.6,
+ "notes": "Step-out from the Civil War pole bonsai1/L13/N1342+ (held, #370): play step lists L10/N9052 with a drop of 0.10; the + pole is the active one (card: peak tokens '7' x9, ' Reconstruction' x5, '6' x5; examples 'through Reconstruction', 'the end of Reconstruction', 18|7|6, 18|7|7, freed|man's schools, the Reconstruction amendments, the Radicals). Probes (exploratory, run on a separate Kaggle T4; none is reused): 'Reconstruction ended in 1877' 1.03, Jim Crow in the 1890s 0.69, the disputed election of 1876 0.68, the Fourteenth Amendment 0.63, freedmen's schools 0.62, impeaching Andrew Johnson 0.58, carpetbaggers 0.54; postwar reconstruction of Germany 0.05, the Marshall Plan 0.02, the Gilded Age 0.10. Scoring runs on a Kaggle T4.",
+ "roles": [
+  "feeds bonsai1/L13/N1342+"
+ ],
+ "selection": "step-out from bonsai1/L13/N1342+",
+ "edges": [
+  {
+   "from": "bonsai1/L10/N9052+",
+   "to": "bonsai1/L13/N1342+",
+   "kind": "feeds",
+   "weight": 0.1,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
