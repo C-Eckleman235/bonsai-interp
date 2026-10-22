@@ -1,0 +1,166 @@
+{
+ "id": "2026-10-22-moridinamael-9ba4dca9",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N5416-",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T07:00:56+00:00",
+ "recipe": {
+  "toolchain_commit": "904b282b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N5416_neg/2026-10-22-moridinamael-9ba4dca9.tests.json"
+ },
+ "label": "The first name 'Carrie' or 'Fiona' of a celebrity or TV character, just before her surname (Carrie Underwood, Fiona Shaw); also the 'in' piece of the surname Feinberg. Other women's first names (Scarlett, Meryl, Emily, Sandra, Adele), men's names, the novel 'Carrie' and Princess Fiona stay quiet.",
+ "edges": [
+  {
+   "from": "bonsai1/L33/N6849-",
+   "to": "bonsai1/L35/N5416-",
+   "kind": "feeds",
+   "weight": 0.29,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ],
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N5416_neg/2026-10-22-moridinamael-9ba4dca9.tests.json",
+   "prereg_commit": "904b282b",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.091,
+     "peak": " Carrie"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.394,
+     "peak": " Fiona"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": -0.253,
+     "peak": " Under"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.436,
+     "peak": " Carrie"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.023,
+     "peak": " Carrie"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": -0.902,
+     "peak": " Greek"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": -1.281,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.08,
+     "peak": " Carrie"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": -0.192,
+     "peak": "Scar"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": -0.078,
+     "peak": " Emily"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": -0.643,
+     "peak": " spy"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.081,
+     "peak": " Stre"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": -0.004,
+     "peak": " og"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": -0.408,
+     "peak": " Stephen"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": -0.545,
+     "peak": " Ad"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.055,
+     "peak": " Bul"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.672,
+    "median_fire": 0.052,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "904b282b",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L33/N6849-"
+ ]
+}
