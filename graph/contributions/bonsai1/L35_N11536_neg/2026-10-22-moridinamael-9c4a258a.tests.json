@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-22-moridinamael-9c4a258a",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N11536-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T20:18:35+00:00",
+ "roles": ["reads bonsai1/L33/N8104+"],
+ "neighbours": [
+  {
+   "unit": "L35/N11536",
+   "pole": "-",
+   "label": "In Japanese text, a kanji that the tokenizer breaks into raw byte pieces (rarer kanji such as those in 鬱蒼, 燭台, 体験, 帯域); weaker for ordinary Japanese words and other non-English text, lowest for plain English.",
+   "short": "byte-split kanji in Japanese (dense pole)",
+   "unit_kind": "dense / positional",
+   "confidence": "low",
+   "notes": "Card flags the pole dense (54% of tokens >0.1 max, max 4.22, gate-closed leak regime). Probes: plain English ~0.15-0.25, plain Japanese/Chinese ~0.3, Korean 0.53, German 0.41; rare byte-split kanji twins 0.48-0.55 vs common-word twins 0.27-0.30. Solver leak: a German sentence 0.48, an Arabic line 0.36. Test sentences written blind by a second author from the label only; leaks placed by that author. Reader of L33/N8104+ with a near-zero ablation drop; label unrelated to the feeder's.",
+   "fire": [
+    "森の奥は木々が鬱蒼と茂っていて、昼でも薄暗かった。",
+    "古い洋館の食卓には銀の燭台が置かれていた。",
+    "庭の薔薇が満開になり、甘い香りが漂っている。",
+    "彼は返事をするのを一瞬躊躇した。",
+    "二人の説明には小さな齟齬があった。",
+    "雨の日はなんとなく憂鬱な気分になる。",
+    "紅茶に檸檬の薄切りを浮かべて飲んだ。",
+    "停電したので蝋燭に火をつけた。"
+   ],
+   "quiet": [
+    "Die Brücke über den Fluss wurde letztes Jahr erneuert.",
+    "وعزاؤنا بارتحال السيّد الوالد، هو حرارةُ دموعكم أيّها الأوفياء..",
+    "森のおくは木がたくさんあって、昼でもくらかった。",
+    "古い家のテーブルには銀のろうそく立てが置かれていた。",
+    "The roses in the garden are in full bloom and smell sweet.",
+    "彼は返事をするのを少しまよった。",
+    "二人の話には小さなちがいがあった。",
+    "雨の日はなんとなく気分が下がる。"
+   ]
+  }
+ ],
+ "predictions": "Likely fail: the two solver leaks (German 0.48, Arabic 0.36 in probes) sit in the near misses, and ordinary Japanese reads ~0.3; fire items should still rank mostly above the kana twins.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "blind-room"
+  ]
+ }
+}
