@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-067ed029",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L16/N11902-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:24:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L16/N11902",
+   "pole": "-",
+   "label": "'):\\n' closing a method signature 'def name(self, ...):' inside a class body with other methods",
+   "fire": [
+    "class Queue:\n    def __init__(self):\n        self.items = []\n\n    def push(self, item):\n        self.items.append(item)\n\n    def pop(self):\n        return self.items.pop(0)",
+    "class Counter:\n    def __init__(self, start):\n        self.value = start\n\n    def increment(self, step):\n        self.value += step\n\n    def reset(self):\n        self.value = 0",
+    "class User:\n    def __init__(self, name):\n        self.name = name\n\n    def greet(self):\n        return 'Hi ' + self.name\n\n    def rename(self, new_name):\n        self.name = new_name",
+    "class Stack:\n    def __init__(self):\n        self._items = []\n\n    def peek(self):\n        return self._items[-1]\n\n    def is_empty(self):\n        return not self._items",
+    "class Timer:\n    def start(self):\n        self.t0 = time.time()\n\n    def stop(self):\n        self.t1 = time.time()\n\n    def elapsed(self):\n        return self.t1 - self.t0",
+    "class Store:\n    def __init__(self):\n        self._rows = {}\n\n    def put(self, key, row):\n        self._rows[key] = row\n\n    def remove(self, key):\n        del self._rows[key]",
+    "class Matrix:\n    def __init__(self, rows):\n        self.rows = rows\n\n    def width(self):\n        return len(self.rows[0])\n\n    def height(self):\n        return len(self.rows)",
+    "class Logger:\n    def __init__(self, path):\n        self.path = path\n\n    def write(self, line):\n        self.fh.write(line)\n\n    def close(self):\n        self.fh.close()"
+   ],
+   "quiet": [
+    "queue = []\nqueue.append(first_item)\nqueue.append(second_item)\nnext_item = queue.pop(0)\nprint(next_item)\nprint(len(queue))",
+    "def increment(value, step):\n    return value + step\n\ncount = increment(0, 5)\ncount = increment(count, 2)\nprint(count)",
+    "name = 'Ada'\ngreeting = 'Hi ' + name\nprint(greeting)\nnew_name = name.upper()\nprint(new_name)\nprint(len(new_name))",
+    "items = [3, 1, 2]\nitems.sort()\ntop = items[-1]\nempty = not items\nprint(top, empty)\nprint(items)",
+    "t0 = time.time()\nrun_job(config)\nt1 = time.time()\nelapsed = t1 - t0\nprint('took', elapsed)\nlog.flush()",
+    "rows = {}\nrows['a'] = load_row('a')\nrows['b'] = load_row('b')\ndel rows['a']\nprint(rows)\nsave(rows)",
+    "def width(rows):\n    return len(rows[0])\n\ngrid = [[1, 2], [3, 4]]\nprint(width(grid))\nprint(len(grid))",
+    "fh = open(path, 'w')\nfh.write(first_line)\nfh.write(second_line)\nfh.close()\nprint('done')\nprint(path)"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "method def '):' in class",
+ "unit_kind": "contextual",
+ "confidence": 0.45,
+ "notes": "Probe: class bodies with several self-methods 0.37 and 0.64 (peak '):\\n'); lone 'def test_x(self):' 0.09; module-level def 0.04; while/if/class headers 0.02-0.03; call lines 0.03. Fire items are multi-line classes with 3 methods each. Near misses are the same operations written as module-level code (a few with a plain module-level def, which scored low in probe)."
+}

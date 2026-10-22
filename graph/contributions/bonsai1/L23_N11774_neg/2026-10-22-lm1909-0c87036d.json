@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-0c87036d",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N11774-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:46:52+00:00",
+ "recipe": {
+  "toolchain_commit": "56c604c2",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L23_N11774_neg/2026-10-22-lm1909-0c87036d.tests.json"
+ },
+ "label": "best guess: ' nothing' in program status messages of the form '... nothing to do'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L23_N11774_neg/2026-10-22-lm1909-0c87036d.tests.json",
+   "prereg_commit": "56c604c2",
+   "author": "lm1909",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.068,
+     "peak": "'"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.083,
+     "peak": " nothing"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.091,
+     "peak": " nothing"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.084,
+     "peak": " new"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.265,
+     "peak": " nothing"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.09,
+     "peak": " nothing"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.043,
+     "peak": " nothing"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.056,
+     "peak": " log"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.053,
+     "peak": "All"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.011,
+     "peak": " task"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.058,
+     "peak": " target"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.084,
+     "peak": " new"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.026,
+     "peak": " skipped"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.042,
+     "peak": "'"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.027,
+     "peak": " sys"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.064,
+     "peak": "'"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.852,
+    "median_fire": 0.084,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "56c604c2",
+  "minutes": 7,
+  "batch_size": 16
+ },
+ "short": "'nothing to do' message",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Diffuse pole (card density 0.58%, no dominant token). Probe: only hit was 'Already processed, nothing to do' 0.21 (card top example is the same frame); Korean/Japanese particles 0.02-0.03, Spanish 'uno de' 0.05, list items 0.03-0.09, prose 'nothing left to discuss' 0.02. Test registers the one frame that replicated; expected to fail.",
+ "selection": "random draw"
+}

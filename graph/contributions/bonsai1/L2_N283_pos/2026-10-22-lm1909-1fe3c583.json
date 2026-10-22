@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-1fe3c583",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N283+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:46:59+00:00",
+ "recipe": {
+  "toolchain_commit": "56c604c2",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L2_N283_pos/2026-10-22-lm1909-1fe3c583.tests.json"
+ },
+ "label": "best guess: the piece ' une' at the start of a split English word (une+conomic, une+ase) and German ' seiner'; weak gate-closed echo pole",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L2_N283_pos/2026-10-22-lm1909-1fe3c583.tests.json",
+   "prereg_commit": "56c604c2",
+   "author": "lm1909",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.588,
+     "peak": " une"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.66,
+     "peak": " une"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.451,
+     "peak": " une"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.683,
+     "peak": " une"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.304,
+     "peak": " une"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.093,
+     "peak": " une"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.311,
+     "peak": " seiner"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.497,
+     "peak": " une"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.006,
+     "peak": " too"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.013,
+     "peak": " most"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.017,
+     "peak": " uneasy"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.014,
+     "peak": " as"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.04,
+     "peak": " old"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.027,
+     "peak": " unexpected"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.075,
+     "peak": " den"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.094,
+     "peak": " unethical"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.474,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "56c604c2",
+  "minutes": 8,
+  "batch_size": 16
+ },
+ "short": "' une' piece",
+ "unit_kind": "lexical",
+ "confidence": 0.25,
+ "notes": "Card flags gate-closed regime dominating (-x- echo 99%), max 3.77. Probe: uneconomic 0.78, seiner 0.31, unease 0.20, French une 0.12; whole-token uneven 0.03. Tokenizer: uneconomic=une+conomic, uneconomical=une+conom+ical, unease=une+ase, uneasily=une+asily; near misses uneasy, unequal, unexpected, unethical are single tokens; ' un'-split words avoided in near misses because ' un' is also in the card's top tokens. Low confidence.",
+ "selection": "random draw"
+}

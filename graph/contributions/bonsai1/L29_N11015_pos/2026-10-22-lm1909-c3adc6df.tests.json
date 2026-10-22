@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-c3adc6df",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N11015+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:24:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N11015",
+   "pole": "+",
+   "label": "two contexts: crystal-system / crystal-habit phrases in mineralogy ('crystallizes in the ... system', 'forms long prisms') and exc_info / traceback in Python exception logging",
+   "fire": [
+    "Aragonite crystallizes in the orthorhombic system and often forms long needles.",
+    "The mineral crystallizes in the hexagonal system as slender, elongated prisms.",
+    "Gypsum crystallizes in the monoclinic system and grows into long bladed crystals.",
+    "When the brine is allowed to evaporate, cubic crystals of halite form on the rim.",
+    "    except IOError:\n        logger.exception(\"Could not read file\", exc_info=True)",
+    "    except Exception as err:\n        log.error(\"Upload failed: %s\", err, exc_info=True)",
+    "    except RuntimeError:\n        logger.error(traceback.format_exc())\n        raise",
+    "    except Exception:\n        sys.stderr.write(traceback.format_exc())"
+   ],
+   "quiet": [
+    "Aragonite is a common mineral in shells and coral reefs around the world.",
+    "The mineral is mined in Brazil and used mainly in the glass industry.",
+    "Gypsum is soft enough to scratch with a fingernail and is used in plaster.",
+    "When the brine is pumped from the well, it is stored in large steel tanks.",
+    "    except IOError:\n        logger.info(\"Could not read file, using defaults\")",
+    "    except Exception as err:\n        print(\"Upload failed:\", err)\n        return False",
+    "    except RuntimeError:\n        cleanup()\n        raise",
+    "    except Exception:\n        sys.stderr.write(\"unexpected error\\n\")"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "crystallisation; exc logging",
+ "unit_kind": "contextual",
+ "confidence": 0.3,
+ "notes": "Probe: 'crystallizes in the orthorhombic system and forms long prisms' 0.77 (peak ' long'), 'allowed to evaporate' 0.35, 'so-called framework silicate' 0.30, traceback.format_exc 0.42, exc_info=True 0.35; except block without exc/traceback 0.09, 'excellent ... back home' 0.004, 'dissolved in water and heated' 0.02. Label is an honest two-item list because neither cluster explains the other. Near misses keep the mineral or except-block topic and drop the crystallisation phrase / exc_info / traceback."
+}

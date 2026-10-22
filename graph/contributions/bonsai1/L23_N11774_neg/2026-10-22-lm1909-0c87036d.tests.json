@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-0c87036d",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N11774-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:24:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L23/N11774",
+   "pole": "-",
+   "label": "best guess: ' nothing' in program status messages of the form '... nothing to do'",
+   "fire": [
+    "The build tool printed 'All targets up to date, nothing to do' and stopped.",
+    "    if task.done:\n        log.info('Task already finished, nothing to do')\n        return",
+    "make: Nothing to be done for 'all'. Cache is fresh, nothing to do.",
+    "The sync job logged 'No new files found, nothing to do' at midnight.",
+    "    except AlreadyExists:\n        message = 'Record exists nothing to do'\n        return message",
+    "The installer answered 'Package is current, nothing to do' when I ran it again.",
+    "    if not changes:\n        print('Working tree clean, nothing to do')\n        sys.exit(0)",
+    "Every night the backup script reports 'Snapshot unchanged, nothing to do' in the log."
+   ],
+   "quiet": [
+    "The build tool printed 'All targets up to date, skipping' and stopped.",
+    "    if task.done:\n        log.info('Task already finished, returning early')\n        return",
+    "make: Cache is fresh, so the build was skipped for every target.",
+    "The sync job logged 'No new files found, exiting' at midnight.",
+    "    except AlreadyExists:\n        message = 'Record exists, skipped'\n        return message",
+    "The installer answered 'Package is current' when I ran it again.",
+    "    if not changes:\n        print('Working tree clean, exiting')\n        sys.exit(0)",
+    "Every night the backup script reports 'Snapshot unchanged, skipped' in the log."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'nothing to do' message",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Diffuse pole (card density 0.58%, no dominant token). Probe: only hit was 'Already processed, nothing to do' 0.21 (card top example is the same frame); Korean/Japanese particles 0.02-0.03, Spanish 'uno de' 0.05, list items 0.03-0.09, prose 'nothing left to discuss' 0.02. Test registers the one frame that replicated; expected to fail."
+}

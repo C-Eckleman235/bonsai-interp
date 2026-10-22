@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-28519f9e",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N5599+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:24:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L21/N5599",
+   "pole": "+",
+   "label": "relative pronoun ' who' / ' where' (also 'whoever') opening a relative clause right after its head noun",
+   "fire": [
+    "Everyone at the wedding thanked the priest who led the service so warmly.",
+    "My cousin finally met the surgeon who repaired his knee last spring.",
+    "Police are still looking for the driver who caused the crash on Friday.",
+    "The judge spoke to the witness who had seen the robbery from her window.",
+    "We visited the small town where my father worked as a young teacher.",
+    "They returned to the beach where they had first met twenty years ago.",
+    "A reward was offered to the person who found the missing painting.",
+    "Le maire a remercié le pompier qui a sauvé les enfants de l'incendie."
+   ],
+   "quiet": [
+    "Everyone at the wedding thanked the priest for leading the service so warmly.",
+    "My cousin finally met his surgeon after the knee operation last spring.",
+    "Police are still looking for a blue van seen near the crash on Friday.",
+    "The judge spoke briefly to the witness and then adjourned the hearing.",
+    "We visited the small town to see the school and the old church square.",
+    "They returned to the beach for a quiet walk after twenty years apart.",
+    "A reward was offered for any information about the missing painting.",
+    "Le maire a remercié les pompiers pour leur courage pendant l'incendie."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "relative who/where",
+ "unit_kind": "contextual",
+ "confidence": 0.4,
+ "notes": "Probe (fraction of max): 'the nurse who answered' 0.37, 'village where' 0.22, 'Whoever' 0.21, relative 'that' after 'printer' only 0.15 (peak elsewhere), complementizer 'said that' 0.07, demonstrative 'that movie' 0.08. Label narrowed to who/where after a head noun because relative 'that' scored low in probe despite top card example. Fire items follow the 'the <person noun> who <verb>' frame that scored highest; near misses keep topic and drop the relative clause."
+}
