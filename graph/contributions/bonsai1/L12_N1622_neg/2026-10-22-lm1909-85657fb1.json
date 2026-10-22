@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-85657fb1",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N1622-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T19:08:11+00:00",
+ "recipe": {
+  "toolchain_commit": "e8118de4",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L12_N1622_neg/2026-10-22-lm1909-85657fb1.tests.json"
+ },
+ "label": "category term in a classification statement ('X are value types / arthropods / gymnosperms / derivatives'), peaking on ' types' or on inner sub-word pieces of the technical group name",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L12_N1622_neg/2026-10-22-lm1909-85657fb1.tests.json",
+   "prereg_commit": "e8118de4",
+   "author": "lm1909",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.521,
+     "peak": " types"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.496,
+     "peak": "throp"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.632,
+     "peak": "nos"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.34,
+     "peak": " derivatives"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.107,
+     "peak": " primitive"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.511,
+     "peak": "throp"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.624,
+     "peak": "nos"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.463,
+     "peak": " types"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.137,
+     "peak": " structs"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.12,
+     "peak": "ed"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.267,
+     "peak": "ifers"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.156,
+     "peak": " asset"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.006,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.178,
+     "peak": " moll"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.105,
+     "peak": "ads"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.017,
+     "peak": " slices"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.922,
+    "median_fire": 0.504,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "e8118de4",
+  "minutes": 4,
+  "batch_size": 16
+ },
+ "short": "technical category term",
+ "unit_kind": "contextual",
+ "confidence": 0.45,
+ "notes": "Probe: 'are value types' 1.10, gymnosperms 0.65, arthropods 0.59 (0.37 outside a classification), derivatives 0.40, semiconductors 0.24; single-token 'mammals' 0.19, 'annual crops' 0.19. Near misses keep the topic and drop the category term.",
+ "selection": "random draw"
+}
