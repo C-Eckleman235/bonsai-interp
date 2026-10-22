@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-22-moridinamael-55dfe729",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N3336+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T13:50:04+00:00",
+ "recipe": {
+  "toolchain_commit": "6bf8e26f",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L30_N3336_pos/2026-10-22-moridinamael-55dfe729.tests.json"
+ },
+ "label": "In sports reports, a word marking which part of a game, course or season is meant: 'back' in back nine, back half of the season, back-to-back and backroom staff; 'top' or 'bottom' of an inning; 'front nine'; and horse racing's 'over' a course. Weaker (about 0.4) for the back half of something outside sports (a novel, a concert); quiet for 'back' as direction or body part (came back, back row, running back) and for a physical bottom (bottom of the drawer).",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L30_N3336_pos/2026-10-22-moridinamael-55dfe729.tests.json",
+   "prereg_commit": "6bf8e26f",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.701,
+     "peak": " over"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.818,
+     "peak": " back"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.634,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.286,
+     "peak": " ninth"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.299,
+     "peak": " front"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.981,
+     "peak": " back"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.081,
+     "peak": " back"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.335,
+     "peak": " back"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.005,
+     "peak": " from"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.086,
+     "peak": " round"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.063,
+     "peak": " game"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.008,
+     "peak": " bag"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.097,
+     "peak": " late"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.108,
+     "peak": " over"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.015,
+     "peak": " ball"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.162,
+     "peak": " back"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.485,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "6bf8e26f",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L28/N858-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L28/N858-", "to": "bonsai1/L30/N3336+", "kind": "feeds", "weight": 0.24, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
