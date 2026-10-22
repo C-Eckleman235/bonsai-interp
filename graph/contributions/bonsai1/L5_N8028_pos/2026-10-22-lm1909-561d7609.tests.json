@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-561d7609",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N8028+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T17:23:41+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N8028",
+   "pole": "+",
+   "label": "pieces of CJK or Tibetan institutional/proper-name compounds (皇|室, 神戸|市|立, Olmo Lun|gring)",
+   "fire": [
+    "The Imperial Household (皇室) announced the birth of a new prince on Monday.",
+    "大阪市立美術館は来月から特別展を開きます。",
+    "In Bön cosmology, Olmo Lungring is the hidden land at the centre of the world.",
+    "皇室の行事は毎年春と秋に行われます。",
+    "横浜市立図書館では週末に子ども向けの読み聞かせ会があります。",
+    "Pilgrims describe Olmo Lungring as a paradise surrounded by snowy peaks.",
+    "京都市立病院は新しい病棟を建設しています。",
+    "Journalists covering the Japanese imperial family (皇室) must follow strict rules."
+   ],
+   "quiet": [
+    "The Imperial Household announced the birth of a new prince on Monday.",
+    "大阪の美術館は来月から特別展を開きます。",
+    "In Bön cosmology, a hidden land lies at the centre of the world.",
+    "天皇の行事は毎年春と秋に行われます。",
+    "横浜の図書館では週末に子ども向けの読み聞かせ会があります。",
+    "Pilgrims describe the valley as a paradise surrounded by snowy peaks.",
+    "京都の病院は新しい病棟を建設しています。",
+    "Journalists covering the Japanese royal family must follow strict rules."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "CJK/Tibetan name pieces",
+ "unit_kind": "sparse feature",
+ "confidence": 0.3,
+ "notes": "Card top: 室 in 皇室, ' Su' (Su Wen), パン in a Japanese hall name, ' Lun' (Olmo Lungring), ' Rig' (Rig Veda), 市 in 神戸市立. Probe: 皇室 0.93, 神戸市立 0.61, Olmo Lungring 0.60; Rig Veda 0.05, Tao Te Ching 0.15, Huang Di Nei Jing 0.19, puppet 0.16. So not 'Asian religious titles' in general; label narrowed to the compounds that fired. Near misses keep the Japanese/English sentence and drop the compound (天皇 kept in one quiet item as a hard near miss)."
+}
