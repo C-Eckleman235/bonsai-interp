@@ -1,0 +1,162 @@
+{
+ "id": "2026-10-22-moridinamael-cb1b999e",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N7651+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T18:05:17+00:00",
+ "recipe": {
+  "toolchain_commit": "2048f88e",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N7651_pos/2026-10-22-moridinamael-cb1b999e.tests.json"
+ },
+ "label": "The Russian word-start piece ' прод' when it opens a verb (продать, продлить, продвигать, продемонстрировать, also transliterated prod-), mid-sentence. Quiet for verbs with other Russian prefixes (купить, разработать, представить), for прод- nouns (продукты, продукция), for продолжить, and for English 'production' or 'prod'. Exceptions that also fire: the piece 'произ' inside воспроизвести and German 'bew' in bewegen.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N7651_pos/2026-10-22-moridinamael-cb1b999e.tests.json",
+   "prereg_commit": "2048f88e",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.094,
+     "peak": " прод"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.919,
+     "peak": " прод"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.766,
+     "peak": " прод"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.766,
+     "peak": " прод"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.882,
+     "peak": " прод"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.825,
+     "peak": " прод"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.613,
+     "peak": " прод"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.88,
+     "peak": " прод"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.769,
+     "peak": "z"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.027,
+     "peak": "ы"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.04,
+     "peak": "ли"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.082,
+     "peak": " ещё"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.065,
+     "peak": "ания"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.174,
+     "peak": "итель"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.067,
+     "peak": " подпис"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.186,
+     "peak": "ед"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.953,
+    "median_fire": 0.853,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "2048f88e",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L31/N9952+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L31/N9952+", "to": "bonsai1/L34/N7651+", "kind": "feeds", "weight": 0.18, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
