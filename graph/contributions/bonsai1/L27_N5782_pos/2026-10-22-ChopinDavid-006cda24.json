@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-006cda24",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N5782+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T13:59:16+00:00",
+ "recipe": {
+  "toolchain_commit": "ff3ba87d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L27_N5782_pos/2026-10-22-ChopinDavid-006cda24.tests.json"
+ },
+ "label": "Fires on geological-process vocabulary in earth-science text (volcanic eruptions, geological processes, plate movement, deep-time dates of eruptions), not on chemistry or biology processes or on fossils in a museum setting.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L27_N5782_pos/2026-10-22-ChopinDavid-006cda24.tests.json",
+   "prereg_commit": "ff3ba87d",
+   "author": "ChopinDavid",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.202,
+     "peak": " volcanic"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.278,
+     "peak": " through"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.163,
+     "peak": " plate"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.244,
+     "peak": " volcanic"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.102,
+     "peak": "onic"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.009,
+     "peak": "The"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.105,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.173,
+     "peak": " volcanic"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.016,
+     "peak": " hundreds"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.013,
+     "peak": "ese"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.009,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.023,
+     "peak": " old"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.014,
+     "peak": " study"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.01,
+     "peak": " novel"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.019,
+     "peak": " renovation"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.015,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.883,
+    "median_fire": 0.168,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "ff3ba87d",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "geological processes (volcanic, tectonic)",
+ "unit_kind": "topic",
+ "confidence": 0.45,
+ "notes": "Probes: 'volcanic eruptions occurred about 200 million years ago' 0.36 (peak '2'); 'formed through geological processes' 0.28; 'caused by plate movement' 0.23; weak: 'millions of years ago ... under a sea' 0.055, 'how terrestrial planets form' 0.09, 'fossils from the Jurassic' 0.007; controls 'founded 200 years ago' 0.015, 'chemical process' 0.02. Card top: Pangea volcanic eruptions, volcanic processes, geological processes, plate movement. The - pole's logit effect suppresses rock/fossil/mineral words.",
+ "selection": "random draw"
+}
