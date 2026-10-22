@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-moridinamael-e4721fc3",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N55+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T22:51:51+00:00",
+ "roles": ["feeds bonsai1/L24/N5483+"],
+ "neighbours": [
+  {
+   "unit": "L23/N55",
+   "pole": "+",
+   "label": "The opening piece of a katakana word that the tokenizer splits into several pieces, loanword or native (e.g. ア in アドレナリン, ト in トンボ), in Japanese or mixed text. Quiet for common katakana words that are a single whole token (e.g. テレビ), and for hiragana or kanji words in the same slot. Weaker (about 0.2-0.45 of max) on English loanwords spelled in Korean Hangul.",
+   "short": "opening piece of a split katakana word",
+   "fire": [
+    "새 스마트폰을 샀다.",
+    "試合の前に選手のアドレナリンが一気に上がった。",
+    "夏の夕方、池の上をトンボが何匹も飛んでいた。",
+    "彼女はフィラデルフィアの大学で研究を続けている。",
+    "このアプリはブロックチェーン技術を使っています。",
+    "祖母はいつもヨーグルトにシナモンをかけて食べる。",
+    "新しいパーキンソン病の治療法が発表された。",
+    "We visited the ギャラリー near the station, and it was amazing."
+   ],
+   "quiet": [
+    "会議の予定を調整した。",
+    "試合の前に選手の緊張が一気に高まった。",
+    "夏の夕方、池の上を鳥が何羽も飛んでいた。",
+    "彼女は東京の大学で研究を続けている。",
+    "このテレビは新しい技術を使っています。",
+    "祖母はいつもご飯にふりかけをかけて食べる。",
+    "新しい病気の治療法が発表された。",
+    "We visited the museum near the station, and it was amazing."
+   ]
+  }
+ ],
+ "predictions": "7-8/8 fire (the Hangul item weakest), 0 near misses; テレビ quiet as a whole token",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "step-out"
+  ]
+ },
+ "notes": "Target chosen from the resident feeders ranking (top MLP feeder of bonsai1/L24/N5483+); play step ran out of GPU memory, so no ablation drop was measured and no edge is recorded. Test sentences written blind by a label-only second author."
+}
