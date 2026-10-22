@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-22-moridinamael-4b23a8ad",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6731-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T22:38:38+00:00",
+ "selection": "step-in from bonsai1/L34/N2247+",
+ "roles": ["reads bonsai1/L34/N2247+"],
+ "neighbours": [
+  {
+   "unit": "L35/N6731",
+   "pole": "-",
+   "label": "A word waiting for its fixed partner, read on the first piece: ' such' before 'as' (fruits such as), 'according' before 'to', the ' well' in ', as well as', the contraction stems isn/wasn/don/won/aren before 't, and the lone space before a number (born in 1987, platform 7). Also the same stem at the start of a longer word (' Don' in 'Donations') and the 'e' of '(e.g.'; split Japanese kanji only weakly. Quiet when the word is used freely (it was such a, sings well, in order to, Prime Minister, can't, I'm, does not, numbers spelled out).",
+   "short": "word waiting for its fixed partner (such→as, isn→'t, space→number)",
+   "fire": [
+    "Donations to the well fund doubled this year.",
+    "The market sells tropical fruits such as mango, papaya and guava.",
+    "According to the forecast, it will rain all weekend.",
+    "She speaks French, as well as a little Portuguese.",
+    "It isn't the first time the bus has been late.",
+    "The door wasn't locked when we arrived.",
+    "Please don't leave your bags near the exit.",
+    "He won't be joining us for dinner tonight."
+   ],
+   "quiet": [
+    "My brother does not eat mushrooms at all.",
+    "The market had such a wide selection of tropical fruit.",
+    "The forecast says it will rain all weekend.",
+    "She sings well and plays the piano beautifully.",
+    "It is not the first time the bus has been late.",
+    "I can't find the door key anywhere.",
+    "Please do not leave your bags near the exit.",
+    "I'm sure he will join us for dinner another time."
+   ],
+   "confidence": "medium",
+   "notes": "Card flags the - pole as dense (27.6% of tokens reach 0.1 of a small max, 4.28); plain text reads about 0.1-0.14 of max, the named triggers about 0.9. Strongest feeders (attribution): L34/N9577 (' according', ' such' / n't stems, space before number) and L34/N3471+ (space before a year). The step-in feeder L34/N2247+ (byte-split kanji) pushes it only to about 0.3-0.5. Test sentences written blind by a second author from the label only; two of them ('Donations...', 'My brother does not...') were in the solver bank."
+  }
+ ],
+ "predictions": "the named triggers read about 0.9 of max, free uses about 0.1",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "neighbors",
+   "inverse-de",
+   "bank-solo"
+  ]
+ }
+}
