@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-22-moridinamael-6a3f0cd5",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N5561+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T07:48:15+00:00",
+ "roles": ["feeds bonsai1/L9/N181+"],
+ "neighbours": [
+  {
+   "unit": "L8/N5561",
+   "pole": "+",
+   "label": "A symbol token (= : => -- + - * , #) that comes right after a run of padding spaces, on the 2nd or later line of a block where several lines each have a name, padding spaces, then that symbol (aligned or ragged: 'width      = 3' / 'Date        : May'). Quiet for a single padded line, padding inside prose, a word (not a symbol) after the padding ('Name:      Ana'), '|' pipes, and weak (~0.2) for the same list with no padding ('x = 1').",
+   "short": "symbol after padding spaces, line after line",
+   "fire": [
+    "total      + 7\nrest       - 2",
+    "width      = 3\nheight     = 7\ndepth      = 12",
+    "Date        : May 4\nAuthor      : Lena Park\nStatus      : draft",
+    "name     => 'server'\nport     => 8080\nhost     => 'localhost'",
+    "alpha    -- first pass\nbeta     -- second pass\ngamma    -- final pass",
+    "base_cost      + 40\ntax            + 6\ndiscount       - 10",
+    "red     , 255\ngreen   , 128\nblue    , 0",
+    "timeout        = 30\nretries   = 5\nverbose          = true"
+   ],
+   "quiet": [
+    "# Semantics version: semantics-4",
+    "Date: May 4\nAuthor: Lena Park\nStatus: draft",
+    "Name:      Ana\nCity:      Lisbon\nRole:      editor",
+    "timeout        = 30",
+    "We waited      for the bus while the rain kept falling.",
+    "| name   | port |\n| server | 8080 |",
+    "alpha -- first pass\nbeta -- second pass",
+    "Title       Annual Report\nPages       48\nFormat      PDF"
+   ]
+  }
+ ],
+ "predictions": "Blind test (sentences written by a second author from the label only). Expect most fire items above 0.3; the 2-line '+ / -' solver leak may be weaker; unpadded lists ~0.2.",
+ "notes": "Step mission from bonsai1/L9/N181+. play step ran out of GPU memory on the stream machine, so the feeder was chosen as the top MLP cell of the resident attribution ranking (feeders tool); no ablation drop was measured, so the feeds edge carries no weight.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "blind-room",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
