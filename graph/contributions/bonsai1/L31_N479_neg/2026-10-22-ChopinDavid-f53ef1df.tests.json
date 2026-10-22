@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-f53ef1df",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N479-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T09:19:55+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L31/N479",
+   "pole": "-",
+   "label": "The article right after 'in'/'dans' in a recipe step, where a cooking vessel (saucepan, bowl, kettle, skillet) is about to be named; quiet on 'in a' in non-cooking sentences and on recipe steps without 'in a'.",
+   "fire": [
+    "Chop the onions and cook them gently in a skillet with a little butter.",
+    "Combine the flour, salt and yeast in a large mixing bowl.",
+    "Place the potatoes in a pot of cold salted water and bring to a boil.",
+    "Melt the chocolate in a small saucepan over very low heat.",
+    "Heat the milk in a pan until it just starts to steam.",
+    "Faire fondre le beurre dans une poêle à feu moyen.",
+    "Toss the salad leaves with the dressing in a wide bowl.",
+    "Simmer the stock in a heavy pot for about forty minutes."
+   ],
+   "quiet": [
+    "My cousin lives in a flat above the bakery on the main street.",
+    "She studied in a library downtown until late every evening.",
+    "The meeting was held in a hotel near the airport.",
+    "He grew up in a village at the foot of the mountains.",
+    "Preheat the oven and line the tray with parchment paper.",
+    "Stir the sauce often so that it does not stick.",
+    "Season the chicken with salt and pepper before roasting.",
+    "Our neighbours keep their bikes in a shed behind the house."
+   ]
+  }
+ ],
+ "predictions": "median fire ~0.5 (probes: in a saucepan 0.74, in a kettle 0.75, dans une casserole 0.43, in a large bowl 0.29); near misses < 0.04 (lives in a house 0.003, works in a bank 0.003, cooking class in a center 0.007, Grease a baking dish 0.03).",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'in a' before a cooking vessel in a recipe",
+ "unit_kind": "context",
+ "confidence": 0.7,
+ "notes": "A next-token predictor of cookware: the logit effect of the + pole promotes tablespoons/cup, and the - pole fires on the article before the vessel."
+}

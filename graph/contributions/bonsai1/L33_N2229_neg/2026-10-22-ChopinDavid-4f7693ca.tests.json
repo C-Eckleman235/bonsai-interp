@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-4f7693ca",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N2229-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T09:19:55+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N2229",
+   "pole": "-",
+   "label": "Unclear. Best guess: the final word piece of a word that closes an emphasized or exclaimed phrase (¡no al terrorismo!, *minimum*), just before the closing mark.",
+   "fire": [
+    "Los manifestantes gritaban: ¡no al racismo!, y la plaza se llenó.",
+    "El lema de la campaña era claro: ¡basta de machismo!, decían los carteles.",
+    "Su discurso terminó con un grito: ¡viva el periodismo!, y todos aplaudieron.",
+    "La pancarta decía ¡no al terrorismo! en letras rojas.",
+    "Los vecinos repetían ¡fuera el vandalismo! durante la reunión.",
+    "Note that this limit is a *minimum*, and larger buffers are allowed.",
+    "El título del libro era 'Fórmulas nuevas de turismo' y se vendió bien.",
+    "Gritaron ¡abajo el autoritarismo! frente al edificio del gobierno."
+   ],
+   "quiet": [
+    "El racismo sigue siendo un problema en muchas ciudades del mundo.",
+    "El machismo aparece en muchas novelas de la época.",
+    "El periodismo local ha cambiado mucho en los últimos años.",
+    "La policía investiga casos de vandalismo en el parque.",
+    "This limit is the smallest value that the buffer can take.",
+    "El turismo creció un diez por ciento el año pasado.",
+    "Los vecinos se reunieron el martes para hablar del parque.",
+    "La plaza estaba llena de gente durante la fiesta."
+   ]
+  }
+ ],
+ "predictions": "Weak; probes mostly ~0 (quoted titles 0.000, *maximum* 0.016, ¡no al terrorismo! 0.136). Expect fire median well below 0.2; this test will probably fail.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "unclear (word closing an emphasized phrase)",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Huge-magnitude late-layer pole whose top examples (titles, emphasis, citations) did not reproduce in probes. Only the Spanish exclamation reached 0.14, so the fire items lean on that form."
+}

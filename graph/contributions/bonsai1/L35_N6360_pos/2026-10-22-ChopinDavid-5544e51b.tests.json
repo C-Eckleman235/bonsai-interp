@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-5544e51b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6360+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T09:19:55+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N6360",
+   "pole": "+",
+   "label": "A space-initial byte-fallback token: a space followed by a non-ASCII character such as '÷', a CJK character or an accented capital ('Ú'); quiet when the same content is written in ASCII.",
+   "fire": [
+    "The speed is found as distance ÷ time for each lap of the track.",
+    "Share the sweets: 24 sweets ÷ 6 children gives four each.",
+    "The temple honours the general 源義経 and holds a festival in spring.",
+    "Tourists in 東京 often visit the shrine 明治神宮 on New Year's Day.",
+    "La carta llegó tarde. Únicamente su hermana la leyó.",
+    "The average is total ÷ count, rounded to one decimal place.",
+    "The poem was written by 李白 during the Tang dynasty.",
+    "Fill in the blank: 12 ÷ 3 equals four."
+   ],
+   "quiet": [
+    "The speed is found as distance / time for each lap of the track.",
+    "Share the sweets: 24 sweets / 6 children gives four each.",
+    "The temple honours the general Minamoto no Yoshitsune and holds a festival in spring.",
+    "Tourists in Tokyo often visit the Meiji Shrine on New Year's Day.",
+    "La carta llegó tarde. Solamente su hermana la leyó.",
+    "The average is total / count, rounded to one decimal place.",
+    "The poem was written by Li Bai during the Tang dynasty.",
+    "Fill in the blank: 12 / 3 equals four."
+   ]
+  }
+ ],
+ "predictions": "median fire ~0.55 (probes: ' ÷' 0.64 and 0.84, ' 源' 0.55, ' 京'/' 清' 0.37, ' Ú' 0.46); near misses < 0.25 (ASCII '/' 0.000, 'divided by' 0.24, Kyoto in Latin 0.000).",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "space + non-ASCII byte token (' ÷', ' 源')",
+ "unit_kind": "token",
+ "confidence": 0.6,
+ "notes": "The 'divided by' control unexpectedly reached 0.24 on a space token; kept similar ASCII controls and accept that risk."
+}

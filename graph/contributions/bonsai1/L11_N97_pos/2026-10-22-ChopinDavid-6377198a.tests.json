@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-6377198a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N97+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T09:19:55+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L11/N97",
+   "pole": "+",
+   "label": "A slot to be filled in a template: format-string placeholders (%s, %d, {}) and gaps where a math symbol has been stripped ('where  is a variable'); quiet on string literals and prose without such slots.",
+   "fire": [
+    "logger.warning(\"Retrying %s after %d seconds\" % (url, delay))",
+    "msg = \"User {} logged in from {}\".format(user, ip)",
+    "endpoint = \"https://%s:%d/health\" % (host, port)",
+    "filename = '{}_{}_v{}.csv'.format(project, date, version)",
+    "print(\"Epoch %d: loss %.4f\" % (epoch, loss))",
+    "sys.stdout.write(\"%s\\n\" % line)",
+    "key = \"{}:{}\".format(namespace, item_id)",
+    "Let  denote the sample size and  the number of successes."
+   ],
+   "quiet": [
+    "logger.warning(\"Retrying the request now\")",
+    "msg = \"User \" + user + \" logged in\"",
+    "endpoint = base_url + \"/health\"",
+    "filename = project + '_' + date + '.csv'",
+    "print(\"Training finished\")",
+    "sys.stdout.write(line)",
+    "Let n denote the sample size and k the number of successes.",
+    "The farmer counted the sheep twice before closing the gate."
+   ]
+  }
+ ],
+ "predictions": "median fire ~0.7 (probes: %s 0.54-0.95, %d 0.54, {} 0.67-0.79, stripped symbol 0.91); near misses < 0.02 (log without placeholder 0.017, string concat 0.012, prose 0.017).",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "format placeholder / empty slot (%s, {})",
+ "unit_kind": "token",
+ "confidence": 0.7,
+ "notes": "Fire items are mostly placeholders in code; one is a stripped-formula gap. Near misses keep the same code shapes without the slot."
+}
