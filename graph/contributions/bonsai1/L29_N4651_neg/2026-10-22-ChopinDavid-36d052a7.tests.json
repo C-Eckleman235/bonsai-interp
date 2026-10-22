@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-36d052a7",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N4651-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T06:20:15+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N4651",
+   "pole": "-",
+   "label": "Fires in Python code on the opening of a string-literal argument inside a function call (create_user('lisa', ...), url_for('/path', id=...)); quiet on the same calls whose arguments are bare variables.",
+   "fire": [
+    "    admin = User.objects.create_user('maria', 'maria@example.com')",
+    "    self.bob = Account.objects.create(name='bob', email='bob@site.org')",
+    "    resp = self.client.get('/api/items/', {'page': 2})",
+    "    link = request.route_url('/blog/edit', post_id=post.id)",
+    "    cfg = load_config('settings.yaml', strict=True)",
+    "    logger.info('starting worker %s', worker_id)",
+    "    os.environ.setdefault('DJANGO_SETTINGS', 'app.settings')",
+    "    tag, _ = Tag.objects.get_or_create(label='urgent')"
+   ],
+   "quiet": [
+    "    admin = User.objects.create_user(name, email)",
+    "    self.bob = Account.objects.create(**data)",
+    "    resp = self.client.get(url, params)",
+    "    link = request.route_url(path, post.id)",
+    "    cfg = load_config(path, strict)",
+    "    logger.info(message)",
+    "    total = sum(values) / len(values)",
+    "    tag, _ = Tag.objects.get_or_create(label)"
+   ]
+  }
+ ],
+ "predictions": "median fire ~0.2 (probes: create_user(' 0.26, sprint_id= 0.19, sources.list 0.09); near misses < 0.05 (probe compute(rate, ...) 0.008); risk: low fire median.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "string-literal call arguments in code",
+ "unit_kind": "contextual",
+ "confidence": 0.35,
+ "notes": "Card top examples are scattered code tokens (sampleRate, '.d', \"('\"); probe kwarg sampleRate= did not fire (0.001), so the label is the string argument rather than keywords."
+}

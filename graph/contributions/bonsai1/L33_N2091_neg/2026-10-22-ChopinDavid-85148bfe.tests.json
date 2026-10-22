@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-85148bfe",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N2091-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T06:20:15+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N2091",
+   "pole": "-",
+   "label": "Fires on the bare word-initial piece ' m' that opens a German word the tokenizer splits (m+ächtig, m+itten, m+ässig); quiet on the same German sentences with an unsplit synonym.",
+   "fire": [
+    "Die Burg stand auf einem mächtigen Felsen hoch über dem Tal.",
+    "Am Abend saßen wir mitten in der Altstadt und tranken Wein.",
+    "Nach dem Regen war der Fluss breit und mächtig angeschwollen.",
+    "Gestern lag ein Reh mitten auf der Landstraße vor unserem Auto.",
+    "Die Ernte fiel in diesem Jahr leider nur mässig aus.",
+    "In der Nacht riss ein mächtiger Sturm viele Dächer ab.",
+    "Verwirrt stand sie mitten im Raum und wusste nicht weiter.",
+    "Unsere Elf spielte am Samstag nur mässig und verlor knapp."
+   ],
+   "quiet": [
+    "Die Burg stand auf einem hohen Felsen weit über dem Tal.",
+    "Am Abend saßen wir im Zentrum der Altstadt und tranken Wein.",
+    "Nach dem Regen war der Fluss breit und stark angeschwollen.",
+    "Heute früh lag ein Reh auf der Landstraße vor unserem Auto.",
+    "Die Ernte fiel in diesem Jahr leider sehr schwach aus.",
+    "In der Nacht riss ein heftiger Sturm viele Dächer ab.",
+    "Verwirrt stand sie allein im Raum und wusste nicht weiter.",
+    "Unsere Elf spielte am Samstag schlecht und verlor knapp."
+   ]
+  }
+ ],
+ "predictions": "median fire ~0.35 (probes: 'mächtige' 0.79, 'mitten' 0.38); near misses < 0.2 (probe 'im Zentrum' 0.19 on 'lich'); risk: other split pieces in near misses.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split German word-initial ' m'",
+ "unit_kind": "lexical",
+ "confidence": 0.55,
+ "notes": "Card peaks on ' m', ' الم', ' cong': opening pieces of split words. English 'mitten' only 0.05 and Arabic ' الم' 0.11, so the test is limited to German."
+}
