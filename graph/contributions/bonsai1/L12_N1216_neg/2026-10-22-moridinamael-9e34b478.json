@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-22-moridinamael-9e34b478",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N1216-",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T16:33:42+00:00",
+ "recipe": {
+  "toolchain_commit": "acdf30b6",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L12_N1216_neg/2026-10-22-moridinamael-9e34b478.tests.json"
+ },
+ "label": "The preposition right after a noun naming how or how much something happens, in the slot that opens an 'in which / by which' clause: 'the way in', 'the manner in', 'the method by', 'the process by', 'the speed with', 'the ease with', 'the extent to', 'the rate at'. Side trigger: '-to' in 'up-to-date'. Quiet for the same prepositions after place, time or reason nouns ('the room in which', 'the time at which', 'the reason for which'), for 'the way of', and for 'at' after rarer speed nouns ('pace at', 'velocity at').",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L12_N1216_neg/2026-10-22-moridinamael-9e34b478.tests.json",
+   "prereg_commit": "acdf30b6",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.566,
+     "peak": "-to"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.877,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.739,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.321,
+     "peak": " by"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.683,
+     "peak": " by"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.672,
+     "peak": " with"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.497,
+     "peak": " with"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.161,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.044,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.001,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.015,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": " still"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.005,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.005,
+     "peak": " hill"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.001,
+     "peak": "He"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.004,
+     "peak": "Nobody"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.619,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "acdf30b6",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L13/N7743+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L12/N1216-", "to": "bonsai1/L13/N7743+", "kind": "feeds", "weight": null, "method": "attribution rank 1 of 12 MLP feeders on the target's top 4 examples (resident feeders tool; play step ablation hit CUDA OOM)"}
+ ]
+}
