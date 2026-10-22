@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-a60440aa",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N4099-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:48:18+00:00",
+ "recipe": {
+  "toolchain_commit": "8f756c26",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L31_N4099_neg/2026-10-22-lm1909-a60440aa.tests.json"
+ },
+ "label": "the third digit '9' of years 189x / 199x (e.g. 18[9]9, 19[9]9)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L31_N4099_neg/2026-10-22-lm1909-a60440aa.tests.json",
+   "prereg_commit": "8f756c26",
+   "author": "lm1909",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.013,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.012,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.167,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.01,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.035,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.012,
+     "peak": "lood"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.046,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.01,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.013,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.014,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.009,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.009,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.009,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.012,
+     "peak": "lood"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.009,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.009,
+     "peak": " "
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.805,
+    "median_fire": 0.013,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "8f756c26",
+  "minutes": 9,
+  "batch_size": 16
+ },
+ "short": "year digit 9 (189x/199x)",
+ "unit_kind": "lexical",
+ "confidence": 0.5,
+ "notes": "Probe: the 1899/1999 sentence scored 0.60 (peak '9'), the strongest mode. The geographic-qualifier mode was weaker: 'Western Ghats' 0.44, 'continental Antarctica' 0.27, 'inner Hebrides' 0.17. Same sentences without the qualifier 0.09-0.10. This test covers only the year mode; quiet years have no 9 in the third position. Whether 1896/1893/1997/1998 fire like 1899 is untested.",
+ "selection": "random draw"
+}

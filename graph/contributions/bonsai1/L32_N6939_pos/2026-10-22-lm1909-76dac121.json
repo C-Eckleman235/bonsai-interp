@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-76dac121",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N6939+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:48:25+00:00",
+ "recipe": {
+  "toolchain_commit": "8f756c26",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L32_N6939_pos/2026-10-22-lm1909-76dac121.tests.json"
+ },
+ "label": "' flower' / ' fruit' as plant-organ words in botanical or horticultural description (flower buds, fruit damage)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L32_N6939_pos/2026-10-22-lm1909-76dac121.tests.json",
+   "prereg_commit": "8f756c26",
+   "author": "lm1909",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.244,
+     "peak": " flower"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.815,
+     "peak": " fruit"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.412,
+     "peak": " flower"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.127,
+     "peak": " fruit"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.618,
+     "peak": " flower"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.598,
+     "peak": " fruit"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.154,
+     "peak": "bed"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.124,
+     "peak": " cherry"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.032,
+     "peak": "ias"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.093,
+     "peak": " cause"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.228,
+     "peak": " aerial"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.19,
+     "peak": " remaining"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.09,
+     "peak": " its"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.004,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.112,
+     "peak": " produces"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.044,
+     "peak": " seed"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.906,
+    "median_fire": 0.328,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "8f756c26",
+  "minutes": 9,
+  "batch_size": 16
+ },
+ "short": "flower/fruit plant organs",
+ "unit_kind": "lexical",
+ "confidence": 0.65,
+ "notes": "Probe: 'flower buds' 0.93, 'fruit damage' 0.88, 'flower spikes' 0.54, 'the fruit is a berry' 0.47. Swapping in shoots/stems 0.14-0.19; florist/bouquet (everyday sense) 0.04. Near misses use other plant parts (shoots, bark, root, stems, spine).",
+ "selection": "random draw"
+}

@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-5e90a081",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N7473+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:47:56+00:00",
+ "recipe": {
+  "toolchain_commit": "8f756c26",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L12_N7473_pos/2026-10-22-lm1909-5e90a081.tests.json"
+ },
+ "label": "' concentration' in lab-protocol phrasing 'to a final concentration of' (weak, unclear unit)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L12_N7473_pos/2026-10-22-lm1909-5e90a081.tests.json",
+   "prereg_commit": "8f756c26",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 5,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.798,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.889,
+     "peak": " final"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.661,
+     "peak": " concentration"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.948,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.863,
+     "peak": " concentration"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.388,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.412,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.856,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.136,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.274,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.365,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.401,
+     "peak": " mix"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.732,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.389,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.045,
+     "peak": " per"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.538,
+     "peak": " once"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.891,
+    "median_fire": 0.827,
+    "near_misses_at_0.3": 5
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "8f756c26",
+  "minutes": 9,
+  "batch_size": 16
+ },
+ "short": "final concentration",
+ "unit_kind": "unclear",
+ "confidence": 0.3,
+ "notes": "Probe was mixed: 'final concentration' 0.66, but also 'medications that are needed' 0.68 (peak ' that'), a config '' assignment 0.46, and ' and' in 'before and after' 0.27-0.35. Protocol without 'concentration' 0.09. The test takes the clearest single frame; quiet items avoid relative 'that' and 'before and after'. Low confidence.",
+ "selection": "random draw"
+}
