@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-21-moridinamael-160e46a8",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N11053+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T04:09:58+00:00",
+ "roles": ["feeds bonsai1/L9/N3479-"],
+ "neighbours": [
+  {
+   "unit": "L8/N11053",
+   "pole": "+",
+   "label": "In code, the Unix exec calls that replace a process with another program, in their argument-vector forms: execv, execvp, execve (in C, or Python's os.execv/os.execvp) and Go's exec.Command; it peaks on the call name. Weaker side triggers: 'import shlex' and the '#!/usr/bin/env' line. Quiet: the list forms execl/execlp, other ways to launch a program (subprocess.Popen, Node spawn, os.system, fork on its own), Python's exec() builtin, SQL cursor.execute, and 'exec' meaning an executive.",
+   "short": "Unix exec calls (execv/execvp/execve, Go exec.Command)",
+   "confidence": "medium",
+   "notes": "Step-out feeder of bonsai1/L9/N3479- (top MLP feeder by resident attribution; play step ran out of GPU memory, so no ablation drop was measured). Test sentences written blind by a second author from the label only; the solver's leak texts were placed by that author.",
+   "fire": [
+    "if (pid == 0) { execvp(argv[1], &argv[1]); perror(\"execvp\"); _exit(127); }",
+    "char *args[] = {\"/bin/ls\", \"-l\", NULL}; execv(\"/bin/ls\", args);",
+    "execve(\"/usr/bin/env\", argv, envp); /* only returns on error */",
+    "os.execvp(\"python3\", [\"python3\", \"worker.py\", \"--fast\"])",
+    "After parsing the config, the launcher calls os.execv(sys.executable, [sys.executable] + sys.argv) to restart itself.",
+    "cmd := exec.Command(\"git\", \"status\", \"--short\")",
+    "out, err := exec.Command(\"ls\", \"-la\", dir).Output()",
+    "if (execve(path, child_argv, environ) == -1) { fprintf(stderr, \"exec failed\\n\"); }"
+   ],
+   "quiet": [
+    "\"We have been preparing for years for a successful landing by Curiosity, and all signs are good,\" Dave Lavery, MSL programme executive, said.",
+    "Humans should make the best use of given information at any time.",
+    "if (pid == 0) { execlp(\"ls\", \"ls\", \"-l\", NULL); perror(\"execlp\"); _exit(127); }",
+    "execl(\"/bin/ls\", \"ls\", \"-l\", (char *)NULL);",
+    "proc = subprocess.Popen([\"python3\", \"worker.py\", \"--fast\"])",
+    "os.system(\"ls -la /tmp\")",
+    "const child = spawn('git', ['status', '--short']);",
+    "pid_t pid = fork(); if (pid > 0) { waitpid(pid, &status, 0); }"
+   ]
+  }
+ ],
+ "predictions": "most fire items above 0.30; execl/execlp near misses are the risk",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
