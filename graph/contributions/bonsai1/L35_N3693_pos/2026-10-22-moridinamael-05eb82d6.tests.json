@@ -1,0 +1,55 @@
+{
+ "contribution": "2026-10-22-moridinamael-05eb82d6",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N3693+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T08:35:22+00:00",
+ "roles": ["reads bonsai1/L32/N8965+"],
+ "neighbours": [
+  {
+   "unit": "L35/N3693",
+   "pole": "+",
+   "label": "The kanji 奨 or 勧 in Japanese text (推奨, 奨励, 奨学金, 勧誘, 勧める, even in names), whatever it means; second, weaker trigger: a Chinese character typed right after a space that follows Latin letters or code (Peking 大学, # 录入). Synonyms without these characters (おすすめ, 推薦) and Chinese 奖 stay lower.",
+   "short": "the kanji 奨/勧 (spelling, not meaning)",
+   "unit_kind": "spelling unit",
+   "confidence": "medium",
+   "notes": "Dense pole (30% of tokens reach 0.1 of max); plain Japanese idles near 0.30-0.40, so Japanese near misses are at risk of crossing 0.30. Test sentences written blind by a second author from the label only. Feeders: L28/N8853- and L32/N4095+ (byte-piece readers).",
+   "fire": [
+    "now)  # 录入时间",
+    "このソフトウェアは最新版へのアップデートが推奨されています。",
+    "彼女は奨学金をもらって大学に通っている。",
+    "市は地元企業の省エネ活動を奨励している。",
+    "駅前で新聞の勧誘を受けたが、丁寧に断った。",
+    "医者は毎朝軽い運動をするよう私に勧めた。",
+    "友人に勧められて、この本を読み始めました。",
+    "推奨環境：メモリ8GB以上、Windows 11。"
+   ],
+   "quiet": [
+    "友達がその映画を見るように言ってきた。",
+    "このソフトウェアは最新版へのアップデートがおすすめです。",
+    "彼女はアルバイトをしながら大学に通っている。",
+    "市は地元企業の省エネ活動を支援している。",
+    "駅前で新聞を配っている人がいたが、そのまま通り過ぎた。",
+    "医者は毎朝軽い運動をするよう私に言った。",
+    "友人に紹介されて、この本を読み始めました。",
+    "必要環境：メモリ8GB以上、Windows 11。"
+   ]
+  }
+ ],
+ "predictions": "fire side clears 0.20 easily; the risk is Japanese near misses idling near 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "neighbors",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
