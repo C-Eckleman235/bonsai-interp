@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-22-moridinamael-27a689fa",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N4095+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T20:48:04+00:00",
+ "roles": ["feeds bonsai1/L33/N6849-"],
+ "neighbours": [
+  {
+   "unit": "L32/N4095",
+   "pole": "+",
+   "label": "A space directly followed by a character the tokenizer breaks into raw byte pieces: uncommon emoji and symbols (math, chess, APL), rare Chinese characters, polytonic Greek, most Korean syllables. Quiet when the same character has no space before it (glued to a word, after a bracket, quote or line break, at text start), and for common characters kept as whole tokens (→, ✓, €, 😀, everyday Chinese, ordinary Cyrillic or accented letters).",
+   "short": "space + byte-split rare character",
+   "fire": [
+    "장기적으로 봤을 때 인플레이션의 상승률은 10% 혹은 그 이상을 넘어설 것이고, 금리는 결국 그보다 많이 상승할 것이다.",
+    "The final move was recorded as ♞ to f3, and the crowd went silent.",
+    "In APL you can sum a vector with the reduce operator ⌿ applied along the first axis.",
+    "The integral sign ∯ denotes a closed surface integral in vector calculus.",
+    "She ended her message with a tiny 🦩 because flamingos were her favorite bird.",
+    "The old manuscript began with the word ἀρχὴ written in faded ink.",
+    "My grandmother wrote 鬱 on the card, a character almost nobody can write from memory.",
+    "He greeted us with 안녕하세요 and bowed politely."
+   ],
+   "quiet": [
+    "Quantum computing is a much stranger affair, relying instead on the qubit as its unit of information.",
+    "The final move was recorded as knight to f3, and the crowd went silent.",
+    "In APL you can sum a vector with the reduce operator (⌿) applied along the first axis.",
+    "The integral sign denotes a closed surface integral in vector calculus.",
+    "She ended her message with a tiny 😀 because smiling faces were her favorite.",
+    "The old manuscript began with the word \"beginning\" written in faded ink.",
+    "My grandmother wrote 中国 on the card, characters everyone learns early.",
+    "He greeted us with a warm hello and bowed politely."
+   ]
+  }
+ ],
+ "predictions": "Blind test (label-only second author). Expect most fire items above 0.3; the plain Korean ones near 0.5-0.6; near misses near zero.",
+ "notes": "Step mission from bonsai1/L33/N6849-. play step ran out of GPU memory (a batch job shares the GPU), so the feeder was chosen from the resident attribution ranking (top MLP feeder) and no ablation edge is recorded. Two test sentences come from the inverse solver (leak and corpus), scored before registration.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "bank-solo",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}

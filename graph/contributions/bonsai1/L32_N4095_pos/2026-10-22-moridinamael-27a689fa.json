@@ -1,0 +1,156 @@
+{
+ "id": "2026-10-22-moridinamael-27a689fa",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N4095+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T20:48:28+00:00",
+ "recipe": {
+  "toolchain_commit": "06e03d2b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L32_N4095_pos/2026-10-22-moridinamael-27a689fa.tests.json"
+ },
+ "label": "A space directly followed by a character the tokenizer breaks into raw byte pieces: uncommon emoji and symbols (math, chess, APL), rare Chinese characters, polytonic Greek, most Korean syllables. Quiet when the same character has no space before it (glued to a word, after a bracket, quote or line break, at text start), and for common characters kept as whole tokens (→, ✓, €, 😀, everyday Chinese, ordinary Cyrillic or accented letters).",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L32_N4095_pos/2026-10-22-moridinamael-27a689fa.tests.json",
+   "prereg_commit": "06e03d2b",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.615,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.701,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.649,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.483,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.838,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.523,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.51,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": -0.0,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": -0.001,
+     "peak": " computing"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": -0.0,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.636,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.001,
+     "peak": " integral"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": -0.001,
+     "peak": " were"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": -0.0,
+     "peak": "begin"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": -0.0,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.0,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.891,
+    "median_fire": 0.569,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "06e03d2b",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step mission from bonsai1/L33/N6849-. play step ran out of GPU memory (a batch job shares the GPU), so the feeder was chosen from the resident attribution ranking (top MLP feeder) and no ablation edge is recorded. Two test sentences come from the inverse solver (leak and corpus), scored before registration.",
+ "roles": [
+  "feeds bonsai1/L33/N6849-"
+ ]
+}
