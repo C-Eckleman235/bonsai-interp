@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-2e027a91",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N558-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T10:19:46+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N558",
+   "pole": "-",
+   "label": "Atom counts and fragments written inside chemical formulas and systematic chemical names in chemistry text (C2H5OH, C8H10N4O2, -nonylphenol); quiet when the same compounds are named in plain words.",
+   "fire": [
+    "Aspirin, with the formula C9H8O4, is made from salicylic acid and acetic anhydride.",
+    "In the reaction, propane C3H8 burns in oxygen to give carbon dioxide and water.",
+    "Table sugar is sucrose, C12H22O11, a disaccharide of glucose and fructose.",
+    "Sulfuric acid, H2SO4, reacts with zinc to release hydrogen gas in the flask.",
+    "The detergent contained 4-octylphenol and several branched alkyl sulfonates.",
+    "Nicotine has the empirical formula C10H14N2 and is an alkaloid found in tobacco.",
+    "The ester ethyl acetate, CH3COOC2H5, gives nail polish remover its smell.",
+    "Under acid conditions the carboxylate, -COO-, becomes the neutral acid -COOH."
+   ],
+   "quiet": [
+    "Aspirin is made by treating salicylic acid with acetic anhydride and warming it.",
+    "In the reaction, propane burns in oxygen to give carbon dioxide and water vapor.",
+    "Table sugar is sucrose, a disaccharide built from one glucose and one fructose.",
+    "Strong acids react with zinc to release hydrogen gas, which bubbles in the flask.",
+    "The detergent contained several surfactants that help lift grease from fabric.",
+    "Nicotine is an alkaloid found in tobacco leaves and it is highly addictive.",
+    "The ester called ethyl acetate gives nail polish remover its sharp sweet smell.",
+    "Under acid conditions the charged group picks up a proton and becomes neutral."
+   ]
+  }
+ ],
+ "predictions": "median fire ~0.5 (probes: C2H5OH '5' 0.60, caffeine formula 0.57, nonylphenol 0.63, -NH3+ 0.38); near misses < 0.1 (formula-like locker code 0.098, plain chemistry prose ~0.01-0.03).",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "chemical formula pieces",
+ "unit_kind": "contextual",
+ "confidence": 0.65,
+ "notes": "Probed: a formula outside chemistry ('locker code is C2H5') scored only 0.098, so the unit needs a chemical setting, not just letter-digit strings."
+}

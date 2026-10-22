@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-5b2c3705",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N2000-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T10:19:46+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N2000",
+   "pole": "-",
+   "label": "Failure, negation and override wording inside code strings and identifiers (\"Not supported\", over_committed, 'over18'); quieter on the same code saying success or plain values. Broad unit (3.2% of tokens reach 0.1 of max).",
+   "fire": [
+    "    if not ok:\n        return S_ERROR(\"Not allowed for this user. Ask an admin\")",
+    "    raise NotImplementedError('Not available on this platform yet')",
+    "    def test_quota_over_limit_rejected(self):\n        pass",
+    "    except KeyError:\n        return {'error': 'Not found', 'code': 404}",
+    "    session.get(page, cookies={'over18': 'yes'}, timeout=5)",
+    "    def test_memory_over_allocated_total(self, mock_stats):",
+    "    log.error(\"Not supported by the current driver version\")",
+    "    if retries > 3:\n        raise RuntimeError('Not responding, giving up')"
+   ],
+   "quiet": [
+    "    if ok:\n        return S_OK(\"Allowed for this user. Proceeding now\")",
+    "    raise_flag = check_platform('available on this platform')",
+    "    def test_quota_within_limit_accepted(self):\n        pass",
+    "    except KeyError:\n        return {'status': 'ok', 'code': 200}",
+    "    session.get(page, params={'page': '2'}, timeout=5)",
+    "    def test_memory_allocated_total(self, mock_stats):",
+    "    log.info(\"Loaded by the current driver version\")",
+    "    if retries > 3:\n        print('Still responding, trying again')"
+   ]
+  }
+ ],
+ "predictions": "median fire ~0.5 (probes: 'Not supported' 0.59, ValueError('Not a valid') 0.51, _over_committed 0.61, cookies over18 0.50); near misses below 0.3 but the unit is broad, so some code near misses may reach 0.2.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "code error/override words",
+ "unit_kind": "unclear",
+ "confidence": 0.35,
+ "notes": "Cards also show Korean IT manual text (probe 0.72 on 강제로 'forcibly', 0.35 on a translated-doc note); this test covers only the code half. English prose 'fail hard' scored 0.25."
+}
