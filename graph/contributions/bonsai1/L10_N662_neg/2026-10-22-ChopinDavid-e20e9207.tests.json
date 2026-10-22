@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-e20e9207",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N662-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T16:20:17+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L10/N662",
+   "pole": "-",
+   "label": "the start of a web address ('http'/'https') inside running text, against the same sentences pointing to a site in words",
+   "fire": [
+    "Full instructions are posted at http://example.com/setup for anyone who needs them.",
+    "Photo source: https://www.flickr.com/photos/riverwalk shared under a free license.",
+    "You can download the data from http://data.example.org/2019 at no cost.",
+    "More details on the program are at https://www.example.edu/summer this week.",
+    "The original article lives at http://blog.example.net/posts/42 and has comments.",
+    "Register for the workshop through https://forms.example.com/signup before Friday.",
+    "Our older recipes are still archived at http://kitchen.example.com/archive for reference.",
+    "Maps of the trail can be printed from https://parks.example.gov/maps before the hike."
+   ],
+   "quiet": [
+    "Full instructions are posted on our website for anyone who needs them.",
+    "Photo source: a local photographer who shared it under a free license.",
+    "You can download the data from the city portal at no cost.",
+    "More details on the program are in the school newsletter this week.",
+    "The original article lives on the author's blog and has comments.",
+    "Register for the workshop at the front desk before Friday.",
+    "Our older recipes are still archived in a binder for reference.",
+    "Maps of the trail can be picked up at the visitor center before the hike."
+   ]
+  }
+ ],
+ "predictions": "should hold weakly; URL probes were 0.38-0.39 and controls under 0.10",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'http' URL start",
+ "unit_kind": "lexical",
+ "confidence": 0.5,
+ "notes": "Card: <|endoftext|> and first token x6 (document start, not testable mid-text), ' http' x5. Probe: http 0.38, https 0.39, 'Image credits: http' 0.38; worded controls 0.05-0.09, code 0.13."
+}

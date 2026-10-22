@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-7e35b60f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N10519-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T16:20:17+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L27/N10519",
+   "pole": "-",
+   "label": "the operator ('=' or '*') of a numeric arithmetic expression on two variables in code (dx = x1 - x0, mid = lo + t * (hi - lo)), against assignments from function calls or strings",
+   "fire": [
+    "a = read_value()\nb = read_value()\ngap = b - a\nprint(gap)",
+    "y0 = curve[0]\ny1 = curve[1]\ndy = y1 - y0\nslope = dy / dx",
+    "left, right = 2.0, 8.0\ncenter = left + 0.5 * (right - left)\nprint(center)",
+    "t_start = clock()\nwork()\nt_stop = clock()\nduration = t_stop - t_start",
+    "def offset(p, q):\n    shift = q - p\n    return shift",
+    "low, high = 1.0, 3.0\nx = low + r * (high - low)\nreturn x",
+    "def area(w, h):\n    size = w * h\n    return size",
+    "p0 = pos[i]\np1 = pos[i + 1]\nstep = p1 - p0\nsteps.append(step)"
+   ],
+   "quiet": [
+    "a = read_value()\nb = read_value()\nlabel = str(b)\nprint(label)",
+    "y0 = curve[0]\ny1 = curve[1]\nname = curve.title\nprint(name)",
+    "left, right = 'L', 'R'\ncenter = 'middle'\nprint(center)",
+    "t_start = clock()\nwork()\nlog = open('run.txt')\nlog.write('done')",
+    "def greet(p, q):\n    msg = 'hi ' + q\n    return msg",
+    "low, high = load_bounds()\nx = choose(low)\nreturn x",
+    "def area_name(w, h):\n    title = format_title(w)\n    return title",
+    "p0 = pos[i]\nitems = sorted(pos)\nfirst = items[0]\nsteps.append(first)"
+   ]
+  }
+ ],
+ "predictions": "should hold; the elapsed = end - start probe was only 0.26",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "arithmetic '=' in code",
+ "unit_kind": "contextual",
+ "confidence": 0.55,
+ "notes": "Card: ' =' x7 before a difference (v = s1 - s0, delta = d2 - d1), ' *' before (high - low); + pole promotes 'between'. Probe: dx = x1 - x0 0.54, lo + 0.5 * (hi - lo) 0.76, width = hi - lo 0.38, total = hi + lo 0.51 (sum fires too), elapsed 0.26; greeting = 'Hello ' + name 0.008, count = len(items) 0.006; prose 'difference between' 0.05."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-7a9a08b9",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N1624+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T16:20:17+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L11/N1624",
+   "pole": "+",
+   "label": "the 'RNA' word piece in compound RNA names (rRNA, tRNA, snRNA, siRNA) in molecular biology, against single-token mRNA/DNA and other molecular-biology words",
+   "fire": [
+    "Ribosomes are built from ribosomal proteins and several rRNA molecules.",
+    "Each amino acid is carried to the ribosome by a matching tRNA.",
+    "Splicing in the nucleus depends on small snRNA particles.",
+    "The researchers silenced the gene by injecting a short siRNA.",
+    "Some viruses carry a dsRNA genome inside their capsid.",
+    "In plants, many miRNA species regulate flowering time.",
+    "The nucleolus is where most rRNA is transcribed and modified.",
+    "Bacterial tRNA genes are often clustered near the origin."
+   ],
+   "quiet": [
+    "Ribosomes are built from ribosomal proteins and many enzyme partners.",
+    "Each amino acid is joined to the next by a peptide bond.",
+    "Splicing in the nucleus produces a mature mRNA ready for export.",
+    "The researchers silenced the gene by editing its DNA sequence.",
+    "Some viruses carry a protein shell around their genome.",
+    "In plants, many hormones regulate flowering time.",
+    "The nucleolus is where the cell's chromosomes cluster during interphase.",
+    "Bacterial DNA is often packed into a single circular chromosome."
+   ]
+  }
+ ],
+ "predictions": "should hold if the piece, not the topic, carries it; 'rescue' (0.43) shows some topic leak",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'RNA' piece in rRNA/tRNA",
+ "unit_kind": "lexical",
+ "confidence": 0.55,
+ "notes": "Card: 'RNA' x3 in rRNA/tRNA, ' processing' in pre-rRNA processing. Probe: pre-rRNA 0.75, tRNA/rRNA 0.78, mRNA (single token) 0.07, rescue 0.43, protein folds 0.28; factory processing 0.006. Tokenizer: ' rRNA' = ' r'+'RNA', ' mRNA' and ' DNA' are single tokens."
+}

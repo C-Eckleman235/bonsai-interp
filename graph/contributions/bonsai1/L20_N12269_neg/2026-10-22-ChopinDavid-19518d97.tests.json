@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-19518d97",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N12269-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T16:20:17+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L20/N12269",
+   "pole": "-",
+   "label": "the indentation that begins a new assignment line in a run of parallel assignments inside a Python function body (host = cfg.get(...) / port = cfg.get(...))",
+   "fire": [
+    "def read(row):\n    first = row.get('first')\n    last = row.get('last')\n    email = row.get('email')\n    return first, last, email",
+    "def parse(args):\n    width = args.get('width')\n    height = args.get('height')\n    depth = args.get('depth')\n    return width, height, depth",
+    "def setup(opts):\n    level = opts.get('level')\n    path = opts.get('path')\n    mode = opts.get('mode')\n    return level",
+    "def unpack(d):\n    a = d['a']\n    b = d['b']\n    c = d['c']\n    return a + b + c",
+    "def build(conf):\n    name = conf.get('name')\n    size = conf.get('size')\n    color = conf.get('color')\n    return name",
+    "def stats(s):\n    mean = s.get('mean')\n    std = s.get('std')\n    count = s.get('count')\n    return mean, std",
+    "def fields(rec):\n    city = rec.get('city')\n    zip_code = rec.get('zip')\n    state = rec.get('state')\n    return city",
+    "def load(env):\n    key = env.get('KEY')\n    secret = env.get('SECRET')\n    region = env.get('REGION')\n    return key"
+   ],
+   "quiet": [
+    "def read(row):\n    if not row:\n        return None\n    print(row)\n    return row",
+    "def parse(args):\n    for item in args:\n        print(item)\n    return len(args)",
+    "def setup(opts):\n    print('starting setup')\n    run(opts)\n    return True",
+    "def unpack(d):\n    return d['a'] + d['b'] + d['c']",
+    "def build(conf):\n    if conf.get('name'):\n        print('ok')\n    return conf",
+    "def stats(s):\n    print(s)\n    return summarize(s)",
+    "def fields(rec):\n    for key in rec:\n        print(key)\n    return rec",
+    "def load(env):\n    connect(env)\n    print('loaded')\n    return env"
+   ]
+  }
+ ],
+ "predictions": "may fail on median: only the cfg.get run reached 0.54, self.attr run 0.17",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "indent before parallel assignments",
+ "unit_kind": "contextual",
+ "confidence": 0.35,
+ "notes": "Card: whitespace indent tokens x10 and ' self' x5 at the start of the next assignment line. Probe: 3 cfg.get assignments 0.54, self.x = ... run 0.17, dict of constants 0.14; one-line code 0.002-0.006, prose lists 0.01-0.02."
+}
