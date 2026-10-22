@@ -192,7 +192,7 @@ td.n { font-family: var(--mono); text-align: right; }
         <form class="find" id="find"><label for="q" class="eyebrow" style="align-self:center">Go to</label><input type="text" id="q" placeholder="L12/N5397 or 12/5397" autocomplete="off"><button type="submit">Open</button><span class="err" id="qerr"></span></form>
       </div>
       <section id="v-map">
-        <div class="row" style="justify-content:space-between"><h2>The survey map</h2><div class="row"><span style="color:var(--ink-2);font-size:.8rem">Colour by</span><div class="seg" role="group" aria-label="Colour by" id="colorby"><button type="button" data-c="status" aria-pressed="true">Status</button><button type="button" data-c="scrutiny" aria-pressed="false">Scrutiny</button><button type="button" data-c="screen" aria-pressed="false">Screen</button></div><span class="mono" id="cursor" style="color:var(--ink-3)">hover the map</span></div></div>
+        <div class="row" style="justify-content:space-between"><h2>The survey map</h2><div class="row"><span style="color:var(--ink-2);font-size:.8rem">Colour by</span><span id="cycling" hidden style="color:var(--ink-3);font:600 .68rem var(--mono);letter-spacing:.06em;text-transform:uppercase">cycling · click to pick</span><div class="seg" role="group" aria-label="Colour by" id="colorby"><button type="button" data-c="status" aria-pressed="true">Status</button><button type="button" data-c="scrutiny" aria-pressed="false">Scrutiny</button><button type="button" data-c="screen" aria-pressed="false">Screen</button></div><span class="mono" id="cursor" style="color:var(--ink-3)">hover the map</span></div></div>
         <div class="mapwrap" id="mapwrap"><canvas id="map" width="1240" height="720" aria-label="Map of all 36 layers by 12,288 neurons with surveyed poles marked"></canvas></div>
         <div class="legend" id="legend"></div>
         <p class="hint">Each row is a layer; neuron index runs left to right at true scale. Click anywhere to zoom into that block of 1,024 neurons.</p>
@@ -389,8 +389,20 @@ td.n { font-family: var(--mono); text-align: right; }
   legend();
   document.getElementById("legend").addEventListener("click", ev => { const b = ev.target.closest("[data-g]"); if (!b) return;
     screenOnly = screenOnly === +b.dataset.g ? -1 : +b.dataset.g; legend(); draw(view.sel); if (view.level === "block") drawBlock(); });
-  document.getElementById("colorby").addEventListener("click", ev => { const b = ev.target.closest("[data-c]"); if (!b) return; colorBy = b.dataset.c;
-    document.querySelectorAll("#colorby button").forEach(x => x.setAttribute("aria-pressed", x === b)); store.set("colorBy", colorBy); legend(); draw(); if (view.level === "block") drawBlock(); });
+  // colour views: a first visit opens on the screen view and cycles through the three until the visitor picks one
+  // (or interacts with the map); a picked view is remembered and never cycles
+  let cycle = null;
+  function setColor(c) { colorBy = c; document.querySelectorAll("#colorby button").forEach(x => x.setAttribute("aria-pressed", x.dataset.c === c));
+    legend(); draw(view.sel); if (view.level === "block") drawBlock(); }
+  function stopCycle() { if (!cycle) return; clearInterval(cycle); cycle = null; document.getElementById("cycling").hidden = true; }
+  function startCycle() {
+    if (cycle || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const order = ["screen", "status", "scrutiny"];
+    document.getElementById("cycling").hidden = false;
+    cycle = setInterval(() => { if (!document.hidden && view.level === "map") setColor(order[(order.indexOf(colorBy) + 1) % order.length]); }, 7000);
+  }
+  document.getElementById("colorby").addEventListener("click", ev => { const b = ev.target.closest("[data-c]"); if (!b) return;
+    stopCycle(); store.set("colorBy", b.dataset.c); setColor(b.dataset.c); });
   const at = ev => { const b = cv.getBoundingClientRect(); const x = (ev.clientX - b.left) * W / b.width, y = (ev.clientY - b.top) * H / b.height;
     const L = Math.floor((y - mT) / rowH), n = Math.round((x - mL) / (W - mL - mR) * N_N - 0.5), pole = ((y - mT) / rowH - L) < 0.5 ? "+" : "-";
     let near = null, best = 9; for (const r of N) { const d = Math.hypot(xOf(r.n) - x, yOf(r.L, r.pole) - y); if (d < best) { best = d; near = r; } }
@@ -647,7 +659,8 @@ td.n { font-family: var(--mono); text-align: right; }
     ["Cartographer", "Five edges added by stepping out"], ["Blind witness", "A clean-room replication with a clean audit"], ["Second opinion", "Ten QCs of other people's labels"],
     ["Deep water", "A held label below layer 24"]].map(([b, d]) => `<div class="badge"><b>${b}</b>${d}</div>`).join("");
 
-  colorBy = store.get("colorBy", "status"); document.querySelectorAll("#colorby button").forEach(x => x.setAttribute("aria-pressed", x.dataset.c === colorBy)); legend();
+  const picked = store.get("colorBy", null);
+  colorBy = picked || "status"; document.querySelectorAll("#colorby button").forEach(x => x.setAttribute("aria-pressed", x.dataset.c === colorBy)); legend();
   show("map"); draw();
   const last = store.get("lastMission", null), m0 = store.get("mode", "solo");
   if (m0 === "gmoo") { mode = "gmoo"; document.querySelectorAll(".seg button[data-mode]").forEach(x => x.setAttribute("aria-pressed", x.dataset.mode === "gmoo")); }
@@ -663,8 +676,10 @@ td.n { font-family: var(--mono); text-align: right; }
     const k = Object.values(j.counts).reduce((a, c) => a + c.slice(0, 8).reduce((x, y) => x + y, 0), 0), el = document.getElementById("tally-screen");
     const h = Object.values(j.counts).reduce((a, c) => a + c.reduce((x, y) => x + y, 0), 0), eh = document.getElementById("tally-hits");
     el.querySelector("b").textContent = k.toLocaleString(); el.hidden = false; eh.querySelector("b").textContent = h.toLocaleString(); eh.hidden = false; legend(); redraw();
+    if (!picked) { setColor("screen"); startCycle(); }
     if (view.level === "neuron") openNeuron(view.L, view.n); })
     .catch(() => { screenMsg = "The atlas is not published here (it appears on the hosted map)."; legend(); });
+  ["pointerdown", "keydown", "wheel"].forEach(t => document.querySelector(".survey").addEventListener(t, stopCycle, { passive: true }));
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", redraw);
   new MutationObserver(redraw).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 })();
