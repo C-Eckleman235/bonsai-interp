@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-d69c32f1",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N2625+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:43:13+00:00",
+ "recipe": {
+  "toolchain_commit": "1c8826f6",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L3_N2625_pos/2026-10-22-lm1909-d69c32f1.tests.json"
+ },
+ "label": "word-final piece of a split Romance/Latinate word (épo|que, évanou|ie, epidemi|ology, monopol|io)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L3_N2625_pos/2026-10-22-lm1909-d69c32f1.tests.json",
+   "prereg_commit": "1c8826f6",
+   "author": "lm1909",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.497,
+     "peak": "que"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.581,
+     "peak": "ie"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.547,
+     "peak": "ology"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.27,
+     "peak": "io"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.33,
+     "peak": "que"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.186,
+     "peak": "que"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.452,
+     "peak": "ology"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.573,
+     "peak": "ie"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.175,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.144,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.121,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.19,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.156,
+     "peak": " musique"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.123,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.113,
+     "peak": " study"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.068,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.475,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "1c8826f6",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "split-word final piece",
+ "unit_kind": "unclear",
+ "confidence": 0.25,
+ "notes": "Card flags broad (2.7% of tokens >0.1 max). Probe: épo|que 0.59, évanou|ie 0.56, epidemi|ology 0.55, Chinese 對抗 sentence 0.28, monopol|io 0.27; but card|iology/onc|ology only 0.09, a plain English sentence 0.11, a German sentence 0.14. Not every split word fires, so this label is only partly supported. French near misses still contain other split words, which makes this a hard test of the split-piece claim.",
+ "selection": "random draw"
+}

@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-3983a700",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N9185+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:43:13+00:00",
+ "recipe": {
+  "toolchain_commit": "1c8826f6",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N9185_pos/2026-10-22-lm1909-3983a700.tests.json"
+ },
+ "label": "unclear: a list, ' legend' (a legend in), ' of' after 'territory', and word-final pieces such as m|ors|els and Cyrillic -ка",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N9185_pos/2026-10-22-lm1909-3983a700.tests.json",
+   "prereg_commit": "1c8826f6",
+   "author": "lm1909",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.523,
+     "peak": " legend"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.663,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.47,
+     "peak": "els"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.192,
+     "peak": " legend"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.493,
+     "peak": " territory"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.288,
+     "peak": "els"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.54,
+     "peak": "ка"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.417,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.039,
+     "peak": " boxer"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.031,
+     "peak": " Austrian"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.007,
+     "peak": "Our"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.033,
+     "peak": " blues"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.024,
+     "peak": "ian"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.036,
+     "peak": " before"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.084,
+     "peak": " нашего"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.033,
+     "peak": " Alaska"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.481,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "1c8826f6",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "unclear (legend, territory of)",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Weak pole (max 3.0). Probe: territory of the Spanish crown 0.69, a legend in 0.61, morsels 0.60, Страничка 0.43, T|outed 0.32; objetivo (one token) 0.07, variation of 0.17, house full of 0.05. I found no shared pattern, so this is a list test of the probe hits.",
+ "selection": "random draw"
+}
