@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-bae965fa",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N9804-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T09:19:55+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L9/N9804",
+   "pole": "-",
+   "label": "Software testing and debugging context: test classes and cases, regression tests tied to issue or bug numbers, code being debugged; quiet on ordinary code and on non-software prose.",
+   "fire": [
+    "def test_checkout_total(self):\n    \"\"\"Regression test for issue #7710.\"\"\"\n    cart = Cart()",
+    "@skip_if_bug_open('jira', 4418)\ndef test_export_csv(self):\n    self.assertTrue(export())",
+    "Set a breakpoint so the crashing unit test can be debugged line by line.",
+    "class TestTokenizerRules(TestBase):\n    positive_cases = ['ab', 'a b']\n    negative_cases = ['']",
+    "def test_retry_on_timeout(self):\n    # Test bug 58213.\n    client = make_client()",
+    "We need to run the failing test under the debugger before we merge the fix.",
+    "class TestDateParsing(unittest.TestCase):\n    \"\"\"A single test case for the date parser.\"\"\"",
+    "def test_form_validation(self):\n    \"\"\"\n    Issue #30142\n    Verify that empty forms are rejected.\n    \"\"\""
+   ],
+   "quiet": [
+    "def average(values):\n    return sum(values) / len(values)",
+    "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y",
+    "def read_config(path):\n    with open(path) as f:\n        return f.read()",
+    "The app stores photos in the cloud and syncs them across your devices.",
+    "Our team reviewed the hiring plan and agreed to open two positions.",
+    "The baker tested a new recipe for rye bread on Saturday morning.",
+    "The gardener trimmed the hedge and swept the path by the gate.",
+    "for name in names:\n    print(name.upper())"
+   ]
+  }
+ ],
+ "predictions": "median fire ~0.28 (probes: 'can be debugged' 0.63, regression test issue # 0.32, TestBase class 0.28, skip_if_bug 0.23); near misses < 0.1 (plain function 0.06, garden 0.05, budget 0.10).",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "software testing / debugging context",
+ "unit_kind": "topic",
+ "confidence": 0.3,
+ "notes": "Card flags a gate-leak regime (82%) and a small max (5.2), so the signal is weak. A prose bug-tracker sentence scored only 0.10."
+}
