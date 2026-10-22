@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-22-moridinamael-f9c35123",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N7743-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T06:28:21+00:00",
+ "roles": ["feeds bonsai1/L20/N4388+"],
+ "neighbours": [
+  {
+   "unit": "L13/N7743",
+   "pole": "-",
+   "label": "a lone space token: the space typed right before a digit (' 9 am', ' 2009') or an extra doubled space between words; digits with no space in front ($40, #12, A3, after a line break or bracket), spelled-out numbers, code indents and runs of 3+ spaces stay quiet",
+   "short": "lone space token (before digits / doubled space)",
+   "unit_kind": "token",
+   "fire": [
+    "The meeting starts at 9 am sharp on Monday.",
+    "She graduated from college in 2009 with honors.",
+    "We need 3 more chairs for the dinner party.",
+    "The train leaves from platform 7 every hour.",
+    "He scored 42 points in the final game.",
+    "Please turn to page 118 of your textbook.",
+    "The recipe calls for 2 cups of flour.",
+    "I think  we should leave before it rains."
+   ],
+   "quiet": [
+    "The meeting starts at nine am sharp on Monday.",
+    "She graduated from college in two thousand nine with honors.",
+    "The ticket cost $40 at the door.",
+    "Please see item #12 on the checklist.",
+    "Our seats were in row A3 near the stage.",
+    "The recipe calls for (2) cups of flour.",
+    "The cat jumped onto the kitchen counter.",
+    "Our flight was delayed by forty-five minutes."
+   ],
+   "notes": "Test written blind by a second author from the label only. Feeder chosen from the resident attribution ranking (top MLP feeder of L20/N4388+) because play step ran out of GPU memory; no ablation drop was measured."
+  }
+ ],
+ "predictions": "8/8 fire, 0 near misses (the space token is split off before digits in this tokenizer)",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test",
+   "step-out"
+  ]
+ }
+}
