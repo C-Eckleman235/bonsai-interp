@@ -1,0 +1,166 @@
+{
+ "id": "2026-10-22-moridinamael-b8a752cc",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6296+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T13:14:08+00:00",
+ "recipe": {
+  "toolchain_commit": "b65cfe4c",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N6296_pos/2026-10-22-moridinamael-b8a752cc.tests.json"
+ },
+ "label": "A run of official proper names strung together in formal writing (a person's title plus their organisation, a venue plus its city, a citation's publisher and place, two named brands joined by '&'), lighting up on a name or on the linking word inside the run (of, at, &, a comma). Quiet: the same kinds of sentence with everyday common nouns in place of the names, and lone casual mentions of a single name.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N6296_pos/2026-10-22-moridinamael-b8a752cc.tests.json",
+   "prereg_commit": "b65cfe4c",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.261,
+     "peak": " Royal"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.216,
+     "peak": " Carnegie"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.337,
+     "peak": ":"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.161,
+     "peak": "ce"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.219,
+     "peak": " Alan"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.054,
+     "peak": "'"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.218,
+     "peak": " Cambridge"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.338,
+     "peak": " &"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": -0.075,
+     "peak": " at"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.028,
+     "peak": " at"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": -0.531,
+     "peak": " coastal"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.255,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": -0.345,
+     "peak": " from"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": -0.097,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": -0.567,
+     "peak": " by"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.21,
+     "peak": " company"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.218,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "b65cfe4c",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L29/N7840-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L29/N7840-",
+   "to": "bonsai1/L35/N6296+",
+   "kind": "feeds",
+   "weight": 0.03,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
