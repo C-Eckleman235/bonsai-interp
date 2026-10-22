@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-c2dff6da",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N3642+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T19:20:06+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L14/N3642",
+   "pole": "+",
+   "label": "the first word inside an opening quotation mark that starts a quoted fragment in the middle of a sentence (with “a huge shed”)",
+   "fire": [
+    "The landlord described the flat as “a cosy retreat” in his advert.",
+    "Critics called the new bridge \"a triumph of design\" when it opened.",
+    "The old diary mentions “a terrible storm” in the spring of that year.",
+    "The minister promised \"a fair deal for farmers\" in her speech on Monday.",
+    "Our guide warned us about “a steep climb” near the end of the trail.",
+    "The council agreed \"that the park shall remain open\" at its last meeting.",
+    "The review praised the chef for “a bold use of spice” in every dish.",
+    "His teacher wrote that he showed \"a rare gift for numbers\" at a young age."
+   ],
+   "quiet": [
+    "The landlord described the flat as a cosy retreat in his advert.",
+    "Critics called the new bridge a triumph of design when it opened.",
+    "The old diary mentions a terrible storm in the spring of that year.",
+    "The minister promised a fair deal for farmers in her speech on Monday.",
+    "Our guide warned us about a steep climb near the end of the trail.",
+    "The council agreed that the park shall remain open at its last meeting.",
+    "The review praised the chef for a bold use of spice in every dish.",
+    "His teacher wrote that he showed a rare gift for numbers at a young age."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on the first quoted word; the same sentences without quote marks near 0",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "first word inside a mid-sentence quote",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card peaks 'a', '...', 'that', 'to' as the first token after an opening quote mid-sentence ('with “a huge shed”', 'resolved \"that ...'). Probe: 'with 'a fine dark oak panelling'' 0.598, 'to win \"a deathless memory\"' 0.558, 'with “a huge shed”' 0.602, 'resolved \"that eight hours' 0.453, 'really “NEED”' 0.291; same sentences unquoted 0.018 and 0.016; a sentence-initial quote 0.122. Near misses remove the quote marks."
+}

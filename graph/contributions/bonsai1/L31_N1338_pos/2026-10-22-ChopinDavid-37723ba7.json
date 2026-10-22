@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-37723ba7",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N1338+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T19:27:49+00:00",
+ "recipe": {
+  "toolchain_commit": "07ea58b1",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L31_N1338_pos/2026-10-22-ChopinDavid-37723ba7.tests.json"
+ },
+ "label": "a possessive determiner (my, your, his, our) introducing the thing someone handles or uses as the object of an action ('pull out my suitcase', 'make do with my binoculars')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L31_N1338_pos/2026-10-22-ChopinDavid-37723ba7.tests.json",
+   "prereg_commit": "07ea58b1",
+   "author": "ChopinDavid",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.591,
+     "peak": " my"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.292,
+     "peak": " her"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.414,
+     "peak": " our"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.126,
+     "peak": " his"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.258,
+     "peak": " my"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.162,
+     "peak": " his"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.11,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.495,
+     "peak": " my"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.216,
+     "peak": " my"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.027,
+     "peak": " her"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.06,
+     "peak": " our"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.049,
+     "peak": " little"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.089,
+     "peak": " my"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.014,
+     "peak": " his"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.082,
+     "peak": " your"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.147,
+     "peak": " my"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.922,
+    "median_fire": 0.275,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "07ea58b1",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "possessive before a handled object",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card peaks ' my' x11, ' your' x7, ' his', ' our', ' unserem' before tools and belongings after 'make do with', 'pull out', 'brings out', 'without'. Probe: 'pull out my suitcase' 0.806, 'make do with my binoculars' 0.521, 'brought out his collection' 0.453, 'or our online mapping tool' 0.203; 'with the binoculars' 0.095, 'pull out a suitcase' 0.336; 'My brother lives' 0.026, 'This is my favourite song' 0.011. Near misses keep the same possessive word but put it in subject or predicate position, not as the object of a handling verb.",
+ "selection": "random draw"
+}

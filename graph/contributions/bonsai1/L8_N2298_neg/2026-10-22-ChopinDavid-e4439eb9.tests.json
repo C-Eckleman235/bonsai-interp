@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-e4439eb9",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N2298-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T19:20:06+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L8/N2298",
+   "pole": "-",
+   "label": "a period or comma typed with a space before it (' .', ' ,'), as in loosely formatted references and prose",
+   "fire": [
+    "- Brown, Alice (Spring) . A Short Guide to Tea. Oxford: Clarendon Press.",
+    "The bridge was built by the town council , and later widened for lorries.",
+    "Our street , which used to be quiet , is now full of traffic.",
+    "He opened the door slowly , looked around , and stepped inside.",
+    "The festival ended late at night . Everyone walked home in the rain.",
+    "The orchard grows apples , pears and plums on the south slope.",
+    "- Green, Tom (Autumn) . Notes on Coastal Birds. Bristol: Kestrel Books.",
+    "My cousin , who lives in Cork , visits us every summer."
+   ],
+   "quiet": [
+    "- Brown, Alice (Spring). A Short Guide to Tea. Oxford: Clarendon Press.",
+    "The bridge was built by the town council, and later widened for lorries.",
+    "Our street, which used to be quiet, is now full of traffic.",
+    "He opened the door slowly, looked around, and stepped inside.",
+    "The festival ended late at night. Everyone walked home in the rain.",
+    "The orchard grows apples, pears and plums on the south slope.",
+    "- Green, Tom (Autumn). Notes on Coastal Birds. Bristol: Kestrel Books.",
+    "My cousin, who lives in Cork, visits us every summer."
+   ]
+  }
+ ],
+ "predictions": "fire about 0.3 on ' ,' and ' .'; the same text with normal punctuation near 0.05; may fail on median",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "space-before-punctuation ' .' ' ,'",
+ "unit_kind": "token",
+ "confidence": 0.45,
+ "notes": "Card peaks ' .' x9 and ' ,' x9 (the space-prefixed tokens), mostly in citations '(1996) .' and loose prose, plus year digits. Probe: '(2004) . The History of Salt' 0.310, 'the order , and later' 0.354, 'market , which closed' 0.289, 'Wait . . .' 0.307; the same with normal punctuation 0.068 and 0.011. Year '2022' fired 0.246, so near misses avoid digits. Near misses are the same sentences with standard punctuation."
+}

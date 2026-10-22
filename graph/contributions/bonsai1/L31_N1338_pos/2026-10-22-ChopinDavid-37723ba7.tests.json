@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-37723ba7",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N1338+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T19:20:06+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L31/N1338",
+   "pole": "+",
+   "label": "a possessive determiner (my, your, his, our) introducing the thing someone handles or uses as the object of an action ('pull out my suitcase', 'make do with my binoculars')",
+   "fire": [
+    "Whenever it rains I have to dig out my old umbrella from the hall cupboard.",
+    "Before the concert she carefully took out her violin and tuned it.",
+    "Without a ladder, we had to make do with our kitchen chairs to reach the shelf.",
+    "At the campsite he unpacked his little stove and boiled water for tea.",
+    "When the power went out I grabbed my torch and went down to the cellar.",
+    "Before every match the goalkeeper pulls on his lucky gloves.",
+    "During the hike you can rest your tired feet by the stream.",
+    "On weekends I love to get out my paints and work on a canvas."
+   ],
+   "quiet": [
+    "Whenever it rains I remember that my old umbrella has a broken spoke.",
+    "Before the concert her violin teacher arrived and sat in the front row.",
+    "Without a ladder, we asked whether our neighbours could help reach the shelf.",
+    "At the campsite his little brother fell asleep before dinner.",
+    "When the power went out I realised that my torch was in the car.",
+    "Before every match the goalkeeper says his coach is the reason he plays.",
+    "During the hike you can see why your guide chose this route.",
+    "On weekends I love it when my aunt comes over and we sit in the garden."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.8 on possessives after handling verbs; possessives as subject or after 'is' near 0",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "possessive before a handled object",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card peaks ' my' x11, ' your' x7, ' his', ' our', ' unserem' before tools and belongings after 'make do with', 'pull out', 'brings out', 'without'. Probe: 'pull out my suitcase' 0.806, 'make do with my binoculars' 0.521, 'brought out his collection' 0.453, 'or our online mapping tool' 0.203; 'with the binoculars' 0.095, 'pull out a suitcase' 0.336; 'My brother lives' 0.026, 'This is my favourite song' 0.011. Near misses keep the same possessive word but put it in subject or predicate position, not as the object of a handling verb."
+}

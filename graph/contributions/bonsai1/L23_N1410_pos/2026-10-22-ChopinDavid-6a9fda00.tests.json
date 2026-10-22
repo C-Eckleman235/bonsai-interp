@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-6a9fda00",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N1410+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T19:20:06+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L23/N1410",
+   "pole": "+",
+   "label": "the function word just before a money-handling verb in personal-finance text ('do not want to [spend]', 'can be [used to fund]'), predicting spending or payment",
+   "fire": [
+    "I have a small inheritance that I do not want to spend on a new car.",
+    "Part of my bonus can be used to pay off the credit card balance.",
+    "My emergency fund is money I really do not want to touch unless I lose my job.",
+    "Any leftover budget from this year can be put toward next year's rent.",
+    "We have some savings we would rather not spend until the mortgage is renewed.",
+    "The tax refund can be used to cover the cost of the children's school fees.",
+    "She keeps a cash reserve that she does not want to withdraw before retirement.",
+    "Unused vacation pay can be cashed out at the end of the year."
+   ],
+   "quiet": [
+    "I have a small garden plot that I do not want to plant with roses this year.",
+    "Part of my weekend can be used to clean out the attic and the garage.",
+    "My grandfather's watch is something I really do not want to lose on holiday.",
+    "Any leftover paint from this project can be put toward the fence next spring.",
+    "We have some evenings we would rather not fill until the children are older.",
+    "The spare bedroom can be used to store the children's old school books.",
+    "She keeps a diary that she does not want to show anyone before she is older.",
+    "Unused classrooms can be opened up for clubs at the end of the day."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.9 in personal-finance sentences; same frames about time or objects near 0",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "function word before spend/pay in finance text",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card peaks ' to', ' can', ' be', ' by', ' on' inside personal-finance text (savings, refunds, insurance, salary). Probe: 'savings that I do not want to spend' 0.884 (peak ' to'), 'payout can be used to fund' 0.510, 'refund processed based on' 0.331, but 'gifts above the limit may be subject to gift taxes' 0.009; non-money controls with the same frames: 'free time ... want to waste' 0.011, 'barn can be used to store' 0.025, 'tour scheduled based on' 0.040, 'paid by weight' 0.024. Near misses keep the frame and swap money for time, effort or objects."
+}
