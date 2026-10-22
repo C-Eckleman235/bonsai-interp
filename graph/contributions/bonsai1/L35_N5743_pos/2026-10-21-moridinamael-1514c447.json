@@ -1,0 +1,166 @@
+{
+ "id": "2026-10-21-moridinamael-1514c447",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N5743+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T05:01:04+00:00",
+ "recipe": {
+  "toolchain_commit": "ee6e097a",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N5743_pos/2026-10-21-moridinamael-1514c447.tests.json"
+ },
+ "label": "Two Arabic expressions: the word ضحايا / الضحايا ('victims'), and the phrase بما في ذلك / بما فيهم ('including', peaking on في, the stronger trigger). Quiet for other Arabic words for dead or injured, for plain في ('in'), and for 'victims' in other languages.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N5743_pos/2026-10-21-moridinamael-1514c447.tests.json",
+   "prereg_commit": "ee6e097a",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.813,
+     "peak": " في"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.263,
+     "peak": "حا"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": -0.007,
+     "peak": " المست"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.778,
+     "peak": " في"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.764,
+     "peak": " في"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.508,
+     "peak": " في"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.026,
+     "peak": "حا"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.554,
+     "peak": " في"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.227,
+     "peak": " من"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.057,
+     "peak": "زل"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": -0.014,
+     "peak": " المست"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.041,
+     "peak": "ظ"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": -0.053,
+     "peak": "وج"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.078,
+     "peak": " الض"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": -0.276,
+     "peak": " مر"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.104,
+     "peak": "ص"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.875,
+    "median_fire": 0.531,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "ee6e097a",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L33/N1660-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L33/N1660-",
+   "to": "bonsai1/L35/N5743+",
+   "kind": "feeds",
+   "weight": 0.3,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
