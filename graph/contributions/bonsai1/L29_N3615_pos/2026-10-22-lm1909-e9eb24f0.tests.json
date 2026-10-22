@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-e9eb24f0",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N3615+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:21:58+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N3615",
+   "pole": "+",
+   "label": "the token right after an acronym that opens its spelled-out expansion ('An FQHC (Federally...', 'X is short for \"...\"')",
+   "fire": [
+    "Thanks for reading our newsletter.\nA CSA (Community Supported Agriculture) share gives members a box of vegetables each week.",
+    "Last updated in May.\nGIF is short for \"Graphics Interchange Format\" - an image format for the web.",
+    "Welcome back to the blog.\nAn HOA (Homeowners Association) sets rules for houses in a development.",
+    "We cross the river on the BQE, the abbreviation for the Brooklyn-Queens Expressway, and head north.",
+    "Subscribe for weekly updates.\nAn IEP (Individualized Education Program) is a plan for a student's support.",
+    "The money goes to a group called MADD, \"Mothers Against Drunk Driving\", in our state.",
+    "Posted by the editor.\nRAID is short for \"redundant array of independent disks\" - a storage method.",
+    "Thanks for visiting.\nA PPO (Preferred Provider Organization) is a type of health insurance plan."
+   ],
+   "quiet": [
+    "Thanks for reading our newsletter.\nOur farm share gives members a box of vegetables each week.",
+    "Last updated in May.\nThis image format is widely used for short animations on the web.",
+    "Welcome back to the blog.\nThe residents' group sets rules for houses in the development.",
+    "We cross the river on the expressway near the old docks and head north.",
+    "Subscribe for weekly updates.\nA support plan sets out how a student will be helped at school.",
+    "The money goes to a group of mothers campaigning against drunk driving in our state.",
+    "Posted by the editor.\nThis storage method spreads data across several disks.",
+    "Thanks for visiting.\nThis type of health insurance plan lets you choose any doctor."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "acronym expansion opener",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card: no single token; peaks on ' (' after 'An FQHC', ' \"' after 'FOURCC is short for', ' for' after 'the abbreviation', ' “' after 'FACES,'. Several top examples follow a document boundary. Probe: every sentence scored ~0.00, including the acronym-expansion ones ('The WHO (World Health Organization)', 'NASA is short for', 'the abbreviation for the BQE'). So the trigger was not reproduced. As a best guess, fire items put the definition after a preceding line, like the card's examples. Expected to fail; recorded honestly."
+}

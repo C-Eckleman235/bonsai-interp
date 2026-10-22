@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-50f12baf",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N3579+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:42:04+00:00",
+ "recipe": {
+  "toolchain_commit": "0604f613",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L32_N3579_pos/2026-10-22-lm1909-50f12baf.tests.json"
+ },
+ "label": "ingredients and pairings in a savoury dinner-menu description (roast with herbs, a glass of wine), as opposed to sweet/dessert lines",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L32_N3579_pos/2026-10-22-lm1909-50f12baf.tests.json",
+   "prereg_commit": "0604f613",
+   "author": "lm1909",
+   "n_fire": 7,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.724,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.293,
+     "peak": " Spanish"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.401,
+     "peak": " with"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.759,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.57,
+     "peak": " local"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.687,
+     "peak": " with"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.703,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.468,
+     "peak": " house"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.157,
+     "peak": " brown"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.183,
+     "peak": " syrup"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.328,
+     "peak": " almond"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.107,
+     "peak": " cl"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.01,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.019,
+     "peak": " includes"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.008,
+     "peak": " small"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.411,
+     "peak": " of"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.953,
+    "median_fire": 0.629,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "0604f613",
+  "minutes": 5,
+  "batch_size": 16
+ },
+ "short": "savoury menu pairings",
+ "unit_kind": "contextual",
+ "confidence": 0.45,
+ "notes": "Card: peaks on ' with', ' and', ' includes' in menus; + side savoury (peas with mint, pumpkin seed oil, cabbage, English sparkling wine), - side fresh fruit/cream. Probe: 'Roast lamb served with rosemary, garlic and a red wine jus' 0.55 (peak ' wine'), 'lunch includes a glass of local white wine' 0.47, lentil/beetroot salad 0.35, salmon with dill 0.20. Dessert 0.09, smoothie 0.14, car/hotel 'with' <=0.10. Fire items lean on roast + herbs + wine; quiet items are sweet menus and non-food 'comes with/includes'.",
+ "selection": "random draw"
+}

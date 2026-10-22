@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-cb515f2e",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N10678+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:41:33+00:00",
+ "recipe": {
+  "toolchain_commit": "0604f613",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L18_N10678_pos/2026-10-22-lm1909-cb515f2e.tests.json"
+ },
+ "label": "the final subword of a multi-token Spanish/Italian surname in a person's full name (Bermude|z, Ramazz|ini)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L18_N10678_pos/2026-10-22-lm1909-cb515f2e.tests.json",
+   "prereg_commit": "0604f613",
+   "author": "lm1909",
+   "n_fire": 7,
+   "n_false_pos": 4,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.269,
+     "peak": " who"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.375,
+     "peak": "ini"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.521,
+     "peak": "uela"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.601,
+     "peak": "asco"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.538,
+     "peak": "ini"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.35,
+     "peak": "vo"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.419,
+     "peak": "ria"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.458,
+     "peak": "ini"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.242,
+     "peak": " who"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.328,
+     "peak": " Garcia"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.108,
+     "peak": " small"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.341,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.312,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.14,
+     "peak": " which"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.077,
+     "peak": " declared"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.339,
+     "peak": " Jones"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.439,
+    "near_misses_at_0.3": 4
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "0604f613",
+  "minutes": 4,
+  "batch_size": 16
+ },
+ "short": "surname final subword",
+ "unit_kind": "lexical",
+ "confidence": 0.45,
+ "notes": "Card: broad (5.9% above 0.1·max); the + pole peaks on surname endings (Bermude|z, Ramazz|ini, Lore|nte, Hook|er) and on list-opening ':\\n'/'.\\n'. Probe: 'Bermudez' 0.77, 'Ramazzini' 0.60, 'Lorente' 0.50, 'Hooker' 0.31, Args block 0.35, 'with support from the city council' 0.19, list colon 0.13, filler 0.03. The tokenizer confirms the fire surnames split into several pieces (Gut|ierrez, Bian|ch|ini, Val|enz|uela, Carr|asco, P|elle|gr|ini, Mont|al|vo, E|che|ver|ria). The quiet names are single tokens (Lopez, Garcia, Smith, Martinez, Jones) or institutions. Broad unit, so near misses may fire weakly.",
+ "selection": "random draw"
+}

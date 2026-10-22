@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-be8633d2",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N7734-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:21:58+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L21/N7734",
+   "pole": "-",
+   "label": "a digit inside an ISSN or a journal code within an academic reference-list entry",
+   "fire": [
+    "Smith, J. and Brown, K. (2009) Turbulent mixing in shallow lakes. Journal of Fluid Mechanics, 41 (3). pp. 211-230. ISSN 0022-1120\nJones, P. (2010) Wave breaking. Ocean Modelling, 12 (2). pp. 9-20. ISSN 1463-5003",
+    "Lee, H. (2007) Mesh refinement for groundwater flow. International Journal of Numerical Methods in Engineering, 70 (5). pp. 601-622. ISSN 0029-5981\nKim, S. (2008) Error estimates. ISSN 0029-5981",
+    "Related links: Cited study: http://onlinelibrary.wiley.com/doi/10.1111/j.1365-2486.2011.02455.x for the full data.",
+    "The pre-publication history for this paper can be accessed here: http://www.biomedcentral.com/1472-6882/11/45",
+    "Patel, R. (2012) Sediment transport in rivers. Water Resources Research, 48 (7). pp. 1-14. ISSN 0043-1397\nGarcia, M. (2013) Bedforms. ISSN 0043-1397",
+    "Taylor, A. (2005) Heat flux at the sea floor. Geophysical Journal International, 160 (2). pp. 455-470. ISSN 0956-540X\nWood, B. (2006) Mantle plumes. ISSN 0956-540X",
+    "Full text: http://onlinelibrary.wiley.com/doi/10.1111/j.1471-4159.2009.06123.x (accessed in March).",
+    "Brown, T. (2011) Coastal erosion models. Continental Shelf Research, 31 (4). pp. 330-345. ISSN 0278-4343\nHall, D. (2012) Tidal flats. ISSN 0278-4343"
+   ],
+   "quiet": [
+    "Smith, J. and Brown, K. (2009) Turbulent mixing in shallow lakes. Journal of Fluid Mechanics, volume forty-one, issue three.\nJones, P. (2010) Wave breaking. Ocean Modelling, second issue.",
+    "Lee, H. (2007) Mesh refinement for groundwater flow. International Journal of Numerical Methods in Engineering, published by Wiley in spring.\nKim, S. (2008) Error estimates.",
+    "Related links: Cited study, available on the Wiley Online Library website for the full data.",
+    "The pre-publication history for this paper can be accessed on the BioMed Central website.",
+    "Patel, R. (2012) Sediment transport in rivers. Water Resources Research, a journal of the American Geophysical Union.\nGarcia, M. (2013) Bedforms.",
+    "Taylor, A. (2005) Heat flux at the sea floor. Geophysical Journal International, published by Oxford University Press.\nWood, B. (2006) Mantle plumes.",
+    "Full text: available from the publisher's website (accessed in March).",
+    "Brown, T. (2011) Coastal erosion models. Continental Shelf Research, an Elsevier journal.\nHall, D. (2012) Tidal flats."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "digits in reference ISSNs",
+ "unit_kind": "sparse feature",
+ "confidence": 0.2,
+ "notes": "Card: peaks on digits inside ISSNs and DOI/BMC journal codes in reference lists ('ISSN 0271-2⟦0⟧91', 'j.1741-3⟦7⟧29', '1471-2⟦4⟧58'), plus a space before a percentage in a list. Probe failed: short prose sentences with an ISSN, a DOI, a phone number, 4-4-2 or a part number all scored <=0.12. Best guess: the pole needs the full eprint-style reference context, so fire items copy that format with repeated ISSNs and Wiley/BMC URLs. Near misses keep the reference entries but spell out the numbers. Expected to fail."
+}

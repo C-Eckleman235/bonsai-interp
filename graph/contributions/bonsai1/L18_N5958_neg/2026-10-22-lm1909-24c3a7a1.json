@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-24c3a7a1",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N5958-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:41:35+00:00",
+ "recipe": {
+  "toolchain_commit": "0604f613",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L18_N5958_neg/2026-10-22-lm1909-24c3a7a1.tests.json"
+ },
+ "label": "the verb 'need' (need/needed; Chinese 需要)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L18_N5958_neg/2026-10-22-lm1909-24c3a7a1.tests.json",
+   "prereg_commit": "0604f613",
+   "author": "lm1909",
+   "n_fire": 5,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.325,
+     "peak": " needed"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.117,
+     "peak": " needed"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.32,
+     "peak": " needed"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.29,
+     "peak": " need"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.377,
+     "peak": "还需要"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.499,
+     "peak": "更多的"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.783,
+     "peak": "需要"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.08,
+     "peak": " needed"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.013,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.051,
+     "peak": " stove"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.061,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.07,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.002,
+     "peak": "更多的"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.029,
+     "peak": "有很多"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.346,
+     "peak": "必须"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.06,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.922,
+    "median_fire": 0.323,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "0604f613",
+  "minutes": 4,
+  "batch_size": 16
+ },
+ "short": "verb 'need'",
+ "unit_kind": "lexical",
+ "confidence": 0.6,
+ "notes": "Card: ' need' x16 in the top 32, also 需要/要/needs/needed; gate-closed leak regime 96%. Probe: ' needed' 0.38, 需要 (还需要更多) 0.51, ' need' 0.26, code comment ' need' 0.19, ' needs' 0.17. 'want to'/'have to' 0.06-0.07, 'require' 0.11, noun 'need for' 0.11. Fire items use the strongest forms (needed, 需要, need to). Quiet items swap only the verb (hired, wanted, have to, 必须, 有) and avoid 要.",
+ "selection": "random draw"
+}
