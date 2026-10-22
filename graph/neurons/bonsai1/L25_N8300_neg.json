@@ -4,7 +4,7 @@
  "layer": 25,
  "index": 8300,
  "pole": "-",
- "label": "a year of the 1880s or 1890s written in digits (18|8|x, 18|9|x); the same digits in other centuries and the 1850s-1860s (this neuron's other pole) stay quiet",
+ "label": "a year of the 1880s or 1890s written in digits (peaks on the decade digit: 18|8|x, 18|9|x, and '1890s'); years 1900-1909 fire about half as strongly; years before 1880 (including the 1850s-1860s, this neuron's other pole), from 1910 on, and in other centuries stay quiet; a non-year 188x/189x number (a count, a distance) is weak on its own but fires once an earlier year appears in the text",
  "short": "the 1880s-1890s (in digits)",
  "kind": "token/lexical",
  "status": "held",
@@ -131,6 +131,128 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-21-C-Eckleman235-a343edd1"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N8300_neg/2026-10-22-moridinamael-70b5052c.tests.json",
+   "prereg_commit": "6e27f57f",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.477,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.449,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.621,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.577,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.678,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.896,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.496,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.594,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.011,
+     "peak": " late"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.003,
+     "peak": " century"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.0,
+     "peak": " nearly"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": " em"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.038,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.078,
+     "peak": "8"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.041,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.017,
+     "peak": "0"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.585,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-22-moridinamael-70b5052c"
   }
  ],
  "label_history": [
@@ -138,29 +260,36 @@
    "2026-10-21-C-Eckleman235-a343edd1",
    "a year of the 1880s or 1890s written in digits (18|8|x, 18|9|x); the same digits in other centuries and the 1850s-1860s (this neuron's other pole) stay quiet",
    "held"
+  ],
+  [
+   "2026-10-22-moridinamael-70b5052c",
+   "a year of the 1880s or 1890s written in digits (peaks on the decade digit: 18|8|x, 18|9|x, and '1890s'); years 1900-1909 fire about half as strongly; years before 1880 (including the 1850s-1860s, this neuron's other pole), from 1910 on, and in other centuries stay quiet; a non-year 188x/189x number (a count, a distance) is weak on its own but fires once an earlier year appears in the text",
+   "held"
   ]
  ],
  "examples": [],
  "evidence": [],
  "roles": [],
  "contributors": [
-  "C-Eckleman235"
+  "C-Eckleman235",
+  "moridinamael"
  ],
  "contributions": [
-  "2026-10-21-C-Eckleman235-a343edd1"
+  "2026-10-21-C-Eckleman235-a343edd1",
+  "2026-10-22-moridinamael-70b5052c"
  ],
  "qc": {
   "confirm": 0,
   "dispute": 0,
-  "refine": 0
+  "refine": 1
  },
  "replications": [],
  "scrutiny": {
-  "level": 1,
-  "name": "tested",
-  "test_rounds": 1,
-  "sentences": 16,
-  "contributors": 1,
-  "qc": 0
+  "level": 3,
+  "name": "checked",
+  "test_rounds": 2,
+  "sentences": 32,
+  "contributors": 2,
+  "qc": 1
  }
 }
