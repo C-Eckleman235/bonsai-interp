@@ -458,6 +458,8 @@ __SECTIONS__
 <footer>
   <p>From the <a href="./">Bonsai Neuron Survey</a> map · crawled on stream Oct 18–21 2026, after the Oct 17 nerve study ·
   every cell links to its neuron on the map.</p>
+  <p>A project by Matt Freeman · <a href="https://x.com/moridinamael" target="_blank" rel="noopener">@moridinamael on X</a> ·
+  <a href="https://www.linkedin.com/in/matt-freeman-phd" target="_blank" rel="noopener">LinkedIn</a></p>
 </footer>
 </div>
 </body>
