@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-a375a7b4",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N4495-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T16:59:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L13/N4495",
+   "pole": "-",
+   "label": "the '.encode' method call in code (best guess; the card shows no shared token or context)",
+   "fire": [
+    "payload = json.dumps(body).encode('utf-8')",
+    "signed = jwt.encode(claims, key, algorithm='RS256')",
+    "    buf = name.encode('ascii', 'ignore')",
+    "encoded = base64.b64encode(raw.encode())",
+    "sock.send(message.encode())",
+    "h = hashlib.sha256(password.encode()).hexdigest()",
+    "out.write(line.encode('latin-1'))",
+    "    jwt_token = jwt.encode({'sub': user.id}, SECRET)"
+   ],
+   "quiet": [
+    "payload = json.loads(body.decode('utf-8'))",
+    "claims = jwt.decode(signed, key, algorithms=['RS256'])",
+    "    buf = name.strip().lower()",
+    "decoded = base64.b64decode(raw)",
+    "message = sock.recv(1024)",
+    "h = hashlib.sha256(data).hexdigest()",
+    "out.write(line.rstrip())",
+    "    user_id = claims.get('sub')"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": ".encode call",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Card: mixed top examples ('.encode' in jwt.encode, ' No' after 'Vaccine:', ' end' in '## end license', ' One' in League One, 'ynes'), no single token. Probe: everything weak; best was jwt.encode 0.095 vs jwt.decode 0.025, text.encode 0.03, alkynes 0.07; other contrasts ~0.02. Best-guess test, expected to fail."
+}
