@@ -1,0 +1,43 @@
+{
+ "contribution": "2026-10-22-moridinamael-bf05e1b4",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N5323+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T13:04:17+00:00",
+ "roles": ["feeds bonsai1/L5/N6575-"],
+ "neighbours": [
+  {
+   "unit": "L4/N5323",
+   "pole": "+",
+   "label": "The word piece 'ina' when the tokenizer splits it off after an opening chunk, usually as a word's ending in names, places or nouns (mar|ina, ocar|ina, Paul|ina, Burk|ina) and also mid-word (v|ina|igrette); a few whole-word -ina names fire too (Christina, Carolina, Gina). Quiet: whole-word -ina tokens like stamina, retina, Argentina, Regina; 'Carolina' right after North/South; -ana, -ino, -ita words (banana, margarita) and 'nominal'.",
+   "short": "the split-off 'ina' word piece",
+   "unit_kind": "token / spelling",
+   "fire": [
+    "We rented a small boat slip at the marina for the summer.",
+    "He learned to play a simple tune on a clay ocarina.",
+    "Paulina handed out the agendas before the meeting started.",
+    "Burkina Faso is a landlocked country in West Africa.",
+    "Whisk the oil slowly into the vinaigrette until it thickens.",
+    "Christina left the keys on the kitchen counter again.",
+    "Gina volunteered to drive everyone to the concert.",
+    "She moved to Carolina after finishing her degree."
+   ],
+   "quiet": [
+    "Her uncle restores an antique accordion in his shed.",
+    "Boats bobbed gently in the harbour as the sun set.",
+    "We rented a small boat slip at the harbor for the summer.",
+    "He learned to play a simple tune on a wooden flute.",
+    "Running every day slowly improved her stamina.",
+    "The doctor examined the back of his retina with a bright light.",
+    "Argentina is a large country in South America.",
+    "Whisk the oil slowly into the dressing until it thickens."
+   ]
+  }
+ ],
+ "predictions": "Blind test (second author saw only the label). Expect most fire items above 0.2; Gina and sentence-initial Paulina/Burkina/Christina are the risks. Feeder found via resident attribution ranking (play step hit CUDA OOM).",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["card", "look", "probe", "inverse-de", "blind-room", "step-out"]
+ }
+}
