@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-adbf2d10",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N2284-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T19:16:21+00:00",
+ "recipe": {
+  "toolchain_commit": "0bdda3e3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L9_N2284_neg/2026-10-22-lm1909-adbf2d10.tests.json"
+ },
+ "label": "linking piece before an adjective suffix in a few words: hingebung|sv|oll, 자유|로|운, 都合|の|良い",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L9_N2284_neg/2026-10-22-lm1909-adbf2d10.tests.json",
+   "prereg_commit": "0bdda3e3",
+   "author": "lm1909",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.724,
+     "peak": "sv"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.777,
+     "peak": "sv"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.079,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.284,
+     "peak": "로"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.589,
+     "peak": "の"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.556,
+     "peak": "の"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.565,
+     "peak": "sv"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.33,
+     "peak": "로"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.017,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.027,
+     "peak": " L"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.065,
+     "peak": " �"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.049,
+     "peak": " 가"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.0,
+     "peak": "大切な"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.094,
+     "peak": "話"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.012,
+     "peak": "ig"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.024,
+     "peak": "론"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.56,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "0bdda3e3",
+  "minutes": 8,
+  "batch_size": 16
+ },
+ "short": "adjective-linking pieces",
+ "unit_kind": "lexical",
+ "confidence": 0.45,
+ "notes": "Probe: hingebungsvoll 'sv' 0.79, 자유로운 '로' 0.59, 都合の良い 'の' 0.40; but liebevoll/wundervoll 0.03-0.04 and 평화로운 0.08, so word-specific. Korean byte pieces gave 0.23 on 멋진 (possible leak).",
+ "selection": "random draw"
+}

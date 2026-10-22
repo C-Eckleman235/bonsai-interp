@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-c6e8e4d4",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N8328-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T19:16:20+00:00",
+ "recipe": {
+  "toolchain_commit": "0bdda3e3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L8_N8328_neg/2026-10-22-lm1909-c6e8e4d4.tests.json"
+ },
+ "label": "Russian verb ending piece in a negated clause ('не не|сет', 'не предприним|ают', 'не вынося|т', 'не д|аст')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L8_N8328_neg/2026-10-22-lm1909-c6e8e4d4.tests.json",
+   "prereg_commit": "0bdda3e3",
+   "author": "lm1909",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.569,
+     "peak": "сет"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.941,
+     "peak": "ают"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.674,
+     "peak": "т"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.162,
+     "peak": "аст"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.976,
+     "peak": "сет"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.723,
+     "peak": "т"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.797,
+     "peak": "ают"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.137,
+     "peak": "аст"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.007,
+     "peak": "ность"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.256,
+     "peak": "ают"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.018,
+     "peak": "зы"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.004,
+     "peak": " под"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.029,
+     "peak": " дост"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.018,
+     "peak": " луч"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.025,
+     "peak": " поп"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.039,
+     "peak": " взять"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.699,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "0bdda3e3",
+  "minutes": 8,
+  "batch_size": 16
+ },
+ "short": "negated verb ending (ru)",
+ "unit_kind": "contextual",
+ "confidence": 0.65,
+ "notes": "Probe minimal pairs: negated 0.25-1.02 vs affirmative 0.01-0.08 for the same verbs (несет 1.02 vs 0.08, предпринимают 0.71 vs 0.05, знают 0.25 vs 0.01). Quiet items are affirmative with varied lead-ins.",
+ "selection": "random draw"
+}

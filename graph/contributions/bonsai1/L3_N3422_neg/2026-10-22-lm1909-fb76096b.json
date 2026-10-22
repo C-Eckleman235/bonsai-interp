@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-fb76096b",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N3422-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T19:16:17+00:00",
+ "recipe": {
+  "toolchain_commit": "0bdda3e3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L3_N3422_neg/2026-10-22-lm1909-fb76096b.tests.json"
+ },
+ "label": "continuation pieces of split words: 'ictured' (P|ictured), 'or(s)' (trem|or), 'im' (br|im)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L3_N3422_neg/2026-10-22-lm1909-fb76096b.tests.json",
+   "prereg_commit": "0bdda3e3",
+   "author": "lm1909",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.739,
+     "peak": "ictured"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.744,
+     "peak": "ictured"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.657,
+     "peak": "or"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.503,
+     "peak": " trem"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.166,
+     "peak": "im"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.573,
+     "peak": "or"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.374,
+     "peak": "im"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.468,
+     "peak": "ors"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.132,
+     "peak": " three"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.064,
+     "peak": " frame"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.097,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.1,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": -0.033,
+     "peak": " top"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": -0.15,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.147,
+     "peak": " off"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.186,
+     "peak": " as"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.538,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "0bdda3e3",
+  "minutes": 8,
+  "batch_size": 16
+ },
+ "short": "split-word tail pieces",
+ "unit_kind": "lexical",
+ "confidence": 0.45,
+ "notes": "Card flags broad (2.4%) and gate-closed leak; max is tiny (0.17). Probe: Pictured 0.74, tremors 0.63, tremor 0.65, brim 0.35, seismograph 0.34; synonyms shown/shaking/top 0.02-0.21. Lexical test on these words.",
+ "selection": "random draw"
+}
