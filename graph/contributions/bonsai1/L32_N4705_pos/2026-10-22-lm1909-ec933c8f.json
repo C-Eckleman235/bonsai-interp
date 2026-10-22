@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-ec933c8f",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N4705+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:43:16+00:00",
+ "recipe": {
+  "toolchain_commit": "41675569",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L32_N4705_pos/2026-10-22-lm1909-ec933c8f.tests.json"
+ },
+ "label": "context where a weapon or a worn item comes next: 'concealed [carry/weapons/handgun]', 'carry a [gun]', 'X-w[earing]'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L32_N4705_pos/2026-10-22-lm1909-ec933c8f.tests.json",
+   "prereg_commit": "41675569",
+   "author": "lm1909",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.766,
+     "peak": " concealed"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.967,
+     "peak": " concealed"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.63,
+     "peak": " concealed"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.669,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.183,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.511,
+     "peak": "-w"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.914,
+     "peak": "-w"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.944,
+     "peak": " concealed"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.017,
+     "peak": " concealed"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.122,
+     "peak": " for"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.07,
+     "peak": " concealed"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.215,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.006,
+     "peak": "box"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.022,
+     "peak": " vest"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.106,
+     "peak": " tall"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.114,
+     "peak": " plastic"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.718,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "41675569",
+  "minutes": 5,
+  "batch_size": 16
+ },
+ "short": "weapon or wearing comes next",
+ "unit_kind": "contextual",
+ "confidence": 0.7,
+ "notes": "Probe: concealed carry/weapons 0.78-0.98, 'carry a firearm' 0.87 (peak ' a'), 'hat-wearing'/'sunglasses-wearing' 0.63-0.69 (peak '-w'), gun-wielding 0.33. Contrasts: 'concealed compartment' 0.04, 'carry a heavy box' 0.02. So the context predicts a weapon or wearing; the bare word ' concealed' or 'carry a' does not fire.",
+ "selection": "random draw"
+}

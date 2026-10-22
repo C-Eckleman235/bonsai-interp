@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-dce7ed50",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N6902+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:43:25+00:00",
+ "recipe": {
+  "toolchain_commit": "41675569",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N6902_pos/2026-10-22-lm1909-dce7ed50.tests.json"
+ },
+ "label": "dense / positional: weakly on for most tokens; best guess is word-internal pieces of rare or non-English words (ful, lla, ahl, Arabic)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N6902_pos/2026-10-22-lm1909-dce7ed50.tests.json",
+   "prereg_commit": "41675569",
+   "author": "lm1909",
+   "n_fire": 7,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.614,
+     "peak": "ful"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.744,
+     "peak": "lla"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.483,
+     "peak": " Zahl"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.401,
+     "peak": "if"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.729,
+     "peak": "ahl"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.471,
+     "peak": " '|'"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.517,
+     "peak": " تقديم"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.176,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.251,
+     "peak": " this"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.265,
+     "peak": " loaf"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.164,
+     "peak": "My"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.192,
+     "peak": " door"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.243,
+     "peak": " film"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.251,
+     "peak": "ained"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.327,
+     "peak": " lunch"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.198,
+     "peak": " painted"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.891,
+    "median_fire": 0.5,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "41675569",
+  "minutes": 5,
+  "batch_size": 16
+ },
+ "short": "dense, rare word pieces",
+ "unit_kind": "dense / positional",
+ "confidence": 0.1,
+ "notes": "The card flags it dense (42.6% of tokens reach 0.1 of max) and gate-closed (-x- echo 100%). Probe: every sentence fired 0.25-0.91, plain English included (0.25-0.28). Rare or foreign pieces were higher (ful 0.91, lla 0.80, ahl 0.78). This test records the density and is expected to fail on near misses.",
+ "selection": "random draw"
+}
