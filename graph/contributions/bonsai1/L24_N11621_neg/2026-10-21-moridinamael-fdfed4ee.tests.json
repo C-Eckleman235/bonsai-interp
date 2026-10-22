@@ -1,0 +1,42 @@
+{
+ "contribution": "2026-10-21-moridinamael-fdfed4ee",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N11621-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T00:42:42+00:00",
+ "roles": ["feeds bonsai1/L26/N338-"],
+ "neighbours": [
+  {
+   "unit": "L24/N11621",
+   "pole": "-",
+   "label": "A helper verb that jumps ahead of its subject after a fronted place or source phrase, mainly passive inversion in French or English ('Dans ce rapport sont décrites les causes', 'In this report are described the causes', 'Along the river can be found orchids', 'Au sommet se trouve un moulin'); fires on the helper (are/is/can be/sont/est/se). Quiet for the same helper in normal subject-first order, in yes/no questions, and in German verb-second order.",
+   "fire": [
+    "In this report are described the main causes of the delay.",
+    "Along the river can be found several rare species of orchid.",
+    "Au sommet de la colline se trouve un vieux moulin.",
+    "Beneath the old floorboards were discovered a dozen silver coins.",
+    "From the archives of the museum is taken the following letter.",
+    "Dans le tiroir du bas sont rangés tous les anciens contrats.",
+    "At the end of the corridor is located the director's office.",
+    "Sur la place du village se dresse une fontaine du XVIIe siècle."
+   ],
+   "quiet": [
+    "The main causes of the delay are described in this report.",
+    "Several rare species of orchid can be found along the river.",
+    "Un vieux moulin se trouve au sommet de la colline.",
+    "Are the silver coins still hidden beneath the old floorboards?",
+    "The following letter is taken from the archives of the museum.",
+    "Tous les anciens contrats sont rangés dans le tiroir du bas.",
+    "Is the director's office located at the end of the corridor?",
+    "Une fontaine du XVIIe siècle se dresse sur la place du village."
+   ]
+  }
+ ],
+ "predictions": "Blind test (label-only author). Expect French and 'are described'/'can be found' items to fire; English 'were discovered'/'is located' items may be weak (probes ranged 0.03-0.66).",
+ "notes": "Step-out feeder of bonsai1/L26/N338-, chosen from the resident attribution ranking (top MLP feeder) because play step hit CUDA OOM; no ablation drop measured. Solver (DE): no leak; 'There waits my' (top) 0.98.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["card", "look", "probe", "inverse-de", "step-out", "blind-room"]
+ }
+}
