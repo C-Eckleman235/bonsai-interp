@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-22-moridinamael-617a94f2",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N11393+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T18:26:48+00:00",
+ "recipe": {
+  "toolchain_commit": "700a818b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N11393_pos/2026-10-22-moridinamael-617a94f2.tests.json"
+ },
+ "label": "In passages of several lines that each end in a semicolon (code statements, bulleted or numbered lists, verse), the last word of a line just before its ';', written attached to the word (not French-style ' ;'). Quiet or weak for the same lines ending in '.', ',' or nothing, and for semicolons inside one running sentence. Exception: the French piece ' rel' in relâchés also fires.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N11393_pos/2026-10-22-moridinamael-617a94f2.tests.json",
+   "prereg_commit": "700a818b",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.661,
+     "peak": " rel"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.391,
+     "peak": " x"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.548,
+     "peak": " jacket"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.143,
+     "peak": " schedule"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.509,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.654,
+     "peak": " slow"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.139,
+     "peak": " promptly"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.585,
+     "peak": "avg"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": -0.265,
+     "peak": " book"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.159,
+     "peak": " x"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.231,
+     "peak": " swe"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.082,
+     "peak": " schedule"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.037,
+     "peak": "Ada"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.218,
+     "peak": " slow"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": -0.375,
+     "peak": " damage"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.269,
+     "peak": " restaurant"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.906,
+    "median_fire": 0.528,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "700a818b",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L34/N7651+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L34/N7651+", "to": "bonsai1/L35/N11393+", "kind": "feeds", "weight": 0.02, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
