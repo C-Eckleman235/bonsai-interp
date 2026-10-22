@@ -1,0 +1,171 @@
+{
+ "id": "2026-10-22-moridinamael-7c249740",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N1325-",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T17:27:19+00:00",
+ "recipe": {
+  "toolchain_commit": "4764ebd7",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N1325_neg/2026-10-22-moridinamael-7c249740.tests.json"
+ },
+ "label": "The opening token of a few words the tokenizer splits into pieces: ' omn' in any omni- word (omnivore, omnibus, omniscient), ' cour' in the plural couriers, and ' met' in Italian metri. The same words as single tokens (courier, English metres) and other split words (carnivorous, autonomous) stay quiet; Russian диаметр and Arabic الحديد fire only sometimes.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N1325_neg/2026-10-22-moridinamael-7c249740.tests.json",
+   "prereg_commit": "4764ebd7",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.338,
+     "peak": " omn"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.556,
+     "peak": " omn"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.379,
+     "peak": " omn"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.004,
+     "peak": " have"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.011,
+     "peak": " until"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.639,
+     "peak": " cour"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.029,
+     "peak": " cour"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.381,
+     "peak": " met"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.003,
+     "peak": " eat"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.001,
+     "peak": "We"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.002,
+     "peak": "'s"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.005,
+     "peak": " have"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.011,
+     "peak": " until"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.006,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.002,
+     "peak": " through"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.004,
+     "peak": " is"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.359,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "4764ebd7",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "short": "opening piece of split words: omn-, cour(iers), Italian met(ri)",
+ "unit_kind": "token",
+ "notes": "Blind test: sentences written by a second author who saw only the label. Feeders-first experiment arm: strongest feeder L31/N7765+ (fires before 'diameter', promotes ' diameter'/' dia'), L29/N11661- (Arabic article piece ' الح'). Solver found no leak; Russian top read 0.07 solo, so Russian/Arabic cases were demoted to 'sometimes'.",
+ "roles": [
+  "reads bonsai1/L34/N6581-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L34/N6581-",
+   "to": "bonsai1/L35/N1325-",
+   "kind": "feeds",
+   "weight": 0.2,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
