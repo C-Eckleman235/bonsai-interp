@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-a47696b4",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N371-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:57:12+00:00",
+ "recipe": {
+  "toolchain_commit": "4ddc121c",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N371_neg/2026-10-22-lm1909-a47696b4.tests.json"
+ },
+ "label": "a word-initial ' b'/' B' piece split off an uncommon animal name (b|ison, b|ant|eng, b|les|b|ok, B|earer)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N371_neg/2026-10-22-lm1909-a47696b4.tests.json",
+   "prereg_commit": "4ddc121c",
+   "author": "lm1909",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.84,
+     "peak": " b"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.812,
+     "peak": " b"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.118,
+     "peak": " b"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.821,
+     "peak": " b"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.264,
+     "peak": " b"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.76,
+     "peak": " b"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.628,
+     "peak": " B"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.398,
+     "peak": " cam"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.143,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.134,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.047,
+     "peak": " farm"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.197,
+     "peak": " lone"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.067,
+     "peak": " deer"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.199,
+     "peak": "ebra"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.248,
+     "peak": " Archer"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.296,
+     "peak": " cam"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.891,
+    "median_fire": 0.694,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "4ddc121c",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "split-off initial b in rare names",
+ "unit_kind": "sparse feature",
+ "confidence": 0.55,
+ "notes": "Probe: bison 0.83, banteng 0.76, Water Bearer 0.73, bontebok 0.68 (all peak ' b'/' B'); banyan only 0.18 (peak 'an'); single-token animals and plants 0.07-0.23 (Hunter 0.23). The tokenizer was checked: every fire word begins with a lone 'Ġb'/'ĠB' piece, and every near miss is a single token or starts with a different piece.",
+ "selection": "random draw"
+}
