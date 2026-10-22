@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-761c6eac",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N1097+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:45:37+00:00",
+ "recipe": {
+  "toolchain_commit": "5ec87ba3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N1097_pos/2026-10-22-lm1909-761c6eac.tests.json"
+ },
+ "label": "unclear; best guess: the token right before a proper name in a list of names or a speech attribution",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N1097_pos/2026-10-22-lm1909-761c6eac.tests.json",
+   "prereg_commit": "5ec87ba3",
+   "author": "lm1909",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.062,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.002,
+     "peak": "on"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.017,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.09,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.001,
+     "peak": "ix"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.002,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.005,
+     "peak": "wind"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.005,
+     "peak": " zwei"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.005,
+     "peak": " from"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.003,
+     "peak": " went"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.015,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": " young"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.002,
+     "peak": " again"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.003,
+     "peak": " coast"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.004,
+     "peak": " from"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.005,
+     "peak": " einen"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.578,
+    "median_fire": 0.005,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "5ec87ba3",
+  "minutes": 6,
+  "batch_size": 16
+ },
+ "short": "unclear (pre-name token?)",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Card: no single token (',', ' the', ' continued', ' my', newline before a date); max 346. Probe failed completely: every sentence <=0.09 (name list 0.09, 'explained Hargreave' 0.03). Label is a placeholder guess built to mirror the card's top examples; expected to fail.",
+ "selection": "random draw"
+}

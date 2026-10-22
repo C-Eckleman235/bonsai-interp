@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-561d7609",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N8028+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:45:40+00:00",
+ "recipe": {
+  "toolchain_commit": "5ec87ba3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N8028_pos/2026-10-22-lm1909-561d7609.tests.json"
+ },
+ "label": "pieces of CJK or Tibetan institutional/proper-name compounds (皇|室, 神戸|市|立, Olmo Lun|gring)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N8028_pos/2026-10-22-lm1909-561d7609.tests.json",
+   "prereg_commit": "5ec87ba3",
+   "author": "lm1909",
+   "n_fire": 5,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.652,
+     "peak": "室"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.185,
+     "peak": "市"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.314,
+     "peak": " Lun"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.207,
+     "peak": "行事"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.312,
+     "peak": "市"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.286,
+     "peak": " Lun"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.395,
+     "peak": "都市"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.706,
+     "peak": "室"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.095,
+     "peak": " Household"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.128,
+     "peak": "特別"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.039,
+     "peak": " land"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.302,
+     "peak": "行事"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.133,
+     "peak": "読み"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.003,
+     "peak": " valley"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.127,
+     "peak": "新しい"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.13,
+     "peak": " family"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.953,
+    "median_fire": 0.313,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "5ec87ba3",
+  "minutes": 6,
+  "batch_size": 16
+ },
+ "short": "CJK/Tibetan name pieces",
+ "unit_kind": "sparse feature",
+ "confidence": 0.3,
+ "notes": "Card top: 室 in 皇室, ' Su' (Su Wen), パン in a Japanese hall name, ' Lun' (Olmo Lungring), ' Rig' (Rig Veda), 市 in 神戸市立. Probe: 皇室 0.93, 神戸市立 0.61, Olmo Lungring 0.60; Rig Veda 0.05, Tao Te Ching 0.15, Huang Di Nei Jing 0.19, puppet 0.16. So not 'Asian religious titles' in general; label narrowed to the compounds that fired. Near misses keep the Japanese/English sentence and drop the compound (天皇 kept in one quiet item as a hard near miss).",
+ "selection": "random draw"
+}

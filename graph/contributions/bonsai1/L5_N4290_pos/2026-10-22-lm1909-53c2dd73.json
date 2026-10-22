@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-53c2dd73",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N4290+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:45:39+00:00",
+ "recipe": {
+  "toolchain_commit": "5ec87ba3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N4290_pos/2026-10-22-lm1909-53c2dd73.tests.json"
+ },
+ "label": "the name pieces 'beth' and 'cket' (Mac|beth, Liz|beth, Be|cket)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N4290_pos/2026-10-22-lm1909-53c2dd73.tests.json",
+   "prereg_commit": "5ec87ba3",
+   "author": "lm1909",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.72,
+     "peak": "beth"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.743,
+     "peak": "cket"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.89,
+     "peak": "beth"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.704,
+     "peak": "cket"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.849,
+     "peak": "beth"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.279,
+     "peak": "beth"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.895,
+     "peak": "beth"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.66,
+     "peak": "cket"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.012,
+     "peak": " drama"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.018,
+     "peak": "bishop"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.004,
+     "peak": " sleep"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.005,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.084,
+     "peak": "let"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.009,
+     "peak": "ina"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.006,
+     "peak": "di"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.013,
+     "peak": "bishop"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.732,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "5ec87ba3",
+  "minutes": 6,
+  "batch_size": 16
+ },
+ "short": "'beth' / 'cket' name pieces",
+ "unit_kind": "lexical",
+ "confidence": 0.55,
+ "notes": "Card + pole peaks 'ville' x7, 'beth' x5, 'cket' x2. Probe: Mac|beth 0.78, Be|cket 0.70, Lis|beth 0.29; Ham|let 0.06, Fayette|ville 0.10, Collins|ville 0.01 -> not 'second piece of a split name' in general and not -ville in my contexts; label narrowed to beth/cket. Near misses use Othello (O|th|ello) and Hamlet (Ham|let) as other split names.",
+ "selection": "random draw"
+}
