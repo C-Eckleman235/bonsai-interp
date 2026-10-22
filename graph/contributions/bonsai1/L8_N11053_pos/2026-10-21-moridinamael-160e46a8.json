@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-21-moridinamael-160e46a8",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N11053+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T04:10:19+00:00",
+ "recipe": {
+  "toolchain_commit": "3153dcdb",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L8_N11053_pos/2026-10-21-moridinamael-160e46a8.tests.json"
+ },
+ "label": "In code, the Unix exec calls that replace a process with another program, in their argument-vector forms: execv, execvp, execve (in C, or Python's os.execv/os.execvp) and Go's exec.Command; it peaks on the call name. Weaker side triggers: 'import shlex' and the '#!/usr/bin/env' line. Quiet: the list forms execl/execlp, other ways to launch a program (subprocess.Popen, Node spawn, os.system, fork on its own), Python's exec() builtin, SQL cursor.execute, and 'exec' meaning an executive.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L8_N11053_pos/2026-10-21-moridinamael-160e46a8.tests.json",
+   "prereg_commit": "3153dcdb",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.306,
+     "peak": "vp"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 1.49,
+     "peak": "v"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.894,
+     "peak": "ve"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.414,
+     "peak": ".exec"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.959,
+     "peak": "v"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.879,
+     "peak": " exec"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.556,
+     "peak": " exec"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.88,
+     "peak": "ve"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.006,
+     "peak": " preparing"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.007,
+     "peak": "Humans"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 1.099,
+     "peak": "cl"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.204,
+     "peak": " \"-"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.414,
+     "peak": "([\""
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.095,
+     "peak": "ls"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.157,
+     "peak": " ['"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.278,
+     "peak": " wait"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.898,
+    "median_fire": 0.887,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "3153dcdb",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L9/N3479-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L8/N11053+", "to": "bonsai1/L9/N3479-", "kind": "feeds", "weight": null, "method": "attribution rank 1 of 12 MLP feeders on the target's top 4 examples (resident feeders tool; play step ablation hit CUDA OOM)"}
+ ]
+}
