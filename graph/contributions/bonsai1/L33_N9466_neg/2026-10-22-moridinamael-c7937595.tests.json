@@ -1,0 +1,45 @@
+{
+ "contribution": "2026-10-22-moridinamael-c7937595",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N9466-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T14:48:11+00:00",
+ "roles": ["reads bonsai1/L32/N8576-"],
+ "neighbours": [
+  {
+   "unit": "L33/N9466",
+   "pole": "-",
+   "label": "the size number in a Django max_length= or SQL VARCHAR(n) column definition, lighting on its first digit (sizes starting 1-4, like 20, 120, 255); the same number in prose, or in other code slots like range() or array sizes, stays quiet",
+   "short": "size number in max_length= / VARCHAR(n)",
+   "unit_kind": "context",
+   "confidence": "medium",
+   "notes": "Test written blind by a second author from the label only. Label covers one slice: the solver and corpus tops show non-code leaks (Arabic tan'adim 0.61, 'IEEE 14-bus' 0.77, Clontarf 1014). Feeders-first: strongest feeders L30/N701- (compete/race) and L17/N11819- (first digit of a year).",
+   "fire": [
+    "name = models.CharField(max_length=255)",
+    "title = models.CharField(max_length=120, blank=True)",
+    "CREATE TABLE users (id INT PRIMARY KEY, email VARCHAR(255) NOT NULL);",
+    "slug = models.SlugField(max_length=40, unique=True)",
+    "ALTER TABLE products ADD COLUMN sku VARCHAR(32);",
+    "code = models.CharField(max_length=10, db_index=True)",
+    "CREATE TABLE cities (name VARCHAR(100), country VARCHAR(2));",
+    "phone = models.CharField(max_length=20, null=True)"
+   ],
+   "quiet": [
+    "4 - الضياع الذي تعيشه بعض الأسر حيث تنعدم فيها أدنى مستويات التربية الإسلامية .",
+    "for k in range(220): total += k",
+    "The name field can hold up to 255 characters.",
+    "for i in range(120): print(i)",
+    "CREATE TABLE users (id INT PRIMARY KEY, email TEXT NOT NULL);",
+    "buffer = [0] * 40",
+    "We added 32 new products to the catalog this week.",
+    "code = models.CharField(db_index=True)"
+   ]
+  }
+ ],
+ "predictions": "6/8 fire; the Arabic solver leak is the one loud near miss",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["step-down", "card", "look", "probe", "neighbors", "inverse-de", "bank-solo", "blind-room", "quick-test"]
+ }
+}
