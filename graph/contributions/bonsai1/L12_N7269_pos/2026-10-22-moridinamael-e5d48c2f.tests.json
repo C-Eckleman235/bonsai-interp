@@ -1,0 +1,44 @@
+{
+ "contribution": "2026-10-22-moridinamael-e5d48c2f",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N7269+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T14:02:07+00:00",
+ "roles": ["feeds bonsai1/L20/N4388+"],
+ "neighbours": [
+  {
+   "unit": "L12/N7269",
+   "pole": "+",
+   "label": "Dense background unit: weakly on (about 0.2-0.5 of max) for almost any running text in any language, whether prose, citations or code, with no single word or meaning driving it; a little higher on year digits written right after Chinese characters (2009年) and on punctuation inside citations.",
+   "unit_kind": "dense / positional",
+   "confidence": "low",
+   "notes": "Gate-closed echo side of a pole whose - side is ~90x larger. Card flags it dense (33% of tokens reach 0.1 of max). Probes: number/no-number twins tied (citation 0.30 vs 0.31; 'back in 1962' 0.45 vs 'back when' 0.45); 'Yes.' 0.19. Feeder chosen from the resident feeders ranking because play step hit CUDA OOM; no ablation weight. Test written blind from the label only.",
+   "fire": [
+    "他于2009年毕业于北京大学。",
+    "公司成立于1998年，总部设在上海。",
+    "这部电影在2015年上映后获得了很多好评。",
+    "我们是2021年夏天第一次见面的。",
+    "该法律自2003年起正式施行。",
+    "東京オリンピックは2021年に開催された。",
+    "据统计，2019年全国旅游人数大幅增长。",
+    "Smith, J. (2004). Soil chemistry in arid regions. Journal of Ecology, 12(3), 45–67."
+   ],
+   "quiet": [
+    "他去年毕业于北京大学。",
+    "公司成立很久了，总部设在上海。",
+    "这部电影上映后获得了很多好评。",
+    "我们是在一个夏天第一次见面的。",
+    "该法律从那时起正式施行。",
+    "東京オリンピックは延期の後に開催された。",
+    "据统计，全国旅游人数大幅增长。",
+    "John Smith wrote a book about soil chemistry in arid regions."
+   ]
+  }
+ ],
+ "predictions": "Likely fail: a dense unit gives near misses 0.2-0.5 too, so ranking and the 0.30 near-miss cap are at risk.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["card", "look", "probe", "inverse-de", "bank-solo", "step-out"]
+ }
+}
