@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-c12c5bd8",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N10544-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T07:20:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L9/N10544",
+   "pole": "-",
+   "label": "URL-routing names in Python web-framework code (url, url_for, slug, URLconf, request.url); quiet on Python code without URL handling.",
+   "fire": [
+    "from flask import Blueprint, url_for, redirect\n\nbp = Blueprint('auth', __name__)\n\n@bp.route('/logout')\ndef logout():\n    return redirect(url_for('auth.login'))",
+    "from django.conf.urls import url, include\n\nurlpatterns = [\n    url(r'^blog/', include('blog.urls')),\n]",
+    "class ArticleForm(forms.Form):\n    title = forms.CharField()\n    slug = forms.SlugField(help_text='Used in the URL')",
+    "def get_absolute_url(self):\n    return reverse('post_detail', kwargs={'slug': self.slug})",
+    "        link = self.request.host_url + self.uri_for('home')\n        self.redirect(link)",
+    "    callback = flask.url_for('oauth_callback', _external=True)\n    return provider.authorize(callback=callback)",
+    "ROOT_URLCONF = 'mysite.urls'\nSTATIC_URL = '/static/'\nMEDIA_URL = '/media/'",
+    "    def get_success_url(self):\n        return reverse_lazy('article_list')"
+   ],
+   "quiet": [
+    "import math\n\ndef hypotenuse(a, b):\n    return math.sqrt(a * a + b * b)\n\nprint(hypotenuse(3, 4))",
+    "from itertools import chain\n\nitems = list(chain(first, second))\nitems.sort()",
+    "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y",
+    "def mean(values):\n    return sum(values) / len(values)",
+    "        total = self.price * self.quantity\n        self.save_total(total)",
+    "    result = numpy.dot(matrix, vector)\n    return result.tolist()",
+    "MAX_RETRIES = 3\nTIMEOUT_SECONDS = 30\nBATCH_SIZE = 64",
+    "    def get_total_cost(self):\n        return self.price * self.count"
+   ]
+  }
+ ],
+ "predictions": "median fire ~0.4 (probes: url_for 0.51, request.url_for 0.49, Django url 0.41, SlugField 0.42); near misses < 0.1 (plain Python 0.03-0.05, prose URL 0.03, garden slug 0.01); risk: framework code without URL names may still fire.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "URL names in web code",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: ' url' x6, '_for' x4, '_URL' x3, ' slug' x2 in Flask/Django code. Max is small (6.4). Fire items are multi-line code passages."
+}

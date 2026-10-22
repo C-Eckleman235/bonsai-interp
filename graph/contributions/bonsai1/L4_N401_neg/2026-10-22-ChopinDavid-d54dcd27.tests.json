@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-d54dcd27",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N401-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T07:20:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N401",
+   "pole": "-",
+   "label": "The word piece 'asc' / 'ASC' / 'Asc' where the tokenizer splits it off (asc+ites, asc+ot, asc+etic, ASC+O, Asc+ension); quiet on asc- words that are single tokens (ascent, ascend, ascending, ascertain, ASCII) and on -asc- inside other words.",
+   "fire": [
+    "Under the microscope the fungus showed a single ascus full of spores.",
+    "The new drug data were presented at the ASCO meeting in Chicago.",
+    "Her family goes to Royal Ascot every June to watch the races.",
+    "In the desert, early Christian ascetics lived alone in caves.",
+    "The doctors drained two liters of fluid caused by ascites.",
+    "The shop sold silk ascots, bow ties, and pocket squares.",
+    "Each tunicate, or ascidian, filters seawater through its body.",
+    "The church holds a special service on Ascension Day each spring."
+   ],
+   "quiet": [
+    "Under the microscope the fungus showed a single cell full of spores.",
+    "The new drug data were presented at the cancer meeting in Chicago.",
+    "Her family watched the balloon ascend over the hills every June.",
+    "In the desert, early hikers made a slow ascent to the caves.",
+    "The doctors tried to ascertain what caused the fluid buildup.",
+    "The shop sold silk ties, bow ties, and pocket squares.",
+    "Each record was sorted in ascending order by date.",
+    "The church printed its schedule in plain ASCII text each spring."
+   ]
+  }
+ ],
+ "predictions": "median fire ~0.75 (probes: ASCAP 1.06, ascot 0.90, ascites 0.79, ascidians 0.74, ascetic 0.61); near misses < 0.1 (ascent 0.01, ascending 0.09, ASCII 0.002).",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'asc' word piece",
+ "unit_kind": "lexical",
+ "confidence": 0.7,
+ "notes": "Layer-4 spelling unit: card peaks ' asc' x10, ' ASC' x6, 'asc' x5, ' Asc' x5. Splits checked with tok.py; every fire word splits off asc/ASC/Asc."
+}

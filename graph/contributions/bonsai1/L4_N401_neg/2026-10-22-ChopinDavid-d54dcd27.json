@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-d54dcd27",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N401-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T07:27:57+00:00",
+ "recipe": {
+  "toolchain_commit": "9a38c978",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N401_neg/2026-10-22-ChopinDavid-d54dcd27.tests.json"
+ },
+ "label": "The word piece 'asc' / 'ASC' / 'Asc' where the tokenizer splits it off (asc+ites, asc+ot, asc+etic, ASC+O, Asc+ension); quiet on asc- words that are single tokens (ascent, ascend, ascending, ascertain, ASCII) and on -asc- inside other words.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N401_neg/2026-10-22-ChopinDavid-d54dcd27.tests.json",
+   "prereg_commit": "9a38c978",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.857,
+     "peak": "us"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.973,
+     "peak": " ASC"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.645,
+     "peak": " Asc"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.464,
+     "peak": " asc"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.719,
+     "peak": " asc"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.718,
+     "peak": " asc"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.734,
+     "peak": " asc"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.773,
+     "peak": " Asc"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.002,
+     "peak": " sp"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.004,
+     "peak": " Chicago"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.01,
+     "peak": " ascend"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.001,
+     "peak": " slow"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.001,
+     "peak": " caused"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.003,
+     "peak": " ties"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.086,
+     "peak": " ascending"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.015,
+     "peak": " ASCII"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.726,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "9a38c978",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "'asc' word piece",
+ "unit_kind": "lexical",
+ "confidence": 0.7,
+ "notes": "Layer-4 spelling unit: card peaks ' asc' x10, ' ASC' x6, 'asc' x5, ' Asc' x5. Splits checked with tok.py; every fire word splits off asc/ASC/Asc.",
+ "selection": "random draw"
+}
