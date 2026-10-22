@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-aff0d878",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N6132-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T16:59:37+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L2/N6132",
+   "pole": "-",
+   "label": "dense / gate-closed leak pole (max 0.23); best guess: plural nouns like ' opinions', ' millions', ' kids' and Cyrillic word pieces",
+   "fire": [
+    "The newspaper printed readers' opinions about the new tram line.",
+    "The lottery jackpot rose to several millions after nobody won in March.",
+    "The library runs a reading club for kids every Saturday afternoon.",
+    "Experts gave conflicting opinions on whether the bridge was safe.",
+    "Студенты обсуждали свои мнения о прочитанной литературе.",
+    "Streaming platforms now reach millions of households across Europe.",
+    "The dentist hands out stickers to kids who sit still during checkups.",
+    "Our forum lets members share opinions on gardening tools."
+   ],
+   "quiet": [
+    "The newspaper printed readers' letters about the new tram line.",
+    "The lottery jackpot rose to a record sum after nobody won in March.",
+    "The library runs a reading club for adults every Saturday afternoon.",
+    "Experts gave conflicting advice on whether the bridge was safe.",
+    "Студенты обсуждали новый фильм после занятий в пятницу.",
+    "Streaming platforms now reach most households across Europe.",
+    "The dentist hands out stickers to patients who sit still during checkups.",
+    "Our forum lets members share photos of gardening tools."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense: opinions/millions",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Card: FLAG broad (4.3% of tokens >0.1 max), gate-closed leak regime 100%, max only 0.23. Probe: Russian 'мнения' 0.68, opinions 0.53, millions 0.55, kids 0.49, but neutral English filler still 0.13 and Spanish 0.13. Recorded as dense; the test is a best guess and is expected to fail."
+}

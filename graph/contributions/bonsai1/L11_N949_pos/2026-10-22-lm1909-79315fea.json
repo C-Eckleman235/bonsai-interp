@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-79315fea",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N949+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:24:44+00:00",
+ "recipe": {
+  "toolchain_commit": "43b215b9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L11_N949_pos/2026-10-22-lm1909-79315fea.tests.json"
+ },
+ "label": "Washington State / Puget Sound place names (Puget, Tacoma, Yakima, Seattle), not George Washington or Washington DC",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L11_N949_pos/2026-10-22-lm1909-79315fea.tests.json",
+   "prereg_commit": "43b215b9",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.889,
+     "peak": "get"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.444,
+     "peak": " Tacoma"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.529,
+     "peak": "ima"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.815,
+     "peak": "get"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.389,
+     "peak": " Tacoma"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.505,
+     "peak": "ima"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.397,
+     "peak": " Olympia"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.827,
+     "peak": "get"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.317,
+     "peak": "mon"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.097,
+     "peak": " Pacific"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.102,
+     "peak": " coast"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.018,
+     "peak": " ferry"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.022,
+     "peak": " rail"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.006,
+     "peak": " Washington"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.017,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.083,
+     "peak": " Washington"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.517,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "43b215b9",
+  "minutes": 4,
+  "batch_size": 16
+ },
+ "short": "Washington State places",
+ "unit_kind": "sparse feature",
+ "confidence": 0.7,
+ "notes": "Probe: Puget Sound 0.98, Tacoma/Olympia 0.59, Yakima 0.57, Spokane 0.24, Washington DC 0.15, George Washington 0.03, SF Bay 0.14, Hudson Valley 0.03, Oregon 0.06. The - pole is the Canadian north / Indigenous Canada.",
+ "selection": "random draw"
+}

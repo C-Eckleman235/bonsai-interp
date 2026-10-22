@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-d759d502",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N8138-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:25:13+00:00",
+ "recipe": {
+  "toolchain_commit": "43b215b9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N8138_neg/2026-10-22-lm1909-d759d502.tests.json"
+ },
+ "label": "the token URL / url (a web address named as such), not 'address', 'link' or 'website'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N8138_neg/2026-10-22-lm1909-d759d502.tests.json",
+   "prereg_commit": "43b215b9",
+   "author": "lm1909",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.896,
+     "peak": " URL"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.496,
+     "peak": " URL"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.268,
+     "peak": " URL"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.274,
+     "peak": " url"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.224,
+     "peak": " URL"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.179,
+     "peak": " url"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.338,
+     "peak": " URL"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.306,
+     "peak": " URL"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.027,
+     "peak": " Retrieved"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.0,
+     "peak": " sharing"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.001,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.001,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.005,
+     "peak": " short"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.002,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.003,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.002,
+     "peak": " every"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.29,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "43b215b9",
+  "minutes": 5,
+  "batch_size": 16
+ },
+ "short": "the word URL",
+ "unit_kind": "lexical",
+ "confidence": 0.75,
+ "notes": "Probe: '[online] URL:' 0.93, 'copy the URL' 0.42, 'paste the url' 0.23, 'website' 0.09, 'address' 0.02, 'Available at:' 0.11. Near misses drop URL and avoid website/link/address words.",
+ "selection": "random draw"
+}

@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-abe29dac",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N3200-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:24:57+00:00",
+ "recipe": {
+  "toolchain_commit": "43b215b9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L22_N3200_neg/2026-10-22-lm1909-abe29dac.tests.json"
+ },
+ "label": "speech verb attributing a quotation to a cited authority, especially scripture ('as the apostle Paul writes', 'as the Psalmist sings')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N3200_neg/2026-10-22-lm1909-abe29dac.tests.json",
+   "prereg_commit": "43b215b9",
+   "author": "lm1909",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.481,
+     "peak": " writes"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.356,
+     "peak": " readers"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.427,
+     "peak": " explains"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.477,
+     "peak": " declares"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.37,
+     "peak": " tells"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.242,
+     "peak": " teaches"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.341,
+     "peak": " his"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.212,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.035,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.044,
+     "peak": " line"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.105,
+     "peak": " his"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.038,
+     "peak": "erals"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.025,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.043,
+     "peak": " with"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.014,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.036,
+     "peak": " and"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.363,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "43b215b9",
+  "minutes": 5,
+  "batch_size": 16
+ },
+ "short": "as X writes (citation)",
+ "unit_kind": "contextual",
+ "confidence": 0.5,
+ "notes": "Probe: 'as the apostle Paul writes' 0.57, 'As the Psalmist sings' 0.53, 'the Psalmist reminds us' 0.35, 'as Gibbon notes' 0.21, 'As Darwin argued' 0.09; everyday 'the sign says' 0.02, 'my neighbour says' 0.03; Paul without a speech verb 0.02. Scriptural citation seems strongest.",
+ "selection": "random draw"
+}
