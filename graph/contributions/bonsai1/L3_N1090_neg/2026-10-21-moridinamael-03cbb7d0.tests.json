@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-21-moridinamael-03cbb7d0",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N1090-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T03:11:32+00:00",
+ "neighbours": [
+  {
+   "unit": "L3/N1090",
+   "pole": "-",
+   "label": "The name ' Catherine' as its own token, in any sentence frame; weaker on look-alike names such as Cathy, Kathryn, Kathleen, Caroline and Caterina; quiet-to-moderate on other first names (Margaret, Susan, Peter). Sits on a dense background that is on for much ordinary text.",
+   "short": "the name 'Catherine' (dense background)",
+   "unit_kind": "dense / positional",
+   "confidence": "low",
+   "roles": ["feeds bonsai1/L25/N3060-"],
+   "notes": "Dense pole (24% of tokens reach 0.1 of max). Probes: ' Catherine' 0.43-0.54 across 5 frames; Margaret/Christopher ~0.15; lookalikes 0.30-0.39; but ordinary tokens (' Sundays', ' Denmark') reach 0.34-0.35 and the solver found 'signed by Susan' at 0.50 solo and a code line at 0.39. Feeder chosen from the resident feeders ranking (play step hit CUDA OOM), so no ablation weight. Test sentences written blind by a label-only author.",
+   "fire": [
+    "Yesterday Catherine finally finished painting the garden fence.",
+    "The letter was signed simply, \"With love, Catherine.\"",
+    "Historians still argue about the reforms of Catherine the Great.",
+    "My aunt Catherine bakes the best lemon cake in the village.",
+    "When the bell rang, Catherine gathered her books and left the classroom.",
+    "Have you met Catherine, the new librarian on the second floor?",
+    "The ship was christened the Catherine before its first voyage.",
+    "In the novel, Catherine falls in love with a stormy neighbor on the moors."
+   ],
+   "quiet": [
+    "self.size_blocks += len(msg.payload)",
+    "Historians still argue about Peter the Great.",
+    "Yesterday the neighbors finally finished painting the garden fence.",
+    "The letter was signed simply, \"With love, from all of us.\"",
+    "Historians still argue about the reforms of the old empire.",
+    "My aunt bakes the best lemon cake in the village.",
+    "When the bell rang, the students gathered their books and left the classroom.",
+    "Have you met the new librarian on the second floor?"
+   ]
+  }
+ ],
+ "predictions": "Catherine items around 0.4-0.5; the dense floor (0.3+ on ordinary text) likely puts 2+ near misses over 0.30, so a fail is likely.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "step-out",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
