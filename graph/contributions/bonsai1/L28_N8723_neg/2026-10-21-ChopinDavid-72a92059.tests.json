@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-ChopinDavid-72a92059",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N8723-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T22:30:21+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N8723",
+   "pole": "-",
+   "label": "The token just before a word of leadership or direction is expected (under the ⟦the⟧ command/direction of, bajo ⟦la⟧ dirección, co-⟦cha⟧ired, ⟦prés⟧idé par, he ⟦hel⟧med), i.e. a predictor of who leads or directs, across languages; 'under the' with a physical object stays low.",
+   "fire": [
+    "The choir sang the requiem under the direction of its new music director.",
+    "The battalion crossed the river under the command of a young major.",
+    "El coro cantó bajo la dirección de su nuevo director musical.",
+    "La comisión, presidida por la ministra, presentó su informe en marzo.",
+    "Le comité, présidé par un ancien juge, rendra ses conclusions en juin.",
+    "The inquiry will be co-chaired by a retired judge and a professor of law.",
+    "For ten seasons she helmed the club through two promotions.",
+    "The excavation was carried out under the supervision of the national museum."
+   ],
+   "quiet": [
+    "The choir sang the requiem under the old stone arches of the cathedral.",
+    "The battalion crossed the river under heavy rain in the early morning.",
+    "El coro cantó bajo la lluvia en la plaza del pueblo.",
+    "La comisión, reunida en Madrid, presentó su informe en marzo.",
+    "Le comité, réuni à Lyon, rendra ses conclusions en juin.",
+    "The inquiry will be held in the town hall and open to the public.",
+    "For ten seasons she played for the club in two different positions.",
+    "The excavation was carried out under a plastic roof to keep the rain off."
+   ]
+  }
+ ],
+ "predictions": "6-8/8 fire >= 0.30 (probes: bajo la dirección 0.75, under the direction 0.57, co-chaired 0.56, présidé 0.41, under the command 0.37, helmed 0.24); near misses 'under the bridge' 0.21 (the main risk), other 'under' frames ~0.08.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "anticipates leadership word",
+ "unit_kind": "contextual",
+ "confidence": 0.55,
+ "notes": "Probes (fraction of max 266): 'bajo la dirección' 0.749 (' la'), 'under the direction of' 0.571 (' the'), 'co-chaired' 0.560 ('cha'), 'présidé par' 0.412, 'under the command of' 0.371, 'helmed' 0.241. Quiet: 'under the bridge' 0.210 (a leak risk), 'under a different title' 0.083, plain prose 0.003. The + pole's logit effect suppresses leadership, helm, lead, led, pres, directing, direction, so the - pole promotes them: a next-word predictor."
+}

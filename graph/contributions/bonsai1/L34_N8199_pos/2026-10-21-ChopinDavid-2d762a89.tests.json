@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-ChopinDavid-2d762a89",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N8199+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T22:30:21+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N8199",
+   "pole": "+",
+   "label": "A single-letter piece ('-l', ' s', ' L') that starts a word the tokenizer split letter-first (pro-|l|ifers, s|pro|cket, L|eland, L|aver|ne), not whole-token words starting with the same letter.",
+   "fire": [
+    "The rally drew hundreds of pro-lifers from across the state.",
+    "The campaign mixed anti-labor slogans with promises of lower taxes.",
+    "The bike shop sells chains and sprockets for older models.",
+    "Her grandmother, Laverne, taught piano in the village for forty years.",
+    "The documentary was narrated by the actor Leland Ortiz.",
+    "Several pro-lifer groups held a vigil outside the courthouse.",
+    "A worn sprocket can make the chain skip under load.",
+    "We stayed with Laverne and her husband on our way to the coast."
+   ],
+   "quiet": [
+    "The rally drew hundreds of supporters from across the state.",
+    "The campaign mixed populist slogans with promises of lower taxes.",
+    "The bike shop sells chains and wheels for older models.",
+    "Her grandmother, Laura, taught piano in the village for forty years.",
+    "The documentary was narrated by the actor Lorenzo Ortiz.",
+    "Several church groups held a vigil outside the courthouse.",
+    "A worn chain can make the gears skip under load.",
+    "We stayed with Lowell and his wife on our way to the coast."
+   ]
+  }
+ ],
+ "predictions": "6-8/8 fire >= 0.30 (probes: -l|ifers 1.03, s|procket 0.81, L|eland 0.60; L|emony 0.18 and L|.A. 0.23 weaker); whole-token words (Laura, Lisbon, metal) 0.01-0.08.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "letter-first split piece",
+ "unit_kind": "lexical",
+ "confidence": 0.6,
+ "notes": "Probes (fraction of max 180): 'pro-lifers' 1.026 ('-l'), 'sprocket' 0.807 (' s'), 'Leland' 0.598 (' L'), 'L.A.' 0.226, 'Lemony' 0.183. Quiet: whole-token ' Laura' 0.082, ' Lisbon' 0.010, ' metal' 0.081, plain 0.010. Every fire item was tokenizer-checked to split letter-first."
+}

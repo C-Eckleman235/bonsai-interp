@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-21-ChopinDavid-72a92059",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N8723-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-21T22:38:26+00:00",
+ "recipe": {
+  "toolchain_commit": "94ba7fc",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L28_N8723_neg/2026-10-21-ChopinDavid-72a92059.tests.json"
+ },
+ "label": "The token just before a word of leadership or direction is expected (under the ⟦the⟧ command/direction of, bajo ⟦la⟧ dirección, co-⟦cha⟧ired, ⟦prés⟧idé par, he ⟦hel⟧med), i.e. a predictor of who leads or directs, across languages; 'under the' with a physical object stays low.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L28_N8723_neg/2026-10-21-ChopinDavid-72a92059.tests.json",
+   "prereg_commit": "94ba7fc",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.506,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.21,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.264,
+     "peak": " la"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.528,
+     "peak": " pres"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.402,
+     "peak": " prés"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.685,
+     "peak": "cha"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.445,
+     "peak": " hel"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.273,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.505,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.036,
+     "peak": " under"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.264,
+     "peak": " la"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.081,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.066,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.124,
+     "peak": " be"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.066,
+     "peak": " she"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.167,
+     "peak": " was"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.898,
+    "median_fire": 0.423,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "94ba7fc",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "anticipates leadership word",
+ "unit_kind": "contextual",
+ "confidence": 0.55,
+ "notes": "Probes (fraction of max 266): 'bajo la dirección' 0.749 (' la'), 'under the direction of' 0.571 (' the'), 'co-chaired' 0.560 ('cha'), 'présidé par' 0.412, 'under the command of' 0.371, 'helmed' 0.241. Quiet: 'under the bridge' 0.210 (a leak risk), 'under a different title' 0.083, plain prose 0.003. The + pole's logit effect suppresses leadership, helm, lead, led, pres, directing, direction, so the - pole promotes them: a next-word predictor.",
+ "selection": "random draw"
+}
