@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-22-moridinamael-67341d75",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N5995-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T21:05:59+00:00",
+ "neighbours": [
+  {
+   "unit": "L27/N5995",
+   "pole": "-",
+   "label": "A space directly followed by a character the tokenizer splits into raw byte pieces: uncommon emoji and symbols (chess pieces, snowman, APL), rare Chinese characters, many Korean syllables and katakana; also the long mark ー before a split katakana, and accented letters inside pointed Hebrew or polytonic Greek. Quiet when the same symbol is glued to a Latin word or punctuation, at text start, and for common characters kept as whole tokens (€, →, everyday Chinese, Cyrillic, Arabic, accented Latin).",
+   "short": "space before a byte-split rare character",
+   "roles": ["feeds bonsai1/L32/N4095+"],
+   "confidence": "medium",
+   "notes": "Step-out feeder of L32/N4095+ (play step hit CUDA OOM on stream, so the feeder was chosen as the top of the resident attribution ranking; no ablation drop measured, so no edge is recorded). Card: peak tokens are space+lead-byte pieces and 'ー'+lead byte; output suppresses continuation byte tokens on the + side (the - pole promotes them). Probes: spaced ♛ ☃ 🦎 纩 0.5-0.6, glued or quoted twins 0; common Chinese, Cyrillic, Arabic, € and café 0; pointed Hebrew and polytonic Greek fire mid-word ~0.5. Solver leak (an Arabic corpus line with shadda, 0.80) did not replicate in a fresh shadda sentence (0). Test sentences written blind by a second author from the label only.",
+   "fire": [
+    "White opened with the pawn and then moved the knight ♞ to f3.",
+    "The forecast showed a little snowman ☃ next to Friday.",
+    "In APL you can sort a vector with the grade symbol ⍋ applied to it.",
+    "The old scroll used the rare character 龘 in its title.",
+    "She wrote her name in Korean as 뷁 for fun.",
+    "The menu listed a dish called ヴィ on the side.",
+    "The katakana word ends with the long mark ー after ヴ in the brand name.",
+    "He read the verse aloud: בְּרֵאשִׁית בָּרָא אֱלֹהִים."
+   ],
+   "quiet": [
+    "We met at the café yesterday.",
+    "我们今天去公园玩。",
+    "White opened with the pawn and then moved the knight to f3.",
+    "The forecast showed snow☃ next to Friday.",
+    "In APL you can sort a vector with the grade function applied to it.",
+    "The old scroll used a rare character in its title.",
+    "She wrote her name in Korean letters for fun.",
+    "The menu listed a small dish on the side."
+   ]
+  }
+ ],
+ "predictions": "Most fire items 0.4-0.6; the two katakana items are the weakest (may be whole tokens); near misses near 0.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "inverse-de",
+   "bank-solo",
+   "blind-room"
+  ]
+ }
+}
