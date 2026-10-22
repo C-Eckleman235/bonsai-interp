@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-2432c81a",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N6046+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:36:26+00:00",
+ "recipe": {
+  "toolchain_commit": "d71b11c1",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L7_N6046_pos/2026-10-22-lm1909-2432c81a.tests.json"
+ },
+ "label": "3D / laser scanning and point-cloud capture (laser scanner, 3D scans, point cloud, LiDAR), not other senses of 'scan'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L7_N6046_pos/2026-10-22-lm1909-2432c81a.tests.json",
+   "prereg_commit": "d71b11c1",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.793,
+     "peak": " scanner"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.967,
+     "peak": " cloud"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.832,
+     "peak": " scanner"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.314,
+     "peak": " scans"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 1.048,
+     "peak": "Cloud"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.79,
+     "peak": " scan"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 1.188,
+     "peak": " cloud"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 1.03,
+     "peak": " scanning"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.012,
+     "peak": " clean"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.031,
+     "peak": " camera"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.053,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.043,
+     "peak": " level"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.083,
+     "peak": ".header"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.213,
+     "peak": " scanned"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.105,
+     "peak": " scan"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.005,
+     "peak": " guided"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.899,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "d71b11c1",
+  "minutes": 14,
+  "batch_size": 16
+ },
+ "short": "3D laser scanning",
+ "unit_kind": "sparse feature",
+ "confidence": 0.75,
+ "notes": "Card: ' scanned/scan/scanner', PointCloud2, 'point cloud', LiDAR. Probe: laser scanner 0.82, point cloud 1.31, PointCloud2 0.98, 3D scans 0.84; other senses of scan are weaker (newspaper 0.17, airport scanner 0.22, barcode 0.13); same survey topic with a tape measure 0.04.",
+ "selection": "random draw"
+}

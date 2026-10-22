@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-a5ae4d94",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N12236-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:36:22+00:00",
+ "recipe": {
+  "toolchain_commit": "d71b11c1",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N12236_neg/2026-10-22-lm1909-a5ae4d94.tests.json"
+ },
+ "label": "the Arabic tanwin kasra diacritic (U+064D), the indefinite genitive mark, especially on defective nouns (قاضٍ، وادٍ، أراضٍ)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N12236_neg/2026-10-22-lm1909-a5ae4d94.tests.json",
+   "prereg_commit": "d71b11c1",
+   "author": "lm1909",
+   "n_fire": 6,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.4,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.451,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.482,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.854,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.193,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.248,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.399,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.409,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.218,
+     "peak": "اض"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.013,
+     "peak": "نزل"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.019,
+     "peak": "م"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.304,
+     "peak": "راض"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.002,
+     "peak": "ويل"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.073,
+     "peak": "وا"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.038,
+     "peak": " الرياض"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.091,
+     "peak": "ان"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.953,
+    "median_fire": 0.404,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "d71b11c1",
+  "minutes": 14,
+  "batch_size": 16
+ },
+ "short": "Arabic tanwin kasra",
+ "unit_kind": "lexical",
+ "confidence": 0.6,
+ "notes": "Card: top examples peak on the byte pieces of U+064D in أراضٍ, عالٍ, راوٍ, معانٍ. Probe: sentences with ٍ 0.17-0.35 (defective nouns راوٍ 0.35, عالٍ 0.31 highest); the same sentences without diacritics 0.004-0.01; other diacritics (fatha/kasra/damma) 0.11; English about Arabic 0.02.",
+ "selection": "random draw"
+}

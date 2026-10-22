@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-e6689da7",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N10584+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:36:13+00:00",
+ "recipe": {
+  "toolchain_commit": "d71b11c1",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L24_N10584_pos/2026-10-22-lm1909-e6689da7.tests.json"
+ },
+ "label": "' in' right after a change noun used without an adjective ('the change in', 'a decrease in', 'the drop in')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L24_N10584_pos/2026-10-22-lm1909-e6689da7.tests.json",
+   "prereg_commit": "d71b11c1",
+   "author": "lm1909",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.319,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.096,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.116,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.392,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.079,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.209,
+     "peak": " rainfall"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.069,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.222,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.025,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.021,
+     "peak": " year"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.03,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.028,
+     "peak": "Each"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.018,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.04,
+     "peak": " graph"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.021,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.029,
+     "peak": "This"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.163,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "d71b11c1",
+  "minutes": 13,
+  "batch_size": 16
+ },
+ "short": "'in' after change noun",
+ "unit_kind": "contextual",
+ "confidence": 0.5,
+ "notes": "Card: ' in' x28 after 'increase/rise/change(s)' in scientific prose. Probe: 'the change in' 0.44, 'The drop in' 0.29, but 'a small rise in' 0.10 and 'a sharp increase in' only 0.07, so an adjective before the noun seems to weaken it; locative 'in' 0.02-0.03, 'increase of' 0.03.",
+ "selection": "random draw"
+}

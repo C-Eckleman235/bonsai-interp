@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-93eb4fcc",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N1112+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T16:59:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L27/N1112",
+   "pole": "+",
+   "label": "the opening pieces of an uncommon given name that the tokenizer splits (S|vet|lana, Diet|rich, Kon|stantin) when a person is introduced",
+   "fire": [
+    "The prize was handed over by the university rector, Professor Burkhard Lenz.",
+    "\"We expected far fewer visitors,\" said Ekaterina Volkova, the festival director.",
+    "The paper's first author, Dragomir Petrov, presented the results in Sofia.",
+    "Copyright (c) 2019, Ludmila Horakova",
+    "The minister thanked the engineer, Dr. Gunhild Sorensen, for her work.",
+    "According to the spokesman, Mamdouh Haddad, the talks will resume on Monday.",
+    "The ceremony was opened by the deputy mayor, Thorvald Lindqvist.",
+    "A reply came from the conductor, Bogumil Nowak, a week later."
+   ],
+   "quiet": [
+    "The prize was handed over by the university rector, Professor Peter Lenz.",
+    "\"We expected far fewer visitors,\" said Anna Volkova, the festival director.",
+    "The paper's first author, David Petrov, presented the results in Sofia.",
+    "Copyright (c) 2019, Michael Horak",
+    "The minister thanked the engineer, Dr. Sarah Jensen, for her work.",
+    "According to the spokesman, the talks will resume on Monday in Amman.",
+    "The ceremony was opened by the deputy mayor of Lidkoping.",
+    "A reply came from the orchestra in Bydgoszcz a week later."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split given-name pieces",
+ "unit_kind": "contextual",
+ "confidence": 0.55,
+ "notes": "Card: peaks on the first piece of split given names after a title or comma (' Wal'|ther, ' Di'|eter, ' Mam'|douh, ' Kon'|stantine, S|'vet'|lana). Probe: Dietrich 0.69, Svetlana 0.67, Konstantin 0.30; single-token names (Wolfgang 0.05, John 0.05, Mary 0.01) and split place names (Wolfsburg, Dietzenbach 0.002) silent. Near misses keep the surname and swap in a single-token given name."
+}

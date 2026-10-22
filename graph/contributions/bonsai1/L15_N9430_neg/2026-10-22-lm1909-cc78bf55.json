@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-cc78bf55",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N9430-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:36:06+00:00",
+ "recipe": {
+  "toolchain_commit": "d71b11c1",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L15_N9430_neg/2026-10-22-lm1909-cc78bf55.tests.json"
+ },
+ "label": "the token right before a digit (the bare space in 'Type 2' / 'Figure 5', '(' in 'exit(1)')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L15_N9430_neg/2026-10-22-lm1909-cc78bf55.tests.json",
+   "prereg_commit": "d71b11c1",
+   "author": "lm1909",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.036,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.267,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.113,
+     "peak": " ok"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.37,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.37,
+     "peak": "("
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.248,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.469,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.322,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.013,
+     "peak": " table"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.023,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.017,
+     "peak": " ok"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.018,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.016,
+     "peak": ")"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.013,
+     "peak": " begin"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.03,
+     "peak": " figure"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.009,
+     "peak": " contract"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.294,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "d71b11c1",
+  "minutes": 13,
+  "batch_size": 16
+ },
+ "short": "token before a digit",
+ "unit_kind": "contextual",
+ "confidence": 0.6,
+ "notes": "Card: ' ' x18 (the separate space before a digit, e.g. 'Type 2', 'الشكل 5'), '(' before a digit, '=' before a number, '-' in '0-9'. Probe: 'Type 2' 0.30, 'Figure 5' 0.34, 'exit(1)' 0.40, 'max_length=100' 0.15; the same text with a word instead of the digit 0.02-0.04.",
+ "selection": "random draw"
+}

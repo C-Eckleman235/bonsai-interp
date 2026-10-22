@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-cc78bf55",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N9430-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T16:59:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L15/N9430",
+   "pole": "-",
+   "label": "the token right before a digit (the bare space in 'Type 2' / 'Figure 5', '(' in 'exit(1)')",
+   "fire": [
+    "Details of the method are given in Table 3 of the appendix.",
+    "Patients with type 1 diabetes need insulin every day.",
+    "if not ok:\n    raise SystemExit(2)",
+    "The results are summarised in Chapter 4 of the report.",
+    "for i in range(8):\n    print(i)",
+    "Construction will begin in Phase 2 of the project.",
+    "As shown in Fig. 7, the curve flattens at high load.",
+    "The rules are set out in Section 9 of the contract."
+   ],
+   "quiet": [
+    "Details of the method are given in the table in the appendix.",
+    "Patients with this type of diabetes need insulin every day.",
+    "if not ok:\n    raise SystemExit(msg)",
+    "The results are summarised in the final chapter of the report.",
+    "for item in items:\n    print(item)",
+    "Construction will begin in the second phase of the project.",
+    "As shown in the figure, the curve flattens at high load.",
+    "The rules are set out in a separate section of the contract."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "token before a digit",
+ "unit_kind": "contextual",
+ "confidence": 0.6,
+ "notes": "Card: ' ' x18 (the separate space before a digit, e.g. 'Type 2', 'الشكل 5'), '(' before a digit, '=' before a number, '-' in '0-9'. Probe: 'Type 2' 0.30, 'Figure 5' 0.34, 'exit(1)' 0.40, 'max_length=100' 0.15; the same text with a word instead of the digit 0.02-0.04."
+}

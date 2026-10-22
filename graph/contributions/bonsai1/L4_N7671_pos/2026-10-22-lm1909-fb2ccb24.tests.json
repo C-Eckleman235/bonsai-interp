@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-fb2ccb24",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N7671+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T16:59:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N7671",
+   "pole": "+",
+   "label": "comparison operators ' <' / ' >' in code conditions (best guess for a broad, gate-closed unit)",
+   "fire": [
+    "def clamp(v, hi):\n    if v > hi:\n        return hi\n    return v",
+    "for i in range(n):\n    if a[i] < best:\n        best = a[i]",
+    "while lo < hi:\n    mid = (lo + hi) // 2",
+    "if len(items) > 0:\n    first = items[0]",
+    "assert total < budget, 'over budget'",
+    "if score > threshold:\n    accept(score)",
+    "        if elapsed < timeout:\n            continue",
+    "if version[0] < 3:\n    import urllib2"
+   ],
+   "quiet": [
+    "def clamp(v, hi):\n    v = min(v, hi)\n    return v",
+    "for i in range(n):\n    best = max(best, a[i])",
+    "while True:\n    mid = (lo + hi) // 2",
+    "first = items[0] if items else None",
+    "assert total, 'empty budget'",
+    "score = compute(score)\naccept(score)",
+    "        elapsed = time.time() - start\n        continue",
+    "version = sys.version_info\nimport urllib2"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "code comparison operators",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Card FLAGs: broad (8.0% of tokens reach 0.1 of max) and gate-closed echo regime 100%; top tokens ' <' in code. Probe was noisy: '>' 0.40, '<' 0.27, '==' 0.14, '&' in prose 0.26/0.06, but also 'below freezing' 0.18 and '<div>' 0.22. Recorded as dense / positional; expected to fail."
+}

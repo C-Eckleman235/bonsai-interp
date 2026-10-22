@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-5a9a3f16",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N6195+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:35:59+00:00",
+ "recipe": {
+  "toolchain_commit": "d71b11c1",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L11_N6195_pos/2026-10-22-lm1909-5a9a3f16.tests.json"
+ },
+ "label": "the closing piece of a well-known fixed name once its first part makes it predictable (Iran–|Iraq| War, The Taming of the Sh|rew|)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L11_N6195_pos/2026-10-22-lm1909-5a9a3f16.tests.json",
+   "prereg_commit": "d71b11c1",
+   "author": "lm1909",
+   "n_fire": 3,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.063,
+     "peak": "-H"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.648,
+     "peak": "Iraq"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.341,
+     "peak": "o"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.051,
+     "peak": "-L"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.788,
+     "peak": "rew"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.261,
+     "peak": "ki"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.044,
+     "peak": " played"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.207,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.026,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.024,
+     "peak": " still"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.021,
+     "peak": " company"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.021,
+     "peak": " French"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.436,
+     "peak": " twins"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.025,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.048,
+     "peak": " played"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.023,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.891,
+    "median_fire": 0.234,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "d71b11c1",
+  "minutes": 13,
+  "batch_size": 16
+ },
+ "short": "fixed-name completion",
+ "unit_kind": "contextual",
+ "confidence": 0.35,
+ "notes": "Card: no single token; 'Iraq' in Iran–Iraq War (x2), '0' in 2000 election, 'rew' in Taming of the Shrew, 'Linear' in Linear-Non-threshold. Probe: Iran–Iraq 0.63, Iran-Iraq 0.45, Shrew 0.57, 2000 election 0.25, linear no-threshold 0.08; generic rewordings 0.02-0.10.",
+ "selection": "random draw"
+}

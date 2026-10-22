@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-c6cabd56",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N5140-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:36:02+00:00",
+ "recipe": {
+  "toolchain_commit": "d71b11c1",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L13_N5140_neg/2026-10-22-lm1909-c6cabd56.tests.json"
+ },
+ "label": "tokens of formal legal and medical citation formats (case reporters like 'Cal. App.', journal abbreviations like 'Crit Care Med', case-caption initials)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L13_N5140_neg/2026-10-22-lm1909-c6cabd56.tests.json",
+   "prereg_commit": "d71b11c1",
+   "author": "lm1909",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.568,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.721,
+     "peak": " Med"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.693,
+     "peak": " re"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.389,
+     "peak": "p"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.162,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.259,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.558,
+     "peak": " Clin"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.81,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.029,
+     "peak": " case"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.032,
+     "peak": " patients"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.191,
+     "peak": " late"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.083,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.033,
+     "peak": " people"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.037,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.029,
+     "peak": " illnesses"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.181,
+     "peak": " had"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.563,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "d71b11c1",
+  "minutes": 13,
+  "batch_size": 16
+ },
+ "short": "legal/journal citations",
+ "unit_kind": "contextual",
+ "confidence": 0.65,
+ "notes": "Card: 'In re', 'Crit Care Med', 'Ga. App.', caption initial 'R.', MIT 'without restriction'. Probe: citation strings 0.55-0.72 (Ga. App. 0.65, Crit Care Med 0.72, court caption 0.57), licence 'without restriction' 0.50; plain prose on the same courts/medicine 0.07-0.11.",
+ "selection": "random draw"
+}

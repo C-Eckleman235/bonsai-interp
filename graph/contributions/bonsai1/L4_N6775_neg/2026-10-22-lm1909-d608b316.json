@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-d608b316",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N6775-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:36:23+00:00",
+ "recipe": {
+  "toolchain_commit": "d71b11c1",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N6775_neg/2026-10-22-lm1909-d608b316.tests.json"
+ },
+ "label": "the short suffix piece right after an '-on' fragment in rare names and words (Bon|is, Hon|ig, Son|i, Mon|is, on|us)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N6775_neg/2026-10-22-lm1909-d608b316.tests.json",
+   "prereg_commit": "d71b11c1",
+   "author": "lm1909",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.632,
+     "peak": "is"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.056,
+     "peak": " through"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.039,
+     "peak": " by"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.601,
+     "peak": "ig"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.668,
+     "peak": "is"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.961,
+     "peak": "is"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.083,
+     "peak": "ig"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.621,
+     "peak": "i"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.069,
+     "peak": " burden"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.056,
+     "peak": " through"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.042,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.082,
+     "peak": " village"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.048,
+     "peak": " surgeon"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.055,
+     "peak": " Ker"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.049,
+     "peak": " for"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.067,
+     "peak": " K"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.82,
+    "median_fire": 0.611,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "d71b11c1",
+  "minutes": 14,
+  "batch_size": 16
+ },
+ "short": "suffix after '-on' piece",
+ "unit_kind": "contextual",
+ "confidence": 0.45,
+ "notes": "Card FLAG: gate-closed (leak regime 99%); peaks 'oni', 'is', 'ig', 'us', 'i' in G|oni|ocidaris, Bon|is, Hon|ig, on|us, Son|i, Mon|is: all follow or contain 'on'. Probe: those words 0.60-1.11; the same sentences without the rare word 0.05-0.07. Two near misses use rare split names without 'on' (Halig, Keris) to test the '-on' part.",
+ "selection": "random draw"
+}
