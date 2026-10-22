@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-22-moridinamael-c865de76",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N10221+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T09:52:14+00:00",
+ "recipe": {
+  "toolchain_commit": "aadacf2e",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L23_N10221_pos/2026-10-22-moridinamael-c865de76.tests.json"
+ },
+ "label": "the digit 9 or 4 as the decade (third) digit of a four-digit year, strongest for 1700s-1800s years (1794, 1849, 1895, also 1946, 1993), or as the first digit of a phone exchange ((518) 956-, 301-402-); the same year with another decade digit (1857, 1762, 1983) stays quiet; weaker on 9 or 4 elsewhere in numbers and on the spelled word 'Nine'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L23_N10221_pos/2026-10-22-moridinamael-c865de76.tests.json",
+   "prereg_commit": "aadacf2e",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.675,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.689,
+     "peak": "4"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.433,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.458,
+     "peak": "4"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.332,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.335,
+     "peak": "4"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.569,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.47,
+     "peak": "4"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.056,
+     "peak": " nineteenth"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.249,
+     "peak": "Nine"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.067,
+     "peak": "4"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.053,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.001,
+     "peak": " its"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.127,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.052,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.005,
+     "peak": " after"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.464,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "aadacf2e",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Test sentences written blind by a second author who saw only the label (letsplay stream). Feeder chosen from the resident feeders ranking because play step ran out of GPU memory, so no ablation drop was measured.",
+ "roles": [
+  "feeds bonsai1/L24/N8804-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L23/N10221+", "to": "bonsai1/L24/N8804-", "kind": "feeds", "weight": null, "method": "attribution rank 1 of 12 MLP feeders on the target's top 4 examples (resident feeders tool; play step ablation hit CUDA OOM)"}
+ ]
+}
