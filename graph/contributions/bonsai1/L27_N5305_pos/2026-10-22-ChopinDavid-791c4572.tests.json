@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-791c4572",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N5305+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T21:20:07+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L27/N5305",
+   "pole": "+",
+   "label": "negation of an expected response inside a conditional (if you have not heard back, if you don't receive)",
+   "fire": [
+    "Contact the support team if you haven't received your refund within ten days.",
+    "If your package has not arrived by Monday, reply to this email with the order number.",
+    "If they don't answer the phone, leave a message with your name and number.",
+    "Should you not hear from the committee by June, assume the grant was declined.",
+    "If the password reset link does not show up, check that the address is correct.",
+    "Let me know if you didn't get the invitation and I'll send it again.",
+    "If you still haven't gotten a reply by Friday, call the clinic directly.",
+    "If the doctor does not call you back within two days, phone the front desk."
+   ],
+   "quiet": [
+    "Contact the support team when you have received your refund to confirm it.",
+    "Your package has not been opened, so you can still return it for free.",
+    "If they answer the phone, ask them about the opening hours.",
+    "We have not heard such good music in years, said the critic.",
+    "If the password reset link shows up, click it within an hour.",
+    "I didn't get much sleep because the neighbors were loud.",
+    "If you get a reply by Friday, forward it to me right away.",
+    "The doctor does not work on Sundays, so the clinic is closed."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on negated expectation in an if-clause; plain negations and un-negated conditionals below 0.17",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "if-clause: no response yet",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: peaks on ''t', ' not', ' unable' in 'if you don't see', 'if you have not heard', 'If you do not hear back'; - side output favours ' after', ' shortly'. Probe: 'if you have not heard' 0.824, 'do not hear back' 0.738, 'If you don't receive' 0.576, 'doesn't help' 0.286, 'is unable to reach' 0.152; un-negated 'If you receive' 0.164, 'If the medicine helps' 0.053, plain 'has not visited' 0.048, 'I don't like coffee' 0.030. Near misses split the two parts: negation outside a conditional, or a conditional without negation."
+}

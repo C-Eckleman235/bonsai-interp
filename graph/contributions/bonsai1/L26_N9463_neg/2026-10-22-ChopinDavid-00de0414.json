@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-00de0414",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N9463-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T21:29:27+00:00",
+ "recipe": {
+  "toolchain_commit": "2847d5df",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L26_N9463_neg/2026-10-22-ChopinDavid-00de0414.tests.json"
+ },
+ "label": "the call tokens of Python statements that clear, add to or delete from a collection (self.listbox.delete(, items.add, tree.clear())",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L26_N9463_neg/2026-10-22-ChopinDavid-00de0414.tests.json",
+   "prereg_commit": "2847d5df",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.1,
+     "peak": ".get"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.378,
+     "peak": " seen"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.489,
+     "peak": ".add"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.234,
+     "peak": " no"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.262,
+     "peak": ".delete"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.41,
+     "peak": "(start"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.32,
+     "peak": " items"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.29,
+     "peak": "(new"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.428,
+     "peak": ".get"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.109,
+     "peak": "(nodes"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.4,
+     "peak": ".current"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.032,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.064,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.01,
+     "peak": "       "
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.01,
+     "peak": "       "
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.047,
+     "peak": " self"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.828,
+    "median_fire": 0.349,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "2847d5df",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "collection-mutation calls in Python",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: peaks on '(' of window.delete(0, 100), '.clear', '.add', '>No', ' no' in code comments; + output promotes ' subset', ' sets'. Probe: 'listbox.delete(0, END)' 0.717, set add/discard 0.356, comment 'there is no user that has no' 0.359, '<p>No results</p>' 0.264, cache.clear/add 0.156; read-only cache code 0.164, 'def area' 0.030, prose 'cleared ... added' 0.135, 'no cavity' prose 0.017. Near misses are read-only Python of the same length and indentation.",
+ "selection": "random draw"
+}

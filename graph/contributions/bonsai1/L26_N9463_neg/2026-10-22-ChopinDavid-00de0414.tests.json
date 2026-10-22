@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-00de0414",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N9463-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T21:20:07+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N9463",
+   "pole": "-",
+   "label": "the call tokens of Python statements that clear, add to or delete from a collection (self.listbox.delete(, items.add, tree.clear())",
+   "fire": [
+    "        self.tree.delete(*self.tree.get_children())\n        for row in rows:\n            self.tree.insert('', END, values=row)\n",
+    "        seen = set()\n        seen.add(node)\n        queue.append(node)\n",
+    "        self.combo.clear()\n        self.combo.addItems(names)\n",
+    "    # Make sure there is no entry that has no owner\n    for entry in entries:\n",
+    "        self.text.delete(1.0, END)\n        self.text.insert(END, msg)\n",
+    "        visited = set()\n        visited.update(start)\n        visited.remove(start)\n",
+    "        self.assertContains(resp, '<li>No items</li>', html=True)\n",
+    "        self.entries.clear()\n        self.entries.extend(new)\n"
+   ],
+   "quiet": [
+    "        rows = self.tree.get_children()\n        for row in rows:\n            print(row)\n",
+    "        count = len(nodes)\n        total = sum(nodes)\n",
+    "        names = self.combo.currentText()\n        return names\n",
+    "    # Compute the mean of all entries\n    for entry in entries:\n",
+    "        msg = self.text.get(1.0, END)\n        return msg.strip()\n",
+    "        width = self.width\n        height = self.height\n",
+    "        self.assertEqual(resp.status_code, 200)\n",
+    "        total = 0\n        for value in self.entries:\n            total += value\n"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.7 on mutation calls in multi-line Python; read-only code below 0.17",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "collection-mutation calls in Python",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: peaks on '(' of window.delete(0, 100), '.clear', '.add', '>No', ' no' in code comments; + output promotes ' subset', ' sets'. Probe: 'listbox.delete(0, END)' 0.717, set add/discard 0.356, comment 'there is no user that has no' 0.359, '<p>No results</p>' 0.264, cache.clear/add 0.156; read-only cache code 0.164, 'def area' 0.030, prose 'cleared ... added' 0.135, 'no cavity' prose 0.017. Near misses are read-only Python of the same length and indentation."
+}
