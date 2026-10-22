@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-08f5f12e",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N7171+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T17:38:24+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N7171",
+   "pole": "+",
+   "label": "Functional list combinators in code: zip / filter / map / fold (incl. zip_longest, foldl) as function names",
+   "fire": [
+    "names = ['a', 'b']\nages = [3, 4]\nfor n, a in zip(names, ages):\n    print(n, a)\n",
+    "words = text.split()\nlong_words = list(filter(lambda w: len(w) > 5, words))\nprint(long_words)\n",
+    "nums = ['1', '2', '3']\nints = list(map(int, nums))\nprint(sum(ints))\n",
+    "import itertools\nfor a, b in itertools.zip_longest(left, right):\n    out.append((a, b))\n",
+    "-- sum a list\nmySum xs = foldl (+) 0 xs\n-- start the fold at zero\n",
+    "keys = ['x', 'y']\nrows = dict(zip(keys, values))\nprint(rows)\n",
+    "def clean(x, y, z):\n    kept = list(filter(None, [x, y, z]))\n    return kept\n",
+    "data = [1, 2, 3]\nsquares = list(map(lambda v: v * v, data))\nprint(squares)\n"
+   ],
+   "quiet": [
+    "names = ['a', 'b']\nages = [3, 4]\nfor i in range(len(names)):\n    print(names[i], ages[i])\n",
+    "words = text.split()\nlong_words = [w for w in words if len(w) > 5]\nprint(long_words)\n",
+    "nums = ['1', '2', '3']\nints = [int(n) for n in nums]\nprint(sum(ints))\n",
+    "import itertools\nfor a in itertools.count(start=1):\n    out.append(a)\n",
+    "-- sum a list\nmySum [] = 0\nmySum (x:xs) = x + mySum xs\n",
+    "keys = ['x', 'y']\nrows = {}\nrows[keys[0]] = values[0]\nprint(rows)\n",
+    "def clean(x, y, z):\n    kept = [v for v in [x, y, z] if v]\n    return kept\n",
+    "data = [1, 2, 3]\nsquares = [v * v for v in data]\nprint(squares)\n"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "zip/filter/map/fold in code",
+ "unit_kind": "lexical",
+ "confidence": 0.75,
+ "notes": "Card auto-test held for ' zip' in code. Probe: Haskell fold 1.18, '(filter' 0.89, '.zip' 0.76, '(map' 0.59, ' zip' in a for-loop 0.41; the same loop without zip 0.02; prose 'zip up' and 'zip code' 0.00. Fire items are multi-line code, near misses are the equivalent loops or comprehensions."
+}
