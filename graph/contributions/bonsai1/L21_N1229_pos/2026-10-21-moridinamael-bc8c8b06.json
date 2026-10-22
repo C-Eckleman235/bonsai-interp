@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-21-moridinamael-bc8c8b06",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N1229+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T05:31:43+00:00",
+ "recipe": {
+  "toolchain_commit": "75464145",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L21_N1229_pos/2026-10-21-moridinamael-bc8c8b06.tests.json"
+ },
+ "label": "The word ' so' used as a connector joining two clauses, for result or purpose, with or without a comma ('the pipes froze so the street lost water', 'he labelled the boxes so nothing got lost', 'it starts at nine, so bring a laptop'). Quiet for 'so' meaning 'very' after is/was/felt ('the soup was so hot'), for fixed phrases ('if so', 'or so', 'I think so', 'and so on', 'even so', 'so-called'), and for the same link made without 'so' ('therefore', 'because', 'in order to').",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L21_N1229_pos/2026-10-21-moridinamael-bc8c8b06.tests.json",
+   "prereg_commit": "75464145",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.899,
+     "peak": " so"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.532,
+     "peak": " so"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.485,
+     "peak": " so"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.527,
+     "peak": " so"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.376,
+     "peak": " so"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.414,
+     "peak": " so"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.402,
+     "peak": " so"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.719,
+     "peak": " so"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.016,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.064,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.156,
+     "peak": " so"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.003,
+     "peak": " before"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.127,
+     "peak": " so"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.029,
+     "peak": " so"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.083,
+     "peak": " so"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.506,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "75464145",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Test written blind by a second author from the label only. Three items match lines in the solver sentence bank (pipes froze, meeting at nine, therefore twin), so they were scored before registration. The feeder edge comes from the resident attribution ranking: play step ran out of GPU memory, so no ablation weight is recorded.",
+ "roles": [
+  "feeds bonsai1/L22/N2694+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L21/N1229+", "to": "bonsai1/L22/N2694+", "kind": "feeds", "weight": null, "method": "attribution rank 1 of 12 MLP feeders on the target's top 4 examples (resident feeders tool; play step ablation hit CUDA OOM)"}
+ ]
+}
