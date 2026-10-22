@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-b8aff6df",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N4359-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:27:24+00:00",
+ "recipe": {
+  "toolchain_commit": "164ad5f9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L23_N4359_neg/2026-10-22-lm1909-b8aff6df.tests.json"
+ },
+ "label": "the number (or the separator or space before it) that completes a breakdown of a whole: remainder to 100%, ratio splits like 50/30/20, totals, the end year of a stated span",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L23_N4359_neg/2026-10-22-lm1909-b8aff6df.tests.json",
+   "prereg_commit": "164ad5f9",
+   "author": "lm1909",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.053,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.589,
+     "peak": "/"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.009,
+     "peak": "/"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.009,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.05,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.523,
+     "peak": " $"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.148,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.029,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.003,
+     "peak": " from"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.012,
+     "peak": "Many"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.005,
+     "peak": " year"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.014,
+     "peak": " fast"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.025,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.008,
+     "peak": " gas"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.003,
+     "peak": " held"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.01,
+     "peak": " clay"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.875,
+    "median_fire": 0.099,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "164ad5f9",
+  "minutes": 6,
+  "batch_size": 16
+ },
+ "short": "number completing a whole",
+ "unit_kind": "contextual",
+ "confidence": 0.4,
+ "notes": "Probe: 'Poor 30%' (sums to 100) 1.18, 30/30/40 0.67, 'thirteen years from 1875 to 1887' 0.55, 40-30-30 0.50, total $950 0.39. A rating list that does not sum to 100 still gave 0.40, so being a breakdown of a whole may matter more than the arithmetic. 'Between 1875 and 1931' 0.02, 'food as needed' 0.015, market-share list 0.15.",
+ "selection": "random draw"
+}
