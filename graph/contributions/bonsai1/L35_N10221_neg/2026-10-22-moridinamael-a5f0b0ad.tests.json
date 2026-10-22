@@ -1,0 +1,55 @@
+{
+ "contribution": "2026-10-22-moridinamael-a5f0b0ad",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N10221-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:40:25+00:00",
+ "neighbours": [
+  {
+   "unit": "L35/N10221",
+   "pole": "-",
+   "label": "A middle or opening chunk of a rare, unfamiliar word or name that the tokenizer splits into several pieces, before the word is finished: odd proper names and foreign words in prose, and ALL-CAPS or camel-case code names right after ( _ or . in code. Long words built from familiar parts (hyper-, -logy) stay low; Korean word-start syllables also light up.",
+   "short": "unfinished chunk of a rare split-up word or code name",
+   "unit_kind": "dense / positional",
+   "confidence": "low",
+   "notes": "Dense pole (23.8% of tokens reach 0.1 of max; plain code sits near 0.2). Fire and quiet sentences written blind by a label-only second author; the solver's leak lines placed by that author. Strongest feeder L34/N9204+ fires on word-start pieces of 'scale' across languages (' esc', ' мас', '(SC').",
+   "roles": ["reads bonsai1/L34/N7651+"],
+   "fire": [
+    "The expedition finally reached the village of Qaqortoqsuaq after three days on the ice.",
+    "Her grandmother always spoke of the poet Wisławaszczykowna with great reverence.",
+    "config = load(MAX_RETRYZQX_THRESHOLD)",
+    "self._xqvBrndlHandler.dispatch(event)",
+    "The tiny fish, Pseudoxiphophorus bimaculatus, thrives in warm streams.",
+    "He ordered the Mykhailivskyi dumplings, a dish he had never tried before.",
+    "result = engine.KRZVLT_MODE_FLAG",
+    "The ruins of Tlahuizcalpantecuhtli's temple drew curious tourists."
+   ],
+   "quiet": [
+    "The botanist catalogued a rose.",
+    "Humans should make the best use of given information at any time.",
+    "The expedition finally reached the village after three days on the ice.",
+    "Her grandmother always spoke of the poet with great reverence.",
+    "config = load(max_retries)",
+    "self.handler.dispatch(event)",
+    "The tiny fish thrives in warm streams.",
+    "He ordered the dumplings, a dish he had never tried before."
+   ]
+  }
+ ],
+ "predictions": "Twin pairs; expect most fire items near 0.2-0.3 and near misses near 0.1, but the pole is dense and code baselines are high, so the 0.20 median is at risk.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "neighbors",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
