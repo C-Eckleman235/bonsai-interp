@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-ad631304",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N3669+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T17:38:25+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N3669",
+   "pole": "+",
+   "label": "Arabic-script Arabic words: fires on the first piece of a split Arabic word (definite article ال / prefixes إ, م), in Arabic sentences or Arabic words embedded in English",
+   "fire": [
+    "ذهبت العائلة إلى السوق لشراء الخضار والفواكه.",
+    "يعمل المهندس في الشركة منذ عشر سنوات.",
+    "The sign above the little shop said المخبز in large green letters.",
+    "قرأ الطالب المقال ثم كتب ملخصا قصيرا.",
+    "تقع المدينة القديمة على ضفاف النهر الكبير.",
+    "On the first page of her notebook she copied the word الإنسان carefully.",
+    "أعلنت الحكومة عن إجراءات جديدة لدعم الاقتصاد.",
+    "My uncle taught me how to write المدرسة before I started school."
+   ],
+   "quiet": [
+    "من هر روز صبح با دوستانم به پارک می‌روم.",
+    "کتاب‌های زیادی در کتابخانه شهر وجود دارد.",
+    "The sign above the little shop said bakery in large green letters.",
+    "دیروز باران شدیدی در تهران بارید.",
+    "The old city lies on the banks of the great river near Cairo.",
+    "On the first page of her notebook she copied the word insaan carefully.",
+    "המהנדס עובד בחברה הזאת כבר עשר שנים.",
+    "My uncle taught me how to write madrasa before I started school."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Arabic word onsets",
+ "unit_kind": "lexical",
+ "confidence": 0.6,
+ "notes": "Card flags positional (window pos 3), but in the probe Arabic sentences scored 0.30-0.57 of max and English ~0.00. A Persian sentence in the same script scored only 0.04, so the trigger looks like Arabic-language word pieces, not the script alone. Quiet items are Persian/Hebrew sentences and English sentences on Arabic topics."
+}

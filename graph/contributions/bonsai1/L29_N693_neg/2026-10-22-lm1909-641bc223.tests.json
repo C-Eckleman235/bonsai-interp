@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-641bc223",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N693-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T17:38:25+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N693",
+   "pole": "-",
+   "label": "Python database-access code: SQL cursor iteration (cursor.execute / fetchall / for row in cursor) and db.Column ORM model definitions",
+   "fire": [
+    "import sqlite3\nconn = sqlite3.connect('shop.db')\ncur = conn.cursor()\ncur.execute('SELECT id, price FROM items')\nfor (item_id, price) in cur.fetchall():\n    total += price",
+    "db = MySQLdb.connect(host='localhost', db='weather')\ncursor = db.cursor()\ncursor.execute('SELECT * FROM readings')\nfor row in cursor:\n    station, temp = row",
+    "class Order(db.Model):\n    __tablename__ = 'orders'\n    id = db.Column(db.Integer, primary_key=True)\n    total = db.Column(db.Float)",
+    "conn = psycopg2.connect(dsn)\ncur = conn.cursor()\ncur.execute('SELECT name, url FROM bookmarks')\nfor name, url in cur.fetchall():\n    links.append(url)",
+    "class User(db.Model):\n    __tablename__ = 'users'\n    id = db.Column(db.Integer, primary_key=True)\n    email = db.Column(db.String(120), unique=True)",
+    "c = conn.cursor()\nc.execute('SELECT * FROM favorites')\nfor (title, link) in c.fetchall():\n    add_link(title, link)",
+    "with sqlite3.connect(path) as conn:\n    cursor = conn.execute('SELECT host, port FROM servers')\n    for row in cursor:\n        host, port = row",
+    "class Photo(db.Model):\n    __tablename__ = 'photos'\n    id = db.Column(db.Integer, primary_key=True)\n    album_id = db.Column(db.Integer, db.ForeignKey('albums.id'))"
+   ],
+   "quiet": [
+    "import csv\nf = open('shop.csv')\nreader = csv.reader(f)\nnext(reader)\nfor (item_id, price) in reader:\n    total += float(price)",
+    "resp = requests.get(url, params={'city': 'Oslo'})\ndata = resp.json()\nreadings = data['readings']\nfor row in readings:\n    station, temp = row",
+    "class Order:\n    def __init__(self, order_id, total):\n        self.order_id = order_id\n        self.total = total",
+    "with open('bookmarks.txt') as fh:\n    lines = fh.read().splitlines()\nfor line in lines:\n    name, url = line.split(',')\n    links.append(url)",
+    "@dataclass\nclass User:\n    name: str\n    email: str\n    active: bool = True",
+    "items = json.loads(text)\nfor (title, link) in items.items():\n    add_link(title, link)",
+    "with open(path) as fh:\n    config = yaml.safe_load(fh)\n    for entry in config['servers']:\n        host, port = entry['host'], entry['port']",
+    "class Photo:\n    def __init__(self, album, filename):\n        self.album = album\n        self.filename = filename"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Python DB cursor/ORM code",
+ "unit_kind": "contextual",
+ "confidence": 0.7,
+ "notes": "Probe: sqlite fetchall 0.92, for row in cursor 0.68, db.Model with db.Column 0.61, Django ORM field dict 0.37. The same loop shapes over json, a plain class or prose stayed ≤0.04, and SQLAlchemy session.query reached 0.14. Quiet items keep the code shape and drop the database."
+}
