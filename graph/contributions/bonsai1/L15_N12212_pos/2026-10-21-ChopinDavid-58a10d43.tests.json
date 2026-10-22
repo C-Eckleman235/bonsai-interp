@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-ChopinDavid-58a10d43",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N12212+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T04:20:18+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L15/N12212",
+   "pole": "+",
+   "label": "the user object or attribute in code ('request.user', 'auth.user', 'create_user', 'User.objects'), not the word 'user' in prose",
+   "fire": [
+    "def profile(request):\n    me = request.user\n    return render(request, 'p.html')",
+    "def setUp(self):\n    self.bob = User.objects.create_user('bob', 'bob@example.com')",
+    "def delete_post(auth, post_id):\n    owner = auth.user\n    post = Post.get(post_id)",
+    "def dashboard(request):\n    if request.user.is_authenticated:\n        return redirect('/home')",
+    "admin = User.objects.get(username='admin')\nadmin.save()",
+    "def get_queryset(self):\n    return Order.objects.filter(owner=self.request.user)",
+    "def logout_view(request):\n    name = request.user.username\n    logout(request)",
+    "def test_login(self):\n    u = User.objects.create_user('ann', 'ann@example.com')\n    self.client.login()"
+   ],
+   "quiet": [
+    "def profile(request):\n    me = request.path\n    return render(request, 'p.html')",
+    "def setUp(self):\n    self.bob = Book.objects.create(title='bob')",
+    "def delete_post(auth, post_id):\n    owner = auth.token\n    post = Post.get(post_id)",
+    "def dashboard(request):\n    if request.method == 'GET':\n        return redirect('/home')",
+    "page = Page.objects.get(slug='admin')\npage.save()",
+    "def get_queryset(self):\n    return Order.objects.filter(status='open')",
+    "Every user who logs out loses the items in their basket.",
+    "def test_login(self):\n    b = Book.objects.create(title='ann')\n    self.client.get('/')"
+   ]
+  }
+ ],
+ "predictions": "Fires on '.user', '_user', ' User' in Python web code; quiet on other attribute names in the same code and on 'user' in prose.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "user identifier in code",
+ "unit_kind": "contextual",
+ "confidence": 0.5,
+ "notes": "Probes: 'User.objects.create_user' 0.43 on '_user', 'auth.user' 0.32, 'request.user' 0.27, 'cursor' 0.18, '.parent' 0.13; same code with 'request.item' 0.06; prose 'The user clicked' 0.03, 'Each user can change' 0.12."
+}

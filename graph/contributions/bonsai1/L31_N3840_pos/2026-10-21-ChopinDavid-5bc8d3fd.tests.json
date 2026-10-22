@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-ChopinDavid-5bc8d3fd",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N3840+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T04:20:18+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L31/N3840",
+   "pole": "+",
+   "label": "the name inside a colon-delimited markup role or URI (:class:, :ref:, :warning:, ':memory:'), not the same word in prose",
+   "fire": [
+    "    Returns an instance of :class:`Config` built from the file.",
+    "conn = sqlite3.connect(':memory:')\ncur = conn.cursor()",
+    "    For background, see :ref:`install-guide` in the docs.",
+    "    Call :func:`load_data` before training the model.",
+    "    Args:\n        mask (:obj:`torch.Tensor`): the attention mask.",
+    "    :note: the cache is cleared on every restart.",
+    "    The :meth:`close` method releases the socket.",
+    "engine = create_engine('sqlite:///:memory:', echo=True)"
+   ],
+   "quiet": [
+    "    Returns an instance of the config built from the file.",
+    "conn = open_database('data.db')\ncur = conn.start()",
+    "    For background, read the install guide in the docs.",
+    "    Call the loader function before training the model.",
+    "    Args:\n        mask: the attention mask as a tensor.",
+    "    Note that the cache is cleared on every restart.",
+    "    The close method releases the socket.",
+    "My grandmother has a sharp memory and an old engine."
+   ]
+  }
+ ],
+ "predictions": "Fires on class/ref/func/obj/warning/memory between colons in reST docstrings or sqlite URIs; quiet on those words in prose.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "name in :role: markup",
+ "unit_kind": "contextual",
+ "confidence": 0.75,
+ "notes": "Probes: ':memory:' 0.80, ':py:class:' 0.86, ':class:' 0.56, ':warning:' 1.19, ':ref:' 0.45; 'poor memory' 0.003, 'the class met' 0.001, prose colons 0.001."
+}
