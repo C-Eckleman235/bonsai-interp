@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-b0427ddc",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N9016-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:37:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L20/N9016",
+   "pole": "-",
+   "label": "punctuation inside Python code (string-key brackets and quotes, colons and commas ending a line or argument)",
+   "fire": [
+    "config = {}\nconfig[\"host\"] = env[\"DB_HOST\"]\nconfig[\"port\"] = int(env[\"DB_PORT\"])\nconnect(**config)",
+    "    Args:\n        name: The `str` key used to look up the value.\n    Returns:\n        The matching `dict` entry, or `None`.",
+    "parser = Parser(\n    strict=False,\n    max_depth=8,\n    encoding='utf-8',\n)",
+    "for row in rows:\n    if row['status'] == 'done':\n        finished.append(row['task_id'])",
+    "order_id = payload.get('order_id')\ncustomer_id = payload['customer_id']\nlog.info(order_id)",
+    "def save(obj, path=None):\n    if path is None:\n        path = obj.default_path\n    write(path, obj)",
+    "record[\"tags\"] = [tag]\nrecord[\"owner\"] = user[\"name\"]\nstore.put(record)",
+    "    Raises:\n        KeyError: If `key` is `None` and no default value is set."
+   ],
+   "quiet": [
+    "The configuration copies the host and port from the environment before it connects.",
+    "The function takes a name, looks it up, and returns the matching entry if there is one.",
+    "The parser runs in lenient mode with a depth limit of eight and reads the file as text.",
+    "For each row, the script checks the status and keeps the tasks that are already done.",
+    "The service reads the order number and the customer number from the request and logs them.",
+    "If no path is given, the save routine falls back to the default location for the object.",
+    "Each record gets a list of tags and the owner's name before it is stored.",
+    "An error is raised when the key is missing and no default value has been set."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Python code punctuation",
+ "unit_kind": "contextual",
+ "confidence": 0.4,
+ "notes": "The card flags it as broad (4.4% of tokens). In the probe, code passages scored 0.14-0.32 of max and prose describing the same code 0.07-0.12. The fire median may fall short of 0.20. Near misses are prose paraphrases of the same code."
+}
