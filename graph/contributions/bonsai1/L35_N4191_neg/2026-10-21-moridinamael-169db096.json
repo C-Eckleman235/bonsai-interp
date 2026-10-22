@@ -1,0 +1,171 @@
+{
+ "id": "2026-10-21-moridinamael-169db096",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N4191-",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T03:21:58+00:00",
+ "recipe": {
+  "toolchain_commit": "0697f598",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N4191_neg/2026-10-21-moridinamael-169db096.tests.json"
+ },
+ "label": "In Python code, the 'st'/'ST' piece that opens a file-status field read from a stat result: os.stat(...).st_size / .st_mtime / .st_mode / .st_ino (also via Path(...).stat()) and stat.ST_MODE / stat.ST_SIZE, strongest when chained right after .stat(); quiet for os.path.getsize / getmtime, the stat.S_ISDIR / S_IRUSR permission helpers, other code constants like tm_year or AF_INET, and the words 'stat' or 'status' in prose.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N4191_neg/2026-10-21-moridinamael-169db096.tests.json",
+   "prereg_commit": "0697f598",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 6,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.364,
+     "peak": "st"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.359,
+     "peak": ".st"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.475,
+     "peak": "st"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": -0.417,
+     "peak": "total"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.623,
+     "peak": ".ST"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.727,
+     "peak": "st"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": -0.087,
+     "peak": "st"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.459,
+     "peak": "st"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.335,
+     "peak": ".Q"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.056,
+     "peak": "cha"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.041,
+     "peak": ".path"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.432,
+     "peak": "DIR"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.134,
+     "peak": "tm"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.016,
+     "peak": ".path"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": -0.297,
+     "peak": " status"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.298,
+     "peak": " sales"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 1,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.812,
+    "median_fire": 0.411,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "0697f598",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "short": "the st_ / ST_ prefix of Python stat-result fields",
+ "unit_kind": "token/lexical",
+ "confidence": 0.6,
+ "notes": "Step-in from bonsai1/L29/N3065+ (only two readers found; L33/N1814+ already mapped). Drop is tiny (0.03) and the label has nothing to do with the feeder's 'since X, you can Y' meaning. Feeders-first: top feeders L31/N6062- (file-system/stat code: S_IS, ).st) and L26/N8691- (icon/image paths) are code cells. Also fires more weakly on Qt's QtGui.Q class prefix (0.3-0.4, patchy) and on odd name pieces (Rud-yard Kipling, Jose-y Wales) but not on most split names (Schwarzenegger, Tchaikovsky). + pole is dense (30% of tokens). Test sentences written blind by a second author from the label only; the solver's leak (QtGui.QFont) was placed by that author.",
+ "roles": [
+  "reads bonsai1/L29/N3065+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L29/N3065+",
+   "to": "bonsai1/L35/N4191-",
+   "kind": "feeds",
+   "weight": 0.03,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
