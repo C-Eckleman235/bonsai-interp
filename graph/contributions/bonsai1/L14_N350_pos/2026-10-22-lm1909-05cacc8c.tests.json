@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-05cacc8c",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N350+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T17:38:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L14/N350",
+   "pole": "+",
+   "label": "code that checks two named sources of the same value against each other (identifiers/comments like 'in the file and in the database', source vs target, expected vs actual)",
+   "fire": [
+    "# if the title in the spreadsheet and in the catalogue do not match, skip the row\nif sheet.title != catalog.title:\n    continue",
+    "def diff(expected: Dict[str, int],\n         actual: Dict[str, int]) -> List[str]:\n    return [k for k in expected if expected[k] != actual.get(k)]",
+    "# compare the value in the cache with the value in the database\nif cache.get(key) != db.get(key):\n    refresh(key)",
+    "def align(source: List[str],\n          target: List[str]) -> List[Tuple[int, int]]:",
+    "# when the date in the header and in the body disagree, trust the header\nif header.date != body.date:\n    body.date = header.date",
+    "def bleu(candidate: List[str],\n         references: List[List[str]]) -> float:",
+    "# make sure the size on disk and in the manifest are the same\nif os.path.getsize(path) != manifest[path]:\n    raise ValueError(path)",
+    "# check whether the user in the token and in the request are the same\nif token.user_id != request.user_id:\n    abort(403)"
+   ],
+   "quiet": [
+    "# read the spreadsheet and print each row\nfor row in sheet.rows:\n    print(row)",
+    "def total(values: List[int]) -> int:\n    return sum(values)",
+    "# store the value in the cache for one hour\ncache.set(key, value, timeout=3600)",
+    "import os\nimport re\npattern = re.compile(r'[0-9]+')",
+    "# log the time when the job starts\nlogger.info('started %s', datetime.now())",
+    "def mean(xs: List[float]) -> float:\n    return sum(xs) / len(xs)",
+    "# print the squares of the first ten numbers\nfor i in range(10):\n    print(i * i)",
+    "# return the user who is logged in\nreturn request.user"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "code: compare two sources",
+ "unit_kind": "contextual",
+ "confidence": 0.4,
+ "notes": "Probe: '# if the name in the file and in the database differ' 0.66, evaluate(prediction, reference) 0.36, compare(source, target) 0.28, output_dict loop 0.23; plain code without a pairing 0.01-0.04; prose with source/target/reference ~0.24 (so near misses are code, not prose)."
+}

@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-77ae990f",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N12116+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T17:38:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N12116",
+   "pole": "+",
+   "label": "the word ' scalar' (and the connective right after it) in scalar multiplication of vectors or matrices",
+   "fire": [
+    "In this course, students learn how to find the product of a scalar and a vector.",
+    "When you multiply a matrix by a scalar, every entry gets multiplied by it.",
+    "A vector multiplied by a positive scalar keeps its direction but changes length.",
+    "Note that multiplication by a scalar distributes over vector addition.",
+    "class Matrix:\n    def __mul__(self, scalar):\n        return Matrix([[v * scalar for v in row] for row in self.rows])",
+    "The velocity vector is multiplied by the scalar mass to give the momentum vector.",
+    "Dividing a vector by a nonzero scalar stretches or shrinks it along the same line.",
+    "In the exercise, take the product of the scalar 3 and the vector (2, -1)."
+   ],
+   "quiet": [
+    "In this course, students learn how to draw two vectors on a grid.",
+    "When you multiply a matrix by 2, every entry gets doubled.",
+    "A vector stretched by a factor of two keeps its direction but doubles in length.",
+    "Note that vector addition is commutative, so u + v equals v + u.",
+    "class Matrix:\n    def __add__(self, other):\n        return Matrix([[a + b for a, b in zip(r, s)] for r, s in zip(self.rows, other.rows)])",
+    "The velocity vector points in the direction in which the object is moving.",
+    "Dividing a vector by its own length gives a unit vector along the same line.",
+    "In the exercise, take the dot product of the vectors (1, 2) and (2, -1)."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "scalar multiplication",
+ "unit_kind": "contextual",
+ "confidence": 0.6,
+ "notes": "Probe: 'product of a scalar and a matrix' 1.17 (peak ' and'), 'multiplied by a negative scalar' 0.85, __rmul__(self, scalar) 0.61; same operations without the word scalar are low ('scaled by constant factor k' 0.11, dot product 0.09, recipe by three 0.04), vector sum 0.25. Near misses keep vector/matrix multiplication but say 'number/factor'."
+}
