@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-3f2e479d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N5796-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T13:50:17+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L15/N5796",
+   "pole": "-",
+   "label": "Fires on a plural count noun right after a numeral that counts it (sacked 217 generals, deployed in 15 operations), not on the same nouns without a number or with a vague quantifier.",
+   "fire": [
+    "By the end of the season the club had fired 14 coaches in a row.",
+    "Last year the charity ran 320 schools across the region.",
+    "The archive now holds 9,000 letters from the war years.",
+    "In the census of 1901 the town listed 87 churches and chapels.",
+    "The firm has opened 42 offices since it was founded.",
+    "Officials said 260 soldiers were wounded in the attack.",
+    "Inspectors visited 58 factories during the spring campaign.",
+    "The navy lost 23 ships before the treaty was signed."
+   ],
+   "quiet": [
+    "By the end of the season the club had fired its coach again.",
+    "Last year the charity ran several schools across the region.",
+    "The archive now holds letters from the war years.",
+    "In the census the town listed its churches and chapels.",
+    "The firm has opened new offices since it was founded.",
+    "Officials said many soldiers were wounded in the attack.",
+    "Inspectors visited the factories during the spring campaign.",
+    "The navy lost ships before the treaty was signed."
+   ]
+  }
+ ],
+ "predictions": "Fire 0.3-0.55, median ~0.4. Near misses (no numeral, 'several', 'many') <= 0.1. AUROC ~0.95.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "counted noun after a numeral",
+ "unit_kind": "token-in-context",
+ "confidence": 0.6,
+ "notes": "Probes: '15 operations' 0.52; '40 million cases' 0.44 (peak ' million'); 'over 700 institutions' 0.43; 'dismissed 217 generals' 0.38; lows: 'The generals met' 0.02, 'Several cases were reported' 0.02; '$46 million contract' 0.13; 'The battle lasted' 0.15. Fire items avoid 'million' so the peak lands on the noun."
+}

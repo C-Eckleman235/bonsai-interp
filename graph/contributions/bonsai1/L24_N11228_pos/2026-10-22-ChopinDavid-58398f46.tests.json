@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-58398f46",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N11228+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T13:50:17+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L24/N11228",
+   "pole": "+",
+   "label": "Fires on a noun naming a group of people treated as a population whose outcomes are measured or compared (graduates, teenagers, residents, age groups), not on nouns for things counted in the same kind of statistic.",
+   "fire": [
+    "Two-thirds of the college's alumni found jobs within six months.",
+    "The study found that today's retirees save less than their parents did.",
+    "Nearly half of the town's voters stayed home on election day.",
+    "Polls suggest that younger graduates are more likely to rent than buy.",
+    "Researchers compared how many immigrants and natives start small businesses.",
+    "Only 12 percent of the district's pupils passed the advanced exam.",
+    "The report shows that rural households spend more on fuel than urban ones.",
+    "Surveys suggest that most smokers want to quit within a year."
+   ],
+   "quiet": [
+    "Two-thirds of the college's computers were replaced within six months.",
+    "The study found that today's refrigerators use less power than older models.",
+    "Nearly half of the town's streetlights stayed off on election day.",
+    "Tests suggest that newer engines are more likely to last than older ones.",
+    "Researchers compared how many apples and pears rot during shipping.",
+    "Only 12 percent of the district's buses passed the safety inspection.",
+    "The report shows that rural roads need more repairs than urban ones.",
+    "Tests suggest that most batteries lose charge within a year."
+   ]
+  }
+ ],
+ "predictions": "Fire 0.15-0.4, median ~0.22. Non-human statistic near misses ~0.02-0.1. AUROC ~0.9; median and AUROC are both at risk because the probes were weak and group nouns fired outside statistics too (0.14-0.29).",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "people as a measured population",
+ "unit_kind": "meaning",
+ "confidence": 0.35,
+ "notes": "Probes: 'the school's graduates went on to college' 0.41; 'The graduates threw their caps' 0.29 (no statistic); 'this decade's teenagers are less likely' 0.24; 'blacks in their area' 0.21; 'workers who speak out' 0.17; 'rural residents earn less' 0.17; 'age groups' 0.15; 'Some teenagers were playing' 0.14; floor 0.01. The pole seems to be about people-groups more than statistics, so near misses keep the statistic and swap the group of people for things."
+}

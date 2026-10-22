@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-e8858ddb",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N2740+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T13:50:17+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N2740",
+   "pole": "+",
+   "label": "Fires on a stray word-initial 'g' piece (' g', '/g') when the tokenizer splits a word right after its first letter g, mostly Spanish words and slash-joined English words; not on g-words that are whole tokens or split into larger pieces, nor on 'g' for grams.",
+   "fire": [
+    "En el jardín de mi tío encontramos un gusano enorme después de la lluvia.",
+    "Desde el muelle vimos una gaviota que robaba pan a los turistas.",
+    "Cuando era niño, mi vecino tenía un gato gris que cazaba ratones.",
+    "Se oyó un grito desde la cocina y todos corrieron a ver qué pasaba.",
+    "Each employee may receive one small present/gift per year from suppliers.",
+    "Please park in the driveway/garage and leave the street clear for the bus.",
+    "The rental includes a small yard/gardening shed behind the kitchen.",
+    "El sindicato y el comité gremial firmaron el acuerdo con la fábrica."
+   ],
+   "quiet": [
+    "En el jardín de mi tío encontramos una gallina enorme después de la lluvia.",
+    "Desde el muelle vimos una golondrina que volaba sobre los turistas.",
+    "Cuando era niño, mi vecino tenía una guitarra vieja que tocaba de noche.",
+    "Se oyó un gorrión desde la cocina y todos salieron a buscarlo.",
+    "Each employee may receive one small present or gift card per year from suppliers.",
+    "Please park in the driveway and leave the street clear for the green bus.",
+    "The rental includes a small yard and a garden shed behind the kitchen.",
+    "Add about 20 g of sugar and a pinch of salt to the dough."
+   ]
+  }
+ ],
+ "predictions": "Fire 0.4-0.7, median ~0.55. Near misses (whole-token g-words, ' gor'/' gall'/' guitar' pieces) <= 0.1. AUROC ~1 unless the larger g-pieces also fire.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-off word-initial 'g' piece",
+ "unit_kind": "spelling unit",
+ "confidence": 0.65,
+ "notes": "Probes: 'el grito' 0.52 (' g'), 'un gato' 0.64 (' g'), 'delegado gremial' 0.59 (' g'), 'agricultural/gardening' 0.62 ('/g'); 'at Gombe' 0.28 (peak elsewhere); '5 g of salt' 0.002; whole-token 'garden' 0.001; 'humilde' 0.10. Tokenizer: gusano and gaviota split ' g'+..., /gift and /garage split '/g'+...; guitarra -> ' guitar', gallina -> ' gall', golondrina -> ' gol', gorrión -> ' gor' (used as near misses)."
+}

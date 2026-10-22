@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-128bbdf9",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N1053-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T13:57:33+00:00",
+ "recipe": {
+  "toolchain_commit": "ff3ba87d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L23_N1053_neg/2026-10-22-ChopinDavid-128bbdf9.tests.json"
+ },
+ "label": "Fires on ' which'/' what' (and German ' welche') when it opens a question about a thing, direct or indirect ('asked which train', 'in what way'), not on relative 'which' after a comma and not on person-asking ' who' (the + pole's side).",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L23_N1053_neg/2026-10-22-ChopinDavid-128bbdf9.tests.json",
+   "prereg_commit": "ff3ba87d",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.565,
+     "peak": " which"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.565,
+     "peak": " what"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.656,
+     "peak": " which"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.363,
+     "peak": " what"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.6,
+     "peak": " welche"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.767,
+     "peak": " which"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.285,
+     "peak": " what"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.419,
+     "peak": " which"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.132,
+     "peak": " which"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.004,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.105,
+     "peak": " which"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.021,
+     "peak": "Ich"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.004,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.031,
+     "peak": " who"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.012,
+     "peak": " final"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.565,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "ff3ba87d",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "interrogative which/what (thing)",
+ "unit_kind": "token-in-context",
+ "confidence": 0.75,
+ "notes": "Probes: 'asked which train' 0.57, 'over which bridge' 0.56, 'in what way' 0.55, 'welche Schule' 0.68, 'what color' 0.32; relative ', which I bought' 0.04; 'asked who was coming' 0.006; relative 'who' 0.005. The + pole peaks on ' who', so the distinction is thing-question vs person-question/relative.",
+ "selection": "random draw"
+}

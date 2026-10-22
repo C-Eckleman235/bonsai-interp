@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-10b68e71",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N3977-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T13:50:17+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N3977",
+   "pole": "-",
+   "label": "Fires on ' and'/' but (also)' that adds a second parallel complement to the same predicate (stored on disk and in a log; particles but also waves), not on ' and'/' but' that joins two full clauses or two plain nouns.",
+   "fire": [
+    "The vaccine works as a treatment but also as a way to prevent infection.",
+    "The festival takes place in the old town and on boats along the river.",
+    "Copies of the contract are kept at the head office and in a bank vault.",
+    "The device can be charged by cable but also by a solar panel.",
+    "The new album is in shops and available on every streaming service.",
+    "Her paintings were shown in Paris but also in several small galleries in Lyon.",
+    "Tickets can be bought at the station and through the mobile app.",
+    "The museum guide is printed in French and in German for visitors."
+   ],
+   "quiet": [
+    "The vaccine works well, but some patients still feel tired for a day.",
+    "The festival takes place in the old town, and the streets are closed all weekend.",
+    "Copies of the contract were lost, but the lawyer had a scan.",
+    "The device is charged by cable, and the battery lasts two days.",
+    "The new album sold out in shops, and the band added a second tour.",
+    "Her paintings were shown in Paris, but she never sold a single one.",
+    "We bought tickets, maps and sandwiches at the station.",
+    "The museum guide was tired, and she sat down for a while."
+   ]
+  }
+ ],
+ "predictions": "Fire 0.3-0.75, median ~0.45. Clause-joining and noun-pair near misses <= 0.05. AUROC ~0.95.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "additive second complement 'and/but also'",
+ "unit_kind": "token-in-context",
+ "confidence": 0.6,
+ "notes": "Probes: 'particles but also as waves' 0.77 (' but'); 'in the journal but also posted' 0.47; 'on disk and in a transaction log' 0.57; 'in theaters and available' 0.50; 'in Korean and English' 0.32; lows: clause 'but it was raining' 0.006, noun pair 'apples and pears' 0.008, clause ', and he went' 0.006. The card's logit effect: the + pole promotes 'instead' and suppresses 'also', so this - pole is the additive side."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-128bbdf9",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N1053-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T13:50:17+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L23/N1053",
+   "pole": "-",
+   "label": "Fires on ' which'/' what' (and German ' welche') when it opens a question about a thing, direct or indirect ('asked which train', 'in what way'), not on relative 'which' after a comma and not on person-asking ' who' (the + pole's side).",
+   "fire": [
+    "During the meeting the manager asked which supplier had sent the broken parts.",
+    "The guide could not remember in what year the castle was rebuilt.",
+    "Before signing, check which plan includes international calls.",
+    "Researchers still debate what role the climate played in the collapse.",
+    "Ich weiß nicht, welche Farbe das Auto hatte.",
+    "My grandmother always wanted to know which recipe I had used.",
+    "The survey asks parents what kind of school they would prefer.",
+    "Nobody on the team could say which version of the file was final."
+   ],
+   "quiet": [
+    "During the meeting the manager praised the supplier, which had sent the parts early.",
+    "The guide could not remember who rebuilt the castle after the fire.",
+    "Before signing, check the plan, which includes international calls.",
+    "Researchers still debate who played the main role in the collapse.",
+    "Ich weiß nicht, wer das Auto gefahren hat.",
+    "My grandmother always wanted to know who had taught me to cook.",
+    "The survey asks parents who drives their children to school.",
+    "Nobody on the team could say who wrote the final version of the file."
+   ]
+  }
+ ],
+ "predictions": "Fire 0.3-0.7, median ~0.5. Near misses with relative 'which' and 'who' questions <= 0.05. AUROC ~1.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "interrogative which/what (thing)",
+ "unit_kind": "token-in-context",
+ "confidence": 0.75,
+ "notes": "Probes: 'asked which train' 0.57, 'over which bridge' 0.56, 'in what way' 0.55, 'welche Schule' 0.68, 'what color' 0.32; relative ', which I bought' 0.04; 'asked who was coming' 0.006; relative 'who' 0.005. The + pole peaks on ' who', so the distinction is thing-question vs person-question/relative."
+}

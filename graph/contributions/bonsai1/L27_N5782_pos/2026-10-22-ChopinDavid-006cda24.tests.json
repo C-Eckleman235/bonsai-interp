@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-006cda24",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N5782+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T13:50:17+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L27/N5782",
+   "pole": "+",
+   "label": "Fires on geological-process vocabulary in earth-science text (volcanic eruptions, geological processes, plate movement, deep-time dates of eruptions), not on chemistry or biology processes or on fossils in a museum setting.",
+   "fire": [
+    "The island was built up by repeated volcanic eruptions over many thousands of years.",
+    "Granite forms deep underground through slow geological processes of cooling.",
+    "The Himalayas are still rising because of plate collisions beneath them.",
+    "These basalt layers record volcanic activity that lasted almost a million years.",
+    "Geologists study how tectonic plates drift a few centimetres each year.",
+    "The canyon walls show several geological episodes of uplift and erosion.",
+    "Massive volcanic outpourings about 250 million years ago may have caused the extinction.",
+    "Hot springs in the valley are fed by volcanic heat from below."
+   ],
+   "quiet": [
+    "The island was built up by repeated waves of settlers over many hundreds of years.",
+    "Cheese forms slowly through biological processes of fermentation.",
+    "The prices are still rising because of supply problems in the region.",
+    "These old letters record family life that lasted almost a century.",
+    "Economists study how interest rates drift a few points each year.",
+    "The novel shows several emotional episodes in the hero's childhood.",
+    "The museum's dinosaur hall reopened after a long renovation.",
+    "Hot meals in the canteen are paid for by the school board."
+   ]
+  }
+ ],
+ "predictions": "Fire 0.2-0.4, median ~0.27. Near misses <= 0.05. AUROC ~0.95, but the median is close to the 0.20 bar.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "geological processes (volcanic, tectonic)",
+ "unit_kind": "topic",
+ "confidence": 0.45,
+ "notes": "Probes: 'volcanic eruptions occurred about 200 million years ago' 0.36 (peak '2'); 'formed through geological processes' 0.28; 'caused by plate movement' 0.23; weak: 'millions of years ago ... under a sea' 0.055, 'how terrestrial planets form' 0.09, 'fossils from the Jurassic' 0.007; controls 'founded 200 years ago' 0.015, 'chemical process' 0.02. Card top: Pangea volcanic eruptions, volcanic processes, geological processes, plate movement. The - pole's logit effect suppresses rock/fossil/mineral words."
+}
