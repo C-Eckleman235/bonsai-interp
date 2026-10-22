@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-22-moridinamael-77d87748",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N2247+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T22:01:01+00:00",
+ "recipe": {
+  "toolchain_commit": "933d00ce",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N2247_pos/2026-10-22-moridinamael-77d87748.tests.json"
+ },
+ "label": "The raw byte pieces of a familiar East Asian character that the tokenizer cannot keep as one token, mostly Japanese-form kanji (e.g. 発, 録, 証, 応, 転, 扱, 奨) and, more weakly, some Korean syllables, in the middle of Japanese, Chinese or Korean text. Quiet when the same word is written with whole-token characters (Chinese simplified or traditional forms, common kanji like 見, 本, 日), for byte-split symbols and other scripts (emoji, math signs, chess pieces, Devanagari, Greek, Arabic), for obscure rare characters, at the very start of a text, and inside an English sentence.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N2247_pos/2026-10-22-moridinamael-77d87748.tests.json",
+   "prereg_commit": "933d00ce",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.014,
+     "peak": "당"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.632,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.503,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.067,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.005,
+     "peak": "丁"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.617,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.227,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.545,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.006,
+     "peak": " السي"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.0,
+     "peak": "下周"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.001,
+     "peak": "请"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.0,
+     "peak": "。"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.0,
+     "peak": "很"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.002,
+     "peak": "東"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.004,
+     "peak": "本"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.001,
+     "peak": " save"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.365,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "933d00ce",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L32/N4095+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L32/N4095+", "to": "bonsai1/L34/N2247+", "kind": "feeds", "weight": 6.03, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
