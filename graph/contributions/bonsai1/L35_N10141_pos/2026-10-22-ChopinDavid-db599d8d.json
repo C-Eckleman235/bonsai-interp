@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-db599d8d",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N10141+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T21:27:26+00:00",
+ "recipe": {
+  "toolchain_commit": "2847d5df",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N10141_pos/2026-10-22-ChopinDavid-db599d8d.tests.json"
+ },
+ "label": "weak, outlier-dominated unit on the slot just before 'protein' (a ___ protein, '-pro' of low-protein)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N10141_pos/2026-10-22-ChopinDavid-db599d8d.tests.json",
+   "prereg_commit": "2847d5df",
+   "author": "ChopinDavid",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.081,
+     "peak": "-pro"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.02,
+     "peak": "-pro"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.112,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.051,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.159,
+     "peak": "-pro"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.003,
+     "peak": " fold"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.005,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.099,
+     "peak": "足够的"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.016,
+     "peak": "-s"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.001,
+     "peak": " sheds"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.112,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.051,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.019,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.005,
+     "peak": " fold"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.001,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.099,
+     "peak": "足够的"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.672,
+    "median_fire": 0.066,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "2847d5df",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "slot before 'protein' (unclear)",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card: max 1568 on one Chinese text, the rest of the top 10 at 230-290 sit before ' protein' (' a', ' sticky', '-pro', ' MG'). The + output suppresses ' protein' (a late anti-overconfidence unit). Probe: 'membrane protein' 0.019 vs 'membrane lipid' 0.019; 'dietary protein' 0.043 vs 'dietary fiber' 0.043; 'whey protein' 0.063; amino-acid chain sentence 0.067; floor 0.001. No probe separated. Best-guess test uses '-protein' compounds and 'a ___ protein' as in the card.",
+ "selection": "random draw"
+}
