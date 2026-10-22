@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-ChopinDavid-7592442b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N8989+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T00:17:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N8989",
+   "pole": "+",
+   "label": "The first word of a new sentence that opens a condition or a question in web copy (If, Is there, Если, 如果), mid-document after an earlier sentence or line break, not a sentence that opens with a plain statement.",
+   "fire": [
+    "Our shop is open all week.\nIf you want to order in bulk, call us first.",
+    "Summer is coming fast. If your garden needs a refresh, start with the soil.",
+    "We love hearing from readers. Is there a topic you want us to cover next?",
+    "Thanks for visiting! If the page looks broken, try reloading it.",
+    "Мы работаем без выходных. Если вам нужна доставка, позвоните нам.",
+    "New courses start in May.\nIf your child is under ten, choose the junior group.",
+    "Our menu changes every week. Is there a dish you would like to see again?",
+    "The sale ends on Sunday. If an item is out of stock, we will refund you."
+   ],
+   "quiet": [
+    "Our shop is open all week.\nWe take bulk orders by phone.",
+    "Summer is coming fast. The garden centre has new soil this week.",
+    "We love hearing from readers. Many of them write to us every week.",
+    "Thanks for visiting! The page was updated on Monday.",
+    "Мы работаем без выходных. Доставка бесплатная по городу.",
+    "New courses start in May.\nThe junior group is for children under ten.",
+    "Our menu changes every week. The chef picks dishes from the market.",
+    "The sale ends on Sunday. Refunds are paid within five days."
+   ]
+  }
+ ],
+ "predictions": "6-8/8 fire >= 0.30 (probes 0.43-0.52, and 'If the company' 0.46 as well as 'If you'); statements 0.04-0.07; a document-initial 'If it rains' only 0.15.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "sentence-opening If/question",
+ "unit_kind": "contextual",
+ "confidence": 0.55,
+ "notes": "Probes (fraction of max 60): 'Is there a tech-friendly activity ...?' 0.519 (peak '?'), 'If you're launching' after a line break 0.472, 'If the company is new' 0.459 (so 'you' is not needed), 'If you need to restock' 0.427, Russian 'Если вы' 0.434. Quiet: plain statements 0.035-0.068; document-initial 'If it rains' 0.149. Every fire item has an earlier sentence before the conditional or question."
+}
