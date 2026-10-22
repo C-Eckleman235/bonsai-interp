@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-a84e2960",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N7009+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:39:02+00:00",
+ "recipe": {
+  "toolchain_commit": "adbd12b8",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L27_N7009_pos/2026-10-22-lm1909-a84e2960.tests.json"
+ },
+ "label": "bibliographic reference entries: the venue part ('Journal of X', an academy name) after a paper title in a formatted citation",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L27_N7009_pos/2026-10-22-lm1909-a84e2960.tests.json",
+   "prereg_commit": "adbd12b8",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.709,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.31,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.765,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.448,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.419,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.481,
+     "peak": "arian"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.497,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.518,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.058,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.011,
+     "peak": " text"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.263,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.095,
+     "peak": " use"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.027,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.043,
+     "peak": " near"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.076,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.046,
+     "peak": " wear"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.489,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "adbd12b8",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "citation venue names",
+ "unit_kind": "contextual",
+ "confidence": 0.35,
+ "notes": "Probe: a formatted reference 'Title. Journal of Medical Informatics. 2015' gave 0.66 (peak ' of') and 'Bavarian Academy' gave 0.56 ('arian'). Prose mentions of journals ('the journal Nature Medicine', 'Science Advances', 'Proceedings of the National Academy') gave about 0, and 'Health IT' 0.08. So the label is the formatted-citation frame, not journal names in general. Near misses describe the same studies in prose.",
+ "selection": "random draw"
+}

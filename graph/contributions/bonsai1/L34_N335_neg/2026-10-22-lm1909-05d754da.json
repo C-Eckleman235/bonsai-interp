@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-05d754da",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N335-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:39:10+00:00",
+ "recipe": {
+  "toolchain_commit": "adbd12b8",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N335_neg/2026-10-22-lm1909-05d754da.tests.json"
+ },
+ "label": "' (' opening the spelled-out expansion right after an acronym, e.g. 'MRI (magnetic resonance imaging)'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N335_neg/2026-10-22-lm1909-05d754da.tests.json",
+   "prereg_commit": "adbd12b8",
+   "author": "lm1909",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.229,
+     "peak": " ("
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.158,
+     "peak": " ("
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.055,
+     "peak": " ("
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.125,
+     "peak": " ("
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.006,
+     "peak": " ("
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.002,
+     "peak": "vere"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.003,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.06,
+     "peak": " ("
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.036,
+     "peak": " ("
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.0,
+     "peak": " heart"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.015,
+     "peak": " ("
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": " study"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.003,
+     "peak": ")."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.001,
+     "peak": "vere"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.003,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.001,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.836,
+    "median_fire": 0.057,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "adbd12b8",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "acronym expansion paren",
+ "unit_kind": "contextual",
+ "confidence": 0.55,
+ "notes": "Probe: 'MRI (magnetic resonance imaging)' 0.97 on ' ('. A non-gloss parenthesis ('(see Figure 2)', '(Ganymede)', '(about 70 percent)') stayed at or below 0.03, and the chemical formula ' Ca' was 0.23. Near misses keep the acronym and either drop the parenthesis or use a non-expansion one.",
+ "selection": "random draw"
+}

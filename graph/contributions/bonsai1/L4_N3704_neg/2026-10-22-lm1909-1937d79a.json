@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-1937d79a",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N3704-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:39:11+00:00",
+ "recipe": {
+  "toolchain_commit": "adbd12b8",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N3704_neg/2026-10-22-lm1909-1937d79a.tests.json"
+ },
+ "label": "the token pieces 'abble' (Scr|abble), 'al' in Be|al and 'agle' in Be|agle",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N3704_neg/2026-10-22-lm1909-1937d79a.tests.json",
+   "prereg_commit": "adbd12b8",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.882,
+     "peak": "abble"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 1.118,
+     "peak": "abble"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.861,
+     "peak": "al"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.998,
+     "peak": "al"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.454,
+     "peak": "agle"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.966,
+     "peak": "abble"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 1.022,
+     "peak": "al"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.455,
+     "peak": "agle"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.011,
+     "peak": " cards"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.015,
+     "peak": " club"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.014,
+     "peak": " knee"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.015,
+     "peak": " rookie"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.002,
+     "peak": " time"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.007,
+     "peak": " board"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.019,
+     "peak": " coach"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.003,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.924,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "adbd12b8",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "Scrabble/Beal/Beagle pieces",
+ "unit_kind": "lexical",
+ "confidence": 0.6,
+ "notes": "Probe: Beal 0.89 ('al'), Scrabble 0.81 ('abble'), Beagle 0.45 ('agle'), Mistral 0.19 ('ral'). corral, babble and coral all scored 0.00, so this is a list of specific pieces, not a general -al or -le spelling unit. The tokenizer splits are checked (Scr|abble, Be|al, Be|agle).",
+ "selection": "random draw"
+}
