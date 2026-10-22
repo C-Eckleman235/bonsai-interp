@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-22-moridinamael-46f06a2e",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N2972-",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T15:36:29+00:00",
+ "recipe": {
+  "toolchain_commit": "805be4ca",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L3_N2972_neg/2026-10-22-moridinamael-46f06a2e.tests.json"
+ },
+ "label": "The katakana character ヨ (yo) at the start of a katakana word, full- or half-width; not hiragana よ, not other kana such as ユ or ヤ, and not ヨ in the middle of a word. One stray exception: the English name Boyd also fires.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L3_N2972_neg/2026-10-22-moridinamael-46f06a2e.tests.json",
+   "prereg_commit": "805be4ca",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.692,
+     "peak": " Boyd"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.745,
+     "peak": "ヨ"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.176,
+     "peak": "ヨ"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.6,
+     "peak": "ヨ"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.569,
+     "peak": "ヨ"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.521,
+     "peak": "ヨ"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.576,
+     "peak": "ヨ"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.473,
+     "peak": "ヨ"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.078,
+     "peak": "’es"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.047,
+     "peak": "旅行"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": -0.001,
+     "peak": "ています"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.058,
+     "peak": "一周"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.148,
+     "peak": "ユ"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.323,
+     "peak": "ヤ"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.069,
+     "peak": "かり"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.005,
+     "peak": "聞いた"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.573,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "805be4ca",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L4/N11339-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L3/N2972-", "to": "bonsai1/L4/N11339-", "kind": "feeds", "weight": null, "method": "attribution rank 1 of 12 MLP feeders on the target's top 4 examples (resident feeders tool; play step ablation hit CUDA OOM)"}
+ ],
+ "notes": "Step mission from bonsai1/L4/N11339- (ML letter variables). play step hit CUDA OOM, so the feeder was chosen from the resident feeders attribution ranking (top MLP feeder) and no ablation edge weight is recorded. Thai โย fired 0.35 once in probing (not claimed). Half-width ﾖ fires when attached to its word, not after a space."
+}
