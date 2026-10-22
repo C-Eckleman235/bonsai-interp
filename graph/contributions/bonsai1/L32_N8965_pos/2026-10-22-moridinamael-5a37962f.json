@@ -1,0 +1,164 @@
+{
+ "id": "2026-10-22-moridinamael-5a37962f",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N8965+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T08:19:41+00:00",
+ "recipe": {
+  "toolchain_commit": "e7e31a20",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L32_N8965_pos/2026-10-22-moridinamael-5a37962f.tests.json"
+ },
+ "label": "word pieces in non-English text: lights up on the first piece of a word the tokenizer splits, in any language but English (strongest on Japanese katakana words like ゴルフ 'golf', also Thai, Hindi, Korean, German and French words); quiet on English text and on short words kept whole",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L32_N8965_pos/2026-10-22-moridinamael-5a37962f.tests.json",
+   "prereg_commit": "e7e31a20",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.467,
+     "peak": "ゴ"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.122,
+     "peak": "コン"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.028,
+     "peak": "ー�"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.339,
+     "peak": "เท"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.403,
+     "peak": "्�"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.127,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.27,
+     "peak": " gest"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.313,
+     "peak": " dr"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.037,
+     "peak": "Quant"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.034,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.182,
+     "peak": " went"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.124,
+     "peak": " going"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.043,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.056,
+     "peak": " with"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.002,
+     "peak": " like"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.064,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.844,
+    "median_fire": 0.291,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "e7e31a20",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "unit_kind": "spelling / script",
+ "confidence": "medium",
+ "notes": "Step-in reader of bonsai1/L29/N2864- (drop 0.08), labelled COLD from its own tops and probes only. Broad pole (2.5% of tokens reach 0.1 of max). Whole-token katakana words (ホテル, パソコン) stayed quiet in probes; English splits (photosynthesis, Przybylski) quiet. Test written blind from the label by a second author.",
+ "roles": [
+  "reads bonsai1/L29/N2864-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L29/N2864-", "to": "bonsai1/L32/N8965+", "kind": "feeds", "weight": 0.08, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
