@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-fe39b617",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N12081+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:01:17+00:00",
+ "recipe": {
+  "toolchain_commit": "e27910c9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L7_N12081_pos/2026-10-22-lm1909-fe39b617.tests.json"
+ },
+ "label": "an approximating word before a quantity ('nearly', 'almost', 'about', 'approximately', German 'ca.'); the - pole is the upper-bound side ('up to', 'upwards of')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L7_N12081_pos/2026-10-22-lm1909-fe39b617.tests.json",
+   "prereg_commit": "e27910c9",
+   "author": "lm1909",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.408,
+     "peak": " nearly"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.424,
+     "peak": " almost"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.41,
+     "peak": " about"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.309,
+     "peak": " approximately"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.042,
+     "peak": " nearly"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.357,
+     "peak": " almost"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.337,
+     "peak": " about"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.662,
+     "peak": " ca"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.011,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.011,
+     "peak": " owns"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.012,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.043,
+     "peak": " exactly"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.026,
+     "peak": " at"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.044,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.03,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.041,
+     "peak": " "
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.382,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "e27910c9",
+  "minutes": 5,
+  "batch_size": 16
+ },
+ "short": "approximately (a number)",
+ "unit_kind": "lexical",
+ "confidence": 0.6,
+ "notes": "Probe: nearly 0.48, Almost 0.47, about 0.32, approximately 0.27, circa 0.07; 'up to' 0.04, 'upwards of' 0.01, exact number 0.03. Quiet items are the same sentences with exact numbers (no 'than', which the card also lists).",
+ "selection": "random draw"
+}

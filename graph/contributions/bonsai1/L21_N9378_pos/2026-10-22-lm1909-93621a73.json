@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-93621a73",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N9378+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:01:10+00:00",
+ "recipe": {
+  "toolchain_commit": "e27910c9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L21_N9378_pos/2026-10-22-lm1909-93621a73.tests.json"
+ },
+ "label": "the decimal point in the upper bound of a confidence interval written 'X to Y.ZZ' in epidemiology results",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L21_N9378_pos/2026-10-22-lm1909-93621a73.tests.json",
+   "prereg_commit": "e27910c9",
+   "author": "lm1909",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.546,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 1.627,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.309,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.299,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.224,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.73,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.128,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.529,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.013,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.013,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.004,
+     "peak": "Patients"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.021,
+     "peak": " was"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.016,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.014,
+     "peak": " made"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.014,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.081,
+     "peak": ";"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.419,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "e27910c9",
+  "minutes": 5,
+  "batch_size": 16
+ },
+ "short": "CI upper-bound decimal",
+ "unit_kind": "contextual",
+ "confidence": 0.55,
+ "notes": "Card flags gate-closed (-x- echo 87%). Probe: 'confidence interval 1.21 to 3.04' 1.06, '95% CI 1.10 to 5.25' 0.61 (peak '.'), but hyphenated '0.55-0.93' 0.05; other decimals (54.3 years, 3.50 to 4.75 dollars, version 2.3) ~0.02. Fire items all use 'to' with an upper bound > 1.",
+ "selection": "random draw"
+}

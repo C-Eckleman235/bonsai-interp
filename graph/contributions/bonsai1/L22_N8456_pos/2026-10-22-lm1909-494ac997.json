@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-494ac997",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N8456+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:01:13+00:00",
+ "recipe": {
+  "toolchain_commit": "e27910c9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L22_N8456_pos/2026-10-22-lm1909-494ac997.tests.json"
+ },
+ "label": "a caption, credit or navigation line ('Image credit:', 'Image:', 'Top') starting a new line after article text",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N8456_pos/2026-10-22-lm1909-494ac997.tests.json",
+   "prereg_commit": "e27910c9",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.384,
+     "peak": "Image"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.388,
+     "peak": "Image"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.668,
+     "peak": "\n"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.459,
+     "peak": "Image"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.692,
+     "peak": "\n"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.37,
+     "peak": "Image"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.475,
+     "peak": "Image"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.721,
+     "peak": "\n"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.008,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.013,
+     "peak": "akers"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.006,
+     "peak": " beetle"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.018,
+     "peak": " after"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.01,
+     "peak": " season"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.009,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.022,
+     "peak": " after"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.015,
+     "peak": " leave"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.467,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "e27910c9",
+  "minutes": 5,
+  "batch_size": 16
+ },
+ "short": "image credit / nav line",
+ "unit_kind": "contextual",
+ "confidence": 0.5,
+ "notes": "Probe: '\\nTop\\nRange and habitat' 0.62 (peak '\\n'), '\\nImage credit: NASA/JPL' 0.45, '\\nPhoto: Maria Lopez' 0.17, '\\nPhoto by' 0.19; same prose run together or photo/image/top as ordinary words 0.01-0.04. Fire items favour 'Image credit:' / 'Image:' / 'Top' lines.",
+ "selection": "random draw"
+}
