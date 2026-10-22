@@ -1,0 +1,69 @@
+{
+ "contribution": "2026-10-21-moridinamael-a52a5be6",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N8273+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T01:13:13+00:00",
+ "roles": ["feeds bonsai1/L4/N9554-"],
+ "neighbours": [
+  {
+   "unit": "L3/N8273",
+   "pole": "+",
+   "label": "the letters 'on' as a word piece: the little word 'on' (on the table, on Monday) fires, and the '-on' piece ending a rare name the tokenizer splits (e.g. Quillathon, Mr. Brevison) fires even more strongly; other prepositions (in, at, under, about), the same rare names with other endings (-an, -en, -ar) and everyday -on words stored whole (season, person, Washington) stay quiet",
+   "short": "'on' piece: word 'on', strongest as end of a split rare name",
+   "unit_kind": "token / spelling",
+   "fire": [
+    "\"The Tescari Dominion is a strong centralized state at the center of the continent, east of the Disputed Lands and north of Aethon.",
+    "The hills of Vortheon glowed red.",
+    "She left the keys on the kitchen table.",
+    "We will meet again on Monday morning.",
+    "The caravan finally reached the gates of Quillathon at dusk.",
+    "Mr. Brevison adjusted his spectacles and cleared his throat.",
+    "Please put your coat on before you go outside.",
+    "The old wizard Zarethon raised his staff toward the storm."
+   ],
+   "quiet": [
+    "She left the keys in the kitchen drawer.",
+    "We will meet again at noon tomorrow.",
+    "The caravan finally reached the gates of Quillathan at dusk.",
+    "Mr. Brevisen adjusted his spectacles and cleared his throat.",
+    "Please wait here before you go outside.",
+    "The old wizard Zarethar raised his staff toward the storm.",
+    "A small bird hid under the fence post.",
+    "Captain Morvidan ordered the crew to lower the sails."
+   ]
+  }
+ ],
+ "predictions": "Blind test written by a second author from the label only (blind:claude-opus-5-5 (label-only)); the two solver leak texts are among the fire items. Expect name endings ~0.6-0.9, word 'on' ~0.2-0.4, near misses under 0.15.",
+ "notes": "Chat voted for 'the little word on itself'; the inverse solver (DE) found a leak on split-name '-on' endings (Aethon 0.97, Vortheon 0.62), so the label was tightened to name them as firing. play step OOMed on the GPU (resident model loaded); feeder chosen from the resident attribution ranking, so no edge weight is recorded.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "quick-test"
+  ],
+  "_screens_vocabulary": [
+   "atlas",
+   "bands",
+   "bank-solo",
+   "blind-room",
+   "card",
+   "disproof",
+   "held-out",
+   "induce",
+   "inverse-de",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round",
+   "step-down",
+   "step-out",
+   "which"
+  ]
+ }
+}
