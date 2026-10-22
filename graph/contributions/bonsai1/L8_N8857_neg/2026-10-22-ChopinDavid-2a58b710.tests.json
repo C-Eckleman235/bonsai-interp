@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-2a58b710",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N8857-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T17:20:14+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L8/N8857",
+   "pole": "-",
+   "label": "a numeric literal or multiplication sign inside a Python numeric expression (gauss(0, 1), 4*1024), against Python lines without arithmetic literals",
+   "fire": [
+    "import random\n\ndef noise(n):\n    return [random.gauss(0, 1) for _ in range(n)]",
+    "CHUNK = 8*1024*1024\nwith open(path, 'rb') as f:\n    data = f.read(CHUNK)",
+    "import numpy as np\n\nsamples = np.random.normal(0, 1, size=100)\nprint(samples.mean())",
+    "value = buf[0] + 256 * buf[1] + 65536 * buf[2]\nprint(value)",
+    "MAX_UPLOAD = 2*1024*1024\nif size > MAX_UPLOAD:\n    raise ValueError('too big')",
+    "def jitter(x):\n    return x + random.uniform(-1, 1)",
+    "area = 3.14159 * r * r\nprint('area:', area)",
+    "weights = [random.gauss(0, 1) * scale for _ in range(10)]"
+   ],
+   "quiet": [
+    "import random\n\ndef pick(items):\n    return random.choice(items)",
+    "with open(path, 'rb') as f:\n    data = f.read()\n    print(len(data))",
+    "import numpy as np\n\nsamples = np.array(values)\nprint(samples.mean())",
+    "name = first + ' ' + last\nprint(name)",
+    "if user is None:\n    raise ValueError('no user')",
+    "def greet(x):\n    return 'Hello, ' + x",
+    "words = text.split()\nprint('words:', words)",
+    "names = [person.name for person in people]"
+   ]
+  }
+ ],
+ "predictions": "may hold weakly; gauss(0, 1) 1.137, 4*1024 0.669, '256 * data' 0.297 but randint(3 * cell, 40, 1) only 0.024",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "number/'*' in Python arithmetic",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: '1' x8, '*' x2, ' *' x2 inside Python (random.gauss(0, 1), 4*1024*1024, 256 * bytedata). Mixed gate regime (51% leak), max 3.3. Probe: gauss(0, 1) 1.137, 4*1024 0.669, 256 * data 0.297, randint 0.024; prose numbers 0.055, string code 0.028, 'Tuesday morning' 0.173."
+}
