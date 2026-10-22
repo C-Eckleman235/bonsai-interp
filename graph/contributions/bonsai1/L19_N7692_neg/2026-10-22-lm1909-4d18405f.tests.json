@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-4d18405f",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N7692-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:39:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L19/N7692",
+   "pole": "-",
+   "label": "tag-name token right after '<' in XML/HTML markup (<ref>, <name>, <option>, <a>, <span>)",
+   "fire": [
+    "page = \"\"\"\n<html>\n  <body>\n    <p>Welcome</p>\n  </body>\n</html>\n\"\"\"",
+    "The sentence needs a citation.<ref>Jones 1998, p. 4</ref> The next paragraph continues.",
+    "data = \"<user><id>42</id><email>a@b.com</email></user>\"",
+    "template = \"\"\"\n<form>\n  <input type=\"text\">\n  <button>Send</button>\n</form>\n\"\"\"",
+    "feed = \"\"\"\n<item>\n  <title>News</title>\n  <link>http://example.com</link>\n</item>\n\"\"\"",
+    "Wrap the warning in <strong>bold</strong> tags so readers notice it.",
+    "icon = '<svg width=\"10\"><circle r=\"4\"/></svg>'",
+    "xml = \"\"\"\n<config>\n  <port>8080</port>\n  <host>localhost</host>\n</config>\n\"\"\""
+   ],
+   "quiet": [
+    "page = [\"Welcome\", \"About\", \"Contact\"]  # menu labels",
+    "The sentence needs a citation (Jones 1998, p. 4). The next paragraph continues.",
+    "data = {\"user\": {\"id\": 42, \"email\": \"a@b.com\"}}",
+    "if count < limit and limit < 100:\n    count += 1\n    send()",
+    "feed:\n  item:\n    title: News\n    link: http://example.com",
+    "Wrap the warning in asterisks so readers notice it.",
+    "icon_size = width * 10 if width < 5 else 4",
+    "config = {\n  \"port\": 8080,\n  \"host\": \"localhost\"\n}"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "markup tag names",
+ "unit_kind": "contextual",
+ "confidence": 0.75,
+ "notes": "Probe: <ref> 0.83, <name> 0.83, <option> 0.69, <a>/<span> 0.65; '<' as less-than 0.00-0.01, YAML/parenthesis equivalents 0.01."
+}
