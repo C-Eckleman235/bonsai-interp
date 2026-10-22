@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-21-moridinamael-1e02ab92",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N7891-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T02:29:21+00:00",
+ "roles": ["feeds bonsai1/L27/N6013-"],
+ "neighbours": [
+  {
+   "unit": "L26/N7891",
+   "pole": "-",
+   "label": "The token '.assertEqual' right after 'self' in a Python unittest method (self.assertEqual(...)), strongest when an earlier self.assertEqual line is in view; quiet for other assert methods (assertTrue, assertIn, assertIsNone), a plain 'assert x == y', and assertEqual called on another object (tc.assertEqual).",
+   "short": "self.assertEqual in Python unit tests",
+   "fire": [
+    "self.assertEqual(result, 42)",
+    "self.assertEqual(len(items), 3)\n        self.assertEqual(items[0], 'apple')",
+    "def test_add(self):\n    self.assertEqual(add(2, 3), 5)",
+    "self.assertEqual(response.status_code, 200)\nself.assertEqual(response.json()['ok'], True)",
+    "self.assertEqual(user.name, \"Alice\")",
+    "def test_parse(self):\n        self.assertEqual(parse('1,2'), [1, 2])\n        self.assertEqual(parse(''), [])",
+    "self.assertEqual(stack.pop(), 'b')",
+    "self.assertEqual(config.get('debug'), False, msg='debug should default off')"
+   ],
+   "quiet": [
+    "Petroleum was the ingredient that kept the Japanese war machine running; when American cryptographers cracked Japanese naval codes, laying bare the details of Japan’s oil production facilities and transport routes in the",
+    "#    print new_value, tz.",
+    "self.assertTrue(result == 42)",
+    "self.assertIn('apple', items)\n        self.assertIn('pear', items)",
+    "def test_add(self):\n    assert add(2, 3) == 5",
+    "self.assertIsNone(response.error)\nself.assertTrue(response.ok)",
+    "tc.assertEqual(user.name, \"Alice\")",
+    "def test_parse(self):\n        self.assertListEqual(parse('1,2'), [1, 2])\n        self.assertFalse(parse(''))"
+   ]
+  }
+ ],
+ "predictions": "Blind test written from the label only. Risky: many fire items put 'self' first in the text, and the solver's leak paragraph read 0.35 in probing.",
+ "notes": "Step from bonsai1/L27/N6013-. play step hit CUDA OOM (resident stream model shares the GPU); feeder chosen as the top MLP cell in the resident attribution ranking, so no ablation drop / edge weight is recorded.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "blind-room",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
