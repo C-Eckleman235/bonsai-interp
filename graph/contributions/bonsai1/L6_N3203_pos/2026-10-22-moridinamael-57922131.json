@@ -1,0 +1,166 @@
+{
+ "id": "2026-10-22-moridinamael-57922131",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N3203+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T18:51:30+00:00",
+ "recipe": {
+  "toolchain_commit": "378576f4",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L6_N3203_pos/2026-10-22-moridinamael-57922131.tests.json"
+ },
+ "label": "Positional, not a word or a meaning: a period (sometimes a comma, newline or \"'s\") fires strongly only when it falls within the first few tokens of a raw text window cut from the middle of a document; written sentences, including fragments that start mid-sentence with an early period, stay low (under about 0.2), the same as ordinary self-contained sentences.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L6_N3203_pos/2026-10-22-moridinamael-57922131.tests.json",
+   "prereg_commit": "378576f4",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.025,
+     "peak": " The"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.061,
+     "peak": "\n"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.036,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.035,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.032,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.035,
+     "peak": "Thanks"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.028,
+     "peak": " more"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.062,
+     "peak": " Mix"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.063,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.063,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.07,
+     "peak": "In"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.097,
+     "peak": "To"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.063,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.056,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.02,
+     "peak": " also"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.032,
+     "peak": "Mix"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.242,
+    "median_fire": 0.035,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "378576f4",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L7/N6702+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L6/N3203+",
+   "to": "bonsai1/L7/N6702+",
+   "kind": "feeds",
+   "weight": 0.58,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
