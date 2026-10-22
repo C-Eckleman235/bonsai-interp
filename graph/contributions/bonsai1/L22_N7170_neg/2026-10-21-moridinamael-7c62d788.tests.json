@@ -1,0 +1,71 @@
+{
+ "contribution": "2026-10-21-moridinamael-7c62d788",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L22/N7170-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-21T17:49:11+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "In code (Python, JavaScript, Java, C++ and similar), a list or array being started, typed or grown: strongest for an empty list literal or empty list constructor that is about to be filled, a List/ArrayList/vector type or type hint, or adding one item to the end of it (append, push); a list literal that already holds items fires more weakly, and so does technical prose saying something returns a list or array. Dicts, sets, tuples, plain numbers and 'list' in everyday prose stay quiet; a variable only named with 'list' can fire weakly."
+ },
+ "neighbours": [
+  {
+   "unit": "L22/N7170",
+   "pole": "-",
+   "label": "A list or array as a program's data container being created, typed or filled, whether in code (an empty or filled list literal, a List/ArrayList/vector type or type hint, appending or pushing onto it, in Python, JavaScript, Java, C++ and similar) or in plain English about software (a function that returns a list, results collected into an array). Dicts, sets, tuples and maps stay quiet, as do everyday lists and arrays outside software (shopping lists, an array of paintings); a variable merely named with 'list', or an everyday list, can fire weakly.",
+   "fire": [
+    "results = []\nfor row in rows:\n    results.append(row.id)",
+    "const names = ['Ada', 'Grace', 'Linus'];\nnames.push('Ken');",
+    "List<String> users = new ArrayList<>();\nusers.add(\"alice\");",
+    "std::vector<int> scores;\nscores.push_back(42);",
+    "def get_ids(items: list[int]) -> list[int]:\n    return [i * 2 for i in items]",
+    "The function returns a list of all matching filenames in the directory.",
+    "Each API response is parsed and the records are collected into an array before sorting.",
+    "We initialize an empty list, then append every prime we find while looping up to n."
+   ],
+   "quiet": [
+    "The guest list for the wedding was very long.",
+    "my_list = 5\nprint(my_list)",
+    "results = {}\nfor row in rows:\n    results[row.id] = row",
+    "const names = new Set(['Ada', 'Grace', 'Linus']);\nnames.add('Ken');",
+    "Map<String, Integer> users = new HashMap<>();\nusers.put(\"alice\", 1);",
+    "std::map<int, int> scores;\nscores[1] = 42;",
+    "def get_ids(pair: tuple[int, int]) -> tuple[int, int]:\n    return (pair[1], pair[0])",
+    "The function returns a dictionary mapping each filename to its size."
+   ]
+  }
+ ],
+ "predictions": "Blind test (author saw only the label). Expect most fire items >= 0.3 and code-container near misses quiet; the 'my_list' and guest-list leak items are the risk (solver found them near 0.2-0.3).",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "blind-room",
+   "quick-test"
+  ],
+  "_screens_vocabulary": [
+   "atlas",
+   "bands",
+   "bank-solo",
+   "blind-room",
+   "card",
+   "disproof",
+   "held-out",
+   "induce",
+   "inverse-de",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round",
+   "step-down",
+   "step-out",
+   "which"
+  ]
+ }
+}
