@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-641bc223",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N693-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:00:01+00:00",
+ "recipe": {
+  "toolchain_commit": "98c83068",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L29_N693_neg/2026-10-22-lm1909-641bc223.tests.json"
+ },
+ "label": "Python database-access code: SQL cursor iteration (cursor.execute / fetchall / for row in cursor) and db.Column ORM model definitions",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L29_N693_neg/2026-10-22-lm1909-641bc223.tests.json",
+   "prereg_commit": "98c83068",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.887,
+     "peak": " cur"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.762,
+     "peak": " cursor"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.575,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.577,
+     "peak": " cur"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.576,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.845,
+     "peak": " c"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.532,
+     "peak": " cursor"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.616,
+     "peak": " db"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.131,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.013,
+     "peak": "':"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.03,
+     "peak": ".order"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.008,
+     "peak": "(url"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.025,
+     "peak": ":\n"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.008,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.008,
+     "peak": "       "
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.009,
+     "peak": " self"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.597,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "98c83068",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "Python DB cursor/ORM code",
+ "unit_kind": "contextual",
+ "confidence": 0.7,
+ "notes": "Probe: sqlite fetchall 0.92, for row in cursor 0.68, db.Model with db.Column 0.61, Django ORM field dict 0.37. The same loop shapes over json, a plain class or prose stayed ≤0.04, and SQLAlchemy session.query reached 0.14. Quiet items keep the code shape and drop the database.",
+ "selection": "random draw"
+}

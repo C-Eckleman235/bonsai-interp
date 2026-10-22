@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-e3410cfa",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N7513-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:59:57+00:00",
+ "recipe": {
+  "toolchain_commit": "98c83068",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L28_N7513_neg/2026-10-22-lm1909-e3410cfa.tests.json"
+ },
+ "label": "in explanatory health/how-it-works prose, the token that introduces a contrasted second item or an example (' protein' after 'while', ' example' in 'as for example', a list item)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L28_N7513_neg/2026-10-22-lm1909-e3410cfa.tests.json",
+   "prereg_commit": "98c83068",
+   "author": "lm1909",
+   "n_fire": 4,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.424,
+     "peak": " protein"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.571,
+     "peak": " while"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.082,
+     "peak": " graft"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.182,
+     "peak": " example"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.222,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.336,
+     "peak": " creation"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.552,
+     "peak": " protein"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.033,
+     "peak": " example"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.153,
+     "peak": " absorb"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.378,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.081,
+     "peak": " graft"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.136,
+     "peak": " regular"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": -0.006,
+     "peak": " straight"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.171,
+     "peak": " when"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.101,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.003,
+     "peak": " be"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.781,
+    "median_fire": 0.279,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "98c83068",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "introduced contrast/example item",
+ "unit_kind": "contextual",
+ "confidence": 0.3,
+ "notes": "Probe: 'energy while protein' 0.69, 'as for example' 0.48, a definition after a dash 0.38, a balance enumeration 0.36. But 'for instance' gave 0.07 and 'while minerals' 0.15. Fire items stay close to the high frames. Low confidence.",
+ "selection": "random draw"
+}

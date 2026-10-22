@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-7e2ec92f",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N10049-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:59:54+00:00",
+ "recipe": {
+  "toolchain_commit": "98c83068",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L28_N10049_neg/2026-10-22-lm1909-7e2ec92f.tests.json"
+ },
+ "label": "whether an ongoing activity or term continues or ends: ceased, continue/continuing, terminated someone's appointment, long-term, end their lives",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L28_N10049_neg/2026-10-22-lm1909-7e2ec92f.tests.json",
+   "prereg_commit": "98c83068",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.841,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.394,
+     "peak": " ceased"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.488,
+     "peak": " ceased"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.81,
+     "peak": " continuing"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.778,
+     "peak": "-term"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.97,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.464,
+     "peak": " continue"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.473,
+     "peak": " their"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.031,
+     "peak": "'s"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.064,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.006,
+     "peak": " won"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.039,
+     "peak": " nights"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.011,
+     "peak": " office"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.024,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.014,
+     "peak": " her"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.025,
+     "peak": "Old"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.633,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "98c83068",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "continuing vs ending",
+ "unit_kind": "sparse feature",
+ "confidence": 0.55,
+ "notes": "Probe: 'terminated Nancy Knight's' 1.08 (peak 's), longer-term 0.77, ceased 0.71, continuing education 0.63, continue 0.39-0.42, 'end their' 0.40, stopped 0.23. Hired and 'was popular' were ≤0.08. Quiet items keep the same subject with a neutral event that neither continues nor stops.",
+ "selection": "random draw"
+}
