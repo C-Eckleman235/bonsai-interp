@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-22-moridinamael-c92dd1d0",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N181+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T07:28:18+00:00",
+ "roles": ["feeds bonsai1/L11/N2426-"],
+ "neighbours": [
+  {
+   "unit": "L9/N181",
+   "pole": "+",
+   "label": "A lone single-space token: the bare space right before digits (' 12', ' 3.5') or the extra space of a double space between words or sentences. Quiet when digits are glued to a symbol ('$40', '(40)', '-3', 'x=5'), for numbers written as words, and for runs of three or more spaces; weaker before a year after a month name ('April 1991').",
+   "short": "the bare space token (before digits, or a double space)",
+   "unit_kind": "token",
+   "fire": [
+    "We ordered 12 pizzas for the party.",
+    "The recipe calls for 3.5 cups of flour.",
+    "She finished the race in 47 minutes.",
+    "Turn to page 208 and read the first paragraph.",
+    "The bus leaves at 7 every morning.",
+    "He scored 3 goals in the final match.",
+    "The meeting ran long.  Everyone was tired afterward.",
+    "I left the keys on the  kitchen table."
+   ],
+   "quiet": [
+    "We ordered twelve pizzas for the party.",
+    "The recipe calls for $3.50 worth of flour.",
+    "She finished the race (47) seconds ahead.",
+    "Turn to page two hundred and read the first paragraph.",
+    "The bus leaves at seven every morning.",
+    "He scored three goals in the final match.",
+    "Our team has members across the whole country.",
+    "The temperature dropped to -4 overnight."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire around 0.2-0.4, double-space items strongest; all near misses under 0.05",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-out",
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
