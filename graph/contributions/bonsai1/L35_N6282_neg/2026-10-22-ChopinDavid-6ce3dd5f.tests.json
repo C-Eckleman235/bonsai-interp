@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-6ce3dd5f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6282-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:19:58+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N6282",
+   "pole": "-",
+   "label": "the first token of a proper name that the tokenizer splits into pieces (' B' of Bologna, Breda, Basingstoke; ' Ch' of Chaucer), against proper names that are a single token",
+   "fire": [
+    "After the war he settled in Bicester and opened a small shop.",
+    "The fleet sailed from Brest at dawn and reached the islands by noon.",
+    "She spent her childhood in Bexley before moving north for work.",
+    "The ship was repaired at Chatham and returned to sea in the spring.",
+    "The agreement became known as the Peace of Breda among historians.",
+    "He took the early train to Chelmsford for the job interview.",
+    "The famous towers of Bologna lean slightly toward each other.",
+    "The young poet read Chaucer aloud to his sisters every evening."
+   ],
+   "quiet": [
+    "After the war he settled in Oxford and opened a small shop.",
+    "The fleet sailed from Bristol at dawn and reached the islands by noon.",
+    "She spent her childhood in London before moving north for work.",
+    "The ship was repaired at Chester and returned to sea in the spring.",
+    "The agreement became known as the Peace of Paris among historians.",
+    "He took the early train to Madrid for the job interview.",
+    "The famous towers of Vienna lean slightly toward each other.",
+    "The young poet read Milton aloud to his sisters every evening."
+   ]
+  }
+ ],
+ "predictions": "should hold; ' B'ologna 0.756, ' Ch'aucer 0.551, ' B'asingstoke 0.526, ' B'reda 0.444; single-token Paris 0.059, 'at home' 0.007",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "first piece of a split name",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: ' B' x9 opening split names (Biff, Basingstoke, Breda, Bologna, Balthazar), ' Ch'aucer, and ' OF' in all-caps licence text. Probe: split names 0.444-0.756, ' OF' 0.224; Treaty of Paris 0.059. Tokenizer checked: Bicester, Brest, Bexley, Chatham, Chelmsford split after ' B'/' Ch'; Oxford, Madrid, Vienna, Bristol, Chester are single tokens."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-9ba375ec",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N8518-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:19:58+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N8518",
+   "pole": "-",
+   "label": "a few name and word pieces: Japanese '皆' as its own token (皆で, 皆様) and the name pieces 'ury' (Maury) and 'awa' (Dawa); no shared meaning found",
+   "fire": [
+    "週末は家族皆でキャンプに出かけて、川で魚を釣りました。",
+    "ご来場いただいた皆様に心より御礼申し上げます。",
+    "Last spring, Maury Wills was honored at a ceremony in Los Angeles.",
+    "The train from Addis Ababa reaches Dire Dawa in about twelve hours.",
+    "クラスの皆で文化祭の準備を遅くまで続けました。",
+    "Researchers on the ship named the deep trench after Matthew Maury.",
+    "Our guide grew up in Dawa and knew every street in the old market.",
+    "参加者の皆様は受付で名札をお受け取りください。"
+   ],
+   "quiet": [
+    "週末は家族全員でキャンプに出かけて、川で魚を釣りました。",
+    "ご来場いただいた皆さんに心より御礼申し上げます。",
+    "Last spring, Willie Mays was honored at a ceremony in Los Angeles.",
+    "The train from Addis Ababa reaches Djibouti in about twelve hours.",
+    "クラスの全員で文化祭の準備を遅くまで続けました。",
+    "Researchers on the ship named the deep trench after Matthew Fontaine.",
+    "Our guide grew up in Harar and knew every street in the old market.",
+    "参加者の方々は受付で名札をお受け取りください。"
+   ]
+  }
+ ],
+ "predictions": "should hold if pieces fire as in probes; 皆で 0.854, 皆様 0.800, Maury 0.877, Dawa 0.570; 全員 0.064, control prose 0.005-0.047; broad flag, so near misses may fire weakly",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "皆 / 'ury' / 'awa' pieces",
+ "unit_kind": "word",
+ "confidence": 0.35,
+ "notes": "Card: '皆' x7, 'ury' x6, 'awa' x3, tiny max 1.84, broad (2.1%), gate-closed leak. Probe: 皆 0.80-0.85, Maury 'ury' 0.877, Dawa 'awa' 0.570; 全員 0.064. Near misses use 皆さん (one token, so no '皆' piece), 全員, and names split differently."
+}

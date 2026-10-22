@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-b47ba765",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N4437+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:19:58+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L6/N4437",
+   "pole": "+",
+   "label": "the period that closes a taxonomic or company abbreviation inside a name ('Cryptocoryne sp.', 'subsp.', 'Co.'), against sentence-final periods and titles like 'Dr.'",
+   "fire": [
+    "Several Anubias sp. were added to the tank after the water was changed.",
+    "The botanists collected Erica cinerea subsp. maderensis on the cliffs.",
+    "The Pacific Lumber Co. once owned most of the forest along the coast.",
+    "Larvae of Culex sp. were found in every water barrel on the farm.",
+    "Seeds of Festuca rubra subsp. commutata were sown in the test plots.",
+    "In 1902 the Ohio Brass Co. moved its works to a larger site.",
+    "A single Aspergillus sp. strain was isolated from the stored grain.",
+    "The old warehouse was sold by the Hudson Coal Co. to the city."
+   ],
+   "quiet": [
+    "Several new plants were added to the tank after the water was changed.",
+    "The botanists collected heather on the cliffs above the bay.",
+    "The lumber company once owned most of the forest along the coast.",
+    "Larvae of mosquitoes were found in every water barrel on the farm.",
+    "Seeds of red fescue were sown in the test plots. They grew quickly.",
+    "In 1902 Mr. Hale moved the brass works to a larger site.",
+    "A single fungal strain was isolated from the stored grain.",
+    "The old warehouse was sold by St. Mary's parish to the city."
+   ]
+  }
+ ],
+ "predictions": "should hold; 'sp.' 1.196, 'subsp.' 0.830, 'Co.' 0.516; 'spp.,' 0.280 and 'Sr.,' 0.102 weaker; sentence-final period 0.024, 'Dr.' 0.013",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "period of 'sp.'/'subsp.'/'Co.'",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: '.' x11 and '.,' x5 after sp., subsp., spp., Co., Sr. Probe: sp. 1.196, subsp. 0.830, Co. 0.516; same text without the abbreviation 0.015-0.021, Dr. Patel 0.013. Broad flag (1.2%)."
+}

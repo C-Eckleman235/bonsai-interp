@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-6ce3dd5f",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6282-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T18:28:50+00:00",
+ "recipe": {
+  "toolchain_commit": "f670714e",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N6282_neg/2026-10-22-ChopinDavid-6ce3dd5f.tests.json"
+ },
+ "label": "the first token of a proper name that the tokenizer splits into pieces (' B' of Bologna, Breda, Basingstoke; ' Ch' of Chaucer), against proper names that are a single token",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N6282_neg/2026-10-22-ChopinDavid-6ce3dd5f.tests.json",
+   "prereg_commit": "f670714e",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.378,
+     "peak": " B"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.24,
+     "peak": " B"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.328,
+     "peak": " B"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.096,
+     "peak": " Ch"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.619,
+     "peak": " B"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.134,
+     "peak": " Ch"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.601,
+     "peak": " B"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.493,
+     "peak": " Ch"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.014,
+     "peak": " war"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.004,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.005,
+     "peak": " London"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.013,
+     "peak": " Chester"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.064,
+     "peak": " Peace"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.006,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.004,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.004,
+     "peak": "The"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.353,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "f670714e",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "first piece of a split name",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: ' B' x9 opening split names (Biff, Basingstoke, Breda, Bologna, Balthazar), ' Ch'aucer, and ' OF' in all-caps licence text. Probe: split names 0.444-0.756, ' OF' 0.224; Treaty of Paris 0.059. Tokenizer checked: Bicester, Brest, Bexley, Chatham, Chelmsford split after ' B'/' Ch'; Oxford, Madrid, Vienna, Bristol, Chester are single tokens.",
+ "selection": "random draw"
+}
