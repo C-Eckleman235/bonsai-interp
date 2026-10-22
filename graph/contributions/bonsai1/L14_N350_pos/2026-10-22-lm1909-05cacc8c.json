@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-05cacc8c",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N350+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:00:59+00:00",
+ "recipe": {
+  "toolchain_commit": "e27910c9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L14_N350_pos/2026-10-22-lm1909-05cacc8c.tests.json"
+ },
+ "label": "code that checks two named sources of the same value against each other (identifiers/comments like 'in the file and in the database', source vs target, expected vs actual)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L14_N350_pos/2026-10-22-lm1909-05cacc8c.tests.json",
+   "prereg_commit": "e27910c9",
+   "author": "lm1909",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.418,
+     "peak": " catalog"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.894,
+     "peak": " actual"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.239,
+     "peak": " db"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.276,
+     "peak": "(source"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.309,
+     "peak": " body"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.326,
+     "peak": " references"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.294,
+     "peak": " manifest"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.425,
+     "peak": " request"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.186,
+     "peak": " spreadsheet"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.031,
+     "peak": "def"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.059,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.014,
+     "peak": "import"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.025,
+     "peak": ".now"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.037,
+     "peak": "def"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.013,
+     "peak": "#"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.263,
+     "peak": " user"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.318,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "e27910c9",
+  "minutes": 4,
+  "batch_size": 16
+ },
+ "short": "code: compare two sources",
+ "unit_kind": "contextual",
+ "confidence": 0.4,
+ "notes": "Probe: '# if the name in the file and in the database differ' 0.66, evaluate(prediction, reference) 0.36, compare(source, target) 0.28, output_dict loop 0.23; plain code without a pairing 0.01-0.04; prose with source/target/reference ~0.24 (so near misses are code, not prose).",
+ "selection": "random draw"
+}
