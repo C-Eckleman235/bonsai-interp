@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-22-moridinamael-66073473",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N3175-",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T15:08:59+00:00",
+ "recipe": {
+  "toolchain_commit": "1155a79b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N3175_neg/2026-10-22-moridinamael-66073473.tests.json"
+ },
+ "label": "The word-piece just before n't in a contraction, the stems ending in -n: don, didn, doesn, isn, wasn, aren, weren, haven, hasn, couldn, wouldn, shouldn, won (fires about 0.9 in any sentence). can't, mustn't and ain't stay quiet, and so does 'not' written out (do not, is not). It also fires on 'well' in 'as well as', 'such' in 'such as', and 'according' in 'according to'. Ordinary text idles at about 0.2-0.35, and a comma right after an opening word (Frankly, ...) can reach 0.6.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N3175_neg/2026-10-22-moridinamael-66073473.tests.json",
+   "prereg_commit": "1155a79b",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 3,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.912,
+     "peak": " don"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.915,
+     "peak": " didn"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.925,
+     "peak": " doesn"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.93,
+     "peak": " isn"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.912,
+     "peak": " weren"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.935,
+     "peak": " haven"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.928,
+     "peak": " couldn"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.924,
+     "peak": " shouldn"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.769,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.324,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.295,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.217,
+     "peak": " an"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.324,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.283,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.267,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.298,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.925,
+    "near_misses_at_0.3": 3
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "1155a79b",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Dense pole (51.6% of tokens reach 0.1 of max, max 3.2). The resident stream probe read this pole ~50x low (0.01 vs 0.95 on verbatim tops); all probing used play probe. Feeder drop from L33/N9466- was 0.00. Test written blind from the label only.",
+ "roles": [
+  "reads bonsai1/L33/N9466-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L33/N9466-", "to": "bonsai1/L35/N3175-", "kind": "feeds", "weight": 0.0, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
