@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-22-moridinamael-dcc5b28e",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N1098-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T15:55:40+00:00",
+ "roles": ["feeds bonsai1/L3/N2972-"],
+ "neighbours": [
+  {
+   "unit": "L0/N1098",
+   "pole": "-",
+   "label": "A less common word or name starting with Y after a space, e.g. Yahweh, Yemen, Yosemite, Yin, yak, yaw, yoga, yard, yogurt; the everyday words you, your, year, young, yes, yet stay low, as does y inside a word (Tokyo, kayak) or Y at the very start of the text",
+   "short": "space + Y-word (not you/year/yes)",
+   "fire": [
+    "The hikers spent three days camping in Yosemite before heading home.",
+    "She ordered a bowl of yogurt topped with fresh berries.",
+    "A shaggy yak carried the supplies up the steep mountain trail.",
+    "The pilot corrected the yaw as the plane drifted in the crosswind.",
+    "Every morning he unrolls his mat and practices yoga for an hour.",
+    "The kids played soccer in the back yard until it got dark.",
+    "The ancient text refers to the deity by the name Yahweh.",
+    "Fighting continued along the coast of Yemen last month."
+   ],
+   "quiet": [
+    "Have you ever spent three days camping in the mountains?",
+    "She ordered a bowl of oatmeal topped with fresh berries, as she does every year.",
+    "Our guide paddled a kayak across the cold mountain lake.",
+    "The pilot corrected the drift as the plane wobbled, yet the landing was smooth.",
+    "Every morning you should stretch on a mat for an hour.",
+    "Your kids played soccer in the garden until it got dark.",
+    "The ancient text refers to the deity by many different names.",
+    "Fighting continued along the coast last month, according to papers in Tokyo."
+   ],
+   "notes": "Step-out feeder of bonsai1/L3/N2972- (katakana ヨ), chosen as the top MLP feeder by resident attribution because play step ran out of GPU memory, so no ablation drop was measured. Test sentences written blind by a second author who saw only the label. Words the tokenizer splits into a bare ' y'/' Y' piece (yawn, yanked, Yves) read weaker (0.13-0.27) in probes."
+  }
+ ],
+ "predictions": "Most fire sentences 0.3-0.6; near misses below 0.15 (you/year/yet ~0.04-0.13).",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "neighbors",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
