@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-ChopinDavid-2c5dbaaa",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N4797-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T02:20:25+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L24/N4797",
+   "pole": "-",
+   "label": "The hyphen piece inside a hyphenated compound where the tokenizer breaks the second word ('Long|-T|erm', 'high|-|temperature'), marking a word that continues across the hyphen; not the same phrase written without a hyphen.",
+   "fire": [
+    "The report looks at the Short-Term costs of the new tax.",
+    "The bank published its Mid-Term forecast on Monday.",
+    "Delegates discussed the Cross-Border trade agreement for hours.",
+    "The city opened a new Pre-School in the old library building.",
+    "The government set up an Anti-Corruption office last year.",
+    "Students can take a Self-Defense class on Thursday evenings.",
+    "The study covers the Long-Term health of retired miners.",
+    "Researchers tested the cables in high-temperature conditions."
+   ],
+   "quiet": [
+    "The report looks at the immediate costs of the new tax.",
+    "The bank published its yearly forecast on Monday.",
+    "Delegates discussed the regional trade agreement for hours.",
+    "The city opened a new school in the old library building.",
+    "The government set up an ethics office last year.",
+    "Students can take a boxing class on Thursday evenings.",
+    "The study covers the lasting health of retired miners.",
+    "Researchers tested the cables in very hot conditions."
+   ]
+  }
+ ],
+ "predictions": "Fire items around 0.3 (probes 0.31-0.33), near misses under 0.05 (probes 0.015-0.044).",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "hyphen piece splitting a compound",
+ "unit_kind": "spelling",
+ "confidence": 0.45,
+ "notes": "Probes (fraction of max 35.5): 'Long-Term Effects' 0.329 on '-T', 'high-temperature' 0.314 on '-', all-caps 'THE GOVERNING COUNCIL' 0.176 on ' C'. Unhyphenated controls 0.015 and 0.044; code identifiers ATTR_AVERAGE and register(Variant 0.011-0.014 (lower than the card examples). Fire items use compounds whose split was checked to put the hyphen in its own piece or a '-X' piece."
+}

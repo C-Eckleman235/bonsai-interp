@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-ChopinDavid-f9fc543a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N10078-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T02:20:25+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L19/N10078",
+   "pole": "-",
+   "label": "The line break inside a sentence that wraps across several code-comment or docstring lines (the newline and the continuation '#' that carry an unfinished sentence onto the next comment line), not a newline that ends a complete comment sentence or a line of code.",
+   "fire": [
+    "def flush(self):\n    # Write the buffer to disk only when the\n    # batch is full, because small writes are slow.\n    self._write()",
+    "def retry(job):\n    # If the worker crashed before it could\n    # report back, we put the job on the queue again.\n    queue.put(job)",
+    "def parse(line):\n    # Split on commas, but ignore the commas that\n    # appear inside quoted fields like \"a, b\".\n    return reader(line)",
+    "class Cache:\n    def get(self, key):\n        \"\"\"Look up the key in memory first and fall back to the\n        database when the entry is missing or stale.\"\"\"\n        return self._lookup(key)",
+    "def shutdown(srv):\n    # Close the sockets after the last request has\n    # been answered, or clients will see a reset.\n    srv.close()",
+    "for row in rows:\n    # Skip rows whose timestamp is older than the\n    # cutoff, since they were handled by the last run.\n    if row.ts < cutoff:\n        continue",
+    "def login(user):\n    # Users who are already logged in should not\n    # see the form again, so redirect them home.\n    return redirect('/')",
+    "def resize(img):\n    # Keep the aspect ratio when the new width is\n    # larger than the original, to avoid stretching.\n    return scale(img)"
+   ],
+   "quiet": [
+    "def flush(self):\n    # Write the buffer to disk.\n    # Small writes are slow.\n    self._write()",
+    "def retry(job):\n    # The worker may have crashed.\n    # Put the job on the queue again.\n    queue.put(job)",
+    "def parse(line):\n    # Split the line on commas.\n    # Quoted fields are ignored.\n    return reader(line)",
+    "class Cache:\n    def get(self, key):\n        \"\"\"Look up the key.\"\"\"\n        value = self._lookup(key)\n        return value",
+    "def shutdown(srv):\n    srv.drain()\n    srv.stop()\n    srv.close()",
+    "for row in rows:\n    if row.ts < cutoff:\n        continue\n    handle(row)",
+    "def login(user):\n    # Redirect logged-in users.\n    # Show the form to everyone else.\n    return redirect('/')",
+    "def resize(img):\n    w = img.width * 2\n    h = img.height * 2\n    return scale(img, w, h)"
+   ]
+  }
+ ],
+ "predictions": "Median fire around 0.25 (probes 0.26-0.34), near misses under 0.05 (probes 0.015-0.02).",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "newline mid-sentence in wrapped code comment",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Probes (fraction of max 12.44): wrapped comment 'queue is\\n    # empty' 0.337 peaking on ' #', wrapped docstring 0.264 on '\\n', another wrapped comment 0.099. Each-line-a-full-sentence comment 0.018, plain code 0.019, wrapped prose outside code 0.056, a poem 0.021. Weak pole overall; fire items wrap a comment mid-clause, near misses keep the same code with one complete sentence per comment line."
+}
