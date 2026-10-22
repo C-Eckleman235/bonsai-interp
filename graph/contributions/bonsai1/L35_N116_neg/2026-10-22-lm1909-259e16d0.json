@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-259e16d0",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N116-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:57:16+00:00",
+ "recipe": {
+  "toolchain_commit": "4ddc121c",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N116_neg/2026-10-22-lm1909-259e16d0.tests.json"
+ },
+ "label": "positions where 'more' is the likely next word (learn / find out / one or / a lot, German 'oder' before 'mehrere')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N116_neg/2026-10-22-lm1909-259e16d0.tests.json",
+   "prereg_commit": "4ddc121c",
+   "author": "lm1909",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.269,
+     "peak": " learn"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.347,
+     "peak": " or"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.401,
+     "peak": " out"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.257,
+     "peak": " lot"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.964,
+     "peak": " oder"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.58,
+     "peak": " learn"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.469,
+     "peak": " or"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.221,
+     "peak": " out"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.028,
+     "peak": " hear"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.007,
+     "peak": " writing"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.258,
+     "peak": " see"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.029,
+     "peak": " has"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.033,
+     "peak": " zwei"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.006,
+     "peak": " treatment"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.015,
+     "peak": " uses"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.007,
+     "peak": " front"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.374,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "4ddc121c",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "predicts next word 'more'",
+ "unit_kind": "contextual",
+ "confidence": 0.6,
+ "notes": "Late layer, predictive. The probe confirmed the activation sits on the token BEFORE 'more' (causal): 'learn more' and 'learn about' both 0.53, 'one or more' and 'one or two' both 0.41, 'a lot more' and 'a lot of' both 0.27, 'find out' 0.46 vs 'find the' 0.16, 'learn to swim' 0.40, German 'eine oder mehrere' 1.15. So the trigger is learn/find out/one or/a lot itself; near misses replace those words with verbs that don't predict 'more'. Card auto screen held (AUROC 0.94).",
+ "selection": "random draw"
+}

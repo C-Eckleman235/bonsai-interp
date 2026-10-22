@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-5afaf921",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N38+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:57:08+00:00",
+ "recipe": {
+  "toolchain_commit": "4ddc121c",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L31_N38_pos/2026-10-22-lm1909-5afaf921.tests.json"
+ },
+ "label": "the modifier of a material compound, where the head is predictable (tooth[-colored], oat/wheat/corn [flour/dough])",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L31_N38_pos/2026-10-22-lm1909-5afaf921.tests.json",
+   "prereg_commit": "4ddc121c",
+   "author": "lm1909",
+   "n_fire": 6,
+   "n_false_pos": 3,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.478,
+     "peak": " metal"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.931,
+     "peak": "-colored"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.476,
+     "peak": "-colored"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.363,
+     "peak": " white"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.254,
+     "peak": " flour"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.426,
+     "peak": " corn"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.858,
+     "peak": " almond"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.297,
+     "peak": " large"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.607,
+     "peak": " metal"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.173,
+     "peak": " by"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.404,
+     "peak": " porcelain"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.086,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.209,
+     "peak": " cream"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.067,
+     "peak": " are"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.008,
+     "peak": " wheat"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.366,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.812,
+    "median_fire": 0.451,
+    "near_misses_at_0.3": 3
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "4ddc121c",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "tooth-colored / grain flour modifier",
+ "unit_kind": "contextual",
+ "confidence": 0.45,
+ "notes": "Probe: 'tooth-colored resin' 0.77 (peak '-colored'), 'a tooth-colored crown' 0.45 (peak ' tooth'), 'with oat flour' 0.40 (peak ' oat'), 'corn dough' 0.35, 'wheat flour' 0.26, 'a second coat' 0.23; 'harvested the wheat' 0.003, 'pulled the tooth' 0.07, recipes without a grain modifier 0.05-0.08. Two near misses keep the bare grain and tooth words as plain nouns (crops, teeth) to test the word without the compound.",
+ "selection": "random draw"
+}

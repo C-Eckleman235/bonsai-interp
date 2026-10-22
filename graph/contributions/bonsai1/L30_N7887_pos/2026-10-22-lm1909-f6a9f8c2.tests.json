@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-f6a9f8c2",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N7887+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T17:38:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L30/N7887",
+   "pole": "+",
+   "label": "operator and function tokens inside written formulas (×, +, sqrt(, :obj: roles) rather than prose about the same math",
+   "fire": [
+    "The mass of the electron is about 9.11 × 10^-31 kg.",
+    "Avogadro's number is roughly 6.02 × 10^23 per mole.",
+    "assert expand((x + 1)**2) == x**2 + 2*x + 1",
+    "result = integrate(exp(-x**2), (x, -oo, oo)) == sqrt(pi)",
+    "        Args:\n            mask (:obj:`torch.BoolTensor` of shape :obj:`(batch_size, seq_len)`):\n                Padding mask.",
+    "From the second equation, 3 y + 4 = 19, so y = 5.",
+    "The radius follows from r = sqrt(A / pi) once the area is known.",
+    "The charge on one proton is 1.60 × 10^-19 coulombs."
+   ],
+   "quiet": [
+    "The mass of the electron is tiny compared with the proton.",
+    "Avogadro's number tells chemists how many particles a mole holds.",
+    "We checked that the square of a sum expands into three terms.",
+    "The bell curve encloses an area related to the number pi.",
+    "The mask argument marks which positions in the batch are padding.",
+    "From the second clue we worked out that the answer was five.",
+    "The radius can be found once you know the area of the circle.",
+    "The charge on one proton is equal and opposite to an electron's."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "tokens inside formal notation",
+ "unit_kind": "contextual",
+ "confidence": 0.5,
+ "notes": "Probe: ':obj:' docstring 0.69, '3.00 × 10^8' 0.59, 'simplify(sqrt(' 0.51, '2 x + 3 = 11' 0.34, ':math:' 0.27; prose about the same math 0.004-0.05, except 'pi times r squared' 0.17. Fire items mirror the high frames (scientific notation with ×, sympy-style asserts, :obj: docstrings, worked equations)."
+}

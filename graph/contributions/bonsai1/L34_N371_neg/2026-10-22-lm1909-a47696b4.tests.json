@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-a47696b4",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N371-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T17:38:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N371",
+   "pole": "-",
+   "label": "a word-initial ' b'/' B' piece split off an uncommon animal name (b|ison, b|ant|eng, b|les|b|ok, B|earer)",
+   "fire": [
+    "Hunters nearly wiped out the bison before the park was founded.",
+    "A small herd of banteng drinks at the waterhole each evening.",
+    "The farm keeps blesbok alongside its cattle.",
+    "We spotted a lone bighorn on the ridge above the road.",
+    "The shy bongo hides in thick forest during the day.",
+    "Visitors to the reserve often photograph the bontebok near the gate.",
+    "On the old star map, the Water Bearer pours a jar into the sea.",
+    "The caravan crossed the desert on a pair of Bactrian camels."
+   ],
+   "quiet": [
+    "Hunters nearly wiped out the wolves before the park was founded.",
+    "A small herd of buffalo drinks at the waterhole each evening.",
+    "The farm keeps goats alongside its cattle.",
+    "We spotted a lone eagle on the ridge above the road.",
+    "The shy deer hides in thick forest during the day.",
+    "Visitors to the reserve often photograph the zebra near the gate.",
+    "On the old star map, the Archer draws his bow across the sky.",
+    "The caravan crossed the desert on a pair of strong camels."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-off initial b in rare names",
+ "unit_kind": "sparse feature",
+ "confidence": 0.55,
+ "notes": "Probe: bison 0.83, banteng 0.76, Water Bearer 0.73, bontebok 0.68 (all peak ' b'/' B'); banyan only 0.18 (peak 'an'); single-token animals and plants 0.07-0.23 (Hunter 0.23). The tokenizer was checked: every fire word begins with a lone 'Ġb'/'ĠB' piece, and every near miss is a single token or starts with a different piece."
+}

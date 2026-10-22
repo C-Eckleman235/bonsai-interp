@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-f6a9f8c2",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N7887+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:57:05+00:00",
+ "recipe": {
+  "toolchain_commit": "4ddc121c",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L30_N7887_pos/2026-10-22-lm1909-f6a9f8c2.tests.json"
+ },
+ "label": "operator and function tokens inside written formulas (×, +, sqrt(, :obj: roles) rather than prose about the same math",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L30_N7887_pos/2026-10-22-lm1909-f6a9f8c2.tests.json",
+   "prereg_commit": "4ddc121c",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.52,
+     "peak": " ×"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.421,
+     "peak": " ×"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.441,
+     "peak": " +"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.432,
+     "peak": " sqrt"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.814,
+     "peak": "obj"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.322,
+     "peak": " ="
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.638,
+     "peak": " sqrt"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.498,
+     "peak": " ×"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.07,
+     "peak": " is"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.008,
+     "peak": "'s"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.172,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.009,
+     "peak": "loses"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.017,
+     "peak": " positions"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.028,
+     "peak": " we"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.027,
+     "peak": " know"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.081,
+     "peak": " is"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.47,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "4ddc121c",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "tokens inside formal notation",
+ "unit_kind": "contextual",
+ "confidence": 0.5,
+ "notes": "Probe: ':obj:' docstring 0.69, '3.00 × 10^8' 0.59, 'simplify(sqrt(' 0.51, '2 x + 3 = 11' 0.34, ':math:' 0.27; prose about the same math 0.004-0.05, except 'pi times r squared' 0.17. Fire items mirror the high frames (scientific notation with ×, sympy-style asserts, :obj: docstrings, worked equations).",
+ "selection": "random draw"
+}

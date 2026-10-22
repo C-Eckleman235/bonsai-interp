@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-ef9680e9",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N3550-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:57:01+00:00",
+ "recipe": {
+  "toolchain_commit": "4ddc121c",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L28_N3550_neg/2026-10-22-lm1909-ef9680e9.tests.json"
+ },
+ "label": "the token ' __' starting an underscore blank to fill in (forms, quizzes)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L28_N3550_neg/2026-10-22-lm1909-ef9680e9.tests.json",
+   "prereg_commit": "4ddc121c",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.759,
+     "peak": " __"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.897,
+     "peak": " __"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.782,
+     "peak": " __"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.909,
+     "peak": " __"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.72,
+     "peak": " __"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.838,
+     "peak": " __"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.862,
+     "peak": " __"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.939,
+     "peak": " __"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.001,
+     "peak": " letters"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.001,
+     "peak": " Water"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.002,
+     "peak": " Email"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": " author"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.001,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.002,
+     "peak": " Date"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.001,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.001,
+     "peak": " favourite"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.85,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "4ddc121c",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "underscore fill-in blank",
+ "unit_kind": "lexical",
+ "confidence": 0.7,
+ "notes": "Probe: fill-in blanks 0.92 and 0.79 (peak ' __'); Python dunder ' __name__' 0.54, '.__file__' 0.39, 'def __init__' 0.02; filled-in versions 0.003-0.01. Label narrowed to blanks, where it was strongest and most consistent. All blanks are exactly 10 underscores, which tokenize as ' __' + '________'.",
+ "selection": "random draw"
+}

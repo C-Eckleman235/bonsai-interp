@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-259e16d0",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N116-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T17:38:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N116",
+   "pole": "-",
+   "label": "positions where 'more' is the likely next word (learn / find out / one or / a lot, German 'oder' before 'mehrere')",
+   "fire": [
+    "Sign up for our newsletter to learn more about upcoming concerts.",
+    "Applicants may submit one or more writing samples.",
+    "Read the full report to find out more about the findings.",
+    "The museum has a lot more to offer than paintings.",
+    "Sie können eine oder mehrere Sprachen auswählen.",
+    "Talk to a nurse if you want to learn more about the treatment.",
+    "Each recipe uses one or more seasonal vegetables.",
+    "Call the front desk to find out more about room upgrades."
+   ],
+   "quiet": [
+    "Sign up for our newsletter to hear about upcoming concerts.",
+    "Applicants may submit two writing samples.",
+    "Read the full report to see the findings.",
+    "The museum has many rooms full of paintings.",
+    "Sie können zwei Sprachen auswählen.",
+    "Talk to a nurse if you have questions about the treatment.",
+    "Each recipe uses at least three seasonal vegetables.",
+    "Call the front desk to ask about room upgrades."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predicts next word 'more'",
+ "unit_kind": "contextual",
+ "confidence": 0.6,
+ "notes": "Late layer, predictive. The probe confirmed the activation sits on the token BEFORE 'more' (causal): 'learn more' and 'learn about' both 0.53, 'one or more' and 'one or two' both 0.41, 'a lot more' and 'a lot of' both 0.27, 'find out' 0.46 vs 'find the' 0.16, 'learn to swim' 0.40, German 'eine oder mehrere' 1.15. So the trigger is learn/find out/one or/a lot itself; near misses replace those words with verbs that don't predict 'more'. Card auto screen held (AUROC 0.94)."
+}

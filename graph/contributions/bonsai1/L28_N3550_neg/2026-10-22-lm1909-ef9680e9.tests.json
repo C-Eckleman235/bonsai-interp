@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-ef9680e9",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N3550-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T17:38:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N3550",
+   "pole": "-",
+   "label": "the token ' __' starting an underscore blank to fill in (forms, quizzes)",
+   "fire": [
+    "Please print your name here: __________ and sign below.",
+    "Complete the sentence: Water boils at __________ degrees Celsius.",
+    "Phone number: __________ Email: __________",
+    "Quiz: The author of Hamlet is __________.",
+    "Write the missing word: The cat sat on the __________.",
+    "Parent signature: __________ Date of birth: __________",
+    "Question 4: The chemical symbol for gold is __________.",
+    "My favourite season is __________ because I like the weather."
+   ],
+   "quiet": [
+    "Please print your name here in capital letters and sign below.",
+    "Complete the sentence: Water boils at one hundred degrees Celsius.",
+    "Phone number: 555 0123 Email: anna at example dot com",
+    "Quiz: The author of Hamlet is William Shakespeare.",
+    "Write the missing word: The cat sat on the mat.",
+    "Parent signature: J. Morris Date of birth: 4 May 2011",
+    "Question 4: The chemical symbol for gold is Au.",
+    "My favourite season is autumn because I like the weather."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "underscore fill-in blank",
+ "unit_kind": "lexical",
+ "confidence": 0.7,
+ "notes": "Probe: fill-in blanks 0.92 and 0.79 (peak ' __'); Python dunder ' __name__' 0.54, '.__file__' 0.39, 'def __init__' 0.02; filled-in versions 0.003-0.01. Label narrowed to blanks, where it was strongest and most consistent. All blanks are exactly 10 underscores, which tokenize as ' __' + '________'."
+}
