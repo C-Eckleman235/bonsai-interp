@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-40ac1f37",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N6012-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T19:05:48+00:00",
+ "recipe": {
+  "toolchain_commit": "535c27bc",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L1_N6012_neg/2026-10-22-lm1909-40ac1f37.tests.json"
+ },
+ "label": "the token 'Luke' / 'uke' and the German piece 'ücken' (the -uke / -ücke spelling), whatever the meaning",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L1_N6012_neg/2026-10-22-lm1909-40ac1f37.tests.json",
+   "prereg_commit": "535c27bc",
+   "author": "lm1909",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.295,
+     "peak": " Luke"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.39,
+     "peak": " Luke"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.263,
+     "peak": " Luke"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.412,
+     "peak": "uke"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.811,
+     "peak": "ücken"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.641,
+     "peak": "ücken"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.443,
+     "peak": " Luke"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.009,
+     "peak": "Die"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.001,
+     "peak": " reading"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.005,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.01,
+     "peak": " neighbour"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.021,
+     "peak": " voltage"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.012,
+     "peak": "el"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.012,
+     "peak": " noch"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.014,
+     "peak": " corner"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.032,
+     "peak": "gel"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.906,
+    "median_fire": 0.401,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "535c27bc",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "Luke / -uke / -ücken token",
+ "unit_kind": "lexical",
+ "confidence": 0.7,
+ "notes": "Early layer, so this is a spelling unit. In the probe, Luke (Gospel or a person) scored 0.26-0.50 of max, Fluke 0.39 and Sicherheitslücken 0.89, while Mark, Mike and Duke scored about 0.02. Near misses swap in other names or words.",
+ "selection": "random draw"
+}

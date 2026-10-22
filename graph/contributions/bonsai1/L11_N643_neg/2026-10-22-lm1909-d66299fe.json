@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-d66299fe",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N643-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T19:05:46+00:00",
+ "recipe": {
+  "toolchain_commit": "535c27bc",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L11_N643_neg/2026-10-22-lm1909-d66299fe.tests.json"
+ },
+ "label": "essay-mill / SEO boilerplate, especially the count in 'free essay and over N,000 other research documents'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L11_N643_neg/2026-10-22-lm1909-d66299fe.tests.json",
+   "prereg_commit": "535c27bc",
+   "author": "lm1909",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.42,
+     "peak": " free"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.171,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.417,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.138,
+     "peak": " other"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.218,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.138,
+     "peak": " research"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.06,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.381,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.009,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.064,
+     "peak": "2"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.007,
+     "peak": " this"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.011,
+     "peak": " sold"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.051,
+     "peak": " class"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.072,
+     "peak": " papers"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.008,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.006,
+     "peak": " over"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.195,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "535c27bc",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "essay-mill spam counts",
+ "unit_kind": "contextual",
+ "confidence": 0.35,
+ "notes": "The probe peaked at 0.31 of max on '0' in 'over 50,000 other research documents'; other essay-site phrasing scored 0.1-0.2, and plain large counts about 0.03. Weak pole; the median may fall short. Near misses keep large counts or essays without the spam frame.",
+ "selection": "random draw"
+}

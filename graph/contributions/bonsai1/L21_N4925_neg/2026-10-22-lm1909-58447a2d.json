@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-58447a2d",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N4925-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T19:05:57+00:00",
+ "recipe": {
+  "toolchain_commit": "535c27bc",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L21_N4925_neg/2026-10-22-lm1909-58447a2d.tests.json"
+ },
+ "label": "' keep' in 'food or drink to keep you going': refreshments described as sustaining someone through a stretch of time",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L21_N4925_neg/2026-10-22-lm1909-58447a2d.tests.json",
+   "prereg_commit": "535c27bc",
+   "author": "lm1909",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.127,
+     "peak": " you"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.097,
+     "peak": " keep"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.336,
+     "peak": " keep"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.054,
+     "peak": " between"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.03,
+     "peak": " keep"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.337,
+     "peak": " keep"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.017,
+     "peak": " train"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.382,
+     "peak": " keep"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.022,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.038,
+     "peak": " off"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.024,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.108,
+     "peak": " meals"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.022,
+     "peak": "Bring"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.033,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.002,
+     "peak": "Pack"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.09,
+     "peak": " salads"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.781,
+    "median_fire": 0.112,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "535c27bc",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "food to keep you going",
+ "unit_kind": "contextual",
+ "confidence": 0.35,
+ "notes": "Weak pole. The card's peaks are function words in hospitality contexts. In the probe only 'snacks and juices to keep you going' cleared 0.3 of max (a non-food 'to keep you busy' reached 0.17). Near misses keep the food context and drop 'keep'.",
+ "selection": "random draw"
+}

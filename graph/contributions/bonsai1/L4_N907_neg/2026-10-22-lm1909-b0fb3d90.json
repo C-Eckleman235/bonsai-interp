@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-b0fb3d90",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N907-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T19:06:12+00:00",
+ "recipe": {
+  "toolchain_commit": "535c27bc",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N907_neg/2026-10-22-lm1909-b0fb3d90.tests.json"
+ },
+ "label": "' end' used as a verb (\"end up\", \"the match will end\"), the other side of the + pole's noun 'The End'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N907_neg/2026-10-22-lm1909-b0fb3d90.tests.json",
+   "prereg_commit": "535c27bc",
+   "author": "lm1909",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.328,
+     "peak": " end"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.177,
+     "peak": " end"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.373,
+     "peak": " end"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.305,
+     "peak": " end"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.325,
+     "peak": " end"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.285,
+     "peak": " end"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.337,
+     "peak": " end"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.2,
+     "peak": " end"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.191,
+     "peak": " match"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.075,
+     "peak": " people"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.085,
+     "peak": " collapse"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.093,
+     "peak": " The"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.101,
+     "peak": " stop"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.09,
+     "peak": " larger"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.11,
+     "peak": " neighbours"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.106,
+     "peak": " wake"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.315,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "535c27bc",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "verb 'end'",
+ "unit_kind": "lexical",
+ "confidence": 0.5,
+ "notes": "The card flags it as broad and gate-closed (leak), with a small max (1.6). In the probe, verb ' end' scored 0.31-0.40 of max, the noun 'The End of' 0.06, 'at the end of' 0.22 (on ' of') and 'wind up' 0.07. Near misses use synonyms and one noun 'The End'.",
+ "selection": "random draw"
+}

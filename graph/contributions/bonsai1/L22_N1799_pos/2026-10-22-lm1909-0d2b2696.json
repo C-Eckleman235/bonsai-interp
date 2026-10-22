@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-0d2b2696",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N1799+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T19:06:00+00:00",
+ "recipe": {
+  "toolchain_commit": "535c27bc",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L22_N1799_pos/2026-10-22-lm1909-0d2b2696.tests.json"
+ },
+ "label": "a succession of repeated instances over time (\"the many presidents of X\", \"every election between 1872 and 1896,\", \"several trips\", \"repeatedly\")",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N1799_pos/2026-10-22-lm1909-0d2b2696.tests.json",
+   "prereg_commit": "535c27bc",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.76,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.511,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.467,
+     "peak": " aboard"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.327,
+     "peak": " repeatedly"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.54,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.51,
+     "peak": " times"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.301,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.433,
+     "peak": " visits"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.027,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.009,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.065,
+     "peak": " career"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.021,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.02,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.011,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.023,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.011,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.489,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "535c27bc",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "repeated instances over time",
+ "unit_kind": "contextual",
+ "confidence": 0.55,
+ "notes": "In the probe, 'portraits of the many governors of' scored 0.94 of max, 'every election between 1900 and 1920' 0.53, 'several trips' 0.41, 'repeatedly' 0.32 and 'many times' 0.27, while the single-occurrence twins scored 0.01-0.08. The - pole lists specific instances ('including', 'between', 'except'). Near misses describe a single occurrence.",
+ "selection": "random draw"
+}

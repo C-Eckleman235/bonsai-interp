@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-1792a4a1",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N11967+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T19:06:12+00:00",
+ "recipe": {
+  "toolchain_commit": "535c27bc",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L3_N11967_pos/2026-10-22-lm1909-1792a4a1.tests.json"
+ },
+ "label": "the short word-initial fragment (often one capital letter) of a word the tokenizer splits into pieces, typically in ALL-CAPS names and headings (' M'ESTRE, ' O'BLIGATIONS, ' ir'ons)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L3_N11967_pos/2026-10-22-lm1909-1792a4a1.tests.json",
+   "prereg_commit": "535c27bc",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.537,
+     "peak": " WR"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.506,
+     "peak": " O"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.614,
+     "peak": " ir"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.436,
+     "peak": "ITT"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.79,
+     "peak": " L"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.483,
+     "peak": " U"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.52,
+     "peak": " O"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.672,
+     "peak": " L"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.107,
+     "peak": " writer"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.083,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.078,
+     "peak": " cellar"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.122,
+     "peak": " M"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.137,
+     "peak": " stew"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.175,
+     "peak": " Urs"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.191,
+     "peak": " out"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.085,
+     "peak": " foot"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.528,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "535c27bc",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "split-word initial fragment",
+ "unit_kind": "sparse feature",
+ "confidence": 0.5,
+ "notes": "The card flags it as broad and gate-closed (echo), with a max of 1.02. In the probe, split ALL-CAPS words and 'leg irons' scored 0.61-0.78 of max, the mixed-case twins 0.14 and an unsplit ALL-CAPS heading 0.26. I checked the tokenizer: every fire item contains a single-letter or 'ir' initial piece. Near misses are the mixed-case or unsplit versions.",
+ "selection": "random draw"
+}

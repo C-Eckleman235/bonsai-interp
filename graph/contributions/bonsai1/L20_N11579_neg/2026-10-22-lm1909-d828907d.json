@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-d828907d",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N11579-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T19:05:50+00:00",
+ "recipe": {
+  "toolchain_commit": "535c27bc",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L20_N11579_neg/2026-10-22-lm1909-d828907d.tests.json"
+ },
+ "label": "first-person 'I' as the subject of the writer's own action (\"Tomorrow I'll ...\", \"I worked to ...\")",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L20_N11579_neg/2026-10-22-lm1909-d828907d.tests.json",
+   "prereg_commit": "535c27bc",
+   "author": "lm1909",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.116,
+     "peak": "'ll"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.182,
+     "peak": " worked"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.124,
+     "peak": " introduce"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.057,
+     "peak": " months"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.192,
+     "peak": "'ll"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.202,
+     "peak": " closely"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.078,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.107,
+     "peak": " tried"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.02,
+     "peak": " will"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.059,
+     "peak": " families"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.015,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.033,
+     "peak": " nurses"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.023,
+     "peak": " will"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.03,
+     "peak": " stores"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.024,
+     "peak": " chairman"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.023,
+     "peak": " farmers"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.12,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "535c27bc",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "first-person I as actor",
+ "unit_kind": "contextual",
+ "confidence": 0.25,
+ "notes": "Weak in the probe: the best was \"Tomorrow I'll\" at 0.18 of max and 'I interviewed' at 0.11, while third-person twins scored 0.03-0.05. Likely to miss the median bar; it is registered as a best guess. Near misses swap 'I' for a third-person subject.",
+ "selection": "random draw"
+}
