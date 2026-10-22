@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-22-moridinamael-6a3f0cd5",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N5561+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T07:48:36+00:00",
+ "recipe": {
+  "toolchain_commit": "fa99333d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L8_N5561_pos/2026-10-22-moridinamael-6a3f0cd5.tests.json"
+ },
+ "label": "A symbol token (= : => -- + - * , #) that comes right after a run of padding spaces, on the 2nd or later line of a block where several lines each have a name, padding spaces, then that symbol (aligned or ragged: 'width      = 3' / 'Date        : May'). Quiet for a single padded line, padding inside prose, a word (not a symbol) after the padding ('Name:      Ana'), '|' pipes, and weak (~0.2) for the same list with no padding ('x = 1').",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L8_N5561_pos/2026-10-22-moridinamael-6a3f0cd5.tests.json",
+   "prereg_commit": "fa99333d",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.094,
+     "peak": " -"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.735,
+     "peak": " ="
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.585,
+     "peak": " :"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.549,
+     "peak": " =>"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.471,
+     "peak": " --"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.492,
+     "peak": " +"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.734,
+     "peak": " ,"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.675,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.025,
+     "peak": "#"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.086,
+     "peak": ":"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.021,
+     "peak": "Name"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.026,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.012,
+     "peak": "We"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.046,
+     "peak": "  "
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.015,
+     "peak": " --"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.017,
+     "peak": "Format"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.567,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "fa99333d",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step mission from bonsai1/L9/N181+. play step ran out of GPU memory on the stream machine, so the feeder was chosen as the top MLP cell of the resident attribution ranking (feeders tool); no ablation drop was measured, so the feeds edge carries no weight.",
+ "roles": [
+  "feeds bonsai1/L9/N181+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L8/N5561+", "to": "bonsai1/L9/N181+", "kind": "feeds", "weight": null, "method": "attribution rank 1 of 12 MLP feeders on the target's top 4 examples (resident feeders tool; play step ablation hit CUDA OOM)"}
+ ]
+}
