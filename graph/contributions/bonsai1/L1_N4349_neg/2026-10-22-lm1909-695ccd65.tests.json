@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-695ccd65",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N4349-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T16:59:37+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N4349",
+   "pole": "-",
+   "label": "the token '加' as the second character of 追加 ('add'), mostly in Japanese",
+   "fire": [
+    "カートに商品を追加すると合計金額が表示されます。",
+    "このプランでは追加料金なしで映画を見られます。",
+    "管理者はユーザーをグループに追加できます。",
+    "来週から新しい機能が追加される予定です。",
+    "リストに名前を追加したら、保存してください。",
+    "ホテルでは追加のタオルを頼むことができます。",
+    "アプリに日本語の字幕が追加されました。",
+    "ブックマークにこのページを追加しておきます。"
+   ],
+   "quiet": [
+    "カートから商品を削除すると合計金額が変わります。",
+    "このプランでは無料で映画を見られます。",
+    "管理者はユーザーをグループから外せます。",
+    "来週から新しい機能が使えるようになる予定です。",
+    "リストに名前を書いたら、保存してください。",
+    "ホテルでは新しいタオルを頼むことができます。",
+    "毎年、この町の人口は少しずつ増加しています。",
+    "パーティーに参加する人は返事をしてください。"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "加 in 追加",
+ "unit_kind": "lexical",
+ "confidence": 0.75,
+ "notes": "Probe: 追加 0.83/0.84, 加える 0.04, 参加 0.007, Chinese 添加 0.001 and 增加 0.009 (merged tokens), 追跡 0.09, 削除 0.003. Tokenizer: 追加 -> 追 + 加; Japanese 増加 -> 増 + 加 (untested near miss, 加 as its own token after a different kanji)."
+}
