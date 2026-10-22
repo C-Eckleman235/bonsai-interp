@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-22-moridinamael-7c249740",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N1325-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T17:26:59+00:00",
+ "roles": ["reads bonsai1/L34/N6581-"],
+ "neighbours": [
+  {
+   "unit": "L35/N1325",
+   "pole": "-",
+   "label": "The opening token of a few words the tokenizer splits into pieces: ' omn' in any omni- word (omnivore, omnibus, omniscient), ' cour' in the plural couriers, and ' met' in Italian metri. The same words as single tokens (courier, English metres) and other split words (carnivorous, autonomous) stay quiet; Russian диаметр and Arabic الحديد fire only sometimes.",
+   "fire": [
+    "Bears are omnivores that eat berries, fish and insects.",
+    "We caught the late omnibus back to the village.",
+    "The narrator seems omniscient, knowing every character's secret thoughts.",
+    "Smartphones have become omnipresent in modern classrooms.",
+    "The emperor believed himself omnipotent until the army revolted.",
+    "The restaurant hired three new couriers for the holiday rush.",
+    "Bike couriers weave through downtown traffic all day.",
+    "La piscina è lunga cinquanta metri."
+   ],
+   "quiet": [
+    "Bears are flexible eaters that eat berries, fish and insects.",
+    "We caught the late bus back to the village.",
+    "The narrator seems all-knowing, aware of every character's secret thoughts.",
+    "Smartphones have become common in modern classrooms.",
+    "The emperor believed himself invincible until the army revolted.",
+    "The restaurant hired a new courier for the holiday rush.",
+    "Bike messengers weave through downtown traffic all day.",
+    "The pool is fifty metres long."
+   ]
+  }
+ ],
+ "short": "opening piece of split words: omn-, cour(iers), Italian met(ri)",
+ "unit_kind": "token",
+ "predictions": "omni- items fire well; couriers and metri near 0.2; near misses quiet",
+ "notes": "Blind test: sentences written by a second author who saw only the label. Feeders-first experiment arm: strongest feeder L31/N7765+ (fires before 'diameter', promotes ' diameter'/' dia'), L29/N11661- (Arabic article piece ' الح'). Solver found no leak; Russian top read 0.07 solo, so Russian/Arabic cases were demoted to 'sometimes'.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "neighbors",
+   "inverse-de",
+   "bank-solo",
+   "blind-room"
+  ]
+ }
+}
