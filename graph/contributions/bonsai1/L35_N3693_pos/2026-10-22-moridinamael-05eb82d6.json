@@ -1,0 +1,162 @@
+{
+ "id": "2026-10-22-moridinamael-05eb82d6",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N3693+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T08:35:45+00:00",
+ "recipe": {
+  "toolchain_commit": "197b6359",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N3693_pos/2026-10-22-moridinamael-05eb82d6.tests.json"
+ },
+ "label": "The kanji 奨 or 勧 in Japanese text (推奨, 奨励, 奨学金, 勧誘, 勧める, even in names), whatever it means; second, weaker trigger: a Chinese character typed right after a space that follows Latin letters or code (Peking 大学, # 录入). Synonyms without these characters (おすすめ, 推薦) and Chinese 奖 stay lower.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N3693_pos/2026-10-22-moridinamael-05eb82d6.tests.json",
+   "prereg_commit": "197b6359",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 7,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.519,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.913,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.866,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.729,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.613,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.546,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.494,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.81,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.316,
+     "peak": "言って"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.332,
+     "peak": "アップ"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.434,
+     "peak": "大学"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.345,
+     "peak": "エネ"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.383,
+     "peak": "、"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.392,
+     "peak": "に"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.37,
+     "peak": "人に"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.257,
+     "peak": "リ"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.671,
+    "near_misses_at_0.3": 7
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "197b6359",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L32/N8965+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L32/N8965+", "to": "bonsai1/L35/N3693+", "kind": "feeds", "weight": 0.06, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
