@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-7225728e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N8831-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T11:20:03+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N8831",
+   "pole": "-",
+   "label": "A code token where 'header' is the predicted next identifier piece (frame_header, last_header, header_index in header-parsing code): a next-token predictor for 'header'",
+   "fire": [
+    "def read_frame(sock):\n    raw = sock.recv(12)\n    frame_header = parse(raw)\n    log(frame_header)\n    return frame_header",
+    "for line in open('data.txt'):\n    if line.startswith('##'):\n        last_header = line.strip()\n        print(last_header)\n        continue",
+    "chunk = f.read(16)\nmagic, size = struct.unpack('<II', chunk[:8])\npacket_header = chunk[:8]\nchecksum = crc32(packet_header)",
+    "rows = list(csv.reader(f))\ncolumn_header = rows[0]\nindex = {name: i for i, name in enumerate(column_header)}",
+    "msg = email.message_from_string(text)\nsubject_header = msg['Subject']\nprint(subject_header)",
+    "def get(self, name):\n    col = self.header_index[name]\n    width = self.header_widths[col]\n    return self.row[col][:width]",
+    "out = open('report.csv', 'w')\nout.write(','.join(table_header) + '\\n')\nlog('wrote', len(table_header), 'columns')",
+    "page = render(doc)\npage_header = doc.title\npage.insert(0, page_header)"
+   ],
+   "quiet": [
+    "def read_frame(sock):\n    raw = sock.recv(12)\n    size = len(raw)\n    log(size)\n    return size",
+    "for line in open('data.txt'):\n    if line.startswith('##'):\n        skipped += 1\n        continue",
+    "chunk = f.read(16)\nmagic, size = struct.unpack('<II', chunk[:8])\npayload = chunk[8:]\nchecksum = crc32(payload)",
+    "rows = list(csv.reader(f))\nfirst_value = rows[1][0]\ntotal = sum(float(r[2]) for r in rows[1:])",
+    "msg = email.message_from_string(text)\nbody = msg.get_payload()\nprint(body)",
+    "def get(self, name):\n    col = self.columns.index(name)\n    return self.row[col]",
+    "out = open('report.csv', 'w')\nfor row in table:\n    out.write(','.join(row) + '\\n')",
+    "page = render(doc)\npage_count = len(doc.pages)\nprint(page_count)"
+   ]
+  }
+ ],
+ "predictions": "6/8 fire above 0.3; same code without a header variable below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predicts 'header' in code",
+ "unit_kind": "contextual",
+ "confidence": "medium",
+ "notes": "Probe: 'previous_header' 0.83 (peak ' previous'), 'block_header' 0.90; but 'writer.writerow(header)' only 0.11 and 'self.header_map' 0.06; same code without header 0.03-0.10; prose 'bold header' 0.07. Fire items repeat the header variable so its second mention is predictable."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-d34f340a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N9506+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T11:20:03+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N9506",
+   "pole": "+",
+   "label": "Unclear; best guess: the line-break token that closes a script or a paragraph ('main()\\n' at the end of a Python file, '?\\n' before a new paragraph)",
+   "fire": [
+    "def main():\n    print('done')\n\nif __name__ == '__main__':\n    main()\n",
+    "Are you ready to change the way you cook?\nHere are five recipes to start with.",
+    "import os\n\ndef main():\n    os.makedirs('out', exist_ok=True)\n\nif __name__ == '__main__':\n    main()\n",
+    "Want to sleep better tonight?\nStart by turning off screens an hour before bed.",
+    "Learn how to save money on groceries.\nMake a list and stick to it.",
+    "if __name__ == \"__main__\":\n    app.run()\n",
+    "What would you do with an extra hour each day?\nMany people say they would read more.",
+    "Find out how to train your puppy in a week.\nBegin with short sessions."
+   ],
+   "quiet": [
+    "def main():\n    print('done')\n    cleanup()",
+    "If you are ready to change the way you cook, here are five recipes to start with.",
+    "import os\nos.makedirs('out', exist_ok=True)",
+    "To sleep better tonight, start by turning off screens an hour before bed.",
+    "Learn how to save money on groceries by making a list and sticking to it.",
+    "app.run(debug=True)",
+    "Asked what they would do with an extra hour each day, many people say they would read more.",
+    "Find out how to train your puppy in a week, beginning with short sessions."
+   ]
+  }
+ ],
+ "predictions": "Fire items weak (0.1-0.2); likely fails because top examples need a following document boundary",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "closing line break (unclear)",
+ "unit_kind": "unclear",
+ "confidence": "low",
+ "notes": "Probe: every item under 0.2: '?\\nIf you have ever' 0.18, end-of-script 'main()\\n' 0.13 (peak ' main'), run()\\n 0.08; same text without the line break 0.01-0.04. Top examples peak on 'main()\\n' right before <|endoftext|>, which a sentence test cannot supply. Near misses run the same content on one line with no line break."
+}
