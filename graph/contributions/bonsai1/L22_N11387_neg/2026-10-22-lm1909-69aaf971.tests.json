@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-69aaf971",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N11387-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:24:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N11387",
+   "pole": "-",
+   "label": "' #' opening a full-line comment indented inside a Python function body, typically after a blank line (inline, top-level comments and hashtags stay quiet)",
+   "fire": [
+    "class ParserTest(unittest.TestCase):\n    def test_empty(self):\n        parser = Parser()\n\n        # an empty string should give no tokens\n        self.assertEqual(parser.parse(''), [])",
+    "    def test_save(self):\n        record = Record(name='a')\n        record.save()\n\n        # the record should now be in the database\n        self.assertTrue(Record.objects.exists())",
+    "    def load(self):\n        self.items = []\n\n        # read every line of the config file\n        for line in open(self.path):\n            self.items.append(line)",
+    "    def tearDown(self):\n        self.client.close()\n\n        # remove the temporary folder\n        shutil.rmtree(self.tmp)",
+    "    def test_delete(self):\n        user = User.objects.all()[0]\n\n        # deleting the user should also delete the profile\n        user.delete()",
+    "    def build(self):\n        layers = self.make_layers()\n\n        # FIXME: this breaks when layers is empty\n        return Model(layers)",
+    "    def test_parse(self):\n        result = parse_file(self.sample)\n\n        # the following fields should be present\n        self.assertIn('date', result)",
+    "    def update(self, value):\n        self.value = value\n\n        # notify any listeners about the change\n        self.emit('changed')"
+   ],
+   "quiet": [
+    "class ParserTest(unittest.TestCase):\n    def test_empty(self):\n        parser = Parser()\n\n        self.assertEqual(parser.parse(''), [])",
+    "    def test_save(self):\n        record = Record(name='a')\n        record.save()  # write it to the database\n        self.assertTrue(Record.objects.exists())",
+    "# read every line of the config file\nitems = []\nfor line in open(path):\n    items.append(line)",
+    "    def tearDown(self):\n        self.client.close()\n\n        shutil.rmtree(self.tmp)",
+    "    def test_delete(self):\n        user = User.objects.all()[0]\n\n        user.delete()\n        self.assertFalse(Profile.objects.exists())",
+    "Our team posted the release notes with the hashtag #python and #opensource.",
+    "    def test_parse(self):\n        result = parse_file(self.sample)\n\n        self.assertIn('date', result)",
+    "    def update(self, value):\n        self.value = value  # store the new value\n        self.emit('changed')"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "indented full-line # comment",
+ "unit_kind": "contextual",
+ "confidence": 0.55,
+ "notes": "Card: ' #' x12 on indented comment lines in test methods, plus '.\\n'. Probe: indented comment in test method 0.45, in run() 0.28; inline comment 0.02, top-level '# Configuration' 0.01, same method with no comment 0.03, hashtag 0.01, prose line break 0.06. Fire items are multi-line method bodies."
+}

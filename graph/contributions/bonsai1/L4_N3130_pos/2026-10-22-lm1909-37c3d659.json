@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-37c3d659",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N3130+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:45:54+00:00",
+ "recipe": {
+  "toolchain_commit": "a809e7d0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N3130_pos/2026-10-22-lm1909-37c3d659.tests.json"
+ },
+ "label": "image- and video-editing software and their edits (Photoshop, photoshopped, Premiere, Lightroom, GIMP, colour grading); text editing and plain photography stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N3130_pos/2026-10-22-lm1909-37c3d659.tests.json",
+   "prereg_commit": "a809e7d0",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.565,
+     "peak": " Photoshop"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.596,
+     "peak": "opped"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.551,
+     "peak": " grading"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.594,
+     "peak": " Premiere"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.478,
+     "peak": "room"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.734,
+     "peak": " Photoshop"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.457,
+     "peak": "ing"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.744,
+     "peak": "opped"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.009,
+     "peak": " printed"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.003,
+     "peak": " cover"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.005,
+     "peak": " write"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.005,
+     "peak": " video"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.005,
+     "peak": " landscape"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.003,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.001,
+     "peak": " newspaper"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.013,
+     "peak": " faces"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.579,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "a809e7d0",
+  "minutes": 7,
+  "batch_size": 16
+ },
+ "short": "photo/video editing software",
+ "unit_kind": "lexical",
+ "confidence": 0.7,
+ "notes": "Card: ' Photoshop' x7 (auto test held, lexical), also ' editing', ' grading', ' Premiere', ' CS', ' Max'. Probe: photoshopped 0.79, colour grading 0.73, Premiere 0.70, Photoshop 0.61, Lightroom 0.43, GIMP 0.39; text editor 0.00, film camera 0.02. Label broadened to the editing-software family the probe supports.",
+ "selection": "random draw"
+}
