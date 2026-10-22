@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-ad84a1cc",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N10423+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T15:28:19+00:00",
+ "recipe": {
+  "toolchain_commit": "b7b3047f",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L3_N10423_pos/2026-10-22-ChopinDavid-ad84a1cc.tests.json"
+ },
+ "label": "a mid-word sub-word piece 'br' / 'rib' / 'ra' (B|rib|es, Ок|тя|бр|ь, mis|br|anded), not br inside a whole-word token",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L3_N10423_pos/2026-10-22-ChopinDavid-ad84a1cc.tests.json",
+   "prereg_commit": "b7b3047f",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.804,
+     "peak": "rib"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.827,
+     "peak": "rib"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.76,
+     "peak": "бр"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.843,
+     "peak": "br"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.582,
+     "peak": " trib"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.672,
+     "peak": "ra"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.461,
+     "peak": "бр"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.436,
+     "peak": " trib"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.117,
+     "peak": " builders"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.236,
+     "peak": "b"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.043,
+     "peak": "ё"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.175,
+     "peak": " hybrid"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.035,
+     "peak": " samples"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.035,
+     "peak": " bridge"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.465,
+     "peak": "ры"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.1,
+     "peak": " Gibraltar"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.716,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "b7b3047f",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "mid-word br/rib piece",
+ "unit_kind": "lexical",
+ "confidence": "low",
+ "notes": "Card: broad (2.8% of tokens), gate-closed echo, max 1.30; peaks 'br', 'rib', 'ra', 'бр'. Probe: 'Bribes' 0.77, 'estribaciones' 0.73, 'Ноябрь' 0.86, 'misbranded' 0.67, 'tribromoanisole' 0.62; whole-word ' rib' 0.37 (leaks, so avoided), ' library' 0.12, ' sofa' -0.01.",
+ "selection": "random draw"
+}

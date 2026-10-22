@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-8e160e70",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N2353-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T15:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N2353",
+   "pole": "-",
+   "label": "the split-off word-initial ' r' piece of a German word beginning r+umlaut (r|äumte, r|ückt), weaker for Arabic ' الر'/' ر'",
+   "fire": [
+    "Nach dem Spiel rührte der Trainer kräftig in seinem Kaffee.",
+    "Am Abend rückte die Polizei mit drei Wagen an.",
+    "Der Lehrer rügte die Schüler wegen ihrer Verspätung.",
+    "Später rächte sich der Ritter an seinem alten Feind.",
+    "In der Küche röstete die Großmutter frische Kaffeebohnen.",
+    "Gestern räumten die Nachbarn endlich ihren Keller aus.",
+    "Lange rätselten die Forscher über den seltsamen Fund.",
+    "Im Herbst rüsteten die Bauern ihre Scheunen für den Winter."
+   ],
+   "quiet": [
+    "Nach dem Spiel rannte der Trainer schnell zu seinem Auto.",
+    "Am Abend kam die Polizei mit drei Wagen an.",
+    "Der Lehrer lobte die Schüler wegen ihrer guten Arbeit.",
+    "Später versöhnte sich der Ritter mit seinem alten Feind.",
+    "In der Küche kochte die Großmutter eine frische Suppe.",
+    "Gestern haben die Nachbarn endlich ihren Keller aufgeräumt.",
+    "Lange war die Antwort der Forscher richtig und klar.",
+    "Im Herbst färbten sich die Blätter im Garten rot."
+   ]
+  }
+ ],
+ "predictions": "7-8/8 fire on ' r' before ä/ö/ü; near misses whose r-words are whole tokens or not word-initial stay low",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "word-initial r piece (German)",
+ "unit_kind": "lexical",
+ "confidence": "medium",
+ "notes": "Card peaks: ' r', ' ر', ' الر', ' р' starting a split word. Probe: 'räumte' 1.04, 'rückt' 1.02; Arabic 'الرائعة' 0.18, Russian 'роскошный' 0.05, English ' red' 0.02, 'geräumt' (' ger' piece) 0.07. So in practice the strong case is German r+umlaut verbs split as ' r' + 'ä/ü/ö...'. Tokenizer checked for every fire verb."
+}

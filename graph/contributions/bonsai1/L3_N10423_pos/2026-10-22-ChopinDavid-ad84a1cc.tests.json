@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-ad84a1cc",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N10423+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T15:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L3/N10423",
+   "pole": "+",
+   "label": "a mid-word sub-word piece 'br' / 'rib' / 'ra' (B|rib|es, Ок|тя|бр|ь, mis|br|anded), not br inside a whole-word token",
+   "fire": [
+    "The official was jailed for accepting Bribes from local builders.",
+    "Los pueblos están en las estribaciones de la sierra.",
+    "Этот Сентябрь выдался тёплым и сухим.",
+    "Inspectors found misbranded vitamins in the warehouse.",
+    "Traces of tribromophenol were found in the cork samples.",
+    "We wandered past the Libraires on the old street of Tunis.",
+    "В отчёте за Октябрь указаны новые цифры.",
+    "The river is a tributary of the Danube in the east."
+   ],
+   "quiet": [
+    "The official was jailed for stealing fabric from local builders.",
+    "Los pueblos están cerca del puente de la sierra.",
+    "Этот месяц выдался тёплым и сухим.",
+    "Inspectors found hybrid vehicles in the warehouse.",
+    "Traces of membrane damage were found in the cork samples.",
+    "We wandered past the bridge on the old street of Tunis.",
+    "В отчёте за весну указаны новые цифры.",
+    "The river flows past Gibraltar toward the east."
+   ]
+  }
+ ],
+ "predictions": "about 6/8 fire; whole-word tokens like ' bridge', ' fabric' stay low; broad pole so some near-miss leakage likely",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "mid-word br/rib piece",
+ "unit_kind": "lexical",
+ "confidence": "low",
+ "notes": "Card: broad (2.8% of tokens), gate-closed echo, max 1.30; peaks 'br', 'rib', 'ra', 'бр'. Probe: 'Bribes' 0.77, 'estribaciones' 0.73, 'Ноябрь' 0.86, 'misbranded' 0.67, 'tribromoanisole' 0.62; whole-word ' rib' 0.37 (leaks, so avoided), ' library' 0.12, ' sofa' -0.01."
+}
