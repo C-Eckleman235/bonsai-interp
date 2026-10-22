@@ -1,0 +1,165 @@
+{
+ "id": "2026-10-22-moridinamael-7fe60e21",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N8934+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T11:33:27+00:00",
+ "recipe": {
+  "toolchain_commit": "dcae3a9e",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L31_N8934_pos/2026-10-22-moridinamael-7fe60e21.tests.json"
+ },
+ "edges": [
+  {"from": "bonsai1/L28/N8579+", "to": "bonsai1/L31/N8934+", "kind": "feeds", "weight": 0.25, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ],
+ "label": "German words on the root 'einz-' meaning single / only / unique (einzige, kein einziger, einzigartig, Einzelzimmer, Einzelheit), lighting up on the 'einz'/'zig' pieces; also the compound 'zweischneidig'. Weak (under 0.25) for other ein-/zwei- words (einfach, Einheit, Einladung, zweifach) and quiet for 'only' said without einz- (nur, allein, English only/unique, French seul).",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L31_N8934_pos/2026-10-22-moridinamael-7fe60e21.tests.json",
+   "prereg_commit": "dcae3a9e",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 5,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.872,
+     "peak": "isch"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.313,
+     "peak": " einz"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.276,
+     "peak": "usch"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.778,
+     "peak": "zig"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.282,
+     "peak": " Ein"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.223,
+     "peak": " Ein"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.441,
+     "peak": " einz"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.708,
+     "peak": "isch"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.545,
+     "peak": "esi"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.04,
+     "peak": " war"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.084,
+     "peak": "usch"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.062,
+     "peak": " ist"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.126,
+     "peak": " D"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.014,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.136,
+     "peak": " Vor"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.417,
+     "peak": " Ein"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.859,
+    "median_fire": 0.377,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "dcae3a9e",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "short": "German 'einz-' words (einzige, einzigartig, Einzel-)",
+ "confidence": "medium",
+ "notes": "Step-in reader of L28/N8579+ (Dniester/Dnipro 'Dn' spelling). Reader's label shares the feeder's spelling flavour (pieces inside words) but not its river meaning: Dniester itself scores 0.03 here. Top examples are mixed (rare name pieces Khammash/Schlesinger/Linton, heart-rate cutoffs 60/100 bpm, Skyrim 'Fourth Era'); einz- was the most consistent branch in probes. Feeders-first: top feeders are early spelling-piece cells (L4/N3010- 'lint/int/inton', L4/N4462- 'Clinton/Hinton'). Test sentences written blind by a label-only author.",
+ "roles": [
+  "reads bonsai1/L28/N8579+"
+ ]
+}
