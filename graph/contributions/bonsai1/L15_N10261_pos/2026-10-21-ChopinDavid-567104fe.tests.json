@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-ChopinDavid-567104fe",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N10261+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T03:20:18+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L15/N10261",
+   "pole": "+",
+   "label": "the last word piece that completes a multi-token technical term or proper name, often in a naming frame ('also called androgen|etic', 'Lov|el|ace', 'C|CG|s')",
+   "fire": [
+    "The rash, also called seborrheic dermatitis, often affects the scalp.",
+    "Integrated Care Boards (ICBs) now plan local health services.",
+    "Charles Babbage designed the first mechanical computer.",
+    "Low thyroid function, often caused by Hashimoto's disease, makes people tired.",
+    "Sugar is broken down in glycolysis, the first step of respiration.",
+    "A kidney infection, also known as pyelonephritis, needs antibiotics.",
+    "The skin growth, called seborrheic keratosis, is usually harmless.",
+    "Ada Lovelace wrote the first published algorithm."
+   ],
+   "quiet": [
+    "The rash, also called a heat rash, often affects the neck.",
+    "Local health boards now plan services in each town.",
+    "Alan Turing designed an early computer.",
+    "Low iron, often caused by a poor diet, makes people tired.",
+    "Sugar is broken down in the body to release energy.",
+    "A kidney infection, also known as a urine infection, needs antibiotics.",
+    "The skin growth, called a mole, is usually harmless.",
+    "Isaac Newton wrote the first great book on motion."
+   ]
+  }
+ ],
+ "predictions": "Fires on the final piece of split technical names and acronyms; quiet when the same frame uses a common one-token word.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "completing split terms",
+ "unit_kind": "spelling unit",
+ "confidence": "low",
+ "notes": "Probe: 'androgenetic' 'etic' 0.83, 'Lovelace' 'ace' 0.50, 'CCGs' 'Gs' 0.41, 'Citizen Service' 0.36, Krebs 0.27; plain-word controls 0.02-0.17 ('baldness' 0.17)."
+}
