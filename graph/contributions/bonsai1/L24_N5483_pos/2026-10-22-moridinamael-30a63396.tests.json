@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-22-moridinamael-30a63396",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N5483+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T22:24:00+00:00",
+ "roles": ["feeds bonsai1/L25/N4920-"],
+ "neighbours": [
+  {
+   "unit": "L24/N5483",
+   "pole": "+",
+   "label": "The first character of a katakana loanword in Japanese text, strongest when a space comes right before it (' チーム', ' レストラン'); katakana glued to the previous word fires unevenly, and weaker inside English sentences. Quiet for native kanji or hiragana words in the same slot, and for emoji, symbols or Korean after a space.",
+   "short": "start of a katakana loanword (after a space)",
+   "fire": [
+    "昨日は友達と駅前の レストラン で夕食を食べました。",
+    "私たちの チーム は決勝戦に進出した。",
+    "新しい コンピューター を買ったので、とても嬉しいです。",
+    "週末に家族で デパート へ買い物に行きました。",
+    "毎朝 コーヒー を一杯飲んでから仕事を始めます。",
+    "彼女は駅の近くの ホテル に泊まっている。",
+    "来月から新しい プロジェクト が始まる予定です。",
+    "子どもたちは公園で サッカー をして遊んでいた。"
+   ],
+   "quiet": [
+    "昨日は友達と駅前の 食堂 で夕食を食べました。",
+    "私たちの 学校 は決勝戦に進出した。",
+    "新しい 机 を買ったので、とても嬉しいです。",
+    "週末に家族で 市場 へ買い物に行きました。",
+    "毎朝 お茶 を一杯飲んでから仕事を始めます。",
+    "彼女は駅の近くの 旅館 に泊まっている。",
+    "来月から新しい 仕事 が始まる予定です。",
+    "子どもたちは公園で かくれんぼ をして遊んでいた。"
+   ]
+  }
+ ],
+ "predictions": "8/8 fire; the hiragana near misses (お茶, かくれんぼ) are the main risk",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "step-out"
+  ]
+ }
+}
