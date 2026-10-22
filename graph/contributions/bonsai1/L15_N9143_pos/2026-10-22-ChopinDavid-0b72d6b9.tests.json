@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-0b72d6b9",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N9143+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T13:20:03+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L15/N9143",
+   "pole": "+",
+   "label": "the first token of a commented-out code line right after '#' (code disabled by a comment, not a prose comment)",
+   "fire": [
+    "class App:\n    def build(self):\n        self.load()\n        #self.panel.refresh()\n        return self",
+    "for row in rows:\n    total += row.value\n    #print(row.value)\nreturn total",
+    "def setup(self):\n    self.ax.plot(x, y)\n    #self.ax.set_xlim(0, 10)\n    self.draw()",
+    "opts = {\n    'debug': False,\n    #'verbose': True,\n    'retries': 3,\n}",
+    "def close(self):\n    self.conn.commit()\n    #self.conn.close()\n    return None",
+    "import os\npath = os.getcwd()\n#os.remove(path)\nprint(path)",
+    "model.fit(X, y)\n#model.save('weights.h5')\nscore = model.score(X, y)",
+    "def update(self):\n    self.count += 1\n    #self.label.setText(str(self.count))\n    self.timer.start()"
+   ],
+   "quiet": [
+    "class App:\n    def build(self):\n        self.load()\n        # refresh happens in the next frame\n        return self",
+    "for row in rows:\n    total += row.value\n    # values are already in dollars\nreturn total",
+    "def setup(self):\n    self.ax.plot(x, y)\n    # keep the default axis limits\n    self.draw()",
+    "opts = {\n    'debug': False,\n    # retries above five are rarely useful\n    'retries': 3,\n}",
+    "def close(self):\n    self.conn.commit()\n    # connection is reused by the pool\n    return None",
+    "import os\npath = os.getcwd()\n# this is the working folder\nprint(path)",
+    "model.fit(X, y)\n# training takes about ten minutes\nscore = model.score(X, y)",
+    "def update(self):\n    self.count += 1\n    # the label updates on the next tick\n    self.timer.start()"
+   ]
+  }
+ ],
+ "predictions": "Fire on 'self', 'print', identifiers directly after '#' when the commented line is code; quiet when the comment after '#' is English prose.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "commented-out code",
+ "unit_kind": "context",
+ "confidence": "low",
+ "notes": "Probe: '#self.window.show()' 0.49, \"#'-fexceptions'\" 0.39, '#sys.exit(1)' 0.26; prose comments '# show the window later' 0.13, '# exit only in strict mode' 0.05. Hedged modals also fire weakly ('would possibly' 0.22, 'may occur' 0.16), not tested here."
+}

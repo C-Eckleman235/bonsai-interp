@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-9581cb54",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N9867+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T13:20:03+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L7/N9867",
+   "pole": "+",
+   "label": "an opening parenthesis directly after a number, as in '334 (1972)' or 'Resolution 1368 (2001)'",
+   "fire": [
+    "The council adopted Resolution 242 (1967) after the war.",
+    "Prince released the album 1999 (1982) to wide acclaim.",
+    "The court cited 512 (2004) as the controlling case.",
+    "Room 117 (the old library) is now used for meetings.",
+    "Flight 409 (from Lisbon) landed two hours late.",
+    "The asteroid 4179 (Toutatis) passed close to Earth that year.",
+    "Opinions differ, see note 23 (above) for the details.",
+    "Highway 61 (the river road) runs along the levee."
+   ],
+   "quiet": [
+    "The council adopted the peace resolution (in 1967) after the war.",
+    "Her early albums include Blue (released 1971) and many others.",
+    "The court cited the Miller case (2004) as controlling.",
+    "Room 117 is now used for meetings.",
+    "The flight from Lisbon (via Madrid) landed two hours late.",
+    "The asteroid Toutatis (a rocky body) passed close to Earth that year.",
+    "Opinions differ, see the notes (above) for the details.",
+    "Highway 61 runs along the levee for many miles."
+   ]
+  }
+ ],
+ "predictions": "Fire on ' (' when the previous token is a numeral; quiet on ' (' after a word and on numbers not followed by a parenthesis.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "( after a number",
+ "unit_kind": "context",
+ "confidence": "high",
+ "notes": "Probe: '334 (1972)' 0.68, '1368 (2001)' 0.57, '4317 (2012)' 0.51, '555 (hahaha)' 0.60; '(' after a title word 'Beloved (1987)' 0.16, 'Brussels (Belgium)' 0.01; number without paren 0.07. Card: ' (' x10 after numbers."
+}
