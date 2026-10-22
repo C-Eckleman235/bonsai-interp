@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-21-moridinamael-ad6d14ee",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N4650+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T04:50:35+00:00",
+ "recipe": {
+  "toolchain_commit": "1300be0e",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N4650_pos/2026-10-21-moridinamael-ad6d14ee.tests.json"
+ },
+ "label": "In English, the word ' so' when it opens a purpose clause right after an action and its object, with no comma before it ('hid the key so they couldn't find it', 'so that we could'); it fires on 'so' itself, so a degree 'so' straight after a verb and its object ('fixed it so quickly') can also fire. Quiet for ', so' after a comma, 'and so', 'so on', sentence-initial 'So', degree 'so' after is/was/felt, 'I think so', and for purpose said without 'so' ('in order to', 'lest', 'because').",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N4650_pos/2026-10-21-moridinamael-ad6d14ee.tests.json",
+   "prereg_commit": "1300be0e",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.362,
+     "peak": " so"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.571,
+     "peak": " so"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.489,
+     "peak": " so"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.549,
+     "peak": " so"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.531,
+     "peak": " so"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.466,
+     "peak": " so"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.415,
+     "peak": " so"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.471,
+     "peak": " so"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.219,
+     "peak": " so"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.04,
+     "peak": " let"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.048,
+     "peak": " because"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.014,
+     "peak": " we"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.022,
+     "peak": " blended"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.019,
+     "peak": " it"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.004,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.147,
+     "peak": " tired"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.48,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "1300be0e",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "unit_kind": "token/lexical",
+ "notes": "Step-out from bonsai1/L28/N10023+. play step hit CUDA OOM (resident stream model holds the GPU), so TARGET is the top feeder by resident attribution (feeders tool), not by ablation drop; no feeds edge weight recorded. Resident probe peaks one token late on this cell; play probe peaks on ' so' (~0.6 on purpose so). Test sentences written blind by a second author from the label only.",
+ "roles": [
+  "feeds bonsai1/L28/N10023+"
+ ]
+}
