@@ -1,0 +1,157 @@
+{
+ "id": "2026-10-21-moridinamael-9cc8a225",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N663-",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T00:26:25+00:00",
+ "recipe": {
+  "toolchain_commit": "0cbc7eb5",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N663_neg/2026-10-21-moridinamael-9cc8a225.tests.json"
+ },
+ "label": "About to say a bird's beak or bill: fires on the word just before 'beak' or 'bill' (usually 'its' or an adjective like 'hooked', 'long sharp') in an English sentence describing a bird's body or feeding. Quiet: the same frame for a mammal's teeth, jaws or claws, a bird's other parts (wings, feathers, legs), and the money or law sense of 'bill'.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N663_neg/2026-10-21-moridinamael-9cc8a225.tests.json",
+   "prereg_commit": "0cbc7eb5",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.126,
+     "peak": " sharp"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 1.089,
+     "peak": " its"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.99,
+     "peak": " colorful"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.493,
+     "peak": "-like"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.567,
+     "peak": " its"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 1.43,
+     "peak": " slender"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.735,
+     "peak": " yellow"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.774,
+     "peak": " crossed"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.016,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.54,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.115,
+     "peak": " sharp"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.004,
+     "peak": " using"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.005,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.011,
+     "peak": "B"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.01,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.005,
+     "peak": " very"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.882,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "0cbc7eb5",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "edges": [
+  {"from": "bonsai1/L34/N7462-", "to": "bonsai1/L35/N663-", "kind": "feeds", "weight": 0.17, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
