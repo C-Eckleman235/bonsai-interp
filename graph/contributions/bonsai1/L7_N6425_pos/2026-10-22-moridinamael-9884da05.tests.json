@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-22-moridinamael-9884da05",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N6425+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T17:32:09+00:00",
+ "roles": ["feeds bonsai1/L9/N5710+"],
+ "neighbours": [
+  {
+   "unit": "L7/N6425",
+   "pole": "+",
+   "label": "a preposition right after an abstract framing noun it idiomatically pairs with, opening a 'which' clause (the mechanism by, the grounds on, the setting in, the terms under; strongest with ' by'); quiet after concrete nouns (the cupboard in, the lamp by) and in passive or travel 'by' (written by, went by bus)",
+   "short": "preposition after an abstract framing noun ('the mechanism by', 'the basis on')",
+   "fire": [
+    "Researchers still debate the mechanism by which the drug lowers blood pressure.",
+    "The court rejected the grounds on which the appeal had been filed.",
+    "She described the setting in which the novel's final chapter unfolds.",
+    "Both parties signed off on the terms under which the loan would be repaid.",
+    "Nobody fully understands the process by which memories are consolidated during sleep.",
+    "The historian examined the context in which the treaty was negotiated.",
+    "We need to clarify the criteria by which applicants will be judged.",
+    "The essay questions the assumptions on which the whole theory rests."
+   ],
+   "quiet": [
+    "Researchers still debate how the drug manages to lower blood pressure.",
+    "The court rejected the appeal because its grounds were weak.",
+    "She described the cupboard in which the old letters had been hidden.",
+    "Both parties signed the contract, which was written by their lawyers.",
+    "Nobody fully understands why memories are consolidated during sleep.",
+    "The historian examined the box in which the treaty documents were stored.",
+    "We went by bus to the office where applicants will be judged.",
+    "The essay questions the table on which the vase was placed."
+   ]
+  }
+ ],
+ "predictions": "Blind test written from the label only. Expect most fire items 0.3-0.7 and concrete-noun 'in/on which' near misses around 0.1, possibly one near 0.2.",
+ "notes": "Step-out from bonsai1/L9/N5710+. play step hit CUDA OOM on the stream machine, so the feeder was chosen from the resident attribution ranking (top MLP feeder) and no ablation edge weight is recorded. Test sentences written blind by a second author who saw only the label.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
