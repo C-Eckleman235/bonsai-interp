@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-21-moridinamael-79154ec1",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N3965-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T01:46:48+00:00",
+ "neighbours": [
+  {
+   "unit": "L35/N3965",
+   "pole": "-",
+   "label": "a French subject pronoun (ça, il, elle, on, tu) that opens a side clause after 'que'/'qu'' or 'si', right before that clause's verb; a dense unit: ordinary French and English text also reads about 0.3-0.45",
+   "fire": [
+    "Je pense qu'il viendra demain matin avec sa sœur.",
+    "Elle m'a dit que ça ne marchait plus depuis lundi.",
+    "Si tu veux, on peut partir plus tôt ce soir.",
+    "Je ne sais pas si elle acceptera la proposition.",
+    "Il faut que tu finisses ce rapport avant midi.",
+    "On espère qu'elle reviendra bientôt de Lyon.",
+    "Je me demande si on aura assez de temps pour tout visiter.",
+    "Le professeur a expliqué que ça dépendait surtout de la météo."
+   ],
+   "quiet": [
+    "Also, rational drug design, although successfully used to develop HIV protease inhibitors, is still in its infancy.",
+    "Люди вокруг стояли так плотно, словно в битком набитом поезде.",
+    "Il viendra demain matin avec sa sœur, je pense.",
+    "Elle m'a dit que la machine ne marchait plus depuis lundi.",
+    "Tu peux partir plus tôt ce soir, si besoin.",
+    "Je ne sais pas encore la réponse à la proposition.",
+    "Il faut finir ce rapport avant midi.",
+    "Nous espérons son retour rapide de Lyon."
+   ],
+   "short": "French pronoun subject after que/si, before its verb (dense)",
+   "unit_kind": "dense / positional",
+   "confidence": "low",
+   "roles": ["reads bonsai1/L34/N7716+"],
+   "notes": "Step-in reader of L34/N7716+ (drop 0.22). Cold mission: labelled from own tops and probes only. Pole is dense (67% of tokens >0.1 max, 21% >0.3), so plain French/English near misses sit near the 0.30 cap; the solver's leak ('in its infancy', 0.47) is placed as a near miss by the blind author."
+  }
+ ],
+ "predictions": "Fire items should rank high (0.5-0.8), but dense-floor near misses (French text 0.35-0.45, the leak 0.47) likely break the 0.30 cap: expect fail on near misses.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "blind-room"
+  ]
+ }
+}
