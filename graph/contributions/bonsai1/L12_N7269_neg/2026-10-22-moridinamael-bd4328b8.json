@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-22-moridinamael-bd4328b8",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N7269-",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T06:52:30+00:00",
+ "recipe": {
+  "toolchain_commit": "ec5ad6ad",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L12_N7269_neg/2026-10-22-moridinamael-bd4328b8.tests.json"
+ },
+ "label": "A lone space token: the space typed right before a number ('born in 1987', 'pier 4') or an extra doubled space between words; also the comma right after a short adverb that opens a clause ('However,' 'Sadly,' 'Of course,' 'Then,' 'but eventually,'). Quiet: numbers with no space before them ($40, A4), spelled-out numbers, list commas, commas after names, and commas after longer opening clauses or phrases ('When I arrived,' 'After dinner,' 'By one estimate,').",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L12_N7269_neg/2026-10-22-moridinamael-bd4328b8.tests.json",
+   "prereg_commit": "ec5ad6ad",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.62,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.587,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.5,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.569,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.594,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.635,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.651,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.489,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.004,
+     "peak": " grandmother"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.006,
+     "peak": " dawn"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.003,
+     "peak": " ended"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.012,
+     "peak": " closed"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.193,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.007,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.004,
+     "peak": "ears"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.006,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.591,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "ec5ad6ad",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-out from bonsai1/L13/N7743-; play step hit CUDA OOM, so the feeder was chosen as the top MLP cell of the resident attribution ranking (chat feeders tool) and no ablation edge weight is recorded. Test sentences written blind by a label-only second author.",
+ "roles": [
+  "feeds bonsai1/L13/N7743-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L12/N7269-", "to": "bonsai1/L13/N7743-", "kind": "feeds", "weight": null, "method": "attribution rank 1 of 12 MLP feeders on the target's top 4 examples (resident feeders tool; play step ablation hit CUDA OOM)"}
+ ]
+}
