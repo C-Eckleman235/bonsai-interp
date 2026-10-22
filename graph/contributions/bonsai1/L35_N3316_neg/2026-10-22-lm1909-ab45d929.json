@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-ab45d929",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N3316-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T19:10:10+00:00",
+ "recipe": {
+  "toolchain_commit": "57501fef",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N3316_neg/2026-10-22-lm1909-ab45d929.tests.json"
+ },
+ "label": "dense: Python code punctuation and identifiers (self._x, keyword '=' arguments, string list items); fires broadly",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N3316_neg/2026-10-22-lm1909-ab45d929.tests.json",
+   "prereg_commit": "57501fef",
+   "author": "lm1909",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.442,
+     "peak": "._"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.341,
+     "peak": "="
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.459,
+     "peak": " '"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.461,
+     "peak": "._"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.335,
+     "peak": "="
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.27,
+     "peak": "(['"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.329,
+     "peak": "._"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.451,
+     "peak": "="
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.031,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.026,
+     "peak": " port"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.008,
+     "peak": " branch"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.023,
+     "peak": " bottom"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.036,
+     "peak": " it"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.034,
+     "peak": " file"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.03,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.024,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.392,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "57501fef",
+  "minutes": 8,
+  "batch_size": 16
+ },
+ "short": "dense, code tokens",
+ "unit_kind": "dense / positional",
+ "confidence": 0.3,
+ "notes": "Card flags broad (5.6% of tokens > 0.1 max). Probe: code lines 0.42-0.53, prose with parentheses 0.20, plain prose 0.02-0.09. Recorded as dense; a pass would still be a density artifact of code vs prose.",
+ "selection": "random draw"
+}
