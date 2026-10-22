@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-a901d147",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N100+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T17:23:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N100",
+   "pole": "+",
+   "label": "the token just before a numeric value is given (n =, max_length=, cerca de, more than, age of)",
+   "fire": [
+    "El museo recibe cerca de 80.000 visitantes cada año, sobre todo en verano.",
+    "Patients in the treatment group (n = 34) received the drug for six weeks.",
+    "The coastal trail is more than 20 kilometres long and climbs steeply.",
+    "class Article(models.Model):\n    title = models.CharField(max_length=200)\n    slug = models.SlugField(max_length=50)",
+    "Volunteers were split into a control group (n = 40) and a training group.",
+    "Il a commencé à peindre à l'âge de 14 ans, dans l'atelier de son oncle.",
+    "The bridge stayed closed for more than 18 months while engineers repaired it.",
+    "La ciudad tiene cerca de 300.000 habitantes y un puerto importante."
+   ],
+   "quiet": [
+    "El museo recibe muchos visitantes extranjeros, sobre todo en verano.",
+    "Patients in the treatment group received the drug for several weeks.",
+    "The coastal trail is long and climbs steeply through the pine forest.",
+    "class Article(models.Model):\n    title = models.CharField(blank=True)\n    slug = models.SlugField(unique=True)",
+    "Volunteers were split into a control group and a training group.",
+    "Il a commencé à peindre quand il était enfant, dans l'atelier de son oncle.",
+    "The bridge stayed closed for a long time while engineers repaired it.",
+    "La ciudad tiene un puerto importante y muchas playas tranquilas."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "slot before a number",
+ "unit_kind": "contextual",
+ "confidence": 0.55,
+ "notes": "Probe: 'cerca' 0.68, '(n =' 0.52, 'more than' 0.42, max_length 0.40, 'age of'/'population of roughly' 0.26; identical text with no number following 0.003-0.06. Layer 33: predicts that a number comes next. Quiet items keep topic but contain no numeric slot."
+}

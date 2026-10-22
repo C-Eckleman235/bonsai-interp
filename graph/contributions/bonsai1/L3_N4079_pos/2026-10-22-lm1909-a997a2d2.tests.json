@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-a997a2d2",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N4079+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T17:23:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L3/N4079",
+   "pole": "+",
+   "label": "the token 'Cookies' / 'COOKIES' in website and HTTP contexts",
+   "fire": [
+    "Read our Terms of Use and Cookies Notice before creating an account.",
+    "def view(request):\n    if 'sessionid' in request.COOKIES:\n        user = load_user(request.COOKIES['sessionid'])",
+    "Footer links: About Us | Contact | Privacy & Cookies | Accessibility",
+    "Manage Cookies: you can change your preferences at any time in the settings menu.",
+    "    headers = {}\n    COOKIES_override = None\n    META_override = None",
+    "Site navigation: Home, Shop, Blog, Cookies Policy, Contact us.",
+    "Strictly necessary Cookies are required for the website to function properly.",
+    "Our Cookies Policy explains how we store small files on your device."
+   ],
+   "quiet": [
+    "Read our Terms of Use and Privacy Notice before creating an account.",
+    "def view(request):\n    if 'sessionid' in request.headers:\n        user = load_user(request.headers['sessionid'])",
+    "Footer links: About Us | Contact | Privacy Policy | Accessibility",
+    "Manage Preferences: you can change your settings at any time in the account menu.",
+    "    headers = {}\n    GET_override = None\n    META_override = None",
+    "Site navigation: Home, Shop, Blog, Shipping Policy, Contact us.",
+    "Strictly necessary scripts are required for the website to function properly.",
+    "Our Privacy Policy explains how we store your data on our servers."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "web 'Cookies' token",
+ "unit_kind": "lexical",
+ "confidence": 0.55,
+ "notes": "FLAG broad (3.2%, max 0.85). Probe: 'Privacy & Cookies Policy' 0.91, 'request.COOKIES' 1.05; baking 'cookies' 0.19; 'Privacy Policy' 0.18; HTTP headers code 0.06; but 'Please take a seat' fired 0.53 on ' take' (card word hit), so near misses avoid 'take'."
+}
