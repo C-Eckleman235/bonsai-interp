@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-22-moridinamael-bd4328b8",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N7269-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T06:52:11+00:00",
+ "roles": ["feeds bonsai1/L13/N7743-"],
+ "neighbours": [
+  {
+   "unit": "L12/N7269",
+   "pole": "-",
+   "label": "A lone space token: the space typed right before a number ('born in 1987', 'pier 4') or an extra doubled space between words; also the comma right after a short adverb that opens a clause ('However,' 'Sadly,' 'Of course,' 'Then,' 'but eventually,'). Quiet: numbers with no space before them ($40, A4), spelled-out numbers, list commas, commas after names, and commas after longer opening clauses or phrases ('When I arrived,' 'After dinner,' 'By one estimate,').",
+   "short": "lone space before a number / doubled space; comma after a short opening adverb",
+   "fire": [
+    "My grandmother was born in 1987, which surprises everyone who meets her young face.",
+    "The ferry leaves from pier 4 every morning at dawn.",
+    "However, the committee refused to change the schedule.",
+    "Sadly, the bakery on the corner closed last winter.",
+    "Of course, nobody remembered to bring the map.",
+    "Then, without a word, she walked out of the room.",
+    "We waited for hours, but eventually, the rain stopped.",
+    "Please turn to page 52 and read the first paragraph aloud."
+   ],
+   "quiet": [
+    "My grandmother was born in nineteen eighty-seven, which surprises everyone who meets her.",
+    "The ferry costs $40 and leaves every morning at dawn.",
+    "When the meeting ended, the committee refused to change the schedule.",
+    "After a long winter, the bakery on the corner finally closed.",
+    "By most accounts, nobody remembered to bring the map.",
+    "Maria, please close the door when you leave the room.",
+    "We bought apples, pears, plums and grapes at the market.",
+    "Please print the report on A4 paper before the meeting."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire, 0-1 near misses at 0.30 (risk: 'By most accounts,' may read like a short opener)",
+ "notes": "Step-out from bonsai1/L13/N7743-; play step hit CUDA OOM, so the feeder was chosen as the top MLP cell of the resident attribution ranking (chat feeders tool) and no ablation edge weight is recorded. Test sentences written blind by a label-only second author.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "step-out"
+  ]
+ }
+}
