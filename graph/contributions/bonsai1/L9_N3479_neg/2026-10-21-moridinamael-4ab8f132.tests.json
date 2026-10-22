@@ -1,0 +1,43 @@
+{
+ "contribution": "2026-10-21-moridinamael-4ab8f132",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N3479-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T03:49:59+00:00",
+ "roles": ["feeds bonsai1/L21/N10295+"],
+ "neighbours": [
+  {
+   "unit": "L9/N3479",
+   "pole": "-",
+   "label": "In code (Python, JavaScript, Java, Go and similar), a command to run written as separate quoted items, the program name and its arguments: a list passed to subprocess.run/Popen/call/check_output (written with the subprocess. prefix), the argument array of Node's spawn, the arguments of Java's ProcessBuilder or Go's exec.Command, or a list stored in a variable named cmd, command or argv; it lights on the opening bracket or the comma after the first item. Ordinary lists (fruit, numbers, column names, even a list of program names that is never run) stay quiet, and so does a whole command written as one string (os.system('ls -la'), cmd = 'git status') or described in prose.",
+   "short": "command-argument lists in code (subprocess/spawn/ProcessBuilder argv)",
+   "fire": [
+    "result = subprocess.run([\"git\", \"status\", \"--short\"], capture_output=True, text=True)",
+    "proc = subprocess.Popen([\"ffmpeg\", \"-i\", \"input.mp4\", \"output.webm\"])",
+    "out = subprocess.check_output([\"ls\", \"-la\", \"/tmp\"])",
+    "subprocess.call([\"python\", \"manage.py\", \"migrate\"])",
+    "const child = spawn('npm', ['install', '--save-dev', 'jest']);",
+    "const ls = spawn('ls', ['-lh', '/usr']);",
+    "ProcessBuilder pb = new ProcessBuilder(\"java\", \"-jar\", \"server.jar\");",
+    "cmd := exec.Command(\"docker\", \"ps\", \"-a\")"
+   ],
+   "quiet": [
+    "fruits = [\"apple\", \"banana\", \"cherry\"]",
+    "columns = [\"name\", \"age\", \"email\", \"created_at\"]",
+    "os.system(\"git status --short\")",
+    "cmd = \"pytest -v tests/\"",
+    "const tools = ['npm', 'yarn', 'pnpm'];",
+    "numbers = [1, 2, 3, 4, 5]",
+    "result = subprocess.run(\"ls -la /tmp\", shell=True)",
+    "To list files, run ls with the -la flag in your terminal."
+   ]
+  }
+ ],
+ "predictions": "Blind test (label-only author). Expect 7-8/8 fire above 0.20; risk: the shell=True string and cmd string near misses (~0.12-0.24 in probes), and the spawn fire item repeats one probe (0.43).",
+ "notes": "Step-out feeder of bonsai1/L21/N10295+, picked from the resident feeders ranking (attribution) because play step hit CUDA OOM (GPU shared with a batch job); no ablation drop measured, so no edge weight is recorded. Solver (differential evolution) found no leak; near-miss ceiling 0.39 combined, single-string os.system ~0.13.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["card", "look", "probe", "inverse-de", "blind-room", "quick-test", "step-out"]
+ }
+}
