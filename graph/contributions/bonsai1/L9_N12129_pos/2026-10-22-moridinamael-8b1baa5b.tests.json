@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-22-moridinamael-8b1baa5b",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N12129+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T14:17:24+00:00",
+ "roles": ["feeds bonsai1/L12/N7269+"],
+ "neighbours": [
+  {
+   "unit": "L9/N12129",
+   "pole": "+",
+   "label": "The lone space token that the tokenizer splits off by itself, mid-sentence: the space in front of a number written in digits (e.g. 'hikers counted| |27 deer'), or the extra space of a double space between words ('the  garden'). Quiet on numbers spelled out in words, on '$5'-style amounts (the space merges into the symbol), and on text with single spaces only.",
+   "short": "lone space token (before digits, or double space)",
+   "unit_kind": "token",
+   "fire": [
+    "The hikers counted 27 deer along the ridge before noon.",
+    "She planted tomatoes in the  garden behind the shed.",
+    "Our train leaves at platform 9 in about ten minutes.",
+    "The recipe calls for 3 eggs and a cup of flour.",
+    "He walked  slowly toward the old lighthouse.",
+    "There were 450 people waiting outside the stadium.",
+    "The library closes early on  Sundays during the summer.",
+    "We drove 120 miles before stopping for lunch."
+   ],
+   "quiet": [
+    "The hikers counted twenty-seven deer along the ridge before noon.",
+    "Our train leaves at platform nine in about ten minutes.",
+    "The recipe calls for three eggs and a cup of flour.",
+    "Tickets cost $45 for people waiting outside the stadium.",
+    "We drove a hundred and twenty miles before stopping for lunch.",
+    "My grandmother turned ninety-two last spring and still bakes bread.",
+    "The cat jumped onto the windowsill and fell asleep.",
+    "The snack at the end of the hallway costs $3 now."
+   ],
+   "notes": "Test sentences written blind by a second author who saw only the label. Exploration: the score at the space is set by the preceding words, not the following token (' the 90th' and ' the  ninetieth' scored identically). Feeder chosen from the resident attribution ranking because play step ran out of GPU memory; no ablation drop measured."
+  }
+ ],
+ "predictions": "8/8 fire above 0.20 median, 0 near misses at 0.30",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "step-out",
+   "inverse-de"
+  ]
+ }
+}
