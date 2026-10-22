@@ -1,0 +1,44 @@
+{
+ "contribution": "2026-10-22-moridinamael-6e0385bc",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N9603+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T20:32:13+00:00",
+ "roles": ["reads bonsai1/L28/N858-"],
+ "neighbours": [
+  {
+   "unit": "L33/N9603",
+   "pole": "+",
+   "label": "The English word 'Mexican' (adjective or noun, any topic: food, people, government, animals), not 'Mexico', 'Mexicans', other-language forms (mexicana) or other nationality words such as Canadian, Indian or Japanese; Turkish and Spanish fire weakly, and brand names inside lists of companies (Marriott, Vivendi) also fire and are not tested here.",
+   "short": "the word 'Mexican'",
+   "unit_kind": "word",
+   "fire": [
+    "com, Orbitz, Venere, Travelocity, IHG, Hotwire, Marriott, Priceline, Tingo و Hotels.",
+    "We ordered Mexican food for the office party on Friday.",
+    "The Mexican government announced new trade rules this morning.",
+    "Her grandmother was a proud Mexican who taught her to cook mole.",
+    "The Mexican free-tailed bat can fly at remarkable speeds.",
+    "A Mexican restaurant opened on the corner of our street last month.",
+    "He collects old Mexican coins from the nineteenth century.",
+    "The museum's new exhibit features Mexican folk art and painted masks."
+   ],
+   "quiet": [
+    "Исследователи из России, Венгрии, Германии, США, Фран",
+    "We ordered Indian food for the office party on Friday.",
+    "The Canadian government announced new trade rules this morning.",
+    "Her grandmother was a proud woman who taught her to cook mole.",
+    "The Brazilian free-tailed bat can fly at remarkable speeds.",
+    "A Japanese restaurant opened on the corner of our street last month.",
+    "He collects old coins from nineteenth-century Mexico.",
+    "The museum's new exhibit features folk art and painted masks from Oaxaca."
+   ]
+  }
+ ],
+ "predictions": "Blind test written from the label only. Expect most 'Mexican' items to fire; the Hungary leak in the quiet set (0.64 solo when probed) will likely be the one near miss above 0.30, so any second strong near miss fails it.",
+ "notes": "Step-in from bonsai1/L28/N858- (sports 'took the lead'); drop 0.11 under zero ablation. This reader's label has little to do with the feeder's. Feeders-first mission: its top feeders (Hotel, mar, /en cells) mirror the Marriott hotel-list tops.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["card", "look", "probe", "step-down", "neighbors", "inverse-de", "bank-solo", "blind-room"]
+ }
+}
