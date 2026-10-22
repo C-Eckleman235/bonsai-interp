@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-22-moridinamael-6e95c6c0",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N630+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T14:59:32+00:00",
+ "roles": ["feeds bonsai1/L8/N9387+"],
+ "neighbours": [
+  {
+   "unit": "L7/N630",
+   "pole": "+",
+   "label": "In data or math code and prose, a lowercase variable that partners an earlier capital matrix name: y after X (X, y), b after A or W (A, b / W, b). Strongest right after the capital; low for a lowercase x, y pair, a capital Y, or a y with no capital X before it.",
+   "short": "lowercase partner after capital matrix X/A/W (X, y; A, b)",
+   "fire": [
+    "X, y = load_iris(return_X_y=True)",
+    "model.fit(X, y)",
+    "X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)",
+    "We solve the linear system Ax = b, where A is the coefficient matrix and b is the right-hand side.",
+    "x = np.linalg.solve(A, b)",
+    "The layer computes Wx + b, with W the weight matrix and b the bias vector.",
+    "def least_squares(X, y): return np.linalg.pinv(X) @ y",
+    "Given a design matrix X and a response vector y, the OLS estimate is (X^T X)^{-1} X^T y."
+   ],
+   "quiet": [
+    "labels = df['target'].values",
+    "y_pred = model.predict(X_test)",
+    "x, y = point.coords",
+    "train, test = split_data(data, test_size=0.2)",
+    "We solve the linear system, where the coefficient matrix and the right-hand side are given.",
+    "result = np.linalg.solve(M, rhs)",
+    "The layer computes a weighted sum plus a bias term before the activation.",
+    "Given a sample of points, the slope is the ratio of the change in y to the change in x."
+   ]
+  }
+ ],
+ "predictions": "Test written blind (label-only second author); solver leak lines placed as near misses. Expect most fire items high; risk on 'Ax = b' where b is not adjacent to A.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "inverse-de",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
