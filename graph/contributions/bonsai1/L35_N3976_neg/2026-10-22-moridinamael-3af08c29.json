@@ -1,0 +1,156 @@
+{
+ "id": "2026-10-22-moridinamael-3af08c29",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N3976-",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T09:21:15+00:00",
+ "recipe": {
+  "toolchain_commit": "531becdb",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N3976_neg/2026-10-22-moridinamael-3af08c29.tests.json"
+ },
+ "label": "the piece ' д' that starts the Russian word for 'door' (дверь, двери, дверью, дверца; tokenized ' д' + 'верь'), mid-sentence after an adjective, preposition or verb (входную дверь, постучал в дверь); quiet on other Russian д- words (двор, дача, дыня), on 'door' in English, French or German, and when the door word opens the sentence",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N3976_neg/2026-10-22-moridinamael-3af08c29.tests.json",
+   "prereg_commit": "531becdb",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 3,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.484,
+     "peak": " д"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.117,
+     "peak": " д"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.397,
+     "peak": " д"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.308,
+     "peak": " д"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.069,
+     "peak": "вор"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.072,
+     "peak": " вып"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.132,
+     "peak": " д"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.179,
+     "peak": " д"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.059,
+     "peak": " зак"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.024,
+     "peak": "К"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.028,
+     "peak": " поп"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.337,
+     "peak": " д"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.036,
+     "peak": "К"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.099,
+     "peak": " сп"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.072,
+     "peak": "кры"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.022,
+     "peak": " door"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.852,
+    "median_fire": 0.155,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "531becdb",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "edges": [
+  {"from": "bonsai1/L32/N8965+", "to": "bonsai1/L35/N3976-", "kind": "feeds", "weight": 0.04, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
