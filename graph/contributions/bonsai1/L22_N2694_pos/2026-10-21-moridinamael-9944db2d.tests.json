@@ -1,0 +1,43 @@
+{
+ "contribution": "2026-10-21-moridinamael-9944db2d",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N2694+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T05:14:01+00:00",
+ "roles": ["feeds bonsai1/L25/N4650+"],
+ "neighbours": [
+  {
+   "unit": "L22/N2694",
+   "pole": "+",
+   "label": "In English, a connector that opens a purpose clause after an action, with or without a comma before it: ' so' / 'so that' / 'so as to' ('saved every month so she could buy a car'), and ' order' in 'in order to' / 'in order that'. It fires on the connector word itself, so the phrase 'so that' can fire even when it means result, and a degree 'so' straight after an action ('fixed it so quickly') can fire. Quiet for result 'so' after a stated fact ('it rained, so we stayed home'), sentence-initial 'So', degree 'so' after is/was, 'I think so', 'and so on', 'in order of' or 'in order' meaning tidy, and for purpose said with plain 'to', 'lest' or 'for the purpose of'.",
+   "short": "purpose connector: 'so (that)', 'so as to', 'in order to/that'",
+   "fire": [
+    "She saved every month so she could buy a car by spring.",
+    "He left the porch light on so that his daughter could find the house.",
+    "We whispered in the library so as not to disturb the other readers.",
+    "The engineers reinforced the bridge in order to handle heavier trucks.",
+    "Please label each box clearly, so the movers know where it goes.",
+    "The teacher repeated the instructions twice so that nobody would get lost.",
+    "They arrived an hour early in order that they might get good seats.",
+    "I wrote the password on a sticky note so I wouldn't forget it."
+   ],
+   "quiet": [
+    "It rained all afternoon, so we stayed home and played cards.",
+    "So, what did you think of the movie last night?",
+    "The soup was so salty that nobody finished it.",
+    "Will the train be late again? I think so.",
+    "We packed tents, stoves, sleeping bags, and so on.",
+    "The names are listed in order of arrival at the station.",
+    "After the cleaning, her desk was finally in order.",
+    "He left the porch light on to help his daughter find the house."
+   ]
+  }
+ ],
+ "predictions": "most fire items 0.3+; 'so as not to' may be weak (~0.15); near misses under 0.15",
+ "notes": "Test sentences written blind by a second author from the label only. play step OOMed on the stream GPU, so the feeder was picked from the resident attribution ranking (top MLP feeder of L25/N4650+) and no ablation weight is recorded. Solver (differential evolution) found no leak (best unrelated 0.17) and no silent on-concept text.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["card", "look", "probe", "step-out", "bank-solo", "inverse-de", "quick-test"]
+ }
+}
