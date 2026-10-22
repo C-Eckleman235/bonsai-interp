@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-971406c5",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N3206+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:26:10+00:00",
+ "recipe": {
+  "toolchain_commit": "7f95e3fd",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L22_N3206_pos/2026-10-22-lm1909-971406c5.tests.json"
+ },
+ "label": "type-definition keywords in code (struct, enum/Enum, class, namedtuple)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N3206_pos/2026-10-22-lm1909-971406c5.tests.json",
+   "prereg_commit": "7f95e3fd",
+   "author": "lm1909",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.938,
+     "peak": "struct"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.528,
+     "peak": " enum"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.275,
+     "peak": "class"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 1.452,
+     "peak": " enum"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.589,
+     "peak": " enum"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.428,
+     "peak": " class"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.278,
+     "peak": "Tuple"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 1.106,
+     "peak": "struct"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.072,
+     "peak": "(void"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.009,
+     "peak": "def"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.008,
+     "peak": "):\n"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.04,
+     "peak": " ("
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.009,
+     "peak": " as"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.051,
+     "peak": " static"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.015,
+     "peak": " typing"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.076,
+     "peak": ")"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.558,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "7f95e3fd",
+  "minutes": 6,
+  "batch_size": 16
+ },
+ "short": "code type-definition keywords",
+ "unit_kind": "lexical",
+ "confidence": 0.65,
+ "notes": "Probe: typedef struct 1.63, enum/Enum 0.59, nested class 0.54, namedtuple 0.30; @classmethod 0.06; def/import code 0.01; English 'class' 0.002. The - pole is ' copy'.",
+ "selection": "random draw"
+}

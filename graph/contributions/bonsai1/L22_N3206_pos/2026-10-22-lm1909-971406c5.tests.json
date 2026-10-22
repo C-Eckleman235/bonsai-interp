@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-971406c5",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N3206+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T16:59:38+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N3206",
+   "pole": "+",
+   "label": "type-definition keywords in code (struct, enum/Enum, class, namedtuple)",
+   "fire": [
+    "#include <stdint.h>\n\nstruct packet {\n    uint8_t id;\n    uint16_t len;\n};",
+    "import enum\n\nclass Status(enum.Enum):\n    OK = 0\n    FAILED = 1",
+    "import math\n\nclass Node:\n    def __init__(self, value):\n        self.value = value\n        self.next = None",
+    "typedef enum {\n    LOW,\n    MEDIUM,\n    HIGH\n} Level;",
+    "from enum import IntEnum\n\nclass Priority(IntEnum):\n    LOW = 1\n    HIGH = 2",
+    "public class Account {\n    private int balance;\n}",
+    "from typing import NamedTuple\n\nclass Pair(NamedTuple):\n    left: int\n    right: int",
+    "#include <math.h>\n\nstruct Vec3 {\n    float x, y, z;\n};\n\nint main() { return 0; }"
+   ],
+   "quiet": [
+    "#include <stdio.h>\n\nint main(void) {\n    printf(\"hello\\n\");\n    return 0;\n}",
+    "import os\n\ndef status():\n    return os.getcwd()",
+    "def add(a, b):\n    total = a + b\n    return total",
+    "for (int i = 0; i < 10; i++) {\n    sum += i;\n}",
+    "import json\n\ndef load(path):\n    with open(path) as f:\n        return json.load(f)",
+    "public static void main(String[] args) {\n    System.out.println(args.length);\n}",
+    "from typing import List\n\ndef first(items: List[int]) -> int:\n    return items[0]",
+    "int square(int x) {\n    return x * x;\n}\n\nint main() { return square(3); }"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "code type-definition keywords",
+ "unit_kind": "lexical",
+ "confidence": 0.65,
+ "notes": "Probe: typedef struct 1.63, enum/Enum 0.59, nested class 0.54, namedtuple 0.30; @classmethod 0.06; def/import code 0.01; English 'class' 0.002. The - pole is ' copy'."
+}
