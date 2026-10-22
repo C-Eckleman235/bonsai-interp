@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-5de2350a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N2456-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T12:20:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L24/N2456",
+   "pole": "-",
+   "label": "The type specification after 'name :' in a NumPy-style docstring parameter list (str, None, optional, array_like), not types described in prose or in Google-style 'name (type):' docstrings.",
+   "fire": [
+    "def fit(data, weights=None):\n    \"\"\"Fit the model.\n\n    Parameters\n    ----------\n    data : array_like\n        Training samples.\n    weights : None | array_like\n        Optional sample weights.\n    \"\"\"",
+    "def save(obj, fname):\n    \"\"\"Save an object.\n\n    Parameters\n    ----------\n    obj : object\n        Anything picklable.\n    fname : str | None\n        Target file name.\n    \"\"\"",
+    "def plot(values, color=None):\n    \"\"\"Draw a line.\n\n    Parameters\n    ----------\n    values : list of float\n        Points to plot.\n    color : str, optional\n        Line colour.\n    \"\"\"",
+    "def resample(sig, rate):\n    \"\"\"Resample a signal.\n\n    Parameters\n    ----------\n    sig : ndarray\n        The signal.\n    rate : float | None\n        New sampling rate.\n    \"\"\"",
+    "def read_raw(subject, run=0):\n    \"\"\"Read raw data.\n\n    Parameters\n    ----------\n    subject : None | str\n        Subject name.\n    run : int, optional\n        Run index.\n    \"\"\"",
+    "def merge(left, right, how='inner'):\n    \"\"\"Merge tables.\n\n    Parameters\n    ----------\n    left : DataFrame\n        First table.\n    how : str, optional\n        Join type.\n    \"\"\"",
+    "def smooth(x, window=5):\n    \"\"\"Smooth a series.\n\n    Parameters\n    ----------\n    x : array_like, shape (n,)\n        Input series.\n    window : int, optional\n        Window length.\n    \"\"\"",
+    "def connect(host, port=None):\n    \"\"\"Open a socket.\n\n    Parameters\n    ----------\n    host : str\n        Host name.\n    port : None | int\n        Port number.\n    \"\"\""
+   ],
+   "quiet": [
+    "def fit(data, weights=None):\n    \"\"\"Fit the model.\n\n    Args:\n        data (list): Training samples.\n        weights (list): Optional sample weights.\n    \"\"\"",
+    "def save(obj, fname):\n    # obj can be anything picklable and fname is the target file name\n    with open(fname, 'wb') as fh:\n        pickle.dump(obj, fh)",
+    "def plot(values, color=None):\n    \"\"\"Draw a line through the given points in the chosen colour.\"\"\"\n    plt.plot(values, color=color)",
+    "The function takes a signal array and a sampling rate given as a floating point number.",
+    "def read_raw(subject, run=0):\n    \"\"\"Read raw data.\n\n    Args:\n        subject (str): Subject name.\n        run (int): Run index.\n    \"\"\"",
+    "Use the merge function with two tables and a join type such as inner or outer.",
+    "def smooth(x, window=5):\n    kernel = np.ones(window) / window\n    return np.convolve(x, kernel, mode='same')",
+    "def connect(host, port=None):\n    \"\"\"Open a socket.\n\n    Args:\n        host (str): Host name.\n        port (int): Port number.\n    \"\"\""
+   ]
+  }
+ ],
+ "predictions": "Fire 0.3-0.7 (probes: ' None' 0.66, ' optional' 0.36). Near misses: Google-style docstrings ~0.04, prose about types ~0.01, plain code ~0.06. Risk: fire median near 0.3 if the type is plain 'int'.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "numpydoc parameter types",
+ "unit_kind": "contextual",
+ "confidence": 0.45,
+ "notes": "Probes (max 64): numpydoc 'factor : float | None' 0.66 (' None'), 'mode : int, optional' 0.36 (' optional'); Google-style 'job (str):' 0.04; plain function with comment 0.06; prose 'must be a string' 0.009. Title-case headings 'Trial of the Century' 0.28, 'Wrapping It Up' 0.29 (a secondary heading trigger; kept out of the test)."
+}

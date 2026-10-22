@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-f824064d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N695-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T12:20:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N695",
+   "pole": "-",
+   "label": "The comma after 'self' in a Python method signature (def name(self, ...)), i.e. the point where a method's parameter list continues past self; not commas in plain function signatures without self, and not commas in other code or prose.",
+   "fire": [
+    "class Cart:\n    def add_item(self, item, qty=1):\n        self.items.append((item, qty))",
+    "class Robot:\n    def move(self, dx, dy):\n        self.x += dx\n        self.y += dy",
+    "class Logger:\n    def write(self, message):\n        print(message)",
+    "class Account(Base):\n    def deposit(self, amount, note=None):\n        self.balance += amount",
+    "class Parser:\n    def __init__(self, text, strict=False):\n        self.text = text",
+    "class Game:\n    def on_key(self, event):\n        self.keys.add(event.key)",
+    "class Matrix:\n    def get(self, row, col):\n        return self.data[row][col]",
+    "class Client:\n    def send(self, payload, timeout=10):\n        return self.sock.send(payload)"
+   ],
+   "quiet": [
+    "def add_item(items, item, qty=1):\n    items.append((item, qty))\n    return items",
+    "points = [(1, 2), (3, 4)]\nfor dx, dy in points:\n    print(dx + dy)",
+    "message = 'hello, world'\nprint(message)",
+    "def deposit(balance, amount):\n    return balance + amount",
+    "config = {'text': 'abc', 'strict': False}\nprint(config)",
+    "The event handler receives the key, the time, and the window.",
+    "row, col = 2, 3\nvalue = data[row][col]",
+    "result = send(payload, timeout=10)\nprint(result)"
+   ]
+  }
+ ],
+ "predictions": "Fire 0.35-0.5 (probes: 'app_main,' 0.49, 'self, options' 0.36, 'self, gl_entries' 0.37). Near misses: functions without self untested directly; JS 0.02, plain code 0.015. Risk: commas in any def signature may fire, which would fail the test.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "comma after self in def",
+ "unit_kind": "contextual",
+ "confidence": 0.4,
+ "notes": "Probes (max 41.5): 'def __init__(self, master, app_main, **kwargs)' 0.49 (','), 'def execute(self, options)' 0.36, 'def make_entries(self, gl_entries)' 0.37; indentation lines in an if/try block 0.15; 'x = 1 ...' 0.015; JS function 0.02; prose 0.04. The card also peaks on indentation whitespace starting a method body; the comma is what the probes support."
+}

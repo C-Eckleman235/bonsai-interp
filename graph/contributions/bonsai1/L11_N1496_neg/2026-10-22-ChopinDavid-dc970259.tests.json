@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-dc970259",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N1496-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T12:20:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L11/N1496",
+   "pole": "-",
+   "label": "Dense, weak pole that is highest on the last piece of a person's or place's proper name (Bernadette, Ilyich, Mongolia, Murphy) and lower on common nouns; it is on for about half of all tokens, so an 8 + 8 test is unlikely to separate.",
+   "fire": [
+    "Every winter the old priest, Father Bartholomew, walked to the village on foot.",
+    "The essay compares the novels of Fyodor Dostoevsky with those of his rivals.",
+    "After the war, the family moved to Kazakhstan and opened a small bakery.",
+    "On the hundredth anniversary of Gallagher's death, the town held a parade.",
+    "She was named after her grandmother, Henriette, who had raised six children.",
+    "Our guide, a cheerful man called Ignatius, showed us the old harbour.",
+    "In 1990 Namibia became independent after a long struggle.",
+    "The letter was signed by Mother Scholastica, the abbess of the convent."
+   ],
+   "quiet": [
+    "Every winter the old priest walked to the village on foot with his dog.",
+    "The essay compares the novels of the period with those of earlier decades.",
+    "After the war, the family moved to the countryside and opened a small bakery.",
+    "On the hundredth anniversary of the bridge, the town held a parade.",
+    "She was named after her grandmother, who had raised six children alone.",
+    "Our guide, a cheerful older man, showed us the old harbour and the market.",
+    "In 1990 the country became independent after a long struggle.",
+    "The letter was signed by the head of the convent on a cold morning."
+   ]
+  }
+ ],
+ "predictions": "Fire items (names) ~0.4-0.7; near misses (same sentences with common nouns) ~0.2-0.4 because the pole is dense. Expect a fail on the near-miss count or AUROC.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "end of proper names (dense)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.2,
+ "notes": "Probes (fraction of max 1.26): 'Sister Bernadette' 0.70 ('ette'), 'Mongolia' 0.67, 'Ilyich' 0.55, 'Amelie' 0.46, 'Murphy' 0.45; 'these' 0.36, 'kitchen' 0.24, budget sentence 0.26. Card: 50% of tokens reach 0.1 of max, gate-closed leak regime. Best-guess test only."
+}

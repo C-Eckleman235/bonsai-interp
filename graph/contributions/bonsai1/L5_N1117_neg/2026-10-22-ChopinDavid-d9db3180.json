@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-d9db3180",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N1117-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T12:27:52+00:00",
+ "recipe": {
+  "toolchain_commit": "c8f62d9f",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N1117_neg/2026-10-22-ChopinDavid-d9db3180.tests.json"
+ },
+ "label": "The word 'eczema' (its 'z'/'cz' piece), not other skin conditions in the same sentences and not other 'cz' words.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N1117_neg/2026-10-22-ChopinDavid-d9db3180.tests.json",
+   "prereg_commit": "c8f62d9f",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.725,
+     "peak": "z"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.836,
+     "peak": "z"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.856,
+     "peak": "z"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.723,
+     "peak": "z"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.723,
+     "peak": "z"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.651,
+     "peak": "z"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.757,
+     "peak": "z"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.753,
+     "peak": "z"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.004,
+     "peak": "ares"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.006,
+     "peak": " ps"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.004,
+     "peak": " appears"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": " early"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.011,
+     "peak": " worse"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.009,
+     "peak": " with"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.008,
+     "peak": " sun"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.01,
+     "peak": "acea"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.739,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "c8f62d9f",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "the word 'eczema'",
+ "unit_kind": "lexical",
+ "confidence": 0.8,
+ "notes": "Probes (max 16.38): 'Eczema is a chronic skin disease' 0.84 ('cz'), 'eczema and hay fever' 0.83 ('z'), 'caused by eczema' 0.83; lows: psoriasis 0.02, hives 0.005, dermatitis 0.011, 'Czech' 0.021, 'Atopic dermatitis' 0.009. Tokenizer: ' eczema' -> ' ec','z','ema'; 'Eczema' -> 'E','cz','ema'.",
+ "selection": "random draw"
+}
