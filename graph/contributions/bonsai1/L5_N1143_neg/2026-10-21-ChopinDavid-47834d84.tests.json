@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-21-ChopinDavid-47834d84",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N1143-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T00:17:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N1143",
+   "pole": "-",
+   "label": "In Russian, the inner pieces of words for cloud and cloudiness (обл|ак|а, обла|ч|ный, облачн-), not other Russian sky or weather words.",
+   "fire": [
+    "Над горами висели тяжёлые серые облака.",
+    "К вечеру небо затянули тёмные облака.",
+    "Днём будет облачно, возможен небольшой дождь.",
+    "Компания хранит все данные в облачном хранилище.",
+    "Самолёт поднялся выше облаков, и стало светло.",
+    "Из-за облачности пилоты не видели землю.",
+    "Дети лежали на траве и смотрели на облака.",
+    "Мы перенесли все фотографии в облачный архив."
+   ],
+   "quiet": [
+    "Над горами висели тяжёлые серые тучи.",
+    "К вечеру небо стало тёмным и холодным.",
+    "Днём будет ветрено, возможен небольшой дождь.",
+    "Компания хранит все данные на своём сервере.",
+    "Самолёт поднялся выше гор, и стало светло.",
+    "Из-за тумана пилоты не видели землю.",
+    "Дети лежали на траве и смотрели на звёзды.",
+    "Мы перенесли все фотографии на новый диск."
+   ]
+  }
+ ],
+ "predictions": "7-8/8 fire >= 0.30 (probes 0.37-0.80); Russian sky and weather words without the cloud root ~0.02. The English city name Baku also fired (0.46) and is not part of this label.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Russian 'cloud' pieces",
+ "unit_kind": "lexical",
+ "confidence": 0.65,
+ "notes": "Probes (fraction of max 14.19): 'облака' 0.803 ('ак'), 'облачный сервис' 0.639 ('ч'), 'облачная погода' 0.371. Quiet: 'белые птицы' 0.019, English weather 0.000. Other card peaks: 'aku' in B|aku 0.46 in probes, Arabic 'ول' in Kabul; ' Kabul' as one English token 0.090. The label covers only the Russian cloud root."
+}
