@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-799fd929",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N179+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T20:19:51+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L14/N179",
+   "pole": "+",
+   "label": "weak unit on operators and length/index names in integer arithmetic and comparisons in code (' *', ' <=', '_length')",
+   "fire": [
+    "    if seq_len <= self.max_length:\n        pad = self.max_length - seq_len",
+    "    offset = start_idx + seq_length * stride",
+    "    while total_steps <= max_steps:\n        total_steps += 1",
+    "    chunk = n // num_chunks\n    rest = n - num_chunks * chunk",
+    "    if step % 100 == 0:\n        save(model)",
+    "    end = min(start + window_length, len(data))",
+    "    grid = np.zeros((rows * 2 + 1, cols * 2 + 1))",
+    "    assert batch_size * num_batches <= len(dataset)"
+   ],
+   "quiet": [
+    "    if name in self.names:\n        print(name)",
+    "    label = 'training finished'\n    log(label)",
+    "    while running:\n        handle(queue.get())",
+    "    title = row.get('title')\n    author = row.get('author')",
+    "    if verbose:\n        save(model)",
+    "    path = os.path.join(root, 'data')",
+    "    grid = load_grid(config_file)",
+    "    assert isinstance(dataset, list)"
+   ]
+  }
+ ],
+ "predictions": "likely fails or holds weakly: probes give 0.11-0.35 on index arithmetic and 0.065 on string code",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "index arithmetic in code (unclear)",
+ "unit_kind": "unclear",
+ "confidence": 0.25,
+ "notes": "Card: max 4.72, 88% gate-closed echo; peaks ' *', '_length', '_steps', ' ==', digits in index arithmetic. Probe: 'seq_length <= self.chunk_length' 0.354, 'if e % 10 == 0' 0.183, 'n - m * avg' 0.155, 'zeros((r + 1, c + 1))' 0.110, a[i + 1] 0.068, string assignment 0.065, English arithmetic 0.063. Near misses are code lines without arithmetic on sizes."
+}

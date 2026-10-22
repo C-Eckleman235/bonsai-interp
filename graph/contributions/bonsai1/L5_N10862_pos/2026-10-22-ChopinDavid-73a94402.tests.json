@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-73a94402",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N10862+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T20:19:51+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N10862",
+   "pole": "+",
+   "label": "the word pieces 'v'/'vas'/'va'/'ba'/'bia' inside split proper names (Dur|vas|as, par|v|ovirus, Ser|bia, Par|ba)",
+   "fire": [
+    "In the epic, the angry sage Durvasas cursed Shakuntala.",
+    "Our vet tested the sick puppy for parvovirus yesterday.",
+    "The football match between Croatia and Serbia ended in a draw.",
+    "Many legends tell of Krishna, son of Vasudeva and Devaki.",
+    "The title Sarvabhauma was given to the great emperor.",
+    "Shelters see more parvovirus cases in summer, so puppies are tested often.",
+    "Historians still debate the causes of the Kot Parba of 1846.",
+    "Pilgrims honored the sage Durvasa at the riverside temple."
+   ],
+   "quiet": [
+    "In the epic, the angry king Dushyanta forgot Shakuntala.",
+    "Our vet tested the sick puppy for rabies yesterday.",
+    "The football match between Croatia and Hungary ended in a draw.",
+    "Many legends tell of Krishna, son of Devaki and her husband.",
+    "The title Maharaja was given to the great emperor.",
+    "Shelters see more flea cases in summer, so pets are checked often.",
+    "Historians still debate the causes of the Sepoy Mutiny of 1857.",
+    "Pilgrims honored the sage Narada at the riverside temple."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.85 where the piece is its own token inside a name; names without those pieces near 0.01",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "pieces v/vas/ba in names",
+ "unit_kind": "token",
+ "confidence": 0.6,
+ "notes": "Card: peaks 'ba' x7, 'v' x5, 'vas' x4, 'va' x3, 'bian', ' Serbia' (Dur|vas|as 22.25, par|v|ovirus, Austrian-Ser|bian). Probe: 'Durvasa' 0.850, 'Austrian-Serbian' 0.755, 'parvovirus' 0.671, 'Kot Parba' 0.617, sentence-initial 'Ser|bia' 0.589; 'rabies' 0.008, 'vase' 0.004. Tokenizer checked: Durvasas -> Dur|vas|as, Sarvabhauma -> Sar|v|ab..., Vasudeva -> Vas|ude|va."
+}

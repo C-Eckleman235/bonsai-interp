@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-ec64c0c8",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N9374+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T20:19:51+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L31/N9374",
+   "pole": "+",
+   "label": "the token ' sit' / 'Sit' in any sense, including word pieces (Sit|uated, sit|ewide, sit-ups); not 'sitting' or 'sat'",
+   "fire": [
+    "The coach told everyone to sit quietly on the bench.",
+    "Free shipping and 30% off sitewide through Sunday.",
+    "Our new cabin is ideally Situated beside a quiet forest lake.",
+    "After the workout we did three sets of sit-ups.",
+    "Students staged a sit-in outside the dean's office.",
+    "Please sit down and make yourself at home.",
+    "The dog learned to sit before it learned its name.",
+    "Let's sit by the fire and talk for a while."
+   ],
+   "quiet": [
+    "The coach saw everyone sitting quietly on the bench.",
+    "Free shipping on all orders through Sunday.",
+    "Our new cabin lies beside a quiet forest lake.",
+    "After the workout we did three sets of push-ups.",
+    "Students held a rally outside the dean's office.",
+    "Please come in and make yourself at home.",
+    "The dog learned to fetch before it learned its name.",
+    "We sat by the fire and talked for a while."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-0.8 wherever ' sit'/'Sit' is its own token; 'sitting', 'sat', 'seated', 'sits' near 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "the token 'sit'",
+ "unit_kind": "token",
+ "confidence": 0.75,
+ "notes": "Card: one token dominates, ' sit'/'Sit' x31 of 32 (sit tight 254, Situated, sitewide, sit-in, sit-ups). Probe: 'sitewide' 0.773, 'Situated' 0.731, 'sit-ups' 0.696, 'sit tight' 0.602; ' sitting' 0.032, ' sat' 0.064 (single tokens). ' stand' leaked 0.492, so near misses avoid 'stand'. Tokenizer: ' sitting', ' seated', ' sits', ' sat', ' site' are single tokens without the piece."
+}
