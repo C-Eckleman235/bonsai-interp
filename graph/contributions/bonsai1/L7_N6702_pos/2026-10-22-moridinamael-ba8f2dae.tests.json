@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-22-moridinamael-ba8f2dae",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N6702+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:31:59+00:00",
+ "roles": ["feeds bonsai1/L11/N10297-"],
+ "neighbours": [
+  {
+   "unit": "L7/N6702",
+   "pole": "+",
+   "label": "Positional, not a word or a meaning: a sentence-ending period, or the comma after a one-word sentence opener (Meanwhile, Well, Hence, Also), fires strongly only when it falls within the first few tokens of a text window cut from the middle of a document; the same punctuation in ordinary self-contained sentences, whether at the start or deep inside, stays near zero.",
+   "short": "early-window boundary punctuation (positional)",
+   "unit_kind": "dense / positional",
+   "confidence": "low",
+   "notes": "Card flags positional (91% of top peaks within the first 16 window tokens). Reconstructions of the top openings ('now. But...', 'Meanwhile, European officials...') read 0.01-0.05 on both the resident probe and play probe; the inverse solver's best natural text reached 0.10-0.15 with no leak. Expect an 8+8 sentence test to fail if the effect depends on window start without a BOS token.",
+   "fire": [
+    "of the old harbor. The ships that remained were sold for scrap within a decade.",
+    "and never returned. Meanwhile, the village council voted to rebuild the bridge.",
+    "ing the final draft. Well, nobody expected the editor to reject it outright.",
+    "than before. Hence, the committee recommended a second round of testing.",
+    "the patients. Also, the nurses reported fewer complaints during night shifts.",
+    "to the north. By spring the snow had melted and the roads were open again.",
+    "it in 1874. Meanwhile, rival firms in Leeds began copying the design.",
+    "ated by heat. Hence, the metal must be cooled slowly to avoid cracking."
+   ],
+   "quiet": [
+    "The ships that remained in the old harbor were sold for scrap within a decade.",
+    "After the storm the villagers waited a long time, and the council voted to rebuild the bridge.",
+    "Nobody on the staff expected the editor to reject the final draft outright.",
+    "The results were weaker than before, so the committee recommended a second round of testing.",
+    "The nurses on the ward reported fewer complaints during night shifts this year.",
+    "By spring the snow to the north had melted and the roads were open again.",
+    "The engine was patented in 1874 and rival firms in Leeds began copying the design.",
+    "Because it is weakened by heat, the metal must be cooled slowly to avoid cracking."
+   ]
+  }
+ ],
+ "predictions": "Likely fail: fire sentences near 0.02-0.05, median below 0.20, because probe-scored text does not reproduce the window-start effect.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
