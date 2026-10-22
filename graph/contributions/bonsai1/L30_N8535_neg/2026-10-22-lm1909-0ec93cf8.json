@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-0ec93cf8",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N8535-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:44:19+00:00",
+ "recipe": {
+  "toolchain_commit": "65e7c356",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L30_N8535_neg/2026-10-22-lm1909-0ec93cf8.tests.json"
+ },
+ "label": "first word of a Latin phrase embedded in modern text (ex situ, ex nihilo, ad hoc, inter alia, pro tempore)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L30_N8535_neg/2026-10-22-lm1909-0ec93cf8.tests.json",
+   "prereg_commit": "65e7c356",
+   "author": "lm1909",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.038,
+     "peak": " ex"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.884,
+     "peak": " ex"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.556,
+     "peak": " ex"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.479,
+     "peak": " ad"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.568,
+     "peak": " inter"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.632,
+     "peak": " pro"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.161,
+     "peak": " ad"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.535,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.094,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.237,
+     "peak": " created"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.0,
+     "peak": "T"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.021,
+     "peak": " up"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.045,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.007,
+     "peak": " chairs"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.006,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.065,
+     "peak": " of"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.562,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "65e7c356",
+  "minutes": 4,
+  "batch_size": 16
+ },
+ "short": "Latin phrase onset",
+ "unit_kind": "contextual",
+ "confidence": 0.5,
+ "notes": "Probe: 'ad hoc' 0.68, 'inter alia' 0.37, 'in vitro/in vivo' 0.23, 'per se' 0.15, 'de facto' 0.10 (assimilated phrases weaker); English 'ex-husband' 0.05, 'pro golfer' 0.09, 'ad' (advert) 0.00. Card top examples are ex situ / ex nihilo / ex vivo / pro tempore / Non habet, so fire items favour the less assimilated phrases.",
+ "selection": "random draw"
+}

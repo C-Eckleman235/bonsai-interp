@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-6038ea67",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N9179-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:44:29+00:00",
+ "recipe": {
+  "toolchain_commit": "65e7c356",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L33_N9179_neg/2026-10-22-lm1909-6038ea67.tests.json"
+ },
+ "label": "function word right before an expected problem/difficulty noun, mainly French ('a connu des [difficultés]', 'sans trop de [souci]'), weakly English 'ran into', 'without much'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L33_N9179_neg/2026-10-22-lm1909-6038ea67.tests.json",
+   "prereg_commit": "65e7c356",
+   "author": "lm1909",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.693,
+     "peak": " des"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.298,
+     "peak": " des"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.325,
+     "peak": " de"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.317,
+     "peak": " de"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.201,
+     "peak": " into"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.179,
+     "peak": " into"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.18,
+     "peak": " without"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.356,
+     "peak": " des"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.018,
+     "peak": "'"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.027,
+     "peak": "'"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.025,
+     "peak": " très"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.023,
+     "peak": " des"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.002,
+     "peak": " summit"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.036,
+     "peak": " same"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.002,
+     "peak": " installed"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.032,
+     "peak": " des"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.307,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "65e7c356",
+  "minutes": 4,
+  "batch_size": 16
+ },
+ "short": "slot before a difficulty",
+ "unit_kind": "unclear",
+ "confidence": 0.3,
+ "notes": "Probe: French 'a connu des difficultés' 0.45 (peak ' des'); English 'ran into serious problems' 0.17, 'without much trouble' 0.15, 'overcome these' 0.07, 'the question' 0.02; neutral rewrites <=0.03. Card top examples are diffuse (' the', ' this', ' no', ' des', ' sans'). Expect the median-fire bar to be at risk, especially on the English items.",
+ "selection": "random draw"
+}
