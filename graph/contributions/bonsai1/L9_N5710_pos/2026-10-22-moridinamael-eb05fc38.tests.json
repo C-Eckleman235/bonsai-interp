@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-22-moridinamael-eb05fc38",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N5710+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T17:10:50+00:00",
+ "roles": ["feeds bonsai1/L11/N6709+"],
+ "neighbours": [
+  {
+   "unit": "L9/N5710",
+   "pole": "+",
+   "label": "In English, the preposition (in, with, at, by, through) directly after a noun for manner, speed or method (way, manner, order, speed, pace, rate, frequency, ease, method, means, mechanism, process), as in 'the speed with which'; it fires on the preposition itself. Quiet for the same prepositions after place, time or situation nouns (a village in which, the year in which), after style or fashion, and for these nouns in ordinary phrases ('with ease', 'at speed', 'in a strange manner').",
+   "fire": [
+    "She was amazed at the speed with which the rumor spread through the school.",
+    "The way in which the committee reached its decision was never made public.",
+    "Researchers studied the rate at which glaciers are melting in the Alps.",
+    "The ease with which he solved the puzzle surprised everyone in the room.",
+    "We need to change the order in which the files are processed.",
+    "The manner in which the letter was written suggested haste.",
+    "Doctors are still unsure of the mechanism by which the drug lowers blood pressure.",
+    "The pace at which technology changes makes planning difficult."
+   ],
+   "quiet": [
+    "She was amazed at the village in which the rumor spread through the school.",
+    "The year in which the committee reached its decision was never made public.",
+    "Researchers studied the valley in which glaciers are melting in the Alps.",
+    "He solved the puzzle with ease, surprising everyone in the room.",
+    "We need to change the folder in which the files are stored.",
+    "The letter was written in a strange manner, suggesting haste.",
+    "Doctors are still unsure of the hospital at which the drug was first tested.",
+    "The car took the corner at speed, making the passengers nervous."
+   ]
+  }
+ ],
+ "short": "preposition after a manner/speed/method noun ('the speed with')",
+ "predictions": "8/8 fire, 0 near misses at 0.30 (blind sentences, written from the label only)",
+ "notes": "Step-out feeder of L11/N6709+. play step ran out of GPU memory on stream, so the feeder was picked from the resident attribution ranking (top MLP feeder); no ablation drop measured, so no edge weight recorded. Test written blind by a second author from the label only. Inverse solver (DE) found no leak; near-miss ceiling 0.12 (place/time nouns before 'in which').",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "step-out",
+   "bank-solo",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
