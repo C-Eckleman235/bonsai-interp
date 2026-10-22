@@ -1,0 +1,165 @@
+{
+ "id": "2026-10-21-moridinamael-b18e98c2",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N3065+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T02:02:05+00:00",
+ "recipe": {
+  "toolchain_commit": "f73b7faf",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L29_N3065_pos/2026-10-21-moridinamael-b18e98c2.tests.json"
+ },
+ "label": "In English, the modal 'can' (strongest as 'you can', weaker 'could') opening a main clause right after a reason clause (since, because, as, or ', so') that says a thing's feature makes an action easy or safe, e.g. 'Since the battery lasts all week, you can leave the charger at home'; quiet for 'can' with no reason before it, for negatives (cannot, could not, must not), for purpose 'so that ... could', and for questions 'Can you ...?'.",
+ "edges": [
+  {
+   "from": "bonsai1/L28/N10023+",
+   "to": "bonsai1/L29/N3065+",
+   "kind": "feeds",
+   "weight": 0.98,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ],
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L29_N3065_pos/2026-10-21-moridinamael-b18e98c2.tests.json",
+   "prereg_commit": "f73b7faf",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.185,
+     "peak": " can"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.265,
+     "peak": " can"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.403,
+     "peak": " it"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.286,
+     "peak": " can"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.016,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.022,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.032,
+     "peak": "The"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.412,
+     "peak": " can"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.022,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.078,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.014,
+     "peak": " through"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.036,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.02,
+     "peak": "Can"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.028,
+     "peak": "Since"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.029,
+     "peak": "She"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.018,
+     "peak": " bridge"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.789,
+    "median_fire": 0.225,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "f73b7faf",
+  "minutes": 0,
+  "batch_size": 1
+ }
+}
