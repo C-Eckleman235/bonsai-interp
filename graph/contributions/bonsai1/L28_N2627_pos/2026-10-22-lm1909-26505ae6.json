@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-26505ae6",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N2627+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T19:07:13+00:00",
+ "recipe": {
+  "toolchain_commit": "4d94a133",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L28_N2627_pos/2026-10-22-lm1909-26505ae6.tests.json"
+ },
+ "label": "Latin genus names of insects (Drosophila, Aedes, Anopheles, Culex, Apis), not plant names",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L28_N2627_pos/2026-10-22-lm1909-26505ae6.tests.json",
+   "prereg_commit": "4d94a133",
+   "author": "lm1909",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.538,
+     "peak": "edes"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.55,
+     "peak": "ros"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.561,
+     "peak": "les"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.444,
+     "peak": " mell"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.341,
+     "peak": "x"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.524,
+     "peak": "ila"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.565,
+     "peak": "edes"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.164,
+     "peak": " been"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.025,
+     "peak": "erc"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.037,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.103,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.007,
+     "peak": "us"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.003,
+     "peak": " rain"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.056,
+     "peak": " rub"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.008,
+     "peak": " about"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.002,
+     "peak": " for"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.531,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "4d94a133",
+  "minutes": 4,
+  "batch_size": 16
+ },
+ "short": "insect genus names",
+ "unit_kind": "sparse feature",
+ "confidence": 0.55,
+ "notes": "Probe: Drosophila 0.89, Aedes 0.64, Anopheles 0.59, Apis 0.44, but Mus musculus 0.34 and 'Asian tiger mosquito' 0.32 too; Quercus 0.04, lay mosquito text 0.09. Near misses use plant binomials and non-Latin insect text.",
+ "selection": "random draw"
+}
