@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-moridinamael-c8552b3f",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N9679+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T11:15:25+00:00",
+ "roles": ["feeds bonsai1/L20/N4951-"],
+ "neighbours": [
+  {
+   "unit": "L18/N9679",
+   "pole": "+",
+   "label": "Right after a distance in kilometres or miles (or a km/h-mph speed), the slot where its conversion goes: the opening bracket, slash or ', or' and the first digits of the converted number, e.g. a ride of 14 km (9 miles); the bracket fires even when no conversion follows it. Weaker (about 0.3-0.5) after other measures: kilograms, metres/feet, hectares, nautical miles, and 'pounds' even as money. Quiet for temperature, litres, plain money, a bracket after a count of people or after an ordinary word, and a distance with no bracket after it.",
+   "short": "slot after a km/miles distance where its conversion goes",
+   "fire": [
+    "A pint of cider costs 4 pounds (5 dollars) at that pub.",
+    "We cycled a ride of 14 km (9 miles) along the canal before lunch.",
+    "The trail climbs steadily for 26 miles (42 km) through the pine forest.",
+    "Speed limits on the motorway are 120 km/h (75 mph) unless signs say otherwise.",
+    "The village lies about 300 km, or 186 miles, north of the capital.",
+    "Her daily commute is 8 miles / 13 km each way.",
+    "The marathon route covers 42.2 km (26.2 miles) of city streets.",
+    "The bridge spans roughly 5 kilometres (3 miles) across the bay."
+   ],
+   "quiet": [
+    "People in Greece used kelp to feed their cattle around the first century B.C.",
+    "We cycled along the canal for a while before lunch.",
+    "The trail climbs steadily through the pine forest (and past an old mill).",
+    "Water boils at 100 °C (212 °F) at sea level.",
+    "The village lies a long way north of the capital, or so they told us.",
+    "Her daily commute takes a bus and a short walk each way.",
+    "Over 30,000 runners (mostly locals) joined the marathon this year.",
+    "The bridge spans the bay and links the two harbours."
+   ]
+  }
+ ],
+ "predictions": "Blind-authored test (label-only author, placed the solver's leak). Expect 7-8/8 fire with the cider leak lowest (~0.3), near misses under 0.15.",
+ "notes": "Feeder of bonsai1/L20/N4951- chosen from the resident feeders ranking (attribution) because play step ran out of GPU memory on stream; no ablation drop was measured, so no edge weight is recorded.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
