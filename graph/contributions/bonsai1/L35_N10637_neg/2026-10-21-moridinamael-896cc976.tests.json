@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-21-moridinamael-896cc976",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N10637-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T03:00:38+00:00",
+ "roles": ["reads bonsai1/L33/N1814+"],
+ "neighbours": [
+  {
+   "unit": "L35/N10637",
+   "pole": "-",
+   "label": "Inside word-for-word stock boilerplate the model knows by heart, peaking on a small word or comma mid-passage: open-source license text (GPL 'but WITHOUT ANY WARRANTY; without even the implied warranty', MIT 'without restriction, including without limitation'), browser user-agent strings ('(KHTML, like Gecko)'), and book copyright notices ('No part of this publication may be reproduced, stored in a retrieval system'). Quiet for the same words (without, like, commas) in ordinary sentences and for freshly made-up legal-sounding clauses (leases, club rules). Side case: the Spanish word 'toponimia' (place-name study) also fires, weaker.",
+   "short": "inside memorized boilerplate (licenses, user-agent strings, copyright notices)",
+   "confidence": "medium",
+   "notes": "Blind test: 16 sentences written by a second author who saw only the label (blind:claude-opus-5-5 label-only), copied unedited. Solver leak (Spanish 'toponimia' top) and solver near miss placed by the blind author. Reached by play step --down from L33/N1814+ (drop -0.01, essentially none); cold labelling from own tops and probes only.",
+   "fire": [
+    "Hacia las fronteras de Aragón y Castilla, en las llanuras regadas por los ríos caudales, allí donde las sucesivas invasiones arraigaron y la primitiva toponimia euskara quedó recubierta por una",
+    "This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "Permission is hereby granted, free of charge, to any person obtaining a copy of this software, to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute.",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "All rights reserved. No part of this publication may be reproduced, stored in a retrieval system, or transmitted, in any form or by any means, electronic, mechanical, photocopying, recording or otherwise.",
+    "You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.",
+    "THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.",
+    "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Safari/605.1.15"
+   ],
+   "quiet": [
+    "Our browser team tested the page in Firefox and Chrome on two laptops.",
+    "She left the house without any umbrella, and without even a coat, so she got soaked.",
+    "You may paint the fence any color you like, without restriction, as long as you finish by Sunday.",
+    "My new phone feels a lot like my old one, only faster and lighter.",
+    "Please don't copy my notes, and don't store them on the shared drive either.",
+    "The tenant agrees that no pet larger than a cat may be kept in the unit, nor stored in the basement.",
+    "Club members shall not bring guests to the pool, without prior approval from the committee, on weekends.",
+    "The browser crashed twice, so I switched to a different one and reloaded the page."
+   ]
+  }
+ ],
+ "predictions": "Most license/user-agent/copyright items fire 0.1-0.4; the GPL 'You should have received a copy' line may be weak (solver found it silent); near misses near 0.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "step-down",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
