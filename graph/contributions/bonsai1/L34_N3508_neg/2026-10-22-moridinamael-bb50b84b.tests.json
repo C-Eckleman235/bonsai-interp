@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-22-moridinamael-bb50b84b",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N3508-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T19:19:30+00:00",
+ "roles": ["reads bonsai1/L33/N8104+"],
+ "neighbours": [
+  {
+   "unit": "L34/N3508",
+   "pole": "-",
+   "label": "The first digit of a four-digit year written in digits (the '2' of 2015, the '1' of 1999), late in a long passage, as in citations, copyright lines and dates. A weak, broad pole: commas and word pieces deep in long text also fire it faintly.",
+   "fire": [
+    "The committee reviewed the proposal over several long meetings, debated the budget at length, and finally approved the new library wing in 2015.",
+    "For a fuller account of the river's changing course and its effect on local farming, see Harlow, The Valley Floods, Cambridge University Press, 1999.",
+    "All rights reserved; no part of this publication may be reproduced without written permission. Copyright © 2021 Meadow Lane Press.",
+    "After years of quiet work in the archive, cataloguing letters and maps that nobody had opened, she published her findings on March 4, 1987.",
+    "The bridge, which had survived storms, floods and two wars without serious damage, was finally replaced in 1962.",
+    "Smith and Patel (2008) reported a similar effect in their study of sleep and memory among university students.",
+    "The original recipe, handed down through four generations of bakers in the same small village, first appeared in print in 1854.",
+    "Our records show the account was opened by mail, transferred twice between branches, and closed on 12 November 2019."
+   ],
+   "quiet": [
+    "Humans should make the best use of given information at any time.",
+    "with a huge variety of trees, shrubs and flowers.",
+    "The committee reviewed the proposal over several long meetings, debated the budget at length, and finally approved the new library wing last spring.",
+    "For a fuller account of the river's changing course and its effect on local farming, see Harlow's book on the valley floods.",
+    "All rights reserved; no part of this publication may be reproduced without written permission from Meadow Lane Press.",
+    "After years of quiet work in the archive, cataloguing letters and maps that nobody had opened, she published her findings in early March.",
+    "The bridge, which had survived storms, floods and two wars without serious damage, was finally replaced in the sixties.",
+    "Smith and Patel reported a similar effect in their study of sleep and memory among university students."
+   ],
+   "unit_kind": "dense / positional",
+   "confidence": "low",
+   "notes": "Step-in reader of bonsai1/L33/N8104+ (drop only 0.01). Top examples peak on a year's first digit in 128-token windows, but verbatim tops read near 0 out of context, and the solver found a 0.32 leak with no year and silent years (1965, 1999). Expected to fail; blind test written from the label only."
+  }
+ ],
+ "predictions": "Likely fail: years read near 0 in short probes; expect fire median under 0.20.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "neighbors",
+   "inverse-de"
+  ]
+ }
+}
