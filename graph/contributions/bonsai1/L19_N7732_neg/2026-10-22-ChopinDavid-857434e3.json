@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-857434e3",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N7732-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T20:26:34+00:00",
+ "recipe": {
+  "toolchain_commit": "16b3b8ca",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L19_N7732_neg/2026-10-22-ChopinDavid-857434e3.tests.json"
+ },
+ "label": "the word that links a consequence back to the event that caused it ('complications from', 'after effects of', 'injuries from')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L19_N7732_neg/2026-10-22-ChopinDavid-857434e3.tests.json",
+   "prereg_commit": "16b3b8ca",
+   "author": "ChopinDavid",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.256,
+     "peak": " complications"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.534,
+     "peak": " effects"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.529,
+     "peak": " complications"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.172,
+     "peak": " injuries"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.216,
+     "peak": " effects"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.278,
+     "peak": " recovering"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.194,
+     "peak": " from"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.226,
+     "peak": " effects"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.018,
+     "peak": " into"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.035,
+     "peak": " dry"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.008,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.079,
+     "peak": " roles"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.004,
+     "peak": " medical"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.096,
+     "peak": " parade"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.015,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.062,
+     "peak": " parade"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.241,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "16b3b8ca",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "consequence linked to its causing event",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: peaks ' complications' x4, ' of', ' from', ' into' before war/flu/attack events ('after effects of WWI' -36.75 max). Probe: 'complications from pneumonia' 0.584, 'after effects of the war' 0.448, 'complications from the surgery' 0.353, 'photos from the wedding' 0.295 (any 'from [event]' leaks), 'losses of the Great War' 0.036, 'died at his home' 0.007. Near misses keep illness/war/accident topics without a consequence noun pointing to its cause.",
+ "selection": "random draw"
+}

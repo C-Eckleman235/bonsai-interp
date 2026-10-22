@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-33fc0f37",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N8138-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T20:19:51+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L15/N8138",
+   "pole": "-",
+   "label": "weak, broad unit on dates and citation punctuation in Japanese, Chinese and Korean text (年, 일, parentheses)",
+   "fire": [
+    "山田太郎『日本経済史』岩波書店、1998年5月、東京。",
+    "その寺は天正3年（1575年）に再建されたと伝えられる。",
+    "김민수 (2005년 9월 21일). 〈한국 근대사 연구〉",
+    "신문은 5일(현지시간) 정부 발표를 전했다.",
+    "彼は1972年に京都大学を卒業し、翌年に渡米した。",
+    "논문은 2011년 3월 7일 학회지에 실렸다.",
+    "北京出版社，2003年，第二版。",
+    "徳川家康は慶長8年（1603年）に征夷大将軍となった。"
+   ],
+   "quiet": [
+    "山田先生の授業はいつもとても分かりやすい。",
+    "その寺は静かな山の中にあり、参拝客も少ない。",
+    "우리 동네에는 작은 빵집이 하나 있다.",
+    "그는 매일 아침 공원에서 산책을 한다.",
+    "彼は京都の大学を卒業し、海外で働いている。",
+    "학생들은 도서관에서 조용히 공부했다.",
+    "这本书讲述了一个农村家庭的故事。",
+    "家康は慎重な性格で知られる武将であった。"
+   ]
+  }
+ ],
+ "predictions": "likely fails: probes give CJK dates only 0.27-0.40 and CJK prose without dates 0.20",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "CJK dates/citations (unclear)",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card: max 2.72, broad (2.3% of tokens reach 0.1 of max), 97% gate-closed leak; peaks on '（', '1', '日', '年' in CJK bibliographies. Probe: '永禄12年（1569年）' 0.399, Korean date+(현지시간) 0.312, Korean citation date 0.307, CJK prose without dates 0.202, English publication sentence 0.150, English floor 0.032. Near misses are CJK sentences of the same register without dates or citation parentheses."
+}

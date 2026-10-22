@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-941fcdfd",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N3415+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T20:27:24+00:00",
+ "recipe": {
+  "toolchain_commit": "16b3b8ca",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N3415_pos/2026-10-22-ChopinDavid-941fcdfd.tests.json"
+ },
+ "label": "the position where 'confirm' or 'affirm' comes next ('booking' -> confirmation, 'reaff' -> irmed), a confirmation predictor",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N3415_pos/2026-10-22-ChopinDavid-941fcdfd.tests.json",
+   "prereg_commit": "16b3b8ca",
+   "author": "ChopinDavid",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.349,
+     "peak": " order"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.235,
+     "peak": " reaff"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.284,
+     "peak": " reservation"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.187,
+     "peak": " reaff"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.059,
+     "peak": " your"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.172,
+     "peak": " reaff"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.231,
+     "peak": " payment"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.206,
+     "peak": " reaff"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.194,
+     "peak": " get"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.0,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.055,
+     "peak": " will"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": " abandoned"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.014,
+     "peak": " your"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.019,
+     "peak": " nations"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.132,
+     "peak": " receive"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.016,
+     "peak": " ministry"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.218,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "16b3b8ca",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "predicts confirm/affirm",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: peaks on the token before confirm-words (' reaff', ' conf', 'Kauf|best' before -ätigung); the - pole suppresses ' confirm', ' confirmed', ' confirmation'. Probe: 'booking confirmation' 0.306 (peak ' booking'), 'reaffirmed' 0.305, 'contact you ... to finalize' 0.248, 'email with the activation link' 0.141; 'overturned its ruling' 0.014, 'receive a newsletter' 0.073, 'Press ... to confirm your vote' 0.016 (the word itself does not fire). Near misses swap the confirmation for another outcome.",
+ "selection": "random draw"
+}

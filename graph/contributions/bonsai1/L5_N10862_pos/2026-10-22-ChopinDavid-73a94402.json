@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-73a94402",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N10862+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T20:28:37+00:00",
+ "recipe": {
+  "toolchain_commit": "16b3b8ca",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N10862_pos/2026-10-22-ChopinDavid-73a94402.tests.json"
+ },
+ "label": "the word pieces 'v'/'vas'/'va'/'ba'/'bia' inside split proper names (Dur|vas|as, par|v|ovirus, Ser|bia, Par|ba)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N10862_pos/2026-10-22-ChopinDavid-73a94402.tests.json",
+   "prereg_commit": "16b3b8ca",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.876,
+     "peak": "vas"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.641,
+     "peak": "v"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.33,
+     "peak": " Serbia"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.046,
+     "peak": " Vas"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.549,
+     "peak": "v"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.6,
+     "peak": "v"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.631,
+     "peak": "ba"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.886,
+     "peak": "vas"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.003,
+     "peak": " D"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.004,
+     "peak": " rab"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.008,
+     "peak": " Croatia"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.021,
+     "peak": " Dev"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.003,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.007,
+     "peak": " checked"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.01,
+     "peak": "iny"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.006,
+     "peak": "ims"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.615,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "16b3b8ca",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "pieces v/vas/ba in names",
+ "unit_kind": "token",
+ "confidence": 0.6,
+ "notes": "Card: peaks 'ba' x7, 'v' x5, 'vas' x4, 'va' x3, 'bian', ' Serbia' (Dur|vas|as 22.25, par|v|ovirus, Austrian-Ser|bian). Probe: 'Durvasa' 0.850, 'Austrian-Serbian' 0.755, 'parvovirus' 0.671, 'Kot Parba' 0.617, sentence-initial 'Ser|bia' 0.589; 'rabies' 0.008, 'vase' 0.004. Tokenizer checked: Durvasas -> Dur|vas|as, Sarvabhauma -> Sar|v|ab..., Vasudeva -> Vas|ude|va.",
+ "selection": "random draw"
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-941fcdfd",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N3415+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T20:19:51+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N3415",
+   "pole": "+",
+   "label": "the position where 'confirm' or 'affirm' comes next ('booking' -> confirmation, 'reaff' -> irmed), a confirmation predictor",
+   "fire": [
+    "Shortly after checkout you will get an order confirmation by email.",
+    "The senator reaffirmed her support for the bill on Monday.",
+    "Once payment clears, we will send a reservation confirmation to your inbox.",
+    "The board reaffirmed its commitment to the merger.",
+    "Please keep the booking confirmation number for your records.",
+    "Leaders of both nations reaffirmed their alliance at the summit.",
+    "Within a few minutes you should receive a payment confirmation message.",
+    "The ministry reaffirmed that the schools will reopen in May."
+   ],
+   "quiet": [
+    "Shortly after checkout you will get a discount code by email.",
+    "The senator withdrew her support for the bill on Monday.",
+    "Once payment clears, we will ship your parcel to your address.",
+    "The board abandoned its plan for the merger.",
+    "Please keep the receipt for your records.",
+    "Leaders of both nations criticized each other at the summit.",
+    "Within a few minutes you should receive a weekly newsletter.",
+    "The ministry announced that the schools will close in May."
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.3 just before 'confirmation'/'-firmed'; near misses with other outcomes near 0.02-0.07",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predicts confirm/affirm",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: peaks on the token before confirm-words (' reaff', ' conf', 'Kauf|best' before -ätigung); the - pole suppresses ' confirm', ' confirmed', ' confirmation'. Probe: 'booking confirmation' 0.306 (peak ' booking'), 'reaffirmed' 0.305, 'contact you ... to finalize' 0.248, 'email with the activation link' 0.141; 'overturned its ruling' 0.014, 'receive a newsletter' 0.073, 'Press ... to confirm your vote' 0.016 (the word itself does not fire). Near misses swap the confirmation for another outcome."
+}

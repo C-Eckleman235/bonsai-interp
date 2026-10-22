@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-bab27aa9",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N9959+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T20:19:51+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N9959",
+   "pole": "+",
+   "label": "students doing or completing assigned schoolwork (do the worksheet, finish their work, homework)",
+   "fire": [
+    "After dinner, my son sits down to finish his spelling homework.",
+    "Pupils who finish the worksheet early may read quietly.",
+    "Each night, students should do twenty minutes of math practice at home.",
+    "In class, the children completed the reading assignment in pairs.",
+    "The teacher collected the assignments that students finished over the weekend.",
+    "Kids who forget to do their homework miss recess.",
+    "Students may finish any incomplete classwork at home and hand it in Monday.",
+    "My daughter spent the evening working through her science worksheet."
+   ],
+   "quiet": [
+    "After dinner, my son sits down to watch his favorite cartoon.",
+    "Pupils who arrive early may play in the yard.",
+    "Each night, the janitor locks the school gates at nine.",
+    "In class, the children sang a song about the seasons.",
+    "The teacher drove to the lake over the weekend.",
+    "Kids who bring a coat can play outside at recess.",
+    "The bakers may finish the bread at dawn and sell it Monday.",
+    "My daughter spent the evening playing with the neighbor's puppy."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on students doing assigned work; school settings without assigned work and non-school task completion below 0.1 (a marathon 'complete' leaked 0.32)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "students completing schoolwork",
+ "unit_kind": "topic / meaning",
+ "confidence": 0.7,
+ "notes": "Card: peaks ' work' x7, ' homework' x6, ' do', ' complete', ' assignment', ' worksheet' (brought home, finished, and turned in 29.88). Probe: 'complete the worksheet during class' 0.937, 'doing her math homework' 0.845, 'finished at home and turned in' 0.593, 'have students do the activity' 0.401; 'office workers finished their shift' 0.068, 'school opened a new gym' 0.012, 'complete the marathon' 0.321. Near misses keep school or completion but drop assigned student work; no 'complete'."
+}

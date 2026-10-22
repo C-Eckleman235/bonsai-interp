@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-23bf2089",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N9986+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T20:19:51+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L8/N9986",
+   "pole": "+",
+   "label": "identifiers near the start of a code snippet (self, tf, input, a function name): positional code-onset unit",
+   "fire": [
+    "shape = tf.reshape(images, [-1, 28, 28, 1])",
+    "    self.width = width\n    self.height = height",
+    "name = input(\"Your name: \")\nprint(name)",
+    "    def update(self):\n        self.count += 1",
+    "logits = tf.matmul(x, weights) + bias",
+    "    self.canvas.delete('all')\n    self.canvas.update()",
+    "age = int(input(\"Age: \"))",
+    "    def reset(self):\n        self.items = []"
+   ],
+   "quiet": [
+    "He tried to reshape his career after the layoffs.",
+    "She learned to value herself after a hard year.",
+    "Their names were read out loud at the ceremony.",
+    "We updated the old map with new roads.",
+    "The weights at the gym were heavy and rusty.",
+    "The painter left the canvas outside to dry.",
+    "My grandmother turned ninety last Tuesday.",
+    "They reset the clocks when the power returned."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on short code snippets; English prose near 0.05, though English tech nouns like 'classes' can fire",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "early code identifiers (positional)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.4,
+ "notes": "Card: flagged positional (69% of top peaks within the first 16 tokens); peaks ' self' x9, ' tf', ' input', ' classes' near the start of code. Probe: 'batch_size = tf.shape' 0.719, 'Keyboard and Mouse classes' (English) 0.542, 'def draw(self)' 0.467/0.462, 'word = input(' 0.394; English 'true self' 0.069, 'self-driving' 0.012. Near misses are short English sentences reusing similar words."
+}

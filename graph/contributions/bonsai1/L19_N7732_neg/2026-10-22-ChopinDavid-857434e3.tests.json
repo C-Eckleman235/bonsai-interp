@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-857434e3",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N7732-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T20:19:51+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L19/N7732",
+   "pole": "-",
+   "label": "the word that links a consequence back to the event that caused it ('complications from', 'after effects of', 'injuries from')",
+   "fire": [
+    "The patient developed complications from the infection last spring.",
+    "For years the region suffered the after effects of the long civil war.",
+    "My uncle passed away in 2015 from complications of diabetes.",
+    "Several workers were treated for injuries from the factory explosion.",
+    "Doctors warned about the long-term after effects of the virus.",
+    "The town was still recovering from the damage of the flood.",
+    "Older adults face more complications from influenza than teenagers do.",
+    "Veterans often live with the lingering effects of the war for decades."
+   ],
+   "quiet": [
+    "The patient walked into the clinic on a rainy afternoon last spring.",
+    "For years the region was known for its long dry summers.",
+    "My uncle retired in 2015 and moved to the coast.",
+    "Several workers were promoted to new roles at the factory.",
+    "Doctors gathered in the hall for the annual medical conference.",
+    "The town held a parade on the first day of summer.",
+    "Older adults often enjoy gardening more than teenagers do.",
+    "Veterans marched together in the city parade on Sunday."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.6 on 'complications from X'/'after effects of X'; near misses with the same topics but no consequence-to-cause link near 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "consequence linked to its causing event",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: peaks ' complications' x4, ' of', ' from', ' into' before war/flu/attack events ('after effects of WWI' -36.75 max). Probe: 'complications from pneumonia' 0.584, 'after effects of the war' 0.448, 'complications from the surgery' 0.353, 'photos from the wedding' 0.295 (any 'from [event]' leaks), 'losses of the Great War' 0.036, 'died at his home' 0.007. Near misses keep illness/war/accident topics without a consequence noun pointing to its cause."
+}
