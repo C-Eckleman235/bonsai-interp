@@ -1,0 +1,45 @@
+{
+ "contribution": "2026-10-22-moridinamael-a9d6a9be",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N8152-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T12:13:01+00:00",
+ "roles": ["reads bonsai1/L31/N8934+"],
+ "neighbours": [
+  {
+   "unit": "L35/N8152",
+   "pole": "-",
+   "label": "Sentences written in a language other than English: strongest in Chinese, Japanese, Korean, Russian, Greek, Thai and Vietnamese (about 0.4-0.8 of max), weaker in German, Spanish and French (about 0.2-0.3); quiet on everyday English prose, though a rare English word the tokenizer splits into odd pieces can reach about 0.3, and a single foreign word dropped into an English sentence is unreliable",
+   "short": "non-English text (any script)",
+   "unit_kind": "dense / positional",
+   "confidence": "medium",
+   "notes": "Gate-closed echo pole (-g +u leak 100%), dense (18.9% of tokens >0.1 max). Corpus tops are word-internal pieces in CJK/Korean/Cyrillic text (rare byte-split characters like 勵 reach ~0.84). Reader of L31/N8934+ (German einz-) with a near-zero ablation drop; German 'einzige' sits at ~0.25, peak on ' einz'. Feeders (L0/N4077+, L28/N9308+) are CJK character cells. Test sentences written blind by a label-only author.",
+   "fire": [
+    "今天的天气很好，我们一起去公园散步吧。",
+    "東京の駅はいつもとても混雑しています。",
+    "저는 매일 아침 커피를 마시면서 신문을 읽어요.",
+    "Вчера вечером мы долго гуляли по набережной реки.",
+    "Η θάλασσα ήταν πολύ ήσυχη το πρωί της Κυριακής.",
+    "ฉันชอบกินข้าวผัดที่ร้านใกล้บ้านมาก",
+    "Hôm nay tôi sẽ đi chợ mua rau và cá cho bữa tối.",
+    "图书馆周末开放到晚上九点，欢迎大家来借书。"
+   ],
+   "quiet": [
+    "They should also not be fed with liquid feed or other non-protein nitrogen supplements.",
+    "Established in 1960, UC San Diego has been shaped by exceptional scholars who aren’t afraid to take risks and redefine conventional wisdom.",
+    "The weather is lovely today, so let's take a walk in the park together.",
+    "The train stations in Tokyo are always very crowded.",
+    "I drink coffee and read the newspaper every morning.",
+    "Last night we walked along the river embankment for a long time.",
+    "The sea was very calm on Sunday morning.",
+    "I really like eating fried rice at the shop near my house."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire above 0.2, near misses mostly under 0.15; the solver's corpus lines are the risk",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["step-down", "card", "look", "neighbors", "probe", "inverse-de", "bank-solo", "blind-room", "quick-test"]
+ }
+}
