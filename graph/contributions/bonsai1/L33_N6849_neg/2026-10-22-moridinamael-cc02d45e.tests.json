@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-22-moridinamael-cc02d45e",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N6849-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T06:46:21+00:00",
+ "roles": ["reads bonsai1/L28/N8579+"],
+ "neighbours": [
+  {
+   "unit": "L33/N6849",
+   "pole": "-",
+   "label": "A Korean, Chinese or Japanese character that begins a new word right after a space, mid-sentence (spaced Korean words, Chinese written with spaces between characters, a Korean/Chinese word dropped into an English sentence after a space). The same CJK/Korean text written without spaces is mostly quiet (rare characters can reach about 0.4), as is the first word of a text, and emoji, Thai, Georgian or Cyrillic after a space stay quiet; English words about Korea or China do not fire.",
+   "short": "CJK/Korean character starting a word after a space",
+   "fire": [
+    "저는 오늘 학교에 갔어요.",
+    "우리는 내일 바다에 갈 거예요.",
+    "She said 감사합니다 to the waiter before leaving.",
+    "我 今天 很 高兴 见到 你。",
+    "The sign at the door read 欢迎 in large red letters.",
+    "My grandmother always calls me 아가 when I visit her.",
+    "这 本 书 非常 有意思。",
+    "He ordered the 김치 찌개 and a bowl of rice."
+   ],
+   "quiet": [
+    "저는오늘학교에갔어요.",
+    "우리는내일바다에갈거예요.",
+    "She said thank you to the waiter before leaving.",
+    "我今天很高兴见到你。",
+    "The sign at the door read welcome in large red letters.",
+    "My grandmother always calls me sweetie when I visit her.",
+    "这本书非常有意思。",
+    "He ordered the kimchi stew and a bowl of rice, a classic Korean dish."
+   ],
+   "notes": "Test sentences written blind by a second author who saw only the label (blind:claude-opus-5-5 (label-only)). Feeders-first arm: top feeders L32/N4095+ (machine guess: space+byte piece ' �'), L24/N11345+ (same, first appearance), L29/N360+ (CJK byte sequence) shaped the tokenizer-level hypothesis. Little to do with the Dniester feeder; the drop comes from one of its top examples."
+  }
+ ],
+ "predictions": "Spaced Korean/Chinese fire sentences beat their unspaced twins; risk: Chinese characters that are whole tokens (no byte split) may stay quiet even when spaced.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "neighbors",
+   "inverse-de",
+   "blind-room"
+  ]
+ }
+}
