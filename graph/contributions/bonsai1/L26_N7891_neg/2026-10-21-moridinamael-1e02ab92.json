@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-21-moridinamael-1e02ab92",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N7891-",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T02:29:41+00:00",
+ "recipe": {
+  "toolchain_commit": "2390bc5d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L26_N7891_neg/2026-10-21-moridinamael-1e02ab92.tests.json"
+ },
+ "label": "The token '.assertEqual' right after 'self' in a Python unittest method (self.assertEqual(...)), strongest when an earlier self.assertEqual line is in view; quiet for other assert methods (assertTrue, assertIn, assertIsNone), a plain 'assert x == y', and assertEqual called on another object (tc.assertEqual).",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L26_N7891_neg/2026-10-21-moridinamael-1e02ab92.tests.json",
+   "prereg_commit": "2390bc5d",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 0,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.01,
+     "peak": "(result"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.025,
+     "peak": "(items"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.013,
+     "peak": "def"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.124,
+     "peak": ".assertEqual"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.009,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.02,
+     "peak": "(parse"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.003,
+     "peak": ".assertEqual"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.016,
+     "peak": "(config"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.352,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.012,
+     "peak": "#"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.01,
+     "peak": "2"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.014,
+     "peak": "',"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.013,
+     "peak": "def"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.014,
+     "peak": "(response"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.015,
+     "peak": "tc"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.025,
+     "peak": "Equal"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.445,
+    "median_fire": 0.014,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "2390bc5d",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step from bonsai1/L27/N6013-. play step hit CUDA OOM (resident stream model shares the GPU); feeder chosen as the top MLP cell in the resident attribution ranking, so no ablation drop / edge weight is recorded.",
+ "roles": [
+  "feeds bonsai1/L27/N6013-"
+ ]
+}
