@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-22-moridinamael-53425992",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N10297-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:10:54+00:00",
+ "roles": ["feeds bonsai1/L13/N7743-"],
+ "neighbours": [
+  {
+   "unit": "L11/N10297",
+   "pole": "-",
+   "label": "The comma right after a ONE-word linking or comment adverb that opens a sentence (However, Therefore, Meanwhile, Indeed, Unfortunately); quiet for the same word mid-sentence, for time/place/manner openers (Today, Outside, Slowly), names, clause openers, list commas, and for the odd openers Still, Besides, Well; multi-word openers (As a result, In addition) are unreliable",
+   "fire": [
+    "However, the bridge was closed for repairs by the time we arrived.",
+    "The team trained hard all season. Therefore, nobody was surprised when they won the final.",
+    "Meanwhile, the soup on the stove had started to boil over.",
+    "Indeed, the old map turned out to be far more accurate than the new one.",
+    "Unfortunately, the train to Lyon had already left the station.",
+    "She had studied the problem for weeks. Consequently, her answer came quickly.",
+    "Moreover, the new policy reduces paperwork for small businesses.",
+    "Nevertheless, the hikers pressed on toward the summit."
+   ],
+   "quiet": [
+    "The bridge, however, was closed for repairs by the time we arrived.",
+    "The team trained hard all season, and nobody was surprised when they won the final.",
+    "Outside, the soup vendors had started to pack up their carts.",
+    "Today, the old map turned out to be far more accurate than the new one.",
+    "Slowly, the train to Lyon pulled out of the station.",
+    "She had studied the problem for weeks. Still, her answer came slowly.",
+    "Besides, the new policy reduces paperwork for small businesses.",
+    "Well, the hikers pressed on toward the summit anyway."
+   ],
+   "short": "comma after a one-word sentence-opening connective (However, / Indeed,)",
+   "confidence": "medium",
+   "notes": "Test sentences written blind by a second author who saw only the label. Probes: one-word connective/comment openers at sentence start read 0.19-0.42 (Indeed 0.42, Afterwards 0.42, Hence 0.40); same word mid-sentence 0.02; Today/Outside/After lunch/In Paris/Because-clause/names/list commas <= 0.06; Still/Besides/Well ~0.005. Inverse solver (differential evolution): no leak; silent on-concept text was the multi-word 'As a result,' (0.06). play step (zero ablation) ran out of GPU memory, so TARGET was chosen from the resident attribution feeders ranking (strongest unmapped MLP feeder of L13/N7743-); no ablation edge weight recorded."
+  }
+ ],
+ "predictions": "most fire sentences 0.2-0.4 (risk: text-initial openers may read lower); near misses near zero",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
