@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-a8065ab5",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N907+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:24:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N907",
+   "pole": "+",
+   "label": "'T' split off as the first piece of an all-caps word or acronym (' T'+'WE'+'ET' in an all-caps call to action, '(T'+'ENS)'); lowercase ' t' fragments and mixed-case T-words stay quiet",
+   "fire": [
+    "LIKE OUR PAGE AND TWEET US YOUR PHOTOS – #CITYMARATHON",
+    "Patients may also try transcutaneous electrical nerve stimulation (TENS) for back pain.",
+    "SUBSCRIBE TODAY AND TWEET US WITH YOUR QUESTIONS",
+    "Doctors sometimes use transcranial magnetic stimulation (TMS) when drugs do not help.",
+    "VISIT OUR BOOTH AND TWEET US – #TECHWEEK",
+    "The scan looked for signs of traumatic brain injury (TBI) after the crash.",
+    "SHARE THIS POST AND TWEET IT TO YOUR FRIENDS",
+    "Her blood test measured thyroid stimulating hormone (TSH) and iron levels."
+   ],
+   "quiet": [
+    "Like our page and send us your photos from the city marathon.",
+    "Patients may also try gentle stretching and heat packs for back pain.",
+    "SUBSCRIBE TODAY AND EMAIL US WITH YOUR QUESTIONS",
+    "Doctors sometimes use magnetic stimulation when drugs do not help.",
+    "VISIT OUR BOOTH AND CALL US – #TECHWEEK",
+    "The scan looked for signs of brain injury after the crash.",
+    "He bought a plain white T-shirt and a pair of trainers.",
+    "Her blood test measured thyroid hormone and iron levels."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-off capital T piece",
+ "unit_kind": "sparse feature",
+ "confidence": 0.45,
+ "notes": "Card: ' T'/'T'/'Т' fragments (TWEET, TENS, ZERO-TIME, TANSIDCO); - pole is lowercase ' t' fragments. Probe: 'FOLLOW US AND TWEET US' 0.74, '(TENS)' 0.42; but ZERO-TIME 0.01, TANSIDCO 0.003, Ticehurst 0.007, T-shirt 0.006, lowercase t-fragments ~0.01. So only the TWEET and parenthesised-acronym frames replicated; fire items stay close to those (tokenizer checked: TWEET -> ' T','WE','ET'; (TMS)/(TBI)/(TSH) -> ' (','T',...)."
+}

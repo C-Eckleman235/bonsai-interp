@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-02a6d4c6",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N8981-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:24:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N8981",
+   "pole": "-",
+   "label": "byte-fallback pieces of a CJK word written after a space in Latin-script text whose UTF-8 starts E9 9B (the U+96C0-96FF block), strongest for ' 集' as in ' 集合'",
+   "fire": [
+    "In set theory, the Cantor 集合 is built by removing middle thirds.",
+    "For each point, the Julia 集合 shows whether the sequence stays bounded.",
+    "The fractal known as the Mandelbrot 集合 has an endlessly detailed boundary.",
+    "def plot():\n    # draw the Mandelbrot 集合 on a grid\n    pass",
+    "Every element of the empty 集合 satisfies any property, trivially.",
+    "The Chinese term for a set is 集合, and the term for a group of people is 集団.",
+    "We call such a collection a closed 集合 in this topology.",
+    "Mandelbrot 集合 f(z) = z^2 + c\nMandelbrot 集合 is the set of all c with bounded orbits."
+   ],
+   "quiet": [
+    "In set theory, the Cantor set is built by removing middle thirds.",
+    "For each point, the Julia set shows whether the sequence stays bounded.",
+    "The fractal known as the Mandelbrot set has an endlessly detailed boundary.",
+    "def plot():\n    # draw the Mandelbrot set on a grid\n    pass",
+    "Every element of the empty set satisfies any property, trivially.",
+    "The Chinese word for dictionary is 字典, and the word for book is 書.",
+    "We call such a collection a closed set in this topology.",
+    "Mandelbrot集合就是使序列不发散的所有复数c的集合。"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "space + 集合 byte pieces",
+ "unit_kind": "sparse feature",
+ "confidence": 0.3,
+ "notes": "Card: max 924 on 'Mandelbrot 集合'; word hits ' <0xE9>' and '<0x9B>'. Tokenizer: ' 集合', ' 電話', ' 雪', ' 雲' all split into ' é','Ľ' (E9 9B) + byte; ' 字典', ' 漢字', ' 書' do not start with E9 9B. Probe: ' 集合' 0.44, ' 電話' 0.13; ' 字典' 0.00, ' 漢字' 0.00, '集合' without space 0.03. Fire items use ' 集' words; very sparse, may fail median."
+}

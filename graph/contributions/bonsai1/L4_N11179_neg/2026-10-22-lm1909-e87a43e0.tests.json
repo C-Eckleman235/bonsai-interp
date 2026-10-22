@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-e87a43e0",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N11179-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:24:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N11179",
+   "pole": "-",
+   "label": "a time amount after a number used as a delay or offset ('delayed by six hours', 'offset eight hours'), plus date ordinal 'th'; plain durations stay low",
+   "fire": [
+    "Our departure was delayed by five hours because the crew had not arrived.",
+    "The concert was pushed back by two hours after the thunderstorm.",
+    "In winter the island's clocks are offset eight hours from London.",
+    "The shipment was held up by nine hours at the border crossing.",
+    "The launch slipped by three hours due to high winds over the pad.",
+    "Due to a signal fault, the overnight train arrived seven hours late.",
+    "The open day runs from Monday 4th to Thursday 7th March.",
+    "The live stream begins at 8 p.m. EST this Thursday."
+   ],
+   "quiet": [
+    "Our departure was smooth because the crew had arrived early.",
+    "The concert lasted the whole evening despite the thunderstorm.",
+    "The island's clocks always show the same time as London.",
+    "The shipment passed quickly through the border crossing.",
+    "She finished the race in a time that surprised everyone.",
+    "The library's opening times are listed on its website.",
+    "The open day is held every spring in early March.",
+    "The live stream will be available to watch again later."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "delay/offset in hours",
+ "unit_kind": "contextual",
+ "confidence": 0.35,
+ "notes": "Weak pole (max 4.8), card flags gate-closed leak 85%. Probe: 'delayed by six hours' 0.92, 'Friday 9th' 0.42, 'p.m. EST' 0.30, 'slept almost five hours' 0.21, '8日早上' 0.21; 'ran in 3 hours 42 minutes' 0.04, 'office hours' 0.02, 'waited forty minutes' 0.00. Inconsistent; expect failure on median."
+}

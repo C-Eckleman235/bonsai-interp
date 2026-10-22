@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-22-lm1909-ea198803",
+ "contributor": "lm1909",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N6495+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:24:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N6495",
+   "pole": "+",
+   "label": "the opening '(' of a short parenthetical tag inside a code string or label ('ui (experimental)', '(beta)')",
+   "fire": [
+    "    ('ui->dark', 'Enable dark theme (experimental)', None),\n    ('ui->font', 'Use larger font', None),",
+    "    ('net->ipv6', 'Allow IPv6 connections (beta)', None),\n    ('net->proxy', 'Use system proxy', None),",
+    "options = [\n    ('cache', 'Enable disk cache (unstable)', False),\n    ('log', 'Verbose logging', False),\n]",
+    "    ('sync->auto', 'Sync files automatically (experimental)', True),\n    ('sync->wifi', 'Only on wifi', True),",
+    "    ('gfx->vsync', 'Turn on vertical sync (recommended)', None),\n    ('gfx->fps', 'Show frame rate', None),",
+    "settings = [\n    ('audio->hd', 'High quality audio (slow)', False),\n    ('audio->mono', 'Mono output', False),\n]",
+    "    ('edit->vim', 'Vim key bindings (experimental)', None),\n    ('edit->wrap', 'Wrap long lines', None),",
+    "    ('dev->trace', 'Record stack traces (debug only)', None),\n    ('dev->mock', 'Use mock server', None),"
+   ],
+   "quiet": [
+    "    ('ui->dark', 'Enable dark theme', None),\n    ('ui->font', 'Use larger font', None),",
+    "    ('net->ipv6', 'Allow IPv6 connections', None),\n    ('net->proxy', 'Use system proxy', None),",
+    "options = [\n    ('cache', 'Enable disk cache', False),\n    ('log', 'Verbose logging', False),\n]",
+    "    ('sync->auto', 'Sync files automatically', True),\n    ('sync->wifi', 'Only on wifi', True),",
+    "    ('gfx->vsync', 'Turn on vertical sync', None),\n    ('gfx->fps', 'Show frame rate', None),",
+    "settings = [\n    ('audio->hd', 'High quality audio', False),\n    ('audio->mono', 'Mono output', False),\n]",
+    "    ('edit->vim', 'Vim key bindings', None),\n    ('edit->wrap', 'Wrap long lines', None),",
+    "    ('dev->trace', 'Record stack traces', None),\n    ('dev->mock', 'Use mock server', None),"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "parenthetical tag in code string",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card: no single token (' (', ',', ' also', ')-'). Probe: everything below 0.20: '(experimental)' in a code tuple 0.18, 'See also' list 0.14, score line 0.13, others 0.04-0.08. Best guess on the top frame; expected to fail."
+}
