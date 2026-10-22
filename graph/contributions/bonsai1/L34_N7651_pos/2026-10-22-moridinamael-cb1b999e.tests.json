@@ -1,0 +1,44 @@
+{
+ "contribution": "2026-10-22-moridinamael-cb1b999e",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N7651+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T18:04:50+00:00",
+ "roles": ["reads bonsai1/L31/N9952+"],
+ "neighbours": [
+  {
+   "unit": "L34/N7651",
+   "pole": "+",
+   "label": "The Russian word-start piece ' прод' when it opens a verb (продать, продлить, продвигать, продемонстрировать, also transliterated prod-), mid-sentence. Quiet for verbs with other Russian prefixes (купить, разработать, представить), for прод- nouns (продукты, продукция), for продолжить, and for English 'production' or 'prod'. Exceptions that also fire: the piece 'произ' inside воспроизвести and German 'bew' in bewegen.",
+   "short": "Russian ' прод' opening a verb",
+   "unit_kind": "word piece",
+   "fire": [
+    "Мы решили продать старую машину до зимы.",
+    "Банк согласился продлить кредит ещё на год.",
+    "Компания будет продвигать новый бренд в соцсетях.",
+    "Учитель попросил продемонстрировать решение у доски.",
+    "Он хочет продлить подписку на журнал до весны.",
+    "Соседи собираются продать дачу летом.",
+    "Агентство обещало активно продвигать наших артистов за границей.",
+    "Вчера он смог продать все билеты за час."
+   ],
+   "quiet": [
+    "- Rambam, The Laws of Tefillin, Mezuzot, and Torah Scrolls, 1:2",
+    "Мы хотим купить квартиру в центре города.",
+    "Мы решили купить старую машину до зимы.",
+    "Банк согласился выдать кредит ещё на год.",
+    "Компания будет развивать новый бренд в соцсетях.",
+    "Учитель попросил представить решение у доски.",
+    "Он хочет продолжить подписку на журнал до весны.",
+    "Соседи собираются покупать продукты летом на рынке."
+   ],
+   "notes": "Step-in reader of bonsai1/L31/N9952+ (sports stages / records), drop 0.18; the reader's label has nothing to do with the feeder's topic. Feeders-first arm: feeders include ' пр' (L22/N604-), ' d' before a word fragment (L32/N4227-) and ' Д' before a non-Latin word (L28/N10926+), all word-piece detectors. Rare split names in English (Przhevalsky, Szczebrzeszyn) stay quiet. Test sentences written blind by a label-only author; the solver's leak (Mezuzot, 0.77 solo) is placed as a near miss."
+  }
+ ],
+ "predictions": "8/8 fire; the Mezuzot leak near miss likely reaches 0.30, the rest quiet",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["step-down", "card", "look", "probe", "neighbors", "inverse-de", "bank-solo", "blind-room", "quick-test"]
+ }
+}
