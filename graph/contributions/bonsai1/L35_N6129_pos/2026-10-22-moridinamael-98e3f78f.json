@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-22-moridinamael-98e3f78f",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6129+",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T11:50:15+00:00",
+ "recipe": {
+  "toolchain_commit": "f7ea405d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N6129_pos/2026-10-22-moridinamael-98e3f78f.tests.json"
+ },
+ "label": "pieces of an uncommon or foreign word that the tokenizer splits into several chunks, in any language (rare English nouns and surnames, Japanese/Chinese/Korean/Russian words); sentences made only of common whole words stay quiet, even in French or German",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N6129_pos/2026-10-22-moridinamael-98e3f78f.tests.json",
+   "prereg_commit": "f7ea405d",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 1,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.098,
+     "peak": " B"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.226,
+     "peak": " ich"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.124,
+     "peak": "Professor"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.226,
+     "peak": "iy"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.122,
+     "peak": " '"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.148,
+     "peak": " l"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.115,
+     "peak": " ultr"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.489,
+     "peak": "e"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.075,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.082,
+     "peak": " near"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.042,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.097,
+     "peak": " at"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.102,
+     "peak": " it"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.166,
+     "peak": " green"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.048,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.466,
+     "peak": " ch"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.797,
+    "median_fire": 0.136,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "f7ea405d",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L31/N8934+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L31/N8934+", "to": "bonsai1/L35/N6129+", "kind": "feeds", "weight": 0.04, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
