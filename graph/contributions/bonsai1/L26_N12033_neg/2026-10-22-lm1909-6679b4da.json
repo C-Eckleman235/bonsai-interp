@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-6679b4da",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N12033-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:41:48+00:00",
+ "recipe": {
+  "toolchain_commit": "0604f613",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L26_N12033_neg/2026-10-22-lm1909-6679b4da.tests.json"
+ },
+ "label": "the organism that breaks down or consumes material ('broken down by microbes', 'fed to pigs', 'eaten by')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L26_N12033_neg/2026-10-22-lm1909-6679b4da.tests.json",
+   "prereg_commit": "0604f613",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 4,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.376,
+     "peak": " by"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 1.072,
+     "peak": " micro"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.602,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 1.498,
+     "peak": " by"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.966,
+     "peak": " by"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.458,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 1.34,
+     "peak": " by"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.575,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.408,
+     "peak": " with"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.131,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.355,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.152,
+     "peak": " was"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.114,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.32,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.337,
+     "peak": " by"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.283,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 1.019,
+    "near_misses_at_0.3": 4
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "0604f613",
+  "minutes": 4,
+  "batch_size": 16
+ },
+ "short": "decomposer/consumer agent",
+ "unit_kind": "contextual",
+ "confidence": 0.7,
+ "notes": "Card: peaks ' by' x8, ' to' (fed to worms, given as food to organisms), 'decomposing', 'eaten by', 'through' (digest). The + pole is the transformation verb (break down, degrade). Probe: 'broken down into soil by fungi and bacteria' 1.41, 'not broken down by microbes' 0.78, 'feeds its vegetable scraps to pigs' 0.53, 'eaten by an owl' 0.34, bacteria digest sludge 0.27. Bureaucratic 'written by', 'given to', 'approved by' 0.00-0.08. Near misses keep the same scene and a by/to phrase but have no organism consuming the material.",
+ "selection": "random draw"
+}

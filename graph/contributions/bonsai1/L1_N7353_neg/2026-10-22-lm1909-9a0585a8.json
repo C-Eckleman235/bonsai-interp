@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-9a0585a8",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N7353-",
+ "contributor": "lm1909",
+ "created": "2026-10-22T18:41:39+00:00",
+ "recipe": {
+  "toolchain_commit": "0604f613",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L1_N7353_neg/2026-10-22-lm1909-9a0585a8.tests.json"
+ },
+ "label": "the standalone Japanese token 'な' (adjectival な as in 有名な, 行なう, なきゃ)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L1_N7353_neg/2026-10-22-lm1909-9a0585a8.tests.json",
+   "prereg_commit": "0604f613",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.388,
+     "peak": "な"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.836,
+     "peak": "な"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.723,
+     "peak": "な"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.911,
+     "peak": "な"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.509,
+     "peak": "な"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.742,
+     "peak": "な"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.459,
+     "peak": "な"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.788,
+     "peak": "な"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.009,
+     "peak": "社"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.034,
+     "peak": "る"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.006,
+     "peak": "題"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": "定"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": -0.0,
+     "peak": "前に"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.002,
+     "peak": "秋"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.002,
+     "peak": "とても"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.13,
+     "peak": "そんな"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.732,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "0604f613",
+  "minutes": 4,
+  "batch_size": 16
+ },
+ "short": "token 'な'",
+ "unit_kind": "lexical",
+ "confidence": 0.85,
+ "notes": "Card: one token dominates (な x32, lift 17,534). Probe: standalone な fired 0.38-0.86 in every frame (簡単な, 便利な, 起きなきゃ, 行なって, 結構な). Merged forms (そんな 0.13, ない, かな) and the だ/で rewrites stayed <=0.13. Tokenizer checked: な is its own token in every fire item. Quiet items use only merged forms (かな, そんな, ない) or no な.",
+ "selection": "random draw"
+}
