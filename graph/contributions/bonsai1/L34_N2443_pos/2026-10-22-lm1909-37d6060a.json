@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-37d6060a",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N2443+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:41:14+00:00",
+ "recipe": {
+  "toolchain_commit": "940ee6b0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N2443_pos/2026-10-22-lm1909-37d6060a.tests.json"
+ },
+ "label": "French text: mid-sentence French words such as ' est', ' soci-', ' plutôt'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N2443_pos/2026-10-22-lm1909-37d6060a.tests.json",
+   "prereg_commit": "940ee6b0",
+   "author": "lm1909",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.287,
+     "peak": " est"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 1.027,
+     "peak": " soci"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.893,
+     "peak": " reste"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.808,
+     "peak": " est"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.75,
+     "peak": " soci"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.773,
+     "peak": " est"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.629,
+     "peak": " est"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.747,
+     "peak": " est"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.008,
+     "peak": " school"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.116,
+     "peak": " soc"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.043,
+     "peak": " is"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.128,
+     "peak": " bibli"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.291,
+     "peak": "oci"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.146,
+     "peak": " muy"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.021,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.267,
+     "peak": " situ"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.762,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "940ee6b0",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "French text",
+ "unit_kind": "contextual",
+ "confidence": 0.75,
+ "notes": "Probe: French sentences 0.58-1.05 (peaks on ' soci', ' est', ' plutôt'); the English translation 0.01-0.04, Spanish 0.12, Italian 0.11. Quiet items are translations of the same content into English, Spanish or Italian.",
+ "selection": "random draw"
+}

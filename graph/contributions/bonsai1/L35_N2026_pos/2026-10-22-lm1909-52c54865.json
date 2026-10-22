@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-52c54865",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N2026+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:41:18+00:00",
+ "recipe": {
+  "toolchain_commit": "940ee6b0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N2026_pos/2026-10-22-lm1909-52c54865.tests.json"
+ },
+ "label": "the first token inside an opening parenthesis when it starts a list label or a name, most strongly enumerators like (a), (b), (1)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N2026_pos/2026-10-22-lm1909-52c54865.tests.json",
+   "prereg_commit": "940ee6b0",
+   "author": "lm1909",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.54,
+     "peak": "a"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.624,
+     "peak": "a"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.455,
+     "peak": "b"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.318,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.645,
+     "peak": "a"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.57,
+     "peak": "a"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.589,
+     "peak": "a"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.413,
+     "peak": "2"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.033,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.006,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.009,
+     "peak": " board"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.255,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.335,
+     "peak": "mostly"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.004,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.046,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.046,
+     "peak": " equal"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.555,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "940ee6b0",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "(a)/(1) enumerator labels",
+ "unit_kind": "contextual",
+ "confidence": 0.55,
+ "notes": "Probe: (a)/(b)/(c) 0.69, (1)/(2) 0.42, capitalised name starts inside parentheses 0.29-0.31; lowercase adverb parenthetical 0.03, '(see appendix' 0.004; the same lists without parentheses <=0.09. The + pole is not flagged (the - pole is positional). Fire items use enumerators only; quiet items keep the same lists and use lowercase parentheticals or none.",
+ "selection": "random draw"
+}

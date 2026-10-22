@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-lm1909-e2798faf",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N2697+",
+ "contributor": "lm1909",
+ "created": "2026-10-22T17:41:03+00:00",
+ "recipe": {
+  "toolchain_commit": "940ee6b0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L2_N2697_pos/2026-10-22-lm1909-e2798faf.tests.json"
+ },
+ "label": "dense early-layer pole; best guess the words ' glow'/' glowing' (and Arabic ' كل')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L2_N2697_pos/2026-10-22-lm1909-e2798faf.tests.json",
+   "prereg_commit": "940ee6b0",
+   "author": "lm1909",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.449,
+     "peak": " glow"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.364,
+     "peak": " glowing"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.257,
+     "peak": " glow"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.358,
+     "peak": " glowing"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.479,
+     "peak": " كل"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.529,
+     "peak": " glowing"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.223,
+     "peak": " glow"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.49,
+     "peak": " كل"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.051,
+     "peak": " all"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.019,
+     "peak": " grass"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.141,
+     "peak": " tint"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.104,
+     "peak": " with"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.036,
+     "peak": "روا"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.038,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.041,
+     "peak": " bedroom"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.069,
+     "peak": "نا"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.406,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "940ee6b0",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "glow (dense)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.1,
+ "notes": "Card flags DENSE (11.7% of tokens >0.1 max, max 0.54, gate-closed echo 98%). Probe: Arabic ' كل' 0.36, 'glowing' 0.24, 'glow' 0.21, but 'light' in the same frame scored 0.16. This test records the density; it is expected to fail.",
+ "selection": "random draw"
+}
