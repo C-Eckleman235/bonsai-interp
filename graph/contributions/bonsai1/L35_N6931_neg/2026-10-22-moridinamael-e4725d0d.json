@@ -1,0 +1,168 @@
+{
+ "id": "2026-10-22-moridinamael-e4725d0d",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6931-",
+ "contributor": "moridinamael",
+ "created": "2026-10-22T08:57:28+00:00",
+ "recipe": {
+  "toolchain_commit": "a3b3fdca",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N6931_neg/2026-10-22-moridinamael-e4725d0d.tests.json"
+ },
+ "label": "Partway through a long, rare unit whose ending is predictable: the pieces of a long rare word or name that the tokenizer splits into several tokens (e.g. Popocatepetl, Mississauga, otorhinolaryngologist), and the words inside a long formal title or institution name (a treaty, agency or film title). The same sentence with short common whole words in plain English stays near 0.05. Dense pole: any Korean or Chinese text idles around 0.3-0.45.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N6931_neg/2026-10-22-moridinamael-e4725d0d.tests.json",
+   "prereg_commit": "a3b3fdca",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.144,
+     "peak": "pet"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.168,
+     "peak": " Miss"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.37,
+     "peak": "hin"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.361,
+     "peak": " Nuclear"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.303,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.314,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.542,
+     "peak": "g"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.441,
+     "peak": "all"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.08,
+     "peak": " shr"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.214,
+     "peak": " ch"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.042,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.071,
+     "peak": "Her"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.018,
+     "peak": " ten"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.012,
+     "peak": " big"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.087,
+     "peak": " sea"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.105,
+     "peak": " old"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.338,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "a3b3fdca",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-in reader of bonsai1/L33/N6849- (drop 0.04). COLD deep-cell run: labelled from own tops and probes only, no feeder lookup. Test written blind from the label by a second author; solver leak lines placed by that author.",
+ "roles": [
+  "reads bonsai1/L33/N6849-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L33/N6849-",
+   "to": "bonsai1/L35/N6931-",
+   "kind": "feeds",
+   "weight": 0.04,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
