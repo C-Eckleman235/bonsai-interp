@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-f6fc7e06",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N2823+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T19:26:59+00:00",
+ "recipe": {
+  "toolchain_commit": "07ea58b1",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L1_N2823_pos/2026-10-22-ChopinDavid-f6fc7e06.tests.json"
+ },
+ "label": "dense unit; strongest on the quantity word ' enough' (and on formal document nouns like ' Parties', ' Report')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L1_N2823_pos/2026-10-22-ChopinDavid-f6fc7e06.tests.json",
+   "prereg_commit": "07ea58b1",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 8,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.714,
+     "peak": " enough"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.671,
+     "peak": " enough"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.654,
+     "peak": " enough"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.841,
+     "peak": " enough"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.726,
+     "peak": " enough"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.773,
+     "peak": " enough"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.631,
+     "peak": " enough"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.811,
+     "peak": " enough"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.32,
+     "peak": "wood"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.409,
+     "peak": " any"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.36,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.394,
+     "peak": " students"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.443,
+     "peak": " every"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.33,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.522,
+     "peak": " report"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.398,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.72,
+    "near_misses_at_0.3": 8
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "07ea58b1",
+  "minutes": 0,
+  "batch_size": 16
+ },
+ "short": "dense: ' enough'",
+ "unit_kind": "dense / positional",
+ "confidence": 0.2,
+ "notes": "Card: dense (71% of tokens reach 0.1 of max), max 0.17, gate-closed echo; peaks ' enough' x14, ' Report', ' Parties'. Probe: 'had enough water' 0.800, 'enough chairs' 0.878, 'annual Report' 0.852, 'Contracting Parties' 0.854, but 'plenty of' 0.656, 'painted the fence' 0.357, code 0.278. Near misses swap 'enough' for other quantity words.",
+ "selection": "random draw"
+}

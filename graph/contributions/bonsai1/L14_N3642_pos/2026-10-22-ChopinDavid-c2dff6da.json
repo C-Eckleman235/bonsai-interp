@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-c2dff6da",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N3642+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T19:28:17+00:00",
+ "recipe": {
+  "toolchain_commit": "07ea58b1",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L14_N3642_pos/2026-10-22-ChopinDavid-c2dff6da.tests.json"
+ },
+ "label": "the first word inside an opening quotation mark that starts a quoted fragment in the middle of a sentence (with “a huge shed”)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L14_N3642_pos/2026-10-22-ChopinDavid-c2dff6da.tests.json",
+   "prereg_commit": "07ea58b1",
+   "author": "ChopinDavid",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.095,
+     "peak": " “"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.061,
+     "peak": "a"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.212,
+     "peak": "a"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.094,
+     "peak": "a"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.214,
+     "peak": "a"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.452,
+     "peak": "that"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.171,
+     "peak": "a"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.293,
+     "peak": " \""
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.008,
+     "peak": " landlord"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.019,
+     "peak": " new"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.016,
+     "peak": " mentions"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.028,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.017,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.015,
+     "peak": " remain"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.016,
+     "peak": " review"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.013,
+     "peak": " young"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.192,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "07ea58b1",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "first word inside a mid-sentence quote",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card peaks 'a', '...', 'that', 'to' as the first token after an opening quote mid-sentence ('with “a huge shed”', 'resolved \"that ...'). Probe: 'with 'a fine dark oak panelling'' 0.598, 'to win \"a deathless memory\"' 0.558, 'with “a huge shed”' 0.602, 'resolved \"that eight hours' 0.453, 'really “NEED”' 0.291; same sentences unquoted 0.018 and 0.016; a sentence-initial quote 0.122. Near misses remove the quote marks.",
+ "selection": "random draw"
+}
