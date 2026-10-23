@@ -1,0 +1,45 @@
+{
+ "contribution": "2026-10-22-moridinamael-182036af",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N11867+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T02:36:29+00:00",
+ "roles": ["reads bonsai1/L25/N4607+"],
+ "neighbours": [
+  {
+   "unit": "L29/N11867",
+   "pole": "+",
+   "label": "Chinese words for how specific or detailed something is: 具体 'specific' and 详细 'detailed' (weaker: 笼统 'vague'), strongest right after a verb, before its object (解决具体问题, 提供详细资料). Other Chinese text hums at 0.3-0.6 of max; English 'specific' is weak.",
+   "short": "具体/详细 'specific/detailed' after a verb (Chinese)",
+   "unit_kind": "dense / positional",
+   "confidence": "low",
+   "notes": "Pole is dense (26.9% of tokens reach 0.1 of max) with a -x- echo regime; plain Chinese reads 0.3-0.6 in probes, so near misses in Chinese are expected to cross 0.30. Solver leak 详细 (0.88) was folded into the label as a fire case. Cold mission: labelled from own tops and probes only.",
+   "fire": [
+    "学校将另行公布详细安排。",
+    "我们需要解决具体问题，而不是空谈理论。",
+    "请提供详细资料，以便我们尽快审核。",
+    "老师要求学生写出具体步骤。",
+    "他向警方描述了详细经过。",
+    "公司会制定具体计划来提高销量。",
+    "请填写详细地址，否则快递无法送达。",
+    "医生询问了病人的具体症状。"
+   ],
+   "quiet": [
+    "皆様の貴重なご意見お待ちしております。",
+    "我们需要解决眼前问题，而不是空谈理论。",
+    "请提供相关资料，以便我们尽快审核。",
+    "老师要求学生写出解题步骤。",
+    "他向警方描述了事情经过。",
+    "公司会制定新的计划来提高销量。",
+    "请填写收件地址，否则快递无法送达。",
+    "医生询问了病人的身体状况。"
+   ]
+  }
+ ],
+ "predictions": "Fire sentences rank high (具体/详细 0.6-0.95); risk: Chinese near misses hum above 0.30, likely failing the near-miss cap.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["step-down", "card", "look", "probe", "bank-solo", "inverse-de", "quick-test"]
+ }
+}
