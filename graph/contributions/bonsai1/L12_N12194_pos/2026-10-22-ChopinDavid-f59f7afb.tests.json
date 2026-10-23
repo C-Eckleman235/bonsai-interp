@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-f59f7afb",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N12194+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T03:19:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N12194",
+   "pole": "+",
+   "label": "the verb-stem piece just before a polite-imperative, 'vous'-future or subjunctive ending that addresses the reader (문의|하|십시오, присоедин|я|йтесь, vi|endrez, qu|ier|as)",
+   "fire": [
+    "궁금한 점이 있으시면 언제든지 사무실로 문의하십시오.",
+    "Присоединяйтесь к нам на вечерней прогулке по парку.",
+    "Nous espérons que vous viendrez à la réunion de jeudi soir.",
+    "Elige el sabor que quieras y te lo preparamos enseguida.",
+    "회의에 참석하실 분은 미리 등록하십시오.",
+    "Подписывайтесь на наш канал, чтобы не пропустить новые видео.",
+    "Si vous avez le temps, vous viendrez dîner avec nous samedi.",
+    "Puedes sentarte donde quieras durante la presentación."
+   ],
+   "quiet": [
+    "어제 우리는 사무실에서 오래 이야기를 나누었다.",
+    "Мы гуляли вечером по парку и говорили о работе.",
+    "Nous avons parlé de la réunion de jeudi soir.",
+    "Ayer elegí el sabor de chocolate en la heladería.",
+    "회의는 오후 세 시에 시작되었다.",
+    "Мой брат вчера купил новый велосипед.",
+    "Samedi dernier nous avons dîné chez nos voisins.",
+    "Me senté al fondo durante la presentación."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on the stem piece of Korean -하십시오 / -하세요 forms, Russian -яйтесь imperatives, French 'vous ...rez' and Spanish 'que quieras'; plain past or declarative forms of comparable verbs near 0.1-0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "verb stem before a polite imperative / subjunctive ending",
+ "unit_kind": "contextual",
+ "confidence": 0.4,
+ "notes": "Card: '하' (문의하십시오), 'я' (извиняюсь, присоединяйтесь), ' vi' (viendrez), ' hub'/' sup' (hubiera, supiera), 'ier' (quieras). Probe: 문의하십시오 0.832, Присоединяйтесь 0.692, viendrez 0.638, que quieras 0.558, извиняюсь 0.339, supiera 0.297; but 'Ojalá hubiera llegado' 0.155 (peak on lleg) and declarative 'Llegué temprano' 0.157. Fire items use reader-addressed polite imperatives and 'que + subjunctive'; near misses use plain declarative statements in the same languages."
+}

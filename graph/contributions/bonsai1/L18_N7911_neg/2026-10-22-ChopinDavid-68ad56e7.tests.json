@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-68ad56e7",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N7911-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T03:19:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N7911",
+   "pole": "-",
+   "label": "the verb of a stock aside that comments on a word or claim just made ('as the name implies/suggests', 'you heard that right')",
+   "fire": [
+    "The cafe is called Night Owl and, as the name suggests, it stays open until dawn.",
+    "Octopuses have three hearts. Yes, you heard that right, three of them.",
+    "The function is named reset, and as the name implies, it clears every field.",
+    "As the title suggests, the book follows a family through one long winter.",
+    "The trail is called Devil's Staircase, and as the name implies, it is steep.",
+    "Tickets for the final cost two dollars. You heard that right, two dollars.",
+    "The plant is known as touch-me-not because, as the name suggests, its leaves fold when touched.",
+    "The new ferry crosses the bay in nine minutes. You read that right, nine minutes."
+   ],
+   "quiet": [
+    "The cafe is called Night Owl and it stays open until dawn on weekends.",
+    "Octopuses have three hearts and blue blood that carries copper.",
+    "The function is named reset, and it clears every field in the form.",
+    "The book follows a family through one long winter in the mountains.",
+    "The trail is called Devil's Staircase, and it climbs above the lake.",
+    "Tickets for the final cost two dollars at the stadium window.",
+    "The plant is known as touch-me-not and grows in damp, shady places.",
+    "The new ferry crosses the bay in nine minutes on calm mornings."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.25 on 'implies', 'suggests', 'heard' in stock asides; the same sentences without the aside near 0.03-0.1. Probe scores stayed below 0.3, so the test is expected to fail on median",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "stock asides: 'as the name suggests', 'you heard that right'",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card: 'as the name implies', 'as the name itself suggests', 'You heard that right!', 'best known for', 'refers to'. Probe: 'You heard that right' 0.245, 'as the name itself suggests' 0.199, 'as the name implies' 0.193, 'best known for' 0.097, 'refers to' 0.026; controls without the aside 0.030-0.097, harbor filler 0.066."
+}
