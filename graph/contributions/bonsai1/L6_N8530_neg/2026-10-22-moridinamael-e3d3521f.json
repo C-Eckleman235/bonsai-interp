@@ -1,0 +1,166 @@
+{
+ "id": "2026-10-22-moridinamael-e3d3521f",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N8530-",
+ "contributor": "moridinamael",
+ "created": "2026-10-23T05:59:31+00:00",
+ "recipe": {
+  "toolchain_commit": "07208302",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L6_N8530_neg/2026-10-22-moridinamael-e3d3521f.tests.json"
+ },
+ "label": "The punctuation mark (dash, colon, ellipsis, question mark) placed right after a joining word such as but, and, so, or, then, yet or because, in any language, before the sentence carries on; weaker after a sentence adverb (still, sadly) or with a plain comma after the joining word. Quiet: the same dashes and colons after ordinary nouns or verbs (asides, list intros), and commas after openers like 'However,'.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L6_N8530_neg/2026-10-22-moridinamael-e3d3521f.tests.json",
+   "prereg_commit": "07208302",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.75,
+     "peak": " —"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.251,
+     "peak": "..."
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.464,
+     "peak": ":"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.45,
+     "peak": " —"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.415,
+     "peak": "..."
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.645,
+     "peak": " —"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.362,
+     "peak": "..."
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.383,
+     "peak": "..."
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.02,
+     "peak": " I"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.007,
+     "peak": ":"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.004,
+     "peak": " studied"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.007,
+     "peak": "You"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.003,
+     "peak": " opened"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.016,
+     "peak": " —"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.012,
+     "peak": "However"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.008,
+     "peak": " amigos"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.432,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "07208302",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-out feeder of bonsai1/L11/N2426- (play step drop 0.03). Probes: 'But –' 0.96, 'And –' 0.99, 'So?' 0.66, 'But:' 0.92, 'Mais –' 0.58, 'Aber –' 0.51; dash after a noun ('The dog –') 0.02, 'However,' comma 0.02, 'But,' 0.33, 'Sadly –' 0.52. Inverse solver (DE): no leak, near-miss ceiling 0.12.",
+ "roles": [
+  "feeds bonsai1/L11/N2426-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L6/N8530-",
+   "to": "bonsai1/L11/N2426-",
+   "kind": "feeds",
+   "weight": 0.03,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
