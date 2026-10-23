@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-22-moridinamael-96ed4e8c",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N6242+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T04:58:56+00:00",
+ "roles": ["feeds bonsai1/L3/N9695-"],
+ "neighbours": [
+  {
+   "unit": "L1/N6242",
+   "pole": "+",
+   "label": "the syllable right after a word-initial Korean 출 ('out', 出) in any 출-word, whatever it means (출신 'hails from', 출발, 출혈, 출동, 출구, 출마); not 출 at the end of a word (제출, 수출) and not origin words without 출 (태생, 고향); also the split piece after English 'out' (out|posts)",
+   "short": "syllable after word-initial Korean 출 ('out')",
+   "fire": [
+    "그는 부산 출신이라서 사투리를 아주 자연스럽게 쓴다.",
+    "기차는 오전 아홉 시에 서울역에서 출발합니다.",
+    "사고 현장에 소방차가 신속하게 출동했다.",
+    "비상시에는 가장 가까운 출구로 대피하십시오.",
+    "상처에서 출혈이 멈추지 않아 병원으로 옮겼다.",
+    "그 배우는 이번 선거에 시장 후보로 출마했다.",
+    "매일 아침 지하철을 타고 출근하는 게 힘들다.",
+    "그녀의 첫 소설은 작년 가을에 출판되었다."
+   ],
+   "quiet": [
+    "그는 부산 태생이라서 사투리를 아주 자연스럽게 쓴다.",
+    "기차는 오전 아홉 시에 서울역을 떠납니다.",
+    "사고 현장에 소방차가 신속하게 도착했다.",
+    "비상시에는 가장 가까운 문으로 대피하십시오.",
+    "보고서는 금요일까지 제출해야 합니다.",
+    "우리나라의 반도체 수출이 크게 늘었다.",
+    "그는 명절마다 고향에 내려가 부모님을 뵙는다.",
+    "그녀의 첫 소설은 작년 가을에 서점에 나왔다."
+   ],
+   "confidence": "medium",
+   "notes": "Test sentences written blind by a second author who saw only the label. The GPU ablation step (play step) ran out of memory on stream, so the feeder was chosen from the resident attribution ranking and no ablation edge weight is recorded. Probes: 출근 read weak (0.10) and 출장을 weak (0.17, the tokenizer merges 장을); English out-pieces are uneven (outposts ~1.0, outplayed 0.14, outnumbered 0.15); Chinese/Japanese 出身 ~0.12."
+  }
+ ],
+ "predictions": "7-8/8 fire (출근 weakest), 0 near misses",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "neighbors",
+   "step-out",
+   "inverse-de",
+   "blind-room"
+  ]
+ }
+}
