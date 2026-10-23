@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-23-C-Eckleman235-cd071183",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N7741-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T22:11:55+00:00",
+ "selection": "concept search: echoes (digit family)",
+ "neighbours": [
+  {
+   "unit": "L35/N7741",
+   "pole": "-",
+   "label": "the token right before an 8 that the text makes predictable: the next digit of a number being copied from earlier in the same text or of a counting run, and the word before 'eight' when counting in words; quiet before an 8 the text gives no reason to expect, and before a predictable different number",
+   "fire": [
+    "The parcel weighs 18 kilograms, and the label confirms 18",
+    "Our table number tonight is 308, so the waiter brought menus to 308",
+    "My grandmother's house was number 48; the old letters were all addressed to number 48",
+    "Platforms 5, 6, 7 and 8 are on the lower level",
+    "The kids sang the counting song: 15, 16, 17, 18",
+    "Floors 25, 26, 27, 28 are offices",
+    "She counted the candles in words: five, six, seven, eight",
+    "The rhyme goes one, two, buckle my shoe; three, four, shut the door; five, six, pick up sticks; seven, eight"
+   ],
+   "quiet": [
+    "The parcel weighs 19 kilograms, and the label confirms 19",
+    "Our table number tonight is 307, so the waiter brought menus to 307",
+    "My grandmother's house was number 46; the old letters were all addressed to number 48",
+    "Platforms 1, 2, 3 and 4 are on the lower level",
+    "The kids sang the counting song: 11, 12, 13, 14",
+    "Floors 21, 22, 23, 24 are offices",
+    "She counted the candles in words: one, two, three, four",
+    "The rhyme goes one, two, buckle my shoe; three, four, shut the door; five, six, pick up sticks"
+   ]
+  }
+ ],
+ "predictions": "7/8 fire >= 0.2 (the two spelled-out items are the least sure); the near misses under 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "which",
+   "card",
+   "probe"
+  ]
+ },
+ "short": "before a predictable 8",
+ "unit_kind": "predictive",
+ "confidence": 0.55,
+ "notes": "Found by the echoes predictable-digit concept screen and position triage (discovery only): 5/6 pairs for digit 8, across copies, counting runs and a fact. Card: max 390, density 0.57%; top examples peak right before an 8 ('datetime(2011, 8, 21 …) … datetime(2011, 8, 22', 'Part VIII'). Triage probes (exploratory, none reused): copied PIN 7828 0.59, copied room 508 0.45, count 45..48 0.35, the word list '…, seven, eight' 0.62 (peak on the comma before 'eight'), 'an octopus has 8' 0.14; a fresh 8 ('the number 68' 0.02, 'code 818' 0.04) and a copied 503 (0.05) stayed low. Like the held L35/N1376+ (6), it takes the spelled-out word. Scoring runs on a Modal L40S (bfloat16; PARITY OK on Modal)."
+}
