@@ -1,0 +1,163 @@
+{
+ "id": "2026-10-23-moridinamael-259763cd",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N11316-",
+ "contributor": "moridinamael",
+ "created": "2026-10-23T07:25:16+00:00",
+ "recipe": {
+  "toolchain_commit": "af556545",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N11316_neg/2026-10-23-moridinamael-259763cd.tests.json"
+ },
+ "label": "A broad, dense cell. Strongest at the second mention of a coined official phrase that the text introduced earlier (a policy term or euphemism such as 'strategic realignment'), peaking on that phrase's first word; also on the item right after the list comma 、 in Chinese lists. Weak at a phrase's first mention, for plain repeated words (the apples, the red car) and for repeated operation or product names.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N11316_neg/2026-10-23-moridinamael-259763cd.tests.json",
+   "prereg_commit": "af556545",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 5,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.347,
+     "peak": "从"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.379,
+     "peak": "ategic"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.299,
+     "peak": " '"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.291,
+     "peak": "-led"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.38,
+     "peak": " '"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.196,
+     "peak": " expectations"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.329,
+     "peak": "ward"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.382,
+     "peak": " fiscal"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.272,
+     "peak": " à"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.368,
+     "peak": "ategic"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.3,
+     "peak": " '"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.112,
+     "peak": " apples"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.031,
+     "peak": "She"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.085,
+     "peak": " began"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.19,
+     "peak": " phone"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.21,
+     "peak": " it"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.844,
+    "median_fire": 0.338,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "af556545",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-in reader of bonsai1/L31/N10108- (play step --down drop 0.03; the top reader L33/N8382+ already had a record). Feeders-first arm: top feeders (L1/N5807- detention/-ention, L33/N8310+ CJK quote/bracket openers, L30/N4790- Korean polite endings) are unlabelled and mostly reflect multilingual context. Test sentences written blind by a second author from the label only; the solver's leak (Arabic/Chinese list text, French corpus line) was placed by that author.",
+ "roles": [
+  "reads bonsai1/L31/N10108-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L31/N10108-", "to": "bonsai1/L34/N11316-", "kind": "feeds", "weight": 0.03, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
