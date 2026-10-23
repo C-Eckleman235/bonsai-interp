@@ -1,0 +1,167 @@
+{
+ "id": "2026-10-22-moridinamael-89138aa1",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N8874+",
+ "contributor": "moridinamael",
+ "created": "2026-10-23T01:49:05+00:00",
+ "recipe": {
+  "toolchain_commit": "9034313c",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N8874_pos/2026-10-22-moridinamael-89138aa1.tests.json"
+ },
+ "label": "A space token standing on its own: the space typed right before digits ('in 1774', 'gate 9', 'about 40 people') or an extra doubled space between two words; weaker on the spaces that indent a code line. Quiet: spelled-out numbers ('forty'), digits with no space before them ($40, B12, a number opening a new line) and ordinary single spaces before words.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L10_N8874_pos/2026-10-22-moridinamael-89138aa1.tests.json",
+   "prereg_commit": "9034313c",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.296,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.331,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.461,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.393,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.276,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.114,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.342,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.827,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.021,
+     "peak": "eenth"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.006,
+     "peak": " should"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.007,
+     "peak": " people"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.014,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.007,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.021,
+     "peak": "Please"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.011,
+     "peak": " personal"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.017,
+     "peak": " beach"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.337,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "9034313c",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Sentences written blind by a second author who saw only the label (blind:claude-opus-5-5 label-only). Bonsai is causal, so the lone ' ' token's activation cannot depend on what follows it: 'some  crabs' (doubled space) and 'some urchins' (a rare word the tokenizer splits off its space) read identically. Solver (DE) found no leak; near-miss ceiling 0.28 was a code-indent line.",
+ "roles": [
+  "feeds bonsai1/L12/N7269-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L10/N8874+",
+   "to": "bonsai1/L12/N7269-",
+   "kind": "feeds",
+   "weight": 0.03,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
