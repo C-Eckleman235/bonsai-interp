@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-fb31b3d2",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N9158+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T15:19:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N9158",
+   "pole": "+",
+   "label": "Korean syllables with initial ㄹ (r/l), mostly in loanwords, that the tokenizer splits into single bytes (룸, 루, 레, 런, 램); other byte-split Korean syllables stay low",
+   "fire": [
+    "어머니는 시장에서 레몬 세 개와 사과를 샀다.",
+    "우리는 다음 달에 런던 여행을 계획하고 있다.",
+    "책상 위에 작은 램프 하나가 켜져 있었다.",
+    "그녀는 작년 여름에 루마니아 시골을 여행했다.",
+    "저녁에는 레몬 차를 한 잔 마시는 것이 좋다.",
+    "형은 런던 대학교에서 경제학을 공부했다.",
+    "거실의 오래된 램프 불빛이 따뜻했다.",
+    "친구가 루마니아 음식을 처음으로 만들어 주었다."
+   ],
+   "quiet": [
+    "어머니는 시장에서 커피 한 봉지와 사과를 샀다.",
+    "우리는 다음 달에 택시 회사를 방문할 계획이다.",
+    "책상 위에 작은 커피 잔 하나가 놓여 있었다.",
+    "그녀는 작년 여름에 시골 마을을 여행했다.",
+    "저녁에는 녹차를 한 잔 마시는 것이 좋다.",
+    "형은 서울 대학교에서 경제학을 공부했다.",
+    "거실의 오래된 택시 사진이 벽에 걸려 있었다.",
+    "친구가 한국 음식을 처음으로 만들어 주었다."
+   ]
+  }
+ ],
+ "predictions": "may hold: probes 룸서비스 0.78/0.80, 루피 1.04 vs byte-split 커피 sentence 0.13",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "byte-split Korean ㄹ-syllable",
+ "unit_kind": "token/lexical (byte-fallback)",
+ "confidence": 0.3,
+ "notes": "Card: '�' x18 among top 32, Korean loanwords 룸서비스, 루피, 란에서 plus scattered Latin/Cyrillic pieces (' grav' 1.06, 'рав' 0.77 in probes). Probe: 룸서비스 0.78/0.80, 루피 1.04, native sentence with byte-split 커피 0.131, English 0.02. Hypothesis that the shared feature is the ㄹ initial is a guess from the card; 'grav'/'рав' are left out of the test."
+}
