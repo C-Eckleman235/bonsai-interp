@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-22-moridinamael-292775e1",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N6145+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T01:11:36+00:00",
+ "roles": ["feeds bonsai1/L19/N9173+"],
+ "neighbours": [
+  {
+   "unit": "L0/N6145",
+   "pole": "+",
+   "label": "The definite article 'the' as the start of a word after a space in Arabic script (al- ال, strongest) or Hebrew script (ha- ה, weaker); the same sentences without the article, al- glued after wa-/bi-/li- (و ب ل), and Latin-letter 'Al-' or Maltese 'il-' stay low.",
+   "short": "space + article al-/ha- in Arabic/Hebrew script",
+   "unit_kind": "token",
+   "fire": [
+    "ذهبت إلى السوق صباحا لشراء الخبز.",
+    "قرأت الكتاب كله أمس.",
+    "يعيش أخي في المدينة منذ سنوات.",
+    "شربنا القهوة بعد الغداء.",
+    "فتح الباب ببطء ودخل.",
+    "نحب الشمس في أيام الشتاء.",
+    "وصل القطار متأخرا ساعة.",
+    "She wrote the word الحب on the whiteboard."
+   ],
+   "quiet": [
+    "ذهبت إلى سوق صغير صباحا.",
+    "قرأت كتابا جديدا أمس.",
+    "يعيش أخي في مدينة كبيرة.",
+    "شربنا قهوة مع صديق.",
+    "فتح بابه ببطء ودخل.",
+    "سافرنا بالقطار وبالسيارة معا.",
+    "ذهبت للسوق والمكتبة مساء.",
+    "He studied at Al-Azhar before moving to Al-Quds."
+   ]
+  }
+ ],
+ "predictions": "7-8/8 fire; the English sentence with one al- word is the weakest fire; glued wa-/bi-/li- near misses stay below 0.2",
+ "notes": "Test sentences written blind by a second author who saw only the label. The Hebrew ha- clause is not covered by any test sentence (probes: Hebrew ha- 0.30-0.52, Hebrew without ha- 0.05). Solver (differential evolution) found no leak.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "inverse-de"
+  ]
+ }
+}
