@@ -4,7 +4,7 @@
  "layer": 25,
  "index": 8045,
  "pole": "+",
- "label": "The opening or inner pieces of a strong verdict word (good OR bad) that the tokenizer splits into several pieces, in English, Russian, German, French, Spanish or Italian, strongest right after is/was: Russian замечательный, великолепный, ужасный; German außergewöhnlich, hervorragend, atemberaubend; French extraordinaire, époustouflant, hors norme; Spanish/Italian extraordinario, straordinario, espantosa; English hyphenated verdict compounds (extra-ordinary, jaw-dropping, first-class, world-class), 'out of this world', and strong judging words in ALL CAPS (INCREDIBLE, MAGNIFICENT, HORRIBLE). Also fires on the shared opening piece in a look-alike with no verdict: German außerhalb ('outside'). Quiet on mild verdicts in any language (gut, okay, хороший, correct, normal, FINE), on strong English words written normally as one token (extraordinary, spectacular, breathtaking, incredible, remarkable), on hyphenated compounds with no verdict (first-floor), and on neutral words in caps.",
+ "label": "The opening piece of a strong verdict (good or bad) that is still unfinished, in a judging slot after is/was/a: it lights up on the first piece of a split or hyphenated verdict word or set phrase, already before the rest arrives (was truly ground-breaking, was mind-blowing, was jaw-dropping, was out of this world, a first-class job, INC-REDIBLE / HORRIBLE in ALL CAPS, German war außergewöhnlich, French était hors norme, Russian зам-ечательный). Quiet on the same opening words in literal uses (turned the ground over, a ground-floor shed, walked out of the room, changed her mind, broke his jaw), on strong verdicts written as one ordinary token (incredible, extraordinary, wonderful), on finished intensifiers (absolutely, extremely), and on mild verdicts (okay, fine, gut). Exception: German außerhalb ('outside') also fires on its opening piece.",
  "short": "exceptional/remarkable intensifier",
  "kind": "meaning",
  "status": "held",
@@ -1595,6 +1595,128 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-23-moridinamael-9bb5cea6"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N8045_pos/2026-10-23-moridinamael-10e1a03d.tests.json",
+   "prereg_commit": "9c0ccf73",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.692,
+     "peak": " ground"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.464,
+     "peak": " mind"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.455,
+     "peak": " jaw"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.807,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.327,
+     "peak": " first"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.556,
+     "peak": "RED"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.541,
+     "peak": "R"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.768,
+     "peak": "erg"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.006,
+     "peak": " ground"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.001,
+     "peak": " minute"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.006,
+     "peak": "He"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.008,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.111,
+     "peak": " ground"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.006,
+     "peak": "istro"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.143,
+     "peak": " extraordinary"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.006,
+     "peak": " crew"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.548,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-23-moridinamael-10e1a03d"
   }
  ],
  "label_history": [
@@ -1647,6 +1769,11 @@
    "2026-10-23-moridinamael-9bb5cea6",
    "The opening or inner pieces of a strong verdict word (good OR bad) that the tokenizer splits into several pieces, in English, Russian, German, French, Spanish or Italian, strongest right after is/was: Russian замечательный, великолепный, ужасный; German außergewöhnlich, hervorragend, atemberaubend; French extraordinaire, époustouflant, hors norme; Spanish/Italian extraordinario, straordinario, espantosa; English hyphenated verdict compounds (extra-ordinary, jaw-dropping, first-class, world-class), 'out of this world', and strong judging words in ALL CAPS (INCREDIBLE, MAGNIFICENT, HORRIBLE). Also fires on the shared opening piece in a look-alike with no verdict: German außerhalb ('outside'). Quiet on mild verdicts in any language (gut, okay, хороший, correct, normal, FINE), on strong English words written normally as one token (extraordinary, spectacular, breathtaking, incredible, remarkable), on hyphenated compounds with no verdict (first-floor), and on neutral words in caps.",
    "held"
+  ],
+  [
+   "2026-10-23-moridinamael-10e1a03d",
+   "The opening piece of a strong verdict (good or bad) that is still unfinished, in a judging slot after is/was/a: it lights up on the first piece of a split or hyphenated verdict word or set phrase, already before the rest arrives (was truly ground-breaking, was mind-blowing, was jaw-dropping, was out of this world, a first-class job, INC-REDIBLE / HORRIBLE in ALL CAPS, German war außergewöhnlich, French était hors norme, Russian зам-ечательный). Quiet on the same opening words in literal uses (turned the ground over, a ground-floor shed, walked out of the room, changed her mind, broke his jaw), on strong verdicts written as one ordinary token (incredible, extraordinary, wonderful), on finished intensifiers (absolutely, extremely), and on mild verdicts (okay, fine, gut). Exception: German außerhalb ('outside') also fires on its opening piece.",
+   "held"
   ]
  ],
  "examples": [],
@@ -1669,20 +1796,21 @@
   "2026-10-23-moridinamael-275f5335",
   "2026-10-23-moridinamael-68d81b6b",
   "2026-10-23-moridinamael-54b5fff4",
-  "2026-10-23-moridinamael-9bb5cea6"
+  "2026-10-23-moridinamael-9bb5cea6",
+  "2026-10-23-moridinamael-10e1a03d"
  ],
  "qc": {
   "confirm": 3,
   "dispute": 0,
-  "refine": 9
+  "refine": 10
  },
  "replications": [],
  "scrutiny": {
   "level": 3,
   "name": "checked",
-  "test_rounds": 13,
-  "sentences": 208,
+  "test_rounds": 14,
+  "sentences": 224,
   "contributors": 2,
-  "qc": 12
+  "qc": 13
  }
 }
