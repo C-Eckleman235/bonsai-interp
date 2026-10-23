@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-64ed23a0",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N7844-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T18:20:17+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L7/N7844",
+   "pole": "-",
+   "label": "a non-initial word piece inside a proper name or compound that the tokenizer splits into several pieces (M|ose|ley, Haw|ke, Ke|igh|ley, four-|leaf), as against names and words that are single tokens",
+   "fire": [
+    "The striker on loan from Leeds was David Brierley, who scored twice.",
+    "The estate passed to the Cholmondeley family in the eighteenth century.",
+    "She studied engineering at a university in Loughborough before moving abroad.",
+    "The mill workers of Huddersfield went on strike in the winter of 1842.",
+    "The new chair of the committee, Margaret Ainsley, opened the meeting.",
+    "The report was written by the economist Thomas Beasley for the bank.",
+    "The coach, Peter Yeardley, praised the defence after the match.",
+    "The essay on politics by Michael Oakeshott is still widely read."
+   ],
+   "quiet": [
+    "The striker on loan from Leeds was David Smith, who scored twice.",
+    "The estate passed to the Taylor family in the eighteenth century.",
+    "She studied engineering at a university in York before moving abroad.",
+    "The mill workers of Hull went on strike in the winter of 1842.",
+    "The new chair of the committee, Margaret Jones, opened the meeting.",
+    "The report was written by the economist Thomas Brown for the bank.",
+    "The coach, Peter Baker, praised the defence after the match.",
+    "The essay on politics by the bishop of Bath is still widely read."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.9 on an inner piece of a multi-piece surname or town; single-token names 0.0-0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "inner piece of split name",
+ "unit_kind": "lexical",
+ "confidence": 0.35,
+ "notes": "Card top: 'ose' (Moseley) x3, 'ke' (Hawke) x4, '7', 'iew', 'leaf', 'igh'. Probe: 'M|ose|ley' 0.899, 'four-|leaf' 0.700, 'Haw|ke' 0.604, 'Ke|igh|ley' 0.498, '14:3|7' 0.167; single-token Smith/Leeds 0.015-0.017. Fire names checked with the tokenizer: B|rier|ley, Ch|ol|mon|de|ley, L|ough|borough, H|udd|ers|field, A|ins|ley, Be|asley, Ye|ard|ley, O|akes|h|ott."
+}

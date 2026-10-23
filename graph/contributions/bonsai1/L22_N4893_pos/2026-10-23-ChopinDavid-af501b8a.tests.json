@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-af501b8a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N4893+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T18:20:17+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N4893",
+   "pole": "+",
+   "label": "unclear; best guess the ' $' token before a dollar amount in a sales or payment sentence, as against the same amounts written in words",
+   "fire": [
+    "Sign up this week and get an instant $25 credit on your account.",
+    "The buyer paid the clerk $12.50 for the two paperbacks.",
+    "Suppose $1,000 is deposited at four percent compounded yearly.",
+    "Members save an extra $15 off every order over fifty dollars.",
+    "The waiter returned with $3.75 in change on a small tray.",
+    "Act now and receive an instant $60 rebate by mail.",
+    "If $200 grows by ten percent, the new balance is higher.",
+    "The landlord asked for $950 as a deposit before the move."
+   ],
+   "quiet": [
+    "Sign up this week and get an instant twenty-five dollar credit on your account.",
+    "The buyer paid the clerk twelve pounds for the two paperbacks.",
+    "Suppose a thousand dollars is deposited at four percent compounded yearly.",
+    "Members save an extra fifteen dollars off every order over fifty dollars.",
+    "The waiter returned with a few coins in change on a small tray.",
+    "Act now and receive a free tote bag by mail.",
+    "If the balance grows by ten percent, the new balance is higher.",
+    "The landlord asked for one month's rent as a deposit before the move."
+   ]
+  }
+ ],
+ "predictions": "probably fails: the pole is extremely sparse; probes of ' $' scored 0.012-0.017. Expect fire 0.0-0.05 and near misses 0.0-0.01",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "' $' before amount (unclear)",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Card max 182 is one outlier ('Save an instant| $170'); density rounds to 0.000%. Next peaks 83.5 and 35.5 are also ' $'. Probe: 'save an instant $40' 0.017, 'if $500 is invested' 0.014, 'The price is $40' 0.012; worded amounts 0.003-0.004. Registered as a best guess on the dominant token."
+}

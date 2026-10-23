@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-a1c454f9",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N2521+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T18:28:23+00:00",
+ "recipe": {
+  "toolchain_commit": "b40523f0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L21_N2521_pos/2026-10-23-ChopinDavid-a1c454f9.tests.json"
+ },
+ "label": "the imported name at the end of a Python standard-library import line ('from pathlib import Path', 'import logging', 'from datetime import datetime'), as against the same words in prose",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L21_N2521_pos/2026-10-23-ChopinDavid-a1c454f9.tests.json",
+   "prereg_commit": "b40523f0",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.762,
+     "peak": " Path"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.317,
+     "peak": " logging"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.534,
+     "peak": " datetime"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 1.0,
+     "peak": " Path"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.289,
+     "peak": " logging"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.429,
+     "peak": " datetime"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.756,
+     "peak": " Path"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.466,
+     "peak": " logging"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.06,
+     "peak": " long"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.046,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.056,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.047,
+     "peak": " new"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.044,
+     "peak": "Illegal"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.052,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.073,
+     "peak": " careful"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.05,
+     "peak": "The"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.5,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "b40523f0",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "imported stdlib name",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card top: 'from pathlib import| Path' x4, 'import| logging' x13, all low max (4.69) and broad. Probe: 'from pathlib import Path' 0.792, 'from datetime import datetime' 0.492, 'from typing import List' 0.110, 'import json/re' 0.026; prose 'path', 'Logging companies', 'sent' 0.07-0.09. Fire items lead with another import line so the trigger is not first.",
+ "selection": "random draw"
+}

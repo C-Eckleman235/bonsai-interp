@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-a1c454f9",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N2521+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T18:20:17+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L21/N2521",
+   "pole": "+",
+   "label": "the imported name at the end of a Python standard-library import line ('from pathlib import Path', 'import logging', 'from datetime import datetime'), as against the same words in prose",
+   "fire": [
+    "import argparse\nfrom pathlib import Path\n\nROOT = Path.cwd()",
+    "import os\nimport logging\n\nlogger = logging.getLogger(__name__)",
+    "import time\nfrom datetime import datetime\n\nnow = datetime.now()",
+    "import shutil\nfrom pathlib import Path\nimport subprocess",
+    "import csv\nimport logging\nimport sqlite3",
+    "import math\nfrom datetime import datetime, timedelta",
+    "#!/usr/bin/env python\nimport sys\nfrom pathlib import Path",
+    "# utilities\nimport json\nimport logging\nfrom typing import Any"
+   ],
+   "quiet": [
+    "She took the long path around the hill to avoid the mud.",
+    "The logging trucks rumbled down the mountain road at dawn.",
+    "Please write the date and time at the top of the form.",
+    "The river carved a new path through the soft rock.",
+    "Illegal logging has destroyed large parts of the rainforest.",
+    "The hikers lost the path when the fog came down.",
+    "He kept a careful log of every trip in a notebook.",
+    "The garden path was lined with lavender and roses."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on the name after 'import' in a block of import lines; the same words in prose 0.0-0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "imported stdlib name",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card top: 'from pathlib import| Path' x4, 'import| logging' x13, all low max (4.69) and broad. Probe: 'from pathlib import Path' 0.792, 'from datetime import datetime' 0.492, 'from typing import List' 0.110, 'import json/re' 0.026; prose 'path', 'Logging companies', 'sent' 0.07-0.09. Fire items lead with another import line so the trigger is not first."
+}
