@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-06516d34",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N8148+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T12:20:10+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N8148",
+   "pole": "+",
+   "label": "the '-d' word piece opening the second half of a hyphenated compound (tree-dwelling, non-dominant)",
+   "fire": [
+    "Those beetles are ground-dwelling insects that hide under logs.",
+    "The museum shows a hand-drawn map of the old harbour.",
+    "We bought a jar of sun-dried tomatoes for the pasta.",
+    "Fishermen left the port in the pre-dawn darkness.",
+    "Her claims about the side effects are well-documented in the literature.",
+    "Most owls are tree-dwelling birds that nest in hollow trunks.",
+    "He threw the ball with his non-dominant arm and still hit the target.",
+    "The village kitchen serves sun-dried fish caught that morning."
+   ],
+   "quiet": [
+    "Those beetles are ground beetles that hide under logs.",
+    "The museum shows a detailed map of the old harbour.",
+    "We bought a jar of dried tomatoes for the pasta.",
+    "Fishermen left the port in the early darkness.",
+    "Her claims about the side effects are documented in the literature.",
+    "Most owls are night birds that nest in hollow trunks.",
+    "He threw the ball with his weaker arm and still hit the target.",
+    "The town installed a data-driven system to time the traffic lights."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-1.0 on '-d' in hyphenated compounds that split as X + '-d' + rest; the same words unhyphenated, or compounds whose second half is one token ('-driving', '-defined'), below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "hyphen '-d' piece",
+ "unit_kind": "token",
+ "confidence": 0.7,
+ "notes": "Card peaks '-d' x21 of top 32 (safe-dropping 434, plant-dwelling 342). Probe: free-dropping 1.038, food-distribution 0.691, tree-dwelling 0.690, non-dominant 0.562; 'tree climbers' 0.002, 'self-driving' ('-driving' one token) 0.001, 'cave dwelling' 0.001. Splits checked with tok.py."
+}
