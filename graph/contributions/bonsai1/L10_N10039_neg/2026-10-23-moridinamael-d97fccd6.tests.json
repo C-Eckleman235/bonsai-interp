@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-23-moridinamael-d97fccd6",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N10039-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T07:46:06+00:00",
+ "roles": ["feeds bonsai1/L11/N1769-"],
+ "neighbours": [
+  {
+   "unit": "L10/N10039",
+   "pole": "-",
+   "label": "a person's leisure or off-duty time, read on the word that sets it up (spare/free/off before 'time', downtime, off duty, a break, 'when not working/attending'); the bare 'when not ...' clause also fires moderately even for objects; quiet for spare/free in other senses (a spare part, free of charge) and for being busy or on duty",
+   "short": "leisure / off-duty time (spare time, off duty, when not working)",
+   "fire": [
+    "When not in use, store the device in a dry place.",
+    "In her spare time, she paints watercolor landscapes of the harbor.",
+    "He spends his free time restoring old bicycles in the garage.",
+    "When not working, the nurse enjoys hiking in the hills.",
+    "The pilots play cards to pass the downtime between flights.",
+    "Off duty, the officer coaches his daughter's soccer team.",
+    "During the break, the students kicked a ball around the yard.",
+    "What do you like to do in your time off?"
+   ],
+   "quiet": [
+    "He was on duty all night at the hospital.",
+    "In the trunk, she keeps a spare tire for long trips to the harbor.",
+    "He restores old bicycles in the garage as his full-time job.",
+    "While working, the nurse checks on patients every hour.",
+    "The pilots review flight plans in the hours between flights.",
+    "On duty, the officer patrols the streets near the stadium.",
+    "During the exam, the students wrote quietly at their desks.",
+    "What do you have to do at work this week?"
+   ]
+  }
+ ],
+ "predictions": "most fire items above 0.3; 'When not in use' moderate (~0.38 in probing); near misses low",
+ "notes": "Test sentences written blind by a second author who saw only the label. Two items (the solver leak 'When not in use...' and 'He was on duty all night...') were scored during probing/solver. Feeder chosen from resident attribution (top MLP feeder of L11/N1769-); play step ablation hit CUDA OOM on stream, so no ablation drop or feeds edge is recorded.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "bank-solo",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
