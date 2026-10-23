@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-22-moridinamael-f9c5edd0",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N7751-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T05:12:59+00:00",
+ "neighbours": [
+  {
+   "unit": "L33/N7751",
+   "pole": "-",
+   "label": "Chinese 的 when the tokenizer leaves it as its own token, linking a modifier to the noun after it: after a specific noun or name (安理会的, 渔民协会的, iPhone的), a number phrase (三百年的), a colour or longer adjective phrase (红色的, 古老而神秘的) or a verb phrase (参加比赛的). Silent where 的 merges with a very common word before (我的, 他的, 老师的, 买的, 重要的, 复杂的) or after (的问题, 的意见, 的历史), on sentence-final 的。, on spaced ' 的', and on 得/地, Japanese 的な and English 's.",
+   "short": "standalone 的 token linking modifier to noun",
+   "roles": ["reads bonsai1/L32/N1646-"],
+   "fire": [
+    "安理会的决议昨天正式通过。",
+    "渔民协会的代表们在码头上开会。",
+    "他把iPhone的屏幕摔碎了。",
+    "这座三百年的古桥依然坚固。",
+    "她穿着一件红色的长裙走进大厅。",
+    "那是一个古老而神秘的村庄。",
+    "参加比赛的选手都很紧张。",
+    "联合国教科文组织的专家来考察遗址。"
+   ],
+   "quiet": [
+    "我的书包放在桌子上。",
+    "他的哥哥在北京工作。",
+    "老师的话大家都记住了。",
+    "这是我昨天买的。",
+    "这是一个很重要的问题。",
+    "这件事情非常复杂的。",
+    "她慢慢地走进教室。",
+    "これは典型的な例です。"
+   ]
+  }
+ ],
+ "predictions": "7-8/8 fire; quiet items silent unless the tokenizer splits a glued 的 differently than expected",
+ "notes": "Step-in reader of bonsai1/L32/N1646- (drop 0.39). Feeders-first arm: top feeders are L29/N11867- (Japanese/Chinese suffix 的, unlabelled), L32/N1646- (standalone 的) and several machine-guessed 的 cells. Test written blind by a second author from the label only.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "neighbors",
+   "inverse-de",
+   "blind-room"
+  ]
+ }
+}
