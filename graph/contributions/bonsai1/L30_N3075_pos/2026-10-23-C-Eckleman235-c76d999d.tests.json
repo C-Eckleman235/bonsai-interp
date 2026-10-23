@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-23-C-Eckleman235-c76d999d",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N3075+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T22:11:52+00:00",
+ "selection": "concept search: echoes (digit family)",
+ "neighbours": [
+  {
+   "unit": "L30/N3075",
+   "pole": "+",
+   "label": "the token right before a 4 that the text makes predictable: the next digit of a number being copied from earlier in the same text, or of a counting run; quiet before a 4 the text gives no reason to expect, and before a predictable different digit",
+   "fire": [
+    "The meeting is in room 214; if you get lost, ask for room 214",
+    "Her student ID is 80054, and the library card also shows 80054",
+    "The ferry ticket said berth 34, and the steward led us to berth 34",
+    "Call extension 6624 for billing; I repeat, extension 6624",
+    "Volumes 1, 2, 3 and 4 sit on the top shelf",
+    "The houses on this side are numbered 21, 22, 23, 24",
+    "Exits 51, 52, 53 and 54 were closed for roadwork",
+    "The tram stops are numbered 61, 62, 63, 64 along the river"
+   ],
+   "quiet": [
+    "The meeting is in room 217; if you get lost, ask for room 217",
+    "Her student ID is 80059, and the library card also shows 80054",
+    "The ferry ticket said berth 36, and the steward led us to berth 74",
+    "Call extension 6627 for billing; I repeat, extension 6627",
+    "Volumes 5, 6, 7 and 8 sit on the top shelf",
+    "The houses on this side are numbered 25, 26, 27, 28",
+    "Exits 55, 56, 57 and 58 were closed for roadwork",
+    "The tram stops are numbered 65, 66, 67, 68 along the river"
+   ]
+  }
+ ],
+ "predictions": "7/8 fire >= 0.2; the near misses under 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "which",
+   "card",
+   "probe"
+  ]
+ },
+ "short": "before a predictable 4",
+ "unit_kind": "predictive",
+ "confidence": 0.6,
+ "notes": "Found by the echoes predictable-digit concept screen and position triage (discovery only): 3/6 pairs for digit 4 (the copied-number pairs). Card: max 322, density 0.10%; top examples peak right before a 4 ('ISBN 1-84046', 'tol=1e-4', '1410451682'). Triage probes (exploratory, none reused): copied PIN 7424 0.57, copied room 504 0.48, count 41..44 0.40; 'a square has exactly 4' 0.02, the word 'four' 0.00; a fresh 4 ('the number 64' 0.01, 'code 814' 0.02) and a copied 507 (0.01) stayed low. Facts and the spelled word are not claimed. Scoring runs on a Modal L40S (bfloat16; PARITY OK on Modal)."
+}
