@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-488a6e3b",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N10997-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T22:26:15+00:00",
+ "recipe": {
+  "toolchain_commit": "630c98ee",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L32_N10997_neg/2026-10-23-ChopinDavid-488a6e3b.tests.json"
+ },
+ "label": "the slot right before a person's reported response in a survey or study frame ('participants were asked to …', 'how customers feel'), predicting an evaluation verb such as 'rate', as against 'to' and 'how' clauses about non-human processes or movement",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L32_N10997_neg/2026-10-23-ChopinDavid-488a6e3b.tests.json",
+   "prereg_commit": "630c98ee",
+   "author": "ChopinDavid",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.287,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.704,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.492,
+     "peak": " guests"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.185,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.255,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.078,
+     "peak": " owners"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.6,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.135,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.016,
+     "peak": " child"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.02,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.084,
+     "peak": " you"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.018,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.068,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.014,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.146,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.008,
+     "peak": " to"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.953,
+    "median_fire": 0.271,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "630c98ee",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "elicited-response slot",
+ "unit_kind": "contextual",
+ "confidence": "medium",
+ "notes": "Probes: 'asked to rate' 0.444 but 'asked to walk' also 0.444 (fires before the verb, so the frame matters, not the verb); 'how customers feel' 0.543 vs 'how the engine works' 0.021; 'patients rate' 0.033 (fires before, not on, 'rate'). Near misses keep 'to'/'how' but drop the elicitation frame.",
+ "selection": "random draw"
+}

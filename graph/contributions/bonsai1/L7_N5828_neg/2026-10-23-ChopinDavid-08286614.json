@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-08286614",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N5828-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T22:26:20+00:00",
+ "recipe": {
+  "toolchain_commit": "630c98ee",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L7_N5828_neg/2026-10-23-ChopinDavid-08286614.tests.json"
+ },
+ "label": "the punctuation that closes a field label or Q/A marker in form-like text ('Patient name:', 'A.'), as against the same words in running prose",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L7_N5828_neg/2026-10-23-ChopinDavid-08286614.tests.json",
+   "prereg_commit": "630c98ee",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.509,
+     "peak": ":"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.491,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.535,
+     "peak": ":"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.652,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.837,
+     "peak": ":"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.608,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.442,
+     "peak": ":"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.612,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.003,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.006,
+     "peak": " it"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.003,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.018,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.012,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.01,
+     "peak": "Someone"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.009,
+     "peak": " officer"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.009,
+     "peak": ","
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.572,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "630c98ee",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "form-label punctuation",
+ "unit_kind": "contextual",
+ "confidence": "low",
+ "notes": "Probes: 'Q. ... A.' 0.525, 'Patient name:' 0.435; email header 'Subject' 0.095, signature newline 0.070, 'Note:' 0.058; prose 0.01-0.03. Card peaks are mostly newlines, which did not reproduce in probes.",
+ "selection": "random draw"
+}
