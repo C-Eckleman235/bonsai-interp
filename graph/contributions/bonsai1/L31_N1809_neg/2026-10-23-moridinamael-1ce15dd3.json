@@ -1,0 +1,168 @@
+{
+ "id": "2026-10-23-moridinamael-1ce15dd3",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N1809-",
+ "contributor": "moridinamael",
+ "created": "2026-10-23T09:35:48+00:00",
+ "recipe": {
+  "toolchain_commit": "d3d2964e",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L31_N1809_neg/2026-10-23-moridinamael-1ce15dd3.tests.json"
+ },
+ "label": "The word ' a' (or the word in that same slot: ' to' in 'a sight to', ' real' in 'a real') right where a sentence is about to state a thing's acclaim or standing ('was always a', 'has become a', 'is considered to be a', 'a sight to', 'became a National Historic Landmark'); it fires on that setup word whatever noun follows; quiet on everyday 'a' (bought a bag, is a tall man, named after a farmer). Also fires on the name piece ' Belt' in 'Atlanta BeltLine'.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L31_N1809_neg/2026-10-23-moridinamael-1ce15dd3.tests.json",
+   "prereg_commit": "d3d2964e",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.839,
+     "peak": " Belt"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.125,
+     "peak": " treasure"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.573,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 1.11,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.756,
+     "peak": " National"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.254,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.271,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.122,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.02,
+     "peak": " Cur"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.01,
+     "peak": " mill"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.06,
+     "peak": " has"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.078,
+     "peak": " could"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.021,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.105,
+     "peak": " was"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.005,
+     "peak": " bridge"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.013,
+     "peak": " a"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.422,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "d3d2964e",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L28/N7405-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L28/N7405-",
+   "to": "bonsai1/L31/N1809-",
+   "kind": "feeds",
+   "weight": 0.17,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
