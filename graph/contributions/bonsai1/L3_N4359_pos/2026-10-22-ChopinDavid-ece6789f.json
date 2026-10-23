@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-ece6789f",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N4359+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T01:30:52+00:00",
+ "recipe": {
+  "toolchain_commit": "0c1eaaee",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L3_N4359_pos/2026-10-22-ChopinDavid-ece6789f.tests.json"
+ },
+ "label": "positional: fires weakly on the first token of a window, especially a leading-space ' $', ' [', ' “'; no lexical content",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L3_N4359_pos/2026-10-22-ChopinDavid-ece6789f.tests.json",
+   "prereg_commit": "0c1eaaee",
+   "author": "ChopinDavid",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": -0.005,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.083,
+     "peak": " ["
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.025,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.083,
+     "peak": " ["
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.042,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.083,
+     "peak": " ["
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": -0.159,
+     "peak": " $"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.083,
+     "peak": " ["
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": -0.011,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": -0.465,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": -0.292,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.387,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.02,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": -0.469,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": -0.199,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.369,
+     "peak": ","
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.953,
+    "median_fire": 0.062,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "0c1eaaee",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "first-token positional unit",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Card flags positional (100% of top peaks at window position 0), max 0.16. Probe: window-initial ' $75,000' 0.065, ' [Fox News]' 0.083, while mid-sentence versions -0.56 to 0.06. An 8+8 test of sentences cannot isolate position 0; registered as dense / positional with a best-guess test.",
+ "selection": "random draw"
+}
