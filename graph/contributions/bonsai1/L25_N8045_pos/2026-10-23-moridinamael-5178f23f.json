@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-23-moridinamael-5178f23f",
+ "kind": "qc",
+ "neuron": "bonsai1/L25/N8045+",
+ "contributor": "moridinamael",
+ "created": "2026-10-23T09:10:19+00:00",
+ "recipe": {
+  "toolchain_commit": "416c6771",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N8045_pos/2026-10-23-moridinamael-5178f23f.tests.json"
+ },
+ "label": "A piece partway through an extreme verdict word or phrase, good or bad, before the rest of it arrives: inner chunks of a long or ALL-CAPS intense adjective or adverb split into several tokens (INC-RED-IBLE, F-ANT-ASTIC, HORR-IBLE, extra-ordinary, зам-еч-ательный, ч-рез-вычайно) and the opening words of a superlative idiom after a praising lead-in (state- of the art, world-class, show-stopping, out of this world). Also, more weakly, ' nothing' right after is/was opening a judgement of something (was nothing special, is nothing short of, is nothing to sneeze at), but not after a comma or in literal uses (nothing in the fridge, nothing to do). Quiet on intense words that arrive as one whole token (amazing, incredible, breathtaking), on mild verdicts without 'nothing' (mediocre, pretty good), and on the same opening words used literally (the top of the hill, around the world). Also quiet on long neutral words split into pieces, in caps or not (photosynthesis, INTERNATIONALIZATION, CALIFORNIA): the chunk must belong to a verdict word. Only weak on first-rate and top-notch, and only weak on words that just say something is huge without judging it (GIGANTIC, ENORMOUS): these are near misses, not fire cases.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N8045_pos/2026-10-23-moridinamael-5178f23f.tests.json",
+   "prereg_commit": "416c6771",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.58,
+     "peak": "RED"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.816,
+     "peak": "ANT"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.551,
+     "peak": "R"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.12,
+     "peak": " extraordinary"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.836,
+     "peak": "еч"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.762,
+     "peak": "рез"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.556,
+     "peak": " state"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.249,
+     "peak": " world"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.025,
+     "peak": " amazing"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.012,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.034,
+     "peak": " mediocre"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.039,
+     "peak": " photos"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.004,
+     "peak": " INTERNATIONAL"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.015,
+     "peak": " road"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.009,
+     "peak": "ikers"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.004,
+     "peak": " spent"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.568,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "416c6771",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "A piece partway through an extreme verdict word or phrase, good or bad, before the rest of it arrives: inner chunks of a long or ALL-CAPS intense adjective or adverb split into several tokens (INC-RED-IBLE, F-ANT-ASTIC, HORR-IBLE, extra-ordinary, зам-еч-ательный, ч-рез-вычайно) and the opening words of a superlative idiom after a praising lead-in (state- of the art, world-class, show-stopping, out of this world). Also, more weakly, ' nothing' right after is/was opening a judgement of something (was nothing special, is nothing short of, is nothing to sneeze at), but not after a comma or in literal uses (nothing in the fridge, nothing to do). Quiet on intense words that arrive as one whole token (amazing, incredible, breathtaking), on mild verdicts without 'nothing' (mediocre, pretty good), and on the same opening words used literally (the top of the hill, around the world). Also quiet on long neutral words split into pieces, in caps or not (photosynthesis, INTERNATIONALIZATION, CALIFORNIA): the chunk must belong to a verdict word. Only weak on first-rate and top-notch."
+ }
+}
