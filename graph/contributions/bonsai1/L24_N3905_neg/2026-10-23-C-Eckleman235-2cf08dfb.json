@@ -1,0 +1,154 @@
+{
+ "id": "2026-10-23-C-Eckleman235-2cf08dfb",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N3905-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-23T23:04:18+00:00",
+ "recipe": {
+  "toolchain_commit": "52e76e5c",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L24_N3905_neg/2026-10-23-C-Eckleman235-2cf08dfb.tests.json"
+ },
+ "label": "the 1950s: a number from 1950 to 1959 in a text set in the 1950s (Eisenhower, early television, rock and roll, the polio vaccine, Sputnik), whether it is a year or a count; the same 195x count in a modern or other-era text, and other decades' years in the same kind of text, stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L24_N3905_neg/2026-10-23-C-Eckleman235-2cf08dfb.tests.json",
+   "prereg_commit": "52e76e5c",
+   "author": "C-Eckleman235",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.601,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.161,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.046,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.468,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.748,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.648,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.63,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.575,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.048,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.042,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.028,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.207,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.025,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.009,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.041,
+     "peak": "7"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.045,
+     "peak": "7"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.953,
+    "median_fire": 0.588,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "second-round",
+   "which"
+  ],
+  "detected": [],
+  "toolchain_commit": "52e76e5c",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "short": "the 1950s, gated by context (round 2)",
+ "unit_kind": "meaning",
+ "confidence": 0.45,
+ "notes": "Second round on my own held label (round 1: #392, 'the 1950s (in digits)'). Reason, written before this test: a context year atlas (every year 1700-2029 read as a year, as a count, and as a count after a no-digit cue sentence about the matching era, an era 50 or 100 years away, or a modern setting; discovery only) found this pole's 195x readings strongly gated by context: inside 1950-59 it read 0.23 as a bare year in 'She was born in Y.', 0.05 as a plain count, 0.03 as a count in a modern cue, but 0.72 as a count after a 1950s cue (0.13 with a cue 50 years off, 0.06 with one 100 years off). Across the late decade units (layers 21-27, n=80) the same pattern holds on average: count 0.09, matched era 0.22, era 50 years off 0.13, era 100 years off 0.09. This round tests the context-gated label on fresh cues; no cue sentence of the atlas is reused. Scoring runs on a Modal L40S (bfloat16; PARITY OK on Modal).",
+ "selection": "concept search: time (context year atlas)"
+}
