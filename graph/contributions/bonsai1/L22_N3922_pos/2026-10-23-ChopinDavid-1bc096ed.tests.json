@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-1bc096ed",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N3922+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T06:19:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N3922",
+   "pole": "+",
+   "label": "the comma-and-closing-quote (,\" or ,”) that ends a quoted spoken statement before its attribution in news writing; indirect speech stays quiet",
+   "fire": [
+    "\"The new clinic will serve thousands of patients each year,\" said the mayor.",
+    "“Our data show a clear link between sleep and memory,” Patel said in an interview.",
+    "\"We did not expect the bridge to fail so quickly,\" an engineer told reporters.",
+    "“It was the hardest season of my career,” the coach said after the final game.",
+    "\"These birds have been returning to the island for centuries,\" says Dr. Moreau.",
+    "“Families should check their smoke alarms twice a year,” the fire chief added.",
+    "\"The results surprised everyone on the team,\" said lead author Kim Hoang, PhD.",
+    "“We are proud of what our students achieved this year,” the principal said."
+   ],
+   "quiet": [
+    "The mayor said the new clinic will serve thousands of patients each year.",
+    "In an interview, Patel described a clear link between sleep and memory.",
+    "An engineer told reporters that nobody expected the bridge to fail so quickly.",
+    "The coach called it the hardest season of his career after the final game.",
+    "Dr. Moreau has studied the birds returning to the island for many years.",
+    "The fire chief reminded families to check their smoke alarms twice a year.",
+    "Lead author Kim Hoang said the results surprised everyone on the team.",
+    "The principal praised the students for what they achieved this year."
+   ]
+  }
+ ],
+ "predictions": "fire 0.55-0.8 on ,\" before 'said X'; the same statements as indirect speech near 0.0-0.12",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "comma closing a news quote",
+ "unit_kind": "context",
+ "confidence": 0.8,
+ "notes": "Card: all 32 top peaks are ,\" or ,” before 'said/says X'. Probe: ',\" said Dr. Lopez' 0.763, '” Grijalva said' 0.605, ',\" she said' 0.565; '.\"' ending a quote also 0.467 (so not tested as near miss); indirect speech 0.110, list of quoted words 0.018."
+}

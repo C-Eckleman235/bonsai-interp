@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-0e2a8352",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N4625-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T06:19:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L19/N4625",
+   "pole": "-",
+   "label": "the slot just before the new or compared amount in a price or quantity change ('to $X', 'compared with $X', 'only X dollars')",
+   "fire": [
+    "After the discount, the price of the course will be only 59 dollars instead of 300.",
+    "Thanks to the new panels, the yearly energy bill dropped to $410 from $1,900.",
+    "Child mortality fell from 120 deaths per 1,000 births in 1990 to 45 per 1,000 in 2015.",
+    "The standard fare costs $18,250 compared with $26,400 for business class.",
+    "With the student card, your fare will be only 12 euros rather than 40.",
+    "Coal use dropped by 80 percent, from 40 million tonnes in 1985 to 8.2 million tonnes.",
+    "So Parent B will receive $240 of the total, which is 40% of the combined income.",
+    "The player's market value rose from 400,000 to 950,000 euros in a single season."
+   ],
+   "quiet": [
+    "The course has 59 students and meets twice a week in the evening.",
+    "The panels were installed on a roof that faces south toward the river.",
+    "The hospital opened in 1990 and now has 45 beds for children.",
+    "The ticket office opens at 9 and closes at 5 on weekdays.",
+    "The student card also gives free entry to the city museums on Sundays.",
+    "The mine employed 800 workers when it opened near the coast in 1985.",
+    "Parent B lives in the city and visits the children every second weekend.",
+    "The player scored 12 goals last season and signed a new contract in June."
+   ]
+  }
+ ],
+ "predictions": "weak: fire 0.05-0.25 at best; near misses with numbers in no comparison near 0.0-0.05; likely fails",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "slot before the compared amount",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card peaks (max 28.9, very rare) sit on the token before the second figure of a from-to change or cost comparison. Probe was weak: 'only 49 dollars instead of 120' 0.224, 'from 300 ... to more than 2,000' 0.131, 'to $85' 0.070, 'compared with $65' 0.072, 'from 12 percent ... to 7 percent' 0.048. Best-guess test only."
+}
