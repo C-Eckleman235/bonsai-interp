@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-23-moridinamael-75d6f8d4",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N9624+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T12:17:13+00:00",
+ "roles": ["reads bonsai1/L31/N10108-"],
+ "neighbours": [
+  {
+   "unit": "L35/N9624",
+   "pole": "+",
+   "label": "The first piece of a borrowed or invented name or word that the tokenizer cuts up, when context makes its ending obvious: Tolkien names (' Mel' of Melkor, ' M' of Mordor) and Korean or Japanese loanwords spelled out in that script (캐릭터 'character', 코리아 'Korea', ジーパン 'jeans'). Quiet for the native word in the same slot (한국, 역할, ズボン) and for many other fantasy names (Tatooine, Gandalf, Frodo). Also fires on an Eastern Arabic digit inside a date (٣٠-٨-٢٠١١).",
+   "short": "first piece of a split loanword / Tolkien name",
+   "confidence": "low",
+   "notes": "Step-in reader of L31/N10108- (drop only 0.03; the label has nothing to do with the feeder's 'plays a part'). Cold mission: labelled from own tops and probes only. Fires were inconsistent in probing (cymbals 0.42 vs 0.00 in two frames). Test sentences written blind by a label-only author; solver leak (Arabic date) placed by that author.",
+   "fire": [
+    "نظم نادي الطلاب السعودي في مدينة سيدني في يوم الاثنين الموافق ٣٠-٨-٢٠١١",
+    "Melkor, the first Dark Lord, rebelled against the other Valar.",
+    "Frodo carried the Ring all the way to Mordor.",
+    "이 게임의 캐릭터 디자인이 정말 마음에 든다.",
+    "코리아 팀이 결승전에 진출했습니다.",
+    "週末は新しいジーパンを買いに行った。",
+    "The armies of Morgoth marched out of Angband.",
+    "She stood on the slopes of Mount Taniquetil and looked west."
+   ],
+   "quiet": [
+    "다양한 역할을 소화해낸다.",
+    "Gandalf the Grey rode quickly across the plains.",
+    "Frodo and Sam walked through the long night.",
+    "이 게임의 인물 묘사가 정말 마음에 든다.",
+    "한국 팀이 결승전에 진출했습니다.",
+    "週末は新しいズボンを買いに行った。",
+    "Luke Skywalker grew up on Tatooine with his uncle.",
+    "She stood on the slopes of the mountain and looked west."
+   ]
+  }
+ ],
+ "predictions": "shaky: expect sentence-initial Melkor/코리아 to score lower; maybe 5/8 fire",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "blind-room"
+  ]
+ }
+}
