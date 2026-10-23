@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-349b548f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N4551-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T20:20:16+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N4551",
+   "pole": "-",
+   "label": "the French word-opening prefix piece ' dé' (dé|rangé, dé|licieux, dé|modée; not the whole tokens ' dém', ' dés', ' décidé'), as against French sentences on the same topics whose words do not start with a split dé-",
+   "fire": [
+    "Après le match, les joueurs étaient complètement dévastés.",
+    "Le vieux château était délabré au printemps dernier.",
+    "Elle a trouvé le gâteau vraiment délicieux hier soir.",
+    "Le chat a dérangé les poules toute la nuit.",
+    "Ils se sont sentis dépassés par le travail de leur père.",
+    "Mon frère a été déçu par la fin du film.",
+    "La neige a fini par dégeler sur la route du village.",
+    "Cette vieille robe est un peu démodée maintenant."
+   ],
+   "quiet": [
+    "Après le match, les joueurs étaient complètement épuisés.",
+    "Le vieux château était rénové au printemps dernier.",
+    "Elle a trouvé le gâteau vraiment savoureux hier soir.",
+    "Le chat a poursuivi les poules toute la nuit.",
+    "Ils se sont sentis fatigués par le travail du père.",
+    "Mon frère a été surpris par la fin du film.",
+    "La neige a fini par fondre sur la route du village.",
+    "Cette vieille robe est un peu usée maintenant."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-0.9 on split ' dé' words; French near misses without them 0.0-0.25",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "French prefix piece ' dé'",
+ "unit_kind": "token",
+ "confidence": 0.7,
+ "notes": "Card: ' dé' x21 (dé|gueu, dé|guisée, dé|rangé, dé|licieux), ' de' x4 (also English 'de|formed'). Probe: 'dédaignés' 0.847, 'démodée' 0.807, 'dérangé' 0.673, 'délicieux' 0.621; 'décidé' (one token) 0.099, French 'restaurant de la gare' 0.234, 'Le petit pain ... très bon' 0.102, English 'deformed' 0.564. Near misses avoid de- words entirely because ' de' leaks."
+}

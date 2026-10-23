@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-d0ba8848",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N9848+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T20:20:16+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N9848",
+   "pole": "+",
+   "label": "Japanese running text (kana-bearing sentences), as against Chinese or English sentences on the same topics",
+   "fire": [
+    "週末は家族と一緒に近くの公園へ散歩に行きました。",
+    "この店のラーメンはとても人気があって、いつも行列ができています。",
+    "新しいスマートフォンを買ったので、写真をたくさん撮りたいと思います。",
+    "台風が近づいているため、明日の授業は休みになるそうです。",
+    "駅の近くに小さな図書館があり、静かに本を読むことができます。",
+    "母は毎朝早く起きて、庭の花に水をあげています。",
+    "来月から新しいプロジェクトが始まるので、準備を進めています。",
+    "京都の古いお寺を訪れて、紅葉の美しさに感動しました。"
+   ],
+   "quiet": [
+    "周末我和家人一起去附近的公园散步。",
+    "这家店的拉面非常受欢迎，门口总是排着长队。",
+    "我买了一部新手机，想拍很多照片。",
+    "因为台风正在靠近，明天的课程将会取消。",
+    "车站附近有一个小图书馆，可以安静地看书。",
+    "母亲每天早上很早起床，给花园里的花浇水。",
+    "下个月新项目就要开始了，我们正在做准备。",
+    "我参观了京都的古老寺庙，被红叶的美丽所感动。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 across Japanese sentences; Chinese on the same topics 0.05-0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Japanese text",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card max 214, broad (1.9% of tokens at 0.1), peaks on varied Japanese tokens ('大', 'と', 'に', 'すごく'). Probe: five Japanese sentences 0.404-0.774 and even 'これはペンです。' 0.471; a Chinese sentence 0.090, English 0.008-0.021. The pole looks like a language detector for Japanese rather than a lexical unit."
+}

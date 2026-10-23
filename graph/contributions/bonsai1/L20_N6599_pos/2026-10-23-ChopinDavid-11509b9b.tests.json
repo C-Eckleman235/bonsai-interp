@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-11509b9b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N6599+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T20:20:16+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L20/N6599",
+   "pole": "+",
+   "label": "a sentence-opening 'It'/'They' that picks up a concrete object just described in the previous sentence, as against dummy 'it' and sentences that repeat the noun",
+   "fire": [
+    "My uncle left me a brass compass. It still points north after fifty years.",
+    "We bought two goldfish at the fair. They swim in circles all day.",
+    "She found an old radio in the attic. It crackles but still plays music.",
+    "The farmer showed us his new tractor. It cost more than his house.",
+    "I keep a small notebook by my bed. It is full of half-remembered dreams.",
+    "The village has three ancient wells. They never run dry, even in summer.",
+    "He repaired his grandfather's bicycle. It rides as smoothly as a new one.",
+    "Our neighbours adopted two kittens. They sleep on the porch every afternoon."
+   ],
+   "quiet": [
+    "My uncle left me a brass compass. The compass still points north after fifty years.",
+    "We bought two goldfish at the fair. The goldfish swim in circles all day.",
+    "She found an old radio in the attic. Nobody remembers who owned the radio.",
+    "The farmer showed us his new tractor. Prices for tractors have doubled lately.",
+    "I keep a small notebook by my bed. Sometimes I wake up and write a few lines.",
+    "The village has three ancient wells. Villagers draw water there every morning.",
+    "He repaired his grandfather's bicycle. Later that day it started to snow.",
+    "Our neighbours adopted two kittens. Their children named the kittens after planets."
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.4 on resumptive 'It'/'They' after an object is introduced; dummy 'it' and repeated nouns 0.0-0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "resumptive It/They for an object",
+ "unit_kind": "context",
+ "confidence": 0.25,
+ "notes": "Card max 7.25 with peaks on ' It', ' it', ' They' after a described object ('but it makes a difference', '. It looked like'). Probe: 'an old clock. It still keeps' 0.364, 'checked the pumps. They seem' 0.206, 'apple trees ... They already' 0.128, but 'The new bridge opened. It carries' only 0.060 and 'but it lacked' 0.058 (peak elsewhere); dummy 'It is raining' 0.075. A weak, inconsistent pole; best guess."
+}
