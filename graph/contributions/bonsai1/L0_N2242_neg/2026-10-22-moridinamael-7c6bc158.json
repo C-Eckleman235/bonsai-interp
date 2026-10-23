@@ -1,0 +1,155 @@
+{
+ "id": "2026-10-22-moridinamael-7c6bc158",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N2242-",
+ "contributor": "moridinamael",
+ "created": "2026-10-23T05:22:51+00:00",
+ "recipe": {
+  "toolchain_commit": "44c26576",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N2242_neg/2026-10-22-moridinamael-7c6bc158.tests.json"
+ },
+ "label": "the character 出 ('out') when the tokenizer keeps it as its own token (strong: Chinese 出题, 出海, 出清, traditional 出發, Japanese 出ます, 日の出), plus Korean 출 in any word at about a third of that; weak when 出 is merged into one token with a neighbour (simplified 出发, 出来, 提出, 出席, 出身, 演出) and silent for 'out/leave' meanings without the character (离开, 行く, exit)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N2242_neg/2026-10-22-moridinamael-7c6bc158.tests.json",
+   "prereg_commit": "44c26576",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.341,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.759,
+     "peak": "出"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.816,
+     "peak": "出"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.824,
+     "peak": "出"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.751,
+     "peak": "出"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.769,
+     "peak": "出"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.709,
+     "peak": "出"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.806,
+     "peak": "出"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.003,
+     "peak": "这本书"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.025,
+     "peak": "布置"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.046,
+     "peak": "进入"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": "年底"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.016,
+     "peak": "去"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.006,
+     "peak": "へ"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.023,
+     "peak": "を見"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.009,
+     "peak": "离开了"
+    }
+   ],
+   "probed_before": {
+    "fire": 1,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.764,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "44c26576",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Test sentences written blind by a second author from the label only (stream rule). Feeder chosen from the resident attribution ranking because play step ran out of GPU memory, so no ablation edge is recorded. Korean 출 (about 0.32 on probes) came from the inverse solver's leak.",
+ "roles": [
+  "feeds bonsai1/L1/N6242+"
+ ]
+}
