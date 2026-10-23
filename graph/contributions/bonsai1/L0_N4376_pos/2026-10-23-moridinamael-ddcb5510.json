@@ -1,0 +1,157 @@
+{
+ "id": "2026-10-23-moridinamael-ddcb5510",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N4376+",
+ "contributor": "moridinamael",
+ "created": "2026-10-23T20:39:24+00:00",
+ "recipe": {
+  "toolchain_commit": "6d321ee1",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N4376_pos/2026-10-23-moridinamael-ddcb5510.tests.json"
+ },
+ "label": "The chunk \"ass\" when the tokenizer cuts it off as its own piece: after a hyphen in compounds (Steam-Assisted, Quality-Assurance, power-assisted, self-assessment, lane-assist, character-assassination), at the start of names like Assam and Assassin's Creed, and the standalone word for a donkey. Quiet for ordinary whole words that merely contain the letters (assist, assess, assets, assignment, Assembly, class, glass, embassy, Massachusetts, unhyphenated \"Quality Assurance\") and for hyphen splits that give \"-as\" (machine-assembled). Weak (about 0.3-0.4) on short words ending in -ass (grass, bass, brass).",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N4376_pos/2026-10-23-moridinamael-ddcb5510.tests.json",
+   "prereg_commit": "6d321ee1",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.861,
+     "peak": "-Ass"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.94,
+     "peak": "-Ass"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.529,
+     "peak": "-ass"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.591,
+     "peak": "-ass"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.654,
+     "peak": "-ass"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.818,
+     "peak": "ass"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.638,
+     "peak": " Ass"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.344,
+     "peak": " Assassin"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.007,
+     "peak": " reach"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.203,
+     "peak": " Assurance"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.225,
+     "peak": " assist"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.127,
+     "peak": " assess"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.006,
+     "peak": " gently"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.024,
+     "peak": " unfair"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.029,
+     "peak": " loose"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.019,
+     "peak": " playing"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.646,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "6d321ee1",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-out from bonsai1/L2/N9112+ ('cass' at word start). play step ran out of GPU memory, so the feeder was chosen from the resident attribution ranking (top MLP feeder). Test sentences written blind by a second author from the label only.",
+ "roles": [
+  "feeds bonsai1/L2/N9112+"
+ ]
+}

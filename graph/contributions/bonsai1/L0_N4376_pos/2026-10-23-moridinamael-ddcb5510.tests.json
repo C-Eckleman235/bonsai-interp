@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-23-moridinamael-ddcb5510",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N4376+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T20:39:02+00:00",
+ "roles": ["feeds bonsai1/L2/N9112+"],
+ "neighbours": [
+  {
+   "unit": "L0/N4376",
+   "pole": "+",
+   "label": "The chunk \"ass\" when the tokenizer cuts it off as its own piece: after a hyphen in compounds (Steam-Assisted, Quality-Assurance, power-assisted, self-assessment, lane-assist, character-assassination), at the start of names like Assam and Assassin's Creed, and the standalone word for a donkey. Quiet for ordinary whole words that merely contain the letters (assist, assess, assets, assignment, Assembly, class, glass, embassy, Massachusetts, unhyphenated \"Quality Assurance\") and for hyphen splits that give \"-as\" (machine-assembled). Weak (about 0.3-0.4) on short words ending in -ass (grass, bass, brass).",
+   "short": "the chunk \"ass\" split off as its own token",
+   "unit_kind": "lexical (token piece)",
+   "fire": [
+    "The game uses Steam-Assisted gravity drilling to reach the lower levels.",
+    "She works in the Quality-Assurance department at a software firm.",
+    "My old bike had power-assisted brakes that squeaked constantly.",
+    "Fill out the self-assessment form before your annual review.",
+    "The new car's lane-assist feature nudged the wheel back gently.",
+    "The senator called the article a character-assassination piece.",
+    "We bought a tin of loose-leaf tea grown in Assam.",
+    "He spent the whole weekend playing Assassin's Creed."
+   ],
+   "quiet": [
+    "The game uses steam pressure to help drilling reach the lower levels.",
+    "She works in Quality Assurance at a software firm.",
+    "My old bike had brakes that I could assist with a lever.",
+    "Teachers will assess each student's work before the annual review.",
+    "The new car's steering feature nudged the wheel back gently.",
+    "The senator called the article an unfair attack on his reputation.",
+    "We bought a tin of loose-leaf tea grown in Darjeeling.",
+    "He spent the whole weekend playing a pirate adventure game."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire above 0.3; near misses under 0.25 (unhyphenated Quality Assurance and assist about 0.2 are the risk)",
+ "notes": "Step-out from bonsai1/L2/N9112+ ('cass' at word start). play step ran out of GPU memory, so the feeder was chosen from the resident attribution ranking (top MLP feeder). Test sentences written blind by a second author from the label only.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
