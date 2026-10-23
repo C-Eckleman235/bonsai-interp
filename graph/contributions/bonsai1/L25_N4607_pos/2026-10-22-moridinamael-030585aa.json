@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-22-moridinamael-030585aa",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N4607+",
+ "contributor": "moridinamael",
+ "created": "2026-10-23T02:01:42+00:00",
+ "recipe": {
+  "toolchain_commit": "b108bc2f",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N4607_pos/2026-10-22-moridinamael-030585aa.tests.json"
+ },
+ "label": "Symbols inside an expression in program code: quoted string values, operators like = + < and multi-digit numbers (e.g. name = 'Alice', i < n, base_dir + 'x'); prose describing the same code stays quiet. Also fires in prose quoting an on-screen form prompt (a \"pick a username\" field).",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N4607_pos/2026-10-22-moridinamael-030585aa.tests.json",
+   "prereg_commit": "b108bc2f",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.643,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.765,
+     "peak": " <"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.338,
+     "peak": " +"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.252,
+     "peak": "\")"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.579,
+     "peak": " +"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.273,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.717,
+     "peak": " >"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.119,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.063,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.158,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.045,
+     "peak": " adding"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.035,
+     "peak": " path"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.046,
+     "peak": " gets"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.138,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.014,
+     "peak": " doubling"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.028,
+     "peak": " in"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.459,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "b108bc2f",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L24/N8804-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L24/N8804-", "to": "bonsai1/L25/N4607+", "kind": "feeds", "weight": 0.65, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
