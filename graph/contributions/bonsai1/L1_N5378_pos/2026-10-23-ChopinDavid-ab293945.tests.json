@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-ab293945",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N5378+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T08:20:05+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N5378",
+   "pole": "+",
+   "label": "dense layer-1 pole with a tiny max (0.19), on for 18% of tokens; strongest on nouns like ' bottle' and ' expression' and the piece 'ze'",
+   "fire": [
+    "He opened a bottle of cold water after the long run.",
+    "The baby dropped her bottle on the kitchen floor.",
+    "A broken bottle lay in the gutter outside the pub.",
+    "The expression of this protein rises after an infection.",
+    "Her face had a puzzled expression when she read the letter.",
+    "They found an old glass bottle buried in the sand.",
+    "Researchers measured the expression of twenty genes in the liver.",
+    "Please put the empty bottle in the green recycling bin."
+   ],
+   "quiet": [
+    "He opened a can of cold soda after the long run.",
+    "The baby dropped her spoon on the kitchen floor.",
+    "A broken chair lay in the gutter outside the pub.",
+    "The level of this protein rises after an infection.",
+    "Her face turned pale when she read the letter.",
+    "They found an old iron key buried in the sand.",
+    "Researchers measured the size of twenty cells in the liver.",
+    "Please put the empty box in the green recycling bin."
+   ]
+  }
+ ],
+ "predictions": "fire items 0.5-0.8 on bottle/expression; near misses may still fire 0.1-0.2 because the pole is dense",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense (bottle / expression)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Dense flag (18.1%), gate-closed regime 96%. Probe: 'A bottle of red wine' 0.850, 'Brzezinski' ('ze') 0.752, 'expression of the gene' 0.674, 'from the bottle' 0.577; 'heavy bag' 0.172, 'the fire' 0.138. Registered as a best-guess token test."
+}
