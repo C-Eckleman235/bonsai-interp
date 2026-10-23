@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-abc10d51",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N4870-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T23:20:07+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N4870",
+   "pole": "-",
+   "label": "the closing '|' + newline token that ends a row of a pipe-delimited table",
+   "fire": [
+    "Nutrition per serving:\n|Item||Calories||Sugar|\n|Apple||95||19g|\n|Banana||105||14g|\n|Orange||62||12g|",
+    "Opening hours:\n|Day||Open||Close|\n|Monday||9am||5pm|\n|Saturday||10am||2pm|",
+    "Results of the club race:\n| Runner | Time |\n| --- | --- |\n| Dana | 41:12 |\n| Eli | 43:50 |\n| Finn | 45:03 |",
+    "Room features:\n|Feature||Included|\n|Wi-Fi||Yes|\n|Balcony||No|\n|Kitchen||Yes|",
+    "The plan compares as follows:\n| Plan | Price | Storage |\n| --- | --- | --- |\n| Basic | $5 | 50 GB |\n| Pro | $12 | 1 TB |",
+    "Symptoms and advice:\n|Symptom||What to do|\n|Mild fever||Rest and drink fluids|\n|Rash||Call your doctor|",
+    "Team roster:\n|Name||Position||Number|\n|Ana||Goalkeeper||1|\n|Ben||Defender||4|\n|Cal||Forward||9|",
+    "Exchange rates today:\n| Currency | Rate |\n| --- | --- |\n| EUR | 0.92 |\n| GBP | 0.79 |\n| JPY | 149.3 |"
+   ],
+   "quiet": [
+    "Nutrition per serving:\nItem, Calories, Sugar\nApple, 95, 19g\nBanana, 105, 14g\nOrange, 62, 12g",
+    "Opening hours:\nDay\tOpen\tClose\nMonday\t9am\t5pm\nSaturday\t10am\t2pm",
+    "Results of the club race: Dana finished in 41:12, Eli in 43:50 and Finn in 45:03.",
+    "Room features:\n- Wi-Fi: yes\n- Balcony: no\n- Kitchen: yes",
+    "The plan compares as follows: Basic costs $5 for 50 GB, while Pro costs $12 for 1 TB.",
+    "Symptoms and advice:\nMild fever; rest and drink fluids.\nRash; call your doctor.",
+    "Team roster:\nAna (Goalkeeper, 1)\nBen (Defender, 4)\nCal (Forward, 9)",
+    "Exchange rates today: EUR 0.92; GBP 0.79; JPY 149.3."
+   ]
+  }
+ ],
+ "predictions": "Multi-row pipe tables (||-style or markdown) fire at the row-ending '|\\n'; the same data as CSV, tab-separated or prose stays quiet.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "pipe-table row end",
+ "unit_kind": "token/format",
+ "confidence": "high",
+ "notes": "Card: 14 of the top 32 peak on '|\\n' in ||-style web tables. Probe: four pipe tables 0.33-0.74 (all peak '|\\n' or ' |\\n'); the same rows as CSV 0.007 and TSV 0.005; a sentence mentioning the pipe symbol 0.006. Card peaks on ' breath' and ' Hair' are the last cell before the row end."
+}

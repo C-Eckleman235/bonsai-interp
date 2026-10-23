@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-7770c5b6",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N11070-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-22T23:29:41+00:00",
+ "recipe": {
+  "toolchain_commit": "3dcbece6",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L24_N11070_neg/2026-10-22-ChopinDavid-7770c5b6.tests.json"
+ },
+ "label": "bracketed section labels and source tags of Japanese web news pages (【特集】, 【速報】, site domains), as opposed to Japanese prose",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L24_N11070_neg/2026-10-22-ChopinDavid-7770c5b6.tests.json",
+   "prereg_commit": "3dcbece6",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.613,
+     "peak": "集"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.689,
+     "peak": "特"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.435,
+     "peak": "報"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.819,
+     "peak": "集"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.433,
+     "peak": "報"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.17,
+     "peak": "news"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.638,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.689,
+     "peak": "特"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.093,
+     "peak": "とても"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.142,
+     "peak": "ン"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.13,
+     "peak": "で"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.099,
+     "peak": "は"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.157,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.176,
+     "peak": "詳"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.345,
+     "peak": "ン"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.167,
+     "peak": "映"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.625,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "3dcbece6",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "Japanese web-news tags",
+ "unit_kind": "context",
+ "confidence": "medium",
+ "notes": "Card top: 【特集】 x4, '.com' x3, 【関連記事】 lists, [블로터TV]. Probe: 【特集】 headline 0.61, 【関連記事】+【特集】 0.69, 【速報】 0.43, livedoor.com URL 0.40, 特集： 0.40, 特集 in prose 0.34; plain Japanese 0.105, English 'special feature' 0.15.",
+ "selection": "random draw"
+}

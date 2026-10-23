@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-5298018c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N62+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-22T23:20:07+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N62",
+   "pole": "+",
+   "label": "a word-final 'y' or 'ty' piece left over when the tokenizer splits a word (Mohanty, shanty, nutty), not whole-token words ending in y",
+   "fire": [
+    "The report was edited by S. Mahanty at the institute.",
+    "The explorer Charles Doughty wrote about his travels in Arabia.",
+    "Our old dog Rusty still loves chasing the mail truck.",
+    "We named the gray kitten Misty because of her smoky fur.",
+    "The sailors sang a sea shanty while they hauled the ropes.",
+    "The professor seemed a bit nutty, but his lectures were brilliant.",
+    "The lawyer K. Mohanty filed the appeal on Monday.",
+    "She bought a lacy panty set for her honeymoon trip."
+   ],
+   "quiet": [
+    "The report was edited by S. Kumar at the institute.",
+    "The explorer Richard Burton wrote about his travels in Arabia.",
+    "Our old dog Kitty still loves chasing the mail truck.",
+    "We named the gray kitten Smoke because of her dark fur.",
+    "The sailors sang a work song while they hauled the ropes.",
+    "The professor seemed a bit odd, but his lectures were brilliant.",
+    "The lawyer Dorothy Kim filed the appeal on Monday.",
+    "She bought a matching Patty doll for her niece."
+   ]
+  }
+ ],
+ "predictions": "Split words ending in a separate 'y'/'ty' piece fire; whole-token -y names (Kitty, Dorothy, Patty) and unrelated words stay quiet.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-off final 'y'",
+ "unit_kind": "token/spelling",
+ "confidence": "medium",
+ "notes": "Card: 'y' x16, 'ty' x3, 'itty' x3 (Mohanty, shanty, Ra-Horakhty, Nutty, Tutty). Probe: Mohanty 0.80, shanty 0.83, nutty 0.57, Horakhty 0.84, Tutty 0.91; cabin 0.028, Kumar 0.029. Whole-token -y names untested: the quiet set tests token vs sound."
+}
