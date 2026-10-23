@@ -1,0 +1,156 @@
+{
+ "id": "2026-10-22-moridinamael-26f89347",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N9523-",
+ "contributor": "moridinamael",
+ "created": "2026-10-23T03:22:24+00:00",
+ "recipe": {
+  "toolchain_commit": "d85e627f",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N9523_neg/2026-10-22-moridinamael-26f89347.tests.json"
+ },
+ "label": "nouns for a person sent to carry word on someone's behalf: emissary, envoy, messenger, herald, courier (and Arabic رسول, weaker in other languages); postman, prophet, angel, diplomat and the word 'message' stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N9523_neg/2026-10-22-moridinamael-26f89347.tests.json",
+   "prereg_commit": "d85e627f",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.904,
+     "peak": "ary"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.547,
+     "peak": " herald"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.389,
+     "peak": " courier"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.463,
+     "peak": " envoy"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.444,
+     "peak": " messenger"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.534,
+     "peak": " envoy"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.373,
+     "peak": " courier"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.327,
+     "peak": " messenger"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.034,
+     "peak": "uce"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.011,
+     "peak": " decree"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.084,
+     "peak": "man"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.123,
+     "peak": " diplomat"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.015,
+     "peak": "ath"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.076,
+     "peak": " sent"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.003,
+     "peak": " bank"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.005,
+     "peak": " decided"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.454,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "d85e627f",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-out feeder of bonsai1/L35/N5416- chosen from the resident attribution ranking (top MLP feeder); play step ran out of GPU memory, so no ablation edge is recorded. Blind test written label-only by a second author. Solver (differential evolution) found no leak; near-miss ceiling 0.24 (prophet/angel).",
+ "roles": [
+  "feeds bonsai1/L35/N5416-"
+ ]
+}
