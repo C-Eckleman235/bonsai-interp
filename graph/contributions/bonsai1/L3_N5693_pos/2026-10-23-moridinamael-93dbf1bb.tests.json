@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-23-moridinamael-93dbf1bb",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N5693+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T13:37:32+00:00",
+ "roles": ["feeds bonsai1/L5/N11279+"],
+ "neighbours": [
+  {
+   "unit": "L3/N5693",
+   "pole": "+",
+   "label": "'likely to' when a degree word grades it: 'more / less / far less / most / twice as likely to <verb>' about who does something (peaks on ' to'); quiet on plain 'is likely to' with no degree word, on 'most likely' used as an adverb ('will most likely close'), on 'the more likely outcome', and on 'more prone / apt / inclined / liable to'",
+   "short": "graded 'more/less likely to'",
+   "fire": [
+    "Teenagers who sleep less are more likely to skip breakfast.",
+    "Drivers over seventy are far less likely to speed than younger drivers.",
+    "Smokers were twice as likely to develop the disease in the study.",
+    "Of all the groups surveyed, retirees were the most likely to vote by mail.",
+    "Children with older siblings are less likely to be shy at school.",
+    "Customers who receive a reminder email are much more likely to renew their subscription.",
+    "In the trial, patients on the new drug were three times as likely to recover within a week.",
+    "Cats raised indoors are less likely to catch infections."
+   ],
+   "quiet": [
+    "Teenagers who sleep less are likely to skip breakfast.",
+    "Drivers over seventy are far less prone to speed than younger drivers.",
+    "The store will most likely close early on Friday.",
+    "Of all the scenarios, a rainy weekend is the more likely outcome.",
+    "Children with older siblings are less inclined to be shy at school.",
+    "Customers who receive a reminder email are likely to renew their subscription.",
+    "In the trial, the new drug will most likely be approved next year.",
+    "Cats raised indoors are less liable to catch infections."
+   ],
+   "confidence": "medium",
+   "notes": "Test sentences written blind by a second author who saw only the label. Probes: 'more/less/most/twice as likely to' 0.61-1.02 peaking on ' to'; plain 'likely to' 0.10-0.17; 'more likely than' 0.16-0.36; 'most likely' adverb, 'likely that', probable/possible, prone/apt/inclined/liable ~0. Also fires strongly on Japanese 可能 after a verb-noun (実現可能, 三分割可能, 使用可能 in corpus context, 0.6-1.1) but not on a short '使用可能です' sentence; not tested here. Found via the resident feeders tool (attribution), since play step ran out of GPU memory. The solver (differential evolution) found no leak."
+  }
+ ],
+ "predictions": "most fires above 0.5; plain 'likely to' near misses around 0.1-0.2",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "blind-room",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
