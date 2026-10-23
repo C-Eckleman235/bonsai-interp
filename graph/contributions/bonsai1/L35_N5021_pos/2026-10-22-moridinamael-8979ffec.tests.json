@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-22-moridinamael-8979ffec",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N5021+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T01:01:00+00:00",
+ "roles": ["reads bonsai1/L27/N5995+"],
+ "neighbours": [
+  {
+   "unit": "L35/N5021",
+   "pole": "+",
+   "label": "A Chinese, Japanese or Korean character that the tokenizer splits into byte pieces, standing alone after a space in English text (e.g. 'wrote 山 in paint') or inside Japanese/Korean prose; peaks on its first byte piece and varies a lot by character. Emoji, chess and math symbols, the euro sign and Cyrillic or Latin letters in the same slot stay low, as does a CJK character glued straight onto an English word.",
+   "short": "lone byte-split CJK character",
+   "fire": [
+    "She wrote 山 in black paint across the top of the scroll.",
+    "The sign above the shop door simply read 龍 in faded gold.",
+    "My teacher asked me to practice the character 鬱 twenty times.",
+    "He tattooed 忍 on his forearm after the trip.",
+    "The label on the jar said 塩, which I later learned means salt.",
+    "On the map, a small 寺 marked the location of the temple.",
+    "Can you tell me how to pronounce 鰻 when ordering at the restaurant?",
+    "The stamp at the bottom of the painting showed a single 鶴 in red ink."
+   ],
+   "quiet": [
+    "The farmers checked the fences before the storm arrived.",
+    "Quantum computing is a much stranger affair, relying instead on the qubit as its unit of information.",
+    "She wrote ★ in black paint across the top of the scroll.",
+    "The sign above the shop door simply read € in faded gold.",
+    "My teacher asked me to practice the symbol ∑ twenty times.",
+    "He tattooed ♞ on his forearm after the trip.",
+    "The label on the jar said Ж, which I later learned is a Cyrillic letter.",
+    "On the map, a small 🏯 marked the location of the temple."
+   ],
+   "notes": "Step-in reader of bonsai1/L27/N5995+ (drop 0.50). Card flags the + pole dense (13% of tokens >= 0.1 of max; echo regime). Probes: response varies by character (山 0.54, 風 0.44, 水/火/愛 ~0.18, 한 0.10); plain Japanese/Russian background 0.22-0.32. Test sentences written blind by a label-only author."
+  }
+ ],
+ "predictions": "Most fire sentences 0.2-0.6; near misses mostly <0.2, solver leak lines ~0.1-0.2.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
