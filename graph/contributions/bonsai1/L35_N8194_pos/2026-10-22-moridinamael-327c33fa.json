@@ -1,0 +1,162 @@
+{
+ "id": "2026-10-22-moridinamael-327c33fa",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N8194+",
+ "contributor": "moridinamael",
+ "created": "2026-10-23T05:49:11+00:00",
+ "recipe": {
+  "toolchain_commit": "40e65c52",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N8194_pos/2026-10-22-moridinamael-327c33fa.tests.json"
+ },
+ "label": "the 'of' link right after a disease or danger word in Korean, Japanese or Chinese, heading into an abstract noun like risk, chance or prevention: Korean 의 (간암의 위험, 사고의 위험), Japanese の (糖尿病の危険性, 心臓病の予防), Chinese 患+disease before 的 (患肝癌的风险, peak on the disease token). Silent on bare disease names (糖尿病患者, 폐암 진단), on ordinary possessives (私の傘, 친구의 가방, 我朋友的书) and in English 'risk of'.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N8194_pos/2026-10-22-moridinamael-327c33fa.tests.json",
+   "prereg_commit": "40e65c52",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 6,
+   "n_false_pos": 4,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.605,
+     "peak": "의"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 1.545,
+     "peak": "의"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.295,
+     "peak": "의"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.945,
+     "peak": "의"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.358,
+     "peak": "の"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.61,
+     "peak": "の"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.558,
+     "peak": "の"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.015,
+     "peak": "地震"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.545,
+     "peak": "을"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.5,
+     "peak": "龄"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.499,
+     "peak": "은"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.131,
+     "peak": "의"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.325,
+     "peak": "의"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.006,
+     "peak": " 기"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.022,
+     "peak": "っています"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.042,
+     "peak": "�"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.781,
+    "median_fire": 0.582,
+    "near_misses_at_0.3": 4
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "40e65c52",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-in reader of bonsai1/L33/N7751- (drop about 0.00, so it barely depends on that cell). COLD arm: labelled from the reader's own tops, probes and solver only. Sentences were written blind by a label-only author; the two solver leaks (formal-joiner tops) were placed as near misses by that author.",
+ "roles": [
+  "reads bonsai1/L33/N7751-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L33/N7751-", "to": "bonsai1/L35/N8194+", "kind": "feeds", "weight": 0.0, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
