@@ -8,6 +8,11 @@ Run by the `checks` workflow on every PR, on a CPU runner: the 1-bit weights mak
 results file with invented activations cannot merge quietly. Each sentence must match its recorded activation within
 TOL (CPU vs the CUDA reference differ by well under that). An outcome that flips while every number agrees is
 reported as borderline, not failed. Exit 1 on a mismatch.
+
+Device drift: CI scores on a CPU in float32, contributors on CUDA bf16 or Apple MPS. On 640 sentences from 40 random
+tests the GPU's own batch-shape effect stayed under 0.01, but a few sentences on dense or deep poles differ between
+devices by up to about 0.1 (PRs #677 and #746). A test whose outcome reproduces, with at most DRIFT_N sentences beyond
+TOL and none beyond DRIFT_MAX, passes as "drift". Invented numbers move many sentences or change the outcome.
 """
 import argparse
 import json
@@ -22,6 +27,19 @@ from bonsai_interp.graph.contrib import NEURON, ROOT
 from bonsai_interp.graph.protocols import outcome
 
 TOL = 0.03
+DRIFT_N, DRIFT_MAX = 2, 0.12  # device drift allowed when the outcome reproduces
+
+
+def verdict(diffs, n_expected, same_outcome):
+    """'ok', 'drift' (passes, noted) or 'fail', from per-sentence |claimed - re-scored| values."""
+    if len(diffs) != n_expected:
+        return "fail"
+    over = [d for d in diffs if d > TOL]
+    if not over:
+        return "ok"
+    if same_outcome and len(over) <= DRIFT_N and max(over) <= DRIFT_MAX:
+        return "drift"
+    return "fail"
 
 
 def added_results(base):
@@ -66,11 +84,14 @@ def check(files):
                 same = outcome(redo) == outcome(t)
                 # the job is catching invented numbers: every sentence must reproduce within TOL. An outcome that flips
                 # while the numbers agree is a test on the pass line (e.g. AUROC 0.906 = 58/64 pairs), not a bad result
-                ok = worst <= TOL and len(diffs) == len(t["per_sentence"])
+                v = verdict([abs(a - b) for _, _, a, b in diffs], len(t["per_sentence"]), same)
+                ok = v != "fail"
                 bad += not ok
-                print(f"{'OK  ' if ok else 'FAIL'} {f}: {c.get('neuron')} max |diff| {worst:.3f} (tolerance {TOL}); "
+                print(f"{dict(ok='OK  ', drift='DRFT', fail='FAIL')[v]} {f}: {c.get('neuron')} max |diff| {worst:.3f} (tolerance {TOL}); "
                       f"outcome claimed {outcome(t)}, re-scored {outcome(redo)}"
-                      + ("" if same or not ok else "  [borderline: the numbers reproduce; the outcome sits on the pass line]"))
+                      + ("  [device drift: the outcome reproduces; at most "
+                         f"{DRIFT_N} sentences differ by up to {DRIFT_MAX}]" if v == "drift" else "")
+                      + ("" if same or v != "ok" else "  [borderline: the numbers reproduce; the outcome sits on the pass line]"))
                 if not ok:
                     for s, i, a, b in sorted(diffs, key=lambda d: -abs(d[2] - d[3]))[:4]:
                         print(f"     {s} #{i}: claimed {a:.3f}, re-scored {b:.3f}")

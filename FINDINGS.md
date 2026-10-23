@@ -727,3 +727,23 @@ Two scale facts for the plan:
 - A held quick test reliably means "not an unrelated label" (false-pass rate likely under about 20%).
 - It does not yet show that the label is *precise*. A random wrong label is the easy null.
 - **Next:** the harder null, distinguishing a label from a nearby, broader or narrower one, or from a sibling pole's label.
+
+## 2026-10-23: Scores barely depend on batch shape; replication failures were device drift
+
+Two PRs failed CI spot-replication with the outcome reproduced (#677, recorded on Apple MPS; #746, recorded on CUDA).
+I measured where the differences come from, on CUDA bf16 through the GPU queue.
+
+- **Batch shape is a small effect.** 40 random recent tests (640 sentences), each scored alone and as one mixed
+  batch, as `play run` does: no sentence moved more than 0.03; the largest move was 0.009 and the median of each test's
+  largest move 0.003. One outcome flipped with every sentence within 0.01, a test on the pass line.
+- **The outlier needs both a large batch and padding.** #677's L22/N2943- sentence ("Nearly 450,000 visitors…") scores
+  0.192 alone, 0.191 in a batch of 16 copies of itself, 0.192 padded beside the longest sentence, and 0.231 in the
+  mixed, padded batch of 16: the bf16 arithmetic changes with the overall (batch, length) shape.
+- **The replication failures were mostly device and precision drift.** CI re-scores on a CPU in float32. #677's
+  recorded 0.294 came from MPS (CUDA mixed batch: 0.231). #746's dense L35 pole differs between CUDA bf16 and CPU float32 by
+  up to 0.053, against 0.023 between batch shapes on CUDA.
+
+**Consequence.** No change to how tests are scored. The replication check now separates device drift from a mismatch:
+a test passes as `drift` when its outcome reproduces and at most 2 of its sentences differ by more than 0.03, none by
+more than 0.12 (`bonsai_interp/graph/replicate.py`). Invented numbers still fail: they change the outcome or move many
+sentences.
