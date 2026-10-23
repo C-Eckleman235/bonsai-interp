@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-23-moridinamael-69ce373c",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N336+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T10:37:46+00:00",
+ "roles": ["reads bonsai1/L34/N10752+"],
+ "neighbours": [
+  {
+   "unit": "L35/N336",
+   "pole": "+",
+   "label": "In code, a variable or attribute name right before its square-bracket index or key (scores[i], config[\"port\"], model.layers[3], in Python, JavaScript or C); much weaker when the same name is called, passed to len(), read with .get() or attribute dots, and on square brackets in prose.",
+   "short": "code name right before its [index]",
+   "fire": [
+    "total += scores[i]",
+    "port = config[\"port\"]",
+    "first = model.layers[3]",
+    "const name = users[idx].name;",
+    "int x = buffer[n - 1];",
+    "row = matrix[r][c]",
+    "headers[\"Authorization\"] = token",
+    "let item = cart.items[0];"
+   ],
+   "quiet": [
+    "size = len(data_dict)",
+    "The index of the book lists every scene in order.",
+    "total += sum(scores)",
+    "port = config.get(\"port\")",
+    "n = len(model.layers)",
+    "const name = users.find(u => u.active).name;",
+    "int x = compute_buffer(n - 1);",
+    "row = matrix.shape"
+   ]
+  }
+ ],
+ "predictions": "Subscripted names should fire around 0.4-0.7; near misses in code idle near 0.2-0.3, and len(data_dict) is the solver's leak (0.27-0.36). One-line snippets may score lower than multi-line code.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "neighbors",
+   "step-down",
+   "bank-solo",
+   "inverse-de",
+   "blind-room"
+  ]
+ }
+}
