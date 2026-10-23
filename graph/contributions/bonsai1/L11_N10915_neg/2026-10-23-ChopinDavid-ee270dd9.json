@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-ee270dd9",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N10915-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T06:28:32+00:00",
+ "recipe": {
+  "toolchain_commit": "08e451b8",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L11_N10915_neg/2026-10-23-ChopinDavid-ee270dd9.tests.json"
+ },
+ "label": "'&' or 'and' joining two category names inside a menu, breadcrumb or category label; '&' in running prose and company names stays quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L11_N10915_neg/2026-10-23-ChopinDavid-ee270dd9.tests.json",
+   "prereg_commit": "08e451b8",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.718,
+     "peak": " &"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.957,
+     "peak": " &"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.729,
+     "peak": " Games"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.658,
+     "peak": " &"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.731,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.541,
+     "peak": " &"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.487,
+     "peak": " &"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.552,
+     "peak": " &"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.078,
+     "peak": " &"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.048,
+     "peak": " &"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.023,
+     "peak": " &"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.017,
+     "peak": " &"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.019,
+     "peak": " bakery"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.024,
+     "peak": "arn"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.102,
+     "peak": " &"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.017,
+     "peak": " evening"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.688,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "08e451b8",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "& in a category or menu label",
+ "unit_kind": "context",
+ "confidence": 0.7,
+ "notes": "Card: 'Filed Under: Cards & Casino', 'Accounts and Folders', 'Herbs & Supplements', 'Haberdashery & Acc.'. Probe: 'Accounts and Folders' 0.841, 'Garden & Outdoor' 0.767, 'Food & Drink' 0.652, 'Herbs & Supplements' 0.562; prose 'My brother & I' 0.019, 'Johnson & Johnson' 0.027. A label with no '&' still gave 0.319 on 'Supplements', so the label context matters.",
+ "selection": "random draw"
+}

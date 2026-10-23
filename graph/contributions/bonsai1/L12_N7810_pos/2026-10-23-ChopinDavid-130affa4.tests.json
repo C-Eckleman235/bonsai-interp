@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-130affa4",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N7810+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T06:19:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N7810",
+   "pole": "+",
+   "label": "a later word piece of a multi-piece proper name (author, brand or title), such as 'ipl' in Kipling or 'pants' in Underpants; single-token names stay quiet",
+   "fire": [
+    "Every December the orchestra plays The Nutcracker by Tchaikovsky to a full hall.",
+    "The novel Crime and Punishment by Fyodor Dostoevsky is long but worth reading.",
+    "He bought an old Lamborghini that spends most of the year in the garage.",
+    "The pinball machine in the bar was a Gottlieb model from the late seventies.",
+    "Her phone case was made by a small firm called Otterbox in Colorado.",
+    "My daughter has read every Diary of a Wimpy Kid book at least twice.",
+    "The keynote was given by Arnold Schwarzenegger at a fitness expo in Ohio.",
+    "The amp was built by Marshall and the guitar was a Rickenbacker from 1965."
+   ],
+   "quiet": [
+    "Every December the orchestra plays music by Bach to a full hall of families.",
+    "The novel Hard Times by Charles Dickens is long but worth reading.",
+    "He bought an old Ford that spends most of the year in the garage.",
+    "The pinball machine in the bar was a cheap model from the late seventies.",
+    "Her phone case was made by a small firm in Colorado last year.",
+    "My daughter has read every book in the school library at least twice.",
+    "The keynote was given by a famous actor at a fitness expo in Ohio.",
+    "The amp was built by Marshall and the guitar was a Gibson from 1965."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.65 on the second or later piece of a split name; the same sentences with common single-token names near 0.0-0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "later piece of a multi-piece name",
+ "unit_kind": "token/lexical",
+ "confidence": 0.35,
+ "notes": "Card: B|ally, K|ipl|ing, Jamie Ryan, Under|pants, Hew|lett, wa|fer. Probe: 'ipl' 0.657, 'pants' 0.647, 'lett' 0.448, ' Ryan' 0.390, 'fer' 0.223, but 'ally' in Bally only 0.093. Low max (4.19), weak pole; splits checked with tokcheck."
+}

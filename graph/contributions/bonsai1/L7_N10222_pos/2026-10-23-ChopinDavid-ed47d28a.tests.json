@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-ed47d28a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N10222+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T06:19:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L7/N10222",
+   "pole": "+",
+   "label": "a lowercase word that continues a sentence directly after ! or ? (the 'she said' of a quote, or 'and'/'y' after an exclamation); a capitalised new sentence stays quiet",
+   "fire": [
+    "Then the door burst open. \"Get out of my kitchen!\" she yelled at the two boys.",
+    "Tom looked up from his book. \"Is it raining again?\" he asked with a sigh.",
+    "The bus was nearly empty. \"Where did you put the map?\" she whispered.",
+    "The coach clapped his hands. \"Run faster!\" he cried from the edge of the field.",
+    "Please send me the form by Friday. Ah! and remember to sign the last page.",
+    "Hola Marta. ¿Vienes a la fiesta esta noche? y no olvides traer algo de comer.",
+    "Grandma smiled at us. \"Who wants more cake?\" she asked, holding the plate.",
+    "Thanks so much for the photos from the trip! and say hello to your brother for me."
+   ],
+   "quiet": [
+    "The door suddenly opened. \"Leave my kitchen now!\" Her voice was loud and angry.",
+    "Tom put down his book. \"Is it still raining?\" He walked to the window to look.",
+    "The bus slowed near the bridge. \"Where is the old map?\" Nobody answered her.",
+    "The coach blew his whistle. \"Faster, everyone!\" The players ran to the far end.",
+    "Please return the form before Friday. Also remember to sign the last page.",
+    "Hola Pedro. ¿Vas a la fiesta el sábado? Por favor trae algo de comer.",
+    "Grandma cut the cake for us. \"Who is hungry?\" Everyone raised a hand at once.",
+    "Thank you for the trip photos! Please say hello to your brother for me."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.45 on the lowercase continuation; the same scenes with a capitalised new sentence after ! or ? near 0.0-0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "lowercase continuation after ! or ?",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: '?” she boomed', '! y no olvides', '? y ¿qué', '(so', '(and'. Probe: 'Oh! and don't forget' 0.422, '?\" he asked' 0.335, '!\" she shouted' 0.240; capitalised '!\" She shouted' 0.046, '. And' 0.027; '(and' only 0.021, so parentheses are not tested."
+}
