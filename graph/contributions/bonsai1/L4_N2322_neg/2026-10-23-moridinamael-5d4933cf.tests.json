@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-23-moridinamael-5d4933cf",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N2322-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T23:27:41+00:00",
+ "roles": ["feeds bonsai1/L5/N1838+"],
+ "neighbours": [
+  {
+   "unit": "L4/N2322",
+   "pole": "-",
+   "label": "A verb saying what the program is doing, as the first word of a print/log status message in code (logger.info(\"Starting server\"), printf(\"Initializing buffers\\n\"), System.out.println(\"Processing batch\")); past-tense status (\"Saved results\", \"Model loaded\") and shell echo fire weaker; error, warning, greeting and count messages, the same verbs in comments, variable names or prose, and non-verb '-ing' words (Morning, Something) stay low, though any message after a run of print lines can fire weakly.",
+   "short": "program-action verb opening a print/log message",
+   "fire": [
+    "logger.info(\"Starting server on port 8080\")",
+    "System.out.println(\"Processing batch \" + batchId);",
+    "print(\"Loading model weights from disk...\")",
+    "console.log(\"Connecting to database at \" + dbUrl);",
+    "log.debug(\"Fetching user profile for id=%s\", user_id)",
+    "fmt.Println(\"Downloading dependencies...\")",
+    "std::cout << \"Compiling shaders\" << std::endl;",
+    "Console.WriteLine(\"Generating report for Q3\");"
+   ],
+   "quiet": [
+    "logger.error(\"Server failed to bind port 8080\")",
+    "# Initialize the buffers before the main loop",
+    "System.out.println(\"Hello, world!\");",
+    "print(\"Good morning, everyone!\")",
+    "console.log(\"Total rows: \" + count);",
+    "loading_model = True  # flag set before weights are read",
+    "fmt.Println(\"Warning: config file missing\")",
+    "The program starts by connecting to the database and fetching the user list."
+   ]
+  }
+ ],
+ "predictions": "most fire items 0.2-0.6 ('Loading' alone read 0.17 in probing, so a miss or two is possible); near misses mostly under 0.15",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "step-out",
+   "inverse-de"
+  ]
+ }
+}
