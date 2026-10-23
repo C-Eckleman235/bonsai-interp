@@ -1,0 +1,45 @@
+{
+ "contribution": "2026-10-22-moridinamael-debd4f0c",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N1646-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T04:37:32+00:00",
+ "roles": ["reads bonsai1/L29/N11867+"],
+ "neighbours": [
+  {
+   "unit": "L32/N1646",
+   "pole": "-",
+   "label": "Chinese 的 when the tokenizer leaves it as its own token: after a less everyday noun or phrase (a specific place, object, event, group, profession or title, or a verb phrase) as in X的Y. Silent where 的 is glued onto a pronoun or very common word (我的, 他的, 我们的, 公司的, 中国的, 老师的, 喜欢的, 漂亮的, 重要的), on spaced ' 的', and on 地/得.",
+   "short": "standalone 的 token (not glued)",
+   "unit_kind": "token / subword",
+   "confidence": "medium",
+   "fire": [
+    "敦煌莫高窟的壁画吸引了无数游客。",
+    "这台蒸汽机车的锅炉已经锈迹斑斑。",
+    "去年马拉松比赛的冠军来自一个小山村。",
+    "消防员的头盔上沾满了灰尘。",
+    "他仔细研究了青铜器的铭文。",
+    "交响乐团的指挥向观众鞠了一躬。",
+    "我们参观了故宫博物院的珍宝馆。",
+    "刚刚修好自行车的师傅正在洗手。"
+   ],
+   "quiet": [
+    "我的壁画作业还没有画完。",
+    "他的锅炉已经锈迹斑斑了。",
+    "我们的冠军来自一个小山村。",
+    "老师的帽子上沾满了灰尘。",
+    "他仔细地研究了那些铭文。",
+    "公司的经理向大家鞠了一躬。",
+    "我们参观了中国的博物馆。",
+    "她跑得很快，终于赶上了公交车。"
+   ],
+   "notes": "Step-in reader of bonsai1/L29/N11867+ (drop 0.55). Cold arm: labelled from own tops and probes only. Test sentences written blind by a second author from the label alone. Solver (DE) found no leak; one silent on-concept case (這是「媽媽」的味道), so bracket frames are not promised."
+  }
+ ],
+ "predictions": "blind test; expect most fire items 0.3-0.7, near misses near 0",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["card", "look", "probe", "step-down", "bank-solo", "inverse-de", "quick-test"]
+ }
+}
