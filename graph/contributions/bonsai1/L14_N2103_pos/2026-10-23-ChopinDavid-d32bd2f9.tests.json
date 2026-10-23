@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-d32bd2f9",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N2103+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T10:20:12+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L14/N2103",
+   "pole": "+",
+   "label": "the token right after a person's given name when it is not the surname (middle initial or parenthetical)",
+   "fire": [
+    "The grant was awarded to Priya S. Raman, a chemist at the university.",
+    "Our guide that afternoon was Robert (Bob) Hale, a retired teacher.",
+    "The article was written by Henrik J. Larsen and two students.",
+    "Questions should be sent to Daniel P. Moreau at the main office.",
+    "The surgery was performed by Kenji T. Watanabe, MD, PhD.",
+    "We interviewed Elizabeth (Liz) Carter about her new book.",
+    "The case was handled by Judge Miriam L. Cohen in Boston.",
+    "The keynote was given by Samuel R. Okoye of the bank."
+   ],
+   "quiet": [
+    "The grant was awarded yesterday, and Priya thanked the university.",
+    "Our guide that afternoon was Mr Hale, a retired teacher.",
+    "The article was written by Larsen and two students.",
+    "Questions should be sent to the main office before Friday.",
+    "The surgery went well, and Kenji was home the next day.",
+    "We interviewed the author about her new book.",
+    "The case was handled by a judge in Boston.",
+    "The keynote was given by the head of the bank."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.45 on the middle initial or '(' after a first name; first names followed by a verb, and titles + surname, below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "slot after a given name",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: ' (' x6, ' K' x5, ' S' x4 after first names ('Cristina (Fernández)', 'Jatin M. Vyas', 'Claes H. Dohlman'). Probe: 'Anil R. Mehta' 0.438, 'Thomas (Tom) Becker' 0.316, 'Maria K. Olsen' 0.259, 'Laura Jensen' (surname directly) 0.151, 'Roger said' 0.009, 'Professor Olsen' 0.003. The weaker initials may miss 0.3."
+}

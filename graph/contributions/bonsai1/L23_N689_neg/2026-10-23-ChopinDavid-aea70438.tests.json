@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-aea70438",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N689-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T10:20:12+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L23/N689",
+   "pole": "-",
+   "label": "' in' of a Python for-loop header and 'list(' calls in multi-line Python code",
+   "fire": [
+    "def copy_reports(paths, dest):\n    os.makedirs(dest, exist_ok=True)\n    for fname in paths:\n        shutil.copy(fname, dest)",
+    "    def redraw(self):\n        if self._ids != []:\n            for item_id in self._ids:\n                self.canvas.delete(item_id)",
+    "def strip_all(filenames):\n    filenames = list(map(str.strip, filenames))\n    return filenames",
+    "    errors = 0\n    for host in parsed_args.hosts:\n        try:\n            ping(host)\n        except OSError:\n            errors += 1",
+    "def save_frames(frames, out_dir):\n    for i, frame in enumerate(frames):\n        frame.save(os.path.join(out_dir, f'{i}.png'))",
+    "    sizes = list(sorted(sizes, key=lambda s: s[0]))\n    return sizes[0]",
+    "def clean(tmp):\n    for entry in os.listdir(tmp):\n        os.remove(os.path.join(tmp, entry))",
+    "    total = 0\n    for value in self.values:\n        total += value\n    return total"
+   ],
+   "quiet": [
+    "def copy_reports(paths, dest):\n    os.makedirs(dest, exist_ok=True)\n    if fname in paths:\n        shutil.copy(fname, dest)",
+    "    def redraw(self):\n        if self._ids != []:\n            while self._ids:\n                self.canvas.delete(self._ids.pop())",
+    "def strip_all(filenames):\n    filenames = filenames.strip()\n    return filenames",
+    "    errors = 0\n    if host not in parsed_args.hosts:\n        try:\n            ping(host)\n        except OSError:\n            errors += 1",
+    "def save_frames(frames, out_dir):\n    frame = frames[0]\n    frame.save(os.path.join(out_dir, 'first.png'))",
+    "    sizes = sorted_sizes\n    return sizes[0]",
+    "We stayed in a small hotel in Lisbon for a week and walked everywhere.",
+    "    total = 0\n    while total < limit:\n        total += step\n    return total"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.4 on ' in' in for-headers inside indented multi-line code; membership tests ('if k in d'), while loops and English 'in' below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "for-loop ' in' / list() in Python",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: ' in' x27 in for-loops inside indented function bodies, ' list' x4 ('= list(map(...))'). Probe on short snippets: 'names = list(set(names))' 0.415, 'for i, row in enumerate' 0.230, comprehension 0.238, 'for item in items' 0.186; 'if key in config' 0.048, while 0.007, C for-loop 0.014, English 'in Paris' 0.017. Fire items are multi-line with indentation, as AGENTS.md advises for code poles."
+}
