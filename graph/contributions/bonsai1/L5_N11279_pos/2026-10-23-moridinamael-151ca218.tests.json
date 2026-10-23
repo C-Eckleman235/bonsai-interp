@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-23-moridinamael-151ca218",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N11279+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T13:03:48+00:00",
+ "roles": ["feeds bonsai1/L20/N1675+"],
+ "neighbours": [
+  {
+   "unit": "L5/N11279",
+   "pole": "+",
+   "label": "the negative or un- word right after a negator, i.e. understatement by cancelling a bad word (not bad, isn't half bad, not uncommon, not unlike, hardly unusual, not unpleasant, not difficult, not without); quiet on the same word with no negator (it was bad, an uncommon sight) and on negated ordinary or positive words (not hot, not good, not safe, not common); weaker after 'nothing'",
+   "short": "bad/un- word cancelled by a negator (not bad, not uncommon)",
+   "fire": [
+    "The new pizza place downtown is not bad at all.",
+    "Honestly, for a first attempt, that painting isn't half bad.",
+    "It is not uncommon for hikers to get lost on that trail in winter.",
+    "Her voice sounded not unlike a church bell ringing across the valley.",
+    "Finding a parking spot on a Sunday is hardly unusual around here.",
+    "The cold swim in the lake was not unpleasant once we got used to it.",
+    "Assembling the bookshelf was not difficult, even without the instructions.",
+    "His plan, while clever, was not without its risks."
+   ],
+   "quiet": [
+    "The new pizza place downtown is bad, sadly.",
+    "Honestly, for a first attempt, that painting is half finished.",
+    "It is uncommon for hikers to get lost on that trail in summer.",
+    "Her voice sounded unlike anything we had heard across the valley.",
+    "Finding a parking spot on a Sunday is unusual around here.",
+    "The cold swim in the lake was unpleasant from start to finish.",
+    "Assembling the bookshelf was difficult, even with the instructions.",
+    "His plan, while clever, was not safe for anyone involved."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire, 0 near misses; 'not without' and 'hardly unusual' the weakest fires",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "step-out",
+   "quick-test"
+  ]
+ },
+ "notes": "Step-out feeder of bonsai1/L20/N1675+. play step OOMed on the stream GPU, so the feeder was picked from the resident attribution ranking (top MLP feeder); the edge weight is the ablation drop measured after the run if available. Test sentences written blind by a second author from the label only."
+}
