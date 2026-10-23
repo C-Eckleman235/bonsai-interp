@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-c8756d45",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N5336+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T16:20:12+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N5336",
+   "pole": "+",
+   "label": "unclear; broad pole with no single trigger. Best guess the bracket and negated character class inside a Python regular expression ('[^<]', '<[^>]+>')",
+   "fire": [
+    "clean = re.sub('<[^<]+?>', '', html)",
+    "tags = re.findall(r'<[^>]+>', page)",
+    "text = re.sub(r'<[^<>]*>', ' ', raw_html)",
+    "pattern = re.compile('<[^<]+>')\nbody = pattern.sub('', body)",
+    "stripped = re.sub('<[^>]*>', '', str(cell))",
+    "for m in re.finditer(r'<[^<]+?>', doc):\n    print(m.group())",
+    "plain = re.sub(r'<[^>]+?>', '', item.description)",
+    "markup = re.compile(r'<[^<]*?>')\ntitle = markup.sub('', title)"
+   ],
+   "quiet": [
+    "clean = html.replace('\\n', ' ')",
+    "tags = page.split(',')",
+    "text = raw_html.strip().lower()",
+    "words = body.split()\nbody = ' '.join(words)",
+    "stripped = str(cell).strip()",
+    "for line in doc.splitlines():\n    print(line)",
+    "plain = item.description.replace('&amp;', 'and')",
+    "parts = title.split(' - ')\ntitle = parts[0]"
+   ]
+  }
+ ],
+ "predictions": "probably fails: broad pole, plain prose floor about 0.19",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "unclear (regex class?)",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Broad flag (3.1%). Card top: ' Jerseys', ' cyber', 'Be here now', 'Keep walking', regex '<[^<]+?>'. Probe: regex '<' 0.551, 'be here now' 0.481, 'walking' 0.212, 'slowly' 0.220; but plain 'cat slept' 0.190. Registered as a best guess on the strongest probe."
+}

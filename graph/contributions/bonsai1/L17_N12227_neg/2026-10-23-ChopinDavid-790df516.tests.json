@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-790df516",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N12227-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T16:20:12+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N12227",
+   "pole": "-",
+   "label": "unclear; best guess the call 'open(' assigned to a file variable in Python, as against other function calls in the same assignment frame",
+   "fire": [
+    "if save:\n    outFile = open(name + '.csv', 'w')",
+    "logFile = open(logPath, 'a')\nlogFile.write(msg)",
+    "for fn in names:\n    handle = open(fn, 'r')",
+    "if not quiet:\n    report = open('report.txt', 'w')",
+    "settings = open(cfgName).read()",
+    "with lock:\n    target = open(dest, 'wb')",
+    "if args.dump:\n    dumpFile = open(dumpName + '.json', 'w')",
+    "source = open(path, encoding='utf-8')\ntext = source.read()"
+   ],
+   "quiet": [
+    "if save:\n    outName = str(name + '.csv')",
+    "logLine = len(logPath)\nprint(logLine)",
+    "for fn in names:\n    size = len(fn)",
+    "if not quiet:\n    report = print('report done')",
+    "settings = dict(cfgName=None)",
+    "with lock:\n    target = list(dest)",
+    "if args.dump:\n    dumpName = str(dumpName + '.json')",
+    "source = sorted(path)\ntext = ''.join(source)"
+   ]
+  }
+ ],
+ "predictions": "probably fails: every probe scored at or below 0.10",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "unclear (open() call?)",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Card top is scattered: 'opener = openers', \"'account.invoice.line'\", 'leg warmers', 'Galaxy S4', 'farmers market'. Probe: every configuration below 0.03 except 'data = open(fileName' 0.100; leg warmers 0.014, farmers market 0.010, gas giant 0.013. The top examples did not replicate; registered as a best guess on the only nonzero probe."
+}

@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-36d8f5b8",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N4250+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T16:28:47+00:00",
+ "recipe": {
+  "toolchain_commit": "4aa283be",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N4250_pos/2026-10-23-ChopinDavid-36d8f5b8.tests.json"
+ },
+ "label": "unclear; best guess the slot where a role or occupation noun appears (designer, analyst, diplomat, editor), as against the same sentence with a non-person noun",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N4250_pos/2026-10-23-ChopinDavid-36d8f5b8.tests.json",
+   "prereg_commit": "4aa283be",
+   "author": "ChopinDavid",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.449,
+     "peak": " senior"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.201,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.692,
+     "peak": " arch"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.19,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.395,
+     "peak": " sound"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.285,
+     "peak": "sell"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.241,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.256,
+     "peak": " landscape"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.056,
+     "peak": " new"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.04,
+     "peak": "She"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.125,
+     "peak": " museum"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.042,
+     "peak": "He"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.21,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.064,
+     "peak": " school"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.116,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.036,
+     "peak": " vegetable"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.27,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "4aa283be",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "unclear (role noun slot?)",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Broad flag-like density (0.9%), max 324. Card top: '.update(admin|istrator', 'domain_to_employer', \"['observer'\", \"get('editor')\", 'Board Dipl|omat'. Probe: 'board-certified diplomat' 0.265, 'new designer and an analyst' 0.235, \"['observer']\" 0.169; \"get('editor')\" 0.007, 'role=teacher_role' 0.063. The top code examples did not replicate.",
+ "selection": "random draw"
+}
