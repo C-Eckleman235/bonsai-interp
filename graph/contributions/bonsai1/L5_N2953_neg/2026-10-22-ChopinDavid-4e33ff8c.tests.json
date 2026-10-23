@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-4e33ff8c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N2953-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T03:19:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N2953",
+   "pole": "-",
+   "label": "the stem piece right after a Romance 'pre-' prefix when the tokenizer splits the word there (pre|cal-entado, pré|con-iser, prec|ar-iedad), plus 'alm' in napalm",
+   "fire": [
+    "Antes de hornear el pan, precalentar el horno durante diez minutos.",
+    "Los médicos preconizan una dieta rica en frutas y verduras frescas.",
+    "Coloque las galletas en el horno precalentado y espere a que se doren.",
+    "La comisión préconise une réforme rapide du système de retraite.",
+    "La precariedad de la vivienda afecta a muchas familias jóvenes del barrio.",
+    "El sindicato denunció la precariedad de los contratos temporales.",
+    "Le rapport préconise la création d'un nouveau centre de recherche.",
+    "Hornear las verduras en una bandeja con el horno precalentado a 200 grados."
+   ],
+   "quiet": [
+    "Antes de comer el pan, cortar las rebanadas durante diez minutos.",
+    "Los médicos recomiendan una dieta rica en frutas y verduras frescas.",
+    "Coloque las galletas en la bandeja grande y espere a que se enfríen.",
+    "La commission propose une réforme rapide du système de retraite.",
+    "La escasez de la vivienda afecta a muchas familias jóvenes del barrio.",
+    "El sindicato denunció la duración de los contratos temporales.",
+    "Le rapport demande la création d'un nouveau centre de recherche.",
+    "Servir las verduras en una bandeja con aceite de oliva y sal."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.97 on 'cal', 'con' or 'ar' after a split 'pre'/'prec' in Spanish and French words; the same sentences with a non-prefixed synonym near 0.01-0.04",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "stem piece after Romance 'pre-'",
+ "unit_kind": "lexical",
+ "confidence": 0.55,
+ "notes": "Card: 'cal' (precalentado), 'con' (préconiser), 'ar' (precariedad), 'ven' (prévenant), 'alm' (napalm). Probe: 'precalentado' 0.970, 'precariedad' 0.465, 'préconise' 0.432, 'napalm' 0.418; 'prévenir' only 0.106 (tokenised ' pré'+'venir', no short stem piece); the same sentences with 'la mesa', 'recommande', 'situación' 0.009-0.035. Fire items use words checked to split as pre|cal, pre|con, prec|ar."
+}

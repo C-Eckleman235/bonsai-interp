@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-8b8c1ae6",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N9387-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T03:19:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L8/N9387",
+   "pole": "-",
+   "label": "the word right after stopping or pausing that names what the pause is for ('stop to think', 'stopped to look', 'paused for effect'): interrupting one activity to attend to something",
+   "fire": [
+    "On the way to work she stopped to buy flowers for her mother.",
+    "Nobody ever stops to ask why the bus is always late on Mondays.",
+    "The hikers stopped to rest on a flat rock above the waterfall.",
+    "Before answering, the senator paused for a moment and smiled.",
+    "Have you ever stopped to wonder where your recycling actually goes?",
+    "Halfway up the hill we stopped to catch our breath and drink water.",
+    "The busy chef rarely stops to taste the soup before it goes out.",
+    "My grandfather would always pause to admire a well-built stone wall."
+   ],
+   "quiet": [
+    "On the way to work she wanted to buy flowers for her mother.",
+    "Nobody ever bothers asking why the bus is always late on Mondays.",
+    "The hikers decided to camp on a flat rock above the waterfall.",
+    "Before answering, the senator looked at his notes and smiled.",
+    "Have you ever tried to find out where your recycling actually goes?",
+    "Halfway up the hill we began to sing and drink water.",
+    "The busy chef rarely forgets to salt the soup before it goes out.",
+    "My grandfather would always hope to build a well-made stone wall."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-1.0 on ' to' after stop/stopped/pause and on ' for' after 'paused'; 'wanted to', 'tried to', 'decided to' in the same sentences near 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'stop to ___': pausing to attend to something",
+ "unit_kind": "contextual",
+ "confidence": 0.75,
+ "notes": "Card: ' to' x12 after stop/stopped, ' look' x6, 'pausing for effect', '去看'. Probe: 'stopped to look' 0.990, 'stop to think' 0.957, 'stopped to visit' 0.953, 'paused for effect' 0.634, 'have to look up' 0.942 (on ' look'); 'wanted to visit' 0.050, 'try to fix' 0.071. Near misses keep the infinitive but replace the stopping verb."
+}

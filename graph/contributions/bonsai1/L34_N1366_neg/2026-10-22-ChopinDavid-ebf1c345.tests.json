@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-ebf1c345",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N1366-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T03:19:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N1366",
+   "pole": "-",
+   "label": "the slot right before an organization's proper name is introduced by a descriptor ('a company called', 'the nonprofit', 'the website'), predicting the name",
+   "fire": [
+    "Last year two former teachers started a company called BrightPath to sell tutoring software.",
+    "The survey was paid for by the education nonprofit Teach Forward this spring.",
+    "According to the price-tracking website CamelBack, the laptop is cheaper than ever.",
+    "In 2019 the automaker set up a company called Voltera to build charging stations.",
+    "The grant came from the conservation nonprofit Blue Shores in Oregon.",
+    "Data from the flight-tracking website SkyWatch show the plane circled twice.",
+    "She left banking to launch a company called Greenleaf that recycles batteries.",
+    "The campaign was organized by the housing nonprofit Open Doors last winter."
+   ],
+   "quiet": [
+    "Last year two former teachers started selling tutoring software to schools.",
+    "The survey was paid for by several education charities this spring.",
+    "According to several price-tracking sites, the laptop is cheaper than ever.",
+    "In 2019 the automaker began building charging stations along highways.",
+    "The grant came from a few conservation groups in Oregon.",
+    "Data from flight-tracking sites show the plane circled twice.",
+    "She left banking to recycle batteries in her hometown.",
+    "The campaign was organized by housing advocates last winter."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.4 on 'called', 'nonprofit', 'website' or 'firm' immediately followed by an organization name; the same descriptors with no name following near 0.01-0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "slot before an organization's name is introduced",
+ "unit_kind": "contextual",
+ "confidence": 0.35,
+ "notes": "Card: 'a company called Calico', 'companies such as Stegeman', 'innovation nonprofit Next 10', 'crime-mapping website Police.uk', 'co-founder of ... Stripe'. Probe: 'website Police.uk' 0.383, 'company called Calico' 0.291, 'nonprofit Next 10' 0.281; but 'such as Tyson' 0.005 and 'startup Stripe' 0.082, so not every name slot fires. Descriptor without a name: 0.002-0.032."
+}

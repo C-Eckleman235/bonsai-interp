@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-ebf1c345",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N1366-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T03:27:51+00:00",
+ "recipe": {
+  "toolchain_commit": "a22c77ef",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N1366_neg/2026-10-22-ChopinDavid-ebf1c345.tests.json"
+ },
+ "label": "the slot right before an organization's proper name is introduced by a descriptor ('a company called', 'the nonprofit', 'the website'), predicting the name",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N1366_neg/2026-10-22-ChopinDavid-ebf1c345.tests.json",
+   "prereg_commit": "a22c77ef",
+   "author": "ChopinDavid",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.007,
+     "peak": " sell"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.307,
+     "peak": " nonprofit"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.068,
+     "peak": " website"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.093,
+     "peak": " Vol"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.248,
+     "peak": " nonprofit"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.068,
+     "peak": " Sky"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.008,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.396,
+     "peak": " nonprofit"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.005,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.008,
+     "peak": " several"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.018,
+     "peak": " several"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.005,
+     "peak": " charging"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.023,
+     "peak": " grant"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.013,
+     "peak": " from"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.008,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.055,
+     "peak": " by"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.828,
+    "median_fire": 0.081,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "a22c77ef",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "slot before an organization's name is introduced",
+ "unit_kind": "contextual",
+ "confidence": 0.35,
+ "notes": "Card: 'a company called Calico', 'companies such as Stegeman', 'innovation nonprofit Next 10', 'crime-mapping website Police.uk', 'co-founder of ... Stripe'. Probe: 'website Police.uk' 0.383, 'company called Calico' 0.291, 'nonprofit Next 10' 0.281; but 'such as Tyson' 0.005 and 'startup Stripe' 0.082, so not every name slot fires. Descriptor without a name: 0.002-0.032.",
+ "selection": "random draw"
+}
