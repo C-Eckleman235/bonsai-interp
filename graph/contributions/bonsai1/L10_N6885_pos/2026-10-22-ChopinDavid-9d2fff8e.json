@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-9d2fff8e",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N6885+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T03:26:39+00:00",
+ "recipe": {
+  "toolchain_commit": "a22c77ef",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N6885_pos/2026-10-22-ChopinDavid-9d2fff8e.tests.json"
+ },
+ "label": "school placement and attendance in K-12 schooling: the words that decide when or where a child goes to school (school age, open enrollment, holding a child back a grade)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L10_N6885_pos/2026-10-22-ChopinDavid-9d2fff8e.tests.json",
+   "prereg_commit": "a22c77ef",
+   "author": "ChopinDavid",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.431,
+     "peak": " first"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.212,
+     "peak": " age"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.369,
+     "peak": " school"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.28,
+     "peak": " back"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.26,
+     "peak": " registration"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.165,
+     "peak": " them"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.094,
+     "peak": " enrollment"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.342,
+     "peak": " back"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.039,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.035,
+     "peak": " county"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.114,
+     "peak": " camp"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.111,
+     "peak": " back"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.035,
+     "peak": " open"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.027,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.064,
+     "peak": " between"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.035,
+     "peak": " about"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.27,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "a22c77ef",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "K-12 school placement / enrollment terms",
+ "unit_kind": "contextual",
+ "confidence": 0.35,
+ "notes": "Card: ' reading', ' school', ' age', ' enrollment', ' Registration', ' admissions', 'in session'. Probe: 'holding a child back a year in kindergarten' 0.572, 'open enrollment ... school' 0.363, 'children of school age' 0.320; 'school is in session' 0.160, university 'admissions policy' 0.087 (higher education is weaker); summer camp 0.149, gym membership 0.008. Fire items are about children's school placement; near misses keep the frame but move it to non-school settings.",
+ "selection": "random draw"
+}
