@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-e9ffa326",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N10444-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T01:20:25+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L14/N10444",
+   "pole": "-",
+   "label": "the boundary that closes an author list (or byline/breadcrumb) and opens a title: the period after the last author's initials in a citation",
+   "fire": [
+    "Cite as: Patel S, Moreno L, Chen W. Sleep patterns in shift workers. Occup Med 2018.",
+    "Reference 12: Okafor B, Lind A. Soil carbon in tropical farms. Geoderma 2016.",
+    "To cite: Haddad R, Kim J. Early reading skills in bilingual children. Child Dev 2019.",
+    "Source: Novak T, Silva P, Brandt K. Heat stress in dairy cattle. Vet J 2014.",
+    "Suggested citation: Ito Y, Park H. Coastal erosion after storms. Mar Geol 2020.",
+    "Reference 7: Rossi G, Dubois M, Ahmed N. Blood pressure in older adults. Lancet 2012.",
+    "Cite as: Larsen E, Cruz D. Bee decline in farmland. Ecol Lett 2017.",
+    "To cite: Weber F, Tanaka S, Ochieng J. Malaria and rainfall. Malar J 2015."
+   ],
+   "quiet": [
+    "Last spring Patel, Moreno and Chen studied sleep patterns in shift workers.",
+    "In 2016, Okafor and Lind measured soil carbon on tropical farms.",
+    "My friends Haddad and Kim both teach reading to bilingual children.",
+    "Novak, Silva and Brandt visited dairy farms during the heat wave.",
+    "Ito and Park walked the coast after the storms to look at erosion.",
+    "Rossi, Dubois and Ahmed checked blood pressure at the senior center.",
+    "Larsen and Cruz noticed fewer bees on the farm this year.",
+    "Weber, Tanaka and Ochieng flew to Kenya to study rainfall."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on the '.' after the last author's initials before the article title; the same names in running prose and ordinary sentence-final periods near 0.01",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "period closing a citation's author list",
+ "unit_kind": "contextual",
+ "confidence": 0.5,
+ "notes": "Card: 16 of 32 peaks are '.' after 'Gupta R', 'et al', 'Lampson, M.A'. Probe: 'Kumar M, Gupta R. Swelling...' 0.727, APA '(2015) A study' 0.392, comma-only version 0.318, 'et al. A study' 0.268, breadcrumb ' >' 0.513, 'The post <title>' 0.341; names in prose 0.007, sentence-final period 0.009. Near misses put the same authors in prose."
+}

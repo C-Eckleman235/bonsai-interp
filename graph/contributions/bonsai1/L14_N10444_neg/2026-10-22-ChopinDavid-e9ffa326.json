@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-e9ffa326",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N10444-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T01:30:59+00:00",
+ "recipe": {
+  "toolchain_commit": "0c1eaaee",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L14_N10444_neg/2026-10-22-ChopinDavid-e9ffa326.tests.json"
+ },
+ "label": "the boundary that closes an author list (or byline/breadcrumb) and opens a title: the period after the last author's initials in a citation",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L14_N10444_neg/2026-10-22-ChopinDavid-e9ffa326.tests.json",
+   "prereg_commit": "0c1eaaee",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.644,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.475,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.478,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.568,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.611,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.535,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.586,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.586,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.005,
+     "peak": " spring"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.007,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.004,
+     "peak": " bilingual"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.01,
+     "peak": " during"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.011,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.012,
+     "peak": " pressure"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.01,
+     "peak": " bees"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.004,
+     "peak": " to"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.577,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "0c1eaaee",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "period closing a citation's author list",
+ "unit_kind": "contextual",
+ "confidence": 0.5,
+ "notes": "Card: 16 of 32 peaks are '.' after 'Gupta R', 'et al', 'Lampson, M.A'. Probe: 'Kumar M, Gupta R. Swelling...' 0.727, APA '(2015) A study' 0.392, comma-only version 0.318, 'et al. A study' 0.268, breadcrumb ' >' 0.513, 'The post <title>' 0.341; names in prose 0.007, sentence-final period 0.009. Near misses put the same authors in prose.",
+ "selection": "random draw"
+}

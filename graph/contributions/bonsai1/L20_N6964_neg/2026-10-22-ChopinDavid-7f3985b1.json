@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-7f3985b1",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N6964-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T01:30:01+00:00",
+ "recipe": {
+  "toolchain_commit": "0c1eaaee",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L20_N6964_neg/2026-10-22-ChopinDavid-7f3985b1.tests.json"
+ },
+ "label": "the blank-line token that closes an indented Python statement ending in ')' or '()' just before a dedent to the next def/block",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L20_N6964_neg/2026-10-22-ChopinDavid-7f3985b1.tests.json",
+   "prereg_commit": "0c1eaaee",
+   "author": "ChopinDavid",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.415,
+     "peak": ")\n\n"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.321,
+     "peak": " []\n"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.411,
+     "peak": "()\n\n"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.343,
+     "peak": "()\n\n"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.208,
+     "peak": ")\n\n"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.342,
+     "peak": "()\n\n"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.228,
+     "peak": "()\n"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.365,
+     "peak": ")\n\n"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.045,
+     "peak": " size"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.002,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.013,
+     "peak": ")\n\n"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.009,
+     "peak": " dough"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.091,
+     "peak": "\n\n"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.019,
+     "peak": ".\n\n"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.007,
+     "peak": "\n\n"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.017,
+     "peak": ".\n\n"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.343,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "0c1eaaee",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "blank line closing an indented code block",
+ "unit_kind": "contextual",
+ "confidence": 0.35,
+ "notes": "Card peaks ')\\n\\n' x10, '\\n\\n' x8, '()\\n\\n' x6, all inside indented Python before a dedent. Probe: method boundary '()\\n\\n' 0.409, indented 'process(item)' then dedent 0.255, 'return i' blank 0.245; prose paragraph break 0.004, top-level 'x = load(path)\\n\\n' 0.005, top-level call 0.098. The same code without the blank line still reached 0.17-0.32, so near misses use top-level code and prose rather than the closed-up version.",
+ "selection": "random draw"
+}
