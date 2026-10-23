@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-23-moridinamael-2e6f6ffb",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N1675+",
+ "contributor": "moridinamael",
+ "created": "2026-10-23T12:39:45+00:00",
+ "recipe": {
+  "toolchain_commit": "79e102dc",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L20_N1675_pos/2026-10-23-moridinamael-2e6f6ffb.tests.json"
+ },
+ "label": "the negative or diminishing word right after a negator in a double-negative boost meaning 'very much so' (no less/fewer than, none other than, not un-X, no small feat, nothing short of, not without, do not hesitate, never fail, not afraid); quiet when the negated word is ordinary or positive (not hot, not happy, no money) and on the capping 'no more than'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L20_N1675_pos/2026-10-23-moridinamael-2e6f6ffb.tests.json",
+   "prereg_commit": "79e102dc",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.2,
+     "peak": " fewer"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.441,
+     "peak": " small"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.84,
+     "peak": " other"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.493,
+     "peak": " short"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.891,
+     "peak": " un"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.773,
+     "peak": " hesitate"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.588,
+     "peak": " fail"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.792,
+     "peak": " less"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.006,
+     "peak": " river"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.002,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.054,
+     "peak": " out"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.029,
+     "peak": " quick"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.092,
+     "peak": " happy"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.004,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.007,
+     "peak": " spring"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.089,
+     "peak": " than"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.782,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "79e102dc",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L21/N7633+"
+ ],
+ "notes": "Step-out feeder of bonsai1/L21/N7633+ (no doubt / without question), chosen as the top MLP feeder by resident attribution because play step ran out of GPU memory next to the stream's resident model, so no ablation drop was measured. Test sentences written blind by a second author from the label only. Inverse solver (DE) found no leak; its near-miss ceiling was 'aren't afraid' (0.39), a negated negative that fits the label.",
+ "edges": [
+  {"from": "bonsai1/L20/N1675+", "to": "bonsai1/L21/N7633+", "kind": "feeds", "weight": null, "method": "attribution rank 1 of 12 MLP feeders on the target's top 4 examples (resident feeders tool; play step ablation hit CUDA OOM)"}
+ ]
+}
