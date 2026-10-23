@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-23-moridinamael-c4311203",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N2796+",
+ "contributor": "moridinamael",
+ "created": "2026-10-23T11:12:18+00:00",
+ "recipe": {
+  "toolchain_commit": "e520fa06",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N2796_pos/2026-10-23-moridinamael-c4311203.tests.json"
+ },
+ "label": "Dense cell (most text sits near 0.4 of max). Peaks on the space token just before a number written in digits (in 2019, by 25 percent, at 30 minute intervals, bought 12 eggs), and on 'well' or 'soon' inside 'as well as' / 'as soon as' mid-sentence. Lower for numbers written as words (twenty-five, a dozen, the thirtieth), for digits glued to a symbol with no space ($40), and for 'as well' at the end of a sentence.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N2796_pos/2026-10-23-moridinamael-c4311203.tests.json",
+   "prereg_commit": "e520fa06",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 8,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.8,
+     "peak": " well"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.877,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.807,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.919,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.932,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.39,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.51,
+     "peak": " soon"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.682,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.399,
+     "peak": "Rain"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.417,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.486,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.433,
+     "peak": " every"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.466,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.333,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.472,
+     "peak": " your"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.364,
+     "peak": "The"
+    }
+   ],
+   "probed_before": {
+    "fire": 1,
+    "quiet": 1,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.906,
+    "median_fire": 0.804,
+    "near_misses_at_0.3": 8
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "e520fa06",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L34/N11316-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L34/N11316-", "to": "bonsai1/L35/N2796+", "kind": "feeds", "weight": 0.03, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
