@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-5af2b555",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N2867+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T19:19:42+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L15/N2867",
+   "pole": "+",
+   "label": "sentence-final punctuation that ends a line or a paragraph ('.', '!', ')' before a line break or the end of the text), as against text that runs on without closing punctuation; positional",
+   "fire": [
+    "We stayed at the farm for a whole summer.\nThe barn was full of old tools",
+    "Tickets go on sale this Friday!\n- Main hall\n- Upper balcony",
+    "The report covers the years 1990 to 2000 (see appendix B)\nMethods are described next",
+    "My grandmother grew roses for decades.\nHer garden was famous in the village",
+    "The festival returns next month!\n- Live music\n- Food stalls",
+    "The data come from three surveys (Smith, 2010)\nResults follow in the next section",
+    "The ferry crossed the bay twice a day.\nIn winter it often stopped running",
+    "This volume contains letters, diaries and a short glossary."
+   ],
+   "quiet": [
+    "We stayed at the farm for a whole summer and the barn was full of old tools",
+    "Tickets go on sale this Friday for the main hall and upper balcony",
+    "The report covers the years 1990 to 2000 and methods are described next",
+    "My grandmother grew roses for decades and her garden was famous in the village",
+    "The festival returns next month with live music and food stalls",
+    "The data come from three surveys and results follow in the next section",
+    "The ferry crossed the bay twice a day but in winter it often stopped running",
+    "This volume contains letters and diaries and a short glossary"
+   ]
+  }
+ ],
+ "predictions": "weak: fire 0.2-0.3 on the line-ending punctuation; unpunctuated fragments 0.0-0.08",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "line-final punctuation",
+ "unit_kind": "dense / positional",
+ "confidence": 0.25,
+ "notes": "Card top: '.\\n', '\\n', ' (', '!\\n', ')\\n' after a sentence. Probe: 'years.\\n' 0.214, '!\\n' 0.255, ')\\n' 0.228, 'an index.' (end of text) 0.310; the same two sentences joined in one line 0.072; unpunctuated fragments 0.017-0.030. A weak structural pole."
+}

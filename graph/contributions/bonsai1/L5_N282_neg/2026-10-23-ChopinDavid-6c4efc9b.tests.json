@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-6c4efc9b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N282-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T19:19:42+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N282",
+   "pole": "-",
+   "label": "the second token of a noun that the tokenizer splits into two pieces, mostly Korean Sino-Korean compounds ('조|각', '집|합') and Russian stems ('кредитных| карт'), as against Korean and Russian sentences of the same kind where the nouns are not split this way",
+   "fire": [
+    "나는 어제 박물관에서 오래된 조각 작품을 보았습니다.",
+    "이 수학 문제는 두 집합 사이의 관계를 묻습니다.",
+    "Владельцы кредитных карт получили новые правила.",
+    "작은 조각 하나가 바닥에 떨어져 있었습니다.",
+    "Банк выпустил миллион кредитных карт в этом году.",
+    "학생들은 집합 개념을 처음 배웠습니다.",
+    "그는 나무 조각 위에 이름을 새겼습니다.",
+    "Многие магазины принимают оплату с банковских карт."
+   ],
+   "quiet": [
+    "나는 어제 박물관에서 오래된 그림을 보았습니다.",
+    "이 수학 문제는 두 숫자 사이의 관계를 묻습니다.",
+    "Владельцы магазинов получили новые правила.",
+    "작은 돌 하나가 바닥에 떨어져 있었습니다.",
+    "Банк открыл новый офис в этом году.",
+    "학생들은 새로운 노래를 처음 배웠습니다.",
+    "그는 나무 위에 이름을 썼습니다.",
+    "Многие магазины работают до позднего вечера."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.9 on the bare second syllable of a split Korean noun or a split Russian stem; plain sentences 0.0-0.2 (Korean text has a floor near 0.2)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "second piece of a split CJK/Russian noun",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card peaks: '합', '각', '영상', '자', ' карт', '信', '金'. Probe: '조|각' 0.874, ' карт' 0.492, '집|합' 0.467, '証拠|金' 0.253, '산|책' 0.191 (in a plain sentence), '동|영상을' 0.083 (the piece merged with a particle), 'пам|яти' 0.111; English 0.020-0.023."
+}
