@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-23-C-Eckleman235-048cf3c6",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6726-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T23:02:39+00:00",
+ "selection": "concept search: echoes (digit family)",
+ "neighbours": [
+  {
+   "unit": "L35/N6726",
+   "pole": "-",
+   "label": "the token right before a 3 that the text makes predictable: the next digit of a number being copied from earlier in the same text, or of a counting run; quiet before a 3 the text gives no reason to expect, and before a predictable different digit",
+   "fire": [
+    "Her flight left from gate 13, and the screen still showed gate 13",
+    "The safe opens with 7093; she whispered 7093 to her partner",
+    "Order 4263 shipped today, and the courier confirmed order 4263",
+    "He parked in bay 53, and the attendant wrote down bay 53",
+    "The scouts counted off: 20, 21, 22, 23",
+    "Pages 60, 61, 62 and 63 were torn out",
+    "Lanes 1, 2 and 3 were reserved for swimmers",
+    "Rooms 90, 91, 92 and 93 face the courtyard"
+   ],
+   "quiet": [
+    "Her flight left from gate 17, and the screen still showed gate 17",
+    "The safe opens with 7098; she whispered 7098 to her partner",
+    "Order 4268 shipped today, and the courier confirmed order 4263",
+    "He parked in bay 57, and the attendant wrote down bay 57",
+    "The scouts counted off: 25, 26, 27, 28",
+    "Pages 65, 66, 67 and 68 were torn out",
+    "Lanes 5, 6 and 7 were reserved for swimmers",
+    "Rooms 94, 95, 96 and 97 face the courtyard"
+   ]
+  }
+ ],
+ "predictions": "7/8 fire >= 0.2; every near miss under 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "which",
+   "card",
+   "probe"
+  ]
+ },
+ "short": "before a predictable 3 (round 2)",
+ "unit_kind": "predictive",
+ "confidence": 0.65,
+ "notes": "Second round on the same label (round 1: #801, held, AUROC 0.938). Reason, written before this test: round 1's near miss 'Chapters 35, 36, 37, and 38' itself contained predictable 3s (each next number's first digit), so it was not a real near miss. This round's near misses contain no predictable 3 anywhere (runs in the 20s, 60s and 90s that end on another digit; copies of numbers without a 3; one copy where a 3 appears where an 8 was expected). Same discovery evidence as round 1 (echoes predictable-digit screen, position triage, card, triage probes); no sentence is reused. Scoring runs on a Modal L40S (bfloat16; PARITY OK on Modal)."
+}
