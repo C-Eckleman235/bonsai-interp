@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-22-moridinamael-89138aa1",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N8874+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T01:48:33+00:00",
+ "roles": ["feeds bonsai1/L12/N7269-"],
+ "neighbours": [
+  {
+   "unit": "L10/N8874",
+   "pole": "+",
+   "label": "A space token standing on its own: the space typed right before digits ('in 1774', 'gate 9', 'about 40 people') or an extra doubled space between two words; weaker on the spaces that indent a code line. Quiet: spelled-out numbers ('forty'), digits with no space before them ($40, B12, a number opening a new line) and ordinary single spaces before words.",
+   "short": "lone space token (before digits, doubled space)",
+   "unit_kind": "token",
+   "fire": [
+    "The treaty was signed in 1774 after months of negotiation.",
+    "Passengers for the morning flight should proceed to gate 9 immediately.",
+    "About 40 people showed up for the town meeting last night.",
+    "She lives on the third floor of building 12 near the park.",
+    "The recipe calls for 250 grams of flour and 3 eggs.",
+    "Please turn to page 87 and read the first paragraph aloud.",
+    "He finished the race in 42 minutes, a personal best.",
+    "The museum  closed early because of the storm."
+   ],
+   "quiet": [
+    "The treaty was signed in the late eighteenth century after months of negotiation.",
+    "Passengers for the morning flight should proceed to gate nine immediately.",
+    "About forty people showed up for the town meeting last night.",
+    "She lives on the third floor of building B12 near the park.",
+    "The recipe calls for a cup of flour and a few eggs.",
+    "Please turn to the next page and read the first paragraph aloud.",
+    "He finished the race in under an hour, a personal best.",
+    "We walked slowly along the beach until sunset."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire above 0.20, 0 near misses at 0.30 (spaces before digits read about 0.25-0.8 depending on the lead-in)",
+ "notes": "Sentences written blind by a second author who saw only the label (blind:claude-opus-5-5 label-only). Bonsai is causal, so the lone ' ' token's activation cannot depend on what follows it: 'some  crabs' (doubled space) and 'some urchins' (a rare word the tokenizer splits off its space) read identically. Solver (DE) found no leak; near-miss ceiling 0.28 was a code-indent line.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-out",
+   "card",
+   "look",
+   "probe",
+   "bank-solo",
+   "inverse-de"
+  ]
+ }
+}
