@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-b892d904",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L16/N11221-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T12:20:10+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L16/N11221",
+   "pole": "-",
+   "label": "a possible cause being checked when diagnosing a symptom or fault (dehydration, a virus, recent illness, drug use)",
+   "fire": [
+    "The doctor wondered whether her dizziness came from low blood sugar.",
+    "If your laptop is suddenly slow, malware may be the culprit.",
+    "His cramps after the race were probably due to dehydration.",
+    "The vet asked if the dog had eaten anything toxic, like chocolate.",
+    "Persistent coughing can be a sign of an infection in the lungs.",
+    "The mechanic suspected a leak in the fuel line was causing the stalling.",
+    "She asked her patient about alcohol use before ordering more tests.",
+    "Fatigue in winter is often caused by a lack of vitamin D."
+   ],
+   "quiet": [
+    "The doctor wondered whether her dizziness would go away with rest.",
+    "If your laptop is suddenly slow, a restart may be the answer.",
+    "His cramps after the race were treated with a gentle massage.",
+    "The vet asked if the dog had enjoyed the walk in the woods.",
+    "Persistent coughing can be eased with warm honey and lemon.",
+    "The mechanic replaced the fuel line and then washed the car.",
+    "She asked her patient about his holiday before ordering more tests.",
+    "Fatigue in winter is often eased by a long walk at noon."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.75 on the named candidate cause in a diagnostic or troubleshooting sentence; the same sentences naming a remedy or an unrelated detail below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "suspected cause in diagnosis",
+ "unit_kind": "meaning",
+ "confidence": 0.35,
+ "notes": "Card: 'asked the patient about marijuana use', 'full virus scan', 'dehydrated', 'Have you recently been sick?', 'blood glucose'. Probe: virus 0.733, dehydrated 0.673, 'recently been sick or travelled' 0.465 vs reinstall 0.028, 'happy ... lucky' 0.020; but 'recently bought a car' 0.426 leaked on ' recently', so near misses avoid 'recently'."
+}
