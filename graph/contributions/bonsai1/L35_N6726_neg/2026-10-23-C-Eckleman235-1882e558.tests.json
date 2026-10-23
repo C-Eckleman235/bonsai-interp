@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-23-C-Eckleman235-1882e558",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6726-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T22:11:49+00:00",
+ "selection": "concept search: echoes (digit family)",
+ "neighbours": [
+  {
+   "unit": "L35/N6726",
+   "pole": "-",
+   "label": "the token right before a 3 that the text makes predictable: the next digit of a number being copied from earlier in the same text, or of a counting run; quiet before a 3 the text gives no reason to expect, and before a predictable different digit",
+   "fire": [
+    "His jersey number was 23, and every fan in the stands wore a shirt with 23",
+    "Apartment 1403 is at the end of the hall; the key tag simply reads 1403",
+    "The bus to the airport is route 63, so after the museum we caught route 63",
+    "Enter the code 59013 at the gate, then repeat 59013 at the door",
+    "Chapters 30, 31, 32, and 33 cover the war years",
+    "The runners wore bibs numbered 10, 11, 12, 13",
+    "Levels 70, 71, 72 and 73 of the garage were full",
+    "The toddler counted her blocks out loud: 1, 2, 3"
+   ],
+   "quiet": [
+    "His jersey number was 27, and every fan in the stands wore a shirt with 27",
+    "Apartment 1408 is at the end of the hall; the key tag simply reads 1403",
+    "The bus to the airport is route 61, so after the museum we caught route 53",
+    "Enter the code 59018 at the gate, then repeat 59018 at the door",
+    "Chapters 35, 36, 37, and 38 cover the war years",
+    "The runners wore bibs numbered 15, 16, 17, 18",
+    "Levels 74, 75, 76 and 77 of the garage were full",
+    "The toddler counted her blocks out loud: 4, 5, 6"
+   ]
+  }
+ ],
+ "predictions": "7/8 fire >= 0.2; the near misses (another digit predictable, or a 3 where a different digit was expected) under 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "which",
+   "card",
+   "probe"
+  ]
+ },
+ "short": "before a predictable 3",
+ "unit_kind": "predictive",
+ "confidence": 0.6,
+ "notes": "Found by an echoes concept screen (predictable-digit pairs: the same passage with a different final digit predictable; 6 pairs per digit, discovery only) and a position triage that required the pole to peak on the token BEFORE the digit and stay quiet there in the control: 6/6 pairs for digit 3, across copies, counting runs and a fact. Card: max 326, density 0.92%; top examples peak right before a 3 ('Fig. 3c', 'event.button == 3', '47 CFR 73.151'). Triage probes (exploratory, none reused): copied PIN 7323 0.51, copied room 503 0.39, count 40..43 0.36, 'a triangle has exactly 3' 0.22, the word 'three' 0.12; a fresh 3 ('the number 63' 0.05, 'code 813' 0.05) and a copied 507 (0.11) stayed low. The label is the digit sibling of the held L35/N1376+ (before a predictable 6). Facts and the spelled word are not claimed. Scoring runs on a Modal L40S (bfloat16; tests/test_device_parity.py printed PARITY OK on Modal)."
+}
