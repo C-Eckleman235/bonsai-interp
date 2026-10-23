@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-moridinamael-d54b4d1d",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N8315-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T06:34:17+00:00",
+ "neighbours": [
+  {
+   "unit": "L23/N8315",
+   "pole": "-",
+   "label": "' to' right after something described as available for use: a supply on hand (room, energy, cash, spare time to spend/spare/burn) or a person who is fit, free, available or ready to act; quiet after abstract nouns (a reason, plan or decision to) and after attitude or likelihood adjectives (eager, happy, likely to)",
+   "short": "' to' after an available supply or a ready person",
+   "roles": ["feeds bonsai1/L24/N4326+"],
+   "fire": [
+    "Do you have a pen to lend me for a minute?",
+    "Others disembarked with a little money to spend in the shops that lined Derby Street.",
+    "We finally have enough room to store the bikes in the garage.",
+    "After the nap she had plenty of energy to clean the whole flat.",
+    "He had some spare cash to put toward a new guitar.",
+    "With an hour to kill before the train, we wandered the market.",
+    "The kids had time to burn, so they built a fort out of cushions.",
+    "Is anyone free to help me move this couch on Saturday?"
+   ],
+   "quiet": [
+    "We finally have a good reason to store the bikes in the garage.",
+    "After the nap she made a plan to clean the whole flat.",
+    "He made the decision to put his savings toward a new guitar.",
+    "With the train delayed, we were eager to wander the market.",
+    "The kids were happy to build a fort out of cushions.",
+    "Is anyone likely to help me move this couch on Saturday?",
+    "The doctor said she is hoping to return to work next week.",
+    "Two volunteers offered to drive the guests home."
+   ]
+  }
+ ],
+ "predictions": "Blind test (label-only author). Expect 7/8 fire, 0-1 near misses; 'free to help' is the least probed branch.",
+ "notes": "Step-out feeder of bonsai1/L24/N4326+, chosen from the resident attribution ranking (top MLP feeder) because play step hit CUDA OOM on stream; no ablation drop measured, so no feeds edge weight is recorded. Two fire items (pen to lend; Derby Street top) were scored during probing.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "step-out"
+  ]
+ }
+}
