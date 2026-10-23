@@ -1,0 +1,167 @@
+{
+ "id": "2026-10-22-moridinamael-8979ffec",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N5021+",
+ "contributor": "moridinamael",
+ "created": "2026-10-23T01:01:25+00:00",
+ "recipe": {
+  "toolchain_commit": "2c80c5a5",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N5021_pos/2026-10-22-moridinamael-8979ffec.tests.json"
+ },
+ "label": "A Chinese, Japanese or Korean character that the tokenizer splits into byte pieces, standing alone after a space in English text (e.g. 'wrote 山 in paint') or inside Japanese/Korean prose; peaks on its first byte piece and varies a lot by character. Emoji, chess and math symbols, the euro sign and Cyrillic or Latin letters in the same slot stay low, as does a CJK character glued straight onto an English word.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N5021_pos/2026-10-22-moridinamael-8979ffec.tests.json",
+   "prereg_commit": "2c80c5a5",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.539,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.366,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.427,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.178,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.317,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.505,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.402,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.483,
+     "peak": " �"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.1,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.18,
+     "peak": " much"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.053,
+     "peak": "She"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.097,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.212,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.076,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.154,
+     "peak": " Ж"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.432,
+     "peak": "�"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.891,
+    "median_fire": 0.414,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "2c80c5a5",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L27/N5995+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L27/N5995+",
+   "to": "bonsai1/L35/N5021+",
+   "kind": "feeds",
+   "weight": 0.5,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
