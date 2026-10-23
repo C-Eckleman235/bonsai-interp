@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-23-moridinamael-7e5bb500",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N2860-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T15:40:41+00:00",
+ "roles": ["feeds bonsai1/L5/N2916+"],
+ "neighbours": [
+  {
+   "unit": "L4/N2860",
+   "pole": "-",
+   "label": "a chance-or-room noun right after a verb of having or giving (have the chance, gave them an opening, have time to, no choice, more room to, some leeway, a shot at; also Gelegenheit, возможность, 機會 after a having verb), read on the noun; it fires even when the noun means something else after 'has' ('the shop has an opening for a cashier'); quiet on the same nouns without that verb (as subject, 'by chance', 'what time is it', 'the room was painted') and after 'missed' or 'took'",
+   "short": "chance/room noun after have/give",
+   "fire": [
+    "The shop has an opening for a cashier.",
+    "If you have the chance, visit the old harbor at sunset.",
+    "The coach gave them an opening to argue their case before the vote.",
+    "Do you have time to look over my essay tonight?",
+    "We had no choice but to cancel the picnic.",
+    "The new layout gives the kids more room to play.",
+    "Our manager gave us some leeway on the deadline.",
+    "She finally has a shot at the championship this year."
+   ],
+   "quiet": [
+    "Her choice of dress surprised everyone.",
+    "By chance, we met an old friend at the harbor.",
+    "The opening of the new bridge drew a large crowd.",
+    "What time is it in Tokyo right now?",
+    "The choice of venue was announced yesterday.",
+    "The room was painted a pale shade of green.",
+    "Leeway in the rules caused some confusion among players.",
+    "He missed the chance to visit the harbor at sunset."
+   ]
+  }
+ ],
+ "predictions": "most fire items clear 0.2 (the cashier vacancy item weakest, ~0.25); quiet items near zero",
+ "notes": "Test sentences written blind by a second author who saw only the label (stream blind_test). Feeder chosen from resident attribution ranking (play step hit CUDA OOM on stream); top-ranked feeder of L5/N2916+.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "bank-solo",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
