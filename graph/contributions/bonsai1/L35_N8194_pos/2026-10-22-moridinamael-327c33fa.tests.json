@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-22-moridinamael-327c33fa",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N8194+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T05:48:37+00:00",
+ "roles": ["reads bonsai1/L33/N7751-"],
+ "neighbours": [
+  {
+   "unit": "L35/N8194",
+   "pole": "+",
+   "label": "the 'of' link right after a disease or danger word in Korean, Japanese or Chinese, heading into an abstract noun like risk, chance or prevention: Korean 의 (간암의 위험, 사고의 위험), Japanese の (糖尿病の危険性, 心臓病の予防), Chinese 患+disease before 的 (患肝癌的风险, peak on the disease token). Silent on bare disease names (糖尿病患者, 폐암 진단), on ordinary possessives (私の傘, 친구의 가방, 我朋友的书) and in English 'risk of'.",
+   "short": "CJK 'of' particle after a disease/danger word (risk of X)",
+   "fire": [
+    "흡연은 간암의 위험을 크게 높인다고 알려져 있다.",
+    "운전 중 휴대폰 사용은 사고의 위험을 두 배로 늘린다.",
+    "규칙적인 운동은 뇌졸중의 예방에 도움이 됩니다.",
+    "고혈압 환자는 심장병의 가능성이 더 높다는 연구 결과가 나왔다.",
+    "肥満は糖尿病の危険性を高めることが知られています。",
+    "毎日の減塩が心臓病の予防につながります。",
+    "高齢者は肺炎の可能性に特に注意する必要がある。",
+    "この地域では地震の危険性が以前から指摘されてきた。"
+   ],
+   "quiet": [
+    "리포터: 이 비극적인 비상사태에 대응하기 위해 노력하는 한국 정부에 감사드리며 생명을 잃은 수 많은 무고한 동물들과 사",
+    "“据估计，目前全世界约有35%的0-6月龄婴儿获得纯母乳喂养”，世卫组织儿童",
+    "흡연자는 간암 진단을 받은 뒤 바로 금연했다.",
+    "그는 길에서 친구의 가방을 대신 들어 주었다.",
+    "규칙적인 운동은 우리 가족의 오랜 습관입니다.",
+    "병원에는 폐암 환자들이 진료를 기다리고 있었다.",
+    "糖尿病患者は定期的に病院へ通っています。",
+    "玄関に置いてあった私の傘がなくなった。"
+   ]
+  }
+ ],
+ "predictions": "Most fire items should clear 0.20; the two solver-leak near misses (formal-joiner tops, about 0.5 in exploration) are expected to exceed 0.30, which would fail the near-miss rule.",
+ "notes": "Step-in reader of bonsai1/L33/N7751- (drop about 0.00, so it barely depends on that cell). COLD arm: labelled from the reader's own tops, probes and solver only. Sentences were written blind by a label-only author; the two solver leaks (formal-joiner tops) were placed as near misses by that author.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "blind-room"
+  ]
+ }
+}
