@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-22-moridinamael-e625b1a9",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N3426+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T02:12:09+00:00",
+ "roles": ["feeds bonsai1/L10/N8874+"],
+ "neighbours": [
+  {
+   "unit": "L9/N3426",
+   "pole": "+",
+   "label": "Web-page clutter breaking into article text, read at its first token: a line-opening media or section label such as 'Image', 'Photo', 'Video', 'Related' or 'Advertisement' (a capitalised 'Image' fires even when it opens an ordinary sentence), or a '...' that cuts a word off before a 'Read More' / '[continues]' link. Quiet: lowercase image/photo/video inside a sentence, ordinary storytelling ellipses, and plain prose lines.",
+   "short": "web-page clutter (Image:, Video:, cut-off ... Read More)",
+   "fire": [
+    "Image: The mayor speaks to reporters outside city hall on Tuesday.",
+    "Photo: Volunteers clear debris from the riverbank after the flood.",
+    "Video: Watch the full press conference below.",
+    "Related: Five ways to cut your heating bill this winter",
+    "Advertisement",
+    "The council voted to delay the project until engineers could revi... Read More",
+    "Researchers say the new battery design could double the range of electric vehi... [continues]",
+    "Image courtesy of the national park service shows the canyon at dawn."
+   ],
+   "quiet": [
+    "return self.assertTrue(repeated.value_eq(x, y))",
+    "I waited and waited... and then the bus finally came.",
+    "The mayor spoke to reporters outside city hall on Tuesday.",
+    "Volunteers cleared debris from the riverbank after the flood, as one photo showed.",
+    "You can watch the full video of the press conference on the city website.",
+    "There are five ways to cut your heating bill this winter.",
+    "The magazine ran fewer ads this year than last.",
+    "The council voted to delay the project until engineers could review the plans."
+   ]
+  }
+ ],
+ "predictions": "Fire and quiet sentences written blind from the label alone by a second author (blind:claude-opus-5-5, label-only). Expect the Image/Photo and cut-off '...' items to fire clearly; 'Advertisement' and 'Video:'/'Related:' opening the text cold are the risk.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "inverse-de",
+   "bank-solo",
+   "quick-test"
+  ]
+ }
+}

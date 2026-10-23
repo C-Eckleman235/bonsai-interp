@@ -1,0 +1,166 @@
+{
+ "id": "2026-10-22-moridinamael-e625b1a9",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N3426+",
+ "contributor": "moridinamael",
+ "created": "2026-10-23T02:12:31+00:00",
+ "recipe": {
+  "toolchain_commit": "70259348",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L9_N3426_pos/2026-10-22-moridinamael-e625b1a9.tests.json"
+ },
+ "label": "Web-page clutter breaking into article text, read at its first token: a line-opening media or section label such as 'Image', 'Photo', 'Video', 'Related' or 'Advertisement' (a capitalised 'Image' fires even when it opens an ordinary sentence), or a '...' that cuts a word off before a 'Read More' / '[continues]' link. Quiet: lowercase image/photo/video inside a sentence, ordinary storytelling ellipses, and plain prose lines.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L9_N3426_pos/2026-10-22-moridinamael-e625b1a9.tests.json",
+   "prereg_commit": "70259348",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.955,
+     "peak": "Image"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.557,
+     "peak": "Photo"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.638,
+     "peak": "Video"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.306,
+     "peak": "Related"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.349,
+     "peak": "Advertisement"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.703,
+     "peak": " Read"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.656,
+     "peak": " ["
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.955,
+     "peak": "Image"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.1,
+     "peak": "return"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.149,
+     "peak": "I"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.021,
+     "peak": " reporters"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.076,
+     "peak": " photo"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.146,
+     "peak": " video"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.028,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.019,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.021,
+     "peak": "The"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.647,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "70259348",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L10/N8874+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L9/N3426+",
+   "to": "bonsai1/L10/N8874+",
+   "kind": "feeds",
+   "weight": 0.04,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
