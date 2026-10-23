@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-23-moridinamael-9bb5cea6",
+ "kind": "qc",
+ "neuron": "bonsai1/L25/N8045+",
+ "contributor": "moridinamael",
+ "created": "2026-10-23T16:08:15+00:00",
+ "recipe": {
+  "toolchain_commit": "5c0d2dc5",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N8045_pos/2026-10-23-moridinamael-9bb5cea6.tests.json"
+ },
+ "label": "The opening or inner pieces of a strong verdict word (good OR bad) that the tokenizer splits into several pieces, in English, Russian, German, French, Spanish or Italian, strongest right after is/was: Russian замечательный, великолепный, ужасный; German außergewöhnlich, hervorragend, atemberaubend; French extraordinaire, époustouflant, hors norme; Spanish/Italian extraordinario, straordinario, espantosa; English hyphenated verdict compounds (extra-ordinary, jaw-dropping, first-class, world-class), 'out of this world', and strong judging words in ALL CAPS (INCREDIBLE, MAGNIFICENT, HORRIBLE). Also fires on the shared opening piece in a look-alike with no verdict: German außerhalb ('outside'). Quiet on mild verdicts in any language (gut, okay, хороший, correct, normal, FINE), on strong English words written normally as one token (extraordinary, spectacular, breathtaking, incredible, remarkable), on hyphenated compounds with no verdict (first-floor), and on neutral words in caps.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N8045_pos/2026-10-23-moridinamael-9bb5cea6.tests.json",
+   "prereg_commit": "5c0d2dc5",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.317,
+     "peak": " вели"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.355,
+     "peak": "ember"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.333,
+     "peak": " ép"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.635,
+     "peak": " extraordin"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.453,
+     "peak": "ordin"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.428,
+     "peak": " jaw"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.429,
+     "peak": " world"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.573,
+     "peak": " this"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.036,
+     "peak": " ост"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.009,
+     "peak": " Aus"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.073,
+     "peak": " de"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.009,
+     "peak": " el"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.119,
+     "peak": " extraordinary"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.013,
+     "peak": " okay"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.009,
+     "peak": " fine"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.012,
+     "peak": " match"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.428,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "5c0d2dc5",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "The opening pieces of a strong verdict word that is still being spelled out over several tokens, good OR bad alike, strongest right after is/was: the first word of a vivid or ranking hyphenated verdict compound (jaw-dropping, mind-blowing, gut-wrenching, eye-watering, world-class, first-rate, second-rate, bottom-tier), 'out of this world', and inner chunks of a strong judging word written in ALL CAPS (INCREDIBLE, FABULOUS, HORRIBLE, TERRIBLE). Quiet on the same judging words spelled normally in lowercase as one token (incredible, terrible), on mild verdict compounds (half-baked, so-so, run-of-the-mill), on hyphenated compounds with no verdict (first-floor, top-down), on literal phrases (around the world), and on neutral words in caps (DELIVERED)."
+ }
+}
