@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-5cf606c9",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N5260-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T13:19:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L23/N5260",
+   "pole": "-",
+   "label": "the separator right after a position or coordinate item (a 'pos' argument, a point like (3,-5), a postal address line), not separators between ordinary items",
+   "fire": [
+    "        self.paint_marker(screen, pos, radius, fill=self.fill)",
+    "    item = Sprite(group, image, pos, layer=2)",
+    "        canvas.create_text(pos, text=label, anchor='w')",
+    "Plot the parabola with vertex at (2,-1) and opening upward.",
+    "Find the line through the point (6,-4) with slope 3.",
+    "Visit us at:\n48 Elm Road\nBurlington, VT 05401\nOpen daily from nine.",
+    "Send letters to:\n17 Harbor Lane\nPortland, ME 04101\nThank you for writing.",
+    "        self.move_to(pos, speed=self.speed)"
+   ],
+   "quiet": [
+    "        self.paint_marker(screen, color, radius, fill=self.fill)",
+    "    item = Sprite(group, image, name, layer=2)",
+    "        canvas.create_text(label, text=label, anchor='w')",
+    "Plot the parabola with steep sides and opening upward.",
+    "Find the line that is parallel to the river with slope 3.",
+    "Visit us at the elm grove behind the old mill, open daily from nine.",
+    "Send letters to our harbor office and we will reply soon.",
+    "        self.move_to(target, speed=self.speed)"
+   ]
+  }
+ ],
+ "predictions": "comma/paren/newline right after pos, a coordinate pair or an address ZIP 0.4-1.2; commas between ordinary arguments or list items below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "after a position item",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: ',' after 'pos' in GUI code (-78.5), '),' after a size tuple, ')' after '(4,-7)', newline after a ZIP code; + pole promotes location/position. Probe: 'draw_box(canvas, pos, size' 1.223, 'center at (3,-5)' 0.736, address newline after ZIP 0.590, 'pos, (w / 2, h / 2),' 0.467; 'compute(alpha, beta' 0.010, 'Paris, Rome' 0.019, 'add(a, b)' 0.007."
+}

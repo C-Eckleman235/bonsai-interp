@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-7300fb0e",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N1038+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T13:27:05+00:00",
+ "recipe": {
+  "toolchain_commit": "c07016dd",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L13_N1038_pos/2026-10-23-ChopinDavid-7300fb0e.tests.json"
+ },
+ "label": "the digit that opens a numbered reference: a Bible book number ('2 Timothy') or an international dialing code ('(+86)')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L13_N1038_pos/2026-10-23-ChopinDavid-7300fb0e.tests.json",
+   "prereg_commit": "c07016dd",
+   "author": "ChopinDavid",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.117,
+     "peak": " Peter"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.19,
+     "peak": " Kings"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.708,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.475,
+     "peak": " (+"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.494,
+     "peak": " Th"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.145,
+     "peak": " John"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.365,
+     "peak": " (+"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.052,
+     "peak": " Corinthians"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.026,
+     "peak": " hours"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.009,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.022,
+     "peak": " floor"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.011,
+     "peak": " manager"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.01,
+     "peak": "2"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.015,
+     "peak": "8"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.009,
+     "peak": "Customers"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.019,
+     "peak": " chapters"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.277,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "c07016dd",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "reference-opening digit",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: '42 U.S.C.', '(1 Timothy', '48 C.F.R', '1 John 1:5', '(+86)', 'Title 49', '2 Thess.'. Probe: '2 Timothy 3:16' 0.710, '(+44)' 0.516, '40 C.F.R.' 0.301, '1 Corinthians' 0.135 (peak on the name, so the digit was lower), '26 U.S.C.' 0.031; counts '2 cats and 1 dog' 0.008, '40 points' 0.012. Mixed: the U.S.C./Corinthians cases are weak.",
+ "selection": "random draw"
+}
