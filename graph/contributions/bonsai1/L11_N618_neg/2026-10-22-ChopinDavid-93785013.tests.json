@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-93785013",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N618-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T04:19:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L11/N618",
+   "pole": "-",
+   "label": "The period-plus-newline that ends a descriptive sentence inside a Python docstring (before the closing triple quotes); quiet on '.\\n' ending prose lines or code comments.",
+   "fire": [
+    "class Queue:\n    \"\"\"A thread-safe queue backed by a fixed-size ring buffer.\n    \"\"\"\n    def __init__(self):\n        self.items = []",
+    "class Parser:\n    def parse(self, text):\n        \"\"\"Parse the text into tokens, skipping blank lines.\n        \"\"\"\n        return text.split()",
+    "class Session:\n    \"\"\"A database session that is closed when the request ends.\n    \"\"\"\n    timeout = 30",
+    "class Worker:\n    def stop(self):\n        \"\"\"Stop the worker after the current job has finished.\n        \"\"\"\n        self.running = False",
+    "class Matrix:\n    \"\"\"A dense matrix stored in row-major order on the GPU.\n    \"\"\"\n    dtype = 'float32'",
+    "class Client:\n    def fetch(self, url):\n        \"\"\"Fetch a page and return its body as a string.\n        \"\"\"\n        return self.get(url)",
+    "class Logger:\n    \"\"\"A logger that writes messages to a rotating file.\n    \"\"\"\n    level = 'INFO'",
+    "class Timer:\n    def reset(self):\n        \"\"\"Reset the timer to zero, keeping its settings.\n        \"\"\"\n        self.t = 0"
+   ],
+   "quiet": [
+    "class Queue:\n    # A thread-safe queue backed by a fixed-size ring buffer.\n    def __init__(self):\n        self.items = []",
+    "The parser splits the text into tokens.\nBlank lines are skipped.\nThat is all it does.",
+    "class Session:\n    timeout = 30\n    retries = 3\n    name = 'db'",
+    "The worker stops after the current job has finished.\nThen it waits for a signal.",
+    "class Matrix:\n    dtype = 'float32'  # stored in row-major order\n    rows = 0",
+    "We fetched the page and read its body.\nIt was mostly empty.",
+    "class Logger:\n    level = 'INFO'\n    path = 'app.log'\n    max_size = 1024",
+    "Reset the timer to zero.\nKeep its settings.\nStart again."
+   ]
+  }
+ ],
+ "predictions": "median fire ~0.25 (probes: class docstring 0.44, function docstrings 0.17 and 0.13); near misses < 0.1 (prose lines 0.07, comment 0.10). Weak; card flags broad (2.0%).",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'.\\n' ending a docstring sentence",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card peaks: '.\\n' x8, all before an indented closing \"\"\" in methods/classes. Probes were weaker than the card, so the test copies the card's shape: indented class/method docstrings with a descriptive clause."
+}
