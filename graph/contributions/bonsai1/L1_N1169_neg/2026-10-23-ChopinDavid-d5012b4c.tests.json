@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-d5012b4c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N1169-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T10:20:12+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N1169",
+   "pole": "-",
+   "label": "quote tokens that close or open a string literal in code",
+   "fire": [
+    "msg = \"connection refused\"\nlogger.error(msg)",
+    "headers = {'Accept': 'application/json'}\nresp = session.get(endpoint, headers=headers)",
+    "path = 'logs/app.log'\nwith open(path) as f:\n    lines = f.readlines()",
+    "self.assertIn('<li>Item</li>', html)\nself.assertEqual(code, 200)",
+    "printf(\"value=%d\\n\", value);\nreturn 0;",
+    "    name = \"default\"\n    if user:\n        name = user.name",
+    "button.setText(\"Save\")\nbutton.setEnabled(True)",
+    "env['HOME'] = 'test_home'\nrun(cmd, env=env)"
+   ],
+   "quiet": [
+    "msg = build_message(code)\nlogger.error(msg)",
+    "headers = make_headers(token)\nresp = session.get(endpoint, headers=headers)",
+    "path = base_dir / filename\nwith open(path) as f:\n    lines = f.readlines()",
+    "self.assertTrue(len(items) > 0)\nself.assertEqual(code, 200)",
+    "printf_value(value);\nreturn 0;",
+    "    name = default_name\n    if user:\n        name = user.name",
+    "button.setWidth(120)\nbutton.setEnabled(True)",
+    "env[key] = home_dir\nrun(cmd, env=env)"
+   ]
+  }
+ ],
+ "predictions": "probes peaked at 0.15-0.17 on quotes, so expect fire around 0.1-0.2; code without string literals near 0.01",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "string-literal quotes in code",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Small-max layer-1 pole (3.52), gate-closed regime dominates. Card: '\"\\n' x9, \"',\" x4 in Python/HTML strings. Probe: 'print(\"Hello, world\")' 0.154, \"url = 'http...'\" 0.171, dict of strings 0.082, prose quote 0.082; same code without quotes 0.005-0.013. Likely fails the 0.3 bar."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-c1cc2db0",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N63-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T10:20:12+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L20/N63",
+   "pole": "-",
+   "label": "the characters inside a DOI identifier in a reference list (doi:10.xxxx/...)",
+   "fire": [
+    "Brown T. Groundwater recharge in arid basins. J. Hydrol. 88 (3): 201–219. doi:10.1016/0022-1694(86)90127-4",
+    "Kim H, Ortiz L. Sleep and memory in older adults. Neurology 71 (4): 33–41. doi:10.1212/01.wnl.0000317092.21210.e7",
+    "Novak P. Ice sheet dynamics. Geophys. Res. Lett. 29 (12): 1580. doi:10.1029/2001GL014379",
+    "Haddad R. Urban heat islands. Int. J. Climatol. 25 (8): 1031–1045. doi:10.1002/joc.1165",
+    "Silva M. Coral bleaching events. Mar. Biol. 140 (2): 225–234. doi:10.1007/s00227-001-0711-2",
+    "Patel A. Insulin signalling. Diabetologia 48 (6): 1100–1110. doi:10.1007/s00125-005-1755-6",
+    "Lund E. Bird migration routes. J. Avian Biol. 36 (4): 285–297. doi:10.1111/j.0908-8857.2005.03524.x",
+    "Okafor C. Soil erosion on slopes. Catena 59 (1): 65–79. doi:10.1016/j.catena.2004.05.004"
+   ],
+   "quiet": [
+    "Brown T. Groundwater recharge in arid basins. J. Hydrol. 88 (3): 201–219.",
+    "Kim H, Ortiz L. Sleep and memory in older adults. Neurology 71 (4): 33–41. Published online 2008.",
+    "Novak P. Ice sheet dynamics. Geophys. Res. Lett. 29 (12): 1580. Received 14 March 2002.",
+    "For help, call the front desk at 0161-496-0732 or 0161-496-0815 after nine.",
+    "Silva M. Coral bleaching events. Mar. Biol. 140 (2): 225–234. Accepted 3 May 2001.",
+    "Your tracking code is 7741-0092-3381-5520; it will update within a day.",
+    "See https://www.example.org/archive/2005/03/lund-birds.html for the full article.",
+    "Okafor C. Soil erosion on slopes. Catena 59 (1): 65–79. ISBN 978-0-444-51837-2."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.5 inside the DOI suffix; the same citations with the DOI removed, and other digit IDs (phone, order numbers, URLs), below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "inside DOI strings",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: all top examples are DOI suffixes ('doi:10.1016/0043-1648(95)...'), peak on digits, '.', '('. Probe: citation with 'doi:10.1016/j.ecol.2003.04.011' 0.390, doi.org URL 0.244, ISSN 0.138, same citation without DOI 0.113, phone 0.024, order number 0.027, URL 0.005."
+}
