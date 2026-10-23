@@ -1,0 +1,167 @@
+{
+ "id": "2026-10-23-moridinamael-7e5bb500",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N2860-",
+ "contributor": "moridinamael",
+ "created": "2026-10-23T15:41:05+00:00",
+ "recipe": {
+  "toolchain_commit": "b22c1eb9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N2860_neg/2026-10-23-moridinamael-7e5bb500.tests.json"
+ },
+ "label": "a chance-or-room noun right after a verb of having or giving (have the chance, gave them an opening, have time to, no choice, more room to, some leeway, a shot at; also Gelegenheit, возможность, 機會 after a having verb), read on the noun; it fires even when the noun means something else after 'has' ('the shop has an opening for a cashier'); quiet on the same nouns without that verb (as subject, 'by chance', 'what time is it', 'the room was painted') and after 'missed' or 'took'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N2860_neg/2026-10-23-moridinamael-7e5bb500.tests.json",
+   "prereg_commit": "b22c1eb9",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.253,
+     "peak": " opening"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.387,
+     "peak": " chance"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.6,
+     "peak": " opening"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.499,
+     "peak": " time"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.32,
+     "peak": " choice"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.443,
+     "peak": " room"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.612,
+     "peak": "eway"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.293,
+     "peak": " shot"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.01,
+     "peak": " surprised"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.002,
+     "peak": "By"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.005,
+     "peak": " crowd"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.027,
+     "peak": " time"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.003,
+     "peak": " announced"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.001,
+     "peak": " painted"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.062,
+     "peak": "eway"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.004,
+     "peak": " visit"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 1,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.415,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "b22c1eb9",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Test sentences written blind by a second author who saw only the label (stream blind_test). Feeder chosen from resident attribution ranking (play step hit CUDA OOM on stream); top-ranked feeder of L5/N2916+.",
+ "roles": [
+  "feeds bonsai1/L5/N2916+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L4/N2860-",
+   "to": "bonsai1/L5/N2916+",
+   "kind": "feeds",
+   "weight": null,
+   "method": "attribution rank 1 of MLP feeders on top-4 corpus examples (resident feeders; play step zero ablation hit CUDA OOM, no drop measured)"
+  }
+ ]
+}
