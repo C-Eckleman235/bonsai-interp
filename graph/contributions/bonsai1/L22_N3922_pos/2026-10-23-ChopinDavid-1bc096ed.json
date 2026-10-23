@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-1bc096ed",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N3922+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T06:28:50+00:00",
+ "recipe": {
+  "toolchain_commit": "08e451b8",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L22_N3922_pos/2026-10-23-ChopinDavid-1bc096ed.tests.json"
+ },
+ "label": "the comma-and-closing-quote (,\" or ,”) that ends a quoted spoken statement before its attribution in news writing; indirect speech stays quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N3922_pos/2026-10-23-ChopinDavid-1bc096ed.tests.json",
+   "prereg_commit": "08e451b8",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.511,
+     "peak": ",\""
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.547,
+     "peak": ",”"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.522,
+     "peak": ",\""
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.542,
+     "peak": ",”"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.517,
+     "peak": ",\""
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.377,
+     "peak": ",”"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.744,
+     "peak": ",\""
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.727,
+     "peak": ",”"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.025,
+     "peak": " said"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.072,
+     "peak": " described"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.015,
+     "peak": " nobody"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.031,
+     "peak": " career"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.108,
+     "peak": " More"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.008,
+     "peak": " reminded"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.128,
+     "peak": " Kim"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.045,
+     "peak": " praised"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.532,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "08e451b8",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "comma closing a news quote",
+ "unit_kind": "context",
+ "confidence": 0.8,
+ "notes": "Card: all 32 top peaks are ,\" or ,” before 'said/says X'. Probe: ',\" said Dr. Lopez' 0.763, '” Grijalva said' 0.605, ',\" she said' 0.565; '.\"' ending a quote also 0.467 (so not tested as near miss); indirect speech 0.110, list of quoted words 0.018.",
+ "selection": "random draw"
+}

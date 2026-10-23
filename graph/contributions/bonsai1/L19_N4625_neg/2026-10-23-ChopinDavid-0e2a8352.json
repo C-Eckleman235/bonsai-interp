@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-0e2a8352",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N4625-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T06:27:41+00:00",
+ "recipe": {
+  "toolchain_commit": "08e451b8",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L19_N4625_neg/2026-10-23-ChopinDavid-0e2a8352.tests.json"
+ },
+ "label": "the slot just before the new or compared amount in a price or quantity change ('to $X', 'compared with $X', 'only X dollars')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L19_N4625_neg/2026-10-23-ChopinDavid-0e2a8352.tests.json",
+   "prereg_commit": "08e451b8",
+   "author": "ChopinDavid",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.253,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.248,
+     "peak": " $"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.126,
+     "peak": "4"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.173,
+     "peak": "4"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.202,
+     "peak": "4"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.62,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.192,
+     "peak": " is"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.14,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.007,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.02,
+     "peak": " river"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.008,
+     "peak": " children"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.01,
+     "peak": " office"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.01,
+     "peak": " city"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.015,
+     "peak": " coast"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.019,
+     "peak": " children"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.008,
+     "peak": "The"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.197,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "08e451b8",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "slot before the compared amount",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card peaks (max 28.9, very rare) sit on the token before the second figure of a from-to change or cost comparison. Probe was weak: 'only 49 dollars instead of 120' 0.224, 'from 300 ... to more than 2,000' 0.131, 'to $85' 0.070, 'compared with $65' 0.072, 'from 12 percent ... to 7 percent' 0.048. Best-guess test only.",
+ "selection": "random draw"
+}
