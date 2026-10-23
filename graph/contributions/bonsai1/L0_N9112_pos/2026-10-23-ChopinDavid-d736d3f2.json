@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-d736d3f2",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N9112+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T08:27:53+00:00",
+ "recipe": {
+  "toolchain_commit": "2c0128ad",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N9112_pos/2026-10-23-ChopinDavid-d736d3f2.tests.json"
+ },
+ "label": "the word piece 'us' completing a split Latin-style name or word (August|us, Brut|us, tor|us), not -us words that are single tokens",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N9112_pos/2026-10-23-ChopinDavid-d736d3f2.tests.json",
+   "prereg_commit": "2c0128ad",
+   "author": "ChopinDavid",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.546,
+     "peak": "us"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.019,
+     "peak": "R"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.031,
+     "peak": "us"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.037,
+     "peak": " under"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.265,
+     "peak": "us"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.059,
+     "peak": " heir"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 1.047,
+     "peak": "us"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 1.098,
+     "peak": "us"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.032,
+     "peak": " father"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.017,
+     "peak": "R"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.049,
+     "peak": " two"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.041,
+     "peak": " old"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.076,
+     "peak": " probe"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.029,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.026,
+     "peak": " are"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.204,
+     "peak": "ut"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.719,
+    "median_fire": 0.162,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "2c0128ad",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "split-word piece 'us'",
+ "unit_kind": "word",
+ "confidence": 0.6,
+ "notes": "Spelling unit; checked with tok.py: Brutus, Severus, Remus, Titus, Uranus, Octavius split off 'us'; circus, virus, genus, focus, census, uterus, bus are single tokens. Probe: 'Emperor Augustus' 0.965, 'torus' 1.062; 'campus' 0.022, 'bonus' 0.021, 'fungus' 0.108, 'join us' 0.070, 'Urb|icus' 0.124 (no 'us' piece).",
+ "selection": "random draw"
+}
