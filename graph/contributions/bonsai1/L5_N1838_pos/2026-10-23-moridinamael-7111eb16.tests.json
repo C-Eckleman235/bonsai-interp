@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-23-moridinamael-7111eb16",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N1838+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T22:51:16+00:00",
+ "roles": ["feeds bonsai1/L6/N2607+"],
+ "neighbours": [
+  {
+   "unit": "L5/N1838",
+   "pole": "+",
+   "label": "an '-ing' action word in a status message that code prints or logs, at the start of the message or after a comma (print('Skipping empty file'), logger.info('Starting server'), echo \"Installing ...\"; any language); the same message in past tense ('Server started') fires only about half as hard; '-ing' words in non-message strings or variable names, and in prose, stay quiet; a '# Skipping ...' comment right after print/log lines can fire weakly",
+   "short": "'-ing' verb in a code status/log message",
+   "fire": [
+    "logger.info('Starting server on port 8080')",
+    "echo \"Installing dependencies...\"",
+    "console.log('Connecting to database...');",
+    "log.debug(\"Retrying request, waiting 5 seconds\")",
+    "System.out.println(\"Loading configuration from disk\");",
+    "fmt.Println(\"Downloading model weights...\")",
+    "print(f'Processing batch {i} of {total}')",
+    "logging.warning('Done with cache, removing stale entries')"
+   ],
+   "quiet": [
+    "print('%s: %d votes' % (commit, len(votes)))",
+    "# Skipping empty file",
+    "print('Empty file, nothing to do')",
+    "logger.info('Server ready on port 8080')",
+    "echo \"Dependencies: see requirements.txt\"",
+    "const connectingTimeout = 5000;",
+    "log.debug(\"Request failed, retry in 5 seconds\")",
+    "String loadingPath = config.get(\"path\");"
+   ]
+  }
+ ],
+ "predictions": "Blind test (second author saw only the label). Expect 7-8/8 fire; '# Skipping empty file' is the solver leak (0.15 alone, 0.31 after print lines) and may reach 0.30.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "step-out"
+  ]
+ }
+}
