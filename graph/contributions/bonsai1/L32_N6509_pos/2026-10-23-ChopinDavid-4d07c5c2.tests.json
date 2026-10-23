@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-4d07c5c2",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N6509+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T05:19:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L32/N6509",
+   "pole": "+",
+   "label": "a lone capital-letter token (' B', ' P') that begins a proper noun the tokenizer splits, mostly Italian and ancient place names and 'B.C.'",
+   "fire": [
+    "The conference was held in Brescia, a city east of Milan.",
+    "Many pilgrims travelled through Bithynia on their way to the coast.",
+    "The temple was built around 300 B.C. by a local king.",
+    "My grandmother grew up in a small village outside Pisa.",
+    "He taught law for twenty years at the university in Pavia.",
+    "The cheese is made on farms near Piacenza in northern Italy.",
+    "Our train stopped for an hour in Bremen before reaching the border.",
+    "The family's olive oil comes from groves near Bari."
+   ],
+   "quiet": [
+    "The conference was held in Berlin, a city east of Hamburg.",
+    "Many pilgrims travelled through France on their way to the coast.",
+    "The temple was built around three centuries ago by a local king.",
+    "My grandmother grew up in a small village outside Paris.",
+    "He taught law for twenty years at the university in Prague.",
+    "The cheese is made on farms near Brussels in central Belgium.",
+    "Our train stopped for an hour in Boston before reaching the coast.",
+    "The family's olive oil comes from groves near Barcelona."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on ' B'/' P' in Brescia, Pisa, Pavia, Bithynia, B.C.; whole-token place names (Berlin, Boston, Paris, Prague) in the same slot near 0.0-0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split capital ' B'/' P' starting a place name",
+ "unit_kind": "token/lexical",
+ "confidence": 0.55,
+ "notes": "Card: ' B' x27 (Bologna, Bari, Bithynia, Bremen, B.C.), ' P', ' di'. Probe: 'Bari, in Puglia' 0.895 (peak ' P'), 'B.C.' 0.662, 'Bremen' 0.533, 'Bologna' 0.457, 'Perugia, in Umbria' 0.320; 'Berlin' 0.108, 'Boston' 0.002. Tokenizer: Brescia, Pisa, Pavia, Piacenza split as ' B'/' P' + rest; Berlin, Boston, Barcelona, Paris, Prague, Brussels are single tokens."
+}

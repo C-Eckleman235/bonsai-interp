@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-dae3aa55",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N11762+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T05:29:03+00:00",
+ "recipe": {
+  "toolchain_commit": "32fee051",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L23_N11762_pos/2026-10-23-ChopinDavid-dae3aa55.tests.json"
+ },
+ "label": "the '=' (or the space after it) right before the numerical result of a worked calculation with numbers and units",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L23_N11762_pos/2026-10-23-ChopinDavid-dae3aa55.tests.json",
+   "prereg_commit": "32fee051",
+   "author": "ChopinDavid",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.683,
+     "peak": " ="
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.173,
+     "peak": " $"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.18,
+     "peak": " ="
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.84,
+     "peak": " ="
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.029,
+     "peak": "/cm"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.292,
+     "peak": " ="
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.264,
+     "peak": " ="
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.021,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.025,
+     "peak": " times"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.021,
+     "peak": " x"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.017,
+     "peak": " is"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.015,
+     "peak": " set"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.009,
+     "peak": " times"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.027,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.012,
+     "peak": " by"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.015,
+     "peak": " on"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.961,
+    "median_fire": 0.222,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "32fee051",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "'=' before a computed numeric result",
+ "unit_kind": "context",
+ "confidence": 0.65,
+ "notes": "Card: peaks on '=' / ' ' before results ('4x10x5 mSv = 200 mSv', '= 125cm³', '36 * 16 = 576'). Probe: 'l x w x h = 5 cm x 4 cm x 3 cm = 60' 1.109, '4 x 10 x 5 mSv = 200' 0.636, '36 * 16 = 576' 0.314; symbolic 'f(x) = ax + b' 0.020, code 'x = y + z' 0.018, prose dose 0.023.",
+ "selection": "random draw"
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-14289dc2",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N8000+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T05:19:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L25/N8000",
+   "pole": "+",
+   "label": "the word-initial piece ' Tal' / ' tal' when a word is split there (talc, Talbot, talisman, Talia)",
+   "fire": [
+    "Sprinkle a little talcum powder inside the gloves before putting them on.",
+    "The eagle gripped the branch with its sharp talons and watched the river.",
+    "The poems are traditionally attributed to the Welsh bard Taliesin.",
+    "The film stars Talley as a detective in 1950s Chicago.",
+    "In the Greek myth, the bronze giant Talos guarded the island of Crete.",
+    "The ceramics workshop in Talavera has produced tiles for four centuries.",
+    "My neighbour Talon repairs vintage motorcycles in his garage.",
+    "The factory was fined after workers inhaled talc dust for years."
+   ],
+   "quiet": [
+    "Sprinkle a little baking powder inside the gloves before putting them on.",
+    "The eagle gripped the branch with its sharp claws and watched the river.",
+    "The poems are traditionally attributed to the Welsh bard Aneirin.",
+    "The film stars Harper as a detective in 1950s Chicago.",
+    "In the Greek myth, the tall bronze giant guarded the island of Crete.",
+    "The ceramics workshop in Seville has produced tiles for four centuries.",
+    "My neighbour has a real talent for repairing vintage motorcycles.",
+    "The factory in Tallinn was fined after workers inhaled dust for years."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-0.95 on ' Tal'/' tal' in split words; whole-token words (talent, tall, Tallinn split as ' Tall') and other names in the same slot near 0.0-0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split piece ' Tal' / ' tal'",
+ "unit_kind": "token/lexical",
+ "confidence": 0.8,
+ "notes": "Card: ' Tal' x9, ' tal' x3, Cyrillic 'ал' after Т, '熟'. Probe: 'Talbot' 0.939, 'talc' 0.881, 'Talia' 0.820, 'talisman' 0.681; 'Talmud' (split ' T|alm') 0.338, whole-token ' talent' 0.069, 'Thompson' 0.005, 'asbestos' 0.006. Tokenizer: talcum, Talley, talon(s), Taliesin, Talavera, Talos split as ' Tal|...'; tall, Talking, Taliban are single tokens; Tallinn is ' Tall|inn'."
+}

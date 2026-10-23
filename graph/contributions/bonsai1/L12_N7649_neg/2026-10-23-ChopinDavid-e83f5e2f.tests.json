@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-e83f5e2f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N7649-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T05:19:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N7649",
+   "pole": "-",
+   "label": "the Russian token ' не' that begins the prepositional pronoun 'неё' after a preposition (у неё, для неё, от неё)",
+   "fire": [
+    "Мы долго говорили, и у неё был очень усталый голос.",
+    "Я купил этот подарок специально для неё и спрятал его в шкаф.",
+    "Письмо пришло от неё только через две недели.",
+    "Он не мог представить свою жизнь без неё и часто звонил.",
+    "Вчера вечером мы зашли к соседке, и у неё горел свет на кухне.",
+    "Учитель приготовил для неё отдельное задание по математике.",
+    "Подруга уехала, и от неё остались только старые фотографии.",
+    "Дети сидели рядом с мамой и смотрели на неё с любовью."
+   ],
+   "quiet": [
+    "Мы долго говорили, и её голос был очень усталым.",
+    "Я купил этот подарок, и она спрятала его в шкаф.",
+    "Её письмо пришло только через две недели.",
+    "Он часто вспоминал её лицо и много звонил.",
+    "Вчера вечером мы зашли к соседке, и её кухня была освещена.",
+    "Учитель проверил её задание по математике.",
+    "Подруга уехала, и остались только её старые фотографии.",
+    "Дети сидели рядом с мамой и слушали её песню."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.9 on ' не' in 'у/для/от/без неё'; the same sentences with the plain form 'её' (no ' не' token) near 0.0-0.15. Broad pole: English near misses not tested here",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "' не' of prepositional 'неё'",
+ "unit_kind": "token/lexical",
+ "confidence": 0.4,
+ "notes": "Card: broad (1.2%), peaks on the first token of a prepositional object: ' the' after 'by', ' не' in 'у неё', ' всем' after 'ко', Arabic 'الم'. Probe: 'у неё' 0.873, 'by the 1920s in most of' 0.440 (peak ' of'), 'to all employees' 0.133, Arabic 0.025, 'all afternoon' 0.014. Only the Russian configuration was strong, so the test is on it. Tokenizer: 'у неё' and 'для неё' carry ' не'; plain 'её' is 'е|ё' or ' её'."
+}
