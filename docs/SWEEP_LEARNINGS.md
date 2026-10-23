@@ -74,6 +74,7 @@ abstraction pass. Each principle names its evidence and whether we have measured
 - label precision: a held quick test rejects unrelated labels (0 / 13 wrong passed; FINDINGS 2026-10-20 null baseline). Does it also reject a nearby, broader or narrower label? That decides how much a held label says.
 - stage 2's cost scales with hits × occurrences (847k × ≤ 256). Would capping occurrences per frequent trigger (e.g. 128) change any bins? It changes results, so it's the user's call; measure on one layer's occ store first
 - prefix sharing and batch 32 for scoring (GPU benchmark after stage 2)
+- scores depend on batch shape on the GPU (found 10-22 through PR #677): one sentence on L22/N2943- scores 0.192 alone on CUDA and on CPU float32, 0.231 inside a batch of 16 or 32 on CUDA (bf16), and 0.294 on Apple MPS; the other 15 match within 0.002. Find the cause (bf16 kernel choice by shape, or attention with right padding), measure how often it moves a value by more than 0.03, and decide whether scoring should run unbatched or in float32 for borderline sentences. A fix changes recorded values, so it goes to the user
 - the all-layer passes run at forward batch 1 (the driver's hits batch, chosen for memory under the 0.22 cap). Benchmark batch 2–4 for stage 2's 8,000 windows: likely the biggest remaining lever on the 70-minute pass
 - the scoring tokens per held pole by depth (a paper metric; L4 about 24.5k, L20 about 172k layer-tokens)
 - feeders-first versus cold deep targets for human and agent labels (stream A/B)
