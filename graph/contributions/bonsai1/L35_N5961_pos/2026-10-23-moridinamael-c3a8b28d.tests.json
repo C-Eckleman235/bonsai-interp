@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-23-moridinamael-c3a8b28d",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N5961+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T08:01:27+00:00",
+ "roles": ["reads bonsai1/L34/N11316-"],
+ "neighbours": [
+  {
+   "unit": "L35/N5961",
+   "pole": "+",
+   "label": "A one-letter Arabic or Hebrew prefix split off as its own token in mid-sentence: the article ال (Hebrew ה), 'and' و, or 'to' ل, cut from a longer or less common word the tokenizer does not keep whole. Quiet when the article stays merged into a short common word, at the very start of a text, and in English; sometimes also on '(' glued between an English UI word and its Korean translation.",
+   "short": "split-off Arabic/Hebrew one-letter prefix (ال, و, ل, ה)",
+   "unit_kind": "token/lexical",
+   "confidence": "medium",
+   "notes": "Cold step-in (labelled from own tops and probes only). Reader of bonsai1/L34/N11316- (downstream drop 0.04); the label has little to do with the feeder's coined-phrase repeats. Test sentences written blind by a second author who saw only the label; the solver placed two bank lines (one scored ~0.01 in probing) as fire items.",
+   "fire": [
+    "قرأت الكتاب في المكتبة أمس",
+    "- Console addresses(콘솔 주소) 대화 상자에서 Finish(마침)를 클릭합니다.",
+    "ذهبنا أمس إلى المستودعات القديمة في الضواحي.",
+    "قام الباحث بدراسة الميكروبات والفطريات في التربة.",
+    "أرسلت الرسالة للمستشارين في الوزارة صباح اليوم.",
+    "تحدث المهندس عن الهيدروليكا والديناميكا الحرارية بالتفصيل.",
+    "اشترى أخي الزعفران والهيل من السوق الشعبي.",
+    "وصل الوفد للمحافظة الشمالية بعد رحلة طويلة."
+   ],
+   "quiet": [
+    "Yesterday we went to the old warehouses in the suburbs.",
+    "The researcher studied the microbes and fungi in the soil.",
+    "I sent the letter to the advisers at the ministry this morning.",
+    "The engineer talked about hydraulics and thermodynamics in detail.",
+    "My brother bought saffron and cardamom at the local market.",
+    "The delegation reached the northern province after a long trip.",
+    "I saw the pianist playing at the concert last night.",
+    "The scientists tested the new microscope in the lab."
+   ]
+  }
+ ],
+ "predictions": "6/8 fire (the library sentence likely misses), 0 near misses",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "which",
+   "step-down",
+   "inverse-de"
+  ]
+ }
+}
