@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-926786cc",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N3326-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T14:28:51+00:00",
+ "recipe": {
+  "toolchain_commit": "8d31f7fd",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L9_N3326_neg/2026-10-23-ChopinDavid-926786cc.tests.json"
+ },
+ "label": "the digit '0' as its own token inside long decimal numbers and measurements (2626985.111|0|74, 2.2|0|m); the same numbers without a 0 stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L9_N3326_neg/2026-10-23-ChopinDavid-926786cc.tests.json",
+   "prereg_commit": "8d31f7fd",
+   "author": "ChopinDavid",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.337,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.333,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.085,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.199,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.047,
+     "peak": " after"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.381,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.146,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.151,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.125,
+     "peak": "8"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.099,
+     "peak": " value"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.027,
+     "peak": "In"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.071,
+     "peak": " reference"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.047,
+     "peak": " after"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.035,
+     "peak": "m"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.071,
+     "peak": " stored"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.026,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.898,
+    "median_fire": 0.175,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "8d31f7fd",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "digit '0' inside decimal numbers",
+ "unit_kind": "token",
+ "confidence": 0.25,
+ "notes": "Card: '0' x23, max 4.28, density 0.23%. Probe: coordinates with 0s 0.403, '2.20m' 0.268, '2,405.00' 0.155; '2.15m' 0.036, '3,155.55' 0.043, dates '2010-08-09' 0.051. Only long decimals reach 0.3, so this may not hold.",
+ "selection": "random draw"
+}

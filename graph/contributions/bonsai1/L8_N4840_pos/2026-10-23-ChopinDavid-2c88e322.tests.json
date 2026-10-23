@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-2c88e322",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N4840+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T14:20:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L8/N4840",
+   "pole": "+",
+   "label": "a concessive 'nevertheless' connective that opens a clause against what came before (' yet', German 'Trotzdem', French 'pourtant'); plain 'but', 'although' and temporal 'not yet' stay quiet",
+   "fire": [
+    "The hotel was expensive and far from the beach, yet we booked it again this year.",
+    "He had lost every early match. And yet, by the end of the season, he was champion.",
+    "The data looked weak at first, yet the effect survived every later test.",
+    "She knew the risks of the climb, yet she went up alone at dawn.",
+    "Die Straße war gesperrt. Trotzdem fuhren viele Autos einfach weiter.",
+    "Das Wetter war schlecht. Trotzdem kamen fast tausend Besucher zum Fest.",
+    "Le film a reçu de mauvaises critiques, et pourtant il a rempli les salles.",
+    "Il avait tout préparé avec soin, et pourtant rien ne s'est passé comme prévu."
+   ],
+   "quiet": [
+    "The hotel was expensive and far from the beach, but we booked it again this year.",
+    "He had lost every early match, although by the end of the season he was champion.",
+    "The final data have not come in yet, so the report will be late.",
+    "She knew the risks of the climb, so she went up with two guides.",
+    "Die Straße war gesperrt, weil dort ein Baum umgefallen war.",
+    "Das Wetter war schön, und fast tausend Besucher kamen zum Fest.",
+    "Le film a reçu de bonnes critiques, et il a rempli les salles.",
+    "Il avait tout préparé avec soin, mais il a oublié les billets."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-1.0 on concessive yet/Trotzdem/pourtant; but/although/temporal yet below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "concessive 'yet / trotzdem / pourtant'",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: ' yet' x21, 'dem' (Trotzdem), ' doch', 'tant' (pourtant). Probe: ', yet nobody' 0.633, 'And yet,' 0.877, 'Trotzdem' 0.954, 'pourtant' 1.014; same clause with ', but' 0.064, ', although' 0.052; temporal 'not arrived yet' 0.010; modal particle 'doch' 0.122. The pole marks the concessive turn, not contrast in general."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-0c480f62",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N4290-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T14:20:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N4290",
+   "pole": "-",
+   "label": "a 't'-sound piece split off inside a rare word after a consonant: Arabic 'ت' (المج|ت|هد, اج|ت|يا|ح) or Latin 'jt', 'ty', 't', 'TA' in names and acronyms (Bui|jt|els, Maj|ty|k, RG|TA); words where the t sits inside a larger token stay quiet",
+   "fire": [
+    "أكد العلماء أن المجتهد في الفقه يحتاج إلى سنوات من الدراسة.",
+    "رفض الشعب اجتياح الجيش للحدود الجنوبية.",
+    "يجتهد الطلاب في الامتحانات كل عام.",
+    "The paper was written by Rijtma and two colleagues in Groningen.",
+    "Our office in Zagreb is run by Ana Majtyk and her deputy.",
+    "Funding for the SGTA scheme was renewed for three more years.",
+    "The prize went to Vojtěch Novák for his work on soil bacteria.",
+    "Membership of the NGTA has grown steadily since 2010."
+   ],
+   "quiet": [
+    "أكد العلماء أن الاجتماع في الفقه يحتاج إلى سنوات من الدراسة.",
+    "رفض الشعب دخول الجيش إلى الحدود الجنوبية.",
+    "يدرس الطلاب في المكتبة كل عام.",
+    "The paper was written by Jansen and two colleagues in Groningen.",
+    "Our office in Zagreb is run by Ana Kovač and her deputy.",
+    "Funding for the student scheme was renewed for three more years.",
+    "The prize went to Jan Novák for his work on soil bacteria.",
+    "Membership of the guild has grown steadily since 2010."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.9 where ت/jt/ty/TA is its own token; same-topic words with merged splits below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-off mid-word 't' piece",
+ "unit_kind": "token",
+ "confidence": 0.55,
+ "notes": "Card: 'ت' x8, 'م', 'تم', 'jt' (Buijtels), 'TA' (RGTA), 'ty' (Majtyka). Probe: 'المجتهدون' 0.808, 'الاجتياح' 0.791, 'Buijtels' 0.799, 'RGTA' 0.872, 'Majtyka' 0.672; 'المكتبة' 0.019, 'Bakker' 0.006, 'Miller' 0.004. Near misses use the same topics with words whose split merges the t ('الاجتماع', 'مجتمع', common names)."
+}

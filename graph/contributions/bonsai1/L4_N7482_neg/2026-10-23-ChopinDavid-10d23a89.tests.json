@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-10d23a89",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N7482-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T14:20:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N7482",
+   "pole": "-",
+   "label": "an h-sound letter split off as its own mid-word piece: Arabic 'ه' or 'ح' inside a longer word (الان|ه|يار, الج|نا|ح), or 'ah' in Conn|ah; the same letters inside a larger token stay quiet",
+   "fire": [
+    "تحدث الوزير عن خطر الانهيار المالي في المصارف.",
+    "حذر الخبراء من الانزلاق نحو الانهيار الكامل للعملة.",
+    "وصل الجنود إلى الجناح الشرقي من القصر.",
+    "استمر اجتياح القوات للمدينة ثلاثة أيام.",
+    "أعلن الجيش الانسحاب من القرية بعد المعارك.",
+    "تحدث الطبيب عن الانحصار النفسي لدى المراهقين.",
+    "تحدث الطبيب عن خطر بالانهيار العصبي عند المرضى.",
+    "The ferry from Connah's Quay used to cross the river every hour."
+   ],
+   "quiet": [
+    "تحدث الوزير عن خطر انهيار المصارف في البلاد.",
+    "حذر الخبراء من تراجع قيمة العملة هذا العام.",
+    "وصل الجنود إلى القصر بعد الظهر.",
+    "استمر الاحتلال للمدينة ثلاثة أعوام.",
+    "أعلن الجيش وقف الحرب في القرية بعد المعارك.",
+    "تحدث الطبيب عن الاقتصاد لدى الأسر الفقيرة.",
+    "تحدث الطبيب عن أهمية النوم عند المرضى.",
+    "The ferry from Savannah used to cross the river every hour."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-1.0 where ه/ح (or 'ah') is a separate token; same words with merged splits below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-off Arabic ه/ح (and 'ah') piece",
+ "unit_kind": "token",
+ "confidence": 0.55,
+ "notes": "Card: 'ه' x12, 'اه', 'ح', 'نه', 'ته', 'ah' (Conn|ah's Quay). Probe: 'الانهيار' (ه piece) 0.837, 'كجناح' (ح piece) 1.028, 'انحصار' (ح piece) 0.434, 'Connah's' 0.970; Arabic sentences without the split 0.009-0.027, 'Savannah' (one token) 0.007. A spelling-unit pole: near misses reuse related words whose split merges the letter ('انه|يار', 'نا|حا', 'الاحتلال')."
+}

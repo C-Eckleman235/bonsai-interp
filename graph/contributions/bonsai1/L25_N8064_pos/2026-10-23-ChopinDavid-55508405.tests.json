@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-55508405",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N8064+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T14:20:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L25/N8064",
+   "pole": "+",
+   "label": "the end of a Python function's header or docstring: the closing '\"\"\"' line (or the '):' of the signature) right before the function body starts",
+   "fire": [
+    "import os\n\ndef list_files(folder):\n    \"\"\"Return the names of all files in folder.\n\n    Hidden files are skipped.\n    \"\"\"\n    return [f for f in os.listdir(folder) if not f.startswith('.')]",
+    "def area(width, height):\n    \"\"\"Compute the area of a rectangle.\n\n    :param width: the width\n    :param height: the height\n    \"\"\"\n    return width * height",
+    "class Cache:\n    def get(self, key):\n        \"\"\"Look up key and return None if missing.\n        \"\"\"\n        return self._data.get(key)",
+    "def to_celsius(f):\n    \"\"\"\n    Convert a Fahrenheit reading to Celsius.\n    \"\"\"\n    return (f - 32) * 5 / 9",
+    "import json\n\ndef load_config(path):\n    \"\"\"Read the JSON config at path.\n\n    Returns:\n        dict of settings\n    \"\"\"\n    with open(path) as fh:\n        return json.load(fh)",
+    "class Queue:\n    def push(self, item):\n        \"\"\"Add item to the end of the queue.\"\"\"\n        self._items.append(item)",
+    "def connect(\n        host='localhost',\n        port=5432,\n        timeout=10,\n    ):\n    return Client(host, port, timeout)",
+    "def mean(values):\n    \"\"\"Return the arithmetic mean.\n\n    Raises ValueError on an empty list.\n    \"\"\"\n    if not values:\n        raise ValueError('empty')\n    return sum(values) / len(values)"
+   ],
+   "quiet": [
+    "import os\n\n# Return the names of all files in folder.\n# Hidden files are skipped.\nnames = [f for f in os.listdir(folder) if not f.startswith('.')]",
+    "width = 4\nheight = 5\n# Compute the area of a rectangle.\narea = width * height\nprint(area)",
+    "message = \"\"\"Dear user,\nyour cache is full.\n\"\"\"\nsend(message)",
+    "for reading in readings:\n    if reading > 90:\n        print('hot')",
+    "import json\n\nwith open(path) as fh:\n    settings = json.load(fh)\nprint(settings)",
+    "items = []\nwhile True:\n    item = read()\n    if item is None:\n        break\n    items.append(item)",
+    "The connect function takes a host, a port and a timeout, and returns a client.",
+    "values = [3, 4, 5]\ntotal = sum(values)\nprint(total / len(values))"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on closing docstring lines and def '):' before a body; non-docstring triple quotes, comments and if/for colons below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "end of def header / docstring",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: ' \"\"\"\\n' x23, '):\\n' x4, '.\"\"\"\\n' x2, max 113. Probe: multi-line docstring close 0.612, one-line docstring close in a method 0.434, multi-line signature ' ):' 0.291, 'def safe_name(name):' 0.250; a string-literal triple quote 0.034, comment block 0.038, 'for/if' colons 0.079. Fire items lean on docstring closes (strongest)."
+}

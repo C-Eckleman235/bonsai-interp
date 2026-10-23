@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-9aea2fd2",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N6986-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T14:30:02+00:00",
+ "recipe": {
+  "toolchain_commit": "8d31f7fd",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L15_N6986_neg/2026-10-23-ChopinDavid-9aea2fd2.tests.json"
+ },
+ "label": "a person's surname used alone to refer back to someone already named, in biography or encyclopedia style ('Mary Evans ... Evans studied', 'Peter Grünberg / Grünberg, Peter'); pronouns, first mentions and place names stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L15_N6986_neg/2026-10-23-ChopinDavid-9aea2fd2.tests.json",
+   "prereg_commit": "8d31f7fd",
+   "author": "ChopinDavid",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.367,
+     "peak": "wick"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.513,
+     "peak": "Sol"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.828,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.374,
+     "peak": " Marsh"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.723,
+     "peak": "ko"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.246,
+     "peak": " O"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.386,
+     "peak": " Weiss"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.17,
+     "peak": "ing"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.023,
+     "peak": " Hard"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.017,
+     "peak": "berg"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.057,
+     "peak": " was"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.031,
+     "peak": "ist"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.075,
+     "peak": " born"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.023,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.02,
+     "peak": "6"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.036,
+     "peak": " painter"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.38,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "8d31f7fd",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "surname re-mention in a biography",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: ',' x10 after a repeated surname (Grünberg, / Kosygin,), ' Evans', 'el' (Frank|el), 'rier' (G|rier). Probe: 'Mary Evans ... Evans studied' 0.699, 'Grünberg\\nGrünberg, Peter' 0.662, 'Eliza Grier ... Grier's' 0.644; pronoun 'She studied' 0.028, first mention 'Commissioner Fulton' 0.049, the town 'Grünberg is' 0.076, citation 'Potts, John' 0.173.",
+ "selection": "random draw"
+}
