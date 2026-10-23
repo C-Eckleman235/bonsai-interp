@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-f0dd71d7",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N131+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T20:20:16+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L15/N131",
+   "pole": "+",
+   "label": "separator punctuation (',', ' =', ':') between items in a code data literal or keyword-argument list; a weak pole whose card peaks do not reproduce in short text",
+   "fire": [
+    "settings = {'host': 'localhost', 'port': 8080, 'debug': True}",
+    "point = {'x': 4, 'y': 7, 'z': -2}",
+    "user = dict(name='Ana', age=31, city='Lisbon')",
+    "colors = {'sky': 'blue', 'grass': 'green', 'sun': 'yellow'}",
+    "plot(x, y, color='red', linewidth=2, label='trend')",
+    "weights = {'a': 0.2, 'b': 0.5, 'c': 0.3}",
+    "row = {'id': 17, 'title': 'Notes', 'pages': 240}",
+    "server.start(timeout=30, retries=5, verbose=False)"
+   ],
+   "quiet": [
+    "The host was friendly, the port was busy and the weather was warm.",
+    "We walked four miles north, then seven miles east along the coast.",
+    "Ana is thirty-one years old and lives in Lisbon with her sister.",
+    "The sky looked blue over the green fields and the yellow sun.",
+    "The trend line on the chart was drawn in a thick red stroke.",
+    "Most of the weight sat on the back wheels of the old cart.",
+    "The notebook had seventeen chapters and almost two hundred pages.",
+    "The server took a long time to start after the power cut."
+   ]
+  }
+ ],
+ "predictions": "fire 0.05-0.15 on separators in dict/list literals and keyword arguments; prose lists 0.0-0.05; most likely fails",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "separator in code literals (weak)",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Card max 13.8 with peaks on ',', ' =', '(self', '],' in code and dated headers. Probe: dict literal ',' 0.068; nested list 0.033, db.Column line 0.030, dateline 0.033, prose list 0.029, 'x = a + b' 0.017. Nothing reached 0.1, so this is a best-guess test of a weak pole."
+}

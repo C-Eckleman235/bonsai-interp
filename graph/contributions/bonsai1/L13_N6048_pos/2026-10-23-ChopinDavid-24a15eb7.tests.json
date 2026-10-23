@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-24a15eb7",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N6048+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T20:20:16+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L13/N6048",
+   "pole": "+",
+   "label": "the point where the leading part of a systematically enumerated code list changes to the next group (A1, A2, B1 …; 'Auditory/…', then 'Visual/…'), as against lists whose leading part never changes",
+   "fire": [
+    "seats = ['R1', 'R2', 'R3', 'S1', 'S2', 'S3']",
+    "MAP = {\n    'North/East': 0,\n    'North/West': 1,\n    'South/East': 2,\n    'South/West': 3,\n}",
+    "keys = ['x_min', 'x_max', 'y_min', 'y_max']",
+    "levels = ['L1', 'L2', 'M1', 'M2', 'H1', 'H2']",
+    "CHANNELS = {\n    'Audio/Low': 10,\n    'Audio/High': 11,\n    'Video/Low': 20,\n    'Video/High': 21,\n}",
+    "grid = ['a1', 'a2', 'a3', 'b1', 'b2', 'b3']",
+    "fields = ['start_date', 'start_time', 'end_date', 'end_time']",
+    "ROOMS = ['K101', 'K102', 'K103', 'P201', 'P202']"
+   ],
+   "quiet": [
+    "seats = ['R1', 'R2', 'R3', 'R4', 'R5', 'R6']",
+    "MAP = {\n    'North/East': 0,\n    'North/West': 1,\n    'North/Up': 2,\n    'North/Down': 3,\n}",
+    "keys = ['x_min', 'x_max', 'x_mean', 'x_std']",
+    "levels = ['L1', 'L2', 'L3', 'L4', 'L5', 'L6']",
+    "CHANNELS = {\n    'Audio/Low': 10,\n    'Audio/High': 11,\n    'Audio/Mid': 12,\n    'Audio/Max': 13,\n}",
+    "grid = ['a1', 'a2', 'a3', 'a4', 'a5', 'a6']",
+    "fields = ['start_date', 'start_time', 'start_zone', 'start_note']",
+    "ROOMS = ['K101', 'K102', 'K103', 'K104', 'K105']"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-1.2 at the first item of a new group in a code enumeration; lists with one constant group 0.0-0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "group change in an enumerated list",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card peaks inside code enumerations ('Visual'/Right after Auditory/..., test_reflect_2d, '0|3|10', 'D|2|B'). Probe: 'Auditory/Left, Auditory/Right, Visual/Left' 1.184 on 'Visual', ['A1','A2','B1',...] 0.948 on 'B'; test_rotate_2d methods 0.059, model['post_...'] 0.092, classifiers 0.158; prose about visual fields 0.007. Near misses keep the enumeration but never change the leading group."
+}
