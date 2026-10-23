@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-9a2fb0d5",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N9890-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T21:20:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N9890",
+   "pole": "-",
+   "label": "dense early pole (23% of tokens at 0.1 of a tiny max 0.20); best guess: the word 'cross' and its forms, as against the same sentences without it",
+   "fire": [
+    "Please do not cross the tracks while the lights are flashing.",
+    "The hikers crossed the glacier slowly with ropes and ice axes.",
+    "She sat quietly with her arms crossed and said nothing.",
+    "The two roads cross just north of the old church.",
+    "def cross_entropy(p, q):\n    return -sum(a * log(b) for a, b in zip(p, q))",
+    "Draw a small cross in the box next to your name.",
+    "The ferry crosses the strait four times a day.",
+    "Our route crossed three rivers and a mountain pass."
+   ],
+   "quiet": [
+    "Please do not walk on the tracks while the lights are flashing.",
+    "The hikers climbed the glacier slowly with ropes and ice axes.",
+    "She sat quietly with her hands folded and said nothing.",
+    "The two roads meet just north of the old church.",
+    "def mean_error(p, q):\n    return sum(abs(a - b) for a, b in zip(p, q))",
+    "Draw a small circle in the box next to your name.",
+    "The ferry sails along the strait four times a day.",
+    "Our route followed three rivers and a mountain pass."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.8 on cross/crossed/crossing; near misses 0.2-0.3 because the pole is dense, so this test probably fails",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense; best guess 'cross' (dense)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.1,
+ "notes": "Card: max 0.20, dense 23.5%, gate-closed regime 100%; peaks on ' cross' x3, ' crossed' x3, '_cross', French 're'. Probe: 'crossing your arms' 0.808, 'def cross' 0.690, 'crossed the river' 0.548; but neutral controls 0.243-0.251 and French 'Apprendre' 0.859, so the floor is high."
+}

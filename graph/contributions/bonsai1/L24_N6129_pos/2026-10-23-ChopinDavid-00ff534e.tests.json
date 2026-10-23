@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-00ff534e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N6129+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T21:20:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L24/N6129",
+   "pole": "+",
+   "label": "tokens in Arabic or Chinese news prose about officials, appointments and joint work, more than in English or Russian prose on the same topics; a broad pole",
+   "fire": [
+    "اجتمع وزير الخارجية مع عدد من المسؤولين لبحث التعاون الاقتصادي.",
+    "أعلنت الحكومة تعيين مدير جديد للهيئة العامة للمياه.",
+    "يعمل الفريق مع المنظمات الدولية على تحسين التعليم في الريف.",
+    "استقبل رئيس الوزراء وفداً من رجال الأعمال في مكتبه.",
+    "他于去年出任外交部副部长。",
+    "新任市长上任后会见了多位企业代表。",
+    "两国官员将共同推动经济合作项目。",
+    "قال المتحدث إن الوزارة ستعمل على حل المشكلة قريباً."
+   ],
+   "quiet": [
+    "The foreign minister met several officials to discuss economic cooperation.",
+    "The government announced a new director for the public water authority.",
+    "The team works with international groups to improve rural schools.",
+    "The prime minister received a delegation of business leaders in his office.",
+    "Last year he became deputy foreign minister.",
+    "After taking office, the new mayor met several business leaders.",
+    "Officials from both countries will promote joint economic projects.",
+    "The spokesman said the ministry would solve the problem soon."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on Arabic and Chinese sentences about officials and appointments; English translations 0.05-0.3",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Arabic/Chinese official-news prose (broad)",
+ "unit_kind": "unclear",
+ "confidence": 0.25,
+ "notes": "Card max 13.4, broad (4.7% of tokens at 0.1); peaks on Arabic plural/verb pieces (مسؤولين, عمل, ي) and '出任', with some English ' the'. Probe: Arabic officials 0.766, Chinese '出任' 0.642, Arabic engineers 0.428, Russian appointment 0.231; English engineers 0.136, cat 0.058 but 'make up the' 0.411 and 'a rival' 0.332, so English near misses may leak."
+}

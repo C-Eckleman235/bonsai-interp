@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-78a00d30",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N5682-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T21:20:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N5682",
+   "pole": "-",
+   "label": "the word piece right after an initial 'L'/'La' piece in a split name or German word (La|ert|ius, La|ot|ian, L|ä|den), as against the same pieces after other initial letters",
+   "fire": [
+    "In the play, Hamlet fights a duel with Laertes near the end.",
+    "Many Laotians moved to France and the United States after 1975.",
+    "Der Junge kaufte frische Brötchen in den kleinen Läden am Markt.",
+    "Our guide told us that Laertius lived in the third century.",
+    "Nachts störte der Lärm der Baustelle die ganze Straße.",
+    "The village sits in the Laotian highlands near the border.",
+    "In the old story, Laertes waits on his farm for Odysseus.",
+    "Die Kinder fanden Läuse in den Haaren und gingen zum Arzt."
+   ],
+   "quiet": [
+    "In the play, the hero fights a duel with Maertens near the end.",
+    "Many Baotians moved to the coast after the drought of 1975.",
+    "The boy bought fresh rolls at the small shops by the market.",
+    "Our guide told us that Dolert lived in the third century.",
+    "At night the noise of the building site kept the street awake.",
+    "The village sits in the Raotian highlands near the border.",
+    "In the old story, the old king waits on his farm for his son.",
+    "The children found lice in their hair and went to the doctor."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on 'ert', 'ot', 'ä', 'ufen' after ' La'/' L'; the same pieces after ' Ba', ' Ma', ' Ra', ' Sa' 0.0-0.25",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "piece after an initial L/La",
+ "unit_kind": "spelling",
+ "confidence": 0.5,
+ "notes": "Card peaks: l|au|flaenge, L|au|ki, La|ert|ius, La|ot|ian, L|ä|den, LA|U|ER. Probe: Laertius 'ert' 0.871, Läden 'ä' 0.720, Lärm 'rm' 0.695, Laotian 'ot' 0.678; Baotian 'ot' 0.238, Mauki 'au' 0.093, Baert 0.027, and Lautner (L|aut|ner) only 0.017, so not every L-split fires. Splits checked with tok.py."
+}

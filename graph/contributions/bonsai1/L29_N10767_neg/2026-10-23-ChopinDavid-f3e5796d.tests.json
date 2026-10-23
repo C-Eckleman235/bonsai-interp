@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-f3e5796d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N10767-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T21:20:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N10767",
+   "pole": "-",
+   "label": "a Python token where the model expects `.update(` or `itertools`/`import` of iterator tools next: the object name starting a line after `x = y.copy()`, `self.__dict__`, and ' import' after 'from itertools'",
+   "fire": [
+    "def with_defaults(opts):\n    merged = DEFAULTS.copy()\n    merged.update(opts)\n    return merged",
+    "def build(env_vars):\n    env = os.environ.copy()\n    env.update(env_vars)\n    return env",
+    "class Node:\n    def __init__(self, **attrs):\n        self.__dict__.update(attrs)",
+    "import sys\nfrom itertools import groupby, islice\nimport re",
+    "def scope(parent):\n    local = parent.copy()\n    local.update({'x': 1})\n    return local",
+    "\"\"\"Helpers.\"\"\"\nfrom itertools import permutations\nfrom math import factorial",
+    "def pairs(rows):\n    return list(itertools.chain.from_iterable(rows))",
+    "def snapshot(state):\n    saved = state.copy()\n    saved.update(timestamp=now())\n    return saved"
+   ],
+   "quiet": [
+    "def with_defaults(opts):\n    merged = []\n    merged.extend(opts)\n    return merged",
+    "def build(env_vars):\n    env = {}\n    for k in env_vars:\n        print(k)",
+    "class Node:\n    def __init__(self, value):\n        self.value = value",
+    "import sys\nfrom pathlib import Path\nimport re",
+    "def scope(parent):\n    local = len(parent)\n    return local + 1",
+    "\"\"\"Helpers.\"\"\"\nfrom math import factorial\nfrom string import ascii_lowercase",
+    "def pairs(rows):\n    return [r for r in rows if r]",
+    "def snapshot(state):\n    saved = str(state)\n    print(saved)\n    return saved"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on the copied object's name at the start of the next line, on '__.' in self.__dict__ and on ' import' after 'from itertools'; same code shapes without the copy or with other modules 0.0-0.3",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Python setup for .update / itertools",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card peaks: ' namespace' before .update after .copy(), 'os.environ' before .update, '__dict__.' before update, ' import' after 'from itertools', ' itertools' before .chain; the - pole promotes 'update', 'chain', 'unpack'. Probe: 'result = base.copy()\\n result' 0.735 (same with .append next: prediction fires before the method), '__.' 0.456, 'from itertools import' 0.649, 'itertools.chain' 0.466; 'self.name = name' 0.013, 'import os / from collections import deque' 0.293."
+}
