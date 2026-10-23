@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-349b548f",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N4551-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T20:29:53+00:00",
+ "recipe": {
+  "toolchain_commit": "deee5666",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N4551_neg/2026-10-23-ChopinDavid-349b548f.tests.json"
+ },
+ "label": "the French word-opening prefix piece ' dé' (dé|rangé, dé|licieux, dé|modée; not the whole tokens ' dém', ' dés', ' décidé'), as against French sentences on the same topics whose words do not start with a split dé-",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N4551_neg/2026-10-23-ChopinDavid-349b548f.tests.json",
+   "prereg_commit": "deee5666",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.638,
+     "peak": " dé"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.593,
+     "peak": " dé"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.488,
+     "peak": " dé"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.547,
+     "peak": " dé"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.295,
+     "peak": " dé"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.387,
+     "peak": " dé"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.546,
+     "peak": " dé"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.605,
+     "peak": " dé"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.114,
+     "peak": "Apr"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.196,
+     "peak": " au"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.236,
+     "peak": "El"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.102,
+     "peak": "Le"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.134,
+     "peak": " du"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.141,
+     "peak": "Mon"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.189,
+     "peak": " du"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.075,
+     "peak": " un"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.546,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "deee5666",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "French prefix piece ' dé'",
+ "unit_kind": "token",
+ "confidence": 0.7,
+ "notes": "Card: ' dé' x21 (dé|gueu, dé|guisée, dé|rangé, dé|licieux), ' de' x4 (also English 'de|formed'). Probe: 'dédaignés' 0.847, 'démodée' 0.807, 'dérangé' 0.673, 'délicieux' 0.621; 'décidé' (one token) 0.099, French 'restaurant de la gare' 0.234, 'Le petit pain ... très bon' 0.102, English 'deformed' 0.564. Near misses avoid de- words entirely because ' de' leaks.",
+ "selection": "random draw"
+}

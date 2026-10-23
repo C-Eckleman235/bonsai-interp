@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-8c17c743",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N3101+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T20:28:23+00:00",
+ "recipe": {
+  "toolchain_commit": "deee5666",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L20_N3101_pos/2026-10-23-ChopinDavid-8c17c743.tests.json"
+ },
+ "label": "the end of a closing or sign-off line that wraps up a piece ('a story for another day', 'read the full report on our site'), as against ordinary sentence ends inside a narrative",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L20_N3101_pos/2026-10-23-ChopinDavid-8c17c743.tests.json",
+   "prereg_commit": "deee5666",
+   "author": "ChopinDavid",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.39,
+     "peak": " day"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.264,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.456,
+     "peak": " time"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.269,
+     "peak": " complete"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.231,
+     "peak": " this"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.208,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.273,
+     "peak": " one"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.405,
+     "peak": " day"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.11,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.023,
+     "peak": " place"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.04,
+     "peak": " following"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.039,
+     "peak": " period"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.081,
+     "peak": " arrived"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.054,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.026,
+     "peak": " stories"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.035,
+     "peak": " sign"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.271,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "deee5666",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "end of a wrap-up / sign-off line",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card max 18.9, broad (1.3%), peaks on '.', '.\\n', ')\\n', ' for' at the end of a document or section ('Read the full Wall Street Journal report here.', 'a topic for another day'). Probe: 'a story for another day' 0.632 (on ' day'), 'Read the full report on our website.' 0.387, 'Thanks for reading, and see you next week.' 0.256, references line 0.212, app.run line 0.202; 'The meeting ended at noon. Everyone went home.' 0.083, unfinished narrative 0.010-0.031.",
+ "selection": "random draw"
+}

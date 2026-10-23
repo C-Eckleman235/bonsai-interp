@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-11509b9b",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N6599+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T20:28:33+00:00",
+ "recipe": {
+  "toolchain_commit": "deee5666",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L20_N6599_pos/2026-10-23-ChopinDavid-11509b9b.tests.json"
+ },
+ "label": "a sentence-opening 'It'/'They' that picks up a concrete object just described in the previous sentence, as against dummy 'it' and sentences that repeat the noun",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L20_N6599_pos/2026-10-23-ChopinDavid-11509b9b.tests.json",
+   "prereg_commit": "deee5666",
+   "author": "ChopinDavid",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.429,
+     "peak": " It"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.054,
+     "peak": " day"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.076,
+     "peak": "les"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.312,
+     "peak": " It"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.098,
+     "peak": " It"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.284,
+     "peak": " They"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.041,
+     "peak": " his"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.071,
+     "peak": " They"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.076,
+     "peak": " me"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.061,
+     "peak": " day"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.044,
+     "peak": " old"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.056,
+     "peak": " us"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.051,
+     "peak": " wake"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.039,
+     "peak": " every"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.058,
+     "peak": " day"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.023,
+     "peak": " after"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.82,
+    "median_fire": 0.087,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "deee5666",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "resumptive It/They for an object",
+ "unit_kind": "context",
+ "confidence": 0.25,
+ "notes": "Card max 7.25 with peaks on ' It', ' it', ' They' after a described object ('but it makes a difference', '. It looked like'). Probe: 'an old clock. It still keeps' 0.364, 'checked the pumps. They seem' 0.206, 'apple trees ... They already' 0.128, but 'The new bridge opened. It carries' only 0.060 and 'but it lacked' 0.058 (peak elsewhere); dummy 'It is raining' 0.075. A weak, inconsistent pole; best guess.",
+ "selection": "random draw"
+}
