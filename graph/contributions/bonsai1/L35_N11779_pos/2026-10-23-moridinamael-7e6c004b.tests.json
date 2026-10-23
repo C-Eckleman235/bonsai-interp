@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-23-moridinamael-7e6c004b",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N11779+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T11:49:16+00:00",
+ "neighbours": [
+  {
+   "unit": "L35/N11779",
+   "pole": "+",
+   "label": "Arguments inside the brackets of a function or method call in a full line of code (Python, JavaScript, C, test checks like assertEqual(len(rows), 4)), strongest on the last argument before the closing ')'. Lower on code with no call (plain assignments, comments, list literals) and on prose that describes code; this is a dense cell, so ordinary prose still sits near 0.3.",
+   "short": "arguments inside a code call's brackets",
+   "unit_kind": "context",
+   "confidence": "low",
+   "roles": ["reads bonsai1/L34/N10752+"],
+   "notes": "Step-in reader of L34/N10752+ (drop 0.02, tied with L35/N3620+ and L35/N11768-; both of those are dense with plain-prose controls at 0.36-0.45, so they were skipped). Feeders-first arm: top feeders are code-piece cells (L34/N11525+ '_option' after '.add', L33/N10617+ ' range' in code, L33/N8434+ ' u' prefix). Logit effect promotes ')' and suppresses ' ('. Dense: plain prose reads about 0.28-0.39. Test written blind by a label-only author; solver leak placed by that author.",
+   "fire": [
+    "result = compute_total(prices, tax_rate, discount)",
+    "console.log(\"Loaded users:\", users.length);",
+    "printf(\"%d items remaining\\n\", count);",
+    "df = pd.read_csv(\"data/sales.csv\", sep=\";\", encoding=\"utf-8\")",
+    "const el = document.getElementById(\"submit-button\");",
+    "plt.plot(x_values, y_values, color=\"red\", linewidth=2)",
+    "memcpy(dest_buffer, src_buffer, sizeof(src_buffer));",
+    "expect(parseInt(\"42\", 10)).toBe(42);"
+   ],
+   "quiet": [
+    "DEBUG = True\nPORT = 8080\nHOST = \"localhost\"",
+    "The function of the heart is to pump blood around the body.",
+    "expected_rows = 4",
+    "total = prices_sum + tax_amount - discount",
+    "// log the number of loaded users here",
+    "int count = 0;",
+    "DATA_PATH = \"data/sales.csv\"",
+    "const buttonId = \"submit-button\";"
+   ]
+  }
+ ],
+ "predictions": "Most fire lines 0.4-0.55; the prose leak (about 0.39) likely tops 0.30, and short assignment near misses sit near 0.25-0.3, so the near-miss cap is the risk.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "step-down",
+   "neighbors",
+   "probe",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
