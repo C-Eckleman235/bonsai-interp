@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-23-moridinamael-69ce373c",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N336+",
+ "contributor": "moridinamael",
+ "created": "2026-10-23T10:38:06+00:00",
+ "recipe": {
+  "toolchain_commit": "bc333717",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N336_pos/2026-10-23-moridinamael-69ce373c.tests.json"
+ },
+ "label": "In code, a variable or attribute name right before its square-bracket index or key (scores[i], config[\"port\"], model.layers[3], in Python, JavaScript or C); much weaker when the same name is called, passed to len(), read with .get() or attribute dots, and on square brackets in prose.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N336_pos/2026-10-23-moridinamael-69ce373c.tests.json",
+   "prereg_commit": "bc333717",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.201,
+     "peak": "[i"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.121,
+     "peak": "[\""
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.188,
+     "peak": "3"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.163,
+     "peak": "[idx"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.158,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.159,
+     "peak": "c"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.09,
+     "peak": "[\""
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.208,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.249,
+     "peak": "_dict"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.142,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.168,
+     "peak": "(scores"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.117,
+     "peak": "(\""
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.157,
+     "peak": ".layers"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.217,
+     "peak": "name"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.204,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.013,
+     "peak": " ="
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.484,
+    "median_fire": 0.161,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "bc333717",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L34/N10752+"
+ ],
+ "notes": "Step-in reader of bonsai1/L34/N10752+ (drop 0.02, tied with three other L35 readers; chose N336+ because N3620+ is 71% dense). Feeders-first arm: top feeders L34/N7686+ (code name before [) and L34/N9067+ (token before a [ list) shaped the label. Probes in multi-line code hit 0.4-0.8 on subscripted names (bracket-less twins 0.19); the blind author's one-line snippets scored 0.09-0.21 with peaks on merged tokens like '[i', '[idx', '[\"', so the test failed at chance. Next round: multi-line code with earlier context, and check tokenization of name+bracket. Feeds edge recorded in 2026-10-23-moridinamael-9ac2.json."
+}
