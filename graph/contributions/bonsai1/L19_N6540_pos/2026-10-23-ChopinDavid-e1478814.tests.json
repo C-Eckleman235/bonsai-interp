@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-e1478814",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N6540+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T16:20:12+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L19/N6540",
+   "pole": "+",
+   "label": "the start of a lookup into a Python container or parsed-arguments object (args., opts., tags[0], options['x']), as against plain arithmetic on simple variables",
+   "fire": [
+    "args = parser.parse_args()\nlogging.info('Loading %s' % args.input)",
+    "row = 'insert into log values (' + fields[0] + ',' + fields[2] + ')'",
+    "def run(opts):\n    out = open(opts.output, 'w')",
+    "if not os.path.exists(config['data_dir']):\n    os.makedirs(config['data_dir'])",
+    "print('Processing %s' % args.filename)",
+    "first = items[0]\nlast = items[-1]",
+    "def build(opts):\n    log = open(opts.logfile, 'a')",
+    "url = 'http://' + parts[1] + '/' + parts[3]"
+   ],
+   "quiet": [
+    "speed = distance / time\nprint(speed)",
+    "count = count + 1\nprint(count)",
+    "def double(n):\n    return n * 2",
+    "if total > limit:\n    total = limit",
+    "print('Processing done')",
+    "x = 4\ny = x * x",
+    "def square(n):\n    return n ** 2",
+    "average = (low + high) / 2"
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.6 on ' args', '(opts', '[' or the index; plain arithmetic code 0.03-0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "args/index lookup in Python",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card top: 'tags[0]', '(options[', '% args.version', 'open(opts.out', 'result[0]'. Probe: 'tags[0]' 0.573, '% args.version' 0.508, 'open(opts.out' 0.442, \"options['location']\" 0.279, 'result[0]' 0.224; 'total = width * height' 0.033, 'return 3.14 * r * r' 0.104."
+}
