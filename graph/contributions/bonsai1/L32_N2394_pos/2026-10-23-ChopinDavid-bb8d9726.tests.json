@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-bb8d9726",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N2394+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T15:19:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L32/N2394",
+   "pole": "+",
+   "label": "square brackets that open or close a list (literal, empty list, nested list or index) in code and in prose about lists, versus parentheses/braces in code and editorial brackets in prose",
+   "fire": [
+    "rows = []\nfor line in text.splitlines():\n    rows.append([line, len(line)])",
+    "config = settings.get(\"plugins\", [])\nfor name in config:\n    load(name)",
+    "matrix = [[0, 0], [0, 0]]\nmatrix[1][0] = 5\nprint(matrix)",
+    "In Haskell, foldr (+) 0 [1, 2, 3] sums the list, and [] is the empty case.",
+    "def first(xs):\n    return xs[0] if xs else None",
+    "pairs = [(a, b) for a in [1, 2] for b in [3, 4]]",
+    "Start with an empty list [] and push each element onto it.",
+    "data = {\"items\": [{\"id\": 1}, {\"id\": 2}]}\nprint(data[\"items\"])"
+   ],
+   "quiet": [
+    "rows = 0\nfor line in text.splitlines():\n    rows += len(line)",
+    "config = settings.get(\"plugins\", None)\nif config is not None:\n    load(config)",
+    "total = add(3, 4)\nresult = scale(total, 2)\nprint(result)",
+    "In Haskell, foldr is a higher-order function that takes a function and a seed.",
+    "def first(x):\n    return x.value if x else None",
+    "pairs = {a: b for a, b in zip(keys, values)}",
+    "The editor added a note [sic] after the misspelled word.",
+    "data = {\"name\": \"Ann\", \"age\": 30}\nprint(data.get(\"name\"))"
+   ]
+  }
+ ],
+ "predictions": "likely holds: probes 0.26-0.69 on list brackets vs editorial bracket 0.04",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "list square brackets",
+ "unit_kind": "token/lexical",
+ "confidence": 0.5,
+ "notes": "Card top: ']' in users[item[0]], ' [' in .get('edges', [{}]), 'null list [ ]', '([{', '[[],'; - pole suppresses '[' tokens. Probe: .get(..., [{}]) 0.667, 'empty list [ ]' 0.691, [[], []] 0.534, users[item[0]] 0.260; set.add 0.173; compute(x, y) 0.012; editorial '[scheduled for Monday]' 0.038."
+}
