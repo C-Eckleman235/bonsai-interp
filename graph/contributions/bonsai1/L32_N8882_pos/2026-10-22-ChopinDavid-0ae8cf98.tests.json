@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-0ae8cf98",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N8882+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T00:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L32/N8882",
+   "pole": "+",
+   "label": "the slot just before 'fed'/'nourished' when animals or children are being fed (predicts 'fed')",
+   "fire": [
+    "In the dry season the goats are fed grain twice a day.",
+    "On the farm, piglets are bottle fed when the sow is ill.",
+    "The orphaned lambs were hand fed by the children.",
+    "Aid workers said many infants were malnourished after the floods.",
+    "During winter the horses are fed hay in the stables.",
+    "At the zoo, the penguins are fed fish every afternoon.",
+    "Doctors noticed that babies who were formula fed slept longer.",
+    "The calves were well fed and grew quickly through spring."
+   ],
+   "quiet": [
+    "In the dry season the tractors are serviced twice a year.",
+    "On the farm, fences are repaired when the snow melts.",
+    "The old barns were painted by the children.",
+    "Aid workers said many roads were damaged after the floods.",
+    "During winter the tools are stored in the sheds.",
+    "At the zoo, the gates are locked every evening.",
+    "Doctors noticed that rooms which were kept dark felt cooler.",
+    "The fields were well drained and dried quickly through spring."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.9 at the token before 'fed' with livestock/infant subjects; inanimate subjects with other passives near 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predicts 'fed' (feeding animals/children)",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card peaks on ' are' in 'cattle are brought', mal|n|ourished, 'artificially fed', 'individuals fed'; the -pole promotes ' fed', ' maintained', ' kept', '-fed'. Probe: 'malnourished' 0.909, 'kept indoors and fed' 0.740, 'cattle are fed' 0.678, 'chickens are put' 0.312, 'children are taught' 0.237; 'workers are paid' 0.036, 'cars are parked' 0.065. Being causal, the subject sets up the prediction, so near misses swap in inanimate farm objects and non-feeding verbs."
+}

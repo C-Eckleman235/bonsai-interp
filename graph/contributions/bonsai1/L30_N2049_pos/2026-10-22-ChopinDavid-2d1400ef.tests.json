@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-2d1400ef",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N2049+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T00:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L30/N2049",
+   "pole": "+",
+   "label": "inner word piece of an industrial/organic chemical name ('ylene' in methylene/ethylene, 'ytic' in catalytic)",
+   "fire": [
+    "Workers at the plant handle drums of methylene chloride every shift.",
+    "The refinery uses ethylene as a feedstock for many plastics.",
+    "Old cars were fitted with a catalytic converter to cut emissions.",
+    "Heavy oil is broken down in the catalytic reforming unit.",
+    "Paint strippers often contain methylene chloride as the main solvent.",
+    "The pipeline carries propylene from the cracker to the polymer plant.",
+    "Engineers replaced the catalytic bed in the reactor last month.",
+    "Fruit ripens faster when it is exposed to ethylene gas in storage."
+   ],
+   "quiet": [
+    "Workers at the plant handle drums of sulfuric acid every shift.",
+    "The refinery uses natural gas as a feedstock for many plastics.",
+    "Old cars were fitted with a larger exhaust pipe to cut noise.",
+    "Heavy oil is broken down in the main distillation unit.",
+    "Paint strippers often contain acetone as the main solvent.",
+    "The pipeline carries crude oil from the port to the storage tanks.",
+    "Engineers replaced the steel lining in the reactor last month.",
+    "Fruit ripens faster when it is kept in warm air in storage."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.9 on 'ylene'/'ytic' pieces in chemistry or refinery text; the same sentences with plain chemical words near 0",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "chemical-name word pieces (-ylene, -ytic)",
+ "unit_kind": "token/lexical",
+ "confidence": 0.55,
+ "notes": "Card peaks on pieces of chemical names: meth|ylene, nitrogen|ous, organoph|osph|ates, catal|ytic, su|ль|фаниламиды. Probe: 'methylene chloride' 0.862, 'catalytic cracking' 0.720, 'sulfonamide' 0.284, but 'organophosphate' 0.088 and 'nitrogenous' 0.089; non-chemistry 'catalyst for change' 0.006, 'organ recital' 0.003. Test uses the two pieces the probe confirmed (ylene, ytic); near misses keep chemistry/industry context with whole-token chemical words."
+}

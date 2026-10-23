@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-90e9108f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N8881+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T00:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N8881",
+   "pole": "+",
+   "label": "the assignment '=' that rebinds a variable inside a loop body (count = count + 1, tags = line.split())",
+   "fire": [
+    "total = 0\nfor item in items:\n    price = item.cost * item.qty\n    total = total + price\nprint(total)",
+    "i = 0\nwhile i < len(words):\n    word = words[i]\n    i = i + 1",
+    "for row in reader:\n    fields = row.strip().split(',')\n    seen = seen + 1",
+    "n = 10\nwhile n > 0:\n    n = n - 1\n    steps = steps + 1",
+    "for line in open(path):\n    parts = line.split()\n    count = count + len(parts)",
+    "pos = 0\nfor chunk in chunks:\n    data = chunk.read()\n    pos = pos + len(data)",
+    "best = None\nfor x in values:\n    score = model(x)\n    best = max(best, score)",
+    "for event in events:\n    delta = event.time - last\n    last = event.time"
+   ],
+   "quiet": [
+    "total = 0\nfor item in items:\n    if item.cost > 10:\n        print(item)\nprint(total)",
+    "i = 0\nwhile i < len(words):\n    print(words[i])\n    i += 1",
+    "for row in reader:\n    if row.startswith('#'):\n        continue",
+    "n = 10\nwhile n > 0:\n    print(n)\n    n -= 1",
+    "for line in open(path):\n    if line == '\\n':\n        break",
+    "pos = 0\nfor chunk in chunks:\n    handle(chunk)\n    log(chunk.name)",
+    "best = None\nfor x in values:\n    if x is None:\n        continue",
+    "for event in events:\n    print(event.time)\n    notify(event)"
+   ]
+  }
+ ],
+ "predictions": "weak: fire 0.15-0.3 on '=' in loop-body reassignments; comparisons, prose 'equal to' and top-level calls under 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'=' reassignment inside loop bodies",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card peaks ' =' x10 in indented loop bodies (current_tags = line.strip().split(), self._offset = self._offset + len(a), count = count + 1). Probe: 'count = count + 1' in a while loop 0.207, 'tags = line.strip().split()' in a for loop 0.193; method body '= 0' 0.030, '==' 0.013, top-level assignment 0.022, prose 0.017-0.040. Low max in probes, so fire items are multi-line loops with several reassignments."
+}

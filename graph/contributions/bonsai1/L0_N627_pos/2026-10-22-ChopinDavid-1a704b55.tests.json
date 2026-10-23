@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-1a704b55",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N627+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T00:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N627",
+   "pole": "+",
+   "label": "short consonant/syllable word piece that ends a split rare name or compound ('z' in Lent|z, 'an' in Virt|an|en, 'd' in hydro|d|ynamics)",
+   "fire": [
+    "The study was led by Wentz at the medical school in Ohio.",
+    "In the novel, Colonel Kurtz waits deep in the jungle.",
+    "The theologian Hans Kunz gave a lecture on Sunday.",
+    "The course covers fluid hydrodynamics and heat transfer.",
+    "A paper by Kurtz and Lobo reviewed the clinical evidence.",
+    "The Finnish chemist Virtanen won a prize for his feed method.",
+    "Several authors, including Wentz, signed the letter.",
+    "Students ran simple hydrodynamics codes on the cluster."
+   ],
+   "quiet": [
+    "The study was led by Walker at the medical school in Ohio.",
+    "In the novel, Colonel Kurt waits deep in the jungle.",
+    "The theologian Hans Miller gave a lecture on Sunday.",
+    "The course covers fluid mechanics and heat transfer.",
+    "A paper by Kurt and Lobo reviewed the clinical evidence.",
+    "The Finnish chemist Jensen won a prize for his feed method.",
+    "Several authors, including Brown, signed the letter.",
+    "Students ran simple weather codes on the cluster."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-1.2 on 'z' after split surnames and on hydro|d; near misses with the unsplit first name or a plain word near 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "trailing pieces of split names ('z','an','d')",
+ "unit_kind": "token/lexical",
+ "confidence": 0.35,
+ "notes": "Layer 0, tiny max (0.89). Card peaks 'an' x12, 'd' x7, 'z' x6 inside names and hydrodynamical. Probe: 'Lentz' 1.167, 'Kilz' 0.834, 'Virtanen' 0.853, 'hydrodynamical' 0.830; 'Nowak' 0.267, 'Laaksonen' 0.089 (no such piece), plain prose 0.01-0.09. Fire items use names tokenized as Went|z, Kurt|z, Kun|z and hydro|d|ynamics; near misses use the same first piece without the trailing piece (Kurt, Went) or whole-token words."
+}
