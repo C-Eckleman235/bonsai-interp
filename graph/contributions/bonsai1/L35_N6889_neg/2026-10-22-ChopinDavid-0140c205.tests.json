@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-0140c205",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6889-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T04:19:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N6889",
+   "pole": "-",
+   "label": "The punctuation right before a parenthesised item in a running pattern of such items, i.e. predicting the next '(' entry: ';' before '(2)' in a '(1) ...; (2) ...' list, ':' before a '(xxx)' area code in a contact list. Quiet when the same list uses numbering without parentheses.",
+   "fire": [
+    "Ratings were recorded as: (1) poor; (2) fair; (3) good; (4) excellent.",
+    "Office contacts: Phone: (312) 555-0144, Fax: (312) 555-0145, Cell: (312) 555-0190.",
+    "Steps: (a) wash the jar; (b) dry it; (c) fill it with sugar.",
+    "Each patient chose one option: (1) surgery; (2) medication; (3) waiting.",
+    "Reach us at Main: (206) 555-0110 or Billing: (206) 555-0111.",
+    "Options include: (i) leasing; (ii) buying outright; (iii) renting monthly.",
+    "Pain was scored as follows: (0) none; (1) mild; (2) severe.",
+    "Our branches: Denver: (303) 555-0177, Boulder: (720) 555-0178."
+   ],
+   "quiet": [
+    "Ratings were recorded as poor, fair, good or excellent by each rater.",
+    "Office contacts: phone 312-555-0144, fax 312-555-0145, cell 312-555-0190.",
+    "Steps: wash the jar, then dry it, then fill it with sugar and close it.",
+    "Each patient chose one option, either surgery, medication or waiting.",
+    "Reach us at the main office or by email if billing has a question.",
+    "Options include leasing, buying outright or renting on a monthly basis.",
+    "Pain was scored as none, mild or severe by the nurse on duty.",
+    "Our branches are in Denver and Boulder and open at nine each day."
+   ]
+  }
+ ],
+ "predictions": "median fire ~0.5 (probes: '(1) never; (2)' 0.91, 'Tel: (415) ... Fax: (415)' 0.87, 'et al. (2010)' 0.37); near misses < 0.2 (copyright policy 0.01, send a fax 0.14). Card flags broad (2.3%), so near misses may fire weakly.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "punctuation before the next '(' item in a pattern",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card peaks: ' Copyright' before (C), ':param' before (list), 'and' before (iii), 'et al.' before (2009), ';' before (2). The pole sits on the token before '(', so it must predict it; near misses keep the same list content but drop the parentheses, so no '(' is predictable."
+}
