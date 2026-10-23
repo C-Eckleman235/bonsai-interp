@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-23-moridinamael-ea09062b",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N1197+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T15:56:36+00:00",
+ "neighbours": [
+  {
+   "unit": "L3/N1197",
+   "pole": "+",
+   "label": "the word rouse/arouse in any form (rouse, roused, rousing, arouse, arousing, arousal), read on the word itself, plus the spelling look-alike 'carouse'; more weakly the noun 'opening' (a job opening, an opening in the defense); quiet on other -ouse look-alikes (house, mouse, grouse, trousers, Rousseau) and on same-meaning words without it (stir, wake, excite, provoke)",
+   "fire": [
+    "The sailors liked to carouse in the harbor bars.",
+    "The alarm failed to rouse the sleeping guard.",
+    "She was roused from her nap by the sound of thunder.",
+    "The coach gave a rousing speech before the final match.",
+    "His strange behavior began to arouse suspicion among the neighbors.",
+    "The documentary aims to arouse public interest in ocean conservation.",
+    "Caffeine increases physiological arousal and alertness in most people.",
+    "After the victory, the soldiers went out to carouse until dawn."
+   ],
+   "quiet": [
+    "He would grouse about the weather all day.",
+    "The alarm failed to wake the sleeping guard.",
+    "She was woken from her nap by the sound of thunder.",
+    "The coach gave a stirring speech before the final match.",
+    "His strange behavior began to provoke questions among the neighbors.",
+    "The documentary aims to spark public interest in ocean conservation.",
+    "Caffeine increases alertness and focus in most people.",
+    "After the victory, the soldiers went back to the house until dawn."
+   ]
+  }
+ ],
+ "roles": ["feeds bonsai1/L4/N2860-"],
+ "short": "rouse/arouse (+carouse), weakly 'opening'",
+ "unit_kind": "token/lexical",
+ "confidence": 0.7,
+ "notes": "Test written blind by a second author from the label only. Step out from bonsai1/L4/N2860-; play step hit CUDA OOM, so the feeder was chosen as the top resident attribution feeder. Solver (DE) leak: 'carouse' (0.41), named in the label. Exploration probes: house/mouse/spouse/blouse/trousers/grouse/Rousseau ~0; stirred/excited/provoked/rally ~0; awaken 0.25; opening 0.29-0.43.",
+ "predictions": "expect 8/8 fire above 0.2 (plain 'aroused' and 'carouse' weakest), near misses near 0",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "step-out",
+   "inverse-de",
+   "bank-solo",
+   "quick-test"
+  ]
+ }
+}
