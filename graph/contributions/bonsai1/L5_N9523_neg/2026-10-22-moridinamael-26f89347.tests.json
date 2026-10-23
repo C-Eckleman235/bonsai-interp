@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-22-moridinamael-26f89347",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N9523-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T03:22:06+00:00",
+ "roles": ["feeds bonsai1/L35/N5416-"],
+ "neighbours": [
+  {
+   "unit": "L5/N9523",
+   "pole": "-",
+   "label": "nouns for a person sent to carry word on someone's behalf: emissary, envoy, messenger, herald, courier (and Arabic رسول, weaker in other languages); postman, prophet, angel, diplomat and the word 'message' stay quiet",
+   "short": "go-between nouns (emissary, envoy, messenger)",
+   "fire": [
+    "The king sent an emissary across the mountains to negotiate a truce.",
+    "A royal herald rode into the square and read the proclamation aloud.",
+    "The courier arrived at dawn with a sealed letter for the general.",
+    "She served as the envoy of the republic at the peace talks in Vienna.",
+    "Breathless, the messenger fell to his knees before the queen.",
+    "The rebels dispatched an envoy to meet the governor in secret.",
+    "Every morning a courier from the bank picked up the signed documents.",
+    "Don't shoot the messenger; I'm only telling you what the board decided."
+   ],
+   "quiet": [
+    "The king wrote a letter across the mountains to negotiate a truce.",
+    "A royal decree was posted in the square and read aloud by the crowd.",
+    "The postman arrived at dawn with a sealed letter for the general.",
+    "She served as a diplomat of the republic at the peace talks in Vienna.",
+    "Breathless, the soldier fell to his knees before the queen.",
+    "The rebels sent a message to the governor in secret.",
+    "Every morning the bank's manager signed the documents himself.",
+    "Don't blame me; I'm only telling you what the board decided."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire above 0.20; diplomat and postman near misses are the risky ones (probed ~0.1)",
+ "notes": "Step-out feeder of bonsai1/L35/N5416- chosen from the resident attribution ranking (top MLP feeder); play step ran out of GPU memory, so no ablation edge is recorded. Blind test written label-only by a second author. Solver (differential evolution) found no leak; near-miss ceiling 0.24 (prophet/angel).",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "step-out",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
