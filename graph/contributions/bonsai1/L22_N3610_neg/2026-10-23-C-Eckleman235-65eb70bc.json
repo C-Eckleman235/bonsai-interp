@@ -1,0 +1,154 @@
+{
+ "id": "2026-10-23-C-Eckleman235-65eb70bc",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N3610-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-23T23:04:00+00:00",
+ "recipe": {
+  "toolchain_commit": "28fd4596",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L22_N3610_neg/2026-10-23-C-Eckleman235-65eb70bc.tests.json"
+ },
+ "label": "the Great Lakes and Rust Belt region on both sides of the border (Lake Erie's shore, Ohio, Cleveland, Akron, Toledo, Buffalo, Niagara and the Ontario lakeshore), named or not; places in other regions in the same frames stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N3610_neg/2026-10-23-C-Eckleman235-65eb70bc.tests.json",
+   "prereg_commit": "28fd4596",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.471,
+     "peak": " Toledo"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.281,
+     "peak": " lake"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 1.002,
+     "peak": " Niagara"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.374,
+     "peak": "aut"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.8,
+     "peak": " County"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.449,
+     "peak": " Akron"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.388,
+     "peak": "auga"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.587,
+     "peak": "Ohio"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.312,
+     "peak": " fishermen"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.11,
+     "peak": " river"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.053,
+     "peak": " grapes"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.06,
+     "peak": " copper"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.062,
+     "peak": " schools"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.112,
+     "peak": " Greenville"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.064,
+     "peak": " Vancouver"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.074,
+     "peak": "con"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.46,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "second-round",
+   "which"
+  ],
+  "detected": [],
+  "toolchain_commit": "28fd4596",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "short": "Great Lakes and Rust Belt (round 2)",
+ "unit_kind": "meaning",
+ "confidence": 0.6,
+ "notes": "Second round with a narrower label (round 1: #802, held, AUROC 0.953). Reason, written before this test: round 1's label also claimed 'the word Ohio in other uses', and its own item for that (the USS Ohio) read 0.14, so that clause is dropped; Gary, Indiana (0.19) is not claimed either. Same discovery evidence as round 1 (world-atlas tier-1 census, card, triage probes); no sentence is reused. Scoring runs on a Modal L40S (bfloat16; PARITY OK on Modal).",
+ "selection": "concept search: world atlas tier 1 (branch 19)"
+}
