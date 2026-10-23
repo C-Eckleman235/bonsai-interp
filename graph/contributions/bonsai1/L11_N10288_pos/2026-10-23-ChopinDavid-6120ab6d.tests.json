@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-6120ab6d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N10288+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T14:20:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L11/N10288",
+   "pole": "+",
+   "label": "letter-case character classes in code: regex ranges '[a-z]'/'[A-Z]' and the ascii_uppercase/ascii_lowercase constants; digit classes, other string methods and prose about case stay quiet",
+   "fire": [
+    "code = re.sub('[^a-z]', '', raw.lower())",
+    "pattern = re.compile(r'^[A-Z][a-z]+$')\nprint(bool(pattern.match(name)))",
+    "chars = string.ascii_lowercase + string.digits\ntoken = ''.join(random.choice(chars) for _ in range(8))",
+    "if re.search('[A-Z]', password) is None:\n    errors.append('needs a capital')",
+    "alphabet = string.ascii_uppercase\nshift = alphabet[3:] + alphabet[:3]",
+    "valid = re.fullmatch(r'[a-zA-Z_]+', ident) is not None",
+    "for ch in string.ascii_lowercase:\n    counts[ch] = text.count(ch)",
+    "slug = re.sub(r'[^a-z0-9-]', '', title)"
+   ],
+   "quiet": [
+    "code = re.sub('[^0-9]', '', raw.strip())",
+    "pattern = re.compile(r'^\\d+\\.\\d+$')\nprint(bool(pattern.match(value)))",
+    "chars = string.digits + string.punctuation\ntoken = ''.join(random.choice(chars) for _ in range(8))",
+    "if re.search('[0-9]', password) is None:\n    errors.append('needs a number')",
+    "numbers = string.digits\nshift = numbers[3:] + numbers[:3]",
+    "valid = re.fullmatch(r'[0-9]+', ident) is not None",
+    "for ch in string.punctuation:\n    counts[ch] = text.count(ch)",
+    "slug = re.sub(r'\\s+', '-', title.strip())"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on '-z'/'-Z' in regex ranges and ascii_upper/lowercase; [0-9], digits and prose below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "letter-case classes in code",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: '.upper', '-z', '_lower', 'lower', '-Z', ' lower', plus an outlier 'comm|ut|ative'. Probe: \"re.sub('[a-z]'\" 0.670, 'ascii_uppercase' 0.385, '.isupper()' 0.195, '.lower()' 0.048, 'commutative' 1.227 (strong, not tested here: off-label spelling hit); '[0-9]' 0.068, '.strip()' 0.021, prose 'upper case letters' 0.029. Fire items lean on regex ranges and ascii constants, where the probes were strongest."
+}
