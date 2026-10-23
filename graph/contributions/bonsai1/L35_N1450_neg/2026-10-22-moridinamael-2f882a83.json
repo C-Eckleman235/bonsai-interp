@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-22-moridinamael-2f882a83",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N1450-",
+ "contributor": "moridinamael",
+ "created": "2026-10-23T03:36:26+00:00",
+ "recipe": {
+  "toolchain_commit": "f97e996c",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N1450_neg/2026-10-22-moridinamael-2f882a83.tests.json"
+ },
+ "label": "the Chinese particle 的 when it is its own separate token, after an owner or a describer and before a less common noun (北京的冬天, 红色的苹果, 努力的员工); dark where 的 merges into one token with a common neighbour (的问题, 的生活, 的手, 的服务, 我的, 好的, 很好的, 更多的), in 的确 and 目的, and for the sister particles 地, 得, 之 and Japanese の",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N1450_neg/2026-10-22-moridinamael-2f882a83.tests.json",
+   "prereg_commit": "f97e996c",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.716,
+     "peak": "的"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.441,
+     "peak": "的"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.675,
+     "peak": "的"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.554,
+     "peak": "的"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.585,
+     "peak": "的"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.693,
+     "peak": "的"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.98,
+     "peak": "的"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.545,
+     "peak": "的"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": -0.003,
+     "peak": "这是我们"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": -0.004,
+     "peak": "的生活"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.002,
+     "peak": "书"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.002,
+     "peak": "我"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": -0.002,
+     "peak": "很好"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.725,
+     "peak": "的"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": -0.005,
+     "peak": "他"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.015,
+     "peak": "得"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.891,
+    "median_fire": 0.63,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "probe",
+   "quick-test",
+   "step-down",
+   "which"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "f97e996c",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L34/N3295-"
+ ],
+ "notes": "Step-in reader of bonsai1/L34/N3295- (largest downstream drop, 0.34; edge in the companion map file). Cold run: labelled from own tops and probes only. Blind test written label-only by a second author; solver (differential evolution) found no leak, near-miss ceiling 0.15. Failed narrowly (AUROC 0.891): the near miss '我们这次旅行的目的是放松' read 0.725 because 旅行的 has a standalone 的 before 目的; the label's clause 'dark in 目的' was ambiguous (meant the 的 inside the word 目的, not a standalone 的 before it). All 8 fire items reached 0.44+; the other 7 near misses read ~0."
+}
