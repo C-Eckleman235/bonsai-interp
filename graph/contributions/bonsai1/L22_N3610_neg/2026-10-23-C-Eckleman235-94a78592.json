@@ -1,0 +1,153 @@
+{
+ "id": "2026-10-23-C-Eckleman235-94a78592",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N3610-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-23T22:12:48+00:00",
+ "recipe": {
+  "toolchain_commit": "fd50edb9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L22_N3610_neg/2026-10-23-C-Eckleman235-94a78592.tests.json"
+ },
+ "label": "the Great Lakes and Rust Belt region on both sides of the border (Lake Erie's shore, Ohio, Cleveland, Akron, Buffalo, Gary, Hamilton and Thunder Bay in Ontario), named or not; also the word 'Ohio' in other uses. Other regions in the same frames stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N3610_neg/2026-10-23-C-Eckleman235-94a78592.tests.json",
+   "prereg_commit": "fd50edb9",
+   "author": "C-Eckleman235",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.459,
+     "peak": "ky"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.744,
+     "peak": " Buffalo"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.187,
+     "peak": " Gary"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.66,
+     "peak": " Cleveland"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.665,
+     "peak": " Bay"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.527,
+     "peak": " Akron"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.23,
+     "peak": "Hamilton"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.141,
+     "peak": " Ohio"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.085,
+     "peak": "fish"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.111,
+     "peak": " Denver"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.159,
+     "peak": " mill"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.062,
+     "peak": " arena"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.075,
+     "peak": " grain"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.226,
+     "peak": " Wichita"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.114,
+     "peak": "ifax"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.018,
+     "peak": " cruiser"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.953,
+    "median_fire": 0.493,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "which"
+  ],
+  "detected": [],
+  "toolchain_commit": "fd50edb9",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "short": "Great Lakes and Rust Belt",
+ "unit_kind": "meaning",
+ "confidence": 0.55,
+ "notes": "Found by the world-atlas tier-1 census (discovery only; see L21/N1879- for the design). A contrast-rule candidate in 5 places: Ohio 0.67, Pennsylvania 0.55, Michigan 0.53, Ontario 0.50, New York 0.49. Card: max 77, density 0.23%; peaks ' Ohio' x7, ' Erie' x3, ' Lakes' x3, ' Ontario' x2, ' Niagara' x2, 'Mahoning County'. Triage probes (exploratory, none reused): Lake Erie walleye 1.05, Youngstown and Pittsburgh steel mills 0.78, Niagara 0.70, Buffalo lake-effect snow 0.57, Duluth/St. Lawrence 0.57, 'Ohio-class submarine' 0.60 (so the word leaks: claimed), Georgia 0.17. Lake Tahoe read 0.36: 'Lake' alone may leak weakly, so no near miss uses another lake and the label claims nothing about other lakes. Scoring runs on a Modal L40S (bfloat16; PARITY OK on Modal).",
+ "selection": "concept search: world atlas tier 1 (branch 19)"
+}
