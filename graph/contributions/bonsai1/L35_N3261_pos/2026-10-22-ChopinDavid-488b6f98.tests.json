@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-488b6f98",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N3261+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T02:19:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N3261",
+   "pole": "+",
+   "label": "A bare word-onset token (' p' or Korean ' 프') that starts a word the tokenizer splits, ahead of the rest of the word",
+   "fire": [
+    "Después de la crisis, muchas familias terminaron en la pobreza durante años.",
+    "Mi hermano siempre muestra una gran pereza los domingos por la mañana.",
+    "El tribunal trató al acusado sin piedad y le impuso la pena máxima.",
+    "Aquel barrio era muy pobre, pero la gente compartía todo lo que tenía.",
+    "새 프린터를 연결하면 드라이버가 자동으로 설치됩니다.",
+    "우리는 여름 방학에 프랑스로 여행을 갔습니다.",
+    "작업 관리자에서 실행 중인 프로세스를 확인할 수 있습니다.",
+    "회사는 신입 프로그래머를 다섯 명 더 뽑기로 했습니다."
+   ],
+   "quiet": [
+    "Después de la crisis, muchas familias terminaron en la miseria durante años.",
+    "Mi hermano siempre muestra un gran cansancio los domingos por la mañana.",
+    "El tribunal trató al acusado con severidad y le impuso la pena máxima.",
+    "Aquel barrio era muy humilde, pero la gente compartía todo lo que tenía.",
+    "새 인쇄기를 연결하면 드라이버가 자동으로 설치됩니다.",
+    "우리는 여름 방학에 일본으로 여행을 갔습니다.",
+    "작업 관리자에서 실행 중인 소프트웨어를 확인할 수 있습니다.",
+    "회사는 신입 개발자를 다섯 명 더 뽑기로 했습니다."
+   ]
+  }
+ ],
+ "predictions": "Fire 0.40-0.80 on ' p' / ' 프'; near misses whose p-words are whole or longer pieces (' pena', ' pud', ' par') and Korean 프 inside a word stay below 0.15.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-word onset ' p' / ' 프'",
+ "unit_kind": "token",
+ "confidence": 0.6,
+ "notes": "Card: ' 프' (프로그램, 프로시저) x15 and ' p' x8 (p|udeur, p|iedad, p|obreza). Probe: 프로그램 0.806, 프로젝트 0.493, p|udeur 0.656, p|iedad 0.502, p|obreza 0.695, ' rep'ase 0.432; English 'program' 0.010, 'pud|or' 0.071, 'par|ar' 0.110. So the bare one-letter onset fires, longer onset pieces do not."
+}
