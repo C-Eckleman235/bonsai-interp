@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-23-moridinamael-259763cd",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N11316-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T07:24:44+00:00",
+ "roles": ["reads bonsai1/L31/N10108-"],
+ "neighbours": [
+  {
+   "unit": "L34/N11316",
+   "pole": "-",
+   "label": "A broad, dense cell. Strongest at the second mention of a coined official phrase that the text introduced earlier (a policy term or euphemism such as 'strategic realignment'), peaking on that phrase's first word; also on the item right after the list comma 、 in Chinese lists. Weak at a phrase's first mention, for plain repeated words (the apples, the red car) and for repeated operation or product names.",
+   "short": "reused coined official phrase (2nd mention); Chinese list items",
+   "unit_kind": "dense / positional",
+   "confidence": "low",
+   "fire": [
+    "一、从「多伦多的祝福」、「香港锡安教会卖",
+    "The ministry announced a policy of 'strategic realignment' in March, and by June strategic realignment had cost four hundred jobs.",
+    "Management called the layoffs a 'workforce optimization initiative'; staff soon learned that the workforce optimization initiative meant fewer desks.",
+    "The council adopted what it called 'community-led densification', and residents quickly asked who exactly had led community-led densification.",
+    "Officials described the price hikes as 'tariff harmonization measures', though critics noted that tariff harmonization measures only ever went up.",
+    "The memo introduced 'flexible attendance expectations', and within a week flexible attendance expectations had replaced the old sick-leave policy.",
+    "The army referred to the retreat as a 'rearward consolidation', and the newspapers repeated rearward consolidation without comment.",
+    "Under the new 'responsible fiscal recalibration', libraries closed early; a year later responsible fiscal recalibration had shut three of them entirely."
+   ],
+   "quiet": [
+    "Le Ghana se présente en quart de finale de la CAN-2013 dans la peau du favori face à l'étonnant Cap-Vert, samedi à Port Elizabeth.",
+    "The ministry announced a policy of 'strategic realignment' in March, and by June four hundred people had lost their jobs.",
+    "Management called the layoffs a 'workforce optimization initiative', and staff soon learned it meant fewer desks.",
+    "The apples were on the table, and later the apples were gone from the table.",
+    "She parked the red car outside, and an hour later the red car had a ticket on it.",
+    "Operation Harvest Moon began at dawn, and by noon Operation Harvest Moon had reached the river.",
+    "The company launched the Lumina X2 phone, and reviewers praised the Lumina X2 for its battery.",
+    "The council adopted a new zoning plan, and residents quickly asked who had written it."
+   ]
+  }
+ ],
+ "predictions": "Unsure: the cell is dense (14% of tokens over 0.1 of max) and reused phrases varied 0.2-0.96 in probing; expect a fail on near misses or the median.",
+ "notes": "Step-in reader of bonsai1/L31/N10108- (play step --down drop 0.03; the top reader L33/N8382+ already had a record). Feeders-first arm: top feeders (L1/N5807- detention/-ention, L33/N8310+ CJK quote/bracket openers, L30/N4790- Korean polite endings) are unlabelled and mostly reflect multilingual context. Test sentences written blind by a second author from the label only; the solver's leak (Arabic/Chinese list text, French corpus line) was placed by that author.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "neighbors",
+   "inverse-de",
+   "bank-solo",
+   "blind-room"
+  ]
+ }
+}
