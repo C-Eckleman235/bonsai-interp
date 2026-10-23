@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-22-moridinamael-bc5faa31",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N5995+",
+ "contributor": "moridinamael",
+ "created": "2026-10-23T00:23:29+00:00",
+ "recipe": {
+  "toolchain_commit": "189bdd07",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L27_N5995_pos/2026-10-22-moridinamael-bc5faa31.tests.json"
+ },
+ "label": "Katakana 'the' (ザ) right after a spaced katakana 'in' or 'on' (イン ザ / オン ザ), i.e. English 'in the' / 'on the' written word by word in katakana inside a title or name mid-sentence; weaker after ウィズ (with); quiet after other prepositions (アンダー, アット, バイ, オブ, フロム), when glued (インザ) or dotted (・ザ・), and at the very start of the text.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L27_N5995_pos/2026-10-22-moridinamael-bc5faa31.tests.json",
+   "prereg_commit": "189bdd07",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.514,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.926,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.776,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.402,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.781,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.359,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.455,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.519,
+     "peak": " �"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.257,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.028,
+     "peak": "・"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.028,
+     "peak": "ザ"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.044,
+     "peak": " �"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.014,
+     "peak": "麦"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.018,
+     "peak": "ライト"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.027,
+     "peak": "・"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.026,
+     "peak": "、"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.516,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "189bdd07",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-in reader of bonsai1/L25/N4920- (drop 4.10, unusually large for a reader). COLD mission: labelled from its own tops and probes only. Tops are mostly space + split katakana/Korean/CJK pieces; the clean strong case found by probing is ' ザ' after spaced イン/オン. Sentences written blind by a second author from the label alone; the solver's leak (ハウス オン ザ ヒル) was folded into the label.",
+ "roles": [
+  "reads bonsai1/L25/N4920-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L25/N4920-", "to": "bonsai1/L27/N5995+", "kind": "feeds", "weight": 4.10, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}

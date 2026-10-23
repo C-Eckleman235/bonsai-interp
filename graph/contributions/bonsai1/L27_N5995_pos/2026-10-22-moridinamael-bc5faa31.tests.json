@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-22-moridinamael-bc5faa31",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N5995+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T00:23:03+00:00",
+ "roles": ["reads bonsai1/L25/N4920-"],
+ "neighbours": [
+  {
+   "unit": "L27/N5995",
+   "pole": "+",
+   "label": "Katakana 'the' (ザ) right after a spaced katakana 'in' or 'on' (イン ザ / オン ザ), i.e. English 'in the' / 'on the' written word by word in katakana inside a title or name mid-sentence; weaker after ウィズ (with); quiet after other prepositions (アンダー, アット, バイ, オブ, フロム), when glued (インザ) or dotted (・ザ・), and at the very start of the text.",
+   "short": "katakana 'in the' / 'on the' (イン ザ / オン ザ)",
+   "fire": [
+    "駅前のカフェ「ハウス オン ザ ヒル」は朝七時に開く。",
+    "昨日の夜、映画「シンギング イン ザ レイン」をもう一度観た。",
+    "兄の好きな曲は「ストレンジャー イン ザ ナイト」だそうだ。",
+    "駅の近くに「キャッスル オン ザ クリフ」という古い洋館がある。",
+    "彼女は小説「キャッチャー イン ザ ライ」を夏休みに読み終えた。",
+    "新しいゲーム「ライト イン ザ ダーク」は来月発売される予定です。",
+    "町の劇団が「フィドラー オン ザ ルーフ」を上演することになった。",
+    "私たちは週末、レストラン「テラス オン ザ ベイ」で食事をした。"
+   ],
+   "quiet": [
+    "21於 是 以 色 列 王 約 阿 施 上 來 ， 在 猶 大 的 伯 示 麥 與 猶 大 王 亞 瑪 謝 相 見",
+    "昨日の夜、映画「シンギング・イン・ザ・レイン」をもう一度観た。",
+    "兄の好きな曲は「ストレンジャーインザナイト」だそうだ。",
+    "駅の近くに「キャッスル アンダー ザ クリフ」という古い洋館がある。",
+    "彼女は小説「ライ麦畑でつかまえて」を夏休みに読み終えた。",
+    "新しいゲーム「ライト オブ ザ ダーク」は来月発売される予定です。",
+    "町の劇団が「フィドラー・オン・ザ・ルーフ」を上演することになった。",
+    "私たちは週末、レストラン「テラス アット ザ ベイ」で食事をした。"
+   ]
+  }
+ ],
+ "predictions": "Most fire items above 0.20; the spaced Chinese Bible verse near miss is the riskiest (it read 0.26 in its top context).",
+ "notes": "Step-in reader of bonsai1/L25/N4920- (drop 4.10, unusually large for a reader). COLD mission: labelled from its own tops and probes only. Tops are mostly space + split katakana/Korean/CJK pieces; the clean strong case found by probing is ' ザ' after spaced イン/オン. Sentences written blind by a second author from the label alone; the solver's leak (ハウス オン ザ ヒル) was folded into the label.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de"
+  ]
+ }
+}
