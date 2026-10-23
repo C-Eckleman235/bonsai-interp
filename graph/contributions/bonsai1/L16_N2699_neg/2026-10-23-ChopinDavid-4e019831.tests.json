@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-4e019831",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L16/N2699-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T23:19:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L16/N2699",
+   "pole": "-",
+   "label": "the self or args token passed as an argument inside a Python call ('in_check(self)', 'dst=args.dest'), a broad code pole",
+   "fire": [
+    "        if self.engine.is_ready(self) and self.queue:",
+    "    connect(host=args.host, port=args.port)",
+    "        result = self.validator.check(self, strict=True)",
+    "    run(target=args.target, timeout=args.timeout)",
+    "        if self.game.is_over(self) or self.paused:",
+    "    upload(path=args.path, bucket=args.bucket)",
+    "        total = self.helper.compute(self) + offset",
+    "    train(model=args.model, epochs=args.epochs)"
+   ],
+   "quiet": [
+    "        if self.engine.is_ready() and self.queue:",
+    "    connect(host='localhost', port=8080)",
+    "        result = self.validator.check(strict=True)",
+    "    run(target='build', timeout=30)",
+    "        if self.game.is_over() or self.paused:",
+    "    upload(path='/tmp/a.txt', bucket='data')",
+    "        total = self.helper.compute() + offset",
+    "    train(model='resnet', epochs=10)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.45 on '(self' or '=args' inside calls; the same lines with literal arguments 0.05-0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "self/args as call arguments (broad)",
+ "unit_kind": "unclear",
+ "confidence": 0.3,
+ "notes": "Card broad (1.7% at 0.1), peaks on Python identifier pieces ('_data', '(self', '.translate', '(args', '=args'). Probe: 'in_check(self)' 0.424, 'send(dst=args.dest' 0.424, 'added as well' 0.158, 'parsed_data' 0.105, 'select_build_environment(args.environment)' 0.091, orchard 0.061."
+}

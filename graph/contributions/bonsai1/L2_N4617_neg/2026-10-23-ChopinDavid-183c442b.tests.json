@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-183c442b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N4617-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T23:19:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L2/N4617",
+   "pole": "-",
+   "label": "dense / positional: the pole is on for a large share of tokens near the start of a text, with no topic or token preference",
+   "fire": [
+    "The band got most of its airplay on college stations in the nineties.",
+    "Southern California Edison supplies power to millions of homes.",
+    "Customer Engagement improved after the new help desk opened.",
+    "Visit the StoreFront to order company mugs and shirts.",
+    "Next, click the Save button in the top corner.",
+    "Pacific Bell ran the phone lines in the state for decades.",
+    "Our Lord taught the disciples to pray in simple words.",
+    "The Student Union hosts a book fair every spring."
+   ],
+   "quiet": [
+    "The band got most of its fans from small concerts in the nineties.",
+    "Power lines run along the road to millions of homes.",
+    "Customers were happier after the new help desk opened.",
+    "Visit the store to order mugs and shirts for the team.",
+    "Next, press the small button in the top corner.",
+    "Phone lines in the state were laid along the railways for decades.",
+    "The teacher taught the children to pray in simple words.",
+    "The students hold a book fair every spring."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.45 on almost any short sentence; near misses about the same; the test is expected to fail",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense / positional",
+ "unit_kind": "dense / positional",
+ "confidence": 0.1,
+ "notes": "Card flags dense (21.6% of tokens at 0.1) and positional (88% of peaks within the first 16 tokens), gate-closed regime. Probe: every sentence 0.205-0.440, e.g. 'ShopFront' 0.440, 'quick brown fox' 0.346, 'college radio' 0.333, 'wide green field' 0.205. Best-guess split: capitalised name or brand words early in the text."
+}

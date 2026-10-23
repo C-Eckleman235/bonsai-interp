@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-f96e2ea0",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N1814+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T23:19:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N1814",
+   "pole": "+",
+   "label": "a lone 'd'/'D' letter piece inside a split identifier or word (b|d_event, T|d, ab|d|icate), a broad low-amplitude pole",
+   "fire": [
+    "    row = table.Td('price')",
+    "    start = self.calendar.lookup(bd_record.date)",
+    "Facing defeat, the emperor chose to abdicate in favour of his son.",
+    "    end = self.rlocale.get_date(bd_death.get_date_object())",
+    "    index = neighbors.KDTree(coords, leaf_size=40)",
+    "The queen refused to abdicate even after the army turned against her.",
+    "    span = row.Td(text='total')",
+    "    birth = self.locale.format(bd_entry.when)"
+   ],
+   "quiet": [
+    "    row = table.Cell('price')",
+    "    start = self.calendar.lookup(record.date)",
+    "Facing defeat, the emperor chose to retire in favour of his son.",
+    "    end = self.rlocale.get_date(death.get_date_object())",
+    "    index = neighbors.BallTree(coords, leaf_size=40)",
+    "The queen refused to resign even after the army turned against her.",
+    "    span = row.Cell(text='total')",
+    "    birth = self.locale.format(entry.when)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.9 on a lone 'd' piece; plain prose and code without it 0.07-0.3",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "lone 'd' piece in identifiers (broad)",
+ "unit_kind": "unclear",
+ "confidence": 0.3,
+ "notes": "Card max 0.22, broad (6.2% of tokens at 0.1); peaks 'd' x8, Korean '이' x5. Probe: 'bd_event' 0.932, 'dom.Td' 0.749, 'KDTree' 0.747, 'abdicate' 0.717, 'balanced' 0.607, Korean '이' 0.604; 'roses and tulips' 0.073, 'dedent' 0.150, 'river' 0.165. Prose baseline is not zero, so near misses may leak."
+}
