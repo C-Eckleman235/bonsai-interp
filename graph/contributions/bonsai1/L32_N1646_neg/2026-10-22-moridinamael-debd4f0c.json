@@ -1,0 +1,166 @@
+{
+ "id": "2026-10-22-moridinamael-debd4f0c",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N1646-",
+ "contributor": "moridinamael",
+ "created": "2026-10-23T04:37:58+00:00",
+ "recipe": {
+  "toolchain_commit": "547cc5f2",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L32_N1646_neg/2026-10-22-moridinamael-debd4f0c.tests.json"
+ },
+ "label": "Chinese 的 when the tokenizer leaves it as its own token: after a less everyday noun or phrase (a specific place, object, event, group, profession or title, or a verb phrase) as in X的Y. Silent where 的 is glued onto a pronoun or very common word (我的, 他的, 我们的, 公司的, 中国的, 老师的, 喜欢的, 漂亮的, 重要的), on spaced ' 的', and on 地/得.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L32_N1646_neg/2026-10-22-moridinamael-debd4f0c.tests.json",
+   "prereg_commit": "547cc5f2",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.609,
+     "peak": "的"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.484,
+     "peak": "的"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.691,
+     "peak": "的"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.421,
+     "peak": "的"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.407,
+     "peak": "的"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.563,
+     "peak": "的"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.364,
+     "peak": "的"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.643,
+     "peak": "的"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": -0.0,
+     "peak": "还没有"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": -0.0,
+     "peak": "斑"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": -0.001,
+     "peak": "来自"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.02,
+     "peak": "老师的"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": -0.001,
+     "peak": "铭"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": -0.0,
+     "peak": "鞠"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.004,
+     "peak": "参观"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.0,
+     "peak": "赶"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.523,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "547cc5f2",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L29/N11867+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L29/N11867+",
+   "to": "bonsai1/L32/N1646-",
+   "kind": "feeds",
+   "weight": 0.55,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
