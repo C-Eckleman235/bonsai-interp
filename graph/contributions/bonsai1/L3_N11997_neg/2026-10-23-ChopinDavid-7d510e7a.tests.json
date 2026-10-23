@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-7d510e7a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N11997-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T21:20:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L3/N11997",
+   "pole": "-",
+   "label": "the SQL keyword SELECT inside a query, as against the English verb 'select' and SQL statements without SELECT",
+   "fire": [
+    "sql = \"\"\"\n    SELECT title, year\n    FROM movies\n    WHERE year < 1980\n\"\"\"",
+    "cursor.execute('''\n  SELECT city, COUNT(*)\n  FROM customers\n  GROUP BY city\n''')",
+    "DELETE FROM sessions WHERE user_id IN (SELECT id FROM users WHERE banned = 1);",
+    "CREATE VIEW top_sales AS\nSELECT region, SUM(amount) AS total\nFROM sales\nGROUP BY region;",
+    "INSERT INTO archive (id, body)\nSELECT id, body FROM posts WHERE created < '2020-01-01';",
+    "df = pd.read_sql(\"\"\"\n    select name, score\n    from results\n    order by score desc\n\"\"\", conn)",
+    "SELECT a.name, b.total\nFROM accounts a\nJOIN (\n    SELECT account_id, SUM(x) AS total FROM tx GROUP BY account_id\n) b ON a.id = b.account_id;",
+    "query = (\n    \"SELECT id, email \"\n    \"FROM users \"\n    \"WHERE active = 1\"\n)"
+   ],
+   "quiet": [
+    "sql = \"\"\"\n    DELETE FROM movies\n    WHERE year < 1980\n\"\"\"",
+    "cursor.execute('''\n  UPDATE customers\n  SET city = 'Paris'\n  WHERE id = 7\n''')",
+    "DELETE FROM sessions WHERE expires < now();",
+    "On the next screen, select your region and confirm the total.",
+    "INSERT INTO archive (id, body) VALUES (1, 'hello');",
+    "Judges will select the best name and score each entry.",
+    "Students may select two electives from the list each term.",
+    "query = (\n    \"UPDATE users \"\n    \"SET active = 0 \"\n    \"WHERE id = 3\"\n)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on SELECT/select inside SQL; English 'select' 0.0-0.05; DELETE/INSERT queries 0.0-0.02",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "SQL SELECT keyword",
+ "unit_kind": "word",
+ "confidence": 0.8,
+ "notes": "Card is 'select'/'SELECT' in SQL (top 32 all variants). Probe: multi-line CTE SELECT 0.880, triple-quoted query 0.789, subquery 'select' 0.653, inline execute string 0.449; 'Please select a size' 0.045, 'committee will select' 0.026, DELETE query 0.004."
+}

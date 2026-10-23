@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-e4e20dda",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N9524-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T21:20:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L14/N9524",
+   "pole": "-",
+   "label": "a word inside a fixed multiword expression whose continuation is forced ('might as well', 'can no longer', 'whether or not', 'the rate at which', 'run afoul'), as against the same words in free combinations",
+   "fire": [
+    "The tickets were free, so we might as well go to the concert.",
+    "After the flood, the farmers could no longer reach their fields.",
+    "We will hold the picnic whether or not it rains on Saturday.",
+    "Doctors measured the speed at which the drug left the blood.",
+    "Two shops ran afoul of the new rules on outdoor signs.",
+    "The missing file caused a series of errors in the report.",
+    "Since the bus is late, you may as well walk home with us.",
+    "Many readers can no longer find the old edition in stores."
+   ],
+   "quiet": [
+    "The tickets were free, so we went to the concert with friends.",
+    "After the flood, the farmers waited a week to reach their fields.",
+    "We will hold the picnic on Saturday if the weather is fine.",
+    "Doctors measured how quickly the drug left the blood.",
+    "Two shops broke the new rules on outdoor signs.",
+    "The missing file caused several errors in the report.",
+    "Since the bus is late, you should walk home with us.",
+    "Many readers want to find the old edition in stores."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on the middle word of fixed phrases; the same words in free use 0.0-0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "word inside a fixed multiword phrase",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card peaks: 'might| as| well', 'can| no| longer', 'whether| or| not', 'rate| at| which', 'run| af|oul', 'a| series| of', 'Traceback (most recent'. Probe: 'run afoul' 0.615, 'whether or not' 0.608, 'can no longer' 0.552, 'rate at which' 0.547, 'might as well' 0.529, 'a series of' 0.341; 'I might eat the last slice' 0.063, 'factory no longer has' 0.093 (so 'no longer' fires after 'can'), plain sentence 0.027."
+}
