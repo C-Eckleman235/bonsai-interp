@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-1b39ba43",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N1037-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T08:28:00+00:00",
+ "recipe": {
+  "toolchain_commit": "2c0128ad",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L11_N1037_neg/2026-10-23-ChopinDavid-1b39ba43.tests.json"
+ },
+ "label": "in Python code, the start of an index or bound expression inside a slice or range that is followed by arithmetic ('[:i + 1]', 'range(i + 1, ...)', '[0:self.cursor]')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L11_N1037_neg/2026-10-23-ChopinDavid-1b39ba43.tests.json",
+   "prereg_commit": "2c0128ad",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.631,
+     "peak": "i"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.754,
+     "peak": " +"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 1.027,
+     "peak": "idx"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.361,
+     "peak": "self"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.318,
+     "peak": ":k"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.678,
+     "peak": "j"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.92,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.903,
+     "peak": "pos"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.026,
+     "peak": " *"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.014,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.067,
+     "peak": " text"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.033,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.126,
+     "peak": " k"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.057,
+     "peak": " vals"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.148,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.004,
+     "peak": ":\n"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.716,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "2c0128ad",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "slice/range bound in code",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: 'xy[:i + 1]', '[:comment_position]', '[0:self.__cursor]', 'range(i+1'. Probe: 'xs[:i + 1]' 1.053, 'line[:pos + 1]' 0.870, 'range(i + 1, n)' 0.716, 'buf[0:self.cursor]' 0.586; 'range(n)' alone 0.220, 'x = i + 1' 0.120, 'line.strip()' 0.004. Fire items are multi-line.",
+ "selection": "random draw"
+}

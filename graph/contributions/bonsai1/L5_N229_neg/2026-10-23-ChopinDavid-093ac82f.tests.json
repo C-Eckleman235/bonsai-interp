@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-093ac82f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N229-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T08:20:05+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N229",
+   "pole": "-",
+   "label": "the Cyrillic (or Latin) piece right after a split prefix п-/пр-/Pod- inside a word ('неп|од|вижен', 'боеп|ри|пасов', 'вышепр|ив|еденным', 'Pod|k'), a spelling unit for the prefixes под-/при-",
+   "fire": [
+    "Мы жили неподалёку от старой церкви на холме.",
+    "На складе нашли ящики с боеприпасами для винтовок.",
+    "В её голосе звучала неподдельная радость.",
+    "Это был очень неприятный разговор с начальником.",
+    "Сосед заподозрил неладное и вызвал полицию.",
+    "Он оставил свой след на научном поприще.",
+    "Стихия казалась неподвластной человеку в ту ночь.",
+    "The bus from the coast reaches Podgorica in about two hours."
+   ],
+   "quiet": [
+    "Мы жили рядом со старой церковью на холме.",
+    "На складе нашли ящики с хлебом для солдат.",
+    "В её голосе звучала большая радость.",
+    "Это был очень долгий разговор с начальником.",
+    "Сосед услышал шум и вызвал полицию.",
+    "Он оставил свой след в науке и в жизни.",
+    "Стихия казалась сильнее человека в ту ночь.",
+    "The bus from the coast reaches the capital in about two hours."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-1.1 on 'од'/'ри'/'ив' after a split п; the same sentences with words lacking such splits 0.0-0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "piece after split под-/при-",
+ "unit_kind": "word",
+ "confidence": 0.55,
+ "notes": "Spelling unit; tok.py: неподалёку, неподдельный, неподвластный -> н|еп|од..., боеприпасы -> бо|еп|ри..., неприятный -> н|еп|ри..., заподозрил -> зап|од..., поприще -> поп|ри..., Podgorica -> Pod|gor... Probe: 'неподвижен' 1.074, 'неподкупность' 0.966, 'Podkamennaya' ('k') 0.972, 'боеприпасов' 0.809, 'вышеприведенным' 0.760, whole 'Под' 0.484; 'техники' 0.073, 'спит' 0.052."
+}

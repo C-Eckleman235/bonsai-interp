@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-d736d3f2",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N9112+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T08:20:05+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N9112",
+   "pole": "+",
+   "label": "the word piece 'us' completing a split Latin-style name or word (August|us, Brut|us, tor|us), not -us words that are single tokens",
+   "fire": [
+    "The senator Brutus joined the plot against Caesar in the spring.",
+    "Rome was founded, the legend says, by Romulus and his brother Remus.",
+    "The emperor Septimius Severus died at York in the year 211.",
+    "Coins struck under the emperor Titus show the arch in Rome.",
+    "The probe flew past Uranus and sent back pictures of its rings.",
+    "As a boy, Octavius was adopted as heir by his great-uncle.",
+    "In the reign of Augustus the city was rebuilt in marble.",
+    "A donut-shaped torus can be made by spinning a circle around an axis."
+   ],
+   "quiet": [
+    "The clown joined the circus against his father's wishes in the spring.",
+    "Rome was crowded, the guide says, during the summer census.",
+    "The doctor said the virus would pass within a week or two.",
+    "Coins struck under the old king show a horse and a bus.",
+    "The probe flew past the moon and sent back pictures of its craters.",
+    "As a boy, he kept his focus on his studies at school.",
+    "In the genus Rosa there are more than a hundred species.",
+    "A donut-shaped ring can be made by bending a long tube."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-1.1 on the 'us' piece; single-token -us words (virus, census) 0.0-0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-word piece 'us'",
+ "unit_kind": "word",
+ "confidence": 0.6,
+ "notes": "Spelling unit; checked with tok.py: Brutus, Severus, Remus, Titus, Uranus, Octavius split off 'us'; circus, virus, genus, focus, census, uterus, bus are single tokens. Probe: 'Emperor Augustus' 0.965, 'torus' 1.062; 'campus' 0.022, 'bonus' 0.021, 'fungus' 0.108, 'join us' 0.070, 'Urb|icus' 0.124 (no 'us' piece)."
+}

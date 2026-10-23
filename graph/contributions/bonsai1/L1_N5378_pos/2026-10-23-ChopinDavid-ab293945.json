@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-ab293945",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N5378+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T08:29:29+00:00",
+ "recipe": {
+  "toolchain_commit": "2c0128ad",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L1_N5378_pos/2026-10-23-ChopinDavid-ab293945.tests.json"
+ },
+ "label": "dense layer-1 pole with a tiny max (0.19), on for 18% of tokens; strongest on nouns like ' bottle' and ' expression' and the piece 'ze'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L1_N5378_pos/2026-10-23-ChopinDavid-ab293945.tests.json",
+   "prereg_commit": "2c0128ad",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.754,
+     "peak": " bottle"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.536,
+     "peak": " bottle"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.66,
+     "peak": " bottle"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.674,
+     "peak": " expression"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.38,
+     "peak": " expression"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.546,
+     "peak": " bottle"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.625,
+     "peak": " expression"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.721,
+     "peak": " bottle"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.061,
+     "peak": " opened"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.193,
+     "peak": " baby"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.131,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.166,
+     "peak": " infection"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.06,
+     "peak": " when"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.143,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.288,
+     "peak": " twenty"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.252,
+     "peak": " box"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.643,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "2c0128ad",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "dense (bottle / expression)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Dense flag (18.1%), gate-closed regime 96%. Probe: 'A bottle of red wine' 0.850, 'Brzezinski' ('ze') 0.752, 'expression of the gene' 0.674, 'from the bottle' 0.577; 'heavy bag' 0.172, 'the fire' 0.138. Registered as a best-guess token test.",
+ "selection": "random draw"
+}

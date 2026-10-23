@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-1b39ba43",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N1037-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T08:20:05+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L11/N1037",
+   "pole": "-",
+   "label": "in Python code, the start of an index or bound expression inside a slice or range that is followed by arithmetic ('[:i + 1]', 'range(i + 1, ...)', '[0:self.cursor]')",
+   "fire": [
+    "def window(seq, k):\n    out = []\n    for i in range(len(seq)):\n        out.append(seq[:i + 1][-k:])\n    return out",
+    "def pairs(items):\n    n = len(items)\n    for a in range(n):\n        for b in range(a + 1, n):\n            yield items[a], items[b]",
+    "def cut(text, idx):\n    left = text[:idx]\n    right = text[idx + 1:]\n    return left + right",
+    "class Editor:\n    def insert(self, ch):\n        self.line = self.line[:self.col] + ch + self.line[self.col:]\n        self.col += 1",
+    "def head(rows, k):\n    keep = rows[0:k + 1]\n    return keep",
+    "def prefix_sums(vals):\n    sums = []\n    for j in range(len(vals)):\n        sums.append(sum(vals[:j + 1]))\n    return sums",
+    "def tail(buf, start):\n    for p in range(start + 1, len(buf)):\n        print(buf[p])",
+    "def strip_comment(line):\n    pos = line.find('#')\n    if pos >= 0:\n        return line[:pos]\n    return line"
+   ],
+   "quiet": [
+    "def window(seq, k):\n    out = []\n    for item in seq:\n        out.append(item * k)\n    return out",
+    "def pairs(items):\n    n = len(items)\n    count = n * 2\n    return count",
+    "def cut(text, idx):\n    left = text.lower()\n    right = text.upper()\n    return left + right",
+    "class Editor:\n    def insert(self, ch):\n        self.buffer.append(ch)\n        self.col += 1",
+    "def head(rows, k):\n    total = k + 1\n    return total",
+    "def prefix_sums(vals):\n    total = 0\n    for v in vals:\n        total = total + v\n    return total",
+    "def tail(buf, start):\n    nxt = start + 1\n    print(nxt, buf)",
+    "def strip_comment(line):\n    clean = line.strip()\n    if clean:\n        return clean.title()\n    return line"
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-1.0 on the bound variable inside [:...] or range(...); the same arithmetic outside a slice 0.0-0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "slice/range bound in code",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: 'xy[:i + 1]', '[:comment_position]', '[0:self.__cursor]', 'range(i+1'. Probe: 'xs[:i + 1]' 1.053, 'line[:pos + 1]' 0.870, 'range(i + 1, n)' 0.716, 'buf[0:self.cursor]' 0.586; 'range(n)' alone 0.220, 'x = i + 1' 0.120, 'line.strip()' 0.004. Fire items are multi-line."
+}
