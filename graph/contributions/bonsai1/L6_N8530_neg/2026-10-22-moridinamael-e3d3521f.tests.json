@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-22-moridinamael-e3d3521f",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N8530-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T05:59:05+00:00",
+ "roles": ["feeds bonsai1/L11/N2426-"],
+ "neighbours": [
+  {
+   "unit": "L6/N8530",
+   "pole": "-",
+   "label": "The punctuation mark (dash, colon, ellipsis, question mark) placed right after a joining word such as but, and, so, or, then, yet or because, in any language, before the sentence carries on; weaker after a sentence adverb (still, sadly) or with a plain comma after the joining word. Quiet: the same dashes and colons after ordinary nouns or verbs (asides, list intros), and commas after openers like 'However,'.",
+   "short": "punctuation right after a joining word (But –, So:)",
+   "fire": [
+    "I wanted to call her back, but — honestly — I lost my nerve.",
+    "We packed the car and... we just sat there staring at the rain.",
+    "He studied all night, so: the exam went better than expected.",
+    "You can stay here or — if you prefer — take the late train home.",
+    "She opened the letter, then... she started to laugh.",
+    "The bridge looked solid, yet — as we soon learned — it was rotting underneath.",
+    "I left early because... well, the meeting had become pointless.",
+    "Quería ir a la fiesta, pero... al final me quedé en casa."
+   ],
+   "quiet": [
+    "I wanted to call her back — honestly a hard decision — and I did it the next day.",
+    "We packed three things: a tent, a stove and two sleeping bags.",
+    "He studied all night for the exam, which went better than expected.",
+    "You can stay here tonight if you prefer to skip the late train home.",
+    "She opened the letter... from her grandmother, sent forty years ago.",
+    "The bridge — built in 1890 — was rotting underneath.",
+    "However, the meeting had become pointless by noon.",
+    "Quería ir a la fiesta: música, amigos y comida."
+   ]
+  }
+ ],
+ "predictions": "most fire items above 0.3; near misses under 0.1. Sentences written blind by a second author from the label only.",
+ "notes": "Step-out feeder of bonsai1/L11/N2426- (play step drop 0.03). Probes: 'But –' 0.96, 'And –' 0.99, 'So?' 0.66, 'But:' 0.92, 'Mais –' 0.58, 'Aber –' 0.51; dash after a noun ('The dog –') 0.02, 'However,' comma 0.02, 'But,' 0.33, 'Sadly –' 0.52. Inverse solver (DE): no leak, near-miss ceiling 0.12.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "step-out",
+   "inverse-de",
+   "blind-room"
+  ]
+ }
+}
