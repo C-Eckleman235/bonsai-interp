@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-23-moridinamael-3a2404d5",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N7879-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T09:49:48+00:00",
+ "roles": ["feeds bonsai1/L24/N4326+"],
+ "neighbours": [
+  {
+   "unit": "L19/N7879",
+   "pole": "-",
+   "label": "' to' that the word before does not call for as its own complement: 'to' tacked onto a noun, an adjective or a finished clause (a sight to behold, plenty of work to finish, strange to everyone, stood up to sing), whatever follows it, and also after seem / appear / be said / be known ('appears to have'); quiet on 'to' an ordinary verb or fixed phrase asks for (tried / refused / hoped / decided / wants to, gave X to, used to, next to)",
+   "short": "unlicensed ' to' (after noun/adjective/clause or raising verb)",
+   "fire": [
+    "The sunrise over the canyon was a sight to behold.",
+    "We still have plenty of work to finish before Friday.",
+    "His accent sounded strange to everyone in the village.",
+    "She stood up to sing the anthem.",
+    "The old bridge appears to have survived the flood.",
+    "The author is said to live in a lighthouse.",
+    "He seems to know every street in the city.",
+    "This is the best place to watch the parade."
+   ],
+   "quiet": [
+    "The bakery is right next to the post office.",
+    "They decided to paint the kitchen blue.",
+    "They tried to behold the sunrise over the canyon.",
+    "We refused to finish the work before Friday.",
+    "She hoped to sing the anthem.",
+    "He gave the old map to the museum.",
+    "We used to live near the lighthouse.",
+    "The parade passed right next to our house."
+   ]
+  }
+ ],
+ "predictions": "Blind test written by a label-only second author; expect most fire items at 0.3-0.6 and near misses around 0.1-0.2, with the raising-verb items the weakest fires.",
+ "notes": "Step-out feeder of bonsai1/L24/N4326+. play step ran out of GPU memory, so the feeder was chosen from the resident attribution list (mcp feeders: top MLP feeder after the already-mapped L23/N8315-); no ablation drop is available, so no feeds edge is recorded. Solver leak (0.30) was 'appears to have attempted to flee', which led to naming raising verbs in the label.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "neighbors"
+  ]
+ }
+}
