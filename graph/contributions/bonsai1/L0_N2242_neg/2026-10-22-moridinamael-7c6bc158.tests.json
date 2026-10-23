@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-22-moridinamael-7c6bc158",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N2242-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T05:22:32+00:00",
+ "roles": ["feeds bonsai1/L1/N6242+"],
+ "neighbours": [
+  {
+   "unit": "L0/N2242",
+   "pole": "-",
+   "label": "the character 出 ('out') when the tokenizer keeps it as its own token (strong: Chinese 出题, 出海, 出清, traditional 出發, Japanese 出ます, 日の出), plus Korean 출 in any word at about a third of that; weak when 出 is merged into one token with a neighbour (simplified 出发, 出来, 提出, 出席, 出身, 演出) and silent for 'out/leave' meanings without the character (离开, 行く, exit)",
+   "short": "出 as its own token (Korean 출 weaker)",
+   "unit_kind": "token",
+   "fire": [
+    "우리는 내일 아침에 출발합니다.",
+    "老师今天出题很难，大家都没做完。",
+    "这家公司计划明年出海，开拓东南亚市场。",
+    "商场年底出清库存，所有衣服打五折。",
+    "我們明天一早出發去台中。",
+    "毎朝七時に家を出ます。",
+    "山の上から日の出を見ました。",
+    "这次考试由王老师出题。"
+   ],
+   "quiet": [
+    "这本书的作者是谁？",
+    "老师今天布置的题很难，大家都没做完。",
+    "这家公司计划明年进入东南亚市场。",
+    "商场年底打折处理库存，所有衣服半价。",
+    "我們明天一早離開去台中。",
+    "毎朝七時に学校へ行きます。",
+    "山の上から朝の太陽を見ました。",
+    "他很快就离开了会议室。"
+   ]
+  }
+ ],
+ "predictions": "7-8/8 fire (Korean 출 near 0.3), 0 near misses at 0.30",
+ "notes": "Test sentences written blind by a second author from the label only (stream rule). Feeder chosen from the resident attribution ranking because play step ran out of GPU memory, so no ablation edge is recorded. Korean 출 (about 0.32 on probes) came from the inverse solver's leak.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
