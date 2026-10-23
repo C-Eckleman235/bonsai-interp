@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-23-moridinamael-484570ac",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N4760-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T09:19:14+00:00",
+ "roles": ["feeds bonsai1/L2/N6869+"],
+ "neighbours": [
+  {
+   "unit": "L0/N4760",
+   "pole": "-",
+   "label": "the short words fare, bare, dare, stare, spare, pare, hare, mare, ware(s) and the name Clare, in any sense, capitalised or not, and their forms (fares, dared, bared, staring, spared); quiet on the common '-are' words care, share, rare and square, on same-sound spellings (fair, pear, bear, hair), and on longer words that end in -are (welfare, nightmare, aware, compare, prepare, software)",
+   "fire": [
+    "The bus fare went up by fifty cents this spring.",
+    "Nobody dared to open the old wooden door.",
+    "She stared at the map for a long time before deciding.",
+    "Do you have a spare pencil I could borrow?",
+    "The hare darted across the field and vanished into the hedge.",
+    "He walked barefoot along the cold sand.",
+    "Clare finished the crossword before breakfast.",
+    "The farmer led the grey mare back to the stable."
+   ],
+   "quiet": [
+    "The bus ticket went up by fifty cents this spring.",
+    "Nobody wanted to share the old wooden desk.",
+    "She cared about the map more than the compass.",
+    "Do you have a square pencil case I could borrow?",
+    "The bear lumbered across the field and vanished into the hedge.",
+    "He walked along the cold sand in a nightmare of fog.",
+    "Claire's sister finished the crossword before breakfast.",
+    "The farmer led the grey horse back to the stable."
+   ]
+  }
+ ],
+ "short": "short '-are' words (fare, bare, dare, stare, spare...), not care/share/rare",
+ "unit_kind": "token/lexical",
+ "predictions": "most fire items above 0.4; care/share/square near misses below 0.2. Risks: 'barefoot' may tokenize differently, sentence-initial 'Clare'.",
+ "notes": "Blind test: sentences written by a second author who saw only the label. Found as the top resident-attribution feeder of bonsai1/L2/N6869+ ('spare'); play step ran out of GPU memory, so no ablation drop was measured.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "step-out"
+  ]
+ }
+}
