@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-fec6440f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N3826-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T05:19:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L20/N3826",
+   "pole": "-",
+   "label": "unclear: the card peaks on indentation whitespace inside Python function bodies, but short code snippets did not fire in probes",
+   "fire": [
+    "class Parser:\n    def parse(self, text):\n        parts = text.split(\"\\n\", 1)\n        self.title = parts[0] or None\n        if len(parts) > 1:\n            self.body = parts[1]",
+    "    def reset(self):\n        self.cache = {}\n        self.count = 0\n        self.items = []\n        return None",
+    "def merge(a, b):\n    merged = list(a)\n    lengths = [x.size for x in merged]\n    for item in b:\n        merged.append(item)\n    return merged",
+    "    def run(self):\n        result = self.query()\n        table = result[list(result.keys())[0]]\n        table.normalize()\n        return table",
+    "def score(rows):\n    total = 0\n    for row in rows:\n        if row.valid:\n            total += row.value\n    return total",
+    "class Cache:\n    def __init__(self):\n        self.hits = 0\n        self.misses = 0\n        self.store = {}",
+    "def read_lines(path):\n    with open(path) as f:\n        lines = f.readlines()\n        lines = [l.strip() for l in lines]\n    return lines",
+    "    def close(self):\n        if self.conn is not None:\n            self.conn.close()\n            self.conn = None\n        self.closed = True"
+   ],
+   "quiet": [
+    "The parser splits the text at the first line break and stores the title.",
+    "Resetting the object clears the cache, the counter and the list of items.",
+    "To merge two lists, copy the first one and append every item of the second.",
+    "The method runs a query, takes the first table in the result and normalizes it.",
+    "The score is the sum of the values of all valid rows.",
+    "A new cache starts with zero hits, zero misses and an empty store.",
+    "The function opens the file, reads every line and strips the whitespace.",
+    "Closing the object shuts the connection if it is open and marks it closed."
+   ]
+  }
+ ],
+ "predictions": "probably fails: short indented Python scored 0.04-0.10 in probes; expect fire median below 0.3",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "unclear (indentation in Python?)",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card: broad (1.6%), peaks on '       ' indentation tokens before 'if'/'self.' lines in Python methods, also ' fraction' in 'decimal to fraction'. Probe: indented Python 0.040-0.103, top-level Python 0.013, 'move the decimal point and simplify' 0.458 (on ' and'). Best guess is still indentation inside longer method bodies, so the fire items are longer multi-line methods."
+}

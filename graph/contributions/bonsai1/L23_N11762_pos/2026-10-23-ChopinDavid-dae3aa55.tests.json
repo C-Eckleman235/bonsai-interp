@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-dae3aa55",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N11762+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T05:19:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L23/N11762",
+   "pole": "+",
+   "label": "the '=' (or the space after it) right before the numerical result of a worked calculation with numbers and units",
+   "fire": [
+    "The area of the room is 6 m x 4 m = 24 square metres.",
+    "For the group, the total cost is 12 tickets x $15 = $180.",
+    "So the distance is 60 km/h x 3 h = 180 km.",
+    "In total the box holds 8 x 6 x 5 = 240 sugar cubes.",
+    "The mass is 2.7 g/cm3 x 10 cm3 = 27 g for the aluminium block.",
+    "This year the farmer planted 15 rows x 20 plants = 300 tomato plants.",
+    "The heater uses 2 kW x 5 h = 10 kWh per day in winter.",
+    "At the base, the pressure is 50 N / 0.5 m2 = 100 Pa."
+   ],
+   "quiet": [
+    "The area of the room is the length times the width, in square metres.",
+    "In the formula A = l x w, the letter l stands for length.",
+    "Distance is defined as d = v t, where v is speed and t is time.",
+    "In the code, set count = 0 before the loop starts.",
+    "The mass equals density times volume, so heavier metals weigh more.",
+    "This year the farmer planted fifteen long rows of tomato plants.",
+    "Let E = P t denote the energy used by the heater.",
+    "The pressure depends on the force and on the area of the base."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-1.1 on '=' before the answer of a numeric calculation; symbolic formulas and code assignments with '=' and prose descriptions of the same calculation near 0.0-0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'=' before a computed numeric result",
+ "unit_kind": "context",
+ "confidence": 0.65,
+ "notes": "Card: peaks on '=' / ' ' before results ('4x10x5 mSv = 200 mSv', '= 125cm³', '36 * 16 = 576'). Probe: 'l x w x h = 5 cm x 4 cm x 3 cm = 60' 1.109, '4 x 10 x 5 mSv = 200' 0.636, '36 * 16 = 576' 0.314; symbolic 'f(x) = ax + b' 0.020, code 'x = y + z' 0.018, prose dose 0.023."
+}

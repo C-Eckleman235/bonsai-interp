@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-22f3089e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N7308-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T05:19:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L27/N7308",
+   "pole": "-",
+   "label": "positions where microbial growth is the expected continuation: hygiene, spoilage and infection contexts that predict 'bacteria', 'germs' or 'growth'",
+   "fire": [
+    "Leaving raw chicken on the counter allows harmful bacteria to multiply quickly.",
+    "Tooth decay begins when acids are produced by bacteria feeding on sugar.",
+    "Wet towels left in a pile soon become a breeding ground for germs.",
+    "Refrigeration slows bacterial growth and keeps milk fresh for longer.",
+    "Stagnant water in the tank was quickly overrun with bacteria.",
+    "The yogurt contains live cultures that promote healthy gut bacteria.",
+    "Always wash cutting boards in hot water to kill germs left by raw meat.",
+    "Salt has been used for centuries to stop bacteria from spoiling fish."
+   ],
+   "quiet": [
+    "Leaving the farm gate open allows the sheep to wander off quickly.",
+    "Silk is a fine thread made by caterpillars feeding on mulberry leaves.",
+    "Wet towels left in a pile on the floor annoyed her roommates.",
+    "Refrigeration changed the way families shopped for groceries in the 1950s.",
+    "The old water tank in the attic was replaced with a larger one.",
+    "The yogurt comes in strawberry, vanilla and plain flavours.",
+    "Always wash cutting boards before slicing bread for sandwiches.",
+    "Salt has been used for centuries to flavour soups and stews."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.85 in hygiene and spoilage sentences about bacteria and germs; the same sentence frames about non-microbial topics near 0.0-0.3. Frame words like 'caused by' may leak weakly",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predicting bacteria / microbial growth",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: peaks on tokens before 'bacteria'/'growth' ('ideal conditions to incubate bacteria', 'produced by bacteria', 'slow the growth of germs', 'prevent bacterial growth', also 'promotes corrosion'); the + pole suppresses 'bacteria', 'growth', 'organisms'. Probe: 'produced by bacteria in the mouth' 0.842, 'prevent bacterial growth' 0.784, 'conditions for bacteria to multiply' 0.646, 'slow the growth of germs' 0.227; leaks: 'ideal conditions for a picnic' 0.496, 'caused by eating garlic' 0.367, 'slow the engine down' 0.227. Near misses therefore avoid 'ideal conditions' and keep away from rust, mold and corrosion."
+}

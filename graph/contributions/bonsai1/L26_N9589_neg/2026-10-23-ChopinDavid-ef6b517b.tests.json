@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-ef6b517b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N9589-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T05:19:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N9589",
+   "pole": "-",
+   "label": "the first eye or face character of a kaomoji emoticon, such as the ´ in (´▽`) or the > in (>_<), in casual East Asian and English posts",
+   "fire": [
+    "昨日は雨で一日中家にいました(´・ω・`)明日は晴れるといいな。",
+    "新しいカメラを買ったよ！すごく嬉しい(≧▽≦)早く使いたい。",
+    "My cat knocked over my coffee again this morning (>_<) so I am late for work.",
+    "週末は温泉に行ってきました。最高でした(￣ー￣)また行きたい。",
+    "這本書我看了三遍，還是很感動(´；ω；`)推薦給大家。",
+    "Finally finished my thesis draft after six months (´▽`) time to sleep now.",
+    "今日のランチはラーメンでした(・∀・)美味しかった！",
+    "我的蛋糕又烤焦了>_<下次一定要注意火候。"
+   ],
+   "quiet": [
+    "昨日は雨で一日中家にいました（泣）明日は晴れるといいな。",
+    "新しいカメラを買ったよ！すごく嬉しい！早く使いたい。",
+    "My cat knocked over my coffee again this morning (again!) so I am late for work.",
+    "週末は温泉に行ってきました。最高でした。また行きたい。",
+    "這本書我看了三遍，還是很感動（真的）推薦給大家。",
+    "Finally finished my thesis draft after six months (finally) time to sleep now.",
+    "今日のランチはラーメンでした（大盛り）美味しかった！",
+    "if (a > b) { return a; } else { return b; }"
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.9 on the first face character of a kaomoji; the same posts with words, （泣） or plain punctuation in place of the face, and '>' as a comparison in code, near 0.0-0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "first face character of a kaomoji",
+ "unit_kind": "token/lexical",
+ "confidence": 0.75,
+ "notes": "Card: peaks on ´, ○, ･, ￣, ◔, > right after '(' in kaomoji. Probe: (´▽`) 0.897, (>_<) 0.705, (￣▽￣) 0.683, (^_^) 0.592; （笑） 0.126, '(really)' 0.097, comparison '>' in prose 0.007."
+}
