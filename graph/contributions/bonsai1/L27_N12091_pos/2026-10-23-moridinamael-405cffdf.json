@@ -1,0 +1,163 @@
+{
+ "id": "2026-10-23-moridinamael-405cffdf",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N12091+",
+ "contributor": "moridinamael",
+ "created": "2026-10-23T08:36:47+00:00",
+ "recipe": {
+  "toolchain_commit": "2f3da311",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L27_N12091_pos/2026-10-23-moridinamael-405cffdf.tests.json"
+ },
+ "label": "the verb (is/was/be) right after a cost/effort/amount/scale/losses noun OF something spelled out as vast ('the cost of rebuilding the entire network is'), setting up a word like 'enormous'; quiet when the measured thing is everyday-sized or the noun is not a measure (color, flavor)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L27_N12091_pos/2026-10-23-moridinamael-405cffdf.tests.json",
+   "prereg_commit": "2f3da311",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 5,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.733,
+     "peak": " is"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.308,
+     "peak": " was"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.726,
+     "peak": " be"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.279,
+     "peak": " is"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.275,
+     "peak": " were"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.343,
+     "peak": " is"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.184,
+     "peak": " was"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.314,
+     "peak": " is"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.103,
+     "peak": " cost"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.003,
+     "peak": " entire"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.337,
+     "peak": " was"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.076,
+     "peak": " is"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.027,
+     "peak": " continent"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.014,
+     "peak": " is"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.003,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.02,
+     "peak": " and"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.922,
+    "median_fire": 0.311,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "2f3da311",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-in reader of bonsai1/L25/N8045+ (drop 0.66). Feeders-first arm: top feeders L26/N1935- ('how' / 'some of' before a degree word) and L26/N1942- ('as' in 'as early as', 'no matter how') are degree-slot predictors; this pole narrows that to large magnitude. Solver: no leak; silent on gerund subjects without a measure noun ('Feeding every child ... was').",
+ "roles": [
+  "reads bonsai1/L25/N8045+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L25/N8045+", "to": "bonsai1/L27/N12091+", "kind": "feeds", "weight": 0.66, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
