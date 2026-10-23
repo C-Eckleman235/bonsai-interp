@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-e4e20dda",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N9524-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T21:28:42+00:00",
+ "recipe": {
+  "toolchain_commit": "07763752",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L14_N9524_neg/2026-10-23-ChopinDavid-e4e20dda.tests.json"
+ },
+ "label": "a word inside a fixed multiword expression whose continuation is forced ('might as well', 'can no longer', 'whether or not', 'the rate at which', 'run afoul'), as against the same words in free combinations",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L14_N9524_neg/2026-10-23-ChopinDavid-e4e20dda.tests.json",
+   "prereg_commit": "07763752",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.552,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.39,
+     "peak": " no"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.475,
+     "peak": " or"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.452,
+     "peak": " at"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.52,
+     "peak": " af"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.141,
+     "peak": " series"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.549,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.507,
+     "peak": " no"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.024,
+     "peak": " we"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.055,
+     "peak": "After"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.037,
+     "peak": "We"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.048,
+     "peak": "Doctors"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.037,
+     "peak": "Two"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.017,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.105,
+     "peak": " you"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.065,
+     "peak": "Many"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.491,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "07763752",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "word inside a fixed multiword phrase",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card peaks: 'might| as| well', 'can| no| longer', 'whether| or| not', 'rate| at| which', 'run| af|oul', 'a| series| of', 'Traceback (most recent'. Probe: 'run afoul' 0.615, 'whether or not' 0.608, 'can no longer' 0.552, 'rate at which' 0.547, 'might as well' 0.529, 'a series of' 0.341; 'I might eat the last slice' 0.063, 'factory no longer has' 0.093 (so 'no longer' fires after 'can'), plain sentence 0.027.",
+ "selection": "random draw"
+}

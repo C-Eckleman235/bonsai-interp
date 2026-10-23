@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-9a2fb0d5",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N9890-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T21:30:17+00:00",
+ "recipe": {
+  "toolchain_commit": "07763752",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N9890_neg/2026-10-23-ChopinDavid-9a2fb0d5.tests.json"
+ },
+ "label": "dense early pole (23% of tokens at 0.1 of a tiny max 0.20); best guess: the word 'cross' and its forms, as against the same sentences without it",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N9890_neg/2026-10-23-ChopinDavid-9a2fb0d5.tests.json",
+   "prereg_commit": "07763752",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.736,
+     "peak": " cross"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.522,
+     "peak": " crossed"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.527,
+     "peak": " crossed"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.393,
+     "peak": " cross"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.69,
+     "peak": " cross"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.352,
+     "peak": " cross"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.594,
+     "peak": " crosses"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.532,
+     "peak": " crossed"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.27,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.109,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.243,
+     "peak": " said"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.319,
+     "peak": " church"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.317,
+     "peak": " for"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.29,
+     "peak": " box"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.143,
+     "peak": " four"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.18,
+     "peak": " mountain"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.53,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "07763752",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "dense; best guess 'cross' (dense)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.1,
+ "notes": "Card: max 0.20, dense 23.5%, gate-closed regime 100%; peaks on ' cross' x3, ' crossed' x3, '_cross', French 're'. Probe: 'crossing your arms' 0.808, 'def cross' 0.690, 'crossed the river' 0.548; but neutral controls 0.243-0.251 and French 'Apprendre' 0.859, so the floor is high.",
+ "selection": "random draw"
+}

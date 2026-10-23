@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-f3e5796d",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N10767-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T21:28:35+00:00",
+ "recipe": {
+  "toolchain_commit": "07763752",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L29_N10767_neg/2026-10-23-ChopinDavid-f3e5796d.tests.json"
+ },
+ "label": "a Python token where the model expects `.update(` or `itertools`/`import` of iterator tools next: the object name starting a line after `x = y.copy()`, `self.__dict__`, and ' import' after 'from itertools'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L29_N10767_neg/2026-10-23-ChopinDavid-f3e5796d.tests.json",
+   "prereg_commit": "07763752",
+   "author": "ChopinDavid",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.78,
+     "peak": " merged"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.311,
+     "peak": ".update"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.531,
+     "peak": "__."
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.624,
+     "peak": " import"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.238,
+     "peak": ".update"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.631,
+     "peak": " import"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.409,
+     "peak": "(it"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.073,
+     "peak": ".update"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.161,
+     "peak": " merged"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.156,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.016,
+     "peak": "init"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.057,
+     "peak": "import"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.12,
+     "peak": " len"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.1,
+     "peak": " import"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.083,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.019,
+     "peak": "(state"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.922,
+    "median_fire": 0.47,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "07763752",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "Python setup for .update / itertools",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card peaks: ' namespace' before .update after .copy(), 'os.environ' before .update, '__dict__.' before update, ' import' after 'from itertools', ' itertools' before .chain; the - pole promotes 'update', 'chain', 'unpack'. Probe: 'result = base.copy()\\n result' 0.735 (same with .append next: prediction fires before the method), '__.' 0.456, 'from itertools import' 0.649, 'itertools.chain' 0.466; 'self.name = name' 0.013, 'import os / from collections import deque' 0.293.",
+ "selection": "random draw"
+}
