@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-eb722daf",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N7916+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T11:19:40+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N7916",
+   "pole": "+",
+   "label": "the action of searching or looking something up (' search' as a method or verb, Korean 검색/탐색), against other actions in the same slot",
+   "fire": [
+    "    def find_users(self, name):\n        hits = self.index.search(name)\n        return hits",
+    "    def search(self, term):\n        return [b for b in self.books if term in b.title]",
+    "        matches = catalog.search(keywords, limit=20)",
+    "On the library website, you can search the catalogue by title or subject.",
+    "인터넷에서 가까운 식당을 검색해 보세요.",
+    "이 프로그램은 파일을 빠르게 탐색할 수 있습니다.",
+    "    query = request.args.get('q')\n    results = Product.search(query)",
+    "Before you buy a used car, search the registration number online."
+   ],
+   "quiet": [
+    "    def find_users(self, name):\n        self.index.close()\n        return None",
+    "    def delete(self, term):\n        self.books = []",
+    "        catalog.save(keywords, limit=20)",
+    "On the library website, you can renew the books you have borrowed.",
+    "인터넷에서 가까운 식당을 예약해 보세요.",
+    "이 프로그램은 파일을 빠르게 저장할 수 있습니다.",
+    "    query = request.args.get('q')\n    Product.delete(query)",
+    "Before you buy a used car, wash it and check the tyres."
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.8 on 'search'/'.search'/'검색'; close/save/browse in the same slot below 0.1, though other query methods like '.count' may leak (0.3)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "search / look up",
+ "unit_kind": "meaning",
+ "confidence": 0.55,
+ "notes": "Card: ' search', '.search', '검색', '탐색', ' login', '.match'. Probe: db.search 0.805, '검색할' 0.723, def search 0.638, prose 'search the archive' 0.332, def login 0.362; def close 0.051, browse 0.044, but db.count 0.307 leaked. Near misses avoid query-like methods."
+}

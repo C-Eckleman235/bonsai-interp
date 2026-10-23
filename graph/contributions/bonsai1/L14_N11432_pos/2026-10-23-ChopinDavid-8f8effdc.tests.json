@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-8f8effdc",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N11432+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T11:19:40+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L14/N11432",
+   "pole": "+",
+   "label": "a literal constant (-1, True, False) passed as an argument inside a Python call, against the same call with a variable or no argument",
+   "fire": [
+    "        panel = wx.Panel(self)\n        label = wx.StaticText(panel, -1, 'Name')",
+    "        rows = content.splitlines(True)\n        return rows",
+    "        user = signup_form.save(commit=False)\n        user.is_active = True",
+    "        box = wx.TextCtrl(panel, wx.ID_ANY, '', size=(120, -1))",
+    "        thread = threading.Thread(target=worker)\n        thread.setDaemon(True)",
+    "        model.train(False)\n        preds = model(inputs)",
+    "        chooser = wx.ComboBox(panel, -1, choices=names)",
+    "        order = order_form.save(commit=False)\n        order.customer = request.user"
+   ],
+   "quiet": [
+    "        panel = wx.Panel(self)\n        label = wx.StaticText(panel, label_id, 'Name')",
+    "        rows = content.splitlines()\n        return rows",
+    "        user = signup_form.save()\n        user.send_welcome_email()",
+    "        box = wx.TextCtrl(panel, wx.ID_ANY, '', size=box_size)",
+    "        thread = threading.Thread(target=worker)\n        thread.start()",
+    "        model.train(mode)\n        preds = model(inputs)",
+    "        chooser = wx.ComboBox(panel, combo_id, choices=names)",
+    "        order = order_form.save()\n        order.notify(request.user)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.75 on '-'/'1', '(True', '=False' in call arguments; the same calls with variable names or no argument below 0.08",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "literal call arguments (-1/True/False)",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: size=(40, -1), get(True, ...), commit=False. Probe: size=(80, -1) 0.758, splitlines(True) 0.547, commit=False 0.304, get(True, 2.0) 0.158 (weak); size=(width, height) 0.018, get(block, timeout) 0.057, save() 0.026, prose -1/true 0.003."
+}
