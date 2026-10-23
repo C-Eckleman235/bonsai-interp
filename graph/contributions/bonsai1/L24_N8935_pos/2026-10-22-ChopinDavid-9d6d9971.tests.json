@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-9d6d9971",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N8935+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T00:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L24/N8935",
+   "pole": "+",
+   "label": "broad unit: a slot that introduces a qualifying adjective (coordinated adjective lists, 'the same', 'the contrasting')",
+   "fire": [
+    "The book offers a social, economic, and political history of the port.",
+    "Both artists were working toward the same goal in different ways.",
+    "The survey covers the cultural, linguistic, and religious life of the valley.",
+    "Critics noted the contrasting styles of the two architects.",
+    "Painting and drawing were treated as parts of the same craft.",
+    "The atlas gives a physical, historical, and economic view of the island.",
+    "The authors describe the contrasting fortunes of the two cities.",
+    "Hunting and farming were seen as two sides of the same way of life."
+   ],
+   "quiet": [
+    "The book was printed in the port and sold in local shops.",
+    "Both artists moved to Paris and worked there for years.",
+    "The survey was posted to every household in the valley.",
+    "Critics walked through the gallery before it opened.",
+    "Painting began after lunch and lasted until dark.",
+    "The atlas sat on the shelf next to the dictionary.",
+    "The authors met in the city and talked for hours.",
+    "Hunting was banned in the park after the fire."
+   ]
+  }
+ ],
+ "predictions": "likely weak: fire 0.3-0.8 in coordinated adjective lists and 'the same'; plain narrative 0.1-0.25, so near misses will fire weakly",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "slot before a qualifying adjective (broad)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.3,
+ "notes": "Card flags broad (9.8% of tokens reach 0.1 of max). Peaks: ' and' in 'historical, topographical, and statistical', ' same', ' contrasting', ' new', ' complete'. Probe: adjective list 0.872, 'the same activity' 0.751, 'signify' 0.503, 'contrasting' 0.456, 'complete list' 0.331; plain narrative 0.111-0.251. Near misses keep register and length but have no qualifying-adjective slot."
+}

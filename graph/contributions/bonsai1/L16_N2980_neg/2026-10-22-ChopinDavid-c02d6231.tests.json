@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-c02d6231",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L16/N2980-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T00:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L16/N2980",
+   "pole": "-",
+   "label": "digits inside a number that is one item of a list of numbers (comma-separated sequences, tuples)",
+   "fire": [
+    "The allowed port numbers are 8080, 8081, 8443, 9000 and 9090.",
+    "Bus routes 12, 14, 17, 23, 28 and 31 stop at the main square.",
+    "Readings were 214, 219, 223, 230, 236 and 241 over the week.",
+    "points = [(10, 20), (35, 40), (55, 70), (90, 115)]",
+    "Workshops run on March 3, 4, 10, 11 and 18 in the library.",
+    "The lottery numbers drawn were 7, 13, 22, 29, 34 and 41.",
+    "Pages 112, 118, 124, 131 and 137 contain the maps.",
+    "Candidates scored 68, 72, 75, 81, 84 and 90 on the test."
+   ],
+   "quiet": [
+    "The server listens on port 8080 for incoming requests.",
+    "Bus route 17 stops at the main square every ten minutes.",
+    "The reading on Monday was 230 and nobody checked it again.",
+    "The point at the top of the hill is 115 metres high.",
+    "The workshop runs on March 18 in the library.",
+    "The winning number drawn this week was 29.",
+    "The map of the old harbour is on page 124.",
+    "The top candidate scored 90 on the test."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.5 on digits in number lists; a single number of the same size in prose near 0.01",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "digits in number lists",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card peaks on digits inside long number lists (coordinates, '156, 15|7, 170', 'Geology 310, ... 3|8|0', 'Nov. 9, 10, 15, 1|6'). Probe: tuple list 0.519, sizes list 0.351, dates list 0.345, course list 0.335, row list 0.287; single numbers in prose: 'built in 1957' 0.008, 'paid 157 dollars' 0.009, '380 students' 0.002. Near misses keep one number in the same topic."
+}

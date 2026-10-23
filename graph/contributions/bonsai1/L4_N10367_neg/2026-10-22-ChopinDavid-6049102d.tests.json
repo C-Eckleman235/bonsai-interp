@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-6049102d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N10367-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T00:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N10367",
+   "pole": "-",
+   "label": "unclear: byte-fallback pieces in Korean (and Japanese/Arabic) text, strongest on transliterated loanwords like 가이드 레일",
+   "fire": [
+    "이 기계에는 새로운 가이드 레일과 모터가 설치되어 있습니다.",
+    "우리 회사는 하이테크 세라믹 부품을 생산합니다.",
+    "고객은 온라인 쇼핑몰에서 노트북 케이스를 주문했습니다.",
+    "이 호텔에는 피트니스 센터와 레스토랑이 있습니다.",
+    "그는 매일 아침 커피와 토스트를 먹습니다.",
+    "새 스마트폰은 카메라 렌즈가 세 개입니다.",
+    "아이들은 크리스마스 파티에서 케이크를 먹었습니다.",
+    "엔지니어가 서버 소프트웨어를 업데이트했습니다."
+   ],
+   "quiet": [
+    "이 기계에는 새로운 철길과 바퀴가 설치되어 있습니다.",
+    "우리 회사는 단단한 도자기 부품을 생산합니다.",
+    "고객은 동네 가게에서 공책과 연필을 샀습니다.",
+    "이 집에는 넓은 마당과 부엌이 있습니다.",
+    "그는 매일 아침 밥과 김치를 먹습니다.",
+    "새 집은 창문이 세 개입니다.",
+    "아이들은 설날에 떡국을 먹었습니다.",
+    "할머니가 마당에서 꽃을 심었습니다."
+   ]
+  }
+ ],
+ "predictions": "likely weak: Korean loanwords 0.3-0.6, native Korean 0.2, English 0.03; may fail on the Korean near misses",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Korean loanword byte pieces (unclear)",
+ "unit_kind": "unclear",
+ "confidence": 0.25,
+ "notes": "Card: gate-closed regime 100%, broad (3.4% of tokens). Peaks: 레일, 레이, 테크, ーラー, Arabic letters. Probe: '가이드 레일' 0.575 (peak a byte piece), 'エクスプローラー' 0.244, Arabic 0.11-0.26, native Korean weather sentence 0.206, English 0.03-0.07. Fire items are Korean sentences with English loanwords; near misses are Korean sentences with native vocabulary of the same length."
+}

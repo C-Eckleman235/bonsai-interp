@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-2e903fd4",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N7244+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T00:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L8/N7244",
+   "pole": "+",
+   "label": "digits of a pre-modern historical date (ancient or medieval years, 'AD'/'BC' contexts)",
+   "fire": [
+    "The emperor Trajan led his legions across the Danube in 106 AD.",
+    "After years of war, the abbey was rebuilt in 1146 by the monks.",
+    "The Battle of Hastings was fought in 1066 between rival claimants.",
+    "Records show the Black Death reached the town in 1348.",
+    "The temple was finished around 515 BC under Persian rule.",
+    "The city of Baghdad was sacked by the Mongols in 1258.",
+    "Historians date the poem to roughly 1170, during the Angevin period.",
+    "Julius Caesar crossed the Rubicon with one legion in 49 BC."
+   ],
+   "quiet": [
+    "The courier delivered the parcel to room 106 on the third floor.",
+    "After the sale, the shop counted 1146 units left in the warehouse.",
+    "The ticket for seat 1066 was printed on blue paper.",
+    "Records show the account had a balance of 1348 euros.",
+    "The parcel weighed around 515 grams on the kitchen scale.",
+    "The train to the airport leaves from platform 12 at 12:58.",
+    "Engineers estimate the bridge carries roughly 1170 cars an hour.",
+    "The recipe needs 49 grams of sugar and two eggs."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.9 on year digits in ancient/medieval history; the same digit strings as prices, rooms or counts near 0",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "digits in ancient/medieval years",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card peaks on digits inside years like 13|1|5, 16|5 B.C.E., 13|6|8, Papias (60-13|5 AD), plus 'Hellenistic' and regnal ' IV'. Probe: 'founded in 1368' 0.868, 'died in 138 AD' 0.567, 'In 1315' 0.255, 'Hellenistic' 0.750; the same digit strings as an invoice 0.016, an extension 0.026, square meters 0.011. Near misses keep the digits and sentence shape but make them non-dates."
+}
