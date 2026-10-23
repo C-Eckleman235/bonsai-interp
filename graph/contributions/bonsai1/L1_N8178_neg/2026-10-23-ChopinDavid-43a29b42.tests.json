@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-43a29b42",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N8178-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T07:20:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N8178",
+   "pole": "-",
+   "label": "the token ' either' when it opens an 'either ... or' alternative (not sentence-final 'either')",
+   "fire": [
+    "We can meet at the station, either before lunch or after six.",
+    "The contract may be ended, either by notice or by mutual consent.",
+    "Students may choose, either in writing or orally, how to present the work.",
+    "Guests can stay, either in the main house or in the cottage.",
+    "The parcel will arrive, either on Monday or on Tuesday morning.",
+    "You will be contacted, either by phone or by email, within a week.",
+    "The judge can rule, either for the tenant or for the landlord.",
+    "Payment is due, either in full or in three monthly parts."
+   ],
+   "quiet": [
+    "We can meet at the station, before lunch or after six.",
+    "The contract may be ended, by notice or by mutual consent.",
+    "Students may choose, in writing or orally, how to present the work.",
+    "Guests can stay, in the main house or in the cottage.",
+    "The parcel will arrive, on Monday or on Tuesday morning.",
+    "You will be contacted, by phone or by email, within a week.",
+    "The judge can rule, for the tenant or for the landlord.",
+    "Payment is due, in full or in three monthly parts."
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.5 on ' either'; near misses 0.15-0.3 baseline, so margin thin",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "' either' opening an alternative",
+ "unit_kind": "dense / positional",
+ "confidence": 0.25,
+ "notes": "Dense (10% of tokens reach 0.1 max). Card: ' either' x16. Probe: 'either in or out' 0.466, 'either expressly' 0.442, but 'pay either by card' 0.210 and sentence-final 'didn't either' 0.160; 'two decades' 0.610 also fires; baselines 0.19-0.30."
+}

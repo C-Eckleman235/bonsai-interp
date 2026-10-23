@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-84cb8fa9",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N4594+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T07:20:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N4594",
+   "pole": "+",
+   "label": "the Python keyword 'class' at the start of a line opening a top-level class definition (after blank lines in a code file)",
+   "fire": [
+    "import os\nimport json\n\n\nclass ConfigLoader:\n    def __init__(self, path):\n        self.path = path",
+    "from django.db import models\n\n\nclass Author(models.Model):\n    name = models.CharField(max_length=100)",
+    "import pytest\n\nDATA = [1, 2, 3]\n\n\nclass TestSum:\n    def test_total(self):\n        assert sum(DATA) == 6",
+    "LIMIT = 10\n\n\nclass Queue(object):\n    def __init__(self):\n        self.items = []",
+    "from typing import List\n\n\nclass Matrix:\n    rows: List[List[float]]",
+    "import logging\n\nlog = logging.getLogger(__name__)\n\n\nclass Worker:\n    def run(self):\n        log.info('start')",
+    "from enum import Enum\n\n\nclass Color(Enum):\n    RED = 1\n    GREEN = 2",
+    "import unittest\n\n\nclass ParserTests(unittest.TestCase):\n    def test_empty(self):\n        self.assertEqual(parse(''), [])"
+   ],
+   "quiet": [
+    "import os\nimport json\n\n\ndef load_config(path):\n    with open(path) as f:\n        return json.load(f)",
+    "from django.db import models\n\n\ndef author_count():\n    return models.Count('name')",
+    "import pytest\n\nDATA = [1, 2, 3]\n\n\ndef test_total():\n    assert sum(DATA) == 6",
+    "LIMIT = 10\n\n\nqueue = []\nfor i in range(LIMIT):\n    queue.append(i)",
+    "from typing import List\n\n\nrows: List[List[float]] = []\nprint(len(rows))",
+    "import logging\n\nlog = logging.getLogger(__name__)\n\n\nif __name__ == '__main__':\n    log.info('start')",
+    "from enum import Enum\n\n\nRED = 1\nGREEN = 2\nprint(RED + GREEN)",
+    "Our teacher said the class would visit the museum on Thursday, and everyone in the class cheered."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on 'class'; 'def' or 'if' at line start 0.1-0.2, prose 'class' ~0.0",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Python 'class' definition at line start",
+ "unit_kind": "token",
+ "confidence": 0.6,
+ "notes": "Card: 'class' x31 of top 32, all line-initial after blank lines in Python. Probe: after import + 2 blank lines 0.480, after 'x = 1' + blank lines 0.337, no blank line 0.192; 'def' line-start 0.104, 'if' 0.170, Java 'public class' 0.113, prose 'class' 0.004-0.014."
+}

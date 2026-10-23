@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-fbaee04b",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N4130+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T07:27:21+00:00",
+ "recipe": {
+  "toolchain_commit": "68a85619",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L32_N4130_pos/2026-10-23-ChopinDavid-fbaee04b.tests.json"
+ },
+ "label": "the title word right before the name of a foreign autocrat or religious strongman ('North Korean leader Kim', 'Shiite cleric al-Sadr'), not leaders of clubs or firms",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L32_N4130_pos/2026-10-23-ChopinDavid-fbaee04b.tests.json",
+   "prereg_commit": "68a85619",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.472,
+     "peak": " leader"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.632,
+     "peak": " leader"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.722,
+     "peak": " cleric"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.94,
+     "peak": " leader"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.536,
+     "peak": "ollah"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.331,
+     "peak": " leader"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.888,
+     "peak": " cleric"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.073,
+     "peak": " leader"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.03,
+     "peak": "Thousands"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.003,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.006,
+     "peak": " local"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.035,
+     "peak": " Kim"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.005,
+     "peak": "7"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.004,
+     "peak": " office"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.005,
+     "peak": " Swift"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.004,
+     "peak": " said"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.677,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "68a85619",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "title before a foreign strongman's name",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: cleric, leader, President, 'such as' before Gulf clerics, 'under' Pol Pot. Probe: 'Shiite cleric Moqtada' 0.861, 'North Korean leader Kim' 0.791, 'regime under Pol Pot' 0.505; 'President Dos Santos' only 0.089; club leader 0.004, chess club President 0.005, team leader 0.003. So 'President' is avoided in fire items.",
+ "selection": "random draw"
+}

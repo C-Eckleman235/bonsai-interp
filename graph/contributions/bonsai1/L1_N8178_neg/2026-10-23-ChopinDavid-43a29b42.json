@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-43a29b42",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N8178-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T07:27:35+00:00",
+ "recipe": {
+  "toolchain_commit": "68a85619",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L1_N8178_neg/2026-10-23-ChopinDavid-43a29b42.tests.json"
+ },
+ "label": "the token ' either' when it opens an 'either ... or' alternative (not sentence-final 'either')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L1_N8178_neg/2026-10-23-ChopinDavid-43a29b42.tests.json",
+   "prereg_commit": "68a85619",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.359,
+     "peak": " either"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.384,
+     "peak": " either"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.311,
+     "peak": " either"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.447,
+     "peak": " either"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.409,
+     "peak": " either"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.479,
+     "peak": " either"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.478,
+     "peak": " either"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.393,
+     "peak": " either"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.211,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.223,
+     "peak": " or"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.161,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.134,
+     "peak": " or"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.16,
+     "peak": " or"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.231,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.206,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.099,
+     "peak": ","
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.401,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "68a85619",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "' either' opening an alternative",
+ "unit_kind": "dense / positional",
+ "confidence": 0.25,
+ "notes": "Dense (10% of tokens reach 0.1 max). Card: ' either' x16. Probe: 'either in or out' 0.466, 'either expressly' 0.442, but 'pay either by card' 0.210 and sentence-final 'didn't either' 0.160; 'two decades' 0.610 also fires; baselines 0.19-0.30.",
+ "selection": "random draw"
+}

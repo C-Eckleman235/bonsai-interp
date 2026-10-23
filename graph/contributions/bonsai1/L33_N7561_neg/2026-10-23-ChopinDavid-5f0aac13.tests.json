@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-5f0aac13",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N7561-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T07:20:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N7561",
+   "pole": "-",
+   "label": "the slot where a second season name is expected in a season pair (spring and summer, winter ... summer), firing on or just before that season word",
+   "fire": [
+    "La colección otoño-invierno llega a las tiendas a finales de septiembre.",
+    "En esta región llueve mucho en otoño y en invierno, pero poco en verano.",
+    "Die Kollektion Frühling-Sommer wird nächste Woche in Berlin gezeigt.",
+    "이 꽃은 봄부터 가을까지 정원에서 볼 수 있습니다.",
+    "Летом здесь жарко, а зимой очень холодно и ветрено.",
+    "The museum is open daily in spring and summer, and on weekends in winter.",
+    "Ces oiseaux arrivent au printemps et repartent à l'automne vers l'Afrique.",
+    "Los precios de los hoteles suben en primavera y verano por los turistas."
+   ],
+   "quiet": [
+    "La colección nueva llega a las tiendas a finales de septiembre.",
+    "En esta región llueve mucho en las montañas, pero poco en la costa.",
+    "Die neue Kollektion wird nächste Woche in Berlin gezeigt.",
+    "이 꽃은 정원 구석에서 쉽게 볼 수 있습니다.",
+    "Здесь часто жарко, а ночью очень холодно и ветрено.",
+    "The museum is open daily for school groups, and on weekends for families.",
+    "Ces oiseaux arrivent en avril et repartent vers l'Afrique.",
+    "Los precios de los hoteles suben en julio por los turistas."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-1.1 on the paired season word; a lone season mention 0.0-0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "second season in a season pair",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: split season pieces ('-ver'ano, 'aut'umn, 여름, 가을) and the token before them, mostly after another season. Probe: 'primavera-verano' 1.071, 'primavera y verano' 0.903, 'spring and\\nautumn' 0.650, '봄-여름' 0.972, 'зимой и прохладно летом' 0.837, 'saison : l'hiver' 0.818; 'Este verano' alone 0.122, 'hiking in the autumn' 0.048. + pole promotes season names."
+}
