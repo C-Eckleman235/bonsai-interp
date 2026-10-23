@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-07d7f5be",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N4312-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T23:19:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N4312",
+   "pole": "-",
+   "label": "the final piece ('o', 'ero', 'aro') that completes a split Italian name such as Pier|o, V|ero or Pes|aro, as against names that are single tokens",
+   "fire": [
+    "Every summer the music festival in Pesaro celebrates the operas of Rossini.",
+    "In the museum guide, the portrait is credited to Piero di Cosimo.",
+    "My sister works as a buyer for Vero Moda in Copenhagen.",
+    "The train from Bologna reached Pesaro just before noon.",
+    "Art historians admire how Piero handled light and geometry.",
+    "During the match, Del Piero curled a free kick into the corner.",
+    "Her favourite jacket is a grey blazer from Vero Moda.",
+    "The coastal road runs south from Rimini to Pesaro and Ancona."
+   ],
+   "quiet": [
+    "Every summer the music festival in Paris celebrates the operas of Rossini.",
+    "In the museum guide, the portrait is credited to Lorenzo di Credi.",
+    "My sister works as a buyer for a fashion chain in Copenhagen.",
+    "The train from Bologna reached Rimini just before noon.",
+    "Art historians admire how Mario handled light and geometry.",
+    "During the match, Romero curled a free kick into the corner.",
+    "Her favourite jacket is a grey blazer from a shop in Milan.",
+    "The coastal road runs south from Rimini to Ancona and Bari."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-1.0 on 'o'/'ero'/'aro' completing Piero, Vero or Pesaro; whole-token names (Pierre, Mario, Lorenzo, Romero) below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "final piece of split Italian names",
+ "unit_kind": "word",
+ "confidence": 0.6,
+ "notes": "Card: 'o'/'ero'/'ERO'/'aro' pieces of Piero, Vero (Moda; Latin VERO), Pesaro. Probe: 'Piero della Francesca' 1.091, 'Del Piero' 0.958, 'Pesaro' 0.871, 'Vero Moda' 0.777, Perugino 0.425, Ferrero 0.162; 'Romero' 0.048, 'Pierre' 0.059. Tokenizer: Piero=[Pier,o], Vero=[V,ero], Pesaro=[Pes,aro]; Pierre, Mario, Lorenzo, Romero are single tokens."
+}
