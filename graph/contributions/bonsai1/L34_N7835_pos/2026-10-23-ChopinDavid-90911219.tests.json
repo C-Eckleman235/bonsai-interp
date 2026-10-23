@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-90911219",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N7835+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T09:19:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N7835",
+   "pole": "+",
+   "label": "Arabic word-initial t-piece (' بت', ' ت', ' والت', ' بالت') split from a verbal noun",
+   "fire": [
+    "قامت الوزارة هذا العام بتقييم أداء المدارس الحكومية في المدينة.",
+    "تهتم الشركة دائما بتوفير أفضل الخدمات لعملائها في كل مكان.",
+    "وفي الختام قام المدير بتقديم الشكر لجميع الموظفين على جهودهم.",
+    "تشمل الحملة الفحص الطبي والتثقيف الصحي للأسر في القرى.",
+    "قال الشاهد إن الرجل قام بالتظاهر بأنه طبيب لخداع المرضى.",
+    "يحتاج المشروع إلى تطوير خطة واضحة قبل بدء العمل.",
+    "تسعى البلدية إلى تحسين الطرق الرئيسية في الأحياء القديمة.",
+    "طلب الأستاذ من الطلاب القيام بتقييم المقالات المنشورة في المجلة."
+   ],
+   "quiet": [
+    "قامت الوزارة هذا العام بتطوير مناهج المدارس الحكومية في المدينة.",
+    "تهتم الشركة دائما بتدريب موظفيها الجدد في كل فروعها.",
+    "وفي الختام قام المدير بتصميم خطة جديدة لجميع الأقسام.",
+    "تشمل الحملة الفحص الطبي ومساعدة الأسر الفقيرة في القرى.",
+    "قال الشاهد إن الرجل قام بتنفيذ الأوامر دون أن يسأل أحدا.",
+    "يحتاج المشروع إلى دراسة دقيقة قبل بدء العمل.",
+    "تسعى البلدية إلى إنشاء حدائق عامة في الأحياء القديمة.",
+    "طلب الأستاذ من الطلاب القيام بكتابة مقالات قصيرة للمجلة."
+   ]
+  }
+ ],
+ "predictions": "Fire where a verbal noun's leading ت is tokenized as its own piece with the preposition (بتقييم -> ' بت'); near misses use verbal nouns of the same pattern whose ت stays inside the next token (بتطوير -> ' ب' + 'تطوير').",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Arabic split t- prefix piece",
+ "unit_kind": "spelling unit",
+ "confidence": "medium",
+ "notes": "Card: ' بت' x19 of top 32, plus English ' t'umbler and Cyrillic ' т'. Probe: بتقديم 0.724, تقييم 0.321 on ' ت', tumbler 0.314, tundra 0.016, tuxedo 0.003, тайна 0.029: English and Russian are weak, so the label is restricted to Arabic. Near misses hold the meaning (form-II verbal noun after ب) but change the split."
+}
