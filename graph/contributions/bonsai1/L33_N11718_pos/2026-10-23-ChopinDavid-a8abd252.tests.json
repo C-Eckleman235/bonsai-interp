@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-a8abd252",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N11718+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T11:19:40+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N11718",
+   "pole": "+",
+   "label": "a lone word-initial letter piece (' d', ' D', ' c') when the tokenizer splits a word as letter + rest (d|ritte, D|ances, c|érémonie)",
+   "fire": [
+    "Er wohnte im dritten Stock eines alten Hauses am Fluss.",
+    "Ein Drittel der Schüler kommt mit dem Fahrrad zur Schule.",
+    "Les cérémonies de mariage durent souvent toute la journée dans ce village.",
+    "Im Winter wurde der Dachboden als Lager für Holz benutzt.",
+    "Après la célébration, les invités ont dansé jusqu'à minuit.",
+    "Our choir will sing Old Dances from the Highlands at the spring concert.",
+    "Die Dauer der Reise hängt vom Wetter in den Bergen ab.",
+    "Sie las ein Gedicht von einem Dichter aus ihrer Heimatstadt."
+   ],
+   "quiet": [
+    "Er wohnte im ersten Stock eines alten Hauses am Fluss.",
+    "Die Hälfte der Schüler kommt mit dem Fahrrad zur Schule.",
+    "Les fêtes de mariage occupent souvent toute la journée dans ce village.",
+    "Im Winter wurde der Keller als Lager für Holz benutzt.",
+    "Après la fête, les invités ont chanté jusqu'à minuit.",
+    "Our choir will sing Old Songs from the Highlands at the spring concert.",
+    "Die Zeit der Reise hängt vom Wetter in den Bergen ab.",
+    "Sie las ein Gedicht von einem Freund aus ihrer Heimatstadt."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.65 on ' d'/' D'/' c' opening a split word; the same sentences with a word not split this way below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "lone initial letter piece (d/c)",
+ "unit_kind": "token",
+ "confidence": 0.5,
+ "notes": "Card: ' d' x11, ' c', 'D'. Probe: 'dritte' ' d' 0.630, 'cérémonie' ' c' 0.366, 'Dances' ' D' 0.312, 'daisy' ' d' 0.167 (weak); 'erste' 0.179, 'messe' 0.042, rose 0.004, 'dancing' (whole) 0.178. Tokens checked with tok.py."
+}

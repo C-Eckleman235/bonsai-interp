@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-4877e34f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N3936-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T11:19:40+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L13/N3936",
+   "pole": "-",
+   "label": "a character taking leave or sending someone away in narrative ('took his leave', 'go away', 'going now'), against the same frames without departure",
+   "fire": [
+    "The old soldier finished his tea, rose from the bench, and took his leave of the family.",
+    "\"Leave me alone, go away!\" she cried from behind the locked door.",
+    "\"It's late, so I'm going now,\" Tom said, and reached for his hat.",
+    "After a short bow, the ambassador took her leave and walked to the carriage.",
+    "\"Just go away and never come back,\" the farmer told the stranger.",
+    "\"Well, I'm off now,\" Anna said at the door. \"See you tomorrow.\"",
+    "Once the guests had eaten, they thanked the cook and took their leave.",
+    "\"Get out of my shop!\" the baker yelled at the boys."
+   ],
+   "quiet": [
+    "The old soldier finished his tea, rose from the bench, and took his pipe from the table.",
+    "\"Leave the lamp on, please!\" she cried from behind the locked door.",
+    "\"It's late, so I'm making tea now,\" Tom said, and reached for the kettle.",
+    "After a short bow, the ambassador took her glass and walked to the table.",
+    "\"Just sit down and eat your soup,\" the farmer told the stranger.",
+    "\"Well, I'm hungry now,\" Anna said at the door. \"What's for dinner?\"",
+    "Once the guests had eaten, they thanked the cook and took more bread.",
+    "\"Get some flour from the shop!\" the baker yelled at the boys."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.55 on the departure word; the same dialogue frames without departure below 0.1, though 'excuse me' requests may leak (0.24)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "taking leave / going away",
+ "unit_kind": "meaning",
+ "confidence": 0.4,
+ "notes": "Card: 'going now', 'took his leave', 'vous en aller', 'Go away', 'see myself out'. Probe: 'Go away!' 0.530, 'took his leave' 0.500, 'I am going now' 0.322; 'took his seat' 0.056, 'going to cook now' 0.047, 'slipped out of the room' only 0.073, 'Excuse me, could you' 0.243 leaked. Broad flag."
+}

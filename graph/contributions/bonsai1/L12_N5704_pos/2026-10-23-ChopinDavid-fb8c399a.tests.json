@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-fb8c399a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N5704+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T11:19:40+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N5704",
+   "pole": "+",
+   "label": "unclear: a mixed pole (view/render terms in UI code, the 'au' of Murnau, 'dermat-'); best guess is view/display classes in UI code",
+   "fire": [
+    "from django.views.generic import ListView\n\nclass BookList(ListView):\n    model = Book",
+    "class Detail(BaseView):\n    template = 'detail.html'",
+    "    def paint(self):\n        self.canvas.render(self.shapes)",
+    "class Settings(TemplateView):\n    template_name = 'settings.html'",
+    "        widget = self.view.render(context)\n        return widget",
+    "class Upload(FormView):\n    form_class = UploadForm",
+    "    def show(self):\n        html = renderer.render(page)\n        return html",
+    "class Home(View):\n    def get(self, request):\n        return response"
+   ],
+   "quiet": [
+    "from django.db import models\n\nclass Book(models.Model):\n    title = models.CharField()",
+    "class Detail(Base):\n    count = 0",
+    "    def paint(self):\n        self.canvas.clear()",
+    "class Settings(Config):\n    debug = False",
+    "        widget = self.store.load(context)\n        return widget",
+    "class Upload(Record):\n    size = 0",
+    "    def show(self):\n        text = reader.read(page)\n        return text",
+    "class Home(object):\n    def get(self, key):\n        return value"
+   ]
+  }
+ ],
+ "predictions": "best guess fire 0.3-0.5 on 'View'/'render' in UI code; the same code with model/data names below 0.1; likely fails",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "unclear (view/render in UI code)",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card: render, Murn|au, Moist|ur, BaseView, interactive, dermat. Probe: Murnau 'au' 0.985, dermatitis 0.519, BaseView 0.492, 'film by Lang' 0.403 (film context leaks), view/render prose 0.193; plain code 0.024-0.061, floor 0.132. No shared distinction found; test probes only the code side."
+}

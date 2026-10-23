@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-e71bc79a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N8656+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T11:19:40+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N8656",
+   "pole": "+",
+   "label": "the first piece of a non-English word that the tokenizer splits (öff|nen, kup|ci, crist|all...), against whole-token words in the same languages",
+   "fire": [
+    "Am Morgen sollte man zuerst die Fenster öffnen und frische Luft hereinlassen.",
+    "Der Laden wird morgen um neun Uhr wieder öffnen, sagte die Verkäuferin.",
+    "Naša trgovina nudi svojim kupcima besplatnu dostavu u cijeloj zemlji.",
+    "U prosincu mnogi ljudi žele kupiti poklone za cijelu obitelj.",
+    "Le sel finit par se cristalliser au fond du verre après quelques jours.",
+    "Bitte geben Sie Ihre Adresse ein, damit wir Ihr Konto verifizieren können.",
+    "Kada kupci dođu u trgovinu, prvo vide police s voćem.",
+    "Nach dem Regen wollen wir die Türen öffnen und den Boden trocknen."
+   ],
+   "quiet": [
+    "Am Morgen sollte man zuerst die Fenster offen lassen und frische Luft hereinlassen.",
+    "Der Laden wird morgen um neun Uhr wieder offen sein, sagte die Verkäuferin.",
+    "Naša trgovina nudi svim ljudima besplatnu dostavu u cijeloj zemlji.",
+    "U prosincu mnogi ljudi žele dati poklone za cijelu obitelj.",
+    "Le sel finit par être au fond du verre après quelques jours.",
+    "Bitte geben Sie Ihre Adresse ein, damit wir Ihr Konto sehen können.",
+    "Kada ljudi dođu u trgovinu, prvo vide police s voćem.",
+    "Nach dem Regen wollen wir die Türen offen halten und den Boden trocknen."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.7 on the opening piece of the split word; the same sentences with a single-token word below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "first piece of split foreign word",
+ "unit_kind": "token",
+ "confidence": 0.3,
+ "notes": "Card: ' kup', ' öff', ' crist', ' div', Korean/Arabic pieces. Probe: 'öffnen' 0.713, 'kupcima' 0.687, 'cristallise' 0.426, 'verifizieren' 0.654 (on 'if'); but 'vergessen' ' verg' only 0.065, so not every split word. Spanish whole words 0.042, English 0.015. Test stays with the stems seen to fire."
+}

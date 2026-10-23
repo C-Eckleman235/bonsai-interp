@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-c930a588",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N8356-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T11:19:40+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N8356",
+   "pole": "-",
+   "label": "' %' as a placeholder inside a Python string that is %-formatted (the '%s'/'%d' slot), not percent or modulo",
+   "fire": [
+    "    for job in jobs:\n        print 'Starting job %s on host %s' % (job.name, host)",
+    "    if not os.path.exists(cfg):\n        raise IOError('Config file not found: %s' % cfg)",
+    "        log.warning('Retrying request after %d seconds' % delay)",
+    "    total = len(rows)\n    print 'Loaded %d rows from the table' % total",
+    "        sys.stderr.write('Cannot open %s for reading\\n' % fname)",
+    "    msg = 'User %s has %d unread messages' % (user, count)\n    return msg",
+    "    if retries > 5:\n        raise RuntimeError('Gave up after %d tries' % retries)",
+    "        print('Epoch %d finished, loss was %f' % (epoch, loss))"
+   ],
+   "quiet": [
+    "    for job in jobs:\n        print('Starting job {} on host {}'.format(job.name, host))",
+    "    if not os.path.exists(cfg):\n        raise IOError(f'Config file not found: {cfg}')",
+    "        log.warning('Retrying request after ' + str(delay) + ' seconds')",
+    "    total = len(rows)\n    remainder = total % batch_size",
+    "        sys.stderr.write('Cannot open file for reading\\n')",
+    "    msg = 'User {} has {} unread messages'.format(user, count)\n    return msg",
+    "    if retries > 5:\n        idx = retries % len(servers)",
+    "Unemployment fell to 4.2 % in March, the lowest rate in a decade."
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.6 on ' %' starting %s/%d inside a quoted string; .format/f-strings, modulo and prose percent below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "%-format placeholder",
+ "unit_kind": "context",
+ "confidence": 0.7,
+ "notes": "Card: 27 of 32 peaks on ' %' inside print/raise/log strings. Probe: print '%d files in %s' 0.535, raise ValueError('...: %s' % mode) 0.502, logger '%s' 0.355; .format 0.022, f-string 0.072, modulo 0.082, prose '15 %' 0.007."
+}
