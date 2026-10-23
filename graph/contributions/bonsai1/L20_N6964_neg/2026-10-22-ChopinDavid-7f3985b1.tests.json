@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-7f3985b1",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N6964-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T01:20:25+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L20/N6964",
+   "pole": "-",
+   "label": "the blank-line token that closes an indented Python statement ending in ')' or '()' just before a dedent to the next def/block",
+   "fire": [
+    "class Lamp:\n    def on(self):\n        self.bulb.power(True)\n\n    def off(self):\n        self.bulb.power(False)\n",
+    "class Cart:\n    def add(self, item):\n        self.items.append(item)\n\n    def clear(self):\n        self.items = []\n",
+    "def run(jobs):\n    for job in jobs:\n        job.start()\n\n    print('started')\n",
+    "class Timer:\n    def reset(self):\n        self.clock.zero()\n\n    def tick(self):\n        self.count += 1\n",
+    "def save(rows, db):\n    with db.session() as s:\n        s.write(rows)\n\n    return len(rows)\n",
+    "class Robot:\n    def stop(self):\n        self.motor.halt()\n\n    def go(self):\n        self.motor.spin(5)\n",
+    "def draw(shapes, canvas):\n    for s in shapes:\n        canvas.paint(s)\n\n    canvas.flush()\n",
+    "class Door:\n    def lock(self):\n        self.bolt.slide(1)\n\n    def unlock(self):\n        self.bolt.slide(0)\n"
+   ],
+   "quiet": [
+    "size = 10\n\nname = 'lamp'\n\nprint(name, size)\n",
+    "The first chapter ends at the harbor.\n\nThe second chapter begins in the hills.",
+    "rows = read(path)\n\ncount = 0\n",
+    "Mix the flour and the water.\n\nLet the dough rest for an hour.",
+    "import os\n\nimport sys\n\nroot = os.getcwd()\n",
+    "Dear Anna,\n\nThank you for the lovely flowers.\n\nBest, Tom",
+    "total = 0\n\nlimit = 99\n",
+    "Step one: open the box.\n\nStep two: remove the tray."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.5 on ')\\n\\n' / '()\\n\\n' between methods or after an indented call; blank lines in prose and after top-level assignments near 0.01",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "blank line closing an indented code block",
+ "unit_kind": "contextual",
+ "confidence": 0.35,
+ "notes": "Card peaks ')\\n\\n' x10, '\\n\\n' x8, '()\\n\\n' x6, all inside indented Python before a dedent. Probe: method boundary '()\\n\\n' 0.409, indented 'process(item)' then dedent 0.255, 'return i' blank 0.245; prose paragraph break 0.004, top-level 'x = load(path)\\n\\n' 0.005, top-level call 0.098. The same code without the blank line still reached 0.17-0.32, so near misses use top-level code and prose rather than the closed-up version."
+}

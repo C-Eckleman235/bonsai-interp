@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-6cba90f5",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N5299+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T01:20:25+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N5299",
+   "pole": "+",
+   "label": "a digit of the page number in a legal case citation (the number after the reporter abbreviation such as U.S., F.3d, Kan.)",
+   "fire": [
+    "The majority cited Gideon v. Wainwright, 372 U.S. 335 (1963), for the right to counsel.",
+    "As the court explained in Brown v. Board, 347 U.S. 483, separate schools are unequal.",
+    "Counsel relied on Doe v. Hall, 512 F.2d 267 (5th Cir. 1975), in the brief.",
+    "Compare Terry v. Ohio, 392 U.S. 128, with the later stop-and-frisk cases.",
+    "The judge quoted Mapp v. Ohio, 367 U.S. 643, when excluding the evidence.",
+    "See also Lane v. City of Dover, 88 Cal.App.3d 491, on the zoning question.",
+    "In People v. Ruiz, 44 N.Y.2d 738, the court upheld the conviction.",
+    "The appellant cites Grant v. Mills, 301 F.3d 562 (2d Cir. 2002), for support."
+   ],
+   "quiet": [
+    "The majority met in room 372, and the session ran for 335 minutes in 1963.",
+    "As the clerk explained, the archive holds 347 boxes and 483 folders.",
+    "Counsel drove 512 miles and stayed 267 nights in hotels during the trial.",
+    "Compare the 392 votes cast in the north with the 128 cast in the south.",
+    "The judge lived at 367 Oak Avenue, about 643 feet from the courthouse.",
+    "See also the report on the 88 houses and 491 acres in the zoning dispute.",
+    "In total, 44 jurors were called and 738 pages of transcript were filed.",
+    "The appellant paid 301 dollars in fees and waited 562 days for a ruling."
+   ]
+  }
+ ],
+ "predictions": "fire 0.7-1.0 on the second/third page digit after a reporter abbreviation; the same digits in addresses, quantities or page counts near 0.0",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "page digits in case citations",
+ "unit_kind": "contextual",
+ "confidence": 0.7,
+ "notes": "Card: all top examples are digits of the page after 'U.S.', 'F.2d', 'Cal.App.3d', 'Kan.'. Probe: Miranda 384 U.S. 436 1.026, Roe 410 U.S. 113 0.944, F.3d 845 0.891, Kan. App. 2d 573 0.713; '436 pages' 0.003, '384 Main Street' 0.026, '384 grams' 0.002, legal prose without a citation -0.001. Near misses keep the numbers and a legal flavour but drop the reporter citation."
+}

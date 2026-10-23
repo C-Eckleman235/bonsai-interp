@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-4f3c055a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N6435+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T01:20:25+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N6435",
+   "pole": "+",
+   "label": "the 'زل' piece of the Arabic root n-z-l (نزل: to descend, inn, guests) when it is split off as its own token mid-word; also a Latin 'al' piece in names like Zalman",
+   "fire": [
+    "وصلنا متأخرين إلى المدينة ثم نزلنا في فندق قريب من المحطة.",
+    "يقدم المطعم وجبة إفطار مجانية لجميع النزلاء كل صباح.",
+    "بعد رحلة طويلة نزلت العائلة في النزل الريفي الهادئ.",
+    "قال المدير إن عدد النزلاء ارتفع كثيرا خلال الصيف الماضي.",
+    "في المساء نزلت درجات الحرارة بشكل ملحوظ في الجبال.",
+    "استقبلنا صاحب النزل بابتسامة وقدم لنا الشاي الساخن.",
+    "عندما توقف القطار نزلنا بسرعة وحملنا الحقائب معنا.",
+    "اشتكى بعض النزلاء من الضوضاء القادمة من الشارع."
+   ],
+   "quiet": [
+    "وصلنا متأخرين إلى المدينة ثم بقينا في فندق قريب من المحطة.",
+    "يقدم المطعم وجبة إفطار مجانية لجميع الزوار كل صباح.",
+    "بعد رحلة طويلة استراحت العائلة في البيت الريفي الهادئ.",
+    "قال المدير إن عدد الضيوف ارتفع كثيرا خلال الصيف الماضي.",
+    "في المساء انخفضت درجات الحرارة بشكل ملحوظ في الجبال.",
+    "استقبلنا صاحب الفندق بابتسامة وقدم لنا الشاي الساخن.",
+    "عندما توقف القطار خرجنا بسرعة وحملنا الحقائب معنا.",
+    "اشتكى بعض السكان من الضوضاء القادمة من الشارع."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-0.9 on 'زل' in نزلت, نزلنا, النزلاء, بالنزل; Arabic sentences on the same topics with فندق or other verbs near 0.02",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Arabic 'زل' piece of root n-z-l",
+ "unit_kind": "token/lexical",
+ "confidence": 0.6,
+ "notes": "Card peaks 'زل' x6 in النزل/النزلاء/نَزَلَ. Probe: النزل 0.779, النزلاء 0.874, النزول ('ول' piece) 0.866, Zalman 0.691; sentence-initial whole-token نزل only 0.218; Arabic without the root 0.006-0.025. Fire items use forms whose split carries 'زل' (checked with the tokenizer); near misses keep hotel/travel topics without the root."
+}

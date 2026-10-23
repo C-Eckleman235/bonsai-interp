@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-5617630f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N8778-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T01:20:25+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N8778",
+   "pole": "-",
+   "label": "the slot where body fatness is about to be named: the object of 'make X ___' or the adjective before 'fat/plump' in weight-gain or body-size contexts (a next-token predictor for 'fat')",
+   "fire": [
+    "Nutritionists argue that sugary cereal is what makes kids fat, not milk.",
+    "Every winter the farmer's pigs grew plump on acorns and leftover corn.",
+    "Critics asked whether cheap soda was making Americans fat during the nineties.",
+    "My aunt always said that late-night snacks would make me fat someday.",
+    "The study tested whether a high-fat diet makes mice fat faster than sugar.",
+    "After a summer of ice cream the puppy looked round and plump again.",
+    "Some people believe potatoes make them fat, but portions matter more.",
+    "Too many pastries at the office are slowly making my coworkers fat."
+   ],
+   "quiet": [
+    "Nutritionists argue that sugary cereal is what makes kids restless, not milk.",
+    "Every winter the farmer's pigs stayed in the barn near the old corn crib.",
+    "Critics asked whether cheap radio was making Americans lonely during the nineties.",
+    "My aunt always said that late-night movies would make me lazy someday.",
+    "The study tested whether loud music makes mice anxious faster than light.",
+    "After a summer at the lake the puppy looked happy and calm again.",
+    "Some people believe rainy days make them sad, but sleep matters more.",
+    "Too many meetings at the office are slowly making my coworkers grumpy."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on the person/animal noun after 'make'/'making' when food or weight gain sets up 'fat', and on 'pl' of plump; the same frames with a non-weight outcome near 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predicts 'fat' in weight-gain contexts",
+ "unit_kind": "contextual",
+ "confidence": 0.5,
+ "notes": "Card: 'Is lettuce making Americans| fat', 'what makes us| fat'; + pole suppresses ' fat'. Probe: 'make children fat' 0.872, 'grown plump' 0.736 (on ' pl'), 'make you fat' 0.604 but 'bread ... make you tired' also 0.604 (activation precedes the adjective, so the food context alone sets it), 'cookies will make you happy' 0.074, 'making teenagers obese' 0.506, 'short and stout' 0.468. Near misses keep the 'make X' frame but drop the weight-gain setup."
+}

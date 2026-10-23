@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-ece6789f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N4359+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T01:20:25+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L3/N4359",
+   "pole": "+",
+   "label": "positional: fires weakly on the first token of a window, especially a leading-space ' $', ' [', ' “'; no lexical content",
+   "fire": [
+    " $40 was the price of the ticket at the door.",
+    " [Reuters] Markets fell sharply on Tuesday morning.",
+    " $12,500 was raised at the school auction.",
+    " [Editor's note] This article was updated on Monday.",
+    " $3.99 buys a coffee and a muffin at the cafe.",
+    " [AP] The storm moved east overnight.",
+    " $250 covers the deposit for the cabin.",
+    " [Update] The road has reopened to traffic."
+   ],
+   "quiet": [
+    "The price of the ticket at the door was $40.",
+    "Markets fell sharply on Tuesday morning, Reuters said.",
+    "The school auction raised $12,500 last week.",
+    "This article was updated on Monday, the editor noted.",
+    "A coffee and a muffin at the cafe cost $3.99.",
+    "The storm moved east overnight, the AP reported.",
+    "The deposit for the cabin is $250.",
+    "The road has reopened to traffic, officials said."
+   ]
+  }
+ ],
+ "predictions": "fire about 0.06-0.1 (below the 0.20 bar) on window-initial ' $'/' ['; mid-sentence versions near 0 or negative; expected to fail the median bar",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "first-token positional unit",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Card flags positional (100% of top peaks at window position 0), max 0.16. Probe: window-initial ' $75,000' 0.065, ' [Fox News]' 0.083, while mid-sentence versions -0.56 to 0.06. An 8+8 test of sentences cannot isolate position 0; registered as dense / positional with a best-guess test."
+}

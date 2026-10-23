@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-af28b6bf",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N11771+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T01:20:25+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N11771",
+   "pole": "+",
+   "label": "plural collection or time-unit identifier tokens in Python code ('_items', '.items', 'messages', '(days', '(minutes', '.errors')",
+   "fire": [
+    "total_items = sum(order.quantities)",
+    "start = now() - timedelta(days=7)",
+    "for name, size in sizes.items():\n    show(name, size)",
+    "deadline = created + timedelta(hours=48)",
+    "page_items = query.limit(20)",
+    "for tag, count in counts.items():\n    log(tag, count)",
+    "timeout = timedelta(minutes=15)",
+    "cart_items = session.get('cart')"
+   ],
+   "quiet": [
+    "total = sum(order.quantities)",
+    "start = now() - offset",
+    "for name in names:\n    show(name, 0)",
+    "deadline = created + extra",
+    "page = query.limit(20)",
+    "for tag in tags:\n    log(tag, 1)",
+    "timeout = 15",
+    "cart = session.get('cart')"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.6 on '_items', '.items', '(days', '(minutes', '(hours'; the same code with singular or unrelated identifiers near 0.05; the word 'messages' in prose near 0.02",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "plural collection identifiers in code",
+ "unit_kind": "token/lexical",
+ "confidence": 0.55,
+ "notes": "Card peaks '_items' x5, '(days' x5, '.errors' x3, 'messages'. Probe: \"'messages':\" 0.607, '(days' 0.598, '.items' 0.425, '_items' 0.398, '.errors' 0.228; 'nb =' 0.096, '+ delta' 0.023, prose 'messages' 0.016. Fire items use the token pieces the tokenizer keeps whole."
+}
