@@ -1,0 +1,31 @@
+{
+ "contribution": "2026-10-23-moridinamael-7490fe41",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N2607+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T21:53:11+00:00",
+ "roles": ["feeds bonsai1/L8/N10589+"],
+ "neighbours": [
+  {
+   "unit": "L6/N2607",
+   "pole": "+",
+   "label": "an error message written inside code: the first words of a failure string handed to raise/throw/log.error/exit, e.g. \"Could not open file\", \"Invalid mode\", \"No such target\" (strongest under an if/else/except branch); the same words in code comments, docstrings or prose stay quiet, and neutral status strings in code (\"Server started\", \"Loading data\") fire only weakly",
+   "short": "error-message string in code",
+   "fire": ["if not os.path.exists(path):\n    raise FileNotFoundError(\"Could not open file: \" + path)", "if (mode !== 'r' && mode !== 'w') { throw new Error(\"Invalid mode: \" + mode); }", "except KeyError:\n    log.error(\"No such target '%s' in build config\", name)", "if (argc < 2) { fprintf(stderr, \"Missing input filename\\n\"); exit(1); }", "} else {\n    throw new IllegalArgumentException(\"Unsupported encoding: \" + enc);\n}", "if user is None:\n    raise ValueError(\"User not found for id %d\" % uid)", "except ConnectionError as e:\n    logger.error(\"Failed to connect to database: %s\", e)\n    sys.exit(2)", "if err != nil {\n    return fmt.Errorf(\"unable to parse config: %w\", err)\n}"],
+   "quiet": ["return self.assertTrue(repeated.value_eq(x, y))", "console.log(\"Server started on port 8080\");", "if not os.path.exists(path):\n    # we could not open the file earlier, so create it now\n    create_file(path)", "When the mode is neither read nor write, the library treats it as an invalid mode and falls back to read.", "def find_target(name):\n    \"\"\"Look up a build target by name; returns None if there is no such target.\"\"\"", "Remember to pass an input filename on the command line, otherwise the tool prints usage help.", "} else {\n    // encoding is unsupported here; convert to UTF-8 first\n    data = toUtf8(data);\n}", "The function returns None when the user is not found, so callers should check for that case."]
+  }
+ ],
+ "predictions": "most fire items 0.3-0.7; the 'Server started' log line is the riskiest near miss (solver leak, ~0.3)",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-out",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
