@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-b6a5c9b9",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N11873-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T02:19:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N11873",
+   "pole": "-",
+   "label": "The CJK character '運' when it is its own token (運営, 運輸, 運転, 幸運), not inside merged tokens like 運動 or 運用",
+   "fire": [
+    "この施設の運営は地元の団体が行っています。",
+    "父は長年、トラックの運転手として働いてきました。",
+    "荷物の運送には三日ほどかかる予定です。",
+    "彼女は自分の運命を受け入れることにしました。",
+    "来月から電車の運賃が少し値上がりします。",
+    "宝くじが当たるなんて、本当に幸運でした。",
+    "この町には古い運河が流れています。",
+    "今回は試合に勝てたのは運が味方したからです。"
+   ],
+   "quiet": [
+    "この施設の管理は地元の団体が行っています。",
+    "父は長年、トラックのドライバーとして働いてきました。",
+    "荷物の配達には三日ほどかかる予定です。",
+    "彼女は自分の将来を受け入れることにしました。",
+    "来月から電車の料金が少し値上がりします。",
+    "毎週末、公園で運動をするようにしています。",
+    "この町には古い川が流れています。",
+    "新しいシステムの運用は来年から始まります。"
+   ]
+  }
+ ],
+ "predictions": "Fire 0.45-0.60 on '運'; sentences with synonyms (管理, 輸送) or merged 運動/運用 below 0.10.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "token '運'",
+ "unit_kind": "token",
+ "confidence": 0.65,
+ "notes": "Card: '運' x17 of the top 32 (運営, 運輸, 運). Probe: 運営 0.524, 運輸 0.549, 運がよかった 0.586; the same sentence with 管理 0.060, 毎朝運動 (one merged token) 0.024. Also fired on Qur'an's \"'an\" 0.608 and weakly on \"'m\" 0.179, so near misses avoid apostrophe pieces. Tiny absolute max (0.23), L1."
+}

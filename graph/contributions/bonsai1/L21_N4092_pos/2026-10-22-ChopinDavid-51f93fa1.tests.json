@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-51f93fa1",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N4092+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T02:19:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L21/N4092",
+   "pole": "+",
+   "label": "Unclear: imported name at the end of a Python 'from ... import X' line (weak, inconsistent)",
+   "fire": [
+    "import os\nfrom django.db import models\nfrom django.conf import settings",
+    "from flask import Flask\nfrom sqlalchemy.orm import relationship",
+    "import json\nfrom collections import defaultdict\nfrom typing import Optional",
+    "from django.contrib.auth import authenticate\nfrom django.http import JsonResponse",
+    "import numpy as np\nfrom scipy.optimize import minimize\nfrom functools import partial",
+    "from celery import shared_task\nfrom django.core.mail import send_mail",
+    "import logging\nfrom datetime import timedelta\nfrom django.utils import timezone",
+    "from rest_framework import serializers\nfrom django.db.models import Q"
+   ],
+   "quiet": [
+    "We imported olive oil and cheese from a small farm in Italy.",
+    "The museum borrowed two paintings from a gallery in Madrid.",
+    "Most of the timber was shipped from Norway to the coast.",
+    "She took the recipe from her grandmother's old notebook.",
+    "The data came from a survey of local schools last spring.",
+    "He ordered the spare parts from a dealer in Ohio.",
+    "The tea is imported from Sri Lanka and packed in Bristol.",
+    "They rented the boat from a fisherman near the harbour."
+   ]
+  }
+ ],
+ "predictions": "Mixed; some import lines 0.3-0.4, most 0.1-0.2; prose near misses below 0.05. Expected to fail.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Python import name (unclear)",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card mixes ISSN check digits, Python import names and line ends in code. Probe: 'from django.db import transaction' 0.414, 'import attr' 0.093, ISSN numbers 0.036-0.161, divmod code 0.099, phone/order numbers 0.025. Only one probe configuration fired, so this is registered as unclear."
+}

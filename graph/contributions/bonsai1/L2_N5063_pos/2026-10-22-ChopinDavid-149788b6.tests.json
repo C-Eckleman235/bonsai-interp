@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-149788b6",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N5063+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T02:19:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L2/N5063",
+   "pole": "+",
+   "label": "French impersonal pronoun ' On' when it starts a sentence",
+   "fire": [
+    "La maison est ancienne mais solide. On y entre par une petite porte en bois.",
+    "Le film démarre doucement. On suit d'abord un vieux pêcheur et son chien.",
+    "Il faut bien choisir ses outils. On ne répare pas un moteur avec un marteau.",
+    "Le quartier a beaucoup changé. On y voit maintenant des cafés et des librairies.",
+    "Ce roman est difficile à résumer. On pourrait parler d'une enquête sans coupable.",
+    "La recette est très simple. On mélange la farine, le beurre et le sucre.",
+    "Les règles du jeu sont claires. On avance de trois cases à chaque tour.",
+    "La montagne était couverte de neige. On entendait seulement le vent."
+   ],
+   "quiet": [
+    "La maison est ancienne mais solide. Nous y entrons par une petite porte en bois.",
+    "Le film démarre doucement et suit d'abord un vieux pêcheur et son chien.",
+    "Il faut bien choisir ses outils, car on ne répare pas un moteur avec un marteau.",
+    "The neighbourhood has changed a lot. On weekends it is full of cafés.",
+    "Ce roman est difficile à résumer. Il raconte une enquête sans coupable.",
+    "La recette est très simple. Vous mélangez la farine, le beurre et le sucre.",
+    "The rules of the game are clear. On each turn you move three squares.",
+    "La montagne était couverte de neige. Le vent soufflait sans arrêt."
+   ]
+  }
+ ],
+ "predictions": "Fire items 0.30-0.50 on ' On'; Nous-sentences, lower-case mid-sentence 'on' and English 'On' below 0.15.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "sentence-initial French 'On'",
+ "unit_kind": "token",
+ "confidence": 0.4,
+ "notes": "Card: 10 of the top 32 peaks are ' On' opening a French sentence. Probe: '. On y trouve' 0.320, '. On découvre' 0.300, '. On ne sait jamais' 0.461; the same sentence with 'Nous y trouvons' 0.101, mid-sentence ', car on ne sait' 0.116, English '. On Mondays' 0.050 and '. On the second day' 0.117. The pole is broad (5.9% of tokens reach 0.1) and also hit 'uel' in 'homosexuel' 0.757, so near misses avoid that word. Margins are thin, so confidence is modest."
+}

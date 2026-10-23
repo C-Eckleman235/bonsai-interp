@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-92e6125f",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N3790+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T02:28:21+00:00",
+ "recipe": {
+  "toolchain_commit": "7932188d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L33_N3790_pos/2026-10-22-ChopinDavid-92e6125f.tests.json"
+ },
+ "label": "German infinitive marker ' zu' before the verb of a zu-infinitive clause, not prepositional 'zu' and not bare infinitives after modals",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L33_N3790_pos/2026-10-22-ChopinDavid-92e6125f.tests.json",
+   "prereg_commit": "7932188d",
+   "author": "ChopinDavid",
+   "n_fire": 6,
+   "n_false_pos": 4,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.201,
+     "peak": " zu"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.355,
+     "peak": " zu"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.435,
+     "peak": " zu"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.922,
+     "peak": " zu"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.535,
+     "peak": " zu"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.107,
+     "peak": " zu"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.597,
+     "peak": " zu"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.095,
+     "peak": " zu"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.368,
+     "peak": "eter"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.339,
+     "peak": " und"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.17,
+     "peak": " san"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.578,
+     "peak": " will"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.29,
+     "peak": " zu"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.174,
+     "peak": "arn"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.32,
+     "peak": " zu"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.121,
+     "peak": "bst"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.688,
+    "median_fire": 0.485,
+    "near_misses_at_0.3": 4
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "7932188d",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "German infinitival 'zu'",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: ' zu' x7 and ' to' x8 before an infinitive, top 'Löschung Ihres Postings zu bewegen'. Probe: 'des Artikels zu bewegen' 1.327, 'das Pferd zu striegeln' 0.620, English 'expecting the central bank to raise' 0.532 but 'caused the villagers to leave' 0.074, so the test stays in German. Truncated 'zur Änderung des Artikels.' 0.263. Prepositional zu was not probed: it is the risky near miss.",
+ "selection": "random draw"
+}

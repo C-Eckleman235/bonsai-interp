@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-ChopinDavid-163f6212",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N8650-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T02:19:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L24/N8650",
+   "pole": "-",
+   "label": "The first function word (preposition or auxiliary) right after a lexical noun-phrase head ('The gene on', 'A referral will', 'Poor starts have'), not after a pronoun subject",
+   "fire": [
+    "A statue found in a garden on Elm Road was donated to the museum.",
+    "The protein on the cell surface binds the virus.",
+    "An appointment will be arranged with a physiotherapist.",
+    "The song with the most streams was played at the end.",
+    "Heavy rains have flooded several roads in the valley.",
+    "The bridge over the river was closed for repairs.",
+    "A decision on the merger will come next month.",
+    "Rising costs have forced the bakery to raise its prices."
+   ],
+   "quiet": [
+    "She found it in a garden and donated it to the museum.",
+    "It binds the virus quickly.",
+    "We will arrange it with a physiotherapist.",
+    "They played it at the end.",
+    "They have flooded several roads in the valley.",
+    "He closed it for repairs.",
+    "We will decide next month.",
+    "It forced them to raise prices."
+   ]
+  }
+ ],
+ "predictions": "Fire 0.30-0.65; the same function words after pronoun subjects below 0.10. Broad unit, so some leakage is possible.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "function word after noun head",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: ' is', ' on', ' will', ' has', ' have', ' with' just after a noun phrase. Probe: 'temple on Bush Street' 0.564, 'gene on the plasmid' 0.659, 'A referral will be made' 0.549, 'The film with the most votes' 0.404, 'Poor starts have' 0.322; pronoun subjects 'She will be made' 0.015, 'They have doomed' 0.076. Flagged broad (4% of tokens reach 0.1)."
+}

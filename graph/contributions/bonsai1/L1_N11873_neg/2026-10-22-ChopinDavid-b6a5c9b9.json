@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-22-ChopinDavid-b6a5c9b9",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N11873-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T02:27:34+00:00",
+ "recipe": {
+  "toolchain_commit": "7932188d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L1_N11873_neg/2026-10-22-ChopinDavid-b6a5c9b9.tests.json"
+ },
+ "label": "The CJK character '運' when it is its own token (運営, 運輸, 運転, 幸運), not inside merged tokens like 運動 or 運用",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L1_N11873_neg/2026-10-22-ChopinDavid-b6a5c9b9.tests.json",
+   "prereg_commit": "7932188d",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.57,
+     "peak": "運"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.556,
+     "peak": "運"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.531,
+     "peak": "運"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.475,
+     "peak": "運"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.546,
+     "peak": "運"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.476,
+     "peak": "運"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.581,
+     "peak": "運"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.596,
+     "peak": "運"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.175,
+     "peak": "の"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.099,
+     "peak": "トラ"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.066,
+     "peak": "物"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.293,
+     "peak": "入れ"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.022,
+     "peak": "の"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.021,
+     "peak": "運動"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.16,
+     "peak": "川"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.108,
+     "peak": "の"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.551,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "7932188d",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "token '運'",
+ "unit_kind": "token",
+ "confidence": 0.65,
+ "notes": "Card: '運' x17 of the top 32 (運営, 運輸, 運). Probe: 運営 0.524, 運輸 0.549, 運がよかった 0.586; the same sentence with 管理 0.060, 毎朝運動 (one merged token) 0.024. Also fired on Qur'an's \"'an\" 0.608 and weakly on \"'m\" 0.179, so near misses avoid apostrophe pieces. Tiny absolute max (0.23), L1.",
+ "selection": "random draw"
+}
