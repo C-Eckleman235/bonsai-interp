@@ -4,68 +4,94 @@ name: merge
 # push a "fold after #n" commit that regenerates the derived graph files on main.
 # Everything else (structural changes, new tools or screens) is left for review; the PR gets a comment saying so.
 #
+# Every run SWEEPS all open PRs, not only the one whose checks just finished. GitHub keeps at most one pending
+# run per concurrency group and cancels the older pending one, so when many PRs' checks finish together most of
+# their merge runs never start; a sweep by whichever run does start (or by the schedule) still merges them all.
+#
 # Security: this runs with a write token, so it never executes code from the PR. It checks out main (trusted
 # code) and only reads the PR's contribution files as data, after the merge.
 on:
   workflow_run:
     workflows: [checks]
     types: [completed]
+  schedule:
+    - cron: "17,47 * * * *"  # backstop: a sweep every 30 minutes
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "only print what would merge"
+        type: boolean
+        default: false
 permissions:
   contents: write
   pull-requests: write
+  actions: read
 concurrency:
   group: merge-main
   cancel-in-progress: false
 jobs:
   colour-in:
-    if: github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success'
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success')
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
       REPO: ${{ github.repository }}
-      SHA: ${{ github.event.workflow_run.head_sha }}
+      DRY: ${{ inputs.dry_run && '1' || '' }}
     steps:
-      - name: Find the PR and its lane
-        id: lane
+      - name: Sweep open PRs and merge the colour-in lane
+        id: sweep
         run: |
-          n=$(gh pr list --repo "$REPO" --state open --json number,headRefOid --jq ".[] | select(.headRefOid==\"$SHA\") | .number" | head -1)
-          [ -z "$n" ] && { echo "no open PR at $SHA"; echo "pr=" >> "$GITHUB_OUTPUT"; exit 0; }
-          echo "pr=$n" >> "$GITHUB_OUTPUT"
-          # a first-time contributor's first PR waits for a maintainer; once one of theirs has merged, GitHub calls them
-          # CONTRIBUTOR and their conforming PRs merge automatically
-          assoc=$(gh api "repos/$REPO/pulls/$n" --jq .author_association)
-          # a PR opened before its author's first merge keeps the stale FIRST_TIME association, so also ask GitHub
-          # whether this author has any merged PR here
-          author=$(gh api "repos/$REPO/pulls/$n" --jq .user.login)
-          merged=$(gh pr list --repo "$REPO" --author "$author" --state merged --limit 1 --json number --jq 'length')
-          [ "$merged" -gt 0 ] && assoc=CONTRIBUTOR
-          case "$assoc" in OWNER|MEMBER|COLLABORATOR|CONTRIBUTOR) ;; *)
-            echo "lane=first-time" >> "$GITHUB_OUTPUT"
-            gh pr comment "$n" --repo "$REPO" --body "Checks pass. This is your first contribution here, so a maintainer will look before it merges; after that, conforming PRs from you merge automatically. Thanks!"
-            exit 0 ;;
-          esac
-          other=$(gh api --paginate "repos/$REPO/pulls/$n/files" --jq '.[] | select(.status != "added" or ((.filename | startswith("graph/contributions/") | not) and (.filename | startswith("runs/cleanroom/") | not))) | .filename')
-          if [ -n "$other" ]; then
-            echo "lane=review" >> "$GITHUB_OUTPUT"
-            printf 'Checks pass. Not auto-merged: this PR changes files outside the colour-in lane, so it waits for review:\n```\n%s\n```\n' "$other" > body.md
-            gh pr comment "$n" --repo "$REPO" --body-file body.md
-          else
-            echo "lane=colour-in" >> "$GITHUB_OUTPUT"
-          fi
-      - name: Merge (merge commit, so the tests-before-results order survives)
-        if: steps.lane.outputs.lane == 'colour-in'
-        run: gh pr merge "${{ steps.lane.outputs.pr }}" --repo "$REPO" --merge --match-head-commit "$SHA"
+          # comment once per PR head: a marker keeps re-sweeps from repeating the same note
+          note_once() {  # note_once <pr> <sha> <file>
+            if gh api --paginate "repos/$REPO/issues/$1/comments" --jq '.[].body' | grep -qF "<!-- merge-lane:$2 -->"; then return 0; fi
+            [ -n "$DRY" ] && { echo "  (dry run) would comment on #$1"; return 0; }
+            printf '\n<!-- merge-lane:%s -->\n' "$2" >> "$3"
+            gh pr comment "$1" --repo "$REPO" --body-file "$3"
+          }
+          merged=""
+          for row in $(gh pr list --repo "$REPO" --state open --limit 300 --json number,headRefOid --jq '.[] | "\(.number):\(.headRefOid)"'); do
+            n=${row%%:*}; sha=${row##*:}
+            st=$(gh run list --repo "$REPO" --workflow checks --commit "$sha" --limit 1 --json status,conclusion --jq '.[0] | "\(.status) \(.conclusion)"')
+            [ "$st" = "completed success" ] || continue
+            # a first-time contributor's first PR waits for a maintainer; once one of theirs has merged, GitHub calls them
+            # CONTRIBUTOR and their conforming PRs merge automatically. A PR opened before its author's first merge keeps
+            # the stale FIRST_TIME association, so also ask GitHub whether this author has any merged PR here.
+            assoc=$(gh api "repos/$REPO/pulls/$n" --jq .author_association)
+            author=$(gh api "repos/$REPO/pulls/$n" --jq .user.login)
+            [ "$(gh pr list --repo "$REPO" --author "$author" --state merged --limit 1 --json number --jq 'length')" -gt 0 ] && assoc=CONTRIBUTOR
+            case "$assoc" in OWNER|MEMBER|COLLABORATOR|CONTRIBUTOR) ;; *)
+              echo "#$n: first-time contributor, waits for a maintainer"
+              echo "Checks pass. This is your first contribution here, so a maintainer will look before it merges; after that, conforming PRs from you merge automatically. Thanks!" > body.md
+              note_once "$n" "$sha" body.md
+              continue ;;
+            esac
+            other=$(gh api --paginate "repos/$REPO/pulls/$n/files" --jq '.[] | select(.status != "added" or ((.filename | startswith("graph/contributions/") | not) and (.filename | startswith("runs/cleanroom/") | not))) | .filename')
+            if [ -n "$other" ]; then
+              echo "#$n: outside the colour-in lane, waits for review"
+              printf 'Checks pass. Not auto-merged: this PR changes files outside the colour-in lane, so it waits for review:\n```\n%s\n```\n' "$other" > body.md
+              note_once "$n" "$sha" body.md
+              continue
+            fi
+            if [ -n "$DRY" ]; then echo "#$n: (dry run) would merge at $sha"; continue; fi
+            for t in 1 2 3; do  # a merge-commit merge pinned to the checked head; retry when main moved under it
+              if gh pr merge "$n" --repo "$REPO" --merge --match-head-commit "$sha"; then merged="$merged $n"; echo "#$n: merged"; break; fi
+              sleep 10
+            done
+          done
+          echo "merged=${merged# }" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@v4
-        if: steps.lane.outputs.lane == 'colour-in'
+        if: steps.sweep.outputs.merged != ''
         with:
           ref: main
           fetch-depth: 0
       - uses: actions/setup-python@v5
-        if: steps.lane.outputs.lane == 'colour-in'
+        if: steps.sweep.outputs.merged != ''
         with:
           python-version: "3.12"
       - name: Fold on main and push (validate --strict is the circuit breaker)
-        if: steps.lane.outputs.lane == 'colour-in'
+        if: steps.sweep.outputs.merged != ''
+        env:
+          MERGED: ${{ steps.sweep.outputs.merged }}
         run: |
           git config user.name "bonsai-survey-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -75,21 +101,26 @@ jobs:
             python -m bonsai_interp.graph.validate --strict
             git add graph/neurons graph/edges.json graph/index.json
             git diff --cached --quiet && { echo "nothing to fold"; exit 0; }
-            git commit -q -m "fold after #${{ steps.lane.outputs.pr }}"
+            git commit -q -m "fold after $(printf '#%s ' $MERGED | sed 's/ $//')"
             git push -q origin HEAD:main && { echo "folded"; exit 0; }
             sleep 5
           done
           echo "could not push the fold after 3 attempts"; exit 1
-      - name: Summary on the PR
-        if: steps.lane.outputs.lane == 'colour-in'
+      - name: Summary on each merged PR
+        if: steps.sweep.outputs.merged != ''
+        env:
+          MERGED: ${{ steps.sweep.outputs.merged }}
         run: |
-          python - <<'PY' > summary.md
-          import json, subprocess
-          files = subprocess.run(["gh", "api", "--paginate", f"repos/${{ github.repository }}/pulls/${{ steps.lane.outputs.pr }}/files", "--jq", ".[].filename"],
+          for n in $MERGED; do
+            python - "$n" <<'PY' > summary.md
+          import json, subprocess, sys
+          n = sys.argv[1]
+          files = subprocess.run(["gh", "api", "--paginate", f"repos/${{ github.repository }}/pulls/{n}/files", "--jq", ".[].filename"],
                                  capture_output=True, text=True).stdout.split()
           idx = json.load(open("graph/index.json"))["neurons"]
           poles = sorted({json.load(open(f)).get("neuron") for f in files if f.endswith(".json") and f.startswith("graph/contributions/")} - {None})
           lines = [f"- `{p}`: {idx[p]['status']}" + (f" ({idx[p].get('short') or (idx[p].get('label') or '')[:70]})" if idx.get(p, {}).get('short') or idx.get(p, {}).get('label') else "") for p in poles if p in idx]
           print("Merged and folded. The map now shows:\n" + "\n".join(lines))
           PY
-          gh pr comment "${{ steps.lane.outputs.pr }}" --repo "$REPO" --body-file summary.md
+            gh pr comment "$n" --repo "$REPO" --body-file summary.md
+          done
