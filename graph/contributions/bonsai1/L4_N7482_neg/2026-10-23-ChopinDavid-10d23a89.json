@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-10d23a89",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N7482-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T14:28:45+00:00",
+ "recipe": {
+  "toolchain_commit": "8d31f7fd",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N7482_neg/2026-10-23-ChopinDavid-10d23a89.tests.json"
+ },
+ "label": "an h-sound letter split off as its own mid-word piece: Arabic 'ه' or 'ح' inside a longer word (الان|ه|يار, الج|نا|ح), or 'ah' in Conn|ah; the same letters inside a larger token stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N7482_neg/2026-10-23-ChopinDavid-10d23a89.tests.json",
+   "prereg_commit": "8d31f7fd",
+   "author": "ChopinDavid",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.532,
+     "peak": "ه"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.501,
+     "peak": "ه"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.885,
+     "peak": "ح"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.006,
+     "peak": " للم"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.201,
+     "peak": "ح"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.316,
+     "peak": "ح"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.552,
+     "peak": "ه"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.985,
+     "peak": "ah"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.262,
+     "peak": " انه"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.008,
+     "peak": " العمل"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.035,
+     "peak": "ود"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.005,
+     "peak": "ام"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.012,
+     "peak": "علن"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.004,
+     "peak": "بيب"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.012,
+     "peak": "وم"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.006,
+     "peak": "The"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.898,
+    "median_fire": 0.516,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "8d31f7fd",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "split-off Arabic ه/ح (and 'ah') piece",
+ "unit_kind": "token",
+ "confidence": 0.55,
+ "notes": "Card: 'ه' x12, 'اه', 'ح', 'نه', 'ته', 'ah' (Conn|ah's Quay). Probe: 'الانهيار' (ه piece) 0.837, 'كجناح' (ح piece) 1.028, 'انحصار' (ح piece) 0.434, 'Connah's' 0.970; Arabic sentences without the split 0.009-0.027, 'Savannah' (one token) 0.007. A spelling-unit pole: near misses reuse related words whose split merges the letter ('انه|يار', 'نا|حا', 'الاحتلال').",
+ "selection": "random draw"
+}

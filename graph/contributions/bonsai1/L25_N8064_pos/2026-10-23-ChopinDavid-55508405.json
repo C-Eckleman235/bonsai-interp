@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-55508405",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N8064+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T14:29:36+00:00",
+ "recipe": {
+  "toolchain_commit": "8d31f7fd",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N8064_pos/2026-10-23-ChopinDavid-55508405.tests.json"
+ },
+ "label": "the end of a Python function's header or docstring: the closing '\"\"\"' line (or the '):' of the signature) right before the function body starts",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N8064_pos/2026-10-23-ChopinDavid-55508405.tests.json",
+   "prereg_commit": "8d31f7fd",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.493,
+     "peak": " \"\"\"\n"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.428,
+     "peak": " \"\"\"\n"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.321,
+     "peak": " \"\"\"\n"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.298,
+     "peak": " \"\"\"\n"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.506,
+     "peak": " \"\"\"\n"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.334,
+     "peak": ".\"\"\"\n"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.448,
+     "peak": " ):\n"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.453,
+     "peak": " \"\"\"\n"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.134,
+     "peak": " os"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.021,
+     "peak": ")"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.092,
+     "peak": "\"\"\"\n"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.012,
+     "peak": " reading"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.108,
+     "peak": " json"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.113,
+     "peak": " True"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.029,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.01,
+     "peak": "(total"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.438,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "8d31f7fd",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "end of def header / docstring",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: ' \"\"\"\\n' x23, '):\\n' x4, '.\"\"\"\\n' x2, max 113. Probe: multi-line docstring close 0.612, one-line docstring close in a method 0.434, multi-line signature ' ):' 0.291, 'def safe_name(name):' 0.250; a string-literal triple quote 0.034, comment block 0.038, 'for/if' colons 0.079. Fire items lean on docstring closes (strongest).",
+ "selection": "random draw"
+}
