@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-83684e10",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N10577-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T19:19:42+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L13/N10577",
+   "pole": "-",
+   "label": "unclear; best guess the digit suffix of a code variable name that repeats with another index (loss_g0 / loss_g1, w1 / w2), as against the same digits in prose or as plain literals",
+   "fire": [
+    "cost_g0 = 0.0\ncost_g1 = 1.0\ntotal = cost_g0 + cost_g1",
+    "w_h0 = init(64)\nw_h1 = init(64)\nout = w_h0 @ w_h1",
+    "kl_d0_b = 0.0\nkl_d1_b = 0.0\nprint(kl_d0_b, kl_d1_b)",
+    "grad_p0 = compute(x)\ngrad_p1 = compute(y)\nstep = grad_p0 - grad_p1",
+    "err_t0 = abs(a - b)\nerr_t1 = abs(b - c)\nif err_t0 > err_t1: swap()",
+    "mask_c0 = np.zeros(8)\nmask_c1 = np.ones(8)\nmask = mask_c0 + mask_c1",
+    "acc_r0 = []\nacc_r1 = []\nfor v in data: acc_r0.append(v)",
+    "loss_q0 = model(a)\nloss_q1 = model(b)\nloss = loss_q0 * 0.5 + loss_q1"
+   ],
+   "quiet": [
+    "The recipe uses 0 eggs, 1 cup of milk and a pinch of salt.",
+    "We counted 64 birds in the morning and 64 more by evening.",
+    "The score was 0 to 0 at half time and 1 to 0 at the end.",
+    "She ran 5 kilometres on Monday and 7 kilometres on Friday.",
+    "The bus leaves at 8 and returns at 6 every weekday.",
+    "There were 8 chairs in the hall and 8 more in the kitchen.",
+    "He planted 3 roses, 2 tulips and 1 small apple tree.",
+    "The test had 2 parts, and most students finished part 1 quickly."
+   ]
+  }
+ ],
+ "predictions": "probably weak: fire 0.1-0.3 on the second indexed identifier; prose digits 0.0-0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "digit suffix in code identifier (unclear)",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card max 7.56, peaks on '1', '2', '0', '.det', 'si' inside code identifiers and citation brackets. Probe: 'loss_g|1' (after loss_g0) 0.255; self.x1/x2 0.041, SQL a.x1 0.049, citation [2] 0.084, test_sort_list_2 0.028; prose digits 0.016-0.031."
+}

@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-6c4efc9b",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N282-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T19:28:14+00:00",
+ "recipe": {
+  "toolchain_commit": "87bf1c8c",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N282_neg/2026-10-23-ChopinDavid-6c4efc9b.tests.json"
+ },
+ "label": "the second token of a noun that the tokenizer splits into two pieces, mostly Korean Sino-Korean compounds ('조|각', '집|합') and Russian stems ('кредитных| карт'), as against Korean and Russian sentences of the same kind where the nouns are not split this way",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N282_neg/2026-10-23-ChopinDavid-6c4efc9b.tests.json",
+   "prereg_commit": "87bf1c8c",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.642,
+     "peak": "각"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.394,
+     "peak": "합"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.479,
+     "peak": " карт"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.57,
+     "peak": "각"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.589,
+     "peak": " карт"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.213,
+     "peak": "합"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.594,
+     "peak": "각"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.412,
+     "peak": " карт"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.118,
+     "peak": "관"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.242,
+     "peak": "학"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.156,
+     "peak": "ин"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.096,
+     "peak": " 돌"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.014,
+     "peak": "Б"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.085,
+     "peak": "래"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.086,
+     "peak": "무"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.243,
+     "peak": "ины"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.524,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "87bf1c8c",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "second piece of a split CJK/Russian noun",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card peaks: '합', '각', '영상', '자', ' карт', '信', '金'. Probe: '조|각' 0.874, ' карт' 0.492, '집|합' 0.467, '証拠|金' 0.253, '산|책' 0.191 (in a plain sentence), '동|영상을' 0.083 (the piece merged with a particle), 'пам|яти' 0.111; English 0.020-0.023.",
+ "selection": "random draw"
+}
