@@ -1,0 +1,153 @@
+{
+ "id": "2026-10-23-C-Eckleman235-bf0a7593",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N106+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-23T23:04:28+00:00",
+ "recipe": {
+  "toolchain_commit": "9abf3d9d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L8_N106_pos/2026-10-23-C-Eckleman235-bf0a7593.tests.json"
+ },
+ "label": "the 'of' in a role analogy that names something as 'the X of Y', borrowing a famous person, place or brand as the role (the Mozart of football, the Venice of the north, the Uber of dog walking); 'of' in literal roles, titles, owners and parts stays low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L8_N106_pos/2026-10-23-C-Eckleman235-bf0a7593.tests.json",
+   "prereg_commit": "9abf3d9d",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.976,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 1.137,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.987,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.609,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.45,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.251,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 1.067,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 1.108,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.187,
+     "peak": " shops"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.058,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.108,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.009,
+     "peak": "She"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.019,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.072,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.024,
+     "peak": " coach"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.101,
+     "peak": " of"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.982,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "which"
+  ],
+  "detected": [],
+  "toolchain_commit": "9abf3d9d",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "short": "role analogy 'the X of Y'",
+ "unit_kind": "contextual",
+ "confidence": 0.65,
+ "notes": "Found by an analogy concept screen (discovery only): 11/12 role-analogy pairs ('Nashville is the Detroit of country music' vs a plain relation), peaking on 'of'. Card: max 15.5, density 0.18%; peaks ' of' x13 ('the David Bailey of the science world', 'the Voldemort of recipes', 'the Black Death of the 21st century'). Triage probes (exploratory, none reused): 'the Mozart of football' 0.83, 'the Paris of the prairie' 1.20, 'the Beyoncé of vegetables' 0.90, 'the Hawaii of the north Atlantic' 0.98; 'the mother of three boys' 0.01, 'chief executive of the company' 0.01, 'king of England' 0.01, 'the capital of France' 0.02. Scoring runs on a Modal L40S (bfloat16; PARITY OK on Modal).",
+ "selection": "concept search: analogy"
+}
