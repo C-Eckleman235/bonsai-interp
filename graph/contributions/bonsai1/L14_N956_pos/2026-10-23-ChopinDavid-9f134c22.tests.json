@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-9f134c22",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N956+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T18:20:17+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L14/N956",
+   "pole": "+",
+   "label": "the space token before a digit string, strongest before the year in 'Month Day, Year' dates, as against the same sentences with the number spelled out in words",
+   "fire": [
+    "Published: Sep 12, 2019\nA new bridge opens across the river.",
+    "The treaty was signed on April 4, 1949, in Washington.",
+    "Updated Feb 28, 2021, 10:15 AM by the news desk.",
+    "The storm made landfall on August 29, 2005, near the city.",
+    "Posted on Dec 1, 2010 by the editor in the travel section.",
+    "The band played its last show on May 17, 2003, in Dublin.",
+    "Filed: Oct 9, 2014\nThe court rejected the appeal.",
+    "She was born on January 30, 1987, in a small village."
+   ],
+   "quiet": [
+    "Published: the twelfth of September\nA new bridge opens across the river.",
+    "The treaty was signed in early April, in Washington.",
+    "Updated late last month, mid-morning, by the news desk.",
+    "The storm made landfall at the end of August, near the city.",
+    "Posted on the first of December by the editor in the travel section.",
+    "The band played its last show in the spring, in Dublin.",
+    "Filed: early October\nThe court rejected the appeal.",
+    "She was born at the end of January, in a small village."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.45 on ' ' before digits (the pole is broad: most numerals fire a little); worded numbers 0.0-0.12",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "space before digits (dates)",
+ "unit_kind": "lexical",
+ "confidence": 0.3,
+ "notes": "Card: ' ' x17 before years in 'Jul 14, 2006', '0' x14 in '$100,000'; broad (4.9% of tokens at 0.1), gate-closed regime 96%. Probe: 'Mar 3, 2015' 0.399, 'June 21, 1998' 0.325, 'about 2015 residents' 0.269, '3, 5 and 7' 0.232, '$10,000' '0' 0.485; no digits 0.067-0.097. The near misses spell out the number, so only the digit is removed."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-6962e996",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N11161+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T18:20:17+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N11161",
+   "pole": "+",
+   "label": "a CJK character that follows a space used as a clause break in unpunctuated Chinese (subtitle-style text), as against the same Chinese text punctuated with full-width commas",
+   "fire": [
+    "我们昨天去了海边 那里的风景非常美丽 大家都很开心",
+    "这个城市的人口很多 每天早上地铁都很拥挤",
+    "他工作了整整十年 终于买了自己的房子",
+    "研究人员发现了一种新的细菌 它可以分解塑料",
+    "老师讲完了课 学生们开始讨论问题",
+    "今年的冬天特别冷 很多人都穿上了厚外套",
+    "这家餐厅的菜很好吃 而且价格也不贵",
+    "我们需要节约用水 因为水资源越来越少"
+   ],
+   "quiet": [
+    "我们昨天去了海边，那里的风景非常美丽，大家都很开心。",
+    "这个城市的人口很多，每天早上地铁都很拥挤。",
+    "他工作了整整十年，终于买了自己的房子。",
+    "研究人员发现了一种新的细菌，它可以分解塑料。",
+    "老师讲完了课，学生们开始讨论问题。",
+    "今年的冬天特别冷，很多人都穿上了厚外套。",
+    "这家餐厅的菜很好吃，而且价格也不贵。",
+    "我们需要节约用水，因为水资源越来越少。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.4 on the space-initial character token; the same sentences with commas 0.0-0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "CJK char after clause-break space",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card top: ' 这', ' 大', ' 吃' etc., space-initial byte tokens in subtitle-style Chinese x22. Probe: '盖房子 这意味着' 0.384, '是女性 这说明' 0.388, '所以 我们' 0.239, Japanese with spaces 0.094, Korean 0.317; the same Chinese with '，' 0.015-0.019, English 0.001."
+}

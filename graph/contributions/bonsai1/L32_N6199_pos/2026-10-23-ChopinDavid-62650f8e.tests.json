@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-62650f8e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N6199+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T18:20:17+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L32/N6199",
+   "pole": "+",
+   "label": "unclear; best guess the conversion letter of an old-style '%' placeholder inside a Python string ('%s', '%d'), as against str.format and f-string placeholders",
+   "fire": [
+    "raise KeyError('Unknown column: %s' % col)",
+    "log.warning('Retrying after %d seconds' % delay)",
+    "msg = 'File %s could not be opened' % path",
+    "print('Loaded %d rows from %s' % (n, fname))",
+    "raise RuntimeError('Timeout waiting for %s' % host)",
+    "sql = \"SELECT * FROM users WHERE id = %s\" % uid",
+    "print('Score: %d out of %d' % (score, total))",
+    "error = 'Invalid token: %s' % token"
+   ],
+   "quiet": [
+    "raise KeyError('Unknown column: {}'.format(col))",
+    "log.warning(f'Retrying after {delay} seconds')",
+    "msg = 'File ' + path + ' could not be opened'",
+    "print(f'Loaded {n} rows from {fname}')",
+    "raise RuntimeError('Timeout waiting for {}'.format(host))",
+    "sql = f\"SELECT * FROM users WHERE id = {uid}\"",
+    "print('Score:', score, 'out of', total)",
+    "error = 'Invalid token: ' + token"
+   ]
+  }
+ ],
+ "predictions": "weak: fire 0.1-0.25 on 's'/'d' after '%'; '{}' and f-string versions 0.0-0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'%s' placeholder letter (weak)",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card top: 's' of '%s' x10 (max 60), but the overall max 88 is '3)' in a numbered fill-in list. Probe: \"'Bad value: %s'\" 0.229, '%d items' 0.165, 'Hello %s' 0.136, '/users/%s/profile' 0.050; .format 0.023, f-string 0.028; numbered list '3)' 0.185. Weak in fresh code."
+}
