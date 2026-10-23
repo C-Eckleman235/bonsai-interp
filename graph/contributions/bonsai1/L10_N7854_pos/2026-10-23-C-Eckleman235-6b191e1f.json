@@ -1,0 +1,153 @@
+{
+ "id": "2026-10-23-C-Eckleman235-6b191e1f",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N7854+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-23T23:18:12+00:00",
+ "recipe": {
+  "toolchain_commit": "1544431a",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N7854_pos/2026-10-23-C-Eckleman235-6b191e1f.tests.json"
+ },
+ "label": "Guangdong (Canton) as a place, written in English or in Chinese characters: Guangzhou, Shenzhen, Foshan, Dongguan, the Pearl River delta and Cantonese food and culture; other Chinese provinces and cities (Shanghai, Sichuan, Beijing) in the same frames stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L10_N7854_pos/2026-10-23-C-Eckleman235-6b191e1f.tests.json",
+   "prereg_commit": "1544431a",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.841,
+     "peak": "zhou"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.56,
+     "peak": "enzhen"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.65,
+     "peak": "广州"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.743,
+     "peak": "深圳"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 1.262,
+     "peak": "an"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.571,
+     "peak": "an"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.991,
+     "peak": "广东"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 1.046,
+     "peak": "zhou"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.016,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.014,
+     "peak": "ronics"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.025,
+     "peak": "中心"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.007,
+     "peak": "乘客"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.039,
+     "peak": " across"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.135,
+     "peak": "en"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.023,
+     "peak": "文化"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.173,
+     "peak": " delta"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.792,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "which"
+  ],
+  "detected": [],
+  "toolchain_commit": "1544431a",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "short": "Guangdong, in English or Chinese",
+ "unit_kind": "meaning",
+ "confidence": 0.6,
+ "notes": "Found by the world-atlas tier-3 census (first-level subdivisions of 8 countries, 8 pairs each, 4 named + 4 unnamed, plus the 31 Chinese provinces again written in Chinese; discovery only): mean 0.98 on the English Guangdong passages and 0.94 on the Chinese-script ones, a candidate for Guangdong only. Triage probes (exploratory, none reused): Guangzhou dim sum 0.79, 深圳 0.74, 广州 0.65, Shenzhen factories 0.61, Cantonese opera in Foshan 1.35; Hong Kong 0.10, Fuzhou 0.06, 上海 0.02. The test checks the cross-script claim with three Chinese-script items. Scoring runs on a Modal L40S (bfloat16; PARITY OK on Modal).",
+ "selection": "concept search: world atlas tier 3 (branch 19)"
+}
