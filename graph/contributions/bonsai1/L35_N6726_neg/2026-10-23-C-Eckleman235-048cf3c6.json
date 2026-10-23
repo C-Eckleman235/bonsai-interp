@@ -1,0 +1,154 @@
+{
+ "id": "2026-10-23-C-Eckleman235-048cf3c6",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6726-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-23T23:03:58+00:00",
+ "recipe": {
+  "toolchain_commit": "966c3419",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N6726_neg/2026-10-23-C-Eckleman235-048cf3c6.tests.json"
+ },
+ "label": "the token right before a 3 that the text makes predictable: the next digit of a number being copied from earlier in the same text, or of a counting run; quiet before a 3 the text gives no reason to expect, and before a predictable different digit",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N6726_neg/2026-10-23-C-Eckleman235-048cf3c6.tests.json",
+   "prereg_commit": "966c3419",
+   "author": "C-Eckleman235",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.121,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.383,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.348,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.426,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.332,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.307,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.321,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.244,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.121,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.144,
+     "peak": "8"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.128,
+     "peak": "2"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.089,
+     "peak": " bay"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.097,
+     "peak": "2"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.106,
+     "peak": "6"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.053,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.094,
+     "peak": "4"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.961,
+    "median_fire": 0.327,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "second-round",
+   "which"
+  ],
+  "detected": [],
+  "toolchain_commit": "966c3419",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "short": "before a predictable 3 (round 2)",
+ "unit_kind": "predictive",
+ "confidence": 0.65,
+ "notes": "Second round on the same label (round 1: #801, held, AUROC 0.938). Reason, written before this test: round 1's near miss 'Chapters 35, 36, 37, and 38' itself contained predictable 3s (each next number's first digit), so it was not a real near miss. This round's near misses contain no predictable 3 anywhere (runs in the 20s, 60s and 90s that end on another digit; copies of numbers without a 3; one copy where a 3 appears where an 8 was expected). Same discovery evidence as round 1 (echoes predictable-digit screen, position triage, card, triage probes); no sentence is reused. Scoring runs on a Modal L40S (bfloat16; PARITY OK on Modal).",
+ "selection": "concept search: echoes (digit family)"
+}
