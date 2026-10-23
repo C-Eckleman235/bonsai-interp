@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-52cc4061",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N6163+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T17:19:47+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N6163",
+   "pole": "+",
+   "label": "in software and file-system text, the slot that sets up a nested 'sub-' item (overridden in a subclass, recursively in all subfolders, as immediate subdirectories), predicting a 'sub' word, as against code and docs where no nested item follows",
+   "fire": [
+    "    def render(self):\n        \"\"\"Draw the widget; must be overridden in a subclass.\"\"\"",
+    "    parser.add_argument('--deep', help='scan all files recursively in every subdirectory')",
+    "    def save(self):\n        \"\"\"Abstract hook; should be implemented in each subclass.\"\"\"",
+    "The installer looks for plugins found as immediate subfolders of the main directory.",
+    "    # walk the tree and collect images recursively from all subdirectories",
+    "    def validate(self):\n        \"\"\"Override this in a subclass to add custom checks.\"\"\"",
+    "Each module is loaded from its own folder, and tests live in nested subpackages.",
+    "    raise NotImplementedError('process() must be defined by a subclass')"
+   ],
+   "quiet": [
+    "    def render(self):\n        \"\"\"Draw the widget; called once per frame by the loop.\"\"\"",
+    "    parser.add_argument('--deep', help='print extra details about every file')",
+    "    def save(self):\n        \"\"\"Write the record to disk and close the file.\"\"\"",
+    "The installer looks for plugins listed in the main configuration file.",
+    "    # read the list and collect images from the download queue",
+    "    def validate(self):\n        \"\"\"Check that the name field is not empty.\"\"\"",
+    "Each module is loaded from its own folder, and tests run on every commit.",
+    "    raise ValueError('process() received an empty input list')"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-1.0 on the word before subclass/subfolder-type items; code and docs with no nesting 0.0-0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "slot predicting a sub- item",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card top: 'found as immediate subdirs', 'overridden in a subclass', 'in a local subdirectory', 'Unexpected subelements'; logit effect promotes ' sub'/'Sub'. Probe: 'overridden in a subclass' 0.987 (on ' in'), 'recursively in all subfolders' 0.775, 'resources such as memory' 0.565, 'in a local subdirectory' 0.339 but 'in a separate file' also 0.339; 'called by the scheduler' 0.144, 'Unexpected subelements' 0.032. The activation sits before the sub- word, so near misses remove the nesting setup, not only the word."
+}

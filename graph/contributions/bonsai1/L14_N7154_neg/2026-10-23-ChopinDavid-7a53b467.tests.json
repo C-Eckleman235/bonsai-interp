@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-7a53b467",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N7154-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T17:19:47+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L14/N7154",
+   "pole": "-",
+   "label": "the line break right after a signature or name at the end of a letter or message, before unrelated material (phone line, date, footer) begins, as against line breaks inside the body of a letter or list",
+   "fire": [
+    "Please return the signed form by Friday.\nKind regards, Mr. Hughes\n(212) 555-0143",
+    "Thank you for coming to the reunion.\nWarm wishes, Linda\nSaturday, June 7, 2003",
+    "We look forward to seeing you in class.\nSincerely,\nDr. Rosa Martinez\n\nOffice hours: 2-4 pm",
+    "Let me know if you have any questions.\nCheers, Tom Whitaker\nSent from my phone",
+    "Merci pour votre patience.\nCordialement, Sophie Laurent\nTél : 01 45 22 33 10",
+    "Happy holidays to you and your family.\nBest, Kevin\nWednesday, December 20, 2017",
+    "The rehearsal starts at six on Thursday.\nRegards, Ms. Okafor\nRoom 114, Music Wing",
+    "Thanks for the lovely flowers.\nLove, Grandma Jean\n\nPosted March 2, 2011"
+   ],
+   "quiet": [
+    "Please return the signed form by Friday.\nThe office closes at noon\non the last day.",
+    "Thank you for coming to the reunion.\nIt was lovely to see\neveryone again after so long.",
+    "We look forward to seeing you in class.\nPlease bring a notebook\nand two pencils.",
+    "Let me know if you have any questions.\nThe deadline is next week\nfor the whole team.",
+    "Merci pour votre patience.\nLe colis arrivera\nla semaine prochaine.",
+    "Happy holidays to you and your family.\nWe baked far too\nmany cookies this year.",
+    "The rehearsal starts at six on Thursday.\nBring your music folder\nand a water bottle.",
+    "Thanks for the lovely flowers.\nThey are on the kitchen\ntable by the window."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on the newline after the signer's name; newlines inside letters, lists and code bodies 0.0-0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "newline after sign-off",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card top: 'Mrs. Kirkwood⏎(775)', 'George⏎Tuesday', 'Gérald Cursoux⏎', plus code block ends after return. Probe: 'Best regards, Mrs. Patel⏎Phone' 0.700, 'Yours sincerely,⏎Alan Brooks⏎⏎Monday' 0.504; code after return 0.103-0.116, letter body newline 0.028, shopping list 0.014. Code-block ends were weak in fresh text, so the test uses sign-offs."
+}
