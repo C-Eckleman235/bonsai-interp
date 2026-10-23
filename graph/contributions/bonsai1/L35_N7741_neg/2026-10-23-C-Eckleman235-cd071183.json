@@ -1,0 +1,153 @@
+{
+ "id": "2026-10-23-C-Eckleman235-cd071183",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N7741-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-23T22:12:41+00:00",
+ "recipe": {
+  "toolchain_commit": "32856710",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N7741_neg/2026-10-23-C-Eckleman235-cd071183.tests.json"
+ },
+ "label": "the token right before an 8 that the text makes predictable: the next digit of a number being copied from earlier in the same text or of a counting run, and the word before 'eight' when counting in words; quiet before an 8 the text gives no reason to expect, and before a predictable different number",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N7741_neg/2026-10-23-C-Eckleman235-cd071183.tests.json",
+   "prereg_commit": "32856710",
+   "author": "C-Eckleman235",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.228,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.529,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.347,
+     "peak": "4"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.239,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.28,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.303,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.583,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.542,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.132,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.083,
+     "peak": "3"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.075,
+     "peak": " number"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.041,
+     "peak": "2"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.009,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.076,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.039,
+     "peak": ":"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.016,
+     "peak": " one"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.325,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "which"
+  ],
+  "detected": [],
+  "toolchain_commit": "32856710",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "short": "before a predictable 8",
+ "unit_kind": "predictive",
+ "confidence": 0.55,
+ "notes": "Found by the echoes predictable-digit concept screen and position triage (discovery only): 5/6 pairs for digit 8, across copies, counting runs and a fact. Card: max 390, density 0.57%; top examples peak right before an 8 ('datetime(2011, 8, 21 …) … datetime(2011, 8, 22', 'Part VIII'). Triage probes (exploratory, none reused): copied PIN 7828 0.59, copied room 508 0.45, count 45..48 0.35, the word list '…, seven, eight' 0.62 (peak on the comma before 'eight'), 'an octopus has 8' 0.14; a fresh 8 ('the number 68' 0.02, 'code 818' 0.04) and a copied 503 (0.05) stayed low. Like the held L35/N1376+ (6), it takes the spelled-out word. Scoring runs on a Modal L40S (bfloat16; PARITY OK on Modal).",
+ "selection": "concept search: echoes (digit family)"
+}
