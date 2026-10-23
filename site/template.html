@@ -382,7 +382,8 @@ td.n { font-family: var(--mono); text-align: right; }
   function legend() { document.getElementById("legend").innerHTML = (colorBy === "status" ? STATUS.map(s => `<span${s === "withheld" ? ' title="the trigger is sensitive content (e.g. a slur): recorded with a masked description, never shown or tested live"' : ""}><i style="background:var(--${s})"></i>${s === "withheld" ? "withheld (sensitive)" : s}</span>`).join("")
     : colorBy === "screen" ? (SCREEN ? SCREEN.groups.map((s, g) => { const k = Object.values(SCREEN.counts).reduce((a, c) => a + (c[g] || 0), 0);
         return `<button type="button" data-g="${g}" aria-pressed="${screenOnly === g}" title="show only this group"><i style="background:${sgColor(g)}"></i>${esc(s)} <span class="mono">${k.toLocaleString()}</span></button>`; }).join("") +
-        `<span>taller tick = auto test held · dots = surveyed poles · screened: layers ${(SCREEN.screened || []).join(", ") || "none yet"} · "word hit" = corpus word statistics (other layers)</span>`
+        `<span>taller tick = auto test held · dots = surveyed poles · screened: layers ${(SCREEN.screened || []).join(", ") || "none yet"} · "word hit" = corpus word statistics (other layers)</span>` +
+        `<span title="layer 12 is where the screen's rule was designed, so scoring it there would test the rule on its own design data; it keeps its earlier auto-token@1 result (34 of 644 held)">L12 held out: the layer used to design the screen</span>`
       : `<span>${esc(screenMsg)}</span>`)
     : SCR.slice(1).map((s, i) => `<span><i style="background:var(--h${i + 1})"></i>${i + 1} ${s}</span>`).join("")) +
     `<span><i style="background:none;border:1px solid var(--ink-3)"></i>upper half of a row = + pole, lower = − pole</span>`; }
