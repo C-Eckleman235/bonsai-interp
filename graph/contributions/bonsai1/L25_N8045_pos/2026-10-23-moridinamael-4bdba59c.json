@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-23-moridinamael-4bdba59c",
+ "kind": "qc",
+ "neuron": "bonsai1/L25/N8045+",
+ "contributor": "moridinamael",
+ "created": "2026-10-23T10:49:17+00:00",
+ "recipe": {
+  "toolchain_commit": "c24dc606",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N8045_pos/2026-10-23-moridinamael-4bdba59c.tests.json"
+ },
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N8045_pos/2026-10-23-moridinamael-4bdba59c.tests.json",
+   "prereg_commit": "c24dc606",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.589,
+     "peak": "RED"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.572,
+     "peak": "R"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.73,
+     "peak": "ANT"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.049,
+     "peak": " extraordinary"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.824,
+     "peak": "еч"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.734,
+     "peak": "рез"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.492,
+     "peak": " state"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.384,
+     "peak": " world"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.071,
+     "peak": " amazing"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.055,
+     "peak": " mediocre"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.013,
+     "peak": "Her"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.012,
+     "peak": " photos"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.015,
+     "peak": " INTERNATIONAL"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.009,
+     "peak": "IF"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.005,
+     "peak": " climbed"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.007,
+     "peak": " world"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.581,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "c24dc606",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "A piece partway through an extreme verdict word or phrase, good or bad, before the rest of it arrives: inner chunks of a long or ALL-CAPS intense adjective or adverb split into several tokens (INC-RED-IBLE, F-ANT-ASTIC, HORR-IBLE, extra-ordinary, зам-еч-ательный, ч-рез-вычайно) and the opening words of a superlative idiom after a praising lead-in (state- of the art, world-class, show-stopping, out of this world). Also, more weakly, ' nothing' right after is/was opening a judgement of something (was nothing special, is nothing short of, is nothing to sneeze at), but not after a comma or in literal uses (nothing in the fridge, nothing to do). Quiet on intense words that arrive as one whole token (amazing, incredible, breathtaking), on mild verdicts without 'nothing' (mediocre, pretty good), and on the same opening words used literally (the top of the hill, around the world). Also quiet on long neutral words split into pieces, in caps or not (photosynthesis, INTERNATIONALIZATION, CALIFORNIA): the chunk must belong to a verdict word. Only weak on first-rate and top-notch, and only weak on words that just say something is huge without judging it (GIGANTIC, ENORMOUS): these are near misses, not fire cases."
+ }
+}
