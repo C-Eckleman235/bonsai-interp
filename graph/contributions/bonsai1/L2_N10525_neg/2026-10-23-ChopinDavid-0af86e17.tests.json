@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-0af86e17",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N10525-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T22:19:44+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L2/N10525",
+   "pole": "-",
+   "label": "dense layer-2 pole that is on for most text, somewhat higher in code identifiers and Japanese/Chinese characters than in English prose",
+   "fire": [
+    "if self.port.isOpen():\n    self.port.close()",
+    "elif file_type in IMAGE_TYPES:\n    return load_image(path)",
+    "駅に着くと、もうとっくに電車は出発していた。",
+    "自動翻訳された記事なので、誤りがあるかもしれません。",
+    "self.button.clicked.connect(self.on_click)",
+    "彼はとっくに家に帰ったと思います。",
+    "for key in config.keys():\n    print(key)",
+    "这家公司扩展了在亚洲的业务。"
+   ],
+   "quiet": [
+    "The dog ran across the field and jumped into the pond.",
+    "My sister bought fresh bread at the bakery this morning.",
+    "We waited for the bus in the rain for twenty minutes.",
+    "The library closes early on public holidays.",
+    "He wrote a letter to his old friend from school.",
+    "The children built a sandcastle near the water.",
+    "Our neighbours planted roses along the front fence.",
+    "The concert started late because of the storm."
+   ]
+  }
+ ],
+ "predictions": "fails: fire items 0.5-1.0, near misses 0.3-0.45; AUROC may be high but near misses cross the bar",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense (code/CJK)",
+ "unit_kind": "dense / positional",
+ "confidence": "low",
+ "notes": "Card: 43% of tokens reach 0.1 of max. Probes: .switch 0.820, mime 0.807, Japanese 1.033/0.500; English prose 0.33-0.41. Best-guess test only."
+}
