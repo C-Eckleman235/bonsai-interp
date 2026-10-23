@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-22-moridinamael-326ed755",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N1220+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T04:13:30+00:00",
+ "roles": ["reads bonsai1/L34/N3295-"],
+ "neighbours": [
+  {
+   "unit": "L35/N1220",
+   "pole": "+",
+   "label": "A number written in digits after a space, read at the lone space token just before the digits, in any language ('built in 1937', 'عام 1998', 'живут 450 человек'); strongest on an Arabic comma ، right after such a year. Also the split-off final 'ث' of Arabic حدث ('happened'). Spelled-out numbers, digits glued to '$', and plain text without digits stay low.",
+   "short": "space before a number in digits",
+   "unit_kind": "lexical",
+   "confidence": "medium",
+   "notes": "Weak, broad pole (max 8.06, 8.8% of tokens reach 0.1 of max). Probes: the bare space before digits reads 0.16-0.23 in English, Russian, Korean, Arabic (incl. Arabic-Indic digits); a doubled space in plain English reads 0.16; spelled-out numbers and '$40' 0.04-0.08; Chinese spelled numbers go negative. Fire items sit near the 0.20 median bar. Feeders (attribution): mostly unlabelled; labelled ones are Arabic al- (L0/N6145+), ' إ' (L0/N6666-) and byte-piece ' �' (L23/N11964+). The reader label has little to do with its feeder L34/N3295- (Chinese 的); drop 0.19. Blind test by a label-only second author.",
+   "fire": [
+    "The old library on the hill was built in 1937 by local stonemasons.",
+    "تأسست الجامعة عام 1998، وأصبحت من أكبر الجامعات في المنطقة.",
+    "В этой деревне живут 450 человек.",
+    "The bridge collapsed in 2004 after weeks of heavy rain.",
+    "ولد الشاعر في عام 1871، ثم انتقل إلى القاهرة.",
+    "Our team finished the race in 42 minutes.",
+    "La ciudad tenía 12000 habitantes a principios de siglo.",
+    "Die Kirche wurde 1650 erbaut und später renoviert."
+   ],
+   "quiet": [
+    "So, we can say that manual is the best reference when we want to understand the digital camera product.",
+    "هذه حالة ناذرة عندما تضطر المرأة إلى أخذ الاحتياط إن كانت قد تناولت هذه الأدوية من قبل و كان لديها نفس رد",
+    "The old library on the hill was built in the nineteen-thirties by local stonemasons.",
+    "تأسست الجامعة في أواخر القرن الماضي، وأصبحت من أكبر الجامعات في المنطقة.",
+    "В этой деревне живут несколько сотен человек.",
+    "The bridge collapsed after weeks of heavy rain.",
+    "ولد الشاعر في قرية صغيرة، ثم انتقل إلى القاهرة.",
+    "Our team finished the race in under an hour."
+   ]
+  }
+ ],
+ "predictions": "Fire items around 0.18-0.25 (median close to the 0.20 bar, the main risk); near misses below 0.15; AUROC high.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "quick-test"
+  ]
+ }
+}
