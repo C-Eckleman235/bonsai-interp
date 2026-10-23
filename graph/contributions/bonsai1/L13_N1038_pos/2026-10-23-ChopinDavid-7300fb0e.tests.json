@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-7300fb0e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N1038+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T13:19:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L13/N1038",
+   "pole": "+",
+   "label": "the digit that opens a numbered reference: a Bible book number ('2 Timothy') or an international dialing code ('(+86)')",
+   "fire": [
+    "The preacher read from 2 Peter 1:5 before the closing hymn.",
+    "This verse in 1 Kings 3:9 asks for an understanding heart.",
+    "For questions, phone our Beijing office at (+86) 10 5555 0199.",
+    "Our Paris desk can be reached at (+33) 1 55 55 01 23.",
+    "The warning in 2 Thessalonians 3:10 is often quoted about work.",
+    "The letter quoted 1 John 4:8, saying that God is love.",
+    "Customers in Japan should dial (+81) 3 5555 0145 for support.",
+    "Her favorite passage is 2 Corinthians 5:17 about new life."
+   ],
+   "quiet": [
+    "The preacher read for 2 hours before the closing hymn.",
+    "This farm has 3 barns and 9 cows in the north field.",
+    "For questions, visit our Beijing office on the 10th floor.",
+    "Our Paris desk has 5 staff and 1 manager.",
+    "The warning came 2 days before the storm hit the coast.",
+    "The letter was 4 pages long and signed by 8 people.",
+    "Customers in Japan bought 3 million units last year.",
+    "Her favorite book has 5 chapters about the sea."
+   ]
+  }
+ ],
+ "predictions": "book-number or dialing-code digits 0.3-0.7; counting digits in ordinary sentences below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "reference-opening digit",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: '42 U.S.C.', '(1 Timothy', '48 C.F.R', '1 John 1:5', '(+86)', 'Title 49', '2 Thess.'. Probe: '2 Timothy 3:16' 0.710, '(+44)' 0.516, '40 C.F.R.' 0.301, '1 Corinthians' 0.135 (peak on the name, so the digit was lower), '26 U.S.C.' 0.031; counts '2 cats and 1 dog' 0.008, '40 points' 0.012. Mixed: the U.S.C./Corinthians cases are weak."
+}

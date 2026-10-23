@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-9bfea76f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N1770+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T13:19:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L14/N1770",
+   "pole": "+",
+   "label": "a digit inside a code-style numeric list or array (coordinates, tuples, status columns), not a number in prose",
+   "fire": [
+    "cube = np.array([\n    [0, 1, 0],\n    [1, 1, 0],\n    [1, 0, 1],\n    [0, 0, 1],\n])",
+    "path = [(1, 0), (1, 2), (3, 2), (3, 0), (1, 0)]",
+    "grid = [[0, 0, 1], [1, 0, 0], [0, 1, 1]]",
+    "offsets = (\n    (0, 1),\n    (1, 0),\n    (0, -1),\n    (-1, 0),\n)",
+    "corners = {\n    'a': [0, 0],\n    'b': [4, 0],\n    'c': [4, 3],\n}",
+    "triangle = np.array([[0.0, 0.0], [1.0, 0.0], [0.5, 0.8]])",
+    "moves = [\n    [2, 1],\n    [1, 2],\n    [-1, 2],\n    [-2, 1],\n]",
+    "self.mesh.setPoints([[0, 0, 0], [3, 0, 0], [3, 3, 0], [0, 3, 0]])"
+   ],
+   "quiet": [
+    "The cube has 6 faces, 12 edges and 8 corners in total.",
+    "Walk 1 block north, then 2 blocks east to reach the shop.",
+    "The grid had 3 rows, and only 1 of them was full.",
+    "She moved 4 chairs and 2 tables before the party started.",
+    "The map shows the corners of the field are 40 meters apart.",
+    "The triangle has sides of 3, 4 and 5 centimeters.",
+    "The knight can move 2 squares one way and 1 square the other.",
+    "The farm has 30 cows, 3 horses and 10 goats."
+   ]
+  }
+ ],
+ "predictions": "digits inside bracketed numeric arrays or tuples 0.3-0.6; the same numbers in prose sentences below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "digits in code arrays",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card peaks: digits in np.array corner lists, coordinate tuples, QRect args, zfs status columns, date lists. Probe: np.array rows 0.531, list of tuples 0.486, zfs columns 0.236, QRect 0.205, date list 0.199; prose '10 and ends at 12' 0.015, '3 apples and 8 oranges' 0.013, code without numbers 0.008."
+}
