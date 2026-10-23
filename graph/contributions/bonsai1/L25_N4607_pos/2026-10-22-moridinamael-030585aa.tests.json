@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-22-moridinamael-030585aa",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N4607+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T02:01:23+00:00",
+ "roles": ["reads bonsai1/L24/N8804-"],
+ "neighbours": [
+  {
+   "unit": "L25/N4607",
+   "pole": "+",
+   "label": "Symbols inside an expression in program code: quoted string values, operators like = + < and multi-digit numbers (e.g. name = 'Alice', i < n, base_dir + 'x'); prose describing the same code stays quiet. Also fires in prose quoting an on-screen form prompt (a \"pick a username\" field).",
+   "fire": [
+    "It’s rather OK (though I don’t get why they use labels inside form fields and a “pick a username” field in this part of the process).",
+    "for (int i = 0; i < n; i++) { total += 1000; }",
+    "path = base_dir + '/config/settings.json'",
+    "if count >= 250: print(\"limit reached\")",
+    "const greeting = \"Hello, \" + user.firstName;",
+    "while (x != 1024) x = x * 2;",
+    "SELECT * FROM users WHERE age > 18 AND city = 'Paris';",
+    "timeout = 3600 * retries + 15"
+   ],
+   "quiet": [
+    "Room 2500 is on the left; the lift is on the right.",
+    "The code sets the name variable to Alice.",
+    "The loop counts upward until it reaches the limit, adding a fixed amount each time.",
+    "The path is built by joining the base directory with the config file name.",
+    "If the count gets too high, the program prints a warning.",
+    "The greeting combines a friendly word with the user's first name.",
+    "The loop keeps doubling the value until it reaches the target.",
+    "The query returns adult users who live in Paris."
+   ]
+  }
+ ],
+ "predictions": "most code lines fire above 0.20; the prose descriptions stay under 0.15; the form-prompt leak fires.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo"
+  ]
+ }
+}
