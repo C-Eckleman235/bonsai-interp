@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-23-moridinamael-298f3874",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N1890-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T13:27:38+00:00",
+ "neighbours": [
+  {
+   "unit": "L34/N1890",
+   "pole": "-",
+   "label": "Dense: on for almost all text (prose, code, any language) at about 0.3-0.6 of its max, with no reliable quiet context; its top examples are inner pieces of split words (underst|aff|ed, inc|orpor|ates), but whole words score about the same",
+   "short": "dense: on for almost all text",
+   "unit_kind": "dense / positional",
+   "confidence": "low",
+   "roles": ["reads bonsai1/L32/N3693-"],
+   "notes": "Card flags dense (77% of tokens >0.1 max, 34% >0.3 max). Probes: plain sentences 0.35-0.6, split-word twins (cantankerous/grumpy, flabbergasted/amazed) equal; only 'understaffed' (0.88) clearly above the floor. Solver: no silent on-concept text; OCR garble and 'Hello.' fire 0.4-0.6. Test sentences written blind by a label-only author; an 8+8 test is not expected to pass for a dense unit. Step-in drop from bonsai1/L32/N3693- is ~0.00, so the reader link is very weak.",
+   "fire": [
+    "heart, ana for those who haVe not v",
+    "J The poUee say that las: night's ram",
+    "The committee was understaffed and incorporated three new volunteers last spring.",
+    "Her antidisestablishmentarian views puzzled the hyperventilating reporter.",
+    "def recalibrate_thermocouple(readings): return [r * 1.07 for r in readings]",
+    "Die Donaudampfschifffahrtsgesellschaft veröffentlichte gestern ihren Jahresbericht.",
+    "The photosynthesizing phytoplankton were quantified by spectrophotometry.",
+    "He mispronounced 'Worcestershire' while microwaving the leftovers."
+   ],
+   "quiet": [
+    "The team was short of staff and took on three new helpers last spring.",
+    "Her odd views puzzled the out-of-breath man.",
+    "x = 1",
+    "Die Firma gab gestern ihren Bericht aus.",
+    "The small sea plants were counted with a light test.",
+    "He said the name wrong while he warmed up the food.",
+    "La ciudad hizo de nuevo el teatro.",
+    "Our plan puts too much weight on links."
+   ]
+  }
+ ],
+ "predictions": "Expected to fail: dense unit, near misses likely reach 0.3+.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "blind-room"
+  ]
+ }
+}
