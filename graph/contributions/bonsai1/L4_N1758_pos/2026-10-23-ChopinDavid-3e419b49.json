@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-3e419b49",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N1758+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T13:28:20+00:00",
+ "recipe": {
+  "toolchain_commit": "c07016dd",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N1758_pos/2026-10-23-ChopinDavid-3e419b49.tests.json"
+ },
+ "label": "the first token of a new line that opens a heading or caption (Evidence, END, NTS, LAGUNA), against the same words mid-sentence",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N1758_pos/2026-10-23-ChopinDavid-3e419b49.tests.json",
+   "prereg_commit": "c07016dd",
+   "author": "ChopinDavid",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.55,
+     "peak": "Evidence"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.933,
+     "peak": "END"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.47,
+     "peak": "End"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.182,
+     "peak": " Fish"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.403,
+     "peak": "Evidence"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.544,
+     "peak": "END"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.421,
+     "peak": "End"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.017,
+     "peak": "ANTA"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.161,
+     "peak": " survey"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.091,
+     "peak": " report"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.006,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.031,
+     "peak": " Lee"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.003,
+     "peak": " where"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.141,
+     "peak": " thread"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.039,
+     "peak": " endemic"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.114,
+     "peak": " reported"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.906,
+    "median_fire": 0.446,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "c07016dd",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "line-opening heading token",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: max only 1.76, gate-closed regime 94%, broad 1.3%; peaks 'Evidence' after a newline, 'END OF COMMENTS', 'NT'S, 'LAG'UNA, 'End'angered. Probe: 'END OF COMMENTS' 0.761, newline 'Evidence of water' 0.553, 'Endangered status' 0.397, 'NTS sheet' 0.274, 'LAGUNA' 0.232; 'The evidence of water' -0.008, 'gave evidence in court' 0.024.",
+ "selection": "random draw"
+}

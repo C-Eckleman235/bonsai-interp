@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-2db22e46",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N4594-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-23T13:28:18+00:00",
+ "recipe": {
+  "toolchain_commit": "c07016dd",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N4594_neg/2026-10-23-ChopinDavid-2db22e46.tests.json"
+ },
+ "label": "the token 'hi' / 'HI' (as a word piece or the greeting), against words where 'hi' is not its own token",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N4594_neg/2026-10-23-ChopinDavid-2db22e46.tests.json",
+   "prereg_commit": "c07016dd",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.749,
+     "peak": "hi"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.725,
+     "peak": "hi"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.779,
+     "peak": "hi"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.592,
+     "peak": "hi"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.773,
+     "peak": "hi"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.788,
+     "peak": "HI"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.612,
+     "peak": "hi"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.666,
+     "peak": "hi"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.028,
+     "peak": "i"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.037,
+     "peak": "i"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.011,
+     "peak": "i"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.091,
+     "peak": " Delhi"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.003,
+     "peak": " brothers"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.043,
+     "peak": "i"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.06,
+     "peak": " hills"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.084,
+     "peak": "ishi"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.737,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "c07016dd",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "token 'hi'",
+ "unit_kind": "token",
+ "confidence": 0.75,
+ "notes": "Card: 'hi' x23, 'HI' x7, ' hi' x2 (ahi, Dive-hi, Haru-hi, N-HI, O-hi, Le-hi). Probe: 'Ohi' 0.929, 'ahi' 0.899, 'NHI' 0.800, 'Lehi' 0.792, 'Dhivehi' 0.665, greeting ' hi' 0.547; ' Delhi' (one token) 0.077, floor 0.003-0.005. Tokenizer checked: Bhi, Ruhi, Sohi, Tohi, Ozhi, Abhi, Rakhi, OHI split off 'hi'/'HI'; Mahi, Kohi, Nehi, Rahi, Jehi, Rishi, Delhi do not.",
+ "selection": "random draw"
+}
