@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-6c648969",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N9118-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T09:19:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N9118",
+   "pole": "-",
+   "label": "word-initial consonant-cluster piece ' sl' / ' fl' / ' сл' tokenized apart from the rest of its word",
+   "fire": [
+    "Over the summer my cousin got much slimmer by cycling to work.",
+    "The children loved the fluffier towels at the hotel.",
+    "Near the coast the land becomes flatter and wetter.",
+    "Эта задача оказалась гораздо сложнее, чем мы думали.",
+    "После болезни он чувствовал себя очень слабым.",
+    "Workers pumped the grey slurry out of the flooded mine.",
+    "The old dog fell into a deep slumber by the fire.",
+    "His excuse sounded flimsy to everyone in the room."
+   ],
+   "quiet": [
+    "Over the summer my cousin got much stronger by cycling to work.",
+    "The children loved the softer towels at the hotel.",
+    "Near the coast the land becomes slick and wetter.",
+    "Эта задача оказалась гораздо проще, чем мы думали.",
+    "После болезни он чувствовал себя очень усталым.",
+    "Workers painted a new slogan on the wall of the mine.",
+    "The old dog lay on its flank by the fire.",
+    "His excuse sounded weak to everyone in the room."
+   ]
+  }
+ ],
+ "predictions": "Fire on ' sl'/' fl'/' сл' when the tokenizer splits the word (sl|immer, fl|atter, сл|ожн); near misses use whole-token sl/fl words (slick, slender, flank, slogan) or synonyms in the same frames.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split ' sl'/' fl'/' сл' onset",
+ "unit_kind": "spelling unit",
+ "confidence": "medium",
+ "notes": "Card: ' sl' x9, ' сл' x6, ' fl' x4. Probe: сложнее 0.972, slimmer 0.764, fluffier 0.718, flatter 0.592, слабый 0.581, slumber 0.426; synonyms narrower 0.006, lower 0.036. Whole-token sl/fl words are untested, so half the near misses use them as the real test of 'split'."
+}

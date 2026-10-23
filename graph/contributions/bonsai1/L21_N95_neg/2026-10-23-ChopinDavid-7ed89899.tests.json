@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-7ed89899",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N95-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T09:19:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L21/N95",
+   "pole": "-",
+   "label": "digit suffix on a numbered identifier in code (value1, key2, item3)",
+   "fire": [
+    "name1 = 'red'\nname2 = 'blue'\nprint(name1 + name2)",
+    "total = 0\nprice1 = 4.50\nprice2 = 3.25\ntotal = price1 + price2",
+    "def merge(list1, list2):\n    return list1 + list2",
+    "user1 = User('ana')\nuser2 = User('ben')\nuser1.follow(user2)",
+    "import numpy as np\narr1 = np.zeros(3)\narr2 = np.ones(3)",
+    "if score1 > score2:\n    winner = 'home'",
+    "path1 = 'data/a.csv'\npath2 = 'data/b.csv'\nfiles = [path1, path2]",
+    "x = 5\nkey1 = 'id'\nval1 = 42\nd = {key1: val1}"
+   ],
+   "quiet": [
+    "first = 'red'\nsecond = 'blue'\nprint(first + second)",
+    "total = 0\nprice = 4.50\ntax = 3.25\ntotal = price + tax",
+    "def merge(left, right):\n    return left + right",
+    "ana = User('ana')\nben = User('ben')\nana.follow(ben)",
+    "import numpy as np\nzeros = np.zeros(3)\nones = np.ones(3)",
+    "if home > away:\n    winner = 'home'",
+    "src = 'data/a.csv'\ndst = 'data/b.csv'\nfiles = [src, dst]",
+    "x = 5\nkey = 'id'\nval = 42\nd = {key: val}"
+   ]
+  }
+ ],
+ "predictions": "Fire on the digit of numbered variable names in code; near misses are the same code with unnumbered names.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "digit suffix in code identifier",
+ "unit_kind": "token",
+ "confidence": "low",
+ "notes": "Card: '1' x7 among mixed code pieces ('=False', '_p', '\\n'). Probe: 'value1' 0.482; every other code probe (keyword arg, set_xscale, def send_css, newline) 0.008-0.094, so only the numbered-identifier reading has support, and from one probe."
+}
