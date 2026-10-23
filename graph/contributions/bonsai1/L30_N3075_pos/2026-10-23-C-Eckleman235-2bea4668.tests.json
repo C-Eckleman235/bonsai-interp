@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-23-C-Eckleman235-2bea4668",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N3075+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T23:02:51+00:00",
+ "selection": "concept search: echoes (digit family)",
+ "neighbours": [
+  {
+   "unit": "L30/N3075",
+   "pole": "+",
+   "label": "the token right before a 4 in a number that is being copied from earlier in the same text; quiet before a 4 the text gives no reason to expect, before a different copied digit, and at the end of a counting run",
+   "fire": [
+    "The gate code is 7714; punch in 7714 when you arrive",
+    "Flight 284 departs at nine; passengers for flight 284 should board",
+    "Lot 6349 sold for a record; the buyer of lot 6349 was anonymous",
+    "Dial extension 504 for sales; that's extension 504",
+    "The serial ends in 4471, and the receipt also says 4471",
+    "His jersey was number 44, and the kids all wanted 44",
+    "Account 90124 is frozen; call about account 90124",
+    "Bin 3405 holds the spare bolts; check bin 3405"
+   ],
+   "quiet": [
+    "The gate code is 7717; punch in 7717 when you arrive",
+    "Flight 286 departs at nine; passengers for flight 286 should board",
+    "Lot 6359 sold for a record; the buyer of lot 6359 was anonymous",
+    "Dial extension 507 for sales; that's extension 504",
+    "The serial ends in 8871, and the receipt also says 8871",
+    "His jersey was number 66, and the kids all wanted 66",
+    "The volumes numbered 31, 32, 33, 34 are missing",
+    "Bin 3505 holds the spare bolts; check bin 3505"
+   ]
+  }
+ ],
+ "predictions": "7/8 fire >= 0.2; near misses under 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "which",
+   "card",
+   "probe"
+  ]
+ },
+ "short": "before a copied 4 (round 2)",
+ "unit_kind": "predictive",
+ "confidence": 0.6,
+ "notes": "Second round with a narrower label (round 1: #795, failed, AUROC 0.625). Reason, written before this test: round 1's copied-number items fired 0.46-0.64 and every counting-run item read about 0.00, so the counting clause was wrong; this round claims copies only and uses a counting run as a near miss. Round-2 triage probes (exploratory, none reused): copied flight number 0.54, copied phone number 0.61, copied invoice 0.32, copied oven setting 0.27; runs ending in 4 (31..34) 0.01. Scoring runs on a Modal L40S (bfloat16; PARITY OK on Modal)."
+}
