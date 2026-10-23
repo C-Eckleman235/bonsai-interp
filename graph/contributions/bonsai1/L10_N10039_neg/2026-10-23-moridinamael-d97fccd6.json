@@ -1,0 +1,157 @@
+{
+ "id": "2026-10-23-moridinamael-d97fccd6",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N10039-",
+ "contributor": "moridinamael",
+ "created": "2026-10-23T07:46:31+00:00",
+ "recipe": {
+  "toolchain_commit": "10a5d02e",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N10039_neg/2026-10-23-moridinamael-d97fccd6.tests.json"
+ },
+ "label": "a person's leisure or off-duty time, read on the word that sets it up (spare/free/off before 'time', downtime, off duty, a break, 'when not working/attending'); the bare 'when not ...' clause also fires moderately even for objects; quiet for spare/free in other senses (a spare part, free of charge) and for being busy or on duty",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L10_N10039_neg/2026-10-23-moridinamael-d97fccd6.tests.json",
+   "prereg_commit": "10a5d02e",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.382,
+     "peak": " not"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.892,
+     "peak": " spare"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.948,
+     "peak": " free"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.402,
+     "peak": " not"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.328,
+     "peak": " between"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.464,
+     "peak": " duty"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.207,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.695,
+     "peak": " off"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.088,
+     "peak": " duty"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.029,
+     "peak": " spare"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.042,
+     "peak": " his"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.016,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.147,
+     "peak": " between"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.136,
+     "peak": " duty"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.044,
+     "peak": " their"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.0,
+     "peak": " you"
+    }
+   ],
+   "probed_before": {
+    "fire": 1,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.433,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "10a5d02e",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Test sentences written blind by a second author who saw only the label. Two items (the solver leak 'When not in use...' and 'He was on duty all night...') were scored during probing/solver. Feeder chosen from resident attribution (top MLP feeder of L11/N1769-); play step ablation hit CUDA OOM on stream, so no ablation drop or feeds edge is recorded.",
+ "roles": [
+  "feeds bonsai1/L11/N1769-"
+ ]
+}
