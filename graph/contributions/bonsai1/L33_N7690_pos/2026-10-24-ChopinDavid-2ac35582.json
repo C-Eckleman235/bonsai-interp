@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-2ac35582",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N7690+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-24T18:29:33+00:00",
+ "recipe": {
+  "toolchain_commit": "fe8b40ec",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L33_N7690_pos/2026-10-24-ChopinDavid-2ac35582.tests.json"
+ },
+ "label": "German degree and scope particles that intensify or hedge a quantity (mehr oder weniger, sogar, so viele, erheblich, weitaus), as against plain German sentences without them",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L33_N7690_pos/2026-10-24-ChopinDavid-2ac35582.tests.json",
+   "prereg_commit": "fe8b40ec",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.052,
+     "peak": " oder"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.279,
+     "peak": "ch"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 1.061,
+     "peak": "lich"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.548,
+     "peak": " so"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.56,
+     "peak": "us"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 1.063,
+     "peak": " oder"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.634,
+     "peak": " Minuten"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.736,
+     "peak": "lich"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.084,
+     "peak": "ung"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.128,
+     "peak": " Sommer"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.197,
+     "peak": "ucht"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.225,
+     "peak": " gef"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.279,
+     "peak": " f"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.045,
+     "peak": "aut"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.109,
+     "peak": " um"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.191,
+     "peak": " Kosten"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.992,
+    "median_fire": 0.685,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "fe8b40ec",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "German degree/scope particles",
+ "unit_kind": "meaning",
+ "confidence": 0.45,
+ "notes": "Card: ' oder' x4 (mehr oder weniger), 'lich' (erheblich), ' sehr', ' sogar', ' so' vielen, weitaus. Probe: mehr oder weniger 1.024, sogar 0.720, so vielen 0.675, erheblich 0.418, weitaus 0.394; plain German 0.290/0.194 (risk: German baseline), English 'more or less' 0.004, French 0.005.",
+ "selection": "random draw"
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-e4933035",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L16/N7204-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T18:20:42+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L16/N7204",
+   "pole": "-",
+   "label": "an off-by-one or index offset inside a Python size or index expression (range(n+1), (rows + 1, cols + 1), (i + 1) % len), as against the same code without the offset",
+   "fire": [
+    "m = len(text)\nmemo = [0 for _ in range(m+1)]\nmemo[m] = 1",
+    "h, w = len(s), len(t)\ntable = zeros((h + 1, w + 1))\ntable[0, 0] = 0",
+    "for k in range(len(nodes)):\n    a = nodes[k]\n    b = nodes[(k + 1) % len(nodes)]",
+    "size = len(arr)\nprefix = [0] * (size + 1)\nfor i in range(size):\n    prefix[i + 1] = prefix[i] + arr[i]",
+    "n = len(coins)\nways = [0 for _ in range(total+1)]\nways[0] = 1",
+    "for j in range(len(ring)):\n    nxt = ring[(j + 1) % len(ring)]\n    edges.append((ring[j], nxt))",
+    "rows = len(grid)\nseen = [[False] * (cols + 1) for _ in range(rows + 1)]",
+    "L = len(seq)\ncost = [[0] * (L + 1) for _ in range(L + 1)]"
+   ],
+   "quiet": [
+    "m = len(text)\nmemo = [0 for _ in range(m)]\nmemo[0] = 1",
+    "h, w = len(s), len(t)\ntable = zeros((h, w))\ntable.fill(0)",
+    "for k in range(len(nodes)):\n    a = nodes[k]\n    print(a.name)",
+    "size = len(arr)\ntotal = sum(arr)\nprint(size, total)",
+    "n = len(coins)\nways = [0 for _ in coins]\nprint(n)",
+    "for j in range(len(ring)):\n    node = ring[j]\n    edges.append((node, node))",
+    "rows = len(grid)\nseen = [[False] * cols for _ in range(rows)]",
+    "L = len(seq)\nlabel = 'sequence of length ' + str(L)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-1.1 on the '1' or '%' of an index/size offset inside brackets; the same lines without the offset and non-index code below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "index offset (+1) in Python array code",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: '1' (xrange(n+1)), ' +' (c + 1), ' %' ((pointIndex + 1) % len), np.insert 0.0. Probe: range(n+1) 1.080, (i + 1) % 0.797, (rows + 1, cols + 1) 0.683, np.insert 0.500; same dp line without +1 0.113, string code 0.008, 'N // 2' 0.018."
+}

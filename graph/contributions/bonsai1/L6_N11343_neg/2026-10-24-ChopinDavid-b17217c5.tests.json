@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-b17217c5",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N11343-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T18:20:42+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L6/N11343",
+   "pole": "-",
+   "label": "a 'D'/'د' piece that is split off as its own token inside a name or a letter-range code (Bhau D|aji, أبو د|اود, F-15A-D, 220a-d), as against a standalone letter D or a whole-token name in the same position",
+   "fire": [
+    "The museum in Bombay holds many inscriptions copied by the scholar Bhau Daji.",
+    "Pilots flying the F-14A-D variants trained at the same base.",
+    "Please answer questions 4a-d before the end of the lesson.",
+    "روى أبو داود هذا الحديث في كتاب الصلاة.",
+    "Engines 300a-d were tested during the second phase of the trials.",
+    "وقد ذكر أبو داود هذه الرواية في سننه.",
+    "The navy kept its A-6A-D bombers in service for many years.",
+    "Items 12a-d in the catalogue describe the bronze coins."
+   ],
+   "quiet": [
+    "The museum in Bombay holds many inscriptions copied by the scholar Ram Sharma.",
+    "Pilots flying the newest variants trained at the same base.",
+    "Please answer questions four and five before the end of the lesson.",
+    "روى البخاري هذا الحديث في كتاب الصلاة.",
+    "Engines three and four were tested during the second phase of the trials.",
+    "Her report card showed a D in physics and an A in art.",
+    "The navy kept its older bombers in service for many years.",
+    "Items twelve and thirteen in the catalogue describe the bronze coins."
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.6 on ' D', ' د' or '-D'/'-d' pieces in split names and letter-range codes; a standalone D (grade) and whole-token names below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-off D / د piece in a name or code",
+ "unit_kind": "token",
+ "confidence": 0.35,
+ "notes": "Card: ' D' x6, ' د' x5 (أبو د..., Bhau D|aji), '-D' (F-15A-D), '-d' (220a-d). Probe: Bhau Daji 0.459, أبو داود 0.546, F-15A-D 0.557, 220a-d 0.407; Daniel 0.227, Ram D. 0.131, Abu Dhabi 0.108, grade D 0.050."
+}
