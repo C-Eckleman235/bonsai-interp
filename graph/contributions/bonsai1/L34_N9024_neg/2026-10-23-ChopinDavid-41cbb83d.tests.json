@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-41cbb83d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N9024-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T03:20:32+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N9024",
+   "pole": "-",
+   "label": "the word-start piece ' pr' (and Russian ' пр') when the tokenizer splits a word after it (pr|udence, pr|icier, пр|есс), as against pr- words kept whole",
+   "fire": [
+    "The judge praised the jury for its prudence during the long trial.",
+    "Fresh berries have become pricier since the frost in April.",
+    "Her conduct during the crisis was praiseworthy and calm.",
+    "Investors acted prudently and sold their shares before the crash.",
+    "Как сообщила пресс-служба компании, завод откроется в мае.",
+    "The bakery prides itself on using flour from local mills.",
+    "Rents in the old town are pricier than in the suburbs.",
+    "Заявление сделал пресс-секретарь мэрии в понедельник."
+   ],
+   "quiet": [
+    "The judge thanked the jury for its patience during the long trial.",
+    "Fresh berries have become costlier since the frost in April.",
+    "Her conduct during the crisis was pristine and calm.",
+    "Investors acted wisely and sold their shares before the crash.",
+    "Как сообщила компания, завод откроется в мае.",
+    "The bakery charges a premium for flour from local mills.",
+    "Rents in the old town are higher than in the suburbs.",
+    "Заявление сделал секретарь мэрии в понедельник."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.75 where ' pr' or ' пр' is its own token; whole-token pr- words near 0",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split word-start ' pr'",
+ "unit_kind": "token",
+ "confidence": 0.75,
+ "notes": "Card: ' pr' x11, ' пр' x3, ' pro'/'-pr' in pr|udently, pr|aiseworthy, pr|icier, pr|ides. Probe: praiseworthy 0.746, пресс-служба 0.625, pricier 0.519, prudently 0.354, prides 0.197; premium, prowess, pristine (single tokens) all 0.001-0.003. Splits checked with tok.py."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-416b43ee",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6243-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T03:20:32+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N6243",
+   "pole": "-",
+   "label": "a lone word-start capital ' G' (or ' g') that the tokenizer splits off the rest of the word (G|iza, G|egend, g|aurus, G|obi), as against G- words kept whole",
+   "fire": [
+    "Every year thousands of tourists visit the Giza plateau at sunrise.",
+    "Snow leopards are rare in the Gobi but still seen by herders.",
+    "Wir wohnen in einer ruhigen Gegend am Stadtrand.",
+    "The gaur, which zoologists call Bos gaurus, grazes in the forest at dawn.",
+    "The guide pointed out the Great Pyramid of Giza from the bus.",
+    "Explorers found dinosaur eggs in the Gobi in the 1920s.",
+    "In dieser Gegend gibt es viele kleine Weinberge.",
+    "The bus to Giza leaves from the main square every hour."
+   ],
+   "quiet": [
+    "Every year thousands of tourists visit the Luxor temples at sunrise.",
+    "Snow leopards are rare in the Himalaya but still seen by herders.",
+    "Wir wohnen in einem ruhigen Viertel am Stadtrand.",
+    "The Indian bison, which zoologists call a wild ox, grazes in the forest at dawn.",
+    "The guide pointed out the tallest pyramid from the bus.",
+    "Explorers found dinosaur eggs in Mongolia in the 1920s.",
+    "In diesem Tal gibt es viele kleine Weinberge.",
+    "The bus to Gaza leaves from the main square every hour."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.7 on split ' G'/' g'; G- words with merged first pieces near 0",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split word-start ' G'",
+ "unit_kind": "token",
+ "confidence": 0.75,
+ "notes": "Card: ' G' x8, '-g', ' g', and Arabic ' الج'/'ج'. Probe: 'Bos gaurus' 0.706, 'Giza pyramids' 0.532, 'der Gegend' 0.514, 'Gobi desert' 0.475; 'Giraffe' (' Gir'), 'Gaza' (whole) 0.001, Cairo control 0.000. Splits checked with tok.py; Arabic left out because probed Arabic did not fire."
+}

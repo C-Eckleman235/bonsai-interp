@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-eeea9d81",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N5148+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T03:20:32+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N5148",
+   "pole": "+",
+   "label": "a full Python library name used as a namespace prefix before an attribute in code (' numpy'., ' tkinter'.), as against aliases, imports and prose mentions",
+   "fire": [
+    "    grid = numpy.zeros((10, 10))\n    grid[0, 0] = 1",
+    "    total = numpy.sum(values) / len(values)",
+    "    window = tkinter.Tk()\n    window.title('Demo')",
+    "    button = tkinter.Button(frame, text='OK')\n    button.pack()",
+    "    mask = numpy.isnan(data)\n    data[mask] = 0.0",
+    "    canvas = tkinter.Canvas(root, width=200, height=100)",
+    "    idx = numpy.argmax(scores)\n    print(idx)",
+    "    entry = tkinter.Entry(form)\n    entry.grid(row=0, column=1)"
+   ],
+   "quiet": [
+    "    grid = np.zeros((10, 10))\n    grid[0, 0] = 1",
+    "    total = sum(values) / len(values)",
+    "    window = Tk()\n    window.title('Demo')",
+    "    button = Button(frame, text='OK')\n    button.pack()",
+    "    mask = data == 0\n    data[mask] = 1.0",
+    "We built the drawing app with tkinter during a weekend workshop.",
+    "    idx = scores.index(max(scores))\n    print(idx)",
+    "My first project used numpy to analyse rainfall records."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on ' numpy'/' tkinter' before '.'; 'np.', 'import numpy' and prose mentions below 0.25",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "library name as code namespace (numpy.)",
+ "unit_kind": "context",
+ "confidence": 0.7,
+ "notes": "Card: ' numpy' x12, ' QtGui' x8, ' tkinter' as attribute prefixes. Probe: 'x = numpy.array' 0.821, 'root = tkinter.Tk()' 0.888, 'pandas.read_csv' 0.298, '(QtGui' merged token 0.227; 'np.array' 0.248, 'import numpy' 0.144, prose 'installed numpy and pandas' 0.024, 'math.sqrt/os.path' 0.201."
+}
