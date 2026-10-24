@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-d2cf0b5e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N1418-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T14:19:44+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L24/N1418",
+   "pole": "-",
+   "label": "the label word of a numbered series right before its number (Week 2, Chapter 3, # 5, rows[1]), as against the same words used without a number",
+   "fire": [
+    "Unit 1: Fractions\nUnit 2: Decimals\nUnit 3: Percentages",
+    "Our trip began badly. Day 1 was rainy. Day 2 was windy. Day 3 was finally sunny.",
+    "The manual has three sections.\nPart 1 covers setup.\nPart 2 covers testing.\nPart 3 covers release.",
+    "Recipe card\nSTEP # 1: Mix the flour\nSTEP # 2: Add the eggs",
+    "def first_two(data):\n    x = data.rows[0]\n    y = data.rows[1]\n    return x, y",
+    "The show improved. Episode 4 introduced the villain, and Episode 5 revealed his plan.",
+    "It was close. Round 1 went to the champion, but Round 2 went to the challenger.",
+    "The game ramps up. Level 7 is hard, and Level 8 is even harder."
+   ],
+   "quiet": [
+    "The course starts with fractions, then moves on to decimals and percentages.",
+    "Our trip began badly. The first day was rainy and the rest was sunny.",
+    "The manual has three sections covering setup, testing and release.",
+    "Recipe card\nFirst mix the flour, then add the eggs.",
+    "def first_two(data):\n    x = data.rows\n    y = data.columns\n    return x, y",
+    "The show improved. The new episode introduced the villain and revealed his plan.",
+    "It was close. The early rounds went to the champion, the late ones to the challenger.",
+    "The game ramps up. This level is hard, and the next one is even harder."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.7 on ' Week', ' Chapter', ' #', '.rows' etc. when a number follows in a repeated series; the same words without numbers below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "label before a series number",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: '.devices' x4 (cfg.devices[1]), ' #' (EXPERIMENT # 6), ' Week' (Journal Week 2), 'Book' (Book 5), '[' (a[0]). Probe: TEST # 0.663, Lesson Plan Week 0.646, Chapter 0.406, config.servers[0] 0.376; 'Chapter one' 0.073, 'this week' 0.005, config.servers 0.007."
+}
