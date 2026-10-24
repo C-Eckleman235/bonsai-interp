@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-9a8a59f7",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N10279+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T02:20:32+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N10279",
+   "pole": "+",
+   "label": "a term that repeats an earlier item in a list, menu or code structure (the second 'Music' in a nav bar, a repeated path key), as against the same words once in prose",
+   "fire": [
+    "Home | News | Football News | Football Scores | Football Videos | Contact",
+    "urls = {\n    '/api/items/{id}/reviews': list_reviews,\n    '/api/items/{id}/photos': list_photos,\n}",
+    "- VAT Definition and Scope\n- VAT Registration Steps\n- VAT Return Deadlines",
+    "The Summer Camp Schedule, Summer Camp Menu and Summer Camp Packing List are now online.",
+    "Products | Garden Tools | Garden Furniture | Garden Lighting | Sale",
+    "config['db_host'] = env.get('DB_HOST')\nconfig['db_port'] = env.get('DB_PORT')",
+    "FAQ: Shipping Rates - Shipping Times - Shipping Zones",
+    "    if user_new_id < 0:\n        reset()\n    if user_new_id >= 0:\n        save()"
+   ],
+   "quiet": [
+    "We read the football news on the train before the match.",
+    "The items in the photos were listed for review by staff.",
+    "The new VAT rules were explained at the meeting yesterday.",
+    "Our summer camp ends with a picnic by the lake.",
+    "She bought new garden tools at the hardware store.",
+    "The database host was moved to a new server last week.",
+    "Shipping was slow during the holidays this year.",
+    "If the new user forgets the password, the site sends a reset link."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on repeated items in menus, lists and code; prose with the words once near 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "repeated item in list/menu/code",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: '}/' in a second route key, '_new' on a repeated variable, ' Music' after 'Music Links |', a repeated 'Easter Experience', ' GST' in a list, ' FX' in a menu. Probe: route dict '}/' 0.596, GST list 0.590, 'Easter Experience' repeat 0.536, nav bar 0.361, repeated self.x 0.170; prose with the same words 0.040-0.053. Unclear whether repetition or list structure is the cause."
+}

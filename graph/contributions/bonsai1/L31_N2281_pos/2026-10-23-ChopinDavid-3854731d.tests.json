@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-3854731d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N2281+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T02:20:32+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L31/N2281",
+   "pole": "+",
+   "label": "contexts that predict the word 'taste' (seasoning 'to taste', 'good/poor taste' judgments), peaking on the word before 'taste'",
+   "fire": [
+    "Add a pinch of sugar and salt to taste, then simmer for ten minutes.",
+    "Everyone agrees the designer has impeccable taste in fabrics.",
+    "Sweeten the tea with honey to taste before pouring.",
+    "Critics said the advertisement was in bad taste.",
+    "Finish the sauce with lemon juice and black pepper to taste.",
+    "She admired his refined taste in old jazz records.",
+    "The comedian's remarks were considered in very poor taste.",
+    "Season the roasted vegetables with sea salt to taste."
+   ],
+   "quiet": [
+    "Add a cup of water to the pot, then simmer for ten minutes.",
+    "Everyone agrees the designer works in a studio near the river.",
+    "Pour the tea into small cups before the guests arrive.",
+    "Critics said the advertisement was too long.",
+    "Finish the sauce by stirring it gently over low heat.",
+    "She bought a box of old jazz records at the fair.",
+    "The comedian's remarks were reported in the morning papers.",
+    "Roast the vegetables in a hot oven until they are soft."
+   ]
+  }
+ ],
+ "predictions": "fire 0.45-1.0 on the token before 'taste' (setup alone fires); near misses remove the seasoning or judgment setup and stay below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predicts 'taste'",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: 'good taste', 'music taste', 'salt and pepper to taste', 'sweeten to your liking', 'in bad taste'; promotes taste/tastes/flavor/вкус/味. Probe: 'excellent taste' 1.053, 'salt and pepper to taste' 0.986, 'in poor taste' 0.449; but 'salt and pepper to the brim' 0.986, 'in poor form' 0.449, 'you have a large apartment' 0.493 (the setup fires, not the word). 'music taste' only 0.116. Near misses drop the setup entirely."
+}

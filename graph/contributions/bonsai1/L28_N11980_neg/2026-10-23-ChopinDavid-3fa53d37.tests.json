@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-3fa53d37",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N11980-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T02:20:32+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N11980",
+   "pole": "-",
+   "label": "injury and body-symptom health advice, peaking just before a body part or ailment, as against the same sentence frames about non-medical trouble",
+   "fire": [
+    "Heavy screen use can lead to dry eyes and blurred vision, doctors warn.",
+    "He complained of dizziness, nausea and ear pain after the flight.",
+    "Poor posture at a desk can cause strain in your neck and shoulders.",
+    "If a cut on your finger becomes swollen, see a nurse.",
+    "Lifting with a bent back can cause slipped discs and muscle spasms.",
+    "Always wear gloves to protect your hands from chemical burns.",
+    "A red, itchy rash on the skin may point to an allergy.",
+    "Runners often suffer from sore knees and swollen ankles."
+   ],
+   "quiet": [
+    "Heavy screen use can lead to late nights and missed deadlines, managers warn.",
+    "He complained of delays, queues and lost luggage after the flight.",
+    "Poor planning at a desk can cause strain in a team's schedule.",
+    "If a payment on an account becomes overdue, call the bank.",
+    "Lifting with a broken crane can cause delays and costly repairs.",
+    "Always wear a badge so visitors know you work here.",
+    "A red, glossy finish on the car may point to a new paint job.",
+    "Runners often complain about crowded paths and muddy trails."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 in symptom/injury advice; the same frames about bills, travel or machines below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "body-part injury/symptom context",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: 'difficulties with thinking', 'ear aches', 'herniated discs', 'protect your eyes', 'irregular mole or patch of skin', 'your muscles'; promotes immobil/brace/fractures/cast. Probe: 'herniated discs' 0.883, 'fatigue and ear infections' 0.709, 'mole or patch of skin' 0.610, 'protect your eyes' 0.397; 'delays, fatigue and late trains' 0.011, 'irregular charge on your bill' 0.001, 'wear on the forklift' 0.101; but 'protect your reputation' 0.397 (peak on ' your' before the noun), so near misses change the lead-in, not only the noun."
+}
