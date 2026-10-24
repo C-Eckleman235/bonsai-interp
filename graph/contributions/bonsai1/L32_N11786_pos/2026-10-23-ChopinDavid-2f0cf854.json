@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-2f0cf854",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N11786+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-24T04:30:27+00:00",
+ "recipe": {
+  "toolchain_commit": "37286f82",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L32_N11786_pos/2026-10-23-ChopinDavid-2f0cf854.tests.json"
+ },
+ "label": "the course of a patient's medical care (discharge, surgery, therapy, monitoring), as against the same sentence frames about objects, training or ordinary obligations",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L32_N11786_pos/2026-10-23-ChopinDavid-2f0cf854.tests.json",
+   "prereg_commit": "37286f82",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.509,
+     "peak": " is"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.317,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.06,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.417,
+     "peak": " be"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.493,
+     "peak": "edic"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.126,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.223,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.572,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.009,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.036,
+     "peak": " roof"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.004,
+     "peak": " includes"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.096,
+     "peak": " be"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.134,
+     "peak": " tyre"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.008,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.032,
+     "peak": " boiler"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.048,
+     "peak": " and"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.953,
+    "median_fire": 0.367,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "37286f82",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "clinical patient management",
+ "unit_kind": "meaning",
+ "confidence": 0.4,
+ "notes": "Card peaks on function words inside clinical management prose: ' after' in 'PE patients can be discharged after initial emergency room assessment', ' to' in 'She needs to have surgery', ' and' in 'physical therapy and nonsteroidal anti-inflammatory drugs', ' be' in 'The patient must be prepared', ' Medicine', ' Imaging'. Probe: discharge after observation 0.319, needs surgery 0.278, physical therapy and drugs 0.222, residency in Emergency Medicine 0.171, monitored during hospital stay 0.053; parallel non-medical frames 0.002-0.019. The meaning is clean but the level is low.",
+ "selection": "random draw"
+}
