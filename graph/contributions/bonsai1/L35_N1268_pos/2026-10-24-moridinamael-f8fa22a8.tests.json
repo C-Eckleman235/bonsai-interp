@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-24-moridinamael-f8fa22a8",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N1268+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T22:16:56+00:00",
+ "roles": ["reads bonsai1/L34/N61-"],
+ "neighbours": [
+  {
+   "unit": "L35/N1268",
+   "pole": "+",
+   "label": "In Arabic text, the word piece right after the opening ت (ta-) of certain ta- verbal nouns that the tokenizer splits there: التضخم, تضامن, تضحيات, ترميم, تمويل, ترفيهية, تهدد (also طمأنينة); common ta- words kept whole (تعليم, تقرير, تطوير), the same roots without ta- (مضاعفات, يهدد) and English translations stay low. Narrow side branches: ' AND' after \"AS IS\" in BSD license text, and ' or' closing an English list like 'debate, arguments, polling, or'.",
+   "short": "split Arabic ta- nouns (tadakhum, tarmim, tamwil)",
+   "fire": [
+    "We expect answers to be supported by facts, references, or specific expertise, but this question will likely solicit debate, arguments, polling, or extended discussion.",
+    "ارتفع معدل التضخم في البلاد إلى سبعة بالمئة هذا العام.",
+    "أعلن العمال تضامنهم الكامل مع زملائهم المضربين.",
+    "قدم الشعب تضحيات كبيرة من أجل الاستقلال.",
+    "بدأت البلدية أعمال ترميم المسجد القديم في وسط المدينة.",
+    "حصل المشروع على تمويل من البنك الدولي.",
+    "افتتحت الحكومة مرافق ترفيهية جديدة للأطفال على الشاطئ.",
+    "تهدد موجة الجفاف المحاصيل الزراعية في الجنوب."
+   ],
+   "quiet": [
+    "Inflation in the country reached seven percent this year",
+    "Inflation in the country rose to seven percent this year.",
+    "ركزت الحكومة على تطوير التعليم في القرى هذا العام.",
+    "قدم الشعب جهوداً كبيرة من أجل الاستقلال.",
+    "نشرت البلدية تقريراً عن حالة المسجد القديم في وسط المدينة.",
+    "The project received funding from the World Bank.",
+    "قد تسبب العدوى مضاعفات خطيرة إذا لم تعالج.",
+    "الجفاف يهدد المحاصيل الزراعية في الجنوب."
+   ],
+   "notes": "Step-in reader of bonsai1/L34/N61- (drop 0.01). Feeders first: L1/N8089+ (' ط') and L30/N8474- ('get a free quote', explains the 'quick price' top). Solver leak (list ' or') placed by the blind author. Test sentences written blind by a label-only author."
+  }
+ ],
+ "predictions": "Arabic ta- fire items 0.2-0.45; English and unsplit/no-ta near misses near 0; expect hold if the solver leak line reproduces.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "neighbors",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "quick-test"
+  ]
+ }
+}
