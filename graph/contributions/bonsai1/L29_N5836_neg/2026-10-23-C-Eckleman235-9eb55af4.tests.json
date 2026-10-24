@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-23-C-Eckleman235-9eb55af4",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N5836-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T02:54:27+00:00",
+ "selection": "concept search: world atlas tier 1 (branch 19)",
+ "neighbours": [
+  {
+   "unit": "L29/N5836",
+   "pole": "-",
+   "label": "the word 'Kentucky' in any use (the state, the Kentucky Derby, Kentucky Fried Chicken, Kentucky bourbon and the Kentucky Wildcats) and the bracket that opens a phone area code after a Kentucky address; Kentucky places and history without the word read only weakly, and so do Tennessee whiskey contexts, so neither is claimed; the same frames with distant states stay low",
+   "fire": [
+    "A Kentucky colonel's portrait hangs in every franchise.",
+    "Kentucky farmers raised tobacco for generations.",
+    "The Kentucky Derby winner was retired to stud.",
+    "We stopped at a Kentucky Fried Chicken off the interstate.",
+    "Contact: 400 Broadway, Paducah, KY 42001. Phone (270) 555-0144.",
+    "The Kentucky Wildcats recruited another top guard.",
+    "A Kentucky bourbon won the gold medal in San Francisco.",
+    "Kentucky's governor declared a state of emergency after the floods."
+   ],
+   "quiet": [
+    "A Colonel Sanders portrait hangs in every franchise.",
+    "Oregon farmers raised hazelnuts for generations.",
+    "The Belmont Stakes winner was retired to stud.",
+    "We stopped at a Taco Bell off the interstate.",
+    "Contact: 400 Broadway, Eugene, OR 97401. Phone (541) 555-0144.",
+    "The Arizona Wildcats recruited another top guard.",
+    "A Scotch whisky won the gold medal in San Francisco.",
+    "Maine's governor declared a state of emergency after the floods."
+   ]
+  }
+ ],
+ "predictions": "7/8 fire >= 0.3; near misses under 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "which",
+   "card",
+   "probe"
+  ]
+ },
+ "short": "the word Kentucky (round 2)",
+ "unit_kind": "lexical",
+ "confidence": 0.65,
+ "notes": "Second round with a narrower label (round 1 #828: held, AUROC 1.00, but the near miss 'Daniel Boone led settlers … into Virginia' read 0.32 with no 'Kentucky'). Reason, written before this test: probes after round 1 (exploratory, none reused) show Kentucky context without the word reading weakly (Louisville bats 0.34, Lincoln's birthplace near Hodgenville 0.31, Daniel Boone on the frontier 0.24, bluegrass 0.19, bourbon barrels 0.14) and Tennessee whiskey 0.32; Davy Crockett 0.10. So this round claims the word and the address bracket only, says the weak contexts openly, and keeps near misses far from Kentucky and Tennessee. Scoring runs on a Modal L40S (bfloat16; PARITY OK on Modal)."
+}
