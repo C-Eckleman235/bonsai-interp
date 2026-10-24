@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-23-moridinamael-517fb89a",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N10586+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T01:01:30+00:00",
+ "roles": ["feeds bonsai1/L3/N10911+"],
+ "neighbours": [
+  {
+   "unit": "L1/N10586",
+   "pole": "+",
+   "label": "The opening mark of a comment or docstring (\"\"\", ''', #, //, /*) at the start of a line inside a function or class body in code, strongest right under the def/class header line, in any programming language. Plain code statements in the same slot stay near zero; a comment at the very top of a file before any code stays low; triple quotes used in prose or as a one-line query string outside a function stay low. Weak exception: a string opened inside a function body (print(\" or msg = \"\"\") can fire moderately (about 0.3-0.5).",
+   "short": "comment/docstring opener inside a function body",
+   "fire": [
+    "def area(r):\n    \"\"\"Return the area of a circle with radius r.\"\"\"\n    return 3.14 * r * r",
+    "class Stack:\n    \"\"\"A simple last-in, first-out container.\"\"\"\n    def __init__(self):\n        self.items = []",
+    "def load_config(path):\n    # Read the YAML file and fall back to defaults if missing\n    with open(path) as f:\n        return yaml.safe_load(f)",
+    "function sum(a, b) {\n    // add the two numbers together\n    return a + b;\n}",
+    "int max(int a, int b) {\n    /* return the larger of two integers */\n    return a > b ? a : b;\n}",
+    "def parse(line):\n    '''Split a CSV line into its fields.'''\n    return line.split(',')",
+    "public class Account {\n    // balance is stored in cents to avoid rounding errors\n    private long balance;\n}",
+    "fn square(x: i32) -> i32 {\n    // multiply the value by itself\n    x * x\n}"
+   ],
+   "quiet": [
+    "def area(r):\n    return 3.14 * r * r",
+    "def area(r):\n    print(\"computing the area\")\n    return 3.14 * r * r",
+    "def area(r):\n    result = 3.14 * r * r\n    return result",
+    "class Stack:\n    def __init__(self):\n        self.items = []",
+    "# config loader module, written for version 2\nimport yaml\nimport os",
+    "function sum(a, b) {\n    const total = a + b;\n    return total;\n}",
+    "int max(int a, int b) {\n    if (a > b) return a;\n    return b;\n}",
+    "She wrote \"\"\"hello\"\"\" in her notes, tripling the quotes for emphasis."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire; the print(\" near miss may reach about 0.3 (solver leak), others near zero",
+ "notes": "Step-out feeder of bonsai1/L3/N10911+, ranked first by attribution (chat feeders tool); play step ran out of GPU memory, so no zero-ablation drop was measured. Test sentences written blind by a label-only author. Solver leak: a string opened inside a function body (print(\").",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "quick-test"
+  ]
+ }
+}

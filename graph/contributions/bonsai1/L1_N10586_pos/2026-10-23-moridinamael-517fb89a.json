@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-23-moridinamael-517fb89a",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N10586+",
+ "contributor": "moridinamael",
+ "created": "2026-10-24T01:01:54+00:00",
+ "recipe": {
+  "toolchain_commit": "67c47e98",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L1_N10586_pos/2026-10-23-moridinamael-517fb89a.tests.json"
+ },
+ "label": "The opening mark of a comment or docstring (\"\"\", ''', #, //, /*) at the start of a line inside a function or class body in code, strongest right under the def/class header line, in any programming language. Plain code statements in the same slot stay near zero; a comment at the very top of a file before any code stays low; triple quotes used in prose or as a one-line query string outside a function stay low. Weak exception: a string opened inside a function body (print(\" or msg = \"\"\") can fire moderately (about 0.3-0.5).",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L1_N10586_pos/2026-10-23-moridinamael-517fb89a.tests.json",
+   "prereg_commit": "67c47e98",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.908,
+     "peak": " \"\"\""
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.719,
+     "peak": " \"\"\""
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.791,
+     "peak": " #"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.725,
+     "peak": " //"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.657,
+     "peak": " /*"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.824,
+     "peak": " '''"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.708,
+     "peak": " //"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.706,
+     "peak": " //"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.023,
+     "peak": " area"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.28,
+     "peak": "(\""
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.081,
+     "peak": " result"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.056,
+     "peak": " __"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.094,
+     "peak": "#"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.038,
+     "peak": "}"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.039,
+     "peak": " ("
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.229,
+     "peak": "\"\"\""
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.722,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "67c47e98",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-out feeder of bonsai1/L3/N10911+, ranked first by attribution (chat feeders tool); play step ran out of GPU memory, so no zero-ablation drop was measured. Test sentences written blind by a label-only author. Solver leak: a string opened inside a function body (print(\").",
+ "roles": [
+  "feeds bonsai1/L3/N10911+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L1/N10586+", "to": "bonsai1/L3/N10911+", "kind": "feeds", "weight": null, "method": "attribution rank 1 of 12 MLP feeders on the target's top 4 examples (resident feeders tool; play step ablation hit CUDA OOM)"}
+ ]
+}
