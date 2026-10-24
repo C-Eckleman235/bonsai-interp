@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-24-moridinamael-381ad244",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L19/N9953+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T18:35:35+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "news narrative of a decision or postponement: 'has decided [to]', 'postponed [again]', 'delay ... [until]'"
+ },
+ "neighbours": [
+  {
+   "unit": "L19/N9953",
+   "pole": "+",
+   "label": "in a reported news or story narrative, the word that tells how an ongoing situation's course runs: it keeps going, ends (often without an outcome), stalls, or is put off or decided ('continuing to', 'now in its third week', 'ended without any trace', 'postponed again', 'has decided to', 'until', 'before'); static facts, market figures, casual first-person plans and instructions ('bake until golden') stay weak; a space-rock headline ('Asteroid Flyby') also fires",
+   "short": "how an ongoing news story runs: goes on, ends, stalls, put off",
+   "notes": "Loop-back QC after mapping neighbours (feeder L9/N3839- space rocks explains the Asteroid Flyby top; reader L22/N6735+ is broad boilerplate). Exploratory probes: non-decision course words beat decision ones in datelined news ('ended Friday without any trace' 0.74, 'strike now in its third week' 0.58, 'has decided to delay' 0.41, noun 'decision' 0.25); static news facts ~0.08, first-person postponement ~0.06. Solver leak: the Asteroid Flyby headline. Test sentences written blind by a second author from the label only.",
+   "fire": [
+    "The strike at the port, now in its third week, shows no sign of ending.",
+    "Rescue crews are continuing to search the collapsed building for survivors.",
+    "The search for the missing hiker ended without any trace of her.",
+    "The council's vote on the new stadium was postponed again on Tuesday.",
+    "After months of debate, the board has decided to close the factory.",
+    "Talks between the two unions stalled late Friday with no agreement in sight.",
+    "Police said the road would remain closed until the investigation is complete.",
+    "The trial was adjourned indefinitely after the judge fell ill."
+   ],
+   "quiet": [
+    "A senior officer and his wife were caught spying for a foreign power.",
+    "By one estimate, this burden amounts to $80 billion per year.",
+    "The port handles about four million containers each year.",
+    "Rescue crews arrived at the collapsed building shortly after noon.",
+    "The missing hiker was described as 34 years old with brown hair.",
+    "The council has nine members, elected every four years.",
+    "The factory, built in 1962, employs roughly 800 workers.",
+    "Shares in the union-backed fund closed at $42.10 on Friday."
+   ]
+  }
+ ],
+ "predictions": "most fire items 0.2-0.5, near misses mostly under 0.15; 'arrived shortly after noon' is the riskiest near miss",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "neighbors",
+   "inverse-de",
+   "blind-room"
+  ]
+ }
+}
