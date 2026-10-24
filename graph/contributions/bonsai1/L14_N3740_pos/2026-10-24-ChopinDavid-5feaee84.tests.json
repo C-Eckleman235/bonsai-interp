@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-5feaee84",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N3740+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T13:19:43+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L14/N3740",
+   "pole": "+",
+   "label": "the size of the gap between the leader and the trailer in a contest ('by a single vote', 'a seven-point lead', 'four games behind'), as against the same numbers used as plain amounts",
+   "fire": [
+    "The bill passed the senate by a single vote.",
+    "The mayor kept her seat by just three votes after a recount.",
+    "The visitors built a ten-point lead early in the third quarter.",
+    "A late goal cut the deficit to a single goal.",
+    "The challenger now trails by two points in the latest poll.",
+    "The proposal was defeated by a single vote in the council.",
+    "Our team finished the season two games behind the leaders.",
+    "She won the race by a fraction of a second."
+   ],
+   "quiet": [
+    "The bill was read aloud in the senate on Monday.",
+    "The mayor counted three votes from her own family.",
+    "The visitors scored ten points early in the third quarter.",
+    "A late goal was shown again on the big screen.",
+    "The challenger answered two questions in the latest poll.",
+    "The proposal was discussed in a single meeting of the council.",
+    "Our team played two games at home last weekend.",
+    "She ran the race in her new shoes."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on the margin word ('single', '-point', 'games behind'); points or votes as plain counts below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "margin in a contest",
+ "unit_kind": "meaning",
+ "confidence": 0.4,
+ "notes": "Card: '-point' x3 in leads, ' one', ' percent', '差距' (gap), ' GB', 'by a single vote'. Probe: 'won the election by a single vote' 0.812, 'cut the lead to one point' 0.391, 'seven-point lead' 0.318, 'two-point lead in the poll' 0.317, 'four games behind' 0.297; 'seven-point plan' 0.012, 'two points for grammar' 0.075, 'held a large crowd' 0.024. Margins in leads sit near 0.3, so the median is at risk."
+}

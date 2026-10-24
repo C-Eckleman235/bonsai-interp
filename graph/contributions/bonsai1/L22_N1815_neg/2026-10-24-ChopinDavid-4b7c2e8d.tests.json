@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-4b7c2e8d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N1815-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T13:19:43+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N1815",
+   "pole": "-",
+   "label": "the word that completes a conversational wrap-up formula after 'So there' or 'Well, that' or 'so' ('So there's that', 'So there you go', 'so yeah', 'Well, that's it'), closing off a topic",
+   "fire": [
+    "The flight was cancelled and my bag is still in Denver. So there's that.",
+    "I finally finished the quilt after six months of work. So there you go.",
+    "Anyway, I'm new to baking bread, so yeah, be patient with me.",
+    "We lost the game in the last minute again. So there's that, I guess.",
+    "Three edits, one new map and a fixed index. So there you go: version two.",
+    "Okay, I think I've covered everything. Well, that's it for this week.",
+    "It rained all through our camping trip. So there it is.",
+    "Honestly I just wanted to share something, so yeah."
+   ],
+   "quiet": [
+    "The flight was cancelled and my bag is still in Denver with the airline.",
+    "I finally finished the quilt after six months of work and gave it to my aunt.",
+    "Anyway, I'm new to baking bread and I would like some tips on yeast.",
+    "We lost the game in the last minute again and the coach was angry.",
+    "Three edits, one new map and a fixed index are included in version two.",
+    "Okay, I think I've covered everything I wanted to say about the trip.",
+    "It rained all through our camping trip and the tent leaked.",
+    "Honestly I just wanted to share something I read this morning."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-1.3 on 'that'/'go'/'yeah'/'it' completing the formula; endings with no such formula below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'So there's that' wrap-ups",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: 'So there's that', 'So there you go', 'So there it is', 'so yeah', 'Well that's it'. Probe: 'So there's that.' 1.298, 'So there you go' 0.623, 'so yeah,' 0.517, 'Well, that's it for today' 0.412; but 'So there was no way' 0.571 and 'Well, that's not quite true' 0.354 also fire, so the frame itself carries the pole. Near misses therefore drop the 'So there'/'Well, that' frame entirely rather than only the closing word."
+}

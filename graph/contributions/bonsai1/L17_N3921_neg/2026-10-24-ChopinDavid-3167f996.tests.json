@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-3167f996",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N3921-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T13:19:43+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N3921",
+   "pole": "-",
+   "label": "the audience or beneficiary slot in event and advice text: 'suitable for', 'fun for', and 'If you or your ...', naming who something is meant for or who is affected (children, families and adults alike)",
+   "fire": [
+    "The museum offers tours suitable for visitors of every age.",
+    "If you or your spouse were born abroad, bring a passport.",
+    "The festival has music and crafts suitable for the whole family.",
+    "If you or your roommate notice a gas smell, leave the building.",
+    "The trail is short and suitable for beginners.",
+    "If you or your parents have diabetes, ask about the screening.",
+    "There will be talks and games suitable for all ages.",
+    "If you or your coworker feel dizzy, sit down at once."
+   ],
+   "quiet": [
+    "The museum offers tours on Saturday mornings in summer.",
+    "Anyone born abroad should bring a passport.",
+    "The festival has music and crafts on the main square.",
+    "A gas smell in the building means everyone should leave.",
+    "The trail is short and winds along the river.",
+    "Diabetes screening is offered at the clinic on Tuesdays.",
+    "There will be talks and games in the main hall.",
+    "Sit down at once if dizziness sets in."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.5 on ' for' after 'suitable/fun' and on ' your' in 'If you or your'; the same topics without the audience slot below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "who it's for: 'suitable for', 'you or your'",
+ "unit_kind": "context",
+ "confidence": 0.25,
+ "notes": "Card: ' school' x5, ' parents', ' with', ' for' ('suitable for all'), ' your' ('If you or your child'). Probe: 'suitable for children' 0.375 but 'suitable for adults only' 0.504, 'If you or your child' 0.300 and 'If you or your partner' 0.300 — so the family/school reading did not hold; 'play with my kids' 0.248, 'neglect their kids' schoolwork' 0.116. The test is on the audience-slot frame instead of family words."
+}
