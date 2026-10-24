@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-53cf866e",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N9167+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-24T06:30:21+00:00",
+ "recipe": {
+  "toolchain_commit": "24a3e2f8",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N9167_pos/2026-10-24-ChopinDavid-53cf866e.tests.json"
+ },
+ "label": "the Chinese token 如果 ('if', including 如果你), as against other conjunctions (因为, 虽然, 即使) or no conjunction in the same sentence",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N9167_pos/2026-10-24-ChopinDavid-53cf866e.tests.json",
+   "prereg_commit": "24a3e2f8",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.844,
+     "peak": "如果你"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.756,
+     "peak": "如果"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.726,
+     "peak": "如果"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.754,
+     "peak": "如果"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.784,
+     "peak": "如果"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.679,
+     "peak": "如果"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.758,
+     "peak": "如果"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.772,
+     "peak": "如果"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.051,
+     "peak": "因为你"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.02,
+     "peak": "咳嗽"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.042,
+     "peak": "虽然"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.036,
+     "peak": "可能会"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.105,
+     "peak": "即使"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.027,
+     "peak": "不要"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.021,
+     "peak": "我们"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.048,
+     "peak": "已经"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.757,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "24a3e2f8",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "如果 ('if')",
+ "unit_kind": "word",
+ "confidence": 0.8,
+ "notes": "Card: '如果' x26, '如果你' x5, ' 如果'. Probe: 如果 0.766 and 0.733, 如果你 0.714; 假如 0.277 and English 'If' 0.292 (partial, kept out of the near misses), 要是 0.117, 即使 0.103, no conjunction 0.034.",
+ "selection": "random draw"
+}
