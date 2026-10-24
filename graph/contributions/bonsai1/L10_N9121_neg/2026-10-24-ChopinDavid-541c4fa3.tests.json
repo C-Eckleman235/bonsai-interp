@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-541c4fa3",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N9121-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T08:20:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L10/N9121",
+   "pole": "-",
+   "label": "type information in Python code: docstring type fields (':type', ':rtype', ':return', numpydoc '-------' headers) and parameter or return annotations, as against the same functions written without types",
+   "fire": [
+    "def merge(self, a, b):\n    \"\"\"\n    :type a: List[int]\n    :type b: List[int]\n    \"\"\"",
+    "def load(path: str) -> dict:\n    return json.load(open(path))",
+    "def mean(xs):\n    \"\"\"\n    Parameters\n    ----------\n    xs : array\n    \"\"\"",
+    "class Solution:\n    def climb(self, n):\n        \"\"\"\n        :rtype: int\n        \"\"\"",
+    "def send(self, msg: bytes, retries: int = 3):\n    pass",
+    "def fit(X, y):\n    \"\"\"\n    Returns\n    -------\n    model : Regressor\n    \"\"\"",
+    "def run(self):\n    \"\"\"\n    :param timeout: seconds\n    :return: None\n    \"\"\"",
+    "async def fetch(url: str, session) -> bytes:\n    pass"
+   ],
+   "quiet": [
+    "def merge(self, a, b):\n    # merge two sorted lists\n    return sorted(a + b)",
+    "def load(path):\n    return json.load(open(path))",
+    "def mean(xs):\n    # average of the values\n    return sum(xs) / len(xs)",
+    "class Solution:\n    def climb(self, n):\n        return n + 1",
+    "def send(self, msg, retries=3):\n    pass",
+    "settings = {'model': 'Regressor', 'depth': 4}",
+    "def run(self):\n    # wait for the timeout\n    time.sleep(5)",
+    "async def fetch(url, session):\n    pass"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.7 on ':type'/'-------'/annotation colons; untyped code, dict colons and prose colons below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Python type annotations/fields",
+ "unit_kind": "context",
+ "confidence": 0.8,
+ "notes": "Card: ' :'/':type' x13, docstring '\"\"\"', ' -------', 'payload: dict', 'graph: BELGraph'. Probe: ':type s: str' 0.659, 'data: dict' 0.502, 'Returns -------' 0.583; comment docstring 0.114, dict literal 0.015, prose colons 0.007-0.009, untyped def 0.017."
+}

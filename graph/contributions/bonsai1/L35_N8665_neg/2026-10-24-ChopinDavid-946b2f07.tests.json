@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-946b2f07",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N8665-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T08:20:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N8665",
+   "pole": "-",
+   "label": "byte-fallback tokens: characters the tokenizer cannot merge and spells as raw bytes (Arabic-Indic digits, rare Korean syllables after a space, Cyrillic look-alike letters in Latin words, Ā), as against the same text written with characters that have their own tokens",
+   "fire": [
+    "ولد الشاعر في عام ١٩٤٥ في دمشق.",
+    "افتتح المعرض يوم ١٥-٣-٢٠١٨ في الرياض.",
+    "제품의 맛과 향이 그대로 녹아 있는 차입니다.",
+    "Download thе nеw ѕoftware here.",
+    "회사는 외부 전문가를 초빙했습니다.",
+    "이 제품은 쫄깃한 식감이 특징입니다.",
+    "Al-Bīrūnī wrote about Āmul and its rivers.",
+    "الصفحة رقم ٤٧ تحتوي على الجدول."
+   ],
+   "quiet": [
+    "ولد الشاعر في عام 1945 في دمشق.",
+    "افتتح المعرض يوم 15-3-2018 في الرياض.",
+    "제품의 정보가 그대로 남아 있는 차입니다.",
+    "Download the new software here.",
+    "회사는 전문가를 초빙했습니다.",
+    "이 제품은 가격이 저렴한 것이 특징입니다.",
+    "Al-Biruni wrote about Amul and its rivers.",
+    "الصفحة رقم 47 تحتوي على الجدول."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.85 on byte tokens; the same sentences with Western digits, common syllables or plain Latin below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "byte-fallback tokens",
+ "unit_kind": "word",
+ "confidence": 0.7,
+ "notes": "Card: ' �' x25 (space-initial byte token), Arabic-Indic date digits, 'ѕоftwаrе', ' Ā', Korean ' 녹'/' 외'. Probe: Arabic-Indic digits 0.844, ' 녹' 0.472, Cyrillic ѕ 0.376, '외부' 0.302, '코팅' 0.287; Korean with merged syllables 0.013, Japanese byte tokens without a space ('ご覧') only 0.054, Western-digit date 0.002. Splits checked with tokcheck."
+}

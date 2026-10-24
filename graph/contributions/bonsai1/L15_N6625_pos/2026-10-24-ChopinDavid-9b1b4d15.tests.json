@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-9b1b4d15",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N6625+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T08:20:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L15/N6625",
+   "pole": "+",
+   "label": "the word completing an action that is avoided or prevented ('managed not to drop', 'instead of being shut down'), as against the same action when it actually happens",
+   "fire": [
+    "Somehow the goalkeeper managed not to drop the ball in the rain.",
+    "The factory was sold to a rival instead of being shut down.",
+    "Luckily I managed not to spill the coffee on my laptop.",
+    "The old cinema was restored instead of being torn down.",
+    "The pilot managed not to crash the plane in the storm.",
+    "The team avoided getting shut out with a late goal.",
+    "The museum was renovated rather than closed down.",
+    "She somehow managed not to lose her keys this time."
+   ],
+   "quiet": [
+    "In the rain, the goalkeeper dropped the ball twice.",
+    "The factory was sold to a rival company last spring.",
+    "Sadly I spilled the coffee all over my laptop.",
+    "The old cinema was painted blue by the new owners.",
+    "The pilot landed the plane safely during the storm.",
+    "The team scored a late goal in the second half.",
+    "The museum was renovated over three long years.",
+    "She lost her keys again on the way to work."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.5 on the verb/particle of the averted action; the same action reported as happening below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "averted action's verb",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card (max only 12): 'managed not to delete', 'avoid getting shut out', 'instead of shut down', 'worry about evicting', 'free you of asthma symptoms'. Probe: 'managed not to drop' 0.341, 'instead of being shut down' 0.478; but 'avoid getting measles' 0.025 and 'worry about cleaning' 0.044, and controls 'cold and wet' 0.202 and 'dropped the cake ... and' 0.180, so the pole is noisy; tested on the two frames that fired."
+}
