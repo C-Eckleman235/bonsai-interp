@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-ed7c226f",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N4921+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-24T16:29:32+00:00",
+ "recipe": {
+  "toolchain_commit": "bc49390c",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N4921_pos/2026-10-24-ChopinDavid-ed7c226f.tests.json"
+ },
+ "label": "dense: a colon separating a name from its type or value ('size: int', 'Name: John'); active on much of code",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N4921_pos/2026-10-24-ChopinDavid-ed7c226f.tests.json",
+   "prereg_commit": "bc49390c",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 4,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.44,
+     "peak": ":"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.513,
+     "peak": ":"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.329,
+     "peak": ":"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.647,
+     "peak": ":"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.45,
+     "peak": ":"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.425,
+     "peak": " ->"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.404,
+     "peak": ":"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.518,
+     "peak": ":"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.28,
+     "peak": "):\n"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.43,
+     "peak": " factor"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.379,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.515,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.164,
+     "peak": "-"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.159,
+     "peak": "):\n"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.144,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.373,
+     "peak": ":\n"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.828,
+    "median_fire": 0.445,
+    "near_misses_at_0.3": 4
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "bc49390c",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "dense; colon after a field name",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Card: FLAG dense (18.6%), gate-closed regime, max only 1.35. Peaks on ':' x17 and ' :' x8 in annotations and 'key: value' lines. Probe: annotation colon 0.608, signature 0.463, 'Name:' 0.391; 'Name =' 0.320, 'for x in items:' 0.409, the cat 0.118.",
+ "selection": "random draw"
+}
