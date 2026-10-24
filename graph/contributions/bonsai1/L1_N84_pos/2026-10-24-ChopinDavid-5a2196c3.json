@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-5a2196c3",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N84+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-24T17:29:15+00:00",
+ "recipe": {
+  "toolchain_commit": "63547a5d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L1_N84_pos/2026-10-24-ChopinDavid-5a2196c3.tests.json"
+ },
+ "label": "certain CJK characters and word-pieces that stand as their own token inside compounds (彩 in 彩信, 材 in 取材, 族 in 种族) and the 'repeat' piece of unrepeatable, on a broad, weak first-layer pole",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L1_N84_pos/2026-10-24-ChopinDavid-5a2196c3.tests.json",
+   "prereg_commit": "63547a5d",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.629,
+     "peak": "彩"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.591,
+     "peak": "材"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.665,
+     "peak": "彩"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.602,
+     "peak": "材"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.649,
+     "peak": "彩"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.629,
+     "peak": "repeat"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.724,
+     "peak": "材"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.734,
+     "peak": "彩"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.033,
+     "peak": "，"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.009,
+     "peak": "报道"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.137,
+     "peak": "发"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.05,
+     "peak": "。"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.055,
+     "peak": "手机"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.044,
+     "peak": " precious"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.071,
+     "peak": "。"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.065,
+     "peak": "。"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.639,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "63547a5d",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "split CJK characters 彩/材/族 (broad)",
+ "unit_kind": "unclear",
+ "confidence": 0.25,
+ "notes": "Card: max 0.31, broad 3.7%, echo regime 84%; peaks 族 (種族), 材 (取材) x3, 彩 (彩信) x3, 'repeat' (unrepeatable). Probe: 彩信 1.037, unrepeatable 0.739, 取材 0.586, 少数民族 0.172 (merged), 散步 0.215, English controls 0.13-0.15.",
+ "selection": "random draw"
+}
