@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-23-C-Eckleman235-1a0118ff",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N8023-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T02:54:34+00:00",
+ "selection": "concept search: world atlas tier 1 (branch 19)",
+ "neighbours": [
+  {
+   "unit": "L22/N8023",
+   "pole": "-",
+   "label": "two things: slavery as the holding of people (enslaved people, bondage, slave states, abolition and escape), and the names 'Carolina' and 'Tennessee' (the states, Charlotte, and their teams); auctions and markets with no people sold, and the names of states outside the South in the same frames, stay low",
+   "fire": [
+    "Enslaved families were separated and sold to different owners.",
+    "Escaped people followed the North Star toward freedom.",
+    "Congress fought over whether new territories would be slave states.",
+    "Abolitionists called bondage a national sin.",
+    "The Carolina Panthers drafted a new quarterback.",
+    "Hurricane warnings were issued for coastal North Carolina.",
+    "The Tennessee Volunteers sold out their home opener.",
+    "Charlotte's banking district added two new towers."
+   ],
+   "quiet": [
+    "Old furniture and farm tools were sold to different buyers.",
+    "Lost hikers followed the river toward the trailhead.",
+    "Congress fought over whether new territories would be free of tariffs.",
+    "Reformers called gambling a national sin.",
+    "The Denver Broncos drafted a new quarterback.",
+    "Blizzard warnings were issued for northern Minnesota.",
+    "The Oregon Ducks sold out their home opener.",
+    "Seattle's tech district added two new towers."
+   ]
+  }
+ ],
+ "predictions": "7/8 fire >= 0.3 (the Tennessee item is the least sure); near misses under 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "which",
+   "card",
+   "probe"
+  ]
+ },
+ "short": "slavery, and the names Carolina and Tennessee (round 2)",
+ "unit_kind": "meaning",
+ "confidence": 0.5,
+ "notes": "Second round with a revised label (round 1 #830: held, AUROC 0.95, but the near miss 'The Tennessee Titans won…' read 0.31 and the fire item 'The auction block … sold human beings' only 0.18). Reason, written before this test: probes after round 1 (exploratory, none reused) show the name half covers Tennessee too ('Tennessee Titans' 0.31, 'Tennessee lawmakers' 0.31) and Charlotte (0.34), while the Denver Broncos stay at 0.02; and the slavery half needs people (enslaved people sold in Richmond 0.69, bondage on Georgia plantations 0.69) rather than the auction itself (an empty auction block 0.04). So Tennessee and Charlotte are claimed, auctions without people are a near-miss kind, and the non-Southern near misses use Denver, Minnesota, Oregon and Seattle. Scoring runs on a Modal L40S (bfloat16; PARITY OK on Modal)."
+}
