@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-0f51756d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N3790-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T09:19:41+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L14/N3790",
+   "pole": "-",
+   "label": "a suffix piece of a compound code identifier (get_work⟦_view⟧, start⟦_sig⟧, ONLY⟦_FIRST⟧), as against prose and code without split compound identifiers",
+   "fire": [
+    "report_view = db.get_report_view()\nrows = report_view.fetch_all()",
+    "MODE_ONLY_LAST_ENTRY = 4\nMODE_ALL = 8",
+    "end_sig = copy.copy(base_sig)\nend_sig.update(extra_sig)",
+    "user_meta = store.load_user_meta()\nprint(user_meta.keys())",
+    "cfg_path = os.path.join(base_dir, cfg_name)\nopen(cfg_path).close()",
+    "price_table = market.get_price_table()\nprice_table.sort()",
+    "FLAG_SKIP_EMPTY_ROWS = 2\nFLAG_NONE = 0",
+    "img_buf = cam.read_img_buf()\nsave(img_buf, out_file)"
+   ],
+   "quiet": [
+    "The report was printed on Monday and sent to every manager in the office.",
+    "a = 4\nb = 8\nprint(a + b)",
+    "The signal was weak, so we moved the radio closer to the window.",
+    "We sat on the porch and watched the storm roll in over the hills.",
+    "The path from the station to the old mill runs along the canal.",
+    "The market was busy and the price of tomatoes had gone up again.",
+    "The children skipped a few rows of seats and sat near the front.",
+    "for x in range(3):\n    print(x)"
+   ]
+  }
+ ],
+ "predictions": "fire about 0.1 on identifier suffix pieces; prose and plain code at 0.03-0.1. The pole looks dense and weak; expected to fail.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "identifier suffix piece",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Card max only 6.8 with a 9% leak regime; tops are '_view', 'HE', '_FIRST', 'Sigma', ' Name', ' al', ' lockdown'. Probe: everything 0.03-0.10 ('_view' 0.089, '_sig' 0.085, 'et al' 0.087, but also hiking prose 0.096). No configuration separated; best guess written as identifier suffixes."
+}

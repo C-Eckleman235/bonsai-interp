@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-cad4fe05",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N3133-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T09:19:41+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N3133",
+   "pole": "-",
+   "label": "the Slavic surname or patronymic piece -ov/-ows/-ов when the tokenizer gives it its own token (Ivan|ov|na, Jank|ows|ka, Пет|ров|на, Mor|oz|ov), as against other surnames, Slavic or not, that lack it",
+   "fire": [
+    "The award went to the physicist Elena Ivanovna Petrenko for her work on lasers.",
+    "Our new neighbour, Magda Jankowska, teaches piano to children on weekends.",
+    "Мою учительницу звали Анна Петровна, и она очень любила стихи.",
+    "Last year the historian Pavel Morozov published a book about the Volga trade.",
+    "The opera tells the story of the tsar Boris Godunov and his troubled reign.",
+    "Этот рассказ написал Антон Чехов, когда жил в Ялте.",
+    "In the final round, the young grandmaster Sergei Sokolov forced a draw.",
+    "The committee is chaired by Dr. Oleg Ivanov and two deputies from Minsk."
+   ],
+   "quiet": [
+    "The award went to the physicist Elena Nakamura for her work on lasers.",
+    "Our new neighbour, Magda Jablonski, teaches piano to children on weekends.",
+    "Мою учительницу звали Анна Сорокина, и она очень любила стихи.",
+    "Last year the historian Paul Hartmann published a book about the Rhine trade.",
+    "The opera tells the story of the king Henry Lindqvist and his troubled reign.",
+    "Этот рассказ написал Иван Бунин, когда жил во Франции.",
+    "In the final round, the young grandmaster Sergei Kovalenko forced a draw.",
+    "The committee is chaired by Dr. Oleg Hernandez and two deputies from Madrid."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.7 on the 'ov'/'ows'/'ов' piece; names without it below 0.1. Final '-ov' fired less reliably than mid-name '-ov-' in probes, so several weak items expected.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Slavic -ov/-ов name piece",
+ "unit_kind": "word",
+ "confidence": 0.4,
+ "notes": "Card: 'ов' x7, 'ows' x5, 'ov' x4, 'ров', 'нов', 'kov', mostly mid-name (Berk|ov|its, Jank|ows|ky, Александ|ров|ич). Probe: 'Berkovits' 0.700, 'Смирнов' 0.363, 'Volkov' 0.238, 'Romanov' 0.123, 'Kasparov' only 0.061; 'Novak' 0.033, 'Сорокин' 0.056, 'Johnson' 0.002. Tokenizer-checked: every fire name has a separate ov/ows/ов/ров piece."
+}

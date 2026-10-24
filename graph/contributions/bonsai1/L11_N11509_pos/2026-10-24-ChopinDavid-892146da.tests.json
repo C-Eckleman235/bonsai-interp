@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-892146da",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N11509+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T09:19:41+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L11/N11509",
+   "pole": "+",
+   "label": "the Japanese word 両方 ('both', two items jointly), as against 片方 / どちらか ('one of the two') in the same Japanese sentences",
+   "fire": [
+    "このアプリはスマホとパソコンの両方で使えます。",
+    "犬と猫の両方を飼っている家庭が増えています。",
+    "彼は英語とフランス語の両方を話すことができる。",
+    "朝食はパンとご飯の両方を用意しました。",
+    "このコースでは理論と実践の両方を学びます。",
+    "傘と帽子の両方を持って出かけたほうがいい。",
+    "その店では現金とカードの両方が使えます。",
+    "テストの前に教科書とノートの両方を見直した。"
+   ],
+   "quiet": [
+    "このアプリはスマホかパソコンのどちらかで使えます。",
+    "犬か猫のどちらかを飼っている家庭が増えています。",
+    "彼は英語を少し話すことができる。",
+    "朝食はパンだけを用意しました。",
+    "このコースでは理論を中心に学びます。",
+    "傘か帽子のどちらかを持って出かけたほうがいい。",
+    "その店では現金だけが使えます。",
+    "テストの前に教科書を一度見直した。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on the byte tokens of 両方; 片方 / どちらか below 0.15. English 'both' fired only 0.11-0.18 in probes, so the test is Japanese only.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Japanese 両方 'both'",
+ "unit_kind": "word",
+ "confidence": 0.35,
+ "notes": "Card: '両方' 14.9 (max), ' both' x3, ' Both' x2, 'at the same time', 'とも|に'. Probe: Japanese 'index.htm と index.html が両方' 0.522; English 'Both justification' 0.178 (sentence-initial), 'both within' 0.111, 'Both of these' 0.138, while 'Either' 0.115 and 'each within' 0.072, so English does not separate. 両方 tokenizes as two byte tokens plus '方'."
+}

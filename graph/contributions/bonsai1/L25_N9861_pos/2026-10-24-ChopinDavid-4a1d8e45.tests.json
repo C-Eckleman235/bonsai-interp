@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-4a1d8e45",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N9861+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T09:19:41+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L25/N9861",
+   "pole": "+",
+   "label": "the word ' main' as a modifier meaning the principal one of several (main building, main valve, main course), as against other modifiers in the same noun phrase",
+   "fire": [
+    "After the storm, the plumber shut off the main gas line before checking the stove.",
+    "Visitors should report to the main office when they arrive at the school.",
+    "The bus stops right outside the main entrance of the hospital every ten minutes.",
+    "For dinner we ordered soup first and grilled fish as the main dish.",
+    "Engineers traced the outage to a fault in the main power cable under the street.",
+    "Our guide led us through the narrow lanes to the main square of the old town.",
+    "The lawyer said the main issue in the case was the missing signature.",
+    "Snow had blocked the main road, so we took the long way around the lake."
+   ],
+   "quiet": [
+    "After the storm, the plumber shut off the outdoor gas line before checking the stove.",
+    "Visitors should report to the front desk when they arrive at the school.",
+    "The bus stops right outside the east entrance of the hospital every ten minutes.",
+    "For dinner we ordered soup first and grilled fish with a green salad.",
+    "Engineers traced the outage to a fault in an old power cable under the street.",
+    "Our guide led us through the narrow lanes to a small square in the old town.",
+    "The lawyer said the only issue in the case was the missing signature.",
+    "Snow had blocked the coastal road, so we took the long way around the lake."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on ' main'; other modifiers below 0.25 (avoid 'central'/'primary', which leaked 0.52/0.28)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "the word ' main'",
+ "unit_kind": "word",
+ "confidence": 0.6,
+ "notes": "Card: ' main' x22, '.main', 'Main', 'メイン', '主'. Probe: 'main water valve' 0.860, 'main building' 0.754, 'main reason' 0.489, 'main course' 0.413, but 'def main' 0.176 in code; synonyms leak: 'central building' 0.518, 'primary reason' 0.278; 'old building' 0.243."
+}

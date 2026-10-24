@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-9b131083",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N11246-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T09:19:41+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N11246",
+   "pole": "-",
+   "label": "a short word-initial piece (' inc', ' conc', ' enc', ' ecc', ' vic') that opens a longer Latinate word split by the tokenizer (inc|andescent, conc|ierge, enc|ircle), as against whole-token words with the same opening (income, concise, encounter, vicinity)",
+   "fire": [
+    "Each old street lamp held an incandescent bulb that glowed a warm yellow.",
+    "At the front desk, the hotel concierge booked us a table for dinner.",
+    "Tall stone walls encircle the old town and its narrow streets.",
+    "The dentist said the chipped incisor would need a small crown.",
+    "The novel follows the family through the vicissitudes of three wars.",
+    "A long incantation was chanted by the priestess at sunset.",
+    "The surgeon made a small incision just below the patient's ribs.",
+    "Scholars of the early church study the ecclesia of the first century."
+   ],
+   "quiet": [
+    "Each old street lamp held a bright bulb that glowed a warm yellow.",
+    "At the front desk, the hotel manager reported a large increase in income.",
+    "Tall stone walls surround the old town, which is a quiet enclave by the sea.",
+    "The dentist said the chipped tooth would need a small crown soon.",
+    "The novel follows the family through the many changes of three wars.",
+    "A long song was chanted by the priestess as the incoming tide rose.",
+    "The surgeon made a small cut just below the patient's ribs in the vicinity of the scar.",
+    "Scholars of the early church encounter concise accounts of the first century."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-1.0 on the word-initial piece; single-token words with the same letters below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split Latinate word opener",
+ "unit_kind": "word",
+ "confidence": 0.75,
+ "notes": "Card: ' inc' x8, ' conc' x6, ' enc' x3, ' ecc' x2, ' vic', ' succ'. Probe: 'incendiary' 0.987, 'incognito' 0.941, 'vicar' 0.871, 'concisely' 0.821, 'incense' 0.817, 'ecclesiastical' 0.702; single-token 'income'/'included' 0.006, 'canon law' 0.006. All fire words tokenizer-checked to split after the opener; all near-miss words are single tokens."
+}
