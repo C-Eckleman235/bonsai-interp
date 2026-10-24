@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-12d4c60a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N6228+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T23:20:44+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L14/N6228",
+   "pole": "+",
+   "label": "the token that pins a reference value of a scale or comparison ('diamond = 10', 'the national average', '1 is the normal rate', '0 means none'), as against the same numbers reported without defining a reference point",
+   "fire": [
+    "On the Mohs list talc = 1, the softest mineral, and quartz sits at 7.",
+    "The pupils averaged 512 on the maths test, against a state average of 498.",
+    "In the zoom setting, 1 is the actual size and 2 doubles the picture.",
+    "For this index a value of 0 means no risk and 100 means certain failure.",
+    "Pain is rated so that 10 is the worst pain the patient can imagine.",
+    "Our clinic's waiting time was 14 days, while the regional average was 21.",
+    "On the Beaufort scale, calm = 0 and a hurricane is force 12.",
+    "In the volume control, 0 means silence and 11 is the loudest level."
+   ],
+   "quiet": [
+    "On the Mohs list talc is soft enough to scratch with a fingernail.",
+    "The pupils averaged 512 on the maths test, up from 498 last year.",
+    "In the zoom setting, the picture can be enlarged with two fingers.",
+    "For this index the engineers collected data from 100 bridges.",
+    "Pain is rated by the nurse every four hours after the operation.",
+    "Our clinic's waiting time was 14 days, down from 21 days in March.",
+    "On the Beaufort coast, calm mornings often turn into windy afternoons.",
+    "In the volume control, the knob turns smoothly from left to right."
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.7 on '=', ' average', ' is' or ' means' that sets an anchor value; plain number reports 0.0-0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "defining a scale's reference value",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card peaks: 'Diamond =10', 'national average', '1 for complete equality', 'Our Sun', '1 is the normal rate', 'top directory is /'. Probe: 'diamond = 10' ' =' 0.713, 'national average' 0.517, '0 means perfect equality' 0.396, '1 is the normal rate' 0.391; same scores without average 0.053; Unix root 0.102; Celsius fixed point 0.096. Fires on scale/anchor definitions, weaker for physical reference points."
+}

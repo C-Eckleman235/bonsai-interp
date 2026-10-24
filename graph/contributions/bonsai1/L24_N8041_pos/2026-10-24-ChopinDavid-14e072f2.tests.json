@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-14e072f2",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N8041+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T23:20:44+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L24/N8041",
+   "pole": "+",
+   "label": "the piece right after a lone capital ' O' that opens a name (O|lin, O|akes, O|strom, O|ws|ley) and the name ' Owen', as against names opening with another lone capital (L|acey, L|eland) or whole-token names",
+   "fire": [
+    "The economist Elinor Ostrom won the prize for her work on shared resources.",
+    "Letters were sent to the treasurer, Margaret Oakes, about the budget.",
+    "The bridge was designed by the engineer Owen Thomas in 1902.",
+    "Funding came from the family of the industrialist John Olin.",
+    "Survey data from Owsley County showed a drop in income.",
+    "The film starred the actor Clive Owen as a weary detective.",
+    "Our group tested the theory proposed by Ostrom and her students.",
+    "A new library wing was named after the donor Frank Oakes."
+   ],
+   "quiet": [
+    "The economist Elinor Lacey won the prize for her work on shared resources.",
+    "Letters were sent to the treasurer, Margaret Leland, about the budget.",
+    "The bridge was designed by the engineer Edwin Thomas in 1902.",
+    "Funding came from the family of the industrialist John Evans.",
+    "Survey data from Lawson County showed a drop in income.",
+    "The film starred the actor Clive Ellis as a weary detective.",
+    "Our group tested the theory proposed by Lacey and her students.",
+    "A new library wing was named after the donor Frank Leland."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.9 on the piece after ' O' and on ' Owen'; L-initial split names and whole-token names 0.0-0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "piece after name-initial ' O' / Owen",
+ "unit_kind": "word",
+ "confidence": 0.6,
+ "notes": "Card peaks ' Owen' x5 and pieces after ' O' ('eg' Oegema, 'ws' Owsley, 'gle' Ogle, 'E' OECD, 'ec' Oecologia). Probe: Owen 0.811/0.730, Oegema 'eg' 0.891, Owsley 'ws' 0.812, Ogle 'gle' 0.571, ' oxy' 0.585, OECD 0.221; 'Edward' control 0.005. Splits checked: Olin=' O'+'lin', Oakes=' O'+'akes', Ostrom=' O'+'strom', Lacey=' L'+'acey', Leland=' L'+'eland'."
+}

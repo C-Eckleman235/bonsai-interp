@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-c7f59c66",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N2118-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T23:20:44+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N2118",
+   "pole": "-",
+   "label": "array-shaping code: arguments and punctuation inside numpy/tensorflow calls that build or reshape arrays (np.zeros((h, w)), expand_dims(x, axis=0), np.ones((3, 3), ...)), as against ordinary Python code on lists, strings and dicts",
+   "fire": [
+    "import numpy as np\ngrid = np.zeros((rows, cols), dtype=np.float32)",
+    "batch = np.expand_dims(frame, axis=0)\nlogits = net(batch)",
+    "w = np.ones((3, 3), np.float32) / 9.0\nblurred = convolve(img, w)",
+    "x = tf.tile(tf.expand_dims(v, 0), [batch_size, 1])",
+    "import numpy as np\nvol = vol[np.newaxis, :, :, :]",
+    "pad = np.zeros((n, 4), dtype=int)\nout = np.concatenate([data, pad], axis=1)",
+    "noise = np.random.randn(64, 64, 3)\nimg = img + 0.1 * noise",
+    "mask = np.ones((h, w), dtype=bool)\nmask[0, :] = False"
+   ],
+   "quiet": [
+    "import json\nconfig = json.load(open('settings.json'))",
+    "words = line.split()\ncounts[words[0]] = len(words)",
+    "name = user.get('name', 'guest')\nprint('hello', name)",
+    "for key, value in sorted(scores.items()):\n    print(key, value)",
+    "import os\npaths = [p for p in os.listdir('.') if p.endswith('.txt')]",
+    "title = title.strip().lower()\nslug = title.replace(' ', '-')",
+    "items = []\nfor row in reader:\n    items.append(row['id'])",
+    "greeting = f'Dear {first}, thank you for your order.'\nsend(greeting)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.6 on commas, parens and np tokens inside array calls; non-array Python 0.0-0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "numpy/tensor array-shaping code",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card peaks '.zeros' x7 and '),', ',' inside np.expand_dims, tf.tile, np.ones((5, 5), ...); max on 'image[np.newaxis...]'. Probe: np.ones((5, 5), np.uint8) 0.403, expand_dims 0.363, np.zeros 0.287, plt.imshow 0.255, newaxis 0.213; list loop 0.015, sum loop 0.010, prose 'array' 0.006."
+}

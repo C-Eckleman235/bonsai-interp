@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-f03ce77c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N4868+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T23:20:44+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L20/N4868",
+   "pole": "+",
+   "label": "the width digits inside a Python format specifier ('%12s', '{:<15}', '%8.3f'), as against the same print statements with unpadded specifiers ('%s', '{}')",
+   "fire": [
+    "for name, size in files:\n    print('%20s %10d' % (name, size))",
+    "row = '{:<12} {:>8}'.format(city, population)\nprint(row)",
+    "if verbose:\n    print '%14s %6.2f' % (label, score)",
+    "sys.stdout.write('{:>10}|{:<25}\\n'.format(idx, title))",
+    "for k in keys:\n    print('%-18s %9.4f' % (k, stats[k]))",
+    "line = '{:^30}'.format('REPORT')\nprint(line)",
+    "header = '%16s %16s' % ('key', 'value')\nprint(header)",
+    "out.write('{:<20}{:>7}\\n'.format(item, qty))"
+   ],
+   "quiet": [
+    "for name, size in files:\n    print('%s %d' % (name, size))",
+    "row = '{} {}'.format(city, population)\nprint(row)",
+    "if verbose:\n    print '%s %f' % (label, score)",
+    "sys.stdout.write('{}|{}\\n'.format(idx, title))",
+    "for k in keys:\n    print('%s %f' % (k, stats[k]))",
+    "line = '{}'.format('REPORT')\nprint(line)",
+    "header = '%s %s' % ('key', 'value')\nprint(header)",
+    "out.write('{}{}\\n'.format(item, qty))"
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-1.0 on width digits inside format specifiers; unpadded specifiers and plain code 0.0-0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "width digits in format specifiers",
+ "unit_kind": "context",
+ "confidence": 0.65,
+ "notes": "Card peaks digits in \"%12s %8s\", '{:<15}', '%17s', '%8.5f' and docstring indentation (gate-closed 94%). Probe: '{:<15}' '5' 0.953, '%12s %8s' '2' 0.749, docstring indent 0.443; try/except 0.039, arithmetic 0.079, prose year 0.050."
+}
