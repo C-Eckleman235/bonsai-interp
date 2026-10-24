@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-c2dce477",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N4471+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-24T12:27:54+00:00",
+ "recipe": {
+  "toolchain_commit": "9e1dfb1a",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N4471_pos/2026-10-24-ChopinDavid-c2dce477.tests.json"
+ },
+ "label": "the word piece right after a bare ' T' in a proper name that the tokenizer splits (T|aut, T|aus, T|uch, T|ahu), as against the same piece after another capital and T-names that are one token or split differently",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N4471_pos/2026-10-24-ChopinDavid-c2dce477.tests.json",
+   "prereg_commit": "9e1dfb1a",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.022,
+     "peak": "aut"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.895,
+     "peak": "aus"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.551,
+     "peak": "uch"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.594,
+     "peak": "ahu"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.952,
+     "peak": "aus"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.506,
+     "peak": "uch"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.926,
+     "peak": "aus"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.519,
+     "peak": "uch"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.101,
+     "peak": "aut"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.01,
+     "peak": "ch"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.018,
+     "peak": " Tucker"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.457,
+     "peak": " Tah"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.007,
+     "peak": "Her"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.184,
+     "peak": "z"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.437,
+     "peak": " Ta"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.057,
+     "peak": "z"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.744,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "9e1dfb1a",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "piece after split ' T' in a name",
+ "unit_kind": "word",
+ "confidence": 0.6,
+ "notes": "Card: T|aut(z) 121, T|aus(ig) 107.5, Tata, Tau, T|ahu, T|uch. Probe: Tautz 0.968, Tausig 0.938, Tuchman 0.590, Tahuichi 0.532; Kautz (K|aut) 0.077, Tamura (Tam|ura) 0.002, Taylor 0.007, Tikal 0.129. All fire names checked with the tokenizer.",
+ "selection": "random draw"
+}
