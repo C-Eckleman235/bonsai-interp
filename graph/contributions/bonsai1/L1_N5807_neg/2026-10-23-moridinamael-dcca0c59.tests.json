@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-23-moridinamael-dcca0c59",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N5807-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T02:13:57+00:00",
+ "roles": ["feeds bonsai1/L34/N11316-"],
+ "neighbours": [
+  {
+   "unit": "L1/N5807",
+   "pole": "-",
+   "label": "the letters 'ze' right after a 'De' (any case) that starts a word with NO space before it: after '(', a quote, a line break or at the very start, as in (Dezeen), \"Deze\", Dutch 'Deze week' at a sentence start, DEZE-44. Quiet when a space comes before it (' Dezeen' mid-sentence, ' deze'), and for Dezember, Dezi, Deza, bronze, dozen. Weak (~0.3) on French 'tenu'.",
+   "short": "'ze' after a space-less word-start 'De' (Dezeen, Deze)",
+   "unit_kind": "token / spelling",
+   "fire": [
+    "The chair was first shown at Milan Design Week (Dezeen, 2023).",
+    "Deze week is de bibliotheek gesloten vanwege een verbouwing.",
+    "She whispered the word \"Deze\" as if it were a password.",
+    "The prototype was labelled DEZE-44 in the lab inventory.",
+    "Dezeen published a long feature on the new museum wing.",
+    "Deze fiets is van mijn broer, niet van mij.",
+    "The quote came from an interview (Dezeen) about sustainable timber.",
+    "\"Dezeen called it the boldest pavilion of the year,\" the curator said."
+   ],
+   "quiet": [
+    "He paid close attention to the details.",
+    "I read about the lamp in an architecture magazine last week.",
+    "The chair was first shown at Milan Design Week, according to Dezeen.",
+    "Ik denk dat deze week de bibliotheek gesloten is.",
+    "She whispered the word as if it were a password.",
+    "The prototype was labelled X-44 in the lab inventory.",
+    "Im Dezember fahren wir in die Berge.",
+    "He bought a dozen eggs at the market."
+   ]
+  }
+ ],
+ "predictions": "most fire items above 0.2 (sentence-initial 'Dezeen'/'Deze' may read lower); near misses under 0.3",
+ "notes": "Step-out feeder of bonsai1/L34/N11316- (stream crawl from bonsai1/L25/N8045+). play step ran out of GPU memory, so the feeder was taken by rank: it is the top MLP feeder by attribution on the resident model (chat feeders tool). The - pole is small (max 3.6, gate-closed leak regime); its tops are 'ze' in 'Dezeen' after '(' or a line break; French 'tenu' / Spanish 'Atentamente' sit near 0.3. The + pole is a strong 'detention' detector. Test sentences written blind by a second author from the label only; the solver's leak and near-miss lines were placed by that author.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "neighbors",
+   "bank-solo",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
