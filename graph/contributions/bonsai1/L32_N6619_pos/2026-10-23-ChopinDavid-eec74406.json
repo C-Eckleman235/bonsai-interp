@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-eec74406",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N6619+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-24T00:27:49+00:00",
+ "recipe": {
+  "toolchain_commit": "5f2b15c1",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L32_N6619_pos/2026-10-23-ChopinDavid-eec74406.tests.json"
+ },
+ "label": "the token just before 'add up', 'added' or 'adduction' where the context sets up that word ('small costs ... but they can [add up]', 'value[-added]', 'abduction and [adduction]'): a predictor of 'add', as against the same frames without that setup",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L32_N6619_pos/2026-10-23-ChopinDavid-eec74406.tests.json",
+   "prereg_commit": "5f2b15c1",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.853,
+     "peak": " minutes"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 1.313,
+     "peak": " can"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.45,
+     "peak": " value"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.652,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.572,
+     "peak": " quickly"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.725,
+     "peak": " value"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.419,
+     "peak": " really"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.377,
+     "peak": " can"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.007,
+     "peak": " helps"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.03,
+     "peak": " often"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.0,
+     "peak": " market"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.1,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.0,
+     "peak": " train"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": -0.0,
+     "peak": " milk"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": -0.0,
+     "peak": " between"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.114,
+     "peak": " is"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.612,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "5f2b15c1",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "predicts 'add' (add up, value-added)",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card + pole peaks on ' can', ' Value'/' value', ' and', ' it' right before 'add up', 'Value addition', 'value-added', 'adduction'; the - pole promotes add/adding/addition. Probe: 'over a year they really add up' 0.899, 'but it can add up fast' 0.819, 'value-added tax' 0.611, 'abduction and adduction' 0.500; the same 'may not sound like much, but it can buy a meal' also 0.819 (peak on ' can', before the next word), so the setup drives it; 'packed in paper bags' 0.000, 'then add the eggs' 0.012.",
+ "selection": "random draw"
+}
