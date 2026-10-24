@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-08693287",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N2571-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T01:20:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L15/N2571",
+   "pole": "-",
+   "label": "a marker of repetition or multiplicity: 'X after X', 'N times a <period>', the optional plural '(s)', a list multiplied ('[0] * n')",
+   "fire": [
+    "The ship was hit by wave after wave as the storm grew worse.",
+    "He takes the tablets three times a day with food.",
+    "Enter the email of the guest(s) you want to invite to the party.",
+    "The old man fed the pigeons in the square day after day.",
+    "grid = [[0] * 8 for _ in rows]\nprint(grid)",
+    "Please attach the document(s) that support your claim.",
+    "She practises the piano five times a week before school.",
+    "The crowd kept singing along, song after song."
+   ],
+   "quiet": [
+    "The ship was hit by a huge wave as the storm grew worse.",
+    "He takes the tablets with food in the morning.",
+    "Enter the email of the guest you want to invite to the party.",
+    "The old man fed the pigeons in the square every morning.",
+    "grid = make_grid(rows)\nprint(grid)",
+    "Please attach the document that supports your claim.",
+    "She practises the piano before school on weekdays.",
+    "The crowd kept singing along to the last song."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on ' after' in 'X after X', ' times' in a frequency, '(s' and the list before '*'; the same sentences without the multiplicity below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "repetition / multiplicity marker",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: ' *' in '[tf.constant(...)] * 2', ' range' in 'for i in range(2)', '(s' in 'name(s)'/'choice(s)', 'wave after wave', 'four times a week', '12 of 13'. Probe: 'wave after wave' 0.596, '[0] * 10' 0.432, 'name(s)' 0.429, 'four times a week' 0.403, '10 of 12 games' 0.275, 'range(5)' 0.217; 'on Mondays' 0.066, 'the name of the applicant' 0.049."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-d3a1379d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N12011-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T01:20:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L7/N12011",
+   "pole": "-",
+   "label": "the 'm' piece of Yiddish-style sch-m words (schmuck, schmooze, schmaltz, fancy-schmancy, schmear), as against other ' sch' words whose next piece is not 'm'",
+   "fire": [
+    "My uncle called the salesman a total schmuck after the deal fell through.",
+    "At the conference she spent the evening schmoozing with publishers.",
+    "The ending of the movie was pure schmaltz, but the audience cried anyway.",
+    "He ordered a bagel with a thick schmear of cream cheese.",
+    "We don't need a fancy schmancy hotel, just a clean bed.",
+    "Those two schmucks left the gate open and the goats got out.",
+    "He's a born schmoozer who can talk his way into any party.",
+    "The song is a little schmaltzy, though the singer has a lovely voice."
+   ],
+   "quiet": [
+    "My uncle called the salesman a total fool after the deal fell through.",
+    "At the conference she spent the evening chatting with publishers.",
+    "The ending of the movie was pure schlock, but the audience cried anyway.",
+    "He ordered a bagel with a thick layer of cream cheese.",
+    "We don't need an expensive hotel, just a clean bed.",
+    "Those two kids left the gate open and the goats got out.",
+    "He's a born talker who can schlep his way into any party.",
+    "The song has a lot of schtick, though the singer has a lovely voice."
+   ]
+  }
+ ],
+ "predictions": "fire 0.7-1.0 on 'm' after ' sch'; schlep, schtick, schlock, schnapps and plain synonyms below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "the 'm' in sch-m words",
+ "unit_kind": "token",
+ "confidence": 0.7,
+ "notes": "Card: 'm' x6 of the top 32, all after ' sch' (schmuck, schmaltzy, fancy schmancy, schmooze); also 'X of the world' and 'blah'. Tokenizer: ' schmuck' -> ' sch','m','uck'; ' schnapps' -> ' schn','apps'; ' schlock' -> ' sch','lock'. Probe: 'fancy schmancy' 1.073, 'schmuck' 0.968, 'schmaltzy' 0.779, 'schmooze' 0.763; 'schlock' 0.099, 'schnapps' 0.015, 'ordinary guy' 0.016. 'Googles of the world' 0.240 and 'blah blah' 0.137 are weaker side triggers."
+}
