@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-23-ChopinDavid-416b43ee",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6243-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-24T03:29:39+00:00",
+ "recipe": {
+  "toolchain_commit": "1e957043",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N6243_neg/2026-10-23-ChopinDavid-416b43ee.tests.json"
+ },
+ "label": "a lone word-start capital ' G' (or ' g') that the tokenizer splits off the rest of the word (G|iza, G|egend, g|aurus, G|obi), as against G- words kept whole",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N6243_neg/2026-10-23-ChopinDavid-416b43ee.tests.json",
+   "prereg_commit": "1e957043",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.468,
+     "peak": " G"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.584,
+     "peak": " G"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.569,
+     "peak": " G"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.795,
+     "peak": " g"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.345,
+     "peak": " G"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.36,
+     "peak": " G"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.434,
+     "peak": " G"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.254,
+     "peak": " G"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.002,
+     "peak": " sunrise"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.006,
+     "peak": " le"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.001,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.001,
+     "peak": " from"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.003,
+     "peak": "Expl"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.002,
+     "peak": " diesem"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.002,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.451,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "1e957043",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "split word-start ' G'",
+ "unit_kind": "token",
+ "confidence": 0.75,
+ "notes": "Card: ' G' x8, '-g', ' g', and Arabic ' الج'/'ج'. Probe: 'Bos gaurus' 0.706, 'Giza pyramids' 0.532, 'der Gegend' 0.514, 'Gobi desert' 0.475; 'Giraffe' (' Gir'), 'Gaza' (whole) 0.001, Cairo control 0.000. Splits checked with tok.py; Arabic left out because probed Arabic did not fire.",
+ "selection": "random draw"
+}
