@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-24-moridinamael-08776db6",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N61-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T21:04:16+00:00",
+ "neighbours": [
+  {
+   "unit": "L34/N61",
+   "pole": "-",
+   "label": "Inside a software license header (code comment or notice with copyright/license context), the exact Apache License 2.0 boilerplate wording: strongest on ' language' in 'See the License for the specific language governing permissions', weaker at 'agreed to in writing,' and '\"AS IS\"'; the word 'language' elsewhere, paraphrases of these lines, MIT/GPL wording and the same phrases in ordinary contracts stay low.",
+   "short": "Apache License header boilerplate ('specific language')",
+   "roles": ["reads bonsai1/L24/N8741+"],
+   "fire": [
+    "# See the License for the specific language governing permissions and",
+    "// See the License for the specific language governing permissions and\n// limitations under the License.",
+    "* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and",
+    "// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS,",
+    "-- distributed under the License is distributed on an \"AS IS\" BASIS, See the License for the specific language governing permissions and limitations under the License.",
+    "/* Copyright 2019 The Authors. Licensed under the Apache License, Version 2.0. See the License for the specific language governing permissions and limitations under the License. */",
+    "<!-- Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS. -->",
+    "; Copyright 2021 Example Project. See the License for the specific language governing permissions and"
+   ],
+   "quiet": [
+    "conn.set_listener(\"testlistener\", testlistener)",
+    "return self.assertTrue(repeated.value_eq(x, y))",
+    "# The documentation is written in plain language so new users can follow it.",
+    "// Choose your preferred language from the settings menu before starting.",
+    "* THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO MERCHANTABILITY.",
+    "# This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License.",
+    "// Check the license file for details on what you may and may not do with this code.",
+    "The parties have agreed to in writing that the delivery date may be extended by two weeks."
+   ]
+  }
+ ],
+ "predictions": "Fire items with 'specific language' near 0.6-0.8, warranty-line items 0.3-0.5; risk: the sentence-initial 'conn' leak (~0.33) and the MIT 'AS IS' line.",
+ "notes": "Step-in reader of bonsai1/L24/N8741+ (drop 0.02, COLD arm: labelled from own tops and probes only). Test sentences written blind by a label-only second author.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
