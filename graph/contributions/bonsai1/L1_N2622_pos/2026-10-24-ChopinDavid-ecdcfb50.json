@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-ecdcfb50",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N2622+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-24T14:28:26+00:00",
+ "recipe": {
+  "toolchain_commit": "28b33cec",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L1_N2622_pos/2026-10-24-ChopinDavid-ecdcfb50.tests.json"
+ },
+ "label": "a rare character or word piece split off inside a word (Arabic ظ in لفظ, kanji 幕 and 描, 'adian' in circadian), as against common whole-word tokens; the pole is tiny and gate-closed",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L1_N2622_pos/2026-10-24-ChopinDavid-ecdcfb50.tests.json",
+   "prereg_commit": "28b33cec",
+   "author": "ChopinDavid",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.214,
+     "peak": "ظ"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.521,
+     "peak": "幕"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.478,
+     "peak": "描"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.582,
+     "peak": "adian"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.165,
+     "peak": "ظ"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.481,
+     "peak": "描"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.377,
+     "peak": "adian"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.624,
+     "peak": "幕"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": -0.039,
+     "peak": " الج"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.073,
+     "peak": "映"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.133,
+     "peak": "った"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.256,
+     "peak": " often"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": -0.062,
+     "peak": " الم"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": -0.166,
+     "peak": "夢"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": -0.178,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.199,
+     "peak": "映"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.479,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "28b33cec",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "rare in-word piece (ظ, 幕, 描)",
+ "unit_kind": "unclear",
+ "confidence": 0.25,
+ "notes": "Card: max 0.18, gate-closed regime 100%; peaks 'ظ' x7, '描' x3, '幕', 'حا', 'adian'. Probe: circ|adian 0.605, لف|ظ|ية 0.572, 字|幕 0.558, 描く 0.464; whole-token احفظ 0.017, 街並み 0.020, مرحبا -0.094, English cat -0.221.",
+ "selection": "random draw"
+}
