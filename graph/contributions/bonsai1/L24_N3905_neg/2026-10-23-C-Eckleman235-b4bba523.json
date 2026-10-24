@@ -1,0 +1,154 @@
+{
+ "id": "2026-10-23-C-Eckleman235-b4bba523",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N3905-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-24T02:55:12+00:00",
+ "recipe": {
+  "toolchain_commit": "f1578591",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L24_N3905_neg/2026-10-23-C-Eckleman235-b4bba523.tests.json"
+ },
+ "label": "the 1950s: a number from 1950 to 1959 in a text that names 1950s public figures or events (Elvis, Eisenhower, Sputnik, the Korean War, McCarthy, I Love Lucy), whether a year or a count; the same 195x count after 1950s lifestyle details alone (drive-ins, poodle skirts, polio shots), in a modern text, or in another era stays low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L24_N3905_neg/2026-10-23-C-Eckleman235-b4bba523.tests.json",
+   "prereg_commit": "f1578591",
+   "author": "C-Eckleman235",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.693,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.749,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.641,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.057,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.289,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.128,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.251,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.09,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.106,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.168,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.021,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.045,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.046,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.007,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.187,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.043,
+     "peak": "5"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.875,
+    "median_fire": 0.27,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "second-round",
+   "which"
+  ],
+  "detected": [],
+  "toolchain_commit": "f1578591",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "short": "the 1950s, gated by its public events (round 3)",
+ "unit_kind": "meaning",
+ "confidence": 0.5,
+ "notes": "Third round on this pole (round 1 #392: 'the 1950s (in digits)', held; round 2 #831: context-gated, held, but its TV cue item read 0.05). Reason, written before this test: probes after round 2 (exploratory, none reused), each a cue sentence plus 'The shop sold 195x posters that week', show that public figures and events gate the unit (Elvis 0.58, Eisenhower's second term 0.41, Sputnik 0.35, soldiers home from Korea 0.33, I Love Lucy 0.29) while lifestyle cues do not (poodle skirts 0.13, the drive-in 0.06, polio shots 0.02). So this round claims public figures and events, and tests lifestyle cues, a modern text and other eras as near misses. Scoring runs on a Modal L40S (bfloat16; PARITY OK on Modal).",
+ "selection": "concept search: time (context year atlas)"
+}
