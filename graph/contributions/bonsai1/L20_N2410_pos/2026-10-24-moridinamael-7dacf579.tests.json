@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-24-moridinamael-7dacf579",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N2410+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T23:05:23+00:00",
+ "roles": ["reads bonsai1/L19/N9953+"],
+ "neighbours": [
+  {
+   "unit": "L20/N2410",
+   "pole": "+",
+   "label": "English forecast of how something will turn out for others (will/would/going to be a great addition, would be a disaster, will boost); not present or past verdicts, not scheduled plans",
+   "short": "forecast of how something will turn out",
+   "unit_kind": "broad",
+   "confidence": "low",
+   "notes": "Cold step-in (labelled from own tops and probes only). Broad pole (1.4% of tokens at 0.1). Probes: 'will be a wonderful addition' 0.36-0.62 vs 'is a wonderful addition' 0.09-0.24; 'is going to be a great fit' 0.28 without a modal; scheduled 'will arrive/sign' ~0.11; German forecast silent in the solver. Blind test written by a label-only second author.",
+   "fire": [
+    "I think she will be a great addition to your team next season.",
+    "Honestly, that new bike lane would be a disaster for the shop owners on Main Street.",
+    "The tax credit will boost small farmers' incomes over the next few years.",
+    "Adding a second cook is going to be a huge help for the weekend staff.",
+    "Trust me, this puppy will make your kids incredibly happy.",
+    "If they cut the bus route, it would be devastating for elderly residents.",
+    "The new library wing will be a wonderful resource for local students.",
+    "I'm sure the scholarship is going to change her life."
+   ],
+   "quiet": [
+    "She has been a great addition to your team this season.",
+    "Honestly, that new bike lane was a disaster for the shop owners on Main Street.",
+    "The tax credit boosted small farmers' incomes over the last few years.",
+    "Adding a second cook has been a huge help for the weekend staff.",
+    "This puppy makes your kids incredibly happy.",
+    "When they cut the bus route, it was devastating for elderly residents.",
+    "The new library wing will open on the third of March at nine o'clock.",
+    "She is going to fly to Boston on Tuesday for her interview."
+   ]
+  }
+ ],
+ "predictions": "Expect most forecasts above 0.20; risk: present/past verdict twins may fire weakly (broad pole), so AUROC may land near 0.9.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "probe",
+   "inverse-de",
+   "bank-solo"
+  ]
+ }
+}
