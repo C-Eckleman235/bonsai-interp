@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-63013aec",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N1643+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T07:20:33+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N1643",
+   "pole": "+",
+   "label": "the first piece of a proper name that the tokenizer splits (Or|ton, Bre|ton, Krank|engymnastik), where the rest of the name is predictable, as against names that are a single token",
+   "fire": [
+    "The crowd booed when Randy Orton walked out with his belt.",
+    "Many poets admired the ideas of André Breton and his circle.",
+    "The coach recommended Krankengymnastik twice a week after surgery.",
+    "Fans of wrestling still argue about Orton and his rivals.",
+    "The art critic compared her work with that of Breton.",
+    "My doctor prescribed Krankengymnastik for my stiff shoulder.",
+    "Tickets for the Orton match sold out within an hour.",
+    "A biography of Breton appeared in Paris last spring."
+   ],
+   "quiet": [
+    "The crowd booed when John Cena walked out with his belt.",
+    "Many poets admired the ideas of Paul Valéry and his circle.",
+    "The coach recommended swimming twice a week after surgery.",
+    "Fans of wrestling still argue about Cena and his rivals.",
+    "The art critic compared her work with that of Picasso.",
+    "My doctor prescribed massage for my stiff shoulder.",
+    "Tickets for the Cena match sold out within an hour.",
+    "A biography of Picasso appeared in Paris last spring."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.5 on the opening piece of split names; single-token names below 0.2 (a floor near 0.15 is expected)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "first piece of a split name",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card peaks: 'eng' in Krank|engymnastik (77), ' M'acclesfield, ' Or'ton, ' G'orky, ' Bre'ton, ' Sho'emaker. Probe: Krank|eng 0.454, ' Or'(ton) 0.444, ' Bre'(ton) 0.352; Gorky and Shoemaker peaked on the space before a year at 0.21-0.22, and single-token controls sat at 0.135-0.149, so the floor is high and years are kept out of this test."
+}

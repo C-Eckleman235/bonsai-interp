@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-8f9f8b8d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N10921-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T07:20:33+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L20/N10921",
+   "pole": "-",
+   "label": "a math-function name or opening parenthesis inside an arithmetic expression in code (sin(, sqrt(, '* ('), as against prose describing the same calculation",
+   "fire": [
+    "dx = r * cos(angle)\ndy = r * sin(angle)",
+    "d = math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1))",
+    "z = cos(lat) * cos(lon)\nw = cos(lat) * sin(lon)",
+    "v = a * (b - c) * (b + c) / (a + 1)",
+    "h = sqrt(a * a + b * b)\nt = atan2(b, a) * (180 / pi)",
+    "px = cx + rad * cos(t)\npy = cy + rad * sin(t)",
+    "res = (n - 1) * (n - 2) * (n - 3) // 6",
+    "e = 0.5 * m * (vx * vx + vy * vy)"
+   ],
+   "quiet": [
+    "The horizontal step is the radius times the cosine of the angle.",
+    "The distance is the square root of the summed squared differences.",
+    "Each coordinate depends on the latitude and the longitude.",
+    "The value grows when the gap between b and c widens.",
+    "The hypotenuse is found from the two shorter sides.",
+    "The point moves around the centre at a fixed radius.",
+    "The result counts the ways to choose three items from n.",
+    "Kinetic energy is half the mass times the speed squared."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.45 on ' sin'/' cos'/' (' in code formulas; prose versions below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "math call / paren in code formula",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: ' [' and ' (' and ' sin' and '#' in code and brackets ('(0, 2) : [0, 2, 4]', 'math.sqrt(p * (p - first) * (p - ...', 'y1 = sin(...)'). Probe: 'y = sin(theta) * sin(phi)' 0.423, 'math.sqrt(s * (s - a) ...' 0.401; nested list literal 0.260, 'Quarterfinal #3' 0.111, os.dup2 0.021; prose controls 0.013-0.027. Only arithmetic code is tested."
+}

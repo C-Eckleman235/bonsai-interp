@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-c0994193",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N5539+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T07:20:33+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N5539",
+   "pole": "+",
+   "label": "the word piece 'aste'/'aster'/'asted' when it is split off a short prefix (t|aster, ro|aster, -w|aste, dism|asted), as against the same or similar words that are a single token (toaster, master, waste)",
+   "fire": [
+    "The coffee roaster in our street sells beans from Ethiopia.",
+    "Our team needs a skilled taster for the new range of cheeses.",
+    "The council collects yard-waste bins every second Tuesday.",
+    "Old phones count as e-waste and must not go in the normal bin.",
+    "The rumour was spread by a local boaster who loved attention.",
+    "Two shots dismasted the frigate and it surrendered within an hour.",
+    "The magazine ran a piece called Make Haste about faster checkouts.",
+    "She hired a professional tea taster to judge the blends."
+   ],
+   "quiet": [
+    "The coffee machine in our street sells beans from Ethiopia.",
+    "Our team needs a skilled master for the new range of cheeses.",
+    "The council collects garden waste bins every second Tuesday.",
+    "Old phones count as rubbish and must not go in the normal bin.",
+    "The rumour was spread by a local plasterer who loved attention.",
+    "Two shots damaged the frigate and it surrendered within an hour.",
+    "The magazine ran a piece called Hurry Up about faster checkouts.",
+    "She bought a new toaster to go with the kettle."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.7 on the split 'aster'/'aste' piece; single-token waste/master/toaster/plaster below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split piece 'aste(r)'",
+ "unit_kind": "word",
+ "confidence": 0.5,
+ "notes": "Card: 'aster' x15, 'aste' x7 (t|aster, H|aste, -w|aste, Dem|aster), max only 1.29 and a gate-closed regime. Probe: t|aster 0.733, e-w|aste 0.652, bo|aster 0.555, dism|asted 0.576; b|aste only ~0.13 (the sentence peaked elsewhere), so 'baste' is avoided; toaster (one token) 0.047. Splits checked with tok.py."
+}

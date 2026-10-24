@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-3e782046",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N1822-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T07:20:33+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L24/N1822",
+   "pole": "-",
+   "label": "content tokens in Chinese prose (news, history, everyday reports), as against the same content written in Japanese, Korean or English",
+   "fire": [
+    "记者了解到，今年春节期间全市接待游客超过百万人次。",
+    "据报道，这家企业去年在西部新建了三个工厂。",
+    "老张说，他小时候最喜欢在河边钓鱼。",
+    "市政府表示，明年将继续扩建地铁线路。",
+    "专家指出，科举制度在清末经历了重大改革。",
+    "这位退休教师每天早上都在公园里练太极拳。",
+    "春节前夕，火车站里挤满了回家过年的旅客。",
+    "调查显示，近一半的家庭每月都会网购日用品。"
+   ],
+   "quiet": [
+    "記者によると、今年の正月には百万人以上の観光客が訪れた。",
+    "報道によれば、この企業は昨年西部に三つの工場を新設した。",
+    "田中さんは、子供の頃川辺で釣りをするのが好きだったと言う。",
+    "시 정부는 내년에도 지하철 노선을 계속 확장할 것이라고 밝혔다.",
+    "Experts note that the imperial exam system was reformed in the late Qing.",
+    "この退職した先生は毎朝公園で太極拳をしている。",
+    "설 연휴를 앞두고 기차역은 귀성객들로 붐볐다.",
+    "A survey shows that nearly half of households shop online every month."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on Chinese nouns; Japanese, Korean and English versions below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Chinese prose",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: Chinese news/history pieces (八|股, 春节, 中|石|化, 多个, 科|举) plus digits in years and phone numbers. Probe: 春节 0.561, 八股 0.334, 中石化 0.309, 尤其是 0.131; Japanese 0.019, Korean 0.034, English 0.029. Digits also fire ('late 1980s' 0.488, a phone number 0.614) but are not tested here."
+}
