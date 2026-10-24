@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-8f26e285",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N8486-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T12:19:48+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N8486",
+   "pole": "-",
+   "label": "the colon (or 'Q' marker) right after a label at the start of a line in a transcript, Q&A or key-value block, as against colons inside running prose, times and ratios",
+   "fire": [
+    "Below is the full text of our phone call.\nDaniel: Good morning, thanks for joining us.",
+    "Here is what was said at the hearing.\nJudge: Please state your name for the record.",
+    "Frequently asked questions\nQ: Can I bring my dog on the train?",
+    "The podcast transcript follows.\nHost: Welcome back to the show, everyone.",
+    "Read the interview below.\nInterviewer: When did you first start painting?",
+    "Customer questions\nQ: Does this jacket come in other colors?",
+    "The chat log from that night reads:\nSam: are you still awake?",
+    "Excerpt from the play\nHAMLET: What a piece of work is a man."
+   ],
+   "quiet": [
+    "Below is the full text of our phone call, in which Daniel thanked us for joining.",
+    "At the hearing the judge asked her to state her name for the record.",
+    "People often ask whether they can bring a dog on the train.",
+    "The podcast host welcomed everyone back to the show at 9:15 that morning.",
+    "In the interview she explained the two reasons she paints: money and joy.",
+    "Customers asked if the jacket came in other colors, and the answer was yes.",
+    "The mix for the mortar was sand and cement at a ratio of 4:1.",
+    "In the play, Hamlet says that man is a remarkable piece of work."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on ':' after a speaker name or field name at line start (and on a line-initial 'Q'); list colons in prose, clock times and ratios below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "line-initial label colon",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: 'Quddus:' -14.31, line-initial 'Q', 'Package:', 'Foo:', bullets, '(ANI):'. Probe: transcript 'Maria:' 0.588, Q&A 'Q' 0.488, config 'Name:' 0.264, '(AP):' 0.155; prose list colon 0.054, 14:37 0.083, 3:2 0.052, same transcript without colon 0.065."
+}

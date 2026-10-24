@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-57325956",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N5842+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T12:19:48+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L27/N5842",
+   "pole": "+",
+   "label": "the attribute-access token right after an object name in Python code ('frappe.db', 'doc.get', 'self.plot'), as against the same names used as plain function calls or in prose",
+   "fire": [
+    "def on_submit(self):\n    rate = frappe.db.get_value('Item Price', self.item, 'rate')",
+    "count = frappe.db.count('Sales Invoice')",
+    "doc = load_pdf(path)\nmeta = doc.getMetadata()",
+    "self.curve = self.plot.plot(x, y, pen='r')",
+    "settings = frappe.get_doc('System Settings')",
+    "page = doc.getPage(0)\ntext = page.extractText()",
+    "self.plot.setTitle('Temperature')",
+    "rows = frappe.db.sql('select name from tabItem')"
+   ],
+   "quiet": [
+    "def on_submit(self):\n    rate = get_value('Item Price', self.item, 'rate')",
+    "count = count_rows('Sales Invoice')",
+    "doc = load_pdf(path)\nmeta = read_metadata(doc)",
+    "curve = make_curve(x, y, pen='r')",
+    "The manager asked us to get the settings file ready.",
+    "page = first_page(doc)\ntext = extract_text(page)",
+    "We set the title of the plot to Temperature.",
+    "rows = run_sql('select name from tabItem')"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.45 on '.db', '.get' or '.plot' after an object in code; plain calls and prose below 0.05. Weak in probes, likely fails the 0.3 bar.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "attribute access in code",
+ "unit_kind": "unclear",
+ "confidence": 0.25,
+ "notes": "Card: doc|.get 75.5, asset_category|_doc, doc|.get, self|.plot, frappe|.db, frappe|.get, http|://. Probe: frappe.db 0.419, 'www' after https:// 0.208, doc.getPages 0.187, self.plot 0.165, http:// 0.132; 'getPages(doc)' 0.048, prose 'get the results' 0.010, 'plotted the data' 0.026."
+}

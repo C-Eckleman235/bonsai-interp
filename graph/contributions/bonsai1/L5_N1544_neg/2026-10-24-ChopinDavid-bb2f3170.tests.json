@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-bb2f3170",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N1544-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T12:19:48+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N1544",
+   "pole": "-",
+   "label": "the first piece of a multi-token name that comes right after its category or title noun ('amino acid meth|ionine', 'planner Nath|aniel', 'boss Ars|ene'), as against the same split names without the category word and category words followed by one-token names",
+   "fire": [
+    "Muscle tissue needs the amino acid leucine to grow after exercise.",
+    "Few foods are rich in the amino acid histidine, the dietitian said.",
+    "The museum hired curator Ignatius Moore to run the new wing.",
+    "Every evening the prophet Ezekiel spoke to the crowd in the square.",
+    "Fans cheered when manager Cornelius Hart walked onto the pitch.",
+    "The protein contains the amino acid cysteine at its active site.",
+    "Our school invited novelist Benedikt Haas to read from his book.",
+    "The museum guide showed us a portrait of King Leopold on horseback."
+   ],
+   "quiet": [
+    "Muscle tissue needs plenty of protein, including leucine, to grow after exercise.",
+    "Few foods are rich in histidine and similar nutrients, the dietitian said.",
+    "The museum hired curator John Moore to run the new wing.",
+    "Every evening the old man spoke to the crowd in the square.",
+    "Fans cheered when the manager walked onto the pitch with Cornelius.",
+    "The protein contains an unusual sugar at its active site.",
+    "Our school invited a novelist from Berlin to read from his book.",
+    "The museum guide showed us a portrait of the king on horseback."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.8 on the first piece of a split name directly after a category or title noun; the same names elsewhere and 'planner John' style one-token names below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "name start after its title",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: 'catalog| NG|C', 'amino acids| meth|ionine', 'fantasy| Frances|ca', 'boss| Ars|ene', 'planner| Nath|aniel', 'God| Yah|weh'. Probe: amino acid methionine 0.766, planner Nathaniel 0.755, boss Arsene 0.585, amino acid glycine 0.496; 'Methionine is found' 0.031, 'Arsene Wenger watched' 0.012, 'story of Francesca' 0.055. Splits checked with the tokenizer."
+}

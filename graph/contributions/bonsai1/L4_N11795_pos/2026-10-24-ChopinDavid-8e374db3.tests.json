@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-8e374db3",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N11795+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T12:19:48+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N11795",
+   "pole": "+",
+   "label": "sentence-initial 'Thus' (and more weakly 'Hence') that draws a conclusion from the previous sentence, as against other sentence-initial connectives and mid-sentence 'thus'",
+   "fire": [
+    "The river carries silt from the mountains every spring. Thus the delta grows a little each year.",
+    "Copper conducts heat very well. Thus, it is often used in cooking pans.",
+    "The vaccine trains the immune system to spot the virus. Thus infected cells are cleared quickly.",
+    "The tax applies only to imports. Hence local farmers pay nothing extra.",
+    "Each cell carries a full copy of the genome. Thus any cell could in principle build the whole plant.",
+    "The bill failed in the senate by two votes. Thus, the old rules remain in force.",
+    "Light travels faster than sound. Thus we see the lightning before we hear the thunder.",
+    "The species lives only on one island. Hence it is listed as endangered."
+   ],
+   "quiet": [
+    "The river carries silt from the mountains every spring. Meanwhile the delta shrinks a little each year.",
+    "Copper conducts heat very well. However, it is rarely used in cooking pans.",
+    "The vaccine trains the immune system to spot the virus, and thus infected cells are cleared quickly.",
+    "The tax applies only to imports. Instead, local farmers pay a land fee.",
+    "Each cell carries a full copy of the genome. Still, no single cell can build the whole plant.",
+    "The bill failed in the senate by two votes. Later, the old rules were changed anyway.",
+    "Light travels faster than sound. Yet we often hear the thunder before we notice the flash.",
+    "The species lives only on one island. Recently it was listed as endangered."
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.6 on ' Thus' or ' Hence' opening a sentence after a full stop; ' However', ' Meanwhile', ' Instead' and mid-sentence 'and thus' below 0.08",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "sentence-initial Thus/Hence",
+ "unit_kind": "word",
+ "confidence": 0.6,
+ "notes": "Card: ' Thus' x11 and ' Hence' among top 32 peaks (4.25-4.44), plus em dashes. Probe: '. Thus the blood level' 0.587, '. Thus, a pure sample' 0.508, '. Hence it is called' 0.348; '. However,' 0.000, '. It is also' 0.016, 'and thus the traffic' 0.035, em dash 0.064. Em dash did not reproduce, so the label is the connective only."
+}
