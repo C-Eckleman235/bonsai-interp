@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-68333e0b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N11762-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T14:19:44+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N11762",
+   "pole": "-",
+   "label": "a capital letter that opens a letter+number code (G-code M140, page S45, Cortex-M7), as against a letter standing alone (seat B, Plan A, grade A)",
+   "fire": [
+    "To heat the bed, the slicer inserts the command M140 before the first layer.",
+    "The controller in that kit is an STM32 with a Cortex-M7 core.",
+    "See Jones et al., Journal of Pediatrics, 98(Suppl 1): S45-S52, for the details.",
+    "The firmware homes the axes first and then sends M104 to heat the nozzle.",
+    "Their phone uses a Cortex-A53 cluster for background tasks.",
+    "Reference: Clinical Infectious Diseases 2011; 52(Suppl 3): S201-S210.",
+    "After the print finishes, the script runs M84 to switch off the stepper motors.",
+    "The sensor node is built around a low-power Cortex-M0 chip."
+   ],
+   "quiet": [
+    "To heat the bed, the slicer waits a few minutes before the first layer.",
+    "The controller in that kit is cheap and has a small fan.",
+    "See Jones et al. in the Journal of Pediatrics for the details on early growth.",
+    "The firmware homes the axes first and then heats the nozzle slowly.",
+    "Their phone falls back to a Plan B approach for background tasks.",
+    "Reference: the clinical guidelines from 2011, section B, cover this topic.",
+    "After the print finishes, the teacher grades it with an A for neatness.",
+    "The sensor node is built around a chip rated for class C power use."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.9 on ' M', ' S' or '-M' before digits in G-code commands, supplement page ranges and Cortex part names; standalone letters below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "letter opening a letter+number code",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: ' A' (p. A1), ' S' (S213-S256), 'M' (M104), '-M' (Cortex-M0). Probe: Suppl S110 0.896, G-code M106 0.820, Cortex-M4 0.583, p. A3 0.337; seat A 0.111, Plan A 0.019, vitamin D 0.012. The distinction is a letter as the head of an alphanumeric code vs a letter used as a word."
+}

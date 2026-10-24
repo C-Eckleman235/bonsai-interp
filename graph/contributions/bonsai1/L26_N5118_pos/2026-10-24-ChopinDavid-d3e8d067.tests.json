@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-d3e8d067",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N5118+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T14:19:44+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N5118",
+   "pole": "+",
+   "label": "the left-hand operand in code just before a strict comparison operator (> or <) is predicted, as against code lines that compute or print without comparing",
+   "fire": [
+    "def larger(a, b):\n    if a.size > b.size:\n        return a\n    return b",
+    "for i in range(n):\n    if scores[i] < threshold:\n        continue\n    keep.append(i)",
+    "class Point:\n    def __lt__(self, other):\n        return self.x < other.x",
+    "while True:\n    elapsed = time.time() - start\n    if elapsed > 5:\n        break",
+    "def clip(v, hi):\n    if v > hi:\n        return hi\n    return v",
+    "mask = (df['age'] > 30) & (df['age'] < 65)\nprint(mask.sum())",
+    "while queue:\n    if len(queue) > max_size:\n        queue.pop(0)",
+    "def search(lo, hi, t):\n    mid = (lo + hi) // 2\n    if arr[mid] < t:\n        return search(mid + 1, hi, t)"
+   ],
+   "quiet": [
+    "def larger(a, b):\n    total = a.size + b.size\n    return total",
+    "for i in range(n):\n    keep.append(scores[i] * 2)",
+    "class Point:\n    def __repr__(self):\n        return str(self.x)",
+    "while True:\n    elapsed = time.time() - start\n    print(elapsed)\n    break",
+    "def clip(v, hi):\n    return min(v, hi)",
+    "ages = df['age'].tolist()\nprint(len(ages))",
+    "while queue:\n    queue.append(item)\n    queue.pop(0)",
+    "def search(lo, hi, t):\n    mid = (lo + hi) // 2\n    return arr[mid]"
+   ]
+  }
+ ],
+ "predictions": "card peaks of 80-153 sit on the token before '>' or '<' and the pole promotes ' >' and ' <'; probe scored only 0.01 on short snippets, so multi-line passages may still score low",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "operand before > / <",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Card: peaks on self.y, ['lon'], pos[1], n, |de| before > or <; promotes ' >', ' <', suppresses ' >=', ' <='. Probe: 'if count > limit' 0.011, 'while index <' 0.007, 'self.width >' 0.009, |x| < 0.004 - all near the floor. Registered as unclear with the best-guess label; near misses remove the comparison setup since activation is causal."
+}
