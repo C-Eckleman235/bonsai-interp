@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-2e60e4c0",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N11331-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T15:19:54+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N11331",
+   "pole": "-",
+   "label": "decorative separator runs (#### or ----) on comment and docstring lines in source code, as against the same code without the separator",
+   "fire": [
+    "import os\nimport sys\n\n# Globals ################################\n\nlogger = None\nDEBUG = False",
+    "def main():\n    start = time.time()\n    ################################\n    # Build the index\n    index = build()",
+    "class Parser:\n    def parse(self, text):\n        # --------------------------------\n        # tokenize\n        return text.split()",
+    "import json\n\n# ----------------------------------------\n# helpers\n# ----------------------------------------\n\ndef load(path):\n    return json.load(open(path))",
+    "def fetch(url):\n    \"\"\"Fetch a page.\n\n    Parameters\n    ----------\n    url : str\n    \"\"\"\n    return requests.get(url)",
+    "CONFIG = {}\n\n########################################\n# Database settings\n########################################\nDB_HOST = 'localhost'",
+    "for row in rows:\n    total += row\n# ---------------------------------------- output\nprint(total)",
+    "def train(model, data):\n    ################ setup ################\n    opt = SGD(model)\n    return opt"
+   ],
+   "quiet": [
+    "import os\nimport sys\n\n# Globals\n\nlogger = None\nDEBUG = False",
+    "def main():\n    start = time.time()\n    # Build the index\n    index = build()",
+    "class Parser:\n    def parse(self, text):\n        # tokenize\n        return text.split()",
+    "import json\n\n# helpers\n\ndef load(path):\n    return json.load(open(path))",
+    "def fetch(url):\n    \"\"\"Fetch a page from the given url and return the response.\"\"\"\n    return requests.get(url)",
+    "CONFIG = {}\n\n# Database settings\nDB_HOST = 'localhost'",
+    "for row in rows:\n    total += row\n# output\nprint(total)",
+    "def train(model, data):\n    # setup\n    opt = SGD(model)\n    return opt"
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.4 on the long '#' or '-' runs; code without them below 0.1. The pole is broad and the probe was weak (max 0.358), so this may fail",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "separator rule in code comments",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card: broad (2.2%); peaks on ' --------------------------------' x6, ' ################' x4, ' k' x5 (self.knob), underscore runs. Probe: self.knob 0.358, '# Settings ####' 0.203, '# ----' in a function 0.155, numpy 'Parameters / ----' 0.111; prose 0.049. Fire items are multi-line code with long separator runs."
+}

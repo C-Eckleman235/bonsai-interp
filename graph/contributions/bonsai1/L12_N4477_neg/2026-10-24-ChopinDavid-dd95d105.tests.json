@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-dd95d105",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N4477-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T15:19:54+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N4477",
+   "pole": "-",
+   "label": "the line break that ends a section heading inside a longer document, as against a line break after an ordinary sentence",
+   "fire": [
+    "The survey covered 40 villages in the northern district. Most households rely on rain for their crops, and many lack storage.\n3.2 Access to clean water\nOnly a third of the villages have a working well.",
+    "The council met four times during the year and approved the new budget in March.\nSection 4: Public Transport\nBus routes were extended to two new suburbs.",
+    "Parrots are social birds that live in large flocks and call loudly at dawn.\nDiet in the wild\nThey feed on seeds, fruit, nectar and buds.",
+    "The constitution was adopted in 1992 after a long national debate.\nFreedom of Religion\nThe law allows citizens to practice any faith.",
+    "Sleep problems are common in older adults and often go untreated.\nRisk factors\nPain, medication and stress can all disturb sleep.",
+    "The company sold its first product in 2004 and grew steadily for a decade.\n2.3 Expansion into Asia\nIn 2015 it opened offices in Seoul and Taipei.",
+    "Most of the coast is rocky, with a few sandy bays near the river mouths.\nClimate and seasons\nWinters are mild and summers are dry.",
+    "The museum holds over 20,000 objects from the region's past.\nOpening hours\nThe galleries are open from Tuesday to Sunday."
+   ],
+   "quiet": [
+    "The survey covered 40 villages in the northern district. Most households rely on rain for their crops, and many lack storage.\nOnly a third of the villages have a working well.",
+    "The council met four times during the year and approved the new budget in March.\nBus routes were extended to two new suburbs.",
+    "Parrots are social birds that live in large flocks and call loudly at dawn.\nIn the wild they feed on seeds, fruit, nectar and buds.",
+    "The constitution was adopted in 1992 after a long national debate.\nThe law allows citizens to practice any faith.",
+    "Sleep problems are common in older adults and often go untreated.\nPain, medication and stress can all disturb sleep.",
+    "The company sold its first product in 2004 and grew steadily for a decade.\nIn 2015 it opened offices in Seoul and Taipei.",
+    "Most of the coast is rocky, with a few sandy bays near the river mouths.\nWinters are mild and summers are dry.",
+    "The museum holds over 20,000 objects from the region's past.\nThe galleries are open from Tuesday to Sunday."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.5 on the newline after a heading line that follows earlier body text; newlines after full sentences below 0.1. The probe's short items did not fire (max 0.073), so this may fail",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "line break after a section heading",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card: '\\n' x16, ':' x2, all after numbered or titled section headings deep in long documents (laws, reports, health pages). Probe: two-line items with a heading first scored 0.019-0.073, sentence-final newlines 0.018-0.035. Fire items therefore put the heading after a full paragraph of body text."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-b089e185",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N8244-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T15:19:54+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L24/N8244",
+   "pole": "-",
+   "label": "the verb 'stop' for bringing a vehicle to a halt in road-safety instructions, as against 'stop' for ending other activities and driving advice that does not involve halting",
+   "fire": [
+    "If a tire bursts on the highway, slow down gently and stop on the shoulder.",
+    "When you hear a siren behind you, move to the right and stop until it passes.",
+    "In heavy fog, drivers should not stop in the middle of the lane.",
+    "If your car overheats, find a safe place to pull off and stop the vehicle.",
+    "At an unmarked railway crossing, always stop and look both ways.",
+    "During a hailstorm, do not stop under trees; find a garage if you can.",
+    "If the warning light comes on, pull over and stop as soon as it is safe.",
+    "A school bus with flashing red lights means all traffic must stop."
+   ],
+   "quiet": [
+    "If the timer rings in the kitchen, take the bread out and stop the oven fan.",
+    "When you hear the bell at school, pack up and stop talking until class ends.",
+    "In heavy fog, drivers should use low beams and keep a long distance.",
+    "If your car overheats, check the coolant level once the engine is cold.",
+    "At an unmarked railway crossing, the road narrows and the surface is rough.",
+    "During a hailstorm, the music festival had to stop for an hour.",
+    "If the warning light comes on, book a service at the garage this week.",
+    "A school bus with flashing lights is painted bright yellow in most states."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on ' stop' in pull-over / do-not-stop driving instructions; 'stop' for music, talking or timers and driving advice without halting below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'stop' = halt the vehicle (driving advice)",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: ' stop' x3 (pull off the road but do not stop on bridges; pull over and stop), plus scattered narrative action slots (peasant put down, fell to, truck turned in). Probe: pull over and stop 0.786, do not stop under bridges 0.588, farmer sat on the wall 0.395, king staged a parade 0.353; cooking instruction 0.006. The vehicle halt is the clearest repeatable case; the narrative slot is too diffuse to test."
+}
