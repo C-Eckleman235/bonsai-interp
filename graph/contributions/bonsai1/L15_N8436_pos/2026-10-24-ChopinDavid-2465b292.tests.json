@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-2465b292",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N8436+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T23:20:44+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L15/N8436",
+   "pole": "+",
+   "label": "unclear weak unit: the continuation piece of an author's surname split by the tokenizer in a reference list (Ein|horn, Fen|ley), as against single-token surnames in the same list format",
+   "fire": [
+    "- Babcock, R. T., & Hornung, P. (2004). Soil carbon in tilled fields. Geoderma, 12, 33-41.",
+    "- Wexler, D. A. (1999). Memory and attention in older adults. Psychol Aging, 14, 210-219.",
+    "References\n- Fenwick, J., Lindqvist, M. (2015). Urban heat islands. Clim Res, 8, 4-9.",
+    "- Stallworth, K. L. (2001). Teacher burnout. J Educ Psychol, 93, 55-61.",
+    "- Kessler, R. C., Babcock, D. (2010). Sleep and mood. Arch Gen Psychiatry, 67, 1-9.",
+    "- Hornung, E., & Wexler, T. (2012). Coral bleaching. Mar Biol, 59, 77-80.",
+    "References\n- Lindqvist, A. (2008). Nordic welfare reform. Scand Polit Stud, 31, 2-20.",
+    "- Fenwick, P. B., Stallworth, G. (1997). Early reading. Read Res Q, 32, 8-24."
+   ],
+   "quiet": [
+    "- Smith, R. T., & Brown, P. (2004). Soil carbon in tilled fields. Geoderma, 12, 33-41.",
+    "- Miller, D. A. (1999). Memory and attention in older adults. Psychol Aging, 14, 210-219.",
+    "References\n- Clark, J., Taylor, M. (2015). Urban heat islands. Clim Res, 8, 4-9.",
+    "- Moore, K. L. (2001). Teacher burnout. J Educ Psychol, 93, 55-61.",
+    "- Jones, R. C., Brown, D. (2010). Sleep and mood. Arch Gen Psychiatry, 67, 1-9.",
+    "- Taylor, E., & Miller, T. (2012). Coral bleaching. Mar Biol, 59, 77-80.",
+    "References\n- Clark, A. (2008). Nordic welfare reform. Scand Polit Stud, 31, 2-20.",
+    "- Moore, P. B., Smith, G. (1997). Early reading. Read Res Q, 32, 8-24."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.4 on the second piece of split surnames in reference entries; single-token surnames 0.1-0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split author surname in references (unclear)",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card max 3.94, broad, gate-closed 90%; peaks on surname pieces in citations ('on' in Navon, 'horn' in Einhorn, 'ley', 'ler', 'mer'). Probe: Einhorn in refs 0.336, Fenley 0.298, Beutler 0.120; Smith/Jones version 0.185; Einhorn in prose 0.073. Separation is small; expect a weak or failed test."
+}

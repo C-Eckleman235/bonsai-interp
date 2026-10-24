@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-94a6a841",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N231-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T23:20:44+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N231",
+   "pole": "-",
+   "label": "the punctuation that closes an element of a bibliographic citation (the period after 'Surname, Name' or a year, the comma before 'p.'), as against the same punctuation ending ordinary prose sentences",
+   "fire": [
+    "Further reading:\n- Hobsbawm, Eric. The Age of Revolution. London: Abacus, 1962.",
+    "Notes\n- Evans 2005, p. 112.\n- Kershaw 1998, p. 64.",
+    "Sources: (Lindner, K. 2014. Coastal erosion in the Baltic. Kiel.)",
+    "Bibliography\n- Tuchman, Barbara. The Guns of August. New York: Macmillan, 1962.",
+    "- Ferguson 2008, pp. 201-203.\n- Beevor 2012, p. 77.",
+    "Cited works: (Okafor, N. 2019. Rainfall and harvests. Lagos.)",
+    "References\n- Morris, Jan. Venice. London: Faber, 1960.",
+    "- Smith 2001, p. 9.\n- Clark 2017, p. 140."
+   ],
+   "quiet": [
+    "Further reading is listed at the back. The age of revolution began in Europe.",
+    "Notes were kept by every student. Evans wrote the most pages that year.",
+    "Sources say the coast is eroding. The Baltic shore lost a metre last year.",
+    "The bibliography was long. Barbara read every book before the exam.",
+    "Ferguson arrived in 2008. He stayed for two years and then moved south.",
+    "Cited by many farmers, the rain was late. Harvests were small that autumn.",
+    "References to Venice fill her letters. Jan loved the city all her life.",
+    "Smith joined the firm in 2001. Clark followed him there years later."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-1.0 on '.', ',', ').' closing an author, year or title in a reference; prose sentence ends 0.0-0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "punctuation closing a citation element",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card peaks ').' x8, '.' x7 after author names and years in reference lists; gate-leak regime 98%, broad. Probe: '(Pasquet, Y. 2010.' 1.007, '- Davies 2012, p. 48.' 0.540, 'Andrew, Christopher.' 0.349; in-text '(Smith, 2007). Since' 0.065; prose 'went to the park.' 0.074. Fire items are reference-list lines."
+}

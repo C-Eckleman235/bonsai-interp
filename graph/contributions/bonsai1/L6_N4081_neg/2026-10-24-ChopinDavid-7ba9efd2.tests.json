@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-7ba9efd2",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N4081-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T23:20:44+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L6/N4081",
+   "pole": "-",
+   "label": "the first fragment of a word that the tokenizer breaks mid-stem (fract|uring, gl|azing, kay|akers), as against whole-token words in the same slot",
+   "fire": [
+    "The report blamed the earthquakes on fracturing near the old wells.",
+    "Fish farms in the valley began culturing trout in concrete ponds.",
+    "The artist spent the afternoon glazing a set of blue bowls.",
+    "In the old market town, weavers sold cloth every Thursday.",
+    "On calm mornings, kayakers paddle out past the harbour.",
+    "Workers should store solvents away from open flames.",
+    "Long rides in the heat gave several cyclists painful cramps.",
+    "The exhibition covered the lives of medieval popes and their courts."
+   ],
+   "quiet": [
+    "The report blamed the earthquakes on drilling near the old wells.",
+    "Fish farms in the valley began raising trout in concrete ponds.",
+    "The artist spent the afternoon painting a set of blue bowls.",
+    "In the old market town, farmers sold cheese every Thursday.",
+    "On calm mornings, fishermen head out past the harbour.",
+    "Workers should store brushes away from open flames.",
+    "Long rides in the heat gave several cyclists painful burns.",
+    "The exhibition covered the lives of medieval kings and their courts."
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.4 on the opening fragment of split words; whole-token words 0.0-0.08",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "first piece of a split word",
+ "unit_kind": "spelling",
+ "confidence": 0.3,
+ "notes": "Card max 5.47; peaks on opening pieces ' Medic', 'ju', ' prim', 'firm', ' cult', ' sw', ' pop', ' Sur', ' fract'. Probe: ' prim' 0.183, ' sw' 0.165, ' cr' 0.098; whole-token words ('medications', 'firmware', 'surveys', 'athletes') 0.005-0.064. Signal is weak relative to the card max. Splits checked with tok.py: fract|uring, cult|uring, gl|azing, we|avers, kay|akers, sol|vents, cr|amps, pop|es."
+}
