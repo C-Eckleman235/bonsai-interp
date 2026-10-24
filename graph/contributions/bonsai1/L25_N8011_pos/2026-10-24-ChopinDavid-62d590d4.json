@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-62d590d4",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N8011+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-24T21:27:29+00:00",
+ "recipe": {
+  "toolchain_commit": "dd7a5cf1",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N8011_pos/2026-10-24-ChopinDavid-62d590d4.tests.json"
+ },
+ "label": "the slot after 'is / serves on' in a biographical sentence that introduces a person's role or membership ('is the author of', 'serves on the board of'); weak, and plain 'is the' / 'on the' leak",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N8011_pos/2026-10-24-ChopinDavid-62d590d4.tests.json",
+   "prereg_commit": "dd7a5cf1",
+   "author": "ChopinDavid",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.243,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.48,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.119,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.558,
+     "peak": " on"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.129,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.524,
+     "peak": " on"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.12,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.532,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.009,
+     "peak": " children"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.006,
+     "peak": " every"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.009,
+     "peak": " open"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.014,
+     "peak": "She"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.007,
+     "peak": " river"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.011,
+     "peak": " he"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.016,
+     "peak": " is"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.013,
+     "peak": " side"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.361,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dd7a5cf1",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "bio role slot ('is the', 'on the')",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: ' the' x18 of 32 peaks, nearly all 'sits on| the| boards', 'is| the| recipient/author/owner' in speaker bios. Probe: 'she is| the| author' 0.430, 'served| on| the boards' 0.389, 'is also| the| founder' 0.319; leaks: 'is also the tallest person' 0.319, 'sits on the bench' 0.159, 'appointed to the board' 0.169; 'cat sits on the table' 0.010. Weak pole, low confidence.",
+ "selection": "random draw"
+}
