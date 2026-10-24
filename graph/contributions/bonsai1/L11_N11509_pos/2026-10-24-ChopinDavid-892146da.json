@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-892146da",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N11509+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-24T09:28:59+00:00",
+ "recipe": {
+  "toolchain_commit": "3cc1624a",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L11_N11509_pos/2026-10-24-ChopinDavid-892146da.tests.json"
+ },
+ "label": "the Japanese word 両方 ('both', two items jointly), as against 片方 / どちらか ('one of the two') in the same Japanese sentences",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L11_N11509_pos/2026-10-24-ChopinDavid-892146da.tests.json",
+   "prereg_commit": "3cc1624a",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.55,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.551,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.616,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.455,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.642,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.438,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.555,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.486,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.369,
+     "peak": "どちら"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.185,
+     "peak": "か"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.001,
+     "peak": "話"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.015,
+     "peak": "パン"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.016,
+     "peak": "では"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.136,
+     "peak": "どちら"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.019,
+     "peak": "では"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.024,
+     "peak": "一度"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.55,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "3cc1624a",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "Japanese 両方 'both'",
+ "unit_kind": "word",
+ "confidence": 0.35,
+ "notes": "Card: '両方' 14.9 (max), ' both' x3, ' Both' x2, 'at the same time', 'とも|に'. Probe: Japanese 'index.htm と index.html が両方' 0.522; English 'Both justification' 0.178 (sentence-initial), 'both within' 0.111, 'Both of these' 0.138, while 'Either' 0.115 and 'each within' 0.072, so English does not separate. 両方 tokenizes as two byte tokens plus '方'.",
+ "selection": "random draw"
+}

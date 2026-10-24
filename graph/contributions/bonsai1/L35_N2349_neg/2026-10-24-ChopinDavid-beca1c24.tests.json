@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-beca1c24",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N2349-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T09:19:41+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N2349",
+   "pole": "-",
+   "label": "the token just before a date or age numeral that the text sets up ('born in Oxford on⟦ 8⟧', 'must be⟦ twenty⟧-five'), as against the same sentences with no numeral following",
+   "fire": [
+    "The composer Gustav Holst was born in Cheltenham on 21 September 1874.",
+    "Records show that the poet was baptised in Dublin on 4 March 1801.",
+    "Our grandmother was born in a small village on 12 July 1931.",
+    "The bridge was officially opened in Glasgow on 3 May 1899.",
+    "The famous nurse Florence Nightingale was born in Florence on 12 May 1820.",
+    "According to the register, the captain died at sea on 17 October 1652.",
+    "The treaty was signed in Utrecht on 11 April 1713 by several powers.",
+    "My father started work at the factory on 2 June 1958."
+   ],
+   "quiet": [
+    "The composer Gustav Holst was born in Cheltenham and studied music in London.",
+    "Records show that the poet was baptised in Dublin by a local priest.",
+    "Our grandmother was born in a small village near the coast.",
+    "The bridge was officially opened in Glasgow by the mayor and his wife.",
+    "The famous nurse Florence Nightingale was born in Florence to wealthy parents.",
+    "According to the register, the captain died at sea during a storm.",
+    "The treaty was signed in Utrecht after long negotiations among several powers.",
+    "My father started work at the factory when he left school."
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.35 on the token before or at the numeral; the same sentences without a numeral below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "slot before an expected numeral",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card: ' twenty', 'February |1|1', 'trescient|os', '第三', '(8|0|1)', 'born in Oxford on |8'; suppresses ' one'/'1'. Probe: 'born in Oxford on 8 January' 0.354 (peak on ' on'), 'thirty years of age' 0.124, '(801)' 0.075, 'February 11' 0.046; controls 0.02-0.09. Only the 'born ... on <day>' frame scored, so the test leans on it."
+}

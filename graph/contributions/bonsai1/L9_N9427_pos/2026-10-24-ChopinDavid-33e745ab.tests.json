@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-33e745ab",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N9427+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T09:19:41+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L9/N9427",
+   "pole": "+",
+   "label": "the colon or copula right after an enumerated item label that introduces that item's content ('Goal number 2:', 'Question two:'), as against the same labels without an introducing colon",
+   "fire": [
+    "We set four targets for the quarter. Target number 3: cut support response times in half.",
+    "The checklist has five steps. Step number 2: unplug the router and wait thirty seconds.",
+    "Readers raised several doubts. Doubt number 1: why was the sample never tested?",
+    "There are three rules in this house. Rule number 2: no phones at the dinner table.",
+    "The audit found two issues. Issue number 1: invoices were approved without receipts.",
+    "My plan for the weekend is simple. Task number 2: repaint the fence in the backyard.",
+    "The coach gave us three tips. Tip number 3: drink water before you feel thirsty.",
+    "Our reading list has six books. Book number 4: a short history of the printing press."
+   ],
+   "quiet": [
+    "We set four targets for the quarter, and the third was to cut support response times in half.",
+    "The checklist has five steps, and you should unplug the router and wait thirty seconds.",
+    "Readers raised several doubts about why the sample was never tested.",
+    "There are three rules in this house, and nobody uses phones at the dinner table.",
+    "The audit found that invoices were sometimes approved without receipts.",
+    "My plan for the weekend is simple, and I want to repaint the fence in the backyard.",
+    "The coach reminded us to drink water before we feel thirsty.",
+    "Our reading list has six books, including a short history of the printing press."
+   ]
+  }
+ ],
+ "predictions": "fire 0.1-0.25 on the colon after the numbered label; the label used inside a sentence below 0.1. Max is tiny (5.8), so likely to fail.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "colon after a numbered item label",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card max only 5.8: 'c'est| que', 'the last one| is', 'Ensuite|,', '质疑二|：', 'Job number 2|:', 'The second| is'. Probe: 'Goal number 2:' 0.234 was the best; 'The second is' 0.095 (peaked on ' first'), 'the last one is' 0.096, French 'c'est que' 0.032. Low-confidence guess on the one configuration that scored."
+}
