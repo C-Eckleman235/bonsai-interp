@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-2db02f1b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N5926-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T06:20:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N5926",
+   "pole": "-",
+   "label": "the first byte of a katakana word that follows a space in Japanese text (space-initial byte-fallback token), as against the same katakana word written without the space",
+   "fire": [
+    "昨日は友達と スーパーに行きました。",
+    "兄は大学で コンピューターを勉強しています。",
+    "週末に新しい カメラを買いました。",
+    "このお店の ケーキはとても美味しいです。",
+    "駅の近くに レストランができました。",
+    "母は毎朝 コーヒーを飲みます。",
+    "妹は夏休みに ピアノを習い始めました。",
+    "会議の前に メールを確認してください。"
+   ],
+   "quiet": [
+    "先週は家族とスーパーに行きました。",
+    "姉は大学でコンピューターを教えています。",
+    "誕生日に新しいカメラをもらいました。",
+    "あのお店のケーキは少し高いです。",
+    "駅の近くに 図書館ができました。",
+    "父は毎晩コーヒーを飲みます。",
+    "弟は春休みに 水泳を習い始めました。",
+    "授業の後でメールを送ってください。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.5 on ' �' before a spaced katakana word; unspaced katakana and spaced kanji/hiragana words below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "space + katakana word start",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: ' �' x21 in Japanese pages where a katakana word follows a space ('トリップアドバイザーは ホテルズ', '兼 テクノロジー'), max 166. Probe: spaced ホテル 0.389, テクノロジー 0.461, ロボット 0.444; unspaced ホテル 0.028, ロボット 0.007; spaced kanji '公園' 0.003; 'ユーザーサポート' 0.108; English 'abstracts and keywords' 0.023."
+}

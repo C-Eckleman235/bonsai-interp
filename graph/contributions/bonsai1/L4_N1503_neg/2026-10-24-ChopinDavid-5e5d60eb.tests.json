@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-5e5d60eb",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N1503-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T06:20:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N1503",
+   "pole": "-",
+   "label": "dense: weakly active on most text, stronger on odd sub-word fragments inside identifiers, package names and letter-spaced strings ('amd64', 'ADJUST', 'crisscross', 'I d r i n k'), as against ordinary prose",
+   "fire": [
+    "wget https://dl.example.com/pkg/tool_current_arm64.deb",
+    "CONFIG_SERVER_REFRESH_RATE = 'rate'",
+    "from whirlpool import client",
+    "The message reads: T h e c a t s a t o n t h e m a t",
+    "sudo apt install ./vscode_latest_amd64.deb",
+    "SETTINGS_GROUP_RESIZE_MODE = 'auto'",
+    "from flimflam import parser",
+    "Decoded, it says: w e l o v e c h e e s e"
+   ],
+   "quiet": [
+    "We downloaded the new tool from the website yesterday.",
+    "The server refreshes the page every few seconds.",
+    "The client called to ask about the washing machine.",
+    "The message said that the cat sat on the warm mat.",
+    "She installed the editor on her laptop last night.",
+    "The settings menu lets you resize the window.",
+    "The parser reads each line and checks the format.",
+    "Decoded, it says that we love cheese and crackers."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.65 on identifier fragments and spaced letters; prose 0.1-0.25 (dense baseline), so the margin is narrow",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "identifier fragments (dense)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.3,
+ "notes": "Card flags dense (32% of tokens above 0.1 max) and gate-closed (leak 100%). Peaks: ' 裡' in spaced Chinese, 'd' in 'amd64', 'JUST' in 'ADJUST', ' n' in letter-spaced text, 'iss' in 'crisscross'. Probe: amd64 0.654, ADJUST 0.538, crisscross 0.535, spaced letters 0.483, spaced Chinese 0.293; prose 0.134-0.257."
+}

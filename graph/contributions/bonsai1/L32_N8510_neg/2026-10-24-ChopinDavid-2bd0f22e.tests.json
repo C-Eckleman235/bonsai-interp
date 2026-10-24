@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-2bd0f22e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N8510-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T06:20:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L32/N8510",
+   "pole": "-",
+   "label": "the slot just before 'every'/'everything' in a ratio or all-inclusive frame ('one nurse for [every]', 'a time and place for [everything]', 'we will do [everything]'), as against sentences on the same topics with no such quantifier frame",
+   "fire": [
+    "In rural clinics there is one nurse for every 900 residents.",
+    "The school hired one teacher for every twenty pupils.",
+    "Back then, there was one car for every ten households.",
+    "With help from abroad, we will do everything we can to bring them home.",
+    "At the camp the ratio was one woman for every forty men.",
+    "My grandmother believed there was a season for everything.",
+    "The city plants one tree for every baby born there.",
+    "Together with the utility, we will do everything possible to restore power."
+   ],
+   "quiet": [
+    "In rural clinics there is one nurse who drives between villages.",
+    "The school hired a new teacher last spring.",
+    "Back then, there was one car on our whole street.",
+    "With help from abroad, we finished the report by Friday.",
+    "At the camp there was a small kitchen and a single well.",
+    "My grandmother believed that winter was the best season.",
+    "The city plants trees along the river each spring.",
+    "Together with the utility, officials said the cut was caused by a storm."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.5 on 'for' in 'one X for every Y' and 'do' in 'will do everything'; same topics without the frame below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "slot before 'every' (ratio / do everything)",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: ' do' x8 before 'everything/anything', ' for' x6 before 'every', 'For everyone'; the + pole promotes 'every/each'. Probe: 'one doctor for every' 0.494, 'we will do everything we can' 0.360, 'place for everything' 0.260; but 'going to do everything' 0.097 (= 'going to do the dishes' 0.097) and 'would do anything' 0.061, so the 'do' slot depends on the lead-in; 'one doctor in the village' 0.079."
+}

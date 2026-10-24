@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-96d8797d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N11229+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T06:20:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N11229",
+   "pole": "+",
+   "label": "positions inside a worked arithmetic or algebra problem where an operand or quantity comes next ('the value of [k]', '+ [term]', 'added to [2000]', 'standard curve'), as against sentences on the same topics with no calculation",
+   "fire": [
+    "If 3x + 5 = 20, what is the value of x in this equation?",
+    "The total cost is (p * q) + (r * s) + t for each order.",
+    "Find the value of m so that the line passes through (2, 7).",
+    "y = max(c, d) - rand() * (c + d)",
+    "Next, 150 is added to the mean to give the adjusted score.",
+    "Prepare a calibration curve from the absorbance readings of each standard.",
+    "The error grows as h^2 + h^3 / 6 when the step size increases.",
+    "For the sum to equal 45, what should the value of n be?"
+   ],
+   "quiet": [
+    "The teacher said this equation was the hardest one in the book.",
+    "The total cost depends on how many orders the shop receives.",
+    "Draw the line neatly so the class can see it from the back.",
+    "The function picks a random colour for each new player.",
+    "Next, the class discussed why some scores were higher than others.",
+    "The lab bought a new spectrophotometer for the chemistry students.",
+    "The error message appears when the program runs short of memory.",
+    "For the picnic on Sunday, what should we bring?"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on 'value of', '+' and 'added to' in calculations; non-calculating sentences on the same topics below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "operand slot in a math problem",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: ' +' x3, ' of' in 'the value of k', ' curve' in 'standard curve', ' Taylor', ' ' before '2000' in 'added to 2000'. Probe: 'value of k' 0.850, rating formula '+' 0.689, 'added to 2000' 0.585, 'standard curve' 0.532, code '+' 0.456, Taylor 0.217; 'The average rating depends on...' 0.054, everyday 0.011-0.015."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-76ed430b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N1387-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T06:20:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L11/N1387",
+   "pole": "-",
+   "label": "names of atmospheric gases and pollutants (methane, carbon monoxide, nitrous oxide, dioxides), as against the same emission sentences naming a non-gas",
+   "fire": [
+    "Wetlands and rice paddies are natural sources of methane in the atmosphere.",
+    "The alarm in the hallway measures carbon monoxide from the old boiler.",
+    "Landfills leak methane as buried food waste slowly rots.",
+    "Faulty heaters can fill a small flat with carbon monoxide overnight.",
+    "On the farm, cows belch methane while they digest grass.",
+    "Leaking gas pipelines release methane that warms the climate quickly.",
+    "Burning wood indoors releases smoke and some carbon monoxide.",
+    "Certain soil bacteria consume methane and turn it into energy."
+   ],
+   "quiet": [
+    "Wetlands and rice paddies are natural homes for frogs in the summer.",
+    "The alarm in the hallway measures humidity from the old bathroom.",
+    "Landfills attract seagulls as buried food waste slowly rots.",
+    "Faulty heaters can fill a small flat with loud banging noises overnight.",
+    "On the farm, cows chew slowly while they digest grass.",
+    "Leaking water pipelines waste millions of litres every single year.",
+    "Burning wood indoors releases heat and a pleasant smell.",
+    "Certain soil bacteria consume sugars and turn them into energy."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.4 on ' methane' and ' monoxide'; same sentences with dust, noise or humidity below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "gas names (methane, monoxide)",
+ "unit_kind": "word",
+ "confidence": 0.4,
+ "notes": "Card peaks: 'ide' in 'Nitrous Oxide', 'ane' in 'Methane', ' methane' x2, ' dioxide', ' mon'(oxide), also ' linear' and ' json' in code. Probe: methane 0.374, carbon monoxide 0.346, nitrous oxide 0.140, sulfur dioxide 0.121; 'dust' 0.020, 'local injection' 0.031; 'in linear mode' 0.314 (a code leak not tested here). Weighted toward methane/monoxide."
+}

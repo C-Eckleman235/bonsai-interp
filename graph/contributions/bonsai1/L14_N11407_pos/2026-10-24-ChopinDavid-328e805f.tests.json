@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-328e805f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N11407+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T06:20:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L14/N11407",
+   "pole": "+",
+   "label": "literal values and constant names in code assignments (an initial id = 1, an IP-address default, a CONSTANT after a comment), as against prose that mentions the same things",
+   "fire": [
+    "class Server(object):\n    port = 0\n    retries = 3",
+    "self.gateway = config.get(\"gateway\", \"10.0.0.254\")",
+    "MAX_RETRIES = 5\n# fonts for the summary report\nTITLE_FONT = 'Arial'",
+    "ids = list(zip(keys, range(0, 50)))",
+    "class Counter:\n    total = 0\n    next_id = 1",
+    "self.host_ip = opts.get(\"host_ip\", \"172.16.4.10\")",
+    "TIMEOUT = 30\n# sizes for thumbnail images\nTHUMB_SIZE = 128",
+    "values = {'sequence': 10, 'active': True}"
+   ],
+   "quiet": [
+    "The server room was opened in 2015 and has three racks.",
+    "The gateway to the park is near the old stone bridge.",
+    "The report used a large font so older readers could follow it.",
+    "We counted fifty birds on the lake this morning.",
+    "The counter at the bakery opens at seven every day.",
+    "The host welcomed sixteen guests to the dinner party.",
+    "The thumbnails on the website were too small to read.",
+    "The sequence of events was hard to follow in the film."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on digits and constant names in code; prose with numbers below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "literal values in code assignments",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: digits in code ('192.16[8]', 'range(1, 10[0])', 'current_id = [1]', 'sequence': 1[0]), ' name' in docstrings 'name: A name for the operation', 'Port' in an exception name. Probe: 'current_id = 1' 0.677, '_COLOR' after a comment 0.502, IP default 0.348, range 0.267, docstring 'name' 0.193, 'SocketPort' 0.112; prose 'built in 1968' 0.009, everyday 0.010-0.013."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-adb4cbcc",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N5971+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T06:20:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L14/N5971",
+   "pole": "+",
+   "label": "unclear: fires weakly on abbreviated regional names ('B.C.') and possessive business names ('Way’s Fruit Farm'), as against the same sentences with a common noun",
+   "fire": [
+    "Earlier this week, B.C. Premier David Eby announced new housing rules.",
+    "Down the road, Smith’s Orchard sells apples every autumn.",
+    "Officials in N.S. confirmed the ferry would resume service.",
+    "Next to the river, Miller’s Fruit Stand opens at dawn.",
+    "Last month, the U.K. Health Secretary visited the new hospital.",
+    "We stopped at Jones’s Bakery on the way home.",
+    "In a statement, the P.E.I. Fisheries Minister praised the catch.",
+    "Further north, Brown’s Dairy Farm welcomes visitors each June."
+   ],
+   "quiet": [
+    "Earlier this week, the provincial premier announced new housing rules.",
+    "Down the road, a small orchard sells apples every autumn.",
+    "Officials in the province confirmed the ferry would resume service.",
+    "Next to the river, a fruit stand opens at dawn.",
+    "Last month, the health secretary visited the new hospital.",
+    "We stopped at a bakery on the way home.",
+    "In a statement, the fisheries minister praised the catch.",
+    "Further north, a dairy farm welcomes visitors each June."
+   ]
+  }
+ ],
+ "predictions": "fire 0.1-0.2 at best; near misses below 0.05; expected to fail",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "abbreviation / possessive name (unclear)",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card peaks are scattered (' Day' in 'Remembrance is Day', ' Bay', '’s' in 'Way’s Fruit Farm', '.C' in 'B.C.', digits in URLs, ' Centers' after a line break). Probe: 'B.C.' 0.128, 'Way’s' 0.109; Remembrance Day 0.021, Horseshoe Bay 0.026, CDC 0.013. No configuration reached 0.2; this is a best-guess test."
+}

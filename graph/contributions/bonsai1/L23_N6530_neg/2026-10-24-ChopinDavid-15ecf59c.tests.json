@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-15ecf59c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N6530-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T06:20:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L23/N6530",
+   "pole": "-",
+   "label": "unclear: fires on Python code, especially private helper identifiers ('_urifixer') and URL strings inside code calls, as against plain prose describing the same operations",
+   "fire": [
+    "def _parse_url(raw):\n    raw = _cleaner.sub('', raw)\n    return raw",
+    "page = urllib.request.urlopen('http://example.com/cell_data.php?id=%d' % cid)",
+    "def _split_path(path):\n    parts = _sep.split(path)\n    return parts",
+    "resp = requests.get('https://api.example.org/gene_info.json?symbol=%s' % sym)",
+    "def _norm(x):\n    x = _rx.sub(' ', x)\n    return x.strip()",
+    "data = urlopen('http://archive.org/neuron_list.cgi?page=%s' % page).read()",
+    "class Loader:\n    def _fetch(self, uri):\n        uri = _fix.sub(r'\\2', uri)",
+    "csv_url = 'https://raw.githubusercontent.com/lab/data/master/tse/headers.csv'"
+   ],
+   "quiet": [
+    "The parser cleans the raw address before returning it to the caller.",
+    "We opened the web page to read about the new cell data.",
+    "Split the long path into short parts before you start.",
+    "She looked up the gene on the website and wrote down its symbol.",
+    "Tidy the text by removing extra spaces at the end of each line.",
+    "The archive keeps a list of neurons on its public pages.",
+    "The loader fetches the file and repairs any broken links.",
+    "The headers of the spreadsheet were written in Portuguese."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.3 on code lines with underscore helpers or URL strings; prose paraphrases below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Python helper code / URLs in code (unclear)",
+ "unit_kind": "unclear",
+ "confidence": 0.3,
+ "notes": "Card peaks are scattered over code and technical prose (' _' in 'uri = _urifixer', 'uron' in a URL, ' return', indentation, ' this' in 'typifies this'). Probe: '_urifixer' code 0.273, URL in urlopen 0.282, 'typifies this' 0.256, 'employed to acquire' 0.115; technical prose 0.018-0.049; everyday prose 0.018-0.038. Weak and scattered; likely to fail."
+}

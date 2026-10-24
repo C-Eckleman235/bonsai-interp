@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-5eb0a81c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N11295+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T06:20:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N11295",
+   "pole": "+",
+   "label": "the slot after an antipsychotic drug name where its drug class is expected ('Olanzapine is an' -> 'atypical antipsychotic'), as against the same frame after drugs of other classes",
+   "fire": [
+    "For many patients, quetiapine is an option when sleep is badly disturbed.",
+    "The psychiatrist explained that aripiprazole is an atypical antipsychotic.",
+    "In adults with schizophrenia, clozapine is an important last-line treatment.",
+    "Our ward pharmacist noted that ziprasidone is an antipsychotic with few weight effects.",
+    "Approved in 2010, lurasidone is an antipsychotic taken with food.",
+    "According to the label, paliperidone is an active metabolite of risperidone.",
+    "The trial showed that asenapine is an effective treatment for mania.",
+    "The leaflet says risperidone is an antipsychotic used in children with autism."
+   ],
+   "quiet": [
+    "For many patients, ibuprofen is an option when joint pain is bad.",
+    "The pharmacist explained that amoxicillin is an antibiotic for ear infections.",
+    "In adults with diabetes, metformin is an important first-line treatment.",
+    "Our ward pharmacist noted that omeprazole is an acid blocker with few side effects.",
+    "Sold for over a century, aspirin is an analgesic taken with food.",
+    "According to the label, salbutamol is an inhaled drug for asthma.",
+    "The trial showed that atorvastatin is an effective treatment for high cholesterol.",
+    "The leaflet says loratadine is an antihistamine used in children with hay fever."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.75 on ' an' after an antipsychotic name; same frame after ibuprofen, metformin and other non-psychiatric drugs below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "antipsychotic 'X is an' slot",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: max 768 on '\"' in 'Olanzapine is an \"atypical\"'; other peaks before 'atypical', 'atypically', 'markedly pleomorphic', 'rare' (pathology). Probe: 'Olanzapine is an' 0.753 (identical for 'effective' and 'atypical' continuations, so the peak is prefix-driven); 'cells with abnormal' 0.303 vs 'cells with normal' 0.193; 'respond atypically' 0.104; 'in an elderly woman' 0.087; 'very rare entity' 0.019. The antipsychotic-specific claim is a guess: no non-antipsychotic drug was probed."
+}

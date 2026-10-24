@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-53f294f9",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N11082-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T06:20:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N11082",
+   "pole": "-",
+   "label": "unclear: fires on fragments inside acronyms, capitalised names and long compounds ('FA'O, FLETCH'ER', Wert'p'apier), as against the same sentences without such fragments",
+   "fire": [
+    "The Director-General of UNESCO may appoint a deputy for the region.",
+    "Speaking for the union, JOHN MARSHALL: We will not back down.",
+    "Der Vertrag regelt die Wertpapierleihe zwischen den Banken.",
+    "worker = threading.Thread(target=fx.runJobs)",
+    "The Secretary-General of NATO met the ministers on Tuesday.",
+    "Gemäß dem Gesetz ist die Wertpapierprüfung jährlich durchzuführen.",
+    "from mph import SpeedInfo",
+    "At the hearing, MARY HOLLOWAY: We worked nights for years to get here."
+   ],
+   "quiet": [
+    "The head of the agency may appoint a deputy for the region.",
+    "Speaking for the union, the spokesman said they would not back down.",
+    "Der Vertrag regelt die Zusammenarbeit zwischen den Banken.",
+    "The worker started the job queue on a separate thread.",
+    "The alliance chief met the ministers on Tuesday.",
+    "Nach dem Gesetz ist die Prüfung jährlich durchzuführen.",
+    "The speed sensor sends its data to the dashboard.",
+    "At the hearing, she said they worked nights for years to get here."
+   ]
+  }
+ ],
+ "predictions": "fire around 0.1 at best; near misses about the same; expected to fail",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "acronym / name fragments (unclear)",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card is broad (1.1% of tokens above 0.1 max) with scattered peaks: ' FA' in 'FAO', ' me' in 'meh', 'p' in 'Wertpapier', '=f' in 'target=fm', 'ER' in 'FLETCHER'. Probe: FAO 0.084, 'target=fm' 0.082, '§ 33' 0.064; but everyday 'beach' sentence 0.096. Nothing separated; best-guess test."
+}
