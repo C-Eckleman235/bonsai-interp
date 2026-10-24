@@ -1,0 +1,44 @@
+{
+ "contribution": "2026-10-24-moridinamael-4c7aee93",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N2314+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T22:40:55+00:00",
+ "roles": ["feeds bonsai1/L19/N9953+"],
+ "neighbours": [
+  {
+   "unit": "L17/N2314",
+   "pole": "+",
+   "label": "a person's whereabouts or doings during a stretch while something else is looked after or keeps running without them (while you're away, at work, on a trip; go out and it finishes itself); the 'while you're…' frame counts even at home; not plain travel or motion 'away'",
+   "short": "being away while things carry on",
+   "unit_kind": "context",
+   "fire": [
+    "The automatic feeder keeps the fish fed while we're sitting in the living room.",
+    "The robot vacuum cleans the whole floor while you're at work.",
+    "Our neighbor waters the plants while we're on vacation in Portugal.",
+    "Just set the slow cooker in the morning, go out, and dinner finishes itself.",
+    "The backup runs overnight while you sleep, so you never have to think about it.",
+    "A sitter will look after the dog while we're away for the weekend.",
+    "Put the bread in the machine, head to the gym, and it bakes itself by the time you're back.",
+    "The camera lets you check on the cat while you're at the office."
+   ],
+   "quiet": [
+    "Load the dishwasher, stand next to it, and watch the cycle finish.",
+    "The robot vacuum is loud, so I run it myself and follow it room to room.",
+    "We watered the plants ourselves every morning before breakfast.",
+    "I stood by the slow cooker all afternoon, stirring the dinner by hand.",
+    "The backup failed last night because the drive was full.",
+    "We walked the dog together along the river this weekend.",
+    "I kneaded the dough by hand and stayed beside the oven while it baked.",
+    "The cat jumped onto the office desk and knocked over a pen."
+   ]
+  }
+ ],
+ "predictions": "Blind test (label-only second author). Expect most fire items to clear 0.20; the 'stayed beside the oven while it baked' near miss is the riskiest.",
+ "notes": "Feeder of bonsai1/L19/N9953+ chosen from the resident attribution ranking (play step OOM'd twice). Solver leak: the 'while we're ...' frame fires even when the person is home (0.65), so the label names it. Literal motion 'away' (sailed/walked away) and plain travel read near zero in probes.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": ["card", "look", "probe", "inverse-de", "bank-solo", "blind-room", "step-out"]
+ }
+}
