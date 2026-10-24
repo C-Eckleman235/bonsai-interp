@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-d1cdf0bc",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N790-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T12:19:48+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N790",
+   "pole": "-",
+   "label": "the connector after a drug name that leads into another name for that drug ('(' before a brand name, 'called', 'also known as'), as against the same connectors after non-drug names",
+   "fire": [
+    "The doctor switched her to metformin (Glucophage) after the blood test.",
+    "Most patients tolerate atorvastatin (Lipitor) without serious side effects.",
+    "Sertraline, sold under the name Zoloft, is a common antidepressant.",
+    "The nurse gave him acetaminophen (Tylenol) for the fever.",
+    "Omeprazole, originally called Losec, reduces stomach acid.",
+    "He was prescribed warfarin (Coumadin) to prevent clots.",
+    "The study compared sildenafil (Viagra) with a placebo in older men.",
+    "Fluoxetine, first marketed as Prozac, changed how depression was treated."
+   ],
+   "quiet": [
+    "The doctor switched her to a new clinic (downtown) after the blood test.",
+    "Most patients tolerate the procedure (a short scan) without serious side effects.",
+    "The hospital, once known as St. Mary's, is now a public clinic.",
+    "The nurse gave him a blanket (a thick wool one) for the fever.",
+    "The ward, originally called the east wing, now treats children.",
+    "He was referred to a specialist (Dr. Patel) to discuss the clots.",
+    "The study compared two cities (Leeds and York) over five years.",
+    "The surgeon, first trained in Boston, changed how the clinic was run."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-0.9 on ' (' or ' called' right after a generic drug name when a brand name follows; '(' and 'called' after places, people or ordinary medical nouns below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "drug name -> its other name",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: valaciclovir| (, tenofovir alafenamide| (TAF), Letrozole, originally| called Femara, cefoxitin| (Mefoxin), sorafenib| (Nexavar). Probe: sorafenib (Nexavar) 0.681, ibuprofen (Advil) 0.728, 'originally called Femara' 0.884, 'gabapentin and pregabalin' 0.202; Lyon (France) 0.015, hall (the old gym) 0.017, singer 'originally called Jimmy' 0.012."
+}

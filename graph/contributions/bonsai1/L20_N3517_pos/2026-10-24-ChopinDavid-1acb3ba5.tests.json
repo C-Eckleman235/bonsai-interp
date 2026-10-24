@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-1acb3ba5",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N3517+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T12:19:48+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L20/N3517",
+   "pole": "+",
+   "label": "a digit inside a four-digit year given as a date or publication year, as against the same digits in counts, prices, phone numbers or codes",
+   "fire": [
+    "Brown, Alice. Rivers of the North. Chicago: Harper, 1969. Print.",
+    "The bridge was opened in 1929 and widened in 1995.",
+    "Jones, M. (1987). Soil and water. Oxford: Clarendon Press.",
+    "Accessed 2019-03-02 from the museum's online catalogue.",
+    "The school was founded in 1891 and moved to its current site in 1954.",
+    "White, Paul. Old Roads. London: Faber, 1949. Print.",
+    "She was born in 1918 and died in Paris in 1999.",
+    "Lee, K. (1996). Coastal birds. Boston: Beacon Press."
+   ],
+   "quiet": [
+    "The stadium holds 1969 fans when the upper seats are closed.",
+    "The bridge is 1929 meters long and carries four lanes.",
+    "The order number on the receipt was 1987 and it was paid in cash.",
+    "Dial 2019 on the hotel phone to reach the front desk.",
+    "The used car cost 1891 pounds after the dealer's discount.",
+    "The plane climbed to 1949 feet before turning back to land.",
+    "The team scored 1918 points over the whole season.",
+    "The parcel weighed 1996 grams on the post office scale."
+   ]
+  }
+ ],
+ "predictions": "fire 0.29-0.45 on a digit of the year (often the 9 of 19xx) in citations and dated events; non-year numbers below 0.05. Weak pole, peak values are near the 0.3 bar.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "digits of a year",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: '9' x11 and other digits, mostly inside years in citations (195|9, 19|0|0, 198|9). Probe: citation 'Penguin, 1959.' 0.442, 'built in 1923 and restored in 1988' 0.339, 'Retrieved 2009-05-15' 0.289; but 'in London in 1977.' 0.034. Non-years: 1959 people 0.002, phone 555 1959 0.009, 1959 dollars 0.031."
+}

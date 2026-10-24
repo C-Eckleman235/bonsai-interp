@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-21841e28",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N2788+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T12:19:48+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L11/N2788",
+   "pole": "+",
+   "label": "dense pole; strongest on nouns for a formal request or a transfer sent to someone ('a Freedom of Information Act request', 'government requests', 'remittances'), with a high floor on ordinary text",
+   "fire": [
+    "The reporter filed a public records request with the county to see the emails.",
+    "The ministry denied several official requests for the audit documents.",
+    "Many families in the village depend on remittances from sons working abroad.",
+    "Banks charge high fees on remittances sent across borders.",
+    "The company turned down the union's formal request for a pay review.",
+    "Under the new law, agencies must answer every records request within twenty days.",
+    "The embassy received hundreds of visa requests after the border opened.",
+    "Economists say remittances now exceed foreign aid in the region."
+   ],
+   "quiet": [
+    "The reporter drove to the county office to see the new building.",
+    "The ministry moved several offices to a new building downtown.",
+    "Many families in the village grow rice and keep a few goats.",
+    "Banks close early on the day before the national holiday.",
+    "The company painted the union hall a bright shade of blue.",
+    "Under the new law, agencies must publish their budgets online.",
+    "The embassy hosted a small concert after the border opened.",
+    "Economists say the harvest was larger than expected this year."
+   ]
+  }
+ ],
+ "predictions": "fire 0.8-1.1 on ' request(s)' in formal/official requests and on remittances; near misses still 0.3-0.6 because the pole is dense, so the test will likely fail on AUROC",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "requests and remittances (dense)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.1,
+ "notes": "Card flags dense (34.7% of tokens above 0.1 max). Probe: FOIA request 1.123, government requests 0.951, remittances 0.804, production lead time 0.835, 'uncontested' 0.836, polite request 0.496; but the cat floor sentence is 0.347 and 'took the lead' 0.647. Registered as dense with a best-guess label."
+}

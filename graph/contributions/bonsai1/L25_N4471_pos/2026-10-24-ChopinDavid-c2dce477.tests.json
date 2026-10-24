@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-c2dce477",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N4471+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T12:19:48+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L25/N4471",
+   "pole": "+",
+   "label": "the word piece right after a bare ' T' in a proper name that the tokenizer splits (T|aut, T|aus, T|uch, T|ahu), as against the same piece after another capital and T-names that are one token or split differently",
+   "fire": [
+    "The paper by Weber and Tautenhahn describes a new method for mass spectra.",
+    "In the archive we found letters signed by Johann Tauscher in 1871.",
+    "The manager praised Thomas Tuchel after the club won the final.",
+    "The boat stopped at the island of Tahuata before heading north.",
+    "Her thesis cites the early work of Victor Tausk on psychoanalysis.",
+    "The violin was made in the workshop of Anton Tuchfeld in Vienna.",
+    "The council named the new square after Maria Tausch last year.",
+    "Records show that Hans Tuchler sold the farm in the spring of 1902."
+   ],
+   "quiet": [
+    "The paper by Weber and Kautsky describes a new method for mass spectra.",
+    "In the archive we found letters signed by Johann Rausch in 1871.",
+    "The manager praised Thomas Tucker after the club won the final.",
+    "The boat stopped at the island of Tahiti before heading north.",
+    "Her thesis cites the early work of Victor Turner on ritual.",
+    "The violin was made in the workshop of Anton Mautz in Vienna.",
+    "The council named the new square after Maria Tauber last year.",
+    "Records show that Hans Lautz sold the farm in the spring of 1902."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-1.0 on 'aut', 'aus', 'uch' or 'ahu' following ' T' in a name; the same piece after K, R, M or L, and one-token T names, below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "piece after split ' T' in a name",
+ "unit_kind": "word",
+ "confidence": 0.6,
+ "notes": "Card: T|aut(z) 121, T|aus(ig) 107.5, Tata, Tau, T|ahu, T|uch. Probe: Tautz 0.968, Tausig 0.938, Tuchman 0.590, Tahuichi 0.532; Kautz (K|aut) 0.077, Tamura (Tam|ura) 0.002, Taylor 0.007, Tikal 0.129. All fire names checked with the tokenizer."
+}

@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-21841e28",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N2788+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-24T12:27:40+00:00",
+ "recipe": {
+  "toolchain_commit": "9e1dfb1a",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L11_N2788_pos/2026-10-24-ChopinDavid-21841e28.tests.json"
+ },
+ "label": "dense pole; strongest on nouns for a formal request or a transfer sent to someone ('a Freedom of Information Act request', 'government requests', 'remittances'), with a high floor on ordinary text",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L11_N2788_pos/2026-10-24-ChopinDavid-21841e28.tests.json",
+   "prereg_commit": "9e1dfb1a",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 6,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.638,
+     "peak": " request"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.508,
+     "peak": " for"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.826,
+     "peak": "itt"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.681,
+     "peak": "itt"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.503,
+     "peak": " request"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.792,
+     "peak": " request"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.395,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.709,
+     "peak": "itt"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.389,
+     "peak": " reporter"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.358,
+     "peak": " moved"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.4,
+     "peak": " rice"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.338,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.332,
+     "peak": " company"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.276,
+     "peak": " new"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.277,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.633,
+     "peak": " year"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.659,
+    "near_misses_at_0.3": 6
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "9e1dfb1a",
+  "minutes": 0,
+  "batch_size": 16
+ },
+ "short": "requests and remittances (dense)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.1,
+ "notes": "Card flags dense (34.7% of tokens above 0.1 max). Probe: FOIA request 1.123, government requests 0.951, remittances 0.804, production lead time 0.835, 'uncontested' 0.836, polite request 0.496; but the cat floor sentence is 0.347 and 'took the lead' 0.647. Registered as dense with a best-guess label.",
+ "selection": "random draw"
+}

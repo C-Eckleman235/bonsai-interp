@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-9d9c06af",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N4173+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T12:19:48+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N4173",
+   "pole": "+",
+   "label": "'enabled' or 'visible' as a boolean flag name in code (attribute, keyword argument, dict key, setter), as against the same words in prose and other flag names in the same code",
+   "fire": [
+    "opts = {'name': 'main', 'logging_enabled': True}",
+    "self.save_button.setEnabled(True)",
+    "panel = Panel(height=200, visible=True)",
+    "if user.is_admin and feature_enabled:\n    show_menu()",
+    "label.setVisible(False)\nlabel.setEnabled(False)",
+    "dialog = Dialog(title='Save', visible=False)",
+    "params = dict(sync_enabled=False, retries=3)",
+    "for plugin in plugins:\n    if plugin.enabled:\n        plugin.run()"
+   ],
+   "quiet": [
+    "opts = {'name': 'main', 'logging_level': 3}",
+    "self.save_button.setText('Save')",
+    "panel = Panel(height=200, width=300)",
+    "if user.is_admin and feature_count:\n    show_menu()",
+    "The save button stays enabled until the form is sent.",
+    "dialog = Dialog(title='Save', modal=False)",
+    "Make sure syncing is enabled before you travel.",
+    "for plugin in plugins:\n    if plugin.loaded:\n        plugin.run()"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.75 on 'enabled' / 'visible' pieces inside code; prose uses and other identifiers in identical code below 0.08",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "enabled/visible flag in code",
+ "unit_kind": "word",
+ "confidence": 0.7,
+ "notes": "Card: '_enabled' x15, 'enabled' x5, '.setEnabled' x3, ' visible=' in code. Probe: 'cache_enabled' key 0.738, '.setEnabled' 0.611, 'visible=False' 0.603, 'config.enabled' 0.309; prose 'is enabled by default' 0.015, 'is visible to all users' 0.004, 'config.verbose' 0.017, 'cache_size' 0.068."
+}
