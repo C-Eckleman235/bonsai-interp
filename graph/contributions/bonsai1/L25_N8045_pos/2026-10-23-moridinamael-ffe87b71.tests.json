@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-23-moridinamael-ffe87b71",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L25/N8045+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T02:35:20+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "The opening piece of a strong verdict (good or bad) that is split into several tokens, lighting up on that first piece before the rest arrives: hyphenated verdict compounds (ground-breaking, mind-blowing, jaw-dropping, mouth-watering, world-class, first-class, state-of-the-art), verdict set phrases (out of this world, second to none), strong verdicts written in ALL CAPS (FANTASTIC, INCREDIBLE, HORRIBLE), and foreign strong verdicts that split (German unglaublich, außergewöhnlich; French hors norme; Russian замечательный). Strongest right after is/was/a, and also fires before a noun (a mouth-watering roast). Quiet on the same opening words used literally (broke his jaw, a hair-band, the ground floor), on neutral or mild hyphenated words (hand-made, water-proof, well-written, ill-conceived, over-priced, so-so), and on strong verdicts written as one ordinary lowercase token (fantastic, incredible, wonderful). Bare 'state' and 'ground' in non-verdict uses can fire weakly."
+ },
+ "neighbours": [
+  {
+   "unit": "L25/N8045",
+   "pole": "+",
+   "label": "The opening piece of a strong verdict (good or bad) that is split into several tokens, lighting up on that first piece when it already signals the verdict: hyphenated verdict compounds (ground-breaking, mind-blowing, jaw-dropping, eye-opening, extra-ordinary, world-class), 'out of this world', strong verdicts written in ALL CAPS (AMAZING, INCREDIBLE, HORRIBLE), and foreign strong verdicts that split (German unglaublich; French hors norme, hors du commun; Russian замечательный, потрясающий). Strongest right after is/was/a. Quiet on the same opening words used literally (broke his jaw, breaking ground, out of this room), on neutral or mild hyphenated words (water-resistant, time-consuming, well-cooked), on neutral ALL CAPS (PARKING, OKAY), and on strong verdicts written as one lowercase token (incredible, horrible). Set phrases whose verdict comes only after the first word (second to none, nothing short of) stay weak (~0.15), and 'first', 'top', 'state' and 'world' can fire weakly (up to ~0.4) whatever follows.",
+   "fire": [
+    "Honestly, the new exhibit at the science museum was mind-blowing from start to finish.",
+    "Her research on protein folding is ground-breaking and will change the field.",
+    "The view from the summit was jaw-dropping, especially at sunrise.",
+    "That documentary about deep-sea creatures was a real eye-opening experience for the kids.",
+    "The dessert at that little bakery was out of this world.",
+    "We tried the new ramen place last night and it was AMAZING.",
+    "The customer service at that hotel was HORRIBLE, and nobody apologized.",
+    "His comeback in the final set was INCREDIBLE to watch."
+   ],
+   "quiet": [
+    "The new exhibit at the science museum was fine, though a bit crowded.",
+    "The construction crew started breaking ground on the library last Monday.",
+    "He fell off his bike and broke his jaw on the curb.",
+    "Make sure you buy a water-resistant jacket before the hiking trip.",
+    "Assembling the bookshelf was more time-consuming than we expected.",
+    "The cat wandered out of this room and into the kitchen.",
+    "The sign at the entrance said PARKING in large white letters.",
+    "We tried the new ramen place last night and it was incredible."
+   ]
+  }
+ ],
+ "predictions": "most fire items above 0.3; near misses under 0.15 (water-resistant, PARKING and lowercase incredible near zero)",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "neighbors",
+   "inverse-de",
+   "blind-room"
+  ]
+ }
+}

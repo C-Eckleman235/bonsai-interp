@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-23-moridinamael-ffe87b71",
+ "kind": "qc",
+ "neuron": "bonsai1/L25/N8045+",
+ "contributor": "moridinamael",
+ "created": "2026-10-24T02:35:49+00:00",
+ "recipe": {
+  "toolchain_commit": "44e79592",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N8045_pos/2026-10-23-moridinamael-ffe87b71.tests.json"
+ },
+ "label": "The opening piece of a strong verdict (good or bad) that is split into several tokens, lighting up on that first piece when it already signals the verdict: hyphenated verdict compounds (ground-breaking, mind-blowing, jaw-dropping, eye-opening, extra-ordinary, world-class), 'out of this world', strong verdicts written in ALL CAPS (AMAZING, INCREDIBLE, HORRIBLE), and foreign strong verdicts that split (German unglaublich; French hors norme, hors du commun; Russian замечательный, потрясающий). Strongest right after is/was/a. Quiet on the same opening words used literally (broke his jaw, breaking ground, out of this room), on neutral or mild hyphenated words (water-resistant, time-consuming, well-cooked), on neutral ALL CAPS (PARKING, OKAY), and on strong verdicts written as one lowercase token (incredible, horrible). Set phrases whose verdict comes only after the first word (second to none, nothing short of) stay weak (~0.15), and 'first', 'top', 'state' and 'world' can fire weakly (up to ~0.4) whatever follows.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N8045_pos/2026-10-23-moridinamael-ffe87b71.tests.json",
+   "prereg_commit": "44e79592",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.439,
+     "peak": " mind"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.331,
+     "peak": " ground"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.411,
+     "peak": " jaw"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.161,
+     "peak": " eye"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.766,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.425,
+     "peak": " AMAZ"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.543,
+     "peak": "R"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.659,
+     "peak": "RED"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.034,
+     "peak": " fine"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.006,
+     "peak": " breaking"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.007,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.006,
+     "peak": " sure"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.012,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.031,
+     "peak": " cat"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.045,
+     "peak": " sign"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.125,
+     "peak": " incredible"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.432,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "44e79592",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "The opening piece of a strong verdict (good or bad) that is split into several tokens, lighting up on that first piece before the rest arrives: hyphenated verdict compounds (ground-breaking, mind-blowing, jaw-dropping, mouth-watering, world-class, first-class, state-of-the-art), verdict set phrases (out of this world, second to none), strong verdicts written in ALL CAPS (FANTASTIC, INCREDIBLE, HORRIBLE), and foreign strong verdicts that split (German unglaublich, außergewöhnlich; French hors norme; Russian замечательный). Strongest right after is/was/a, and also fires before a noun (a mouth-watering roast). Quiet on the same opening words used literally (broke his jaw, a hair-band, the ground floor), on neutral or mild hyphenated words (hand-made, water-proof, well-written, ill-conceived, over-priced, so-so), and on strong verdicts written as one ordinary lowercase token (fantastic, incredible, wonderful). Bare 'state' and 'ground' in non-verdict uses can fire weakly."
+ }
+}
