@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-2c61e39a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N7932+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T07:20:33+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N7932",
+   "pole": "+",
+   "label": "the token that completes the magnitude of a multi-digit or large quantity (trailing digits of 60, 7,000, 86400, or the word 'thousand'), as against single-digit quantities in the same sentences",
+   "fire": [
+    "The old library holds more than 30,000 books in its basement.",
+    "Each panel weighs about 250 kilograms when fully assembled.",
+    "Last year the charity planted twelve thousand trees in the hills.",
+    "We drove nearly 900 miles in two days to reach the coast.",
+    "The concert hall can seat 2,500 people on three levels.",
+    "A typical blue whale weighs around 150 tonnes as an adult.",
+    "In total, five hundred volunteers helped clear the beach.",
+    "The tank holds 80 litres of water and cools the engine."
+   ],
+   "quiet": [
+    "The old library holds more than 3 shelves of maps in its basement.",
+    "Each panel weighs about 2 kilograms when fully assembled.",
+    "Last year the charity planted a few trees in the hills.",
+    "We drove nearly 9 miles in the rain to reach the coast.",
+    "The concert hall can seat a small orchestra on its stage.",
+    "A typical blue whale calf drinks milk for about 7 months.",
+    "In total, five volunteers helped clear the beach.",
+    "The tank holds 8 litres of water and cools the engine."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on trailing digits or 'thousand/hundred' of large counts; single-digit amounts below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "magnitude-completing number token",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: '0' x17 (8640|0, 7,00|0, 6|0 inches, 21,00|0 acres), also '8' in 48, '2' in 32. Probe: 7,000 0.659, 86400 0.645, 60 inches 0.410, 45,000 0.303, 48 bars 0.531, 120 people 0.234; spelled 'seven thousand' 0.538 (so the meaning, not only the digit, fires); '6 inches' 0.012."
+}

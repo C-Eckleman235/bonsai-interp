@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-99482ebb",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N7370+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T07:20:33+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N7370",
+   "pole": "+",
+   "label": "the separator before a language code in a list or field of language codes (EN,FR,DE; EN-English; LANGUAGE_CODE = '...'), as against the same separators in lists of other short codes",
+   "fire": [
+    "Audio tracks: EN,DE,FR,IT,ES,JA,KO",
+    "Available in: FR,EN,NL,PL,SV,DA",
+    "Original language: DE-German, runtime: 98 min",
+    "LANGUAGE_CODE = 'fr'\nUSE_I18N = True",
+    "Interface languages: EN,ES,PT,RU,ZH,AR",
+    "Captions: EN,FR,IT,NL,TR,EL",
+    "Language: FR-French, format: paperback, pages: 312",
+    "Supported locales: DE,EN,FR,ES,IT,PL,CS"
+   ],
+   "quiet": [
+    "Shirt sizes: XS,S,M,L,XL,XXL,XXXL",
+    "Grades given: A,B,C,D,E,F",
+    "Original format: DVD-Video, runtime: 98 min",
+    "DEBUG = False\nUSE_TZ = True",
+    "Accepted currencies: USD,EUR,GBP,JPY,CHF",
+    "Blood types: A,B,AB,O",
+    "Binding: PB-Paperback, condition: good, pages: 312",
+    "Paper sizes: A3,A4,A5,B4,B5"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-1.0 on the comma/dash/quote before a language code; size, grade or currency code lists below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "separator before a language code",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: \" '\" before 'it', 'id', 'mupi' in locale code, ',N' in 'EN,IT,FR,...,NL', 'EN-English'. Probe: 'Subtitles available: EN,FR,DE,...' 1.021, 'Language: EN-English' 0.708, LANGUAGE_CODE = 'de' 0.443; size list S,M,L 0.012, TIME_ZONE line 0.015; but \"lang = 'fr'\" inside an if-block only 0.016, so code assignments are kept to settings-style lines."
+}
