@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-23-moridinamael-95a15315",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N10911+",
+ "contributor": "moridinamael",
+ "created": "2026-10-24T00:04:16+00:00",
+ "recipe": {
+  "toolchain_commit": "c91aba7d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L3_N10911_pos/2026-10-23-moridinamael-95a15315.tests.json"
+ },
+ "label": "A complaint or negation word inside a program's message string in code, strongest in error messages (raise ValueError(\"Invalid port\"), print(\"Error: No data found\"), throw new Error(\"Cannot read file\"), \"x must be positive\"): No, Invalid, Cannot, Missing, Expected, Failed, must, not. The same words in comments or prose stay near zero; plain status messages (\"Opened the file\") stay low; a complaint word in a non-error code string (\"Invalid entries\") can fire moderately.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L3_N10911_pos/2026-10-23-moridinamael-95a15315.tests.json",
+   "prereg_commit": "c91aba7d",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.434,
+     "peak": "Invalid"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.494,
+     "peak": " No"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.287,
+     "peak": "Cannot"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.574,
+     "peak": " must"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.398,
+     "peak": "Missing"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.608,
+     "peak": "Expected"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.35,
+     "peak": "failed"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.368,
+     "peak": " not"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.001,
+     "peak": " Port"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.028,
+     "peak": "Loaded"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": -0.0,
+     "peak": " released"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": " x"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.042,
+     "peak": " field"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": -0.0,
+     "peak": " int"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.027,
+     "peak": "connected"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.117,
+     "peak": " opened"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.416,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "c91aba7d",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L4/N2322-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L3/N10911+", "to": "bonsai1/L4/N2322-", "kind": "feeds", "weight": null, "method": "attribution rank 1 of 12 MLP feeders on the target's top 4 examples (resident feeders tool; play step ablation hit CUDA OOM)"}
+ ]
+}
