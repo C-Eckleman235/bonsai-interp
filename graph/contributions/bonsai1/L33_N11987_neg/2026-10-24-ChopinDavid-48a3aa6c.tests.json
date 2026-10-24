@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-48a3aa6c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N11987-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T22:20:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N11987",
+   "pole": "-",
+   "label": "the semicolon-newline token that ends one item of a Chinese numbered list before the next （二）-style marker, as against the same content written as running prose",
+   "fire": [
+    "申请材料包括：\n（一）身份证复印件；\n（二）学历证明；\n（三）近期照片。",
+    "本办法所称的违法行为包括：\n（一）伪造检测数据；\n（二）擅自停运设施。",
+    "企业应当提交下列文件：\n（一）营业执照；\n（二）年度财务报告。",
+    "学校的主要任务是：\n（一）组织教学活动；\n（二）开展科学研究。",
+    "有下列情形之一的，予以处罚：\n（一）拒绝检查的；\n（二）提供虚假材料的。",
+    "合同应当载明以下内容：\n（一）当事人的名称；\n（二）标的和数量。",
+    "委员会的职责如下：\n（一）制定年度计划；\n（二）监督计划实施。",
+    "居民可以通过以下方式报名：\n（一）网上登记；\n（二）到社区窗口办理。"
+   ],
+   "quiet": [
+    "申请材料包括身份证复印件、学历证明和近期照片。",
+    "本办法所称的违法行为包括伪造检测数据和擅自停运设施。",
+    "企业应当提交营业执照和年度财务报告。",
+    "学校的主要任务是组织教学活动和开展科学研究。",
+    "拒绝检查或者提供虚假材料的，予以处罚。",
+    "合同应当载明当事人的名称、标的和数量。",
+    "委员会负责制定年度计划并监督计划实施。",
+    "居民可以在网上登记，也可以到社区窗口办理。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-1.1 on '；\\n' between numbered items; prose versions and parentheses in running text 0.0-0.18",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "item end in Chinese numbered list",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card peaks: '；⏎' before （二） in legal lists, '⏎' before （繼續）, '：⏎' before '1.', '日' before (金). Probe: legal list '；\\n' 1.087; same content as prose 0.082; '中文组（小五' 0.174; '日（金）' 0.029; English '(Friday)' 0.010. Only the list-item break reproduced; the parenthesis reading did not."
+}

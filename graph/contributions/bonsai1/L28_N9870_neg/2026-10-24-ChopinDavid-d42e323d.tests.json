@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-d42e323d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N9870-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T22:20:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N9870",
+   "pole": "-",
+   "label": "the word-initial piece ' ch' when a word is split as ' ch' + rest (chitosan, chasm, churning, chutney), as against whole-word ch- tokens (chocolate, cheap) and other initials",
+   "fire": [
+    "After the storm the river was churning with mud and branches.",
+    "Shrimp shells are a cheap source of chitosan for the lab.",
+    "The hikers stopped at the edge of a narrow chasm in the rock.",
+    "Lamb was served with a sweet tomato chutney on the side.",
+    "Damage to chondrocytes slowly wears down the knee cartilage.",
+    "The climbers roped across the chasm one at a time.",
+    "Old dairies kept churning butter by hand well into the century.",
+    "Wound dressings made with chitosan may speed up healing."
+   ],
+   "quiet": [
+    "After the storm the river was brown with mud and branches.",
+    "Shrimp shells are a cheap source of protein for the farm.",
+    "The hikers stopped at the edge of a narrow canyon in the rock.",
+    "Lamb was served with a sweet chocolate sauce on the side.",
+    "Damage to tendons slowly wears down the knee joint.",
+    "The climbers roped across the gap one at a time.",
+    "Old dairies kept making butter by hand well into the century.",
+    "Wound dressings made with honey may speed up healing."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-1.0 on ' ch' in split words; single-token ch- words and controls 0.0-0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "word-initial ' ch' piece",
+ "unit_kind": "word",
+ "confidence": 0.8,
+ "notes": "Card: ' ch' x23 of top 32 (chondrogenic, chitosan, churning, chasm). tok.py: chitosan/chasm/churning/chondrocyte/chutney split as ' ch'+rest; chocolate, cheap single tokens; chimera/chalet/chiffon/chorizo split differently. Probe: chondrocytes 1.040, chitosan 0.924, churning 0.871, chasm 0.856, chutney 0.617; cellulose/turning/chocolate 0.000-0.001."
+}
