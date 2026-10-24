@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-3c960c62",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N1432+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T06:20:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N1432",
+   "pole": "+",
+   "label": "names of recurrent neural network types (RNN, LSTM, GRU, 'recurrent'), in code and prose, as against other layer types (Dense, Linear, Conv, attention)",
+   "fire": [
+    "layer = keras.layers.LSTM(64, return_sequences=True)",
+    "encoder = nn.GRU(input_size=32, hidden_size=64)",
+    "def testBiRNNOutputs(self):\n    with self.session():",
+    "The model uses a recurrent layer to remember earlier words.",
+    "cell = rnn.LSTMCell(num_units=256)",
+    "To save memory we replaced the transformer with a gated recurrent unit.",
+    "stacked = tf.nn.rnn_cell.MultiRNNCell([cell1, cell2])",
+    "Long short-term memory networks are a kind of recurrent model."
+   ],
+   "quiet": [
+    "layer = keras.layers.Dense(64, activation='tanh')",
+    "encoder = nn.Linear(in_features=32, out_features=64)",
+    "def testConvOutputs(self):\n    with self.session():",
+    "The model uses a convolutional layer to detect edges in images.",
+    "cell = nn.Conv2d(3, 16, kernel_size=3)",
+    "To save memory we replaced the transformer with a smaller attention model.",
+    "stacked = keras.Sequential([layer1, layer2])",
+    "Decision trees are a kind of rule-based model."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on 'NN' in RNN, 'STM' in LSTM, 'RU' in GRU and ' recurrent'; other layer names below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "recurrent network names (RNN/LSTM/GRU)",
+ "unit_kind": "word",
+ "confidence": 0.7,
+ "notes": "Card: ' recurrent' x11, 'NN' x4 (RNN), 'STM' (LSTM), 'RU'/'U' (GRU), 'urrent' (Recurrent), 'IST' (MNIST). Probe: LSTMCell 0.835, testRNNDecoder 0.723, GRUCell 0.678, 'Gated Recurrent' 0.479, 'recurrent neural network' 0.474; Conv2D 0.000, convolutional 0.100; MNIST 0.365 (a leak, kept out)."
+}

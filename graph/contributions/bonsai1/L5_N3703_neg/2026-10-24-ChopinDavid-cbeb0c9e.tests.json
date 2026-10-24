@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-cbeb0c9e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N3703-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T06:20:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N3703",
+   "pole": "-",
+   "label": "the spelling piece 'lam' when it is its own token inside a longer word or symbol (Stehlampe, Klamotten, lamella, lamina, a variable 'lam'), as against sentences using a different word in that place",
+   "fire": [
+    "In the script we set lam = 0.5 before the loop runs.",
+    "Die neue Stehlampe steht im Wohnzimmer neben dem Sofa.",
+    "Sie kaufte neue Klamotten für den Urlaub am Meer.",
+    "Under the microscope each lamella of the gill was visible.",
+    "In this species the leaf lamina is broad and thin.",
+    "On the hillside two lambs were born last night.",
+    "The variable lam controls the strength of the penalty term.",
+    "Im Flur hängt eine alte Wandlampe aus Messing."
+   ],
+   "quiet": [
+    "In the script we set alpha = 0.5 before the loop runs.",
+    "Die neue Stehleuchte steht im Wohnzimmer neben dem Sofa.",
+    "Sie kaufte neue Kleidung für den Urlaub am Meer.",
+    "Under the microscope each filament of the gill was visible.",
+    "In this species the leaf blade is broad and thin.",
+    "On the hillside two calves were born last night.",
+    "The variable beta controls the strength of the penalty term.",
+    "Im Flur hängt ein alter Spiegel aus Messing."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.6 on the 'lam'/' lam' piece; replacements below 0.1; ' lam' in 'lambs' is the uncertain case",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'lam' word piece",
+ "unit_kind": "word",
+ "confidence": 0.5,
+ "notes": "Card: ' Lam' x5, ' lam' x4, 'am' x4 (after L), ' lamb' in 'lamba = 4673'; also word-problem verbs (' stole', ' finds', ' board'). Probe: ' lamb' in 'lamba' 0.583, variable ' lam' 0.504, 'lam' in Taschenlampe 0.461, 'am' in Laminate 0.471; word problems 0.201 and 0.149; but ' lamb' as food 'leg of lamb' 0.081 (= beef control 0.078), so the whole-word food token does not fire. 'lambs' tokenises as ' lam'+'bs' and is included as a test of piece versus meaning."
+}
