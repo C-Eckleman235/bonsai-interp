@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-moridinamael-ed29ed67",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N10787-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T01:37:23+00:00",
+ "roles": ["feeds bonsai1/L1/N10586+"],
+ "neighbours": [
+  {
+   "unit": "L0/N10787",
+   "pole": "-",
+   "label": "The triple-quote mark (\"\"\" or ''') opening a string on the line right after a line ending in ':', strongest as a docstring under a Python class or def header, also under for/if/with headers. The same triple quote after an ordinary code line (x = 1, return 0), in an assignment outside a function (query = \"\"\"), after '{', or in prose stays low, as do other comment marks (#, //, /**, a single \"). Weak exceptions: under a prose line ending in ':' it reaches about 0.3, and an assignment string right inside a def body (msg = \"\"\") about 0.5.",
+   "short": "triple quote opening a docstring under a ':' header line",
+   "fire": [
+    "def add(a, b):\n    \"\"\"Return the sum of a and b.\"\"\"",
+    "class UserProfile:\n    \"\"\"Stores the display name and avatar for one account.\"\"\"",
+    "def parse_config(path):\n    '''Read the YAML file at path and return a dict.'''",
+    "def __init__(self, size):\n        \"\"\"Create an empty buffer of the given size.\"\"\"",
+    "class Matrix(object):\n    '''A small dense matrix with row-major storage.'''",
+    "async def fetch_page(url):\n    \"\"\"Download one page and return its HTML text.\"\"\"",
+    "def main():\n    \"\"\"\n    Entry point for the command line tool.\n    \"\"\"",
+    "for row in rows:\n    \"\"\"Each row holds an id, a name and a timestamp.\"\"\""
+   ],
+   "quiet": [
+    "x = 1\n\"\"\"Return the sum of a and b.\"\"\"",
+    "query = \"\"\"SELECT name, avatar FROM users WHERE id = 1\"\"\"",
+    "def parse_config(path):\n    # Read the YAML file at path and return a dict.",
+    "return 0\n    \"\"\"Create an empty buffer of the given size.\"\"\"",
+    "config = {\n    \"\"\"A small dense matrix with row-major storage.\"\"\"",
+    "async def fetch_page(url):\n    // Download one page and return its HTML text.",
+    "Python docstrings are written with three quotes, like \"\"\"this\"\"\", and describe what a function does.",
+    "count = len(rows)\n'''Each row holds an id, a name and a timestamp.'''"
+   ]
+  }
+ ],
+ "predictions": "most fire items above 0.5 (class and def strongest, for-loop and ''' lower); near misses under 0.2",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "neighbors",
+   "step-out",
+   "inverse-de"
+  ]
+ }
+}
