@@ -1,0 +1,162 @@
+{
+ "id": "2026-10-24-moridinamael-4c7aee93",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N2314+",
+ "contributor": "moridinamael",
+ "created": "2026-10-24T22:41:21+00:00",
+ "recipe": {
+  "toolchain_commit": "0f172cfe",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L17_N2314_pos/2026-10-24-moridinamael-4c7aee93.tests.json"
+ },
+ "label": "a person's whereabouts or doings during a stretch while something else is looked after or keeps running without them (while you're away, at work, on a trip; go out and it finishes itself); the 'while you're…' frame counts even at home; not plain travel or motion 'away'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L17_N2314_pos/2026-10-24-moridinamael-4c7aee93.tests.json",
+   "prereg_commit": "0f172cfe",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.646,
+     "peak": "'re"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 1.055,
+     "peak": " at"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 1.043,
+     "peak": " vacation"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 1.415,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.221,
+     "peak": " sleep"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.658,
+     "peak": " away"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.384,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.855,
+     "peak": " office"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.135,
+     "peak": " watch"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.027,
+     "peak": " room"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.195,
+     "peak": " breakfast"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.127,
+     "peak": " afternoon"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.031,
+     "peak": " full"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.009,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.062,
+     "peak": " hand"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.01,
+     "peak": " knocked"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.756,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "0f172cfe",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Feeder of bonsai1/L19/N9953+ chosen from the resident attribution ranking (play step OOM'd twice). Solver leak: the 'while we're ...' frame fires even when the person is home (0.65), so the label names it. Literal motion 'away' (sailed/walked away) and plain travel read near zero in probes.",
+ "roles": [
+  "feeds bonsai1/L19/N9953+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L17/N2314+", "to": "bonsai1/L19/N9953+", "kind": "feeds", "weight": null, "method": "attribution rank 2 of 12 MLP feeders on the target's top 4 examples (resident feeders tool; play step ablation hit CUDA OOM)"}
+ ]
+}
