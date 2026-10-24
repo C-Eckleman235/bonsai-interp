@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-24-moridinamael-78b4dc3b",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N8741+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T19:50:14+00:00",
+ "neighbours": [
+  {
+   "unit": "L24/N8741",
+   "pole": "+",
+   "label": "Inside code, a line that looks up a value by key or index, with square brackets (d[a][b], row['name'], items[0]) or chained .get() calls; code without a lookup (arithmetic, print, loops, assignments of literals) and prose stay low.",
+   "short": "keyed lookup in code (d[k], .get())",
+   "confidence": "low",
+   "notes": "Broad pole (7% of tokens at 0.1 of max). Resident probes: bracket lookups 0.17-0.44, plain code 0.07-0.15, prose 0.03-0.12. Solver: .get() chain reached 0.42; leak 0.31 from a bracketed aside in prose stacked with @classmethod. Test sentences written blind from the label only.",
+   "roles": ["reads bonsai1/L23/N12001-"],
+   "fire": [
+    "name = row['name']",
+    "value = config['database']['host']",
+    "first = items[0]",
+    "port = settings.get('server').get('port')",
+    "total += prices[i] * counts[i]",
+    "label = labels[pred.argmax()]",
+    "user_id = response.json()['data']['user']['id']",
+    "cell = grid[y][x]"
+   ],
+   "quiet": [
+    "The quote reads: \"he [the mayor] agreed\".",
+    "@classmethod",
+    "name = 'Alice'",
+    "value = 'localhost'",
+    "first = 0",
+    "port = 8080",
+    "total += price * count",
+    "print(label)"
+   ]
+  }
+ ],
+ "predictions": "borderline: fire items around 0.2 of max, near misses around 0.1; median may miss the 0.20 bar",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "step-down",
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "quick-test"
+  ]
+ }
+}
