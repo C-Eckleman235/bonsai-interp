@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-fc5e42c3",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N9448+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T10:20:33+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L6/N9448",
+   "pole": "+",
+   "label": "the piece 'ур' of Russian т|ур and т|ур|нир (tour, tournament), as against Russian sports and travel sentences without those words",
+   "fire": [
+    "Наша команда заняла второе место в турнире по шахматам.",
+    "Во втором туре соревнований он набрал больше всех очков.",
+    "Спортсмены готовятся к новому турниру уже три месяца.",
+    "В последнем туре чемпионата хозяева проиграли гостям.",
+    "Молодой теннисист выиграл свой первый турнир в Москве.",
+    "В третьем туре лидером остаётся команда из Казани.",
+    "Организаторы перенесли турнир на следующую неделю.",
+    "В этом туре играют восемь лучших команд страны."
+   ],
+   "quiet": [
+    "Наша команда заняла второе место в соревнованиях по шахматам.",
+    "Во второй части соревнований он набрал больше всех очков.",
+    "Спортсмены готовятся к новому сезону уже три месяца.",
+    "В последней игре чемпионата хозяева проиграли гостям.",
+    "Молодой теннисист выиграл свой первый матч в Москве.",
+    "После третьей игры лидером остаётся команда из Казани.",
+    "Организаторы перенесли соревнования на следующую неделю.",
+    "В этой лиге играют восемь лучших команд страны."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.3 on 'ур'; other Russian sports text below 0.1. Weak pole (max 2.58, gate-closed regime dominates), likely to fail.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'ур' in тур/турнир",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card is mixed and weak: 'т|ур|нирной' 2.58, 'т|ур|е' 2.56, ' Dome', 'args|.manual', 'non-ex|ercise', 'args.in|file'. Probe: 'турнире .. турнирной' 0.254, ' dome' 0.164, argparse lines 0.07-0.13, English tournament 0.024. Only the Russian piece was above 0.2, so the test is on that."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-908e09e1",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N1394-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T10:20:33+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N1394",
+   "pole": "-",
+   "label": "the joining token between two alternative names or paired categories ('the Anasazi, or Ancient Puebloans', 'American Indians/Alaska Natives', 'pinyon/juniper'), as against sentences on the same topics without an alternation",
+   "fire": [
+    "The canyon was home to the Diné, or Navajo, for many generations.",
+    "The survey counted Native Hawaiians/Pacific Islanders separately from other groups.",
+    "The slopes are covered with oak/hickory forest and scattered pines.",
+    "These rock carvings were made by the Hohokam, or ancestral O'odham, long ago.",
+    "The form asks whether you identify as Hispanic/Latino or not.",
+    "Clients may choose either art therapy or music therapy each week.",
+    "The village of the Haudenosaunee, or Iroquois, stood near the lake.",
+    "Above the river the hills support spruce/fir woodland."
+   ],
+   "quiet": [
+    "The canyon was home to Navajo families for many generations.",
+    "The survey counted every household on the islands last spring.",
+    "The slopes are covered with tall trees and scattered pines.",
+    "These rock carvings were made by people living here long ago.",
+    "The form asks for your name, address, and date of birth.",
+    "Clients attend a music class each week at the center.",
+    "The village of the Iroquois stood near the lake.",
+    "Above the river the hills are bare and rocky."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-1.1 on ' or' or '/' joining the two names; same topics without an alternation below 0.2. The Native American topic may fire on its own (earth lodge 0.755), so near misses may leak.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "joiner of alternative names",
+ "unit_kind": "unclear",
+ "confidence": 0.3,
+ "notes": "Card: 'Anasazi,| or Ancient Puebloans' -109, 'permanent| earth lodge', 'and| supported employment', 'American Indians|/Alaska', 'pinyon|/j', 'therapy| or'. Probe: 'Anasazi, or Ancient Puebloans' 1.084, 'earth lodges' 0.755, 'Indians/Alaska' 0.716, 'pinyon/juniper' 0.562, 'either group therapy or' 0.453, 'supported employment' 0.421; 'non-native lizard' 0.113, unrelated 0.007."
+}

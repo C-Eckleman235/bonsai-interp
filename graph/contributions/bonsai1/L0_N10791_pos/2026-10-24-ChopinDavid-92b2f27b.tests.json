@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-92b2f27b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N10791+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T10:20:33+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N10791",
+   "pole": "+",
+   "label": "the token ' So' opening a sentence in spoken, explanatory talk ('... a big water user. So we have a big responsibility'), as against other sentence openers (Therefore, Then, And) and lowercase ' so'",
+   "fire": [
+    "And honestly, the city has been growing really fast. So we need more schools, and we need them soon.",
+    "You know, the river is the main water source for the farms here. So everybody has to share it.",
+    "I've been working with these kids for about ten years now. So I know how hard it is for them.",
+    "Basically the old system kept crashing every week. So we decided to rebuild it from scratch.",
+    "Look, the test is very sensitive, it catches almost everything. So you do get some false alarms.",
+    "We had a lot of volunteers show up on the first day. So we split them into three teams.",
+    "The budget was cut in half last spring, right? So now we have to make some choices.",
+    "Our clinic is the only one for fifty miles. So people drive in from all over the county."
+   ],
+   "quiet": [
+    "And honestly, the city has been growing really fast. Therefore we need more schools, and we need them soon.",
+    "You know, the river is the main water source for the farms here. Everybody has to share it.",
+    "I've been working with these kids for about ten years now. Then I moved to a new school.",
+    "Basically the old system kept crashing every week. We decided to rebuild it from scratch.",
+    "Look, the test is very sensitive, it catches almost everything. Thus you do get some false alarms.",
+    "We had a lot of volunteers show up on the first day. And we split them into three teams.",
+    "The budget was cut in half last spring, right? Now we have to make some choices.",
+    "Our clinic is the only one for fifty miles, and people drive in from all over the county."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.9 on ' So' after a full stop; other openers and lowercase so below 0.1. Probes were weak (0.21), so this may fail on the median.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "sentence-opening ' So'",
+ "unit_kind": "token",
+ "confidence": 0.3,
+ "notes": "Card: 24 of 32 top peaks are sentence-opening ' So' in transcribed speech ('a big water user.| So we have' 2.41), plus contracted ''re'. Probe: '. So I walked' 0.214, '. So we have' peaked elsewhere at 0.152; lowercase ' so' 0.086-0.098, '. Therefore' 0.017, ''re' in short sentences 0.030-0.039. Fire items use longer spoken passages like the card."
+}
