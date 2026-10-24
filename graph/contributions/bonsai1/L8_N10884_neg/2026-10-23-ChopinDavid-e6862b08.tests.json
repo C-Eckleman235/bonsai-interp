@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-e6862b08",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N10884-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T04:20:42+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L8/N10884",
+   "pole": "-",
+   "label": "the token right after the first element inside Python curly braces when the braces build a set ('{u.name| for| ...}', \"{'red'|,| ...}\"), as against the same element in list brackets or a dict",
+   "fire": [
+    "def ids(rows):\n    keys = {r.key for r in rows}\n    return keys",
+    "class Pool:\n    def owners(self):\n        return {job.owner for job in self.jobs}",
+    "def domains(emails):\n    found = {e.split('@')[1] for e in emails}\n    return sorted(found)",
+    "VOWELS = {'a', 'e', 'i', 'o', 'u'}\nif ch in VOWELS:\n    count += 1",
+    "def test_unique(self):\n    labels = {n.label for n in self.graph.nodes}\n    assert len(labels) == 3",
+    "ALLOWED = {'GET', 'POST', 'PUT'}\nif request.method not in ALLOWED:\n    abort(405)",
+    "def cities(people):\n    places = {p.city for p in people if p.city}\n    return places",
+    "STOP = {'the', 'and', 'of'}\nwords = [w for w in text.split() if w not in STOP]"
+   ],
+   "quiet": [
+    "def ids(rows):\n    keys = [r.key for r in rows]\n    return keys",
+    "class Pool:\n    def owners(self):\n        return [job.owner for job in self.jobs]",
+    "def domains(emails):\n    found = {e: e.split('@')[1] for e in emails}\n    return found",
+    "VOWELS = ['a', 'e', 'i', 'o', 'u']\nif ch in VOWELS:\n    count += 1",
+    "def test_unique(self):\n    labels = [n.label for n in self.graph.nodes]\n    assert len(labels) == 3",
+    "ALLOWED = ('GET', 'POST', 'PUT')\nif request.method not in ALLOWED:\n    abort(405)",
+    "def cities(people):\n    places = {p.name: p.city for p in people}\n    return places",
+    "STOP = {'the': 1, 'and': 2, 'of': 3}\nprint(STOP['the'])"
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-1.0 on ' for' in set comprehensions and the comma in set literals; list comprehensions, dict comprehensions and dict literals below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "inside a Python set",
+ "unit_kind": "context",
+ "confidence": 0.75,
+ "notes": "Card peaks: ' for' in '{client.ident for client in ...}', '{x.id for x in instances}', comma in \"{'split_gain', ...}\". Probe: set comprehension 0.978 vs same list comprehension 0.042; set literal 0.766 vs list literal 0.011; dict comprehension 0.166; dict literal 0.018; set(... for ...) generator 0.027."
+}

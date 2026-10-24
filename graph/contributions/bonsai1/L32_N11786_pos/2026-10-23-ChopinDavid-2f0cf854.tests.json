@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-2f0cf854",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N11786+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T04:20:42+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L32/N11786",
+   "pole": "+",
+   "label": "the course of a patient's medical care (discharge, surgery, therapy, monitoring), as against the same sentence frames about objects, training or ordinary obligations",
+   "fire": [
+    "Most patients with a simple fracture can be discharged after the cast is fitted.",
+    "After the scan showed a tear, he needed to have surgery on his knee.",
+    "Management includes rest, physical therapy and anti-inflammatory medication.",
+    "Patients with severe cases may need to be transferred to a specialist unit.",
+    "If symptoms persist, the patient should be referred for an MRI and an orthopaedic review.",
+    "Low-risk patients can be treated as outpatients and followed up after two weeks.",
+    "Her doctor said she would need to have the gallbladder removed by keyhole surgery.",
+    "Initial treatment is splinting and ice, and surgery is reserved for displaced fractures."
+   ],
+   "quiet": [
+    "Most parcels with a simple label can be dispatched after the box is sealed.",
+    "After the storm showed a leak, he needed to have the roof on his barn repaired.",
+    "The course includes rest days, sprint training and stretching sessions.",
+    "Containers with heavy loads may need to be moved to a larger ship.",
+    "If the noise persists, the car should be taken for a check and a tyre change.",
+    "Small orders can be packed in the shop and collected after two weeks.",
+    "Her landlord said she would need to have the old boiler replaced by a plumber.",
+    "Initial repair is patching and paint, and rebuilding is reserved for collapsed walls."
+   ]
+  }
+ ],
+ "predictions": "expected weak: fire 0.2-0.35 in patient-care sentences, near misses with the same frame outside medicine below 0.05; may fail on the 0.3 threshold",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "clinical patient management",
+ "unit_kind": "meaning",
+ "confidence": 0.4,
+ "notes": "Card peaks on function words inside clinical management prose: ' after' in 'PE patients can be discharged after initial emergency room assessment', ' to' in 'She needs to have surgery', ' and' in 'physical therapy and nonsteroidal anti-inflammatory drugs', ' be' in 'The patient must be prepared', ' Medicine', ' Imaging'. Probe: discharge after observation 0.319, needs surgery 0.278, physical therapy and drugs 0.222, residency in Emergency Medicine 0.171, monitored during hospital stay 0.053; parallel non-medical frames 0.002-0.019. The meaning is clean but the level is low."
+}

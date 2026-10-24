@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-bf39242e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N9466-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T04:20:42+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L27/N9466",
+   "pole": "-",
+   "label": "the quantity being tested against a threshold, especially the variable after 'elif' in a chain of numeric cases ('elif| size| < 1024'), as against the same variable used in assignments or output",
+   "fire": [
+    "def grade(score):\n    if score >= 90:\n        return 'A'\n    elif score >= 80:\n        return 'B'\n    elif score >= 70:\n        return 'C'",
+    "def unit(nbytes):\n    if nbytes < 1024:\n        return 'B'\n    elif nbytes < 1048576:\n        return 'KB'",
+    "def bucket(age):\n    if age < 13:\n        return 'child'\n    elif age < 20:\n        return 'teen'",
+    "def speed_label(kmh):\n    if kmh < 30:\n        label = 'slow'\n    elif kmh < 90:\n        label = 'normal'\n    return label",
+    "def plural(count):\n    if count == 0:\n        return 'none'\n    elif count == 1:\n        return 'one'",
+    "def wind(knots):\n    if knots < 4:\n        return 'calm'\n    elif knots < 11:\n        return 'breeze'\n    elif knots < 28:\n        return 'wind'",
+    "def tier(points):\n    if points > 500:\n        return 'gold'\n    elif points > 100:\n        return 'silver'",
+    "def battery(level):\n    if level > 80:\n        icon = 'full'\n    elif level > 20:\n        icon = 'half'\n    return icon"
+   ],
+   "quiet": [
+    "def grade(score):\n    total = score + 5\n    name = 'A'\n    return name",
+    "def unit(nbytes):\n    size = nbytes * 8\n    print(size)\n    return 'bits'",
+    "def bucket(age):\n    years = age\n    label = 'person'\n    return label",
+    "def speed_label(kmh):\n    mph = kmh * 0.62\n    print(mph)\n    return 'converted'",
+    "def plural(count):\n    total = count * 2\n    text = str(total)\n    return text",
+    "def wind(knots):\n    ms = knots * 0.51\n    report = 'measured'\n    return report",
+    "def tier(points):\n    points += 10\n    save(points)\n    return 'updated'",
+    "def battery(level):\n    log(level)\n    icon = 'battery'\n    return icon"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on the variable in later branches of if/elif threshold chains; the same variables assigned or printed below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "variable compared in an elif chain",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card peaks: ' delta' in 'elif delta < 43200', ' minor' in 'elif minor == 1', ' days', ' locale', ' size' after 'elif', ')' in 'if len(bits) == 8', prose 'relative humidity in the 25 percent', 'levels of carbon dioxide were 280'. Probe: if/elif chain on n 0.640; same function with assignments only 0.023; single 'if len(items) == 0' only 0.030, so a lone if is weak and elif chains are the test; prose 'water temperature below 30 degrees' 0.340, 'rents were 400 dollars' 0.170."
+}

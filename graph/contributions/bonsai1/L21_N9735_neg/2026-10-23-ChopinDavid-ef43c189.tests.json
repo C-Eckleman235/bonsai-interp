@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-ef43c189",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N9735-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T04:20:42+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L21/N9735",
+   "pole": "-",
+   "label": "the operator or gap just before an item is repeated (squaring '5 cm * 5 cm', a doubled block '0110 0110', 'outer(o, o)'): the model expects the next item to copy the previous one, as against the same layout where the next item differs",
+   "fire": [
+    "The area of a square tile with side 3 m is 3 m * 3 m = 9 square metres.",
+    "Repeating the block 1100 twice gives 1100 1100 in the output stream.",
+    "A square garden with side 7 m has an area of 7 m * 7 m = 49 square metres.",
+    "When the motif abc is written twice we get abc abc on the page.",
+    "The floor of the square room, 5 m on each side, covers 5 m * 5 m = 25 square metres.",
+    "Doubling the code 2718 produces 2718 2718 on the receipt.",
+    "For a square window of side 2 ft the glass area is 2 ft * 2 ft = 4 square feet.",
+    "If you repeat the sequence 0101 two times you get 0101 0101 again."
+   ],
+   "quiet": [
+    "The area of a rectangular tile with sides 3 m and 4 m is 3 m * 4 m = 12 square metres.",
+    "Joining the blocks 1100 and 0011 gives 1100 0011 in the output stream.",
+    "A rectangular garden 7 m by 2 m has an area of 7 m * 2 m = 14 square metres.",
+    "When the motifs abc and xyz are written together we get abc xyz on the page.",
+    "The floor of the long room, 5 m by 8 m, covers 5 m * 8 m = 40 square metres.",
+    "Joining the codes 2718 and 3141 produces 2718 3141 on the receipt.",
+    "For a window 2 ft wide and 3 ft tall the glass area is 2 ft * 3 ft = 6 square feet.",
+    "If you follow 0101 with 1110 you get 0101 1110 at the end."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.65 on the '*' or space before a repeated item in squares and doubled patterns; the same layouts with two different items below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "slot before a self-repeat",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card peaks: '()\\n' between m.stop() calls, ' ' in '1011 1011', ' *' in 'l * l = 5cm * 5cm', ']*' in 'target[0]*target[0]', ',' in 'SUCCESS, SUCCESS' and 'outer( o, o )'; + pole promotes ' repeated', ' twice', ' duplicate'. Probe: 'square with side 4 cm is 4 cm * 4 cm' 0.639 vs rectangle 4 cm * 6 cm 0.015; 'pattern 0110 repeated twice gives 0110 0110' 0.479; 'v[0]*v[0]' 0.171 vs dot product 0.009; maildir_to_maildir 0.049. Prose squares and doubled patterns are the strongest frame."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-a48f037d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N1459+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T04:20:42+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L2/N1459",
+   "pole": "+",
+   "label": "the token ' metric' and the German word piece ' Gesch' when it starts a split word (Gesch|äft, Gesch|w|ister, Gesch|m|ack), as against 'metrics', 'measure' and Gesch- words tokenised another way",
+   "fire": [
+    "Customer retention is the most important metric for a subscription business.",
+    "Most countries switched to the metric system during the twentieth century.",
+    "Meine Geschwister wohnen alle in der Nähe von Hamburg.",
+    "Die Geschwindigkeit auf der Autobahn ist hier begrenzt.",
+    "Every recipe in the book gives the weights in metric units.",
+    "Über Geschmack lässt sich bekanntlich nicht streiten.",
+    "Response time is a simple metric that every team can track.",
+    "Frau Weber ist die neue Geschäftsführerin in München."
+   ],
+   "quiet": [
+    "Customer retention is the most important figure for a subscription business.",
+    "Most countries switched to decimal money during the twentieth century.",
+    "Meine Schwestern wohnen alle in der Nähe von Hamburg.",
+    "Die Geschichte der Autobahn ist hier im Museum zu sehen.",
+    "Every recipe in the book gives the weights in grams and kilos.",
+    "Über ein Geschenk freut sich bekanntlich jeder.",
+    "Response time is one of the metrics that every team can track.",
+    "Herr Weber kauft seine Brötchen in München."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-0.9 on ' metric' and the ' Gesch' piece; 'metrics', 'measure', 'Geschichte', 'Geschenk', 'Geschäfte' below 0.1 (often negative)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "' metric' / ' Gesch' piece",
+ "unit_kind": "word",
+ "confidence": 0.55,
+ "notes": "Card peaks: ' metric' x6 ('conversion metric', 'the metric data', 'adopted the metric system'), 'gesch'/'esch' x10 in Geschäfte/Geschichte/ausgeschlagen; max only 0.19 and gate-closed, but probe readings are normalised high. Probe: 'useful metric' 0.900, 'metric system' 0.844, 'Geschäftsführung' (' Gesch') 0.677, 'Geschäftsführer' 0.665; 'Geschichte' (one token) -0.218, 'measure' -0.246, 'geometric' -0.336, 'knapp' -0.176. tok.py: Geschwister, Geschwindigkeit, Geschmack split with ' Gesch'; Geschenk splits ' Ges|chen|k'; Geschäfte ' Geschä|fte'; Geschichte and metrics are single tokens."
+}
