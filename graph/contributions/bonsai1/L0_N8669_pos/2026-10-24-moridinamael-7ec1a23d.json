@@ -1,0 +1,162 @@
+{
+ "id": "2026-10-24-moridinamael-7ec1a23d",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N8669+",
+ "contributor": "moridinamael",
+ "created": "2026-10-24T21:27:36+00:00",
+ "recipe": {
+  "toolchain_commit": "f14e28e7",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N8669_pos/2026-10-24-moridinamael-7ec1a23d.tests.json"
+ },
+ "label": "the word piece right after a chunk ending in 'ct' when the tokenizer splits a word there (Praefect|us, Act|a, Act|on, Tract|atus, tazobact|am, ACT|U|ALLY in capitals), including made-up words; quiet when the 'ct' word is one whole token (intact, actor, lowercase actually, Connecticut, tractor) and on the meaning of acting",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N8669_pos/2026-10-24-moridinamael-7ec1a23d.tests.json",
+   "prereg_commit": "f14e28e7",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.998,
+     "peak": "us"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.864,
+     "peak": "atus"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.722,
+     "peak": "am"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.881,
+     "peak": "U"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.536,
+     "peak": "a"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.344,
+     "peak": "olum"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.547,
+     "peak": "a"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.014,
+     "peak": "ill"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.016,
+     "peak": " commander"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.055,
+     "peak": " intact"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.011,
+     "peak": " abdominal"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.015,
+     "peak": " report"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.008,
+     "peak": " premiere"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.014,
+     "peak": " from"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.009,
+     "peak": " acting"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.012,
+     "peak": " casts"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.945,
+    "median_fire": 0.635,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "f14e28e7",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L1/N2586+"
+ ],
+ "notes": "Step-out feeder of bonsai1/L1/N2586+ ('Acta'/'Annals' journal-title words) chosen from the resident attribution ranking (play step hit CUDA OOM twice next to the stream's resident model). Test written blind by a second author from the label only; the solver found no leak (near-miss ceiling about 0.13). The one fire miss was the made-up 'Vectorillax' (0.01, peak 'ill'), which the tokenizer likely does not split right after 'ct'.",
+ "edges": [
+  {"from": "bonsai1/L0/N8669+", "to": "bonsai1/L1/N2586+", "kind": "feeds", "weight": null, "method": "attribution rank 1 of 12 MLP feeders on the target's top 4 examples (resident feeders tool; play step ablation hit CUDA OOM)"}
+ ]
+}

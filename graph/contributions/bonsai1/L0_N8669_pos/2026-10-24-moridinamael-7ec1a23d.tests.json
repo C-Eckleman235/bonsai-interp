@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-24-moridinamael-7ec1a23d",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N8669+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T21:27:10+00:00",
+ "roles": ["feeds bonsai1/L1/N2586+"],
+ "neighbours": [
+  {
+   "unit": "L0/N8669",
+   "pole": "+",
+   "label": "the word piece right after a chunk ending in 'ct' when the tokenizer splits a word there (Praefect|us, Act|a, Act|on, Tract|atus, tazobact|am, ACT|U|ALLY in capitals), including made-up words; quiet when the 'ct' word is one whole token (intact, actor, lowercase actually, Connecticut, tractor) and on the meaning of acting",
+   "short": "piece after a split 'ct' chunk (Act|a, Praefect|us)",
+   "unit_kind": "spelling",
+   "fire": [
+    "The Praefectus of the legion ordered the gates sealed before nightfall.",
+    "Wittgenstein's Tractatus Logico-Philosophicus is famously short and dense.",
+    "The patient was started on piperacillin-tazobactam for the abdominal infection.",
+    "She shouted, \"I ACTUALLY DID FINISH THE ENTIRE REPORT!\"",
+    "The ruling was published in the Acta Apostolicae Sedis later that year.",
+    "Researchers isolated a new compound they named Bractolumin from the root bark.",
+    "Medieval scribes copied the Acta Sanctorum by candlelight for decades.",
+    "In the game, the wizard casts Vectorillax to freeze every enemy on screen."
+   ],
+   "quiet": [
+    "The commander of the legion ordered the gates sealed before nightfall.",
+    "The old farmhouse survived the storm completely intact.",
+    "The patient was started on a standard antibiotic for the abdominal infection.",
+    "She said, \"I actually did finish the entire report.\"",
+    "The actor rehearsed his lines backstage before the premiere.",
+    "Researchers isolated a new compound from the root bark of the tree.",
+    "She spent the summer acting in a small community theater production.",
+    "In the game, the wizard casts a spell to freeze every enemy on screen."
+   ]
+  }
+ ],
+ "predictions": "Blind test written by a second author from the label only. Expect most fire sentences to clear 0.20; made-up words (Bractolumin, Vectorillax) depend on where the tokenizer splits them.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "step-out",
+   "quick-test"
+  ]
+ }
+}
