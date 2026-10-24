@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-10c22d7e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N2628-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T19:19:41+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N2628",
+   "pole": "-",
+   "label": "the opening of a message-string argument in Python error, warning and assert calls (raise X(\"...\"), warnings.warn(\"...\"), assertTrue(..., \"...\"))",
+   "fire": [
+    "def load(path):\n    if not os.path.exists(path):\n        raise FileNotFoundError(f\"No config found at {path}\")",
+    "if count < 0:\n    raise ValueError(\"count must be non-negative\")",
+    "try:\n    import numpy\nexcept ImportError:\n    warnings.warn(\"numpy not available, using slow path\")",
+    "        self.assertEqual(len(rows), 3, \"Expected three rows in the result\")",
+    "    if user is None:\n        raise PermissionError(\"You must be logged in to edit this page\")",
+    "        assert isinstance(port, int), \"port must be an integer\"",
+    "def parse(s):\n    if not s:\n        raise TypeError(f\"Cannot parse empty string {s!r}\")",
+    "    if timeout > 60:\n        logger.warning(\"Timeout is unusually long: %s\", timeout)"
+   ],
+   "quiet": [
+    "def load(path):\n    if not os.path.exists(path):\n        return {}",
+    "if count < 0:\n    count = 0",
+    "try:\n    import numpy\nexcept ImportError:\n    numpy = None",
+    "        self.assertEqual(len(rows), 3)",
+    "    if user is None:\n        return redirect(login_url)",
+    "        assert isinstance(port, int)",
+    "def parse(s):\n    if not s:\n        return []",
+    "    if timeout > 60:\n        timeout = 60"
+   ]
+  }
+ ],
+ "predictions": "Python lines that pass a human-readable message to raise/warn/assert fire at the call's opening paren or quote; the same calls with no message stay quiet.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "error-message string opener",
+ "unit_kind": "context",
+ "confidence": "low",
+ "notes": "Probe: assertTrue(..., \"Name should...\") 0.680 on ' \"', warnings.warn(\"...\") 0.665 on '.warn', raise ValueError(f\"...\") 0.437 on '(f'; same branch with 'return None' -0.006. Off-code hits also exist: 'associated with' 0.565, 'estimate ... prior' 0.417, so the pole is not code-only; the test covers the code reading."
+}
