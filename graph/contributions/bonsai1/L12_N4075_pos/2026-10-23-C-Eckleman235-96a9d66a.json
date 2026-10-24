@@ -1,0 +1,153 @@
+{
+ "id": "2026-10-23-C-Eckleman235-96a9d66a",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N4075+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-23T22:12:50+00:00",
+ "recipe": {
+  "toolchain_commit": "45a8d908",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L12_N4075_pos/2026-10-23-C-Eckleman235-96a9d66a.tests.json"
+ },
+ "label": "Hawaii and French Polynesia as places: Hawaiian and Tahitian islands, towns and landmarks (Maui, Oahu, Honolulu, Lahaina, Bora Bora, Moorea, Papeete), named or not, and 'Hawaiian' in food names; islands in the Caribbean, the Mediterranean and the Indian Ocean stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L12_N4075_pos/2026-10-23-C-Eckleman235-96a9d66a.tests.json",
+   "prereg_commit": "45a8d908",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.326,
+     "peak": " Maui"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.616,
+     "peak": "olulu"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.356,
+     "peak": "ora"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.722,
+     "peak": "au"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.438,
+     "peak": "ete"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.556,
+     "peak": " Hawaiian"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.595,
+     "peak": "ahu"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.253,
+     "peak": "a"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.041,
+     "peak": " Pos"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.002,
+     "peak": "Miami"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.138,
+     "peak": "agoon"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.048,
+     "peak": " beach"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.013,
+     "peak": " reefs"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.05,
+     "peak": " Cuban"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.055,
+     "peak": "ane"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.011,
+     "peak": " snork"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.497,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "which"
+  ],
+  "detected": [],
+  "toolchain_commit": "45a8d908",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "short": "Hawaii and Polynesia",
+ "unit_kind": "meaning",
+ "confidence": 0.5,
+ "notes": "Found by the world-atlas tier-1 census (discovery only; see L21/N1879- for the design): 8/8 Hawaii passages, named and unnamed, mean 0.76, a candidate for Hawaii only. Card: max 41, density 0.05%; peaks ' Hawaii' x6, 'olulu' x2, ' Hawai' x2, 'Pol|ynes|ia', Tahitian names, 'Pearl Harbor in Hawaii'. Triage probes (exploratory, none reused): Waimea Bay/Oahu 0.59, Papeete 0.54, Hawaiian pizza 0.45, Suva, Fiji 0.36 (not claimed), the Maori canoe at Waitangi 0.29 and Kilauea 0.27 (weaker: not claimed), Negril, Jamaica 0.03, Mykonos 0.00. Scoring runs on a Modal L40S (bfloat16; PARITY OK on Modal).",
+ "selection": "concept search: world atlas tier 1 (branch 19)"
+}
