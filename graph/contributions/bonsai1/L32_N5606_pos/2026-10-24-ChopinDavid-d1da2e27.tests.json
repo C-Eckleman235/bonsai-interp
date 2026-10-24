@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-d1da2e27",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N5606+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T20:19:43+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L32/N5606",
+   "pole": "+",
+   "label": "a farm-labour context at the point where a field or farm location is coming ('in the| fields', 'on the| farm'), as against the same sentence shapes set in non-agricultural places",
+   "fire": [
+    "The pickers spent the whole August afternoon bent over in the fields.",
+    "Every spring the family hired extra hands to work on the farm.",
+    "After the harvest, the stubble was burned in the fields to clear them.",
+    "Old tractors were left rusting out in the field behind the barn.",
+    "The hired men were up at dawn to bring the cattle in from the pasture.",
+    "Much of the potato crop was left lying in the field after the rains.",
+    "As a boy he spent his summers helping his uncle bale hay on the farm.",
+    "The workers hoed weeds between the rows of corn in the hot sun."
+   ],
+   "quiet": [
+    "The clerks spent the whole August afternoon bent over in the office.",
+    "Every spring the hotel hired extra staff to work at the front desk.",
+    "After the concert, the rubbish was cleared from the hall to tidy it.",
+    "Old computers were left gathering dust in the room behind the library.",
+    "The night nurses were up at dawn to bring the patients their breakfast.",
+    "Much of the paperwork was left lying on the desk after the meeting.",
+    "As a boy he spent his summers helping his uncle sell books in the city.",
+    "The students filed papers between the rows of shelves in the archive."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on 'the'/'in' before field/farm in agricultural sentences; garage/park/office versions 0.0-0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "farm work: where 'field' comes next",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card peaks on ' the', ' in', ' on' before field(s)/farm, plus ' b'(aling) and ' hay'; the - pole promotes ' fields', ' hay'. Probe: 'stalks standing in| the| fields' 0.779, 'left to rot| in| the field' 0.532, 'help their father on| the| farm' 0.445, 'cutting wheat' 0.435; 'bicycles in the garage' 0.068, 'soccer in the park' 0.029. Leak: 'help their father in| the| shop' 0.471, so the farm-help setup alone fires; near misses here move to clearly non-farm settings."
+}

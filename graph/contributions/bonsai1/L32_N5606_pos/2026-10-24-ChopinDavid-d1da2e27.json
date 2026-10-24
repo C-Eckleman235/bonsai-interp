@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-d1da2e27",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N5606+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-24T20:27:32+00:00",
+ "recipe": {
+  "toolchain_commit": "e47a25ed",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L32_N5606_pos/2026-10-24-ChopinDavid-d1da2e27.tests.json"
+ },
+ "label": "a farm-labour context at the point where a field or farm location is coming ('in the| fields', 'on the| farm'), as against the same sentence shapes set in non-agricultural places",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L32_N5606_pos/2026-10-24-ChopinDavid-d1da2e27.tests.json",
+   "prereg_commit": "e47a25ed",
+   "author": "ChopinDavid",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.299,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.309,
+     "peak": " farm"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.58,
+     "peak": " was"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.475,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.27,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.719,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.58,
+     "peak": "ale"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.592,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.075,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.036,
+     "peak": " work"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.009,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": "Old"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.005,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.022,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.152,
+     "peak": " sell"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.046,
+     "peak": "The"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.527,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "e47a25ed",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "farm work: where 'field' comes next",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card peaks on ' the', ' in', ' on' before field(s)/farm, plus ' b'(aling) and ' hay'; the - pole promotes ' fields', ' hay'. Probe: 'stalks standing in| the| fields' 0.779, 'left to rot| in| the field' 0.532, 'help their father on| the| farm' 0.445, 'cutting wheat' 0.435; 'bicycles in the garage' 0.068, 'soccer in the park' 0.029. Leak: 'help their father in| the| shop' 0.471, so the farm-help setup alone fires; near misses here move to clearly non-farm settings.",
+ "selection": "random draw"
+}

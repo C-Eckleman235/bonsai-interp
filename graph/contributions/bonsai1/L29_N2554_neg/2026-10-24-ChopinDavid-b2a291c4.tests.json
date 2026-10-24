@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-b2a291c4",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N2554-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T20:19:43+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N2554",
+   "pole": "-",
+   "label": "the word-start piece ' Ar'/' ar' when a longer word or name is split after it (Arp, Arvell, Arles, arched, armonía), as against words that begin with 'ar' but are single tokens or split differently",
+   "fire": [
+    "The exhibition included several late collages by Jean Arnaud and his circle.",
+    "Her photographs were often compared to the portraits of Diane Arbus.",
+    "The Finnish architect Arvo Pärt's namesake designed the new chapel.",
+    "Catherine of Aragon arrived in England as a young bride.",
+    "In the novel, Arden is a quiet forest where the exiles hide.",
+    "My neighbour's toddler, Arlo, waves at every passing bus.",
+    "Roses climbed over the wooden arbor at the end of the garden.",
+    "The guitarist opened the song with a slow descending arpeggio."
+   ],
+   "quiet": [
+    "The exhibition included several late collages by Jean Cocteau and his circle.",
+    "Her photographs were often compared to the portraits of Richard Avedon.",
+    "The Finnish architect's partner designed the new chapel near the lake.",
+    "The queen arrived in Argentina as a young bride.",
+    "In the novel, the forest is a quiet place where the exiles hide in the areas near the river.",
+    "My neighbour's toddler, Milo, waves at every passing bus.",
+    "Roses climbed over the wooden arcade at the end of the garden.",
+    "The guitarist opened the song with a slow descending scale."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on ' Ar'/' ar' in split names and words; whole-token 'ar' words 0.0-0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split word-start ' Ar'",
+ "unit_kind": "token",
+ "confidence": 0.45,
+ "notes": "Card peaks ' Ar' x8, ' ar' x3 (Arp, Arvell, Artes, armonía, arched), mostly arts contexts. Probe: 'Hans| Ar|p' 0.791, '| Ar|vell' 0.680, '| ar|ched' 0.580, '| ar|monía' 0.504, '| Ar|les' 0.467, banker '| Ar|mand' 0.461 (so not only arts); whole-token 'Arizona' 0.006. Ballet ' leading' 0.479 is a side trigger. Splits checked with tok.py."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-7279b841",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N3010+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T20:19:43+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N3010",
+   "pole": "+",
+   "label": "tokens that mean obstruct or impede: Chinese '阻' (alone or in 阻止), English ' obstruction' and ' impedance', as against near synonyms that are other tokens (障碍, 抵抗, resistance, blockage)",
+   "fire": [
+    "计划因为预算问题而被阻断，项目只能暂停。",
+    "人群在门口阻拦了那辆车，不让它离开。",
+    "长期的贸易壁垒会阻害经济的发展。",
+    "下水道被树叶阻塞了，水流不出去。",
+    "保安及时出面阻止了这场争吵。",
+    "The engineer measured the impedance of the speaker cable.",
+    "An obstruction in the pipe caused the water to back up.",
+    "The cardiologist used impedance readings to monitor the heart."
+   ],
+   "quiet": [
+    "计划因为预算问题而被推迟，项目只能暂停。",
+    "人群在门口围观了那辆车，不肯离开。",
+    "长期的贸易壁垒会影响经济的发展。",
+    "下水道被树叶填满了，水流不出去。",
+    "保安及时出面劝解了这场争吵。",
+    "The engineer measured the length of the speaker cable.",
+    "A crack in the pipe caused the water to leak out.",
+    "The cardiologist used pressure readings to monitor the heart."
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.4 on 阻/阻止/obstruction/impedance; synonym and antonym controls 0.0-0.07",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "the obstruct tokens 阻 / obstruction / impedance",
+ "unit_kind": "token",
+ "confidence": 0.35,
+ "notes": "Card max 9.69 on standalone '阻' (阻害, 阻擋); '阻止' ~3.2, ' impedance' ~2.7, ' obstruction', ' inhib' also in top 32. Probe (normalised): '阻止' 0.280, ' impedance' 0.237, ' obstruction' 0.148, ' inhibit' 0.038 (weak); controls ' resistance' 0.068, 'blockage' 0.038, '帮助' 0.016. Standalone 阻 (阻害, 阻断, 阻塞, 阻拦) is the strongest card case; splits checked."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-32e3852b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N11828-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T20:19:43+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L14/N11828",
+   "pole": "-",
+   "label": "unclear: tokens at the very start of a web document (card) and forum boilerplate such as 'Who is online'; the probe could not reproduce the document-start peaks",
+   "fire": [
+    "Some threads are locked.\nWho is online\nUsers browsing this forum: Google [Bot]",
+    "Board index » General\nWho is online\nRegistered users: none",
+    "Posted in Gardening.\nWho is online\nIn total there are 4 users online",
+    "This article needs additional citations. (Learn how and when to remove this message)",
+    "Last post by admin.\nWho is online\nUsers browsing this forum: no registered users",
+    "Please help improve this article. (Learn how and when to remove this template message)",
+    "Forum rules apply.\nWho is online\nMost users ever online was 212",
+    "Unsourced material may be removed. (Learn how and when to remove this template message)"
+   ],
+   "quiet": [
+    "Some threads are locked because the moderators went on holiday.",
+    "The board met in the main hall to discuss the general budget.",
+    "She posted a photo of her gardening project on the weekend.",
+    "This article was written by a local historian last spring.",
+    "The last post office in the village closed in 1998.",
+    "Please help your neighbours by clearing snow from the path.",
+    "The rules of the game are printed inside the box lid.",
+    "Some material from the old house was used to build the shed."
+   ]
+  }
+ ],
+ "predictions": "fire 0.1-0.4 on forum boilerplate lines; ordinary sentences 0.0-0.1; likely to fail",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "document-start / boilerplate (unclear)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Card max 5.19, nearly every top example is the first token after <|endoftext|> ('*', 'An', 'P', 'The', 'by'): positional. Probe of document-initial sentences gave only 0.022-0.069 (the probe adds its own start), so the start effect is not testable here. Only boilerplate 'Who is| online|' 0.388 and 'Learn| how|' 0.086 fired. Test is the boilerplate reading."
+}

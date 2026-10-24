@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-609123b7",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N9336-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T20:19:43+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N9336",
+   "pole": "-",
+   "label": "the adverb ' hopefully' (with weaker response to similar sentence adverbs such as 'luckily'), on a pole that is weakly on for much ordinary text",
+   "fire": [
+    "The flight was delayed again, but hopefully we land before midnight.",
+    "I fixed the leak this morning, so hopefully the ceiling dries out.",
+    "The coach changed the lineup, and hopefully the team plays better.",
+    "My exams end on Friday, so hopefully I can rest next week.",
+    "The new update is huge, but hopefully it runs on older phones.",
+    "We planted the seeds late, but hopefully they still sprout.",
+    "The package left the warehouse today, so hopefully it comes soon.",
+    "I emailed the landlord twice, and hopefully he answers this time."
+   ],
+   "quiet": [
+    "The flight was delayed again, and we landed after midnight.",
+    "I fixed the leak this morning, and the ceiling dried out by noon.",
+    "The coach changed the lineup, and the team played much better.",
+    "My exams end on Friday, then I can rest next week.",
+    "The new update is huge, and it runs slowly on older phones.",
+    "We planted the seeds late, and they sprouted anyway.",
+    "The package left the warehouse today and arrived on Tuesday.",
+    "I emailed the landlord twice, and he answered both times."
+   ]
+  }
+ ],
+ "predictions": "fire 0.7-1.0 on ' hopefully'; controls with other adverbs 0.4-0.7, so the test may fail on density",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "' hopefully' (dense)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.25,
+ "notes": "Card max 0.17, density 31.7% of tokens above 0.1 of max: flagged dense; ' hopefully' x19+x7 of 32 peaks. Probe: 'but| hopefully|' 0.972, 'so| hopefully|' 0.917, manner 'waited| hopefully|' 0.747, 'but| luckily|' 0.701, sentence-initial 'Hopefully' 0.535, unrelated floor 0.397-0.430. Near misses drop the adverb; I expect leaks."
+}
