@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-a96f48d7",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N2229+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T03:20:32+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N2229",
+   "pole": "+",
+   "label": "the Arabic letter alif 'ا' when the tokenizer leaves it as its own token (after ' الن' in الناخبين/الناشر, or after 'من' in يومنا/استخدمنا), as against words where alif is merged",
+   "fire": [
+    "أكد المسؤول أن صوت كل الناخبين له قيمة كبيرة.",
+    "ما زالت هذه الأغنية مشهورة إلى يومنا الحاضر.",
+    "أرسل الكاتب الكتاب إلى الناشر قبل نهاية العام.",
+    "في الرحلة الماضية استخدمنا خريطة قديمة.",
+    "دعت اللجنة جميع الناخبين إلى المشاركة في التصويت.",
+    "تحدث الناشر عن خطط الدار للعام المقبل.",
+    "قال الأستاذ إننا فهمنا الدرس بسرعة.",
+    "في الأمس علمنا بخبر نجاح أخينا."
+   ],
+   "quiet": [
+    "أكد المسؤول أن صوت كل الناس له قيمة كبيرة.",
+    "ما زالت هذه الأغنية مشهورة حتى الآن.",
+    "أرسل الكاتب الكتاب إلى الدار قبل نهاية العام.",
+    "في الرحلة الماضية وصلنا متأخرين إلى الفندق.",
+    "دعت اللجنة جميع المواطنين إلى المشاركة في التصويت.",
+    "تحدث المدير عن خطط الشركة للعام المقبل.",
+    "قال الأستاذ إن الطلاب أنهوا الدرس بسرعة.",
+    "في الأمس سمعت خبر نجاح أخي."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.75 where 'ا' is a separate token; words with merged alif below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "standalone Arabic 'ا' piece",
+ "unit_kind": "token",
+ "confidence": 0.7,
+ "notes": "Card: 'ا' x28, mostly in الن|ا|خبين and -من|ا endings. Probe: الناخبين 0.733, يومنا 0.573, الناشر 0.466, استخدمنا 0.404, الناقد 0.296; وصلنا (merged 'نا') 0.028, الناس and النار (single tokens) ~0.0. Splits checked with tok.py."
+}
