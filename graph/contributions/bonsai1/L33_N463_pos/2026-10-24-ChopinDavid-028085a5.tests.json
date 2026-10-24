@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-028085a5",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N463+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T05:20:37+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N463",
+   "pole": "+",
+   "label": "a French preposition that opens a qualifying frame or required complement right after a clause verb ('il faut préciser que dans ce cas', 'répondre à des exigences'), as against 'dans' giving a plain physical location",
+   "fire": [
+    "Il faut rappeler que dans la plupart des cas, la maladie guérit seule.",
+    "Les candidats doivent impérativement répondre à plusieurs critères de sélection.",
+    "Il est important de noter que dans les zones rurales, les écoles ferment.",
+    "On estime dans ce contexte que la réforme arrive trop tard.",
+    "Chaque dossier doit répondre à des normes de sécurité très strictes.",
+    "Il convient de souligner que dans certains pays, le vote est obligatoire.",
+    "Les experts observent dans ce domaine une forte hausse des prix.",
+    "Le projet devra répondre à toutes les attentes des habitants du quartier."
+   ],
+   "quiet": [
+    "Il faut rappeler que la plupart des malades guérissent seuls.",
+    "Les candidats doivent impérativement remplir plusieurs critères de sélection.",
+    "Il est important de noter que les écoles rurales ferment.",
+    "Mes parents habitent dans un petit village près de Lyon.",
+    "Chaque dossier doit respecter des normes de sécurité très strictes.",
+    "Les enfants jouent dans le jardin derrière la maison.",
+    "Les experts observent une forte hausse des prix cette année.",
+    "Le projet devra satisfaire toutes les attentes des habitants du quartier."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on 'dans'/'à' opening a qualifying frame after a reporting or 'répondre' clause; literal location 'dans une maison' and the same clause without the preposition below 0.25",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "French framing preposition",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card peaks: ' dans' x8 after 'il convient de préciser que', 'on considère', ' à' after 'répondre', ' que' after 'on constate', ' par' after 'perçue'. Probe: 'préciser que dans le mariage' 0.758, 'répondre à quelques exigences' 0.607, 'On considère dans ce cas' 0.388; same clause without 'dans' 0.226, 'Nous habitons dans une petite maison' 0.140, English translation 0.006. English 'get it right' 0.620 and 'snores' 0.370 also fire and are not covered by this label."
+}

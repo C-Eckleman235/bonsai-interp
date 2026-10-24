@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-d0cf26b2",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N5486-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T05:20:37+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L3/N5486",
+   "pole": "-",
+   "label": "the tokens ' autor' (Spanish/Portuguese 'author', as in 'derechos de autor'), all-caps ' AUTHOR' in an 'ABOUT THE AUTHOR' heading, and ' least' in 'at the very least': a small set of specific word tokens, as against lowercase English ' author' and plain 'at least'",
+   "fire": [
+    "El tribunal confirmó que la canción vulneraba los derechos de autor del compositor.",
+    "La editorial pagó al autor una suma importante por la primera edición.",
+    "O livro foi publicado sem a autorização do autor, segundo o jornal.",
+    "Cada obra está protegida por la ley de propiedad intelectual y derechos de autor.",
+    "The essay closes with a short list of sources.\nABOUT THE AUTHOR\nHe teaches history in Ohio.",
+    "Thanks for reading this chapter.\n\nABOUT THE AUTHOR\n\nMaria grew up in Lisbon and writes for children.",
+    "If you cannot afford a new roof, at the very least repair the broken tiles.",
+    "Before the interview you should, at the very least, read the company website."
+   ],
+   "quiet": [
+    "The court confirmed that the song infringed the rights of its original composer.",
+    "The publisher paid the writer a large sum for the first edition.",
+    "The book was published without permission from the writer, the newspaper said.",
+    "Each work is protected by the law on intellectual property and patents.",
+    "The essay closes with a short list of sources and a note about the author.",
+    "Thanks for reading this chapter, and please leave a review for the author.",
+    "If you cannot afford a new roof, you should at least call a builder soon.",
+    "Before the interview you should read at least two articles about the company."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on ' autor', heading ' AUTHOR' and 'at the very least'; lowercase ' author', 'at least <number>' and copyright text without 'autor' below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "' autor' / ' AUTHOR' / 'very least'",
+ "unit_kind": "word",
+ "confidence": 0.5,
+ "notes": "Card peaks: ' AUTHOR' in 'ABOUT THE AUTHOR' x4, ' autor' in 'derechos de autor', ' least' in 'at the very least' x6, ' equivalent'. Probe: 'derechos de autor' 0.869, 'ABOUT THE AUTHOR' 0.712, 'at the very least' 0.701, 'no equivalent' 0.496; lowercase 'about the author' 0.149, 'at least three goals' 0.147, 'at the very most' 0.228, 'patentes' control 0.109. No single shared meaning found: this is a list label at word level."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-e920a7c8",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N938+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T05:20:37+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L23/N938",
+   "pole": "+",
+   "label": "dense / positional: fires broadly on early tokens of a sentence, highest on degree and comparison words near the start ('A similar', 'it particularly', 'Here are some'); not a specific feature",
+   "fire": [
+    "A similar approach was tried in Denmark ten years ago.",
+    "I found the second chapter particularly moving and read it twice.",
+    "Here are some ideas for keeping children busy on rainy days.",
+    "Engineers are also testing a lighter version of the engine.",
+    "A comparable study in Japan reached the same conclusion.",
+    "She thought the ending was particularly well written.",
+    "There are several reasons why the plan might fail.",
+    "Doctors are also warning about the risks of too much sun."
+   ],
+   "quiet": [
+    "The approach was tried in Denmark ten years ago.",
+    "I read the second chapter twice on the train home.",
+    "Ideas for keeping children busy on rainy days are listed below.",
+    "Engineers tested a lighter version of the engine in March.",
+    "The study in Japan reached the same conclusion.",
+    "She thought the ending was written in a hurry.",
+    "The plan might fail for reasons nobody has considered.",
+    "Doctors warned about the risks of too much sun."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.7 on 'similar', 'particularly', 'some', 'also' within the first few tokens; the same sentences reworded without those words still fire 0.15-0.3, so the test is likely to fail",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "early-sentence degree word (dense)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.25,
+ "notes": "Card flags broad (6.7% above 0.1 max) and positional (81% of top peaks within the first 16 tokens); peaks ' similar' x4, ' some', ' particularly', ' also', ' very'. Probe: 'found it particularly hard' 0.686, 'A similar system' 0.565, 'it particularly interesting' 0.538, 'are also studying' 0.522, 'Here are some tips' 0.423; reworded controls 0.170-0.275."
+}

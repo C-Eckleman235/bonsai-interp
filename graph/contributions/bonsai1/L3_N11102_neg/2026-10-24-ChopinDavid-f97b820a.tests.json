@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-f97b820a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N11102-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T05:20:37+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L3/N11102",
+   "pole": "-",
+   "label": "unclear: fires weakly on word pieces that begin or end a proper name or version tag ('Mart|ín', '2|.X', 'Drajkmyr Marsh'); broad and mostly in the gate-closed regime",
+   "fire": [
+    "El delantero Carlos Martínez marcó dos goles en la final del domingo.",
+    "Les utilisateurs de la version 3.X signalent moins de problèmes de mémoire.",
+    "The rangers found the lost hikers near the Grelmoor Marsh at dawn.",
+    "La alcaldesa Lucía Martín inauguró el nuevo puente sobre el río.",
+    "Support for the 4.X branch of the library ends next spring.",
+    "Old maps show a fort on the edge of the Thornwick Marsh.",
+    "El ministro Jorge Martínez presentó el presupuesto ante el congreso.",
+    "Most plugins written for the 1.X series no longer load in the new release."
+   ],
+   "quiet": [
+    "El delantero Carlos Pérez marcó dos goles en la final del domingo.",
+    "Les utilisateurs de la version 3 signalent moins de problèmes de mémoire.",
+    "The rangers found the lost hikers near the old bridge at dawn.",
+    "La alcaldesa Lucía Gómez inauguró el nuevo puente sobre el río.",
+    "Support for the fourth branch of the library ends next spring.",
+    "Old maps show a fort on the edge of the northern forest.",
+    "El ministro Jorge López presentó el presupuesto ante el congreso.",
+    "Most plugins written for the first series no longer load in the new release."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on 'Mart' in Martín/Martínez, '.X' in version tags, and 'Marsh' in invented place names; plain words and numbers below 0.2; broad, likely to fail",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "name / version piece (unclear)",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card is broad (6% of tokens above 0.1 max, 86% gate-closed); peaks '.X' in 'version 2.X', '路上' in '網路上', '史上最', ' Marsh' in 'Drajkmyr Marsh', ' Mart' in 'Guillermo Martín', 'L' in 'sativum L.'. Probe: 'Guillermo Martín' 0.603, 'version 2.X' 0.558, 'Drajkmyr Marsh' 0.484, '網路上' 0.209, 'sativum L.' 0.118; 'version 2 is better' 0.141, plain English 0.081."
+}

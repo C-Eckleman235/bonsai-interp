@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-2dba2fd6",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N9119+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T05:20:37+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L13/N9119",
+   "pole": "+",
+   "label": "unclear: fires weakly on spans that sweep across a whole range ('the joys, the sorrows and all between', 'year-round', 'from a mild ... to something as serious as') and on an aside like 'of course.'; no single token or meaning",
+   "fire": [
+    "Parenthood brings everything, including the laughter, the tears and all the moments between.",
+    "In Florida, mosquitoes can breed year-round thanks to the warm, wet climate.",
+    "Side effects vary from a slight headache to something as severe as a seizure.",
+    "Odder things have happened, of course. The point is that we should be ready.",
+    "Their volunteers work in remote corners of the globe to deliver clean water.",
+    "Marriage gives you all of it, the triumphs, the failures and everything else besides.",
+    "The farm market stays open year-round, even in the coldest weeks of January.",
+    "Reactions can be anything from mild redness to something as dangerous as swelling of the throat."
+   ],
+   "quiet": [
+    "Parenthood brings many changes, and most parents say they sleep less.",
+    "In Florida, mosquitoes breed in standing water left after heavy storms.",
+    "Side effects were reported by twelve patients during the second trial.",
+    "The bus was late again. The driver said the road was closed for repairs.",
+    "Their volunteers deliver clean water to villages near the capital.",
+    "Marriage changed his habits, and he now cooks dinner most nights.",
+    "The farm market opens on Saturdays at eight and closes at noon.",
+    "Reactions to the vaccine were recorded in a notebook by the nurse."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.5 on range-sweeping phrases; plain declarative sentences below 0.1; weak and broad, likely to fail",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "range-sweeping span (unclear)",
+ "unit_kind": "unclear",
+ "confidence": 0.25,
+ "notes": "Card is broad (1.2% of tokens above 0.1 max); peaks on ',' x8 in 'the joys, the beauty', '-round' in 'year-round', ' to' in 'from X to something as serious as', ' über' in 'von ... über ... bis'. Probe: 'the joys, the sorrows' 0.482, 'Stranger things have happened, of course.' 0.474, 'year-round' 0.452, 'from mild irritation to something as serious as' 0.354, 'far corners of the Earth' 0.328; but 'everything from jewelry to ceramics' only 0.027, plain sentences 0.03."
+}
