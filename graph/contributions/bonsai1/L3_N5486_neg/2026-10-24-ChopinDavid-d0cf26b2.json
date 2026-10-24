@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-d0cf26b2",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N5486-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-24T05:27:50+00:00",
+ "recipe": {
+  "toolchain_commit": "f7e228ee",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L3_N5486_neg/2026-10-24-ChopinDavid-d0cf26b2.tests.json"
+ },
+ "label": "the tokens ' autor' (Spanish/Portuguese 'author', as in 'derechos de autor'), all-caps ' AUTHOR' in an 'ABOUT THE AUTHOR' heading, and ' least' in 'at the very least': a small set of specific word tokens, as against lowercase English ' author' and plain 'at least'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L3_N5486_neg/2026-10-24-ChopinDavid-d0cf26b2.tests.json",
+   "prereg_commit": "f7e228ee",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.975,
+     "peak": " autor"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.487,
+     "peak": " autor"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.347,
+     "peak": " autor"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.894,
+     "peak": " autor"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.695,
+     "peak": " AUTHOR"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.795,
+     "peak": " AUTHOR"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.775,
+     "peak": " least"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.615,
+     "peak": " least"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.049,
+     "peak": " song"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.044,
+     "peak": " edition"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.003,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.046,
+     "peak": " is"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.239,
+     "peak": " author"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.205,
+     "peak": " author"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.028,
+     "peak": " cannot"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.015,
+     "peak": " interview"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.735,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "f7e228ee",
+  "minutes": 0,
+  "batch_size": 16
+ },
+ "short": "' autor' / ' AUTHOR' / 'very least'",
+ "unit_kind": "word",
+ "confidence": 0.5,
+ "notes": "Card peaks: ' AUTHOR' in 'ABOUT THE AUTHOR' x4, ' autor' in 'derechos de autor', ' least' in 'at the very least' x6, ' equivalent'. Probe: 'derechos de autor' 0.869, 'ABOUT THE AUTHOR' 0.712, 'at the very least' 0.701, 'no equivalent' 0.496; lowercase 'about the author' 0.149, 'at least three goals' 0.147, 'at the very most' 0.228, 'patentes' control 0.109. No single shared meaning found: this is a list label at word level.",
+ "selection": "random draw"
+}
