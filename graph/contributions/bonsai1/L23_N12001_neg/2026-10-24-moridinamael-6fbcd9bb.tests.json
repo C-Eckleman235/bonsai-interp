@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-24-moridinamael-6fbcd9bb",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N12001-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T19:01:39+00:00",
+ "roles": ["reads bonsai1/L22/N6735+"],
+ "neighbours": [
+  {
+   "unit": "L23/N12001",
+   "pole": "-",
+   "label": "separator marks in machine-printed output: the ├─ / └─ before each process ID in a systemctl status process tree (strongest), and the || between cells of a wiki-style table with 3+ columns; folder trees, two-column tables, markdown tables and plain code are weaker (about 0.15-0.35); the same facts written as prose stay quiet",
+   "short": "├─ / || separators in system output and tables",
+   "unit_kind": "dense / positional",
+   "fire": [
+    "● nginx.service - A high performance web server\n   CGroup: /system.slice/nginx.service\n           ├─1123 nginx: master process /usr/sbin/nginx\n           └─1124 nginx: worker process",
+    "CGroup: /system.slice/sshd.service\n           ├─842 sshd: /usr/sbin/sshd -D [listener]\n           ├─2291 sshd: admin [priv]\n           └─2305 sshd: admin@pts/0",
+    "Tasks: 3 (limit: 4915)\n   CGroup: /system.slice/postgresql.service\n           ├─901 /usr/lib/postgresql/14/bin/postgres\n           └─915 postgres: checkpointer",
+    "CGroup: /system.slice/docker.service\n           └─1450 /usr/bin/dockerd -H fd://",
+    "CGroup: /system.slice/apache2.service\n           ├─3301 /usr/sbin/apache2 -k start\n           ├─3302 /usr/sbin/apache2 -k start\n           └─3303 /usr/sbin/apache2 -k start",
+    "{| class=\"wikitable\"\n! Year !! Team !! Goals\n|-\n| 2019 || Ajax || 14\n|-\n| 2020 || Porto || 9\n|}",
+    "| Mercury || 0.39 AU || 88 days\n|-\n| Venus || 0.72 AU || 225 days",
+    "! Station !! Line !! Opened !! Platforms\n|-\n| Central || Red || 1904 || 4"
+   ],
+   "quiet": [
+    "class Cache:\n    def get(self, key):\n        if key in self.store:\n            return self.store[key]\n        elif key is None:\n            raise KeyError(key)",
+    "cat access.log | grep 404 | sort | uniq -c",
+    "The nginx web server is running with a master process, ID 1123, and one worker process, ID 1124.",
+    "The SSH daemon is listening as process 842, and the admin user has a session open on terminal zero.",
+    "PostgreSQL started under process 901, and its checkpointer runs as process 915.",
+    "The Docker daemon is active and runs as a single process with ID 1450.",
+    "Apache has started three identical processes, numbered 3301 through 3303.",
+    "In 2019 he scored fourteen goals for Ajax, and the next year he scored nine for Porto."
+   ]
+  }
+ ],
+ "predictions": "process-tree items fire strongly; wiki-markup tables uncertain (unprobed syntax); the code leak may reach ~0.35",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo"
+  ]
+ }
+}
