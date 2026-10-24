@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-c65f2a67",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N2430-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T00:19:43+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N2430",
+   "pole": "-",
+   "label": "an HTML attribute name (class, src, href, alt, target) inside a tag written in a code string, as against the same words in prose, even prose about HTML",
+   "fire": [
+    "name = user.name\nhtml = '<p class=\"username\">' + name + '</p>'\nreturn html",
+    "for url in urls:\n    parts.append('<img src=\"' + url + '\" width=\"200\">')",
+    "items = []\nitems.append('<a href=\"/about\" class=\"nav-link\">About</a>')",
+    "icon = get_icon(kind)\nreturn f'<img alt=\"{kind}\" src=\"{icon}\">'",
+    "menu = ''\nmenu += '<li class=\"menu-item\">' + label + '</li>'",
+    "out = []\nout.append('<a target=\"_self\" href=\"' + link + '\">more</a>')",
+    "cell = row[0]\nline = '<td class=\"cell\">' + str(cell) + '</td>'",
+    "thumb = photo.thumb_url\nbody += '<img src=\"' + thumb + '\" />'"
+   ],
+   "quiet": [
+    "name = user.name\nprint('Welcome back, ' + name + '!')\nreturn name",
+    "for url in urls:\n    parts.append(url.strip().lower())",
+    "items = []\nitems.append({'title': 'About', 'path': '/about'})",
+    "The art class visited the museum and drew the statues in the main hall.",
+    "When the source image is missing, the page shows only a blank box.",
+    "Press alt and F4 to close the program without saving your work.",
+    "The marketing team hit its target for new members in March.",
+    "Every link on the page should open in the same window, the designer said."
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.7 on the attribute name inside '<tag ...>' in code; the same words in prose below 0.06",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "HTML attribute name inside a tag in code",
+ "unit_kind": "context",
+ "confidence": 0.7,
+ "notes": "Card: ' class' x5, ' src' x5, ' href' x3, ' alt' x2, ' target' x2, all inside HTML tags built in Python/JS strings. Probe: ' alt' 0.692, ' class' 0.466/0.446, ' target' 0.345 in code tags; prose 'The class met' 0.033, 'the alt key' 0.049, 'Our target' 0.028, prose about 'the class attribute' 0.027."
+}

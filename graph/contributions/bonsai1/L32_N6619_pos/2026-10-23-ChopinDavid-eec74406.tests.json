@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-eec74406",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N6619+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T00:19:43+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L32/N6619",
+   "pole": "+",
+   "label": "the token just before 'add up', 'added' or 'adduction' where the context sets up that word ('small costs ... but they can [add up]', 'value[-added]', 'abduction and [adduction]'): a predictor of 'add', as against the same frames without that setup",
+   "fire": [
+    "Ten minutes of reading each night seems small, but those minutes add up.",
+    "Skipping a coffee here and there may seem trivial, but the savings can add up.",
+    "Shoppers in the region pay value-added tax on most items.",
+    "The exercise trains both abduction and adduction of the hip.",
+    "One late fee is not much, yet over a year these charges quickly add up.",
+    "The farm turns raw milk into cheese, a value-added product for the market.",
+    "A few calories from snacks may not matter, but they really add up over time.",
+    "Each small donation may feel minor, but together they can add up to millions."
+   ],
+   "quiet": [
+    "Ten minutes of reading each night helps children fall asleep faster.",
+    "Skipping breakfast on busy mornings often leads to tiredness by noon.",
+    "Shoppers in the region pay with cards at most market stalls.",
+    "The exercise trains balance and strength of the hip.",
+    "One late train is not unusual, yet the commuters complained loudly.",
+    "The farm turns raw milk into cheese, which it sells at the market.",
+    "A few snacks between meals are fine if they are fruit or nuts.",
+    "Each small donation is recorded in the charity's yearly report."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.9 on the token before 'add up' / '-added' / 'adduction'; frames that set up a different continuation below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predicts 'add' (add up, value-added)",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card + pole peaks on ' can', ' Value'/' value', ' and', ' it' right before 'add up', 'Value addition', 'value-added', 'adduction'; the - pole promotes add/adding/addition. Probe: 'over a year they really add up' 0.899, 'but it can add up fast' 0.819, 'value-added tax' 0.611, 'abduction and adduction' 0.500; the same 'may not sound like much, but it can buy a meal' also 0.819 (peak on ' can', before the next word), so the setup drives it; 'packed in paper bags' 0.000, 'then add the eggs' 0.012."
+}
