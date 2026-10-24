@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-807d4d78",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N6665+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T22:20:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L19/N6665",
+   "pole": "+",
+   "label": "the point in a technical specification where the kind of value is named ('any string of', 'an arbitrary integer', 'a random sequence of bytes'), as against the same sentence frames describing ordinary objects",
+   "fire": [
+    "The password may be any string of letters, digits and symbols.",
+    "Each node is identified by an arbitrary integer chosen by the client.",
+    "The salt must be a random sequence of bytes at least sixteen long.",
+    "A label is any string of up to sixty-four Unicode characters.",
+    "The seed is an arbitrary integer between zero and two billion.",
+    "The token is an opaque sequence of bytes returned by the server.",
+    "The value field accepts any string of hexadecimal digits.",
+    "Every record carries an arbitrary integer key assigned at insert time."
+   ],
+   "quiet": [
+    "The parade may be any group of neighbours, friends and pets.",
+    "Each house is identified by a painted sign chosen by the owner.",
+    "The garden must be a sunny patch of ground at least ten feet long.",
+    "A label is any sticker placed on the front of the jar.",
+    "The seed is planted between March and the end of April.",
+    "The cake is a sweet stack of layers made by the baker.",
+    "The shop window shows a row of handmade candles.",
+    "Every visitor carries a paper ticket handed out at the gate."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on the type word or its 'of' in prose specs; everyday frames 0.0-0.25; code lines weak (~0.1)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "naming a value's data type in a spec",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card peaks on ' arbitrary', 'any string of', '.random', '@type name', db.Column; the - pole promotes ' integer', ' boolean', ' numeric', ' byte'. Probe: 'any string of printable characters' 0.902, 'random sequence of bytes' 0.713, 'arbitrary integer' 0.591; 'a small sticker' 0.235, form/trip controls 0.008-0.019; code lines db.Column 0.096, numpy.random 0.040 (so code-only items avoided)."
+}

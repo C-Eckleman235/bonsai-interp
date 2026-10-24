@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-7a62b1b7",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N7197+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-24T22:28:13+00:00",
+ "recipe": {
+  "toolchain_commit": "ce4b9bc7",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L9_N7197_pos/2026-10-24-ChopinDavid-7a62b1b7.tests.json"
+ },
+ "label": "a narrative time-span phrase that links to the preceding stretch of a life story ('the next two years', 'during this time', 'this period'), as against the same sentences without the span",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L9_N7197_pos/2026-10-24-ChopinDavid-7a62b1b7.tests.json",
+   "prereg_commit": "ce4b9bc7",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.348,
+     "peak": " next"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.371,
+     "peak": " time"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.118,
+     "peak": " period"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.357,
+     "peak": " next"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.161,
+     "peak": " time"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.202,
+     "peak": " next"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.38,
+     "peak": " period"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.316,
+     "peak": " next"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.046,
+     "peak": " bought"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.025,
+     "peak": " also"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.044,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.051,
+     "peak": "Lewis"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.026,
+     "peak": "2"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.044,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.028,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.041,
+     "peak": " in"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.332,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "ce4b9bc7",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "narrative time span ('the next two years')",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card peaks on ' period', ' time', ' decade', ' years', ' chapter' after 'during this'/'the next'. Probe was weak: 'spent the next two years' 0.283, 'During this time' 0.173, 'during this period' 0.169, 'The next chapter' 0.037; 'what time' 0.030, 'a period at the end' 0.032, no-span control 0.018. Expect a weak pole; may fail on threshold.",
+ "selection": "random draw"
+}

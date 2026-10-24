@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-ba94bd7a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N6861+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T22:20:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L3/N6861",
+   "pole": "+",
+   "label": "the Korean syllable 무 when it is its own token inside a word (사무소, 사무실, 고무, 무역), as against Korean text without it; a broad pole",
+   "fire": [
+    "우리 회사의 서울 사무소는 강남역 근처에 있습니다.",
+    "그는 아침 일찍 사무실에 도착해서 메일을 확인했다.",
+    "이 장갑은 천연 고무로 만들어져 잘 늘어납니다.",
+    "아이들은 고무줄 놀이를 하며 운동장에서 뛰어놀았다.",
+    "그녀는 시청에서 사무직으로 오 년 동안 일했다.",
+    "변호사 사무소에 서류를 제출해야 합니다.",
+    "공장 바닥에는 미끄럼 방지용 고무 매트가 깔려 있다.",
+    "새 사무실은 창문이 커서 햇빛이 잘 들어온다."
+   ],
+   "quiet": [
+    "우리 회사의 서울 지점은 강남역 근처에 있습니다.",
+    "그는 아침 일찍 학교에 도착해서 메일을 확인했다.",
+    "이 장갑은 부드러운 천으로 만들어져 잘 늘어납니다.",
+    "아이들은 술래잡기를 하며 운동장에서 뛰어놀았다.",
+    "그녀는 시청에서 안내원으로 오 년 동안 일했다.",
+    "변호사에게 서류를 직접 제출해야 합니다.",
+    "공장 바닥에는 미끄럼 방지용 철판이 깔려 있다.",
+    "새 집은 창문이 커서 햇빛이 잘 들어온다."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.85 on 무 pieces; other Korean text 0.15-0.25 (broad baseline)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Korean 무 piece",
+ "unit_kind": "word",
+ "confidence": 0.45,
+ "notes": "Card max 0.94, broad (2.3%); top tokens '무' x4 (사무소, 사무실, 고무), '架', '動'. tok.py: ' 사무소'/' 사무실'/' 사무직'/' 고무줄' split with 무 alone; ' 무역' as ' 무'+'역' (space-initial); ' 무료' single. Probe: 사무소 0.850, 사무실 0.718, 고무 0.526; 회사 control 0.203, weather 0.197; Chinese 架 0.822."
+}

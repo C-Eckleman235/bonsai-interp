@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-a215039e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N11965+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T22:20:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N11965",
+   "pole": "+",
+   "label": "a token inside a repeated date, time or number pattern, where the text is restating a format it already used (a second timestamp, 'type 1 or type 2'), as against the same date or number given once",
+   "fire": [
+    "Posted: Friday, March 3, 2017 at 9:05 a.m.\nUpdated: Friday, March 3, 2017 at 11:20 a.m.",
+    "Created on 2019-05-14 at 08:30\nLast edited on 2019-05-14 at 17:45",
+    "t0 = datetime(2015, 3, 9, 12, 0)\nt1 = datetime(2015, 3, 10, 12, 0)",
+    "Patients with stage 2 or stage 3 disease received the new drug.",
+    "Filed: Tuesday, June 4, 2002 at 2:10 p.m.\nRevised: Tuesday, June 4, 2002 at 6:55 p.m.",
+    "Doors open at 7:30 on Saturday and at 7:30 on Sunday as well.",
+    "a = date(2020, 1, 15)\nb = date(2020, 1, 16)",
+    "The bus leaves at 8:15 from gate 4 and again at 9:15 from gate 4."
+   ],
+   "quiet": [
+    "Posted: Friday, March 3, 2017 at 9:05 a.m. by our weekend editor.",
+    "Created on 2019-05-14 at 08:30 by the maintenance team.",
+    "t0 = datetime(2015, 3, 9, 12, 0)\nprint(t0.isoformat())",
+    "Patients with the advanced disease received the new drug.",
+    "Filed: Tuesday, June 4, 2002 at 2:10 p.m. in the county court.",
+    "Doors open early on Saturday, and the band plays until late.",
+    "a = date(2020, 1, 15)\nprint(a.weekday())",
+    "The bus leaves at 8:15 from gate 4 and goes straight to the airport."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on the month/comma/digit of the second copy of a date pattern; single dates and lone numbers 0.1-0.25",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "repeated date/number pattern",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card peaks on digits and commas in dates ('Last Modified: Monday, July' after a Published line, datetime(...) pairs, 'type 1 or type 2'). Probe: second timestamp ' July' 0.686 vs single 0.263; second datetime line ',' 0.416 vs single 0.218; 'type 1 or type 2' 0.358; '32/64' 0.401; lone '30-8-2011' 0.150. Broad pole: single numbers sit at 0.15-0.25, so near misses may approach threshold."
+}

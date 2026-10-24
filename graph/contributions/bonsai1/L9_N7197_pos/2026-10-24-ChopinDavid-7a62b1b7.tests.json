@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-7a62b1b7",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N7197+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T22:20:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L9/N7197",
+   "pole": "+",
+   "label": "a narrative time-span phrase that links to the preceding stretch of a life story ('the next two years', 'during this time', 'this period'), as against the same sentences without the span",
+   "fire": [
+    "He left the army in 1946 and spent the next three years farming in Ohio.",
+    "She joined the orchestra in 1971. During this time, she also taught violin.",
+    "After the treaty, trade grew rapidly during this period of peace.",
+    "Lewis moved to London and spent the next decade writing for newspapers.",
+    "They married in 1920; during this time they lived above a bakery.",
+    "The firm went public in 1998 and spent the next two years expanding abroad.",
+    "Prices doubled in 1974, and during this period many factories closed.",
+    "He graduated in 1955 and spent the next four years as a ship's doctor."
+   ],
+   "quiet": [
+    "He left the army in 1946 and bought a small farm in Ohio.",
+    "She joined the orchestra in 1971 and also taught violin.",
+    "After the treaty, trade between the two ports grew rapidly.",
+    "Lewis moved to London and wrote for several newspapers.",
+    "They married in 1920 and lived above a bakery.",
+    "The firm went public in 1998 and opened offices abroad.",
+    "Prices doubled in 1974, and many factories closed.",
+    "He graduated in 1955 and worked as a ship's doctor."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.4 on ' next'/' time'/' period' in biographical spans; plain sentences 0.01-0.08",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "narrative time span ('the next two years')",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card peaks on ' period', ' time', ' decade', ' years', ' chapter' after 'during this'/'the next'. Probe was weak: 'spent the next two years' 0.283, 'During this time' 0.173, 'during this period' 0.169, 'The next chapter' 0.037; 'what time' 0.030, 'a period at the end' 0.032, no-span control 0.018. Expect a weak pole; may fail on threshold."
+}
