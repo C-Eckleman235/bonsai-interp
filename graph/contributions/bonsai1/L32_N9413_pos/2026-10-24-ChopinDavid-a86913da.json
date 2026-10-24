@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-a86913da",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N9413+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-24T21:26:58+00:00",
+ "recipe": {
+  "toolchain_commit": "dd7a5cf1",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L32_N9413_pos/2026-10-24-ChopinDavid-a86913da.tests.json"
+ },
+ "label": "positions in early-detection and early-warning passages where 'early' (detection, warning, intervention) is the expected continuation; it predicts 'early', as against the same topics with no 'early' setup and everyday uses of 'early'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L32_N9413_pos/2026-10-24-ChopinDavid-a86913da.tests.json",
+   "prereg_commit": "dd7a5cf1",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.525,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.298,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.537,
+     "peak": " provide"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.512,
+     "peak": " allow"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.301,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.317,
+     "peak": " urge"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.938,
+     "peak": " early"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.391,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.147,
+     "peak": " cancer"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.198,
+     "peak": " weather"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.096,
+     "peak": "ismic"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.062,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.061,
+     "peak": " better"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.006,
+     "peak": " is"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.044,
+     "peak": "uges"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.043,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.452,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dd7a5cf1",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "predicts 'early' (detection/warning)",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: peaks on ',', '.', ' to', ' of', ' early' in cancer screening and missile/aerospace warning passages; the - pole promotes early/earlier/earliest, so this is an 'early' predictor. Probe: 'as early as possible|.| Early treatment' 0.526, 'radar network| gives| warning' 0.370, 'buoys| provide| an early warning' 0.355, 'importance of early intervention' 0.285 at '.', 'due to earlier detection' 0.171. Leak: 'buoys provide a steady record of tides' 0.229 (topic alone). Everyday 'left the house early' 0.001. Weak pole; confidence low.",
+ "selection": "random draw"
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-4050b6f9",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N11091+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T21:19:46+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L8/N11091",
+   "pole": "+",
+   "label": "network-management protocol names in code and prose (SNMP, YANG, ASN.1, MIB, NETCONF, VLAN), as against general web or file protocols in the same slots",
+   "fire": [
+    "The monitoring server polls each switch over SNMP every five minutes.",
+    "def get_interfaces(host):\n    return snmp_walk(host, community, IF_MIB_OID)",
+    "  YANG Description: the operational state of this BGP neighbor\n  self.__neighbor = YANGDynClass(base=neighbor)",
+    "# decode the ASN.1 structure of the certificate request\nfrom pyasn1.codec.der import decoder",
+    "Most routers expose their counters through an SNMP agent and a standard MIB.",
+    "The controller pushes configuration to the devices using NETCONF and YANG models.",
+    "trap_handler = SnmpTrapReceiver(port=162, community=\"public\")",
+    "Our NOC team wrote a script to parse SNMP traps from the core routers."
+   ],
+   "quiet": [
+    "The monitoring server polls each website over HTTPS every five minutes.",
+    "def get_pages(host):\n    return http_get(host, session, INDEX_PATH)",
+    "  Description: the display name of this customer account\n  self.__name = StringField(base=name)",
+    "# decode the JSON body of the signup request\nimport json",
+    "Most websites expose their content through a web server and a standard sitemap.",
+    "The controller pushes files to the devices using FTP and shell scripts.",
+    "mail_handler = SmtpReceiver(port=25, domain=\"example.com\")",
+    "Our support team wrote a script to parse emails from the main inbox."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-1.2 on SNMP/YANG/ASN.1-type names; HTTP/FTP/JSON substitutes 0.0-0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "network-management protocols (SNMP/YANG)",
+ "unit_kind": "context",
+ "confidence": 0.65,
+ "notes": "Card: peaks on 'sn|mp|', 'Y|ANG|' x2, 'ASN.|1|', ' vlan', 'C|IM|', 'O|MF|', eDirectory; - pole peaks on ' network'. Probe: '\"sn|mp|\"' 1.180, prose '| SNMP|' 0.984, 'Y|ANG| Description' 0.668, 'ASN.|1|' 0.406, '| vlan|' 0.257 (weaker); 'http' version 0.007, 'name strings' version 0.026. Fire set adds untested MIB and NETCONF as generalization items."
+}
