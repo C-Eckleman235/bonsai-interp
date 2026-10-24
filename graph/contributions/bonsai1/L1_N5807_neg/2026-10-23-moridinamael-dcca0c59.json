@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-23-moridinamael-dcca0c59",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N5807-",
+ "contributor": "moridinamael",
+ "created": "2026-10-24T02:14:26+00:00",
+ "recipe": {
+  "toolchain_commit": "f1d09a82",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L1_N5807_neg/2026-10-23-moridinamael-dcca0c59.tests.json"
+ },
+ "label": "the letters 'ze' right after a 'De' (any case) that starts a word with NO space before it: after '(', a quote, a line break or at the very start, as in (Dezeen), \"Deze\", Dutch 'Deze week' at a sentence start, DEZE-44. Quiet when a space comes before it (' Dezeen' mid-sentence, ' deze'), and for Dezember, Dezi, Deza, bronze, dozen. Weak (~0.3) on French 'tenu'.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L1_N5807_neg/2026-10-23-moridinamael-dcca0c59.tests.json",
+   "prereg_commit": "f1d09a82",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.872,
+     "peak": "ze"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.72,
+     "peak": "ze"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.877,
+     "peak": "ze"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.507,
+     "peak": "ZE"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.72,
+     "peak": "ze"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.72,
+     "peak": "ze"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.986,
+     "peak": "ze"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.6,
+     "peak": "ze"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.147,
+     "peak": " attention"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.038,
+     "peak": " about"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.037,
+     "peak": " at"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.038,
+     "peak": "en"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.013,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.033,
+     "peak": " prototype"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.059,
+     "peak": "ember"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.036,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 1,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.72,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "f1d09a82",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-out feeder of bonsai1/L34/N11316- (stream crawl from bonsai1/L25/N8045+). play step ran out of GPU memory, so the feeder was taken by rank: it is the top MLP feeder by attribution on the resident model (chat feeders tool). The - pole is small (max 3.6, gate-closed leak regime); its tops are 'ze' in 'Dezeen' after '(' or a line break; French 'tenu' / Spanish 'Atentamente' sit near 0.3. The + pole is a strong 'detention' detector. Test sentences written blind by a second author from the label only; the solver's leak and near-miss lines were placed by that author.",
+ "roles": [
+  "feeds bonsai1/L34/N11316-"
+ ],
+ "edges": [
+  {"from": "bonsai1/L1/N5807-", "to": "bonsai1/L34/N11316-", "kind": "feeds", "weight": null, "method": "attribution rank 1 of 12 MLP feeders on the target's top 4 examples (resident feeders tool; play step ablation hit CUDA OOM)"}
+ ]
+}
