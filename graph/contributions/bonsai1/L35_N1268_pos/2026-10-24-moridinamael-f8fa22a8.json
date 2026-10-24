@@ -1,0 +1,168 @@
+{
+ "id": "2026-10-24-moridinamael-f8fa22a8",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N1268+",
+ "contributor": "moridinamael",
+ "created": "2026-10-24T22:17:39+00:00",
+ "recipe": {
+  "toolchain_commit": "3ef04126",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N1268_pos/2026-10-24-moridinamael-f8fa22a8.tests.json"
+ },
+ "label": "In Arabic text, the word piece right after the opening ت (ta-) of certain ta- verbal nouns that the tokenizer splits there: التضخم, تضامن, تضحيات, ترميم, تمويل, ترفيهية, تهدد (also طمأنينة); common ta- words kept whole (تعليم, تقرير, تطوير), the same roots without ta- (مضاعفات, يهدد) and English translations stay low. Narrow side branches: ' AND' after \"AS IS\" in BSD license text, and ' or' closing an English list like 'debate, arguments, polling, or'.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N1268_pos/2026-10-24-moridinamael-f8fa22a8.tests.json",
+   "prereg_commit": "3ef04126",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.443,
+     "peak": " or"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.448,
+     "peak": "ض"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.438,
+     "peak": "ض"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.207,
+     "peak": "ض"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.434,
+     "peak": "رم"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.321,
+     "peak": "مو"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.095,
+     "peak": "في"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.073,
+     "peak": "هد"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.0,
+     "peak": "In"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.001,
+     "peak": " rose"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.012,
+     "peak": "ط"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": " أجل"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.034,
+     "peak": "قر"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.007,
+     "peak": " World"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.04,
+     "peak": " لم"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.234,
+     "peak": "هد"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.953,
+    "median_fire": 0.378,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "3ef04126",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L34/N61-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L34/N61-",
+   "to": "bonsai1/L35/N1268+",
+   "kind": "feeds",
+   "weight": 0.01,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
