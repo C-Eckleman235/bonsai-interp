@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-24375713",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N1116-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T19:19:41+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N1116",
+   "pole": "-",
+   "label": "a word-final suffix piece that completes a multi-token word (Russian adjective endings -ских/-ские, English -ably, -ytic)",
+   "fire": [
+    "Учёные из африканских стран представили новые данные.",
+    "Многие французские писатели жили в Париже.",
+    "Он изучает жизнь сибирских крестьян в прошлом веке.",
+    "Немецкие инженеры построили новый мост через реку.",
+    "The two maps were unmistakably drawn by the same hand.",
+    "His argument was, frankly, indefensibly weak in places.",
+    "The lab confirmed a cytolytic response in the treated cells.",
+    "Sales of the device grew unfathomably fast last year."
+   ],
+   "quiet": [
+    "The new data came from several countries in the south.",
+    "Many writers from that land lived in Paris.",
+    "He studies the life of farm workers in the past.",
+    "The team built a new bridge over the river last year.",
+    "The two maps were drawn by the same hand.",
+    "His plan was, frankly, weak in places.",
+    "The lab found a strong response in the treated cells.",
+    "Sales of the phone grew very fast last year."
+   ]
+  }
+ ],
+ "predictions": "Sentences with long words split into pieces fire on the closing suffix piece; sentences of short single-token English words stay quiet.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "word-final suffix token",
+ "unit_kind": "spelling unit",
+ "confidence": "low",
+ "notes": "Layer 0, broad flag (3.5%). Probe: 'российских' 0.969, 'Российские' 0.867, 'immeasurably' 0.977 (on 'ably'), 'lymphocytic' 0.562, 'politico-religious' 0.497, 'осторожностью' 0.449; English 'Russian emigrants' 0.010, 'dog barked' 0.018. Near misses use English sentences with single-token words, so the test cannot separate 'suffix piece' from 'any Russian/long word'."
+}

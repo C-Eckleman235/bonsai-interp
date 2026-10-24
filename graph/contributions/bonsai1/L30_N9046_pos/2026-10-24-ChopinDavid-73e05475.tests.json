@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-73e05475",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N9046+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T19:19:41+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L30/N9046",
+   "pole": "+",
+   "label": "predicts a staffed service point or storage place (reception, concierge, front desk, luggage room) in guest and visitor contexts",
+   "fire": [
+    "After checking out, we left our suitcases with the porter until our train.",
+    "If you lose your key card, just ask at the front desk for a new one.",
+    "Guests can store their skis in the locked room next to the reception.",
+    "Our flight landed at midnight, but someone was still waiting at the desk to check us in.",
+    "You can drop off your coats at the cloakroom before the concert starts.",
+    "For theatre tickets and dinner bookings, speak to the concierge in the lobby.",
+    "Valuables should be left in the safe at reception during your stay.",
+    "When the elevator broke, we called down to the night manager for help."
+   ],
+   "quiet": [
+    "After checking out, we walked along the river until our train.",
+    "If you get hungry, the town has several cheap noodle shops nearby.",
+    "Guests can swim in the heated pool next to the garden terrace.",
+    "Our flight landed at midnight, and the city lights looked beautiful from above.",
+    "The concert started late because the band was stuck in traffic.",
+    "For the best view of the old town, climb the hill behind the church.",
+    "The rooms were small but clean, with a view over the harbour.",
+    "When the rain stopped, we walked to the market for breakfast."
+   ]
+  }
+ ],
+ "predictions": "Guest/visitor sentences whose next word would be desk, reception, concierge or a place to leave belongings fire on the preceding token; sentences that set up no such place stay quiet.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predicts reception/concierge",
+ "unit_kind": "next-token predictor",
+ "confidence": "medium",
+ "notes": "Logit effect promotes conc, reception, bell, storage, secure. Probe: 'on duty at the [front desk]' 1.098, 'leave your bags in the [hotel lobby]' 0.863, 'leave your bags in the [car]' 0.827 (setup alone fires), office 'loading dock' 0.456, 'concierge service' 0.555; library and volcano sentences 0.025. Near misses keep hotel/travel topics but remove the 'leave/ask at the ___' setup."
+}

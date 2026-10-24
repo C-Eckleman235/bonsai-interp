@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-fffbb67e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N5811+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T19:19:41+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L2/N5811",
+   "pole": "+",
+   "label": "unclear: diffuse early-layer unit with weak peaks on scattered nouns (French groupe, sortilège, heavens) and the hex byte 'eb'",
+   "fire": [
+    "Elle a rejoint un groupe de musiciens à Lyon l'été dernier.",
+    "Le groupe a décidé de partir tôt le lendemain matin.",
+    "Le magicien prononça un sortilège qui endormit tout le village.",
+    "Personne ne savait comment briser le sortilège de la sorcière.",
+    "Thunder rolled across the heavens as the storm moved in.",
+    "Ancient sailors read the heavens to find their way home.",
+    "The firmware blob begins \\x4a\\xeb\\x10\\xc3\\xeb\\x22 before the header.",
+    "buf = b'\\x00\\xeb\\x7f\\x31\\xeb\\x90\\x12'"
+   ],
+   "quiet": [
+    "Elle a rejoint une chorale à Lyon l'été dernier.",
+    "Les amis ont décidé de partir tôt le lendemain matin.",
+    "Le magicien prononça une phrase qui endormit tout le village.",
+    "Personne ne savait comment ouvrir la porte de la sorcière.",
+    "Thunder rolled across the valley as the storm moved in.",
+    "Ancient sailors used the coastline to find their way home.",
+    "The firmware blob begins with a short header and a checksum.",
+    "buf = bytearray(16)"
+   ]
+  }
+ ],
+ "predictions": "Best guess: sentences with groupe, sortilège, heavens and \\xeb hex bytes fire weakly; parallel sentences without those words stay lower, with leaks likely.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "unclear diffuse unit",
+ "unit_kind": "unclear",
+ "confidence": "low",
+ "notes": "Card max 1.19, broad flag (2.0% of tokens above 0.1 max), mixed regimes. Probe: 'sortilège' 0.755, '\\xeb' 0.561, 'groupe' 0.529, 'heavens' 0.518, 'sequence of' 0.493 (on ' of'), 'badges' 0.162, 'Meanwhile' 0.065, plain cat sentence 0.096. No shared pattern found; this test checks the listed words only."
+}

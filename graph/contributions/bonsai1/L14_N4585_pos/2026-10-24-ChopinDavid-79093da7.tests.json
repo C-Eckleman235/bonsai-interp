@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-79093da7",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N4585+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T19:19:41+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L14/N4585",
+   "pole": "+",
+   "label": "line break inside a hard-wrapped sentence (the newline that splits running prose mid-clause)",
+   "fire": [
+    "Dear members, the annual picnic will take place in the\nriverside park this year, and everyone is welcome to\nbring a dish to share with the group.",
+    "The committee reviewed every application with great\ncare, and the final decision will be announced at the\nnext general meeting in the spring.",
+    "Permission is hereby granted to any person obtaining a\ncopy of this software to use it without restriction,\nsubject to the conditions listed below.",
+    "Our grandfather kept a small orchard behind the old\nbarn, where he grew apples, pears and a single stubborn\ncherry tree that rarely gave fruit.",
+    "Please note that the library will close early on\nFriday afternoon so that the staff can attend a\ntraining session downtown.",
+    "The expedition reached the foot of the glacier just\nbefore sunset, and the guides decided to set up camp\nnear a sheltered ridge of rock.",
+    "We regret to inform you that the shipment of your\norder has been delayed by the storm, and it should\narrive within the next ten days.",
+    "In the early years of the colony, most families relied\non fishing and small farms, trading their surplus for\ntools brought in by passing ships."
+   ],
+   "quiet": [
+    "Dear members, the annual picnic will take place in the riverside park this year, and everyone is welcome to bring a dish to share.",
+    "The committee reviewed every application with great care, and the final decision will be announced at the next general meeting.",
+    "Permission is granted to any person obtaining a copy of this software to use it without restriction, subject to the conditions below.",
+    "Our grandfather kept a small orchard behind the old barn, where he grew apples, pears and one stubborn cherry tree.",
+    "Please note that the library will close early on Friday afternoon so that the staff can attend a training session.",
+    "Packing list:\ntent\nsleeping bag\nstove\nrope",
+    "We regret to inform you that the shipment of your order has been delayed by the storm and should arrive soon.",
+    "Ingredients:\n2 cups flour\n1 cup sugar\n3 eggs\n1 tsp salt"
+   ]
+  }
+ ],
+ "predictions": "Hard-wrapped prose where a newline breaks a sentence mid-clause fires weakly at the newline; the same prose on one line stays near zero.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "mid-sentence hard wrap",
+ "unit_kind": "unclear",
+ "confidence": "low",
+ "notes": "Card peaks sit on the token just before a line break in wrapped text (GPL header, newsletters). Probe: wrapped GPL line 0.154 vs unwrapped 0.008; wrapped letter 0.148; wrapped harvest 0.063 vs unwrapped 0.014; shopping list (newlines between items, no sentence) 0.017. Effect is small relative to the 18.4 corpus max, so the median gate may fail."
+}
