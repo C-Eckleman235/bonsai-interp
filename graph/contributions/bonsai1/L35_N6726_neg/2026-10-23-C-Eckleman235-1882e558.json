@@ -1,0 +1,153 @@
+{
+ "id": "2026-10-23-C-Eckleman235-1882e558",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6726-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-23T22:12:35+00:00",
+ "recipe": {
+  "toolchain_commit": "4c7087af",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N6726_neg/2026-10-23-C-Eckleman235-1882e558.tests.json"
+ },
+ "label": "the token right before a 3 that the text makes predictable: the next digit of a number being copied from earlier in the same text, or of a counting run; quiet before a 3 the text gives no reason to expect, and before a predictable different digit",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N6726_neg/2026-10-23-C-Eckleman235-1882e558.tests.json",
+   "prereg_commit": "4c7087af",
+   "author": "C-Eckleman235",
+   "n_fire": 6,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.556,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.615,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.65,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.377,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.305,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.307,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.293,
+     "peak": "7"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.173,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.111,
+     "peak": "2"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.108,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.099,
+     "peak": "3"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.104,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.33,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.053,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.1,
+     "peak": "4"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.041,
+     "peak": "4"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.342,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "which"
+  ],
+  "detected": [],
+  "toolchain_commit": "4c7087af",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "short": "before a predictable 3",
+ "unit_kind": "predictive",
+ "confidence": 0.6,
+ "notes": "Found by an echoes concept screen (predictable-digit pairs: the same passage with a different final digit predictable; 6 pairs per digit, discovery only) and a position triage that required the pole to peak on the token BEFORE the digit and stay quiet there in the control: 6/6 pairs for digit 3, across copies, counting runs and a fact. Card: max 326, density 0.92%; top examples peak right before a 3 ('Fig. 3c', 'event.button == 3', '47 CFR 73.151'). Triage probes (exploratory, none reused): copied PIN 7323 0.51, copied room 503 0.39, count 40..43 0.36, 'a triangle has exactly 3' 0.22, the word 'three' 0.12; a fresh 3 ('the number 63' 0.05, 'code 813' 0.05) and a copied 507 (0.11) stayed low. The label is the digit sibling of the held L35/N1376+ (before a predictable 6). Facts and the spelled word are not claimed. Scoring runs on a Modal L40S (bfloat16; tests/test_device_parity.py printed PARITY OK on Modal).",
+ "selection": "concept search: echoes (digit family)"
+}
