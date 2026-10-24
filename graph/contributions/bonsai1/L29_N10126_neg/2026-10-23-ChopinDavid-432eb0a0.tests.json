@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-432eb0a0",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N10126-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T01:20:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N10126",
+   "pole": "-",
+   "label": "the negation in an exhortation or warning ('let's not', 'let us not', 'we must not', 'don't' as an imperative), where 'forget' is the likely next word, as against negation in a plain statement ('did not', 'is not')",
+   "fire": [
+    "It was a great season, and let's not forget the fans who travelled every week.",
+    "Before we celebrate, let us not forget those who lost their homes.",
+    "The coach smiled and said, \"Let's not get ahead of ourselves.\"",
+    "As we build the new bridge, we must not forget the workers who built the old one.",
+    "Please don't forget to lock the back door when you leave.",
+    "Let us not be afraid to ask for help when we need it.",
+    "Cheap flights are nice, but let's not ignore the cost to the climate.",
+    "Above all, we must not lose sight of why we started."
+   ],
+   "quiet": [
+    "It was a great season, and the fans did not miss a single game.",
+    "Before the storm, the families had not left their homes.",
+    "The coach smiled and said the team was not tired yet.",
+    "The new bridge is not finished, and the old one is still in use.",
+    "The back door was not locked when we got home.",
+    "She was not afraid to ask for help when she needed it.",
+    "Cheap flights are nice, but they are not good for the climate.",
+    "The report does not explain why the project started late."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.9 on ' not'/\"'t\" in let's not / let us not / we must not / don't + verb; statement negation below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'not' in an exhortation (predicts 'forget')",
+ "unit_kind": "context",
+ "confidence": 0.65,
+ "notes": "Card: ' not' x16 of the top 32, nearly all in \"let's not forget\"; the + pole suppresses ' forget' and its forms, so the - pole predicts 'forget'. Probe: \"let's not forget\" 0.911, 'Let us not pretend' 0.537, \"don't forget to bring\" 0.526, \"Let's not rush\" 0.447, 'We must not forget' 0.314; 'did not arrive' 0.001, 'is not ready' 0.005, 'Never forget' 0.057."
+}

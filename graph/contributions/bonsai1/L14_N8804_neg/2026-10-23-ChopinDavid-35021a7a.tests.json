@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-35021a7a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N8804-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T01:20:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L14/N8804",
+   "pole": "-",
+   "label": "the 0 in a Python emptiness or count check inside an if-statement ('if len(x) > 0:', 'if count != 0:'), as against 0 in assignments and other numbers in the same comparison",
+   "fire": [
+    "def save_all(records):\n    if len(records) > 0:\n        db.insert(records)\n    return True",
+    "def report(errors):\n    total = len(errors)\n    if total != 0:\n        print(\"found\", total)",
+    "for user in users:\n    pending = user.inbox()\n    if len(pending) > 0:\n        notify(user)",
+    "def clean(paths):\n    if len(paths) == 0:\n        return []\n    return [p.strip() for p in paths]",
+    "class Cart:\n    def checkout(self):\n        if len(self.items) > 0:\n            self.pay()",
+    "def warn(skipped):\n    if skipped > 0:\n        print(\"Warning:\", skipped, \"skipped\")",
+    "rows = fetch()\nif len(rows) > 0:\n    for row in rows:\n        show(row)",
+    "def check(queue):\n    if queue.size() != 0:\n        queue.flush()\n    return queue"
+   ],
+   "quiet": [
+    "def save_all(records):\n    if len(records) > 10:\n        db.insert(records)\n    return True",
+    "def report(errors):\n    total = 0\n    for e in errors:\n        total += 1",
+    "for user in users:\n    pending = user.inbox()\n    if pending:\n        notify(user)",
+    "def clean(paths):\n    if not paths:\n        return []\n    return [p.strip() for p in paths]",
+    "class Cart:\n    def checkout(self):\n        if self.items:\n            self.pay()",
+    "def warn(skipped):\n    if skipped > 3:\n        print(\"Warning:\", skipped, \"skipped\")",
+    "rows = fetch()\nstart = 0\nfor row in rows[start:]:\n    show(row)",
+    "def check(queue):\n    if queue.is_full():\n        queue.flush()\n    return queue"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.4 on '0' in 'if len(...) > 0:' inside a function; '= 0' assignments and '> 5' comparisons below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "0 in an if-condition count check (code)",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: '0' x19 of the top 32, all in if-conditions ('if(counter!=0):', 'if len(extra_prop_names)>0:', '> 0,', '== 0:'). Probe: 'if len(items) > 0:' 0.360, 'if count != 0:' 0.203, 'x if x > 0 else' 0.143; 'while n > 0:' 0.029, 'count = 0' 0.068, 'if len(items) > 5:' 0.032. Fire items are multi-line functions per the code-pole tip."
+}
