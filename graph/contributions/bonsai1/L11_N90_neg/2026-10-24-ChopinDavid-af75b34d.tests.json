@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-af75b34d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N90-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T11:19:45+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L11/N90",
+   "pole": "-",
+   "label": "a capitalized library class name used in Python code, such as PIL's Image and pathlib's Path ('im = Image.new', 'path = Path(dest)'), as against lowercase variables and the word 'image' in prose",
+   "fire": [
+    "from PIL import Image\n\nthumb = Image.new(\"L\", (32, 32))",
+    "import numpy as np\nfrom PIL import Image\n\npic = Image.fromarray(np.zeros((8, 8)))",
+    "from pathlib import Path\n\nout_dir = Path(args.out)",
+    "from PIL import Image\n\nlogo = Image.open(\"logo.png\").convert(\"RGBA\")",
+    "import os\nfrom pathlib import Path\n\nroot = Path(__file__).parent",
+    "from PIL import Image\n\ncanvas = Image.new(\"RGB\", (800, 600), \"white\")",
+    "from pathlib import Path\n\nconfig = Path.home() / \".myapp\"",
+    "from PIL import Image\n\nphoto = Image.open(src)\nphoto.thumbnail((128, 128))"
+   ],
+   "quiet": [
+    "import numpy as np\n\nthumb = np.zeros((32, 32))",
+    "import numpy as np\n\npic = np.ones((8, 8))",
+    "import os\n\nout_dir = os.path.abspath(args.out)",
+    "import json\n\nlogo = json.load(open(\"logo.json\"))",
+    "import os\n\nroot = os.path.dirname(__file__)",
+    "The canvas behind the image was painted white.",
+    "import os\n\nconfig = os.path.expanduser(\"~/.myapp\")",
+    "The photo on the wall shows the harbor at sunset."
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.65 on Image or Path used as a class in code; lowercase code names and prose 'image' below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Image/Path class in code",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: im =| Image.new 19.0, PIL|.Image.fromarray, image =| Image.open, TILE_FORMAT_P|IL, path =| Path(dest_dir), Cur|iosity, SW|IFT. Probe: 'from PIL import Image / Image.new' 0.646, 'from pathlib import Path / Path(dest)' 0.394, 'Image.open(path)' 0.351, 'Taylor Swift' 0.397, 'Curiosity rover' 0.180; prose 'The image on the cover' 0.004, 'Her curiosity' 0.002."
+}

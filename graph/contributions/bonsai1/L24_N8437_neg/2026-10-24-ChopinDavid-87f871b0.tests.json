@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-87f871b0",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N8437-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T11:19:45+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L24/N8437",
+   "pole": "-",
+   "label": "tokens inside a string literal in code that holds HTML markup or a format template (attribute names like href, align, width; '%d' fields), as against code with plain string literals and markup written outside code",
+   "fire": [
+    "    rows = re.findall('<tr class=\"item\">(.*?)</tr>', body)",
+    "    return '<a href=\"%s\" target=\"_blank\">%s</a>' % (url, text)",
+    "    html += '<div style=\"color: red\" id=\"warn\">' + msg + '</div>'",
+    "    fname = 'output_%03d_%s.txt' % (n, tag)",
+    "    title = re.search('<meta name=\"title\" content=\"(.*?)\"', page)",
+    "    log.write('Step: {}, Valid Loss: {:.3f}\\n'.format(step, v))",
+    "    cell = '<td valign=\"top\" width=\"30%\">' + value + '</td>'",
+    "    img_tag = f'<img src=\"{src}\" alt=\"{alt}\" height=\"20\">'"
+   ],
+   "quiet": [
+    "    rows = soup.find_all(class_=\"item\")",
+    "    return url.strip().lower()",
+    "    total += price * quantity",
+    "    fname = os.path.join(folder, name)",
+    "    title = page.get(\"title\", \"untitled\")",
+    "    logger.setLevel(level)",
+    "<td valign=\"top\" width=\"30%\">Name</td>",
+    "Set the image height to twenty pixels and add a short alt text."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on an attribute name or format field inside a quoted string in code; plain-string code, raw HTML and prose below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "markup inside code strings",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: re.findall('<select| id=' 46.5, '<td| align=', '<img src=\"%s\"| height=', 'null-%05|d', 'Epoch: {},| Train Loss'. Probe: '<td align=' in findall 0.571, '<a href=' in findall 0.487, '<img .. width=' in return string 0.437, \"'Epoch: {}, Train Loss'\" 0.362, 'frame-%04d' 0.342; raw '<a href>' HTML 0.156, 'compute_height(widget)' 0.036, prose about alignment -0.004."
+}

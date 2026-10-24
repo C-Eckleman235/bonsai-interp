@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-71e0f0ec",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N8846-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T11:19:45+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L15/N8846",
+   "pole": "-",
+   "label": "the end of a string fragment that is being assembled into a larger string in code: the closing quote before %, .format or +, and separator variables between joined pieces, as against standalone string literals",
+   "fire": [
+    "    label = 'Score: %.2f, ' % score",
+    "    out = first + delim + middle + delim + last",
+    "    header = '{0} rows, '.format(len(rows))",
+    "    text += \"height=\" + str(h) + \"cm, \"",
+    "    line = 'User %s logged in at ' % user + stamp",
+    "    row = key + tab + val + tab",
+    "    msg = 'Found {} files in '.format(n) + folder",
+    "    path = base + '/' + sub + '/'"
+   ],
+   "quiet": [
+    "    label = 'score'",
+    "    out = compute(first, middle, last)",
+    "    header = rows[0]",
+    "    text = None",
+    "    print('logged in')",
+    "    row = table.get(key)",
+    "The sign said \"Found keys at the front desk.\"",
+    "    path = os.getcwd()"
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.95 on the closing quote or separator of a fragment that is formatted or concatenated; standalone literals, prose quotes and plain code below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "string pieces being assembled",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: \"'{0:d} days,| '.format\" 50.25, '\"m,| \"' + concat, '\"%.5lf|,\" %', \"'%s@|' %\", 'grp_id + sep + genes +| sep'. Probe: 'name + sep + value + sep' 0.988, \"'{0} days, '.format(n)\" 0.774, '\"m, \"' concat 0.471, \"'Total: %d items, ' % count\" 0.365; print(\"done\") 0.004, name = 'report' 0.005, prose quote 0.004."
+}
