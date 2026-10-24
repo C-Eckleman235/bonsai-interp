@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-dc3c1f54",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N9847+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T20:19:43+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L2/N9847",
+   "pole": "+",
+   "label": "word pieces inside compound Python identifiers in import and def lines ('__main__', 'Connection|Comple|ter', 'in|_external|_angles'), as against plain prose about the same code",
+   "fire": [
+    "from setuptools import __main__ as setup_main",
+    "def compute_distance_to_external_boundary(self, idx):",
+    "from twisted.internet.testing import StringTransportCompleter",
+    "def load_internal_marker_path(config):",
+    "from pip import __main__ as pip_main",
+    "def get_rotation_from_external_frame(self, frame):",
+    "from tornado.testing import AsyncHTTPCompleter",
+    "def build_library_problem_data(rows):"
+   ],
+   "quiet": [
+    "The setup script runs its main routine when it is started directly.",
+    "This method computes how far each point lies from the outer boundary.",
+    "The testing module provides a helper that finishes fake connections.",
+    "This function loads the marker settings from the configuration file.",
+    "The installer runs its main routine when it is started directly.",
+    "This method reads the rotation of the camera from the outside frame.",
+    "The testing helper finishes each request before the test ends.",
+    "This function builds a table of problems from the given rows."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on identifier pieces in Python lines; prose descriptions 0.0-0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "pieces of compound code identifiers",
+ "unit_kind": "unclear",
+ "confidence": 0.25,
+ "notes": "Card is broad (2.6% of tokens above 0.1 of max) with mixed peaks: code identifier pieces ('main', '_external', 'Comple', '_PATH'), Korean ' 또한', ' bedside'. Probe: 'twine import __|main|__' 0.873, 'in|_external|_angles' 0.751, 'Connection|Comple|ter' 0.684, ' 또한' 0.300, ' bedside' 0.184; prose 0.061-0.098. Only the code case is strong; label is a best guess."
+}

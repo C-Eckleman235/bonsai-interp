@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-37706fca",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N4170+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T20:19:43+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N4170",
+   "pole": "+",
+   "label": "the word that sets up 'secret' as the next noun ('closely guarded', 'best-kept', 'kept a', 'remained their'), firing on the setup even when another noun follows, as against the same nouns without a secrecy setup",
+   "fire": [
+    "The exact blend of spices is a closely guarded secret of the family.",
+    "Where the old pirate buried his gold remains a mystery to this day.",
+    "The location of the new factory was kept a secret until the launch.",
+    "Cold water is one of the best-kept secrets of good pastry.",
+    "Her real age has always remained her secret.",
+    "The identity of the author is a jealously guarded secret.",
+    "The band kept the album title a surprise until the concert.",
+    "How the magician does the trick is still his secret."
+   ],
+   "quiet": [
+    "The exact blend of spices is printed on the back of the jar.",
+    "Where the old pirate buried his gold is shown on a map in the museum.",
+    "The location of the new factory was announced at the press launch.",
+    "Cold water is one of the most important ingredients of good pastry.",
+    "Her real age is printed on her passport.",
+    "The identity of the author is written on the cover of the book.",
+    "The band announced the album title at the start of the concert.",
+    "How the magician does the trick is explained in his book."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.75 on the setup token before secret; sentences without the setup 0.0-0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "setup that predicts 'secret'",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card peaks on the token before 'secret' (best-kept| beauty, closely| guarded, kept| a, remained| their); the - pole promotes ' secret'. Probe: 'remained| their|' 0.744, 'closely| guarded| secret' 0.707, 'best-|kept|' 0.674, 'kept| a| secret' 0.501; 'closely| guarded| treasure' also 0.707 (it reads the setup, not the word); 'kept running' 0.050, 'told everyone the secret' 0.075."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-0c209821",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N9649+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T20:19:43+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N9649",
+   "pole": "+",
+   "label": "the separator before the next step up in an ordered size or grade scale (Small ..., Medium ...,| Large), as against separators in unordered lists",
+   "fire": [
+    "Cup sizes: Small 8 oz, Medium 12 oz, Large 16 oz.",
+    "Our boxes come in three sizes: small, medium and large.",
+    "Shirt sizes: S fits chest 34-36, M fits 38-40, L fits 42-44.",
+    "Engine classes: Light under 1 litre, Medium 1-2 litres, Heavy over 2 litres.",
+    "Pizza: Small 10 inch, Medium 12 inch, Large 14 inch, Family 18 inch.",
+    "Dogs are grouped as small, medium, large and giant breeds.",
+    "Storage plans: Basic 50 GB, Standard 200 GB, Premium 2 TB.",
+    "Eggs are graded by weight: medium 53-63 g, large 63-73 g, very large over 73 g."
+   ],
+   "quiet": [
+    "Cup colours: white, blue, green and yellow.",
+    "Our boxes come in three colours: red, green and black.",
+    "Shirt styles: polo, button-down, henley and crew neck.",
+    "Engine makers: Ford, Honda, Toyota and Fiat.",
+    "Pizza toppings: cheese, mushroom, olive and ham.",
+    "Dogs are grouped as hounds, terriers, herding and toy breeds.",
+    "Storage options: cloud, local disk, tape and USB stick.",
+    "Eggs are sold as free range, organic, barn and caged."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.75 on the separator before the larger grade; unordered lists 0.0-0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "next step in a size scale",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: separators and newlines inside size tables (Small/Medium/Large, payload classes) plus 'the| most', 'burden| off'. Probe: 'Medium 23-29 inches|,| Large' 0.729, 'Medium 2-20t|,| Heavy' 0.691, 'small, medium| and| large' 0.508, 'reserved for the| most|' 0.514, 'burden| off|' 0.640 (unexplained side trigger); unordered 'red, green| and| blue' 0.049."
+}
