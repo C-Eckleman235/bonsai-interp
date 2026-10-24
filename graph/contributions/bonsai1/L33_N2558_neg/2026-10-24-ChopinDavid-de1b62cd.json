@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-de1b62cd",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N2558-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-24T10:29:07+00:00",
+ "recipe": {
+  "toolchain_commit": "db4ed5c9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L33_N2558_neg/2026-10-24-ChopinDavid-de1b62cd.tests.json"
+ },
+ "label": "the inner piece 'р' of the split Russian discourse words 'нап|р|отив' and 'нап|р|имер' (and similar inner pieces of fixed strings like the w3.org namespace URL), as against Russian sentences that use synonyms or omit them",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L33_N2558_neg/2026-10-24-ChopinDavid-de1b62cd.tests.json",
+   "prereg_commit": "db4ed5c9",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.554,
+     "peak": "от"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.127,
+     "peak": " нап"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.711,
+     "peak": "р"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.352,
+     "peak": "уз"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.759,
+     "peak": "р"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.1,
+     "peak": " нап"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.671,
+     "peak": "р"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.177,
+     "peak": " нап"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.02,
+     "peak": " с"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.058,
+     "peak": "лет"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.227,
+     "peak": "я"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.069,
+     "peak": "сет"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.09,
+     "peak": "п"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.02,
+     "peak": " р"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.091,
+     "peak": "пер"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.103,
+     "peak": "уч"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.453,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "db4ed5c9",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "inner piece of напротив/например",
+ "unit_kind": "spelling",
+ "confidence": 0.4,
+ "notes": "Card: 'нап|р|отив' -115.5, 'нап|р|имер' -109 and -102, plus code pieces (sys, __name__, 1 in a QGIS call, xmlns http). Probe: 'а напротив' 0.654, xmlns URL 0.480, 'например' 0.335; sys.stdout 0.114, __name__ 0.049, Russian without the word 0.081, English 'for example' 0.016. Broad pole (2.1%).",
+ "selection": "random draw"
+}
