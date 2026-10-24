@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-ced7c28e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N793-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T18:20:42+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L21/N793",
+   "pole": "-",
+   "label": "a function or bound method passed as a callback argument in Python (Thread(target=...), Bind(event, self.handler), partial(...), command=self.on_ok), as against calling the same function directly",
+   "fire": [
+    "import threading\n\nclass Loader:\n    def begin(self):\n        t = threading.Thread(target=self.fetch_pages)\n        t.start()",
+    "class Panel(wx.Panel):\n    def build(self):\n        self.Bind(wx.EVT_MENU, self.on_save, id=wx.ID_SAVE)",
+    "from functools import partial\nimport signal\n\nsignal.signal(signal.SIGTERM, partial(shutdown, server))",
+    "quit_btn = tk.Button(frame, text='Quit', command=self.on_quit)\nquit_btn.grid(row=0, column=1)",
+    "import threading\n\nfor job in jobs:\n    worker = threading.Thread(target=process_job, args=(job,))\n    worker.start()",
+    "class Window(wx.Frame):\n    def wire(self):\n        self.Bind(wx.EVT_CLOSE, self.on_close)",
+    "self.timer = QTimer()\nself.timer.timeout.connect(self.refresh_view)\nself.timer.start(1000)",
+    "import atexit\n\natexit.register(self.cleanup_files)\nprint('ready')"
+   ],
+   "quiet": [
+    "class Loader:\n    def begin(self):\n        pages = self.fetch_pages()\n        print(len(pages))",
+    "class Panel(wx.Panel):\n    def build(self):\n        self.label = 'Settings'\n        self.width = 640",
+    "import signal\n\nresult = shutdown(server)\nprint(result)",
+    "quit_btn = tk.Button(frame, text='Quit')\nquit_btn.grid(row=0, column=1)",
+    "for job in jobs:\n    result = process_job(job)\n    results.append(result)",
+    "class Window(wx.Frame):\n    def wire(self):\n        self.on_close()\n        return True",
+    "self.count = 0\nself.count += 1\nprint(self.count)",
+    "import os\n\nfiles = os.listdir('.')\nprint('ready')"
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.8 on '(target', ' self', ' partial' or ' command' where a callable is handed to a framework; direct calls and plain attribute assignments below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "callable passed as a callback argument",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: ' self' x11 (Bind(..., self.on_x)), '(target' x9 (Thread(target=)), ' partial'. Probe: Thread(target=) 0.557, Bind self.on_click 0.772, partial 0.559, command=self.on_ok 0.637; direct call self.run_job(1) 0.019, attribute assignments 0.077, sorted key=len 0.101."
+}
