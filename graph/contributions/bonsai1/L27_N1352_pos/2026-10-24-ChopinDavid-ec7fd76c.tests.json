@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-ec7fd76c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N1352+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T21:19:46+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L27/N1352",
+   "pole": "+",
+   "label": "GraphQL in code: the GraphQL name, graphql endpoints, gql schemas, query/mutation type definitions, as against the same code written for REST or plain HTTP",
+   "fire": [
+    "import requests\n\n# the dashboard pulls everything through one GraphQL endpoint\nresp = requests.post(URL, json={\"query\": QUERY})",
+    "GRAPHQL_ENDPOINT = \"https://api.example.com/graphql\"\nheaders = {\"Authorization\": token}",
+    "const GET_BOOKS = gql`\n  query GetBooks {\n    books { title author }\n  }\n`;",
+    "class Mutation(graphene.ObjectType):\n    create_user = CreateUser.Field()\n\nschema = graphene.Schema(query=Query, mutation=Mutation)",
+    "type Query {\n  user(id: ID!): User\n  posts(limit: Int): [Post]\n}\n\ntype Mutation {\n  addPost(title: String!): Post\n}",
+    "const client = new ApolloClient({\n  uri: '/graphql',\n  cache: new InMemoryCache(),\n});",
+    "# fetch repository stars via the GitHub GraphQL API\nquery = \"\"\"{ repository(owner: \\\"x\\\", name: \\\"y\\\") { stargazerCount } }\"\"\"",
+    "app.use('/graphql', graphqlHTTP({\n  schema: schema,\n  graphiql: true,\n}));"
+   ],
+   "quiet": [
+    "import requests\n\n# the dashboard pulls everything through one REST endpoint\nresp = requests.get(URL, params={\"page\": 1})",
+    "API_ENDPOINT = \"https://api.example.com/v2/items\"\nheaders = {\"Authorization\": token}",
+    "const GET_BOOKS = async () => {\n  const res = await fetch('/api/books');\n  return res.json();\n};",
+    "class UserView(View):\n    def post(self, request):\n        return create_user(request)",
+    "CREATE TABLE users (\n  id INTEGER PRIMARY KEY,\n  name TEXT NOT NULL\n);",
+    "const client = axios.create({\n  baseURL: '/api',\n  timeout: 5000,\n});",
+    "# fetch repository stars via the GitHub REST API\nurl = \"https://api.github.com/repos/x/y\"",
+    "app.use('/static', express.static('public', {\n  maxAge: '1d',\n}));"
+   ]
+  }
+ ],
+ "predictions": "fire 0.7-0.95 in GraphQL code; REST versions of the same code 0.0-0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "GraphQL in code",
+ "unit_kind": "context",
+ "confidence": 0.75,
+ "notes": "Card: peaks on ' GraphQL', '?' in '/graphql?query=', a 'MUTATION' schema entry, graphene 'mutation=M|utations', the - pole promotes Apollo, GraphQL, Resolver. Probe: '| GraphQL| query' comment 0.926, GRAPHQL_URL line 0.922, graphene Schema(query, mutation) 0.871, gql typeDefs 0.814; REST comment 0.049, REST_URL line 0.072, 'bar graph' 0.000, plain __init__ 0.000."
+}

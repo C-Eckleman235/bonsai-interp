@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-d7d02371",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N5403-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T21:19:46+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L11/N5403",
+   "pole": "-",
+   "label": "framing a case as an anomaly against a background pattern ('an isolated incident', 'the exception', 'a one-off', 'atypical', 'a fluke'), firing on the anomaly word, as against the same words in a literal sense and the same cases framed as typical",
+   "fire": [
+    "Police say the attack was an isolated incident and that the town remains safe.",
+    "Sadly, his experience is not exceptional; thousands of tenants report the same.",
+    "The manager insisted the cold room was an exception and not how they usually run things.",
+    "Critics argue this was no one-off but a sign of deeper problems at the bank.",
+    "Researchers called the warm winter atypical for the northern provinces.",
+    "The coach dismissed the heavy defeat as a fluke and expects a better result next week.",
+    "Analysts treat last quarter's loss as an outlier rather than a new trend.",
+    "Engineers concluded the crack was an anomaly limited to a single beam."
+   ],
+   "quiet": [
+    "Police say the attack was a planned operation and that more arrests will follow.",
+    "Sadly, his experience is very common; thousands of tenants report the same.",
+    "The manager insisted the cold room was normal and exactly how they always run things.",
+    "Critics argue this was a clear sign of deeper problems at the bank.",
+    "Researchers called the warm winter typical for the northern provinces.",
+    "The coach described the heavy defeat in detail and expects a better result next week.",
+    "Analysts treat last quarter's loss as the start of a new trend.",
+    "The hikers reached an isolated cabin high in the mountains after dark."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-1.0 on the anomaly word; literal 'isolated' and typical-framing near misses 0.0-0.3",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "framing a case as an exception",
+ "unit_kind": "meaning",
+ "confidence": 0.6,
+ "notes": "Card: ' isolated' x4, ' exception' x3, ' exceptional' x2, 'ypical' x2, '-off', 'aberr|ation', Russian 'единичный случай': all 'not an isolated incident / the exception / atypical'. Probe: 'not| exceptional|' 1.026, 'an| exception|' 0.911, 'isolated| incident|' 0.729, 'one|-off|' 0.709, 'at|ypical|' 0.613; literal 'an isolated stretch of road' 0.053; 'part of a pattern' 0.279 and 'not complicated' 0.309 leak mildly. Untested words in the fire set (fluke, outlier, anomaly, rare case) test the meaning without the card's words."
+}

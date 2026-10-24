@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-62403fea",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N11441+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T21:19:46+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L24/N11441",
+   "pole": "+",
+   "label": "interior pieces of an unfamiliar foreign surname or place name that the tokenizer splits (ere, ore, ke, age), as against names that are single common tokens in the same sentences",
+   "fire": [
+    "The goalkeeper Davide Sereni kept a clean sheet in the derby.",
+    "The finance minister, Chukwuemeka Okereafor, presented the budget on Monday.",
+    "Our guide in Crete was a cheerful man called Nikos Papadoperakis.",
+    "The paper was co-written by Ifeoma Nwokeke of the University of Ibadan.",
+    "The new mayor of the town, Aurelio Ferezzini, took office in June.",
+    "Researchers at the Kerepesi archive found the missing letters.",
+    "The midfielder Tommaso Camperelli signed with a club in Genoa.",
+    "Professor Ageorgiou gave the opening lecture on Byzantine coins."
+   ],
+   "quiet": [
+    "The goalkeeper David Smith kept a clean sheet in the derby.",
+    "The finance minister, Michael Johnson, presented the budget on Monday.",
+    "Our guide in Crete was a cheerful man called Nick Taylor.",
+    "The paper was co-written by Mary Brown of the University of Ibadan.",
+    "The new mayor of the town, Robert Miller, took office in June.",
+    "Researchers at the national archive found the missing letters.",
+    "The midfielder Thomas Wilson signed with a club in Genoa.",
+    "Professor Jones gave the opening lecture on Byzantine coins."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-1.0 on a non-initial piece of a split rare name; single-token common names 0.0-0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "mid-name pieces of rare split names",
+ "unit_kind": "token",
+ "confidence": 0.65,
+ "notes": "Card: 'ere' x7, ' Bere' x4, 'ke' x3, ' Pere' x3, \"'Re\" x3, 'age' x2, all inside split rare surnames and places (Pereym, Mere, Serevi, Okechukwu, Papageorgiou, Berea). Probe: 'C|ere|zo' 0.977, 'Ok|ech|ukwu' 0.891 on 'ke', 'Camp|ore|se' 0.835, ' Bere|a' 0.814, 'Ok|ere|ke' 0.735, 'Papp|age|orge' 0.710; 'Johnson' 0.003, 'severe' 0.012, 'here and there' 0.014. Splits of test names checked with tokcheck."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-8e67d206",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N2656+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T21:19:46+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N2656",
+   "pole": "+",
+   "label": "tokens of a person's name in Japanese text (surname and given-name pieces), weaker for names in Chinese and Vietnamese; as against the same sentences with the name removed or replaced by a role word",
+   "fire": [
+    "今回のインタビューでは、作家の宮崎美穂さんに執筆の秘訣を聞きました。",
+    "この店のパンは、職人の佐々木健太郎さんが毎朝焼いています。",
+    "チームを率いるのは、元代表選手の森田浩之監督です。",
+    "ブログを書いているのは、料理研究家の藤井由紀子さんです。",
+    "展覧会では、画家の小林直樹氏の新作が初めて公開されました。",
+    "講演会には、物理学者の高橋理恵子教授が登壇しました。",
+    "番組の司会は、アナウンサーの石川奈緒さんが務めます。",
+    "この写真集は、写真家の中島康平さんが十年かけて撮影したものです。"
+   ],
+   "quiet": [
+    "今回のインタビューでは、人気の作家に執筆の秘訣を聞きました。",
+    "この店のパンは、ベテランの職人が毎朝焼いています。",
+    "チームを率いるのは、元代表選手の新しい監督です。",
+    "ブログを書いているのは、若い料理研究家です。",
+    "展覧会では、地元の画家の新作が初めて公開されました。",
+    "講演会には、有名な物理学者が登壇しました。",
+    "番組の司会は、局のアナウンサーが務めます。",
+    "この写真集は、ある写真家が十年かけて撮影したものです。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.7 on name pieces in Japanese sentences; nameless versions 0.0-0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "personal names in Japanese text",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: peaks on name pieces: Japanese 田|辺祐|希, 古|嵜智|志, 荒|木|典子, Chinese 王, 黄, 汪, Korean 황선, Vietnamese Nguyen, Mai. Probe: Japanese '荒|木|典子さん' 0.672, '田|辺祐|希さん' 0.618; Vietnamese ' Nguyen' 0.353; Chinese '王小明' 0.200, '黄磊' 0.131 (weaker); nameless Japanese and Chinese versions 0.009-0.016; English 'John Smith' 0.011. The test uses Japanese names."
+}
