@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-16b10a88",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N7246-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T17:20:45+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L13/N7246",
+   "pole": "-",
+   "label": "the first piece of a German word split across tokens inside running German prose (alle|in, wir|kt, den|ke), as against German sentences whose words are single tokens",
+   "fire": [
+    "Die Firma hat viel versprochen. Mit Worten allein ist den Kunden aber nicht geholfen.",
+    "Der Bericht ist lang. Die Zahlen allein sagen jedoch wenig über die Lage aus.",
+    "Viele Menschen haben Angst. Das Gesetz allein wird dieses Problem nicht lösen.",
+    "Die Lage ist schwierig. Geld allein reicht nicht, um die Schule zu retten.",
+    "Der Verein sucht Helfer. Allein im letzten Jahr kamen zwanzig neue Mitglieder.",
+    "Die Stadt plant viel. Die Kosten allein liegen bei zwei Millionen Euro.",
+    "Das Projekt war teuer. Der Umbau allein dauerte fast drei Jahre.",
+    "Die Debatte geht weiter. Mit Appellen allein lässt sich die Krise nicht beenden."
+   ],
+   "quiet": [
+    "Die Firma hat viel versprochen. Mit Worten ist den Kunden aber nicht geholfen.",
+    "Der Bericht ist lang. Die Zahlen sagen jedoch wenig über die Lage aus.",
+    "Viele Menschen haben Angst. Das Gesetz wird dieses Problem nicht lösen.",
+    "Die Lage ist schwierig. Geld reicht nicht, um die Schule zu retten.",
+    "Der Verein sucht Helfer. Im letzten Jahr kamen zwanzig neue Mitglieder.",
+    "Die Stadt plant viel. Die Kosten liegen bei zwei Millionen Euro.",
+    "Das Projekt war teuer. Der Umbau dauerte fast drei Jahre.",
+    "Die Debatte geht weiter. Mit Appellen lässt sich die Krise nicht beenden."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.5 on ' alle' in allein and similar first pieces in longer German passages; German sentences with single-token words below 0.1. Only one probe item fired, so this is a weak guess",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "first piece of a split German word (unclear)",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card: German, Dutch and Korean text, peaks on ' durch'(aus), ' alle'(in), ' waar'(deer), ' den'(ke), ' wir'(kt), ' 그'(룹). Probe: 'Versprechen allein' 0.487, Dutch 'waardeer' 0.092; durchaus 0.020, denke 0.043, Gruppe 0.000, English control 0.011."
+}
