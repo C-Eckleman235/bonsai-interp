@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-da38eba0",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N7330-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-24T13:29:46+00:00",
+ "recipe": {
+  "toolchain_commit": "62a9c341",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N7330_neg/2026-10-24-ChopinDavid-da38eba0.tests.json"
+ },
+ "label": "the split piece 'f' (as '-f', 'ef', 'gef') that begins a find/fund stem broken off from its continuation ('fact-f|inding', 'rang|ef|inder', 'statt|gef|unden'); it promotes 'finding'/'found'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N7330_neg/2026-10-24-ChopinDavid-da38eba0.tests.json",
+   "prereg_commit": "62a9c341",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.756,
+     "peak": "-f"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.668,
+     "peak": "-f"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.616,
+     "peak": "ef"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.344,
+     "peak": "gef"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.619,
+     "peak": "gef"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.446,
+     "peak": "ef"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.621,
+     "peak": "-f"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.243,
+     "peak": "ef"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.076,
+     "peak": " fact"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.004,
+     "peak": " jury"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.012,
+     "peak": " laser"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.017,
+     "peak": " Wald"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.008,
+     "peak": "ert"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.005,
+     "peak": " cruiser"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.004,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.014,
+     "peak": " die"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.617,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "62a9c341",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "split 'f' of find/fund stems",
+ "unit_kind": "word",
+ "confidence": 0.55,
+ "notes": "Card: 'ef' x8, '-f' x4, ' bef', 'gef' (fact-finding, rangefinder, stattgefunden, Befragung); the neuron's output promotes ' findings', ' finding', ' found'. Probe: 'fact-finding' 0.499, 'fact-finder' 0.618, 'rangefinder' 0.525, 'stattgefunden' 0.654, 'befanden' 0.246; 'fact-checking' 0.035, 'telescope' 0.005, 'new findings' 0.083. Tokenizer checked: every fire word splits into a lone f-piece before the stem.",
+ "selection": "random draw"
+}
