@@ -1,0 +1,153 @@
+{
+ "id": "2026-10-23-C-Eckleman235-bd492f65",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N1879-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-23T22:12:43+00:00",
+ "recipe": {
+  "toolchain_commit": "f5f0fa12",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L21_N1879_neg/2026-10-23-C-Eckleman235-bd492f65.tests.json"
+ },
+ "label": "the American Midwest as a place: its states, towns, colleges and farm country (Iowa, Indiana, Nebraska, Illinois, Des Moines, the Hoosiers, 'the Midwest'), named or not; also the word 'Indiana' in other senses. Places in the South, New England and the West Coast stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L21_N1879_neg/2026-10-23-C-Eckleman235-bd492f65.tests.json",
+   "prereg_commit": "f5f0fa12",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.69,
+     "peak": " Nebraska"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.534,
+     "peak": " Rapids"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.751,
+     "peak": "ue"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.617,
+     "peak": " corn"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.484,
+     "peak": " Lincoln"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.865,
+     "peak": " Midwest"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.631,
+     "peak": " Illinois"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.538,
+     "peak": " Indiana"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.028,
+     "peak": " small"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.073,
+     "peak": " crowds"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.064,
+     "peak": "lem"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.075,
+     "peak": "ns"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.117,
+     "peak": "con"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.059,
+     "peak": "icked"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.241,
+     "peak": " fair"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.087,
+     "peak": " Georgia"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.624,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "which"
+  ],
+  "detected": [],
+  "toolchain_commit": "f5f0fa12",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "short": "the Midwest",
+ "unit_kind": "meaning",
+ "confidence": 0.6,
+ "notes": "Found by the world-atlas tier-1 census (64 US states, DC and Canadian provinces/territories, 8 pairs each: 4 named, 4 described without the name; controls swap in a neighbouring or distant place; discovery only). Under a contrast rule it was a candidate in 9 places: Indiana 0.81, Illinois 0.74, Iowa 0.69, Nebraska 0.65, Missouri 0.49, South Dakota 0.47, Wisconsin 0.46, Kansas 0.45, Manitoba 0.40 (mean over 8 passages). Card: max 53, density 0.40%; peaks ' Indiana' x9, ' Iowa' x8, ' Midwest' x2. Triage probes (exploratory, none reused): Des Moines farm fields 0.72, the Hoosiers in Bloomington 0.82, 'the Midwest' 0.71, Iowa 0.75, 'Indiana Jones' 0.75 (so the word leaks: claimed), southern Manitoba 0.48 (not claimed or tested), Atlanta 0.16, Maryland 0.05. Scoring runs on a Modal L40S (bfloat16; PARITY OK on Modal).",
+ "selection": "concept search: world atlas tier 1 (branch 19)"
+}
