@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-23-C-Eckleman235-2cf08dfb",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N3905-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-23T23:03:11+00:00",
+ "selection": "concept search: time (context year atlas)",
+ "neighbours": [
+  {
+   "unit": "L24/N3905",
+   "pole": "-",
+   "label": "the 1950s: a number from 1950 to 1959 in a text set in the 1950s (Eisenhower, early television, rock and roll, the polio vaccine, Sputnik), whether it is a year or a count; the same 195x count in a modern or other-era text, and other decades' years in the same kind of text, stay low",
+   "fire": [
+    "Elvis had just appeared on Ed Sullivan. The drive-in sold 1953 tickets that night.",
+    "Ike was in the White House and the suburbs were booming. The new subdivision had 1957 houses.",
+    "Families gathered around their first TV sets. The station got 1955 letters from viewers.",
+    "Rock and roll was new and teenagers loved it. The record shop sold 1958 copies in a week.",
+    "Senator McCarthy was hunting communists, and by 1954 his hearings were on television.",
+    "The polio vaccine was being tested in schools, and in 1955 the results were announced.",
+    "Sputnik had just alarmed the country, and in 1958 NASA was founded.",
+    "Hula hoops were the latest craze, and in 1958 millions of them were sold."
+   ],
+   "quiet": [
+    "Influencers had just posted about it online. The drive-in sold 1953 tickets that night.",
+    "Lincoln was in the White House and the railroads were booming. The new town had 1957 houses.",
+    "Families gathered around their new smartphones. The station got 1955 emails from viewers.",
+    "Streaming had replaced albums and teenagers loved it. The record shop sold 1958 vinyl copies in a week.",
+    "Senator Douglas was debating Lincoln, and by 1858 their debates were in every newspaper.",
+    "The smallpox vaccine was being tested in villages, and in 1796 the results were announced.",
+    "The Moon landing had just thrilled the country, and in 1970 the EPA was founded.",
+    "Pet rocks were the latest craze, and in 1975 millions of them were sold."
+   ]
+  }
+ ],
+ "predictions": "6/8 fire >= 0.2; near misses under 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "which",
+   "card",
+   "probe"
+  ]
+ },
+ "short": "the 1950s, gated by context (round 2)",
+ "unit_kind": "meaning",
+ "confidence": 0.45,
+ "notes": "Second round on my own held label (round 1: #392, 'the 1950s (in digits)'). Reason, written before this test: a context year atlas (every year 1700-2029 read as a year, as a count, and as a count after a no-digit cue sentence about the matching era, an era 50 or 100 years away, or a modern setting; discovery only) found this pole's 195x readings strongly gated by context: inside 1950-59 it read 0.23 as a bare year in 'She was born in Y.', 0.05 as a plain count, 0.03 as a count in a modern cue, but 0.72 as a count after a 1950s cue (0.13 with a cue 50 years off, 0.06 with one 100 years off). Across the late decade units (layers 21-27, n=80) the same pattern holds on average: count 0.09, matched era 0.22, era 50 years off 0.13, era 100 years off 0.09. This round tests the context-gated label on fresh cues; no cue sentence of the atlas is reused. Scoring runs on a Modal L40S (bfloat16; PARITY OK on Modal)."
+}
