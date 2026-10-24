@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-23-moridinamael-95a15315",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N10911+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T00:03:58+00:00",
+ "roles": ["feeds bonsai1/L4/N2322-"],
+ "neighbours": [
+  {
+   "unit": "L3/N10911",
+   "pole": "+",
+   "label": "A complaint or negation word inside a program's message string in code, strongest in error messages (raise ValueError(\"Invalid port\"), print(\"Error: No data found\"), throw new Error(\"Cannot read file\"), \"x must be positive\"): No, Invalid, Cannot, Missing, Expected, Failed, must, not. The same words in comments or prose stay near zero; plain status messages (\"Opened the file\") stay low; a complaint word in a non-error code string (\"Invalid entries\") can fire moderately.",
+   "short": "complaint word in a code message string",
+   "fire": [
+    "raise ValueError(\"Invalid port number\")",
+    "print(\"Error: No data found in the input file\")",
+    "throw new Error(\"Cannot read file: permission denied\");",
+    "if x <= 0: raise ValueError(\"x must be positive\")",
+    "log.error(\"Missing required field 'username'\")",
+    "raise TypeError(f\"Expected int, got {type(val).__name__}\")",
+    "fmt.Errorf(\"failed to connect to database: %v\", err)",
+    "System.err.println(\"Config file not found at \" + path);"
+   ],
+   "quiet": [
+    "# Port number is invalid if it is above 65535",
+    "print(\"Loaded data from the input file\")",
+    "// We cannot read the file until the lock is released",
+    "if x <= 0: x = abs(x)  # make x positive",
+    "log.info(\"Received field 'username'\")",
+    "# Expected an int here, but a float also works",
+    "fmt.Printf(\"connected to database: %v\\n\", addr)",
+    "System.out.println(\"Config file opened at \" + path);"
+   ]
+  }
+ ],
+ "predictions": "most fire items above 0.3; lowercase 'failed' and mid-string 'not found' weakest; quiet items near zero",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "step-out",
+   "bank-solo",
+   "inverse-de",
+   "quick-test"
+  ]
+ }
+}
