@@ -1,0 +1,163 @@
+{
+ "id": "2026-10-24-moridinamael-55f1fb66",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N2586+",
+ "contributor": "moridinamael",
+ "created": "2026-10-24T20:38:00+00:00",
+ "recipe": {
+  "toolchain_commit": "9adf9146",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L1_N2586_pos/2026-10-24-moridinamael-55f1fb66.tests.json"
+ },
+ "label": "the words 'Acta', 'Annals' and 'Annales' in any context (journal titles like Acta Tropica or Annals of Internal Medicine, but also Acta Sanctorum, the annals of history, the annals of baseball), plus 'Transactions' when it begins a journal title (IEEE Transactions on..., Philosophical Transactions); quiet on look-alikes (act, Action, actual, annual, Anna), on everyday 'transactions' (banking, sales), and on journal names that contain none of these words (Nature Medicine, Proceedings of the National Academy of Sciences, Physical Review Letters)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L1_N2586_pos/2026-10-24-moridinamael-55f1fb66.tests.json",
+   "prereg_commit": "9adf9146",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.642,
+     "peak": " Transactions"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.516,
+     "peak": "a"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.523,
+     "peak": "als"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.305,
+     "peak": "als"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.508,
+     "peak": "a"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.578,
+     "peak": "les"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.477,
+     "peak": " on"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.459,
+     "peak": " Transactions"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.01,
+     "peak": " Current"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.048,
+     "peak": " journal"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.448,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.008,
+     "peak": " history"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.005,
+     "peak": " collection"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.008,
+     "peak": " school"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.19,
+     "peak": " Review"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.002,
+     "peak": " week"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.512,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "9adf9146",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L5/N12097+"
+ ],
+ "notes": "Step-out feeder of bonsai1/L5/N12097+ chosen from the resident attribution ranking (play step hit CUDA OOM twice next to the stream's resident model). Test written blind by a second author from the label only. The DE solver's leak was 'IEEE Transactions on ...' (0.64, peak ' Transactions'), so the label was widened to 'Transactions' in journal titles before the draw; everyday 'transactions' stays near 0. The one near miss over 0.30 was ' of' in 'New England Journal of Medicine' (0.45): ' of' after 'Journal' is a secondary branch the label does not claim (probes put it at about 0.25-0.35, even in 'journal of daily thoughts').",
+ "edges": [
+  {"from": "bonsai1/L1/N2586+", "to": "bonsai1/L5/N12097+", "kind": "feeds", "weight": null, "method": "attribution rank 1 of 12 MLP feeders on the target's top 4 examples (resident feeders tool; play step ablation hit CUDA OOM)"}
+ ]
+}
