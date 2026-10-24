@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-0b5c454b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N1127+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T16:21:33+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N1127",
+   "pole": "+",
+   "label": "the word right before an expected physical or numeric magnitude noun (weight, age, depth, altitude, height), predicting that measure",
+   "fire": [
+    "The ride has a minimum age of twelve for safety reasons.",
+    "Nurses measure every child's height and weight on the first visit.",
+    "The divers descended slowly to a depth of forty meters.",
+    "Losing a little each month is the safest way to reach a healthy weight.",
+    "The club sets a minimum age of eighteen for new members.",
+    "Pine trees grow here at altitudes above two thousand meters.",
+    "Parents are sending children to school at ever younger ages.",
+    "The form asks for your height and weight before the test."
+   ],
+   "quiet": [
+    "The ride has a long queue on most summer weekends.",
+    "Nurses greet every child with a sticker on the first visit.",
+    "The divers chatted quietly on the boat before lunch.",
+    "Cooking at home each night is the cheapest way to eat well.",
+    "The club holds a dinner each spring for new members.",
+    "Pine trees grow here on the slopes facing the north.",
+    "Parents are sending children to school with packed lunches.",
+    "The form asks for your name and address before the test."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.55 on the token just before 'weight', 'age', 'depth', 'altitude' when the context sets up a measure ('a minimum', 'height and', 'dive to a'); contexts that set up no measure below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "word before a magnitude noun (weight / age / depth)",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: ' healthy' x3 (healthy weight), ' younger' x3 (younger ages), ' minimum' x2 (minimum age), 'height and weight', 'down to a depth', 'at altitudes'. Probe: minimum age 0.533, height and weight 0.442, dive to a depth 0.428, healthy weight 0.310; 'healthy heart' also 0.310 and 'dive to a reef' 0.428 (fires before the noun, a predictor); 'internal temperature' 0.003, internal wiring 0.021."
+}
