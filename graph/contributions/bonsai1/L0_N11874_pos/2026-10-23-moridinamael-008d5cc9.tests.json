@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-moridinamael-008d5cc9",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N11874+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T03:11:32+00:00",
+ "roles": ["feeds bonsai1/L1/N5807-"],
+ "neighbours": [
+  {
+   "unit": "L0/N11874",
+   "pole": "+",
+   "label": "the piece 'ze' when the tokenizer cuts it off as its own token (Cru|ze, Je|ze|bel, Pl|zen, 'Deze' at the start of a line, the Dutch or Czech word ' ze', 'Ze' in Zeus); quiet when ze is merged into a bigger token (' bronze', ' freeze', ' dozen', ' Deze' after a space) or the letters split another way (z|ehn, Mend|ez, Gonz|alez, all-caps ' Z'+'E'); weak (~0.25) on whole words ending in -ze (' gaze', ' blaze', ' maze')",
+   "short": "the token piece 'ze' on its own",
+   "unit_kind": "token",
+   "fire": [
+    "She rented a Chevy Cruze for the long road trip to Ohio.",
+    "In the old story, Jezebel painted her eyes and looked out the window.",
+    "The brewery in Plzen gave its name to pilsner beer.",
+    "Ik weet niet waar ze wonen, maar ze komen morgen langs.",
+    "Zeus hurled a thunderbolt from the top of Mount Olympus.",
+    "Deze fiets is van mijn broer.",
+    "Přijel ze Prahy včera večer.",
+    "Ze zei dat het de hele dag had geregend."
+   ],
+   "quiet": [
+    "She bought a dozen eggs before the long road trip to Ohio.",
+    "The bronze statue stood quietly by the window.",
+    "The brewery in Munich gave its name to a famous lager.",
+    "Ik weet niet waar hij woont, maar hij komt morgen langs.",
+    "The pond will freeze solid if the cold lasts another night.",
+    "Officer Mendez filed the report late on Friday.",
+    "Ich habe in diesem Jahr zehn Bücher gelesen.",
+    "Hij wees en zei: Deze fiets is van mijn broer."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire, 0-1 near misses (the ' Deze' after a space item is the riskiest)",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "step-out"
+  ]
+ }
+}
