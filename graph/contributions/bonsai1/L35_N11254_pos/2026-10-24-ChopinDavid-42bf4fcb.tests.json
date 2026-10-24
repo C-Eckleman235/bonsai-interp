@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-42bf4fcb",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N11254+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T17:20:45+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N11254",
+   "pole": "+",
+   "label": "the byte-split CJK character 検 (examine, test) inside detection and testing compounds (検査, 検知, 検出) in Japanese medical and software text, as against the same sentences with another noun in its place",
+   "fire": [
+    "健康診断で尿検査と血液検査を受けることになりました。",
+    "このアプリは不正なファイルを自動で検知して隔離します。",
+    "新型ウイルスのPCR検査で陽性反応が出たと発表された。",
+    "セキュリティソフトがマルウェアを検出し、警告を表示した。",
+    "医師は念のため精密検査を受けるよう勧めました。",
+    "ウイルス対策ソフトによる検知・駆除の機能が強化された。",
+    "鳥インフルエンザの簡易検査で陽性反応が確認された。",
+    "侵入を検知するとシステムは通信を遮断します。"
+   ],
+   "quiet": [
+    "健康診断で医師の診察と問診を受けることになりました。",
+    "このアプリは不要なファイルを自動で整理して削除します。",
+    "新型ウイルスの流行で外出を控えるよう発表された。",
+    "セキュリティソフトが更新を完了し、通知を表示した。",
+    "医師は念のため数日間休むよう勧めました。",
+    "ウイルス対策ソフトによる自動更新の機能が強化された。",
+    "鳥インフルエンザの発生で養鶏場が閉鎖された。",
+    "異常があるとシステムは管理者に連絡します。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.4 on the byte pieces of 検 in medical tests and virus detection; the same sentences with 診察 or 駆除 below 0.05. The probe showed 検査 in an airport sentence at 0.004, so context matters and the median may miss 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "the character 検 in 検査/検知/検出",
+ "unit_kind": "word",
+ "confidence": 0.3,
+ "notes": "Card: byte tokens '�' x25 peaking on 検 (検査, 検知, 検定), 檢 in Chinese. Probe: ウイルスの検知 0.316, 血液検査 0.216; 荷物の検査 at the airport 0.004, Chinese 檢測 0.002 (檢 is one token), 結果/駆除 controls 0.003-0.004."
+}

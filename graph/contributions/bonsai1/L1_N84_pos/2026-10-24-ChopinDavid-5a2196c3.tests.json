@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-5a2196c3",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N84+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T17:20:45+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N84",
+   "pole": "+",
+   "label": "certain CJK characters and word-pieces that stand as their own token inside compounds (彩 in 彩信, 材 in 取材, 族 in 种族) and the 'repeat' piece of unrepeatable, on a broad, weak first-layer pole",
+   "fire": [
+    "她的手机不能发彩信，只能发短信。",
+    "电视台的记者正在现场取材。",
+    "她给我发了一条彩信，里面有照片。",
+    "那位作家常常去农村取材写小说。",
+    "老式手机没有彩信功能。",
+    "These memories are unrepeatable and precious to me.",
+    "为了这部纪录片，他们去了西藏取材。",
+    "运营商推出了新的彩信套餐。"
+   ],
+   "quiet": [
+    "她的手机不能上网，只能发短信。",
+    "电视台的记者正在现场报道。",
+    "她给我发了一条短信，里面有地址。",
+    "那位作家常常去农村生活写小说。",
+    "老式手机没有拍照功能。",
+    "These memories are simple and precious to me.",
+    "为了这部纪录片，他们去了西藏旅行。",
+    "运营商推出了新的流量套餐。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-1.0 on 彩 and 材 where they are separate tokens; ordinary Chinese sentences without them 0.1-0.25. The pole is broad, so near misses may reach 0.3",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split CJK characters 彩/材/族 (broad)",
+ "unit_kind": "unclear",
+ "confidence": 0.25,
+ "notes": "Card: max 0.31, broad 3.7%, echo regime 84%; peaks 族 (種族), 材 (取材) x3, 彩 (彩信) x3, 'repeat' (unrepeatable). Probe: 彩信 1.037, unrepeatable 0.739, 取材 0.586, 少数民族 0.172 (merged), 散步 0.215, English controls 0.13-0.15."
+}
