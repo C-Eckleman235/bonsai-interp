@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-23-ChopinDavid-10049549",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N498-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T04:20:42+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N498",
+   "pole": "-",
+   "label": "the Chinese character 即 as a token of its own ('即日', '，即…' meaning 'that is / namely'), as against words where it is merged into one token (立即, 即时) and other function characters",
+   "fire": [
+    "这座城市的老城区，即旧城墙以内的部分，已经有八百年历史。",
+    "学校通知，新规定即日生效，所有学生必须遵守。",
+    "她最担心的问题，即孩子的教育，终于有了答案。",
+    "本次活动的主办方，即市文化局，邀请了很多嘉宾。",
+    "合同签署后即刻执行，双方不得拒绝。",
+    "这种现象的根本原因，即人口老龄化，需要认真对待。",
+    "比赛的冠军，即来自上海的选手，获得了一万元奖金。",
+    "所谓的双减，即减轻作业负担，已经实施两年。"
+   ],
+   "quiet": [
+    "这座城市的老城区已经有八百年历史，游客很多。",
+    "学校通知，学生们必须立即回到教室上课。",
+    "她最担心孩子的教育问题，终于有了答案。",
+    "本次活动由市文化局主办，邀请了很多嘉宾。",
+    "合同签署以后，双方都必须遵守条款。",
+    "这个软件支持即时翻译，用起来很方便。",
+    "比赛的冠军来自上海，获得了一万元奖金。",
+    "所谓的改革，已经在全国实施了两年。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-0.8 where 即 is its own token; 立即 / 即时 tokens and nearby characters like 既, 就 below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "the token 即",
+ "unit_kind": "word",
+ "confidence": 0.8,
+ "notes": "Card: all 32 top peaks on '即' ('即日执行', '，即自身停止', '因素，即我们'). Probe: '那个人，即我们的老师' 0.764, '即日起' 0.643, '原因，即价格太高' 0.754; '立即' token 0.122, '即时' token 0.080, '既然' 0.011, plain sentence 0.002. tok.py: 立即 and 即时 are single tokens; 即日 splits 即|日."
+}
