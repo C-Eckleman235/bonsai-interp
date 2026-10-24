@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-23-C-Eckleman235-077bb134",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N11072-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T02:54:30+00:00",
+ "selection": "concept search: world atlas tier 2 (branch 19)",
+ "neighbours": [
+  {
+   "unit": "L9/N11072",
+   "pole": "-",
+   "label": "modern Greece: the islands (Mykonos, Corfu, Santorini, Crete, Naxos), Thessaloniki and Athens today, and 'Greek' in food and letters (Greek salad, Greek yogurt, the Greek letter mu); ancient Greek sites and other Mediterranean islands and countries in the same frames stay low",
+   "fire": [
+    "Whitewashed houses tumble down the cliffs of Santorini.",
+    "Ferries to Naxos were delayed by strong winds.",
+    "Party boats circled the bays of Mykonos all night.",
+    "The olive harvest on Crete was the best in years.",
+    "Tourists swam off the beaches of Corfu.",
+    "He made a Greek salad with tomatoes, cucumber and feta.",
+    "In the formula, the Greek letter mu stands for the mean.",
+    "Thessaloniki's students marched through the city centre."
+   ],
+   "quiet": [
+    "Whitewashed houses tumble down the cliffs of Positano.",
+    "Ferries to Hvar were delayed by strong winds.",
+    "Party boats circled the bays of Ibiza all night.",
+    "The olive harvest on Sicily was the best in years.",
+    "Tourists swam off the beaches of Malta.",
+    "He made a Caprese salad with tomatoes, basil and mozzarella.",
+    "In the formula, the capital letter N stands for the sample size.",
+    "Pilgrims climbed the hill to the ruins of ancient Olympia."
+   ]
+  }
+ ],
+ "predictions": "7/8 fire >= 0.3; near misses under 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "which",
+   "card",
+   "probe"
+  ]
+ },
+ "short": "modern Greece (round 2)",
+ "unit_kind": "meaning",
+ "confidence": 0.6,
+ "notes": "Second round with a narrower label (round 1 #829: held, AUROC 1.00, but Piraeus, named in the label, read 0.17). Reason, written before this test: probes after round 1 (exploratory, none reused) show the islands and food carrying the unit (Greek salad 0.63, Mykonos 0.61, Corfu 0.56, souvlaki near Syntagma 0.38, the Parthenon 0.35) while Piraeus port (0.23), Rhodes (0.28) and Delphi (0.07) are weak. So Piraeus is dropped and the islands are claimed; an ancient-site near miss (Olympia) tests the 'ancient sites stay low' clause. Scoring runs on a Modal L40S (bfloat16; PARITY OK on Modal)."
+}
