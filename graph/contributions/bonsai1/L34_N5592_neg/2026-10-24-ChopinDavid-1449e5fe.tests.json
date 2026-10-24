@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-1449e5fe",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N5592-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T16:21:33+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N5592",
+   "pole": "-",
+   "label": "dense: active across most text; best guess, the closing token of a quoted value or argument in a code condition",
+   "fire": [
+    "    if data.get('mode', None) and data['mode'].get('fast'):\n        start()",
+    "    if attrs.get(\"kind\") == \"leaf\" and visible:\n        draw()",
+    "    if row['status'] == 'done' and row['owner']:\n        archive(row)",
+    "    while queue and queue[0].get('ready'):\n        queue.pop(0)",
+    "    if cfg.get('debug', False) and cfg['level'] > 2:\n        log()",
+    "    if node.attrib.get('type') == 'text' and node.text:\n        keep(node)",
+    "    if item.get('price') and item['price'] > 10:\n        flag(item)",
+    "    if opts.get(\"verbose\") == \"yes\" and out:\n        show(out)"
+   ],
+   "quiet": [
+    "We start the fast mode only when the data says so.",
+    "The leaf is drawn when it is visible and of the right kind.",
+    "Finished rows that have an owner are archived each night.",
+    "The queue is emptied while its first item is ready.",
+    "Logging is on when debugging is set and the level is high.",
+    "Text nodes are kept when they actually contain text.",
+    "Items that cost more than ten dollars are flagged.",
+    "Output is shown when the verbose option is turned on."
+   ]
+  }
+ ],
+ "predictions": "near misses will fire as much as fire items; probe floor on a plain sentence was 0.243, so this test is expected to fail",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense; closing token in code conditions (best guess)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.1,
+ "notes": "Card: FLAG dense (17.6% of tokens reach 0.1 of max). Peaks on closing quotes and parens in code conditions, 'State', ' Divine', 'wood'. Probe: code condition 0.613 and 0.381, prose 0.234-0.442, the cat floor 0.243. Not separable with 8+8."
+}

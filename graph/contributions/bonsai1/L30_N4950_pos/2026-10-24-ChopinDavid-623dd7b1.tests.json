@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-623dd7b1",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N4950+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T16:21:33+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L30/N4950",
+   "pole": "+",
+   "label": "a method or function name being called in long Python code (format, append, plot, encode), as against the same words in prose",
+   "fire": [
+    "import base64\n\ndef sign(msg, key):\n    raw = hmac.new(key, msg).digest()\n    sig = base64.b64encode(raw)\n    return sig.decode()",
+    "def draw(ax, data):\n    for col in range(data.shape[1]):\n        ax.plot(data[:, col], label=str(col))\n    ax.legend()",
+    "def widths(items):\n    out = np.array([len(x) for x in items], np.float32)\n    return out.mean()",
+    "    if not page:\n        raise FetchError('Could not load {}'.format(url))\n    entries = page.get('entries')",
+    "    points = []\n    for i in range(10):\n        points.append(i * 0.5)\n    return points",
+    "    clause = []\n    if owner:\n        clause.append('coalesce(owner.id, 0)')\n    sql = ' and '.join(clause)",
+    "    files = self._decode_files(files)\n    rt = self.runtime\n    rt.start(files)",
+    "    bits = np.floor(np.log2(diffs)) + 1\n    total = bits.sum()\n    return total"
+   ],
+   "quiet": [
+    "Before you sign the form, encode the address in the box at the top.",
+    "The students will plot the data on graph paper in class.",
+    "She keeps an array of old coins in a glass case by the door.",
+    "Please format the report so the headings stand out.",
+    "He will append his notes to the minutes of the meeting.",
+    "The cook added a coalesce of herbs, which is not a real word.",
+    "Old letters are hard to decode when the ink has faded.",
+    "The log of the voyage was kept by the second mate."
+   ]
+  }
+ ],
+ "predictions": "fire weakly on method names before '(' in Python; the same words in English prose near zero. Probe calls reached only 0.035-0.112 in short snippets, so the median will likely miss 0.3",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "called method names in Python code",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card: peaks on 'encode', 'alesce', '.plot', '.array', '.format', '.append' in long code (max 183, dense 0.7%). Probe: short snippets b64encode 0.112, ax.plot 0.077, np.array 0.063, .format 0.035; prose format/append 0.003. Separation exists but activations are small without long code context."
+}

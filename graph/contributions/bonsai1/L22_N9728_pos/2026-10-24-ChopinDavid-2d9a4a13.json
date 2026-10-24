@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-2d9a4a13",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N9728+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-24T16:28:35+00:00",
+ "recipe": {
+  "toolchain_commit": "bc49390c",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L22_N9728_pos/2026-10-24-ChopinDavid-2d9a4a13.tests.json"
+ },
+ "label": "the indentation token that opens a new line inside a deeply nested code block, right after a line that closes a call or literal",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N9728_pos/2026-10-24-ChopinDavid-2d9a4a13.tests.json",
+   "prereg_commit": "bc49390c",
+   "author": "ChopinDavid",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.042,
+     "peak": "\")\n"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.023,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.018,
+     "peak": " self"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.092,
+     "peak": "       "
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.022,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.05,
+     "peak": "\n"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.017,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.02,
+     "peak": " self"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.013,
+     "peak": " aligned"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.019,
+     "peak": " id"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.017,
+     "peak": "We"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.016,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.017,
+     "peak": " parser"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.018,
+     "peak": "At"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.017,
+     "peak": " web"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.013,
+     "peak": "Then"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.922,
+    "median_fire": 0.022,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "bc49390c",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "indentation after a closed line in nested code",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card: whitespace runs x7, newline tokens x4, '=True' x4, ')\\n' x2, all in long Python files (Django test dicts, Qt setup code). Probe: short code blocks and prose all 0.014-0.022, no difference. Likely needs long-range code context the test cannot give; best-guess test with longer nested code.",
+ "selection": "random draw"
+}

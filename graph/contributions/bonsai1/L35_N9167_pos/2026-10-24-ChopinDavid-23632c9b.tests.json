@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-23632c9b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N9167+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T16:21:33+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N9167",
+   "pole": "+",
+   "label": "positional: fires on the first token of a context window, whatever it is",
+   "fire": [
+    "total of twelve people came to the meeting.",
+    "only road into the valley was closed by snow.",
+    "himself into the work and finished by dawn.",
+    "can be ordered from the shop on the corner.",
+    "の後、彼は東京に戻った。",
+    "salary of the clerk was paid every Friday.",
+    "ads were printed on the back of the ticket.",
+    "34 minutes past the hour, the train left."
+   ],
+   "quiet": [
+    "The total of twelve people came to the meeting.",
+    "The only road into the valley was closed by snow.",
+    "He threw himself into the work and finished by dawn.",
+    "It can be ordered from the shop on the corner.",
+    "その後、彼は東京に戻った。",
+    "The salary of the clerk was paid every Friday.",
+    "Small ads were printed on the back of the ticket.",
+    "At 34 minutes past the hour, the train left."
+   ]
+  }
+ ],
+ "predictions": "the scorer cannot isolate window position 0, and the probe found nothing (all fragments below 0.06), so this test is expected to fail",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "positional; first token of the window",
+ "unit_kind": "dense / positional",
+ "confidence": 0.1,
+ "notes": "Card: FLAG positional (88% of top peaks at window position 0, 100% within the first 16 tokens); peaks on arbitrary tokens (の, ' total', ' إ', '.tk', a digit). Probe: sentence fragments starting mid-sentence all -0.005 to 0.054. Best-guess test with fragments that begin mid-thought."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-2d9a4a13",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N9728+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T16:21:33+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N9728",
+   "pole": "+",
+   "label": "the indentation token that opens a new line inside a deeply nested code block, right after a line that closes a call or literal",
+   "fire": [
+    "class Window:\n    def setup(self):\n        self.label = QLabel(self.panel)\n        self.label.setAlignment(Qt.AlignLeft)\n        self.label.setObjectName(\"title\")\n        self.button = QPushButton(self.panel)\n        self.button.setObjectName(\"ok\")",
+    "class TestVolume(TestCase):\n    def test_attach(self):\n        info = {\n            'source_type': 'volume',\n            'volume_id': 7,\n            'device_type': 'disk',\n        }\n        self.assertEqual(1, len(info))",
+    "def build(self):\n        self.flags(group='compute')\n        self.flags(virt_type='kvm', group='libvirt')\n        flavor = 'small'\n        image = 'base'\n        return flavor, image",
+    "    def on_save(self, event):\n        name = self.name_box.GetValue()\n        size = self.size_box.GetValue()\n        self.Bind(wx.EVT_BUTTON, self.on_close)\n        self.Layout()",
+    "class Parser:\n    def end_author(self):\n        self.end_name()\n        self.in_author = 0\n        self.depth -= 1\n\n    def end_title(self):\n        self.in_title = 0",
+    "    for row in rows:\n        if row.id % 10 == 0:\n            db.commit()\n            # flush\n        db.save(row)\n    db.commit()\n    db.close()",
+    "services:\n    web:\n        image: nginx\n        ports:\n            - 80\n    db:\n        image: postgres\n        restart: always",
+    "    def test_run(self):\n        res = sess.run([node])\n        self.assertEqual(1, len(res))\n        self.assertEqual(2, res[0])\n        self.assertTrue(done)"
+   ],
+   "quiet": [
+    "The window has a title at the top.\nBelow it there is a single button.\nPressing it saves the file.\nThe label is aligned to the left.",
+    "The volume was attached as a disk.\nIts id was seven.\nThe test checked one field.\nEverything passed on the first try.",
+    "We set the compute group first.\nThen we picked the small flavor.\nThe base image came last.\nIt took about an hour.",
+    "When you press save, the name is read.\nThe size is read next.\nThe close button is bound.\nThen the layout is refreshed.",
+    "The parser closes the author tag.\nIt resets the author flag.\nIt lowers the depth by one.\nThen it handles the title.",
+    "For every row we check the id.\nEvery tenth row we commit.\nEach row is saved.\nAt the end we commit and close.",
+    "The web service runs nginx on port 80.\nThe database runs postgres.\nIt restarts automatically.\nBoth start together.",
+    "The test runs the session once.\nIt checks there is one result.\nIt checks the value is two.\nThen it checks the run finished."
+   ]
+  }
+ ],
+ "predictions": "fire weakly on the leading whitespace of lines inside a method or nested literal in long code; prose with line breaks below 0.1. The probe found almost nothing (all 0.014-0.022), so this will probably fail",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "indentation after a closed line in nested code",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card: whitespace runs x7, newline tokens x4, '=True' x4, ')\\n' x2, all in long Python files (Django test dicts, Qt setup code). Probe: short code blocks and prose all 0.014-0.022, no difference. Likely needs long-range code context the test cannot give; best-guess test with longer nested code."
+}
