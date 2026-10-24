@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-84aff254",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N12040+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T13:19:43+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N12040",
+   "pole": "+",
+   "label": "a word piece that continues an unusual word right after a short first piece: the kanji after the honorific prefix お (お茶, お花), and inner consonant pieces of transliterated Slavic or Central Asian names (Pan|j|shir, L|j|ub|lj|ana)",
+   "fire": [
+    "週末は友達とお茶を飲みながら話しました。",
+    "父は夕食のときはお酒を少しだけ飲みます。",
+    "母の誕生日にはいつもお花を買って帰ります。",
+    "暑い日は冷たいお水をこまめに飲んでください。",
+    "The convoy drove north through the Panjshir valley at dawn.",
+    "Last spring the conference was held in Ljubljana for the first time.",
+    "The ferry from Sweden arrives in the port of Szczecin every morning.",
+    "Many historians have studied the advice that Brzezinski gave the president."
+   ],
+   "quiet": [
+    "週末は友達とコーヒーを飲みながら話しました。",
+    "父は夕食のときはビールを少しだけ飲みます。",
+    "母の誕生日にはいつもケーキを買って帰ります。",
+    "暑い日は冷たいジュースをこまめに飲んでください。",
+    "The convoy drove north through the Rhine valley at dawn.",
+    "Last spring the conference was held in Vienna for the first time.",
+    "The ferry from Sweden arrives in the port of Hamburg every morning.",
+    "Many historians have studied the advice that Kissinger gave the president."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.85 on the kanji after お and on 'j'/'cz'/'ze' pieces inside transliterated names; the same nouns without お around 0.25, and common English names below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "piece after お / inside foreign names",
+ "unit_kind": "word",
+ "confidence": 0.35,
+ "notes": "Card: '手' x7 (お手伝い), '天' (お天気), '仕' (お仕事), 'd' in Pajdusakova, 'j' in Panjwai, 'ith' in Pithana, ' 이름'. Probe: お手伝い 0.752, お天気 0.824, お仕事 0.816; without お 0.251 and 0.277; Pajdusakova 0.859, Panjwai 0.686; 'Mrkos and Smith' 0.025. The shared pattern is a continuation piece after an odd prefix; the near misses keep the noun or the frame and drop the split. Without-お near misses are a known risk near 0.25."
+}

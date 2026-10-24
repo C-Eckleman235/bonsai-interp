@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-da38eba0",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N7330-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T13:19:43+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N7330",
+   "pole": "-",
+   "label": "the split piece 'f' (as '-f', 'ef', 'gef') that begins a find/fund stem broken off from its continuation ('fact-f|inding', 'rang|ef|inder', 'statt|gef|unden'); it promotes 'finding'/'found'",
+   "fire": [
+    "The union demanded an independent fact-finding panel after the accident.",
+    "In this kind of case, the jury serves as the fact-finder.",
+    "Hunters often carry a laser rangefinder to judge the distance.",
+    "Die Polizei hat das gestohlene Auto im Wald aufgefunden.",
+    "Das Konzert hat trotz des Regens im Park stattgefunden.",
+    "The navy tested a new rangefinding system on the cruiser.",
+    "The senators flew to the border on a fact-finding trip.",
+    "Der Arzt besprach den Befund mit der Patientin."
+   ],
+   "quiet": [
+    "The union demanded an independent fact-checking panel after the accident.",
+    "In this kind of case, the jury decides the verdict.",
+    "Hunters often carry a laser pointer to mark the target.",
+    "Die Polizei hat das gestohlene Auto im Wald gesucht.",
+    "Das Konzert wurde wegen des Regens im Park abgesagt.",
+    "The navy tested a new radar system on the cruiser.",
+    "The senators flew to the border on a campaign trip.",
+    "Der Arzt besprach die Diagnose mit der Patientin."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.65 on '-f'/'ef'/'gef' before 'inding', 'inder', 'unden'; compounds with other second parts and whole-word 'findings' below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split 'f' of find/fund stems",
+ "unit_kind": "word",
+ "confidence": 0.55,
+ "notes": "Card: 'ef' x8, '-f' x4, ' bef', 'gef' (fact-finding, rangefinder, stattgefunden, Befragung); the neuron's output promotes ' findings', ' finding', ' found'. Probe: 'fact-finding' 0.499, 'fact-finder' 0.618, 'rangefinder' 0.525, 'stattgefunden' 0.654, 'befanden' 0.246; 'fact-checking' 0.035, 'telescope' 0.005, 'new findings' 0.083. Tokenizer checked: every fire word splits into a lone f-piece before the stem."
+}

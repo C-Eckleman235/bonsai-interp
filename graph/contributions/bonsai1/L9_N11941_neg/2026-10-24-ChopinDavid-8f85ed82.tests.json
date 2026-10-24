@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-8f85ed82",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N11941-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T13:19:43+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L9/N11941",
+   "pole": "-",
+   "label": "small integers that are members of an enumerated list or range of values ('[0, 1, 2, 3]', 'the values 0, 1, 2', 'any number from 0 to 10'), as against counts, dates and amounts",
+   "fire": [
+    "weights = [0, 1, 1, 2, 3, 5, 8]",
+    "    self.steps = [0, 0, 1, 2, 2, 3, 4]",
+    "The index takes the values 0, 1, 2, 3 and 4 in turn.",
+    "Each cell holds a digit, and the digits 0, 1 and 2 are allowed.",
+    "scores = [1, 2, 2, 3, 4, 4, 5]",
+    "Pick any number from 1 to 9 and write it down.",
+    "    ids = [0, 2, 4, 6, 8]",
+    "The parameter k can be 0, 1, 2 or 3 depending on the mode."
+   ],
+   "quiet": [
+    "The shop sold 4 lamps and 2 chairs on Monday.",
+    "The train leaves at 7 and arrives at 9.",
+    "The concert is on 3 June 2022 in the park.",
+    "A coffee costs 2 dollars and a cake costs 4.",
+    "She has 3 brothers and 1 sister.",
+    "The book has 12 chapters and 240 pages.",
+    "We waited 5 minutes for the bus.",
+    "The recipe needs 2 eggs and 1 cup of milk."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.4 on digits inside value lists in code or prose; counts of objects, dates and prices below 0.12",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "integers in a value list",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: digits in Python lists ('[0, 2, 3, 3,', 'prescalerValue=[0,0,0,0,1,1,2'), ' any' in 'any number from 0 to 10'. Probe: '[0, 2, 3, 3, 4, 5]' 0.385, 'levels = [0, 0, 1, 1, 2, 2, 3]' 0.376, 'The values 0, 1, 2 and 3' 0.347, 'any number from 0 to 10' 0.334, 'orders = [0, 2, 4]' 0.238; '2 apples and 3 pears' 0.109, 'range(0, 180, 5)' 0.108, '12 March 2021' 0.020."
+}

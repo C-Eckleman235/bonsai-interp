@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-27a1bc06",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N2816+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T13:19:43+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N2816",
+   "pole": "+",
+   "label": "generic statements about when, where or how often something typically happens ('are most common in', 'usually occur during', 'are another common target'), as against reports of one specific event",
+   "fire": [
+    "Nosebleeds are most common in the winter when the air is dry.",
+    "Ear infections are most common in young children.",
+    "These errors usually occur during the first week of use.",
+    "Flooding tends to happen during the spring thaw.",
+    "Olive oil is another common target of food fraud.",
+    "Injuries are most common in the first minutes of a match.",
+    "Delays usually occur during the holiday rush.",
+    "Allergies are most common in people with a family history of asthma."
+   ],
+   "quiet": [
+    "My nose bled last night because the air was dry.",
+    "Our son had an ear infection last month.",
+    "The error appeared during my first week at the new job.",
+    "The river flooded during the spring thaw of 1997.",
+    "The inspector tested a bottle of olive oil on Tuesday.",
+    "He was injured in the first minute of the match.",
+    "Our train was delayed during the holiday rush.",
+    "My sister developed an allergy to cats last year."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.5 on the preposition or verb after a generic frequency frame; one-off past events below 0.25",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "generic 'typically happens' frame",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: peaks on function words in health and how-to text ('Cramps are most common in| the heat', 'usually occur| during', 'Generally|,'). Probe: 'most common in the summer' 0.494, 'would usually occur during' 0.463, 'Fruit juices are another common target' 0.371, 'Generally, sunburn results from' 0.104, 'will usually answer with' 0.006; episodic 'The crash occurred during ... yesterday' 0.236, 'hit him in the summer' 0.157."
+}

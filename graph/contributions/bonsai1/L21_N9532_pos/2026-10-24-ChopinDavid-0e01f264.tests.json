@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-0e01f264",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N9532+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-24T13:19:43+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L21/N9532",
+   "pole": "+",
+   "label": "unclear: Python method bodies (calls on self, if-guards, keyword arguments), weak on fresh code",
+   "fire": [
+    "class Cache:\n    def get(self, key):\n        item = self._store.get(key)\n        if item:\n            return item.value",
+    "    def stop(self):\n        self._notify_about_usage(context, server, 'stop.start')\n        self.driver.power_off(server)",
+    "    def media_title(self):\n        \"\"\"Return the title of current playing media.\"\"\"\n        return self._player.title",
+    "        uid = UserIdentity(email=email)\n        identity = Identity(uid)\n        if not identity.valid:\n            raise ValueError",
+    "    def set_label(self, index):\n        self.tk.call(self._w, 'label', index)",
+    "        if versionutils.is_newer(min_version, current):\n            return True",
+    "        window = Window(np.zeros((32, 32), channels))\n        result = window.run()",
+    "    def tearDown(self):\n        self.assertEqual(install.mode, 4)\n        self.cleanup()"
+   ],
+   "quiet": [
+    "The cache looks up the key and, if it finds an item, gives back its value.",
+    "To stop the server, the tool first sends a notice and then turns off the power.",
+    "The player shows the title of the song that is playing right now.",
+    "Each user gets an identity from their email, and invalid ones are rejected.",
+    "The label is set by the toolkit when you choose an index from the menu.",
+    "If the minimum version is newer than the current one, the check passes.",
+    "The window starts with an empty grid of thirty-two by thirty-two cells.",
+    "After each test, the script checks the install mode and cleans up."
+   ]
+  }
+ ],
+ "predictions": "best guess: Python method code 0.05-0.2, prose 0.0-0.05; likely fails on median",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Python method bodies (unclear)",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Card peaks are scattered over Python code tokens (' version', 'Identity', ' instance', ' if', '(self'). Probe: every sentence at or below 0.063 (Python 'if obj' 0.063, JS 'if' 0.060, prose 'if there is a newer one' 0.040). Registered as unclear with a best-guess test."
+}
