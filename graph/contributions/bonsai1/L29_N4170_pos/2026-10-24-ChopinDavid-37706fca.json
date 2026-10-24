@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-37706fca",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N4170+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-24T20:28:25+00:00",
+ "recipe": {
+  "toolchain_commit": "e47a25ed",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L29_N4170_pos/2026-10-24-ChopinDavid-37706fca.tests.json"
+ },
+ "label": "the word that sets up 'secret' as the next noun ('closely guarded', 'best-kept', 'kept a', 'remained their'), firing on the setup even when another noun follows, as against the same nouns without a secrecy setup",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L29_N4170_pos/2026-10-24-ChopinDavid-37706fca.tests.json",
+   "prereg_commit": "e47a25ed",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.737,
+     "peak": " closely"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.309,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.831,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.866,
+     "peak": "kept"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.62,
+     "peak": " her"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.977,
+     "peak": " guarded"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.744,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.762,
+     "peak": " his"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.216,
+     "peak": " is"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.07,
+     "peak": " is"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.016,
+     "peak": " announced"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.008,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.055,
+     "peak": " is"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.007,
+     "peak": " is"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.003,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.121,
+     "peak": " is"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.753,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "e47a25ed",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "setup that predicts 'secret'",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card peaks on the token before 'secret' (best-kept| beauty, closely| guarded, kept| a, remained| their); the - pole promotes ' secret'. Probe: 'remained| their|' 0.744, 'closely| guarded| secret' 0.707, 'best-|kept|' 0.674, 'kept| a| secret' 0.501; 'closely| guarded| treasure' also 0.707 (it reads the setup, not the word); 'kept running' 0.050, 'told everyone the secret' 0.075.",
+ "selection": "random draw"
+}
