@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-25-C-Eckleman235-d5a51f35",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N7003+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T05:00:19+00:00",
+ "selection": "concept search: echoes (copy-only digit screen)",
+ "neighbours": [
+  {
+   "unit": "L34/N7003",
+   "pole": "+",
+   "label": "inside a number that is being copied from earlier in the text, the token just before a 7 in the copy (the model knows a 7 comes next because it saw the number before); the same copies with a different digit at that spot, and first mentions where a 7 follows unpredictably, stay quiet",
+   "fire": [
+    "Your parcel tracking code is 1746.\nTo check status, enter 1746",
+    "Train 4761 departs at noon. All aboard train 4761!",
+    "The winning lottery number was 6174. Again, that is 6174.",
+    "Employee badge 1764 was scanned. Badge 1764 is cleared.",
+    "Apartment 671 is vacant.\nKeys for apartment 671 are at the desk.",
+    "The jersey number is 47. Fans chanted 47 all night.",
+    "Case file 1476 was reopened.\nInvestigators reviewed case file 1476.",
+    "Set the dial to 674. Turning it to 674 now."
+   ],
+   "quiet": [
+    "Your parcel tracking code is 1346.\nTo check status, enter 1346",
+    "Train 4361 departs at noon. All aboard train 4361!",
+    "The winning lottery number was 6134. Again, that is 6134.",
+    "Employee badge 1364 was scanned. Badge 1364 is cleared.",
+    "Apartment 671 is vacant and freshly painted.",
+    "The jersey number is 47 this season.",
+    "Case file 1476 was reopened last spring.",
+    "Set the dial to 674 before you start."
+   ],
+   "short": "before a copied 7 (copies only)",
+   "notes": "From a copy-only digit screen (10 digits x 6 pairs, position-aware: fire on the token before the copied digit, quiet there in a control that copies another digit), where the known units came back as positive controls (copied 3 L34/N3875+, 6 L34/N4571+, 8 L34/N9922-). This pole: 4/6 screen pairs; triage: copies before a 7 0.29-0.43, other digit 0.00, first mention 0.00, counting 0.00; its output promotes '7', ' seven', ' seventh', ' July', ' VII'. Part of a family of layer-34 copy-digit units that feed the late 'predictable digit' units."
+  }
+ ],
+ "predictions": ">= 7/8 fire; near misses < 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ]
+ }
+}
