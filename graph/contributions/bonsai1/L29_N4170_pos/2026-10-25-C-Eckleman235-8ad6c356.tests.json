@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-25-C-Eckleman235-8ad6c356",
+ "contributor": "C-Eckleman235",
+ "kind": "qc",
+ "neuron": "bonsai1/L29/N4170+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T04:43:48+00:00",
+ "selection": "picked",
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "the word that sets up 'secret' as the next noun ('closely guarded', 'best-kept', 'kept a', 'remained their'), firing on the setup even when another noun follows, as against the same nouns without a secrecy setup",
+  "notes": "Picked for fun (a neuron that waits for 'secret'). Probes: 'best-kept lawn' 0.84 but 'kept a diary' 0.06 and 'the closely guarded border' 0.02, so the setup seems to be read in context, as the label says. This confirm uses harder near misses, two with 'kept' in a non-secret sense. I read this pole's earlier test before writing mine (the brief asks to read it after drafting): none of its sentences or frames are reused, and these 16 sentences were scored 0 times before this commit."
+ },
+ "neighbours": [
+  {
+   "unit": "L29/N4170",
+   "pole": "+",
+   "label": "the word that sets up 'secret' as the next noun ('closely guarded', 'best-kept', 'kept a', 'remained their'), firing on the setup even when another noun follows, as against the same nouns without a secrecy setup",
+   "fire": [
+    "The coach's playbook was a closely guarded document that few players saw.",
+    "Grandma's cure for hiccups is the best-kept trick in our family.",
+    "The date of the wedding was kept a surprise for the guests.",
+    "The name of the winner was kept a mystery until the final night.",
+    "Fresh herbs are one of the best-kept secrets of a good soup.",
+    "Who funded the campaign has long remained their secret.",
+    "The chef's sauce recipe is a jealously guarded treasure of the restaurant.",
+    "The location of the cave remains a well-kept secret among local climbers."
+   ],
+   "quiet": [
+    "The coach's playbook was a thick document that every player read.",
+    "Grandma's cure for hiccups is the oldest trick in our family.",
+    "The date of the wedding was kept in a small notebook by the planner.",
+    "The name of the winner was kept on a list at the front desk.",
+    "Fresh herbs are one of the main ingredients of a good soup.",
+    "Who funded the campaign has long been listed on their website.",
+    "The chef's sauce recipe is a popular feature of the restaurant.",
+    "The location of the cave is marked on maps used by local climbers."
+   ]
+  }
+ ],
+ "predictions": "confirm: >= 7/8 fire, no near miss >= 0.3; two near misses keep 'kept' in a non-secret sense",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "look",
+   "probe"
+  ]
+ }
+}
