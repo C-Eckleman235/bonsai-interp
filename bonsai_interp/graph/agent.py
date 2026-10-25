@@ -294,6 +294,12 @@ def brief(a):
         out = [ln for ln in out if not any(k in ln for k in ("bands scan", "bands sample", "Look past the top examples"))]
         out.insert(2, "Depth: QUICK. Find TARGET as below, then look, probe a handful of sentences, pre-register one test and run it. "
                       "Skip the band scan.")
+    if a.kind in ("interpret", "qc", "step", "stepin") and a.neuron:
+        out.insert(2, f"Start from what is already known: `{py} -m bonsai_interp.graph.play card --neuron {nid} --no-logits`. If it shows a held "
+                      "sweep-library or auto-screen test, that hypothesis already passed a held-out 8 + 8 (scrutiny 0): test its edges (what else "
+                      "fires the pole, what the claim misses) instead of re-deriving it. "
+                      f"`{py} -m bonsai_interp.graph.play search \"<words>\"` lists poles with related labels and automatic results. "
+                      "No atlas lines on the card: `bash scripts/fetch_data.sh atlas`.")
     if a.kind in ("interpret", "qc"):
         if (a.depth or "quick") == "quick":  # ~5-10 minutes: top examples, a few probes, one pre-registered test
             out = [ln for ln in out if not any(k in ln for k in ("bands scan", "bands sample", "Look past the top examples"))]

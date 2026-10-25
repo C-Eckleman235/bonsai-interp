@@ -21,7 +21,8 @@ One row per pole, keyed by `pole` = 2 * neuron + (1 for the - pole):
   hit_trigger                     and whether stage 1 screened that word (lists, at most 5)
   bin, context, test, auroc       the auto-token@2 screen and auto test, when the layer has been screened
   lib_kind, lib_condition,        the sweep library's best test of the pole (sweeplib@1: copy, topic, lang, struct, number,
-  lib_test, lib_auroc, lib_held   predict), a held one first; lib_held lists every condition it held under
+  lib_test, lib_auroc, lib_held,  predict), a held one first; lib_held lists every condition it held under, lib_label
+  lib_label                       the claim that test made (scrutiny 0: an automatic test, never a survey label)
 Scrutiny 0 throughout: corpus statistics and automatic tests, never a label. Labels and statuses from tested
 contributions stay in graph/ (git), keyed the same way, and can be joined on (layer, neuron, sign).
 Published in the `atlas` release; `bash scripts/fetch_data.sh atlas` downloads it.
@@ -68,12 +69,14 @@ def _schema():
                       ("bin", pa.dictionary(pa.int8(), pa.string())), ("context", pa.string()),
                       ("test", pa.dictionary(pa.int8(), pa.string())), ("auroc", pa.float32()),
                       ("lib_kind", pa.dictionary(pa.int8(), pa.string())), ("lib_condition", pa.dictionary(pa.int16(), pa.string())),
-                      ("lib_test", pa.dictionary(pa.int8(), pa.string())), ("lib_auroc", pa.float32()), ("lib_held", lst(pa.string()))])
+                      ("lib_test", pa.dictionary(pa.int8(), pa.string())), ("lib_auroc", pa.float32()), ("lib_held", lst(pa.string())),
+                      ("lib_label", pa.string())])
 
 
 def sweeplib(path=ROOT / "data" / "sweeplib" / "bonsai1.sweeplib1.results.jsonl.gz"):
-    """{(layer, "N123+"): (kind, condition, outcome, auroc, [held conditions])} from the sweep library's results: the pole's
-    best result (a held test first, then the highest AUROC). Placebo tests are left out. {} when there are no results."""
+    """{(layer, "N123+"): (kind, condition, outcome, auroc, [held conditions], label)} from the sweep library's results: the
+    pole's best result (a held test first, then the highest AUROC), with that test's label (masked). Placebo tests are left
+    out. {} when there are no results."""
     if not Path(path).exists():
         return {}
     from bonsai_interp.graph.protocols import v2_stats
@@ -85,13 +88,13 @@ def sweeplib(path=ROOT / "data" / "sweeplib" / "bonsai1.sweeplib1.results.jsonl.
                 continue
             L, key = int(r["neuron"].split("/L")[1].split("/")[0]), r["neuron"].split("/")[-1]
             auroc = (v2_stats(r) or (None,))[0]
-            cand = (r["kind"], r["condition"], r["outcome"], auroc)
+            cand = (r["kind"], r["condition"], r["outcome"], auroc, mask(r.get("label")))
             if r["outcome"] == "held":
                 held.setdefault((L, key), []).append(f"{r['kind']}:{r['condition']}")
             old = best.get((L, key))
             if old is None or (cand[2] == "held", cand[3] or 0) > (old[2] == "held", old[3] or 0):
                 best[(L, key)] = cand
-    return {k: (*v, held.get(k, [])) for k, v in best.items()}
+    return {k: (*v[:4], held.get(k, []), v[4]) for k, v in best.items()}
 
 
 def build_layer(hits_path, screen_path=None, out_dir=ATLAS, lib=None):
@@ -127,12 +130,13 @@ def build_layer(hits_path, screen_path=None, out_dir=ATLAS, lib=None):
             cols["context"].append(mask(s.get("context")))  # sensitive words never reach the public atlas
             cols["test"].append(s.get("test"))
             cols["auroc"].append(s.get("auroc"))
-            lb = lib.get((L, key), (None, None, None, None, []))
+            lb = lib.get((L, key), (None, None, None, None, [], None))
             cols["lib_kind"].append(lb[0])
             cols["lib_condition"].append(lb[1])
             cols["lib_test"].append(lb[2])
             cols["lib_auroc"].append(None if lb[3] is None else float(lb[3]))
             cols["lib_held"].append(lb[4])
+            cols["lib_label"].append(lb[5])
     schema = _schema()
     arrays = []
     for field in schema:
@@ -209,9 +213,10 @@ def add_lib(src=ATLAS, out_dir=ATLAS):
         t = _read(path)
         L = _layer_of(path)
         keys = [f"N{n}{s}" for n, s in zip(t["neuron"].to_pylist(), t["sign"].to_pylist())]
-        lb = [lib.get((L, k), (None, None, None, None, [])) for k in keys]
+        lb = [lib.get((L, k), (None, None, None, None, [], None)) for k in keys]
         cols = {"lib_kind": [x[0] for x in lb], "lib_condition": [x[1] for x in lb], "lib_test": [x[2] for x in lb],
-                "lib_auroc": [None if x[3] is None else float(x[3]) for x in lb], "lib_held": [x[4] for x in lb]}
+                "lib_auroc": [None if x[3] is None else float(x[3]) for x in lb], "lib_held": [x[4] for x in lb],
+                "lib_label": [x[5] for x in lb]}
         arrays = []
         for field in schema:
             if field.name in cols:

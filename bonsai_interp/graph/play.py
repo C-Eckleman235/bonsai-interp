@@ -539,6 +539,15 @@ def main():
     wy.add_argument("--k", type=int, default=20, help="poles to list")
     wy.add_argument("--check", type=int, default=8, help="how many of the strongest to verify by zeroing")
     wy.add_argument("--out", help="also write the result as JSON")
+    se = sub.add_parser("search", help="search what the survey knows: tested labels, sweep-library and word-screen automatic tests")
+    se.add_argument("text", nargs="?", help="words to find in a label, condition or context (case-insensitive)")
+    se.add_argument("--kind", help="sweep-library kind: copy, topic, lang, struct, number, predict")
+    se.add_argument("--condition", help="sweep-library condition, e.g. script/arabic, num/year, piece/code")
+    se.add_argument("--held", action="store_true", help="only held results")
+    se.add_argument("--layers", help="e.g. 30-35 or 2,4,6")
+    se.add_argument("--source", choices=["survey", "library", "screen"], help="only one source")
+    se.add_argument("--limit", type=int, default=40)
+    se.add_argument("--json", action="store_true")
     d = sub.add_parser("doctor", help="check this machine is ready to play")
     d.add_argument("--quick", action="store_true", help="skip loading the model")
     b = sub.add_parser("brief", help="print the full instructions for a mission (for an AI agent)")
@@ -557,6 +566,9 @@ def main():
     if a.cmd == "card":
         from bonsai_interp.graph import card
         return card.main(a)
+    if a.cmd == "search":
+        from bonsai_interp.graph import search
+        return search.main(a)
     if a.cmd == "why":
         from bonsai_interp.graph import why
         return why.main(a)
