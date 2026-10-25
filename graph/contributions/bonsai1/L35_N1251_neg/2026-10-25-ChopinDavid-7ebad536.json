@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-7ebad536",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N1251-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T19:30:17+00:00",
+ "recipe": {
+  "toolchain_commit": "2b289bc8",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N1251_neg/2026-10-25-ChopinDavid-7ebad536.tests.json"
+ },
+ "label": "the byte-fallback token ' \\xe9': a space followed by a CJK character whose UTF-8 starts with byte E9 (酒 银 预 饭 都 高 风 长), as opposed to a space before characters starting with other bytes (学 医 花 生 大)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N1251_neg/2026-10-25-ChopinDavid-7ebad536.tests.json",
+   "prereg_commit": "2b289bc8",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.332,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.401,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.434,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.375,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.374,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.462,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.52,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.382,
+     "peak": " �"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.003,
+     "peak": "以后"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.003,
+     "peak": "增长"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.003,
+     "peak": "。"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.005,
+     "peak": "热闹"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.003,
+     "peak": "漂亮"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.002,
+     "peak": "。"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.002,
+     "peak": "两个小时"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.003,
+     "peak": "名"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.392,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "2b289bc8",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "space + E9-byte CJK character",
+ "unit_kind": "token/lexical",
+ "confidence": 0.75,
+ "notes": "Card: peak ' �' x23; every top Chinese example is a space before an E9 character (鞋 関 都 饭 酒 预 醋), plus Arabic ' والح'. Probe: '住的 酒店' 0.634; spaces before 学 (E5) 0.003 and 医 (E5) 0.002; no space 0.003; Arabic ' والح' 0.181. Tokenizer: E9 characters after a space give the token 'Ġé'; E5/E6/E7/E8 give other byte tokens. A spelling unit, not a meaning.",
+ "selection": "random draw"
+}
