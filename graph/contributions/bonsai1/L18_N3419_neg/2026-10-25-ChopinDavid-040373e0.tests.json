@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-040373e0",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N3419-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T18:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N3419",
+   "pole": "-",
+   "label": "the double-pipe cell separator '||' in a scraped spec table, just before a numeric value or range (|Temperature range °F||-100 to 500|), as opposed to the same specs written as prose",
+   "fire": [
+    "|Operating temperature °C||-20 to 60|\n|Operating temperature °F||-4 to 140|",
+    "|Humidity range||10 to 90 %|\n|Pressure range||800 to 1100 hPa|",
+    "|Voltage range (V)||110 to 240|\n|Current range (A)||0.5 to 2|",
+    "|Storage temperature °C||-40 to 85|\n|Storage temperature °F||-40 to 185|",
+    "|Speed range (rpm)||500 to 3000|\n|Torque range (Nm)||2 to 15|",
+    "|Depth range (m)||0 to 200|\n|Water temperature °C||-2 to 35|",
+    "|Frequency range (Hz)||20 to 20000|\n|Impedance (ohm)||8 to 16|",
+    "|Weight range (kg)||1 to 50|\n|Load range (kg)||10 to 500|"
+   ],
+   "quiet": [
+    "The operating temperature runs from minus twenty to sixty degrees.",
+    "The humidity can range from dry to very damp in this region.",
+    "The charger works with most wall sockets around the world.",
+    "Store the device somewhere cool and dry, away from sunlight.",
+    "The motor speed can be set with a small dial on the side.",
+    "Divers should check the water temperature before each dive.",
+    "The speakers sound clear at both low and high volumes.",
+    "The scale can weigh anything from a letter to a suitcase."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.5 on '||' before numbers in pipe-delimited spec tables; prose versions of the same specs below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'||' before a numeric table cell",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: peaks '0' x3, ',', '||', '4', '_sp', ' −' (Temperature range °F||-100; [4.828; HCT – 0,360). Probe: pipe table with temperature ranges 0.462, 'HCT – 0,360' 0.203; 'assertAllClose([4.828...' 0.021, prose '−4 m' 0.033, '|Power (kW)||404|' 0.034 (single row, no range), prose 'temperature range of the oven' 0.014. Fire items follow the two-row range table that fired."
+}

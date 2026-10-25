@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-3eaa45fe",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N2707+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T18:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L11/N2707",
+   "pole": "+",
+   "label": "words that specify how many participants or arguments something has (individual vs group, solo, singles/doubles, transitive/intransitive, unary/binary), as opposed to the same contexts without an arity marker",
+   "fire": [
+    "Lessons are available as individual or small-group classes.",
+    "The verb 'sleep' is intransitive because it takes no object.",
+    "She won the women's singles title in Paris last spring.",
+    "After ten years in the band he went solo and toured alone.",
+    "class UnaryExpression(Expression):\n    def evaluate(self):\n        return -self.operand",
+    "Each child gets individual attention from the tutor.",
+    "In English, 'give' is a ditransitive verb with two objects.",
+    "The pianist played a long solo in the middle of the song."
+   ],
+   "quiet": [
+    "Lessons are available in the morning or the evening.",
+    "The verb 'sleep' is irregular because its past is 'slept'.",
+    "She won the women's title in Paris last spring.",
+    "After ten years in the band he went home and rested.",
+    "class Expression:\n    def evaluate(self):\n        return self.value",
+    "Each child gets a free lunch from the school.",
+    "In English, 'give' is a common verb with many meanings.",
+    "The pianist played a long piece in the middle of the concert."
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.65 on ' individual', ' solo', ' singles', 'trans'/'itive', ' Binary'; matched sentences without an arity word below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "arity markers (individual, solo, transitive)",
+ "unit_kind": "meaning",
+ "confidence": 0.6,
+ "notes": "Card: peaks ' individual' x6, 'trans' x4, 'itive' x3, ' solo' x2, ' Binary', 'Doub|les', 'Group'. Probe: 'individual or group sessions' 0.620, 'transitive verb' 0.599, 'singles and doubles' 0.559, 'solo album' 0.511, 'BinaryOperator' 0.377; 'weekly therapy' 0.079, 'a verb is a word' 0.045, 'morning and evening matches' 0.018. The distinction is how many parties take part."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-00602292",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N3929-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T18:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L3/N3929",
+   "pole": "-",
+   "label": "the 'view / observe' character when the tokenizer keeps it as its own token: traditional Chinese 觀 in compounds (宏觀, 主觀, 景觀), Japanese 観 pieces and 見, Korean 관; simplified compounds that merge into one token (宏观, 主观, 景观) do not carry it",
+   "fire": [
+    "這篇文章的觀點很有說服力。",
+    "他對未來一直很悲觀。",
+    "這個問題要從宏觀的角度來看。",
+    "法官必須保持客觀和公正。",
+    "公園的景觀設計非常漂亮。",
+    "她是一個樂觀開朗的人。",
+    "這只是我個人的主觀感受。",
+    "這款手機的外觀十分時尚。"
+   ],
+   "quiet": [
+    "这篇文章的观点很有说服力。",
+    "他对未来一直很悲观。",
+    "这个问题要从宏观的角度来看。",
+    "法官必须保持客观和公正。",
+    "公园的景观设计非常漂亮。",
+    "她是一个乐观开朗的人。",
+    "这只是我个人的主观感受。",
+    "这款手机的外观十分时尚。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.95 on standalone 觀 in traditional Chinese; the same sentences in simplified Chinese, where 观 merges into the word token, below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "standalone 觀/観/관 (view)",
+ "unit_kind": "token/lexical",
+ "confidence": 0.55,
+ "notes": "Card: peaks '�' x4, '관' x2, '測' x2, '觀', '見', '观' (宏觀景致, 観測, 外見, 주관적). Probe: '宏觀景致' 0.939, '観測と矛盾しない' 0.544, '外見的' 0.268, '주관적인' 0.266; simplified '外观十分轻薄' (merged) 0.022, Korean '관찰' (merged) 0.045, English 'observance' 0.004. Fire items are traditional Chinese with split 觀; near misses are the same sentences in simplified script with merged 观 words."
+}
