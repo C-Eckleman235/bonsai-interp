@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-b65d7d8a",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N4812-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T05:28:18+00:00",
+ "recipe": {
+  "toolchain_commit": "6cb8fcbf",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L15_N4812_neg/2026-10-25-ChopinDavid-b65d7d8a.tests.json"
+ },
+ "label": "the 'of' after a capitalised office title that is the second role in a person's list of positions ('X of A and President of B'), as against 'of' in ordinary noun phrases",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L15_N4812_neg/2026-10-25-ChopinDavid-b65d7d8a.tests.json",
+   "prereg_commit": "6cb8fcbf",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.257,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.513,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.294,
+     "peak": " President"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.355,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.719,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.406,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.27,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.741,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.093,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.037,
+     "peak": " owns"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.025,
+     "peak": " as"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.012,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.029,
+     "peak": " from"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.027,
+     "peak": "Dr"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.011,
+     "peak": " town"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.026,
+     "peak": " arrived"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.381,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "6cb8fcbf",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "'of' after a second listed title",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: 'and President of the Latin American Parliament' -20, 'and President of interpack' -17, 'Bowditch Professor of', 'and the granddaughter of'. Probe: 'director of the museum and President of the national arts council' 0.423; 'Professor of Linguistics' (single title) 0.163, 'grandson of' 0.063, 'chairman of the board' 0.043, 'cup of coffee' 0.027. Only the two-role list fired, so the label is narrow and low confidence.",
+ "selection": "random draw"
+}

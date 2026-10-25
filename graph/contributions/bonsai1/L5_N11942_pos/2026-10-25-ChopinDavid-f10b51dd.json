@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-f10b51dd",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N11942+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T05:27:43+00:00",
+ "recipe": {
+  "toolchain_commit": "6cb8fcbf",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N11942_pos/2026-10-25-ChopinDavid-f10b51dd.tests.json"
+ },
+ "label": "the agent-noun suffix that turns a field into a practitioner (Japanese 家 in 研究家/武道家, Korean 가 in 소설가/전문가), as against the same character used as 'house/home' or as the Korean subject particle",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N11942_pos/2026-10-25-ChopinDavid-f10b51dd.tests.json",
+   "prereg_commit": "6cb8fcbf",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.384,
+     "peak": "家"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.783,
+     "peak": "家"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.363,
+     "peak": "家"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.836,
+     "peak": "家"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.407,
+     "peak": "가"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.498,
+     "peak": "가"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.56,
+     "peak": "가"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.527,
+     "peak": "가"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.013,
+     "peak": "末"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.055,
+     "peak": "子"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.041,
+     "peak": "家"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.052,
+     "peak": "元"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.027,
+     "peak": "원"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.028,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.03,
+     "peak": " 앞"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.016,
+     "peak": "에는"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.512,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "6cb8fcbf",
+  "minutes": 0,
+  "batch_size": 16
+ },
+ "short": "practitioner suffix 家/가",
+ "unit_kind": "token",
+ "confidence": 0.6,
+ "notes": "Card: '가' x14, '家' x5 (料理研究家 8.81, 武道家 8.56, 조각가, 전문가), plus Russian -вед- pieces. Probe: 料理研究家 0.745, 武道家 0.757, 소설가 0.604, 전문가 0.466; 家に帰って 0.009, 날씨가 (particle) 0.023; заповедник 0.433, проповедь 0.251 (Russian not tested here).",
+ "selection": "random draw"
+}
