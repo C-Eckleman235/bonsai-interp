@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-cea0fcff",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N8562-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T23:28:05+00:00",
+ "recipe": {
+  "toolchain_commit": "f2dd3470",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L20_N8562_neg/2026-10-25-ChopinDavid-cea0fcff.tests.json"
+ },
+ "label": "the indentation that opens the body of a Python def or for block, as against the same computations written as top-level lines with no block",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L20_N8562_neg/2026-10-25-ChopinDavid-cea0fcff.tests.json",
+   "prereg_commit": "f2dd3470",
+   "author": "ChopinDavid",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.337,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.341,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.112,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.245,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.138,
+     "peak": "\n"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.102,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.229,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.225,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.015,
+     "peak": " rows"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.023,
+     "peak": " n"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.084,
+     "peak": ":"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.014,
+     "peak": "(keys"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.022,
+     "peak": "(msg"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.072,
+     "peak": "("
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.044,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.016,
+     "peak": "(words"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.227,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "f2dd3470",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "Python block-body indent",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: '):\\n' x11 and indentation runs right after def/for headers; max 12.44. Probe: for-loop body 0.372, def body 0.150, class/def 0.111, while 0.113, one-line def 0.165 at '):', flat code 0.046, indented prose list 0.013.",
+ "selection": "random draw"
+}
