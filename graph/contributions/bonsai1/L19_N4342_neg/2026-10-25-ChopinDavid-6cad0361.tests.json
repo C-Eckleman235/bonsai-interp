@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-6cad0361",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N4342-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T20:21:15+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L19/N4342",
+   "pole": "-",
+   "label": "unclear: weak pole on line ends in Python tensor and buffer code (StringIO(x)\\n, unsqueeze(-1)\\n) and on repeated variable names in assignment chains; best guess is the end of a wrapper-call line in numerical Python",
+   "fire": [
+    "stream = StringIO(payload)\nself.assertEqual(stream.getvalue(), payload)\n",
+    "mask = mask.unsqueeze(1)\nif self.causal:\n    mask = mask.tril()\n",
+    "counts = tf.reduce_sum(hits, axis=0)\ncounts = tf.cast(counts, tf.float32)\n",
+    "out = BytesIO(raw)\nheader = out.read(4)\n",
+    "probs = probs.unsqueeze(-1)\nloss = -(probs * target).sum()\n",
+    "sizes = tf.reduce_max(lens, axis=1)\nsizes = tf.cast(sizes, tf.int64)\n",
+    "fake = StringIO(contents)\nparser.feed(fake.read())\n",
+    "scores = scores.squeeze(0)\nif self.normalize:\n    scores = scores / scores.sum()\n"
+   ],
+   "quiet": [
+    "print('starting')\nprint('done')\n",
+    "name = input('Name: ')\nprint(name)\n",
+    "The parcel (a small box) arrived late.\nNobody was home.\n",
+    "x = 3\ny = x + 4\n",
+    "items = ['a', 'b']\nfor i in items:\n    print(i)\n",
+    "She paid the bill (in cash) and left.\nIt was raining.\n",
+    "total = price * qty\nprint(total)\n",
+    "msg = 'hello'\nlog.info(msg)\n"
+   ]
+  }
+ ],
+ "predictions": "best guess fire 0.15-0.35 on ')\\n' after StringIO/unsqueeze/reduce wrappers; plain print lines and prose below 0.05; likely fails",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "wrapper-call line end in ML code (unclear)",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card: max 12; peaks ')\\n' x5 ('log_pi.unsqueeze(-1)', 'StringIO(encoded)', 'tf.stack(..., 2)'), ' lengths', '.depth'. Probe: 'StringIO(text)' 0.316, 'lengths ... tf.cast' 0.344 (peak 's'), 'unsqueeze(-1)' 0.170, 'tf.stack' 0.040; print lines 0.003, prose parenthesis 0.040."
+}

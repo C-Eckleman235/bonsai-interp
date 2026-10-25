@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-14e132a1",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N605+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T20:21:15+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N605",
+   "pole": "+",
+   "label": "the 'Args:' header line of a Google-style Python docstring (the ':\\n' after Args), as opposed to other docstring section headers and prose colons",
+   "fire": [
+    "def resize(image, size):\n    \"\"\"Resize an image to a square.\n\n    Args:\n        image: the input array.\n        size: target width in pixels.\n    \"\"\"",
+    "class Cache:\n    def __init__(self, limit):\n        \"\"\"Create an empty cache.\n\n        Args:\n            limit: maximum number of entries.\n        \"\"\"",
+    "def connect(host, port=80):\n    \"\"\"Open a socket to a server.\n\n    Args:\n      host: name of the server.\n      port: port number.\n    \"\"\"",
+    "def parse(text, strict=False):\n    \"\"\"Turn raw text into tokens.\n\n    Args:\n        text: the string to parse.\n    \"\"\"",
+    "def train(model, data):\n  \"\"\"Fits the model on a dataset.\n\n  Args:\n    model: a compiled model.\n    data: a batched dataset.\n  \"\"\"",
+    "def send(msg):\n    \"\"\"Sends a message to the queue.\n\n    Args:\n        msg: the payload to send.\n    \"\"\"",
+    "def merge(a, b):\n    \"\"\"Combine two sorted lists.\n\n    Args:\n        a: first list.\n        b: second list.\n    \"\"\"",
+    "def score(pred, gold):\n    \"\"\"Compute accuracy.\n\n    Args:\n        pred: predicted labels.\n        gold: true labels.\n    \"\"\""
+   ],
+   "quiet": [
+    "def resize(image, size):\n    \"\"\"Resize an image to a square.\n\n    Returns:\n        the resized array.\n    \"\"\"",
+    "class Cache:\n    def __init__(self, limit):\n        \"\"\"Create an empty cache.\n\n        Note:\n            the cache is not thread safe.\n        \"\"\"",
+    "def connect(host, port=80):\n    \"\"\"Open a socket to a server.\n\n    Raises:\n      OSError: if the host is down.\n    \"\"\"",
+    "def parse(text, strict=False):\n    \"\"\"Turn raw text into tokens.\n\n    Example:\n        parse('a b')\n    \"\"\"",
+    "Before you train the model, check the following:\n- the data is batched\n- the model is compiled",
+    "Message format for the queue:\nsender, time, body.",
+    "Steps to merge two lists:\nsort both, then walk them together.",
+    "Our accuracy target for this quarter:\nninety percent on the test set."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on ':\\n' after Args in docstrings; 'Returns:', 'Raises:', 'Example:' headers 0.1-0.25; prose colons below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "docstring 'Args:' header",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: max 21; peaks ':\\n' x14 after Args in docstrings (9 of top 10), plus ' ' before a year in citations. Probe: 'Args:' 0.393, 'Raises:' 0.185, 'Returns:' 0.165, date space '3 March 2015' 0.163, citation 0.014, prose colon 0.024."
+}

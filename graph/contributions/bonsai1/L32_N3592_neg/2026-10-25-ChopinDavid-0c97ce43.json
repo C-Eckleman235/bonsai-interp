@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-0c97ce43",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N3592-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T20:31:04+00:00",
+ "recipe": {
+  "toolchain_commit": "0bf4ad32",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L32_N3592_neg/2026-10-25-ChopinDavid-0c97ce43.tests.json"
+ },
+ "label": "' press' and ' news' used as the journalism modifier of an event or item (press conference, news conference, press release), and French 'conf' in conférence: the media-briefing word, as opposed to journalism contexts without those words and 'press' as a machine or verb",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L32_N3592_neg/2026-10-25-ChopinDavid-0c97ce43.tests.json",
+   "prereg_commit": "0bf4ad32",
+   "author": "ChopinDavid",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.594,
+     "peak": " press"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.383,
+     "peak": " news"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.863,
+     "peak": " conf"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.267,
+     "peak": " press"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.865,
+     "peak": " news"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.27,
+     "peak": "é"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.68,
+     "peak": " press"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.766,
+     "peak": " news"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.056,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.023,
+     "peak": " reform"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.071,
+     "peak": " à"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.019,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.034,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.114,
+     "peak": "'est"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.01,
+     "peak": " reporters"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.006,
+     "peak": "The"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.637,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "0bf4ad32",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "press/news media modifier",
+ "unit_kind": "token/lexical",
+ "confidence": 0.6,
+ "notes": "Card: max 219; peaks ' press' x8, ' news' x6, ' conf' x4 ('a news conference Monday', 'introductory press conference', 'une conférence des Ministres'). Probe: 'conférence à Genève' 0.968, 'news conference' 0.668, 'press conference' 0.553, 'press release' 0.481, 'news report' 0.396 (the word fires before the next noun); 'printing press' 0.008, 'medical conference' 0.062, 'meeting with reporters' 0.051.",
+ "selection": "random draw"
+}
