@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-6cd3c160",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N9499-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T22:21:13+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N9499",
+   "pole": "-",
+   "label": "the word piece 'our' inside French lourd-/Lourdes (l|our|de) and the piece 'ush' in German Haushalt (Ha|ush|alt): a mid-word spelling unit",
+   "fire": [
+    "Selon le ministre, la facture sera lourde pour les petites entreprises cette année.",
+    "Les camions lourds ne peuvent plus traverser le vieux pont du village.",
+    "Chaque printemps, des milliers de pèlerins se rendent à Lourdes en train.",
+    "Im Herbst muss der Stadtrat über den Haushalt für das nächste Jahr abstimmen.",
+    "Elle garde des souvenirs très lourds de cette longue nuit à l'hôpital.",
+    "Les sanctions prévues par la loi restent lourdes, même pour une première faute.",
+    "Laut Bericht ist der Haushalt der Gemeinde seit drei Jahren ausgeglichen.",
+    "Après la pluie, l'atmosphère devient lourde et humide dans toute la vallée."
+   ],
+   "quiet": [
+    "Selon le ministre, la facture sera élevée pour les petites entreprises cette année.",
+    "Les camions longs ne peuvent plus traverser le vieux pont du village.",
+    "Chaque printemps, des milliers de pèlerins se rendent à Rome en train.",
+    "Im Herbst muss der Stadtrat über das Budget für das nächste Jahr abstimmen.",
+    "Elle garde des souvenirs très nets de cette longue nuit à l'hôpital.",
+    "Les sanctions prévues par la loi restent sévères, même pour une première faute.",
+    "Laut Bericht ist die Kasse der Gemeinde seit drei Jahren ausgeglichen.",
+    "Après la pluie, l'atmosphère devient fraîche et humide dans toute la vallée."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on l|our|de(s), L|our|des, Ha|ush|alt; synonyms (grave, léger, Budget) below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "spelling piece 'our'/'ush' mid-word",
+ "unit_kind": "token",
+ "confidence": 0.5,
+ "notes": "Card: 'our' x12 in lourde(s)/Lourdes, 'ush' in Haushalt. Probe: 'sont lourdes' 0.497, 'Lourdes' 0.476, 'Der Haushalt' 0.580, 'lourd' (split l|ourd) only 0.201; synonyms 'graves' 0.058, 'léger' 0.128, 'Fatima' 0.043. Whole-token ' jour' leaked 0.375, so near misses avoid jour/pour/four/tour."
+}

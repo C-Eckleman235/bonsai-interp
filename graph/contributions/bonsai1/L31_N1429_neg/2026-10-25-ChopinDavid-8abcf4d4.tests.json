@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-8abcf4d4",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N1429-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T22:21:13+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L31/N1429",
+   "pole": "-",
+   "label": "the token that sets up an expected ' short' ('X for| short', 'cut| short', 'long story| short'): a next-token predictor for 'short' in its idioms",
+   "fire": [
+    "The Environmental Protection Agency, or EPA for short, released new rules on Monday.",
+    "His time as captain was cut short by a knee injury in the spring.",
+    "It was a long trip with many delays, but to make a long story short, we got there.",
+    "Researchers call it the default mode network, or DMN for short, in most papers.",
+    "Their holiday in Spain was cut short when the airline went bankrupt.",
+    "We use the term artificial intelligence, or AI for short, throughout this report.",
+    "Her speech was cut short by loud protests from the back of the hall.",
+    "The International Space Station, or ISS for short, orbits the Earth every ninety minutes."
+   ],
+   "quiet": [
+    "The Environmental Protection Agency released new rules on Monday after a long review.",
+    "His time as captain was ended by a knee injury in the spring.",
+    "It was a long trip with many delays, but in the end, we got there.",
+    "Researchers call it the default mode network in most papers on rest.",
+    "Their holiday in Spain was ruined when the airline went bankrupt.",
+    "We use the term artificial intelligence throughout this report.",
+    "Her speech was interrupted by loud protests from the back of the hall.",
+    "The International Space Station orbits the Earth every ninety minutes."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on ' for' after an abbreviation, ' cut' before 'short', ' story' in 'long story short'; the same sentences without the setup below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predicts 'short' in idioms",
+ "unit_kind": "context",
+ "confidence": 0.7,
+ "notes": "Card: ' for' x11 in 'BMI for short', ' cut' x5 ('life cut short'), ' story' x3; + pole suppresses ' short'. Probe: 'NWS for short' 0.755, 'the Fed for short' 0.821, 'career was cut short' 0.783, 'long story short' 0.396, truncated 'a prenup for' 0.682 (so it is the prediction, not the word 'short'); 'or NWS,' 0.018, 'was ended' 0.122, 'ran short of money' 0.000."
+}
