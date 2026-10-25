@@ -197,13 +197,44 @@ def vocab(root=ROOT):
     return dict(zip(t["tok"].to_pylist(), t["text"].to_pylist()))
 
 
+def add_lib(src=ATLAS, out_dir=ATLAS):
+    """Join the sweep library's columns onto existing atlas tables (no stage 1 inputs needed): every pole keeps its
+    other columns, and lib_* are replaced by the current results."""
+    import pyarrow as pa
+    lib = sweeplib()
+    if not lib:
+        sys.exit("no sweep library results (data/sweeplib/bonsai1.sweeplib1.results.jsonl.gz)")
+    schema = _schema()
+    for path in sorted(Path(src).glob("bonsai1_L*.arrow"), key=_layer_of):
+        t = _read(path)
+        L = _layer_of(path)
+        keys = [f"N{n}{s}" for n, s in zip(t["neuron"].to_pylist(), t["sign"].to_pylist())]
+        lb = [lib.get((L, k), (None, None, None, None, [])) for k in keys]
+        cols = {"lib_kind": [x[0] for x in lb], "lib_condition": [x[1] for x in lb], "lib_test": [x[2] for x in lb],
+                "lib_auroc": [None if x[3] is None else float(x[3]) for x in lb], "lib_held": [x[4] for x in lb]}
+        arrays = []
+        for field in schema:
+            if field.name in cols:
+                a = pa.array(cols[field.name], type=field.type.value_type if pa.types.is_dictionary(field.type) else field.type)
+                arrays.append(a.dictionary_encode() if pa.types.is_dictionary(field.type) else a)
+            else:
+                arrays.append(t[field.name].combine_chunks())
+        out = Path(out_dir) / path.name
+        _write(pa.Table.from_arrays(arrays, schema=schema), out)
+        n = sum(x[2] == "held" for x in lb)
+        print(f"L{L}: {sum(x[0] is not None for x in lb)} poles with a library test, {n} held -> {out.name}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
+    sub.add_parser("add-lib", help="join the sweep library's results onto the existing atlas tables in data/atlas")
     b = sub.add_parser("build", help="build the atlas from the auto-token@2 stage 1 tables and screen exports")
     b.add_argument("--auto2", default=str(ROOT / "data" / "auto2"), help="where bonsai1_L*.hits.jsonl.gz live")
     b.add_argument("--auto", default=str(ROOT / "data" / "auto"), help="where bonsai1_L*.screen.json.gz live")
     a = ap.parse_args()
+    if a.cmd == "add-lib":
+        return add_lib()
     files = sorted(Path(a.auto2).glob("bonsai1_L*.hits.jsonl.gz"), key=_layer_of)
     if not files:
         sys.exit(f"no stage 1 tables in {a.auto2}")
