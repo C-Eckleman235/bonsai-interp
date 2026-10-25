@@ -26,6 +26,9 @@ Two measures:
 
 `python -m bonsai_interp.graph.coverage build` writes graph/auto/bonsai1.coverage.json (token coverage for every held or
 partial label it can measure). fold reads it, and reads the coverage rounds from the contributions.
+
+fold imports this module for ASSIGN and measured() only, so nothing here may import numpy at module level (the graph
+checks run without it).
 """
 import argparse
 import gzip
@@ -36,7 +39,6 @@ import sys
 from functools import lru_cache
 from pathlib import Path
 
-import numpy as np
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "graph" / "auto" / "bonsai1.coverage.json"
@@ -94,6 +96,7 @@ def trigger_tokens(trigger):
 @lru_cache(4)
 def _hits(L):
     """(token ids, counts) per pole index (p * N + n) for layer L's strong activations, and the pole totals."""
+    import numpy as np
     p = HITS / f"bonsai1_L{L}.hits.npz"
     if not p.exists():
         return None
@@ -108,6 +111,7 @@ def _hits(L):
 
 def token_coverage(nid, trigger):
     """(coverage, strong count) for a pole and a trigger, or None when the pole has no token table (dense or ineligible)."""
+    import numpy as np
     m = re.match(r"^bonsai1/L(\d+)/N(\d+)([+-])$", nid)
     L, n, p = int(m[1]), int(m[2]), 0 if m[3] == "+" else 1
     h = _hits(L)
@@ -140,6 +144,7 @@ def _label_source(contribs):
 
 
 def build(a):
+    import numpy as np
     from bonsai_interp.graph import contrib
     by = {}
     for _, c in contrib.load_all():
@@ -185,6 +190,7 @@ def measured():
 def draw(nid, label_contribution, k=ROUND_N, windows=1500, batch=4):
     """k of the pole's strong activations, drawn at random from held-out windows (16,400 on), one per window, seeded by the
     pole and the label's contribution id: [{window, position, act, text}] with the peak token marked ⟦ ⟧. GPU."""
+    import numpy as np
     import torch
     from bonsai_interp import explore
     from bonsai_interp.auto import context_tier as ct
