@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-28c23880",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N8477-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T16:28:21+00:00",
+ "recipe": {
+  "toolchain_commit": "076061e6",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L8_N8477_neg/2026-10-25-ChopinDavid-28c23880.tests.json"
+ },
+ "label": "energy as an amount that is used, supplied or counted (total energy, energy intake, Calories, high-calorie), the word ' energy' and its Calorie/Russian equivalents, as opposed to other measured quantities like water or protein",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L8_N8477_neg/2026-10-25-ChopinDavid-28c23880.tests.json",
+   "prereg_commit": "076061e6",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.303,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.727,
+     "peak": " Calories"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.806,
+     "peak": "orie"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.499,
+     "peak": " energy"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.569,
+     "peak": " energy"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.619,
+     "peak": " Calories"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.452,
+     "peak": " energy"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.585,
+     "peak": "ии"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.022,
+     "peak": " more"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.011,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.105,
+     "peak": "-rich"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": "ulating"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.085,
+     "peak": " lot"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.033,
+     "peak": " portions"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.019,
+     "peak": " ran"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.029,
+     "peak": " много"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.577,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "076061e6",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "energy / calories as a quantity",
+ "unit_kind": "token/lexical",
+ "confidence": 0.6,
+ "notes": "Card: peaks ' energy' x12, 'orie' x3 (high-cal|orie), Arabic 'طاقة' pieces, ' энер' x2. Probe: 'nine Calories per gram' 0.924, 'total energy used' 0.798, 'high-calorie snack' 0.696, Russian 'энергию' 0.561, 'no energy left' 0.416, but 'into electrical energy' only 0.089; 'total water used' 0.099, 'into heat' 0.044. Fire items keep energy as a counted amount, not a converted form.",
+ "selection": "random draw"
+}

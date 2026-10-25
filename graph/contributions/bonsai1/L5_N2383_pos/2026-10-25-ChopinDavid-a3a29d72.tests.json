@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-a3a29d72",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N2383+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T16:20:06+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N2383",
+   "pole": "+",
+   "label": "a separator slash or opening parenthesis that offers an alternative or gloss for the item just named (' / ' between paired amenities, '（' before a gloss), strongest in Japanese/Chinese text, as opposed to listing the same items with '、' or 'and'",
+   "fire": [
+    "客室には、テレビ、ポット / 湯沸かし器が備わっています。",
+    "お問い合わせの際は、氏名、学校名（クラス名）をご記入ください。",
+    "酒店设有健身房、桑拿 / 蒸汽浴室和室外泳池。",
+    "各部屋にはシャワー / バスタブとドライヤーがあります。",
+    "参加者は、会社名（部署名）と連絡先を記入してください。",
+    "房间配有冰箱、咖啡 / 茶具和免费无线网络。",
+    "朝食はビュッフェ / セットメニューからお選びいただけます。",
+    "The suite has a sofa bed / cot for children and a balcony."
+   ],
+   "quiet": [
+    "客室には、テレビ、ポット、湯沸かし器が備わっています。",
+    "お問い合わせの際は、氏名と学校名をご記入ください。",
+    "酒店设有健身房、桑拿、蒸汽浴室和室外泳池。",
+    "各部屋にはシャワーとバスタブとドライヤーがあります。",
+    "参加者は、会社名と部署名と連絡先を記入してください。",
+    "房间配有冰箱、咖啡机和免费无线网络。",
+    "朝食はビュッフェ形式でお楽しみいただけます。",
+    "The suite has a balcony and a small kitchen for guests."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-1.0 on ' /' and '（' after an item in CJK or English listings; the same items joined by '、', 'と', 'and' below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "alternative/gloss separator ' /' '（'",
+ "unit_kind": "token/lexical",
+ "confidence": 0.45,
+ "notes": "Card: peaks '/or' x9, '（' x8, '/' x5, ' /' x5, nearly all in hotel/amenity listings in Japanese, Korean and Chinese. Probe: Japanese 'コーヒー / ティーメーカー' 0.998, 'company (organization name)' 0.368, English 'coffee / tea maker' 0.260, 'and/or' 0.147; '3/4 cup' 0.012, URL slash 0.008, 'coffee maker, a tea kettle and' 0.239 (a warning for English near misses)."
+}

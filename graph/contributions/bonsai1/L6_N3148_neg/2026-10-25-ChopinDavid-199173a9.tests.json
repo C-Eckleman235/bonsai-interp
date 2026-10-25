@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-199173a9",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N3148-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T16:20:06+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L6/N3148",
+   "pole": "-",
+   "label": "the piece that follows a split 'C'/'CD'/'cal' stem in abbreviations and rare names (CD|I, CD|L, c|dl, cal|adium, Cal|iban), as opposed to whole-token words and abbreviations in the same frames",
+   "fire": [
+    "Pink and white caladium plants grow well in the shade.",
+    "She studied for months to pass the CDL exam for bus drivers.",
+    "Older games came on CD-I discs that few players still own.",
+    "In the play, Prospero treats Caliban as a servant.",
+    "Plant caladium bulbs in spring once the soil is warm.",
+    "The trucking firm only hires drivers with a valid CDL.",
+    "Download the guide from the cdl website before the workshop.",
+    "Therapists use CDI sessions to strengthen the parent bond."
+   ],
+   "quiet": [
+    "Pink and white begonia plants grow well in the shade.",
+    "She studied for months to pass the driving exam for bus drivers.",
+    "Older games came on CDs that few players still own.",
+    "In the play, Prospero treats Ariel as a servant.",
+    "Plant tulip bulbs in spring once the soil is warm.",
+    "The trucking firm only hires drivers with a clean record.",
+    "Download the guide from the CDC website before the workshop.",
+    "Therapists use play sessions to strengthen the parent bond."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.85 on the piece after ' CD', ' c', ' cal', ' Cal'; whole-token words (begonia, CDs, CDC) below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "piece after split C-/CD-/cal- stem",
+ "unit_kind": "token/lexical",
+ "confidence": 0.5,
+ "notes": "Card: peaks 'dl' x3 (c|dl), 'I' x3 (CD|I), 'ell', 'adium' x2 (cal|adium), 'dt', 'L' (CD|L), 'DMI', 'iban' (Cal|iban). Probe: 'caladium' 0.870, 'www.cdl.org' 0.747, 'CDI' 0.728, 'CDL license' 0.570, 'Caliban' 0.436; 'begonia' 0.019, 'a plain CD' 0.010, 'stadium' 0.003. Splits checked with tok.py: CD-ROM -> ' CD','-ROM'; CDs and CDC are single tokens."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-e99c6319",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N5550-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T16:20:06+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L10/N5550",
+   "pole": "-",
+   "label": "the numeral in a figure or table reference ('Figure 7 shows'), a weak guess for a pole whose card peaks scatter over newlines, periods and numerals in structured documents",
+   "fire": [
+    "Figure 3 shows the rainfall recorded at each station.",
+    "As Table 2 makes clear, the yields fell after the drought.",
+    "Figure 5 compares the two methods on the test set.",
+    "The map in Figure 9 marks the main fault lines.",
+    "Table 4 lists the samples collected in the second year.",
+    "Figure 6 plots temperature against depth for the core.",
+    "The results in Table 8 confirm the earlier estimate.",
+    "Figure 2 gives an overview of the study area."
+   ],
+   "quiet": [
+    "Station 3 recorded the most rainfall that spring.",
+    "As 2 farmers made clear, the yields fell after the drought.",
+    "Group 5 used both methods on the test set.",
+    "The map shows 9 main fault lines across the region.",
+    "We collected 4 samples in the second year.",
+    "Core 6 was drilled to a depth of forty metres.",
+    "The results from 8 sites confirm the earlier estimate.",
+    "Route 2 gives the best view of the study area."
+   ]
+  }
+ ],
+ "predictions": "fire 0.1-0.25 on the number after Figure/Table; numbers in other roles below 0.06",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "figure-reference numeral (weak)",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card: max 6.6, peaks '\\n' x4, ',' x3, '.' x2, digits ('Figure 7', 'Chapter 12', '9|1'), no clear pattern. Probe: 'Figure 7 shows four map views' 0.214 was the only item above 0.08; heading newlines 0.076, 'Chapter 12 Quiz 4' 0.059, birth-date period 0.027. Low confidence: one probe item carries the label."
+}

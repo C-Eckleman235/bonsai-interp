@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-28c23880",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N8477-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T16:20:06+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L8/N8477",
+   "pole": "-",
+   "label": "energy as an amount that is used, supplied or counted (total energy, energy intake, Calories, high-calorie), the word ' energy' and its Calorie/Russian equivalents, as opposed to other measured quantities like water or protein",
+   "fire": [
+    "A cyclist in a long race may burn more energy than a marathon runner.",
+    "The label says the drink contains 140 Calories in a single can.",
+    "Children need a high-calorie breakfast before a long day of sport.",
+    "Insulating the attic cut the total energy the house needed each winter.",
+    "Nuts are rich in fat and supply a lot of energy for their weight.",
+    "Many diets start by counting Calories at every meal.",
+    "The factory measured how much energy each machine used per shift.",
+    "Спортсменам нужно много энергии во время тренировок."
+   ],
+   "quiet": [
+    "A cyclist in a long race may drink more water than a marathon runner.",
+    "The label says the drink contains 30 grams of sugar in a single can.",
+    "Children need a protein-rich breakfast before a long day of sport.",
+    "Insulating the attic cut the noise the house let in each winter.",
+    "Nuts are rich in fat and supply a lot of fibre for their weight.",
+    "Many diets start by counting portions at every meal.",
+    "The factory measured how much time each machine ran per shift.",
+    "Спортсменам нужно много воды во время тренировок."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on ' energy', ' Calories', '-cal|orie', ' энерги'; same sentences with water, protein, fibre or time below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "energy / calories as a quantity",
+ "unit_kind": "token/lexical",
+ "confidence": 0.6,
+ "notes": "Card: peaks ' energy' x12, 'orie' x3 (high-cal|orie), Arabic 'طاقة' pieces, ' энер' x2. Probe: 'nine Calories per gram' 0.924, 'total energy used' 0.798, 'high-calorie snack' 0.696, Russian 'энергию' 0.561, 'no energy left' 0.416, but 'into electrical energy' only 0.089; 'total water used' 0.099, 'into heat' 0.044. Fire items keep energy as a counted amount, not a converted form."
+}

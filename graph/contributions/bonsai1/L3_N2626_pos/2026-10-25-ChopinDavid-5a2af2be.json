@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-5a2af2be",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N2626+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T16:28:52+00:00",
+ "recipe": {
+  "toolchain_commit": "076061e6",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L3_N2626_pos/2026-10-25-ChopinDavid-5a2af2be.tests.json"
+ },
+ "label": "a word-final spelling piece left after the tokenizer splits a word (post|ures, allsp|ice, lic|or|ice, v|if), as opposed to the same kind of word kept as one token (posture, gestures, cinnamon)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L3_N2626_pos/2026-10-25-ChopinDavid-5a2af2be.tests.json",
+   "prereg_commit": "076061e6",
+   "author": "ChopinDavid",
+   "n_fire": 6,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.83,
+     "peak": "ures"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.558,
+     "peak": "ice"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.037,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.725,
+     "peak": "ures"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.447,
+     "peak": "if"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.494,
+     "peak": "ice"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.749,
+     "peak": "ures"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.009,
+     "peak": "or"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.495,
+     "peak": " posture"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.031,
+     "peak": "ind"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.039,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.188,
+     "peak": " portraits"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.175,
+     "peak": "ug"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.055,
+     "peak": " warm"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.019,
+     "peak": " strains"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.018,
+     "peak": " by"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.766,
+    "median_fire": 0.526,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "076061e6",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "split word-final piece (ures/ice/if)",
+ "unit_kind": "token/lexical",
+ "confidence": 0.4,
+ "notes": "Card: max only 0.91, broad flag; peaks 'ures' x4 (post|ures), 'zip' x2 (Prin|zip), 'ice' (allsp|ice), 'if' (v|if_driver). Probe: 'Poor postures' 0.836, 'graceful postures' 0.821, 'vif_driver' 0.739, 'allspice' 0.578, 'Prinzip' 0.224; 'Poor habits' 0.026, 'pinch of salt' 0.018. Splits checked with tok.py: ' posture', ' gestures', ' textures' are single tokens.",
+ "selection": "random draw"
+}

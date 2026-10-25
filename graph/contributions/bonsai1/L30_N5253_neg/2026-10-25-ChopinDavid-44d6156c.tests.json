@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-44d6156c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N5253-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T16:20:06+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L30/N5253",
+   "pole": "-",
+   "label": "legislative and electoral politics: bills, amendments, taxes, parties and votes on public policy, as opposed to the same sentence frames about everyday or commercial decisions",
+   "fire": [
+    "The senator voted against the proposed tax increase on gasoline.",
+    "Parliament passed a bill that will raise the minimum wage next year.",
+    "The opposition party promised to repeal the new immigration law.",
+    "Voters in the referendum approved the measure by a narrow margin.",
+    "The governor signed the budget amendment despite protests from Republicans.",
+    "Under the new law, property taxes and certain licence fees will fall.",
+    "The coalition collapsed after a dispute over pension reform.",
+    "Congress debated the proposed ban on campaign donations from companies."
+   ],
+   "quiet": [
+    "The chef voted against the proposed change to the lunch menu.",
+    "The bakery made a cake that will feed the whole class next week.",
+    "The gardener promised to remove the new hedge by the fence.",
+    "Diners in the restaurant approved the dessert by a narrow margin.",
+    "The coach signed the new striker despite complaints from the fans.",
+    "Under the new rota, cleaning shifts and certain kitchen duties will fall.",
+    "The band split up after a dispute over the album cover.",
+    "The family debated the proposed trip to the coast in August."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.7 on policy tokens (proposed, Democrat, certain fees, repeal) in political sentences; matched non-political frames below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "legislation and electoral politics",
+ "unit_kind": "topic/meaning",
+ "confidence": 0.5,
+ "notes": "Card: peaks on function words inside political text (referendum, Senate Banking, balanced budget amendments, state income tax, Lisbon Treaty); + pole suppresses policy/policies/constit. Probe: 'cut the state income tax and certain fees' 0.692, 'rejected the proposed amendment' 0.445, 'A Minnesota Democrat' 0.395, 'coalition government' 0.209; 'recipe would cut the sugar' 0.064, 'proposed design for the cereal box' 0.073, but 'A Minnesota farmer' 0.228 (state names leak, so near misses avoid them)."
+}

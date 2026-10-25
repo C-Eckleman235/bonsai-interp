@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-52cfc885",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N4297+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T16:29:40+00:00",
+ "recipe": {
+  "toolchain_commit": "076061e6",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L32_N4297_pos/2026-10-25-ChopinDavid-52cfc885.tests.json"
+ },
+ "label": "romanized Korean words split into pieces (Mapo-gu, Haneunim, taeguk, Jongno-gu, hanbok), as opposed to English or Western names in the same sentence frames",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L32_N4297_pos/2026-10-25-ChopinDavid-52cfc885.tests.json",
+   "prereg_commit": "076061e6",
+   "author": "ChopinDavid",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.414,
+     "peak": "-g"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.16,
+     "peak": "b"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.196,
+     "peak": "e"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.121,
+     "peak": "und"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.403,
+     "peak": "-g"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.362,
+     "peak": "ong"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.462,
+     "peak": "-g"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.265,
+     "peak": "war"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.014,
+     "peak": " So"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.001,
+     "peak": " dress"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.0,
+     "peak": " dusk"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.001,
+     "peak": " Brighton"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.0,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.004,
+     "peak": "Vis"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.001,
+     "peak": " fish"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.0,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.314,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "076061e6",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "romanized Korean words",
+ "unit_kind": "token/lexical",
+ "confidence": 0.55,
+ "notes": "Card: peaks ' s' (Baekdu|s|ani), ' Map' x2 (Mapo-gu), 'im' (Haneun|im), 'G' (GwangHee), ' t' (taeguk), ' D' (Dangun), plus Old English and Mercia ' of'. Probe: 'Haneunim' 0.593, 'Mapo-gu' 0.558, 'taeguk' 0.317, Old English 'eorðan' 0.212, 'kingdom of Mercia' 0.171, but 'Dangun myth' 0.093; 'Oxford Street, Westminster' 0.008, 'God the Father' 0.006. Splits checked: Jongno-gu, Insadong, Myeongdong, hanbok, Haeundae all split into pieces.",
+ "selection": "random draw"
+}
