@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-969a9712",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N6745-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T07:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L21/N6745",
+   "pole": "-",
+   "label": "dense structural pole: line breaks after a date heading or a code line, and the honorific ' عليه' in Arabic, against flat one-line prose that still sits near 0.2",
+   "fire": [
+    "Monday, March 3, 2014\nThe reading this week opens with a long journey.",
+    "Sunday, June 9, 2019\nA short reflection on patience and prayer.",
+    "قال رسول الله صلى الله عليه وسلم إن الدين يسر",
+    "وروي عن علي عليه السلام أنه قال ذلك",
+    "import json\nimport time\n\ndef run():\n    return 0\n",
+    "settings = {\n    'debug': True,\n    'port': 8080\n}",
+    "Friday, November 12, 2021\nNotes from the weekly study group.",
+    "from math import sqrt\n\nclass Point:\n    pass\n"
+   ],
+   "quiet": [
+    "My neighbor planted tulips along the fence last spring.",
+    "The bakery on the corner sells bread until noon every day.",
+    "We drove along the coast and stopped for lunch in a small town.",
+    "The museum opened a new wing devoted to local painters.",
+    "Our teacher read a short story aloud before the bell rang.",
+    "The train was late again, so I walked the last mile home.",
+    "Grandpa fixed the old radio with a few spare parts.",
+    "The library extended its hours during the exam season."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.7 on newlines after date headings or code lines and on ' عليه'; flat single-line prose 0.15-0.25 (dense pole, so the 0.30 near-miss bar is at risk)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "line breaks / structure (dense)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Dense: 43.8% of tokens reach 0.1 of a max of only 1.96, gate-closed regime 100%. Card peaks on '\\n' x7 after dates and code, ' عليه' x6. Probe: Arabic 'صلى الله عليه وسلم' 0.667, date heading + newline 0.473, config dict 0.453, imports 0.425; plain prose 0.196 and 0.210."
+}

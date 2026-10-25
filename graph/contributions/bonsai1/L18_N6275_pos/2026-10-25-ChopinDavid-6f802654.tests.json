@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-6f802654",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N6275+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T07:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N6275",
+   "pole": "+",
+   "label": "the closing piece of a named entity in prose: a website's domain suffix ('.com', '.org') or the final word of a named law ('Clean Water Act')",
+   "fire": [
+    "You can order the seeds online at HarvestHome.com or by phone.",
+    "Volunteers can sign up at www.riverwatch.org until next month.",
+    "Her recipes are collected at PlainKitchen.com and in two books.",
+    "Congress passed the Endangered Species Act after years of debate.",
+    "Details of the program appear at www.cityparks.org under events.",
+    "The factory had to comply with the Clean Air Act within five years.",
+    "He sells vintage maps through OldRoads.com from his garage.",
+    "Lawyers cited the Fair Housing Act in the complaint against the landlord."
+   ],
+   "quiet": [
+    "You can order the seeds online or by phone from the shop.",
+    "Volunteers can sign up at the front desk until next month.",
+    "Her recipes are collected in a blog and in two books.",
+    "Congress passed the new rules after years of debate.",
+    "Details of the program appear in the newsletter under events.",
+    "The factory had to cut its pollution within five years.",
+    "He sells vintage maps through the mail from his garage.",
+    "Lawyers cited several old rulings in the complaint against the landlord."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on '.com'/'.org' in a website name and on ' Act' closing a law's name; the same sentences without the name below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "domain suffix / name end",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Broad pole (1.9% of tokens >0.1 max). Card: '.org' x3, '.com' x3, 'Clean Air⟦ Act⟧', acronym ')'. Probe: 'GreenFields.com' 0.761, 'www.example.org' 0.545, 'Clean Water Act' 0.428; acronym '(TQM)' only 0.062, so acronyms are left out; same sentences without the name 0.037-0.177."
+}
