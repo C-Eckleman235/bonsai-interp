@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-24-moridinamael-dfdd05e2",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N741-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T03:15:16+00:00",
+ "roles": ["feeds bonsai1/L7/N11725+"],
+ "neighbours": [
+  {
+   "unit": "L3/N741",
+   "pole": "-",
+   "label": "the letters 'ung' as their own word piece inside names and rare words (Tung-uska, Tung-sten, b-ung, m-ung, k-ung fu, B-unge, p-ungent, U-NG-A), any topic; not common verbs flung/stung/clung or words kept whole like young, lung, fungus, Chung",
+   "short": "'ung' word piece in names and rare words",
+   "unit_kind": "lexical",
+   "fire": [
+    "The Tunguska event flattened millions of trees across a remote Siberian forest in 1908.",
+    "Tungsten has the highest melting point of any metal, which is why it was used in light bulb filaments.",
+    "He hammered a wooden bung into the barrel to keep the cider from leaking.",
+    "She soaked a cup of mung beans overnight to make sprouts for the salad.",
+    "The old master taught kung fu in a small courtyard behind the tea shop.",
+    "Bunge is one of the largest grain trading companies in the world.",
+    "A pungent smell of fermented fish drifted out of the market stall.",
+    "Delegates gathered in New York for the opening week of UNGA."
+   ],
+   "quiet": [
+    "The meteor blast flattened millions of trees across a remote Siberian forest in 1908.",
+    "Iron has a high melting point, which is why it was used in old furnace grates.",
+    "He flung the wooden lid off the barrel to check on the cider.",
+    "She soaked a cup of lentils overnight to make a soup for dinner.",
+    "The young student practiced karate in a small courtyard behind the tea shop.",
+    "Cargill is one of the largest grain trading companies in the world.",
+    "A strong smell of fermented fish drifted out of the market stall and stung her eyes.",
+    "Delegates gathered in New York for the opening week of the summit."
+   ]
+  }
+ ],
+ "predictions": "8/8 fire; at most the 'stung' near miss reaches ~0.1",
+ "notes": "Feeder found with the stream's attribution ranking (play step hit CUDA OOM). Test sentences written blind by a second author from the label only. Probes: 'ung' piece fires after single letters and clusters alike (Kr-ung 0.61, Br-ung 0.45); quiet on fl-ung/st-ung/cl-ung (<0.1) and whole tokens young/lung/fungus/Chung/dungeon. Solver (DE): no leak, near-miss ceiling 0.21.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "neighbors",
+   "inverse-de",
+   "blind-room",
+   "step-out"
+  ]
+ }
+}
