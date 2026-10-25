@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-e1d16057",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N6444-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T04:27:31+00:00",
+ "recipe": {
+  "toolchain_commit": "9bd11324",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L1_N6444_neg/2026-10-24-ChopinDavid-e1d16057.tests.json"
+ },
+ "label": "the leading space-byte of a Korean word that the tokenizer spells in raw UTF-8 bytes (훨씬, 쓰면, 채용, 친구), as against Korean words that have their own tokens",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L1_N6444_neg/2026-10-24-ChopinDavid-e1d16057.tests.json",
+   "prereg_commit": "9bd11324",
+   "author": "ChopinDavid",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.641,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.27,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.321,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.435,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.206,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.154,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.149,
+     "peak": "폰"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.549,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.051,
+     "peak": " 가"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.045,
+     "peak": "을"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.064,
+     "peak": "획"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.065,
+     "peak": "으로"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.078,
+     "peak": "누"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.059,
+     "peak": " 시간"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": -0.012,
+     "peak": "폰"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.004,
+     "peak": "선"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.295,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "9bd11324",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "Korean word spelled in bytes",
+ "unit_kind": "token",
+ "confidence": 0.6,
+ "notes": "Card: all top 32 on '�' (space byte of 훨씬, 쓰면, 채용, 채). Probe: 쓰면 0.835, 채용 0.603, 채 0.585, 훨씬 0.549/0.572; '더 빠르고' (no 훨씬) 0.130, 공원 산책 sentence 0.069, 도서관 sentence 0.113; English 0.033. Near misses were tokenizer-checked to contain no space-initial byte tokens.",
+ "selection": "random draw"
+}
