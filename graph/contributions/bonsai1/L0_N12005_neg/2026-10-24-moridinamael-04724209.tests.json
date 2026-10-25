@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-24-moridinamael-04724209",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N12005-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T05:17:53+00:00",
+ "roles": ["feeds bonsai1/L1/N7930+"],
+ "neighbours": [
+  {
+   "unit": "L0/N12005",
+   "pole": "-",
+   "label": "the word 'winner' (winner, Winner, winners) as a whole word, in any meaning including the surname Winner; not related words like win, won, winning, victor or champion, and not look-alikes like runner, dinner or spinner",
+   "short": "the word 'winner'",
+   "unit_kind": "lexical",
+   "fire": [
+    "The winner of the raffle will be announced at noon.",
+    "Winners receive a gift card and a small trophy.",
+    "She was declared the winner after a recount of the ballots.",
+    "Everyone agreed the lemon tart was the clear winner of the bake-off.",
+    "Debra Winner wrote the article about local gardens.",
+    "That new recipe is a real winner with the kids.",
+    "The judges took an hour to pick the winner.",
+    "Past winners include a teacher from Ohio and a retired pilot."
+   ],
+   "quiet": [
+    "The champion of the raffle will be announced at noon.",
+    "Those who win receive a gift card and a small trophy.",
+    "She was declared victorious after a recount of the ballots.",
+    "Everyone agreed the lemon tart won the bake-off easily.",
+    "Debra Spinner wrote the article about local gardens.",
+    "That new recipe is a real hit with the kids.",
+    "The judges took an hour to decide who had won.",
+    "Past runners include a teacher from Ohio and a retired pilot."
+   ]
+  }
+ ],
+ "predictions": "7-8/8 fire; sentence-initial 'Winners' is the weakest risk; near misses (victor, win, runners, Spinner) stay under 0.25",
+ "notes": "Step-out feeder of bonsai1/L1/N7930+ ('runner'), picked as the top MLP feeder by resident attribution (the play step ablation ran out of GPU memory). Test sentences written blind by a second author who saw only the label. Probes: surname 'Kate Winner' 0.79, 'a real winner' (soup) 0.84, winners 0.67, gold medal/champions/trophy without the word under 0.04; victor 0.20, winning 0.18, runner 0.18, split forms (#winner, WINNER) 0.25-0.35. Inverse solver: no leak, near-miss ceiling 0.21.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "bank-solo",
+   "blind-room",
+   "step-out"
+  ]
+ }
+}
