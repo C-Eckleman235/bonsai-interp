@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-1bff6bca",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N5525+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T01:20:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N5525",
+   "pole": "+",
+   "label": "the last token of a person's full name when a title, role or credential follows (signature blocks, 'Name, President of ...', 'Name, Ph.D.'); the same name inside ordinary narrative stays low",
+   "fire": [
+    "The deal was confirmed by Ingrid Halvorsen, Chief Executive of the shipping group.",
+    "Kind regards,\nStefan Brauer\nManaging Director, Nordbau GmbH",
+    "Keynote: Lucia P. Ferraro, M.D., Department of Cardiology",
+    "The award was presented by Kenji Watanabe, Chairman of the foundation.",
+    "Yours faithfully,\nAmelie Durand\nHead of Human Resources",
+    "Panel chair: Oskar T. Lindgren, Ph.D., Uppsala University",
+    "The merger was announced by Carlos Medeiros, President and CEO of the bank.",
+    "With best wishes,\nPiotr Zielinski\nSales Manager, Eastern Europe"
+   ],
+   "quiet": [
+    "The deal was confirmed after Ingrid Halvorsen called her brother on the phone.",
+    "Last summer Stefan Brauer went hiking in the mountains with his dog.",
+    "Lucia Ferraro grew tomatoes in a small garden behind her house.",
+    "The award ceremony ended late, and Kenji Watanabe walked home in the rain.",
+    "On Sunday Amelie Durand baked bread for the whole family.",
+    "Oskar Lindgren learned to ski when he was only four years old.",
+    "The merger made headlines, and Carlos Medeiros read about it over breakfast.",
+    "My neighbour Piotr Zielinski fixed my bicycle chain yesterday."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.5 on the name-final token or comma before a role; same names in narrative 0.0-0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "end of a name before its title/role",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: name-final pieces in French/German/Spanish signatures and ', ' before President/Chairman/Ph.D. Probe: 'Rafael M. Oliveira, Ph.D.' 0.499; 'Henrik Lindqvist, President of the board' 0.389; signature 'Martina Kowalczyk\\nHead of Procurement' 0.331; 'Thomas J. Whitfield\\nDirector' 0.333; same name in narrative 0.119; 'Kowalczyk is a common surname' 0.104."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-deddd6d9",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N5645-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T01:20:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N5645",
+   "pole": "-",
+   "label": "the token right before a 'does not / doesn't' continuation, mostly inside code identifiers ('except ObjectDoesNotExist', 'test_bad_update_doesnt_...'); the + pole promotes ' does'. Prose 'it does not' and the multilingual card peaks did not reproduce",
+   "fire": [
+    "try:\n    order = Order.objects.get(id=order_id)\nexcept ObjectDoesNotExist:\n    order = None",
+    "def test_empty_list_doesnt_raise(self):\n    self.assertEqual(total([]), 0)",
+    "from django.core.exceptions import ObjectDoesNotExist\n\ndef find(pk):\n    return Item.objects.get(pk=pk)",
+    "try:\n    profile = request.user.profile\nexcept ObjectDoesNotExist:\n    profile = Profile.objects.create(user=request.user)",
+    "def test_missing_key_doesnt_crash(self):\n    self.assertIsNone(lookup({}, 'a'))",
+    "    try:\n        post = Post.objects.get(slug=slug)\n    except ObjectDoesNotExist:\n        raise Http404",
+    "def test_bad_token_doesnt_login(self):\n    self.assertFalse(login('xyz'))",
+    "try:\n    book = Book.objects.get(isbn=code)\nexcept ObjectDoesNotExist:\n    return JsonResponse({'error': 'missing'})"
+   ],
+   "quiet": [
+    "try:\n    order = Order.objects.get(id=order_id)\nexcept ValueError:\n    order = None",
+    "def test_empty_list_returns_zero(self):\n    self.assertEqual(total([]), 0)",
+    "from django.core.exceptions import ValidationError\n\ndef find(pk):\n    return Item.objects.get(pk=pk)",
+    "try:\n    profile = request.user.profile\nexcept AttributeError:\n    profile = Profile.objects.create(user=request.user)",
+    "def test_missing_key_returns_none(self):\n    self.assertIsNone(lookup({}, 'a'))",
+    "    try:\n        post = Post.objects.get(slug=slug)\n    except KeyError:\n        raise Http404",
+    "def test_bad_token_fails_login(self):\n    self.assertFalse(login('xyz'))",
+    "try:\n    book = Book.objects.get(isbn=code)\nexcept TypeError:\n    return JsonResponse({'error': 'missing'})"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on ' Object' or the token before 'DoesNotExist/doesnt' in code; other exception names and prose 0.0-0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "before 'DoesNotExist' in code",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card peaks: Korean 주 before 지 않습니다, Russian связей before 'еще не', Arabic أن/كي, ' Object' before DoesNotExist, '_update' before _doesnt. Probe: 'except ObjectDoesNotExist' 0.571; Russian 0.178; Korean 0.087; Arabic أن 0.086, لكي 0.007; prose 'but it does not work' 0.032. Test keeps the code frame."
+}

@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-727f065d",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N10915+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T01:27:51+00:00",
+ "recipe": {
+  "toolchain_commit": "dac2c87e",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L20_N10915_pos/2026-10-24-ChopinDavid-727f065d.tests.json"
+ },
+ "label": "the word that completes a predicate about something's normal use or function ('was first used as', 'does its job'), read off a state or role rather than an event",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L20_N10915_pos/2026-10-24-ChopinDavid-727f065d.tests.json",
+   "prereg_commit": "dac2c87e",
+   "author": "ChopinDavid",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.587,
+     "peak": " used"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.257,
+     "peak": " job"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.196,
+     "peak": " used"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.063,
+     "peak": " its"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.31,
+     "peak": " used"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.097,
+     "peak": " out"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.023,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.181,
+     "peak": " clean"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.03,
+     "peak": " old"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.001,
+     "peak": " are"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.018,
+     "peak": " during"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.02,
+     "peak": " company"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.097,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.016,
+     "peak": " kickoff"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.017,
+     "peak": " her"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.099,
+     "peak": " keeps"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.898,
+    "median_fire": 0.189,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dac2c87e",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "use/function completions ('first used', 'its job')",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card peaks mixed: ' view', ' used', ' dry', ' mine', ' job', ' running', ' control'. Probe: 'chapel was first used as a granary' 0.582; 'immune system just does its job' 0.483; 'keep them dry at all times' 0.331 (peak ' all'); 'it is mine' 0.262; 'engine running' 0.186; 'under control' 0.038; event floors 0.01-0.12. Test keeps the two strongest frames.",
+ "selection": "random draw"
+}
