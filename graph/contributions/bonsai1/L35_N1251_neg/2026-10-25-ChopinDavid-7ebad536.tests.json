@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-7ebad536",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N1251-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T19:21:11+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N1251",
+   "pole": "-",
+   "label": "the byte-fallback token ' \\xe9': a space followed by a CJK character whose UTF-8 starts with byte E9 (酒 银 预 饭 都 高 风 长), as opposed to a space before characters starting with other bytes (学 医 花 生 大)",
+   "fire": [
+    "下午我们去了 银行，办完事以后去吃了午饭。",
+    "这家公司 预计明年的收入会增长一成。",
+    "大家一起吃完 饭后，就去公园散步了。",
+    "新开的 酒吧就在我家楼下，晚上很热闹。",
+    "从山上往下看， 风景非常漂亮。",
+    "他们住在一栋 高楼的顶层，可以看到整个城市。",
+    "这条路很 长，我们走了两个小时。",
+    "我们参观了 都江堰，那里的水利工程很有名。"
+   ],
+   "quiet": [
+    "下午我们去了 学校，办完事以后去吃了午饭。",
+    "这家公司 今年的收入增长了一成。",
+    "大家一起 看完电影，就去公园散步了。",
+    "新开的 花店就在我家楼下，白天很热闹。",
+    "从山上往下看， 城市非常漂亮。",
+    "他们住在一栋 大楼的顶层，可以看到整个城市。",
+    "这条路很 宽，我们走了两个小时。",
+    "我们参观了 故宫，那里的建筑很有名。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on the ' \\xe9' token in Chinese text with a stray space before an E9 character; the same frame with a space before a character from another byte range below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "space + E9-byte CJK character",
+ "unit_kind": "token/lexical",
+ "confidence": 0.75,
+ "notes": "Card: peak ' �' x23; every top Chinese example is a space before an E9 character (鞋 関 都 饭 酒 预 醋), plus Arabic ' والح'. Probe: '住的 酒店' 0.634; spaces before 学 (E5) 0.003 and 医 (E5) 0.002; no space 0.003; Arabic ' والح' 0.181. Tokenizer: E9 characters after a space give the token 'Ġé'; E5/E6/E7/E8 give other byte tokens. A spelling unit, not a meaning."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-8119bba4",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N2860-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T19:21:11+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L20/N2860",
+   "pole": "-",
+   "label": "setting aside an unresolved cause to state the outcome ('whatever the reason,', 'no matter what the cause,', 'regardless of the cause'), as opposed to giving the cause ('for this reason', 'because of this') or not concluding",
+   "fire": [
+    "The shop lost customers last year. Whatever the cause, it closed in March.",
+    "Some blame the weather and some blame the coach. No matter what the reason, the team lost again.",
+    "Historians still argue about why the empire fell; whatever the explanation, the effect was dramatic.",
+    "Nobody knows why the lights went out. Whatever the reason, the whole street was dark for hours.",
+    "It may have been the heat or the noise. Regardless of the cause, nobody slept that night.",
+    "Theories differ on why prices rose, but whatever the cause, the net result was higher rents.",
+    "Maybe the email was lost, maybe it was ignored. Either way, the deadline passed.",
+    "The airline gave three different excuses. No matter what caused the delay, the outcome was a cancelled flight."
+   ],
+   "quiet": [
+    "The shop lost customers last year. Because of this, it closed in March.",
+    "Some blame the weather and some blame the coach. The team lost again on Sunday.",
+    "Historians still argue about why the empire fell and publish new books about it.",
+    "Nobody knows why the lights went out. The electrician will come tomorrow.",
+    "It may have been the heat or the noise that kept everyone awake that night.",
+    "Theories differ on why prices rose, and economists keep studying the data.",
+    "Maybe the email was lost, maybe it was ignored. I will send it again today.",
+    "The airline gave three different excuses. The delay was caused by a broken engine."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.75 on the comma after 'whatever the reason' and on the outcome verb; 'for this reason,', 'because of this' and cause-only sentences below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "whatever the reason, outcome",
+ "unit_kind": "context",
+ "confidence": 0.65,
+ "notes": "Card: peaks ',' x10 ('No matter what the reason,', 'Whatever the reason,'), ' result' x5 ('net result', 'end result'), ' effect' x2; positive pole suppresses result/outcome. Probe: 'No matter what the cause, the outcome was' 0.742, 'Whatever the reason,' 0.428, 'The end result was' 0.220, 'desired outcomes' 0.159, 'The effect of the new tax' 0.071; 'For this reason,' 0.005, 'The reason she left' 0.008."
+}

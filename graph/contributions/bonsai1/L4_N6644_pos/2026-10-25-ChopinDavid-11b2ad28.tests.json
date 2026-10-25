@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-11b2ad28",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N6644+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T19:21:11+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N6644",
+   "pole": "+",
+   "label": "the 'sit' lexeme across forms and languages (seat, seated, seating, sat, German Sitz-/Sitzung), as opposed to furniture words and other posture or rest words",
+   "fire": [
+    "The new stadium has seating for forty thousand fans.",
+    "Guests were seated at long tables in the garden.",
+    "Die nächste Sitzung findet am Donnerstag im Rathaus statt.",
+    "She found an empty seat at the back of the bus.",
+    "The old man sat on the porch and watched the rain.",
+    "After the long walk we were glad to sit for a while.",
+    "The children sat in a circle around the teacher.",
+    "Every car has heated seats and a large boot."
+   ],
+   "quiet": [
+    "The new stadium has parking for four thousand cars.",
+    "Guests were greeted at the gate of the garden.",
+    "Die nächste Wahl findet am Donnerstag im Rathaus statt.",
+    "She found an old ticket at the back of the bus.",
+    "The old man stood on the porch and watched the rain.",
+    "After the long walk we were glad to rest for a while.",
+    "The children ran in a circle around the teacher.",
+    "Every car has heated mirrors and a large boot."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on ' seat', ' seated', ' seating', ' sat', 'itz' in Sitzung; chair, stood, parking, Wahl and other matched words below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "seat / sit / Sitz",
+ "unit_kind": "token/lexical",
+ "confidence": 0.7,
+ "notes": "Card: peaks ' seated' x7, 'itz' x6, ' seat' x4, ' seating' x4, 'Se|ating'. Probe: 'Sitzung' 0.905, 'more seating' 0.591, 'remain seated' 0.563, 'He sat down' 0.446, 'took a seat' 0.403; 'The chair' 0.038, 'sweat' 0.004, 'settle' 0.009. 'sat' firing makes this the sit lexeme, not the seat noun."
+}

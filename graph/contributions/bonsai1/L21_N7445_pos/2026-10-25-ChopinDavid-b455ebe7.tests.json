@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-b455ebe7",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N7445+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T19:21:11+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L21/N7445",
+   "pole": "+",
+   "label": "the line break that closes a section header inside indented Python: a '# comment' line opening a new block after a blank line, or a numpydoc '----------' underline, as opposed to ordinary code lines",
+   "fire": [
+    "class Loader:\n    def load(self, path):\n        text = open(path).read()\n\n        # parse the header\n        header = text.split(',')[0]\n        return header",
+    "    def step(self):\n        self.t += 1\n\n        # update velocities\n        self.v += self.a * self.dt\n        return self.v",
+    "def build(cfg):\n    model = Model(cfg)\n\n    # optimiser settings\n    opt = Adam(model.parameters())\n    return model, opt",
+    "def area(r):\n    \"\"\"Compute area.\n\n    Returns\n    -------\n    float\n        The area.\n    \"\"\"\n    return 3.14 * r * r",
+    "    def close(self):\n        self.flush()\n\n        # release the lock\n        self.lock.release()\n        self.closed = True",
+    "def scale(x, k):\n    \"\"\"Scale an array.\n\n    Parameters\n    ----------\n    x : ndarray\n        Input values.\n    \"\"\"\n    return x * k",
+    "    def clean(self):\n        rows = self.fetch()\n\n        # drop empty rows\n        rows = [r for r in rows if r]\n        return rows",
+    "    def reset(self):\n        self.count = 0\n\n        # clear cached results\n        self.cache = {}\n        self.ready = False"
+   ],
+   "quiet": [
+    "class Loader:\n    def load(self, path):\n        text = open(path).read()\n        header = text.split(',')[0]\n        return header",
+    "    def step(self):\n        self.t += 1\n        self.v += self.a * self.dt\n        return self.v",
+    "def build(cfg):\n    model = Model(cfg)\n    opt = Adam(model.parameters())\n    return model, opt",
+    "def area(r):\n    \"\"\"Compute the area of a circle of radius r and return it as a float.\"\"\"\n    return 3.14 * r * r",
+    "    def close(self):\n        self.flush()\n        self.lock.release()\n        self.closed = True",
+    "def scale(x, k):\n    \"\"\"Multiply every value in x by the factor k.\"\"\"\n    return x * k",
+    "    def clean(self):\n        rows = self.fetch()\n        rows = [r for r in rows if r]\n        return rows",
+    "    def reset(self):\n        self.count = 0\n        self.cache = {}\n        self.ready = False"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on the newline ending a '# ...' header after a blank line or a docstring underline; the same code without header comments or underlines below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "line break after an in-code section header",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: peaks '\\n' x14 and indentation runs; top examples are newlines right after '# physical values', '# call method', '# purge secrets' and ' ----------\\n'. Probe: class with blank line then '# default paths' 0.642, numpydoc underline 0.463, comment inside a short function 0.262 and in a loop 0.131; same code without comments 0.024 and 0.054; prose lines 0.131."
+}
