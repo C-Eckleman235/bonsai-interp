@@ -1,0 +1,164 @@
+{
+ "id": "2026-10-25-C-Eckleman235-d4e8d8a8",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N9240+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-25T04:55:03+00:00",
+ "recipe": {
+  "toolchain_commit": "b05b2e60",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L32_N9240_pos/2026-10-25-C-Eckleman235-d4e8d8a8.tests.json"
+ },
+ "label": "the word joining two numbers in a range, size or score, right after the first number ('2:00 PM to 3:00', 'aged 5 to 12', '39 x 30 cm', '12 by 14 feet', '9-to-5', 'won 3 to 1'): a second number comes next; 'to', 'by' and 'x' that do not join two numbers stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L32_N9240_pos/2026-10-25-C-Eckleman235-d4e8d8a8.tests.json",
+   "prereg_commit": "b05b2e60",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.404,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.465,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.511,
+     "peak": " x"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.382,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.297,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.388,
+     "peak": " by"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.62,
+     "peak": "-to"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.488,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.003,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.018,
+     "peak": " than"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.002,
+     "peak": " was"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.011,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.002,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.012,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.018,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.003,
+     "peak": " by"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.434,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "bands",
+   "card",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bands"
+  ],
+  "toolchain_commit": "b05b2e60",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L35/N1376+"
+ ],
+ "selection": "step-out from bonsai1/L35/N1376+",
+ "edges": [
+  {
+   "from": "bonsai1/L32/N9240+",
+   "to": "bonsai1/L35/N1376+",
+   "kind": "feeds",
+   "weight": 0.25,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
