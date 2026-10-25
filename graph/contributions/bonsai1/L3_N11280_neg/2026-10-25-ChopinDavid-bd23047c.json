@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-bd23047c",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N11280-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T22:28:37+00:00",
+ "recipe": {
+  "toolchain_commit": "6fcdc7ad",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L3_N11280_neg/2026-10-25-ChopinDavid-bd23047c.tests.json"
+ },
+ "label": "words for water held underground ('groundwater', 'aquifer'), as against surface water and other soil terms",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L3_N11280_neg/2026-10-25-ChopinDavid-bd23047c.tests.json",
+   "prereg_commit": "6fcdc7ad",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.627,
+     "peak": " groundwater"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.607,
+     "peak": " groundwater"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.627,
+     "peak": " groundwater"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.441,
+     "peak": "ifer"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.587,
+     "peak": " groundwater"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.441,
+     "peak": "ifer"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.613,
+     "peak": " groundwater"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.585,
+     "peak": " groundwater"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.253,
+     "peak": " water"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.057,
+     "peak": " washed"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.157,
+     "peak": " could"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.254,
+     "peak": " water"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.149,
+     "peak": " water"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.233,
+     "peak": " shrinking"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.148,
+     "peak": " pond"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.136,
+     "peak": " tanks"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.597,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "6fcdc7ad",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "underground water words",
+ "unit_kind": "meaning",
+ "confidence": 0.4,
+ "notes": "Card: ' groundwater' x13, 'water' in 'Groundwater', plus 'stant' in transubstantiation. Probe: 'pump groundwater' 0.634, 'tested groundwater' 0.644, 'Ground|water levels' 0.578, 'aquifer' 0.494, 'transub|stant|iation' 0.778; 'river water' 0.185, 'the soil' 0.203. Pole is broad (5.7% of tokens), so near misses will fire weakly.",
+ "selection": "random draw"
+}
