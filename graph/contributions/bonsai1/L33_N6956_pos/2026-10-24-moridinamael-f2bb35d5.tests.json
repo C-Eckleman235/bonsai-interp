@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-24-moridinamael-f2bb35d5",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N6956+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T04:55:58+00:00",
+ "roles": ["reads bonsai1/L27/N6755+"],
+ "neighbours": [
+  {
+   "unit": "L33/N6956",
+   "pole": "+",
+   "label": "the digits of a well-known fixed phone code: a country's international dialling code (+39, +81) or a public service number like 112; not ordinary extensions, room numbers or local numbers",
+   "short": "known dialling / service code digits",
+   "fire": [
+    "To call Italy from abroad, dial +39 before the number.",
+    "Japan's country code is +81, so remember to add it when texting friends in Tokyo.",
+    "In an emergency anywhere in the EU, just dial 112.",
+    "Americans are taught from childhood to call 911 if there's a fire.",
+    "The UK emergency line is 999, and it has been since 1937.",
+    "Numbers in Germany start with +49 when dialled from outside the country.",
+    "My grandmother's phone book listed relatives in France under the +33 prefix.",
+    "If you need non-urgent police help in Britain, try 101 instead."
+   ],
+   "quiet": [
+    "To call the hotel desk from your room, dial extension 39.",
+    "Our meeting is in room 81 on the third floor.",
+    "In an emergency, find the nearest exit and alert staff.",
+    "Americans are taught from childhood to stay calm if there's a fire.",
+    "The old building was finished in 1937 and still stands.",
+    "Rooms in the German wing start with 49 on the door plaques.",
+    "My grandmother's phone book listed relatives in France by city.",
+    "If you need help with your order, reply to this email instead."
+   ],
+   "confidence": "medium",
+   "notes": "Blind test: sentences written by a second author who saw only the label. Step-in reader of L27/N6755+ (drop 0.09; the reader's label has little to do with the feeder's history-of-machines topic). Exploration: the pole fires on digits of a number the model knows for a specific named thing: dialling codes (+39 0.91, +81 0.75, +34 0.59, +49 0.42, +33 0.40), Europe's 112 (0.41), Madrid's 012 service line (0.55), and the decade digits of some famous named laws and films (FOIA 1966 0.58, Seven Samurai 1954 0.56-0.63, Rashomon 1950 0.40), while the same numbers with no famous owner read ~0 (dial 39 for my aunt 0.02, local parking rule of 1966 0.01, bridge completed in 1956 0.02). The year branch is unreliable (Civil Rights Act 1964, Abbey Road 1969, Orwell 1949, 1970s films all < 0.1), so the label is limited to phone codes. Exceptions seen: 'The country code for Brazil is +55' 0.01, US 911 0.001. Top feeders (L32/N8126-, L27/N3843+) are year-digit cells. Solver: no leak; film year in a mixed passage silent."
+  }
+ ],
+ "predictions": "Most dialling-code and 112 items fire; 911 likely misses (0.001 in exploration); 999 and 101 untested.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "neighbors",
+   "inverse-de",
+   "blind-room"
+  ]
+ }
+}
