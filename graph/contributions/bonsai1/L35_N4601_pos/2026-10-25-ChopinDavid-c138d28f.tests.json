@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-c138d28f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N4601+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T15:20:11+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N4601",
+   "pole": "+",
+   "label": "the split-off first letter (' p', ' к', ' п') of a word broken by the tokenizer, mostly for small physical masses or pieces (piers, pucks, pustules, куски), as opposed to whole-word tokens for the same kinds of objects",
+   "fire": [
+    "After the game the kids left a bag of old pucks by the bench.",
+    "The pier was rebuilt on new steel piers after the hurricane.",
+    "The doctor drained a single pustule on the patient's wrist.",
+    "Small white puffs of smoke rose from the chimney in the cold air.",
+    "Unopened letters were piling up on the kitchen table.",
+    "Мама нарезала хлеб на ровные куски и положила их на тарелку.",
+    "Он отломил маленький кусочек шоколада и отдал его сестре.",
+    "Девочка собрала цветы в небольшие пучки и связала их лентой."
+   ],
+   "quiet": [
+    "After the game the kids left a bag of old balls by the bench.",
+    "The pier was rebuilt on new steel posts after the hurricane.",
+    "The doctor drained a single blister on the patient's wrist.",
+    "Small white clouds of smoke rose from the chimney in the cold air.",
+    "Unopened letters lay in heaps on the kitchen table.",
+    "The workers broke the old wall into chunks and loaded the truck.",
+    "Он нашёл красивые камни на берегу и отдал их сестре.",
+    "A large pile of firewood was stacked against the barn."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on ' p'/' к'/' п' when it starts a split word; whole-token synonyms (pile, chunks, heaps, stone) below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-off first letter ' p'/' к'",
+ "unit_kind": "token/lexical",
+ "confidence": 0.5,
+ "notes": "Card: peaks ' p' x13, ' п' x8, ' к' x3, all word-initial split pieces (p|iling, p|iers, p|ustules, к|усочки, п|учков); + pole promotes chunk/lump/heap/pile. Probe: 'мелкие куски' 0.809, 'concrete piers' 0.612, 'pustules' 0.499, 'kept piling up' 0.396, 'hockey pucks' 0.358, 'пакет' 0.150; whole token 'huge pile' 0.117, pundit (' pund') 0.000, pebbles (' pe') 0.000."
+}

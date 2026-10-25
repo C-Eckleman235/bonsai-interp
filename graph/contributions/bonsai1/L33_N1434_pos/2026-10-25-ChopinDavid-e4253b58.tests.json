@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-e4253b58",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N1434+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T15:20:11+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N1434",
+   "pole": "+",
+   "label": "the last element of a size or shape tuple in GUI/tensor code (the '64' in size=(64,64), 'depth' in [batch, height, width, depth]), as opposed to other literals in the same code",
+   "fire": [
+    "    window = sg.Window('Demo', layout, size=(400,300))",
+    "    [sg.Button('OK', size=(10,2)), sg.Button('Cancel')]",
+    "    logo = sg.Image(filename='a.png', size=(32,32))",
+    "    [sg.Text('Path:', size=(8,1)), sg.Input(key='path')]",
+    "    thumb = sg.Image(data=raw, key='thumb', size=(96,96))",
+    "    [sg.Multiline(key='log', size=(60,20))]",
+    "    [sg.Text('Title', font=('Arial', 18))]",
+    "    canvas = sg.Canvas(key='plot', size=(640,480))"
+   ],
+   "quiet": [
+    "    window = sg.Window('Demo', layout, finalize=True)",
+    "    [sg.Button('OK'), sg.Button('Cancel')]",
+    "    logo = sg.Image(filename='a.png', key='logo')",
+    "    [sg.Text('Path:'), sg.Input(key='path')]",
+    "    count = len(items) + 12",
+    "    names = ['alpha', 'beta', 'gamma']",
+    "    retries = 3\n    timeout = 30",
+    "    canvas = sg.Canvas(key='plot', background_color='white')"
+   ]
+  }
+ ],
+ "predictions": "fire 0.1-0.25 on the last number of size=(a,b); other code literals and prose below 0.05; weak overall",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "last element of a size tuple in code",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card: peaks '1' in size=(15,1), ' depth' in TensorShape, '6' in size=(128,256), '5' in font size, plus 'Treaty of'. Probe weak: size=(64,64) 0.204, size=(12,1) 0.110, 'Treaty of Paris' 0.181; TensorShape with channels 0.015, dict 'size': 12 0.038, range 0.005. Low confidence."
+}

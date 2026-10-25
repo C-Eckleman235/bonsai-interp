@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-fa6edc5f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N12007+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T15:20:11+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L32/N12007",
+   "pole": "+",
+   "label": "search-engine features named in software docs or config (OpenSearch, faceting, elasticsearch, query capabilities), as opposed to other features in the same kind of config or list",
+   "fire": [
+    "# If set, an OpenSearch description will be generated for the docs.\nhtml_use_opensearch = 'https://docs.example.org'\n",
+    "The search backend supports faceting, autocomplete and fuzzy matching.",
+    "# Settings for the elasticsearch connection used by the indexer.\n",
+    "Solr offers faceting, result grouping and spellcheck out of the box.",
+    "# Base URL for the OpenSearch file.\nhtml_use_opensearch = ''\n",
+    "The plugin adds faceting, synonyms and highlighting to every query.",
+    "# Index documents into elasticsearch after each import.\n",
+    "Add an OpenSearch link so browsers can search the manual directly."
+   ],
+   "quiet": [
+    "# If set, a PDF version will be generated for the docs.\nlatex_engine = 'xelatex'\n",
+    "The editor supports themes, autosave and split panes.",
+    "# Settings for the postgres connection used by the importer.\n",
+    "The app offers dark mode, offline sync and backups out of the box.",
+    "# Base URL for the static files.\nhtml_static_path = ['_static']\n",
+    "The plugin adds colours, icons and tooltips to every page.",
+    "# Write a log line after each import.\n",
+    "Add a print link so readers can save the manual directly."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.45 on _op|ensearch / OpenSearch, the comma after 'faceting', ' el|asticsearch'; other Sphinx options and feature lists below 0.12",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "search-engine feature names in software text",
+ "unit_kind": "meaning",
+ "confidence": 0.3,
+ "notes": "Card: peaks ',' after 'faceting', '_op|ensearch' x2, 'Open|Search', ' el|asticsearch', '/m|rss', 'sparql', 'twe|epy'. Probe: 'an OpenSearch description file' 0.452, 'faceting, highlighting' 0.368, tweepy 0.225, 'html_use_opensearch' 0.171, 'elasticsearch module' 0.153; 'html_copy_source' 0.120, 'kitchen tools include knives,' 0.018."
+}

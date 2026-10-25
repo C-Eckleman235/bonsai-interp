@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-aa63661e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N3491+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T15:20:11+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N3491",
+   "pole": "+",
+   "label": "the token right before a numeric range in Spanish/French ('que va de X a Y', 'âgés de X à Y', 'entre las X y las Y'): the range-introducing slot, as opposed to the same sentences with a single number or no range",
+   "fire": [
+    "El curso está pensado para estudiantes, con una duración que va de 3 a 6 meses.",
+    "Le camp accueille des jeunes âgés de 8 à 15 ans chaque été.",
+    "La tienda atiende al público entre las 10 de la mañana y las 8 de la noche.",
+    "En esta zona la profundidad del lago, que va de 2 a 40 metros, cambia mucho.",
+    "L'atelier est ouvert aux enfants âgés de 5 à 10 ans le mercredi.",
+    "El museo recibe visitas entre las 11 y las 5 todos los sábados.",
+    "Hay modelos con un precio que va de 200 a 900 euros según la marca.",
+    "Le club propose des cours aux adultes âgés de 18 à 65 ans."
+   ],
+   "quiet": [
+    "El curso está pensado para estudiantes y dura unos meses en total.",
+    "Le camp accueille des jeunes de toute la région chaque été.",
+    "La tienda atiende al público todos los días de la semana.",
+    "En esta zona el lago es muy profundo y el agua está fría.",
+    "L'atelier est ouvert aux enfants du quartier le mercredi.",
+    "El museo recibe muchas visitas todos los sábados del año.",
+    "Hay modelos de varias marcas en la tienda del centro.",
+    "Le club propose des cours aux adultes débutants le soir."
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.75 on va/âgés/las before 'de X a Y' or a time range; same-language sentences without a range below 0.12; English ranges stay low (~0.1)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "slot before a Romance numeric range",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: peaks ' va' before 'de débil a intenso', 'âg|és' before 'de 7 à 11', ' las' in 'entre las horas de las 8', 'vari|ando de 0 a 180'; - pole suppresses 'between/entre', so + promotes it. Probe: 'âgés de 6 à 12 ans' 0.709, 'entre las 9 ... y las 6' 0.547, 'que va de 10 a 35' 0.518; Spanish without range 0.068; English 'aged 8 to 14' 0.088, 'range from 20 to 50' 0.116."
+}

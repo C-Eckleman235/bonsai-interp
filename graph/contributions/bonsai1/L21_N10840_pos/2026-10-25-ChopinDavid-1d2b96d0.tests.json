@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-1d2b96d0",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N10840+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T15:20:11+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L21/N10840",
+   "pole": "+",
+   "label": "the closing token at the end of a Python statement line (a call's or subscript's closing bracket right before the newline), as opposed to the same content described in prose",
+   "fire": [
+    "    h = self.dropout(self.embed(tokens))\n    out = self.head(h)\n    return out",
+    "    record['city'] = payload['city']\n    record['zip'] = payload['zip']\n",
+    "    x1, y1 = start\n    x2, y2 = end\n    dist = math.hypot(x2 - x1, y2 - y1)\n",
+    "    z = tf.nn.sigmoid(self.dense(features))\n    loss = criterion(z, labels)\n",
+    "    items = frame['score'].tolist()\n    best = max(items)\n",
+    "    settings['mode'] = options['mode']\n    settings['debug'] = options['debug']\n",
+    "    a = np.maximum(self.w1(inp), 0)\n    b = self.w2(a)\n",
+    "    width, height = image.size\n    ratio = float(width) / float(height)\n"
+   ],
+   "quiet": [
+    "The model applies dropout to the token embeddings and then a final head layer.",
+    "The record copies the city and the postal code from the incoming payload.",
+    "We take the start and end points and compute the distance between them.",
+    "The features pass through a dense layer and a sigmoid before the loss.",
+    "The scores are turned into a plain list and the best one is kept.",
+    "The settings copy the mode and the debug flag from the options.",
+    "The input goes through the first layer, a rectifier and then the second layer.",
+    "The width and height of the image give its aspect ratio."
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.4 on the line-final ')' / '))\\n' / ']\\n' of multi-line Python; prose describing the same steps below 0.12",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "line-final closer in Python code",
+ "unit_kind": "unclear",
+ "confidence": 0.25,
+ "notes": "Card: peaks scattered over ')\\n', '))\\n', \"']\\n\", '2' at line end, plus ' technique' in prose: no single token. Probe: 'torch.relu(self.fc2(x))' line 0.392, 'lat2, lon2 = destination' 0.277, \"row['name']\" line 0.201, '.tolist()' 0.160, but 'parse_args()' only 0.065 and prose 'picking technique' 0.233, prose floors 0.066-0.175. Weak and broad; expect a low-margin result."
+}
