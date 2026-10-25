@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-c3fcd58d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N10363+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T21:19:50+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L31/N10363",
+   "pole": "+",
+   "label": "the token right after an 'update' cue: the next word after 'up to date' or the second apt-get after 'apt-get update', as against the same commands and phrases without updating",
+   "fire": [
+    "Engineers must stay up to date with changes in safety regulations.",
+    "Our newsletter keeps members up to date with club events.",
+    "Doctors need to remain up to date with current research.",
+    "The app keeps you up to date with live train times.",
+    "First type sudo apt-get update, then type sudo apt-get upgrade -y and wait.",
+    "On the server I ran sudo apt-get update && sudo apt-get dist-upgrade last night.",
+    "To refresh packages: apt-get update; apt-get upgrade; reboot.",
+    "Before installing, do sudo apt-get update followed by sudo apt-get full-upgrade."
+   ],
+   "quiet": [
+    "Engineers must stay in touch with colleagues in other offices.",
+    "Our newsletter keeps members happy with photos of club events.",
+    "Doctors need to remain patient with anxious families.",
+    "The app keeps you company with live radio stations.",
+    "First type sudo apt-get install git, then type sudo apt-get remove nano and wait.",
+    "On the server I ran sudo apt-get install nginx && sudo apt-get autoremove last night.",
+    "To add packages: apt-get install vim; apt-get install curl; reboot.",
+    "Before compiling, do sudo apt-get install make followed by sudo apt-get install gcc."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.5 on ' with' after 'up to date' and on '-get' of 'apt-get upgrade' after update; 'in touch with' and apt-get install/remove pairs below 0.10",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "after an update / up-to-date cue",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: sudo apt-get update ... apt-get upgrade (201, peak '-get'), 'update every day with', 'up to date with market developments', 'keep up with new technologies', 'auto_now' after updated_at, 'latest firmware', max 201, very sparse. Probe: 'stay up to date with' 0.532, apt-get update+upgrade 0.514, auto_now 0.186, 'keep up with' 0.106, 'latest firmware' 0.048, 'latest OS' 0.020, apt-get install 0.010."
+}
