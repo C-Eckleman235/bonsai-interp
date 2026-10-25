@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-moridinamael-a98aa834",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N3610+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T00:47:37+00:00",
+ "roles": ["feeds bonsai1/L16/N3493-"],
+ "neighbours": [
+  {
+   "unit": "L8/N3610",
+   "pole": "+",
+   "label": "the final piece of a few exact names: Magritte, Nettuno, Polycarp, Tunguska, and London only in 'Tower of London' (other Londons, other towers, painters or look-alikes like Juno, harp stay quiet)",
+   "short": "end of Magritte/Nettuno/Polycarp/Tunguska/Tower of London",
+   "fire": [
+    "The museum's new wing is devoted entirely to René Magritte.",
+    "We spent the afternoon queuing to see the Crown Jewels at the Tower of London.",
+    "Bologna's famous fountain shows a bronze statue of Nettuno holding a trident.",
+    "In 1908 a huge explosion flattened forests near the Tunguska River in Siberia.",
+    "Saint Polycarp was bishop of Smyrna in the second century.",
+    "Her favorite painting is the bowler-hatted man by Magritte.",
+    "The ravens of the Tower of London are said to protect the kingdom.",
+    "Scientists still debate what caused the Tunguska event."
+   ],
+   "quiet": [
+    "The museum's new wing is devoted entirely to Salvador Dalí.",
+    "We spent the afternoon queuing to see the shops on Oxford Street in London.",
+    "Bologna's famous fountain shows a bronze statue of Neptune holding a trident.",
+    "In 1908 a huge explosion flattened forests near a remote river in Siberia.",
+    "Saint Ignatius was bishop of Antioch in the second century.",
+    "Her favorite painting is the melting clocks by Dalí.",
+    "The ravens near the Eiffel Tower are said to steal tourists' snacks.",
+    "Scientists still debate what caused the meteor airburst over Chelyabinsk."
+   ]
+  }
+ ],
+ "predictions": "blind test written label-only by a second author; expect most fire items 0.2-0.8 (Tunguska weakest, ~0.2), near misses under 0.2",
+ "notes": "Feeder found with the stream's resident attribution (play step ran out of GPU memory); no ablation drop measured. The - pole is a strong 'paint' detector (max 33.75), not tested here.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "inverse-de",
+   "step-out"
+  ]
+ }
+}
