@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-1f99009a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N4205+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T01:20:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N4205",
+   "pole": "+",
+   "label": "the token just before a run of column-aligning spaces in code or config tables (a quoted dict key or variable name padded out before ':' or '='); the same key-value lines with single spacing stay quiet",
+   "fire": [
+    "settings = {\n    'user'        : 'admin',\n    'timeout'     : 30,\n    'retries'     : 5,\n}",
+    "y_low      = -10\ny_high     = 10\nmargin     = None    # margin size",
+    "colors = {\n    'red'         : '#ff0000',\n    'green'       : '#00ff00',\n    'blue'        : '#0000ff',\n}",
+    "rate_init      = 0.01\nrate_decay     = 0.95\nbatch_size     = 64",
+    "limits = {\n    'cpu'          : 4,\n    'memory'       : '8G',\n    'disk'         : '50G',\n}",
+    "max_iter       = 500\ntol            = 1e-6\nseed           = None   # random seed",
+    "params = {\n    'alpha'        : 0.5,\n    'beta'         : 0.1,\n    'gamma'        : 2,\n}",
+    "est_ok         = 0\nest_warn       = 1\nest_fail       = 2"
+   ],
+   "quiet": [
+    "settings = {\n    'user': 'admin',\n    'timeout': 30,\n    'retries': 5,\n}",
+    "y_low = -10\ny_high = 10\nmargin = None  # margin width",
+    "colors = {\n    'red': '#ff0000',\n    'green': '#00ff00',\n    'blue': '#0000ff',\n}",
+    "rate_init = 0.01\nrate_decay = 0.95\nbatch_size = 32",
+    "limits = {\n    'cpu': 4,\n    'memory': '8G',\n    'disk': '50G',\n}",
+    "max_iter = 500\ntol = 1e-6\nseed = None  # rng seed",
+    "params = {\n    'alpha': 0.5,\n    'beta': 0.1,\n    'gamma': 2,\n}",
+    "est_ok = 0\nest_warn = 1\nest_fail = 3"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on keys followed by padding spaces; identical lines with single spaces 0.0-0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "key before alignment padding",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: 'step =⟦ None⟧      #', '@param:⟦ table⟧      --', 'ecoli⟦'⟧       :', 'est_hard⟦min⟧       ='. Probe: padded dict \"'host'       :\" 0.557; padded 'step      = None' 0.294; padded '@param: name        --' 0.041; unpadded dict 0.005; unpadded assignments 0.025; padded 'Author:      Jane' 0.002. Test uses padded dict keys and padded assignments."
+}

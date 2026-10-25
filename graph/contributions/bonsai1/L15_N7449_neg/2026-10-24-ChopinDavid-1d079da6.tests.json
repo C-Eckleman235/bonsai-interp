@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-1d079da6",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N7449-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T01:20:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L15/N7449",
+   "pole": "-",
+   "label": "the vertical-dimension slot: height, bottom, the y axis, or the second value of a (width, height) pair; the matching horizontal or non-spatial slot (width, left, x, color) stays quiet",
+   "fire": [
+    "box = [[pad_top, pad_bottom], [pad_left, pad_right]]\nprint(box)",
+    "The cabinet is forty inches wide and seventy inches tall.",
+    "window_width = 1024\nwindow_height = 768\nwindow_title = 'Demo'",
+    "In image arrays the column index runs right and the row index runs down the page.",
+    "plt.figure(figsize=(8, 5))\nplt.bar(names, values)",
+    "border = {'top': 2, 'bottom': 2}\nprint(border)",
+    "The tower stands about ninety meters tall above the old harbor.",
+    "img = cv2.resize(img, (640, 480))\ncv2.imshow('frame', img)"
+   ],
+   "quiet": [
+    "box = [[pad_left, pad_right], [pad_left, pad_right]]\nprint(box)",
+    "The cabinet is forty inches wide and painted dark green.",
+    "window_width = 1024\nwindow_title = 'Demo'\nwindow_icon = None",
+    "In image arrays the colors are stored as three channels for each pixel.",
+    "plt.figure(facecolor='white')\nplt.bar(names, values)",
+    "border = {'color': 'red', 'style': 'solid'}\nprint(border)",
+    "The tower was built about ninety years ago above the old harbor.",
+    "img = cv2.imread('photo.png')\ncv2.imshow('frame', img)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.45 on ' tall', '_height', '_bottom', the comma before the height value; width/left/color slots 0.0-0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "height / vertical slot",
+ "unit_kind": "meaning",
+ "confidence": 0.6,
+ "notes": "Card: comma in size=(40, -1), crop_bottom, graph_height, 'one unit tall', size[1], 'y axis extends down'; + pole suppresses height/vertical. Probe: 'margin_bottom' 0.449; 'y axis goes down' 0.426; 'Rect(10, 20, width, height)' comma 0.387; 'figsize=(6, 4)' comma 0.303; 'canvas_height' 0.274; 'three units tall' 0.251; 'painted bright red' 0.022; 'canvas_color' 0.003."
+}
