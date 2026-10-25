@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-c1adf409",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N5803+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T04:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L7/N5803",
+   "pole": "+",
+   "label": "a hyphen joining two name parts into one name (double-barrelled surnames like Street-Porter, and '%s-%s' name templates in code), as against hyphens in ordinary lower-case compounds",
+   "fire": [
+    "The garden was designed by Lady Anne Carter-Wright in the 1920s.",
+    "Tonight's lecture will be given by Dr. James Holt-Barrett.",
+    "Critics loved the new album from the singer Rosa Lyons-Kerr.",
+    "    key = '%s-%s' % (user.id, item.id)\n    return cache.get(key)",
+    "The old house belonged to the Ashby-Clarke family for a century.",
+    "    label = \"{0}-{1}\".format(city, zone)\n    print(label)",
+    "The minister thanked Sir Peter Grant-Lowell for his years of service.",
+    "    path = '%s-%s.log' % (host, date)\n    open(path).close()"
+   ],
+   "quiet": [
+    "The garden was designed by a well-known architect in the 1920s.",
+    "Tonight's lecture will be given by a long-time member of the club.",
+    "Critics loved the new album from the singer, a twenty-two year old.",
+    "    key = cache_key(user.id, item.id)\n    return cache.get(key)",
+    "The old house belonged to a hard-working family for a century.",
+    "    label = city + zone\n    print(label)",
+    "The minister thanked the part-time staff for their years of service.",
+    "    path = host + date + '.log'\n    open(path).close()"
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-1.0 on the hyphen of a double-barrelled surname or '%s-%s'; hyphens in well-known/twenty-five/long-term compounds below 0.10",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "hyphen joining two name parts",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card peaks: '}-{' format keys, '%s-%s' x9, Fearnley-Whittingstall, Street-Porter, Tylney-Pole. Probe: '%s-%s' 1.069, Street-Porter 0.909, Fearnley-Whittingstall 0.840, Smith-Jones 0.551, London-Paris 0.359; '%s_%s' 0.415 (so no underscore near misses); well-known 0.008, twenty-five 0.005."
+}

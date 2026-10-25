@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-a4ee1012",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N10284-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T04:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N10284",
+   "pole": "-",
+   "label": "the line-ending period of a numbered or lettered item in a structured document (statute, report, outline) when the next line opens a new item, as against sentence-final periods inside running prose",
+   "fire": [
+    "Article 7 sets out the rights of tenants.\na. Tenants may request repairs in writing.\nb. Landlords must reply within ten days.",
+    "Summary of the audit:\n1) No irregularities were found in the payroll.\n2) Two invoices lacked signatures.",
+    "The inspector noted the following.\n- The fire exits were blocked by boxes.\n- Two extinguishers had expired.",
+    "Part III covers the duties of employers.\n(a) Employers shall keep records of hours worked.\n(b) Records shall be kept for three years.",
+    "Frequently asked questions\nQ1. Can I change my order after paying?\nQ2. How long does delivery take?",
+    "The superior artery runs behind the upper part of the stomach.\n(b) The inferior artery runs along the lower edge.",
+    "Section 2 defines the terms used in this act.\n2.1 A vessel means any craft used on water.\n2.2 An owner means the registered keeper.",
+    "Steps for new members:\n1. Fill in the form at the front desk.\n2. Pay the yearly fee by card."
+   ],
+   "quiet": [
+    "Article 7 sets out the rights of tenants. Tenants may request repairs in writing, and landlords must reply within ten days.",
+    "The audit found no irregularities in the payroll. Two invoices lacked signatures, but the total was correct.",
+    "The inspector walked through the building slowly. The fire exits were blocked by boxes, and two extinguishers had expired.",
+    "Employers must keep records of the hours their staff work. These records have to be kept for three years.",
+    "Many customers ask whether they can change an order after paying. Most changes are possible within an hour.",
+    "The upper artery runs behind the stomach. A smaller one follows the lower edge before it joins the main vessel.",
+    "This act uses several technical terms. A vessel, for example, means any craft used on water.",
+    "New members fill in a short form at the front desk. After that they pay the yearly fee by card."
+   ]
+  }
+ ],
+ "predictions": "best guess: fire 0.3+ on '.\\n' before 'b.', '2)', '- '; prose periods below 0.10. Probes did not reproduce the card, so a fail is expected",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "end of a list item before the next item",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Card peaks are '.\\n' before lettered/numbered items in legal, medical and FAQ text (51.0, 41.25). Probe: every configuration 0.012-0.027, including 'during the year.\\nb. Freedom of Assembly' 0.018 and recipe steps 0.027. Max 51 with density 0.005% above 0.3·max: the card contexts are rare outliers."
+}
