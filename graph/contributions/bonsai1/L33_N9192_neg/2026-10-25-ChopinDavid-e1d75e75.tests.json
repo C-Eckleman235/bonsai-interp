@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-e1d75e75",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N9192-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T08:20:55+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N9192",
+   "pole": "-",
+   "label": "predicts the verb 'play' in audio/video playback contexts: the slot after a music or recording subject ('the song was | played', 'a radio is | playing'), versus the same frames with a non-media subject",
+   "fire": [
+    "The children danced around the room while the music was being played loudly.",
+    "We sat in silence as the recording was played for the jury.",
+    "Somewhere down the hall a radio is playing an old love song.",
+    "As soon as the DVD started playing, the cat jumped onto the couch.",
+    "In the study, monkeys heard the melody while it was being played twice a day.",
+    "At the ceremony the national anthem was played by a brass band.",
+    "On the porch an old cassette was playing his favorite tapes.",
+    "Halfway through the concert the orchestra started playing a waltz."
+   ],
+   "quiet": [
+    "The children danced around the room while the cake was being sliced carefully.",
+    "We sat in silence as the verdict was read to the jury.",
+    "Somewhere down the hall a baby is crying for its mother.",
+    "As soon as the oven started heating, the cat jumped onto the couch.",
+    "In the study, monkeys ate the fruit while it was being weighed twice a day.",
+    "At the ceremony the wedding cake was cut by the bride.",
+    "On the porch an old dog was chewing his favorite slippers.",
+    "Halfway through the dinner the guests started leaving early."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.5 on the verb slot after a song/recording/radio subject; the same frames about food, documents or people below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predicts 'play' (media playback)",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Opposite pole suppresses ' play/playing/played', so this pole pushes them. Card: 'while the song was being played', 'recording is playing', 'song started playing', 'DVD player'. Probe: 'anthem started' 0.434, 'song was being played' 0.367, 'record is playing' 0.293, 'will not open in media player' 0.502; but media subjects leak without playback ('record is sitting' 0.293, 'anthem was written' 0.246), so near misses use non-media subjects ('soup was being served' 0.001)."
+}

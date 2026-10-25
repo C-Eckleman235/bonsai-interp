@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-890d4ee9",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N1813-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T08:20:55+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L20/N1813",
+   "pole": "-",
+   "label": "sentence-final punctuation closing a short complete statement or reply that a qualifying follow-up continues (Sure. / Attention! / '... thick.' before 'While ...'), versus the same content without the clause boundary",
+   "fire": [
+    "Do you ship to Canada?\nYes. We ship most orders within two days.",
+    "Is the room quiet at night?\nMostly. The street noise fades after ten.",
+    "The coating should be roughly 0.5 millimeters thick. While thicker coats are possible, they crack.",
+    "For the price, I doubt I could have found a nicer place in Denver. It may depend on the season.",
+    "Please read this. Warning! If the light blinks red, unplug the device at once.",
+    "It is a vivid portrait of the period, and while some chapters drag, it rewards patience.",
+    "Can I return an opened item?\nOf course. Just keep the receipt.",
+    "The gap must be under 2 millimeters wide. While a wider gap seems harmless, it leaks."
+   ],
+   "quiet": [
+    "Do you ship to Canada and the United States by air",
+    "Is the room quiet at night or does the street get loud",
+    "The coating should be roughly 0.5 millimeters thick on every side of the panel",
+    "For the price, a nicer place in Denver would be hard to find in any season",
+    "Please note that warning lights on the panel blink red when the device overheats",
+    "It is a vivid portrait of the period with some chapters that drag",
+    "Can I return an opened item if I keep the receipt",
+    "The gap must be under 2 millimeters wide on both sides of the door"
+   ]
+  }
+ ],
+ "predictions": "weak: fire perhaps 0.05-0.2 on the period/exclamation; near misses without the boundary below 0.05. Expect this test to fail.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "end of short statement before qualifier",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card peaks are on '.', '!', ' and' at clause ends in reviews, patents and Q&A ('Sure.', 'Attention!', 'better in SF.'). Probe could not reproduce: every item 0.005-0.029 (Q&A 'Sure.' 0.022, 'thick.' 0.029, 'Attention!' 0.022). The trigger is not captured; this is a best-guess test."
+}

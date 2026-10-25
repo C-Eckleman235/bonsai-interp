@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-0161c1e3",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N7454+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T08:20:55+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L14/N7454",
+   "pole": "+",
+   "label": "the continuation piece of a rare word the tokenizer splits into fragments (past|ured, uno|aked, s|pond|ylitis), versus the same slot filled by a common single-token word",
+   "fire": [
+    "Every Sunday the market stall offers pastured chicken and duck eggs.",
+    "The waiter preferred an unoaked white with the grilled fish.",
+    "My uncle was treated for spondylosis of the lower spine last winter.",
+    "The family ages its best wine in oaked barrels for two years.",
+    "Doctors diagnosed sacroiliitis after the scan showed swollen joints.",
+    "In the epic, the blind king Dhritarashtra listens as the battle is described.",
+    "Over centuries the cartilage of the old skeleton had ossified completely.",
+    "Doctors say spondylitis often begins in early adulthood."
+   ],
+   "quiet": [
+    "Every Sunday the market stall offers fresh chicken and duck eggs.",
+    "The waiter preferred a crisp white with the grilled fish.",
+    "My uncle was treated for arthritis of the lower spine last winter.",
+    "The family ages its best wine in large barrels for two years.",
+    "Doctors diagnosed an infection after the scan showed swollen joints.",
+    "In the epic, the blind old king listens as the battle is described.",
+    "Over centuries the bones of the old skeleton had hardened completely.",
+    "Doctors say back pain often begins in early adulthood."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on the second or later piece of a rare split word; common single-token words in the same frame below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "rare-word continuation piece",
+ "unit_kind": "contextual",
+ "confidence": 0.3,
+ "notes": "Broad pole (1.4% of tokens >0.1 max); card peaks are mostly mid-word pieces ('ured', 'pond', 'rit', 'aked', 'Web') plus ' freedom' and ' by'. Probe: oaked 0.861, spondylitis 0.668, pastured 0.509, but 'caused by' 0.575 and 'won his freedom' 0.333 also fire, so the label covers only part of the pole; 'fresh eggs' control 0.054, base64 0.193."
+}

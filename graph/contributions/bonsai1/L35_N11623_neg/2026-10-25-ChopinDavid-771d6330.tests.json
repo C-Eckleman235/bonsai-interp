@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-771d6330",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N11623-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T08:20:55+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N11623",
+   "pole": "-",
+   "label": "the space-initial byte-fallback pieces of the Korean syllables 롤/록 (roll/rock loanwords: 롤러코스터, 록 밴드, 롤빵), versus other byte-split Korean syllables in the same position",
+   "fire": [
+    "주말에 친구들과 놀이공원에 가서 롤러코스터를 세 번 탔다.",
+    "그녀는 대학 시절 록 밴드에서 기타를 쳤다.",
+    "아침 식사로 따뜻한 롤빵과 우유를 먹었다.",
+    "삼촌은 젊었을 때 롤링스톤즈 공연을 직접 봤다고 한다.",
+    "여름마다 이 도시에서 큰 록 페스티벌이 열린다.",
+    "어린 시절 공원에서 롤러스케이트를 타며 놀았다.",
+    "그 가수는 무대 위에서 진짜 록스타처럼 보였다.",
+    "할아버지는 오래된 카메라에 롤 필름을 끼우셨다."
+   ],
+   "quiet": [
+    "주말에 친구들과 놀이공원에 가서 회전목마를 세 번 탔다.",
+    "그녀는 대학 시절 합창단에서 노래를 불렀다.",
+    "아침 식사로 따뜻한 빵과 우유를 먹었다.",
+    "삼촌은 젊었을 때 비틀즈 공연을 직접 봤다고 한다.",
+    "여름마다 이 도시에서 큰 음악 축제가 열린다.",
+    "어린 시절 공원에서 자전거를 타며 놀았다.",
+    "그 가수는 무대 위에서 정말 행복해 보였다.",
+    "할아버지는 오래된 카메라에 새 배터리를 끼우셨다."
+   ]
+  }
+ ],
+ "predictions": "fire 0.45-0.6 on the ' �' byte piece of a word-initial 롤/록; other word-initial byte-split syllables (빵, 축제) below 0.1; 울 may leak ~0.3",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Korean ' 롤/록' byte pieces",
+ "unit_kind": "token",
+ "confidence": 0.5,
+ "notes": "Card peaks: ' 롤'러, ' 록'화, ' 롤'링스톤즈, 롤필름, 롤업 (all space-initial byte splits). Probe: 롤러코스터 0.536, 롤링스톤즈 0.536, 록 음악 0.595, 롤 필름 0.499; 귀신의 집 0.040, 학교 0.022, 로봇 (own token ' 로') 0.003, but 울면서 0.290. Checked splits with tok.py."
+}
