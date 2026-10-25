@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-44ad2bcd",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N2100+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T21:19:50+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N2100",
+   "pole": "+",
+   "label": "a lone word-initial ' f'/' F' piece when a French word is split into f + rest (fumée, fureur, fuite, fédération), as against French words that stay whole or split elsewhere",
+   "fire": [
+    "Une épaisse colonne de fumée montait au-dessus de la forêt.",
+    "Ce petit restaurant fait fureur auprès des étudiants parisiens.",
+    "Le jardinier a étalé du fumier sur les parterres de roses.",
+    "La police enquête sur la fuite des documents confidentiels.",
+    "Dans le sous-bois, la fougère recouvrait tout le sentier.",
+    "Le président de la fédération a annoncé sa démission hier.",
+    "Après l'orage, on voyait encore des fumées au loin.",
+    "Les joueurs ont rejoint la Fédération française de rugby en mai."
+   ],
+   "quiet": [
+    "Une épaisse colonne de nuages montait au-dessus de la forêt.",
+    "Ce petit restaurant plaît beaucoup aux étudiants parisiens.",
+    "Le jardinier a étalé du compost sur les parterres de roses.",
+    "La police enquête sur la disparition des documents confidentiels.",
+    "Dans le sous-bois, la mousse recouvrait tout le sentier.",
+    "Le président de la famille a annoncé sa décision hier.",
+    "Après l'orage, on voyait encore des éclairs au loin.",
+    "Les joueurs ont rejoint la sélection nationale de rugby en mai."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on the lone ' f' in fumée, fureur, fumier, fuite, fougère, fédération; the same sentences with a whole-token word (famille, fortune, fusion) or a longer first piece below 0.10",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-off French ' f' piece",
+ "unit_kind": "word",
+ "confidence": 0.4,
+ "notes": "Card: ' f' x10, ' F' x8 at word starts split as one letter: 'Action contre la F|aim', 'la f|édération', 'nuages de f|umée', '(f|roid de canard)', 'fait f|ureur'; max 139. Probe: f|umée 0.668, f|ureur 0.461, faim 0.431 (peak ' fa'), Die F|ledermaus 0.372, f|roid 0.045 (a miss), whole 'famille' 0.008, English 'fought' 0.005, 'farmers' 0.053."
+}
