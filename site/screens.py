@@ -27,7 +27,18 @@ GROUPS = [("spelling", ["spelling"]), ("word", ["lexical"]), ("meaning", ["sense
           ("format", ["format"]), ("topic", ["topic"]), ("copy", ["copy"]), ("other", ["dense", "positional", "unexplained", "rare"]),
           ("word hit", [])]
 GROUP_OF = {b: i for i, (_, bins) in enumerate(GROUPS) for b in bins}
+# the sweep library's kinds, folded into the same groups (a held library test colours a pole the screen left unexplained)
+LIB_GROUP = {"copy": "copy", "topic": "topic", "lang": "context", "predict": "context", "struct": "format", "number": "format"}
 OTHER, HIT = 7, 8
+
+
+def _lib_labels():
+    """kind:condition -> the label a held sweep-library test carries (shown on the map's card)."""
+    p = ROOT / "graph" / "auto" / "bonsai1.sweeplib1.protocol.json"
+    if not p.exists():
+        return {}
+    kinds = json.loads(p.read_text(encoding="utf-8"))["kinds"]
+    return {f"{k}:{c}": lab for k, v in kinds.items() for c, lab in v["conditions"].items()}
 
 
 def main(src=ROOT / "data" / "atlas"):
@@ -46,15 +57,22 @@ def main(src=ROOT / "data" / "atlas"):
         t = _read(p).to_pydict()
         L = int(t["layer"][0])
         chars, c = ["."] * (2 * N_N), [0] * len(GROUPS)
-        cols = {"pole": [], "w": [], "lift": [], "cov": [], "trig": [], "bin": [], "context": [], "test": [], "auroc": []}
+        cols = {"pole": [], "w": [], "lift": [], "cov": [], "trig": [], "bin": [], "context": [], "test": [], "auroc": [], "lib": [], "lib_test": []}
+        has_lib = "lib_kind" in t
         for i, pole in enumerate(t["pole"]):
             words, b = t["hit_tok"][i], t["bin"][i]
             trig = t["hit_trigger"][i]
+            lk = t["lib_kind"][i] if has_lib else None
+            lib_held = lk is not None and t["lib_test"][i] == "held"
             if b == "weak" or (b in ("unexplained", "rare") and not any(trig)):
                 b = None  # nothing specific to show beyond the words
-            if b is None and not any(trig) and not words:
+            if b is None and not any(trig) and not words and lk is None:
                 continue
-            if b is not None:
+            if lib_held and t["test"][i] != "held":  # the library explains what the word screen did not
+                g = GROUP_OF[LIB_GROUP[lk]]
+                chars[pole] = chr(65 + g)
+                c[g] += 1
+            elif b is not None:
                 g = GROUP_OF.get(b, OTHER)
                 chars[pole] = chr(65 + g) if t["test"][i] == "held" else chr(97 + g)
                 c[g] += 1
@@ -71,17 +89,22 @@ def main(src=ROOT / "data" / "atlas"):
             cols["context"].append(mask(t["context"][i]))
             cols["test"].append(t["test"][i])
             cols["auroc"].append(None if t["auroc"][i] is None else round(t["auroc"][i], 3))
+            cols["lib"].append(f"{lk}:{t['lib_condition'][i]}" if lk else None)
+            cols["lib_test"].append(t["lib_test"][i] if lk else None)
             used.update(words)
         if not any(x is not None for x in cols["bin"]):  # an unscreened layer: drop the empty screen columns
             for k in ("bin", "context", "test", "auroc"):
+                cols.pop(k)
+        if not any(x is not None for x in cols["lib"]):
+            for k in ("lib", "lib_test"):
                 cols.pop(k)
         layers[str(L)] = "".join(chars)
         counts[str(L)] = c
         (OUT / f"L{L}.json").write_text(json.dumps(cols, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8", newline="\n")
     (OUT / "vocab.json").write_text(json.dumps({str(k): mask_token(vocab.get(k, "")) for k in sorted(used)}, ensure_ascii=False, separators=(",", ":")) + "\n",
                                     encoding="utf-8", newline="\n")
-    bins = {"protocol": ["auto-token@2"], "groups": [g for g, _ in GROUPS], "layers": layers, "counts": counts,
-            "screened": sorted(int(L) for L, cc in counts.items() if sum(cc[:HIT]) > 0)}
+    bins = {"protocol": ["auto-token@2", "sweeplib@1"], "groups": [g for g, _ in GROUPS], "layers": layers, "counts": counts,
+            "screened": sorted(int(L) for L, cc in counts.items() if sum(cc[:HIT]) > 0), "lib_labels": _lib_labels()}
     (OUT / "bins.json").write_text(json.dumps(bins, separators=(",", ":")) + "\n", encoding="utf-8", newline="\n")
     print(f"wrote site/screens/: {len(layers)} layers ({len(bins['screened'])} screened), "
           f"{sum(sum(cc[:HIT]) for cc in counts.values()):,} screened poles, {sum(cc[HIT] for cc in counts.values()):,} word-hit poles")
