@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-2bd38d8c",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N8348+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T13:28:29+00:00",
+ "recipe": {
+  "toolchain_commit": "d08c709a",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L22_N8348_pos/2026-10-25-ChopinDavid-2bd38d8c.tests.json"
+ },
+ "label": "the less-than operator ' <' in a code comparison (an upper bound on a value); English 'less than' or 'under' does not carry it",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N8348_pos/2026-10-25-ChopinDavid-2bd38d8c.tests.json",
+   "prereg_commit": "d08c709a",
+   "author": "ChopinDavid",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.663,
+     "peak": " <"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.011,
+     "peak": " +="
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.009,
+     "peak": " score"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.014,
+     "peak": " ["
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.06,
+     "peak": "       "
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.013,
+     "peak": " height"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.008,
+     "peak": " accelerate"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.104,
+     "peak": " <"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.081,
+     "peak": " n"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.013,
+     "peak": " +="
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.041,
+     "peak": " >"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.039,
+     "peak": " >"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.021,
+     "peak": " return"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.013,
+     "peak": " height"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.033,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.019,
+     "peak": " !="
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.406,
+    "median_fire": 0.013,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "d08c709a",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "code less-than operator '<'",
+ "unit_kind": "token",
+ "confidence": 0.6,
+ "notes": "Card: peaks on code ' <' (x7), 'than' after 'less', 'under' the age. Probe: 'if x >= 0 and x < 10' 0.772, 'at most one hundred, or' 0.176; English 'under the age' 0.017, 'less than five degrees' 0.009, 'below the threshold' 0.035, same code with ' >' 0.038. The test is therefore restricted to code.",
+ "selection": "random draw"
+}
