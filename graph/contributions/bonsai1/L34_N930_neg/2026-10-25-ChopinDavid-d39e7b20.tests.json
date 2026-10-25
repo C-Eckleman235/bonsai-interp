@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-d39e7b20",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N930-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T05:20:02+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N930",
+   "pole": "-",
+   "label": "an Arabic-numeral digit inside Korean, Japanese or Arabic text (before a counter such as 시간, 日, 명, أشهر), as against the same digits in English sentences",
+   "fire": [
+    "그 공장은 지난해 4개월 동안 문을 닫았다.",
+    "우리 반에는 학생이 모두 25명 있다.",
+    "새 도서관은 내년 3월에 문을 연다.",
+    "この橋は完成までに5年かかった。",
+    "会議は午後2時から始まる予定だ。",
+    "店の前には8人ほどが並んでいた。",
+    "يستغرق العلاج عادة 3 أسابيع.",
+    "سافر أخي إلى القاهرة قبل 5 سنوات."
+   ],
+   "quiet": [
+    "The factory closed for 4 months last year.",
+    "There are 25 students in our class.",
+    "The new library opens in March next year after 3 delays.",
+    "It took 5 years to finish this bridge.",
+    "The meeting is set to start at 2 in the afternoon.",
+    "About 8 people were waiting in front of the shop.",
+    "The treatment usually takes 3 weeks.",
+    "My brother travelled to Cairo 5 years ago."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on digits in Korean/Japanese/Arabic sentences; digits in English sentences of the same content below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "digit inside CJK/Arabic text",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: digits before counters in Korean/Japanese/Arabic (12 개월 -640, 3月 -580, 6 أشهر -548). Probe: 6 أشهر 0.896, 6시간 0.603, 6명 0.603 (not only time units), 3日間 0.415, 200円 0.313; English '6 months' 0.022, 'room number is 12' 0.001."
+}
