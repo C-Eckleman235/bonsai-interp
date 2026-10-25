@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-97dd7937",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N1675+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T17:20:06+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N1675",
+   "pole": "+",
+   "label": "two spelling pieces: 'بر' inside the Arabic word for cemetery (مقبرة) and 'ing' completing 'back|ing' in virtualization code identifiers (backing_file, backingStore), as opposed to other مق- words and whole-token ' backing' in prose",
+   "fire": [
+    "زرنا المقبرة القديمة في أطراف المدينة صباح الجمعة.",
+    "تقع مقبرة الشهداء على تلة قريبة من النهر.",
+    "دفنت العائلة جدها في مقبرة العائلة بجوار المسجد.",
+    "    path = disk.get_backing_file(image_path)\n    if backing_file:\n        os.remove(backing_file)\n",
+    "    def test_snapshot(self):\n        info = self._get_backing_info()\n",
+    "<disk type='file'>\n  <backingStore type='file'>\n    <format type='qcow2'/>\n  </backingStore>\n</disk>\n",
+    "قال الحارس إن المقبرة تغلق أبوابها عند الغروب.",
+    "    base = image.backing\n    self.assertIsNone(base)\n"
+   ],
+   "quiet": [
+    "جلسنا في المقهى القديم في أطراف المدينة صباح الجمعة.",
+    "يقع مقعد الحديقة على تلة قريبة من النهر.",
+    "زارت العائلة جدها في منزل العائلة بجوار المسجد.",
+    "    path = disk.get_size(image_path)\n    if size:\n        os.remove(path)\n",
+    "    def test_snapshot(self):\n        info = self._get_disk_info()\n",
+    "The singer needed strong backing from the label to tour.",
+    "قال الحارس إن المكتبة تغلق أبوابها عند الغروب.",
+    "    base = image.parent\n    self.assertIsNone(base)\n"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on 'بر' in مقبرة/المقبرة and on 'ing' after 'back'/'_back' in code; مقهى/مقعد and prose ' backing' below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "مقبرة 'بر' / code back|ing",
+ "unit_kind": "token/lexical",
+ "confidence": 0.45,
+ "notes": "Card: peaks 'بر' x3 (مقبرة), ' flavor' x3 and 'back|ing' in nova/libvirt code, max only 3.59. Probe: 'في مقبرة القرية' 0.968, 'backing_file' code 0.629, '<backingStore' 0.579, nova 'flavor =' 0.442; prose 'vanilla flavor' 0.032, 'backing vocals' 0.065, مكتبة 0.034, similar code without flavor 0.051. Tokenizer: 'backing_file' -> back|ing, ' backing' is one token, ' مقبرة' -> مق|بر|ة, ' مقهى' -> مق|هى."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-0d23cb87",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N10691+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T17:20:06+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N10691",
+   "pole": "+",
+   "label": "unclear: the axis value in tensor concatenation (axis=1 in tf.concat) and a set of English nouns of shared place or time ('the same day as', 'adjacent to', 'shared many a stage'); a mixed pole with no single meaning",
+   "fire": [
+    "    merged = tf.concat(axis=1, values=[left, right])\n",
+    "    h = tf.concat([x, y], axis=1)\n",
+    "    states = tf.concat(axis=1, values=state_list)\n",
+    "The parade is on the same day as the city marathon.",
+    "Our office is in a tower adjacent to the train station.",
+    "He has shared many a stage with folk singers over the years.",
+    "The wedding fell on the same day as her final exam.",
+    "The bakery sits in a shop adjacent to the river bridge."
+   ],
+   "quiet": [
+    "    merged = left + right\n",
+    "    h = tf.reshape(x, [-1, 64])\n",
+    "    states = list(state_list)\n",
+    "The parade is held every year in the spring.",
+    "Our office is in a tall tower in the city centre.",
+    "He has sung folk songs in pubs over the years.",
+    "The wedding was a small party in her parents' garden.",
+    "The bakery sells bread and cakes near the river."
+   ]
+  }
+ ],
+ "predictions": "weak: fire 0.25-0.5 on '1' in tf.concat(axis=1 and on ' day' in 'the same day as'; ordinary code and sentences below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "axis=1 / same day (unclear)",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card: peaks '1' x4 (tf.concat(axis=1)), ' stage', ' adjacent', ' day', ' days', ' pollen'. Probe: 'tf.concat(axis=1' 0.491, 'axis=1)' 0.339, np axis=0 0.312, 'the same day as' 0.527, 'adjacent to' 0.343, 'many a stage' 0.285, 'five days after' 0.226; 'cat slept' 0.008, plain arithmetic code 0.010. Two unrelated clusters, so low confidence."
+}

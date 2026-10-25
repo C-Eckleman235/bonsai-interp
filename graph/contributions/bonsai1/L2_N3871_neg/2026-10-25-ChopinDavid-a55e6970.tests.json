@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-a55e6970",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N3871-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T17:20:06+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L2/N3871",
+   "pole": "-",
+   "label": "dense: an early-layer pole that is on for most text (75% of tokens reach 0.1 of max), slightly higher on food words like ' dish' and on word pieces like 'iv', 'ic', 'ia'",
+   "fire": [
+    "For the party she made a cold dish of beans and herbs.",
+    "Wash the glass dish by hand, not in the machine.",
+    "The drug is an antiviral used against influenza.",
+    "Organic cotton is grown without synthetic chemicals.",
+    "Ammonia gives the cleaner its sharp smell.",
+    "The restaurant's signature dish is a slow-cooked lamb stew.",
+    "Stack the clean dishes on the shelf by the window.",
+    "Antifungal creams treat many common skin infections."
+   ],
+   "quiet": [
+    "For the party she made a cold salad of beans and herbs.",
+    "Wash the glass jar by hand, not in the machine.",
+    "The drug is a medicine used against influenza.",
+    "Plain cotton is grown with many chemicals.",
+    "Vinegar gives the cleaner its sharp smell.",
+    "The restaurant's best meal is a slow-cooked lamb stew.",
+    "Stack the clean plates on the shelf by the window.",
+    "Simple creams treat many common skin problems."
+   ]
+  }
+ ],
+ "predictions": "fails as an 8+8 test: near misses will fire at 0.2-0.5 as well; fire items 0.6-0.9 on ' dish(es)' and pieces like 'iv' in antiviral",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense (dish / word pieces)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.1,
+ "notes": "Card: max 0.43, dense (75% of tokens at 0.1 of max), gate-closed leak regime 100%; peaks ' dish' x6, 'ish' x4, 'iv' x3, 'ic' x3. Probe: 'special dish' 0.899, 'Organic' 0.864, 'Ammonia' 0.836, 'antiviral' 0.804, 'dirty dishes' 0.677; but 'the house on the hill' 0.421, 'delicate task' 0.357, 'He ran quickly' 0.212, numbers 0.193. Registered as dense with a best-guess test."
+}
