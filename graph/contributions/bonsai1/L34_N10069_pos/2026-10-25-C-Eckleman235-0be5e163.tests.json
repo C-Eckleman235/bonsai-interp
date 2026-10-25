@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-25-C-Eckleman235-0be5e163",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N10069+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T05:00:11+00:00",
+ "selection": "concept search: echoes (copy-only digit screen)",
+ "neighbours": [
+  {
+   "unit": "L34/N10069",
+   "pole": "+",
+   "label": "inside a number that is being copied from earlier in the text, the token just before a 4 in the copy (the model knows a 4 comes next because it saw the number before); the same copies with a different digit at that spot, and first mentions where a 4 follows unpredictably, stay quiet",
+   "fire": [
+    "Your parcel tracking code is 2457.\nTo check status, enter 2457",
+    "Train 5472 departs at noon. All aboard train 5472!",
+    "The winning lottery number was 7245. Again, that is 7245.",
+    "Employee badge 2475 was scanned. Badge 2475 is cleared.",
+    "Apartment 742 is vacant.\nKeys for apartment 742 are at the desk.",
+    "The jersey number is 54. Fans chanted 54 all night.",
+    "Case file 2547 was reopened.\nInvestigators reviewed case file 2547.",
+    "Set the dial to 745. Turning it to 745 now."
+   ],
+   "quiet": [
+    "Your parcel tracking code is 2157.\nTo check status, enter 2157",
+    "Train 5172 departs at noon. All aboard train 5172!",
+    "The winning lottery number was 7215. Again, that is 7215.",
+    "Employee badge 2175 was scanned. Badge 2175 is cleared.",
+    "Apartment 742 is vacant and freshly painted.",
+    "The jersey number is 54 this season.",
+    "Case file 2547 was reopened last spring.",
+    "Set the dial to 745 before you start."
+   ],
+   "short": "before a copied 4 (copies only)",
+   "notes": "From a copy-only digit screen (10 digits x 6 pairs, position-aware: fire on the token before the copied digit, quiet there in a control that copies another digit), where the known units came back as positive controls (copied 3 L34/N3875+, 6 L34/N4571+, 8 L34/N9922-). This pole: 6/6 screen pairs; triage: copies before a 4 0.32-0.79, other digit 0.00, first mention 0.00, counting 'one, two, three,' 0.05; its output promotes '4', ' four', ' fourth', ' April'. Part of a family of layer-34 copy-digit units that feed the late 'predictable digit' units."
+  }
+ ],
+ "predictions": ">= 7/8 fire; near misses < 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ]
+ }
+}
