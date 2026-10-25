@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-72b32901",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N9682+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T12:20:07+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L19/N9682",
+   "pole": "+",
+   "label": "a word that marks an object as given or provided by someone (gift, donated, supplied, lent), on the word itself just before its source is named",
+   "fire": [
+    "In the hall hangs a large tapestry, a gift from the city of Ghent.",
+    "The old piano in the chapel was donated by a local family in 1950.",
+    "The library's rare atlas was donated by a sea captain's widow.",
+    "On her desk sat a brass clock, a present from her grandfather.",
+    "The new ambulance was donated by the town's rotary club.",
+    "The vase in the window was a wedding gift from her aunt.",
+    "The fossil collection was lent by the national museum for the summer.",
+    "Each classroom received laptops donated by a software company."
+   ],
+   "quiet": [
+    "In the hall hangs a large tapestry that shows the city of Ghent.",
+    "The old piano in the chapel was tuned by a local man in 1950.",
+    "The library's rare atlas was found in a sea captain's trunk.",
+    "On her desk sat a brass clock that ticked loudly all day.",
+    "The new ambulance was parked behind the town's fire station.",
+    "The vase in the window was painted blue with white flowers.",
+    "The fossil collection was cleaned by the museum staff over the summer.",
+    "Each classroom received a fresh coat of paint over the holidays."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on 'gift', 'donated', 'presented', 'lent', 'supplied' when an object's giver follows; the same objects described without a giving word below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "giving/provenance words (gift, donated)",
+ "unit_kind": "meaning",
+ "confidence": 0.4,
+ "notes": "Card: peaks on 'a gift (from the emperor)', 'data supplied (by)', 'Donated (by Titanic filmmaker)', 'a visit (with members)'. Probe: 'a gift from the king' 0.654, 'donated by a retired engineer' 0.509, 'during a visit with friends' 0.347, 'figures supplied by' 0.297 (borderline); same sentences without the giving word 0.015-0.037. 'To force a confession,' 0.212."
+}

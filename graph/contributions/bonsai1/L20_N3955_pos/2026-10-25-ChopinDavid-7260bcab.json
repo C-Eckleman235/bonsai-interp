@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-7260bcab",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N3955+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T12:29:15+00:00",
+ "recipe": {
+  "toolchain_commit": "2734e5cf",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L20_N3955_pos/2026-10-25-ChopinDavid-7260bcab.tests.json"
+ },
+ "label": "unclear: weak firing at the end of a Python call line (the ')\\n' after a call with arguments), and on some numbers and chemical words in prose",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L20_N3955_pos/2026-10-25-ChopinDavid-7260bcab.tests.json",
+   "prereg_commit": "2734e5cf",
+   "author": "ChopinDavid",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.281,
+     "peak": ")\n\n"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.229,
+     "peak": "(True"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.533,
+     "peak": "(username"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.239,
+     "peak": "(True"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.013,
+     "peak": ")\n\n"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.049,
+     "peak": "))\n\n"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.466,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.171,
+     "peak": "(host"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.099,
+     "peak": "\n\n"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.054,
+     "peak": "'\n\n"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.111,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.06,
+     "peak": " []\n\n"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.064,
+     "peak": " []\n\n"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.096,
+     "peak": "\n\n"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.014,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.03,
+     "peak": "(port"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.781,
+    "median_fire": 0.234,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "2734e5cf",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "unclear (end of a call line)",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card max 13.75; peaks on ')\\n', ')\\n\\n' after calls such as 'plt.grid(True)', 'writer.writerow(header)', 'self._ClearScreen()', plus scores ('Mallorca 3-2') and 'hydrogen'. Probe: 'plt.grid(True)\\n\\n' 0.452, 'Mallorca 3-2' 0.382, 'authenticate(email=' 0.309, 'hydrogen' 0.261, 'writer.writerow(header)\\n' 0.134, 'self.clear_screen()\\n\\n' 0.130; 'x = 5' 0.061, prose 0.022. Best guess, low confidence.",
+ "selection": "random draw"
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-5f13b928",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N2849+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T12:20:07+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N2849",
+   "pole": "+",
+   "label": "the word pieces 'withstanding' (in 'Notwithstanding') and '-based' (in compounds like 'evidence-based'), with weaker firing on some intensifying adjectives",
+   "fire": [
+    "The weather was poor. Notwithstanding the rain, the parade went ahead as planned.",
+    "Our clinic follows an evidence-based approach to treating back pain.",
+    "The sea was rough. Notwithstanding his age, the old sailor still crossed the bay.",
+    "The district introduced a project-based curriculum in its middle schools.",
+    "Several firms now sell cloud-based accounting software to small shops.",
+    "Funding was tight. Notwithstanding that, the library opened two new branches.",
+    "The charity runs a community-based program for young parents.",
+    "The report recommends plant-based meals in hospital cafeterias."
+   ],
+   "quiet": [
+    "The weather was poor. Because of the rain, the parade was moved indoors.",
+    "Our clinic follows a careful approach to treating back pain.",
+    "The sea was rough. Despite his age, the old sailor still crossed the bay.",
+    "The district introduced a new curriculum in its middle schools.",
+    "Several firms now sell simple accounting software to small shops.",
+    "Funding was tight. Even so, the library opened two new branches.",
+    "The charity runs a weekly program for young parents.",
+    "The report recommends cheaper meals in hospital cafeterias."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.9 on 'withstanding' and '-based'; 'despite', standalone 'based', and the same sentences without the compound below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'withstanding' and '-based' pieces",
+ "unit_kind": "token",
+ "confidence": 0.45,
+ "notes": "Card max is only 0.68 and the pole is broad (1.6% of tokens reach 0.1 of max); top peaks are '-based' x12 and 'withstanding' x10. Probe: 'Notwithstanding these difficulties' 0.823, 'competency-based' 0.922, 'employer-based' 0.321, lower-case mid-sentence 'notwithstanding' 0.352; 'Despite these difficulties' 0.077, 'is based in Denver' 0.017. Caution: 'exceptionally violent' 0.643, so near misses avoid strong intensifiers."
+}

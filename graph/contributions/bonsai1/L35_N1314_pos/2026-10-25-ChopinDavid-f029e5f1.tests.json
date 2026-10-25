@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-f029e5f1",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N1314+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T12:20:07+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N1314",
+   "pole": "+",
+   "label": "the byte-fallback tokens of Korean syllables that begin with ㅋ (캡, 캘, 케, 캔, 캠, 캐), strongest in transliterated foreign loanwords",
+   "fire": [
+    "약을 먹기 쉽게 캡슐 형태로 만들었습니다.",
+    "이번 주말에 가족과 함께 캠핑을 갔다.",
+    "생일에 엄마가 초콜릿 케이크를 사 주셨다.",
+    "아이가 가게에서 캔디를 하나 골랐다.",
+    "우리 학교 캠퍼스는 아주 넓고 조용하다.",
+    "동물원에서 캥거루를 처음 보았다.",
+    "그녀는 작년에 캐나다로 유학을 갔다.",
+    "새 휴대폰으로 사진을 찍고 캡처해서 보냈다."
+   ],
+   "quiet": [
+    "약을 먹기 쉽게 작은 알약으로 만들었습니다.",
+    "이번 주말에 가족과 함께 텔레비전을 보았다.",
+    "생일에 엄마가 신선한 레몬을 사 주셨다.",
+    "아이가 가게에서 라디오를 하나 골랐다.",
+    "우리 동네 학교는 아주 넓고 조용하다.",
+    "동물원에서 고양이를 처음 보았다.",
+    "그녀는 작년에 바다로 여행을 갔다.",
+    "새 휴대폰으로 사진을 찍고 친구에게 보냈다."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on the bytes of a ㅋ-initial syllable such as 캡, 캠, 케, 캔, 캐; byte-split Korean syllables with other initials (학, 텔, 레, 라) below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Korean ㅋ-initial syllable bytes",
+ "unit_kind": "token",
+ "confidence": 0.45,
+ "notes": "Card: top peaks are bytes of 캡(쳐), 캘(린더), 캡(슐), 케(이블), 캔(버스), 캄(보디아), all byte-split ㅋ syllables, plus 'C' in CAVES and Russian 'ц'. Probe: 캡처 0.845, 캘린더 0.697, 캔버스 0.523, 케이블 0.492; native ㅋ words 콩 0.299 and 칼 0.182 lower; byte-split 학교 0.028; English 'canyons and caves' 0.001. Fire items use ㅋ loanwords; near misses use byte-split syllables with other initials, many also loanwords (텔레비전, 레몬, 라디오), so a pass shows the ㅋ initial, not loanword status."
+}
