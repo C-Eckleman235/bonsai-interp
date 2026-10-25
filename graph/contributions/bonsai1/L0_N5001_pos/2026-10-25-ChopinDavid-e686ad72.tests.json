@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-e686ad72",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N5001+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T17:20:06+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N5001",
+   "pole": "+",
+   "label": "unclear: a broad layer-0 piece detector that fires weakly on assorted word-final pieces ('ne' in Gerne, 'とい' before いい, Arabic 'ي', ' space'), not one token or meaning",
+   "fire": [
+    "Wir beraten Sie gerne. Gerne senden wir Ihnen weitere Informationen zu.",
+    "Die Berge lagen in weiter Ferne hinter dem See.",
+    "この方法を試してみるといいでしょう。",
+    "早めに予約するといいですよ。",
+    "أعلن الحزب التأييد الكامل للقرار الجديد.",
+    "There is plenty of space in the attic for old boxes.",
+    "Leave enough space between the plants so they can grow.",
+    "عبّر السكان عن الاستياء من ارتفاع الأسعار."
+   ],
+   "quiet": [
+    "Wir beraten Sie jederzeit. Bitte senden Sie uns eine Nachricht.",
+    "Die Berge lagen hinter dem großen See im Norden.",
+    "この方法はとても簡単です。",
+    "早めに予約してください。",
+    "أعلن الحزب موقفه من القرار الجديد.",
+    "There are plenty of old boxes in the attic.",
+    "Water the plants every morning so they can grow.",
+    "عبّر السكان عن الغضب من ارتفاع الأسعار."
+   ]
+  }
+ ],
+ "predictions": "weak and broad: fire 0.3-0.8 on 'ne' in Gerne/Ferne, 'とい', Arabic 'ي' in الاستياء/التأييد and ' space'; near misses with other pieces in the same languages below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "assorted pieces (unclear)",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card: max 0.31, broad (3.2% of tokens at 0.1 of max), gate-closed regime 68%; peaks 'ne' x7, 'とい' x4, 'ي' x3, '하고' x3. Probe: 'Gerne' 0.741, 'といい' 0.759, Arabic 'الاستياء' 0.810, 'storage space' 0.664, '하고' 0.239; English filler 0.03, German 'im Garten' 0.043. Tokenizer: 'Gerne' -> Ger|ne, ' Ferne' -> Fer|ne, 'といい' -> とい|い. Best-guess test only."
+}
