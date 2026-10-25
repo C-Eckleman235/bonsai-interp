@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-25-C-Eckleman235-dcf26dfa",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N9922-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T04:54:26+00:00",
+ "selection": "step-out from bonsai1/L35/N7741-",
+ "neighbours": [
+  {
+   "unit": "L34/N9922",
+   "pole": "-",
+   "label": "inside a number that is being copied from earlier in the text, the token just before an 8 in the copy (the model knows an 8 comes next because it saw the number before); the same copies with a different digit at that spot, and first mentions where an 8 follows unpredictably, stay quiet",
+   "fire": [
+    "Account number: 4817\nPlease confirm your account number: 4817",
+    "Flight BA 2289 is boarding.\nPassengers on flight BA 2289, please proceed.",
+    "Order ID 7380 shipped today. Track order ID 7380 online.",
+    "The gate code is 1846. Say it back: 1846.",
+    "Invoice 5582 is overdue.\nRe: invoice 5582",
+    "Ticket 3098 was drawn. Holder of ticket 3098, come forward.",
+    "Dial 0844 for help. Again, that is 0844.",
+    "Locker 6681 is yours. Remember: locker 6681."
+   ],
+   "quiet": [
+    "Account number: 4517\nPlease confirm your account number: 4517",
+    "Flight BA 2259 is boarding.\nPassengers on flight BA 2259, please proceed.",
+    "Order ID 7350 shipped today. Track order ID 7350 online.",
+    "The gate code is 1946. Say it back: 1946.",
+    "Invoice 5582 is overdue.\nPlease pay it by Friday.",
+    "Ticket 3098 was drawn from the barrel at noon.",
+    "Dial 0844 for help with your bill.",
+    "Locker 6681 is on the second floor."
+   ],
+   "short": "before a copied 8 (copies only)",
+   "notes": "Feeds the predictable-8 unit L35/N7741- (drop 0.36, the largest feeder). Probes: copies before an 8 0.32-0.49; counting to eight, 'a spider has eight', the year after 1987, and a first-mention 1988 all <= 0.01. Its + pole's output suppresses '8', ' eight', ' August', ' VIII'. A sibling of L34/N4571+ (copied 6), which feeds the predictable-6 unit."
+  }
+ ],
+ "predictions": ">= 7/8 fire; near misses < 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "bands",
+   "probe",
+   "step-out"
+  ]
+ },
+ "roles": [
+  "feeds bonsai1/L35/N7741-"
+ ]
+}
