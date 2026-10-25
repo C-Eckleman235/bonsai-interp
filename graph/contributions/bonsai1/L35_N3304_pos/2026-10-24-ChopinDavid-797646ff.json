@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-797646ff",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N3304+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T00:29:25+00:00",
+ "recipe": {
+  "toolchain_commit": "afacb812",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N3304_pos/2026-10-24-ChopinDavid-797646ff.tests.json"
+ },
+ "label": "a word-initial 'h' split off as its own token after a slash ('/h' in punk/hardcore, software/hardware), the piece that predicts 'ard'; other slash-split letters ('/m', '/f') stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N3304_pos/2026-10-24-ChopinDavid-797646ff.tests.json",
+   "prereg_commit": "afacb812",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.388,
+     "peak": "/h"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.395,
+     "peak": "/h"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.642,
+     "peak": "/h"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.64,
+     "peak": "/h"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.81,
+     "peak": "/h"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.486,
+     "peak": "/h"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.748,
+     "peak": "/h"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.341,
+     "peak": "/h"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.027,
+     "peak": "/p"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.0,
+     "peak": " software"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.012,
+     "peak": " played"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.005,
+     "peak": "/f"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.001,
+     "peak": "/g"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.002,
+     "peak": " computer"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.026,
+     "peak": " post"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.013,
+     "peak": " plays"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.563,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "afacb812",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "slash-split '/h' before 'ard'",
+ "unit_kind": "word",
+ "confidence": 0.6,
+ "notes": "Card peaks ' h' x9, '/h' x5, '(h' x2, all before 'ard'. Probe: 'punk/hardcore' '/h' 0.851; 'punk/metal' '/m' 0.050; ' h' in hardscrabble/hallowed/horticultural 0.18-0.24; '(hardness)' 0.098 and '(hardware)' 0.000 despite the card's '(h'; whole-token ' hardware' 0.000. Test uses only the '/h' split; ' h' pieces would sit near the median threshold.",
+ "selection": "random draw"
+}

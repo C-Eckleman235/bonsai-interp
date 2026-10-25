@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-6344a2ac",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N1945-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T00:29:55+00:00",
+ "recipe": {
+  "toolchain_commit": "afacb812",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L28_N1945_neg/2026-10-24-ChopinDavid-6344a2ac.tests.json"
+ },
+ "label": "the capitalized word ' Historical' or ' Historic' opening an institution or publication title (Trust for Historic Preservation, journal Historical Studies); lowercase 'historical' in prose and other capitalized title words stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L28_N1945_neg/2026-10-24-ChopinDavid-6344a2ac.tests.json",
+   "prereg_commit": "afacb812",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.067,
+     "peak": " Historical"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.456,
+     "peak": " Historical"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.484,
+     "peak": " Historical"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.526,
+     "peak": " Historic"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.332,
+     "peak": " Historic"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.646,
+     "peak": " Historical"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.547,
+     "peak": " Historic"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.446,
+     "peak": " Historical"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.5,
+     "peak": " Political"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.026,
+     "peak": " Medieval"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.02,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.145,
+     "peak": " historic"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.019,
+     "peak": " The"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.067,
+     "peak": " Literary"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.01,
+     "peak": " historical"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.021,
+     "peak": " Social"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.505,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "afacb812",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "' Historical' starting a title",
+ "unit_kind": "word",
+ "confidence": 0.55,
+ "notes": "Card peaks ' Historical' x11, ' Historic' x4, plus commas in forum 'edited' lines. Probe: 'Trust for Historic Preservation' 0.941; 'journal Historical Studies' 0.989; 'County Historical Society' only 0.102 (after another capitalized word); lowercase 'historical documents' 0.147, 'historic buildings' 0.026; 'Garden Society' 0.006; forum 'edited' comma 1.030. Fire items put the word after a preposition, article or common noun, not after another title word.",
+ "selection": "random draw"
+}
