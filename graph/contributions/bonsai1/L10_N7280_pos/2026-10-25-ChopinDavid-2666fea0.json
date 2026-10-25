@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-2666fea0",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N7280+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T06:28:28+00:00",
+ "recipe": {
+  "toolchain_commit": "f7978b15",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N7280_pos/2026-10-25-ChopinDavid-2666fea0.tests.json"
+ },
+ "label": "a middle word piece of a multi-token foreign proper name or drug name (Tian|an|men, sor|afen|ib, H|MG), as against the same words written as single tokens; gate-closed regime dominates",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L10_N7280_pos/2026-10-25-ChopinDavid-2666fea0.tests.json",
+   "prereg_commit": "f7978b15",
+   "author": "ChopinDavid",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.638,
+     "peak": "an"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.567,
+     "peak": "an"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.069,
+     "peak": "emia"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.15,
+     "peak": "afen"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.412,
+     "peak": "an"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.228,
+     "peak": "MG"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.463,
+     "peak": "an"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.042,
+     "peak": "in"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.011,
+     "peak": " gathered"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.063,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.058,
+     "peak": " given"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.046,
+     "peak": " trial"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.039,
+     "peak": " gate"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.062,
+     "peak": " cholesterol"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.032,
+     "peak": " tickets"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.007,
+     "peak": " him"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.32,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "f7978b15",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "mid-word pieces of foreign/technical names",
+ "unit_kind": "unclear",
+ "confidence": 0.25,
+ "notes": "Card is mixed (66% gate-closed regime): Chinese 大, 'H|MG', 'ライブ', 'Tian|an|men', 'Sor|afen|ib'. Probe: 'Tiananmen Square' 0.696 on 'an', 'HMG CoA' 0.265, 'sorafenib' 0.251; 'flatbed' and 'flat' 0.032, Spanish teatro 0.027, floors 0.033-0.073. Only Tiananmen is strong; label is a guess.",
+ "selection": "random draw"
+}

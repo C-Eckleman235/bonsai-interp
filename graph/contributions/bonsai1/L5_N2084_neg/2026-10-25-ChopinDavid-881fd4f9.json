@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-881fd4f9",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N2084-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T06:28:42+00:00",
+ "recipe": {
+  "toolchain_commit": "f7978b15",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N2084_neg/2026-10-25-ChopinDavid-881fd4f9.tests.json"
+ },
+ "label": "the street-type word ' Avenue'/' Ave' in an address or street name, as against other street types (Street, Road, Boulevard) and lower-case 'avenue' as a figure of speech",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N2084_neg/2026-10-25-ChopinDavid-881fd4f9.tests.json",
+   "prereg_commit": "f7978b15",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.599,
+     "peak": " Avenue"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.646,
+     "peak": " Avenue"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.712,
+     "peak": " Ave"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.741,
+     "peak": " Avenue"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.687,
+     "peak": " Avenue"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.783,
+     "peak": " Ave"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.487,
+     "peak": " Avenue"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.964,
+     "peak": " Ave"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.088,
+     "peak": " Street"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.054,
+     "peak": " Street"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.026,
+     "peak": " Road"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.157,
+     "peak": " Boulevard"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.009,
+     "peak": " hours"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.099,
+     "peak": " Street"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.003,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.037,
+     "peak": " Oak"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.7,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "f7978b15",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "' Avenue'/' Ave' in addresses",
+ "unit_kind": "token",
+ "confidence": 0.75,
+ "notes": "Card: ' Avenue' x12, ' Ave' x11 (2nd Ave Miami, Massachusetts Avenue, Oxford Avenue). Probe: '5th Ave' 0.712, '2ND AVE' 0.892, 'Lexington Avenue' 0.550, 'Park Avenue' 0.498; 'Lexington Street' 0.068, 'Park Road' 0.011, ' venue' 0.019, figurative 'every avenue of research' 0.294 (kept out of the near misses' leading role but not tested).",
+ "selection": "random draw"
+}
