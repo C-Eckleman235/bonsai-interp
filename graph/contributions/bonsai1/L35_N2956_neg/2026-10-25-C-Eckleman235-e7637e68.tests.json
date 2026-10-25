@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-25-C-Eckleman235-e7637e68",
+ "contributor": "C-Eckleman235",
+ "kind": "qc",
+ "neuron": "bonsai1/L35/N2956-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T04:44:04+00:00",
+ "selection": "picked",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "In English text, the word right after which a number is the expected next token: a month name or 'founded in' before a year, a US state abbreviation before a ZIP code, or 'and' between the two parts of a compound amount (hours and minutes, dollars and cents); the number itself need not follow, and words where no number is expected stay quiet",
+  "notes": "Picked for its link to the echoes map (predictable numbers). The label claims 'and' in compound amounts, but its own test read those at 0.02-0.13, and probes of other number-expecting words read low or negative ('turn to page' -0.12, 'Read Chapter' -0.02, 'retired aged' 0.12, 'two hours and' -0.01). This refine keeps years, dates and ZIP codes and makes the other number slots near misses. I read this pole's earlier test before writing mine (the brief asks to read it after drafting): none of its sentences or frames are reused, and these 16 sentences were scored 0 times before this commit."
+ },
+ "neighbours": [
+  {
+   "unit": "L35/N2956",
+   "pole": "-",
+   "label": "the word right before a calendar or postal number: a year after 'in' / 'founded in' / a month name, a day after a month name, a ZIP code after a US state abbreviation; other places where a number is expected (page, chapter, room, extension, age, a count, the second part of 'hours and minutes') stay quiet",
+   "fire": [
+    "The library first opened its doors in 1887 on Main Street.",
+    "Our grandmother was born in June 1931 in a small village.",
+    "Send the package to 12 Oak Lane, Austin, TX 78701.",
+    "The treaty was signed on November 11 in a railway carriage.",
+    "The company was incorporated in 1998 by three engineers.",
+    "The concert was moved to August 22 because of rain.",
+    "Please write to PO Box 77, Portland, OR 97201.",
+    "The school was established in 1874 by local farmers."
+   ],
+   "quiet": [
+    "The answer is printed on page 112 of the textbook.",
+    "Our grandmother retired at age 65 in a small village.",
+    "Send the package to room 214 on the second floor.",
+    "The treaty has 14 articles and two appendices.",
+    "The trip took three hours and 20 minutes by train.",
+    "The rules are explained in Chapter 9 of the guide.",
+    "Please call extension 4471 for the front desk.",
+    "The school has 874 students and 40 teachers."
+   ],
+   "short": "right before a year, a date or a ZIP code (not other expected numbers)"
+  }
+ ],
+ "predictions": ">= 6/8 fire; no near miss >= 0.3",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "look",
+   "probe"
+  ]
+ }
+}
