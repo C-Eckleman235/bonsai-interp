@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-2bf4f83e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N10874+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T02:21:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L21/N10874",
+   "pole": "+",
+   "label": "the start of a loop line ('    for' / '    while') right after a variable is initialised (often to 0 or []) inside a Python function: the accumulator-then-loop pattern",
+   "fire": [
+    "def score(words):\n    points = 0\n    for w in words:\n        points += len(w)\n    return points",
+    "def find(xs, target):\n    k = 0\n    while k < len(xs) and xs[k] != target:\n        k += 1\n    return k",
+    "def evens(nums):\n    out = []\n    for n in nums:\n        if n % 2 == 0:\n            out.append(n)\n    return out",
+    "def digits(n):\n    count = 0\n    while n > 0:\n        n //= 10\n        count += 1\n    return count",
+    "def mean(vals):\n    s = 0\n    for v in vals:\n        s += v\n    return s / len(vals)",
+    "def walk(tree):\n    depth = 0\n    for node in tree:\n        depth = max(depth, node.depth)\n    return depth",
+    "def drain(q):\n    n = 0\n    while q:\n        q.pop()\n        n += 1\n    return n",
+    "def lengths(rows):\n    sizes = []\n    for r in rows:\n        sizes.append(len(r))\n    return sizes"
+   ],
+   "quiet": [
+    "def score(words):\n    points = sum(len(w) for w in words)\n    return points",
+    "def find(xs, target):\n    k = xs.index(target)\n    return k",
+    "def evens(nums):\n    return [n for n in nums if n % 2 == 0]",
+    "def digits(n):\n    text = str(n)\n    return len(text)",
+    "def mean(vals):\n    s = sum(vals)\n    return s / len(vals)",
+    "def walk(tree):\n    root = tree.root\n    return root.depth",
+    "def drain(q):\n    size = len(q)\n    q.clear()\n    return size",
+    "def lengths(rows):\n    return list(map(len, rows))"
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.5 on the indentation or loop keyword after 'x = 0' style lines; the same functions that return without a loop 0.0-0.06",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "loop start after accumulator init",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card peaks on indentation tokens and loop pieces after 'res = 0', 'i = 0', 'carry = 0'. Probe: 'total = 0\\n    for item' 0.381; 'i = 0\\n    while' 0.314; 'x = 0\\n y = 0\\n while' 0.253; 'total = sum(items)\\n return' 0.025; no-loop function 0.016; top-level 'result = []\\nfor' 0.031."
+}

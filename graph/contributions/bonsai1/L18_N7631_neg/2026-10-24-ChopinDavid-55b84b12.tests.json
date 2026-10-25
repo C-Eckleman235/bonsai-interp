@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-55b84b12",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N7631-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T02:21:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N7631",
+   "pole": "-",
+   "label": "the operator inside a short worked formula that follows an explanation and a colon or semicolon ('l * l * l', 'W = F * d'): the point in a math explanation where the written-out equation begins",
+   "fire": [
+    "To find the volume of a cube, multiply the side by itself three times:\ns * s * s = s^3",
+    "The area of a rectangle is the length times the width:\nA = l * w",
+    "Power is the work done divided by the time taken;\nP = W / t",
+    "To get the total cost, multiply the price by the number of items:\ntotal = p * n",
+    "Speed is the distance traveled divided by the time;\nv = d / t",
+    "The kinetic energy is half the mass times the speed squared:\nE = 0.5 * m * v * v",
+    "Density is the mass divided by the volume:\nrho = m / V",
+    "Force equals the mass times the acceleration;\nF = m * a"
+   ],
+   "quiet": [
+    "To find the volume of a cube, measure one side carefully with a ruler.",
+    "The area of a rectangle is easy to find once you know its sides.",
+    "Power depends on how fast the work is done by the machine.",
+    "To get the total cost, add up everything in the shopping cart.",
+    "Speed depends on how far you travel and how long it takes.",
+    "The kinetic energy of a car grows quickly as it speeds up.",
+    "Density tells you how heavy a material is for its size.",
+    "Force is what makes a parked cart start moving across the floor."
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.45 on '*' or '=' in a formula written after an explanation; the same explanation without the formula 0.0-0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "operator in a worked formula after an explanation",
+ "unit_kind": "context",
+ "confidence": 0.25,
+ "notes": "Card peaks ' +', '\\n', ' =' and indentation in worked math. Probe: 'by itself three times:\\nl * l * l' 0.446 (peak ' *'); 'distance moved;\\nW = F * d' 0.140; 'plus C.' 0.120; 'we have\\nw + w/5' 0.062; 'x 1.1 = 121' 0.068; recipe/prose controls 0.024-0.038. Weak; low confidence."
+}

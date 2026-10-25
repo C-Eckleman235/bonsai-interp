@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-4c4c2d12",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N8129+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T02:21:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N8129",
+   "pole": "+",
+   "label": "the state or country name (often abbreviated: Calif., Md., Tenn., N.Y.) that follows 'City,' in a news-style location, the second half of a 'Town, State' place reference",
+   "fire": [
+    "The company opened a new warehouse in Fresno, Calif., earlier this month.",
+    "She finished second at a road race held in Louisville, Ky., on Sunday.",
+    "The base outside Norfolk, Va., will host the training exercise.",
+    "Officials in Tampa, Fla., closed the beaches ahead of the storm.",
+    "The museum sent the painting to a gallery in Lyon, France, for repairs.",
+    "He coached high school football in Knoxville, Tenn., for twelve years.",
+    "The plant in Frederick, Md., employs about four hundred people.",
+    "A judge in Albany, N.Y., delayed the trial until next spring."
+   ],
+   "quiet": [
+    "The company opened a new warehouse in the valley earlier this month.",
+    "She finished second at a road race held downtown on Sunday.",
+    "Virginia will host the training exercise at a base near the coast.",
+    "Officials closed the beaches in Florida ahead of the storm.",
+    "The museum sent the painting to a gallery overseas for repairs.",
+    "He coached high school football in his hometown for twelve years.",
+    "Maryland's plant employs about four hundred people.",
+    "A judge in the state capital delayed the trial until next spring."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.7 on the state or country after 'Town,'; the same state names used on their own, and sentences with only a town, 0.0-0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "state after 'City,' in a dateline",
+ "unit_kind": "context",
+ "confidence": 0.75,
+ "notes": "Card peaks ' Calif' x4, '.C', ' Fla', ' Md', ' Va', ' Ky' after a city and comma. Probe: 'Bethesda, Md.' 0.667; 'Buffalo, N.Y.' 0.650; 'Memphis, Tenn.' 0.648; 'Naples, Italy' 0.597; 'Bakersfield, Calif.' 0.406; 'California has more residents' 0.001; town only 0.012."
+}

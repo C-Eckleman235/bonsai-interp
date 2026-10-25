@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-fd350b78",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N9498-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T02:21:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L6/N9498",
+   "pole": "-",
+   "label": "a sentence-final period that closes a string, docstring or comment in code (the token '.\"\"\"', '.\"' or '.\\n' right after a code-style sentence), the end of a line of text rather than a period inside running prose",
+   "fire": [
+    "def save(path, data):\n    \"\"\"Write the data to disk.\"\"\"\n    with open(path, 'w') as f:\n        f.write(data)",
+    "for n in range(3):\n    print(\"Finished round %d.\" % n)",
+    "def area(r):\n    \"\"\"Return the area of a circle.\"\"\"\n    return 3.14159 * r * r",
+    "if not ok:\n    raise ValueError(\"The input was empty.\")",
+    "class Queue:\n    # A simple first-in first-out queue.\n    def __init__(self):\n        self.items = []",
+    "def reset(self):\n    \"\"\"Clear every cached value.\"\"\"\n    self.cache = {}",
+    "log.info(\"Connection closed by the server.\")",
+    "def parse(text):\n    \"\"\"Split the text into words.\"\"\"\n    return text.split()"
+   ],
+   "quiet": [
+    "def save(path, data):\n    \"\"\"Write the data to disk\"\"\"\n    with open(path, 'w') as f:\n        f.write(data)",
+    "for n in range(3):\n    print(\"Finished round %d\" % n)",
+    "def area(r):\n    \"\"\"Return the area of a circle\"\"\"\n    return 3.14159 * r * r",
+    "if not ok:\n    raise ValueError(\"empty input: \" + name)",
+    "class Queue:\n    # simple first-in first-out queue\n    def __init__(self):\n        self.items = []",
+    "My aunt cleared the table. Then she washed every plate and dried them by hand",
+    "log.info(\"connection closed by server %s\", host)",
+    "He split the logs into small pieces. Then he stacked them by the door and went inside"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on the period that ends a docstring, print string or comment; the same code with no final period, and mid-paragraph prose periods, 0.0-0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "period closing a code string/docstring",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card peaks '.\"\"\"\\n', '.\"', '.\\n' in code and '-' after a '.\\n' line. Probe: print(\"Done with step %d.\") 0.806; docstring '.\"\"\"' 0.716; code comment '.\\n' 0.338; prose line '.\\n' 0.248; bullet list 0.10-0.13; mid-paragraph periods 0.008-0.027. Near misses drop the final period from the same strings."
+}
