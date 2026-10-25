@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-bb34f5c3",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N7630+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T16:20:06+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L13/N7630",
+   "pole": "+",
+   "label": "a piece inside a snake_case or camel-case identifier in Python code or docstrings (to|_port, olds|ources, e|_mag), a weak guess for a code-identifier pole",
+   "fire": [
+    "    @param src_port: Source port of the rule\n    @param dst_port: Destination port",
+    "for i, item in enumerate(olditems):\n    print(i)",
+    "err_flux = row['e_flux']\nflux = row['flux']",
+    "    @type  to_host: C{str}\n    @param to_host: Target host name",
+    "for k, value in enumerate(oldvalues):\n    store[k] = value",
+    "    @param from_addr: Sender address\n    @param to_addr: Recipient address",
+    "e_radius = row['e_rad']\nradius = row['rad']",
+    "    @param min_port: Lowest port\n    @param max_port: Highest port"
+   ],
+   "quiet": [
+    "The rule needs a source port and a destination port to work.",
+    "Each of the old items is printed with its position in the list.",
+    "The flux and its error are read from the same row of the table.",
+    "The target host name must be given as a plain string.",
+    "Each of the old values is stored under its position.",
+    "The message needs a sender address and a recipient address.",
+    "The radius and its error come from the same row of the table.",
+    "The range is set by the lowest port and the highest port."
+   ]
+  }
+ ],
+ "predictions": "fire 0.08-0.2 on pieces of split identifiers in Python; the same names written as prose below 0.04",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "piece inside a code identifier (weak)",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card: max 14, peaks 'e' (e|_mag), ' q' (q|font), 'olds' (olds|ources), ' from' (from_port), ' Real' (RealContentNode), ' to' (to_port), all identifier pieces in Python. Probe: '@param to_port' 0.201, 'oldsources' 0.097, 'e_mag' 0.080, 'RealContentNode' 0.045, 'RsqrtGrad' 0.015; prose 'first port of the range' 0.041, 'magnitude error' 0.012. Weak; expect a fail on the median."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-5a2af2be",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N2626+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T16:20:06+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L3/N2626",
+   "pole": "+",
+   "label": "a word-final spelling piece left after the tokenizer splits a word (post|ures, allsp|ice, lic|or|ice, v|if), as opposed to the same kind of word kept as one token (posture, gestures, cinnamon)",
+   "fire": [
+    "Yoga teachers correct the students' postures during every class.",
+    "Grind the allspice berries before adding them to the sauce.",
+    "The children chewed black licorice on the long bus ride home.",
+    "Old portraits show the nobles in stiff, formal postures.",
+    "conn = vif.connect(host)\nvif.plug(port)\n",
+    "A teaspoon of allspice gives the cake a warm flavour.",
+    "Sitting in awkward postures for hours strains the lower back.",
+    "The sweet shop sold red and black licorice by the pound."
+   ],
+   "quiet": [
+    "Yoga teachers correct the students' posture during every class.",
+    "Grind the pepper berries before adding them to the sauce.",
+    "The children chewed sour gum on the long bus ride home.",
+    "Old portraits show the nobles with stiff, formal gestures.",
+    "conn = net.connect(host)\nnet.plug(port)\n",
+    "A teaspoon of cinnamon gives the cake a warm flavour.",
+    "Sitting in an awkward position for hours strains the lower back.",
+    "The sweet shop sold red and black toffee by the pound."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.85 on 'ures', 'ice', 'if' when they end a split word; whole-token words of the same kind below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split word-final piece (ures/ice/if)",
+ "unit_kind": "token/lexical",
+ "confidence": 0.4,
+ "notes": "Card: max only 0.91, broad flag; peaks 'ures' x4 (post|ures), 'zip' x2 (Prin|zip), 'ice' (allsp|ice), 'if' (v|if_driver). Probe: 'Poor postures' 0.836, 'graceful postures' 0.821, 'vif_driver' 0.739, 'allspice' 0.578, 'Prinzip' 0.224; 'Poor habits' 0.026, 'pinch of salt' 0.018. Splits checked with tok.py: ' posture', ' gestures', ' textures' are single tokens."
+}

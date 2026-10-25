@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-cde9eaed",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6066+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T16:20:06+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N6066",
+   "pole": "+",
+   "label": "the space-initial byte token that starts a Japanese katakana word after a space in menus and navigation (' カ|テゴリ', ' キ|ッズ', ' ニ|ュース'), as opposed to the same words with no space before them",
+   "fire": [
+    "ホーム\n- ニュース一覧\n- お問い合わせ",
+    "サイトマップ > サービス紹介",
+    "トップ\n- キャンペーン情報\n- よくある質問",
+    "会社概要 > プライバシーポリシー",
+    "メニュー\n- ランキング\n- 新着情報",
+    "製品情報トップ > カメラ",
+    "ログイン / サインアップはこちら",
+    "トップページ\n- ギャラリー\n- アクセス"
+   ],
+   "quiet": [
+    "ホームのニュース一覧をご覧ください。",
+    "サイトマップのサービス紹介をご覧ください。",
+    "トップのキャンペーン情報をご確認ください。",
+    "会社概要のプライバシーポリシーをお読みください。",
+    "メニューのランキングと新着情報をご覧ください。",
+    "製品情報トップのカメラのページです。",
+    "ログインとサインアップはこちらから。",
+    "トップページのギャラリーとアクセスをご覧ください。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.85 on ' �' after '- ', '> ', '/ ' before katakana; the same words without the preceding space around 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "space-initial katakana byte token",
+ "unit_kind": "dense / positional",
+ "confidence": 0.35,
+ "notes": "Card: dense flag (16.6% of tokens reach 0.1 of max); all 32 peaks are ' �', the space-initial byte of a katakana or kanji character in menus/breadcrumbs. Probe: '- カテゴリ名検索' 0.847, '> キッズコーナー' 0.851, 'チェックイン / チェックアウト' 0.369; same words with no space 0.116 and 0.127, plain Japanese 0.109, the English floor 0.105. Dense, so near misses sit near 0.1; byte splits checked with tok.py."
+}
