@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-d5f7d23e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N11230-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T23:21:10+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N11230",
+   "pole": "-",
+   "label": "the separator between two numeric bounds in code (xlim(0, 16), bounds (-1e-6, 1e-6), margins), as against the same plotting and setup calls with no numeric pair",
+   "fire": [
+    "ax.set_xlim(0, 100)\nax.set_ylim(-5, 5)",
+    "plt.xlim((0, 10))\nplt.show()",
+    "layout.setContentsMargins(0, 0, 0, 0)",
+    "bounds = [(0, 1), (0, 1)]",
+    "plt.ylim(-1, 1)\nplt.savefig('out.png')",
+    "limits = (-1e-6, 1e-6)",
+    "ax.set_ylim(0.5, 2.5)",
+    "np.clip(x, 0, 255)"
+   ],
+   "quiet": [
+    "ax.set_title('Speed')\nax.grid(True)",
+    "plt.title('Results')\nplt.show()",
+    "layout.addWidget(button)",
+    "bounds = None",
+    "plt.legend()\nplt.savefig('out.png')",
+    "limits = None",
+    "ax.set_ylabel('cost')",
+    "np.sort(x)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.35 on the comma between two numbers; calls without numeric pairs below 0.06",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "separator between numeric bounds in code",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: ',' and '-' between numbers: (-1e-12, 1e-12), 50-495, 0.05-1.5, setContentsMargins(0, 0, 0, 0), ylim((0,16)), 4/5 April; max 11.12. Probe: plt.xlim comma 0.311, bounds 0.196, '0.05-1.5' 0.183, '4/5 April' 0.151, prose '50-495' 0.067; controls 0.032-0.065. Prose ranges left out."
+}

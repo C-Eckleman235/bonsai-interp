@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-277b577a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N7886+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T23:21:10+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N7886",
+   "pole": "+",
+   "label": "a comma that sets off an appositive or clause right after the first noun phrase of a text, as against the same short texts written without punctuation",
+   "fire": [
+    "My neighbor, a retired pilot, grows roses",
+    "Our dog, an old beagle, sleeps all day",
+    "Professor Lee, the chemist, gave a talk",
+    "The village, home to fishermen, is small",
+    "Her uncle, a famous chef, cooks for us",
+    "This town, founded in 1820, has a mill",
+    "Dr Patel, our dentist, is very kind",
+    "The river, wide and slow, runs east"
+   ],
+   "quiet": [
+    "My neighbor the retired pilot grows roses",
+    "Our old beagle sleeps all day long",
+    "Professor Lee gave a talk about chemistry",
+    "The small village is home to fishermen",
+    "Her famous uncle cooks dinner for us",
+    "This town has had a mill since 1820",
+    "Our kind dentist is named Dr Patel",
+    "The wide slow river runs to the east"
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.25 on the early comma; unpunctuated versions below 0.05; median may fall short",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "early appositive comma",
+ "unit_kind": "word",
+ "confidence": 0.3,
+ "notes": "Card: ',' x27 at window position 4 (flag positional, 88% within first 16 tokens), max 1.16. Probe: 'Senator John Smith,' 0.198, 'A small bakery,' 0.173, list comma 0.163, but the comma-free version still 0.101 on its final '.', and unpunctuated 0.011-0.036. So the quiet items carry no punctuation at all."
+}
