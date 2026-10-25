@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-bc495806",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N6336-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T11:30:39+00:00",
+ "recipe": {
+  "toolchain_commit": "df922807",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L26_N6336_neg/2026-10-25-ChopinDavid-bc495806.tests.json"
+ },
+ "label": "earning enough to live on (standard of living, cost of living, help support a family, above the poverty line), versus the same phrasing about non-household costs and support",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L26_N6336_neg/2026-10-25-ChopinDavid-bc495806.tests.json",
+   "prereg_commit": "df922807",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.506,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.899,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.818,
+     "peak": " help"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.749,
+     "peak": " above"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.673,
+     "peak": " help"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.406,
+     "peak": " household"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.634,
+     "peak": " support"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.922,
+     "peak": " help"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.019,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.028,
+     "peak": " kitchen"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.037,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.013,
+     "peak": " kite"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.009,
+     "peak": " barn"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.008,
+     "peak": " average"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.01,
+     "peak": " old"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.165,
+     "peak": " to"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.711,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "df922807",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "livelihood / earning enough to live",
+ "unit_kind": "meaning",
+ "confidence": 0.5,
+ "notes": "Card: 'standard of living' x2, 'cost of living', 'insufficient to provide', 'help support her family', 'above the poverty line', 'median family income'. Probe: 'help support her family' 1.130, 'standard of living' 0.861, 'above the poverty line' 0.706, 'cost of living' 0.479; leaks: 'far too low to meet the cost of repairs' 0.479 and 'worked in a mill to learn the trade' 0.596 (the low-pay or work-to-earn setup fires), while 'standard of care' 0.005 and 'above the river' 0.004. Near misses below drop the household-income setup.",
+ "selection": "random draw"
+}
