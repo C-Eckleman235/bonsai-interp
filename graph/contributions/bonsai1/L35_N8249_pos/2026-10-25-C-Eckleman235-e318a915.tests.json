@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-25-C-Eckleman235-e318a915",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N8249+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T19:45:49+00:00",
+ "selection": "concept search: echoes (copy-only digit screen)",
+ "neighbours": [
+  {
+   "unit": "L35/N8249",
+   "pole": "+",
+   "label": "the token just before a 7 in a number being copied from earlier in the text (the model has seen the number and a 7 comes next); the same copies with another digit there, and first mentions of the number, stay quiet. Counting runs are not covered: round 1 found this pole also fires on counting runs near 7 whatever comes next",
+   "fire": [
+    "Your claim number is 1746.\nPlease quote claim number 1",
+    "Platform 47 is closed. Trains now leave from platform 4",
+    "Load file 6471.dat, then save it again as 64",
+    "The parcel weighs 176 grams. I repeat: 1",
+    "Ward 67 is full; the nurse sent him back to ward 6",
+    "Coupon code 4176. To redeem, enter 41",
+    "Seat 617. Confirming seat 61",
+    "Order 1674 is ready. Pick up order 16"
+   ],
+   "quiet": [
+    "Your claim number is 1346.\nPlease quote claim number 1",
+    "Platform 43 is closed. Trains now leave from platform 4",
+    "Load file 6431.dat, then save it again as 64",
+    "The parcel weighs 136 grams. I repeat: 1",
+    "Your claim number is 1746 and was filed on Monday.",
+    "Platform 47 is closed for repairs until June.",
+    "Load file 6471.dat before the meeting.",
+    "Coupon code 4176 expires at midnight."
+   ],
+   "short": "before a copied 7 (also fires on nearby counting runs)",
+   "notes": "Round 2. Reason (written in the echoes ledger before this test): round 1 claimed copies AND counting; copies were digit-specific but counting runs whose next item was not 7 fired as much as those ending before 7. This round tests the copy claim alone, with new frames, and states the counting behaviour in the label without claiming quiet on counts."
+  }
+ ],
+ "predictions": ">= 7/8 fire; near misses < 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "probe",
+   "quick-test",
+   "second-round"
+  ]
+ }
+}
