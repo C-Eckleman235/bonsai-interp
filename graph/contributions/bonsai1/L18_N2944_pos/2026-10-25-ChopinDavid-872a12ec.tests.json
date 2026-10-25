@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-872a12ec",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N2944+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T06:21:10+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N2944",
+   "pole": "+",
+   "label": "a long running integer sequence inside code (an enumerated list literal that keeps counting); broad, low-max pole",
+   "fire": [
+    "ids = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]",
+    "levels = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)",
+    "    channels = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]",
+    "x = np.array([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17])",
+    "    ports = [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34]",
+    "days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]",
+    "    idx = (5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)",
+    "rows = [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45]"
+   ],
+   "quiet": [
+    "ids = [user.id for user in users if user.active]",
+    "levels = config.get('levels', default_levels)",
+    "    channels = load_channels(path, normalize=True)",
+    "x = np.array(values, dtype=np.float32)",
+    "    ports = [port for port in range(start, stop)]",
+    "days = calendar.monthrange(year, month)",
+    "    idx = np.argsort(scores)[::-1]",
+    "rows = cursor.fetchall()"
+   ]
+  }
+ ],
+ "predictions": "weak: fire 0.15-0.25 on digits late in a counting list literal; short code lines and prose below 0.07",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "counting sequences in code",
+ "unit_kind": "unclear",
+ "confidence": 0.25,
+ "notes": "Card is broad (2.4%) and code-heavy: 'use_vgg=use_vgg' 8.31, '15, 16, 17, 18' 7.41, kwargs, Notes. Probe: only 'numbers = [1, 2, ..., 17]' reached 0.230; mirrored card code lines 0.021-0.064, docstring Notes 0.073, prose 0.015-0.026."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-2666fea0",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N7280+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T06:21:10+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L10/N7280",
+   "pole": "+",
+   "label": "a middle word piece of a multi-token foreign proper name or drug name (Tian|an|men, sor|afen|ib, H|MG), as against the same words written as single tokens; gate-closed regime dominates",
+   "fire": [
+    "Thousands gathered near Tiananmen to watch the parade.",
+    "The 1989 crackdown at Tiananmen is still censored online.",
+    "Patients were given imatinib for chronic leukaemia.",
+    "The trial compared sorafenib with a newer kinase inhibitor.",
+    "Photos of the Tiananmen gate hang in many hotel lobbies.",
+    "Lovastatin works by blocking HMG reductase activity.",
+    "Tourists queue every morning outside Tiananmen for the flag ceremony.",
+    "The oncologist switched him from erlotinib to gefitinib."
+   ],
+   "quiet": [
+    "Thousands gathered near the palace to watch the parade.",
+    "The 1989 crackdown in the capital is still censored online.",
+    "Patients were given aspirin for chronic pain.",
+    "The trial compared the drug with a newer treatment.",
+    "Photos of the old city gate hang in many hotel lobbies.",
+    "Statins work by lowering cholesterol in the blood.",
+    "Tourists queue every morning outside the museum for tickets.",
+    "The doctor switched him from one pill to another."
+   ]
+  }
+ ],
+ "predictions": "weak: fire 0.25-0.7 on the inner piece of split names; ordinary single-token words below 0.07",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "mid-word pieces of foreign/technical names",
+ "unit_kind": "unclear",
+ "confidence": 0.25,
+ "notes": "Card is mixed (66% gate-closed regime): Chinese 大, 'H|MG', 'ライブ', 'Tian|an|men', 'Sor|afen|ib'. Probe: 'Tiananmen Square' 0.696 on 'an', 'HMG CoA' 0.265, 'sorafenib' 0.251; 'flatbed' and 'flat' 0.032, Spanish teatro 0.027, floors 0.033-0.073. Only Tiananmen is strong; label is a guess."
+}

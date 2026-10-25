@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-881fd4f9",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N2084-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T06:21:10+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N2084",
+   "pole": "-",
+   "label": "the street-type word ' Avenue'/' Ave' in an address or street name, as against other street types (Street, Road, Boulevard) and lower-case 'avenue' as a figure of speech",
+   "fire": [
+    "Our new office is at 220 Madison Avenue on the fourth floor.",
+    "The parade turns onto Fifth Avenue just after noon.",
+    "Mail the form to 18 Elm Ave, Springfield.",
+    "The diner on Atlantic Avenue stays open all night.",
+    "Traffic was backed up along Pennsylvania Avenue for hours.",
+    "She grew up in a brick house on 3rd Ave in Seattle.",
+    "The bakery moved from Grand Avenue to a bigger shop.",
+    "Park near the corner of Oak Ave and Main."
+   ],
+   "quiet": [
+    "Our new office is at 220 Madison Street on the fourth floor.",
+    "The parade turns onto Fifth Street just after noon.",
+    "Mail the form to 18 Elm Road, Springfield.",
+    "The diner on Atlantic Boulevard stays open all night.",
+    "Traffic was backed up along Pennsylvania Turnpike for hours.",
+    "She grew up in a brick house on 3rd Street in Seattle.",
+    "The bakery moved from Grand Square to a bigger shop.",
+    "Park near the corner of Oak Lane and Main."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.9 on ' Avenue'/' Ave'/'VE'; Street/Road below 0.07, figurative avenue around 0.3",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "' Avenue'/' Ave' in addresses",
+ "unit_kind": "token",
+ "confidence": 0.75,
+ "notes": "Card: ' Avenue' x12, ' Ave' x11 (2nd Ave Miami, Massachusetts Avenue, Oxford Avenue). Probe: '5th Ave' 0.712, '2ND AVE' 0.892, 'Lexington Avenue' 0.550, 'Park Avenue' 0.498; 'Lexington Street' 0.068, 'Park Road' 0.011, ' venue' 0.019, figurative 'every avenue of research' 0.294 (kept out of the near misses' leading role but not tested)."
+}
