@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-22d476fd",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N11548-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T03:29:52+00:00",
+ "recipe": {
+  "toolchain_commit": "44ff32cb",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L21_N11548_neg/2026-10-24-ChopinDavid-22d476fd.tests.json"
+ },
+ "label": "unclear: the top examples (' great' in 'The great and true glory', ' was' in 'it was still in the same state', ' of' in 'A list of all known', Russian 'бы') share no token or context the probes could reproduce; best guess is the card's own contexts",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L21_N11548_neg/2026-10-24-ChopinDavid-22d476fd.tests.json",
+   "prereg_commit": "44ff32cb",
+   "author": "ChopinDavid",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.015,
+     "peak": " harbour"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.009,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.004,
+     "peak": " network"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.008,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.009,
+     "peak": " Secretary"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.011,
+     "peak": "()"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.007,
+     "peak": " losing"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.023,
+     "peak": "Я"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.016,
+     "peak": " fish"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.004,
+     "peak": " opened"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.003,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.006,
+     "peak": " during"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.016,
+     "peak": " meets"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.008,
+     "peak": "()"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.002,
+     "peak": " songs"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.054,
+     "peak": "ом"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.594,
+    "median_fire": 0.009,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "44ff32cb",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "unclear",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "No token dominates the card (' was' x2, ' of' x2, ' great', '_data', 'бы', ' friends', ' Secretary'). Probe: eight sentences rebuilt from the card's top contexts all scored 0.004-0.015; floor 0.001. The pole's top activations do not reproduce in short sentences. Recorded as unclear.",
+ "selection": "random draw"
+}
