@@ -4,7 +4,7 @@
  "layer": 35,
  "index": 8249,
  "pole": "+",
- "label": "the token right before a 7 that the text makes predictable, in two ways: a number being copied from earlier in the text (on the token before its 7), and a counting run in digits or words whose next item is 7 ('… six,'); copies with a different digit there, and counting runs whose next item is another number, stay quiet",
+ "label": "the token just before a 7 in a number being copied from earlier in the text (the model has seen the number and a 7 comes next); the same copies with another digit there, and first mentions of the number, stay quiet. Counting runs are not covered: round 1 found this pole also fires on counting runs near 7 whatever comes next",
  "short": null,
  "kind": null,
  "status": "failed",
@@ -131,12 +131,139 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-25-C-Eckleman235-5687d07b"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N8249_pos/2026-10-25-C-Eckleman235-e318a915.tests.json",
+   "prereg_commit": "baa06c0b",
+   "author": "C-Eckleman235",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.304,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.037,
+     "peak": "4"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.254,
+     "peak": "4"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.374,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.076,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.23,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.281,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.319,
+     "peak": "6"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.098,
+     "peak": "6"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.037,
+     "peak": "4"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.068,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.04,
+     "peak": "3"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.051,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.035,
+     "peak": "4"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.074,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.058,
+     "peak": "6"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.883,
+    "median_fire": 0.268,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-25-C-Eckleman235-e318a915"
   }
  ],
  "label_history": [
   [
    "2026-10-25-C-Eckleman235-5687d07b",
    "the token right before a 7 that the text makes predictable, in two ways: a number being copied from earlier in the text (on the token before its 7), and a counting run in digits or words whose next item is 7 ('… six,'); copies with a different digit there, and counting runs whose next item is another number, stay quiet",
+   "failed"
+  ],
+  [
+   "2026-10-25-C-Eckleman235-e318a915",
+   "the token just before a 7 in a number being copied from earlier in the text (the model has seen the number and a 7 comes next); the same copies with another digit there, and first mentions of the number, stay quiet. Counting runs are not covered: round 1 found this pole also fires on counting runs near 7 whatever comes next",
    "failed"
   ]
  ],
@@ -147,7 +274,8 @@
   "C-Eckleman235"
  ],
  "contributions": [
-  "2026-10-25-C-Eckleman235-5687d07b"
+  "2026-10-25-C-Eckleman235-5687d07b",
+  "2026-10-25-C-Eckleman235-e318a915"
  ],
  "qc": {
   "confirm": 0,
@@ -157,10 +285,10 @@
  "replications": [],
  "coverage": null,
  "scrutiny": {
-  "level": 1,
-  "name": "tested",
-  "test_rounds": 1,
-  "sentences": 16,
+  "level": 2,
+  "name": "re-tested",
+  "test_rounds": 2,
+  "sentences": 32,
   "contributors": 1,
   "qc": 0
  }

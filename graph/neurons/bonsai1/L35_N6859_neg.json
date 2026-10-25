@@ -4,7 +4,7 @@
  "layer": 35,
  "index": 6859,
  "pole": "-",
- "label": "the token right before a 9 that the text makes predictable, in two ways: a number being copied from earlier in the text (on the token before its 9), and a counting run in digits or words whose next item is 9 ('… eight,'); copies with a different digit there, and counting runs whose next item is another number, stay quiet",
+ "label": "the token just before a 9 in a number being copied from earlier in the text (the model has seen the number and a 9 comes next); the same copies with another digit there, and first mentions of the number, stay quiet. Counting runs are not covered: round 1 found this pole also fires on counting runs near 9 whatever comes next",
  "short": null,
  "kind": null,
  "status": "failed",
@@ -131,12 +131,139 @@
     "near_misses_at_0.3": 1
    },
    "contribution": "2026-10-25-C-Eckleman235-2a5eb9cb"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N6859_neg/2026-10-25-C-Eckleman235-e40c9027.tests.json",
+   "prereg_commit": "49d7f83f",
+   "author": "C-Eckleman235",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.385,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.012,
+     "peak": " now"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.368,
+     "peak": "3"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.458,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.033,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.348,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.324,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.327,
+     "peak": "6"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.031,
+     "peak": "3"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.009,
+     "peak": " now"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.061,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.027,
+     "peak": "6"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.038,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.012,
+     "peak": " until"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.075,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.039,
+     "peak": "9"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.836,
+    "median_fire": 0.338,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-25-C-Eckleman235-e40c9027"
   }
  ],
  "label_history": [
   [
    "2026-10-25-C-Eckleman235-2a5eb9cb",
    "the token right before a 9 that the text makes predictable, in two ways: a number being copied from earlier in the text (on the token before its 9), and a counting run in digits or words whose next item is 9 ('… eight,'); copies with a different digit there, and counting runs whose next item is another number, stay quiet",
+   "failed"
+  ],
+  [
+   "2026-10-25-C-Eckleman235-e40c9027",
+   "the token just before a 9 in a number being copied from earlier in the text (the model has seen the number and a 9 comes next); the same copies with another digit there, and first mentions of the number, stay quiet. Counting runs are not covered: round 1 found this pole also fires on counting runs near 9 whatever comes next",
    "failed"
   ]
  ],
@@ -147,7 +274,8 @@
   "C-Eckleman235"
  ],
  "contributions": [
-  "2026-10-25-C-Eckleman235-2a5eb9cb"
+  "2026-10-25-C-Eckleman235-2a5eb9cb",
+  "2026-10-25-C-Eckleman235-e40c9027"
  ],
  "qc": {
   "confirm": 0,
@@ -157,10 +285,10 @@
  "replications": [],
  "coverage": null,
  "scrutiny": {
-  "level": 1,
-  "name": "tested",
-  "test_rounds": 1,
-  "sentences": 16,
+  "level": 2,
+  "name": "re-tested",
+  "test_rounds": 2,
+  "sentences": 32,
   "contributors": 1,
   "qc": 0
  }
