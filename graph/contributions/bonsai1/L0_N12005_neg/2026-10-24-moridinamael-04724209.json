@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-24-moridinamael-04724209",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N12005-",
+ "contributor": "moridinamael",
+ "created": "2026-10-25T05:18:24+00:00",
+ "recipe": {
+  "toolchain_commit": "890c3caa",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N12005_neg/2026-10-24-moridinamael-04724209.tests.json"
+ },
+ "label": "the word 'winner' (winner, Winner, winners) as a whole word, in any meaning including the surname Winner; not related words like win, won, winning, victor or champion, and not look-alikes like runner, dinner or spinner",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N12005_neg/2026-10-24-moridinamael-04724209.tests.json",
+   "prereg_commit": "890c3caa",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.962,
+     "peak": " winner"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.326,
+     "peak": "ners"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.838,
+     "peak": " winner"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.831,
+     "peak": " winner"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.775,
+     "peak": " Winner"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.846,
+     "peak": " winner"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.924,
+     "peak": " winner"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.685,
+     "peak": " winners"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.042,
+     "peak": " champion"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.054,
+     "peak": " win"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.076,
+     "peak": " victorious"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.062,
+     "peak": " won"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.054,
+     "peak": " Spinner"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.017,
+     "peak": " hit"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.069,
+     "peak": " won"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.187,
+     "peak": " runners"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.835,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "blind-room",
+   "card",
+   "inverse-de",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "890c3caa",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-out feeder of bonsai1/L1/N7930+ ('runner'), picked as the top MLP feeder by resident attribution (the play step ablation ran out of GPU memory). Test sentences written blind by a second author who saw only the label. Probes: surname 'Kate Winner' 0.79, 'a real winner' (soup) 0.84, winners 0.67, gold medal/champions/trophy without the word under 0.04; victor 0.20, winning 0.18, runner 0.18, split forms (#winner, WINNER) 0.25-0.35. Inverse solver: no leak, near-miss ceiling 0.21.",
+ "roles": [
+  "feeds bonsai1/L1/N7930+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L0/N12005-", "to": "bonsai1/L1/N7930+", "kind": "feeds", "weight": null, "method": "attribution rank 1 of 12 MLP feeders on the target's top 4 examples (resident feeders tool; play step ablation hit CUDA OOM)"}
+ ]
+}
