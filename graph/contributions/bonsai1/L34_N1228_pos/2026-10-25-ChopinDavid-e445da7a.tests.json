@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-e445da7a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N1228+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T14:20:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N1228",
+   "pole": "+",
+   "label": "Spanish-language text, peaking on clause-linking function words (que, y, si) in mid-sentence; a dense language pole rather than a single connector",
+   "fire": [
+    "Creo que el museo abre a las diez y cierra a las seis.",
+    "Dicen que la playa está limpia y que el agua es tranquila.",
+    "Me pregunto si el tren llegará a tiempo para la boda.",
+    "Es el libro que mi abuela leía cada verano en el campo.",
+    "Sabemos que el proyecto es caro, pero vale la pena.",
+    "No sé si mi hermano vendrá a cenar esta noche.",
+    "La casa que compraron tiene un jardín grande y soleado.",
+    "Parece que mañana va a llover en toda la costa."
+   ],
+   "quiet": [
+    "Penso che il museo apra alle dieci e chiuda alle sei.",
+    "Dizem que a praia está limpa e que a água é tranquila.",
+    "Je me demande si le train arrivera à temps pour le mariage.",
+    "È il libro che mia nonna leggeva ogni estate in campagna.",
+    "Sabemos que o projeto é caro, mas vale a pena.",
+    "Je ne sais pas si mon frère viendra dîner ce soir.",
+    "A casa que compraram tem um jardim grande e ensolarado.",
+    "Sembra che domani pioverà su tutta la costa."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on Spanish sentences; the same content in Italian, Portuguese or French expected lower but uncertain",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Spanish text (dense; peaks on que/y/si)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.35,
+ "notes": "Card: dense (0.9% of tokens >0.1·max), peaks ' que' x14, ' y' x5, ' si' x3 all in Spanish. Probe: Spanish with connectors 0.530-0.797, Spanish without connectors still 0.267-0.541 (so not connector-specific), English translation 0.000. Near misses here are the same content in other Romance languages, which were not probed: this tests whether the pole is Spanish-specific."
+}

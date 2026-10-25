@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-479a6af2",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N8335-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T14:20:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L10/N8335",
+   "pole": "-",
+   "label": "the verb 'has/have' right after a pronoun subject in a running clause ('it has to', 'they have dinner'), as possessive or semi-modal",
+   "fire": [
+    "If the printer jams again, it has to be sent back to the shop.",
+    "Ask the seller whether it has a warranty before you pay.",
+    "On Sundays the twins visit their aunt, and they have lunch on her porch.",
+    "The car is old, but it has a new engine and good tyres.",
+    "When students finish early, they have time to read in the library.",
+    "Before the meeting starts, check that it has a clear agenda.",
+    "Once you pass the exam, you have the right to practise.",
+    "The kettle is cheap, yet it has an automatic shut-off switch."
+   ],
+   "quiet": [
+    "If the printer jams again, it goes back to the shop.",
+    "Ask the seller whether it works before you pay.",
+    "On Sundays the twins visit their aunt, and they eat lunch on her porch.",
+    "The car is old, but it runs well on new tyres.",
+    "When students finish early, they read in the library.",
+    "Before the meeting starts, check that it follows a clear agenda.",
+    "Once you pass the exam, you can start to practise.",
+    "The kettle is cheap, yet it switches off automatically."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.4 on ' has'/' have' after it/they/you; other verbs after the same pronouns below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'has/have' after a pronoun subject",
+ "unit_kind": "token/lexical",
+ "confidence": 0.4,
+ "notes": "Card: peaks ' has' x10, ' have' x9 mostly after 'it'/'you'/'they' ('until it has come to a stop', 'Does it have', 'it has to be good'). Probe: 'it has to cool down' 0.372, 'whether it has an index' 0.345, 'they have dinner' 0.247, 'had to rest' 0.099, 'The garden has' 0.182; 'it needs to cool down' 0.004, 'it contains an index' 0.168 (a partial leak for possessive-like verbs)."
+}
