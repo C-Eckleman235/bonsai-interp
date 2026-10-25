@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-6344a2ac",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N1945-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T00:20:43+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N1945",
+   "pole": "-",
+   "label": "the capitalized word ' Historical' or ' Historic' opening an institution or publication title (Trust for Historic Preservation, journal Historical Studies); lowercase 'historical' in prose and other capitalized title words stay quiet",
+   "fire": [
+    "She published two papers in the journal Historical Research last year.",
+    "Funding came from the Society for Historical Archaeology in 2004.",
+    "He was elected president of the Historical Association of Ohio.",
+    "The house is listed on the National Register of Historic Places.",
+    "A grant from the Fund for Historic Theatres paid for the new roof.",
+    "The lecture was printed in Historical Essays, edited by two professors.",
+    "Volunteers at the Office of Historic Preservation sorted old maps.",
+    "Her thesis drew on records kept by the Institute of Historical Studies."
+   ],
+   "quiet": [
+    "She published two papers in the journal Political Research last year.",
+    "Funding came from the Society for Medieval Archaeology in 2004.",
+    "He was elected president of the Chemical Association of Ohio.",
+    "The house is one of several historic places in the old quarter.",
+    "A grant from the Fund for Regional Theatres paid for the new roof.",
+    "The lecture was printed in Literary Essays, edited by two professors.",
+    "Volunteers sorted the town's historical maps in the library basement.",
+    "Her thesis drew on records kept by the Institute of Social Studies."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-1.0 on ' Historical/Historic' in titles; lowercase historical/historic and ' Political', ' Literary' title words 0.0-0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "' Historical' starting a title",
+ "unit_kind": "word",
+ "confidence": 0.55,
+ "notes": "Card peaks ' Historical' x11, ' Historic' x4, plus commas in forum 'edited' lines. Probe: 'Trust for Historic Preservation' 0.941; 'journal Historical Studies' 0.989; 'County Historical Society' only 0.102 (after another capitalized word); lowercase 'historical documents' 0.147, 'historic buildings' 0.026; 'Garden Society' 0.006; forum 'edited' comma 1.030. Fire items put the word after a preposition, article or common noun, not after another title word."
+}

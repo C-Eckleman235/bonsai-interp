@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-5f9349ab",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N8605+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T00:29:38+00:00",
+ "recipe": {
+  "toolchain_commit": "afacb812",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L26_N8605_pos/2026-10-24-ChopinDavid-5f9349ab.tests.json"
+ },
+ "label": "the final digit of a US ZIP code in a mailing address, the spot where a ZIP+4 hyphen may follow; five-digit numbers outside addresses stay quiet (the pole predicts a hyphen continuation, as also with 'greenish-' and 'German-born')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L26_N8605_pos/2026-10-24-ChopinDavid-5f9349ab.tests.json",
+   "prereg_commit": "afacb812",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.361,
+     "peak": "3"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.389,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.296,
+     "peak": "7"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.323,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.346,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.282,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.35,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.131,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.022,
+     "peak": "3"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.011,
+     "peak": " stadium"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.018,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.015,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.014,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.002,
+     "peak": "eter"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.003,
+     "peak": "2"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.007,
+     "peak": "1"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.335,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "afacb812",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "last digit of a ZIP code",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: ZIP last digits (2090[7]-8250, 3033[3]), nationality before '-born', color '-ish' before hyphen; logit promotes '-'. Probe: 'CO 80217-4410' '7' 0.464; 'ID 83702' '2' 0.335; 'room 83702' 0.091; 'greenish-gray' 'ish' 0.742; 'Polish-born' 0.225; 'Russian novelist' 0.234; 'dull green color' 0.273. Colors and nationalities leak without the hyphen, so the test uses ZIP codes only.",
+ "selection": "random draw"
+}

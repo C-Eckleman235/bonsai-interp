@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-5f9349ab",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N8605+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T00:20:43+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N8605",
+   "pole": "+",
+   "label": "the final digit of a US ZIP code in a mailing address, the spot where a ZIP+4 hyphen may follow; five-digit numbers outside addresses stay quiet (the pole predicts a hyphen continuation, as also with 'greenish-' and 'German-born')",
+   "fire": [
+    "For a catalog, write to 1200 Oak Avenue, Madison, WI 53703 today.",
+    "Mail the completed form to P.O. Box 912, Tulsa, OK 74101 by June.",
+    "Our office is at 45 River Road, Albany, NY 12207 near the station.",
+    "Donations may be sent to 300 Pine Street, Eugene, OR 97401 at any time.",
+    "Return the survey to P.O. Box 77, Lansing, MI 48909 in the envelope.",
+    "Visit us at 18 Market Square, Austin, TX 78701 during business hours.",
+    "Questions can be mailed to 600 Elm Drive, Columbus, OH 43215 for review.",
+    "The clinic moved to 92 Hill Lane, Raleigh, NC 27601 last month."
+   ],
+   "quiet": [
+    "For a catalog, call our order line and quote item 53703 today.",
+    "The stadium held a crowd of 74101 people at the final game.",
+    "Our office keeps file number 12207 in the locked cabinet.",
+    "The town counted 97401 residents in the most recent survey.",
+    "The invoice listed part number 48909 for the replacement pump.",
+    "The car's odometer showed 78701 miles when we sold it.",
+    "Her ticket had the serial number 43215 printed on the back.",
+    "The ship's registry number is 27601 according to the log."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.5 on the last ZIP digit in addresses; room, order and population numbers of five digits 0.0-0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "last digit of a ZIP code",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: ZIP last digits (2090[7]-8250, 3033[3]), nationality before '-born', color '-ish' before hyphen; logit promotes '-'. Probe: 'CO 80217-4410' '7' 0.464; 'ID 83702' '2' 0.335; 'room 83702' 0.091; 'greenish-gray' 'ish' 0.742; 'Polish-born' 0.225; 'Russian novelist' 0.234; 'dull green color' 0.273. Colors and nationalities leak without the hyphen, so the test uses ZIP codes only."
+}

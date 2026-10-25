@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-797646ff",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N3304+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T00:20:43+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N3304",
+   "pole": "+",
+   "label": "a word-initial 'h' split off as its own token after a slash ('/h' in punk/hardcore, software/hardware), the piece that predicts 'ard'; other slash-split letters ('/m', '/f') stay quiet",
+   "fire": [
+    "The festival booked three metal/hardcore bands for its second stage.",
+    "Our office budget covers both software/hardware upgrades this year.",
+    "He played guitar in an emo/hardcore group during college.",
+    "The label released a new rock/hardcore compilation last spring.",
+    "Sort the items into two bins marked soft/hard before recycling them.",
+    "The repair shop lists its computer/hardware services on the door.",
+    "Critics called the album a blend of post/hardcore and shoegaze.",
+    "That club plays techno/hardstyle sets until four in the morning."
+   ],
+   "quiet": [
+    "The festival booked three metal/punk bands for its second stage.",
+    "Our office budget covers both software/firmware upgrades this year.",
+    "He played guitar in an emo/metal group during college.",
+    "The label released a new rock/folk compilation last spring.",
+    "Sort the items into two bins marked paper/glass before recycling them.",
+    "The repair shop lists its computer/phone services on the door.",
+    "Critics called the album a blend of post/rock and shoegaze.",
+    "That club plays techno/trance sets until four in the morning."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on '/h' in X/hard... compounds; '/m', '/f', '/s' splits and whole-word ' hard' 0.0-0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "slash-split '/h' before 'ard'",
+ "unit_kind": "word",
+ "confidence": 0.6,
+ "notes": "Card peaks ' h' x9, '/h' x5, '(h' x2, all before 'ard'. Probe: 'punk/hardcore' '/h' 0.851; 'punk/metal' '/m' 0.050; ' h' in hardscrabble/hallowed/horticultural 0.18-0.24; '(hardness)' 0.098 and '(hardware)' 0.000 despite the card's '(h'; whole-token ' hardware' 0.000. Test uses only the '/h' split; ' h' pieces would sit near the median threshold."
+}
