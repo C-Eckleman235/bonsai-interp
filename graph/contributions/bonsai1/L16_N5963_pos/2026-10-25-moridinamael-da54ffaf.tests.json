@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-25-moridinamael-da54ffaf",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L16/N5963+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T18:07:44+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "a type relationship between programming classes or values: inheritance, base and derived classes, instance-of and assignment of a value to a variable, as against programming prose about other operations (loops, printing, files)"
+ },
+ "neighbours": [
+  {
+   "unit": "L16/N5963",
+   "pole": "+",
+   "label": "the word that names or points to the parent or target type in a programming type relationship (base, derived, subclass of, instance of the parent type, isinstance's second argument), as against plain class talk, loops or file handling",
+   "fire": [
+    "In Python, class Dog(Animal) makes Animal the base class that Dog inherits from.",
+    "The call isinstance(x, Shape) returns True because Circle is a subclass of Shape.",
+    "In Java, ArrayList extends AbstractList, so AbstractList is its superclass.",
+    "Make sure your exception class derives from Exception rather than BaseException.",
+    "In C++, class Derived : public Base means every Derived object is also a Base.",
+    "The interface Comparable is implemented by String, so a String is an instance of Comparable.",
+    "Use issubclass(MyError, ValueError) to check whether MyError descends from ValueError.",
+    "In TypeScript, `interface Admin extends User` makes User the parent type of Admin."
+   ],
+   "quiet": [
+    "The boss is a superior of the clerk in the company hierarchy.",
+    "Each object stores its own copy of the data in a private field.",
+    "In Python, class Dog defines a bark method and stores the dog's name in self.name.",
+    "The call len(shapes) returns the number of items stored in the list.",
+    "In Java, ArrayList stores its elements in a resizable array internally.",
+    "Make sure your script closes the file after reading every line of the log.",
+    "In C++, a for loop runs from zero up to the size of the vector.",
+    "The String class has a method called length that counts the characters."
+   ]
+  }
+ ],
+ "predictions": "Expect about 6/8 fire above 0.20 and at most 1 near miss at 0.30; the boss/clerk leak may reach about 0.1-0.3.",
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "neighbors",
+   "inverse-de"
+  ]
+ }
+}
