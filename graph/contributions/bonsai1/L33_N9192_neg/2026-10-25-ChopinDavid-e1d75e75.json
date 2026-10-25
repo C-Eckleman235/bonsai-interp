@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-e1d75e75",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N9192-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T08:30:12+00:00",
+ "recipe": {
+  "toolchain_commit": "6a6fb458",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L33_N9192_neg/2026-10-25-ChopinDavid-e1d75e75.tests.json"
+ },
+ "label": "predicts the verb 'play' in audio/video playback contexts: the slot after a music or recording subject ('the song was | played', 'a radio is | playing'), versus the same frames with a non-media subject",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L33_N9192_neg/2026-10-25-ChopinDavid-e1d75e75.tests.json",
+   "prereg_commit": "6a6fb458",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.472,
+     "peak": " music"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.468,
+     "peak": " was"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.175,
+     "peak": " is"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.615,
+     "peak": " started"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.324,
+     "peak": " was"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.21,
+     "peak": " was"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.578,
+     "peak": " was"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.001,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.0,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.001,
+     "peak": " sat"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": -0.0,
+     "peak": " for"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.0,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.017,
+     "peak": " was"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": -0.0,
+     "peak": " bride"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.0,
+     "peak": " favorite"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.0,
+     "peak": " leaving"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.977,
+    "median_fire": 0.396,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "6a6fb458",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "predicts 'play' (media playback)",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Opposite pole suppresses ' play/playing/played', so this pole pushes them. Card: 'while the song was being played', 'recording is playing', 'song started playing', 'DVD player'. Probe: 'anthem started' 0.434, 'song was being played' 0.367, 'record is playing' 0.293, 'will not open in media player' 0.502; but media subjects leak without playback ('record is sitting' 0.293, 'anthem was written' 0.246), so near misses use non-media subjects ('soup was being served' 0.001).",
+ "selection": "random draw"
+}

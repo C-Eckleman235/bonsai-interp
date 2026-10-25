@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-e25e518a",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N322-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T08:31:10+00:00",
+ "recipe": {
+  "toolchain_commit": "6a6fb458",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L1_N322_neg/2026-10-25-ChopinDavid-e25e518a.tests.json"
+ },
+ "label": "the CJK character 息 when it is its own token (息子, 喘息, 息を, 訊息, 出息), versus words where 息 is merged into a larger token (消息, 休息, 信息) or absent",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L1_N322_neg/2026-10-25-ChopinDavid-e25e518a.tests.json",
+   "prereg_commit": "6a6fb458",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.907,
+     "peak": "息"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.81,
+     "peak": "息"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.605,
+     "peak": "息"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.732,
+     "peak": "息"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.686,
+     "peak": "息"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.466,
+     "peak": "息"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.778,
+     "peak": "息"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.44,
+     "peak": "息"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.013,
+     "peak": "いた"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.018,
+     "peak": "ッ"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.015,
+     "peak": "きた"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.012,
+     "peak": "気"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.012,
+     "peak": "很高兴"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.015,
+     "peak": "完"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.013,
+     "peak": "話し"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.006,
+     "peak": "系统"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.709,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "6a6fb458",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "CJK '息' as its own token",
+ "unit_kind": "token",
+ "confidence": 0.75,
+ "notes": "Card: '息' x9 as its own token (息子, 息を呑む, 喘息, 訊息, 出息); merged '信息' only -3.4 of 25.5. Probe: 息子 0.946, 息を呑んだ 0.722, 喘息 0.665, 訊息 0.568; 消息 0.006, 休息 0.007, 信息 0.031. Splits checked with tok.py (利息 is one token, avoided).",
+ "selection": "random draw"
+}
