@@ -1,0 +1,162 @@
+{
+ "id": "2026-10-24-moridinamael-2ba5c00f",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N10483-",
+ "contributor": "moridinamael",
+ "created": "2026-10-25T02:29:26+00:00",
+ "recipe": {
+  "toolchain_commit": "722a33e2",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N10483_neg/2026-10-24-moridinamael-2ba5c00f.tests.json"
+ },
+ "label": "Ordinary words in impersonal explanatory prose about how physical things work (gases, electricity, machines, devices, planets): what causes what, e.g. 'the more you press it, the faster it goes'; weaker for biology or economics, near zero for code, maths proofs and stories about people.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N10483_neg/2026-10-24-moridinamael-2ba5c00f.tests.json",
+   "prereg_commit": "722a33e2",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 4,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.155,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.353,
+     "peak": " hotter"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.188,
+     "peak": " longer"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.181,
+     "peak": " pulls"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.455,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.234,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.392,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.35,
+     "peak": " brake"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.266,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.116,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.151,
+     "peak": " telling"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.219,
+     "peak": " lights"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.043,
+     "peak": "def"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.156,
+     "peak": " started"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.31,
+     "peak": " pedal"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.029,
+     "peak": " and"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 1,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.812,
+    "median_fire": 0.292,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-de",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "722a33e2",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L23/N11602+"
+ ],
+ "notes": "Failed blind test. The strongest fire items were operating a device (pedal/throttle 0.46, dial 0.39, brake 0.35, current/hotter 0.35); textbook physics (gas law, lever, orbit) scored only 0.16-0.19, and the near miss 'She pressed the pedal' in a story reached 0.31. A next round should try a narrower label about operating machines and controls (pedal, dial, button, brake) rather than physics explanation. Broad pole (9.5% of tokens at 0.1 of max).",
+ "edges": [
+  {"from": "bonsai1/L23/N11602+", "to": "bonsai1/L25/N10483-", "kind": "feeds", "weight": 0.08, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
