@@ -14,7 +14,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-RANK = {("survey", "held"): 0, ("library", "held"): 1, ("screen", "held"): 2}
+RANK = {("survey", "held"): 0, ("survey", "partial"): 1, ("library", "held"): 1, ("screen", "held"): 2}
 
 
 def _layers(spec):
@@ -103,9 +103,9 @@ def queue(mode, layers=None):
       1. Survey poles people could not settle (contested, unresolved, failed, probed).
       2. Unsurveyed eligible poles that fire often (strong count at or above the layer median), whose word screen found
          no word covering a tenth of their strong activations, and whose automatic tests did not hold.
-    deepen: held labels that may be more than they say. Held survey or automatic labels whose top word covers under half
-      of the pole's strong activations (the word is not the whole story), or that held under two or more sweep-library
-      conditions.
+    deepen: held labels that may be more than they say. First (tier 0) the 'partial' survey labels, whose measured coverage
+      is under half of the pole. Then held survey or automatic labels whose top word covers under half of the pole's strong
+      activations (the word is not the whole story), or that held under two or more sweep-library conditions.
     Score: strong activations x (1 - top word coverage), so a loud pole that no single word explains comes first."""
     from bonsai_interp import atlas
     ix = json.loads((ROOT / "graph" / "index.json").read_text(encoding="utf-8"))["neurons"]
@@ -135,6 +135,11 @@ def queue(mode, layers=None):
                                 "why": f"{strong[i]:,} strong activations, top word covers {cov:.0%}, screen {d['bin'][i] or '-'}"
                                        + (f", library {get('lib_kind', i)}:{get('lib_condition', i)} failed" if get("lib_test", i) == "failed" else "")})
             else:
+                if st == "partial":  # measured: the held label covers under half of the pole (coverage.ASSIGN)
+                    c_ = rec.get("coverage")
+                    out.append({"pole": nid, "layer": L, "tier": 0, "score": score,
+                                "why": f"partial: the held label covers {c_:.0%} of the pole; " + (rec.get("label") or "")[:90]})
+                    continue
                 held_by = "survey" if st == "held" else "screen" if d["test"][i] == "held" else "library" if get("lib_test", i) == "held" else None
                 if not held_by:
                     continue
@@ -159,6 +164,6 @@ def main_queue(a):
     tiers = {}
     for r in rs:
         tiers[r["tier"]] = tiers.get(r["tier"], 0) + 1
-    print(f"{len(rs)} {'ambiguous' if a.ambiguous else 'deepen'} candidates (tier 1 {tiers.get(1, 0)}, tier 2 {tiers.get(2, 0)})")
+    print(f"{len(rs)} {'ambiguous' if a.ambiguous else 'deepen'} candidates (" + ", ".join(f"tier {t} {n}" for t, n in sorted(tiers.items())) + ")")
     for r in rs[:a.limit]:
         print(f"  {r['pole']:22s} t{r['tier']} {r['score']:>9,.0f}  {r['why'][:150]}")

@@ -14,6 +14,9 @@ Rules (per neuron pole, contributions in (created, id) order):
     the label last changed makes a held pole 'contested'.
   - replicate: appended to 'replications'; never changes the label.
   - unit_kind containing 'dense' makes the pole 'dense'; depth 'full' makes it 'probed'.
+  - a held label is the pole's assignment only if it covers at least half of the pole's strong activations
+    (bonsai_interp/graph/coverage.py); a held label measured below that is 'partial'. Coverage comes from a declared
+    trigger's token measure, else a 'coverage' round on that label, else the token estimate from the label's quoted words.
   - a 'withhold' contribution (sensitive trigger) makes the pole 'withheld', above every other status; its masked
     label and short replace any other, so the content never reaches the index, the map or the stream.
   - list fields (roles, evidence, examples) are unions in order; scalar extras: latest wins.
@@ -25,6 +28,7 @@ from collections import defaultdict
 
 from bonsai_interp.graph.contrib import NEURON, ROOT, load_all
 from bonsai_interp.graph.protocols import outcome
+from bonsai_interp.graph.coverage import ASSIGN, measured
 
 G = ROOT / "graph"
 SCALARS = ("short", "verdict", "summary", "offshoots", "depth", "lineage")
@@ -66,7 +70,7 @@ def fold_neuron(neuron, contribs):
          "label": None, "short": None, "kind": None, "status": "unlabelled", "depth": "quick",
          "tests": [], "label_history": [], "examples": [], "evidence": [], "roles": [], "contributors": [],
          "contributions": [], "qc": {"confirm": 0, "dispute": 0, "refine": 0}, "replications": []}
-    held, failed_rounds, since = False, 0, {"confirm": 0, "dispute": 0}
+    held, failed_rounds, since, held_cid = False, 0, {"confirm": 0, "dispute": 0}, None
     for c in contribs:
         r["contributions"].append(c["id"])
         r["contributors"] = _union(r["contributors"], [c["contributor"]])
@@ -82,6 +86,8 @@ def fold_neuron(neuron, contribs):
         counted = [t for t in tests if t.get("counts_for_status", True) and t["outcome"] in ("held", "failed")]
         res = counted[-1]["outcome"] if counted else None
         kind, verdict = c["kind"], (c.get("qc") or {}).get("verdict")
+        if kind == "coverage":  # a coverage round on the current label: read below, after the label is settled
+            continue
         if kind == "withhold":
             r["withheld"] = {"reason": c["withheld"]["reason"], "label": c["label"], "short": c.get("short"), "contribution": c["id"]}
             r["label_history"].append([c["id"], c["label"], "withheld"])
@@ -101,10 +107,11 @@ def fold_neuron(neuron, contribs):
         if kind in ("interpret", "qc") and c.get("label"):
             r["label_history"].append([c["id"], c["label"], res or "recorded"])
             if res == "held":
-                r["label"], held, failed_rounds, since = c["label"], True, 0, {"confirm": 0, "dispute": 0}
+                r["label"], held, failed_rounds, since, held_cid = c["label"], True, 0, {"confirm": 0, "dispute": 0}, c["id"]
             elif not held:
                 r["label"] = c["label"]
                 failed_rounds += res == "failed"
+    r["coverage"] = _coverage(neuron, held_cid, contribs) if held else None
     r["scrutiny"] = scrutiny(r, contribs)
     if r.get("withheld"):
         w = r["withheld"]
@@ -115,7 +122,10 @@ def fold_neuron(neuron, contribs):
     elif r["depth"] == "full":
         r["status"] = "probed"
     elif held:
-        r["status"] = "contested" if since["dispute"] > since["confirm"] else "held"
+        # held means the trigger reliably fires the pole; it is the pole's assignment only if it also covers at least half of the
+        # pole's strong activations (coverage.ASSIGN). Below that the label is 'partial': information, not assignment.
+        partial = r["coverage"] is not None and r["coverage"]["value"] < ASSIGN
+        r["status"] = "contested" if since["dispute"] > since["confirm"] else "partial" if partial else "held"
     elif failed_rounds >= 3:
         r["status"] = "unresolved"
     elif failed_rounds:
@@ -125,6 +135,22 @@ def fold_neuron(neuron, contribs):
     elif r["label"]:
         r["status"] = "probed"  # labelled, but only exploratory or unscored tests so far
     return r
+
+
+def _coverage(neuron, held_cid, contribs):
+    """The current held label's coverage: a token measure from a declared trigger, else the latest coverage round on this
+    label, else the token estimate from the label's quoted words (graph/auto/bonsai1.coverage.json). None if unmeasured."""
+    tok = measured().get(neuron)
+    tok = tok if tok and tok["label_contribution"] == held_cid else None
+    rounds = [c for c in contribs if c["kind"] == "coverage" and c.get("label_contribution") == held_cid]
+    if tok and tok["method"] == "declared trigger":
+        return {"value": tok["coverage"], "method": "declared trigger (token measure)", "strong": tok["strong"]}
+    if rounds:
+        c = rounds[-1]
+        return {"value": c["coverage"], "method": f"coverage round ({sum(c['marks'])}/{len(c['marks'])} described)", "contribution": c["id"]}
+    if tok:
+        return {"value": tok["coverage"], "method": "estimated from the label's quoted words (token measure)", "strong": tok["strong"]}
+    return None
 
 
 def _history(r):
@@ -158,7 +184,7 @@ def fold():
     points = defaultdict(int)
     for cs in by_neuron.values():
         for c in cs:
-            points[c["contributor"]] += {"interpret": 10, "qc": 6, "replicate": 15, "map": 3, "withhold": 3}.get(c["kind"], 1)
+            points[c["contributor"]] += {"interpret": 10, "qc": 6, "replicate": 15, "map": 3, "withhold": 3, "coverage": 4}.get(c["kind"], 1)
     idx = {"neurons": {n: {k: r[k] for k in ("status", "short", "label", "kind", "depth")} | {"qc": r["qc"], "n_contrib": len(r["contributions"]),
                                                                                             "replicated": bool(r["replications"]),
                                                                                             "contributors": r["contributors"],
@@ -167,6 +193,7 @@ def fold():
                                                                                             "history": _history(r),
                                                                                             "scrutiny": r["scrutiny"]}
                        | ({"withheld": r["withheld"]["reason"]} if r.get("withheld") else {})
+                       | ({"coverage": r["coverage"]["value"]} if r.get("coverage") else {})
                        for n, r in sorted(records.items())},
            "edges": [[e["from"], e["to"], e["kind"]] for e in E],
            "contributors": dict(sorted(points.items(), key=lambda t: (-t[1], t[0]))),

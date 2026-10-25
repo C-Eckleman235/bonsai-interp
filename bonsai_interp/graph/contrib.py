@@ -20,7 +20,7 @@ from bonsai_interp.graph.protocols import LEGACY, PROTOCOLS
 
 ROOT = Path(__file__).resolve().parents[2]
 C = ROOT / "graph" / "contributions"
-KINDS = {"interpret", "qc", "replicate", "map", "withhold"}
+KINDS = {"interpret", "qc", "replicate", "map", "withhold", "coverage"}
 WITHHELD_REASONS = {"slur", "sexual", "personal data", "violence", "other"}
 QC_VERDICTS = {"confirm", "dispute", "refine"}
 ID = re.compile(r"^\d{4}-\d{2}-\d{2}-[A-Za-z0-9-]+-[A-Za-z0-9]{4,}$|^core-[a-z0-9-]+$")
@@ -83,6 +83,16 @@ def check(path: Path, c: dict):
             say(f"{rel}: a withhold label must not contain the sensitive word itself; describe it masked")
         if (c.get("withheld") or {}).get("reason") not in WITHHELD_REASONS:
             say(f"{rel}: withheld.reason must be one of {sorted(WITHHELD_REASONS)}")
+        if not (c.get("methods") or {}).get("agent"):
+            say(f"{rel}: needs a 'methods' block with 'agent'")
+    if c["kind"] == "coverage":
+        marks, sample = c.get("marks"), c.get("sample")
+        if not c.get("label_contribution"):
+            say(f"{rel}: a coverage round needs 'label_contribution' (the id of the held label it measures)")
+        if not isinstance(sample, list) or not sample or not isinstance(marks, list) or len(marks) != len(sample)                 or not all(isinstance(m, bool) for m in marks):
+            say(f"{rel}: a coverage round needs 'sample' (the drawn activations) and one true/false 'marks' entry per sample")
+        elif abs(c.get("coverage", -1) - sum(marks) / len(marks)) > 1e-3:
+            say(f"{rel}: 'coverage' must equal the share of marks that are true")
         if not (c.get("methods") or {}).get("agent"):
             say(f"{rel}: needs a 'methods' block with 'agent'")
     if c["kind"] == "qc":

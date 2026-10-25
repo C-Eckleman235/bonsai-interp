@@ -22,6 +22,7 @@ SCREENS = {
     "card": "neuron card: top examples, density, regimes, logit effect, flags (play card)",
     "which": "reverse search: which poles fire on a text or token (play which)",
     "quick-test": "pre-registered 8 + 8 sentence test (quick-8+8)",
+    "coverage-round": "play coverage: 16 random strong activations marked for whether the label describes them (coverage-16@1)",
     "second-round": "a further labelling round after a failed test",
     "step-out": "strongest feeders by attribution + single-unit zeroing (play step), edges recorded",
     "step-down": "readers: later poles that lose activation in this pole's contexts when it is zeroed (play step --down), edges recorded",

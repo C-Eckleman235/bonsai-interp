@@ -747,3 +747,33 @@ I measured where the differences come from, on CUDA bf16 through the GPU queue.
 a test passes as `drift` when its outcome reproduces and at most 2 of its sentences differ by more than 0.03, none by
 more than 0.12 (`bonsai_interp/graph/replicate.py`). Invented numbers still fail: they change the outcome or move many
 sentences.
+
+## 2026-10-25: Held is not assignment: most word labels cover a minority of their pole (`bonsai_interp/graph/coverage.py`)
+
+**The bug.** A quick-8+8 test shows that a label's trigger reliably fires the pole: it is a sufficiency test. Nothing
+checked coverage, the share of the pole's activity the label accounts for. So L4/N11474− held "the word 'cobra'" while
+cobra makes up 0.3% of its 48,246 strong activations; ' Cobra' is the peak in only 3 of its top 32 examples. The user's
+verdict: "That's information, not assignment."
+
+**The measure.** Coverage is the share of a pole's strong activations (at least 0.3 of max, in auto-token@2's selection
+windows) on the label's trigger tokens. It is exact, computed from the word screen's full (token, pole) tables. Older
+labels have no declared trigger, so their triggers were read from the clean word-like terms they quote, but only for
+word-shaped labels.
+
+Of 348 held labels measurable this way, 105 cover at least half of their pole and 243 do not. Of these, 242 become
+`partial` on main; one is `contested`, a status that takes precedence.
+
+**The rule (the user, 2026-10-25).** A held label is the pole's assignment only if it covers at least 50% of the strong
+activations. Below that it is `partial`: kept in the record as a true sub-trigger. Coverage comes from three sources, in
+order:
+1. a declared token trigger, measured exactly;
+2. a coverage round (`play coverage`): 16 random strong activations, one per held-out window, seeded by the label's
+   contribution id, each marked "described" or not;
+3. the quoted-word estimate.
+
+**Open.** 1,516 held labels describe contexts, not token sets, so they stay `held` with coverage unmeasured until a
+coverage round measures them. The deepen queue (`play search --deepen`) lists the partial labels first.
+
+**Caveat.** The quoted-word estimate can be wrong. It undercounts a label that lists its word forms in parentheses
+instead of quotes, and it counts a quoted context word as part of the trigger. A new contribution that declares the
+trigger replaces the estimate.

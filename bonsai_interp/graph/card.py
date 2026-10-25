@@ -153,7 +153,7 @@ def card(neuron, k=6, logits=True, before=40, after=8):
         except (FileNotFoundError, KeyError, OSError) as e:
             out["direct"] = {"error": f"weights unavailable: {e.__class__.__name__}"}
     rec = record(name, L, n)
-    out["records"] = {p: {"status": r["status"], "label": r.get("label"), "short": r.get("short")} for p, r in rec.items()}
+    out["records"] = {p: {"status": r["status"], "label": r.get("label"), "short": r.get("short"), "coverage": r.get("coverage")} for p, r in rec.items()}
     atlas_rows = atlas_poles(name, L, n)
     for p, row in atlas_rows.items():
         out["poles"][p]["atlas"] = row
@@ -206,7 +206,11 @@ def render(c):
         rec = c["records"].get(p)
         lines.append(f"--- {p} pole{' (ASKED)' if p == c.get('focus') else ''}   max {st['max']:.2f}   density >0.1·max {st['density']['0.1']:.3%}  >0.3·max {st['density']['0.3']:.3%}"
                      f"   regimes {', '.join(f'{k} {v:.0%}' for k, v in st['regimes'].items() if v is not None)}")
-        lines.append(f"    record: {rec['status']}: {rec['label']}" if rec else "    record: none (unsurveyed)")
+        cov = (rec or {}).get("coverage")
+        lines.append((f"    record: {rec['status']}: {rec['label']}" + (f"   [covers {cov['value']:.0%} of strong activations; {cov['method']}]" if cov else
+                      "   [coverage not measured: run `play coverage`]" if rec["status"] == "held" else "")) if rec else "    record: none (unsurveyed)")
+        if rec and rec["status"] == "partial":
+            lines.append("    -> PARTIAL: the label held its test but covers under half of what this pole does. Find the rest (play look, bands).")
         for f in st["flags"]:
             lines.append(f"    FLAG {f}")
         if st.get("peak_tokens"):

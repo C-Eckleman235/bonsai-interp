@@ -299,7 +299,11 @@ def brief(a):
                       "sweep-library or auto-screen test, that hypothesis already passed a held-out 8 + 8 (scrutiny 0): test its edges (what else "
                       "fires the pole, what the claim misses) instead of re-deriving it. "
                       f"`{py} -m bonsai_interp.graph.play search \"<words>\"` lists poles with related labels and automatic results. "
-                      "No atlas lines on the card: `bash scripts/fetch_data.sh atlas`.")
+                      "No atlas lines on the card: `bash scripts/fetch_data.sh atlas`. "
+                      "A label must COVER the pole, not just fire it: a held label covering under half of the pole's strong activations is "
+                      "'partial'. Declare a token trigger in the tests file (\"trigger\": {\"words\": [...]}) when the label is a word or piece; "
+                      f"otherwise, once it holds, run `{py} -m bonsai_interp.graph.play coverage --neuron {nid}` and record the round "
+                      "(graph/SCHEMA.md, Coverage).")
     if a.kind in ("interpret", "qc"):
         if (a.depth or "quick") == "quick":  # ~5-10 minutes: top examples, a few probes, one pre-registered test
             out = [ln for ln in out if not any(k in ln for k in ("bands scan", "bands sample", "Look past the top examples"))]

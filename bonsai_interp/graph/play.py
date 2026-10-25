@@ -177,7 +177,10 @@ def draw(a):
 OPTIONAL = {"short": "a 2-5 word name for the map", "unit_kind": "lexical | contextual | sparse feature | dense / positional | unclear",
             "confidence": "a number 0-1 or low / medium / high", "notes": "free text (e.g. 'some sentences suggested by Twitch chat')",
             "predictions": "what you expect, written before the run",
-            "selection": "how the pole was chosen: random draw | step-out from <id> | step-in from <id> | concept search: <concept> | picked"}
+            "selection": "how the pole was chosen: random draw | step-out from <id> | step-in from <id> | concept search: <concept> | picked",
+            "trigger": "for a label whose trigger is a set of tokens: {\"words\": [...]} (any case, plus pieces of their split), "
+                       "{\"pieces\": [...]} (the piece as its own token) or {\"tokens\": [...]} (exact tokens); its coverage of the pole's "
+                       "strong activations is measured, and a held label covering under half of them is 'partial'"}
 
 
 def fill(a):
@@ -351,7 +354,7 @@ def run(a):
             c["qc"] = {"verdict": t["qc"]["verdict"], "label_under_test": t["qc"].get("label_under_test")}
             if t["qc"]["verdict"] != "refine":
                 c.pop("label")
-        for k in ("short", "unit_kind", "confidence", "notes", "roles", "via", "selection"):
+        for k in ("short", "unit_kind", "confidence", "notes", "roles", "via", "selection", "trigger"):
             if t.get(k) is not None:
                 c[k] = t[k]
         out = p.with_name(p.name.replace(".tests.json", ".json"))
@@ -392,6 +395,56 @@ def step(a):
         print(f"{f['unit']:<11} drop {f['drop']:.2f}  + peaks {f['peaks_pos']}  - peaks {f['peaks_neg']}")
     print("Pick one, then: python -m bonsai_interp.graph.play new interpret --neuron bonsai1/<unit><pole> ... "
           "and add 'roles': ['feeds <this neuron>'] plus an edge in your results notes.")
+
+
+def coverage_cmd(a):
+    """A coverage round (see bonsai_interp/graph/coverage.py): --neuron draws the sample, --record writes the contribution."""
+    import secrets
+    from bonsai_interp.graph import coverage as cv
+    from bonsai_interp.graph import fold as fd
+    from bonsai_interp.graph.contrib import load_all
+    if a.record:
+        d = json.loads(Path(a.record).read_text(encoding="utf-8"))
+        marks = [s.get("describes") for s in d["sample"]]
+        if not all(isinstance(m, bool) for m in marks):
+            sys.exit(f"{a.record}: set 'describes' to true or false on every sample (does the label describe this activation?)")
+        nid = d["neuron"]
+        folder = folder_for(nid)
+        cid = f"{dt.date.today().isoformat()}-{a.handle}-{secrets.token_hex(4)}"
+        c = {"id": cid, "kind": "coverage", "neuron": nid, "contributor": a.handle,
+             "created": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "label": d["label"],
+             "label_contribution": d["label_contribution"], "protocol": "coverage-16@1",
+             "sample": [{k: s[k] for k in ("window", "position", "act", "text")} for s in d["sample"]], "marks": marks,
+             "coverage": round(sum(marks) / len(marks), 4), "methods": {"agent": a.agent or "<who marked the sample>", "screens": ["coverage-round"]}}
+        folder.mkdir(parents=True, exist_ok=True)
+        out = folder / f"{cid}.json"
+        out.write_text(json.dumps(c, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
+        verdict = "assignment (>= 50%)" if c["coverage"] >= cv.ASSIGN else "partial (< 50%)"
+        print(f"wrote {out.relative_to(ROOT).as_posix()}: the label describes {sum(marks)}/{len(marks)} = {c['coverage']:.0%} -> {verdict}. "
+              f"Commit it and open a PR (a coverage round needs no pre-registration: the sample is drawn from the label's id).")
+        return
+    nid = a.neuron if a.neuron.startswith("bonsai1/") else f"bonsai1/{a.neuron}"
+    cs = sorted([c for _, c in load_all() if c["neuron"] == nid], key=lambda c: (c["created"], c["id"]))
+    r = fd.fold_neuron(nid, cs) if cs else None
+    if not r or r["status"] not in ("held", "partial"):
+        sys.exit(f"{nid} has no held label to measure (status {r['status'] if r else 'unlabelled'})")
+    src = cv._label_source(cs)
+    print(f"drawing {cv.ROUND_N} strong activations of {nid} (label from {src[1]}) from held-out windows ...", flush=True)
+    sample = cv.draw(nid, src[1])
+    if not sample:
+        sys.exit("no strong activations found in the held-out windows searched")
+    draft = ROOT / ".coverage" / f"{folder_for(nid).name}.json"
+    draft.parent.mkdir(exist_ok=True)
+    draft.write_text(json.dumps({"neuron": nid, "label": r["label"], "label_contribution": src[1],
+                                 "instructions": "For each sample, set 'describes' to true if the label describes why the pole fires at the marked "
+                                                 "token, false otherwise. Judge the label as written, not what you now think the pole does.",
+                                 "sample": [{**s, "describes": None} for s in sample]}, ensure_ascii=False, indent=1) + "\n",
+                     encoding="utf-8", newline="\n")
+    print(f"label: {r['label']}")
+    for i, s in enumerate(sample):
+        print(f"  {i:2d} {s['act']:5.2f} | {s['text'][-140:]}")
+    print(f"\nmark each sample in {draft.relative_to(ROOT).as_posix()} ('describes': true/false), then "
+          f"`play coverage --record {draft.relative_to(ROOT).as_posix()} --handle <you> --agent <who marked>`")
 
 
 def look(a):
@@ -539,6 +592,11 @@ def main():
     wy.add_argument("--k", type=int, default=20, help="poles to list")
     wy.add_argument("--check", type=int, default=8, help="how many of the strongest to verify by zeroing")
     wy.add_argument("--out", help="also write the result as JSON")
+    cv = sub.add_parser("coverage", help="a coverage round: draw 16 strong activations of a held label's pole, mark which ones the label describes")
+    cv.add_argument("--neuron", help="draw the sample for this pole's current held label (GPU)")
+    cv.add_argument("--record", help="the marked draft (.coverage/<pole>.json): write the coverage contribution")
+    cv.add_argument("--handle", default="<your-github-handle>")
+    cv.add_argument("--agent", help="who marked the sample, e.g. 'claude-code opus-5.5' or 'human'")
     se = sub.add_parser("search", help="search what the survey knows: tested labels, sweep-library and word-screen automatic tests")
     se.add_argument("text", nargs="?", help="words to find in a label, condition or context (case-insensitive)")
     se.add_argument("--kind", help="sweep-library kind: copy, topic, lang, struct, number, predict")
@@ -571,6 +629,8 @@ def main():
     if a.cmd == "card":
         from bonsai_interp.graph import card
         return card.main(a)
+    if a.cmd == "coverage":
+        return coverage_cmd(a)
     if a.cmd == "search":
         from bonsai_interp.graph import search
         return search.main_queue(a) if (a.ambiguous or a.deepen) else search.main(a)
