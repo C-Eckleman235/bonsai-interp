@@ -80,6 +80,28 @@ def _alone(p):
     return first if files == [p.relative_to(ROOT).as_posix()] else None
 
 
+def _amendments(P):
+    """Code versions allowed besides the registered one: committed-alone entries of the amendments file, each a fix that
+    changes no selection, test or judgement (a crash or speed fix), with its reason."""
+    p = P["protocol"].with_name(P["protocol"].name.replace(".protocol.", ".amendments."))
+    if not p.exists() or not _alone(p):
+        return set()
+    return {e["code_sha256"] for e in json.loads(p.read_text(encoding="utf-8"))}
+
+
+def amend(a):
+    P = _paths()
+    p = P["protocol"].with_name(P["protocol"].name.replace(".protocol.", ".amendments."))
+    if p.exists():
+        sys.exit(f"{p.name} exists and is committed: a further amendment is a new file version (not supported); register a new protocol")
+    for f in CODE:
+        if subprocess.run(["git", "status", "--porcelain", "--", str(f)], cwd=ROOT, capture_output=True, text=True).stdout.strip():
+            sys.exit(f"commit {f.relative_to(ROOT)} first")
+    p.write_text(json.dumps([{"code_sha256": _code_sha(), "commit": ct._commit(), "note": a.note}], indent=1) + "\n", encoding="utf-8",
+                 newline="\n")
+    print(f"wrote {p.relative_to(ROOT)}: commit it ALONE")
+
+
 def _setup(a, need_prereg=False):
     if a.smoke:
         P = _paths(a.smoke)
@@ -89,8 +111,9 @@ def _setup(a, need_prereg=False):
     if not P["protocol"].exists() or not _alone(P["protocol"]):
         sys.exit(f"commit {P['protocol'].relative_to(ROOT)} on its own before running any stage (run `protocol` first)")
     man = json.loads(P["protocol"].read_text(encoding="utf-8"))
-    if man["code_sha256"] != _code_sha():
-        sys.exit("the sweep library's code changed since its protocol was registered: that is a new protocol version")
+    if _code_sha() not in {man["code_sha256"]} | _amendments(P):
+        sys.exit("the sweep library's code changed since its protocol was registered and the change is not a committed "
+                 "amendment: that is a new protocol version")
     if need_prereg and (not P["prereg"].exists() or not _alone(P["prereg"])):
         sys.exit(f"commit {P['prereg'].relative_to(ROOT)} on its own before scoring (run `build` first)")
     OUT.mkdir(parents=True, exist_ok=True)
@@ -213,8 +236,10 @@ def read_probs(model, tok, texts, pre, sets, B):
         with torch.no_grad():
             h = model.model(input_ids=enc.input_ids, attention_mask=enc.attention_mask).last_hidden_state
             pr = model.lm_head(h[torch.arange(len(chunk), device=DEVICE), last]).float().softmax(-1)
-        idx = torch.tensor(np.stack(sets[b:b + B]), device=DEVICE, dtype=torch.long)
-        out[b:b + len(chunk)] = pr.gather(1, idx).sum(1).cpu().numpy()
+        w = max(len(x) for x in sets[b:b + B])  # sets differ in length: pad with token 0 and mask it out
+        idx = torch.tensor([list(x) + [0] * (w - len(x)) for x in sets[b:b + B]], device=DEVICE, dtype=torch.long)
+        keep = torch.tensor([[1.0] * len(x) + [0.0] * (w - len(x)) for x in sets[b:b + B]], device=DEVICE)
+        out[b:b + len(chunk)] = (pr.gather(1, idx) * keep).sum(1).cpu().numpy()
     return out
 
 
@@ -491,13 +516,14 @@ def score(a):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("cmd", choices=["protocol", "select", "build", "score"])
+    ap.add_argument("cmd", choices=["protocol", "amend", "select", "build", "score"])
+    ap.add_argument("--note", help="amend: what the fix changes and why no selection, test or judgement changes")
     ap.add_argument("--smoke", help="a scratch directory: no manifests, small batteries")
     ap.add_argument("--pilot", action="store_true", help="with --smoke: the full batteries (an exploratory run on the selection split)")
     ap.add_argument("--kinds", nargs="*", help="select only these kinds (and 'predict')")
     ap.add_argument("--batch", type=int, default=32)
     a = ap.parse_args()
-    {"protocol": protocol, "select": select, "build": build, "score": score}[a.cmd](a)
+    {"protocol": protocol, "amend": amend, "select": select, "build": build, "score": score}[a.cmd](a)
 
 
 if __name__ == "__main__":
