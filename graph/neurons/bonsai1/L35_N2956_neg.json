@@ -131,6 +131,128 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-21-moridinamael-f5fdb149"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N2956_neg/2026-10-25-C-Eckleman235-e7637e68.tests.json",
+   "prereg_commit": "9f517f15",
+   "author": "C-Eckleman235",
+   "n_fire": 3,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.406,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.264,
+     "peak": " June"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.09,
+     "peak": " TX"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.204,
+     "peak": " November"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.257,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.189,
+     "peak": " August"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.384,
+     "peak": " OR"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.496,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.04,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.233,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.014,
+     "peak": " room"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.097,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.035,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": -0.002,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.083,
+     "peak": " extension"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.35,
+     "peak": " and"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.859,
+    "median_fire": 0.261,
+    "near_misses_at_0.3": 1
+   },
+   "contribution": "2026-10-25-C-Eckleman235-e7637e68"
   }
  ],
  "label_history": [
@@ -138,6 +260,11 @@
    "2026-10-21-moridinamael-f5fdb149",
    "In English text, the word right after which a number is the expected next token: a month name or 'founded in' before a year, a US state abbreviation before a ZIP code, or 'and' between the two parts of a compound amount (hours and minutes, dollars and cents); the number itself need not follow, and words where no number is expected stay quiet",
    "held"
+  ],
+  [
+   "2026-10-25-C-Eckleman235-e7637e68",
+   "the word right before a calendar or postal number: a year after 'in' / 'founded in' / a month name, a day after a month name, a ZIP code after a US state abbreviation; other places where a number is expected (page, chapter, room, extension, age, a count, the second part of 'hours and minutes') stay quiet",
+   "failed"
   ]
  ],
  "examples": [],
@@ -146,23 +273,25 @@
   "reads bonsai1/L34/N5579+"
  ],
  "contributors": [
-  "moridinamael"
+  "moridinamael",
+  "C-Eckleman235"
  ],
  "contributions": [
-  "2026-10-21-moridinamael-f5fdb149"
+  "2026-10-21-moridinamael-f5fdb149",
+  "2026-10-25-C-Eckleman235-e7637e68"
  ],
  "qc": {
   "confirm": 0,
   "dispute": 0,
-  "refine": 0
+  "refine": 1
  },
  "replications": [],
  "scrutiny": {
-  "level": 1,
-  "name": "tested",
-  "test_rounds": 1,
-  "sentences": 16,
-  "contributors": 1,
-  "qc": 0
+  "level": 3,
+  "name": "checked",
+  "test_rounds": 2,
+  "sentences": 32,
+  "contributors": 2,
+  "qc": 1
  }
 }
