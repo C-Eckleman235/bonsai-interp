@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-24-moridinamael-946cb7b2",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N11602+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T01:35:44+00:00",
+ "roles": ["reads bonsai1/L22/N2221+"],
+ "neighbours": [
+  {
+   "unit": "L23/N11602",
+   "pole": "+",
+   "label": "the English verbs 'install', 'inject' or 'implant' (putting something into a machine, program or body), any tense; not other verbs after 'can' or 'to' (read, review, browse) and not the nouns 'installation' or 'injection'",
+   "short": "verbs install / inject / implant",
+   "confidence": "low",
+   "notes": "COLD step-in arm: labelled from own tops and probes only. Broad cell (3.9% of tokens at 0.1). Solver leak: 'threatening to spend' top fires 0.81 with no installing; label covers one branch only. Test written blind by a label-only author.",
+   "fire": [
+    "You need to install the latest driver before the printer will work.",
+    "The nurse will inject the vaccine into your upper arm.",
+    "Surgeons implanted a small pacemaker under her collarbone.",
+    "He installed the new dishwasher himself last weekend.",
+    "Attackers managed to inject malicious code into the login page.",
+    "Doctors can implant a cochlear device to restore some hearing.",
+    "We are installing solar panels on the roof this spring.",
+    "The vet injected the dog with a mild sedative."
+   ],
+   "quiet": [
+    "principal strength is also his weakness: the $10 million of his own estimated $300 million fortune that he is threatening to spend.",
+    "The plumber came to look at the old boiler in the basement.",
+    "You need to read the manual before the printer will work.",
+    "The nurse will review your chart before the appointment.",
+    "Surgeons discussed the risks with her before the operation.",
+    "The installation of the new dishwasher took all weekend.",
+    "The injection left a small bruise on his arm.",
+    "Doctors can explain the device and how it helps hearing."
+   ]
+  }
+ ],
+ "predictions": "likely fail: the solver's 'spend' leak sits in the near misses at ~0.8 and the cell is broad",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "step-down",
+   "inverse-de",
+   "bank-solo",
+   "blind-room"
+  ]
+ }
+}
