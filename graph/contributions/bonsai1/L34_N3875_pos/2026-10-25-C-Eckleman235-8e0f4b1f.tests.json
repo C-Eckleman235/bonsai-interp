@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-25-C-Eckleman235-8e0f4b1f",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N3875+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T04:54:30+00:00",
+ "selection": "step-out from bonsai1/L35/N6726-",
+ "neighbours": [
+  {
+   "unit": "L34/N3875",
+   "pole": "+",
+   "label": "inside a number that is being copied from earlier in the text, the token just before a 3 in the copy; the same copies with a different digit at that spot, and first mentions where a 3 follows unpredictably, stay quiet",
+   "fire": [
+    "Booking code 6739 confirmed. Quote booking code 6739 at the desk.",
+    "Flight UA 1532 is delayed.\nPassengers on flight UA 1532, please wait.",
+    "The safe opens with 2830. Enter 2830 now.",
+    "Locker 4473 is yours. Remember: locker 4473.",
+    "Invoice 9312 is due.\nRe: invoice 9312",
+    "Call extension 5038. Once more: extension 5038.",
+    "Bus 63 leaves at noon. Catch bus 63 at the corner.",
+    "Patient ID 7134 was admitted. Chart for patient ID 7134 updated."
+   ],
+   "quiet": [
+    "Booking code 6759 confirmed. Quote booking code 6759 at the desk.",
+    "Flight UA 1552 is delayed.\nPassengers on flight UA 1552, please wait.",
+    "The safe opens with 2850. Enter 2850 now.",
+    "Locker 4473 is on the ground floor near the gym.",
+    "Invoice 9312 is due at the end of the month.",
+    "Call extension 5038 for the front desk.",
+    "Bus 68 leaves at noon. Catch bus 68 at the corner.",
+    "Patient ID 7134 was admitted overnight."
+   ],
+   "short": "before a copied 3 (copies only)",
+   "notes": "Feeds the predictable-3 unit L35/N6726- (drop 0.18, its largest feeder). Its output promotes '3', ' three', ' third'. Probes: copies before a 3 0.34-0.53; counting, 'a triangle has', '2 + 1 =' and 'turned 30 on May' all <= 0.003. The copy-only sibling of the copy+count 3 unit, like L34/N4571+ (6) and L34/N9922- (8)."
+  }
+ ],
+ "predictions": ">= 7/8 fire; near misses < 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "bands",
+   "probe",
+   "step-out"
+  ]
+ },
+ "roles": [
+  "feeds bonsai1/L35/N6726-"
+ ]
+}
