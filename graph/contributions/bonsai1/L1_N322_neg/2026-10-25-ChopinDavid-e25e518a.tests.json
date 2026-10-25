@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-e25e518a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N322-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T08:20:55+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N322",
+   "pole": "-",
+   "label": "the CJK character 息 when it is its own token (息子, 喘息, 息を, 訊息, 出息), versus words where 息 is merged into a larger token (消息, 休息, 信息) or absent",
+   "fire": [
+    "山頂に着いたとき、私は息が切れていた。",
+    "鈴木さんの息子はサッカー選手になった。",
+    "母は子供の頃から喘息に悩まされてきた。",
+    "冷たい空気の中で白い息が見えた。",
+    "他终于有出息了，全家人都很高兴。",
+    "他跑完步后不停地喘息。",
+    "彼は深く息を吸ってから話し始めた。",
+    "系统会自动发送訊息给所有用户。"
+   ],
+   "quiet": [
+    "山頂に着いたとき、私は疲れていた。",
+    "鈴木さんの娘はサッカー選手になった。",
+    "母は子供の頃から頭痛に悩まされてきた。",
+    "冷たい空気の中で白い雪が見えた。",
+    "他终于成功了，全家人都很高兴。",
+    "他跑完步后不停地喝水。",
+    "彼はゆっくり水を飲んでから話し始めた。",
+    "系统会自动发送消息给所有用户。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.55-0.95 on a standalone 息 token; merged 消息/信息 and sentences without 息 below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "CJK '息' as its own token",
+ "unit_kind": "token",
+ "confidence": 0.75,
+ "notes": "Card: '息' x9 as its own token (息子, 息を呑む, 喘息, 訊息, 出息); merged '信息' only -3.4 of 25.5. Probe: 息子 0.946, 息を呑んだ 0.722, 喘息 0.665, 訊息 0.568; 消息 0.006, 休息 0.007, 信息 0.031. Splits checked with tok.py (利息 is one token, avoided)."
+}
