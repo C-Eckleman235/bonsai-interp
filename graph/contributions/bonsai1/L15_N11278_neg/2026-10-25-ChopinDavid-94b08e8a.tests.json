@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-94b08e8a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N11278-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T23:21:10+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L15/N11278",
+   "pole": "-",
+   "label": "oxygen-deprivation terms in medicine (ischemic, hypoxic, hypoxia), as against the same medical sentences naming a different condition",
+   "fire": [
+    "Doctors confirmed an ischemic stroke after the brain scan.",
+    "The heart muscle showed ischemic damage after the blockage.",
+    "The team ruled out hypoxic injury to the newborn's brain.",
+    "In older adults, ischemic colitis can follow a drop in blood pressure.",
+    "The surgeon worried about ischemic changes in the bowel.",
+    "Patients with ischemic heart disease need regular checkups.",
+    "Prolonged hypoxia can harm the kidneys of premature babies.",
+    "Cold water caused hypoxic brain damage in the diver."
+   ],
+   "quiet": [
+    "Doctors confirmed a migraine after the brain scan.",
+    "The heart muscle showed normal function after the exam.",
+    "The team ruled out jaundice in the newborn's skin.",
+    "In older adults, constipation can follow a change in diet.",
+    "The surgeon worried about scar tissue in the bowel.",
+    "Patients with high cholesterol need regular checkups.",
+    "Prolonged coughing can tire the muscles of young children.",
+    "Cold water caused painful cramps in the diver."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on the pieces of ischemic/hypoxic; other conditions below 0.15; diabetic and liver failure probed weak so they are left out",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "ischemic / hypoxic terms",
+ "unit_kind": "word",
+ "confidence": 0.3,
+ "notes": "Card: isch|emic -11.56, hyp|ox|ia, di|abetic, liver failure, uranium, Parkinson; also ' rate', ' rotary', solar ' activity' (mixed). Probe: 'ischemic' 0.544 on 'ic', but 'diabetic' 0.058, liver failure 0.144, uranium 0.096, and controls up to 0.226 ('temperature'), 0.185 ('sleep'). Narrowed to the oxygen terms; risky."
+}

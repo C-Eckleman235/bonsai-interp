@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-cea0fcff",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N8562-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T23:21:10+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L20/N8562",
+   "pole": "-",
+   "label": "the indentation that opens the body of a Python def or for block, as against the same computations written as top-level lines with no block",
+   "fire": [
+    "for row in rows:\n    total += row.price\nprint(total)\n",
+    "for name in names:\n    if name.startswith('a'):\n        print(name)\n",
+    "def double(n):\n    return n * 2\n",
+    "for key in d:\n    print(key, d[key])\n",
+    "def greet(user):\n    msg = 'hi ' + user\n    return msg\n",
+    "for i in range(10):\n    squares.append(i * i)\n",
+    "def is_even(k):\n    return k % 2 == 0\n",
+    "for line in lines:\n    words = line.split()\n    count += len(words)\n"
+   ],
+   "quiet": [
+    "total = sum(row.price for row in rows)\nprint(total)\n",
+    "names = [n for n in names if n]\nprint(names)\n",
+    "double = lambda n: n * 2\nprint(double(3))\n",
+    "keys = list(d.keys())\nprint(keys)\n",
+    "user = 'sam'\nmsg = 'hi ' + user\nprint(msg)\n",
+    "squares = [i * i for i in range(10)]\n",
+    "k = 4\nresult = k % 2 == 0\n",
+    "words = text.split()\ncount = len(words)\n"
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.4 on the first body indent after 'def ...:' or 'for ...:'; flat code below 0.06",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Python block-body indent",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: '):\\n' x11 and indentation runs right after def/for headers; max 12.44. Probe: for-loop body 0.372, def body 0.150, class/def 0.111, while 0.113, one-line def 0.165 at '):', flat code 0.046, indented prose list 0.013."
+}

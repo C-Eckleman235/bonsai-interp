@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-c58c1cde",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N9794-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T23:29:29+00:00",
+ "recipe": {
+  "toolchain_commit": "f2dd3470",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L29_N9794_neg/2026-10-25-ChopinDavid-c58c1cde.tests.json"
+ },
+ "label": "unclear: inner pieces of compound or hyphenated nouns (pit-to-plant, state|room), as against the same sentences with plain words",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L29_N9794_neg/2026-10-25-ChopinDavid-c58c1cde.tests.json",
+   "prereg_commit": "f2dd3470",
+   "author": "ChopinDavid",
+   "n_fire": 6,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.232,
+     "peak": "-to"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.483,
+     "peak": "ater"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.099,
+     "peak": " sell"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.383,
+     "peak": "ater"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.394,
+     "peak": "-to"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.391,
+     "peak": "ater"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.327,
+     "peak": "-to"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.481,
+     "peak": "ater"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.111,
+     "peak": " catering"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.105,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.1,
+     "peak": " sell"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.187,
+     "peak": " for"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.01,
+     "peak": " branch"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.08,
+     "peak": " captain"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.301,
+     "peak": " truck"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.049,
+     "peak": " in"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.906,
+    "median_fire": 0.387,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "f2dd3470",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "unclear (compound-word inner pieces)",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card: broad (3.8% of tokens), max 32.5; '-to' of pit-to-plant, 'ater' of Stateroom, 'iqu' of Liquor, 'ulatory', ' del', ' been', chocolate bitters. Probe: pit-to 0.610 but 'pit to the plant' 0.441, stateroom 0.660 vs 'guest room' 0.254, ne- 0.301, cocktail 0.157/0.120. Dense-ish background makes near misses fire weakly.",
+ "selection": "random draw"
+}

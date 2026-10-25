@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-e56d822c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L16/N6220-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T23:21:11+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L16/N6220",
+   "pole": "-",
+   "label": "the first statement inside a lock-protected Python block (with self.lock: / lock.acquire()), as against the same methods using another context manager or no lock",
+   "fire": [
+    "def pop(self):\n    with self.mutex:\n        if not self.items:\n            return None\n",
+    "def put(self, x):\n    with self.lock:\n        self.items.append(x)\n",
+    "def reset(self):\n    with self._lock:\n        self.count = 0\n",
+    "def size(self):\n    with self.queue_lock:\n        return len(self.queue)\n",
+    "def flush(self):\n    self.lock.acquire()\n    data = self.buffer\n",
+    "def close(self):\n    with self.state_lock:\n        if self.closed:\n            return\n",
+    "def incr(self):\n    with self.counter_lock:\n        self.n += 1\n",
+    "def drain(self):\n    with self.lock:\n        self.jobs.clear()\n"
+   ],
+   "quiet": [
+    "def pop(self):\n    with open(self.path) as f:\n        if not f:\n            return None\n",
+    "def put(self, x):\n    if x is not None:\n        self.items.append(x)\n",
+    "def reset(self):\n    with open('log.txt', 'w') as f:\n        f.write('')\n",
+    "def size(self):\n    n = len(self.queue)\n    return n\n",
+    "def flush(self):\n    self.check()\n    data = self.buffer\n",
+    "def close(self):\n    with open(self.path) as f:\n        if f.closed:\n            return\n",
+    "def incr(self):\n    self.n = self.n + 1\n    return self.n\n",
+    "def drain(self):\n    jobs = list(self.jobs)\n    self.jobs = []\n"
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.9 on the indent/if right after 'with ...lock:'; 'with open' and lock-free versions below 0.10",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "first statement under a held lock",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: indentation and ' if' just after 'with self.lock:', 'with self.dataLock:', 'lock.acquire()', 'safe_read_lock'; also a heapq fringe loop; max 27.38. Probe: with self.lock 0.889, with self.data_lock 0.583, acquire() 0.366, 'with open' 0.013, 'with self.timer' 0.246, no-lock 0.058; heappop loop 0.928 (so loops are avoided in the near misses)."
+}

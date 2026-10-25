@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-f2bc1150",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N1678-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T23:28:28+00:00",
+ "recipe": {
+  "toolchain_commit": "f2dd3470",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L7_N1678_neg/2026-10-25-ChopinDavid-f2bc1150.tests.json"
+ },
+ "label": "the last digit of a well-known catalogue number written as a name (E. coli K12, Isaiah 53, Apollo 13), as against the same digits used as plain counts",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L7_N1678_neg/2026-10-25-ChopinDavid-f2bc1150.tests.json",
+   "prereg_commit": "f2dd3470",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.774,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.736,
+     "peak": "3"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.038,
+     "peak": "3"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.022,
+     "peak": " crew"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.872,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.831,
+     "peak": "3"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.052,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.481,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.037,
+     "peak": " coli"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.062,
+     "peak": " read"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.022,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.019,
+     "peak": " crew"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.041,
+     "peak": " has"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.034,
+     "peak": " wrote"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.008,
+     "peak": " summer"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.024,
+     "peak": " has"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.867,
+    "median_fire": 0.609,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "f2dd3470",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "last digit of a named number (K12, Isaiah 53)",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: K1|2 -7.09, Isaiah 5|3 x3, DOI s0|0, Sche|chter; max 7.09, rare (0.034%). Probe: K12 1.035, Isaiah 53 0.778, DOI 0.526, but Highway A12 0.145, K2 0.062, '12 apples' 0.010; 'Isaiah, chapter fifty-three' 0.615 (context, not digit). Psalm/Apollo/Route are untested generalisations.",
+ "selection": "random draw"
+}
