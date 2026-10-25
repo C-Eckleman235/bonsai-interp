@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-3fbe2ad6",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N1888-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T09:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N1888",
+   "pole": "-",
+   "label": "a word-initial 'h' split off by the tokenizer as its own piece (-h|oned, beh|older, -h|itting), versus h-words the tokenizer keeps whole (-hearted, behalf, hitting)",
+   "fire": [
+    "The debate coach praised her well-honed arguments after the final round.",
+    "Critics called the documentary a hard-hitting look at the prison system.",
+    "As the saying goes, beauty is in the eye of the beholder.",
+    "In the old tale the sailor beheld a whale rising from the waves.",
+    "Runners who stay well-hydrated recover faster after a race.",
+    "The new stadium is a concrete behemoth on the edge of the city.",
+    "The local paper ran a hard-hitting story about the river pollution.",
+    "Years of practice gave the carpenter well-honed skills with every tool."
+   ],
+   "quiet": [
+    "The debate coach praised her half-hearted effort only out of kindness.",
+    "Critics called the documentary a self-help video in disguise.",
+    "She spoke on behalf of the whole class at the ceremony.",
+    "In the old tale the sailor would behold a whale rising from the waves.",
+    "Runners who stay hydrated recover faster after a race.",
+    "The new stadium is a concrete giant on the edge of the city.",
+    "The cold-hearted landlord refused to fix the broken heater.",
+    "The boxer kept hitting the heavy bag until his arms gave out."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.7 on '-h' or ' beh' pieces; near misses whose h-word is one token below 0.07",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-off initial h",
+ "unit_kind": "token/lexical",
+ "confidence": 0.6,
+ "notes": "Card: ' h' x9, ' beh' x5, '-h' x4, ' H' x4 (well-hydrated, behemoth, beheld, Haptic, once-handsome). Tokenizer: ' well-honed' -> '-h'+'oned', ' hard-hitting' -> '-h'+'itting', ' beholder' -> ' beh'+'older', but ' half-hearted' -> '-hearted', ' behalf', ' behold', ' hitting', ' hydrated', ' handsome' are whole. Probe: beheld 0.700, well-hydrated 0.558, behemoth 0.312, once-handsome 0.248, Haptic 0.160; 'hydrated' 0.060, 'handsome' 0.017."
+}
