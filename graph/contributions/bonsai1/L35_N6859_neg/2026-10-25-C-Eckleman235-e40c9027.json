@@ -1,0 +1,148 @@
+{
+ "id": "2026-10-25-C-Eckleman235-e40c9027",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6859-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-25T19:46:23+00:00",
+ "recipe": {
+  "toolchain_commit": "49d7f83f",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N6859_neg/2026-10-25-C-Eckleman235-e40c9027.tests.json"
+ },
+ "label": "the token just before a 9 in a number being copied from earlier in the text (the model has seen the number and a 9 comes next); the same copies with another digit there, and first mentions of the number, stay quiet. Counting runs are not covered: round 1 found this pole also fires on counting runs near 9 whatever comes next",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N6859_neg/2026-10-25-C-Eckleman235-e40c9027.tests.json",
+   "prereg_commit": "49d7f83f",
+   "author": "C-Eckleman235",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.385,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.012,
+     "peak": " now"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.368,
+     "peak": "3"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.458,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.033,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.348,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.324,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.327,
+     "peak": "6"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.031,
+     "peak": "3"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.009,
+     "peak": " now"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.061,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.027,
+     "peak": "6"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.038,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.012,
+     "peak": " until"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.075,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.039,
+     "peak": "9"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.836,
+    "median_fire": 0.338,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "49d7f83f",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "selection": "concept search: echoes (copy-only digit screen)"
+}
