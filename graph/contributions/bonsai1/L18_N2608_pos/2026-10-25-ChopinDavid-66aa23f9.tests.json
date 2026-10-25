@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-66aa23f9",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N2608+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T13:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N2608",
+   "pole": "+",
+   "label": "the token just before a word of likeness or 'other' in a comparison between two groups (which are (similar), together with (other)): a predictor of similar/other/analogous",
+   "fire": [
+    "Wolves can breed with domestic dogs, which are similar in size and build.",
+    "The Welsh miners joined forces with workers in other regions to demand higher pay.",
+    "Mules are often compared to hinnies, which are similar but smaller.",
+    "Teachers in Ohio met together with teachers from other states in Chicago.",
+    "Lemons can be crossed with limes, which are similar in taste and colour.",
+    "The farmers of the valley united with farmers in other provinces against the tax.",
+    "Crows are closely related to ravens, which are similar in behaviour.",
+    "The Polish refugees settled together with refugees from other countries in the camp."
+   ],
+   "quiet": [
+    "Wolves can travel for miles at night, which makes them hard to track.",
+    "The Welsh miners worked long shifts underground to earn a living.",
+    "Mules are often used on farms, which makes them valuable to farmers.",
+    "Teachers in Ohio met on Monday to plan the school year.",
+    "Lemons can be stored in the fridge, which keeps them fresh for weeks.",
+    "The farmers of the valley sold their wheat at the market every week.",
+    "Crows are often seen in parks, where they look for food.",
+    "The Polish refugees settled near the river and built small houses."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.3 on ' are' or ' with' when a second group has just been compared and 'similar'/'other' follows; the same verbs without a comparison below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predicts similar/other in comparisons",
+ "unit_kind": "context",
+ "confidence": 0.25,
+ "notes": "Broad pole (1.0% of tokens reach 0.1 of max on the - side). The + pole's output promotes 'similarly', 'other', 'analogous', 'similar', 'comparable'. Card peaks are scattered ('Homeland Security', spaces before digits, ' in' after places). Probe: 'Ross's geese, which are similar' 0.273, 'together with other communities' 0.210; 'Homeland Security issued' 0.021, 'established in 2009' 0.005, everyday sentences 0.007-0.024. Weak evidence; best guess."
+}

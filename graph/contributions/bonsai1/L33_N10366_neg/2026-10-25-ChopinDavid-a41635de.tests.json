@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-a41635de",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N10366-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T13:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N10366",
+   "pole": "-",
+   "label": "the determiner just before a word for what is left over after part of a whole has been used or removed (the remainder, the rest, the residue, the few survivors): a predictor of remnant words",
+   "fire": [
+    "The farmer sold most of the harvest in town and stored the remainder in the barn.",
+    "Two of the guests left before dessert, but the rest stayed until midnight.",
+    "She boiled the sauce down and scraped the residue from the bottom of the pan.",
+    "Of the hundred trees planted in spring, only a handful survived the drought.",
+    "We paid a third of the price up front and agreed to send the balance in May.",
+    "Most of the class went on the trip, while the remaining few stayed in the library.",
+    "He used half of the paint on the fence and poured the rest back into the can.",
+    "After the flood, the town rebuilt most streets and abandoned the remainder."
+   ],
+   "quiet": [
+    "The farmer drove to town on Monday and repaired the roof of the barn.",
+    "Two of the guests brought flowers, and everyone admired the colours.",
+    "She stirred the sauce slowly and tasted it with a wooden spoon.",
+    "In the spring the gardener planted a row of young trees along the path.",
+    "We booked the tickets in advance and agreed to meet at the station in May.",
+    "The class went on a trip to the coast and visited an old lighthouse.",
+    "He painted the fence a dark green and washed the brushes in the sink.",
+    "After the storm, the town held a meeting and thanked the volunteers."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.4 on ' the'/' a' when the sentence has split a whole and a remnant word follows; determiners in sentences without a partition below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predicts remainder/rest/residue",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: peaks on 'offset the (remainder)', 'the last', 'minimal', and the + pole's output suppresses 'residual', 'residue', 'remnants', 'leftover', 'survivors', so the - pole promotes them. Probe: 'saved the remainder' 0.278, 'the rest stayed' 0.289, 'only a few of the original houses survived' 0.301, 'weighed the residue' 0.289, 'the leftover pieces' 0.093, 'what remains' 0.067; sentences without a partition 0.000-0.009."
+}
