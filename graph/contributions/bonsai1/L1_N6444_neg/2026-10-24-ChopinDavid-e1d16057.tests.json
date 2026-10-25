@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-e1d16057",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N6444-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T04:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N6444",
+   "pole": "-",
+   "label": "the leading space-byte of a Korean word that the tokenizer spells in raw UTF-8 bytes (훨씬, 쓰면, 채용, 친구), as against Korean words that have their own tokens",
+   "fire": [
+    "요즘 나오는 노트북은 예전 제품보다 훨씬 가볍다.",
+    "그 프로그램을 오래 쓰면 컴퓨터가 느려진다.",
+    "은행은 내년에 대졸 신입 채용을 줄일 계획이다.",
+    "아이들은 신발을 신은 채 방 안으로 들어왔다.",
+    "주말에 오랜 친구를 만나서 저녁을 먹었다.",
+    "선수들은 매일 아침 두 시간씩 훈련을 한다.",
+    "요즘은 휴대폰으로 거의 모든 일을 처리한다.",
+    "엄마는 시장에서 신선한 채소를 사 오셨다."
+   ],
+   "quiet": [
+    "요즘 나오는 노트북은 예전 제품보다 가볍다.",
+    "그 프로그램을 오래 사용하면 컴퓨터가 느려진다.",
+    "은행은 내년에 대졸 신입 사원을 감축할 계획이다.",
+    "아이들은 신발을 신고 방 안으로 들어왔다.",
+    "주말에 오랜 동료를 만나서 이야기를 나누었다.",
+    "선수들은 매일 아침 두 시간씩 운동을 한다.",
+    "요즘은 스마트폰으로 거의 모든 일을 처리한다.",
+    "엄마는 시장에서 신선한 생선을 사 오셨다."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.85 on the space-initial byte token of byte-spelled Korean words; Korean sentences made only of whole-token words below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Korean word spelled in bytes",
+ "unit_kind": "token",
+ "confidence": 0.6,
+ "notes": "Card: all top 32 on '�' (space byte of 훨씬, 쓰면, 채용, 채). Probe: 쓰면 0.835, 채용 0.603, 채 0.585, 훨씬 0.549/0.572; '더 빠르고' (no 훨씬) 0.130, 공원 산책 sentence 0.069, 도서관 sentence 0.113; English 0.033. Near misses were tokenizer-checked to contain no space-initial byte tokens."
+}

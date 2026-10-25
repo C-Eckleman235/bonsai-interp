@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-e477ff58",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N10562+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T04:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N10562",
+   "pole": "+",
+   "label": "the 'with' keyword opening a context-manager block inside a Python method body (with self.settings(...), with excutils...), as against the same method bodies without a with-statement and 'with' in prose",
+   "fire": [
+    "class ViewTests(TestCase):\n    def test_home(self):\n        with self.settings(LANGUAGE_CODE='en'):\n            self.client.get('/')",
+    "class CacheTests(TestCase):\n    def test_expiry(self):\n        with self.assertRaises(KeyError):\n            self.cache['gone']",
+    "class ApiTests(TestCase):\n    def test_login(self):\n        with self.settings(SESSION_TIMEOUT=5):\n            self.login()",
+    "class ModelTests(TestCase):\n    def test_save(self):\n        with self.assertNumQueries(1):\n            self.obj.save()",
+    "class FormTests(TestCase):\n    def test_clean(self):\n        with self.assertRaises(ValueError):\n            self.form.clean()",
+    "class MailTests(TestCase):\n    def test_send(self):\n        with self.settings(EMAIL_HOST='localhost'):\n            self.send_mail()",
+    "class LockTests(TestCase):\n    def test_acquire(self):\n        with self.lock:\n            self.counter += 1",
+    "class UrlTests(TestCase):\n    def test_redirect(self):\n        with self.settings(APPEND_SLASH=True):\n            self.client.get('/about')"
+   ],
+   "quiet": [
+    "class ViewTests(TestCase):\n    def test_home(self):\n        self.set_language('en')\n        self.client.get('/')",
+    "class CacheTests(TestCase):\n    def test_expiry(self):\n        result = self.cache.get('gone')\n        self.assertIsNone(result)",
+    "class ApiTests(TestCase):\n    def test_login(self):\n        self.timeout = 5\n        self.login()",
+    "class ModelTests(TestCase):\n    def test_save(self):\n        self.obj.save()\n        self.assertTrue(self.obj.pk)",
+    "class FormTests(TestCase):\n    def test_clean(self):\n        data = self.form.clean()\n        self.assertEqual(data, {})",
+    "class MailTests(TestCase):\n    def test_send(self):\n        self.host = 'localhost'\n        self.send_mail()",
+    "class LockTests(TestCase):\n    def test_acquire(self):\n        self.lock.acquire()\n        self.counter += 1",
+    "class UrlTests(TestCase):\n    def test_redirect(self):\n        self.append_slash = True\n        self.client.get('/about')"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.55 on ' with' that starts an indented line in a method; same methods without 'with' below 0.10",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Python 'with' block in a method",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: ' with' x16 at the start of indented lines (save_and_reraise_exception 33.0, ops.device 29.75, mock.patch.object 28.88, self.settings 27.38). Probe mixed: 'with self.settings' inside def test_admin 0.538, excutils in except 0.186, 'with open(path)' 0.076, bare top-level 'with mock.patch' 0.088; prose 'with her brother' 0.029. Fire items use with-blocks inside def test_ methods with self.* managers, the configuration that scored high; low expected hit rate."
+}

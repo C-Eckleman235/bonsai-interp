@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-8c409438",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N864+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T04:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N864",
+   "pole": "+",
+   "label": "the period and blank line ending the summary line of a Python docstring, before the longer description, as against the same summary text ending a one-line docstring or a comment",
+   "fire": [
+    "    def load(self, path):\n        \"\"\"Load a settings file from disk.\n\n        The file must be valid JSON.\n        \"\"\"",
+    "    def close(self):\n        \"\"\"Close the open connection.\n\n        Safe to call more than once.\n        \"\"\"",
+    "    def parse(text):\n        \"\"\"Parse a date written in ISO format.\n\n        Returns None if the text is empty.\n        \"\"\"",
+    "    def render(self, ctx):\n        \"\"\"Render the template with a context.\n\n        Missing keys become empty strings.\n        \"\"\"",
+    "    def retry(func):\n        \"\"\"Retry a function call on failure.\n\n        Waits one second between attempts.\n        \"\"\"",
+    "    def flush(self):\n        \"\"\"Write buffered rows to the database.\n\n        Called automatically on exit.\n        \"\"\"",
+    "    def validate(self, value):\n        \"\"\"Check that the value is a positive number.\n\n        Raises ValueError otherwise.\n        \"\"\"",
+    "    def encode(self, obj):\n        \"\"\"Encode an object as a byte string.\n\n        Uses UTF-8 for all text.\n        \"\"\""
+   ],
+   "quiet": [
+    "    def load(self, path):\n        # Load a settings file from disk.\n        return json.load(open(path))",
+    "    def close(self):\n        \"\"\"Close the open connection.\"\"\"\n        self.conn.close()",
+    "    def parse(text):\n        # Parse a date written in ISO format.\n        return date.fromisoformat(text)",
+    "    def render(self, ctx):\n        \"\"\"Render the template with a context.\"\"\"\n        return self.tpl.format(**ctx)",
+    "    def retry(func):\n        # Retry a function call on failure.\n        return wrap(func)",
+    "    def flush(self):\n        \"\"\"Write buffered rows to the database.\"\"\"\n        self.db.write(self.rows)",
+    "    def validate(self, value):\n        # Check that the value is a positive number.\n        return value > 0",
+    "    def encode(self, obj):\n        \"\"\"Encode an object as a byte string.\"\"\"\n        return str(obj).encode()"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.5 on '.\\n\\n' after a docstring's first line; one-line docstrings and '#' comments below 0.10",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "end of docstring summary line",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card top: '\"\"\"Register a custom matcher⟦.\\n\\n⟧' 7.06, then opening quotes after 'said:' (6.28, 6.22). Probe: the quotation configurations did not fire (said: \" 0.078, follows: “ 0.056, so-called 0.006), but the docstring summary line scored 0.489. Test follows the docstring finding."
+}
