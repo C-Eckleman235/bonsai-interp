@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-f2ed7728",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N3346-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T14:20:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L3/N3346",
+   "pole": "-",
+   "label": "the Python literal True when it is the value being assigned (attribute assignment or keyword argument, ' True' / '=True'), as opposed to False/None in the same slot or True used in a comparison or in prose",
+   "fire": [
+    "field = models.BooleanField(default=False, editable=True)",
+    "class Settings:\n    verbose = True\n    retries = 3",
+    "parser.add_argument('--fast', action='store_true', required=True)",
+    "title = models.CharField(max_length=120, null=True)",
+    "class Job(Base):\n    queued = True\n    owner = None",
+    "loader = DataLoader(dataset, batch_size=32, shuffle=True)",
+    "plt.savefig('out.png', transparent=True)",
+    "class Meta:\n    abstract = True\n    ordering = ['name']"
+   ],
+   "quiet": [
+    "field = models.BooleanField(default=False, editable=False)",
+    "class Settings:\n    verbose = False\n    retries = 3",
+    "parser.add_argument('--fast', action='store_true', required=False)",
+    "title = models.CharField(max_length=120, null=False)",
+    "class Job(Base):\n    queued = None\n    owner = None",
+    "loader = DataLoader(dataset, batch_size=32, shuffle=None)",
+    "while done is True:\n    time.sleep(1)",
+    "class Meta:\n    abstract = False\n    ordering = ['name']"
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.75 on ' True'/'=True' after '=' in code; False/None in the same slot and 'is True' comparisons below 0.08",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "True as an assigned value in code",
+ "unit_kind": "token/lexical",
+ "confidence": 0.6,
+ "notes": "Card: 32/32 peaks on ' True' or '=True' after '='. Probe: 'blank=True' kwarg 0.702, class attribute 'debug = True' 0.537, 'self.running = True' 0.284; 'debug = False' 0.073, '= None' 0.002, 'if flag is True' 0.003, prose 'True after all' 0.004."
+}

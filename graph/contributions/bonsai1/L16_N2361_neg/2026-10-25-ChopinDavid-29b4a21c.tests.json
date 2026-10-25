@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-29b4a21c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L16/N2361-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T14:20:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L16/N2361",
+   "pole": "-",
+   "label": "the punctuation that closes a clause introducing another, further or contrasting point ('another difficulty, however,', 'another problem.', 'On the other hand,'): a 'here comes a further point' boundary",
+   "fire": [
+    "The roof leaks badly. There is another issue, however, with the wiring.",
+    "Prices went up in March. There was another increase, however, in June.",
+    "The engine is fine. On the other hand, the brakes need work.",
+    "Our first trial failed. Another approach, however, worked well.",
+    "The museum is free on Sundays. There is another reason to visit, though.",
+    "The map was accurate. The guidebook, on the other hand, was outdated.",
+    "Sales grew in Europe. There is another market, however, that shrank.",
+    "The hotel was clean. Another complaint, however, concerned the noise."
+   ],
+   "quiet": [
+    "The roof leaks badly. There is an issue with the wiring too.",
+    "Prices went up in March. They went up in June as well.",
+    "The engine is fine. The brakes need work.",
+    "Our first trial failed. The second trial worked well.",
+    "The museum is free on Sundays. Many families visit then.",
+    "The map was accurate. The guidebook was outdated.",
+    "Sales grew in Europe. The market in Asia shrank.",
+    "The hotel was clean. Some guests complained about the noise."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on ',' or '.' closing a clause with another/however/other hand; the same sentences without the additive/contrastive framing below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "boundary after 'another point'/'however'",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: 'another thing that … can do is', 'however,', 'Speaking of great programmers,', 'another kind of massaging.', 'another aspect of the Mitchell Report.', 'С другой стороны,'. Probe: 'another difficulty, however,' 0.634, 'another difficulty that affects…' 0.426 (at '.'), 'Speaking of good teachers,' 0.279, 'P.S. Can' 0.147; 'This tool can simplify' 0.017, 'Good teachers are rare, and' 0.023, 'Please tell me' 0.008. 'The thing that this tool can do is' only 0.034."
+}

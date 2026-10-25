@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-a2383fdc",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N9324-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T14:20:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N9324",
+   "pole": "-",
+   "label": "the boundary right after a sentence that closes a self-contained remark, before a new sentence or parenthetical ('. (See Appendix A', 'a pleasant discovery. But'); weak, unclear pole",
+   "fire": [
+    "We changed the survey in spring 2019. (See Table 2 for the questions.)",
+    "The device draws about 2 W at rest. (For comparison, a phone draws less.)",
+    "The results were published last year. (See the appendix for raw data.)",
+    "Our team rewrote the parser in March. (Details are in Section 4.)",
+    "The bridge was closed for repairs. (See the notice at the gate.)",
+    "The sample was heated to 80 degrees. (For safety, we wore gloves.)",
+    "Attendance fell sharply in 2020. (See Figure 3 for the trend.)",
+    "The vote was postponed again. (For background, see last week's report.)"
+   ],
+   "quiet": [
+    "We changed the survey in spring 2019, see Table 2 for the questions.",
+    "The device draws about 2 W at rest, less than a laptop.",
+    "The results were published last year with the raw data.",
+    "Our team rewrote the parser in March, as Section 4 describes.",
+    "The bridge was closed for repairs according to the notice at the gate.",
+    "The sample was heated to 80 degrees while we wore gloves.",
+    "Attendance fell sharply in 2020, as Figure 3 shows.",
+    "The vote was postponed again, as reported last week."
+   ]
+  }
+ ],
+ "predictions": "fire 0.1-0.2 on '.' or ' (' between two sentences; the same content joined by a comma below 0.06; likely too weak to hold",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "sentence boundary before an aside (weak)",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card: max 6.44; peaks on '.' and ' (' after a complete sentence ('Not a very pleasant discovery.', 'has failed utterly.', '. (See Appendix A', '. (For those of you'). Probe: '2014. (See Appendix A' 0.139, '0.7 V in the end. (For those' 0.063, 'Not a very pleasant discovery.' 0.052; comma-joined versions 0.015-0.057. All probes small: unclear."
+}

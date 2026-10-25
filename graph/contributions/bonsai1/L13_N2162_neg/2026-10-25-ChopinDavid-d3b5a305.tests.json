@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-d3b5a305",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N2162-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T14:20:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L13/N2162",
+   "pole": "-",
+   "label": "the 'type' field name in a Python docstring (':type x:' / '@type x:'), the slot that declares a parameter's type",
+   "fire": [
+    "def save(obj, path):\n    \"\"\"Save an object.\n\n    :param obj: the object\n    :type obj: dict\n    \"\"\"",
+    "def area(r):\n    \"\"\"\n    @param r: radius of the circle\n    @type r: float\n    \"\"\"",
+    "def send(msg):\n    \"\"\"Send a message.\n\n    :param msg: text to send\n    :type msg: str\n    \"\"\"",
+    "def scale(img, factor):\n    \"\"\"\n    :param factor: zoom factor\n    :type factor: int\n    \"\"\"",
+    "def parse(line):\n    \"\"\"\n    @param line: one line of input\n    @type line: str\n    \"\"\"",
+    "def merge(a, b):\n    \"\"\"Merge two lists.\n\n    :param a: first list\n    :type a: list\n    \"\"\"",
+    "def connect(host):\n    \"\"\"\n    :param host: server address\n    :type host: str\n    \"\"\"",
+    "def fetch(url, timeout):\n    \"\"\"\n    :param timeout: seconds to wait\n    :type timeout: float\n    \"\"\""
+   ],
+   "quiet": [
+    "def save(obj, path):\n    \"\"\"Save an object.\n\n    :param obj: the object\n    :raises IOError: on failure\n    \"\"\"",
+    "def area(r):\n    \"\"\"\n    @param r: radius of the circle\n    @return: the area\n    \"\"\"",
+    "def send(msg):\n    \"\"\"Send a message.\n\n    :param msg: text to send\n    :returns: True on success\n    \"\"\"",
+    "def scale(img, factor):\n    \"\"\"\n    :param factor: zoom factor\n    :param img: the image\n    \"\"\"",
+    "Which type of bread do you usually buy at the bakery?",
+    "def merge(a, b):\n    \"\"\"Merge two lists.\n\n    :param a: first list\n    :param b: second list\n    \"\"\"",
+    "She said this type of engine is common in old tractors.",
+    "def fetch(url, timeout):\n    \"\"\"\n    :param timeout: seconds to wait\n    :returns: the response\n    \"\"\""
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.8 on 'type' after ':' or '@' in a docstring; other docstring fields and prose 'type' below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "':type' field in docstrings",
+ "unit_kind": "token/lexical",
+ "confidence": 0.65,
+ "notes": "Card: 'type' x11, all ':type'/'@type' docstring fields; also units ' grams', 'g', 'F'. Probe: ':type path: str' 0.681, '@type x: int' 0.706; ':returns:' field 0.050, 'type of flour' 0.031, 'type of music' 0.027, '85 grams of flour' 0.076."
+}
