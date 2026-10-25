@@ -182,7 +182,9 @@ def atlas_poles(name, L, n):
             continue
         out[p] = {"words": [[vocab.get(w, f"#{w}"), lift, round(cov, 3), trig] for w, lift, cov, trig
                             in zip(r["hit_tok"], r["hit_lift"], r["hit_coverage"], r["hit_trigger"])],
-                  "bin": r["bin"], "context": r["context"], "test": r["test"], "auroc": r["auroc"]}
+                  "bin": r["bin"], "context": r["context"], "test": r["test"], "auroc": r["auroc"],
+                  "lib": ({"kind": r["lib_kind"], "condition": r["lib_condition"], "test": r["lib_test"], "auroc": r["lib_auroc"],
+                           "held": r.get("lib_held") or [], "label": r.get("lib_label")} if r.get("lib_kind") else None)}
     return out
 
 
@@ -218,6 +220,15 @@ def render(c):
         if at and at.get("bin"):
             lines.append(f"    auto screen: {at['bin']}" + (f", auto test {at['test']}" if at.get("test") else "")
                          + (f" (AUROC {at['auroc']:.2f})" if at.get("auroc") is not None else "") + (f": {at['context']}" if at.get("context") else ""))
+        lb = at.get("lib") if at else None
+        if lb:
+            lines.append(f"    sweep library (sweeplib@1, deterministic, scrutiny 0): {lb['kind']}:{lb['condition']} test {lb['test']}"
+                         + (f" (AUROC {lb['auroc']:.2f})" if lb.get("auroc") is not None else "") + (f": {lb['label']}" if lb.get("label") else ""))
+            more = [h for h in lb["held"] if h != f"{lb['kind']}:{lb['condition']}"]
+            if more:
+                lines.append("    also held under: " + ", ".join(more))
+            if lb["test"] == "held":
+                lines.append("    -> a starting hypothesis that already passed a held-out 8 + 8: probe its edges (what else fires it, what the label misses)")
         for e in st["examples"]:
             lines.append(f"    {e['act']:8.2f} {e['regime']:>10} | {e['text'][-110:]}")
     d = c.get("direct")
