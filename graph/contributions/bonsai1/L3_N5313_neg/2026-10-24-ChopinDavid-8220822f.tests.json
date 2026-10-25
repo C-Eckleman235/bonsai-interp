@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-8220822f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N5313-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T00:20:43+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L3/N5313",
+   "pole": "-",
+   "label": "dense, weak pole that is broadly on in code identifiers and much ordinary text; best guess: snake_case or dotted identifiers in code, as against plain prose",
+   "fire": [
+    "layer_count = source_layer.featureCount()",
+    "user_email = form_data.get('email_address')",
+    "self.max_depth = config.max_depth",
+    "output_path = os.path.join(base_dir, file_name)",
+    "row_total = sum(cell_values)",
+    "df_clean = raw_frame.dropna()",
+    "next_token = token_stream.peek()",
+    "param_list = model_spec.parameters"
+   ],
+   "quiet": [
+    "The farmer counted the layers of soil in the field.",
+    "She sent an email to her sister on Sunday morning.",
+    "The lake reaches its greatest depth near the dam.",
+    "He walked along the path to the old base camp.",
+    "The total cost of the trip was very low.",
+    "They cleaned the frame of the window with soap.",
+    "The bus driver gave each child a paper token.",
+    "The list of guests was pinned to the door."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.7 on code identifiers; prose 0.2-0.6, so the test is expected to fail",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense: code identifiers",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Card flags dense (35% of tokens reach 0.1 of max, max 0.29) and the gate-closed leak regime. Probe: 'created_layer' 0.581; 'firstname.lastname' 0.734; 'ws_name' 0.486; 'a_det' 0.653; but prose 'fertilizer' 0.655, 'He walked' 0.248, recipe 0.187. Registered as dense; test is a best guess."
+}
