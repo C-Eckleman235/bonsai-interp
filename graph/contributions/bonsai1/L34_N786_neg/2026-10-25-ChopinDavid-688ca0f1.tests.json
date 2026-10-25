@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-688ca0f1",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N786-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T15:20:11+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N786",
+   "pole": "-",
+   "label": "digits of a number written inside parentheses after another value (a unit conversion '(106 degrees F)' or a year '(1801)'), as opposed to the same numbers written outside parentheses",
+   "fire": [
+    "The thermometer showed 38 degrees Celsius (100 degrees Fahrenheit) at noon.",
+    "The Treaty of Utrecht (1713) ended the long war in Europe.",
+    "On the coast it was 45 degrees Celsius (113 degrees Fahrenheit) by midday.",
+    "The Battle of Hastings (1066) changed the language of England.",
+    "Water boils at 100 degrees Celsius (212 degrees Fahrenheit) at sea level.",
+    "The Congress of Vienna (1815) redrew the map of the continent.",
+    "In July it reached 35 degrees Celsius (95 degrees Fahrenheit) in the valley.",
+    "The Peace of Westphalia (1648) ended the Thirty Years' War."
+   ],
+   "quiet": [
+    "The thermometer showed 38 degrees Celsius at noon on Monday.",
+    "The Treaty of Utrecht was signed in 1713 and ended the long war.",
+    "On the coast it was 45 degrees Celsius by midday on Friday.",
+    "The Battle of Hastings in 1066 changed the language of England.",
+    "Water boils at 100 degrees Celsius at sea level.",
+    "The Congress of Vienna met in 1815 and redrew the map.",
+    "In July it reached 35 degrees Celsius in the valley.",
+    "The Peace of Westphalia, signed in 1648, ended the war."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on a digit inside '(NNN ...)' conversions and '(year)'; the same sentences without parentheses below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "digits of a parenthetical number",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: peaks on digits inside parentheses: '(2|1.05%)', '(6|00 mm)', '(18|0|1)', '(1|08 degrees Fahrenheit)'. Probe: '(106 degrees Fahrenheit)' 0.500, 'Act of Union (1801)' 0.417; but '(19.3%)' 0.028 and '(360 mm)' 0.045 stayed low; no-parenthesis versions 0.001-0.002. Mixed: conversions in degrees and years fired, mm and percent did not."
+}

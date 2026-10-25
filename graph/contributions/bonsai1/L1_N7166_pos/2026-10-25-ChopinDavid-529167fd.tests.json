@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-529167fd",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N7166+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T15:20:11+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N7166",
+   "pole": "+",
+   "label": "dense layer-1 unit: weakly on for most tokens, peaking on a few names and words (' rage', ' Jah', 'ガン', ' Gallagher')",
+   "fire": [
+    "Vinyl records are all the rage again in our town.",
+    "Her face went red with rage at the referee's call.",
+    "The reggae singer praised Jah in every chorus.",
+    "Liam Gallagher sang the final song of the night.",
+    "明日の試合もガンバってください。",
+    "Road rage is a growing problem on the motorway.",
+    "The poem calls on Jah to bring peace to the island.",
+    "My neighbour, Mrs Gallagher, grows roses in her garden."
+   ],
+   "quiet": [
+    "Vinyl records are popular again in our town.",
+    "Her face went red with anger at the referee's call.",
+    "The reggae singer praised God in every chorus.",
+    "Liam Smith sang the final song of the night.",
+    "明日の試合も楽しんでください。",
+    "Traffic is a growing problem on the motorway.",
+    "The poem calls on the sea to bring peace to the island.",
+    "My neighbour, Mrs Brown, grows roses in her garden."
+   ]
+  }
+ ],
+ "predictions": "fire 0.8-0.9 on ' rage'/' Jah'/'ガン'/' Gallagher'; near misses still reach 0.35-0.45, so the test should fail on margin",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense; peaks on rage/Jah/ガン",
+ "unit_kind": "dense / positional",
+ "confidence": 0.1,
+ "notes": "Card FLAG dense: 81.8% of tokens reach 0.1 of max, gate-closed regime 100%. Probe: 'all the rage' 0.911, 'ガンバッテ' 0.875, 'Jah' 0.859, 'flew into a rage' 0.847, 'Gallagher' 0.795; but 'every day' 0.424, 'all the fashion' 0.447, 'old dog slept' 0.361. Registered as dense; expect failure."
+}
