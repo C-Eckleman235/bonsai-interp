@@ -1,0 +1,33 @@
+{
+ "contribution": "2026-10-24-moridinamael-bab356c4",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N2221+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T00:22:57+00:00",
+ "roles": ["reads bonsai1/L20/N2410+"],
+ "neighbours": [
+  {
+   "unit": "L22/N2221",
+   "pole": "+",
+   "label": "the line in a web request handler (a Django/Flask/Express view function, after its setup lines) where it sends the page or response back (return render / JsonResponse / res.send); not returns in ordinary functions, not 'return' in prose, and a weaker side branch on 'from' in prose 'stop/keep X from ...'",
+   "short": "web view's send-back line (return render)",
+   "unit_kind": "context",
+   "confidence": "low",
+   "fire": ["def index(request):\n    posts = Post.objects.all()\n    return render(request, 'blog/index.html', {'posts': posts})", "@app.route('/profile')\ndef profile():\n    user = get_current_user()\n    return render_template('profile.html', user=user)", "app.get('/api/items', async (req, res) => {\n  const items = await db.items.find();\n  res.send(items);\n});", "def api_status(request):\n    data = {'status': 'ok', 'version': '1.2'}\n    return JsonResponse(data)", "@app.route('/login', methods=['POST'])\ndef login():\n    form = LoginForm(request.form)\n    return jsonify({'success': True})", "router.post('/users', (req, res) => {\n  const user = createUser(req.body);\n  res.json(user);\n});", "def product_detail(request, pk):\n    product = get_object_or_404(Product, pk=pk)\n    return render(request, 'shop/detail.html', {'product': product})", "app.get('/', (req, res) => {\n  const title = 'Home';\n  res.render('index', { title });\n});"],
+   "quiet": ["The current economic downturn puts additional pressure on our facilities, but we're determined to become a no-kill community.", "if not os.", "def compute_total(items):\n    total = sum(i.price for i in items)\n    return total", "def parse_date(text):\n    parts = text.split('-')\n    return datetime(int(parts[0]), int(parts[1]), int(parts[2]))", "function add(a, b) {\n  const sum = a + b;\n  return sum;\n}", "def normalize(name):\n    name = name.strip().lower()\n    return name.replace(' ', '_')", "She plans to return the borrowed books to the library on Friday.", "After a long trip abroad, he was glad to return home to his family."],
+   "notes": "Step-in reader of bonsai1/L20/N2410+ (drop 0.24); its label has little to do with the feeder's forecast meaning. Feeders-first arm: top feeder L17/N11819- is a giant positional unit, second is a ' return' token cell (L0/N3328-, machine guess). Probes: Django view return render 0.30-0.37, plain function return 0.07-0.15, prose return 0.03-0.06; peak sits on the indent opening the send-back line. Broad pole (3.9% at 0.1), max probe 0.37, so a quick 8+8 is at risk. Test written blind from the label only."
+  }
+ ],
+ "predictions": "Express res.send/res.json lines may score lower than Python return render; expect fire medians near 0.2-0.3, risk of failing the 0.20 median bar.",
+ "methods": {
+  "agent": "claude-opus-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "probe",
+   "step-down",
+   "neighbors",
+   "inverse-de"
+  ]
+ }
+}
