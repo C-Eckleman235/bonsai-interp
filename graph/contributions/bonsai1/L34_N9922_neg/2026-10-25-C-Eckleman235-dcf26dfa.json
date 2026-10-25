@@ -1,0 +1,164 @@
+{
+ "id": "2026-10-25-C-Eckleman235-dcf26dfa",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N9922-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-25T04:54:57+00:00",
+ "recipe": {
+  "toolchain_commit": "3881b356",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N9922_neg/2026-10-25-C-Eckleman235-dcf26dfa.tests.json"
+ },
+ "label": "inside a number that is being copied from earlier in the text, the token just before an 8 in the copy (the model knows an 8 comes next because it saw the number before); the same copies with a different digit at that spot, and first mentions where an 8 follows unpredictably, stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N9922_neg/2026-10-25-C-Eckleman235-dcf26dfa.tests.json",
+   "prereg_commit": "3881b356",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.635,
+     "peak": "4"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.627,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.568,
+     "peak": "3"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.44,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.619,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.66,
+     "peak": "9"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.121,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.601,
+     "peak": "6"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.004,
+     "peak": "7"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.003,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.007,
+     "peak": "7"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.004,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.005,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.004,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.01,
+     "peak": "8"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.005,
+     "peak": " "
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.61,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "bands",
+   "card",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bands"
+  ],
+  "toolchain_commit": "3881b356",
+  "minutes": 1,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L35/N7741-"
+ ],
+ "selection": "step-out from bonsai1/L35/N7741-",
+ "edges": [
+  {
+   "from": "bonsai1/L34/N9922-",
+   "to": "bonsai1/L35/N7741-",
+   "kind": "feeds",
+   "weight": 0.36,
+   "method": "single-unit zero ablation (play step)"
+  }
+ ]
+}
