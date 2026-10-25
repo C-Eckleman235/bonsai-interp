@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-ae9d36b1",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N7344-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T09:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N7344",
+   "pole": "-",
+   "label": "a tuple swap in code (a, b = b, a), where two variables trade values, versus multi-target assignments that do not swap",
+   "fire": [
+    "def sort_pair(nums, j):\n    if nums[j] < nums[j-1]:\n        nums[j], nums[j-1] = nums[j-1], nums[j]\n    return nums",
+    "while lo < hi:\n    items[lo], items[hi] = items[hi], items[lo]\n    lo += 1\n    hi -= 1",
+    "def flip(p, q):\n    p, q = q, p\n    return p, q",
+    "if start > end:\n    start, end = end, start\nprint(start, end)",
+    "for k in range(len(row) - 1):\n    if row[k] > row[k+1]:\n        row[k], row[k+1] = row[k+1], row[k]",
+    "def gcd(m, n):\n    while n:\n        m, n = n, m % n\n    return m",
+    "if width < height:\n    width, height = height, width\narea = width * height",
+    "def rotate(board, i, j):\n    board[i][j], board[j][i] = board[j][i], board[i][j]\n    return board"
+   ],
+   "quiet": [
+    "def sort_pair(nums, j):\n    if nums[j] < nums[j-1]:\n        nums[j] = 0\n    return nums",
+    "while lo < hi:\n    total = items[lo] + items[hi]\n    lo += 1\n    hi -= 1",
+    "def flip(p, q):\n    r = p * q\n    return r",
+    "if start > end:\n    print('bad range')\nprint(start, end)",
+    "for k in range(len(row) - 1):\n    if row[k] > row[k+1]:\n        count += 1",
+    "def mean(m, n):\n    s = m + n\n    return s / 2",
+    "if width < height:\n    print('portrait')\narea = width * height",
+    "def reset(board, i, j):\n    board[i][j] = None\n    return board"
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.9 on the '=' or first right-hand item of a swap; non-swap tuple assignments below 0.25",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "tuple swap",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: 'idx1,idx2=idx2,idx1', 'to_send[0],to_send[i_can] = to_send[i_can],to_send[0]', plus aligned continuation lines in lists. The opposite pole suppresses ' reverse', ' vice', ' Conversely', ' opposite'. Probe: bubble-sort swap arr[i], arr[i+1] = arr[i+1], arr[i] 0.861, 'a, b = b, a' 0.393, 'left, right = right, left' 0.358; non-swaps 'left, top = 0, 10' 0.233 and 'a, b = c, d' 0.160 leak weakly, 'x, y = 3, 4' 0.058."
+}

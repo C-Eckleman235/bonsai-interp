@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-9e2b26b5",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N830-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T09:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N830",
+   "pole": "-",
+   "label": "dense, low-amplitude unit that is on for most text in any language; best guess: higher on content words in non-English text (Japanese, Russian, Korean) than on short English function words",
+   "fire": [
+    "駅から歩いて五分のところに小さなパン屋があります。",
+    "Мы долго гуляли по старому городу и ели мороженое.",
+    "주말에는 친구들과 함께 바닷가에 가기로 했습니다.",
+    "Летом бабушка варит варенье из клубники и малины.",
+    "週末は家族と一緒に山へハイキングに行きました。",
+    "그 영화는 생각보다 훨씬 재미있어서 두 번이나 봤어요.",
+    "Новая библиотека открылась в центре нашего города.",
+    "このレストランでは季節の野菜を使った料理が人気です。"
+   ],
+   "quiet": [
+    "x = 1\ny = 2\nprint(x)",
+    "Le chat dort sur le canapé toute la journée.",
+    "It is what it is, and so it is.",
+    "for i in range(3):\n    pass",
+    "El perro come en la cocina con los niños.",
+    "Yes, no, maybe, and so on.",
+    "a = [0, 0, 0]\nb = a",
+    "Der Hund ist im Garten und der Ball ist auch da."
+   ]
+  }
+ ],
+ "predictions": "dense: fire items 0.4-0.8, near misses 0.2-0.6; expect the test to fail",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense multilingual",
+ "unit_kind": "dense / positional",
+ "confidence": 0.1,
+ "notes": "Card: dense (52.9% of tokens >0.1 max), max only 0.19, gate-closed regime 100%, peaks on Korean/Japanese/Russian/Arabic pieces. Probe: Japanese 'での' 0.819, Russian ' жизнь' 0.740, English ' walk' 0.629, ''d' 0.580, Korean 0.540, Arabic 0.515, French 0.333, code 0.235. An 8+8 test is not expected to separate; registered as a best guess."
+}

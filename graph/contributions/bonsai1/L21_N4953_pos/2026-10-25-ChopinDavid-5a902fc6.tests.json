@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-5a902fc6",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N4953+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T09:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L21/N4953",
+   "pole": "+",
+   "label": "a linking word that opens the specification of a span or condition (valid from the date of, whether it's X or Y), versus the same topics without that link",
+   "fire": [
+    "Your ticket stays valid for thirty days from the date of issue at the station.",
+    "The farm has always had pests to fight, whether it's beetles in June or mice in winter.",
+    "Returns are accepted within two weeks from the date of delivery to your door.",
+    "Our coach makes us train outside, whether it's pouring rain or blazing sun.",
+    "The warranty covers the motor for five years from the date of installation.",
+    "Travelers love the old inn, whether they come for the food or for the views.",
+    "Each license runs for one year from the date of approval by the board.",
+    "She reads every evening, whether it's a thick novel or a short poem."
+   ],
+   "quiet": [
+    "Your ticket is still valid, and you can ride the train at the station today.",
+    "The farm has always had pests to fight, like beetles and mice in the barn.",
+    "Returns are accepted at the main desk on the second floor of the store.",
+    "Our coach makes us train outside, even in pouring rain and blazing sun.",
+    "The warranty covers the motor and the pump if anything breaks down.",
+    "Travelers love the old inn for its food and its views of the valley.",
+    "Each license is approved by the board at its monthly meeting downtown.",
+    "She reads every evening, usually a thick novel or a short poem."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on ' of' after 'from the date' and on ' whether' introducing alternatives; near misses below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "span/condition linker",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Broad pole (1.9% of tokens >0.1 max), max 6.38; card peaks ' of' after 'from the time/date', ' whether', ' zip', ' tant', ' for' after wait, ' \"' in a quote list. Probe: 'from the date of purchase' 0.528, 'whether it's summer heat or winter ice' 0.449, quote list 0.317, 'wait for spring' 0.240, 'from the time of' only 0.196 (peak ' until'), zip loop 0.034; 'valid and can be used' 0.047."
+}

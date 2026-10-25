@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-eae84cc0",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N3757-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T09:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N3757",
+   "pole": "-",
+   "label": "the year-and-volume slot of a journal reference in a bibliography (Journal. 2004;12(3), Journal, 28(4)), versus years and journal-like phrases in ordinary prose",
+   "fire": [
+    "Garcia M, Chen L. Vitamin D and bone loss in women. J Bone Miner Res. 2011 Apr;26(4):812-9.",
+    "Patel R. Hand hygiene in nursing homes. Am J Infect Control. 2006;34(5):301-6.",
+    "Okafor N. Sleep and memory in teenagers. Pediatrics. 2015 Jan;135(1):44-52.",
+    "Miller T. Pollinator decline in farmland. Biological Conservation, 162, 88-97.",
+    "Svensson K. Stroke recovery and exercise. Clin Rehabil. 2003;17(2):150-8.",
+    "Nguyen H. Classroom feedback and motivation. Learning and Instruction, 31(2), 210-219.",
+    "Rossi A. Asthma in urban children. Eur Respir J. 2009 Jul;34(1):77-85.",
+    "Kim S. Coral bleaching on reef flats. Marine Biology, 147, 1201-1210."
+   ],
+   "quiet": [
+    "In 2011 my cousin moved to Spain to study bone health in older women.",
+    "Hand hygiene in nursing homes became a big topic after the 2006 outbreak.",
+    "The 2015 school year started late because of a teachers' strike.",
+    "Pollinators are declining on farmland, and conservation groups are worried.",
+    "Back in 2003 she began exercising every day after her stroke.",
+    "Good classroom feedback can make students far more motivated to learn.",
+    "We visited Rome in July 2009 and ate gelato every afternoon.",
+    "Divers noticed coral bleaching on the reef flats last summer."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.6 on the year digit or comma after the journal name in references; years and topic words in prose below 0.03",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "citation year/volume slot",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: last digit of the year after an abbreviated journal name ('Complement Ther Med. 200|5', 'Clin Exp Otorhinolaryngol. 201|3'), and the comma after a journal title ('Biological Conservation,'). Probe: 'J Clin Sleep Med. 2009 Mar;5(2)' 0.560, 'Osteoarthritis Cartilage 1998;6(2)' 0.495, 'Biological Conservation, 155' 0.292, 'Teaching and Teacher Education, 28(4)' 0.208; 'In 2009 we moved' 0.006, 'festival in 2013' 0.009."
+}
