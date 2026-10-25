@@ -7,7 +7,7 @@
 :root {
   --paper: #eef2ef; --sheet: #f8faf8; --ink: #17302c; --ink-2: #44605a; --ink-3: #7b938d; --rule: #d3ddd9;
   --mark: #2d3fc6; --mark-ink: #ffffff; --plus: #a8620f; --minus: #0f7a6e;
-  --held: #1f7a4d; --failed: #b4441f; --dense: #8a9590; --withheld: #5b6475; --probed: #2d3fc6; --replicated: #7b4bb8; --contested: #c08a12;
+  --held: #1f7a4d; --partial: #7a8a12; --failed: #b4441f; --dense: #8a9590; --withheld: #5b6475; --probed: #2d3fc6; --replicated: #7b4bb8; --contested: #c08a12;
   --h1: #c9d3e8; --h2: #8fa6d6; --h3: #5a76c9; --h4: #c9851d; --h5: #c2410c;
   --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --s6: #008300; --s7: #4a3aa7;
   --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
@@ -17,13 +17,13 @@
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
   --paper: #0f1716; --sheet: #15201e; --ink: #e3ece9; --ink-2: #a8bcb6; --ink-3: #6f8781; --rule: #26342f;
   --mark: #8c9bff; --mark-ink: #0f1716; --plus: #e0a34a; --minus: #3cc2b0;
-  --held: #4fc386; --failed: #ee7a52; --dense: #77837e; --withheld: #9aa3b5; --probed: #8c9bff; --replicated: #b892ee; --contested: #e7b84a;
+  --held: #4fc386; --partial: #b9cc4a; --failed: #ee7a52; --dense: #77837e; --withheld: #9aa3b5; --probed: #8c9bff; --replicated: #b892ee; --contested: #e7b84a;
   --h1: #2c3a5c; --h2: #3f5a9a; --h3: #6c8be0; --h4: #e0a245; --h5: #ff7a3d;
   --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9; color-scheme: dark } }
 :root[data-theme="dark"] {
   --paper: #0f1716; --sheet: #15201e; --ink: #e3ece9; --ink-2: #a8bcb6; --ink-3: #6f8781; --rule: #26342f;
   --mark: #8c9bff; --mark-ink: #0f1716; --plus: #e0a34a; --minus: #3cc2b0;
-  --held: #4fc386; --failed: #ee7a52; --dense: #77837e; --withheld: #9aa3b5; --probed: #8c9bff; --replicated: #b892ee; --contested: #e7b84a;
+  --held: #4fc386; --partial: #b9cc4a; --failed: #ee7a52; --dense: #77837e; --withheld: #9aa3b5; --probed: #8c9bff; --replicated: #b892ee; --contested: #e7b84a;
   --h1: #2c3a5c; --h2: #3f5a9a; --h3: #6c8be0; --h4: #e0a245; --h5: #ff7a3d;
   --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9; color-scheme: dark }
 
@@ -267,7 +267,7 @@ td.n { font-family: var(--mono); text-align: right; }
   const CARDS = (() => { try { return JSON.parse(document.getElementById("card-data").textContent); } catch (e) { return {}; } })();
   const REPO = "moridinamael/bonsai-interp", CLEAN = "moridinamael/neuron-cleanroom";
   const L_N = 36, N_N = 12288;
-  const STATUS = ["held", "probed", "replicated", "contested", "failed", "unresolved", "dense", "withheld"];
+  const STATUS = ["held", "partial", "probed", "replicated", "contested", "failed", "unresolved", "dense", "withheld"];
   const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
   const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const store = { get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
@@ -320,11 +320,12 @@ td.n { font-family: var(--mono); text-align: right; }
   }
 
   // tally
-  const held = N.filter(r => r.status === "held").length;
+  const held = N.filter(r => r.status === "held").length, partial = N.filter(r => r.status === "partial").length;
+  const assigned = N.filter(r => r.status === "held" && r.coverage != null).length;
   document.getElementById("tally").innerHTML =
     `<div><b>${(L_N * N_N).toLocaleString()}</b><span>neurons</span></div>` +
     `<div><b>${N.length}</b><span>poles surveyed</span></div>` +
-    `<div><b>${held}</b><span>labels holding</span></div>` +
+    `<div title="${assigned} with coverage measured at 50% or more; ${held - assigned} not measured yet. ${partial} more labels held their test but cover under half of their pole's activity (partial)."><b>${held}</b><span>labels holding</span></div>` +
     `<div><b>${(100 * N.length / (2 * L_N * N_N)).toFixed(4)}%</b><span>of the map</span></div>` +
     `<div id="tally-screen" hidden><b></b><span>poles screened (auto)</span></div>` +
     `<div id="tally-hits" hidden><b></b><span>poles with word hits</span></div>`;
@@ -382,7 +383,7 @@ td.n { font-family: var(--mono); text-align: right; }
       ctx.strokeStyle = css("--mark"); ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(x, y, 10, 0, 2 * Math.PI); ctx.stroke();
       ctx.beginPath(); ctx.moveTo(x - 16, y); ctx.lineTo(x - 11, y); ctx.moveTo(x + 11, y); ctx.lineTo(x + 16, y); ctx.moveTo(x, y - 16); ctx.lineTo(x, y - 11); ctx.moveTo(x, y + 11); ctx.lineTo(x, y + 16); ctx.stroke(); }
   }
-  function legend() { document.getElementById("legend").innerHTML = (colorBy === "status" ? STATUS.map(s => `<span${s === "withheld" ? ' title="the trigger is sensitive content (e.g. a slur): recorded with a masked description, never shown or tested live"' : ""}><i style="background:var(--${s})"></i>${s === "withheld" ? "withheld (sensitive)" : s}</span>`).join("")
+  function legend() { document.getElementById("legend").innerHTML = (colorBy === "status" ? STATUS.map(s => `<span${s === "withheld" ? ' title="the trigger is sensitive content (e.g. a slur): recorded with a masked description, never shown or tested live"' : s === "partial" ? ' title="the label held its test, but its trigger covers under half of the pole&#39;s strong activations: information, not the pole&#39;s assignment"' : ""}><i style="background:var(--${s})"></i>${s === "withheld" ? "withheld (sensitive)" : s}</span>`).join("")
     : colorBy === "screen" ? (SCREEN ? SCREEN.groups.map((s, g) => { const k = Object.values(SCREEN.counts).reduce((a, c) => a + (c[g] || 0), 0);
         return `<button type="button" data-g="${g}" aria-pressed="${screenOnly === g}" title="show only this group"><i style="background:${sgColor(g)}"></i>${esc(s)} <span class="mono">${k.toLocaleString()}</span></button>`; }).join("") +
         `<span>taller tick = auto test held · dots = surveyed poles · screened: layers ${(SCREEN.screened || []).join(", ") || "none yet"} · "word hit" = corpus word statistics (other layers)</span>` +
@@ -490,7 +491,7 @@ td.n { font-family: var(--mono); text-align: right; }
 
   function poleCard(L, n, pole) {
     const r = byId[`bonsai1/L${L}/N${n}${pole}`], id = `bonsai1/L${L}/N${n}${pole}`, pc = pole === "+" ? "p" : "m";
-    const head = `<div class="row"><span class="pole ${pc}">${pole === "+" ? "+ POLE" : "− POLE"}</span>${r ? `<span class="chip" style="color:var(--${r.status})"${r.withheld ? ' title="sensitive trigger: recorded with a masked description, never tested live"' : ""}>${esc(r.status)}${r.withheld ? " · " + esc(r.withheld) : ""}</span>` : `<span class="chip" style="color:var(--ink-3)">open</span>`}</div>`;
+    const head = `<div class="row"><span class="pole ${pc}">${pole === "+" ? "+ POLE" : "− POLE"}</span>${r ? `<span class="chip" style="color:var(--${r.status})"${r.withheld ? ' title="sensitive trigger: recorded with a masked description, never tested live"' : ""}>${esc(r.status)}${r.withheld ? " · " + esc(r.withheld) : ""}${r.coverage != null ? " · covers " + Math.round(100 * r.coverage) + "%" : ""}</span>` : `<span class="chip" style="color:var(--ink-3)">open</span>`}</div>`;
     if (!r) return `<div class="polecard">${head}<p class="lab" style="color:var(--ink-2)">Nobody has labelled this pole.</p>${screenHTML(L, n, pole)}
       <div class="acts"><button type="button" data-act="interpret" data-id="${id}">Interpret it</button><button type="button" data-act="blind" data-id="${id}">Blind run</button></div></div>`;
     const col = o => o === "held" ? "held" : o === "failed" ? "failed" : "ink-3";

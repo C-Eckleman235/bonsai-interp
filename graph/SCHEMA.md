@@ -30,13 +30,14 @@ merging the same contribution twice changes nothing, and new information never o
 | `neighbours` | `[{"unit": "L12/N5397", "pole": "-", "label": …, "fire": [8], "quiet": [8]}]` |
 | `qc` | For QC: `{"verdict": "confirm", "dispute" or "refine", "label_under_test": …}` |
 | `predictions`, `short`, `unit_kind`, `confidence`, `notes`, `roles`, `via` | Optional. They are copied into the results |
+| `trigger` | Optional, copied into the results. For a label whose trigger is a set of tokens, a machine-checkable form of it: `{"words": [...]}` (any case, plus 3+ letter pieces of how the tokenizer splits them), `{"pieces": [...]}` (the piece as its own token) or `{"tokens": [...]}` (exact tokens, leading space included). Its coverage of the pole's strong activations is measured (see "Coverage") |
 | `selection` | Optional, copied into the results. How the pole was chosen: `random draw` (written by `play draw`), `step-out from <id>`, `step-in from <id>`, `concept search: <concept>` or `picked` (`play new --selection …`). Statistics about the share of clean poles should use random draws only; absent means not recorded |
 
 ### `<id>.json` (the results)
 
 | Field | Meaning |
 |---|---|
-| `id`, `kind`, `neuron`, `contributor`, `created` | `kind` is one of `interpret`, `qc`, `replicate` (a blind clean-room run), `map` (edges only) or `withhold` (a sensitive trigger, below) |
+| `id`, `kind`, `neuron`, `contributor`, `created` | `kind` is one of `interpret`, `qc`, `replicate` (a blind clean-room run), `map` (edges only), `withhold` (a sensitive trigger, below) or `coverage` (a coverage round, see "Coverage") |
 | `label` | For `interpret` and `qc` refine: the label that was tested |
 | `qc` | `{"verdict": "confirm" or "dispute" or "refine", "label_under_test": …}` |
 | `tests` | `[{protocol, tests_file, prereg_commit, author, …numbers…, per_sentence}]`. `counts_for_status: false` excludes a test from the status (used for model-written test sentences) |
@@ -76,7 +77,8 @@ The record keeps the earlier fields: `id`, `label`, `short`, `kind`, `status`, `
 | status | when |
 |---|---|
 | `unlabelled` | no contribution has tested a label yet |
-| `held` | the latest round of the current label held |
+| `held` | the latest round of the current label held, and its coverage is at least 50% or not measured yet (`coverage` on the record says which) |
+| `partial` | the latest round of the current label held, but its measured coverage is under 50%: the label is true information about the pole, not its assignment |
 | `contested` | the label held, but since it last changed, more QC tests have failed than held |
 | `failed` | no label has held yet; one or two failed rounds |
 | `unresolved` | no label has held after three failed rounds |
@@ -92,6 +94,29 @@ More rules:
 - `replicate` contributions never change the label.
 - For list fields, the record holds the union of all contributions, in order. For scalar fields,
   the latest contribution wins.
+
+## Coverage
+
+A held test shows that the label's trigger reliably fires the pole. It does not show that the label accounts for what the
+pole does: a pole can pass "the word 'cobra'" while cobra is 0.3% of its strong activations. Coverage is the share of the
+pole's strong activations (at least 0.3 of its corpus max) that the label describes. **A held label is the pole's assignment
+only if its coverage is at least 50%** (the user's rule, 2026-10-25); below that the status is `partial`. Nothing is
+deleted: a partial label stays in the record as a true sub-trigger.
+
+The record's `coverage` is `{value, method, …}` from the first of:
+1. **A declared trigger** (`trigger` on the contribution), measured exactly against the word screen's full (token, pole)
+   tables of strong activations (auto-token@2's selection windows).
+2. **A coverage round** (`coverage` contribution, protocol `coverage-16@1`). `play coverage --neuron <id>` draws 16 of
+   the pole's strong activations at random from held-out windows, one per window, seeded by the pole and the label's
+   contribution id, so the sample cannot be chosen. The author marks each one true or false for "the label describes
+   this", then `play coverage --record …` writes a contribution with `label_contribution`, `sample`, `marks` and
+   `coverage` (the share marked true). No pre-registration is needed, because the sample is fixed by the label's id.
+3. **An estimate** from the clean word-like terms quoted in a word-shaped label (`the word 'X'`, unit kind `lexical` or
+   `token`, …), measured like a declared trigger. Declaring a trigger in a new contribution replaces it.
+
+The token measures live in `graph/auto/bonsai1.coverage.json`, written by `python -m bonsai_interp.graph.coverage build`
+(it needs the token tables from the `auto2-data` release) and read by `fold`. Labels with no token trigger and no round
+have `coverage: null` and stay `held` until a round measures them.
 
 ## Sensitive triggers: `withhold`
 
@@ -144,6 +169,7 @@ are `L<layer>_N<index>_<pos|neg>.json`.
 | `neurons[id].contributors` | `[handle]` | In order of first contribution |
 | `neurons[id].t` | `[[protocol, outcome, n_fire, n_false_pos, author, contribution id]]` | Every test, oldest first. `outcome` is `held`, `failed`, `invalid` (fields missing for its protocol), `recorded` (a protocol the code does not score) or, for `cleanroom@1`, the blind verdict in words |
 | `neurons[id].history` | `[[label, outcome]]` | The last six labels tried |
+| `neurons[id].coverage` | number (absent when not measured) | The current held or partial label's coverage of the pole's strong activations (see "Coverage") |
 | `neurons[id].scrutiny` | `{level, name, test_rounds, sentences, contributors, qc}` | How much evidence there is, 0 `unexamined` to 5 `replicated` |
 | `edges` | `[[from id, to id, kind]]` | Every edge, without weights (those are in `edges.json`) |
 | `contributors` | `{handle: points}` | The scoreboard, highest first |

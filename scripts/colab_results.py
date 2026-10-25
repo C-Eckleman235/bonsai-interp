@@ -20,7 +20,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-OPTIONAL = ("short", "unit_kind", "confidence", "notes", "roles", "via", "selection")  # play run's order
+OPTIONAL = ("short", "unit_kind", "confidence", "notes", "roles", "via", "selection", "trigger")  # play run's order
 
 
 def digest(b):

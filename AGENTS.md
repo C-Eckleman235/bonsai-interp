@@ -121,6 +121,13 @@ it in order.
   is one, not as an unrelated second meaning.
 - **Near misses carry the test.** They keep the topic, length and style, and drop only the
   claimed trigger. Easy near misses (unrelated filler) make a label look cleaner than it is.
+- **A label must cover the pole, not just fire it.** A held 8 + 8 shows your trigger fires the pole; coverage shows how
+  much of the pole it explains. A held label whose trigger covers under half of the pole's strong activations is
+  `partial`: information, not the pole's assignment. If your trigger is a set of tokens, declare it in the tests file
+  (`"trigger": {"words": [...]}`, see graph/SCHEMA.md) so it is measured exactly. Otherwise run a coverage round after the
+  label holds: `play coverage --neuron <id>`, mark each of the 16 random strong activations true or false, then
+  `play coverage --record`. When the card shows a word that covers only a few percent of the strong activations, look
+  past it before you label (`play look`, `bonsai_interp.probe.bands`).
 - **Neurons can be dense.** Some are on for most text, and an 8 + 8 test cannot pass for them.
   Say so with `"unit_kind": "dense / positional"` instead of forcing a label.
 - **Write your own sentences.** If the model wrote them, run with `--author bonsai`, because
