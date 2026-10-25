@@ -548,6 +548,11 @@ def main():
     se.add_argument("--source", choices=["survey", "library", "screen"], help="only one source")
     se.add_argument("--limit", type=int, default=40)
     se.add_argument("--json", action="store_true")
+    q = se.add_mutually_exclusive_group()
+    q.add_argument("--ambiguous", action="store_true", help="mission queue: poles nothing explains yet (unsettled survey poles first, then loud "
+                   "unexplained ones), ranked")
+    q.add_argument("--deepen", action="store_true", help="mission queue: held labels that may be more than they say (top word covers under half "
+                   "of the strong activations, or several library conditions held), ranked")
     d = sub.add_parser("doctor", help="check this machine is ready to play")
     d.add_argument("--quick", action="store_true", help="skip loading the model")
     b = sub.add_parser("brief", help="print the full instructions for a mission (for an AI agent)")
@@ -568,7 +573,7 @@ def main():
         return card.main(a)
     if a.cmd == "search":
         from bonsai_interp.graph import search
-        return search.main(a)
+        return search.main_queue(a) if (a.ambiguous or a.deepen) else search.main(a)
     if a.cmd == "why":
         from bonsai_interp.graph import why
         return why.main(a)
