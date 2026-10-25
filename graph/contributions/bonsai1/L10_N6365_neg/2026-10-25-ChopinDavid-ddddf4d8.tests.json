@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-ddddf4d8",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N6365-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T10:21:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L10/N6365",
+   "pole": "-",
+   "label": "the indentation token that opens the first body line of a Python function, right after the def line (or its docstring)",
+   "fire": [
+    "def square(x):\n    return x * x",
+    "import math\n\ndef area(r):\n    return math.pi * r ** 2",
+    "def greet(name):\n    return 'Hello, ' + name",
+    "def is_even(n):\n    \"\"\"Return True if n is even.\"\"\"\n    return n % 2 == 0",
+    "def double(values):\n    return [v * 2 for v in values]",
+    "from os import path\n\ndef exists(p):\n    return path.exists(p)",
+    "def last(items):\n    return items[-1]",
+    "def clamp(v, lo, hi):\n    return max(lo, min(v, hi))"
+   ],
+   "quiet": [
+    "x = 4\nif x > 2:\n    print('big')",
+    "import math\n\nr = 3\narea = math.pi * r ** 2",
+    "names = ['a', 'b']\nfor name in names:\n    print('Hello, ' + name)",
+    "n = 10\nwhile n > 0:\n    n -= 2",
+    "values = [1, 2, 3]\ndoubled = [v * 2 for v in values]",
+    "from os import path\n\np = 'data.txt'\nok = path.exists(p)",
+    "items = [5, 6, 7]\nlast = items[-1]",
+    "Clamp the value: take the max of lo and the min of v and hi."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.4 on the indentation after 'def ...:' in short functions; indentation of later lines, loops and prose indentation below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "first indent of a function body",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: 22 of the top 32 peaks are '   ' (and '\\t') opening the first line after 'def f(...):' or after a docstring. Probe: 'def add(a, b):\\n    return a + b' 0.395, def with docstring 0.281; class/__init__ body 0.077, 'def main()' with several lines 0.075, for loop body 0.062, indented poem 0.054, one-line def 0.024. The multi-line main() result is a caution: the effect may be strongest for short functions."
+}

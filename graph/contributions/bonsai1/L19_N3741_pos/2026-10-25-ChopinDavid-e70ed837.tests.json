@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-e70ed837",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N3741+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T10:21:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L19/N3741",
+   "pole": "+",
+   "label": "the point in a competition or judging rule where the deciding criterion is stated ('based on the', 'goes to the', 'with the'), anticipating a superlative such as faster, most or highest",
+   "fire": [
+    "Each team gets three attempts, and the winner is decided by the best of them.",
+    "The trophy goes to the player with the highest score at the end of the night.",
+    "Each rider jumps twice and is ranked on the better of the two jumps.",
+    "The scholarship is awarded to the student with the strongest essay.",
+    "Every runner gets two laps, and the final time is based on the quicker lap.",
+    "First prize goes to the baker with the tallest cake in the contest.",
+    "Each archer shoots twice, and placement depends on the closer arrow.",
+    "The medal is given to the swimmer with the fastest time in the final."
+   ],
+   "quiet": [
+    "Each team gets three snacks, and the bus leaves at the end of the trip.",
+    "The trophy sits on a shelf in the lobby at the end of the hall.",
+    "Each rider brings a helmet and rides along the trail by the river.",
+    "The scholarship office is open on Mondays near the main library.",
+    "Every runner gets a shirt, and the race starts near the old bridge.",
+    "First, the baker mixes flour and sugar in a large bowl.",
+    "Each archer carries a quiver and walks to the field after lunch.",
+    "The medal is kept in a glass case at the town museum."
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.5 just before the superlative criterion in contest rules; the same function words in non-ranking sentences below 0.03",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "ranking criterion (predicts superlative)",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card (max 14.8): 'film with [the] most audience votes', 'determined by [the] positions', 'the fifth longest throw', 'prizes awarded for the most unique'; the opposite pole's output suppresses ' highest', ' closest', ' best', ' strongest', so this pole promotes superlatives. Probe: 'final result is based on the faster one' 0.528, 'go to the most unique' 0.224, 'with the most votes' 0.153, 'fifth longest throw' 0.124; 'determined by the positions' 0.047, non-ranking 'film with the blue poster' 0.009, filler 0.011-0.027."
+}
