@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-c0df2e4a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N2383-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T07:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N2383",
+   "pole": "-",
+   "label": "the argument of a debugging print in code, strongest inside a commented-out '#print(...)' line",
+   "fire": [
+    "links = page.select('div.item')\n#print(links)\nfor link in links:\n    visit(link)",
+    "rows = cursor.fetchall()\n#print(rows)\nconn.close()",
+    "tokens = text.split(',')\n    #print(tokens)\n    out = []",
+    "resp = session.get(url)\n#print(resp.status_code)\nbody = resp.json()",
+    "for key in config:\n    #print(key, config[key])\n    apply(key)",
+    "img = cv2.imread(path)\n# print(img.shape)\ngray = convert(img)",
+    "matrix = build(n)\n        #print(matrix)\n        solve(matrix)",
+    "words = line.strip().split()\n#print(words)\ncount += len(words)"
+   ],
+   "quiet": [
+    "links = page.select('div.item')\n#links.sort()\nfor link in links:\n    visit(link)",
+    "rows = cursor.fetchall()\n# close the cursor first\nconn.close()",
+    "tokens = text.split(',')\n    # strip whitespace later\n    out = []",
+    "resp = session.get(url)\n# retry on failure\nbody = resp.json()",
+    "for key in config:\n    # skip empty keys\n    apply(key)",
+    "img = cv2.imread(path)\n# resize before converting\ngray = convert(img)",
+    "matrix = build(n)\n        # n must be even\n        solve(matrix)",
+    "words = line.strip().split()\n# count every word\ncount += len(words)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.75 on the argument of '#print(x)' / 'print(x)' lines; the same code with other commented calls below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "debug print argument",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: all top examples are print arguments, mostly commented ('# print eta', '#print(getp)', '#print(line_split)'). Probe: '#print(items)' 0.732, 'print(data)' 0.243, '# print row' 0.193 (but near miss '# add row' 0.184, so bare comments are not separated); 'save(data)' 0.096; English 'print the report' 0.009."
+}
