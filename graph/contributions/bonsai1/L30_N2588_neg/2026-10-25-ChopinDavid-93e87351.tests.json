@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-93e87351",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N2588-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T22:21:13+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L30/N2588",
+   "pole": "-",
+   "label": "the '=' sign inside an inline LaTeX formula in prose ('so that $\\alpha = 3$'), as against the same relation written in words or the formula without '='",
+   "fire": [
+    "For the second case we take $\\beta = 0.5$ and repeat the calculation.",
+    "The series converges only when $|x| < 1$, and at $x = 0$ it equals one.",
+    "Setting $n = 4$ in the formula gives the number of edges of the cube.",
+    "In natural units we write $c = 1$, which simplifies every equation below.",
+    "The wave has period $T = 2\\pi/\\omega$, so a higher frequency means a shorter period.",
+    "At equilibrium the forces balance, so $F = kx$ for small displacements.",
+    "We choose the step size $h = 0.01$ to keep the error small.",
+    "For a fair coin the probability is $p = 1/2$ on every toss."
+   ],
+   "quiet": [
+    "For the second case we take beta as one half and repeat the calculation.",
+    "The series converges only when x is small, and at zero it equals one.",
+    "Setting n to four in the formula gives the number of edges of the cube.",
+    "In natural units the speed of light is one, which simplifies every equation below.",
+    "The wave has a period set by its frequency, so a higher frequency means a shorter period.",
+    "At equilibrium the forces balance, so the spring force grows with $x$ for small displacements.",
+    "We choose a small step size $h$ to keep the error small.",
+    "For a fair coin the probability is one half on every toss."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.7 on ' =' inside $...$; the relation in words, or a formula with no '=', below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'=' in inline LaTeX",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: positional flag, peaks on '2','1','0',' =',' ...,' in LaTeX and code. Probe: '$\\gamma = 2$' 0.688; '(1 - 2\\nu)' 0.034, 'x_0, ..., x_{n-1}' 0.001, code 'idx + 1' -0.001, '$116,070' 0.010. Only '=' inside inline math fired, so the test is that."
+}
