@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-4e4dcde3",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N10028-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T03:20:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L3/N10028",
+   "pole": "-",
+   "label": "the plural 's' split off as its own token at the end of a code identifier ('_ctrl|s', 'Struct|s', 'idx|s'), as against the singular identifier and plurals that are a single token",
+   "fire": [
+    "_ctrls_map = {}\n_items_map = {}",
+    "for cfg in self._cfgs:\n    cfg.reload()",
+    "Types: Structs and unions may be nested inside each other.",
+    "_ctrls = []\n_ctrls.append(button)",
+    "valid_ctrls = [c for c in ctrl_list if c.ok]",
+    "all_cfgs = load_cfgs(path)\nprint(len(all_cfgs))",
+    "class Registry:\n    _ctrls_by_id = {}",
+    "Note that Structs can implement interfaces in Go."
+   ],
+   "quiet": [
+    "_ctrl_map = {}\n_items_map = {}",
+    "for cfg in self._cfg_list:\n    cfg.reload()",
+    "Types: a Struct and a union may be nested inside each other.",
+    "_ctrl = None\n_ctrl = button",
+    "valid_ctrl = [c for c in ctrl_list if c.ok][0]",
+    "all_cfg = load_cfg(path)\nprint(len(all_cfg))",
+    "class Registry:\n    _ctrl_by_id = {}",
+    "Note that a Struct can implement interfaces in Go."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.4 on the separate 's' token; singular identifiers and single-token plurals below 0.10",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-off plural 's' in identifiers",
+ "unit_kind": "word",
+ "confidence": 0.45,
+ "notes": "Tiny pole (max 0.66), broad, 79% gate-closed; 18 of top 32 peaks on 's' ('diff|s', 'Convert|s', '_ctrl|s', 'Campaign|s', 'Struct|s'). Probe: 'diffs' 0.407, '_ctrls_cache' 0.270, 'Structs' 0.269, 'Campaigns.URL' 0.142 (peak elsewhere); singular '_ctrl_cache' 0.082, ' cats' 0.070, ' converts' 0.005. Every fire item checked with the tokenizer."
+}

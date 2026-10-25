@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-0f98ae91",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N12119-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T03:29:03+00:00",
+ "recipe": {
+  "toolchain_commit": "44ff32cb",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L31_N12119_neg/2026-10-24-ChopinDavid-0f98ae91.tests.json"
+ },
+ "label": "the person about to make an entrance in a scene ('when another client walked into the room', 'when you walk into a home'): the subject slot where the model expects 'walked in', as against the same people in sentences with no entrance",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L31_N12119_neg/2026-10-24-ChopinDavid-0f98ae91.tests.json",
+   "prereg_commit": "44ff32cb",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.347,
+     "peak": " uncle"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.372,
+     "peak": " stranger"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.067,
+     "peak": " coach"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.452,
+     "peak": " customer"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.189,
+     "peak": " bride"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.434,
+     "peak": " sister"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.331,
+     "peak": " teacher"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.186,
+     "peak": " manager"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.343,
+     "peak": " uncle"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.279,
+     "peak": " stranger"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.016,
+     "peak": " had"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.4,
+     "peak": " customer"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.001,
+     "peak": " her"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.001,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.003,
+     "peak": " card"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.062,
+     "peak": " and"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.797,
+    "median_fire": 0.339,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "44ff32cb",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "subject before 'walked in(to)'",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: subject or 'just' before 'walked into/in' (client, you, nurse, they just); the + pole suppresses walk/walked. Probe: 'stylist and client walked into the room' 0.623, 'when you walk into a home' 0.375, 'just walked out of the gym' 0.248, 'a nurse walked in' 0.188 but 'a nurse called' also 0.185 (it predicts from the scene, not the verb); 'client paid the bill' 0.015.",
+ "selection": "random draw"
+}

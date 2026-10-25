@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-73558319",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N3942-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T03:20:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N3942",
+   "pole": "-",
+   "label": "inline type-checker and linter directive comments in Python ('# type: ignore', '# type: Dict[...]', '# pylint: disable=...'), as against ordinary trailing comments that explain the code",
+   "fire": [
+    "class Store:\n    def items(self):\n        data = self._backend.fetch()\n        return data.rows  # type: ignore\n",
+    "def load(path):\n    result = {}  # type: Dict[str, int]\n    with open(path) as f:\n        result['n'] = len(f.read())\n    return result\n",
+    "class Worker:\n    def run(self):\n        job = self.queue.pop()\n        return job.execute()  # type: ignore[attr-defined]\n",
+    "def setup(app):\n    names = []  # type: List[str]\n    for ext in app.extensions:\n        names.append(ext.name)\n    return names\n",
+    "class Handler:\n    def __call__(self, event):  # pylint: disable=arguments-differ\n        self.events.append(event)\n        return True\n",
+    "def parse(text):\n    tokens = text.split()\n    count = len(tokens)  # type: int\n    return count\n",
+    "class Cache:\n    def get(self, key):\n        value = self._store[key]\n        return value.payload  # type: ignore\n",
+    "def build(cfg):\n    opts = {}  # type: Dict[str, Any]\n    opts.update(cfg)\n    return opts\n"
+   ],
+   "quiet": [
+    "class Store:\n    def items(self):\n        data = self._backend.fetch()\n        return data.rows  # rows are already sorted\n",
+    "def load(path):\n    result = {}  # maps each name to its size\n    with open(path) as f:\n        result['n'] = len(f.read())\n    return result\n",
+    "class Worker:\n    def run(self):\n        job = self.queue.pop()\n        return job.execute()  # run the oldest job first\n",
+    "def setup(app):\n    names = []  # collect extension names here\n    for ext in app.extensions:\n        names.append(ext.name)\n    return names\n",
+    "class Handler:\n    def __call__(self, event):  # called once per event\n        self.events.append(event)\n        return True\n",
+    "def parse(text):\n    tokens = text.split()\n    count = len(tokens)  # number of words\n    return count\n",
+    "class Cache:\n    def get(self, key):\n        value = self._store[key]\n        return value.payload  # unwrap the stored value\n",
+    "def build(cfg):\n    opts = {}  # start from an empty set of options\n    opts.update(cfg)\n    return opts\n"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.35 on the directive (# / type / :) in multi-line code; plain explanatory trailing comments below 0.10",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Python '# type:' / lint directives",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: ' #' before 'type: ignore' and 'pylint: disable' dominates (13 of 32). Probe: '# type: ignore' 0.324 (peak ' type'), '# type: Dict[str, Any]' 0.274, '# pylint: disable' 0.186; plain trailing comment 0.070, full-line comment 0.022, imports 0.077, hashtags 0.001."
+}

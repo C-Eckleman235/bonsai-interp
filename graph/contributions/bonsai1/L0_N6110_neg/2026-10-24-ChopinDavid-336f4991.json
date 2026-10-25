@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-336f4991",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N6110-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T03:29:41+00:00",
+ "recipe": {
+  "toolchain_commit": "44ff32cb",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N6110_neg/2026-10-24-ChopinDavid-336f4991.tests.json"
+ },
+ "label": "' or' as a fallback operator in code after a subscript or call ('opts[\"x\"] or default', \"get('name') or ''\"), as against ' or' between alternatives in prose",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N6110_neg/2026-10-24-ChopinDavid-336f4991.tests.json",
+   "prereg_commit": "44ff32cb",
+   "author": "ChopinDavid",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.24,
+     "peak": " or"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.218,
+     "peak": " or"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.208,
+     "peak": " or"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.225,
+     "peak": " or"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.176,
+     "peak": " or"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.155,
+     "peak": " or"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.231,
+     "peak": " or"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.211,
+     "peak": " or"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.11,
+     "peak": "['"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.049,
+     "peak": "('"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.053,
+     "peak": " os"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.043,
+     "peak": " salad"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.077,
+     "peak": "('"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.005,
+     "peak": " by"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.025,
+     "peak": "items"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.004,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.214,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "44ff32cb",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "code fallback ' or'",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Tiny layer-0 pole (max 0.69); card peaks ' or' x5 in code (\"log.opts['md_print'] or log\", \"') or ''\"), ')]', ' Conversely'. Probe: \"opts['md_print'] or opts['quiet']\" 0.238, \"get('name') or ''\" 0.149; 'return value or default' 0.001 (after a bare name), tea or coffee 0.037, same line without or 0.059. The median may fall below the bar.",
+ "selection": "random draw"
+}

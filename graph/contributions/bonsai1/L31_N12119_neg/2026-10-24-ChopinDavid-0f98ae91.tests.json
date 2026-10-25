@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-0f98ae91",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N12119-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T03:20:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L31/N12119",
+   "pole": "-",
+   "label": "the person about to make an entrance in a scene ('when another client walked into the room', 'when you walk into a home'): the subject slot where the model expects 'walked in', as against the same people in sentences with no entrance",
+   "fire": [
+    "We were halfway through dinner when my uncle walked into the kitchen.",
+    "The meeting had just started when a stranger walked into the office.",
+    "Everyone went quiet as the coach walked into the locker room.",
+    "I was reading at the counter when a customer walked into the shop.",
+    "The music stopped the moment the bride walked into the hall.",
+    "She was fixing her hair when her sister walked into the bathroom.",
+    "The kids froze when their teacher walked into the classroom.",
+    "Nobody noticed when the manager walked into the break room."
+   ],
+   "quiet": [
+    "We were halfway through dinner, and my uncle told a long story.",
+    "The meeting had just started, and a stranger asked about parking.",
+    "Everyone agreed that the coach had picked the right team.",
+    "I was reading at the counter, and a customer paid in coins.",
+    "The music was chosen by the bride and her mother.",
+    "She lent her sister a dress for the party.",
+    "The kids wrote a thank-you card for their teacher.",
+    "The manager signed the forms and filed them."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.6 on the subject in 'when X walked into the room' scenes; the same people paying, calling or working below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "subject before 'walked in(to)'",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: subject or 'just' before 'walked into/in' (client, you, nurse, they just); the + pole suppresses walk/walked. Probe: 'stylist and client walked into the room' 0.623, 'when you walk into a home' 0.375, 'just walked out of the gym' 0.248, 'a nurse walked in' 0.188 but 'a nurse called' also 0.185 (it predicts from the scene, not the verb); 'client paid the bill' 0.015."
+}
