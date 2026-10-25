@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-5884ec08",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N4309+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T06:21:10+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L25/N4309",
+   "pole": "+",
+   "label": "the venue slot of a public listing: the place named after a scheduled date and time in an event announcement or meeting notice, as against 'at the' + place in everyday narrative",
+   "fire": [
+    "The annual plant sale runs Saturday, May 12, from 9 a.m. to 1 p.m. at the Oakdale Community Center.",
+    "The school board will meet at 6:30 p.m. Monday in Cedar Falls at the district office.",
+    "A free workshop is scheduled Wednesday, Oct. 3 at 10 a.m. at the Westfield Senior Center.",
+    "Auditions are set for Tuesday, January 15, from 5 to 8 p.m. at the Lincoln Arts Pavilion.",
+    "The memorial service will be held Sunday, April 7 at 2 p.m. at St. Mark's Lutheran Church.",
+    "The planning commission meets at 7 p.m. Wednesday in Hudson at Town Hall.",
+    "The craft fair takes place Saturday, Dec. 1, from 10 a.m. to 3 p.m. at the Elm Street Fire Hall.",
+    "Registration opens Friday, August 9, at 8 a.m. at the Harbor View Convention Center."
+   ],
+   "quiet": [
+    "After lunch my grandmother sat at the kitchen window and watched the birds.",
+    "He waited at the bus stop for nearly twenty minutes in the rain.",
+    "Somebody left a red umbrella at the front desk yesterday afternoon.",
+    "My brother works at a bakery and gets up very early every day.",
+    "The dog barked at the mailman again this morning.",
+    "We stopped at a gas station to buy snacks for the long drive.",
+    "She smiled at the waiter and asked for another cup of coffee.",
+    "The kids threw stones at the pond until their mother called them home."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.6 on the venue name or its 'at' in announcement-style notices; narrative 'at the market/table' below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "venue in event listings",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: ' at' after dates ('September 30 at the BB&T' 37.5, 'July 2 at the Chief Sepass Theatre'), ' Events' in 'Ice and Events Center', ' Berkeley' BART. Probe: 'from 2 to 4 p.m. at the Riverside Public Library' 0.567, 'meets at 7 p.m. Thursday in Dover at City Hall' 0.433, 'located two blocks from the Central Station tram stop' 0.405, but 'Join us Friday, June 8 at the Grange Hall' only 0.158; narrative 'at the table/market/clock' 0.025-0.060."
+}
