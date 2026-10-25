@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-14f91069",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N1218-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T13:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N1218",
+   "pole": "-",
+   "label": "a Japanese or Chinese character that the tokenizer splits into raw byte pieces (the 'ー�' of katakana loanwords such as アプローチ, ローマ; the first bytes of kanji such as 圧, 圏, 販), on those byte tokens",
+   "fire": [
+    "私たちは新しいアプローチで問題を解決した。",
+    "夏休みに家族でローマを旅行しました。",
+    "会社のサーバーが昨夜止まってしまった。",
+    "物価の上昇が家計を圧迫している。",
+    "この店では地元の野菜を販売しています。",
+    "東京圏の人口は今も増えている。",
+    "彼は医者からプローブの使い方を学んだ。",
+    "強い抑圧の中でも人々は声を上げた。"
+   ],
+   "quiet": [
+    "私たちは新しい方法で問題を解決した。",
+    "夏休みに家族でスーパーに行きました。",
+    "会社のパーティーが昨夜開かれた。",
+    "朝のコーヒーを飲むのが楽しみだ。",
+    "この店では地元の野菜を売っています。",
+    "公園でボールを投げて遊んだ。",
+    "彼は医者から食事の取り方を学んだ。",
+    "人々は大きな声で歌を歌った。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.6 on byte tokens ('�', 'ー�') inside Japanese words; Japanese sentences made only of whole-token words below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "byte-split CJK characters",
+ "unit_kind": "token",
+ "confidence": 0.45,
+ "notes": "Card: peaks on '�' x13, 'ー�' x7 in Japanese (抑(圧), プロ(ーブ), アプロ(ーチ), (圏), ハ(ーバ)ー, 販). Probe: '収益を圧迫' 0.572, 'アプローチ' 0.504, 'ハーバー' 0.377, '抑圧' 0.335, '圏内' 0.197; plain Japanese 0.000/-0.001, English 0.004, '控' (whole token) 0.073. Splits checked: アプローチ ['ア','プロ','ー�','�'], ローマ ['ロ','ー�','�'], サーバー ['サー�','�','ー'], 圧迫 ['�','�','迫'], 販売 ['�','�','売']; コーヒー, スーパー, ボール, パーティー are whole tokens."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-0b580017",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N9200+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T13:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L13/N9200",
+   "pole": "+",
+   "label": "word pieces in the middle of a rare, archaic or foreign word that the tokenizer breaks into fragments (stal-worth, hom-in-aticum, прон-з-ительные); a broad pole",
+   "fire": [
+    "The old ballad praises a stalworth knight who never left his post.",
+    "In feudal law, the vassal's oath was called hominagium by the clerks.",
+    "Её пронзительный взгляд заставил всех замолчать.",
+    "The scribe wrote the word quhilk where we would now write which.",
+    "The herbalist recommended a tincture of eyebright for tired eyes.",
+    "Он говорил о неповторимой красоте северных озёр.",
+    "In Middle English, the word swythe meant quickly or very.",
+    "The monk copied the psalter by the light of a single candle."
+   ],
+   "quiet": [
+    "The old ballad praises a brave knight who never left his post.",
+    "In feudal law, the vassal's oath was called a promise by the clerks.",
+    "Её добрый взгляд заставил всех улыбнуться.",
+    "The scribe wrote the word which where we would now write that.",
+    "The doctor recommended a cup of tea for tired eyes.",
+    "Он говорил о большой красоте северных озёр.",
+    "In modern English, the word fast means quickly or firmly.",
+    "The boy copied the poem by the light of a small lamp."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.9 on inner pieces of rare split words; common whole-token words in similar sentences below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "mid-word pieces of rare words",
+ "unit_kind": "token",
+ "confidence": 0.3,
+ "notes": "Broad pole (2.1% of tokens reach 0.1 of max), max only 4.6. Card peaks: Micro(gram)ma, непов(тор)имым, stal(worth), Azz(aw)ajall, hom(in)aticum, прон(з)или, pl(ong)ées. Probe: 'stalworth' 0.795, 'hominaticum' 0.712, 'пронзительные' 0.941, 'Micrograms' 0.243; ordinary words 0.068-0.200 ('rang' 0.192, 'ran' 0.121), so near misses are expected to leak somewhat."
+}

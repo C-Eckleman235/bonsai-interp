@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-161d8c88",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N11703+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T13:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N11703",
+   "pole": "+",
+   "label": "the word piece 'en' / 'onen' / 'inen' ending a surname when the tokenizer splits it off (Finnish -nen names, Tan-en-baum)",
+   "fire": [
+    "The paper was written with Dr. Lehtonen, a chemist from Helsinki.",
+    "Our coach, Anna Salonen, trained the team for six years.",
+    "The interview with Mika Hakkinen was broadcast on Sunday evening.",
+    "According to Professor Rasanen, the results will appear next year.",
+    "Last week the mayor, Jari Laaksonen, opened the new library.",
+    "The violinist Pekka Nieminen played a solo at the concert.",
+    "A grant from the Lehtonen family paid for the new labs.",
+    "Most of the photographs were taken by Liisa Salonen in 1998."
+   ],
+   "quiet": [
+    "The paper was written with Dr. Peterson, a chemist from Boston.",
+    "Our coach, Anna Morrison, trained the team for six years.",
+    "The interview with Mika Johnson was broadcast on Sunday evening.",
+    "According to Professor Wilson, the results will appear next year.",
+    "Last week the mayor, Jari Thompson, opened the new library.",
+    "The violinist Pekka Harris played a solo at the concert.",
+    "A grant from the Peterson family paid for the new labs.",
+    "Most of the photographs were taken by Liisa Morrison in 1998."
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.4 on the split-off 'en'/'onen'/'inen' piece of a surname; the same sentences with a surname that has no such piece below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'-en/-onen' surname piece",
+ "unit_kind": "token",
+ "confidence": 0.5,
+ "notes": "Card: peaks 'en' x9, 'onen' x5, 'ен' x5 inside names (G(onen), Tan(en)baum, Auvin(en), Ah(onen), Callan(en)). Probe: 'Ahonen' 0.313, 'Auvinen' 0.391, 'Tanenbaum' 0.393, 'Callanen' 0.362, 'Korhonen' 0.157; 'Heidi Anderson' 0.026, plain sentences 0.004-0.010. Splits checked: Lehtonen ['Le','ht','onen'], Salonen ['Sal','onen'], Hakkinen ['Hak','kin','en'], Rasanen ['R','asan','en'], Laaksonen ['La','ak','son','en'], Nieminen ['Ni','em','inen']."
+}
