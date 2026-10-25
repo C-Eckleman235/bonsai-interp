@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-4266e152",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N10764-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T20:28:59+00:00",
+ "recipe": {
+  "toolchain_commit": "0bf4ad32",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L29_N10764_neg/2026-10-25-ChopinDavid-4266e152.tests.json"
+ },
+ "label": "a word broken so that a bare 'l'/'L' piece starts the second part after a hyphen, slash, underscore, dot or space (war-lord, cuts/lacerations, test_limited, .Lower): the split-off 'l' spelling unit, as opposed to the same words where the tokenizer keeps 'l' inside a longer piece",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L29_N10764_neg/2026-10-25-ChopinDavid-4266e152.tests.json",
+   "prereg_commit": "0bf4ad32",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.944,
+     "peak": "-l"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.88,
+     "peak": "/l"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.663,
+     "peak": "_l"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.659,
+     "peak": "-L"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.713,
+     "peak": ".L"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.911,
+     "peak": "-l"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.672,
+     "peak": ".L"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.658,
+     "peak": " l"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": -0.0,
+     "peak": "ics"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": -0.0,
+     "peak": "Bru"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": -0.0,
+     "peak": ".assertTrue"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.0,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.002,
+     "peak": ".UP"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": -0.0,
+     "peak": " autumn"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": -0.0,
+     "peak": "Driver"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.0,
+     "peak": " bowls"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.693,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "0bf4ad32",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "split-off l/L piece",
+ "unit_kind": "token/lexical",
+ "confidence": 0.7,
+ "notes": "Card: max 298; peaks '-l' x5, ' l' x5, '.L' x4, '_L' x3 ('Cuts/lacerations', 'test_user_password_change_limited', 'Ultra-Light', 'war-lord'). Probe: 'war-lord' 0.893, 'cuts/lacerations' 0.944, 'test_limited_access' 0.604, 'ten lavers' 0.714, 'co-leader' ('-le') 0.277; 'warlord' 0.000, 'anti-lock' ('-lock') 0.004, lowercase 'ultra-light' ('-light') 0.000. Items checked with the tokenizer.",
+ "selection": "random draw"
+}
