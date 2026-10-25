@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-6d4df633",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N9384-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T10:21:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N9384",
+   "pole": "-",
+   "label": "the first byte token of a katakana word that follows a space in Japanese text",
+   "fire": [
+    "昨日 ラーメンを食べました。",
+    "駅の近くに 新しい レストランができた。",
+    "アカウント設定 | パスワード変更 | ヘルプ",
+    "Ubuntu リリースノートを読んでください。",
+    "フランス > パリ の天気予報",
+    "毎朝 ジョギングをしています。",
+    "今度の 週末に カメラを買う予定です。",
+    "ホーム | ニュース | コンタクト"
+   ],
+   "quiet": [
+    "昨日ラーメンを食べました。",
+    "駅の近くに新しいレストランができた。",
+    "アカウント設定｜パスワード変更｜ヘルプ",
+    "Ubuntu の 説明を読んでください。",
+    "フランス＞パリの天気予報",
+    "毎朝 散歩をしています。",
+    "今度の 週末に 本を買う予定です。",
+    "ホーム｜ニュース｜コンタクト"
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-0.9 on the space-initial byte token of a katakana word; katakana without a preceding space, space + hiragana/kanji, and space + Chinese below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "space + katakana word start",
+ "unit_kind": "token",
+ "confidence": 0.75,
+ "notes": "Card: 32 of 32 top peaks are ' �' or 'ー�' starting a katakana word after a space (ロ, プ, ミ, ホ, フ, ブ, レ). Probe: 'Debian QA ミーティング' 0.908, ' プリンター' 0.755, ' ロンドン' 0.739, ' ログイン' 0.726, ' ホテル' 0.612; 'ホテル' with no space 0.004, ' 天気' (kanji after space) 0.071, Chinese after space 0.046, English 0.007."
+}

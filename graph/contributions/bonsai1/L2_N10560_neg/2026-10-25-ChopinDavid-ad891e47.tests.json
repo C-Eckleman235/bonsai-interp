@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-ad891e47",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N10560-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T10:21:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L2/N10560",
+   "pole": "-",
+   "label": "rare non-ASCII symbols and letters (math signs such as − π σ, arrows, Greek, Latin letters with dots below), versus their plain ASCII spellings",
+   "fire": [
+    "The reading fell to −18 on the outdoor thermometer.",
+    "Multiply the radius by 2π to get the circumference.",
+    "The temple was named after the goddess Ἀθηνᾶ by the city.",
+    "The caliph's governor in Ḥimṣ collected the taxes.",
+    "We report the mean and the spread σ for each group.",
+    "Sales went ↑ in the north and ↓ in the south.",
+    "The angle θ is measured from the horizontal axis.",
+    "The town of Ṭarsūs lies near the coast."
+   ],
+   "quiet": [
+    "The reading fell to -18 on the outdoor thermometer.",
+    "Multiply the radius by two pi to get the circumference.",
+    "The temple was named after the goddess Athena by the city.",
+    "The caliph's governor in Homs collected the taxes.",
+    "We report the mean and the spread sigma for each group.",
+    "Sales went up in the north and down in the south.",
+    "The angle theta is measured from the horizontal axis.",
+    "The town of Tarsus lies near the coast."
+   ]
+  }
+ ],
+ "predictions": "fire 0.55-0.9 on the rare symbol token; the ASCII or spelled-out equivalent below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "rare non-ASCII symbols",
+ "unit_kind": "token",
+ "confidence": 0.6,
+ "notes": "Card (max 2.53, broad): peaks on ' �' bytes for Ḥ, Ṣ, Greek, and on ' −', ' π', ' ↑', '‡', 'σ'. Probe: ' π' 0.903, 'Ṣafad' 0.881, Greek Ἥλιος 0.744, ' −24' 0.743, '(σ)' 0.691, ' ↑' 0.563; ASCII '-24' 0.025, 'the Greek word for sun' 0.150, plain filler 0.136. The plain-text floor is near 0.14, so near misses may not be far below."
+}
