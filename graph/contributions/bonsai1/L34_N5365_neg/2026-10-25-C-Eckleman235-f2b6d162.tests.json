@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-25-C-Eckleman235-f2b6d162",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N5365-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T05:00:15+00:00",
+ "selection": "concept search: echoes (copy-only digit screen)",
+ "neighbours": [
+  {
+   "unit": "L34/N5365",
+   "pole": "-",
+   "label": "inside a number that is being copied from earlier in the text, the token just before a 5 in the copy (the model knows a 5 comes next because it saw the number before); the same copies with a different digit at that spot, and first mentions where a 5 follows unpredictably, stay quiet",
+   "fire": [
+    "Your parcel tracking code is 1547.\nTo check status, enter 1547",
+    "Train 4571 departs at noon. All aboard train 4571!",
+    "The winning lottery number was 7154. Again, that is 7154.",
+    "Employee badge 1574 was scanned. Badge 1574 is cleared.",
+    "Apartment 751 is vacant.\nKeys for apartment 751 are at the desk.",
+    "The jersey number is 45. Fans chanted 45 all night.",
+    "Case file 1457 was reopened.\nInvestigators reviewed case file 1457.",
+    "Set the dial to 754. Turning it to 754 now."
+   ],
+   "quiet": [
+    "Your parcel tracking code is 1247.\nTo check status, enter 1247",
+    "Train 4271 departs at noon. All aboard train 4271!",
+    "The winning lottery number was 7124. Again, that is 7124.",
+    "Employee badge 1274 was scanned. Badge 1274 is cleared.",
+    "Apartment 751 is vacant and freshly painted.",
+    "The jersey number is 45 this season.",
+    "Case file 1457 was reopened last spring.",
+    "Set the dial to 754 before you start."
+   ],
+   "short": "before a copied 5 (copies only)",
+   "notes": "From a copy-only digit screen (10 digits x 6 pairs, position-aware: fire on the token before the copied digit, quiet there in a control that copies another digit), where the known units came back as positive controls (copied 3 L34/N3875+, 6 L34/N4571+, 8 L34/N9922-). This pole: 4/6 screen pairs; triage: copies before a 5 0.28-0.52, other digit 0.00, first mention 0.00, counting 0.001. Part of a family of layer-34 copy-digit units that feed the late 'predictable digit' units."
+  }
+ ],
+ "predictions": ">= 7/8 fire; near misses < 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ]
+ }
+}
