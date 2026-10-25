@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-d4bfaf99",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N7077-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T07:27:03+00:00",
+ "recipe": {
+  "toolchain_commit": "364944ad",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L21_N7077_neg/2026-10-25-ChopinDavid-d4bfaf99.tests.json"
+ },
+ "label": "the trailing word piece of an enterprise software or IT vendor product name ('GIS' in ArcGIS, 'VIEW' in LabVIEW, 'inet' in Fortinet, 'ica' in Vertica)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L21_N7077_neg/2026-10-25-ChopinDavid-d4bfaf99.tests.json",
+   "prereg_commit": "364944ad",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.768,
+     "peak": "GIS"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.804,
+     "peak": "GIS"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.687,
+     "peak": "VIEW"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.6,
+     "peak": "VIEW"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.309,
+     "peak": "inet"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.531,
+     "peak": "inet"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.547,
+     "peak": "ica"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.284,
+     "peak": " database"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.007,
+     "peak": " county"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.045,
+     "peak": " spreadsheet"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.061,
+     "peak": " controller"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.01,
+     "peak": " summer"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.044,
+     "peak": " branch"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.012,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.01,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.033,
+     "peak": " faster"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.574,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "364944ad",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "IT product-name pieces",
+ "unit_kind": "token/lexical",
+ "confidence": 0.55,
+ "notes": "Card: 'Arc⟦GIS⟧' x5, 'c⟦isco⟧', 'vert⟦ica⟧', ' arcpy', 'Lab⟦VIEW⟧', 'Fort⟦inet⟧'. Tokenizer: ' ArcGIS' -> ' Arc'+'GIS', ' LabVIEW' -> ' Lab'+'VIEW', ' Fortinet' -> ' Fort'+'inet', ' Vertica' -> ' Vert'+'ica'. Probe: ArcGIS 1.040, Fortinet 0.785, LabVIEW 0.625, vertica URL 0.581; same frames with album/Python/garden hose 0.033-0.139.",
+ "selection": "random draw"
+}
