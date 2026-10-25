@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-bc495806",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N6336-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T11:21:09+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N6336",
+   "pole": "-",
+   "label": "earning enough to live on (standard of living, cost of living, help support a family, above the poverty line), versus the same phrasing about non-household costs and support",
+   "fire": [
+    "Two part-time jobs were barely enough to cover the cost of living in the city.",
+    "The strike was about wages that could not sustain a decent standard of living.",
+    "At fourteen he went to work on the docks to help feed his younger siblings.",
+    "Her pension barely kept her above the poverty line after the rent went up.",
+    "Many farm families took in laundry to help make ends meet in the winter.",
+    "The median household income in the county is far below the state average.",
+    "His salary as a clerk could not support a wife and four children.",
+    "She sent most of her pay home to help support her parents in the village."
+   ],
+   "quiet": [
+    "Two new pumps were enough to cover the water needs of the whole garden.",
+    "The inspection found that the kitchen met a high standard of cleanliness.",
+    "At fourteen he went to the docks to watch the big ships come in.",
+    "The kite rose high above the trees after the wind picked up.",
+    "Many farm families decorated their barns with lanterns in the winter.",
+    "The average rainfall in the county is far below the state average.",
+    "The old wooden beams could not support the weight of the new roof.",
+    "She sent most of her photos home to show her parents the village."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-1.1 in wage-sufficiency and family-support clauses; 'standard of care', 'cost of repairs', 'beams help support' and plain sentences below 0.2; low-wage setups without the word may leak",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "livelihood / earning enough to live",
+ "unit_kind": "meaning",
+ "confidence": 0.5,
+ "notes": "Card: 'standard of living' x2, 'cost of living', 'insufficient to provide', 'help support her family', 'above the poverty line', 'median family income'. Probe: 'help support her family' 1.130, 'standard of living' 0.861, 'above the poverty line' 0.706, 'cost of living' 0.479; leaks: 'far too low to meet the cost of repairs' 0.479 and 'worked in a mill to learn the trade' 0.596 (the low-pay or work-to-earn setup fires), while 'standard of care' 0.005 and 'above the river' 0.004. Near misses below drop the household-income setup."
+}
