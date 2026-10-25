@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-6450efbe",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N1159+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T02:29:59+00:00",
+ "recipe": {
+  "toolchain_commit": "5a168ddb",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N1159_pos/2026-10-24-ChopinDavid-6450efbe.tests.json"
+ },
+ "label": "a context that predicts a 'j'/'J' token next: the index after 'i' in '[i, j]' or '(i, j)', the unit after an energy number ('2475 kJ'); it fires on the token before the j",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N1159_pos/2026-10-24-ChopinDavid-6450efbe.tests.json",
+   "prereg_commit": "5a168ddb",
+   "author": "ChopinDavid",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.149,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.24,
+     "peak": "[i"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.163,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.078,
+     "peak": " D"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.06,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.126,
+     "peak": "(i"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.177,
+     "peak": " k"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.182,
+     "peak": " A"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.042,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": -0.0,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.08,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": " D"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.005,
+     "peak": " serving"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": -0.0,
+     "peak": "(cell"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.105,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.006,
+     "peak": "[col"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.156,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "5a168ddb",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "predicts 'j'/'J' next (index j, kJ)",
+ "unit_kind": "context",
+ "confidence": 0.25,
+ "notes": "Card peaks are tokens right before a j/J: '[i' before ', j', '(i' before ', j', '5' before 'kJ', '.ReadOnly' before 'JournalForm', 'issenschaft' before 'sjournalisten'; the - pole promotes ' J'. Probe: '2475 kJ' 0.199 vs '590 calories' 0.066; 'M[i, 0]' 0.181 (peak '[i'); 'M[i, j]' 0.086; 'Location(i, j)' 0.048 vs 'Location(x, y)' 0.000. Weak and inconsistent; low confidence.",
+ "selection": "random draw"
+}

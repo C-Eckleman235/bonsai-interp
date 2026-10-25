@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-68be17d9",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N9828-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T02:21:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L32/N9828",
+   "pole": "-",
+   "label": "the word piece ' he' / ' HE' when it starts a longer split word (heeding, heeded, hearkened, HEARD, HEARING), not the pronoun 'he'",
+   "fire": [
+    "The hikers pressed on, never heeding the ranger's advice about the storm.",
+    "Few of the villagers heeded the old woman's warning about the river.",
+    "In the old story the king hearkened to the voice of his wise servant.",
+    "PLEASE CALL US TODAY - WE WANT TO MAKE SURE YOUR CONCERNS ARE HEARD",
+    "THANK YOU FOR YOUR ORDER AND WE LOOK FORWARD TO HEARING FROM YOU",
+    "The council, heeding public anger, delayed the vote by a month.",
+    "Long ago the tribes hearkened to the elders before every hunt.",
+    "VOTERS DEMAND TO BE HEARD ON THE NEW TAX PLAN"
+   ],
+   "quiet": [
+    "The hikers pressed on, though he had warned them about the storm.",
+    "Few of the villagers knew that he had warned them about the river.",
+    "In the old story the king listened to the voice of his wise servant.",
+    "PLEASE CALL US TODAY - WE WANT TO MAKE SURE YOUR CONCERNS ARE ANSWERED",
+    "THANK YOU FOR YOUR ORDER AND WE LOOK FORWARD TO SERVING YOU",
+    "The council, facing public anger, delayed the vote by a month.",
+    "Long ago the tribes listened to the elders before every hunt.",
+    "VOTERS DEMAND A SAY ON THE NEW TAX PLAN"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on ' he' or ' HE' that begins heeding/heeded/hearkened/HEARD/HEARING; the pronoun ' he' in matching frames 0.0-0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "piece ' he'/' HE' starting a word",
+ "unit_kind": "token",
+ "confidence": 0.6,
+ "notes": "Card peaks ' he' x8, ' HE' x3 in hearken/heed/HEARD/heave. Tokenizer: heeding = ' he'+'eding', heeded = ' he'+'eded', hearkened = ' he'+'ark'+'ened', HEARD = ' HE'+'ARD', heaving = ' he'+'aving'; ' heed', ' heard', ' hearing' are single tokens. Probe: HEARD 0.767; heeding 0.670; HEARING 0.596; hearkened 0.472; heaving 0.166; pronoun 'he' 0.002-0.024."
+}

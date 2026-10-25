@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-21d6d957",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N8795-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T02:21:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N8795",
+   "pole": "-",
+   "label": "dense early-layer pole on word-internal continuation pieces of split words (Arabic 'ادة' of قيادة/قتادة, 'اص' of التفاصيل, 'ral' of enthralled, final 's' of unterwegs); it is on weakly for much text",
+   "fire": [
+    "كان قتادة من كبار علماء التابعين في البصرة.",
+    "تحتاج قيادة الفريق إلى صبر كبير وحكمة.",
+    "سنعلن التفاصيل الكاملة للمشروع في الأسبوع القادم.",
+    "The children were completely enthralled by the puppet show.",
+    "Wir waren den ganzen Tag unterwegs und kamen spät nach Hause.",
+    "Audiences were enthralled by her voice on the opening night.",
+    "تولى قيادة السفينة بعد وفاة القبطان.",
+    "Er ist beruflich viel unterwegs, meistens in Europa."
+   ],
+   "quiet": [
+    "The children were very happy with the puppet show.",
+    "The team needs a patient and wise captain.",
+    "We will share the full plan for the project next week.",
+    "The audience loved her voice on the opening night.",
+    "We were out all day and came home late.",
+    "He travels a lot for work, mostly in Europe.",
+    "He took over the ship after the captain died.",
+    "The scholar taught for many years in the old city."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-0.85 on these continuation pieces; plain English sentences 0.1-0.25, so near misses will often fire weakly",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense; split-word continuation pieces",
+ "unit_kind": "dense / positional",
+ "confidence": 0.2,
+ "notes": "Card flags dense (32.6% of tokens reach 0.1 of max), max 0.20. Probe: unterwegs 's' 0.838; enthralled 'ral' 0.820; قتادة 0.817; قيادة 0.740; التفاصيل 0.738; plain English 0.134-0.173; plain Arabic 0.256. Test uses the same pieces in new sentences; English near misses without split words."
+}

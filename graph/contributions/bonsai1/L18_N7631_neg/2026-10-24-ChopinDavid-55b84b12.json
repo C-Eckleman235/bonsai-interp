@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-55b84b12",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N7631-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T02:30:30+00:00",
+ "recipe": {
+  "toolchain_commit": "5a168ddb",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L18_N7631_neg/2026-10-24-ChopinDavid-55b84b12.tests.json"
+ },
+ "label": "the operator inside a short worked formula that follows an explanation and a colon or semicolon ('l * l * l', 'W = F * d'): the point in a math explanation where the written-out equation begins",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L18_N7631_neg/2026-10-24-ChopinDavid-55b84b12.tests.json",
+   "prereg_commit": "5a168ddb",
+   "author": "ChopinDavid",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.84,
+     "peak": "s"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.159,
+     "peak": ":\n"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.119,
+     "peak": " ="
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.035,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.084,
+     "peak": " ="
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.342,
+     "peak": ":\n"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.061,
+     "peak": " ="
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.03,
+     "peak": " mass"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.036,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.047,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.065,
+     "peak": " depends"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.035,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.053,
+     "peak": " depends"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.039,
+     "peak": " grows"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.016,
+     "peak": " tells"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.057,
+     "peak": " cart"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.773,
+    "median_fire": 0.102,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "5a168ddb",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "operator in a worked formula after an explanation",
+ "unit_kind": "context",
+ "confidence": 0.25,
+ "notes": "Card peaks ' +', '\\n', ' =' and indentation in worked math. Probe: 'by itself three times:\\nl * l * l' 0.446 (peak ' *'); 'distance moved;\\nW = F * d' 0.140; 'plus C.' 0.120; 'we have\\nw + w/5' 0.062; 'x 1.1 = 121' 0.068; recipe/prose controls 0.024-0.038. Weak; low confidence.",
+ "selection": "random draw"
+}

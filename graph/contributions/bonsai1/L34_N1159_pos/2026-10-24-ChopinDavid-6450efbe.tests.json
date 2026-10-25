@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-6450efbe",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N1159+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T02:21:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N1159",
+   "pole": "+",
+   "label": "a context that predicts a 'j'/'J' token next: the index after 'i' in '[i, j]' or '(i, j)', the unit after an energy number ('2475 kJ'); it fires on the token before the j",
+   "fire": [
+    "One cup of cooked rice provides about 860 kJ of energy.",
+    "for i in range(rows):\n    for j in range(cols):\n        grid[i, j] = 1",
+    "A chocolate bar supplies roughly 2200 kJ per hundred grams.",
+    "dist = D[i, j] + D[j, k]",
+    "The label lists 1650 kJ of energy for each serving.",
+    "cell = Cell(i, j)\nboard.add(cell)",
+    "Peanut butter contains about 2500 kJ in a hundred grams.",
+    "A[i, j] = A[j, i]"
+   ],
+   "quiet": [
+    "One cup of cooked rice provides about 200 calories of energy.",
+    "for r in range(rows):\n    total += grid[r]",
+    "A chocolate bar supplies roughly 530 calories per hundred grams.",
+    "dist = D[a] + D[b]",
+    "The label lists 390 calories of energy for each serving.",
+    "cell = Cell(x, y)\nboard.add(cell)",
+    "Peanut butter contains about 590 calories in a hundred grams.",
+    "A[row] = A[col]"
+   ]
+  }
+ ],
+ "predictions": "fire 0.1-0.25 on '[i' / '(i' before ', j' and on the digit before ' kJ'; the same lines with other indices or units 0.0-0.07",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predicts 'j'/'J' next (index j, kJ)",
+ "unit_kind": "context",
+ "confidence": 0.25,
+ "notes": "Card peaks are tokens right before a j/J: '[i' before ', j', '(i' before ', j', '5' before 'kJ', '.ReadOnly' before 'JournalForm', 'issenschaft' before 'sjournalisten'; the - pole promotes ' J'. Probe: '2475 kJ' 0.199 vs '590 calories' 0.066; 'M[i, 0]' 0.181 (peak '[i'); 'M[i, j]' 0.086; 'Location(i, j)' 0.048 vs 'Location(x, y)' 0.000. Weak and inconsistent; low confidence."
+}

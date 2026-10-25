@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-24-ChopinDavid-7b13f9df",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N9421-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T02:28:43+00:00",
+ "recipe": {
+  "toolchain_commit": "5a168ddb",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L24_N9421_neg/2026-10-24-ChopinDavid-7b13f9df.tests.json"
+ },
+ "label": "a possessive that points at a child or parent in parenting advice ('your child's', 'your lead', 'a dad's', 'children's'): it marks whose needs or example is meant in child-rearing text",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L24_N9421_neg/2026-10-24-ChopinDavid-7b13f9df.tests.json",
+   "prereg_commit": "5a168ddb",
+   "author": "ChopinDavid",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.37,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.05,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.49,
+     "peak": " your"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.946,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.114,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.204,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.25,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.437,
+     "peak": " you"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.031,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.024,
+     "peak": " dam"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.049,
+     "peak": " with"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.086,
+     "peak": "'s"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.021,
+     "peak": " bank"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.012,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.044,
+     "peak": " bright"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.043,
+     "peak": " trades"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.31,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "5a168ddb",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "child/parent possessives in parenting text",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card peaks \"'s\" after child/children/dad, 孩子, ' your'. Probe: 'your teen will likely follow your lead' 0.718; \"your child's growing confidence\" 0.616; \"children's needs\" 0.344; \"a dad's steady involvement\" 0.289; \"the company's growing profit\" 0.018; \"a factory's steady output\" 0.046; child without a possessive 0.027.",
+ "selection": "random draw"
+}
