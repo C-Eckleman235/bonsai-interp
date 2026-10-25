@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-f9cec7b1",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N6891-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T03:20:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N6891",
+   "pole": "-",
+   "label": "unclear; best guess: the placeholder domain 'example' in code that builds a URL ('http://example.com'), as against real domains in the same code",
+   "fire": [
+    "config = {\n    'host': 'http://example.com',\n    'port': 8080,\n}",
+    "response = client.get('https://example.org/api/users')\nprint(response.status_code)",
+    "    'homepage': 'http://www.example.com',\n    'email': 'admin@site.net',",
+    "url = 'http://example.com/login'\nresp = session.post(url, data=payload)",
+    "def test_redirect(self):\n    r = self.client.get('http://example.com/old')\n    self.assertEqual(r.status_code, 301)",
+    "    'callback_url': 'https://example.net/hook',\n    'retries': 3,",
+    "BASE = 'http://api.example.com/v2'\nheaders = {'Accept': 'application/json'}",
+    "link = '<a href=\"http://example.com/about\">About us</a>'\nhtml += link"
+   ],
+   "quiet": [
+    "config = {\n    'host': 'http://localhost',\n    'port': 8080,\n}",
+    "response = client.get('https://github.com/api/users')\nprint(response.status_code)",
+    "    'homepage': 'http://www.python.org',\n    'email': 'admin@site.net',",
+    "url = 'http://wikipedia.org/login'\nresp = session.post(url, data=payload)",
+    "def test_redirect(self):\n    r = self.client.get('/old')\n    self.assertEqual(r.status_code, 301)",
+    "    'callback_url': 'https://slack.com/hook',\n    'retries': 3,",
+    "BASE = 'http://api.weather.gov/v2'\nheaders = {'Accept': 'application/json'}",
+    "link = '<a href=\"/about\">About us</a>'\nhtml += link"
+   ]
+  }
+ ],
+ "predictions": "if the guess holds, fire 0.3-0.5 on 'example' in code URLs; real domain names below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "unclear (placeholder 'example' URL?)",
+ "unit_kind": "unclear",
+ "confidence": 0.25,
+ "notes": "Small (max 2.89), broad (1.1% of tokens) pole, 95% gate-closed regime; top examples are document-initial tokens after <|endoftext|>, 'example' in a URL, ' test' in a test method, ' dogs', ' bad'. Probe: 'http://example.com' in a dict 0.468, ' bad' credit 0.192, ' test' 0.128, ' dogs' 0.127; document-initial 'P' 0.048. Low confidence."
+}

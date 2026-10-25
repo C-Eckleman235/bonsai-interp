@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-336f4991",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N6110-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T03:20:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N6110",
+   "pole": "-",
+   "label": "' or' as a fallback operator in code after a subscript or call ('opts[\"x\"] or default', \"get('name') or ''\"), as against ' or' between alternatives in prose",
+   "fire": [
+    "timeout = settings['timeout'] or 30",
+    "user = session.get('user') or anonymous_user()",
+    "path = os.environ.get('HOME') or '/tmp'",
+    "title = row['title'] or row['name']",
+    "port = config.get('port') or 8080",
+    "label = data['label'] or ''",
+    "items = cache.get(key) or []",
+    "mode = args['mode'] or defaults['mode']"
+   ],
+   "quiet": [
+    "timeout = settings['timeout']",
+    "user = session.get('user')",
+    "path = os.environ.get('HOME')",
+    "Would you like the soup or the salad tonight?",
+    "port = config.get('port')",
+    "You can pay by card or in cash at the desk.",
+    "items = cache.get(key)",
+    "We could take the bus or walk to the station."
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.25 on ' or' after a subscript or call in code; prose 'tea or coffee' and code with no ' or' below 0.06",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "code fallback ' or'",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Tiny layer-0 pole (max 0.69); card peaks ' or' x5 in code (\"log.opts['md_print'] or log\", \"') or ''\"), ')]', ' Conversely'. Probe: \"opts['md_print'] or opts['quiet']\" 0.238, \"get('name') or ''\" 0.149; 'return value or default' 0.001 (after a bare name), tea or coffee 0.037, same line without or 0.059. The median may fall below the bar."
+}

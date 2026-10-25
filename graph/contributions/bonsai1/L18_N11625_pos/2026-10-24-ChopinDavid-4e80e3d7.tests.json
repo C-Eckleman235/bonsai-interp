@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-24-ChopinDavid-4e80e3d7",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N11625+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T03:20:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N11625",
+   "pole": "+",
+   "label": "the party or office tag that follows a politician's name in news copy ('Durbin, D-Ill.', 'Slaughter (D-NY)', 'the Shiv Sena MP'), as against the same letters as grades or section labels and names of non-politicians",
+   "fire": [
+    "The amendment was drafted by Sen. Patty Murray, D-Wash., and two colleagues.",
+    "Speaking on the floor, Rep. Jim Jordan, R-Ohio, criticized the agency.",
+    "Rep. Nancy Pelosi (D-Calif.) praised the vote late Thursday.",
+    "A spokesman for Sen. John Thune, R-S.D., said the vote would wait.",
+    "The Labour MP said she would raise the issue in Parliament.",
+    "The letter was signed by Rep. Elijah Cummings, D-Md., and others.",
+    "Sen. Lisa Murkowski (R-Alaska) said she had not decided.",
+    "According to Rep. Tim Ryan, D-Ohio, the plant will stay open."
+   ],
+   "quiet": [
+    "The recipe was drafted by Patty Murray, a chef in Seattle, and two cooks.",
+    "Speaking at the fair, Jim Jordan, a farmer from Ohio, praised the weather.",
+    "Nancy Hill, who runs the bakery, praised the new oven late Thursday.",
+    "A spokesman for the museum said the opening would wait.",
+    "The teacher said she would raise the issue at the parents' meeting.",
+    "The letter was signed by Elijah Brown, the school principal, and others.",
+    "My son got a D in algebra and a B in art this term.",
+    "According to the plumber, the leak will need a new pipe."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-1.1 on D/R/MP after a legislator; grades, form sections and non-political appositives below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "party tag after a politician's name",
+ "unit_kind": "context",
+ "confidence": 0.7,
+ "notes": "Card peaks ' D' x4, ' R' x3, ' MP' after legislators' names. Probe: 'Durbin, D-Ill.' 1.098, 'Turzai, R-Allegheny' 0.902, 'Schiff, D-Calif.' 0.730, '(D-NY)' 0.692, 'Shiv Sena MP' 0.944; a grade D 0.017, section D 0.006. Caution: 'Sen. Dick Durbin said' reached 0.504 at the period of 'Sen.', so near misses avoid Sen./Rep. titles."
+}
