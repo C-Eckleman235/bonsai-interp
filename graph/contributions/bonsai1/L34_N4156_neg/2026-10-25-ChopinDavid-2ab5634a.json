@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-2ab5634a",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N4156-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T12:29:05+00:00",
+ "recipe": {
+  "toolchain_commit": "2734e5cf",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N4156_neg/2026-10-25-ChopinDavid-2ab5634a.tests.json"
+ },
+ "label": "the token ' re' / ' Re' when it is split off as its own piece at the start of a word (Re|ise, re|çu, re|heat), in any language; whole-word tokens that begin with re do not fire",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N4156_neg/2026-10-25-ChopinDavid-2ab5634a.tests.json",
+   "prereg_commit": "2734e5cf",
+   "author": "ChopinDavid",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.08,
+     "peak": " Re"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.342,
+     "peak": " Re"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.269,
+     "peak": " Re"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.166,
+     "peak": " Re"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.014,
+     "peak": " fr"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.522,
+     "peak": " re"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.119,
+     "peak": " re"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.102,
+     "peak": " re"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.002,
+     "peak": "Wir"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.006,
+     "peak": " nach"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.018,
+     "peak": " die"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.01,
+     "peak": " eine"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.028,
+     "peak": " écrit"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.063,
+     "peak": " centro"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.002,
+     "peak": " review"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.004,
+     "peak": " make"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.953,
+    "median_fire": 0.143,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "2734e5cf",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "split-off ' re' / ' Re' piece",
+ "unit_kind": "token",
+ "confidence": 0.6,
+ "notes": "Card: top peaks are ' re' x16 and ' Re' x10 as split pieces (Panagrellus re|divivus, Re|iseveranstaltern, Re|legation, re|naissance, re|çu). Probe: re|divivus 0.846, Re|iseveranstalter 0.884, re|çu 0.442, re|naissance 0.397, Re|legation 0.346; single-token remember/return 0.003, rebuild 0.004. Every fire item was checked with the tokenizer to split off ' re' or ' Re'; English re|heat and re|train are untested by probes.",
+ "selection": "random draw"
+}

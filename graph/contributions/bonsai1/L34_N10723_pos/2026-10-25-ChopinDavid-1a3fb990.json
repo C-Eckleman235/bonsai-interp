@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-1a3fb990",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N10723+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T12:28:45+00:00",
+ "recipe": {
+  "toolchain_commit": "2734e5cf",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N10723_pos/2026-10-25-ChopinDavid-1a3fb990.tests.json"
+ },
+ "label": "unclear: tokens in resource-management contexts, mostly code that handles 'resource' objects and the word 'energy' in 'distributed energy'; does not depend on the word 'resource' following",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N10723_pos/2026-10-25-ChopinDavid-1a3fb990.tests.json",
+   "prereg_commit": "2734e5cf",
+   "author": "ChopinDavid",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.523,
+     "peak": "):\n"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.274,
+     "peak": "otas"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.322,
+     "peak": "):\n"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.344,
+     "peak": "(\n"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.853,
+     "peak": " energy"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.27,
+     "peak": ".release"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.548,
+     "peak": "):\n"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.782,
+     "peak": " energy"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": -0.0,
+     "peak": " b"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": -0.0,
+     "peak": "Hello"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": -0.0,
+     "peak": "_of"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.0,
+     "peak": " x"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": -0.0,
+     "peak": "ers"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.057,
+     "peak": " word"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": -0.0,
+     "peak": " name"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.0,
+     "peak": " bright"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.433,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "2734e5cf",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "unclear (resource-handling code)",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card: peaks in code around resources ('parsed_data[u'resource_definitions']', 'resource.init_quotas()', 'ResourceBundleDAO.save', 'test_bulk_delete_unknown_resource') and 'distributed energy resources'. The - pole promotes 'resource'. Probe: 'def test_delete_unknown_resource(self):' 0.630, 'distributed energy resources' 0.520 but 'distributed energy grids' also 0.520 (peak on ' energy'), 'data[u'resource_name']' 0.284; 'human resources' -0.000, 'natural resources' 0.113. So it is not a next-token 'resource' predictor; best guess is a resource-management code context, low confidence.",
+ "selection": "random draw"
+}

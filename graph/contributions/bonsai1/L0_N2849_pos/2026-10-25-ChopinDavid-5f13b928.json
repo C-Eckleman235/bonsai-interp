@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-5f13b928",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N2849+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T12:27:33+00:00",
+ "recipe": {
+  "toolchain_commit": "2734e5cf",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N2849_pos/2026-10-25-ChopinDavid-5f13b928.tests.json"
+ },
+ "label": "the word pieces 'withstanding' (in 'Notwithstanding') and '-based' (in compounds like 'evidence-based'), with weaker firing on some intensifying adjectives",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N2849_pos/2026-10-25-ChopinDavid-5f13b928.tests.json",
+   "prereg_commit": "2734e5cf",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.754,
+     "peak": "withstanding"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.543,
+     "peak": "-based"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.768,
+     "peak": "withstanding"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.4,
+     "peak": "-based"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.554,
+     "peak": "-based"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.793,
+     "peak": "withstanding"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.337,
+     "peak": "-based"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.416,
+     "peak": "-based"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.15,
+     "peak": " indoors"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.07,
+     "peak": " clinic"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.045,
+     "peak": " his"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.035,
+     "peak": " new"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.144,
+     "peak": " shops"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.031,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.034,
+     "peak": " weekly"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.157,
+     "peak": " cheaper"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.548,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "2734e5cf",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "'withstanding' and '-based' pieces",
+ "unit_kind": "token",
+ "confidence": 0.45,
+ "notes": "Card max is only 0.68 and the pole is broad (1.6% of tokens reach 0.1 of max); top peaks are '-based' x12 and 'withstanding' x10. Probe: 'Notwithstanding these difficulties' 0.823, 'competency-based' 0.922, 'employer-based' 0.321, lower-case mid-sentence 'notwithstanding' 0.352; 'Despite these difficulties' 0.077, 'is based in Denver' 0.017. Caution: 'exceptionally violent' 0.643, so near misses avoid strong intensifiers.",
+ "selection": "random draw"
+}
