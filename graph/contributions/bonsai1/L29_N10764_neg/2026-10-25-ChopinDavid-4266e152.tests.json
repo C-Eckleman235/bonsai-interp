@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-4266e152",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N10764-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T20:21:15+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N10764",
+   "pole": "-",
+   "label": "a word broken so that a bare 'l'/'L' piece starts the second part after a hyphen, slash, underscore, dot or space (war-lord, cuts/lacerations, test_limited, .Lower): the split-off 'l' spelling unit, as opposed to the same words where the tokenizer keeps 'l' inside a longer piece",
+   "fire": [
+    "Critics called the novel's hero semi-literate but charming.",
+    "Bruises/lacerations on the arms were noted in the nurse's report.",
+    "    def check_limited_scope(self):\n        self.assertTrue(self.scope)",
+    "The company sells an Ultra-Light tent for long-distance hikers.",
+    "    mode = text.LOWER_CASE\n    return mode",
+    "In the old story, the war-lord demanded a tribute of grain each autumn.",
+    "    x = driver.LinuxDriver(name)\n    return x",
+    "The museum displays two bronze lavers from the ancient temple."
+   ],
+   "quiet": [
+    "Critics called the novel's hero barely able to read but charming.",
+    "Bruises and cuts on the arms were noted in the nurse's report.",
+    "    def check_scope(self):\n        self.assertTrue(self.scope)",
+    "The company sells an ultra-light tent for long-distance hikers.",
+    "    mode = text.UPPER_CASE\n    return mode",
+    "In the old story, the warlord demanded a tribute of grain each autumn.",
+    "    x = driver.WindowsDriver(name)\n    return x",
+    "The museum displays two bronze bowls from the ancient temple."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-0.95 where '-l', '/l', '_l', '.L' or ' l' is its own token; same words with merged pieces ('-lock', 'lord') below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-off l/L piece",
+ "unit_kind": "token/lexical",
+ "confidence": 0.7,
+ "notes": "Card: max 298; peaks '-l' x5, ' l' x5, '.L' x4, '_L' x3 ('Cuts/lacerations', 'test_user_password_change_limited', 'Ultra-Light', 'war-lord'). Probe: 'war-lord' 0.893, 'cuts/lacerations' 0.944, 'test_limited_access' 0.604, 'ten lavers' 0.714, 'co-leader' ('-le') 0.277; 'warlord' 0.000, 'anti-lock' ('-lock') 0.004, lowercase 'ultra-light' ('-light') 0.000. Items checked with the tokenizer."
+}

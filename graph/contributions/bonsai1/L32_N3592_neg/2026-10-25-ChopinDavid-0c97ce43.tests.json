@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-0c97ce43",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N3592-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T20:21:15+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L32/N3592",
+   "pole": "-",
+   "label": "' press' and ' news' used as the journalism modifier of an event or item (press conference, news conference, press release), and French 'conf' in conférence: the media-briefing word, as opposed to journalism contexts without those words and 'press' as a machine or verb",
+   "fire": [
+    "The mayor announced the new budget at a press conference on Tuesday.",
+    "At a news conference in Paris, the minister defended the reform.",
+    "Le président a parlé lors d'une conférence de presse à Bruxelles.",
+    "The company confirmed the merger in a press release this morning.",
+    "Police gave few details at a brief news conference outside the station.",
+    "La conférence des évêques s'est tenue à Lyon cette année.",
+    "The striker said at his farewell press conference that he would miss the fans.",
+    "Officials will hold a news briefing at noon to update the public."
+   ],
+   "quiet": [
+    "The mayor announced the new budget to reporters on Tuesday.",
+    "Speaking to journalists in Paris, the minister defended the reform.",
+    "Le président a parlé aux journalistes à Bruxelles.",
+    "The company confirmed the merger in a statement this morning.",
+    "Police gave few details to the reporters gathered outside the station.",
+    "La réunion des évêques s'est tenue à Lyon cette année.",
+    "The striker told reporters after his last match that he would miss the fans.",
+    "The old printing press in the cellar still works on special days."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.97 on ' press'/' news' before conference/release and on 'conf'; reporter or briefing sentences without the words and printing press below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "press/news media modifier",
+ "unit_kind": "token/lexical",
+ "confidence": 0.6,
+ "notes": "Card: max 219; peaks ' press' x8, ' news' x6, ' conf' x4 ('a news conference Monday', 'introductory press conference', 'une conférence des Ministres'). Probe: 'conférence à Genève' 0.968, 'news conference' 0.668, 'press conference' 0.553, 'press release' 0.481, 'news report' 0.396 (the word fires before the next noun); 'printing press' 0.008, 'medical conference' 0.062, 'meeting with reporters' 0.051."
+}

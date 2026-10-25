@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-46e97de2",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N7289+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T20:21:15+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N7289",
+   "pole": "+",
+   "label": "the end of a line inside deeply indented code (12 or more spaces, nested blocks): the line break that keeps a deep block going, as opposed to the same lines at shallow indentation",
+   "fire": [
+    "                if value is None:\n                    missing.append(key)\n                else:\n                    found += 1\n",
+    "            for row in rows:\n                if row.empty:\n                    continue\n                total += row.size\n",
+    "                    while queue:\n                        node = queue.pop()\n                        seen.add(node)\n",
+    "            try:\n                data = load(path)\n            except IOError:\n                data = None\n",
+    "                if retries > 3:\n                    log.warning('giving up')\n                    break\n",
+    "            elif mode == 'w':\n                handle.write(text)\n                handle.flush()\n",
+    "                    if line.startswith('#'):\n                        comments += 1\n                        continue\n",
+    "            with open(name) as f:\n                lines = f.readlines()\n                count = len(lines)\n"
+   ],
+   "quiet": [
+    "if entry is None:\n    absent.append(name)\nelse:\n    hits += 1\n",
+    "for line in lines:\n    if line.blank:\n        continue\n    size += line.width\n",
+    "while stack:\n    item = stack.pop()\n    done.add(item)\n",
+    "try:\n    conf = read(fname)\nexcept IOError:\n    conf = {}\n",
+    "if retries > 3:\n    log.warning('giving up')\n    exit(1)\n",
+    "if mode == 'w':\n    handle.write(text)\n    handle.flush()\n",
+    "Each comment line starts with a hash sign.\nThe parser counts them.\nThen it moves on.\n",
+    "with open(src) as fh:\n    text = fh.read()\nsize = len(text)\n"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on '\\n', ':\\n', ')\\n' at 12+ space indentation; the same code at 0-4 spaces below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "line end in deep code block",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: max 207; peaks '\\n' x9, ':\\n' x7, ')\\n' x6, all at 16-20 space indentation ('removed.append(i)' then else, 'if not name:', 'startrow += 1'). Probe: snippet at 12-16 spaces 0.527, 4-level nesting from column 0 0.163-0.189, flat code 0.047, prose 0.014."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-5732e9df",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L16/N5691+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T20:21:15+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L16/N5691",
+   "pole": "+",
+   "label": "unclear: a sparse pole on '.\\n' ending a paragraph of web prose before a new paragraph; probes of ordinary paragraph breaks scored near zero, so the trigger that selects these breaks is unknown",
+   "fire": [
+    "Ants are attracted to sugar left on kitchen counters and in many sweet food products.\nThis spray works by coating the trail they follow.",
+    "Mount the mirror so it faces the window in the hallway.\nYou can pick a round frame or a plain square one.",
+    "The rocket was towed through city streets to the aviation museum.\nThousands of people came out to see it.",
+    "Choose a colour that suits the size and light of your room.\nAnother thing to think about is the finish.",
+    "Many weed killers contain this compound and its close relatives.\nIt acts by blocking a key enzyme in the leaf.",
+    "Put a small arrow on the door leading to the garden.\nGuests will find their way without asking.",
+    "The study appeared in the Journal of Applied Ecology (JAE).\nMost farmers had never heard of it.",
+    "Keep the patio furniture covered when it is not in use.\nOutdoor chairs last much longer this way."
+   ],
+   "quiet": [
+    "Ants are attracted to sugar left on kitchen counters, and this spray works by coating the trail they follow.",
+    "Mount the mirror so it faces the window; you can pick a round frame or a plain square one.",
+    "The rocket was towed through city streets to the aviation museum, and thousands of people came out.",
+    "Choose a colour that suits the size and light of your room, then think about the finish.",
+    "Many weed killers contain this compound, which acts by blocking a key enzyme in the leaf.",
+    "Put a small arrow on the door leading to the garden so guests find their way.",
+    "The study appeared in a journal that most farmers had never heard of.",
+    "Keep the patio furniture covered when it is not in use, and it will last longer."
+   ]
+  }
+ ],
+ "predictions": "best guess fire on '.\\n' before a new paragraph in product or how-to web text; all probe configurations scored below 0.04, so this will likely fail",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "rare paragraph-final period (unclear)",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Card: max 61, very sparse (0.009%); peaks '.\\n' x20 ('insecticides products.\\nThis chemical', 'direction of the room.\\nYou can choose', 'California Science Center.\\nTravelling'). Probe: five paragraph breaks 0.002-0.008, same text without break 0.005, list lines 0.008."
+}

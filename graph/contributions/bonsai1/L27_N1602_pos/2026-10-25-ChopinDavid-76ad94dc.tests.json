@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-76ad94dc",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N1602+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T20:21:15+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L27/N1602",
+   "pole": "+",
+   "label": "the medical modifier ' chronic' and other words that set up 'pain' next in clinical text (dulling chronic, control, treating): a pain-and-long-term-illness anticipator, as opposed to the same medical sentences with a different modifier",
+   "fire": [
+    "Many older adults live with chronic back problems that limit their walking.",
+    "The clinic offers a program for patients with chronic headaches.",
+    "Physiotherapy is often the first step for people with chronic joint stiffness.",
+    "The new drug was tested in adults with chronic nerve damage.",
+    "Doctors warned that chronic inflammation can damage the heart over time.",
+    "Her chronic migraines kept her away from work for weeks.",
+    "Researchers followed two hundred people with chronic arthritis for a year.",
+    "Massage may ease chronic muscle tension in the neck and shoulders."
+   ],
+   "quiet": [
+    "Many older adults live with hearing problems that limit their social life.",
+    "The clinic offers a program for patients who want to quit smoking.",
+    "Physiotherapy is often the first step for people after a hip replacement.",
+    "The new drug was tested in adults with high blood pressure.",
+    "Doctors warned that a poor diet can damage the heart over time.",
+    "Her new job kept her away from home for weeks.",
+    "Researchers followed two hundred people with mild asthma for a year.",
+    "Massage may improve circulation in the neck and shoulders."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.85 on ' chronic' in medical sentences, even before non-pain nouns; same sentences with 'acute'/'rare'/'new' below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'chronic' pain anticipator",
+ "unit_kind": "token/lexical",
+ "confidence": 0.5,
+ "notes": "Card: max 254; peaks ' pain' x6, ' chronic' x2 ('dulling chronic or so-called slow pain', 'patients with chronic non-cancer pain', 'treating severe pain', 'control pain'). Probe: 'dulling chronic pain' 0.828, 'treating chronic infections' 0.735 (fires without pain), 'control pain' 0.324, 'in pain' 0.280; 'treating mild infections' 0.013, 'control costs' 0.002."
+}
