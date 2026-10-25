@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-89ede878",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N8106+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T18:27:05+00:00",
+ "recipe": {
+  "toolchain_commit": "fb46efa9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N8106_pos/2026-10-25-ChopinDavid-89ede878.tests.json"
+ },
+ "label": "the character '在' when the tokenizer keeps it as its own token (Japanese compounds 在庫, 在住, 在籍, 在宅 and Chinese 在 + place), plus the word-final piece 'ai' in Lithuanian or Pashtun surnames; merged tokens such as 现在, 存在, 所在 do not carry it",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N8106_pos/2026-10-25-ChopinDavid-89ede878.tests.json",
+   "prereg_commit": "fb46efa9",
+   "author": "ChopinDavid",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.652,
+     "peak": "在"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.852,
+     "peak": "在"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.723,
+     "peak": "在"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.797,
+     "peak": "在"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.943,
+     "peak": "在"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.209,
+     "peak": "在"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.923,
+     "peak": "ai"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.102,
+     "peak": "ai"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.001,
+     "peak": "シャ"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.002,
+     "peak": "む"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.003,
+     "peak": "しています"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": "います"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.002,
+     "peak": "の"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.001,
+     "peak": "。"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.023,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.014,
+     "peak": " near"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.76,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "fb46efa9",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "standalone '在' token",
+ "unit_kind": "token/lexical",
+ "confidence": 0.65,
+ "notes": "Card: peaks '在' x22, ' 在' x4, 'ai' x4 (在籍, 在庫, 在住, Yousafzai). Probe: '在庫がある' 0.963, '在籍期間' 0.846, '一、在婚禮現場' 0.766, 'Tyzenhauzai' 0.927, 'Yousafzai' 0.858; '，在' merged 0.367; '现在住在北京' 0.125 (merged 现在, 在北京); '一直存在' -0.001. Every item checked with tokcheck.",
+ "selection": "random draw"
+}

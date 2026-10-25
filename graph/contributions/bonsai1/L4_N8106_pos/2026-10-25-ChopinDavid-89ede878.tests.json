@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-89ede878",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N8106+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T18:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N8106",
+   "pole": "+",
+   "label": "the character '在' when the tokenizer keeps it as its own token (Japanese compounds 在庫, 在住, 在籍, 在宅 and Chinese 在 + place), plus the word-final piece 'ai' in Lithuanian or Pashtun surnames; merged tokens such as 现在, 存在, 所在 do not carry it",
+   "fire": [
+    "このシャツはまだ在庫があります。",
+    "東京に在住の外国人が増えています。",
+    "彼は大学に在籍しています。",
+    "私は週に三日、在宅で働いています。",
+    "三年間の在任中に多くの改革を行った。",
+    "新娘和新郎在会场门口迎接客人。",
+    "The novel is set in the village of the Tarakzai tribe.",
+    "We visited the Pliateraitai family farm near Kaunas."
+   ],
+   "quiet": [
+    "このシャツはもう売り切れです。",
+    "東京に住む外国人が増えています。",
+    "彼は大学に所属しています。",
+    "私は週に三日、会社で働いています。",
+    "三年間の任期中に多くの改革を行った。",
+    "新娘和新郎一直站着迎接客人。",
+    "The novel is set in the village of the hill tribe.",
+    "We visited the old family farm near Kaunas."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.95 on standalone '在' and on name-final 'ai'; sentences with merged 现在/存在/所在/在校 or with synonyms in place of 在 below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "standalone '在' token",
+ "unit_kind": "token/lexical",
+ "confidence": 0.65,
+ "notes": "Card: peaks '在' x22, ' 在' x4, 'ai' x4 (在籍, 在庫, 在住, Yousafzai). Probe: '在庫がある' 0.963, '在籍期間' 0.846, '一、在婚禮現場' 0.766, 'Tyzenhauzai' 0.927, 'Yousafzai' 0.858; '，在' merged 0.367; '现在住在北京' 0.125 (merged 现在, 在北京); '一直存在' -0.001. Every item checked with tokcheck."
+}

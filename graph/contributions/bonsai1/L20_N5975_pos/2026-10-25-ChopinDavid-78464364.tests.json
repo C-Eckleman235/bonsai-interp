@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-78464364",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N5975+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T18:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L20/N5975",
+   "pole": "+",
+   "label": "unclear: peaks on closing quote-bracket-newline tokens and indentation in long Python test files (\"'])\\n\", \"']\\n\\n\", self.), but short code snippets do not reproduce it",
+   "fire": [
+    "import unittest\n\nclass UserViewTests(TestCase):\n    fixtures = ['accounts-users.json']\n\n    def setUp(self):\n        self.client.login(username='a', password='b')\n",
+    "    def test_upload(self):\n        resp = self.client.post('/upload', data=self.payload,\n            headers=self.mocks['headers_with_token'])\n        self.assertEqual(resp.status_code, 200)\n",
+    "class OrderTests(TestCase):\n    fixtures = ['orders.yaml', 'products.yaml']\n\n    def test_total(self):\n        order = Order.objects.get(pk=1)\n",
+    "        title.set_color(cfg['title']['color'])\n        title.set_size(cfg['title']['size'])\n        title.set_family(cfg['title']['font'])\n",
+    "    def test_parse(self):\n        result = parse(self.fixtures['simple_config'])\n        self.assertIn('name', result)\n",
+    "REQUIRED_KEYS = ['input_path', 'output_path', 'max_threads',\n                 'log_level']\n\ndef check(cfg):\n    return all(k in cfg for k in REQUIRED_KEYS)\n",
+    "class Stack:\n    def __init__(self, size):\n        self._items = [None] * size\n        self._size = size\n        self._top = 0\n",
+    "        req = build_request(\n            auth=self.creds['service_account_new'])\n        self.assertTrue(req.ok)\n"
+   ],
+   "quiet": [
+    "The test was easy, and the students finished it early.",
+    "She wrote 'thank you' on the card and left it on the desk.",
+    "The shop sells apples, pears, plums and fresh bread.",
+    "He called out 'goodbye' and closed the door behind him.",
+    "The report has three parts: input, output and a summary.",
+    "We stacked the boxes by size, biggest at the bottom.",
+    "The sign said 'closed' in large red letters.",
+    "Please bring your passport, your ticket and a pen."
+   ]
+  }
+ ],
+ "predictions": "best guess: fire 0.1-0.3 on \"'])\" and \"']\" line ends inside longer Python unittest code; prose with quotes below 0.05; expected to fail because probes stayed below 0.09",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "unclear: Python closing quotes/brackets",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card max 34; peaks '       ' x2, ' self' x2, \"'])\\n\", \"']\\n\\n\" (http=my_mocks['...'])\\n, fixtures = ['admin-views-users.xml']). Probe: none of the short snippets reproduced it: fixture line 0.068, set_style(...['style']) 0.085, list of setting names 0.028, mocks 0.006; prose 0.008-0.014. Registered unclear; fire items are longer test-file passages."
+}

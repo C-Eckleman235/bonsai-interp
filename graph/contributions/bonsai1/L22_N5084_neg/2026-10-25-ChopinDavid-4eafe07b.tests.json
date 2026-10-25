@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-4eafe07b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N5084-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T18:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N5084",
+   "pole": "-",
+   "label": "the author announcing their own procedure in a methods or how-to section ('We will ...', 'In this study, ...' after a step or section heading), as opposed to the same words outside a procedural write-up",
+   "fire": [
+    "Materials: a breadboard, a buzzer, two AA batteries.\nStep 2: Wire the buzzer\nWe will connect the buzzer to the positive rail first.",
+    "2. Methods\nIn this study, forty volunteers wore a heart-rate monitor for a week.",
+    "Procedure\nIn this experiment, the seeds were soaked in salt water for two days.",
+    "Section 3: Data collection\nWe will survey shop owners in three districts of the city.",
+    "Step 4 - Test the sensor\nWe will now check that the sensor reads the room temperature.",
+    "3.1 Study design\nIn this research, the independent variable is the dose of caffeine.",
+    "Overview of the tutorial\nWe will build a small web server in about fifty lines of code.",
+    "Methodology\nIn this survey, respondents rated their trust in local news on a scale of one to five."
+   ],
+   "quiet": [
+    "My grandmother grew up by the sea.\nIn this village, everyone knew the fishermen by name.",
+    "History lesson\nThe study of ancient Rome tells us a lot about modern law.",
+    "Weather report\nTomorrow it will rain in the north and clear up by the evening.",
+    "Chapter 2\nThe old house will be sold once the family agrees on a price.",
+    "Sports news\nIn this league, teams play each other twice a season.",
+    "Travel diary\nIn this city, the trams run late into the night.",
+    "Letters to the editor\nShe said the bridge will never be finished on time.",
+    "A short story\nThe children will remember that summer for the rest of their lives."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.6 on ' will' / ' study' / ' experiment' when the author introduces their own procedure after a heading; 'in this town', 'the study of history', narrative 'will' below 0.12",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "methods-section 'we will / in this study'",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: peaks ' this' x5, ' We' x4, ' will', ' study' (Step 1 ... We will be sensing; 3.3 dependent variable / In this research; In this study). Probe: 'Step 1 ... We will be measuring' 0.535, 'Methods / In this study, participants' 0.434; 'For this project,' (no heading) 0.087, 'In this town' 0.050, 'The study of history' 0.020, narrative 'they will have finished' 0.014. Fire items put a heading line before the author's procedural sentence."
+}

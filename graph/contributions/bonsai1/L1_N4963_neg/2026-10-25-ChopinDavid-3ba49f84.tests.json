@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-3ba49f84",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N4963-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T18:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N4963",
+   "pole": "-",
+   "label": "dense / positional: a tiny-magnitude, broad layer-1 pole that fires on many tokens of Chinese, Korean and French text (书, 甜, 五, 적으로, ' em') and barely on plain English; no specific trigger",
+   "fire": [
+    "这家咖啡馆的小蛋糕做得很精致。",
+    "그 화가는 전통 풍경을 현대적으로 표현했다。",
+    "Le feu d'artifice a illuminé la tour emblématique de la ville.",
+    "约翰福音第三章十六节是最有名的经文。",
+    "会议定于二〇一〇年三月五日（星期五）举行。",
+    "이 작품은 한국적 정서를 섬세하게 담고 있다。",
+    "Les enfants ont embrassé leur grand-mère avant de partir.",
+    "他在书店里买了一本旧书。"
+   ],
+   "quiet": [
+    "The small cakes at this café are very carefully made.",
+    "The painter expressed traditional landscapes in a modern way.",
+    "The fireworks lit up the famous tower of the city.",
+    "The third chapter of John is the best-known passage.",
+    "The meeting is set for Friday the fifth of March, 2010.",
+    "This work carefully captures a sense of Korean feeling.",
+    "The children hugged their grandmother before leaving.",
+    "He bought an old book at the bookshop."
+   ]
+  }
+ ],
+ "predictions": "best guess: fire 0.4-0.75 on CJK/Korean/French sentences, English sentences below 0.1; but some Chinese sentences score low (0.05), so the test may fail",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense: non-English text tokens",
+ "unit_kind": "dense / positional",
+ "confidence": 0.2,
+ "notes": "Card: max only 0.20, broad (2.5% of tokens at 0.1 of max), gate-closed leak regime 83%; peaks '书' x4, ' em' x3, '扫', '五'. Probe: Korean '현대적으로' 0.740, '小甜品' 0.728, French 'emblématique' 0.688, '哥林多前书' 0.677, '星期五' 0.589, 'from ..base import' 0.425; English 'He still lives' 0.087, 'cold and grey' -0.058; but '我今天去图书馆借书' 0.049. Registered dense with a best-guess language contrast."
+}

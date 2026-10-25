@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-040373e0",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N3419-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T18:28:26+00:00",
+ "recipe": {
+  "toolchain_commit": "fb46efa9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L18_N3419_neg/2026-10-25-ChopinDavid-040373e0.tests.json"
+ },
+ "label": "the double-pipe cell separator '||' in a scraped spec table, just before a numeric value or range (|Temperature range °F||-100 to 500|), as opposed to the same specs written as prose",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L18_N3419_neg/2026-10-25-ChopinDavid-040373e0.tests.json",
+   "prereg_commit": "fb46efa9",
+   "author": "ChopinDavid",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.425,
+     "peak": "||"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.118,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.034,
+     "peak": "|"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.521,
+     "peak": "||"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.055,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.048,
+     "peak": "||"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.037,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.086,
+     "peak": ")||"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.012,
+     "peak": " minus"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.008,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.026,
+     "peak": " wall"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.02,
+     "peak": " sunlight"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.026,
+     "peak": " small"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.022,
+     "peak": " dive"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.01,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.015,
+     "peak": " suitcase"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.07,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "fb46efa9",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "'||' before a numeric table cell",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: peaks '0' x3, ',', '||', '4', '_sp', ' −' (Temperature range °F||-100; [4.828; HCT – 0,360). Probe: pipe table with temperature ranges 0.462, 'HCT – 0,360' 0.203; 'assertAllClose([4.828...' 0.021, prose '−4 m' 0.033, '|Power (kW)||404|' 0.034 (single row, no range), prose 'temperature range of the oven' 0.014. Fire items follow the two-row range table that fired.",
+ "selection": "random draw"
+}

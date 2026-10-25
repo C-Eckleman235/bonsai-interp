@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-78464364",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N5975+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T18:28:39+00:00",
+ "recipe": {
+  "toolchain_commit": "fb46efa9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L20_N5975_pos/2026-10-25-ChopinDavid-78464364.tests.json"
+ },
+ "label": "unclear: peaks on closing quote-bracket-newline tokens and indentation in long Python test files (\"'])\\n\", \"']\\n\\n\", self.), but short code snippets do not reproduce it",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L20_N5975_pos/2026-10-25-ChopinDavid-78464364.tests.json",
+   "prereg_commit": "fb46efa9",
+   "author": "ChopinDavid",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.054,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.06,
+     "peak": "_with"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.068,
+     "peak": "']\n\n"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.083,
+     "peak": "_size"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.042,
+     "peak": "'])\n"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.073,
+     "peak": " all"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.107,
+     "peak": " self"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.021,
+     "peak": ".ok"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.007,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.025,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.009,
+     "peak": "ums"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.014,
+     "peak": " him"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.018,
+     "peak": " output"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.036,
+     "peak": " by"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.01,
+     "peak": " letters"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.011,
+     "peak": ","
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.064,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "fb46efa9",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "unclear: Python closing quotes/brackets",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card max 34; peaks '       ' x2, ' self' x2, \"'])\\n\", \"']\\n\\n\" (http=my_mocks['...'])\\n, fixtures = ['admin-views-users.xml']). Probe: none of the short snippets reproduced it: fixture line 0.068, set_style(...['style']) 0.085, list of setting names 0.028, mocks 0.006; prose 0.008-0.014. Registered unclear; fire items are longer test-file passages.",
+ "selection": "random draw"
+}
