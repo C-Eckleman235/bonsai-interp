@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-2ab5634a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N4156-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T12:20:07+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N4156",
+   "pole": "-",
+   "label": "the token ' re' / ' Re' when it is split off as its own piece at the start of a word (Re|ise, re|çu, re|heat), in any language; whole-word tokens that begin with re do not fire",
+   "fire": [
+    "Wir planen im Sommer eine lange Reise nach Italien.",
+    "Der Kellner brachte uns nach dem Essen die Rechnung.",
+    "Bitte melden Sie sich zuerst an der Rezeption im Erdgeschoss.",
+    "Im Winter braucht das Auto neue Reifen.",
+    "Chaque matin, elle reçoit une lettre de son frère.",
+    "El centro ofrece programas de reeducación para adultos.",
+    "You can reheat the soup in the microwave for two minutes.",
+    "The company will retrain its workers to use the new machines."
+   ],
+   "quiet": [
+    "Wir planen im Sommer eine lange Pause vom Büro.",
+    "Der Kellner brachte uns nach dem Essen den Kaffee.",
+    "Bitte halten Sie sich an die Regel im Erdgeschoss.",
+    "Im Winter hielt der Bürgermeister eine lange Rede.",
+    "Chaque matin, elle écrit une lettre à son frère.",
+    "El centro ofrece clases de música para adultos.",
+    "You can review the report in the meeting for two minutes.",
+    "The company will reopen its factory to make the new machines."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.9 on a split ' re' or ' Re' piece; words that are single tokens (Regel, review, reopen, Revolution) below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-off ' re' / ' Re' piece",
+ "unit_kind": "token",
+ "confidence": 0.6,
+ "notes": "Card: top peaks are ' re' x16 and ' Re' x10 as split pieces (Panagrellus re|divivus, Re|iseveranstaltern, Re|legation, re|naissance, re|çu). Probe: re|divivus 0.846, Re|iseveranstalter 0.884, re|çu 0.442, re|naissance 0.397, Re|legation 0.346; single-token remember/return 0.003, rebuild 0.004. Every fire item was checked with the tokenizer to split off ' re' or ' Re'; English re|heat and re|train are untested by probes."
+}

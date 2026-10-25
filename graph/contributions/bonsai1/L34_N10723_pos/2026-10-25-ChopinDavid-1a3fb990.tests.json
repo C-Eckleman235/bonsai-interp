@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-1a3fb990",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N10723+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T12:20:07+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N10723",
+   "pole": "+",
+   "label": "unclear: tokens in resource-management contexts, mostly code that handles 'resource' objects and the word 'energy' in 'distributed energy'; does not depend on the word 'resource' following",
+   "fire": [
+    "def test_create_missing_resource(self):\n    self.assertRaises(NotFound, self.api.get, 'abc')",
+    "resource = Resource(name)\nresource.save()\nresource.init_quotas()",
+    "def test_update_unknown_resource(self, app, model):\n    assert model.update('x') is None",
+    "ResourceDAO.save(\n    ResourceDTO(str(key), data)\n)",
+    "Utilities are worried about distributed energy systems on rooftops.",
+    "for res in resources:\n    res.release()\n    pool.free(res)",
+    "def delete_resource(self, resource_id):\n    return self.client.delete(resource_id)",
+    "The grid operator studied how distributed energy storage affects prices."
+   ],
+   "quiet": [
+    "def add_numbers(a, b):\n    return a + b",
+    "name = input('Name: ')\nprint('Hello', name)",
+    "def test_sum_of_list(self):\n    assert sum([1, 2]) == 3",
+    "total = 0\nfor x in values:\n    total += x",
+    "Farmers are worried about the dry summer on the plains.",
+    "for word in words:\n    print(word.upper())",
+    "def greet(self, name):\n    return 'Hi ' + name",
+    "The museum studied how old paintings fade in bright light."
+   ]
+  }
+ ],
+ "predictions": "fire items 0.25-0.6 in code that creates, saves or deletes resources and in 'distributed energy' prose; plain code and prose without that context below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "unclear (resource-handling code)",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card: peaks in code around resources ('parsed_data[u'resource_definitions']', 'resource.init_quotas()', 'ResourceBundleDAO.save', 'test_bulk_delete_unknown_resource') and 'distributed energy resources'. The - pole promotes 'resource'. Probe: 'def test_delete_unknown_resource(self):' 0.630, 'distributed energy resources' 0.520 but 'distributed energy grids' also 0.520 (peak on ' energy'), 'data[u'resource_name']' 0.284; 'human resources' -0.000, 'natural resources' 0.113. So it is not a next-token 'resource' predictor; best guess is a resource-management code context, low confidence."
+}

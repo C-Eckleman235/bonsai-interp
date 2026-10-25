@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-34372549",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N10694+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T12:20:07+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N10694",
+   "pole": "+",
+   "label": "dense: a tiny, broad activation present on a large share of tokens (Japanese 'の', ' someone', Russian 'хуже', Arabic 'كل' among the peaks); no single trigger",
+   "fire": [
+    "駅のみどりの窓口で特急券を買った。",
+    "I would hate to sleep in someone else's bed.",
+    "Погода сегодня ещё хуже, чем вчера.",
+    "يذهب إلى المسجد مع كل صلاة.",
+    "She borrowed someone else's bicycle for the race.",
+    "Сейчас ситуация стала хуже для всех.",
+    "في كل يوم يقرأ صفحة من الكتاب.",
+    "みどりの窓口は朝六時から開いています。"
+   ],
+   "quiet": [
+    "駅の売店で新聞を買った。",
+    "I would hate to sleep in a cold tent.",
+    "Погода сегодня тёплая и солнечная.",
+    "يذهب إلى المسجد في الصباح.",
+    "She borrowed a red bicycle for the race.",
+    "Сейчас ситуация стала понятной для всех.",
+    "في الصباح يقرأ صفحة من الكتاب.",
+    "駅の売店は朝六時から開いています。"
+   ]
+  }
+ ],
+ "predictions": "fire items 0.5-0.9 on the listed peak tokens; near misses may also fire because the unit is dense",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense (no single trigger)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Card: max 0.14, 13.0% of tokens reach 0.1 of max, gate-closed regime 100%, flagged dense. Probe: 'みどりの窓口' 0.915, 'хуже' 0.709, 'someone else's' 0.703, 'مع كل' 0.581; '日本の夏' 0.055, 'cat sat on the mat' 0.060, code 0.053. Written as a best-guess test of the peak tokens; an 8+8 test may not separate a dense unit."
+}

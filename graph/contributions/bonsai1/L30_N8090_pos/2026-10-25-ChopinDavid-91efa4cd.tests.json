@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-91efa4cd",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N8090+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T12:20:07+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L30/N8090",
+   "pole": "+",
+   "label": "the code token just before an expected 'url' (e.g. '_signed' in get_signed_url, 'page' in 'webpage_url', the \"['\" opening source['url'])",
+   "fire": [
+    "link = bucket.generate_signed_url(blob)\nreturn link",
+    "self.link = info.get('webpage_url')\nself.views = info.get('views')",
+    "href = page['url']\nrequests.get(href)",
+    "thumb = item.get('thumbnail_url')\nsave(thumb)",
+    "presigned = s3.get_presigned_url(key)\nprint(presigned)",
+    "for entry in feed:\n    fetch(entry['url'])",
+    "avatar = user.get('avatar_url')\nshow(avatar)",
+    "download = release['browser_download_url']\nfetch(download)"
+   ],
+   "quiet": [
+    "size = bucket.get_total_size(blob)\nreturn size",
+    "self.title = info.get('title')\nself.views = info.get('views')",
+    "name = page['name']\nprint(name)",
+    "price = item.get('price')\nsave(price)",
+    "total = s3.get_object_count(key)\nprint(total)",
+    "for entry in feed:\n    show(entry['date'])",
+    "age = user.get('age')\nshow(age)",
+    "version = release['tag_name']\nprint(version)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on the token that predicts 'url' next in code; the same code shape with keys like 'title', 'count', 'path' below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "token before 'url' in code",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: peaks on '(img' before _urls, ' resp' before .url, '_signed' before _url, '_show' before _urls, \"('\" before webpage_url, \"['\" before url. The - pole promotes ' URL', ' url'. Probe: 'get_signed_url' 0.877 (on _signed), \"data.get('webpage_url')\" 0.662 (on page), \"source['url']\" 0.426; \"data.get('title')\" 0.004, \"source['count']\" 0.001; 'img_urls' vs 'img_paths' both 0.151, so the url-predicting context (url-related code nearby) matters."
+}
