@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-e2f79a54",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N11167+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T19:21:11+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L25/N11167",
+   "pole": "+",
+   "label": "the end of a clause that limits or qualifies a claim, where a contrast ('but', 'however') is expected next ('extremely subjective', 'to the contrary', 'hard to generalize from it;'), as opposed to plain unqualified statements",
+   "fire": [
+    "The sample was tiny, so we should not read too much into it; more work is needed.",
+    "Judging art is highly subjective and critics rarely agree.",
+    "There is no strong evidence to the contrary, so the claim stands for now.",
+    "The rules were generally followed; however, a few exceptions occurred.",
+    "It would be nice to own a boat, but that is not realistic for us.",
+    "Minor colds can usually be treated at home. However, see a doctor if fever persists.",
+    "Short sentences are effective to that end. But longer ones have their place.",
+    "The results are promising, though it is too early to draw conclusions."
+   ],
+   "quiet": [
+    "The sample was large, and we analysed it carefully over two years.",
+    "Judging the art contest took the critics most of the afternoon.",
+    "There is a strong smell of coffee in the kitchen this morning.",
+    "The rules were printed on a sheet and handed to every player.",
+    "We own a boat and take it out on the lake every summer.",
+    "Minor colds usually last about a week.",
+    "Short sentences were written on the board by the teacher.",
+    "The results were posted on the website at noon."
+   ]
+  }
+ ],
+ "predictions": "best guess: fire 0.2-0.5 on the token closing a hedged clause; plain statements below 0.1. Probes did not reproduce the card, so a failure is expected",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "qualified claim before a contrast",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card: varied peaks (' subjective', ' contrary', ' it' in 'generalize from it;', 'itions;', ' home' before 'However'); negative pole suppresses ' but', ' yet', ' But', so this pole promotes a contrast. Probe: all low: 'Sure, the hotel was cheap, but' 0.109, plain version 0.090, 'generalize from it;' 0.058, 'extremely subjective' 0.012, 'to the contrary' 0.007. Registered as unclear."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-4788b140",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N8094-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T19:21:11+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L14/N8094",
+   "pole": "-",
+   "label": "' will' in API documentation stating how a supplied value or option will be used ('that string will be used as the name'), as opposed to 'will' in everyday conditional predictions",
+   "fire": [
+    "If a dictionary is given, those values will be applied as the defaults.",
+    "When a string is passed, that string will be printed as the title.",
+    "If omitted, the current directory will be used as the root.",
+    "Any extra keyword arguments will be forwarded to the plotting function.",
+    "If a callable is supplied, it will be called on each element.",
+    "By default the first column will be treated as the index of the table.",
+    "If a path is given, the output will be written to that file.",
+    "When set to True, missing values will be filled with zeros."
+   ],
+   "quiet": [
+    "If the weather is good, the parade will start at noon.",
+    "When the store opens, the first customers will get a free coffee.",
+    "If you are late, the bus will leave without you.",
+    "Any extra guests will need to bring their own chairs.",
+    "If it rains, we will stay inside and play cards.",
+    "As planned, the first day of the trip will be spent in Rome.",
+    "If the train is delayed, the meeting will be moved to Friday.",
+    "When the sun sets, the street lights will turn on."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.65 on ' will' in parameter docs; everyday 'if X, Y will happen' sentences below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'will' in parameter documentation",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: weak (max 5.6); top example 'If a string, that string will be used as the name'; also subscript assignments ' =' x7. Probe: 'that list will be used as the column names' 0.642, 'link a particular gene with' 0.103; subscript assignment code 0.04-0.05 and config['debug'] = True -0.011, so the code ' =' peaks did not reproduce in short snippets."
+}
