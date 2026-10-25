@@ -293,7 +293,8 @@ td.n { font-family: var(--mono); text-align: right; }
     const i = D.at.get(2 * n + (pole === "-" ? 1 : 0)); if (i === undefined) return null;
     const words = [];
     for (let k = i * TOPW; k < i * TOPW + TOPW; k++) if (D.w[k] >= 0) words.push({ t: vtext(D.w[k]), lift: D.lift[k], cov: D.cov[k], trig: !!D.trig[k] });
-    return { words, bin: D.bin ? D.bin[i] : null, context: D.context ? D.context[i] : null, test: D.test ? D.test[i] : null, auroc: D.auroc ? D.auroc[i] : null };
+    return { words, bin: D.bin ? D.bin[i] : null, context: D.context ? D.context[i] : null, test: D.test ? D.test[i] : null, auroc: D.auroc ? D.auroc[i] : null,
+      lib: D.lib ? D.lib[i] : null, libTest: D.lib_test ? D.lib_test[i] : null };
   }
   function loadLayer(L) { if (!SCREEN || !SCREEN.layers[L]) return Promise.resolve(null);
     VPROM = VPROM || fetch("screens/vocab.json").then(r => r.ok ? r.json() : {}).catch(() => ({})).then(v => (VOCAB = v));
@@ -313,6 +314,8 @@ td.n { font-family: var(--mono); text-align: right; }
     const words = d.words.length ? `<div class="toks">Word hits ${d.words.map(w => `<span title="lift ${w.lift.toLocaleString()} · ${w.cov}% of strong activations${w.trig ? " · screened as a trigger" : ""}"${w.trig ? ' style="border-color:var(--ink-3)"' : ""}>${showTok(w.t)}</span>`).join("")}</div>` : "";
     return `<div class="screen"><div class="eyebrow">Atlas · scrutiny 0</div>${head}${words}
       ${d.context ? `<div>Context: ${esc(d.context)}</div>` : ""}
+      ${d.lib ? `<div>Sweep library: <span class="mono">${esc(d.lib)}</span> · ${d.libTest === "held" ? `<b style="color:var(--held)">held</b>` : `<span style="color:var(--failed)">failed</span>`}`
+        + `${d.lib.startsWith("predict") ? "" : ((SCREEN.lib_labels || {})[d.lib] ? `<br>${esc(SCREEN.lib_labels[d.lib])}` : "")}</div>` : ""}
       <div class="hint" style="margin:0">Corpus statistics, not a label: a starting point to test with fresh sentences.</div></div>`;
   }
 

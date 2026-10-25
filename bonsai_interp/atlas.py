@@ -20,6 +20,8 @@ One row per pole, keyed by `pole` = 2 * neuron + (1 for the - pole):
   hit_lift, hit_coverage,         lift over the pole's base rate, share of the pole's strong activations,
   hit_trigger                     and whether stage 1 screened that word (lists, at most 5)
   bin, context, test, auroc       the auto-token@2 screen and auto test, when the layer has been screened
+  lib_kind, lib_condition,        the sweep library's best test of the pole (sweeplib@1: copy, topic, lang, struct, number,
+  lib_test, lib_auroc, lib_held   predict), a held one first; lib_held lists every condition it held under
 Scrutiny 0 throughout: corpus statistics and automatic tests, never a label. Labels and statuses from tested
 contributions stay in graph/ (git), keyed the same way, and can be joined on (layer, neuron, sign).
 Published in the `atlas` release; `bash scripts/fetch_data.sh atlas` downloads it.
@@ -64,12 +66,38 @@ def _schema():
                       ("hit_tok", lst(pa.int32())), ("hit_n", lst(pa.int32())), ("hit_precision", lst(pa.float32())),
                       ("hit_lift", lst(pa.float32())), ("hit_coverage", lst(pa.float32())), ("hit_trigger", lst(pa.bool_())),
                       ("bin", pa.dictionary(pa.int8(), pa.string())), ("context", pa.string()),
-                      ("test", pa.dictionary(pa.int8(), pa.string())), ("auroc", pa.float32())])
+                      ("test", pa.dictionary(pa.int8(), pa.string())), ("auroc", pa.float32()),
+                      ("lib_kind", pa.dictionary(pa.int8(), pa.string())), ("lib_condition", pa.dictionary(pa.int16(), pa.string())),
+                      ("lib_test", pa.dictionary(pa.int8(), pa.string())), ("lib_auroc", pa.float32()), ("lib_held", lst(pa.string()))])
 
 
-def build_layer(hits_path, screen_path=None, out_dir=ATLAS):
+def sweeplib(path=ROOT / "data" / "sweeplib" / "bonsai1.sweeplib1.results.jsonl.gz"):
+    """{(layer, "N123+"): (kind, condition, outcome, auroc, [held conditions])} from the sweep library's results: the pole's
+    best result (a held test first, then the highest AUROC). Placebo tests are left out. {} when there are no results."""
+    if not Path(path).exists():
+        return {}
+    from bonsai_interp.graph.protocols import v2_stats
+    best, held = {}, {}
+    with gzip.open(path, "rt", encoding="utf-8") as f:
+        for line in f:
+            r = json.loads(line)
+            if r.get("placebo"):
+                continue
+            L, key = int(r["neuron"].split("/L")[1].split("/")[0]), r["neuron"].split("/")[-1]
+            auroc = (v2_stats(r) or (None,))[0]
+            cand = (r["kind"], r["condition"], r["outcome"], auroc)
+            if r["outcome"] == "held":
+                held.setdefault((L, key), []).append(f"{r['kind']}:{r['condition']}")
+            old = best.get((L, key))
+            if old is None or (cand[2] == "held", cand[3] or 0) > (old[2] == "held", old[3] or 0):
+                best[(L, key)] = cand
+    return {k: (*v, held.get(k, [])) for k, v in best.items()}
+
+
+def build_layer(hits_path, screen_path=None, out_dir=ATLAS, lib=None):
     import pyarrow as pa
     L = _layer_of(hits_path)
+    lib = lib or {}
     screen = {}
     if screen_path and screen_path.exists():
         with gzip.open(screen_path, "rt", encoding="utf-8") as f:
@@ -99,6 +127,12 @@ def build_layer(hits_path, screen_path=None, out_dir=ATLAS):
             cols["context"].append(mask(s.get("context")))  # sensitive words never reach the public atlas
             cols["test"].append(s.get("test"))
             cols["auroc"].append(s.get("auroc"))
+            lb = lib.get((L, key), (None, None, None, None, []))
+            cols["lib_kind"].append(lb[0])
+            cols["lib_condition"].append(lb[1])
+            cols["lib_test"].append(lb[2])
+            cols["lib_auroc"].append(None if lb[3] is None else float(lb[3]))
+            cols["lib_held"].append(lb[4])
     schema = _schema()
     arrays = []
     for field in schema:
@@ -173,10 +207,10 @@ def main():
     files = sorted(Path(a.auto2).glob("bonsai1_L*.hits.jsonl.gz"), key=_layer_of)
     if not files:
         sys.exit(f"no stage 1 tables in {a.auto2}")
-    ids = set()
+    ids, lib = set(), sweeplib()
     for f in files:
         L = _layer_of(f)
-        out, t = build_layer(f, Path(a.auto) / f"bonsai1_L{L}.screen.json.gz")
+        out, t = build_layer(f, Path(a.auto) / f"bonsai1_L{L}.screen.json.gz", lib=lib)
         for row in t["hit_tok"].to_pylist():
             ids.update(row)
         screened = t["bin"].drop_null()
