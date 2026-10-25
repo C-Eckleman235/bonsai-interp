@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-58872ee9",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N4521+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-25T21:28:26+00:00",
+ "recipe": {
+  "toolchain_commit": "300e9c33",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L17_N4521_pos/2026-10-25-ChopinDavid-58872ee9.tests.json"
+ },
+ "label": "dense: fires on most content tokens of ordinary prose and lists; best guess is substantive written text as against bare one-word or filler utterances",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L17_N4521_pos/2026-10-25-ChopinDavid-58872ee9.tests.json",
+   "prereg_commit": "300e9c33",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.371,
+     "peak": " migration"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.397,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.339,
+     "peak": " Step"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.431,
+     "peak": " for"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.305,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.297,
+     "peak": " offer"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.576,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.425,
+     "peak": " investment"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.083,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.262,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.167,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.116,
+     "peak": "No"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.118,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.169,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.126,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.334,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.384,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "300e9c33",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "dense: content prose",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Card flags dense (10.0% of tokens reach 0.1·max), max 9.19, top tokens spread (engagement, colorful, private, pollution, list numbers). Probe: content sentences 0.48-0.57, 'I went home and slept' 0.318, 'Hello there' 0.240, 'Ok.' 0.036, 'the the the the' 0.040.",
+ "selection": "random draw"
+}
