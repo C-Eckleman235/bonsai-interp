@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-686d86ac",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N1406+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T20:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N1406",
+   "pole": "+",
+   "label": "the ' inv'/' Inv'/'inv' word piece when 'inv...' words split across tokens (Inv|ited, un|inv|ited, inv|asives), as against invite, invest and inventory words that are a single token",
+   "fire": [
+    "The picnic was spoiled by uninvited ants crawling over the bread.",
+    "Our summer conference features three Invited talks on Friday.",
+    "Print your own birthday Invites from our free templates.",
+    "The banner over the hall read ALL NEIGHBOURS INVITED in red letters.",
+    "Volunteers spent the weekend pulling invasives out of the wetland.",
+    "Several uninvolved bystanders were questioned by the police.",
+    "The constitution treats the right to privacy as inviolable.",
+    "A brisk morning swim in the lake was invigorating for everyone."
+   ],
+   "quiet": [
+    "The picnic was spoiled when ants crawled over the bread.",
+    "Our summer conference has invited three speakers for Friday.",
+    "Print your own birthday cards from our free templates.",
+    "She sent a short invitation to every neighbour on the street.",
+    "Volunteers spent the weekend checking the inventory of the food bank.",
+    "Several investors were questioned about the failed company.",
+    "The new mayor plans to invest in parks and libraries.",
+    "A friendly Invite from the club arrived in the post on Monday."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.9 on the ' Inv'/'inv' piece of Invited, Invites, uninvited, uninvolved, invasives, inviolable; single-token invited, invitation, Invite, inventory, invest below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "' inv' piece of split invite/invasive words",
+ "unit_kind": "token",
+ "confidence": 0.65,
+ "notes": "Card: ' inv' x12, ' Inv' x10, 'inv', '_inv', '(inv' in split words (un|inv|ited, Inv|ited, Inv|ites, inv|asives, Inv|itations). The - pole suppresses ' inv' and invite words. Probe: 'uninvited' 0.914; 'Invited speakers' 0.575; 'Invitations' 0.593; 'invasives' 0.293; 'invigorating' 0.332; single-token 'invited' 0.008, 'invitation' 0.019, 'inventory' 0.004. Tokenizer checked for every fire word."
+}

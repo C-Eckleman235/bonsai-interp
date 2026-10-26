@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-5eb7ba62",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N493-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T20:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N493",
+   "pole": "-",
+   "label": "' B' or ' b' as a lone word-initial piece of a word the tokenizer splits (B|opha, b|uns, B|NP), as against b-words that are a single token",
+   "fire": [
+    "Along the estuary the boats waited in small sheltered bays for the tide.",
+    "Mussels and clams are bivalves that filter plankton from the water.",
+    "The soldiers carried old Brown Bess muskets into the battle.",
+    "Hikers set up a rough bivouac below the ridge as the storm arrived.",
+    "In the election the far-right BNP lost every one of its seats.",
+    "Dancers wore their hair in neat buns for the opening performance.",
+    "Climbers rested in the shade of huge granite boulders near the summit.",
+    "Economists at BMO expect the central bank to hold rates steady."
+   ],
+   "quiet": [
+    "Along the estuary the boats waited in a small sheltered bay for the tide.",
+    "Mussels and clams were served with bread and butter at the cafe.",
+    "The soldiers carried brown bags of supplies into the barracks.",
+    "Hikers set up a rough camp below the ridge as the storm arrived.",
+    "In the election the far-right party lost every one of its seats in Boston.",
+    "Dancers tied their hair with blue ribbons for the opening performance.",
+    "Climbers rested in the shade of a big rock near the summit.",
+    "Economists at the bank expect the central bank to hold rates steady."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on ' B'/' b' when the word continues in further pieces (bays, bivalves, BNP, Bess); single-token b-words (banana, bottles, Bob, bay) below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "word-initial ' B'/' b' piece of a split word",
+ "unit_kind": "token",
+ "confidence": 0.6,
+ "notes": "Card: ' B' x17, ' b' x10 in split words (Bopha, buns, Brown Bess, Ballesteros, bays, BNP, BMO, boulders, bachelors). Probe: Bopha 0.671, bays 0.610, Ballesteros 0.673, BMO 0.483, buns 0.428, boulders 0.276; 'banana ... bottles' 0.051, 'Bob ... bay' 0.031. Tokenizer checked: every fire word starts with a bare ' B' or ' b' piece."
+}
