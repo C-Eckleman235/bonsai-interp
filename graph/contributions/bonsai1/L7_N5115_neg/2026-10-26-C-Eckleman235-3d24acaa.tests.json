@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-C-Eckleman235-3d24acaa",
+ "contributor": "C-Eckleman235",
+ "kind": "qc",
+ "neuron": "bonsai1/L7/N5115-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T17:44:14+00:00",
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "Unit-of-weight/mass or measurement tokens (' kg', 'kg', ' kilograms', ' pounds', ' lbs', ' gallon', ' cm', ' km') right after a number, in body-weight or quantity statements, across languages (English, German, Russian)",
+  "notes": "Model-QC pilot (concept-maps plan sha256 e2c0fbd950fc010cf3ac8c4a8d9473758ba54d8ddb3e2dbc13f451f5a8ddf787): label slot A of this pole, from contribution 2026-10-26-JasperBlank-3517cbdf; which model wrote it stays sealed until all 30 tests are scored. Sentences written by a fresh Opus subagent that saw only the pole's card (record line removed) and the three anonymous labels; nothing was probed or scored."
+ },
+ "neighbours": [
+  {
+   "unit": "L7/N5115",
+   "pole": "-",
+   "label": "Unit-of-weight/mass or measurement tokens (' kg', 'kg', ' kilograms', ' pounds', ' lbs', ' gallon', ' cm', ' km') right after a number, in body-weight or quantity statements, across languages (English, German, Russian)",
+   "fire": [
+    "At her last checkup the nurse wrote down that she weighed 61 kg, a little less than the year before.",
+    "The heavyweight boxer stepped on the scale at the weigh-in and came in at 243 pounds.",
+    "My doctor wants me to drop to about 180 lbs before we talk about knee surgery.",
+    "The old farmhouse well could supply roughly 40 gallons of water a day during the dry summer.",
+    "By the end of first grade my son had grown to 122 cm and needed new trousers again.",
+    "We drove another 85 km along the coast before we found a campsite with free spots.",
+    "Nach dem Urlaub zeigte die Waage plötzlich 78 Kilogramm an, und mein Arzt war nicht begeistert.",
+    "После родов я весила 72 кг, а через полгода похудела до шестидесяти."
+   ],
+   "quiet": [
+    "At her last checkup the nurse said she looked healthy, a little thinner than the year before.",
+    "The heavyweight boxer stepped on the scale at the weigh-in and the crowd booed loudly.",
+    "My doctor wants me to lose some weight before we talk about knee surgery next spring.",
+    "The old farmhouse well ran nearly dry every August, so we hauled water from town in buckets.",
+    "By the end of first grade my son had grown so tall that he needed new trousers again.",
+    "We drove much further along the coast before we found a campsite with free spots.",
+    "Nach dem Urlaub zeigte die Waage plötzlich mehr an, und mein Arzt war nicht begeistert.",
+    "После родов я сильно поправилась, а через полгода снова похудела."
+   ]
+  }
+ ],
+ "predictions": "confirm: the label as written should hold a harder independent test (>= 6/8 fire, AUROC >= 0.9)",
+ "methods": {
+  "agent": "claude-code opus-5.5 (blind QC-writer subagent, card only)",
+  "screens": [
+   "card"
+  ]
+ },
+ "selection": "model-QC pilot: a seeded draw of poles held by all three labelling models (#1018-#1021)"
+}
