@@ -881,3 +881,19 @@ commit of its own) and judged by quick-8+8@2 with placebo tests, beside the live
   An idle process stopped on Oct 26 caused none.
 - **Coverage must be computed layer by layer.** In test order it reloaded a 17M-entry table per held claim, turning
   minutes into hours (sweeplib@2 amendment 1).
+
+## 2026-10-26: Composition round 2 stalls past layer 11 (compose@2, docs/COMPOSE.md)
+
+compose@1's engine ran on layers 13–17, composing from everything characterized after round 1 (twins, grammar,
+compose@1).
+- **22 poles held of 4,495 tests,** 8 of them assignment-grade, against 0 of 366 placebo tests.
+- **Round 1 by comparison:** 506 poles in layers 6–11.
+- **The composed condition barely fires the targets:** a median of 0.001 of max on fresh text, against 0.03 in
+  round 1. The near misses stay quiet. Past layer ~11, the token classes at a pole's peaks co-occur with it rather
+  than drive it.
+- **What the next round needs:**
+  - offsets taken from each pole's own occlusion map, including far context;
+  - context units (language, topic, code slot, steering units);
+  - composition over mid-layer units.
+
+The local word-class basis reaches about layer 11.

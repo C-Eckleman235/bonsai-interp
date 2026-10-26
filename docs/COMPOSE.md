@@ -90,3 +90,49 @@ Examples (pole, coverage):
 
 Next: round 2 (layers 12–17) with round 1's holds as units, the attention distance sweep on held pairs, and per-round
 coverage gain as the stopping rule.
+
+## Round 2 (compose@2, layers 13–17): the snowball stalls
+
+compose@2 (protocol 7eb795ff, tests 53f8b67c) ran compose@1's engine on layers 13–17 with two changes:
+- **Units:** every pole characterized after round 1, from the survey, word screen, twins, grammar and compose@1.
+- **Matching:** the upstream tables were filtered to those units before matching, which made selection 10–30× faster.
+
+Layer 12 was held out of the word screen, so it has no token table and could be neither target nor source.
+
+It produced 33,480 hypotheses; the best 6,000 gave 4,495 tests and 366 placebos.
+
+| | tests | held | assignment-grade |
+|---|---:|---:|---:|
+| pair | 957 | 18 (1.9%) | |
+| class | 3,538 | 4 (0.1%) | |
+| **all** | 4,495 | **22 poles** | **8** |
+| placebo | 366 | **0** | |
+
+By layer: L13 8, L14 4, L15 4, L16 5, L17 1. The assignment-grade holds are mostly format and code compositions:
+- `http` after punctuation;
+- `%` after a quote or indent;
+- `#` after a newline or indent;
+- year / month after a number;
+- `!` in any script;
+- the impress / impression family across languages.
+
+**Why it stalls.** In round 1 the composed condition fired its target on fresh text at a median 0.03 of max, and the
+held quartile at 0.29. In round 2 the median is 0.001: the condition barely fires the pole at all. The near misses
+stay quiet in both rounds.
+
+So past layer ~11, the classes of a pole's read and previous tokens at its peaks are not what drives it. Those tokens
+co-occur at the peaks without causing them. The occlusion pilot points the same way:
+- the previous token's share falls (87% in layers 6–11, 78% in layers 18–23);
+- tokens far back matter more (40% of layer 18–23 peaks have one, 10–31 tokens back, that removes at least a quarter
+  of the peak).
+
+**What the next round needs**:
+1. **Offsets from each pole's own occlusion map**, not a fixed 0 and 1. That includes far context, with a distance
+   sweep.
+2. **Context units, not only word units:** language and script gates, topic, code slot, and the census's steering
+   units.
+3. **Composition over mid-layer units themselves**, layers 12 and up, read through attention, once those units have
+   labels.
+
+Round 2 is a registered negative result about the method, not about the model: local word-class composition reaches
+about layer 11.
