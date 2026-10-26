@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-f63f37f7",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N11562+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T23:19:54+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L19/N11562",
+   "pole": "+",
+   "label": "unclear; best guess: a keyword parameter in a multi-line Python function signature ('num_hashes=None,')",
+   "fire": [
+    "class Model:\n    def __init__(self,\n            hidden_size=768,\n            num_layers=12,\n            dropout=None,\n            use_cache=True):\n        self.hidden_size = hidden_size",
+    "def fetch(url,\n          timeout=None,\n          retries=3,\n          headers=None,\n          verify=True):\n    pass",
+    "def train(model,\n          optimizer=None,\n          scheduler=None,\n          max_steps=1000,\n          log_every=10):\n    step = 0",
+    "    def forward(self,\n                input_ids=None,\n                attention_mask=None,\n                position_ids=None,\n                labels=None):\n        x = self.embed(input_ids)",
+    "def plot(xs,\n         ys,\n         color=None,\n         label=None,\n         ax=None):\n    ax = ax or plt.gca()",
+    "def connect(host,\n            port=5432,\n            user=None,\n            password=None,\n            dbname=None):\n    return None",
+    "def resize(image,\n           width=None,\n           height=None,\n           keep_ratio=True,\n           mode='bilinear'):\n    return image",
+    "def send(message,\n         to=None,\n         cc=None,\n         bcc=None,\n         subject=None):\n    return True"
+   ],
+   "quiet": [
+    "The farmers harvested the wheat early because of the coming storm.",
+    "Our guide explained the history of the old castle walls.",
+    "The orchestra rehearsed the symphony for three long evenings.",
+    "She planted tulips along the path in front of the house.",
+    "The village holds a market in the square every Thursday.",
+    "Heavy rain flooded the low fields near the river.",
+    "He learned to play chess from his grandmother.",
+    "The ferry crosses the bay twice a day in summer."
+   ]
+  }
+ ],
+ "predictions": "probes did not reproduce the card (max 0.122); expect fire items near 0.1 and the test to fail",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "unclear; kwargs in code signatures (guess)",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Card: peaks on ',\\n' after 'num_hashes=None', 'revno', '_price', \"',\" in code. Probe: one-line and short code 0.007-0.121, prose 0.018-0.122. Per AGENTS.md code poles need longer multi-line passages, so fire items are longer signatures; best-guess test."
+}
