@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-45fd3ccc",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N11472-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T15:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L27/N11472",
+   "pole": "-",
+   "label": "CSS / XPath selector syntax inside a scraping or styling string (pseudo-elements like '::text', bracketed XPath predicates like '[2]' or '[@id=...]'), as against ordinary string literals in the same kind of code",
+   "fire": [
+    "name = product.css(\"h2.title::text\").get()\nprint(name)",
+    "cells = doc.xpath('//div[@class=\"specs\"]/table/tr[3]/td')",
+    "author = quote.css('small.author::text').extract_first()",
+    "nav li:last-child a::after { content: none; }",
+    "first = tree.xpath('//ul[@id=\"menu\"]/li[1]/a/@href')",
+    "for row in response.css('table.results tr'):\n    score = row.css('td.score::text').get()",
+    "header = html.xpath('//h1[contains(@class, \"name\")]/text()')",
+    "footer p:first-of-type::before { content: '>'; }"
+   ],
+   "quiet": [
+    "name = product.get(\"title\", \"unknown\")\nprint(name)",
+    "cells = load_rows('data/specs.csv', skip_header=True)",
+    "author = quote.get('author').strip()",
+    "message = 'The file could not be saved, please try again.'",
+    "first = config['menu']['items'][0]",
+    "for row in results:\n    score = row.get('score', 0)",
+    "header = 'Welcome back, ' + user.name",
+    "log.info('Finished parsing %d pages', count)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on '::', '[' or ':first' inside a selector string; plain string literals (paths, messages, keys) below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "CSS/XPath selector syntax in code",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: Scrapy '.css(\"::text\")', CSS ':last-of-type', XPath '//tr[normalize-space', cssselect('video > source'). Probe: '::text' 0.733, xpath '[' 0.700, ':first-child' 0.342, ' >' 0.308; '_css' method name 0.160; prose about a selector 0.071. A MIME-type list scored 0.347, so near misses avoid lists of slash strings."
+}

@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-26-JasperBlank-6d183f5b",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N3968+",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T13:39:15+00:00",
+ "recipe": {
+  "toolchain_commit": "dc58702b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N3968_pos/2026-10-26-JasperBlank-6d183f5b.tests.json"
+ },
+ "label": "word piece 'i/ih/iz' inside split foreign names: Dai-ichi (Fukushima), Jitsi, Chingiz Khan, Zhizh",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N3968_pos/2026-10-26-JasperBlank-6d183f5b.tests.json",
+   "prereg_commit": "dc58702b",
+   "author": "JasperBlank",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.496,
+     "peak": "ichi"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.509,
+     "peak": "i"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.622,
+     "peak": "iz"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.543,
+     "peak": "i"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.457,
+     "peak": "ichi"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.523,
+     "peak": "i"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.597,
+     "peak": "iz"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.516,
+     "peak": "iz"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.006,
+     "peak": " damaged"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.008,
+     "peak": " your"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.009,
+     "peak": "ir"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.011,
+     "peak": " grant"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.015,
+     "peak": " damaged"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.015,
+     "peak": " extra"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.003,
+     "peak": " historians"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.009,
+     "peak": " a"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.52,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc58702b",
+  "minutes": 10,
+  "batch_size": 192
+ },
+ "short": "split foreign name piece",
+ "unit_kind": "sparse feature",
+ "confidence": "low",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "selection": "random draw",
+ "trigger": {
+  "words": [
+   "Dai-ichi",
+   "Jitsi",
+   "Chingiz"
+  ]
+ }
+}

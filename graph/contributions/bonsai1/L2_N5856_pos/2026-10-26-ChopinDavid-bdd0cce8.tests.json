@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-bdd0cce8",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N5856+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T10:20:09+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L2/N5856",
+   "pole": "+",
+   "label": "the token '/wiki' in en.wikipedia.org URLs (and the token ' resumed'), on a dense low-amplitude pole, as against other URL paths and the word wiki in prose",
+   "fire": [
+    "More background is at https://en.wikipedia.org/wiki/Battle_of_Hastings for anyone curious.",
+    "Reference: http://en.wikipedia.org/wiki/Kalman_filter",
+    "I first learned about it from https://en.wikipedia.org/wiki/Tardigrade last year.",
+    "Talks between the two sides resumed on Monday morning.",
+    "(see https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem)",
+    "Image credit: https://en.wikipedia.org/wiki/File:Moon_crescent.jpg",
+    "After a short break, the concert resumed with a slow piece.",
+    "The full list is on https://en.wikipedia.org/wiki/List_of_lighthouses here."
+   ],
+   "quiet": [
+    "More background is at https://www.britannica.com/event/Battle-of-Hastings for anyone curious.",
+    "Reference: http://docs.scipy.org/doc/Kalman_filter",
+    "I first learned about it from a nature documentary last year.",
+    "Talks between the two sides restarted on Monday morning.",
+    "(see https://mathworld.wolfram.com/FermatsLastTheorem.html)",
+    "Image credit: https://images.nasa.gov/details/Moon_crescent.jpg",
+    "After a short break, the concert continued with a slow piece.",
+    "The full list is on our team wiki page here."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-0.9 on '/wiki' after en.wikipedia.org and on ' resumed'; other URL paths, wiki in prose and 'restarted' below 0.3",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'/wiki' in Wikipedia URLs",
+ "unit_kind": "dense / positional",
+ "confidence": 0.45,
+ "notes": "Dense L2 pole (14.2% of tokens reach 0.1 of max; max only 0.28). Card: '/wiki' x20, ' resumed' x4. Probe: wikipedia '/wiki' 0.884, 0.896; ' resumed' 0.695; github '/wiki' 0.299, '.wikipedia' bare domain 0.330, prose ' Wikipedia' 0.264, 'project wiki' 0.007, example.com '/docs' 0.078. Floor about 0.05."
+}

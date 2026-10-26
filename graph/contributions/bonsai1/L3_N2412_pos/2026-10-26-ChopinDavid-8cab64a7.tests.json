@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-8cab64a7",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N2412+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T14:19:53+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L3/N2412",
+   "pole": "+",
+   "label": "short abbreviated Unix/system-style identifiers in code (std*, stdout, mkdir, mt, dt, chmod), especially as imported names, as against full-word identifiers in the same code positions",
+   "fire": [
+    "from os import mkdir, chdir",
+    "import sys\nout = sys.stdout",
+    "from shutil import rmtree\nfrom os import mkdir",
+    "proc = run(cmd, stdout=PIPE, stderr=PIPE)",
+    "from twisted.internet import reactor, stdio",
+    "from utils.fs import mkdir, chmod",
+    "import subprocess\np = subprocess.Popen(args, stdout=log)",
+    "from os import chmod, umask"
+   ],
+   "quiet": [
+    "from os import path, rename",
+    "import sys\nname = sys.platform",
+    "from shutil import copy\nfrom glob import glob",
+    "proc = run(cmd, check=True, timeout=30)",
+    "from twisted.internet import reactor, task",
+    "from utils.fs import reader, writer",
+    "import subprocess\np = subprocess.Popen(args, text=True)",
+    "from os import walk, remove"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on abbreviated identifiers (std, stdout, mkdir, chmod, mt); full-word names such as numpy or json below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "abbreviated system identifiers in code",
+ "unit_kind": "token",
+ "confidence": 0.45,
+ "notes": "Tiny pole (max 0.92), broad (2.2%). Card: ' mkdir' x3, ' stdout' x2, 'dt', ' mt|ls', ' std|io', ' dat|adir'. Probe: 'import mtls' 0.948, 'from cloudvolume.lib import mkdir' 0.842, 'defer, stdio' 0.761, 'stdin, stdout, stderr' 0.727, ''dt' in tag list' 0.526; 'import numpy as np' 0.021, 'transparent' in prose 0.104."
+}

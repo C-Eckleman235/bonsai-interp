@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-dfb82437",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N10464-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T12:20:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N10464",
+   "pole": "-",
+   "label": "the separator that closes one bibliography entry and opens the next (the '- ' bullet or line break before the next author's surname in a reference list), as against the same punctuation in ordinary lists and prose",
+   "fire": [
+    "Further reading\n- Adams, R. Birds of the Coast. Bristol: Harbour Press, 2003.\n- Baker, T. Gulls and Terns. Leeds: Moorland, 1997.\n- Clarke, S. Seabird Ecology. York: Ridge, 2011.",
+    "Sources\n- Duarte, P. The River Basin. Lisbon: Tejo, 1989.\n- Evans, G. Floods in Wales. Cardiff: Taff Books, 2001.",
+    "Bibliography\n- Fischer, H. Alpine Glaciers. Bern: Haupt, 1995.\n- Gomez, L. Ice and Time. Madrid: Sol, 2008.\n- Hart, D. Cold Peaks. Denver: Range, 2014.",
+    "Works cited\n- Ibsen, K. Northern Lights. Oslo: Fjord, 1992.\n- Jansen, M. Arctic Nights. Utrecht: Dom, 2006.",
+    "References\n- Kumar, V. Monsoon Patterns. Delhi: Indus, 2000.\n- Lopez, A. Tropical Rain. Lima: Andes, 2012.",
+    "Notes\n- Morgan, E. Desert Winds. Phoenix: Mesa, 1999.\n- Nakamura, Y. Sand and Stone. Kyoto: Kamo, 2005.\n- Olsen, B. Dry Lands. Aarhus: Jutland, 2017.",
+    "Reed, C. (2004). Forest Soils. Chicago: Lakeside.\nSato, H. (2010). Moss and Fern. Sapporo: Hokkai.\nTorres, F. (2015). Leaf Litter. Quito: Volcan.",
+    "Cited works\n- Ulrich, J. Lakes of Bavaria. Munich: Isar, 1993.\n- Vance, P. Still Waters. Boston: Charles, 2009."
+   ],
+   "quiet": [
+    "Packing list\n- sleeping bag\n- warm socks\n- head torch\n- water bottle",
+    "Things to do\n- call the dentist\n- pay the gas bill\n- return library books",
+    "Adams wrote about coastal birds in 2003, and Baker followed with a book on gulls.",
+    "Ingredients\n- two eggs\n- a cup of milk\n- a pinch of salt\n- flour",
+    "We arrived in Lisbon on Monday.\nOn Tuesday we drove to Porto.\nOn Wednesday it rained.",
+    "Meeting agenda\n- budget review\n- new office plan\n- holiday rota",
+    "Fischer, H. Alpine Glaciers. Bern: Haupt, 1995. A clear and readable survey.",
+    "Garden tasks\n- prune the roses\n- weed the beds\n- mow the lawn"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on the bullet or line-break token between two reference entries; bullets in shopping or to-do lists, and line breaks between prose sentences, below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "boundary between reference entries",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: '-' x16 and '.\\n' x9, all between entries (Random House.⏎Lewinsohn; ⏎- Mach, E.). Probe: bulleted references 0.656 on '-', two newline-separated entries 0.341 on '.\\n', author list 'Lee K., Park J.' 0.329; single entry 0.070, prose about authors 0.074, shopping list bullets 0.004, prose line break 0.002."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-dfb9b73b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N8181+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T10:20:09+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L13/N8181",
+   "pole": "+",
+   "label": "a name that repeats an item already given earlier in the same list or import line (User, UserAvatar; os, os.path; Diabetes ... Diabetes), as against the same lists where every item is new",
+   "fire": [
+    "from shop.models import Order, OrderItem, Product",
+    "from rest_framework.views import APIView, APIViewSet",
+    "import json\nimport logging\nimport logging.handlers",
+    "Keywords: Asthma, Allergy, Asthma, Inhaler",
+    "from .errors import Error, ErrorCode, Warning",
+    "from flask import Request, RequestContext",
+    "Categories: Travel, Food, Travel, Photography",
+    "from blog.forms import CommentForm, CommentFormSet"
+   ],
+   "quiet": [
+    "from shop.models import Order, Customer, Product",
+    "from rest_framework.views import APIView, GenericView",
+    "import json\nimport logging\nimport argparse",
+    "Keywords: Asthma, Allergy, Pollen, Inhaler",
+    "from .errors import Error, Failure, Warning",
+    "from flask import Request, Blueprint",
+    "Categories: Travel, Food, Music, Photography",
+    "from blog.forms import CommentForm, PostForm"
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.95 on the repeated name in a list; the same lists with all-new items below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "a list item repeating an earlier item",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: 'import User, ⟦ User⟧Avatar', 'Docstring, Doc⟦string⟧Deprecated', 'import os / import⟦ os⟧.path', 'IPartner, I⟦Partner⟧Authorizer', 'HttpResponse, ⟦ HttpResponse⟧BadRequest', 'Diabetes,⟦ Diabetes⟧'. Probe: 'User, UserAvatar' 0.704, 'HttpResponse, HttpResponseBadRequest' 0.567, 'import os / import os.path' 0.745, 'Diabetes, Insulin, Diabetes' 0.940; 'User, Avatar' 0.031, 'HttpResponse, JsonResponse' 0.017, 'import os / import sys' 0.029. An induction-style repeat detector."
+}

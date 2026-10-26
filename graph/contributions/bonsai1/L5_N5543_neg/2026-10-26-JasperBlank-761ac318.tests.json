@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-26-JasperBlank-761ac318",
+ "contributor": "JasperBlank",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N5543-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T13:17:27+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N5543",
+   "pole": "-",
+   "label": "Dense, weak negative activation on the word 'line'/'lines' (and pieces such as SAX, ih) inside code identifiers; no clear narrow trigger",
+   "fire": [
+    "def output_callback(self, line, kill_switch):\n    self.process.write(line)\n    return line",
+    "test.must_contain_exactly_lines(output, lines, ['title', 'find'])\ntest.run()",
+    "for line in open(path):\n    lines.append(line.strip())\nprint(len(lines))",
+    "def read_all(self):\n    return [x for x in self.lines if x]",
+    "with open('log.txt') as f:\n    for line in f:\n        count += 1",
+    "def parse(source):\n    try:\n        parser.parse(source)\n    except SAXException, e:\n        print(e)",
+    "files.writeall(files.join(tmpDir, 'a3'))\nassert lines == expected",
+    "def split_text(text):\n    lines = text.split('\\n')\n    return lines"
+   ],
+   "quiet": [
+    "x = 5\ny = x * 2\nprint(y)",
+    "The committee will meet on Thursday to discuss the proposed budget for next year.",
+    "def add(a, b):\n    return a + b\n\nresult = add(3, 4)",
+    "She walked along the shore and watched the waves roll in under a pale sky.",
+    "import os\nimport sys\n\nprint(os.getcwd())",
+    "Conversations with the club are ongoing, and we want to renew his contract soon.",
+    "class Dog:\n    def bark(self):\n        return 'woof'",
+    "Traditional awarding of prizes by the city takes place on the coming Thursday."
+   ]
+  }
+ ],
+ "predictions": "4/8 fire, 3 near misses",
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card"
+  ]
+ },
+ "short": "line/lines in code",
+ "unit_kind": "dense / positional",
+ "confidence": "low",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "trigger": {
+  "words": [
+   "line",
+   "lines"
+  ]
+ }
+}

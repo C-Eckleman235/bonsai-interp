@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-26-JasperBlank-6d56a7e9",
+ "contributor": "JasperBlank",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N7716-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T02:08:02+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N7716",
+   "pole": "-",
+   "label": "' *' (multiplication operator) in polar/spherical-to-Cartesian trig code, right before a cos/sin factor, e.g. 'x = r * math.cos(angle)' or 'r * sin(theta) * cos(phi)'",
+   "fire": [
+    "import math\nfor i in range(12):\n    angle = i * math.pi / 6\n    x = radius * math.cos(angle)\n    y = radius * math.sin(angle)",
+    "def spherical_to_xyz(theta, phi, r):\n    x = r * sin(theta) * cos(phi)\n    y = r * sin(theta) * sin(phi)\n    z = r * cos(theta)\n    return x, y, z",
+    "for p in particles:\n    p.angle = random.uniform(0, 2 * math.pi)\n    p.velocity_x = speed * math.cos(p.angle)\n    p.velocity_y = speed * math.sin(p.angle)",
+    "def circle_points(r, n):\n    pts = []\n    for k in range(n):\n        t = 2 * math.pi * k / n\n        pts.append((r * math.cos(t), r * math.sin(t)))\n    return pts",
+    "To convert polar coordinates to Cartesian ones, set x equal to the radius times cos(theta), and y equal to the radius * sin(theta).",
+    "float a = radians(deg);\nfloat px = cx + rad * cos(a);\nfloat py = cy + rad * sin(a);\nellipse(px, py, 4, 4);",
+    "def rotate(x, y, a):\n    nx = x * math.cos(a) - y * math.sin(a)\n    ny = x * math.sin(a) + y * math.cos(a)\n    return nx, ny",
+    "The projected length is the vector magnitude multiplied by cos(angle) of inclination, so the horizontal component is v * cos(alpha)."
+   ],
+   "quiet": [
+    "import math\nfor i in range(12):\n    angle = i + math.pi / 6\n    print(angle)\n    total = total + angle",
+    "def total_price(items, tax):\n    subtotal = sum(i.price * i.count for i in items)\n    return subtotal * (1 + tax)",
+    "The recipe calls for two cups of flour, a pinch of salt, and enough warm water to make the dough soft and elastic.",
+    "for p in particles:\n    p.age += 1\n    p.x = p.x + p.vx\n    p.y = p.y + p.vy\n    if p.age > 100:\n        particles.remove(p)",
+    "Angles in a right triangle sum to one hundred eighty degrees, and the sine of an angle is the opposite side over the hypotenuse.",
+    "def area(w, h):\n    return w * h\n\nprint(area(3, 4) * 2)",
+    "She walked along the beach at sunset, picking up shells and watching the waves roll gently over the sand.",
+    "x = np.linspace(0, 10, 100)\ny = np.sqrt(x) + np.log(x + 1)\nplt.plot(x, y)\nplt.show()"
+   ]
+  }
+ ],
+ "predictions": "5/8 fire, 1 near miss",
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "card"
+  ]
+ },
+ "short": "multiply before cos/sin",
+ "unit_kind": "sparse feature",
+ "confidence": "low",
+ "notes": "Label and sentences written blind by a Claude subagent from the card text alone (prompt: haiku_labeler/prompt.md, identical for Haiku, Sonnet and Opus); one retry on mechanical checks. Part of a Haiku/Sonnet/Opus comparison on the same 48 poles."
+}

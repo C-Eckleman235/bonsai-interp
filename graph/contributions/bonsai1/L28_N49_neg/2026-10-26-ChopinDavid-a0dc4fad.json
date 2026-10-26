@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-a0dc4fad",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N49-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T13:27:20+00:00",
+ "recipe": {
+  "toolchain_commit": "31705c30",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L28_N49_neg/2026-10-26-ChopinDavid-a0dc4fad.tests.json"
+ },
+ "label": "an operator inside an inline formula or code keyword argument ('=', '/')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L28_N49_neg/2026-10-26-ChopinDavid-a0dc4fad.tests.json",
+   "prereg_commit": "31705c30",
+   "author": "ChopinDavid",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.162,
+     "peak": " ("
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.087,
+     "peak": "="
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.022,
+     "peak": " /"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.079,
+     "peak": "="
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.011,
+     "peak": " *"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.042,
+     "peak": "="
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.013,
+     "peak": " for"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.158,
+     "peak": "="
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.011,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.034,
+     "peak": " name"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.005,
+     "peak": " its"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.012,
+     "peak": " up"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.014,
+     "peak": " mass"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.009,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.013,
+     "peak": " out"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.008,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.875,
+    "median_fire": 0.06,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "31705c30",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "operator in formula/code (weak)",
+ "unit_kind": "context",
+ "confidence": "low",
+ "notes": "Weak in probes: size=64 '=' 0.215, physics 'd = (vf2 - vi2) / 2a' 0.217; max_length=512 only 0.042, '6w/5 = 69' 0.011, 'x to the n' 0.011; prose 0.008-0.010.",
+ "selection": "random draw"
+}

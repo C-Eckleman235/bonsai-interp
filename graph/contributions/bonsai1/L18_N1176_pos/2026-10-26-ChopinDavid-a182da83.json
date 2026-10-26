@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-a182da83",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N1176+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T12:28:50+00:00",
+ "recipe": {
+  "toolchain_commit": "8e9cd6a4",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L18_N1176_pos/2026-10-26-ChopinDavid-a182da83.tests.json"
+ },
+ "label": "the opening parenthesis that introduces a role or part after a performer's name in a cast or credits list, as against parentheses used for dates, abbreviations or asides",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L18_N1176_pos/2026-10-26-ChopinDavid-a182da83.tests.json",
+   "prereg_commit": "8e9cd6a4",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.623,
+     "peak": "),"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.267,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.256,
+     "peak": "the"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.437,
+     "peak": " ("
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.341,
+     "peak": " ("
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.265,
+     "peak": " ("
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.714,
+     "peak": ")"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.558,
+     "peak": "ler"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.062,
+     "peak": " closing"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.114,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.154,
+     "peak": " voices"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.034,
+     "peak": " house"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.108,
+     "peak": " are"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.022,
+     "peak": "This"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.031,
+     "peak": " London"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.143,
+     "peak": " every"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.389,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "8e9cd6a4",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "'(' before a role in a cast list",
+ "unit_kind": "unclear",
+ "confidence": 0.25,
+ "notes": "Card is diffuse (broad flag, 1.4% of tokens reach 0.1 of max): ' the', ' actors', 'erson' (Hutcherson), '),' in a cast list, Korean actor-role brackets, ' line', ' range'. Probe: cast list 'Helen Burns (Adele)' 0.752 on ' (', 'tonal range' 0.723, 'offensive line and' 0.549, 'co-star' 0.451; plain prose 0.04-0.10. Best-guess sub-trigger only; the pole may have no single meaning.",
+ "selection": "random draw"
+}

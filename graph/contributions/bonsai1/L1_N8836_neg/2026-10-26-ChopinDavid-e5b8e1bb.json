@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-e5b8e1bb",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N8836-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T09:29:35+00:00",
+ "recipe": {
+  "toolchain_commit": "d269a055",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L1_N8836_neg/2026-10-26-ChopinDavid-e5b8e1bb.tests.json"
+ },
+ "label": "word-internal continuation pieces of a few particular multi-token words (사|로|잡다 'captivate', Verbesser|ung, Fut|on, 廃止), as against the same languages without those words",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L1_N8836_neg/2026-10-26-ChopinDavid-e5b8e1bb.tests.json",
+   "prereg_commit": "d269a055",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.903,
+     "peak": "로"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.891,
+     "peak": "로"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.701,
+     "peak": "ung"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.816,
+     "peak": "ung"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.662,
+     "peak": "on"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 1.002,
+     "peak": "on"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.709,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.936,
+     "peak": "로"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.287,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.185,
+     "peak": "기를"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.187,
+     "peak": "ere"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.101,
+     "peak": " ging"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.082,
+     "peak": " spare"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.357,
+     "peak": " sofa"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.139,
+     "peak": "定"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.173,
+     "peak": "을"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.853,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "d269a055",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "continuation piece of a few split words",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Broad L1 pole (7.6% of tokens reach 0.1 of max, gate-closed regime 100%). Card: 사로잡 x2, Verbesserung, 廃止 x2, Futon, -ом, 지속. Probe: 사로잡을 0.878, Verbesserung 'ung' 0.864, 사로잡혀 0.806, 廃止 0.783, Futon 'on' 0.778; Korean without 사로잡 0.167, German without Verbesserung -0.042. Token-specific, not a general meaning.",
+ "selection": "random draw"
+}

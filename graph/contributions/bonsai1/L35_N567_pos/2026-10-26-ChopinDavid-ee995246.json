@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-ee995246",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N567+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T08:30:25+00:00",
+ "recipe": {
+  "toolchain_commit": "393fbffd",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N567_pos/2026-10-26-ChopinDavid-ee995246.tests.json"
+ },
+ "label": "Russian and Arabic function pieces that open a fixed continuation: the hyphen in во-вторых, the preposition ' с' in 'поделиться с вами', Arabic attached ' ب' before a noun, ranges like 'XI - XIII'; as against Russian sentences of the same kind without those pieces",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N567_pos/2026-10-26-ChopinDavid-ee995246.tests.json",
+   "prereg_commit": "393fbffd",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.593,
+     "peak": "-"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 1.105,
+     "peak": " с"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.86,
+     "peak": " XIV"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.154,
+     "peak": " و"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.939,
+     "peak": " с"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.659,
+     "peak": "-"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.291,
+     "peak": "-"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.222,
+     "peak": "ب"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.11,
+     "peak": " по"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.215,
+     "peak": "ы"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.09,
+     "peak": "ор"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.025,
+     "peak": " هذه"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.071,
+     "peak": " расс"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.003,
+     "peak": "н"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.043,
+     "peak": "с"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.092,
+     "peak": " ك"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.626,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "393fbffd",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "Russian/Arabic pieces opening fixed continuations",
+ "unit_kind": "unclear",
+ "confidence": 0.3,
+ "notes": "Card top: '-' x5 (во-вторых, Австро-Венгерской), ' с' x4, ' ب' x2, '-овых', 'XIII'. Probe: XI - XIII 0.839, Arabic بفيتامين 0.805, во-вторых 0.741, -ических 0.661, 'с вами' 0.617; Russian without them 0.362 and 0.158; English 0.000. Russian baseline is high, so leak risk.",
+ "selection": "random draw"
+}

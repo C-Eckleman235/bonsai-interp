@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-14ff9ce5",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N11252+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T08:29:36+00:00",
+ "recipe": {
+  "toolchain_commit": "393fbffd",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L30_N11252_pos/2026-10-26-ChopinDavid-14ff9ce5.tests.json"
+ },
+ "label": "the first character of a two-character Chinese action verb when that character is its own token (煽|动, 抒|发, 斟|酌, 怂|恿, 鼓|动), as against sentences using a single-token verb of the same meaning",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L30_N11252_pos/2026-10-26-ChopinDavid-14ff9ce5.tests.json",
+   "prereg_commit": "393fbffd",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.633,
+     "peak": "煽"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.57,
+     "peak": "抒"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.684,
+     "peak": "斟"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.282,
+     "peak": "揣"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.16,
+     "peak": "怂"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.589,
+     "peak": "唆"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.534,
+     "peak": "蛊"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.287,
+     "peak": "鼓"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.0,
+     "peak": "不满"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.007,
+     "peak": "童"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.001,
+     "peak": "考虑"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": "总是"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.003,
+     "peak": "朋友"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.133,
+     "peak": "闹"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.038,
+     "peak": "吸引"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.142,
+     "peak": "集"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.552,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "393fbffd",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "first char of split Chinese verb",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: 煽 x2, 抒 x2, 展, 培, 翻, 誘導, 創造 — verb-initial characters. Probe: 煽动 0.702, 抒发 0.565; 诱导 (one token) 0.097, 创造 (one token) 0.002, same sentences without the verb ~0.01. Tokenizer: 斟酌, 揣摩, 怂恿, 唆使, 蛊惑, 鼓动 split; 激发, 表达, 描写 single tokens.",
+ "selection": "random draw"
+}

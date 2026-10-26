@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-1304f697",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N5243-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T16:26:21+00:00",
+ "recipe": {
+  "toolchain_commit": "ff2a5b24",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L11_N5243_neg/2026-10-26-ChopinDavid-1304f697.tests.json"
+ },
+ "label": "the ORM model namespace in Python web code: 'db' in db.Column, the '.Model' base class, and '.models' imports (Flask-SQLAlchemy, Django), as against other classes, imports and the word 'models' in prose",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L11_N5243_neg/2026-10-26-ChopinDavid-1304f697.tests.json",
+   "prereg_commit": "ff2a5b24",
+   "author": "ChopinDavid",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.791,
+     "peak": ".Model"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.367,
+     "peak": ".query"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.733,
+     "peak": ".Model"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.324,
+     "peak": ".Model"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.208,
+     "peak": ".objects"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.714,
+     "peak": ".Model"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.191,
+     "peak": ".objects"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.669,
+     "peak": ".Model"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.114,
+     "peak": "):\n"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.021,
+     "peak": "_price"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.042,
+     "peak": ":\n"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.017,
+     "peak": "\n\n"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.022,
+     "peak": "\n\n"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.057,
+     "peak": ":\n"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.012,
+     "peak": " made"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.06,
+     "peak": ":\n"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.518,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "ff2a5b24",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "ORM model namespace (db.Model, .models)",
+ "unit_kind": "context",
+ "confidence": 0.7,
+ "notes": "Card: 'db.Column', 'class Role(db.Model)', 'from sentry.models import User'. Probe: Flask-SQLAlchemy class 0.684, '.models import' 0.445, Django models.Model 0.334; sqlite3 'shop.db' 0.160; plain class 0.014, numpy 0.005, 'trained three models' 0.010, '85 db' 0.002.",
+ "selection": "random draw"
+}

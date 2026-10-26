@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-26-JasperBlank-f2cd8f4c",
+ "contributor": "JasperBlank",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N11928+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T02:08:02+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L6/N11928",
+   "pole": "+",
+   "label": "The first indentation whitespace token (a tab, or an odd-width run of 3/5/7/11 spaces) on the line right after a Python 'def ...():' header, where the function body begins",
+   "fire": [
+    "class Server(object):\n\n\tdef serve_forever(self):\n\t\tself.client = self.Dispatcher(self)\n\t\tself.client.start()\n",
+    "import os\n\n# Returns Username\ndef get_user():\n   try:\n        user = os.getlogin()\n   except OSError:\n        user = None\n   return user\n",
+    "class Queue:\n\tdef hasnext(self):\n\t\twith self.lock:\n\t\t\tif len(self.items) > 0:\n\t\t\t\treturn True\n\t\treturn False\n",
+    "class Form(Dialog):\n\n\tdef on_submit(self):\n\t\tself.validate_in_use_date()\n\t\tself.status = self.get_status()\n",
+    "class Plugin:\n\n   def getIcon(self):\n       return QIcon(':/plugins/qad/icons/join.png')\n\n   def getName(self):\n       return 'join'\n",
+    "def suite():\n   \"\"\"\n   Gather all the tests in a suite.\n   \"\"\"\n   result = unittest.TestSuite()\n   return result\n",
+    "class Worker:\n\tdef run(self):\n\t\twhile self.alive:\n\t\t\tself.step()\n\n\tdef stop(self):\n\t\tself.alive = False\n",
+    "def load_config(path):\n   with open(path) as f:\n      data = f.read()\n   return data\n"
+   ],
+   "quiet": [
+    "class Server(object):\n\n    def serve_forever(self):\n        self.client = self.Dispatcher(self)\n        self.client.start()\n",
+    "The old man walked slowly down the road toward the market, stopping every few steps to rest his weary legs.",
+    "import sys\n\ntry:\n    import psutil\nexcept ImportError:\n    psutil = None\n",
+    "def get_user():\n    try:\n        return os.getlogin()\n    except OSError:\n        return None\n",
+    "Please send the report by Friday; the table has columns for name,\tdate,\tand total amount owed.",
+    "x = 1\ny = 2\nif x < y:\n    print('smaller')\nelse:\n    print('larger')\n",
+    "The recipe says to simmer the sauce for twenty minutes, then stir in the basil and serve over pasta.",
+    "for item in items:\n    if item.ready:\n        total += item.price\n    else:\n        skipped += 1\n"
+   ]
+  }
+ ],
+ "predictions": "6/8 fire, 1 near miss",
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "card"
+  ]
+ },
+ "short": "indent after def line",
+ "unit_kind": "contextual",
+ "confidence": "medium",
+ "notes": "Label and sentences written blind by a Claude subagent from the card text alone (prompt: haiku_labeler/prompt.md, identical for Haiku, Sonnet and Opus); one retry on mechanical checks. Part of a Haiku/Sonnet/Opus comparison on the same 48 poles."
+}

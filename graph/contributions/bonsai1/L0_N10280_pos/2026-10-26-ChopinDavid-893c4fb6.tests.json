@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-893c4fb6",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N10280+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T12:20:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N10280",
+   "pole": "+",
+   "label": "the word piece 'ury'/'URY' as its own token at the end of a word (LUX|URY, us|ury, B|ury, Dr|ury), as against similar words whose ending is a different piece",
+   "fire": [
+    "The hotel advert promised a LUXURY SPA with every booking.",
+    "Medieval preachers condemned usury as a grave sin.",
+    "The actor trained at the old theatre on Drury Lane.",
+    "Ancient priests read the augury in the flight of birds.",
+    "After the war many families fell into penury and hunger.",
+    "The famous jazz club in Fleury closed last year.",
+    "WARNING: RISK OF SERIOUS INJURY IF MISUSED.",
+    "The festival celebrates the TWENTIETH CENTURY in music."
+   ],
+   "quiet": [
+    "The hotel advert promised a MODERN SPA with every booking.",
+    "Medieval preachers condemned greed as a grave sin.",
+    "The actor trained at the old theatre on Bond Street.",
+    "Ancient priests read the omens in the flight of birds.",
+    "After the war many families fell into poverty and hunger.",
+    "The famous jazz club in Lyon closed last year.",
+    "WARNING: RISK OF SERIOUS HARM IF MISUSED.",
+    "The festival celebrates the TWENTIETH DECADE in music."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-1.0 on 'ury'/'URY' as a separate token; the same frames with other words below 0.2 (whole-word ' jury', ' luxury', ' navy' also fire and are avoided in near misses)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "the piece 'ury'",
+ "unit_kind": "token",
+ "confidence": 0.6,
+ "notes": "Card: 'ury' x17, 'URY' x5, ' navy' x4, 'ory' x2. Probe: LUXURY 0.984, usury 0.633, Bury 0.578, ' navy' 0.714; 'MODERN' 0.078, ' story' 0.082; whole-word ' luxury' 0.445 and ' jury' 0.550 also fire, so near misses avoid -ury words entirely.",
+ "trigger": {
+  "pieces": [
+   "ury",
+   "URY"
+  ]
+ }
+}

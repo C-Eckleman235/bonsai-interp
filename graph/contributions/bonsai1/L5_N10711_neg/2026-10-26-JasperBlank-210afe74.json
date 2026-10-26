@@ -1,0 +1,156 @@
+{
+ "id": "2026-10-26-JasperBlank-210afe74",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N10711-",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T13:38:42+00:00",
+ "recipe": {
+  "toolchain_commit": "dc58702b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N10711_neg/2026-10-26-JasperBlank-210afe74.tests.json"
+ },
+ "label": "Russian Cyrillic piece ' бан' (as in банк, банальный, банка) and 'ан' after 'м' in Russian words",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N10711_neg/2026-10-26-JasperBlank-210afe74.tests.json",
+   "prereg_commit": "dc58702b",
+   "author": "JasperBlank",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.931,
+     "peak": " бан"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.893,
+     "peak": " бан"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.83,
+     "peak": " бан"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.849,
+     "peak": " бан"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.833,
+     "peak": " бан"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.484,
+     "peak": " бан"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.712,
+     "peak": " бан"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.799,
+     "peak": " бан"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.129,
+     "peak": "ители"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.094,
+     "peak": "и"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.065,
+     "peak": "ут"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.113,
+     "peak": "т"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.163,
+     "peak": "аг"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.228,
+     "peak": "аб"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.048,
+     "peak": " он"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.04,
+     "peak": " х"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.831,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc58702b",
+  "minutes": 9,
+  "batch_size": 192
+ },
+ "short": "Russian ' бан' piece",
+ "unit_kind": "lexical",
+ "confidence": "medium",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "selection": "random draw",
+ "trigger": {
+  "tokens": [
+   " бан"
+  ]
+ }
+}

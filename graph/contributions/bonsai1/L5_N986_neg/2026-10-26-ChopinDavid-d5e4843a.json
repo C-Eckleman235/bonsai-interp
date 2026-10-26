@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-d5e4843a",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N986-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T14:26:17+00:00",
+ "recipe": {
+  "toolchain_commit": "18829b5d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N986_neg/2026-10-26-ChopinDavid-d5e4843a.tests.json"
+ },
+ "label": "the street-type word that closes a street name in an address (Drive, Dr, Rd, Blvd, Parkway), as against 'drive' and 'Dr' in their other senses (a car trip, a hard drive, a fundraising drive, the title Doctor)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N986_neg/2026-10-26-ChopinDavid-d5e4843a.tests.json",
+   "prereg_commit": "18829b5d",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.877,
+     "peak": " Drive"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.881,
+     "peak": " Dr"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.805,
+     "peak": " Drive"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.537,
+     "peak": " Blvd"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.451,
+     "peak": " Rd"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.685,
+     "peak": " Parkway"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.981,
+     "peak": " Drive"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.642,
+     "peak": " Dr"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.129,
+     "peak": " drive"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.212,
+     "peak": " drive"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.261,
+     "peak": " drive"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.047,
+     "peak": " Dr"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.036,
+     "peak": "Fire"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.13,
+     "peak": " drive"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.062,
+     "peak": " drive"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.029,
+     "peak": " Dr"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.745,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "18829b5d",
+  "minutes": 0,
+  "batch_size": 16
+ },
+ "short": "street-type suffix (Drive/Dr/Rd)",
+ "unit_kind": "context",
+ "confidence": 0.7,
+ "notes": "Card: ' Drive' x20, ' Dr' x3, ' Rd' x2, ' Parkway' x2, ' Blvd' x2, all closing an address. Probe: 'Maple Drive' 0.832, 'Harbor Dr' 0.956, 'Sunset Blvd' 0.432, 'Mill Rd' 0.403; 'a long drive' 0.220, 'hard drive' 0.019, 'charity drive' 0.164, 'Dr. Patel' 0.091.",
+ "selection": "random draw"
+}

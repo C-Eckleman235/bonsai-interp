@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-26-JasperBlank-d05c2cdc",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N3461-",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T13:39:09+00:00",
+ "recipe": {
+  "toolchain_commit": "dc58702b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N3461_neg/2026-10-26-JasperBlank-d05c2cdc.tests.json"
+ },
+ "label": "Chinese/CJK floor-or-layer measure characters (层, 樓/楼层, 字 in floor numbers, 重, 星) after a number, in non-English text",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N3461_neg/2026-10-26-JasperBlank-d05c2cdc.tests.json",
+   "prereg_commit": "dc58702b",
+   "author": "JasperBlank",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.54,
+     "peak": "层"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.411,
+     "peak": "層"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 1.214,
+     "peak": "字"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.219,
+     "peak": "层"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.253,
+     "peak": "層"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.653,
+     "peak": "层"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.272,
+     "peak": "重"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.512,
+     "peak": "层"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.064,
+     "peak": "场"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.022,
+     "peak": "機"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.01,
+     "peak": "周五"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.04,
+     "peak": "房间"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.047,
+     "peak": "間"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.012,
+     "peak": "的"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.136,
+     "peak": "部分"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.015,
+     "peak": "Tomorrow"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.462,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc58702b",
+  "minutes": 10,
+  "batch_size": 192
+ },
+ "short": "CJK floor/layer character",
+ "unit_kind": "sparse feature",
+ "confidence": "low",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "selection": "random draw",
+ "trigger": {
+  "words": [
+   "层",
+   "層",
+   "字",
+   "重",
+   "星"
+  ]
+ }
+}
