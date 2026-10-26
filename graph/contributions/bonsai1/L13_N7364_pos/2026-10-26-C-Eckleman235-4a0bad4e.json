@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-26-C-Eckleman235-4a0bad4e",
+ "kind": "qc",
+ "neuron": "bonsai1/L13/N7364+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-26T18:42:49+00:00",
+ "recipe": {
+  "toolchain_commit": "c2b0809c",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L13_N7364_pos/2026-10-26-C-Eckleman235-4a0bad4e.tests.json"
+ },
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L13_N7364_pos/2026-10-26-C-Eckleman235-4a0bad4e.tests.json",
+   "prereg_commit": "c2b0809c",
+   "author": "C-Eckleman235",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.992,
+     "peak": " at"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.767,
+     "peak": " at"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.025,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.742,
+     "peak": " Antwort"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.093,
+     "peak": "\n"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.715,
+     "peak": " comment"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.938,
+     "peak": " reply"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.903,
+     "peak": " at"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.028,
+     "peak": "Kevin"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.022,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.009,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.052,
+     "peak": " auf"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.095,
+     "peak": " comments"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.021,
+     "peak": " about"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.119,
+     "peak": " Share"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.184,
+     "peak": " Tom"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.875,
+    "median_fire": 0.754,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5 (blind QC-writer subagent, card only)",
+  "screens": [
+   "card",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "c2b0809c",
+  "minutes": 3,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "Blog/forum comment-section boilerplate: the token right after a post date/timestamp (' at' in 'November 26, 2012 at 4:41 pm', newline after a date-stamp line) and the 'Leave a reply/comment' call-to-action word (' reply', ' comment(s)', 'Antwort')"
+ },
+ "selection": "QC noise floor: a second independent QC of each model-QC pilot label (#1051-#1080)"
+}
