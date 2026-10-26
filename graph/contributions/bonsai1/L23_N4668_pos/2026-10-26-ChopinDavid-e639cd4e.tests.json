@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-e639cd4e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N4668+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T16:20:08+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L23/N4668",
+   "pole": "+",
+   "label": "unclear; best guess: an opening parenthesis that starts an inline table or figure reference in statistical prose ('(table 1)', '(Figure 2)'), as against the same prose without the reference",
+   "fire": [
+    "About 40% of farms used irrigation in 2010 (table 2), up from a quarter.",
+    "Rates of smoking fell sharply after the tax rise (Figure 3), especially among teens.",
+    "Fewer than 15% of respondents owned a car (table 4), so buses mattered.",
+    "Average rainfall dropped by a third over the decade (Figure 1), and wells dried up.",
+    "Only 9% of schools had internet access in 1998 (table 3), mostly in cities.",
+    "The share of women in parliament doubled between 1990 and 2010 (table 5), but remains low.",
+    "Most patients recovered within a week (Figure 2), although some relapsed.",
+    "Nearly 60% of homes were heated with coal in 1950 (table 1), mainly in the north."
+   ],
+   "quiet": [
+    "About 40% of farms used irrigation in 2010, up from a quarter.",
+    "Rates of smoking fell sharply after the tax rise, especially among teens.",
+    "Fewer than 15% of respondents owned a car, so buses mattered.",
+    "Average rainfall dropped by a third over the decade, and wells dried up.",
+    "Only 9% of schools had internet access in 1998, mostly in cities.",
+    "The share of women in parliament doubled between 1990 and 2010, but remains low.",
+    "Most patients recovered within a week, although some relapsed.",
+    "Nearly 60% of homes were heated with coal in 1950, mainly in the north."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2+ on ' (' before 'table' or 'Figure'; the same sentences without the reference below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "unclear: '(' of an inline table reference",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Weak pole (max 8.7, 0.42% density) whose card peaks on line ends, '.Read', ' (' before 'table 1', and code indentation. Probe: '(table 1)' 0.237; forum signature newline 0.040, code 0.037-0.038, plain sentences 0.026. Only one configuration reached 0.2, so this is a low-confidence guess."
+}

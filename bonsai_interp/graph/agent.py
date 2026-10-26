@@ -37,6 +37,12 @@ def doctor(a):
         if DEVICE.type == "cpu":
             why = "set by BONSAI_DEVICE" if report()["device_forced"] else "no CUDA GPU or Apple Silicon found"
             _ok("warn", "device", f"{describe()}: {why}; missions would take hours")
+        import torch
+        from bonsai_interp.env import DTYPE
+        if DEVICE.type == "cuda" and DTYPE == torch.bfloat16 and torch.cuda.get_device_capability(DEVICE) < (8, 0):
+            # e.g. a Colab T4: float16 tensor cores but none for bfloat16 (docs/FLOAT16.md: float16 matches the reference)
+            _ok("warn", "dtype", "this GPU has no bfloat16 tensor cores, so bfloat16 runs ~5x slower than float16 here; "
+                "put BONSAI_DTYPE=float16 in .env (allowed for missions: docs/FLOAT16.md)")
         mem = memory_gb()
         if DEVICE.type == "cuda":
             # measured peak of any mission step (load, play run/probe, logits, the auto tier): about 5.2 GB

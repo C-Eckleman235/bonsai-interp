@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-C-Eckleman235-a1829ba1",
+ "contributor": "C-Eckleman235",
+ "kind": "qc",
+ "neuron": "bonsai1/L15/N5974-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T17:44:36+00:00",
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "Subject-start word (determiner/demonstrative/noun like 'these', 'each', 'today', 'the trend') right after a causal connective 'so' / 'therefore,' where a main verb is expected next",
+  "notes": "Model-QC pilot (concept-maps plan sha256 e2c0fbd950fc010cf3ac8c4a8d9473758ba54d8ddb3e2dbc13f451f5a8ddf787): label slot B of this pole, from contribution 2026-10-26-JasperBlank-0b3abd48; which model wrote it stays sealed until all 30 tests are scored. Sentences written by a fresh Opus subagent that saw only the pole's card (record line removed) and the three anonymous labels; nothing was probed or scored."
+ },
+ "neighbours": [
+  {
+   "unit": "L15/N5974",
+   "pole": "-",
+   "label": "Subject-start word (determiner/demonstrative/noun like 'these', 'each', 'today', 'the trend') right after a causal connective 'so' / 'therefore,' where a main verb is expected next",
+   "fire": [
+    "The old cables kept fraying at the joints, so these replacements are braided with nylon.",
+    "Ticket prices doubled over the summer; therefore, each family now buys only one pass.",
+    "The coach wanted a faster lineup this season, so the starters run sprints every morning.",
+    "Interest rates climbed for six straight quarters, and so the housing market cooled considerably.",
+    "The museum lost its funding last spring, so today volunteers staff the front desk.",
+    "Our garden gets almost no afternoon sun; therefore, those tomatoes never fully ripen.",
+    "The original recipe was far too salty for the kids, so this version uses half the soy sauce.",
+    "Several students missed the field trip because of illness, so a makeup visit was scheduled in May."
+   ],
+   "quiet": [
+    "The old cables kept fraying at the joints, even though these replacements cost twice as much.",
+    "Ticket prices doubled over the summer, and each family complained loudly at the gate.",
+    "The coach wanted a faster lineup this season and hired a sprint trainer from the college.",
+    "Interest rates climbed for six straight quarters while the housing market kept setting records.",
+    "The museum lost its funding last spring, yet today it still opens its doors at nine.",
+    "Our garden gets almost no afternoon sun, which is why those tomatoes are grown in pots.",
+    "The original recipe was far too salty for the kids, who preferred this version with honey.",
+    "Several students missed the field trip because of illness, and a nurse checked on them later."
+   ]
+  }
+ ],
+ "predictions": "confirm: the label as written should hold a harder independent test (>= 6/8 fire, AUROC >= 0.9)",
+ "methods": {
+  "agent": "claude-code opus-5.5 (blind QC-writer subagent, card only)",
+  "screens": [
+   "card"
+  ]
+ },
+ "selection": "model-QC pilot: a seeded draw of poles held by all three labelling models (#1018-#1021)"
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-34d30b2d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N2149+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T16:20:08+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L24/N2149",
+   "pole": "+",
+   "label": "unclear; best guess: the key-value separator in hand-built key-value code (a '\"key\":' fragment inside a string, or a spaced ' : ' in a dict literal), as against the same code without key-value pairs",
+   "fire": [
+    "update = '\"muted\":' + str(is_muted)",
+    "params = {\n    \"f\" : \"json\",\n    \"where\" : where_clause\n}",
+    "msg = '{\"volume\":' + str(level) + '}'",
+    "query = {\"user\" : user_id, \"limit\" : 20}",
+    "line = '\"channel\":' + channel_name",
+    "options = {\n    \"returnGeometry\" : False,\n    \"outFields\" : fields\n}",
+    "payload = '\"status\":' + json.dumps(state)",
+    "args = {\"token\" : token, \"page\" : page_number}"
+   ],
+   "quiet": [
+    "update = str(is_muted)",
+    "params = [\"json\", where_clause]",
+    "msg = 'volume set to ' + str(level)",
+    "query = (user_id, 20)",
+    "line = 'channel ' + channel_name",
+    "options = [False, fields]",
+    "payload = json.dumps(state)",
+    "args = [token, page_number]"
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.4 on '\":' or ' :' between a key and its value; code without key-value pairs below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "unclear: key-value separators in code",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card: \"'\\\"enabled\\\":' + dvr_enabled\", '\"clearEmptyFields\" : clearEmptyFields', plus ' same', ' self', ' =' and prose ' your'; density 0.35%. Probe: spaced dict ' :' 0.143, '\"enabled\":' string 0.157, unspaced Python dict 0.030; 'sense your mood' 0.376 (unexplained); 'the same response' 0.027. Weak and mixed; low confidence."
+}

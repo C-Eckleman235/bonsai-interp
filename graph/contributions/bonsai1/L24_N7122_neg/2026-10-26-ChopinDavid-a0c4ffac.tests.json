@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-a0c4ffac",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N7122-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T14:19:53+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L24/N7122",
+   "pole": "-",
+   "label": "'All' or 'Any' opening a new sentence or line as a quantifier over things just discussed ('All of these factors...', 'All children must...'), as against 'all' inside a sentence and sentences opening with another determiner",
+   "fire": [
+    "The museum reopened in May.\nAll visitors must now book a ticket online.",
+    "The inspectors checked every school in the region.\nAll of them passed the fire safety test.",
+    "Several brands of paint were compared. All of these contained lead.",
+    "We moved house twice that year. Any spare money went on the rent.",
+    "The rules changed in January.\nAll drivers have to carry their licence.",
+    "Four wells were dug in the village. All of them dried up by August.",
+    "The recipe uses butter, honey and oats.\nAny of these can be swapped for cheaper ones.",
+    "Three bridges were built in the valley. All were designed by one engineer."
+   ],
+   "quiet": [
+    "The museum reopened in May.\nVisitors must now book a ticket online.",
+    "The inspectors checked every school in the region.\nThey passed the fire safety test.",
+    "Several brands of paint were compared. They contained lead.",
+    "We moved house twice that year. Our spare money went on the rent.",
+    "The rules changed in January.\nDrivers have to carry their licence.",
+    "Four wells were dug in the village. They dried up by August.",
+    "The recipe uses butter, honey and oats.\nThese can be swapped for cheaper ones.",
+    "Three bridges were built in the valley. Each was designed by one engineer."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.4 on sentence- or line-initial 'All'/'Any'; mid-sentence 'all' and sentences opening with 'These'/'The' below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "sentence-initial 'All'/'Any'",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: 'All' x19 after a newline, ' All' x8 after a period, ' Any' x2 (All manufacturing companies..., All of these factors make asphalt...). Probe: 'All companies must' 0.229, 'Any offer' 0.258, 'All the children' 0.158, 'All of these factors' 0.182 (peak on 'these'); 'ate all the cake' 0.006, 'all night' 0.002, 'These factors' 0.011. Activations ran below the card's; line-initial forms (the card's commonest) are used for half the fire items."
+}

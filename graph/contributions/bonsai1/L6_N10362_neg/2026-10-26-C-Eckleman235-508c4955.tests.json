@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-C-Eckleman235-508c4955",
+ "contributor": "C-Eckleman235",
+ "kind": "qc",
+ "neuron": "bonsai1/L6/N10362-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T17:43:54+00:00",
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "the split name-ending 'al' / 'wal' of Indian surnames (Agrawal, Agarwal), where the tokenizer breaks the name into pieces; the top examples are all names of this shape, and the pole does not fire on other 'al' endings",
+  "notes": "Model-QC pilot (concept-maps plan sha256 e2c0fbd950fc010cf3ac8c4a8d9473758ba54d8ddb3e2dbc13f451f5a8ddf787): label slot A of this pole, from contribution 2026-10-26-JasperBlank-8b9a3c1a; which model wrote it stays sealed until all 30 tests are scored. Sentences written by a fresh Opus subagent that saw only the pole's card (record line removed) and the three anonymous labels; nothing was probed or scored."
+ },
+ "neighbours": [
+  {
+   "unit": "L6/N10362",
+   "pole": "-",
+   "label": "the split name-ending 'al' / 'wal' of Indian surnames (Agrawal, Agarwal), where the tokenizer breaks the name into pieces; the top examples are all names of this shape, and the pole does not fire on other 'al' endings",
+   "fire": [
+    "Our new hire, Priya Jaiswal, will lead the quarterly audit of the vendor contracts next month.",
+    "The startup was founded in Bangalore by Sachin Bansal and a college friend from IIT Delhi.",
+    "In the debate, Arvind Kejriwal argued that the city's water tariffs were unfair to renters.",
+    "A detailed survey of rural credit was later published by Neha Agarwal and two colleagues.",
+    "Shareholders listened as chairman Sunil Mittal described the company's expansion into African telecom markets.",
+    "The wedding invitation listed the groom as Rohan Goyal, son of a textile merchant from Ludhiana.",
+    "Last spring the botanist Meera Agrawal catalogued over two hundred orchid species in Assam.",
+    "According to the court filing, the steel firm was controlled by the Jindal family for decades."
+   ],
+   "quiet": [
+    "Our new hire, Priya Sharma, will lead the quarterly audit of the vendor contracts next month.",
+    "The festival in Bangalore drew crowds to see a famous musician from the state of Bengal.",
+    "In the debate, the general argued that the canal tariffs were unfair to farmers in Nepal.",
+    "A detailed survey of rural credit was later published by the national bank of Portugal.",
+    "Shareholders listened as the chairman described a total overhaul of the company's capital plan.",
+    "The wedding invitation listed the groom as Rohan Gupta, son of a textile merchant from Ludhiana.",
+    "Last spring the botanist from Agra catalogued over two hundred tropical orchid species in Assam.",
+    "According to the court filing, the steel firm made an illegal deal with a rival in Senegal."
+   ]
+  }
+ ],
+ "predictions": "confirm: the label as written should hold a harder independent test (>= 6/8 fire, AUROC >= 0.9)",
+ "methods": {
+  "agent": "claude-code opus-5.5 (blind QC-writer subagent, card only)",
+  "screens": [
+   "card"
+  ]
+ },
+ "selection": "model-QC pilot: a seeded draw of poles held by all three labelling models (#1018-#1021)"
+}

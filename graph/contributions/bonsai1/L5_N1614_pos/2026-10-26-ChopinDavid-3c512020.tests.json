@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-3c512020",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N1614+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T20:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N1614",
+   "pole": "+",
+   "label": "characters inside a base64 or random mixed-case key string (RSA keys, base64 payloads, JWT tokens, API secrets), as against hex digests and ordinary string literals",
+   "fire": [
+    "ACCESS_KEY = 'AKzQ8mWpR3tYvLx9NbHc2DfGjK7sUeIo'\nREGION = 'eu-west-1'",
+    "payload = base64.b64decode('VGhpcyBpcyBhIHNlY3JldCBtZXNzYWdlIGZvciB5b3U=')",
+    "PRIVATE = '''-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC7\n'''",
+    "headers = {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJhcHAifQ'}",
+    "SECRET_KEY = 'Xq7RtLmP2vZbNc9KdFwHy4GsJeUa8TiO'\nDEBUG = False",
+    "img = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJ'",
+    "client_secret = 'pL9vQwE3rTyU7iOaSdFgH2jKlZxCvBnM'\nscope = 'read'",
+    "blob = 'U29tZSBkYXRhIHRoYXQgd2FzIGVuY29kZWQgaW4gYmFzZTY0'\nprint(len(blob))"
+   ],
+   "quiet": [
+    "ACCESS_LEVEL = 'admin'\nREGION = 'eu-west-1'",
+    "payload = message.decode('utf-8').strip().lower()",
+    "PRIVATE = '''This file holds settings for the private build.\nDo not share it.\n'''",
+    "headers = {'Content-Type': 'application/json', 'Accept': 'text/html'}",
+    "SECRET_NAME = 'database_password'\nDEBUG = False",
+    "md5 = 'e4d909c290d0fb1ca068ffaddf22cbd0'",
+    "client_name = 'reporting service'\nscope = 'read'",
+    "sha = '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b'\nprint(len(sha))"
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-1.1 on pieces of base64 or random mixed-case keys; lowercase hex checksums and readable strings below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "inside base64 / random mixed-case key strings",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: every top example is inside a base64 blob, PEM key or API secret (MIIEow..., VGhhbmsg..., API_SECRET). Probe: PEM key 0.833; base64 decode payload 0.862; API_SECRET 0.658; JWT 1.120; lowercase hex checksum 0.092; readable strings 0.026; plain code 0.043."
+}

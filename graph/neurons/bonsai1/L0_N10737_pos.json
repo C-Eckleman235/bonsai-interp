@@ -4,10 +4,10 @@
  "layer": 0,
  "index": 10737,
  "pole": "+",
- "label": "the bare tokens ' Barack', ' Yosemite' and ' governmental' (a layer-0 token detector), as against neighbouring tokens such as ' Obama', ' government' and other park names",
+ "label": "Exact tokens ' Barack', ' Yosemite', ' Yale', ' routinely', ' EW' and ' governmental' (a layer-0 token detector, not a politics or park theme), as against neighbours such as ' Obama', ' Harvard', ' Yellowstone', ' regularly' and ' government'",
  "short": "tokens ' Barack' / ' Yosemite' / ' governmental'",
  "kind": "word",
- "status": "partial",
+ "status": "held",
  "depth": "quick",
  "tests": [
   {
@@ -131,6 +131,128 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-24-ChopinDavid-84befea2"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N10737_pos/2026-10-26-moridinamael-3db74a33.tests.json",
+   "prereg_commit": "9428716b",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.69,
+     "peak": " Barack"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.577,
+     "peak": " Yosemite"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.433,
+     "peak": " Yale"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.357,
+     "peak": " routinely"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.554,
+     "peak": " EW"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.4,
+     "peak": " governmental"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.3,
+     "peak": " Barack"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.484,
+     "peak": " Yosemite"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.017,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.322,
+     "peak": " acted"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.162,
+     "peak": " stepped"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.079,
+     "peak": " hiking"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.043,
+     "peak": " wait"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.04,
+     "peak": " door"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.02,
+     "peak": " with"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.07,
+     "peak": " in"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.459,
+    "near_misses_at_0.3": 1
+   },
+   "contribution": "2026-10-26-moridinamael-3db74a33"
   }
  ],
  "label_history": [
@@ -138,34 +260,37 @@
    "2026-10-24-ChopinDavid-84befea2",
    "the bare tokens ' Barack', ' Yosemite' and ' governmental' (a layer-0 token detector), as against neighbouring tokens such as ' Obama', ' government' and other park names",
    "held"
+  ],
+  [
+   "2026-10-26-moridinamael-3db74a33",
+   "Exact tokens ' Barack', ' Yosemite', ' Yale', ' routinely', ' EW' and ' governmental' (a layer-0 token detector, not a politics or park theme), as against neighbours such as ' Obama', ' Harvard', ' Yellowstone', ' regularly' and ' government'",
+   "held"
   ]
  ],
  "examples": [],
  "evidence": [],
  "roles": [],
  "contributors": [
-  "ChopinDavid"
+  "ChopinDavid",
+  "moridinamael"
  ],
  "contributions": [
-  "2026-10-24-ChopinDavid-84befea2"
+  "2026-10-24-ChopinDavid-84befea2",
+  "2026-10-26-moridinamael-3db74a33"
  ],
  "qc": {
   "confirm": 0,
   "dispute": 0,
-  "refine": 0
+  "refine": 1
  },
  "replications": [],
- "coverage": {
-  "value": 0.0109,
-  "method": "estimated from the label's quoted words (token measure)",
-  "strong": 6450
- },
+ "coverage": null,
  "scrutiny": {
-  "level": 1,
-  "name": "tested",
-  "test_rounds": 1,
-  "sentences": 16,
-  "contributors": 1,
-  "qc": 0
+  "level": 3,
+  "name": "checked",
+  "test_rounds": 2,
+  "sentences": 32,
+  "contributors": 2,
+  "qc": 1
  }
 }

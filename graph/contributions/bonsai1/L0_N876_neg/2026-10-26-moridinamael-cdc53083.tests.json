@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-26-moridinamael-cdc53083",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L0/N876-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T16:53:29+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "a handful of word-initial ' in' tokens: ' inset', ' inches', ' inmate', ' invoice' (and their plurals), as against ' in'-words like ' inside', ' includes' and synonyms"
+ },
+ "neighbours": [
+  {
+   "unit": "L0/N876",
+   "pole": "-",
+   "label": "a word-initial ' in' piece of less common 'in-' words (inset, inches, inmate, invoice, insects, infant, inn, Ingram), not the preposition 'in' or very common words like inside, include, information, interest, indeed",
+   "fire": [
+    "The magazine ran a small inset map showing the island's location.",
+    "The shelf is about thirty inches wide.",
+    "One inmate wrote letters to the warden every week.",
+    "Please send the invoice to our accounting department by Friday.",
+    "Tiny insects swarmed around the porch light all evening.",
+    "The nurse gently lifted the infant from the crib.",
+    "We stayed at a quiet inn near the harbor.",
+    "The package was shipped by Ingram to bookstores across the country."
+   ],
+   "quiet": [
+    "The magazine ran a small map in the corner showing the island's location.",
+    "The shelf is about a meter wide.",
+    "One prisoner wrote letters to the warden every week.",
+    "Please send the bill to our accounting department by Friday.",
+    "Tiny bugs swarmed around the porch light all evening.",
+    "The nurse gently lifted the baby from the crib.",
+    "We stayed at a quiet hotel near the harbor.",
+    "The package was shipped by the distributor to bookstores across the country."
+   ]
+  }
+ ],
+ "predictions": "Expect 7-8/8 fire (inset, inches, inmate, invoice, insects strong; infant, inn, Ingram weaker ~0.3-0.4) and 0 near misses.",
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de"
+  ]
+ }
+}

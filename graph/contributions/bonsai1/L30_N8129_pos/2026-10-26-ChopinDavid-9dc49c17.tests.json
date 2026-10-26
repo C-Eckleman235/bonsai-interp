@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-9dc49c17",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N8129+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T09:21:20+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L30/N8129",
+   "pole": "+",
+   "label": "the determiner or preposition right after a web-navigation instruction (haga clic en este, suivez ce, перейдите по, click on this), where a word like 'link' or 'file' is expected next, strongest in non-English text, as against the same determiners in other instructions",
+   "fire": [
+    "Si quiere ver el vídeo completo, pulse en este enlace.",
+    "Pour lire la suite de l’article, cliquez sur ce lien.",
+    "Для регистрации на сайте пройдите по этой ссылке.",
+    "Puede descargar el formulario de inscripción desde este enlace.",
+    "Pour télécharger le logiciel gratuitement, suivez ce lien officiel.",
+    "If you want to read the full report, click on this link.",
+    "Para acceder al catálogo, haga clic en el botón de abajo.",
+    "Чтобы прочитать полный текст, перейдите по ссылке в описании."
+   ],
+   "quiet": [
+    "Si quiere ver a su abuela, visite este pueblo en verano.",
+    "Pour lire la suite de l’histoire, attendez ce soir.",
+    "Для приготовления супа возьмите эту кастрюлю.",
+    "Puede comprar el pan de centeno en esta panadería.",
+    "Pour cuire les pâtes, utilisez ce grand pot.",
+    "If you want to read the full report, ask the manager.",
+    "Para cocinar el arroz, ponga el agua a hervir.",
+    "Чтобы прочитать полный текст, возьмите книгу в библиотеке."
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-1.0 on the determiner after click/follow/download instructions; determiners after non-web instructions below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "slot for 'link' after a navigation instruction",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Predicts the word 'link' (+ pole promotes ' link', ' links', ' Link'). Card: 'desde este ENLACE', 'siguiendo un enlace', 'переходите по ссылке', 'Suivez ce lien'. Probe: 'haga clic en este enlace' 0.966, 'suivez ce lien' 0.761, 'abra este archivo' 0.662, 'перейдите по ссылке' 0.428, 'follow the link' 0.403, 'click on this link' 0.351, 'click on this button' 0.351 (word after does not matter); 'venez chez moi' 0.005, 'chain link fence' 0.016."
+}

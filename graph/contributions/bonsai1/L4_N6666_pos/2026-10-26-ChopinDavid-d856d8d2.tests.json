@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-d856d8d2",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N6666+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T16:20:08+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N6666",
+   "pole": "+",
+   "label": "the method name of a terminal zero-argument call that converts or finishes an object ('.close()', '.json()', '.fetchall()', '.numpy()', '.now()', '.tolist()'), as against calls that take arguments and plain attribute access",
+   "fire": [
+    "log = open('run.log')\ntext = log.read()\nlog.close()",
+    "r = session.get(api_url)\nresult = r.json()",
+    "cursor.execute(sql)\nrecords = cursor.fetchall()",
+    "pred = model(x).detach().numpy()",
+    "items = mask.tolist()\nprint(len(items))",
+    "started = datetime.datetime.now()",
+    "sock.sendall(msg)\nsock.close()",
+    "body = response.json()\nprint(body['id'])"
+   ],
+   "quiet": [
+    "log = open('run.log', 'a')\nlog.write(line)",
+    "r = session.get(api_url, headers=headers)",
+    "cursor.execute(sql, (user_id,))",
+    "pred = model(x, training=False)",
+    "items = mask.shape\nprint(items)",
+    "started = record.timestamp",
+    "sock.sendall(msg)\nsock.settimeout(3)",
+    "body = response.text\nprint(body)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on the method-name token of '.close()', '.json()', '.fetchall()', '.numpy()'; calls with arguments and attributes below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "terminal zero-arg method call (.close() / .json())",
+ "unit_kind": "context",
+ "confidence": 0.7,
+ "notes": "Card: '.numpy()', '.now()', '.tolist()', 'splitlines()', '.fetchall()', '.close()', '.json()'. Probe: '.numpy()' 0.896, '.close()' 0.682, '.json()' 0.669, '.fetchall()' 0.669, '.now()' 0.437; 'f.write(text)' 0.021, 'requests.get(url, timeout=5)' 0.010, 'user.age' attribute 0.005."
+}

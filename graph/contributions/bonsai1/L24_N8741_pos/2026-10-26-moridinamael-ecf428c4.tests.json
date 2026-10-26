@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-26-moridinamael-ecf428c4",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L24/N8741+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T17:41:06+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Inside code, a line that looks up a value by key or index, with square brackets (d[a][b], row['name'], items[0]) or chained .get() calls; code without a lookup (arithmetic, print, loops, assignments of literals) and prose stay low."
+ },
+ "neighbours": [
+  {
+   "unit": "L24/N8741",
+   "pole": "+",
+   "label": "Inside code, a name, argument list or key chain being re-typed that was already written a few lines or tokens earlier (the next piece can be copied from above); the same call or lookup with fresh names, plain lookups, and prose stay low.",
+   "fire": [
+    "x = config[\"model\"][\"layers\"][\"hidden\"]; y = config[\"model\"][\"layers\"][\"hidden\"] * 2",
+    "result = compute_loss(predictions, targets, weights)\nlog(compute_loss(predictions, targets, weights))",
+    "self.user_account_balance = 0\nself.user_account_balance += deposit_amount",
+    "def render(width, height, depth):\n    return draw(width, height, depth)",
+    "data['users'][0]['profile']['email'] = new_email\nprint(data['users'][0]['profile']['email'])",
+    "const total = order.items.reduce(sum); console.log(order.items.reduce(sum));",
+    "if response.status_code == 200:\n    print(response.status_code)",
+    "np.concatenate([left_half, right_half], axis=0)\nnp.concatenate([left_half, right_half], axis=1)"
+   ],
+   "quiet": [
+    "The quote reads: \"he [the mayor] agreed\".",
+    "@classmethod",
+    "x = config[\"model\"][\"layers\"][\"hidden\"]; y = params[\"train\"][\"batch\"] * 2",
+    "result = compute_loss(predictions, targets, weights)\nlog(evaluate(scores, labels))",
+    "self.user_account_balance = 0\nself.last_login_time = now()",
+    "def render(width, height, depth):\n    return draw(size, color)",
+    "email = data['email']",
+    "const total = order.items.reduce(sum); console.log(\"done\");"
+   ]
+  }
+ ],
+ "predictions": "Expect most fire items to reach 0.2+ (my probes: repeated call 0.89 vs fresh args 0.13); lookups alone were only 0.2-0.3. Unsure about 1-2 short fire items.",
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "neighbors"
+  ]
+ }
+}

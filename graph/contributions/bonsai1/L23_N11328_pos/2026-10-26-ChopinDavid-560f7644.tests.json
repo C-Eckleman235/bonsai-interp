@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-560f7644",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N11328+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T10:20:09+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L23/N11328",
+   "pole": "+",
+   "label": "word pieces inside longer Russian (and Ukrainian) nouns and names split by the tokenizer (а|р|х|ив, В|я|ч|ес|лав, договор|а), as against English renderings of the same sentences",
+   "fire": [
+    "Ярослав сохранил архив переписки на флешке.",
+    "Юристы подписали договор аренды в пятницу.",
+    "Святослав Рихтер был великим пианистом.",
+    "Откройте архив и найдите нужный файл.",
+    "Мы обсудили условия договора с поставщиком.",
+    "Вячеслав рассказал о результатах исследования.",
+    "Сотрудник отправил архив документов в налоговую.",
+    "Владислав не продлил договор с клубом."
+   ],
+   "quiet": [
+    "Yaroslav saved the archive of letters on a flash drive.",
+    "The lawyers signed the lease contract on Friday.",
+    "Sviatoslav Richter was a great pianist.",
+    "Open the archive and find the right file.",
+    "We discussed the terms of the contract with the supplier.",
+    "Vyacheslav talked about the results of the study.",
+    "The employee sent the archive of documents to the tax office.",
+    "Vladislav did not extend his contract with the club."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.7 on pieces of split Russian nouns and names; the same sentences in English below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "pieces of split Cyrillic words",
+ "unit_kind": "word",
+ "confidence": 0.35,
+ "notes": "Card: Russian mid-word pieces ' файл'ом, чемпион'ат', синдр'ом', Вячес'лав', ' договор'а. Probe: 'архив с файлом' 0.684, 'Вячеслав' 0.683, 'договора' 0.455, 'Чемпионат' 0.416, Ukrainian 'файлом' 0.406; English translation 0.001; but short common Russian sentences also fire weakly ('хлеб' 0.237, 'парке' 0.098). Near misses are English renderings, which is an easier contrast than ideal."
+}

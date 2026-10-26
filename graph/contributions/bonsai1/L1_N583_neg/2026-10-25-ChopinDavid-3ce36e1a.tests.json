@@ -1,0 +1,56 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-3ce36e1a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N583-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T02:19:54+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N583",
+   "pole": "-",
+   "label": "the tokens ' greatly', ' completely', ' strengthened' and ' stakeholders' (whole-word tokens), on a dense layer-1 unit",
+   "fire": [
+    "The rains have greatly reduced the risk of wildfires this summer.",
+    "After the update, the old menu was completely removed from the app.",
+    "The town council met with local stakeholders to discuss the plan.",
+    "Ties between the two universities were strengthened by the grant.",
+    "Her second novel was greatly admired by critics in Paris.",
+    "By morning the snow had completely covered the parked cars.",
+    "Several stakeholders asked for more time to review the draft.",
+    "The dam was strengthened after the cracks were found."
+   ],
+   "quiet": [
+    "The rains have cut the risk of wildfires this summer.",
+    "After the update, the old menu was taken out of the app.",
+    "The town council met with local farmers to discuss the plan.",
+    "Ties between the two universities grew after the grant.",
+    "Her second novel was read by critics in Paris.",
+    "By morning the snow had covered the parked cars.",
+    "Several neighbours asked for more time to review the draft.",
+    "The dam was repaired after the cracks were found."
+   ]
+  }
+ ],
+ "predictions": "fire 0.7-0.9 on the four tokens; near misses with plain words 0.2-0.3; near synonyms like 'largely' leak, so near misses avoid them",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "' greatly/completely/strengthened/stakeholders'",
+ "unit_kind": "dense / positional",
+ "confidence": 0.35,
+ "notes": "Card: dense (21% of tokens reach 0.1 of a 0.22 max); peaks ' greatly' x9, ' completely' x7, ' stakeholders' x6, ' strengthened' x6. Probe: strengthened 0.884, stakeholders 0.787, greatly 0.772, completely 0.767; synonyms largely 0.596, entirely 0.463; residents 0.224, reinforced 0.269; cat floor 0.277. Near misses drop the adverb or use plain words; floor near 0.28 means one may leak.",
+ "trigger": {
+  "words": [
+   "greatly",
+   "completely",
+   "stakeholders",
+   "strengthened"
+  ]
+ }
+}

@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-9a91c649",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N7935+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T20:28:18+00:00",
+ "recipe": {
+  "toolchain_commit": "b2cd2c52",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L8_N7935_pos/2026-10-26-ChopinDavid-9a91c649.tests.json"
+ },
+ "label": "the widget or test base class reached through a module dot in Python (wx.Panel, tkinter.Frame, unittest.TestCase), as against module functions and plain attributes after a dot",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L8_N7935_pos/2026-10-26-ChopinDavid-9a91c649.tests.json",
+   "prereg_commit": "b2cd2c52",
+   "author": "ChopinDavid",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.214,
+     "peak": "import"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.613,
+     "peak": ".TestCase"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.841,
+     "peak": ".Frame"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.176,
+     "peak": "import"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.875,
+     "peak": ".TestCase"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.167,
+     "peak": "import"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.164,
+     "peak": "import"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.541,
+     "peak": ".TestCase"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.2,
+     "peak": "import"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.164,
+     "peak": "import"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.219,
+     "peak": "import"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.206,
+     "peak": "import"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.164,
+     "peak": "import"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.174,
+     "peak": "import"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.212,
+     "peak": "import"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.169,
+     "peak": "import"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.719,
+    "median_fire": 0.378,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "b2cd2c52",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "GUI/test base class after a module dot",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: FLAG dense (19% of tokens reach 0.1 of max, max 1.48) but the top is GUI/test classes (wx.Panel, tkinter.Frame, base.TestCase, tf.test.TestCase, MockHandler, frappe). Probe: wx.Panel 0.537, unittest.TestCase 0.660, tkinter.Frame 0.535; '@frappe.whitelist' 0.202; MockHandler 0.076; plain code 'x = 3' 0.191; 'English tea room' 0.479 (a prose leak from the ' tea' top examples). Dense flag means near misses may hover near 0.2.",
+ "selection": "random draw"
+}

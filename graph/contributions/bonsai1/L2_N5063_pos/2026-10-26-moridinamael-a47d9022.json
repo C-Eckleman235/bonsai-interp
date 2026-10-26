@@ -1,0 +1,168 @@
+{
+ "id": "2026-10-26-moridinamael-a47d9022",
+ "kind": "qc",
+ "neuron": "bonsai1/L2/N5063+",
+ "contributor": "moridinamael",
+ "created": "2026-10-26T21:32:37+00:00",
+ "recipe": {
+  "toolchain_commit": "dd8e720a",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L2_N5063_pos/2026-10-26-moridinamael-a47d9022.tests.json"
+ },
+ "label": "A few specific word-pieces, not one word: sentence-initial French pronoun ' On' (weaker for mid-sentence 'on'), the '-uel(s)' end of French 'sexuel/homosexuel', the 'hn' piece of German 'gewöhnlich', and Chinese '喜' in 歡喜",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L2_N5063_pos/2026-10-26-moridinamael-a47d9022.tests.json",
+   "prereg_commit": "dd8e720a",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.1,
+     "peak": "anche"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.095,
+     "peak": "'"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.077,
+     "peak": " ?"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.048,
+     "peak": " cette"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.267,
+     "peak": " On"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.104,
+     "peak": " dès"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.473,
+     "peak": "uel"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.146,
+     "peak": "'é"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.07,
+     "peak": "anche"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.168,
+     "peak": "Person"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.085,
+     "peak": " ?"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.106,
+     "peak": "Sel"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.246,
+     "peak": " décidé"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.11,
+     "peak": "Vous"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.263,
+     "peak": " lé"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.148,
+     "peak": " â"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.422,
+    "median_fire": 0.102,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-gmoo",
+   "look",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "dd8e720a",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "French impersonal pronoun ' On' when it starts a sentence"
+ },
+ "trigger": {
+  "tokens": [
+   " On",
+   " on",
+   "uel",
+   "uels",
+   "hn",
+   "喜"
+  ]
+ }
+}

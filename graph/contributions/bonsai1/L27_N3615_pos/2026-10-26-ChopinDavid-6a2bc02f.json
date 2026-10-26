@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-6a2bc02f",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N3615+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T11:28:53+00:00",
+ "recipe": {
+  "toolchain_commit": "96dad33d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L27_N3615_pos/2026-10-26-ChopinDavid-6a2bc02f.tests.json"
+ },
+ "label": "medial word pieces of rare Greek- or Latin-derived scientific terms that the tokenizer splits into fragments (encephal|omy|elitis, r|hy|olitic, monoc|yt|ogenes), as against sentences on the same topic that use plain words",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L27_N3615_pos/2026-10-26-ChopinDavid-6a2bc02f.tests.json",
+   "prereg_commit": "96dad33d",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.81,
+     "peak": "omy"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.804,
+     "peak": "hy"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.665,
+     "peak": "yt"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.504,
+     "peak": "ys"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.762,
+     "peak": "hy"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.767,
+     "peak": "et"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.834,
+     "peak": "el"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.017,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.019,
+     "peak": " swelling"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.006,
+     "peak": " slow"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.011,
+     "peak": " bacteria"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.037,
+     "peak": "ys"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.013,
+     "peak": " ash"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.003,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.009,
+     "peak": "Some"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.014,
+     "peak": " strains"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.764,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "96dad33d",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "inner pieces of rare Greek/Latin terms",
+ "unit_kind": "word",
+ "confidence": 0.5,
+ "notes": "Card: 'omy' x4 (encephal⟦omy⟧elitis), 'hy' (r⟦hy⟧olitic), 'pt' (consum⟦pt⟧ives), 'yt' (monoc⟦yt⟧ogenes), 'et' (Chloromyc⟦et⟧in), 'ast' (My⟦ast⟧henia). Probe: 'disseminated encephalomyelitis' 0.806, 'rhyolitic glass' 0.838, 'Listeria monocytogenes' 0.516, 'Myasthenia gravis' 0.297; same-topic plain words 0.010-0.018; but sentence-initial 'Osteomyelitis is' 0.058, so the test keeps the terms mid-sentence.",
+ "selection": "random draw"
+}

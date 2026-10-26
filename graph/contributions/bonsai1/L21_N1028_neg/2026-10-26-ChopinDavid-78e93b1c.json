@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-78e93b1c",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N1028-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T09:29:19+00:00",
+ "recipe": {
+  "toolchain_commit": "d269a055",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L21_N1028_neg/2026-10-26-ChopinDavid-78e93b1c.tests.json"
+ },
+ "label": "the attribute or method token where Python code splits or searches a URL string (self.base_url.split('?'), url.find('#')), as against other operations on URLs and splitting of non-URL strings",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L21_N1028_neg/2026-10-26-ChopinDavid-78e93b1c.tests.json",
+   "prereg_commit": "d269a055",
+   "author": "ChopinDavid",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.354,
+     "peak": ".split"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.055,
+     "peak": ":\n"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.397,
+     "peak": ".split"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.181,
+     "peak": "_url"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.249,
+     "peak": ".split"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.797,
+     "peak": ".split"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.188,
+     "peak": "')\n"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.024,
+     "peak": " self"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.024,
+     "peak": "_URL"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.02,
+     "peak": "_url"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.043,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.054,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.034,
+     "peak": "')"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.044,
+     "peak": " item"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.026,
+     "peak": ")"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.062,
+     "peak": " *"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.883,
+    "median_fire": 0.218,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "d269a055",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "splitting or searching a URL string in code",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Gate-closed regime dominates (81% leak). Card: 'self.base_url.split('?')', 'push.find('span')', 'url.split('|')', 'os.path.join', '.match'. Probe: base_url.split('?') 0.669; address.find(':') 0.106, os.path.join 0.147, line.split(',') 0.088, plain url assignment 0.033. Only the URL split clearly fired; low confidence.",
+ "selection": "random draw"
+}

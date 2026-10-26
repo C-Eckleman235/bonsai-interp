@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-26-JasperBlank-6db18057",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N3948-",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T13:39:14+00:00",
+ "recipe": {
+  "toolchain_commit": "dc58702b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N3948_neg/2026-10-26-JasperBlank-6db18057.tests.json"
+ },
+ "label": "' Historical' (also Senior, directors, History) as the head word of a local organisation name after a place name, e.g. 'Sussex County Historical Society'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N3948_neg/2026-10-26-JasperBlank-6db18057.tests.json",
+   "prereg_commit": "dc58702b",
+   "author": "JasperBlank",
+   "n_fire": 8,
+   "n_false_pos": 3,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.707,
+     "peak": " Historical"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.657,
+     "peak": " Historical"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.575,
+     "peak": " Senior"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.596,
+     "peak": " directors"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.856,
+     "peak": " Historical"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.709,
+     "peak": " History"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.816,
+     "peak": " Historical"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.906,
+     "peak": " Historical"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.389,
+     "peak": " club"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.376,
+     "peak": " library"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.189,
+     "peak": " mornings"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.243,
+     "peak": " committee"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.178,
+     "peak": " ago"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.189,
+     "peak": " library"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.328,
+     "peak": " garden"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.066,
+     "peak": " truck"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.708,
+    "near_misses_at_0.3": 3
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc58702b",
+  "minutes": 10,
+  "batch_size": 192
+ },
+ "short": "local Historical Society",
+ "unit_kind": "contextual",
+ "confidence": "medium",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "selection": "random draw",
+ "trigger": {
+  "words": [
+   "Historical",
+   "Senior",
+   "directors",
+   "History"
+  ]
+ }
+}

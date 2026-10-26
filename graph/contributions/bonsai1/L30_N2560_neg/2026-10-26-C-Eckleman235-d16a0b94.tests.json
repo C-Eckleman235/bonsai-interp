@@ -1,0 +1,45 @@
+{
+ "contribution": "2026-10-26-C-Eckleman235-d16a0b94",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N2560-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T18:37:46+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L30/N2560",
+   "pole": "-",
+   "label": "The opening '(' of an exit or return-code call in Python error handling (sys.exit(1), exit(1), ReturnCode(1))",
+   "fire": [
+    "    except IOError as e:\n        sys.stderr.write('cannot read: %s\\n' % e)\n        return ReturnCode(1)\n",
+    "    if script not in SCRIPTS:\n        print('Unknown script:', script)\n        exit(1)\n",
+    "        log.error('Unknown build environment: %s' % env_name)\n        sys.exit(1)\n",
+    "    except KeyboardInterrupt:\n        print('interrupted')\n        sys.exit(-1)\n",
+    "    if not os.path.exists(path):\n        print('missing file', path)\n        raise SystemExit(2)\n",
+    "    except ValueError as err:\n        logging.error('bad value: %s', err)\n        exit(3)\n",
+    "    if args.count < 0:\n        parser.error('negative count')\n        sys.exit(2)\n",
+    "    except Exception as exc:\n        print(exc, file=sys.stderr)\n        return ReturnCode(4)\n"
+   ],
+   "quiet": [
+    "    except IOError as e:\n        sys.stderr.write('cannot read: %s\\n' % e)\n        data = None\n",
+    "    if script not in SCRIPTS:\n        print('Unknown script:', script)\n        script = DEFAULT\n",
+    "        log.info('Using build environment: %s' % env_name)\n        env = ENVIRONMENTS[env_name]\n",
+    "    except KeyboardInterrupt:\n        print('interrupted')\n        cleanup = True\n",
+    "    if not os.path.exists(path):\n        print('missing file', path)\n        path = fallback\n",
+    "    except ValueError as err:\n        logging.error('bad value: %s', err)\n        value = 0\n",
+    "    if args.count < 0:\n        parser.error('negative count')\n        args.count = 0\n",
+    "    except Exception as exc:\n        print(exc, file=sys.stderr)\n        results = []\n"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5",
+  "screens": [
+   "card"
+  ]
+ },
+ "short": "'(' of exit(1) calls",
+ "unit_kind": "contextual",
+ "confidence": 0.35
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-9a91c649",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N7935+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T20:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L8/N7935",
+   "pole": "+",
+   "label": "the widget or test base class reached through a module dot in Python (wx.Panel, tkinter.Frame, unittest.TestCase), as against module functions and plain attributes after a dot",
+   "fire": [
+    "import wx\n\nclass Editor(wx.Frame):\n    def __init__(self, parent):\n        self.box = wx.Panel(self)",
+    "import unittest\n\nclass LoaderTest(unittest.TestCase):\n    def test_load(self):\n        self.assertTrue(True)",
+    "import tkinter as tk\n\nwin = tk.Tk()\ntoolbar = tk.Frame(win)\ntoolbar.pack()",
+    "import wx\n\napp = wx.App()\nok = wx.Button(None, label='OK')",
+    "from django import test\n\nclass ViewTests(test.TestCase):\n    def test_index(self):\n        pass",
+    "import tkinter\n\nroot = tkinter.Tk()\nlabel = tkinter.Label(root, text='hi')",
+    "import wx\n\nclass Settings(wx.Dialog):\n    def __init__(self):\n        sizer = wx.BoxSizer()",
+    "import unittest\n\nclass MathTest(unittest.TestCase):\n    def test_add(self):\n        self.assertEqual(1 + 1, 2)"
+   ],
+   "quiet": [
+    "import os\n\nclass Editor:\n    def __init__(self, parent):\n        self.path = os.path.join('a', 'b')",
+    "import json\n\nclass Loader:\n    def load(self):\n        return json.loads('{}')",
+    "import numpy as np\n\nwin = np.zeros(3)\ntoolbar = np.ones(3)\nprint(toolbar)",
+    "import math\n\nangle = math.radians(30)\nok = math.cos(angle)",
+    "import random\n\nclass Dice:\n    def roll(self):\n        return random.randint(1, 6)",
+    "import time\n\nstart = time.time()\nlabel = str(start)",
+    "import sys\n\nclass Settings:\n    def __init__(self):\n        self.args = sys.argv",
+    "import re\n\nclass Matcher:\n    def match(self, s):\n        return re.findall('a', s)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.7 on '.Panel', '.Frame', '.TestCase', '.Button' after a GUI or test module; dotted function calls like os.path.join, np.zeros, json.dumps below 0.25",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "GUI/test base class after a module dot",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: FLAG dense (19% of tokens reach 0.1 of max, max 1.48) but the top is GUI/test classes (wx.Panel, tkinter.Frame, base.TestCase, tf.test.TestCase, MockHandler, frappe). Probe: wx.Panel 0.537, unittest.TestCase 0.660, tkinter.Frame 0.535; '@frappe.whitelist' 0.202; MockHandler 0.076; plain code 'x = 3' 0.191; 'English tea room' 0.479 (a prose leak from the ' tea' top examples). Dense flag means near misses may hover near 0.2."
+}

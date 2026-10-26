@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-26-JasperBlank-e53a3e9a",
+ "contributor": "JasperBlank",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N5111-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T13:17:27+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N5111",
+   "pole": "-",
+   "label": "' self' (and '(self', '=self') in Python-style code, the instance reference in methods",
+   "fire": [
+    "class Client:\n    def connect(self):\n        with self.lock:\n            return self.socket\n",
+    "def handler(self, event):\n    self.queue.append(event)\n    self.notify(self.state)\n",
+    "class Widget:\n    def __init__(self):\n        self.items = dict(self._defaults)\n",
+    "    def test_value(self):\n        self.assertEqual(self.result, 42)\n",
+    "def update(self):\n    return self._read_events(self.fd)\n",
+    "class App(object):\n    def run(self):\n        self.Bind(wx.EVT_MENU, self.on_quit, id=self.quit_id)\n",
+    "def close(self):\n    if self.conn:\n        self.conn.close()\n",
+    "class Parser:\n    def parse(self, text):\n        self.tokens = self.split(text)\n"
+   ],
+   "quiet": [
+    "def connect(host, port):\n    sock = socket.socket()\n    sock.connect((host, port))\n    return sock\n",
+    "import os\nprint(os.getcwd())\nfiles = os.listdir('.')\n",
+    "The weather was cold, and the children played outside until sunset.",
+    "def add(a, b):\n    return a + b\n\nprint(add(2, 3))\n",
+    "x = {'a': 1}\nfor key in x:\n    print(key)\n",
+    "He told the team that they would finish the project by Friday afternoon.",
+    "She loves herself too much to stay in a job that makes her miserable.",
+    "class Point:\n    pass\n\np = Point()\np.x = 3\n"
+   ]
+  }
+ ],
+ "predictions": "7/8 fire, 0 near misses",
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card"
+  ]
+ },
+ "short": "self in Python code",
+ "unit_kind": "lexical",
+ "confidence": "high",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "trigger": {
+  "words": [
+   "self"
+  ]
+ }
+}

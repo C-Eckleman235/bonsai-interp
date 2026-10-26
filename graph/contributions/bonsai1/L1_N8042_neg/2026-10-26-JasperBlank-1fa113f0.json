@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-26-JasperBlank-1fa113f0",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N8042-",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T12:51:29+00:00",
+ "recipe": {
+  "toolchain_commit": "aafdf0af",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L1_N8042_neg/2026-10-26-JasperBlank-1fa113f0.tests.json"
+ },
+ "label": "'ания' as the ending of Russian 'Компания' (company), written after 'Комп' at a line start or after a newline; the same ending in other Cyrillic words is not the trigger",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L1_N8042_neg/2026-10-26-JasperBlank-1fa113f0.tests.json",
+   "prereg_commit": "aafdf0af",
+   "author": "JasperBlank",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.702,
+     "peak": "ания"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.781,
+     "peak": "ания"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.678,
+     "peak": "ания"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.397,
+     "peak": "ании"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.688,
+     "peak": "ания"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.854,
+     "peak": "ания"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.436,
+     "peak": "ании"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.49,
+     "peak": "ании"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.007,
+     "peak": " из"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.007,
+     "peak": " с"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.009,
+     "peak": " для"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.006,
+     "peak": " мен"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.008,
+     "peak": "нич"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.005,
+     "peak": " где"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.006,
+     "peak": "ный"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.005,
+     "peak": "П"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.683,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code haiku-5.5 (subagent)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "aafdf0af",
+  "minutes": 191,
+  "batch_size": 32
+ },
+ "short": "Russian 'Компания' ending 'ания'",
+ "unit_kind": "contextual",
+ "confidence": "medium",
+ "notes": "Label and sentences written blind by a Claude subagent from the card text alone (prompt: haiku_labeler/prompt.md, identical for Haiku, Sonnet and Opus); one retry on mechanical checks. Part of a Haiku/Sonnet/Opus comparison on the same 48 poles.",
+ "selection": "random draw"
+}

@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-25-JasperBlank-6cf9f861",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N1267+",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T12:50:15+00:00",
+ "recipe": {
+  "toolchain_commit": "72952caa",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N1267_pos/2026-10-25-JasperBlank-6cf9f861.tests.json"
+ },
+ "label": "the Russian 'ц' inside the stem 'офиц-' of офицер (officer, officers), where the tokenizer splits 'офи|ц|еры'; the card also shows weaker hits on Arabic 'صحة' (health) and English 'ology' forms, so the pole is not a clean single-token feature",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N1267_pos/2026-10-25-JasperBlank-6cf9f861.tests.json",
+   "prereg_commit": "72952caa",
+   "author": "JasperBlank",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.628,
+     "peak": "ц"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.895,
+     "peak": "ц"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.997,
+     "peak": "ц"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.489,
+     "peak": "ц"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.587,
+     "peak": " офи"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.697,
+     "peak": "ц"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 1.196,
+     "peak": "ц"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.675,
+     "peak": "ц"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.186,
+     "peak": " ф"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.058,
+     "peak": "д"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.046,
+     "peak": " к"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.062,
+     "peak": " снова"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.012,
+     "peak": " наз"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.072,
+     "peak": " офис"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.358,
+     "peak": " ф"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.029,
+     "peak": " выз"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.686,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code haiku-5.5 (subagent)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "72952caa",
+  "minutes": 653,
+  "batch_size": 16
+ },
+ "short": "Russian 'офиц' (officer)",
+ "unit_kind": "dense / positional",
+ "confidence": "low",
+ "notes": "Label and sentences written blind by a Claude Haiku subagent from the card text alone (prompt: haiku_labeler/prompt.md); one automatic retry on mechanical checks. Draw restricted to layers 0-9.",
+ "selection": "random draw"
+}

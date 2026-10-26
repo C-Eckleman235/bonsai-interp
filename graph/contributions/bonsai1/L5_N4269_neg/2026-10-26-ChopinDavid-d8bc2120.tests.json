@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-d8bc2120",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N4269-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T10:20:09+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N4269",
+   "pole": "-",
+   "label": "the fused code token '(op' (an open parenthesis glued to the argument name op) and the Russian piece 'есс' inside агрессивн-/агрессия words, as against the same calls with other argument names and Russian words without that piece",
+   "fire": [
+    "  rank = tensor_util.constant_value(op.inputs[2])\n  if rank is None:",
+    "Учёные изучали агрессивное поведение крыс в клетке.",
+    "  dtype = _get_dtype(op.outputs[0])\n  return dtype",
+    "Врач отметил, что агрессия у подростков часто связана с семьёй.",
+    "  for i, inp in enumerate(op.inputs):\n    shape = infer_shape(op.inputs[i])",
+    "Соседская собака вела себя очень агрессивно с детьми.",
+    "  grad = gradient_registry.lookup(op.type)\n  result = grad(op.inputs[0], dy)",
+    "Тренер не любил агрессивный стиль игры соперника."
+   ],
+   "quiet": [
+    "  rank = tensor_util.constant_value(node.inputs[2])\n  if rank is None:",
+    "Учёные изучали спокойное поведение крыс в клетке.",
+    "  dtype = _get_dtype(tensor.outputs[0])\n  return dtype",
+    "Врач отметил, что тревога у подростков часто связана с семьёй.",
+    "  for i, inp in enumerate(node.inputs):\n    shape = infer_shape(node.inputs[i])",
+    "Соседская собака вела себя очень дружелюбно с детьми.",
+    "  grad = gradient_registry.lookup(node.type)\n  result = grad(node.inputs[0], dy)",
+    "Тренер не любил осторожный стиль игры соперника."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on '(op' and 'есс'; same calls with other arguments and Russian words without 'есс' below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "the pieces '(op' and 'есс'",
+ "unit_kind": "word",
+ "confidence": 0.4,
+ "notes": "Broad, gate-closed pole (3.1% of tokens reach 0.1 of max). Card: 'уч' x3, 'есс' x3, '(CON' x3, '(op' x2. Probe: 'constant_value(op.inputs[0])' 0.728, 'агрессивность' 0.700; 'научиться' 0.091, 'научная' 0.143, 'compute_score(X, ...)' 0.077, 'aggressively' 0.212. The 'уч' and '(X' card hits did not reproduce, so the label is the two pieces that did: a list, not a shared meaning.",
+ "trigger": {
+  "words": [
+   "(op",
+   "есс"
+  ]
+ }
+}

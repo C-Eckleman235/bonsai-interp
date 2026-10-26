@@ -1,0 +1,168 @@
+{
+ "id": "2026-10-26-moridinamael-4a2de77b",
+ "kind": "qc",
+ "neuron": "bonsai1/L0/N2699+",
+ "contributor": "moridinamael",
+ "created": "2026-10-26T15:24:44+00:00",
+ "recipe": {
+  "toolchain_commit": "5386c7cc",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N2699_pos/2026-10-26-moridinamael-4a2de77b.tests.json"
+ },
+ "label": "a short list of word-pieces: ' Himal' (Himalaya/Himalayan), ' Gomez', 'imin' (Yimin), 'emer' (Kraemer), and Arabic حمل/عامل; not mountains or surnames in general",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N2699_pos/2026-10-26-moridinamael-4a2de77b.tests.json",
+   "prereg_commit": "5386c7cc",
+   "author": "blind:claude-sonnet-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.735,
+     "peak": " Himal"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.255,
+     "peak": "imal"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.714,
+     "peak": " Gomez"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.978,
+     "peak": "imin"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.487,
+     "peak": "emer"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.921,
+     "peak": " Himal"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.774,
+     "peak": " Gomez"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.443,
+     "peak": "امل"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.072,
+     "peak": "Thomas"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.135,
+     "peak": "om"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.195,
+     "peak": " climbers"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.046,
+     "peak": " downtown"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.012,
+     "peak": " game"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.011,
+     "peak": "-authored"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.045,
+     "peak": " samples"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.051,
+     "peak": "ards"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 2,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.724,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "5386c7cc",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "the tokens ' Himal' (Himalaya/Himalayan) and ' Gomez', as against other mountain, breed and surname tokens in the same sentences"
+ },
+ "trigger": {
+  "tokens": [
+   " Himal",
+   " Gomez",
+   "imin",
+   "emer",
+   "حمل",
+   "عامل"
+  ]
+ }
+}

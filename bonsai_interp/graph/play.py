@@ -293,7 +293,7 @@ def run(a):
         sys.exit("nothing to run")
     import torch
     from bonsai_interp import explore
-    from bonsai_interp.env import limit_memory
+    from bonsai_interp.env import DTYPE, limit_memory
     from bonsai_interp.model import load
     from bonsai_interp.probe import textinv
     limit_memory(0.8)
@@ -343,6 +343,8 @@ def run(a):
         meth = {**declared, "screens": sorted(set(declared.get("screens", [])) | set(tests_screens)),
                 "detected": detect(ROOT, int(m["L"]), int(m["n"]), m["pole"]), "toolchain_commit": _commit(),
                 "minutes": minutes_between(ROOT, rel), "batch_size": len(todo)}
+        if DTYPE != torch.bfloat16:  # float16 on GPUs without bfloat16 (docs/FLOAT16.md): say so in the record
+            meth["dtype"] = str(DTYPE).removeprefix("torch.")
         unknown = [x for x in meth["screens"] if x not in SCREENS]
         if unknown:
             print(f"note: screens not in the shared vocabulary (add them in bonsai_interp/graph/methods.py): {unknown}")

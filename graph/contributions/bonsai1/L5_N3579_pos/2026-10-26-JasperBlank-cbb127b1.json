@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-26-JasperBlank-cbb127b1",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N3579+",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T13:39:10+00:00",
+ "recipe": {
+  "toolchain_commit": "dc58702b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N3579_pos/2026-10-26-JasperBlank-cbb127b1.tests.json"
+ },
+ "label": "Dense, very weak positive activation (max 0.68) on tokens inside surnames and place names such as Wickham, Schickell, Chester, Steinfeld, BlakRoc; no clear trigger",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N3579_pos/2026-10-26-JasperBlank-cbb127b1.tests.json",
+   "prereg_commit": "dc58702b",
+   "author": "JasperBlank",
+   "n_fire": 8,
+   "n_false_pos": 3,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.954,
+     "peak": " Chester"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.936,
+     "peak": "ick"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.917,
+     "peak": "ick"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.94,
+     "peak": "infeld"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.99,
+     "peak": "ak"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.786,
+     "peak": " Grü"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.757,
+     "peak": " Wick"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.888,
+     "peak": "ick"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.233,
+     "peak": " verdict"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.408,
+     "peak": " thyroid"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.25,
+     "peak": " young"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.184,
+     "peak": " university"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.232,
+     "peak": "Exclusive"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.307,
+     "peak": " Fest"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.384,
+     "peak": " shipping"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.193,
+     "peak": "As"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.927,
+    "near_misses_at_0.3": 3
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc58702b",
+  "minutes": 10,
+  "batch_size": 192
+ },
+ "short": "weak name fragments",
+ "unit_kind": "dense / positional",
+ "confidence": "low",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "selection": "random draw"
+}

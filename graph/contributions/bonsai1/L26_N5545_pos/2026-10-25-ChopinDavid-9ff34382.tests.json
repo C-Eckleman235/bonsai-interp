@@ -1,0 +1,56 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-9ff34382",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N5545+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T03:19:56+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N5545",
+   "pole": "+",
+   "label": "the word 'research' (English ' research', 'Research' and Chinese/Japanese 研究), as against sentences on the same scientific topics that use other words",
+   "fire": [
+    "Her lab does research on how bees find their way home.",
+    "New research suggests that coffee may protect the liver.",
+    "The university spends millions each year on cancer research.",
+    "He left the company to focus on his research in physics.",
+    "Funding for climate research was cut again this spring.",
+    "The museum opened a research center for local history.",
+    "我们在大学里研究机器学习。",
+    "The results of the research were published in a medical journal."
+   ],
+   "quiet": [
+    "Her lab does experiments on how bees find their way home.",
+    "A new poll suggests that coffee drinkers sleep less.",
+    "The university spends millions each year on new dormitories.",
+    "He left the company to focus on his teaching in physics.",
+    "Funding for climate education was cut again this spring.",
+    "The museum opened a visitor center for local history.",
+    "我们在大学里学习机器学习。",
+    "The results of the election were published in the local paper."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on ' research'/'Research'/研究; same topics with 'work', 'experiments', 'teaching' below 0.15 ('studies' may leak, so it is not used)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "the word 'research'",
+ "unit_kind": "token",
+ "confidence": 0.7,
+ "notes": "Card: top 32 peak on ' Research' x9, 'Research' x9, '研究' x8, ' research' x6. Probe: 'done research on coral reefs' 0.654; 'Recent research shows' 0.525; Research in Motion 0.909; 研究古代语言 0.791; 'researched' 0.428; but 'Recent studies' 0.369 and 'investigation' 0.223 leak; 'fieldwork' 0.104.",
+ "trigger": {
+  "words": [
+   " research",
+   "Research",
+   " Research",
+   "研究"
+  ]
+ }
+}

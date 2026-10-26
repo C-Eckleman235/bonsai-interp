@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-0cf3af99",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N9606-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T15:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L2/N9606",
+   "pole": "-",
+   "label": "a single kanji token inside a Sino-Japanese compound written in Japanese (危機, 冷暖房, 貧しい, 本革), as against Japanese text made of common multi-character tokens and kana",
+   "fire": [
+    "円高が進み、金融危機への不安が広がった。",
+    "このホテルの全室に冷暖房が付いています。",
+    "子供のころ、彼女はとても貧しい村に住んでいた。",
+    "新しいモデルには本革のハンドルが付いている。",
+    "夏休みに海で日光浴を楽しんだ。",
+    "複数の商品を同梱して送ることができます。",
+    "地図の上で赤道は太い線で示されている。",
+    "その政府は深刻な財政危機に直面している。"
+   ],
+   "quiet": [
+    "円が少し上がって、みんなは安心した。",
+    "このホテルの部屋はとてもきれいです。",
+    "子供のころ、彼女は小さい町に住んでいた。",
+    "新しいモデルはとても人気があります。",
+    "夏休みに海で泳いで楽しかった。",
+    "いくつかの商品をまとめて送ることができます。",
+    "地図の上で川は青い線で書かれている。",
+    "その町はとても静かで、人が少ない。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on the lone kanji token; everyday Japanese sentences without such compounds below 0.3",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "lone kanji token in a Japanese compound",
+ "unit_kind": "token",
+ "confidence": 0.35,
+ "notes": "Broad weak L2 pole (3.7% of tokens reach 0.1 of max; leak regime 100%). Card: 同梱, 貧弱, 危機, 日光浴, 冷暖房, 赤道, 本革. Probe: 危機 0.959, 同梱 0.825, 冷暖房 0.785, 本革 0.760, 貧しい 0.711; '今日は天気がいいです' 0.099, '友達に会いました' 0.254 (on 達), English 0.034. Near misses may still fire on other kanji, hence low confidence."
+}

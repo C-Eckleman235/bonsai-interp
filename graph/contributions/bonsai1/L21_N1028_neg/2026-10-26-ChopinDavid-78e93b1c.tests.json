@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-78e93b1c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N1028-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T09:21:20+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L21/N1028",
+   "pole": "-",
+   "label": "the attribute or method token where Python code splits or searches a URL string (self.base_url.split('?'), url.find('#')), as against other operations on URLs and splitting of non-URL strings",
+   "fire": [
+    "if '#' in self.page_url:\n    anchor = self.page_url.split('#')[1]",
+    "if '?' in request_url:\n    query = request_url.split('?')[1]",
+    "if '/' in self.endpoint_url:\n    host = self.endpoint_url.split('/')[2]",
+    "pos = link_url.find('?')\nif pos >= 0:\n    link_url = link_url[:pos]",
+    "if '&' in self.api_url:\n    params = self.api_url.split('&')",
+    "for href in links:\n    if '?' in href:\n        href = href.split('?')[0]",
+    "if '|' in stream_url:\n    parts = stream_url.split('|')\n    stream_url = parts[0]",
+    "idx = self.base_url.find('://')\nscheme = self.base_url[:idx]"
+   ],
+   "quiet": [
+    "if self.page_url is None:\n    self.page_url = DEFAULT_URL",
+    "request_url = build_request(host, port)\nresponse = fetch(request_url)",
+    "self.endpoint_url = endpoint_url\nself.retries = 3",
+    "count = len(items)\nif count >= 0:\n    total = count * 2",
+    "self.api_url = config['api_url']\nlog.info('started')",
+    "for item in items:\n    if item > 0:\n        total += item",
+    "stream_url = get_stream()\nplayer.play(stream_url)",
+    "width = self.width * 2\nheight = self.height * 2"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on url/base_url and .split/.find in URL parsing; other code below 0.12",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "splitting or searching a URL string in code",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Gate-closed regime dominates (81% leak). Card: 'self.base_url.split('?')', 'push.find('span')', 'url.split('|')', 'os.path.join', '.match'. Probe: base_url.split('?') 0.669; address.find(':') 0.106, os.path.join 0.147, line.split(',') 0.088, plain url assignment 0.033. Only the URL split clearly fired; low confidence."
+}

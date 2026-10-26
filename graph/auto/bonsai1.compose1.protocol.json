@@ -1,0 +1,34 @@
+{
+ "protocol": "compose@1",
+ "written": "2026-10-26T02:53:31+00:00",
+ "toolchain_commit": "7a6db1d3",
+ "code_sha256": "b66bc893237aede12494a7676dae25fc359554acd277caa456c5a982cd49b9fb",
+ "target_layers": [
+  6,
+  7,
+  8,
+  9,
+  10,
+  11
+ ],
+ "selection": {
+  "min_count": 2,
+  "focus": 0.3,
+  "units": 3,
+  "pair_recall": 0.6,
+  "pair_joint": 0.5,
+  "class_recall": 0.7,
+  "class_distinct": 3,
+  "trigger_mass": 0.8,
+  "trigger_max": 40,
+  "cand_per_layer": 8,
+  "cand_total": 16,
+  "cap": 6000,
+  "placebo_every": 10
+ },
+ "test_windows_from": 16400,
+ "snippet": 48,
+ "judge": "quick-8+8@2",
+ "read": "last token, mean over the 3 PREAMBLES",
+ "about": "compose@1: the first compositional round. Explain a pole by the upstream word units at the offsets that feed its peaks.\n\n  python -m bonsai_interp.compose.round protocol        # write the manifest; commit it ALONE\n  python -m bonsai_interp.compose.round select          # CPU: hypotheses for every residual pole of the target layers\n  python -m bonsai_interp.compose.round build           # CPU: held-out 8 + 8 tests; commit the prereg manifest ALONE\n  python -m bonsai_interp.compose.round score           # GPU: judge with quick-8+8@2's rule\n  (--smoke DIR: no manifests, a few hundred targets; files in DIR)\n\nWhy tokens at offsets (FINDINGS 2026-10-26). At their peaks, mid-layer poles are mostly functions of the read token and\nthe one before it: replacing the read token removes about 99% of a peak, the previous one 78-87% in layers 6-23, and\ntokens 10 or more back almost nothing. Zeroing the top attributed upstream neurons removes only about half. Each pole's\npeaks are classes (22-24 distinct read tokens in a top 32), so the class at each offset is named by the upstream word\nunits whose strong activations cover it.\n\nSelection (CPU, deterministic; the scan's top 32 peaks of each target and the word screen's (token, pole) tables of\nstrong activations, selection windows 0-7,999):\n  - For each offset k in {0, 1}: the upstream poles (layers below the target) whose strong triggers (>= 2 strong\n    activations) include the tokens of the peaks at offset k. A unit is scored recall x focus:\n      recall = the share of the 32 peaks covered;\n      focus  = the share of the unit's own strong activations on those tokens.\n    A greedy union of up to 3 units, each with focus >= 0.3, then covers the offset.\n  - A 'pair' hypothesis (A here, given B one token back) needs:\n      - each offset covered on >= 60% of the peaks;\n      - both offsets covered together on >= 50%.\n  - A 'class' hypothesis (the read token is one of the units' words) needs:\n      - the read token covered on >= 70% of the peaks;\n      - at least 3 distinct covered tokens (one or two words are the word screen's business).\n  - Units must already be characterized (a held survey label, a held word-screen or sweep-library test): a composition\n    is a sentence about known pieces, and a later round can use the units this round characterizes.\n  - Targets are eligible poles of the target layers that are not assignment-grade already (the residual).\nTests (test windows 16,400 on, never a target's own top windows; 48-token snippets read at the last token; 3 preambles):\n  - pair: fire = a token of class A after a token of class B. Quiet = 4 with A without B (the same read token as a fire\n    item where possible) and 4 with B without A (a read token of the same word class).\n  - class: fire = 8 tokens of the class, at most 2 per token. Quiet = 8 tokens of the same word class outside the class,\n    excluding the target's own strong triggers.\n  - A unit's trigger set is its tokens with >= 2 strong activations, most first, until they hold 80% of its strong\n    activations (at most 40 tokens). Class A is the union of the read-token units' trigger sets restricted to tokens the\n    target itself fires on (>= 2 strong activations in the selection windows); class B is the union of the\n    previous-token units' trigger sets.\n  - Placebo: one hypothesis in ten also gets a test of two quiet sets against each other, to count false holds.\nCoverage (graph/SCHEMA.md): the share of the target's strong activations on its class-A tokens. This is exact for\n'class'; for 'pair' it is an upper bound, alongside the share of the 32 peaks where both hold.\n"
+}

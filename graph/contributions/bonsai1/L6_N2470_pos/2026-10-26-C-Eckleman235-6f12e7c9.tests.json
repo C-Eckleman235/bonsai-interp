@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-C-Eckleman235-6f12e7c9",
+ "contributor": "C-Eckleman235",
+ "kind": "qc",
+ "neuron": "bonsai1/L6/N2470+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T17:44:07+00:00",
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "The comma token ',' immediately after a sentence-initial conjunction (And/But/and), opening a parenthetical or interrupting aside, e.g. 'And, you know,' / 'But, in general,'",
+  "notes": "Model-QC pilot (concept-maps plan sha256 e2c0fbd950fc010cf3ac8c4a8d9473758ba54d8ddb3e2dbc13f451f5a8ddf787): label slot B of this pole, from contribution 2026-10-26-JasperBlank-3d1950f0; which model wrote it stays sealed until all 30 tests are scored. Sentences written by a fresh Opus subagent that saw only the pole's card (record line removed) and the three anonymous labels; nothing was probed or scored."
+ },
+ "neighbours": [
+  {
+   "unit": "L6/N2470",
+   "pole": "+",
+   "label": "The comma token ',' immediately after a sentence-initial conjunction (And/But/and), opening a parenthetical or interrupting aside, e.g. 'And, you know,' / 'But, in general,'",
+   "fire": [
+    "The storm knocked out power for hours. And, of course, the generator refused to start.",
+    "I love living near the ocean. But, as everyone warns you, the humidity ruins everything.",
+    "My grandfather never trusted banks. And, in his defense, the local one did fail in 1931.",
+    "The novel starts slowly. But, once the sister arrives, it becomes impossible to put down.",
+    "The startup raised forty million dollars, and, by most accounts, spent half of it on office furniture.",
+    "Most dogs hate baths. But, oddly enough, our retriever jumps into the tub on her own.",
+    "The deadline is Friday. And, unless something changes, we will miss it by at least a week.",
+    "Critics praised the opera's staging, and, to my surprise, even the stubborn reviewers liked the score."
+   ],
+   "quiet": [
+    "The generator refused to start, of course, after the storm knocked out power for hours.",
+    "Living near the ocean is lovely. Still, as everyone warns you, the humidity ruins everything.",
+    "My grandfather never trusted banks and in his defense the local one did fail in 1931.",
+    "The novel starts slowly, then becomes impossible to put down once the sister arrives.",
+    "Our startup raised forty million dollars. Then, by most accounts, it spent half on office furniture.",
+    "Oddly enough, our retriever jumps into the tub on her own, though most dogs hate baths.",
+    "Unless something changes, we will miss Friday's deadline by at least a week.",
+    "Even the stubborn reviewers liked the opera's score, which honestly surprised me a little."
+   ]
+  }
+ ],
+ "predictions": "confirm: the label as written should hold a harder independent test (>= 6/8 fire, AUROC >= 0.9)",
+ "methods": {
+  "agent": "claude-code opus-5.5 (blind QC-writer subagent, card only)",
+  "screens": [
+   "card"
+  ]
+ },
+ "selection": "model-QC pilot: a seeded draw of poles held by all three labelling models (#1018-#1021)"
+}

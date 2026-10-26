@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-1304f697",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N5243-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T16:20:08+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L11/N5243",
+   "pole": "-",
+   "label": "the ORM model namespace in Python web code: 'db' in db.Column, the '.Model' base class, and '.models' imports (Flask-SQLAlchemy, Django), as against other classes, imports and the word 'models' in prose",
+   "fire": [
+    "import datetime\n\nclass Post(db.Model):\n    id = db.Column(db.Integer, primary_key=True)",
+    "from shop.models import Product, Category\n\ndef list_products():\n    return Product.query.all()",
+    "class Comment(db.Model):\n    __tablename__ = 'comments'\n    body = db.Column(db.Text)",
+    "from django.db import models\n\nclass Author(models.Model):\n    name = models.CharField(max_length=50)",
+    "from accounts.models import Profile\n\nprofile = Profile.objects.get(user=request.user)",
+    "class Tag(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    label = db.Column(db.String(30))",
+    "from blog.models import Entry\n\nentries = Entry.objects.filter(published=True)",
+    "class Invoice(db.Model):\n    total = db.Column(db.Float, nullable=False)"
+   ],
+   "quiet": [
+    "import datetime\n\nclass Post(object):\n    def __init__(self, title):\n        self.title = title",
+    "from shop.utils import format_price\n\ndef list_products(items):\n    return [format_price(i) for i in items]",
+    "class Comment:\n    def __init__(self, body):\n        self.body = body",
+    "from collections import namedtuple\n\nAuthor = namedtuple('Author', ['name', 'age'])",
+    "from accounts.helpers import get_profile\n\nprofile = get_profile(user_id)",
+    "class Tag:\n    def __init__(self, label):\n        self.label = label",
+    "In our experiments the larger models made fewer errors on the blog dataset.",
+    "class Invoice:\n    def total(self, items):\n        return sum(items)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on '.Model', ' db' or '.models' in model-definition code; plain classes, numpy imports, ML 'models' prose below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "ORM model namespace (db.Model, .models)",
+ "unit_kind": "context",
+ "confidence": 0.7,
+ "notes": "Card: 'db.Column', 'class Role(db.Model)', 'from sentry.models import User'. Probe: Flask-SQLAlchemy class 0.684, '.models import' 0.445, Django models.Model 0.334; sqlite3 'shop.db' 0.160; plain class 0.014, numpy 0.005, 'trained three models' 0.010, '85 db' 0.002."
+}

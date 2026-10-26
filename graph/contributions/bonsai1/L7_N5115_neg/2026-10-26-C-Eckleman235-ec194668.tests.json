@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-C-Eckleman235-ec194668",
+ "contributor": "C-Eckleman235",
+ "kind": "qc",
+ "neuron": "bonsai1/L7/N5115-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T17:44:17+00:00",
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "Mass/weight unit tokens right after a number, mainly kg / kilograms (also lbs, pounds, gallon, Cyrillic кг/килограмм), especially in body or animal weight statements",
+  "notes": "Model-QC pilot (concept-maps plan sha256 e2c0fbd950fc010cf3ac8c4a8d9473758ba54d8ddb3e2dbc13f451f5a8ddf787): label slot B of this pole, from contribution 2026-10-26-JasperBlank-0915bd55; which model wrote it stays sealed until all 30 tests are scored. Sentences written by a fresh Opus subagent that saw only the pole's card (record line removed) and the three anonymous labels; nothing was probed or scored."
+ },
+ "neighbours": [
+  {
+   "unit": "L7/N5115",
+   "pole": "-",
+   "label": "Mass/weight unit tokens right after a number, mainly kg / kilograms (also lbs, pounds, gallon, Cyrillic кг/килограмм), especially in body or animal weight statements",
+   "fire": [
+    "The vet weighed our retriever this morning and he is up to 34 kg, so we are cutting his treats.",
+    "Adult male walruses can weigh as much as 1,500 kilograms and live for around forty years.",
+    "The newborn calf on the dairy farm weighed a healthy 40 kg at birth, according to the farmer.",
+    "When I enlisted I weighed only 140 pounds, but basic training put some muscle on me.",
+    "The wrestler cut weight all week and finally made the 165 lbs class on Friday morning.",
+    "Sea turtles of this species may reach 90 kilograms, though most adults are somewhat lighter.",
+    "Наш кот за зиму набрал вес и теперь весит почти 8 кг, ветеринар советует диету.",
+    "Говорят, что взрослый медведь здесь весит около 300 килограммов и очень опасен."
+   ],
+   "quiet": [
+    "The vet measured our retriever this morning and he stands 58 cm at the shoulder now.",
+    "Adult male walruses can grow to more than three metres long and live for around forty years.",
+    "The newborn calf on the dairy farm looked healthy and strong at birth, according to the farmer.",
+    "When I enlisted I was very skinny, but basic training put some muscle on me quickly.",
+    "The wrestler ran 12 miles a day all week before the tournament on Friday morning.",
+    "Sea turtles of this species may swim 2,000 km in a single migration season.",
+    "Наш кот за зиму сильно поправился, и ветеринар советует ему строгую диету.",
+    "Говорят, что взрослый медведь здесь бывает ростом около двух метров и очень опасен."
+   ]
+  }
+ ],
+ "predictions": "confirm: the label as written should hold a harder independent test (>= 6/8 fire, AUROC >= 0.9)",
+ "methods": {
+  "agent": "claude-code opus-5.5 (blind QC-writer subagent, card only)",
+  "screens": [
+   "card"
+  ]
+ },
+ "selection": "model-QC pilot: a seeded draw of poles held by all three labelling models (#1018-#1021)"
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-5996e641",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N7592-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T13:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L20/N7592",
+   "pole": "-",
+   "label": "a word stating a restriction or limit on what something accepts ('only accepts', 'must be')",
+   "fire": [
+    "if not isinstance(key, str):\n    raise TypeError('Cache only accepts string keys')",
+    "Note: this optimizer only runs on GPU backends at the moment.",
+    "if y.ndim > 1:\n    raise ValueError('Encoder only supports 1-dimensional labels')",
+    "The upload form only takes PNG images smaller than two megabytes.",
+    "Warning: the batch size must be a power of two for this kernel.",
+    "if len(name) > 32:\n    raise ValueError('Username can only be 32 characters long')",
+    "The trial account only allows three projects per user.",
+    "This endpoint only returns the first hundred results per request."
+   ],
+   "quiet": [
+    "if not isinstance(key, str):\n    key = str(key)\ncache[key] = value",
+    "Note: this optimizer runs on GPU and CPU backends alike.",
+    "if y.ndim > 1:\n    y = y.ravel()\nencoder.fit(y)",
+    "The upload form takes images of any kind and resizes them for you.",
+    "Tip: the batch size can be set from the command line.",
+    "name = name.strip()\nuser = User(name=name)\nuser.save()",
+    "The trial account includes projects, storage and email support.",
+    "This endpoint returns results sorted by date, newest first."
+   ]
+  }
+ ],
+ "predictions": "Fires on 'only'/limit words in technical docs and error messages; quiet on the same docs stating capabilities without a restriction.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "stated restriction/limitation",
+ "unit_kind": "context",
+ "confidence": "low",
+ "notes": "Probe: ValueError '... only accepts 2-dimensional' 0.773, 'video length' 0.379, 'doesn't matter' 0.313, 'only supports files up to' 0.282, 'currently must be' 0.221; but 'supports files of any size' 0.274 and 'many styles' 0.157, so near misses may leak."
+}

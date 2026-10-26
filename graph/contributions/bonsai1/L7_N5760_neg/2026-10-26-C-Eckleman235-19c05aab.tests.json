@@ -1,0 +1,46 @@
+{
+ "contribution": "2026-10-26-C-Eckleman235-19c05aab",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N5760-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T18:37:46+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L7/N5760",
+   "pole": "-",
+   "label": "Punctuation in indented Python code that opens an argument or documentation entry: the ':' after an 'Args:' parameter name, or the '(' / '(not' starting a call argument inside an indented block",
+   "fire": [
+    "    def fetch(path, retries=3):\n        \"\"\"Download a file.\n\n        Args:\n            path: where to save the file\n            retries: how many times to try\n        \"\"\"\n        if any(not isinstance(p, str) for p in path):\n            raise TypeError(path)\n",
+    "    def build(items):\n        if bdms and\\\n            any(not isinstance(i, Item) for i in items):\n            return None\n        run('make')\n        run('make install')\n",
+    "class Loader(object):\n    def load(self, name, mode):\n        \"\"\"Open a file.\n\n        Args:\n            name: file name\n            mode: read or write\n        \"\"\"\n        return open(name, mode)\n",
+    "    def update(self, rows):\n        for r in rows:\n            if not self.valid(r) and any(not x for x in r):\n                continue\n            self.save('row')\n            self.log('done')\n",
+    "def parse(text, strict):\n    \"\"\"Parse text.\n\n    Args:\n        text: the input string\n        strict: raise on errors\n    \"\"\"\n    return [t for t in text.split() if not strict]\n",
+    "        for host in hosts:\n            if all(not up(h) for h in host.peers):\n                run('ping')\n                run('reboot')\n        return hosts\n",
+    "def merge(a, b):\n    \"\"\"Merge two lists.\n\n    Args:\n        a: first list\n        b: second list\n    \"\"\"\n    return a + b\n",
+    "    def stop(self):\n        if self.proc and any(not c.done for c in self.children):\n            self.exec('kill')\n            self.exec('wait')\n"
+   ],
+   "quiet": [
+    "The function downloads a file and saves it to the path you give it, trying again up to three times if the network fails.",
+    "Before building, make sure the tools are installed, then run the make command followed by make install as usual.",
+    "The loader opens a file by name and mode, so you pass the file name first and then say whether you want to read or write.",
+    "When updating, each row is checked and skipped if it is invalid, and afterwards the program writes a short log line.",
+    "The parser takes the text and a flag for strict mode, and returns a list of words without raising errors unless asked.",
+    "For every host the script checks whether its peers are up, pings it, and reboots it if nothing answers within a minute.",
+    "The merge helper joins two lists end to end, so the first list always comes before the second in the result.",
+    "To stop the service the program looks for a running process, kills it, and then waits for all its children to finish."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5",
+  "screens": [
+   "card"
+  ]
+ },
+ "short": "indented-code punctuation",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Weak pole (max 11.7); label is a guess from six top examples, all in indented Python."
+}

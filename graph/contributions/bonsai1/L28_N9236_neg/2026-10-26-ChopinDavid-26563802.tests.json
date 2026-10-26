@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-26563802",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N9236-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T19:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N9236",
+   "pole": "-",
+   "label": "the credit-hour digit in a course catalog entry ('(3 credits)', '(3L,3CR)', '(4 crs.)'), as against other numbers in catalog entries and the same digits in non-catalog text",
+   "fire": [
+    "PSYC 220 Developmental Psychology (3 credits): growth from infancy to old age.",
+    "CHEM 101 General Chemistry I (4 credits). Lecture and laboratory.",
+    "ENGL 315 Shakespeare (3 cr.) A study of the major plays.",
+    "MATH 241 Calculus III (4 cr. hrs.) Prerequisite: MATH 142.",
+    "ART 110 Drawing Fundamentals (2 credits): line, form and value.",
+    "BIOL 330 Genetics (3L,1LAB,4CR): inheritance and gene expression.",
+    "ECON 202 Principles of Macroeconomics (3 crs.) National income and money.",
+    "PHIL 150 Introduction to Ethics (3 credit hours): theories of right action."
+   ],
+   "quiet": [
+    "PSYC 220 Developmental Psychology covers growth from infancy to old age.",
+    "CHEM 101 General Chemistry I meets in Room 4 of the science hall.",
+    "ENGL 315 Shakespeare (Spring 2024) is a study of the major plays.",
+    "MATH 241 Calculus III follows MATH 142 in the sequence.",
+    "ART 110 Drawing Fundamentals (Studio B): line, form and value.",
+    "The book has three chapters on genetics and two on evolution.",
+    "ECON 202 Principles of Macroeconomics (online section) covers national income.",
+    "We read 3 essays on ethics during the first week of the seminar."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-1.0 on the digit inside '(N credits)'-style brackets after a course title; course numbers, years and counts in brackets elsewhere below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "credit-hour number in a course listing",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: '(3L,3CR)' twice at -35.75/-33.5, '(3 crs.)', plus scattered drug and nuclear tokens. Probe: '(3L,3CR)' 0.960, '(3 crs.)' 1.007, '(4 credits)' 0.904; 'given by injection' 0.672, 'nuclear' 0.330, 'six levels' 0.286; plain course prose 0.002, 'three apples' 0.001. Credit hours is the clean reading; the medical tokens are a second, untested strand."
+}
