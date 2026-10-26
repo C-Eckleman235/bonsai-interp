@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-26-JasperBlank-b6ad5e6c",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N5974-",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T12:54:37+00:00",
+ "recipe": {
+  "toolchain_commit": "cfd6808b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L15_N5974_neg/2026-10-26-JasperBlank-b6ad5e6c.tests.json"
+ },
+ "label": "the first word of a result clause after 'so' / 'therefore' (e.g. 'so today', 'therefore, each', 'so these', 'and so the trend'): the subject-starting token right after a consequence connective",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L15_N5974_neg/2026-10-26-JasperBlank-b6ad5e6c.tests.json",
+   "prereg_commit": "cfd6808b",
+   "author": "JasperBlank",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.804,
+     "peak": " today"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.179,
+     "peak": " each"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.756,
+     "peak": " suit"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.657,
+     "peak": " trend"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.347,
+     "peak": " this"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.244,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.174,
+     "peak": " every"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.33,
+     "peak": " those"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.014,
+     "peak": " bread"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.007,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.049,
+     "peak": " commuting"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.017,
+     "peak": " East"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.031,
+     "peak": " old"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.04,
+     "peak": " team"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.018,
+     "peak": "I"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.019,
+     "peak": " lights"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.339,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5 (subagent)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "cfd6808b",
+  "minutes": 194,
+  "batch_size": 48
+ },
+ "short": "subject after 'so/therefore'",
+ "unit_kind": "contextual",
+ "confidence": "low",
+ "notes": "Label and sentences written blind by a Claude subagent from the card text alone (prompt: haiku_labeler/prompt.md, identical for Haiku, Sonnet and Opus); one retry on mechanical checks. Part of a Haiku/Sonnet/Opus comparison on the same 48 poles.",
+ "selection": "random draw"
+}
