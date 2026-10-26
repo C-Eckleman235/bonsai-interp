@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-28d38d95",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N289-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T00:19:53+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L21/N289",
+   "pole": "-",
+   "label": "literal argument values in Python test code (numbers and strings right after '=' or inside a call), as against the same test code with variable names in place of the literals",
+   "fire": [
+    "def test_limits(self):\n    with pytest.raises(ValueError):\n        check_range('abc', min_len=1, max_len=3)",
+    "    def test_cache(self):\n        resp.headers['Cache-Control'] = 'public, max-age=0'\n        return resp",
+    "def test_old_date(self):\n    d = datetime(1, 1, 1, 0, 2, 34, 987)\n    self.assertRaises(ValueError, fmt, d)",
+    "    form = SignupForm(data={\n        'password1': 'secret',\n        'password2': 'mismatch',\n    })",
+    "    self.assertEqual(Model.objects.filter(count__lt=0).count(), 0)\n    self.assertTrue(ok)",
+    "    events = split_events(raw, chunk_duration=3.)\n    assert_array_equal(events, expected)",
+    "    specs = {'hw:ram_max_mb': \"50\"}\n    meta = Image(specs=specs)\n    self.assertEqual(meta.ram, 50)",
+    "def test_window():\n    w = make_window(size=8, step=2)\n    assert len(w) == 4"
+   ],
+   "quiet": [
+    "def test_limits(self):\n    with pytest.raises(ValueError):\n        check_range(text, min_len=low, max_len=high)",
+    "    def test_cache(self):\n        resp.headers[key] = policy\n        return resp",
+    "def test_old_date(self):\n    d = make_date(year, month, day)\n    self.assertRaises(ValueError, fmt, d)",
+    "    form = SignupForm(data=payload)\n    form.full_clean()\n    errors = form.errors",
+    "    self.assertEqual(Model.objects.filter(owner=user).count(), total)\n    self.assertTrue(ok)",
+    "    events = split_events(raw, chunk_duration=duration)\n    assert_array_equal(events, expected)",
+    "    specs = build_specs(flavor)\n    meta = Image(specs=specs)\n    self.assertEqual(meta.ram, expected_ram)",
+    "def test_window():\n    w = make_window(size=size, step=step)\n    assert len(w) == n"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3+ on '=' or the literal in multi-line test code; variable versions below 0.10; likely weak",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "literal values in test code",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card: max 38 on '=' before 1 in pytest.raises call, '0.6', datetime(...34), 'mismatch' string, max-age=0, flags__lt=0; all in test code. Probe (short snippets): every item 0.007-0.070, including 'timeout=5' 0.060 and prose '0.6' 0.070. The pole did not reproduce on short code; the test uses longer test-function context."
+}
