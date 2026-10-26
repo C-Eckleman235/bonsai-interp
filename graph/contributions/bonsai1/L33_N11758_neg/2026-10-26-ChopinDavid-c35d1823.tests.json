@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-c35d1823",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N11758-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T20:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N11758",
+   "pole": "-",
+   "label": "the colon after the place of publication in a bibliographic citation (Vancouver: University of British Columbia Press), as against colons in times, ratios, labels and lists",
+   "fire": [
+    "See Smith, Rivers of the North (Toronto: University of Toronto Press, 1998).",
+    "Jones, A. Early Trade Routes. Oxford: Clarendon Press, 2004.",
+    "The argument is developed in Brown, Coastal Towns (London: Routledge, 2011), 45.",
+    "Miller, J. Settlers and Traders (Chicago: University of Chicago Press, 1987).",
+    "For background, see Green, The Fur Trade (Montreal: McGill-Queen's University Press, 2001).",
+    "Taylor, R. Village Life in Wales. Cardiff: University of Wales Press, 1979.",
+    "A fuller account appears in White, Harbour Cities (New York: Norton, 2015).",
+    "Clark, P. Mapping the Prairie (Winnipeg: University of Manitoba Press, 2009)."
+   ],
+   "quiet": [
+    "The train to the coast leaves at 10:45 every weekday morning.",
+    "Final score: three goals to one for the home side.",
+    "The recipe needs three things: flour, eggs and milk.",
+    "Mix the cement and sand at a ratio of 1:3 before adding water.",
+    "Warning: the floor is wet near the main entrance.",
+    "The meeting agenda had one item: the new parking rules.",
+    "Doors open at 7:30 and the concert starts an hour later.",
+    "Her advice was simple: sleep early and walk every day."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.5 on ':' between a city and a publisher in parenthetical or reference-list citations; colons in clock times, scores, labels and list introductions below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "colon after the city in a citation",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: mixed peaks (' International' in a treaty name, ' of' in 'a number of', ':' after Vancouver in a citation, '-f' in cattle-fair, word pieces in French, Russian, German, Arabic, 'conf'usion). Probe: '(Vancouver: University of British Columbia Press, 2010)' 0.467 (peak ':'); 'cattle-fair' 0.292; 'International Convention' 0.224; 'a number of universities' 0.173; everyday sentences 0.001-0.016. The citation colon is the cleanest probe hit; coverage will be partial."
+}
