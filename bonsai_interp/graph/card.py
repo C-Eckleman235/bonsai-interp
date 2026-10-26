@@ -184,7 +184,9 @@ def atlas_poles(name, L, n):
                             in zip(r["hit_tok"], r["hit_lift"], r["hit_coverage"], r["hit_trigger"])],
                   "bin": r["bin"], "context": r["context"], "test": r["test"], "auroc": r["auroc"],
                   "lib": ({"kind": r["lib_kind"], "condition": r["lib_condition"], "test": r["lib_test"], "auroc": r["lib_auroc"],
-                           "held": r.get("lib_held") or [], "label": r.get("lib_label")} if r.get("lib_kind") else None)}
+                           "held": r.get("lib_held") or [], "label": r.get("lib_label"), "coverage": r.get("lib_coverage")}
+                          if r.get("lib_kind") else None),
+                  "census": r.get("census_flags")}
     return out
 
 
@@ -226,13 +228,18 @@ def render(c):
                          + (f" (AUROC {at['auroc']:.2f})" if at.get("auroc") is not None else "") + (f": {at['context']}" if at.get("context") else ""))
         lb = at.get("lib") if at else None
         if lb:
-            lines.append(f"    sweep library (sweeplib@1, deterministic, scrutiny 0): {lb['kind']}:{lb['condition']} test {lb['test']}"
-                         + (f" (AUROC {lb['auroc']:.2f})" if lb.get("auroc") is not None else "") + (f": {lb['label']}" if lb.get("label") else ""))
+            lines.append(f"    deterministic passes (scrutiny 0): best {lb['kind']}:{lb['condition']} test {lb['test']}"
+                         + (f" (AUROC {lb['auroc']:.2f})" if lb.get("auroc") is not None else "")
+                         + (f", covers {lb['coverage']:.0%}" if lb.get("coverage") is not None else "") + (f": {lb['label']}" if lb.get("label") else ""))
             more = [h for h in lb["held"] if h != f"{lb['kind']}:{lb['condition']}"]
             if more:
                 lines.append("    also held under: " + ", ".join(more))
             if lb["test"] == "held":
                 lines.append("    -> a starting hypothesis that already passed a held-out 8 + 8: probe its edges (what else fires it, what the label misses)")
+        cf = at.get("census") if at else None
+        if cf:
+            names = [n for n, b in (("prediction-type", 1), ("frequency-type", 2), ("entropy-type", 4), ("strong steerer", 8)) if cf & b]
+            lines.append("    census (weights only, docs/CENSUS.md): " + ", ".join(names))
         for e in st["examples"]:
             lines.append(f"    {e['act']:8.2f} {e['regime']:>10} | {e['text'][-110:]}")
     d = c.get("direct")

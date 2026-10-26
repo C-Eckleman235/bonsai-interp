@@ -20,9 +20,12 @@ One row per pole, keyed by `pole` = 2 * neuron + (1 for the - pole):
   hit_lift, hit_coverage,         lift over the pole's base rate, share of the pole's strong activations,
   hit_trigger                     and whether stage 1 screened that word (lists, at most 5)
   bin, context, test, auroc       the auto-token@2 screen and auto test, when the layer has been screened
-  lib_kind, lib_condition,        the sweep library's best test of the pole (sweeplib@1: copy, topic, lang, struct, number,
-  lib_test, lib_auroc, lib_held,  predict), a held one first; lib_held lists every condition it held under, lib_label
-  lib_label                       the claim that test made (scrutiny 0: an automatic test, never a survey label)
+  lib_kind, lib_condition,        the pole's best test across the deterministic passes (atlas.LIB_SOURCES): sweeplib@1
+  lib_test, lib_auroc, lib_held,  (copy, topic, lang, struct, number, predict), sweeplib@2 (twin), sweeplib@3 (grammar),
+  lib_label, lib_coverage         compose@1 (compose); a held one first, then the higher coverage. lib_held lists every
+                                  kind:condition it held under, lib_label the claim (scrutiny 0: automatic, never a
+                                  survey label), lib_coverage its share of the pole's strong activations when measured
+  census_flags                    the weights-only census (docs/CENSUS.md): predict 1, frequency 2, entropy 4, steer 8
 Scrutiny 0 throughout: corpus statistics and automatic tests, never a label. Labels and statuses from tested
 contributions stay in graph/ (git), keyed the same way, and can be joined on (layer, neuron, sign).
 Published in the `atlas` release; `bash scripts/fetch_data.sh atlas` downloads it.
@@ -70,31 +73,59 @@ def _schema():
                       ("test", pa.dictionary(pa.int8(), pa.string())), ("auroc", pa.float32()),
                       ("lib_kind", pa.dictionary(pa.int8(), pa.string())), ("lib_condition", pa.dictionary(pa.int16(), pa.string())),
                       ("lib_test", pa.dictionary(pa.int8(), pa.string())), ("lib_auroc", pa.float32()), ("lib_held", lst(pa.string())),
-                      ("lib_label", pa.string())])
+                      ("lib_label", pa.string()), ("lib_coverage", pa.float32()), ("census_flags", pa.int16())])
 
 
-def sweeplib(path=ROOT / "data" / "sweeplib" / "bonsai1.sweeplib1.results.jsonl.gz"):
-    """{(layer, "N123+"): (kind, condition, outcome, auroc, [held conditions], label)} from the sweep library's results: the
-    pole's best result (a held test first, then the highest AUROC), with that test's label (masked). Placebo tests are left
-    out. {} when there are no results."""
-    if not Path(path).exists():
-        return {}
+LIB_SOURCES = {  # every deterministic pass whose per-pole results join the atlas: (file, kind of row)
+    "sweeplib@1": ROOT / "data" / "sweeplib" / "bonsai1.sweeplib1.results.jsonl.gz",
+    "sweeplib@2": ROOT / "data" / "sweeplib2" / "bonsai1.sweeplib2.results.jsonl.gz",
+    "sweeplib@3": ROOT / "data" / "grammar" / "bonsai1.sweeplib3.results.jsonl.gz",
+    "compose@1": ROOT / "data" / "compose" / "bonsai1.compose1.results.jsonl.gz",
+}
+
+
+def _lib_rows(proto, path):
+    """(pole id, kind, condition, outcome, auroc, label, coverage) per non-placebo result of one pass."""
     from bonsai_interp.graph.protocols import v2_stats
-    best, held = {}, {}
     with gzip.open(path, "rt", encoding="utf-8") as f:
         for line in f:
             r = json.loads(line)
             if r.get("placebo"):
                 continue
-            L, key = int(r["neuron"].split("/L")[1].split("/")[0]), r["neuron"].split("/")[-1]
-            auroc = (v2_stats(r) or (None,))[0]
-            cand = (r["kind"], r["condition"], r["outcome"], auroc, mask(r.get("label")))
-            if r["outcome"] == "held":
-                held.setdefault((L, key), []).append(f"{r['kind']}:{r['condition']}")
+            if proto == "sweeplib@1":
+                yield r["neuron"], r["kind"], r["condition"], r["outcome"], (v2_stats(r) or (None,))[0], r.get("label"), None
+            elif proto == "sweeplib@2":
+                yield r["neuron"], "twin", r["claim"], r["outcome"], r.get("auroc"), r.get("label"), r.get("coverage")
+            elif proto == "sweeplib@3":
+                yield r["neuron"], "grammar", r["condition"], r["outcome"], (v2_stats(r) or (None,))[0], r.get("label"), None
+            else:
+                yield r["target"], "compose", r["kind"], r["outcome"], (v2_stats(r) or (None,))[0], r.get("label"), r.get("coverage_A")
+
+
+def sweeplib(sources=None):
+    """{(layer, "N123+"): (kind, condition, outcome, auroc, [held kind:condition], label, coverage)} over every
+    deterministic pass in LIB_SOURCES: the pole's best result. A held test comes first, then a higher coverage, then a
+    higher AUROC. Labels are masked; placebo tests are left out. {} when there are no results."""
+    best, held = {}, {}
+    for proto, path in (sources or LIB_SOURCES).items():
+        if not Path(path).exists():
+            continue
+        for nid, kind, cond, outcome, auroc, label, cov in _lib_rows(proto, path):
+            L, key = int(nid.split("/L")[1].split("/")[0]), nid.split("/")[-1]
+            cand = (kind, cond, outcome, auroc, mask(label), cov)
+            if outcome == "held":
+                held.setdefault((L, key), []).append(f"{kind}:{cond}")
+            rank = lambda c: (c[2] == "held", c[5] if c[5] is not None else -1, c[3] or 0)
             old = best.get((L, key))
-            if old is None or (cand[2] == "held", cand[3] or 0) > (old[2] == "held", old[3] or 0):
+            if old is None or rank(cand) > rank(old):
                 best[(L, key)] = cand
-    return {k: (*v[:4], held.get(k, []), v[4]) for k, v in best.items()}
+    return {k: (*v[:4], held.get(k, []), v[4], v[5]) for k, v in best.items()}
+
+
+def census_flags(path=ROOT / "data" / "census" / "bonsai1.census.poles.npz"):
+    """(36, 2, N) census flag bits (predict 1, frequency 2, entropy 4, steer 8), or None without the census."""
+    import numpy as np
+    return np.load(path)["flags"] if Path(path).exists() else None
 
 
 def build_layer(hits_path, screen_path=None, out_dir=ATLAS, lib=None):
@@ -130,13 +161,15 @@ def build_layer(hits_path, screen_path=None, out_dir=ATLAS, lib=None):
             cols["context"].append(mask(s.get("context")))  # sensitive words never reach the public atlas
             cols["test"].append(s.get("test"))
             cols["auroc"].append(s.get("auroc"))
-            lb = lib.get((L, key), (None, None, None, None, [], None))
+            lb = lib.get((L, key), (None, None, None, None, [], None, None))
             cols["lib_kind"].append(lb[0])
             cols["lib_condition"].append(lb[1])
             cols["lib_test"].append(lb[2])
             cols["lib_auroc"].append(None if lb[3] is None else float(lb[3]))
             cols["lib_held"].append(lb[4])
             cols["lib_label"].append(lb[5])
+            cols["lib_coverage"].append(None if lb[6] is None else float(lb[6]))
+            cols["census_flags"].append(None)
     schema = _schema()
     arrays = []
     for field in schema:
@@ -205,18 +238,21 @@ def add_lib(src=ATLAS, out_dir=ATLAS):
     """Join the sweep library's columns onto existing atlas tables (no stage 1 inputs needed): every pole keeps its
     other columns, and lib_* are replaced by the current results."""
     import pyarrow as pa
-    lib = sweeplib()
+    lib, cf = sweeplib(), census_flags()
     if not lib:
-        sys.exit("no sweep library results (data/sweeplib/bonsai1.sweeplib1.results.jsonl.gz)")
+        sys.exit("no deterministic results in data/ (atlas.LIB_SOURCES)")
     schema = _schema()
     for path in sorted(Path(src).glob("bonsai1_L*.arrow"), key=_layer_of):
         t = _read(path)
         L = _layer_of(path)
         keys = [f"N{n}{s}" for n, s in zip(t["neuron"].to_pylist(), t["sign"].to_pylist())]
-        lb = [lib.get((L, k), (None, None, None, None, [], None)) for k in keys]
+        lb = [lib.get((L, k), (None, None, None, None, [], None, None)) for k in keys]
+        signs = t["sign"].to_pylist()
+        neur = t["neuron"].to_pylist()
         cols = {"lib_kind": [x[0] for x in lb], "lib_condition": [x[1] for x in lb], "lib_test": [x[2] for x in lb],
                 "lib_auroc": [None if x[3] is None else float(x[3]) for x in lb], "lib_held": [x[4] for x in lb],
-                "lib_label": [x[5] for x in lb]}
+                "lib_label": [x[5] for x in lb], "lib_coverage": [None if x[6] is None else float(x[6]) for x in lb],
+                "census_flags": [None if cf is None else int(cf[L, 0 if sg == "+" else 1, n]) for n, sg in zip(neur, signs)]}
         arrays = []
         for field in schema:
             if field.name in cols:

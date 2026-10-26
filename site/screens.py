@@ -28,7 +28,8 @@ GROUPS = [("spelling", ["spelling"]), ("word", ["lexical"]), ("meaning", ["sense
           ("word hit", [])]
 GROUP_OF = {b: i for i, (_, bins) in enumerate(GROUPS) for b in bins}
 # the sweep library's kinds, folded into the same groups (a held library test colours a pole the screen left unexplained)
-LIB_GROUP = {"copy": "copy", "topic": "topic", "lang": "context", "predict": "context", "struct": "format", "number": "format"}
+LIB_GROUP = {"copy": "copy", "topic": "topic", "lang": "context", "predict": "context", "struct": "format", "number": "format",
+             "twin": "lexical", "grammar": "context", "compose": "context"}
 OTHER, HIT = 7, 8
 
 
@@ -57,7 +58,8 @@ def main(src=ROOT / "data" / "atlas"):
         t = _read(p).to_pydict()
         L = int(t["layer"][0])
         chars, c = ["."] * (2 * N_N), [0] * len(GROUPS)
-        cols = {"pole": [], "w": [], "lift": [], "cov": [], "trig": [], "bin": [], "context": [], "test": [], "auroc": [], "lib": [], "lib_test": []}
+        cols = {"pole": [], "w": [], "lift": [], "cov": [], "trig": [], "bin": [], "context": [], "test": [], "auroc": [], "lib": [], "lib_test": [],
+                "lib_label": [], "lib_cov": []}
         has_lib = "lib_kind" in t
         for i, pole in enumerate(t["pole"]):
             words, b = t["hit_tok"][i], t["bin"][i]
@@ -91,19 +93,22 @@ def main(src=ROOT / "data" / "atlas"):
             cols["auroc"].append(None if t["auroc"][i] is None else round(t["auroc"][i], 3))
             cols["lib"].append(f"{lk}:{t['lib_condition'][i]}" if lk else None)
             cols["lib_test"].append(t["lib_test"][i] if lk else None)
+            cols["lib_label"].append(mask(t["lib_label"][i]) if lk and "lib_label" in t and t["lib_label"][i] else None)
+            cov_ = t["lib_coverage"][i] if lk and "lib_coverage" in t else None
+            cols["lib_cov"].append(None if cov_ is None else round(cov_, 2))
             used.update(words)
         if not any(x is not None for x in cols["bin"]):  # an unscreened layer: drop the empty screen columns
             for k in ("bin", "context", "test", "auroc"):
                 cols.pop(k)
         if not any(x is not None for x in cols["lib"]):
-            for k in ("lib", "lib_test"):
+            for k in ("lib", "lib_test", "lib_label", "lib_cov"):
                 cols.pop(k)
         layers[str(L)] = "".join(chars)
         counts[str(L)] = c
         (OUT / f"L{L}.json").write_text(json.dumps(cols, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8", newline="\n")
     (OUT / "vocab.json").write_text(json.dumps({str(k): mask_token(vocab.get(k, "")) for k in sorted(used)}, ensure_ascii=False, separators=(",", ":")) + "\n",
                                     encoding="utf-8", newline="\n")
-    bins = {"protocol": ["auto-token@2", "sweeplib@1"], "groups": [g for g, _ in GROUPS], "layers": layers, "counts": counts,
+    bins = {"protocol": ["auto-token@2", "sweeplib@1", "sweeplib@2", "sweeplib@3", "compose@1"], "groups": [g for g, _ in GROUPS], "layers": layers, "counts": counts,
             "screened": sorted(int(L) for L, cc in counts.items() if sum(cc[:HIT]) > 0), "lib_labels": _lib_labels()}
     (OUT / "bins.json").write_text(json.dumps(bins, separators=(",", ":")) + "\n", encoding="utf-8", newline="\n")
     print(f"wrote site/screens/: {len(layers)} layers ({len(bins['screened'])} screened), "

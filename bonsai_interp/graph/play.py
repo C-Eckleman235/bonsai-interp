@@ -601,7 +601,7 @@ def main():
     cv.add_argument("--agent", help="who marked the sample, e.g. 'claude-code opus-5.5' or 'human'")
     se = sub.add_parser("search", help="search what the survey knows: tested labels, sweep-library and word-screen automatic tests")
     se.add_argument("text", nargs="?", help="words to find in a label, condition or context (case-insensitive)")
-    se.add_argument("--kind", help="sweep-library kind: copy, topic, lang, struct, number, predict")
+    se.add_argument("--kind", help="deterministic kind: copy, topic, lang, struct, number, predict (sweeplib@1), twin, grammar, compose")
     se.add_argument("--condition", help="sweep-library condition, e.g. script/arabic, num/year, piece/code")
     se.add_argument("--held", action="store_true", help="only held results")
     se.add_argument("--layers", help="e.g. 30-35 or 2,4,6")
