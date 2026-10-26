@@ -1,0 +1,243 @@
+{
+ "protocol": "sweeplib@2",
+ "written": "2026-10-26T03:40:59+00:00",
+ "toolchain_commit": "4e06c0e5",
+ "code_sha256": "5734ed01106aa8f01fccfde8cfd0c310547eecd395dd981b2ce8d9f9f6aa9e54",
+ "about": "sweeplib@2: twin batteries seeded by word hits. Pass 2 builds on pass 1: every word the word screen (auto-token@2)\nfound becomes a battery of one-swap twins (twins.py), and every pole that shares the word is scored from one read.",
+ "seeds_file": "bonsai1.sweeplib2.seeds.json.gz",
+ "seeds_sha256": "7c7ed26de577573e70b87c6d29bb9bfd12f166b77e24d6eca98809acc1f769ae",
+ "seed_words": 21829,
+ "seed_pole_words": 503314,
+ "words_run": 300,
+ "pole_words_run": 279441,
+ "first_words": [
+  " the",
+  " of",
+  " to",
+  " in",
+  " is",
+  " for",
+  " that",
+  " and",
+  " with",
+  " be",
+  " on",
+  " as",
+  " or",
+  " are",
+  " you",
+  " not",
+  " by",
+  " at",
+  " from",
+  " was",
+  " de",
+  " it",
+  " can",
+  " this",
+  " have",
+  " if",
+  " self",
+  " more",
+  " your",
+  " will",
+  " all",
+  " but",
+  " their",
+  " an",
+  " one",
+  " his",
+  " The",
+  " la",
+  " time",
+  " up"
+ ],
+ "last_word_poles": 192,
+ "splits": {
+  "select": [
+   0,
+   16000
+  ],
+  "test": [
+   16400,
+   null
+  ]
+ },
+ "snippet": 48,
+ "pairs": {
+  "select": 16,
+  "min_select": 12,
+  "test": 8
+ },
+ "sets": "The sets (n snippets each; selection from windows 0-15,999, tests from 16,400 on):\n\n  base       the seed mid-sentence (after a word or a comma; from prose when there is enough)\n  base2      a second, disjoint sample of the same pool (the context placebo)\n  case       base with only the last token changed to another case of the word (' Word', ' WORD', ' word'; rotated)\n  case_ctl   base with the last token changed to the control word in that same case\n  ctl, ctl2  base with the last token changed to a control word: a same-shape word of similar frequency (auto-token@2's\n             swap); ctl against ctl2 is the swap placebo\n  infl       base with the last token changed to an inflection of the word (-s, -ed, -ing, or the base form; rotated)\n  infl_ctl   base with the last token changed to a same-shape word of similar frequency, with the same ending when one exists\n  space      the word's letters without the leading space, at a word start (after a bracket, quote, slash or line break)\n  space_ctl  space with the last token changed to the control word's letters\n  piece      the same letters as a split piece inside a longer word (the previous token ends in a letter)\n  piece_ctl  piece with the last token changed to the control word's letters\n  longer     a longer whole-word token that contains the letters (' word' -> ' password', ' words' is an inflection)\n  initial    the seed at the start of a sentence (after . ! or ?), prose\n  comment, string, code   the seed in code (corpus domain 3): in a comment or docstring, inside a string literal, elsewhere\n  prose      the seed mid-sentence in English prose (corpus domains 0 and 1)",
+ "claims": {
+  "form/any-case": {
+   "axis": "form",
+   "type": "inv",
+   "fire": "case",
+   "quiet": [
+    "case_ctl"
+   ],
+   "placebo": "sweeplib@2:swap"
+  },
+  "form/this-case": {
+   "axis": "form",
+   "type": "sel",
+   "fire": "base",
+   "quiet": [
+    "case"
+   ],
+   "placebo": "sweeplib@2:ctx"
+  },
+  "form/no-space": {
+   "axis": "form",
+   "type": "inv",
+   "fire": "space",
+   "quiet": [
+    "space_ctl"
+   ],
+   "placebo": "sweeplib@2:swap"
+  },
+  "form/space-only": {
+   "axis": "form",
+   "type": "sel",
+   "fire": "base",
+   "quiet": [
+    "space"
+   ],
+   "placebo": "sweeplib@2:ctx"
+  },
+  "piece/inside": {
+   "axis": "piece",
+   "type": "inv",
+   "fire": "piece",
+   "quiet": [
+    "piece_ctl"
+   ],
+   "placebo": "sweeplib@2:swap"
+  },
+  "piece/own": {
+   "axis": "piece",
+   "type": "sel",
+   "fire": "base",
+   "quiet": [
+    "piece",
+    "longer"
+   ],
+   "placebo": "sweeplib@2:ctx"
+  },
+  "pos/initial": {
+   "axis": "pos",
+   "type": "sel",
+   "fire": "initial",
+   "quiet": [
+    "base"
+   ],
+   "placebo": "sweeplib@2:ctx"
+  },
+  "pos/mid": {
+   "axis": "pos",
+   "type": "sel",
+   "fire": "base",
+   "quiet": [
+    "initial"
+   ],
+   "placebo": "sweeplib@2:ctx"
+  },
+  "slot/comment": {
+   "axis": "slot",
+   "type": "sel",
+   "fire": "comment",
+   "quiet": [
+    "string",
+    "code",
+    "prose"
+   ],
+   "placebo": "sweeplib@2:ctx"
+  },
+  "slot/string": {
+   "axis": "slot",
+   "type": "sel",
+   "fire": "string",
+   "quiet": [
+    "comment",
+    "code",
+    "prose"
+   ],
+   "placebo": "sweeplib@2:ctx"
+  },
+  "slot/code": {
+   "axis": "slot",
+   "type": "sel",
+   "fire": "code",
+   "quiet": [
+    "comment",
+    "string",
+    "prose"
+   ],
+   "placebo": "sweeplib@2:ctx"
+  },
+  "slot/prose": {
+   "axis": "slot",
+   "type": "sel",
+   "fire": "prose",
+   "quiet": [
+    "comment",
+    "string",
+    "code"
+   ],
+   "placebo": "sweeplib@2:ctx"
+  },
+  "infl/family": {
+   "axis": "infl",
+   "type": "inv",
+   "fire": "infl",
+   "quiet": [
+    "infl_ctl"
+   ],
+   "placebo": "sweeplib@2:swap"
+  },
+  "infl/this-form": {
+   "axis": "infl",
+   "type": "sel",
+   "fire": "base",
+   "quiet": [
+    "infl"
+   ],
+   "placebo": "sweeplib@2:ctx"
+  }
+ },
+ "selection": {
+  "auroc": 0.85,
+  "med_fire": 0.15,
+  "quiet_hi": 0.3,
+  "quiet_hi_share": 0.15,
+  "win": 0.75,
+  "mean_diff": 0.1
+ },
+ "excluded": "weak poles (corpus max < 0.5); poles not seeded by the word",
+ "judge": "quick-8+8@2",
+ "read": "last token; selection after PREAMBLES[0], tests mean over the 3 PREAMBLES",
+ "coverage": {
+  "assignment": 0.5,
+  "token claims": {
+   "form/any-case": "+case",
+   "form/this-case": "seed",
+   "form/no-space": "+space",
+   "form/space-only": "seed",
+   "piece/inside": "+piece",
+   "piece/own": "seed",
+   "infl/family": "+infl",
+   "infl/this-form": "seed"
+  },
+  "context claims": {
+   "pos/initial": "initial",
+   "pos/mid": "mid",
+   "slot/comment": "comment",
+   "slot/string": "string",
+   "slot/code": "code",
+   "slot/prose": "prose"
+  },
+  "strong": 0.3
+ }
+}
