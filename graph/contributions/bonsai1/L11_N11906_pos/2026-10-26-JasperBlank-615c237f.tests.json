@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-26-JasperBlank-615c237f",
+ "contributor": "JasperBlank",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N11906+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T02:08:10+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L11/N11906",
+   "pole": "+",
+   "label": "Code/docstring context: identifier pieces or comment words marking the start/beginning of an action, e.g. '_start' in method names (_start_summary, report_start), '# Start by', '.begin', 'before_'",
+   "fire": [
+    "class Parser:\n    def _start_summary(self, attrs):\n        self.in_summary = True",
+    "Override the methods `report_start` and `report_failure` to customize how test output is shown.",
+    "    def parse(self, data):\n        # Start by skipping the header bytes\n        self.pos = 16",
+    "    def on_start_element(self, name, attrs):\n        self.stack.append(name)",
+    "        self.timer.start_time = now()\n        self.timer_start()\n        return self",
+    "    async def _call_before_start_hook(self, shard_id):\n        await self.hook()",
+    "        it = self.items.begin()\n        while it != self.items.end():\n            it += 1",
+    "    def _start_section(self, attrsD):\n        self.push('section', 1)"
+   ],
+   "quiet": [
+    "class Parser:\n    def _end_summary(self):\n        self.in_summary = False",
+    "Override the methods `report_success` and `report_failure` to customize how test output is shown.",
+    "    def parse(self, data):\n        # Skip the header bytes first\n        self.pos = 16",
+    "    def on_close_element(self, name):\n        self.stack.pop()",
+    "We will start the meeting at nine and finish before lunch on Friday.",
+    "    async def _call_after_hook(self, shard_id):\n        await self.hook()",
+    "        for item in self.items:\n            total += item.value",
+    "The race will begin at the old bridge and loop around the lake twice."
+   ]
+  }
+ ],
+ "predictions": "5/8 fire, 1 near miss",
+ "methods": {
+  "agent": "claude-code opus-5.5 (subagent)",
+  "screens": [
+   "card"
+  ]
+ },
+ "short": "start/begin in code names",
+ "unit_kind": "contextual",
+ "confidence": "low",
+ "notes": "Label and sentences written blind by a Claude subagent from the card text alone (prompt: haiku_labeler/prompt.md, identical for Haiku, Sonnet and Opus); one retry on mechanical checks. Part of a Haiku/Sonnet/Opus comparison on the same 48 poles."
+}
