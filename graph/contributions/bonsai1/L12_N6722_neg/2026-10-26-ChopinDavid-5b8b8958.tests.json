@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-5b8b8958",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N6722-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T17:21:28+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N6722",
+   "pole": "-",
+   "label": "anaphoric determiners and pro-forms (this, its, these, here) that point back to something just mentioned, as against 'the', 'a' or quantifiers in the same slot",
+   "fire": [
+    "The valve sometimes sticks open. If this happens, turn off the main supply.",
+    "The engine was rebuilt in May, and its power has nearly doubled.",
+    "Two new drugs were tested in mice, and these compounds slowed the disease.",
+    "We anchored in the bay at dusk, but the winds here shifted all night.",
+    "The printer jams on thick paper. When this occurs, open the rear tray.",
+    "The bridge reopened last week, and its deck was fully repaved.",
+    "Several fossils turned up in the quarry, and these bones are very old.",
+    "The path drops into the valley, and the ground here is soft and wet."
+   ],
+   "quiet": [
+    "The valve sometimes sticks open. If the pressure drops, turn off the main supply.",
+    "The engine was rebuilt in May, and the power has nearly doubled.",
+    "Two new drugs were tested in mice, and both compounds slowed the disease.",
+    "We anchored in the bay at dusk, but the winds shifted all night.",
+    "The printer jams on thick paper. When a sheet sticks, open the rear tray.",
+    "The bridge reopened last week, and the deck was fully repaved.",
+    "Several fossils turned up in the quarry, and some bones are very old.",
+    "The path drops into the valley, and the ground is soft and wet."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.6 on ' this', ' its', ' these', ' here' referring back; the same sentences with 'the', 'a', 'many' below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "anaphoric this/its/these/here",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: 'When this occurs', 'or this might be caused', 'its body aches', 'these aggressive cancers', 'the currents here'. Probe: 'When this occurs' 0.607, 'the currents here' 0.576, 'these tumors' 0.215, 'its cabin' 0.214 vs 'When the dose' 0.071, 'the cabin' 0.031, 'many tumors' 0.031. A sentence-initial 'Operating' scored 0.27-0.35 in both versions, so no item starts with that word."
+}
