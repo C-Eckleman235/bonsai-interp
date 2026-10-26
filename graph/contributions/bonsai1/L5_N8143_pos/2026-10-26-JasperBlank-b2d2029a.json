@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-26-JasperBlank-b2d2029a",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N8143+",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T13:40:00+00:00",
+ "recipe": {
+  "toolchain_commit": "dc58702b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N8143_pos/2026-10-26-JasperBlank-b2d2029a.tests.json"
+ },
+ "label": "French/Spanish source-and-people words: 'ente' in 'Fuente:' (source), ' personnes'/' personas', 'Action', 'alert' in French/Spanish text",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N8143_pos/2026-10-26-JasperBlank-b2d2029a.tests.json",
+   "prereg_commit": "dc58702b",
+   "author": "JasperBlank",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.599,
+     "peak": "ente"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.495,
+     "peak": " personnes"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.036,
+     "peak": " des"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.731,
+     "peak": "ente"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.459,
+     "peak": " personnes"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.473,
+     "peak": "SOURCE"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.363,
+     "peak": " personnes"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.254,
+     "peak": " personas"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.047,
+     "peak": " trat"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.126,
+     "peak": "udi"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.057,
+     "peak": " tur"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.044,
+     "peak": " pasado"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.065,
+     "peak": " y"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.27,
+     "peak": " page"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.103,
+     "peak": " vo"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.09,
+     "peak": " visit"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.859,
+    "median_fire": 0.466,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc58702b",
+  "minutes": 11,
+  "batch_size": 192
+ },
+ "short": "Fuente / personnes (fr/es)",
+ "unit_kind": "unclear",
+ "confidence": "low",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "selection": "random draw",
+ "trigger": {
+  "words": [
+   "Fuente",
+   "personnes",
+   "personas",
+   "SOURCE"
+  ]
+ }
+}
