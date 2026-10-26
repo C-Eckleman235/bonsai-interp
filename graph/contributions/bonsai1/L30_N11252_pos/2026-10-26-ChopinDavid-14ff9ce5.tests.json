@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-14ff9ce5",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N11252+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T08:21:20+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L30/N11252",
+   "pole": "+",
+   "label": "the first character of a two-character Chinese action verb when that character is its own token (煽|动, 抒|发, 斟|酌, 怂|恿, 鼓|动), as against sentences using a single-token verb of the same meaning",
+   "fire": [
+    "有人在网上故意煽动群众的不满情绪。",
+    "这篇散文抒写了作者对童年的怀念。",
+    "这件事很重要，我们必须仔细斟酌每一个细节。",
+    "他总是揣摩老板的心思，然后再说话。",
+    "是他的朋友怂恿他去参加那场比赛的。",
+    "警方怀疑有人在背后唆使这些年轻人闹事。",
+    "那些广告用夸张的承诺蛊惑消费者。",
+    "工会领袖在集会上鼓动工人罢工。"
+   ],
+   "quiet": [
+    "有人在网上故意激发群众的不满情绪。",
+    "这篇散文记录了作者对童年的怀念。",
+    "这件事很重要，我们必须仔细考虑每一个细节。",
+    "他总是观察老板的表情，然后再说话。",
+    "是他的朋友建议他去参加那场比赛的。",
+    "警方怀疑有人在背后组织这些年轻人闹事。",
+    "那些广告用夸张的承诺吸引消费者。",
+    "工会领袖在集会上号召工人罢工。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on the verb's first character; single-token synonyms under 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "first char of split Chinese verb",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: 煽 x2, 抒 x2, 展, 培, 翻, 誘導, 創造 — verb-initial characters. Probe: 煽动 0.702, 抒发 0.565; 诱导 (one token) 0.097, 创造 (one token) 0.002, same sentences without the verb ~0.01. Tokenizer: 斟酌, 揣摩, 怂恿, 唆使, 蛊惑, 鼓动 split; 激发, 表达, 描写 single tokens."
+}
