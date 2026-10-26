@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-dc64aa76",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N9429-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T01:21:07+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L21/N9429",
+   "pole": "-",
+   "label": "the opening of a human-readable status or error message inside code (print('score: ...', raise IOError(\"Checksum mismatch: ...\"), log.error(\"Unexpected exception: ...\")), as against the same code with the message replaced by a variable",
+   "fire": [
+    "def summarize(clf, X_test):\n    acc = clf.score(X_test)\n    print('test accuracy: %.3f' % acc)",
+    "    if header_crc != body_crc:\n        raise IOError(\"Header mismatch: %x != %x\" % (header_crc, body_crc))",
+    "    except Exception as exc:\n        logger.error(\"Unexpected failure: %s\" % exc)\n        return None",
+    "def show(stats):\n    total = sum(stats)\n    print('mean value: %.2f' % (total / len(stats)))",
+    "    if len(keys) != len(values):\n        raise ValueError(\"Length mismatch: %d keys, %d values\" % (len(keys), len(values)))",
+    "    except KeyError as err:\n        log.warning(\"Missing field: %s. Skipping row\" % err)",
+    "for epoch in range(n_epochs):\n    loss = train(model)\n    print(\"epoch loss:\", loss)",
+    "    if version < MIN_VERSION:\n        raise RuntimeError(\"Version too old: %s\" % version)"
+   ],
+   "quiet": [
+    "def summarize(clf, X_test):\n    acc = clf.score(X_test)\n    results.append(acc)",
+    "    if header_crc != body_crc:\n        header_crc = recompute(body_crc, header_crc)",
+    "    except Exception as exc:\n        errors.append(exc)\n        return None",
+    "def show(stats):\n    total = sum(stats)\n    return total / len(stats)",
+    "    if len(keys) != len(values):\n        values = pad(values, len(keys))",
+    "    except KeyError as err:\n        row = defaults.copy()",
+    "for epoch in range(n_epochs):\n    loss = train(model)\n    history.append(loss)",
+    "    if version < MIN_VERSION:\n        version = upgrade(version)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.6 on the quote or the colon that opens the message; variable versions below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "message text opening in code",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: Unexpected| exception 21.1, Checksum| mismatch, print|(' x3, ' '' x4, all opening a message string in code. Probe: print('accuracy: 0.601, log.error(\"Unexpected exception: 0.521, raise ValueError(\"Size mismatch: 0.387; logger.info(\"Upload done; 0.092; OUTPUT_PATH = 'results...' 0.151; plain arithmetic 0.123; prose about a checksum 0.061."
+}
