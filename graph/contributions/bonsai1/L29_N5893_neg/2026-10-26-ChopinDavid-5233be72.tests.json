@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-5233be72",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N5893-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T09:21:20+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N5893",
+   "pole": "-",
+   "label": "the comma before a confirmation tag that asks the reader to agree (', right?', ', doesn't it?', ', isn't it?'), as against commas in lists, dates and ordinary clause joins",
+   "fire": [
+    "A free concert in the park? That sounds great, doesn’t it?",
+    "We all want the best for our kids, right? So why argue about it?",
+    "You would think a new car is reliable, right? Not this one.",
+    "Nobody likes waiting in line, right? That is why we built the app.",
+    "It looks easy enough, doesn’t it? Then you try it yourself.",
+    "Everyone loves a good bargain, right? Our sale starts today.",
+    "That is a pretty clever idea, isn’t it? I wish I had thought of it.",
+    "Homemade bread just tastes better, right? Here is my recipe."
+   ],
+   "quiet": [
+    "A free concert in the park will take place on Saturday, June 3.",
+    "We bought shoes, socks, and hats for the kids at the mall.",
+    "In 2015, the factory opened a new car plant in Ohio.",
+    "Nobody was waiting in line, so we walked straight in.",
+    "The task looked easy, but it took us three hours.",
+    "On Monday, the store will start its spring sale.",
+    "He had a clever idea, and the team agreed to try it.",
+    "Flour, water, salt, and yeast are all you need for bread."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on the comma before a tag question; list, date and narrative commas below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "comma before a 'right?' tag",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Predicts the tag (+ pole suppresses ' right', ' correct', so the - pole promotes them). Card: ', right?' x4, 'Sounds fun, doesn't it?', 'c’est pas mal, non', 'No big deal, its only'. Probe: 'Sounds fun, doesn't it?' 0.563, 'unless you try, right?' 0.443, 'about the money, right?' 0.323, 'must be true, says' 0.229; 'so we signed up anyway' 0.174, list commas 0.060, 'In 1990,' 0.000."
+}
