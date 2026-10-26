@@ -4,10 +4,10 @@
  "layer": 0,
  "index": 876,
  "pole": "-",
- "label": "a handful of word-initial ' in' tokens: ' inset', ' inches', ' inmate', ' invoice' (and their plurals), as against ' in'-words like ' inside', ' includes' and synonyms",
+ "label": "a word-initial ' in' piece of less common 'in-' words (inset, inches, inmate, invoice, insects, infant, inn, Ingram), not the preposition 'in' or very common words like inside, include, information, interest, indeed",
  "short": "' inset/inches/inmate/invoice' tokens",
  "kind": "token",
- "status": "partial",
+ "status": "held",
  "depth": "quick",
  "tests": [
   {
@@ -131,6 +131,128 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-25-ChopinDavid-fd2e1ada"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N876_neg/2026-10-26-moridinamael-cdc53083.tests.json",
+   "prereg_commit": "3aacdeda",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.767,
+     "peak": " inset"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.749,
+     "peak": " inches"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.721,
+     "peak": " inmate"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.601,
+     "peak": " invoice"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.45,
+     "peak": " insects"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.427,
+     "peak": " infant"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.32,
+     "peak": " inn"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.813,
+     "peak": " Ingram"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.032,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.001,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.073,
+     "peak": " prisoner"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.004,
+     "peak": " department"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.014,
+     "peak": " porch"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.011,
+     "peak": " crib"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.016,
+     "peak": " stayed"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.008,
+     "peak": " distributor"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.661,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-26-moridinamael-cdc53083"
   }
  ],
  "label_history": [
@@ -138,34 +260,37 @@
    "2026-10-25-ChopinDavid-fd2e1ada",
    "a handful of word-initial ' in' tokens: ' inset', ' inches', ' inmate', ' invoice' (and their plurals), as against ' in'-words like ' inside', ' includes' and synonyms",
    "held"
+  ],
+  [
+   "2026-10-26-moridinamael-cdc53083",
+   "a word-initial ' in' piece of less common 'in-' words (inset, inches, inmate, invoice, insects, infant, inn, Ingram), not the preposition 'in' or very common words like inside, include, information, interest, indeed",
+   "held"
   ]
  ],
  "examples": [],
  "evidence": [],
  "roles": [],
  "contributors": [
-  "ChopinDavid"
+  "ChopinDavid",
+  "moridinamael"
  ],
  "contributions": [
-  "2026-10-25-ChopinDavid-fd2e1ada"
+  "2026-10-25-ChopinDavid-fd2e1ada",
+  "2026-10-26-moridinamael-cdc53083"
  ],
  "qc": {
   "confirm": 0,
   "dispute": 0,
-  "refine": 0
+  "refine": 1
  },
  "replications": [],
- "coverage": {
-  "value": 0.0447,
-  "method": "estimated from the label's quoted words (token measure)",
-  "strong": 8271
- },
+ "coverage": null,
  "scrutiny": {
-  "level": 1,
-  "name": "tested",
-  "test_rounds": 1,
-  "sentences": 16,
-  "contributors": 1,
-  "qc": 0
+  "level": 3,
+  "name": "checked",
+  "test_rounds": 2,
+  "sentences": 32,
+  "contributors": 2,
+  "qc": 1
  }
 }
