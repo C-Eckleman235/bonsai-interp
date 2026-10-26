@@ -145,7 +145,7 @@ placebos, a held-out 8 + 8, and the 50% coverage rule.
 | pass | what it explains | result |
 |---|---|---|
 | census (weights only) | the output side of every pole | 12% prediction-type, 10% strong steerers, 550 frequency, 0 entropy |
-| word screen (auto-token@2) | word-level triggers | 35 layers; 68k held tests, mostly partial coverage |
+| word screen (auto-token@2) | word-level triggers | 35 layers; 68,295 poles with a held test, most covering under half of the pole |
 | sweeplib@1 | copy, number, language/script, predict | 225 held |
 | sweeplib@2 twins (seeded by the word screen) | which part of a word is the trigger | 20,164 held on 10,715 poles; 1,378 partial word poles reach assignment |
 | sweeplib@3 grammar | generic roles at the last token | 30 held; roles mark sub-triggers, not assignments |
