@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-02d1d316",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N3129+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T22:21:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N3129",
+   "pole": "+",
+   "label": "code that builds or styles a user interface's text widgets (Qt text edits, tkinter, Django form widgets, CSS text rules), as against code of similar shape that handles data",
+   "fire": [
+    "        self.summaryText = QtGui.QTextEdit()\n        self.summaryText.setPlaceholderText('Summary')",
+    "import tkinter as tk\nfrom tkinter import scrolledtext\nwindow = tk.Tk()",
+    "    bio = forms.CharField(widget=forms.Textarea(attrs={'rows': 4}))",
+    "pre, code { white-space: pre-wrap; font-family: monospace; }",
+    "        self.logText = QtWidgets.QPlainTextEdit(self)\n        self.logText.setReadOnly(True)",
+    "        entry = tk.Entry(frame, width=40)\n        entry.grid(row=1, column=0, padx=5)",
+    "        'notes': ('django.db.models.fields.TextField', [], {'blank': 'True'}),",
+    "textarea { resize: vertical; white-space: normal; }"
+   ],
+   "quiet": [
+    "        self.summaryStats = np.mean(values)\n        self.summaryStats = round(self.summaryStats, 3)",
+    "import math\nfrom collections import defaultdict\ncounts = defaultdict(int)",
+    "    total = sum(item.price for item in cart.items)",
+    "    result = [x * 2 for x in numbers if x > 0]",
+    "        self.logCount = len(records)\n        self.logCount += 1",
+    "        rows = df.groupby('city').size()\n        rows = rows.sort_values()",
+    "        'notes': len(notes), 'total': total, 'mean': total / max(n, 1),",
+    "    scores = sorted(scores, reverse=True)[:10]"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-1.0 on widget names, '.set...' calls, 'import' in tkinter lines and CSS property colons; numeric or data code below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "GUI / text-widget code",
+ "unit_kind": "topic",
+ "confidence": 0.45,
+ "notes": "Card: CSS 'white-space: pre-wrap' (179), Qt 'licenseText.setObjectName', 'addressText.setReadOnly', 'from tkinter import ttk', Django 'models.fields.TextField', 'widget=forms.Textarea'. Probe: CSS 'white-space: pre-wrap' 0.993, 'widget=forms.Textarea' 0.551, tkinter import 0.494, QTextEdit setReadOnly 0.491, Django TextField 0.111; numpy/pandas imports 0.010, arithmetic self.total 0.005."
+}

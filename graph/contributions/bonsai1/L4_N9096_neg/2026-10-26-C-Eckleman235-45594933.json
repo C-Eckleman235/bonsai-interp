@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-26-C-Eckleman235-45594933",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N9096-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-26T21:53:31+00:00",
+ "recipe": {
+  "toolchain_commit": "9289944c",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N9096_neg/2026-10-26-C-Eckleman235-45594933.tests.json"
+ },
+ "label": "Nickname-style ending pieces of first names (-ie, -nie, -ny: Freddie, Connie, Jonnie)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N9096_neg/2026-10-26-C-Eckleman235-45594933.tests.json",
+   "prereg_commit": "9289944c",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 4,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.401,
+     "peak": " R"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.234,
+     "peak": " Jon"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.773,
+     "peak": " Freddie"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.723,
+     "peak": "ie"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.804,
+     "peak": " Eddie"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.965,
+     "peak": "nie"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.768,
+     "peak": " Connie"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.408,
+     "peak": "ie"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.276,
+     "peak": " R"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.313,
+     "peak": " Joanna"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.215,
+     "peak": "le"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.554,
+     "peak": "ma"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.248,
+     "peak": " Edward"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.235,
+     "peak": " grandmother"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.456,
+     "peak": "stance"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.418,
+     "peak": " Jose"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.797,
+    "median_fire": 0.746,
+    "near_misses_at_0.3": 4
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "9289944c",
+  "minutes": 8,
+  "batch_size": 24,
+  "dtype": "float16"
+ },
+ "short": "names ending -ie / -nie",
+ "unit_kind": "lexical",
+ "confidence": 0.55,
+ "notes": "triage: unclear; probed. probe: Freddie 0.83, nie 0.51, Connie ie 0.96; non-name 0.16. Pole is gate-closed, weak max 0.97.",
+ "selection": "random draw",
+ "trigger": {
+  "pieces": [
+   "ie",
+   "nie",
+   "ny"
+  ]
+ }
+}

@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-94a850e0",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N11006+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T23:26:28+00:00",
+ "recipe": {
+  "toolchain_commit": "d04042e8",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L21_N11006_pos/2026-10-26-ChopinDavid-94a850e0.tests.json"
+ },
+ "label": "the verb at the point where a sentence turns to whether an action has an effect ('would make a difference', 'would matter'), as against 'make' with an ordinary object",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L21_N11006_pos/2026-10-26-ChopinDavid-94a850e0.tests.json",
+   "prereg_commit": "d04042e8",
+   "author": "ChopinDavid",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.439,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.556,
+     "peak": " make"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.254,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.11,
+     "peak": " difference"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.145,
+     "peak": " difference"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.033,
+     "peak": " hope"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.011,
+     "peak": " tax"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.049,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.177,
+     "peak": " make"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.083,
+     "peak": " make"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.07,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.174,
+     "peak": " make"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.134,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.036,
+     "peak": " visitors"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.081,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.027,
+     "peak": " plenty"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.594,
+    "median_fire": 0.128,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "d04042e8",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "'make' in 'make a difference'",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: 'を' x6 (Japanese object marker), ' make' 14.62 in 'single vote would make a difference', ' on', ' for'. Probe: 'single vote would make a difference' 0.849; Japanese を only 0.17-0.28, が control 0.079; 'thought the election was already decided' 0.019. The English effect frame is the strongest probed configuration, so the test targets it.",
+ "selection": "random draw"
+}

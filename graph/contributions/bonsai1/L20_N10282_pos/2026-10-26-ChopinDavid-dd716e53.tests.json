@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-dd716e53",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N10282+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T22:21:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L20/N10282",
+   "pole": "+",
+   "label": "words inside an example sentence quoted to illustrate grammar ('A complex sentence: The cat, while on the mat, ...'), as against the same kind of sentence used as ordinary narrative",
+   "fire": [
+    "Grammar tip: a compound sentence joins two clauses.\nExample: The rain stopped, and the children went outside.",
+    "Here is a sentence in the passive voice: The cake was eaten by the guests.",
+    "A sentence fragment looks like this: Because the train was late.",
+    "This is an example of a comma splice: The sun rose, we left the camp.",
+    "A simple sentence has one clause.\nExample: The girl reads a book.",
+    "In the active voice, we would write: The guests ate the cake.",
+    "Consider this complex sentence: The man, although tired, finished the race.",
+    "For instance, in the sentence The boy kicked the ball, the subject is the boy."
+   ],
+   "quiet": [
+    "After the storm, the rain stopped, and the children went outside to play.",
+    "At the wedding, the cake was eaten by the guests within minutes.",
+    "We missed the meeting because the train was late again this morning.",
+    "Early on Sunday the sun rose over the hills, and we left the camp.",
+    "Every evening after dinner, the girl reads a book in her room.",
+    "By the end of the party, the guests ate the whole cake.",
+    "Last spring the man, although tired, finished the race in the rain.",
+    "During recess the boy kicked the ball over the school fence."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.75 on the subject or verb of an example sentence after a grammar label ('A simple sentence:', 'An example of a run-on:'); the same sentences as plain narration below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "inside an example sentence in a grammar lesson",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: 'The cat, while on the mat, meditated' after 'A complex sentence.', 'An example violation: Lilies are', 'The cat was bathing', plus '%s' format strings. Probe: 'A complex sentence. The dog, while chasing the ball' 0.745, run-on example 0.444, passive example 0.263, '%s: %s' 0.272; same dog sentence as narration 0.061, 'Yesterday the dog ran' 0.026."
+}

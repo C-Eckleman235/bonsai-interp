@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-f0676999",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N10302+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T23:19:54+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L15/N10302",
+   "pole": "+",
+   "label": "dense unit with no clear trigger; best guess: arithmetic and string-format operators in code ('+', '%s')",
+   "fire": [
+    "msg = \"%s: %s\" % (key, val)",
+    "path = base + \"/data/\" + name",
+    "y = (A + B) @ x",
+    "line = \"%s,%s,%s\\n\" % (a, b, c)",
+    "total = count + offset + 1",
+    "label = prefix + \"_\" + str(idx)",
+    "out.write(\"%s\\n\" % row)",
+    "z = (x + y) * (x - y)"
+   ],
+   "quiet": [
+    "The garden was full of roses and the bees were busy.",
+    "She walked to the market and bought fresh bread.",
+    "Our neighbours painted their fence a pale green.",
+    "The train left the station a few minutes late.",
+    "He read the letter twice before folding it away.",
+    "We spent the summer at a cabin by the lake.",
+    "The teacher handed back the tests on Monday.",
+    "Snow fell quietly over the sleeping town."
+   ]
+  }
+ ],
+ "predictions": "the pole is on for ~38% of tokens; fire items with '+' or '%s' in code may reach 0.5-0.8 but prose sits around 0.35, so the test will probably fail",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense; operators in code (guess)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Card: FLAG dense 38.5%, peaks '%s', ' (', ' +'. Probe: 'x = (I + v * v.T)' 0.769, '%s' format 0.555, '(a + b)' 0.453, but plain prose 0.345-0.358 and 'as soon as possible' 0.730. Written as a best-guess test."
+}

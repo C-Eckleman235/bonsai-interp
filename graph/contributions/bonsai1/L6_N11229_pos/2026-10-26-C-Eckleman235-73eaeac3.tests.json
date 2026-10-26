@@ -1,0 +1,55 @@
+{
+ "contribution": "2026-10-26-C-Eckleman235-73eaeac3",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N11229+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T21:33:51+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L6/N11229",
+   "pole": "+",
+   "label": "Trailing commas followed by a newline inside multi-line code arguments (',\\n', '),\\n', '],\\n')",
+   "fire": [
+    "result = merge(left,\n               right,\n               how='inner')",
+    "settings = dict(host='a',\n                port=80,\n                debug=True)",
+    "values = [first(a),\n          second(b),\n          third(c)]",
+    "plot(x_values,\n     y_values,\n     color='red')",
+    "model = Net(layers=3,\n            width=64,\n            drop=0.1)",
+    "paths = ['a/b',\n         'c/d',\n         'e/f']",
+    "send(to_addr,\n     subject,\n     body)",
+    "grid = np.arange(len(cells),\n                 dtype=float)"
+   ],
+   "quiet": [
+    "result = merge(left, right, how='inner')",
+    "settings = dict(host='a', port=80, debug=True)",
+    "values = [first(a), second(b), third(c)]",
+    "plot(x_values, y_values, color='red')",
+    "model = Net(layers=3, width=64, drop=0.1)",
+    "paths = ['a/b', 'c/d', 'e/f']",
+    "send(to_addr, subject, body)",
+    "grid = np.arange(len(cells), dtype=float)"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "line-ending commas in code",
+ "unit_kind": "lexical",
+ "confidence": 0.6,
+ "notes": "triage: token (',\\n' cov 50%). probe: '),\\n' 0.34, ',\\n' 0.34, CC-BY-NC 0.49 (also fires).",
+ "trigger": {
+  "tokens": [
+   ",\n",
+   "',\n",
+   "),\n",
+   "],\n"
+  ]
+ }
+}

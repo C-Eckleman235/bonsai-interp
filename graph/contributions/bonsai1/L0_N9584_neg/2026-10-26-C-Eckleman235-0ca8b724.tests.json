@@ -1,0 +1,59 @@
+{
+ "contribution": "2026-10-26-C-Eckleman235-0ca8b724",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N9584-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T21:33:51+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N9584",
+   "pole": "-",
+   "label": "Multi-character tokens that join two bracket pairs: '][', '],[', '}/{', '}_{'",
+   "fire": [
+    "url = 'http://{host}/{path}'.format(host=h, path=p)",
+    "pairs = [[1,2],[3,4],[5,6]]",
+    "name = 'run_{lr}_{seed}'.format(lr=a, seed=b)",
+    "cell = table[row][col]",
+    "route = '/users/{id}/{action}'",
+    "matrix = [[0,1],[1,0]]",
+    "key = 'out_{epoch}_{step}.npz'",
+    "val = cube[x][y][z]"
+   ],
+   "quiet": [
+    "url = 'http://{host}'.format(host=h)",
+    "pairs = [1,2,3,4,5,6]",
+    "name = 'run_{lr}'.format(lr=a)",
+    "cell = table.get(row)",
+    "route = '/users/{id}'",
+    "matrix = np.eye(2)",
+    "key = 'out_{epoch}.npz'",
+    "val = cube.item(x)"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "bracket-joining tokens",
+ "unit_kind": "lexical",
+ "confidence": 0.7,
+ "notes": "triage: token. cov ~70% from card. probe: '}/{' 0.97, '],[' 0.90, '}_{' 0.78, '][' 0.34.",
+ "trigger": {
+  "tokens": [
+   "][",
+   "']['",
+   "\"][\"",
+   "],[",
+   "}/{",
+   ")/(",
+   "}-{",
+   "}_{"
+  ]
+ }
+}

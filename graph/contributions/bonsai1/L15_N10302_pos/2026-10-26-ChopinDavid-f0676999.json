@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-f0676999",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N10302+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T23:26:03+00:00",
+ "recipe": {
+  "toolchain_commit": "d04042e8",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L15_N10302_pos/2026-10-26-ChopinDavid-f0676999.tests.json"
+ },
+ "label": "dense unit with no clear trigger; best guess: arithmetic and string-format operators in code ('+', '%s')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L15_N10302_pos/2026-10-26-ChopinDavid-f0676999.tests.json",
+   "prereg_commit": "d04042e8",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 5,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.488,
+     "peak": "s"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.45,
+     "peak": "/\""
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.316,
+     "peak": " +"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.325,
+     "peak": "s"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.684,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.321,
+     "peak": " str"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.385,
+     "peak": ")"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.387,
+     "peak": " +"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.444,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.345,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.215,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.33,
+     "peak": " left"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.415,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.286,
+     "peak": "We"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.225,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.367,
+     "peak": " over"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.703,
+    "median_fire": 0.386,
+    "near_misses_at_0.3": 5
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "d04042e8",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "dense; operators in code (guess)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Card: FLAG dense 38.5%, peaks '%s', ' (', ' +'. Probe: 'x = (I + v * v.T)' 0.769, '%s' format 0.555, '(a + b)' 0.453, but plain prose 0.345-0.358 and 'as soon as possible' 0.730. Written as a best-guess test.",
+ "selection": "random draw"
+}
