@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-b669e9c9",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N2880+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T06:27:31+00:00",
+ "recipe": {
+  "toolchain_commit": "f98f0986",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N2880_pos/2026-10-26-ChopinDavid-b669e9c9.tests.json"
+ },
+ "label": "the Arabic word-final piece 'ول' when the tokenizer splits it off as its own token (spelling unit), not the same letters inside a larger token",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N2880_pos/2026-10-26-ChopinDavid-b669e9c9.tests.json",
+   "prereg_commit": "f98f0986",
+   "author": "ChopinDavid",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.25,
+     "peak": "ول"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.099,
+     "peak": "ول"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.036,
+     "peak": "ند"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.209,
+     "peak": "ار"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.561,
+     "peak": "ول"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.322,
+     "peak": "وف"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.047,
+     "peak": " نحو"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.356,
+     "peak": "ول"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.018,
+     "peak": " المدينة"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.029,
+     "peak": "دي"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.05,
+     "peak": "وق"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.209,
+     "peak": "ار"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.024,
+     "peak": "بيب"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.025,
+     "peak": "ات"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.146,
+     "peak": "تغير"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.181,
+     "peak": "عبة"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.82,
+    "median_fire": 0.229,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "f98f0986",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "Arabic split-off 'ول'",
+ "unit_kind": "lexical",
+ "confidence": 0.6,
+ "notes": "Card: 27 of top 32 peaks on the token 'ول' (المفعول, السيول, القول); also 'onet' (Mesonet). Probe: السيول 0.812, المفعول 0.676, القول 0.533, Mesonet 0.661; الولد (merged token 'ولد') 0.095, plain Arabic 0.131, English filler 0.03. Near misses use words whose 'ول' sits inside a larger token (الوصول, الدول, المحصول→'صول', المعقول→'قول'), checked with the tokenizer.",
+ "selection": "random draw"
+}
