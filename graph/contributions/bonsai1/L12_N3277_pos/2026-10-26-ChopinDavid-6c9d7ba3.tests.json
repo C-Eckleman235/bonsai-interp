@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-6c9d7ba3",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N3277+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T06:21:12+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N3277",
+   "pole": "+",
+   "label": "tokens inside Python source code (imports, call arguments, loop bodies), as opposed to the same words in prose",
+   "fire": [
+    "import json\nimport re\nfrom copy import copy\nfrom functools import partial",
+    "def save(obj, path, indent=2, sort_keys=True):\n    with open(path, \"w\") as fh:\n        json.dump(obj, fh, indent=indent)",
+    "for row in rows:\n    count += row[\"value\"]\n    seen.add(row[\"id\"])",
+    "model = build(layers, width, dropout=dropout, seed=seed)",
+    "from contextlib import contextmanager\nfrom typing import Iterator",
+    "parser.add_argument(\"--limit\", type=int, default=10, help=\"max rows\")",
+    "while queue:\n    node = queue.pop()\n    visit(node, depth=depth + 1)",
+    "import numpy as np\nfrom copy import deepcopy\nfrom io import StringIO"
+   ],
+   "quiet": [
+    "The clerk kept a copy of every receipt in a shoebox.",
+    "She saved the photos to a folder and sorted them by date.",
+    "For each row of seats, the usher counted the empty chairs.",
+    "The architect built the model with thin layers of balsa wood.",
+    "In this context the word has a slightly different meaning.",
+    "The sign by the door gave a limit of ten people per room.",
+    "While the queue grew, the baker kept pulling loaves from the oven.",
+    "He bought a used copy of the novel at the station kiosk."
+   ]
+  }
+ ],
+ "predictions": "may fail on the median: code probes reached only 0.22-0.34",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Python source tokens",
+ "unit_kind": "contextual",
+ "confidence": 0.35,
+ "notes": "Card: broad flag (1.0% of tokens reach 0.1 of max), peaks in Python files on ' copy' (from copy import), ' context' (contextlib), commas in call args. Probe: 'from copy import deepcopy' 0.341, 'compute(alpha, beta, debug=debug' 0.320, 'mode=\"r\"' 0.238, loop '+=' 0.224; prose 'made a copy of the letter' 0.054, 'context of the speech' 0.048, filler 0.032."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-17e83225",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N11250+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T06:21:12+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L8/N11250",
+   "pole": "+",
+   "label": "the verb or preposition right after 'only' in a usage restriction ('is only used for', 'only called when'), versus the same clause without 'only'",
+   "fire": [
+    "# this flag is only used by the test suite\nDEBUG = False",
+    "The emergency exit is only opened during fire drills.",
+    "This function is only called after the config has loaded.",
+    "The back gate is only used when the main road floods.",
+    "Note: the cache is only read at startup.",
+    "The old ballroom is only used for weddings now.",
+    "This hook is only called if the user is logged in.",
+    "The guest room is only heated in the winter months."
+   ],
+   "quiet": [
+    "# this flag is set by the test suite\nDEBUG = False",
+    "The emergency exit is opened during fire drills.",
+    "This function is called after the config has loaded.",
+    "The back gate is closed when the main road floods.",
+    "Note: the cache is read at startup.",
+    "The old ballroom was restored for weddings now.",
+    "This hook is registered once the user is logged in.",
+    "Only two of the rooms are heated in the winter months."
+   ]
+  }
+ ],
+ "predictions": "probably holds; risk that some unrestricted 'used when' quiet items reach 0.3 (probe 0.275)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "verb after restrictive 'only'",
+ "unit_kind": "contextual",
+ "confidence": 0.6,
+ "notes": "Card: peaks on ' used', ' called', ' for', ' if' after 'only' in code comments and manuals; Russian 'только для'. Probe: code comment 'only used for debugging' 0.989, 'only called once' 0.665, 'only used when' 0.653, 'только' 0.385; without 'only': 'is called once' 0.140, 'is used when' 0.275, 'used exclusively' 0.279; counting 'Only three people' 0.050."
+}
