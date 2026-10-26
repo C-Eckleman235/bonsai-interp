@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-C-Eckleman235-f0cd4c73",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N6945+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-26T19:09:27+00:00",
+ "recipe": {
+  "toolchain_commit": "588b2920",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L29_N6945_pos/2026-10-26-C-Eckleman235-f0cd4c73.tests.json"
+ },
+ "label": "The software menu name that starts a menu path before '>', '->' or '|' ('go to [Tools]->Preferences', '[File] > New', '[Select] > Save Selection', '[Settings] | Options')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L29_N6945_pos/2026-10-26-C-Eckleman235-f0cd4c73.tests.json",
+   "prereg_commit": "588b2920",
+   "author": "C-Eckleman235",
+   "n_fire": 6,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.839,
+     "peak": " Tools"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.985,
+     "peak": " File"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.177,
+     "peak": " >"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.881,
+     "peak": " Tools"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.609,
+     "peak": " Settings"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.41,
+     "peak": " Extensions"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.273,
+     "peak": " Display"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.498,
+     "peak": " Help"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.229,
+     "peak": " tools"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.062,
+     "peak": " file"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.002,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.319,
+     "peak": " tools"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.009,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.002,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.031,
+     "peak": " tab"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.088,
+     "peak": " desk"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.953,
+    "median_fire": 0.553,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "588b2920",
+  "minutes": 9,
+  "batch_size": 24,
+  "dtype": "float16"
+ },
+ "short": "menu name before '>' path",
+ "unit_kind": "contextual",
+ "confidence": 0.5,
+ "notes": "The output direction promotes '>' and '->'. Near misses use the same words in ordinary prose.",
+ "selection": "random draw"
+}
