@@ -26,6 +26,12 @@ Kept for existing callers:
 - `background_tick(tag)`: call before each batch. It keeps the turn while no stream ticket waits; otherwise it
   synchronises, steps back into the queue at priority 1 and returns the seconds it waited.
 - `release()`: drops the background's turn.
+- `hold_batch_slot(tag)`: the machine's single BATCH SLOT. Call it before a batch job loads the model; it blocks until no
+  other batch process holds the slot, then keeps it until the process exits. Turns share compute but not memory: each
+  batch process holds its own model copy (4-5 GB), and two of them beside the stream over-fill the 16 GB display GPU,
+  the condition behind the 2026-10-18..20 driver resets. context_tier._gpu_load takes it, so every auto2, sweeplib,
+  compose and coverage job does; new batch code that calls model.load directly must take it first. The stream does not
+  (it is the foreground and holds one resident copy).
 
 The directory is shared by every checkout on the machine: BONSAI_GPU_TURN (environment or .env), else
 %USERPROFILE%/bonsai-gpu-turn on Windows (never AppData: see _dir) and ~/.cache/bonsai-gpu-turn elsewhere.
@@ -115,13 +121,13 @@ def _tickets():
 
 
 class _OSLock:
-    """An exclusive lock on one byte of gpu.lock, released by the OS if the process dies."""
+    """An exclusive lock on one byte of a lock file (gpu.lock by default), released by the OS if the process dies."""
 
-    def __init__(self):
-        self.fd = None
+    def __init__(self, name="gpu.lock"):
+        self.fd, self.name = None, name
 
     def try_acquire(self):
-        fd = os.open(_dir() / "gpu.lock", os.O_RDWR | os.O_CREAT)
+        fd = os.open(_dir() / self.name, os.O_RDWR | os.O_CREAT)
         try:
             if sys.platform == "win32":
                 import msvcrt
@@ -153,6 +159,25 @@ class _OSLock:
 
 
 _state = {"depth": 0, "prio": None, "ticket": None, "lock": _OSLock()}
+_slot = {"lock": None}
+
+
+def hold_batch_slot(tag="batch", poll=5.0):
+    """Block until this process holds the machine's one batch slot (see the module docstring); idempotent. The slot is
+    kept for the life of the process and released by the OS when it exits. Returns the seconds waited."""
+    if _slot["lock"] is not None:
+        return 0.0
+    lk, t0, told = _OSLock("batch-slot.lock"), time.time(), False
+    while not lk.try_acquire():
+        if not told:
+            who = (_dir() / "batch-slot.json")
+            print(f"gpu_turn: waiting for the batch slot (held by {who.read_text(encoding='utf-8').strip() if who.exists() else 'another batch process'})",
+                  file=sys.stderr, flush=True)
+            told = True
+        time.sleep(poll)
+    _slot["lock"] = lk
+    (_dir() / "batch-slot.json").write_text(json.dumps({"pid": os.getpid(), "tag": tag, "since": time.time()}), encoding="utf-8")
+    return time.time() - t0
 _plock = threading.Lock()   # guards _state
 _acq = threading.Lock()     # one acquisition at a time within the process
 

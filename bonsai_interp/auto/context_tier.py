@@ -680,6 +680,8 @@ def _gpu_load(lm_head=False):
     import transformers.integrations.sdpa_attention as sdpa
     from bonsai_interp.model import load
     sdpa.use_gqa_in_sdpa = lambda *a, **k: False
+    from bonsai_interp import gpu_turn
+    gpu_turn.hold_batch_slot("batch")  # one batch model copy on the card at a time, beside the stream
     _tick()
     model, tok, rec = load("bonsai1", lm_head=lm_head)
     model.model.register_forward_pre_hook(_tick)
