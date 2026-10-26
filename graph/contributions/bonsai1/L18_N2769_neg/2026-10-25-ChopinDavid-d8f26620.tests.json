@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-d8f26620",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N2769-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T00:19:53+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N2769",
+   "pole": "-",
+   "label": "the token that closes a string key, argument or call in Python code just before a colon or line break ('name':, int(s)), as against prose using the same words",
+   "fire": [
+    "    cost = {\n        'magic': {\n            'low': 0,\n        },\n    }",
+    "    old = {\n        \"light.hall\": {\n            \"entry_id\": \"abc\",\n        }\n    }",
+    "    def perimeter(self, poly):\n        r\"\"\"Return the perimeter.\"\"\"\n        return sum(poly)",
+    "    else:\n        n = int(text)\n        return n - 1",
+    "    user = User.objects.create(\n        name='Field Ranger',\n        email='ranger@example.com',\n    )",
+    "    self._apply(filters['facet'])\n    if 'query' in filters:\n        run()",
+    "    params[SVC] = \\\n        [{'kernel': kernels}]\n    fit(params)",
+    "    self.push('title', 0)\n    ctx = self.context\n    return ctx"
+   ],
+   "quiet": [
+    "The magic show cost a lot, but the low prices for children helped.",
+    "The hall light stayed on all night because nobody remembered it.",
+    "Measure the perimeter of the garden before buying the fence.",
+    "Otherwise, convert the text into a number and subtract one.",
+    "The park hired a new field ranger who answers every email.",
+    "She searched the archive by facet and by keyword for the query.",
+    "The support vector method uses kernels to separate the points.",
+    "Push the title card to the front of the stack before the show."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.3 on closing quote/paren tokens in code; prose versions below 0.08; median likely under 0.3",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "closing key/arg in code",
+ "unit_kind": "unclear",
+ "confidence": 0.25,
+ "notes": "Card: broad (2.1% of tokens), max 10.38 on ')\\n' after int(s), '):\\n' after def args, \"':\" dict key, \"',\\n\" in create(); one prose hit ' Antony'. Probe: dict key 0.218, int(s) 0.210, def args 0.148, but subscript assignment 0.032; prose 0.040-0.135 (Antony 0.135). Weak and broad."
+}
