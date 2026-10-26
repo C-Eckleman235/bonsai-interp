@@ -1,0 +1,166 @@
+{
+ "id": "2026-10-26-moridinamael-337ccccc",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N9716-",
+ "contributor": "moridinamael",
+ "created": "2026-10-26T22:00:07+00:00",
+ "recipe": {
+  "toolchain_commit": "34f9359b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N9716_neg/2026-10-26-moridinamael-337ccccc.tests.json"
+ },
+ "label": "In Chinese text, a verb of removing, fixing or compensating (消除, 清除, 消灭, 弥补, 解决) right before its object",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N9716_neg/2026-10-26-moridinamael-337ccccc.tests.json",
+   "prereg_commit": "34f9359b",
+   "author": "blind:claude-sonnet-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.764,
+     "peak": "消除"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 1.03,
+     "peak": "清除"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.621,
+     "peak": "消灭"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.467,
+     "peak": "弥补"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.457,
+     "peak": "解决"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.562,
+     "peak": "解决了"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.616,
+     "peak": "消除"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.819,
+     "peak": "清除"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.148,
+     "peak": "。"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.362,
+     "peak": "电脑"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.078,
+     "peak": "。"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.303,
+     "peak": "想起"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.203,
+     "peak": "研究"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.22,
+     "peak": "讲"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.23,
+     "peak": "，"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.224,
+     "peak": "观察"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.619,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-gmoo",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "34f9359b",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L26/N7669-"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L25/N9716-",
+   "to": "bonsai1/L26/N7669-",
+   "kind": "feeds",
+   "weight": null,
+   "method": "single-unit zero ablation (play step)",
+   "note": "play step ran out of GPU memory; feeder found with chat feeders tool (attribution on top 4 corpus examples), no ablation drop measured"
+  }
+ ]
+}
