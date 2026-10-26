@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-C-Eckleman235-1500af87",
+ "contributor": "C-Eckleman235",
+ "kind": "qc",
+ "neuron": "bonsai1/L15/N5974-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T18:40:09+00:00",
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "unclear: a determiner or noun phrase opener right after the connective 'so' (' so today', ' so these', ' so the trend'); peaks are spread over commas, 'in', 'are', 'a', 'each' with no single dominant token, so no clean trigger was found",
+  "notes": "Replicate QC (round 2 of 2) for a QC noise-floor study (plan sha256 54b0a719c1fd9151a78a4e5192055503b32101af3b24153d9274b53fec255a82), on the labels of the model-QC pilot (#1051-#1080): label slot C of this pole, from contribution 2026-10-26-JasperBlank-0163a0c4. Sentences written by a NEW fresh Opus subagent given the identical packet as round 1 (the pole's card with its record line removed and the three anonymous labels), never shown round 1's tests or results and not told which model wrote which label; nothing was probed or scored before this commit."
+ },
+ "neighbours": [
+  {
+   "unit": "L15/N5974",
+   "pole": "-",
+   "label": "unclear: a determiner or noun phrase opener right after the connective 'so' (' so today', ' so these', ' so the trend'); peaks are spread over commas, 'in', 'are', 'a', 'each' with no single dominant token, so no clean trigger was found",
+   "fire": [
+    "We missed the last ferry back to the island, so tomorrow we will try the early boat.",
+    "The garden hose had cracked in the frost, so these new fittings should stop the leaks.",
+    "Customers kept asking for gluten-free options, so the cafe added three new pastries.",
+    "My cousin moved to Denver in June, so this year our reunion will be held there.",
+    "The library extended its hours during finals week, so every student had more time to study.",
+    "Fuel prices kept climbing through the autumn, so a lot of commuters switched to buses.",
+    "The puppy chewed through two leashes already, so each new one is made of chain.",
+    "Our flight was delayed by six hours, so some passengers booked hotel rooms near the airport."
+   ],
+   "quiet": [
+    "We missed the last ferry back to the island because the taxi got stuck in traffic.",
+    "The garden hose had cracked in the frost, and these new fittings were not much better.",
+    "Customers kept asking for gluten-free options at the cafe, so often that staff made a sign.",
+    "My cousin moved to Denver in June after accepting a job at the regional hospital.",
+    "The library extended its hours during finals week, although the cafe on the ground floor closed early.",
+    "Fuel prices kept climbing through the autumn, while every commuter complained about the cost.",
+    "The puppy chewed through two leashes already and seems so proud of himself each time.",
+    "Our flight was delayed by six hours when a storm moved over the airport in the afternoon."
+   ]
+  }
+ ],
+ "predictions": "confirm: the label as written should hold a harder independent test (>= 6/8 fire, AUROC >= 0.9)",
+ "methods": {
+  "agent": "claude-code opus-5.5 (blind QC-writer subagent, card only)",
+  "screens": [
+   "card"
+  ]
+ },
+ "selection": "QC noise floor: a second independent QC of each model-QC pilot label (#1051-#1080)"
+}
