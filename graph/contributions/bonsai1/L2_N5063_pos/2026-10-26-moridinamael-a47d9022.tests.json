@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-26-moridinamael-a47d9022",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L2/N5063+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T21:32:09+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "French impersonal pronoun ' On' when it starts a sentence"
+ },
+ "neighbours": [
+  {
+   "unit": "L2/N5063",
+   "pole": "+",
+   "label": "A few specific word-pieces, not one word: sentence-initial French pronoun ' On' (weaker for mid-sentence 'on'), the '-uel(s)' end of French 'sexuel/homosexuel', the 'hn' piece of German 'gewöhnlich', and Chinese '喜' in 歡喜",
+   "fire": [
+    "On a mangé chez mes grands-parents dimanche dernier.",
+    "On ne sait jamais ce que l'avenir nous réserve.",
+    "On se retrouve devant la gare à huit heures ?",
+    "On dit que cette forêt est la plus ancienne de la région.",
+    "Il pleuvait depuis le matin. On a donc décidé de rester à la maison.",
+    "On peut réserver les billets en ligne dès aujourd'hui.",
+    "Le mariage homosexuel a été légalisé en France en 2013.",
+    "L'école propose désormais des cours d'éducation sexuelle adaptés à chaque âge."
+   ],
+   "quiet": [
+    "Nous avons mangé chez mes grands-parents dimanche dernier.",
+    "Personne ne sait ce que l'avenir nous réserve.",
+    "Nous nous retrouvons devant la gare à huit heures ?",
+    "Selon la légende, cette forêt est la plus ancienne de la région.",
+    "Il pleuvait depuis le matin. Nous avons donc décidé de rester à la maison.",
+    "Vous pouvez réserver les billets en ligne dès aujourd'hui.",
+    "Le mariage pour tous a été légalisé en France en 2013.",
+    "L'école propose désormais des cours de santé adaptés à chaque âge."
+   ]
+  }
+ ],
+ "predictions": "Expect the On sentences to fire (about 0.3-0.4); sexuel/homosexuel items less sure; near misses quiet.",
+ "trigger": {"tokens": [" On", " on", "uel", "uels", "hn", "喜"]},
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "bank-solo"
+  ]
+ }
+}
