@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-10412f72",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N587+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T02:19:54+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L13/N587",
+   "pole": "+",
+   "label": "names and line breaks inside a block of several consecutive Python import lines (from x import Y / import z), as against a single import followed by code, or ordinary code lines",
+   "fire": [
+    "import csv\nimport random\nfrom datetime import datetime\nfrom itertools import chain\nfrom requests import Session",
+    "import logging\nimport argparse\nfrom typing import List, Optional\nfrom dataclasses import dataclass\nfrom tqdm import tqdm",
+    "import math\nimport time\nfrom lxml import etree\nfrom xml.dom import minidom\nfrom six import StringIO",
+    "import pickle\nfrom functools import partial\nfrom operator import itemgetter\nfrom scipy.sparse import csr_matrix\nimport pandas as pd",
+    "import socket\nimport struct\nfrom threading import Thread\nfrom queue import Queue\nfrom select import select",
+    "from flask import Flask, request\nfrom flask_cors import CORS\nfrom werkzeug.utils import secure_filename\nimport hashlib",
+    "import glob\nimport shutil\nfrom os.path import join, exists\nfrom subprocess import check_output\nfrom zipfile import ZipFile",
+    "import yaml\nfrom copy import deepcopy\nfrom matplotlib import pyplot as plt\nfrom sklearn.cluster import KMeans\nimport seaborn as sns"
+   ],
+   "quiet": [
+    "import csv\n\ndef read_rows(path):\n    with open(path) as f:\n        return list(csv.reader(f))",
+    "def setup(level):\n    handler = make_handler(level)\n    handler.attach(root)\n    return handler",
+    "tree = parse(path)\nroot = tree.getroot()\nnodes = root.findall('item')\nprint(len(nodes))",
+    "with open(path, 'rb') as f:\n    data = load(f)\nkeys = sorted(data)\nprint(keys[:5])",
+    "sock = make_socket(host, port)\nsock.send(payload)\nreply = sock.recv(1024)\nsock.close()",
+    "app = create_app()\napp.config['DEBUG'] = True\nroutes = app.url_map\nprint(routes)",
+    "files = list_files(root)\nfor name in files:\n    target = join_path(dest, name)\n    copy_file(name, target)",
+    "config = read_config(path)\nmodel = build_model(config)\nlabels = model.fit_predict(points)\nshow(labels)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-1.0 on imported names in blocks of 3+ import lines; single-import snippets and plain code below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "inside a Python import block",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: every top example sits inside a run of import lines (from bs4 import| BeautifulSoup 4.94, from shapely import| geometry, newlines between from-imports). Probe: 4-line import blocks 0.973 / 0.422 / 0.312; one 'import re' then a function 0.046; plain assignments 0.041; prose 'import' 0.017-0.020; C #include block 0.217."
+}
