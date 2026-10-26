@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-1e0ce4c3",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N11164+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T01:28:54+00:00",
+ "recipe": {
+  "toolchain_commit": "56c941e9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L13_N11164_pos/2026-10-25-ChopinDavid-1e0ce4c3.tests.json"
+ },
+ "label": "the class or object name imported in a Python 'from module import Name' line (and the interpreter in a shebang), as against plain 'import module' lines and other code",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L13_N11164_pos/2026-10-25-ChopinDavid-1e0ce4c3.tests.json",
+   "prereg_commit": "56c941e9",
+   "author": "ChopinDavid",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.321,
+     "peak": " python"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.066,
+     "peak": ".auth"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.226,
+     "peak": " SQLAlchemy"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.149,
+     "peak": " ABC"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.279,
+     "peak": " reactor"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.036,
+     "peak": " create"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.104,
+     "peak": " import"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.841,
+     "peak": "View"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.032,
+     "peak": "import"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.026,
+     "peak": ".db"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.009,
+     "peak": "import"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.012,
+     "peak": "\n"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.079,
+     "peak": " sys"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.009,
+     "peak": "import"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.092,
+     "peak": " sys"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.011,
+     "peak": "\n"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.188,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "56c941e9",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "name imported by 'from ... import'",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: max 2.09 (tiny), gate-closed echo regime 99%, broad 2%: ' python' x10 in shebangs, py2exe, HTTPApplication, Api, HTTPServer, declarative_base, ABCMeta, AppConfig. Probe: from flask_restful import Api 1.005, declarative_base 0.371, AppConfig 0.323, shebang python 0.321; 'import numpy as np / import asyncio' 0.017, np.zeros code 0.085, prose about python 0.053.",
+ "selection": "random draw"
+}
