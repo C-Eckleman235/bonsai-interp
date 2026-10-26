@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-08795724",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N11171+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T15:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L19/N11171",
+   "pole": "+",
+   "label": "the word that opens a choice among alternatives ('(' before 'A, B or C', 'whether ... or'), as against brackets and question words that do not set up a set of options",
+   "fire": [
+    "For each sample, record the blood group (A, B, AB or O) in the second column.",
+    "Students must state whether the claim is supported or refuted by the text.",
+    "Please indicate your preferred seat (window, middle or aisle) when booking.",
+    "The survey asks whether respondents rent or own their home.",
+    "Each animal is labelled by diet (herbivore, carnivore or omnivore) on the chart.",
+    "Nobody could tell whether the painting was an original or a copy.",
+    "Select the shipping method (standard, express or overnight) at checkout.",
+    "The judge must decide whether the contract is valid or void."
+   ],
+   "quiet": [
+    "For each sample, write the date (in pencil) in the second column.",
+    "Students must read the text carefully before the class starts.",
+    "Please arrive early (around nine) when booking a seat.",
+    "The survey asks how long respondents have lived in their home.",
+    "Each animal is fed twice a day (once at dawn) by the keepers.",
+    "Nobody could tell when the painting was moved to the hall.",
+    "Pay for the order (including tax) at checkout.",
+    "The judge must read the contract before the hearing."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-1.2 on '(' or 'whether' (or the next word) before a list of options; parentheses with asides and 'when'/'how' clauses below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "opener of a set of alternatives",
+ "unit_kind": "context",
+ "confidence": 0.65,
+ "notes": "Card: ' (' x17 and ' whether' x8: 'mutation type (insertion, deletion or substitution)', 'tell whether ... or not', 'polarity (north vs. south)'. Probe: 'by type (insertion, deletion or substitution)' 1.228, 'Decide whether ... true or false' 0.710, 'fridge type (side by side, ...)' 0.545, 'classified as red, blue or green' 0.298; aside '(a day late)' 0.010, 'Decide when' 0.101. 'Classify each mutation and write ... (two pages)' scored 0.402 on ' and', so near misses avoid classification verbs."
+}

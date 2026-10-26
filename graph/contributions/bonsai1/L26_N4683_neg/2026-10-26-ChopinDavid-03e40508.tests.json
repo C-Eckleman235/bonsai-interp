@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-03e40508",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N4683-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T15:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N4683",
+   "pole": "-",
+   "label": "the verb that states where a biological entity's material or traits come from (inherited, derived, comes from, passed down), as against other verbs about the same entity",
+   "fire": [
+    "In humans, the Y chromosome is inherited from the father without recombination.",
+    "Researchers showed that the cloned calf's mitochondria were derived from the egg donor.",
+    "Most of a plant's chloroplast DNA comes from the seed parent in many species.",
+    "Eye colour in this family seems to be inherited through the mother's side.",
+    "The stem cells used in the trial were derived from donated umbilical cord blood.",
+    "In this fungus, the nuclear genome is inherited from both mating partners.",
+    "Scientists found that the virus's surface gene was derived from a bat strain.",
+    "The disease allele is inherited as a dominant trait in these families."
+   ],
+   "quiet": [
+    "In humans, the Y chromosome is small and carries relatively few genes.",
+    "Researchers showed that the cloned calf's mitochondria were healthy and active.",
+    "Most of a plant's chloroplast DNA is packed into many small circular molecules.",
+    "Eye colour in this family seems to be mostly brown with a few green.",
+    "The stem cells used in the trial were frozen before shipment to the clinic.",
+    "In this fungus, the nuclear genome is sequenced and fully annotated.",
+    "Scientists found that the virus's surface gene was mutated in several places.",
+    "The disease allele is rare in most populations outside Finland."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on 'inherited' / 'derived' / 'comes' in a genetics sentence; other verbs about genes or cells below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "verb of biological origin (inherited/derived)",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: 'mtDNA was derived exclusively', 'mitochondrial DNA usually comes from the egg', but also 'Lactobacillus is', 'node that has', 'elements that occur'. Probe: 'genome is inherited only from the mother' 0.696 and 'inherited from both parents' 0.696 (so not exclusivity); 'only three countries that use' 0.028, 'feed exclusively' 0.016, 'not the only devices' 0.102. Low confidence: the card mixes non-biological predicates."
+}
