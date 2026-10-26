@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-099ff2e1",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N10226+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T12:20:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N10226",
+   "pole": "+",
+   "label": "dense / positional unit: weakly on for most tokens of ordinary expository prose, lower on very short exclamations, code and repeated words",
+   "fire": [
+    "Termites are a group of insects that feed on dead wood and leaf litter.",
+    "Anaemia is a condition in which the blood lacks healthy red cells.",
+    "The valley has a slope of roughly fifteen degrees toward the river.",
+    "The national park covers an area of about 3,200 square kilometres.",
+    "Basalt is a dark volcanic rock that forms from cooling lava.",
+    "Sound travels at roughly 343 metres per second in dry air.",
+    "Lichens are a partnership between a fungus and an alga.",
+    "The Danube is the second longest river in Europe."
+   ],
+   "quiet": [
+    "Wow!",
+    "Oh no, no, no!",
+    "Thanks!!",
+    "x = 1\ny = 2",
+    "Ha ha ha ha.",
+    "OK.",
+    "print(42)",
+    "Yay, yay!"
+   ]
+  }
+ ],
+ "predictions": "expository sentences peak 0.4-0.9; short exclamations, code and repetitions peak lower, but an 8 + 8 test is not expected to separate cleanly",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense: on for most prose",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Card flags dense (51% of tokens reach 0.1 of max, gate-closed regime 100%). Peaks are scattered function words (' a', ' an', ',', ' to'). Probe: expository sentences 0.568-0.870 (mite, pica, rock dip, 450,000, same time), 'Hello!' 0.276, code 0.319, 'Yes, yes' 0.194, but the cat floor sentence 0.404. Recorded as dense; test is a best guess."
+}
