@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-04811938",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N5057+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T22:30:56+00:00",
+ "recipe": {
+  "toolchain_commit": "9c1c2500",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N5057_pos/2026-10-26-ChopinDavid-04811938.tests.json"
+ },
+ "label": "the word piece right after a lone initial 'D' or 'Д' that the tokenizer splits off a name ('D|nipro', 'D|ham|i', 'Д|м|итрий', 'D|ym'), as against the same kind of piece after another split-off capital letter",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N5057_pos/2026-10-26-ChopinDavid-04811938.tests.json",
+   "prereg_commit": "9c1c2500",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.543,
+     "peak": "nie"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.932,
+     "peak": "my"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.659,
+     "peak": "zh"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 1.435,
+     "peak": "han"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.618,
+     "peak": "v"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.826,
+     "peak": "м"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.438,
+     "peak": "zer"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.798,
+     "peak": "ni"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.049,
+     "peak": "d"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.019,
+     "peak": " close"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.006,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.021,
+     "peak": "hop"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.01,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.011,
+     "peak": "ой"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.011,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.012,
+     "peak": " a"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.729,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "9c1c2500",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "piece after a split-off initial 'D' in a name",
+ "unit_kind": "word",
+ "confidence": 0.6,
+ "notes": "Card: 'м' in Дмитрий x2, 'ans' in Dhansiri, 'ym' in DymonRed, 'ham' in Dhami, 'ni' in Dniester, 'n' in DnD. Probe: 'Dnipro' 1.082, 'Dhami' 0.876, 'Dym' 0.871, 'Дмитрий' 0.728, 'Dvořák' 0.650; 'Bhami' 0.221, 'Борис' 0.010. Tokenizer: Dmytro -> D|my|tro, Dnieper -> D|nie|per, Dvina -> D|v|ina, Dzhokhar -> D|zh|ok|har, Dhanbad -> D|han|bad.",
+ "selection": "random draw"
+}

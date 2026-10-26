@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-236de8c6",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N3055-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T22:21:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N3055",
+   "pole": "-",
+   "label": "the last token of a code line (':', ')', '{}', a value) in code that carries trailing inline '#' comments, a predictor of a two-space gap before a comment, as against the same code written without inline comments",
+   "fire": [
+    "def size(tree):\n    if tree is None:  # empty tree\n        return 0\n    if tree.children == []:  # single node\n        return 1",
+    "    for row in rows:  # skip the header\n        if not row:  # blank line\n            continue",
+    "    cache = {}  # maps key to value\n    seen = set()  # keys already visited\n    order = []  # insertion order",
+    "    self.assertTrue(result.ok)  # request succeeded\n    self.assertEqual(result.count, 3)  # three items",
+    "    while queue:  # until nothing is left\n        item = queue.pop()  # newest first\n        if item.done:  # already handled\n            break",
+    "    try:\n        conn = connect(url)  # may time out\n    except TimeoutError:  # retry later\n        conn = None",
+    "    x = x + 1  # move right\n    y = y - 1  # move up\n    z = 0  # stay level",
+    "    if user.is_admin:  # full access\n        return True\n    if user.banned:  # no access\n        return False"
+   ],
+   "quiet": [
+    "def size(tree):\n    if tree is None:\n        return 0\n    if tree.children == []:\n        return 1",
+    "    for row in rows:\n        if not row:\n            continue",
+    "    cache = {}\n    seen = set()\n    order = []",
+    "    self.assertTrue(result.ok)\n    self.assertEqual(result.count, 3)",
+    "    while queue:\n        item = queue.pop()\n        if item.done:\n            break",
+    "    try:\n        conn = connect(url)\n    except TimeoutError:\n        conn = None",
+    "    x = x + 1\n    y = y - 1\n    z = 0",
+    "    if user.is_admin:\n        return True\n    if user.banned:\n        return False"
+   ]
+  }
+ ],
+ "predictions": "fire 0.1-0.25 on ':' or ')' ending a line in code that already has inline comments; the same code without comments below 0.07",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "end of a code line before an inline comment",
+ "unit_kind": "context",
+ "confidence": 0.2,
+ "notes": "Card: all top examples are the token just before '  # comment' in Python (':' x6, '.' x8 incl. 'Autonomie.  If not' double space), + pole promotes runs of spaces. Probe weak: assertEqual lines with comments 0.234, 'is None:  # leaf' 0.155, 'except ValueError:  #' 0.123; same function without comments 0.065; prose 0.002. Low confidence: the effect is small."
+}
