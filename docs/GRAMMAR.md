@@ -78,4 +78,42 @@ AUROC ≥ 0.85 (pobj 0, dobj 0, nsubj 1, prep 0, poss 0 of 884,736). The selecti
 constructions: possessive `'s` vs the contraction (179), passive participles (18, word-class 21), negation (12,
 word-class 26), intensifiers (5, word-class 20) and adjectives in the word-class variant (24).
 
-RESULTS_PLACEHOLDER
+## Results: sweeplib@3 (2026-10-26)
+
+| | |
+|---|---|
+| Protocol commit | 1b6a2d6e |
+| Tests pre-registered | 184d4ed7 |
+| Artifacts | the `sweeplib3-data` release |
+
+326 tests were built from the selected (pole, condition) pairs: 19 conditions with test items, each with a placebo test
+on the same poles.
+
+| | tests | held |
+|---|---:|---:|
+| all conditions | 326 | **30 poles** |
+| possessive 's (vs the contraction of is/has) | 179 | 22 |
+| negation, word-class variant | 26 | 3 |
+| X and Y (second conjunct) | 3 | 1 |
+| passive, intensified, modified adjective (word class) | 84 | 1 each |
+| placebo tests | 326 | **0** |
+
+- **By depth.** 21 of the 30 holds are in layers 0–5, 6 in layers 18–23 and 3 in layers 30–35. None are in layers
+  6–17.
+- **By earlier word-screen bin.** 16 holds are on poles the word screen called dense and 9 on unexplained ones. The
+  grammar pass adds labels where the word screen had none.
+- **Coverage.** The held conditions cover a median 3% of their poles' top activations. So they are true but partial
+  facts (sub-triggers), not assignments.
+
+**Reading.** Generic grammatical roles are not a first-pass explainer of single neurons in this model. Read at the last
+token, the core argument roles (subject, object, preposition, determiner, possessor) separate essentially no pole from
+the same word in another role. Only locally marked constructions do. The possessive 's is the clear case: an early
+layer can tell "John's" from "John's going" by the next-to-local context. Grammar is better used as an ingredient of
+composition (a role at an offset) than as a screen of its own.
+
+**FINDINGS paragraph.** A grammar first pass over all 884,736 poles (20 spaCy roles, plus word-class variants, the same
+word in another role as the near miss) held for 30 poles, against 0 of 326 placebo tests. 22 of the holds were the
+possessive 's against its contraction. The core argument roles (subject, object, preposition object, determiner,
+possessor) selected no pole at all. Held conditions cover a median 3% of their poles, so grammar marks sub-triggers, not
+assignments, at the single-neuron level.
+
