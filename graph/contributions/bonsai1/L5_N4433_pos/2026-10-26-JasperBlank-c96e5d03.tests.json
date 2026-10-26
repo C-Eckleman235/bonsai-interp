@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-26-JasperBlank-c96e5d03",
+ "contributor": "JasperBlank",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N4433+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T13:17:27+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N4433",
+   "pole": "+",
+   "label": "Weak, diffuse pole: ' authors' in boilerplate declarations ('The authors declare no conflict of interest') and word fragments in code/identifiers or ' copy'/' paper'; no single trigger",
+   "fire": [
+    "Conflicts of Interest\nThe authors declare that they have no competing interests related to this study.",
+    "Consent for publication\nAll authors declare no conflict of interest and approved the final manuscript.",
+    "Please send a signed copy of the form to the office before the end of the month.",
+    "Submitted papers after the deadline will not be considered, so check the guidelines before you send your paper.",
+    "def read_bed(path):\n    for lines in open(bedfile):\n        bedfield = lines.strip()",
+    "Each of the authors contributed equally to the design of the experiments and to the writing of the report.",
+    "He kept a printed copy of the paper on his desk and marked the key figures in red.",
+    "The authors thank the staff of the clinic for their help with recruiting patients for the trial."
+   ],
+   "quiet": [
+    "Interests that compete with this study were declared absent by the committee in the Conflicts section.",
+    "Everyone involved approved the final manuscript and agreed to the terms of publication.",
+    "A signed form should reach the office before the end of the month, please.",
+    "Entries submitted after the deadline will not be considered, so check the guidelines before you send them.",
+    "def read_lines(path):\n    for line in open(infile):\n        fields = line.strip()",
+    "Every one of the students contributed equally to the design of the experiments and to the final report.",
+    "On his desk he kept a printed list and marked the key figures in red.",
+    "Staff at the clinic helped with recruiting patients for the trial and were thanked in the notes."
+   ]
+  }
+ ],
+ "predictions": "4/8 fire, 2 near misses",
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card"
+  ]
+ },
+ "short": "authors declare boilerplate",
+ "unit_kind": "unclear",
+ "confidence": "low",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "trigger": {
+  "words": [
+   "authors",
+   "copy",
+   "paper"
+  ]
+ }
+}

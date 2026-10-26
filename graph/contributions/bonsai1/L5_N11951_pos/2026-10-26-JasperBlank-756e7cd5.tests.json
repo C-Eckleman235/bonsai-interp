@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-26-JasperBlank-756e7cd5",
+ "contributor": "JasperBlank",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N11951+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T13:17:27+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N11951",
+   "pole": "+",
+   "label": "the token ' %.' / '{}.' where a Python-style format placeholder '{}' or '%' is followed directly by a period or file extension inside a string literal (e.g. '{}.json'.format(...))",
+   "fire": [
+    "def path(self, name):\n    return os.path.join(self.workdir, 'report-{}.xml'.format(name))\n",
+    "for sd in ['twl', 'wwf']:\n    infile = '../dict/{}.txt'.format(sd)\n    outfile = infile + '.out'\n",
+    "url = 'http://{}:{}/{}.json'.format(HOST, PORT, key)\nresp = requests.get(url)\n",
+    "def save(self, tag):\n    fname = 'run-{}-{}.csv'.format(self.id, tag)\n    return fname\n",
+    "print('Loaded %d items, accuracy was %.2f%%.' % (n, acc))\n",
+    "log.info('Wrote {}.'.format(path))\nreturn path\n",
+    "out = os.path.join(cache_dir, '{}.png'.format(image_id))\nimg.save(out)\n",
+    "msg = 'Progress: {:.1f}%.'.format(pct)\nprint(msg)\n"
+   ],
+   "quiet": [
+    "class Report:\n    def location(self):\n        return os.path.join(self.workdir, 'report.xml')\n",
+    "words = ['twl', 'wwf']\nfor sd in words:\n    infile = '../dict/' + sd\n",
+    "target = 'http://localhost:8080/data'\nresp = requests.get(target)\n",
+    "class Runner:\n    def label(self, tag):\n        return f'run_{self.id}_{tag}'\n",
+    "x = [1, 2, 3]\nprint(sum(x) / len(x))\n",
+    "log.info('Finished')\nreturn path\n",
+    "thumb = os.path.join(cache_dir, image_id)\nimg.save(thumb)\n",
+    "The test finished at noon, and the results were posted on the board."
+   ]
+  }
+ ],
+ "predictions": "6/8 fire, 0 near misses",
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card"
+  ]
+ },
+ "short": "format placeholder then '.'",
+ "unit_kind": "contextual",
+ "confidence": "medium",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "trigger": {
+  "tokens": [
+   "{}.",
+   " %.",
+   "%."
+  ]
+ }
+}
