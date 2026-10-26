@@ -97,11 +97,13 @@ def build():
 
 
 def _ids(keys):
-    from bonsai_interp.graph import cards
+    """(layer, pole index, neuron) for pole ids like bonsai1/L12/N5397-."""
+    from bonsai_interp.graph.contrib import NEURON
     out = []
     for k in keys:
-        _, L, n, p = cards.parse(k)
-        out.append((L, 0 if p == "+" else 1, n))
+        m = NEURON.match(k)
+        if m:
+            out.append((int(m["L"]), 0 if m["pole"] == "+" else 1, int(m["n"])))
     return out
 
 
