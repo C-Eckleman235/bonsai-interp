@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-26-JasperBlank-36472667",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N8086-",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T13:39:58+00:00",
+ "recipe": {
+  "toolchain_commit": "dc58702b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N8086_neg/2026-10-26-JasperBlank-36472667.tests.json"
+ },
+ "label": "dense, near-zero negative activity on mid-word pieces of identifiers and long words (e.g. 'Sy' in Syllabus, 'Ass' in ResourceAssessment, '_de', ' Com' in Composites); not a clean trigger",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N8086_neg/2026-10-26-JasperBlank-36472667.tests.json",
+   "prereg_commit": "dc58702b",
+   "author": "JasperBlank",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.607,
+     "peak": "Dec"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.601,
+     "peak": " Sy"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.595,
+     "peak": " Com"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.41,
+     "peak": "_CON"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.402,
+     "peak": "Ass"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.49,
+     "peak": "_ep"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.372,
+     "peak": " Sy"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.354,
+     "peak": "_com"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.102,
+     "peak": " after"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.086,
+     "peak": "(x"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.137,
+     "peak": " honey"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.176,
+     "peak": "()\n"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.201,
+     "peak": " r"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.184,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.139,
+     "peak": " slow"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.1,
+     "peak": " None"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.45,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc58702b",
+  "minutes": 11,
+  "batch_size": 192
+ },
+ "short": "dense word-start pieces",
+ "unit_kind": "dense / positional",
+ "confidence": "low",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "selection": "random draw",
+ "trigger": {
+  "pieces": [
+   "_de",
+   "_CON",
+   " Sy",
+   " Com",
+   "Ass"
+  ]
+ }
+}

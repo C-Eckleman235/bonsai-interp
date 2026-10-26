@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-26-JasperBlank-fca94c51",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N7380+",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T13:39:48+00:00",
+ "recipe": {
+  "toolchain_commit": "dc58702b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N7380_pos/2026-10-26-JasperBlank-fca94c51.tests.json"
+ },
+ "label": "Mid-word fragments containing 'mp'/'up'/'уп' (e.g. Mediapack, Schulpflicht, confirmpassword, Russian преступление), Korean honorific 옵",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N7380_pos/2026-10-26-JasperBlank-fca94c51.tests.json",
+   "prereg_commit": "dc58702b",
+   "author": "JasperBlank",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.778,
+     "peak": "iap"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.623,
+     "peak": "ulp"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.803,
+     "peak": "mp"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.707,
+     "peak": "уп"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.845,
+     "peak": "уп"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.736,
+     "peak": "옵"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.607,
+     "peak": "iap"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.795,
+     "peak": "уп"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.032,
+     "peak": " backup"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.007,
+     "peak": " attendance"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.005,
+     "peak": "Before"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.072,
+     "peak": " фак"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.058,
+     "peak": " зав"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.081,
+     "peak": " 앞"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.006,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.021,
+     "peak": " продолж"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.757,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc58702b",
+  "minutes": 11,
+  "batch_size": 192
+ },
+ "short": "mp/up word fragments",
+ "unit_kind": "sparse feature",
+ "confidence": "low",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "selection": "random draw"
+}

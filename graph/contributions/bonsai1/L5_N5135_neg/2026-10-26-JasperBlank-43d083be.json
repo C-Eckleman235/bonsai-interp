@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-26-JasperBlank-43d083be",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N5135-",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T13:39:22+00:00",
+ "recipe": {
+  "toolchain_commit": "dc58702b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N5135_neg/2026-10-26-JasperBlank-43d083be.tests.json"
+ },
+ "label": "'new' (as operator or in identifiers like list_new_kernels) and alloc/delete memory words in code or technical docs",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N5135_neg/2026-10-26-JasperBlank-43d083be.tests.json",
+   "prereg_commit": "dc58702b",
+   "author": "JasperBlank",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.279,
+     "peak": " new"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 1.035,
+     "peak": " new"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.398,
+     "peak": "Alloc"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.021,
+     "peak": " new"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.1,
+     "peak": "_new"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.151,
+     "peak": " new"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.351,
+     "peak": "delete"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.694,
+     "peak": " malloc"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.021,
+     "peak": "]"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.178,
+     "peak": "_pair"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.014,
+     "peak": "Length"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.005,
+     "peak": " file"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.008,
+     "peak": "ernels"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.01,
+     "peak": " core"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.01,
+     "peak": ");\n"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.007,
+     "peak": "Files"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.945,
+    "median_fire": 0.374,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc58702b",
+  "minutes": 10,
+  "batch_size": 192
+ },
+ "short": "new / alloc / delete in code",
+ "unit_kind": "contextual",
+ "confidence": "medium",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "selection": "random draw",
+ "trigger": {
+  "words": [
+   "new",
+   "_new",
+   "Alloc",
+   "allocated",
+   "deleted",
+   "delete"
+  ]
+ }
+}

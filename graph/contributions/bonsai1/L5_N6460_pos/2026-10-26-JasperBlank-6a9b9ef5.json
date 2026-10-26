@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-26-JasperBlank-6a9b9ef5",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N6460+",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T13:39:38+00:00",
+ "recipe": {
+  "toolchain_commit": "dc58702b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N6460_pos/2026-10-26-JasperBlank-6a9b9ef5.tests.json"
+ },
+ "label": "word piece 'us'/'uss' inside a capitalised name after N or L (Nussbaum, Luskin, Lusitania), and the Cyrillic stem 'уз' in вуз/ВУЗ",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N6460_pos/2026-10-26-JasperBlank-6a9b9ef5.tests.json",
+   "prereg_commit": "dc58702b",
+   "author": "JasperBlank",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.661,
+     "peak": "uss"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.683,
+     "peak": "us"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.646,
+     "peak": "uss"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.598,
+     "peak": "us"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.995,
+     "peak": "уз"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.705,
+     "peak": "за"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.657,
+     "peak": "uss"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.7,
+     "peak": "us"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.001,
+     "peak": " walk"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.005,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.013,
+     "peak": " организ"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.006,
+     "peak": " reports"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.006,
+     "peak": " old"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.056,
+     "peak": "ст"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.003,
+     "peak": " invoice"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.001,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.672,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc58702b",
+  "minutes": 10,
+  "batch_size": 192
+ },
+ "short": "'us' in names, вуз",
+ "unit_kind": "lexical",
+ "confidence": "low",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "selection": "random draw",
+ "trigger": {
+  "pieces": [
+   "us",
+   "uss",
+   "уз"
+  ]
+ }
+}

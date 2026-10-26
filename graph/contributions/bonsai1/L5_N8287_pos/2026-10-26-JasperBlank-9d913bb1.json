@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-26-JasperBlank-9d913bb1",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N8287+",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T13:40:01+00:00",
+ "recipe": {
+  "toolchain_commit": "dc58702b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N8287_pos/2026-10-26-JasperBlank-9d913bb1.tests.json"
+ },
+ "label": "mid-word fragments in Arabic words (ف / اف as in الرافض, رافداً) and odd word-internal pieces like 'en' in ramen, 'I' in PII",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N8287_pos/2026-10-26-JasperBlank-9d913bb1.tests.json",
+   "prereg_commit": "dc58702b",
+   "author": "JasperBlank",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.594,
+     "peak": "اف"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.482,
+     "peak": "اف"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.586,
+     "peak": "اف"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 1.068,
+     "peak": "en"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.983,
+     "peak": "I"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.559,
+     "peak": "i"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.426,
+     "peak": "اف"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.725,
+     "peak": "azi"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.022,
+     "peak": "ث"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.075,
+     "peak": "رى"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.036,
+     "peak": "بع"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.009,
+     "peak": " noodles"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.01,
+     "peak": " taken"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.01,
+     "peak": " service"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.026,
+     "peak": "بال"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.016,
+     "peak": "Com"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.59,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc58702b",
+  "minutes": 11,
+  "batch_size": 192
+ },
+ "short": "Arabic mid-word letters",
+ "unit_kind": "unclear",
+ "confidence": "low",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "selection": "random draw"
+}

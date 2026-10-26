@@ -1,0 +1,157 @@
+{
+ "id": "2026-10-26-JasperBlank-f8363c47",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N5432-",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T13:39:25+00:00",
+ "recipe": {
+  "toolchain_commit": "dc58702b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N5432_neg/2026-10-26-JasperBlank-f8363c47.tests.json"
+ },
+ "label": "Arabic letter ه or ج standing as a list/section marker at the start of a line (e.g. 'ه ـ' or 'ج -' item labels), also ه as an abbreviation for hijri",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N5432_neg/2026-10-26-JasperBlank-f8363c47.tests.json",
+   "prereg_commit": "dc58702b",
+   "author": "JasperBlank",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.682,
+     "peak": "ج"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.964,
+     "peak": "ه"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.672,
+     "peak": "ج"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.68,
+     "peak": " ه"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.639,
+     "peak": "ه"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.361,
+     "peak": "ج"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.566,
+     "peak": "ه"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.613,
+     "peak": "ج"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.031,
+     "peak": " الطلاب"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.04,
+     "peak": " update"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.139,
+     "peak": " س"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.176,
+     "peak": " الأ"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.024,
+     "peak": " budget"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.237,
+     "peak": "س"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.182,
+     "peak": "ي"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.03,
+     "peak": " introduction"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.655,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc58702b",
+  "minutes": 10,
+  "batch_size": 192
+ },
+ "short": "Arabic list-marker letters",
+ "unit_kind": "sparse feature",
+ "confidence": "low",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "selection": "random draw",
+ "trigger": {
+  "pieces": [
+   "ه",
+   "ج"
+  ]
+ }
+}

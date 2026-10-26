@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-26-JasperBlank-75fc2e49",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N2794-",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T13:39:02+00:00",
+ "recipe": {
+  "toolchain_commit": "dc58702b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N2794_neg/2026-10-26-JasperBlank-75fc2e49.tests.json"
+ },
+ "label": "Preposition-like topic markers opening a clause in Chinese/Japanese ('对于', '於', 'が') and English ', upon' / ', a priori' after a comma",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N2794_neg/2026-10-26-JasperBlank-75fc2e49.tests.json",
+   "prereg_commit": "dc58702b",
+   "author": "JasperBlank",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.738,
+     "peak": "对于"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.78,
+     "peak": "对于"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.266,
+     "peak": "於"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.529,
+     "peak": "於"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.701,
+     "peak": " upon"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.698,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.688,
+     "peak": "对于"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.251,
+     "peak": " upon"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.072,
+     "peak": "酒店"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.026,
+     "peak": "十"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.06,
+     "peak": "保持"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.218,
+     "peak": "在"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.061,
+     "peak": " unions"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.068,
+     "peak": " una"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.048,
+     "peak": "大多数"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.04,
+     "peak": " risky"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.693,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc58702b",
+  "minutes": 10,
+  "batch_size": 192
+ },
+ "short": "clause-opening preposition",
+ "unit_kind": "unclear",
+ "confidence": "low",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "selection": "random draw",
+ "trigger": {
+  "words": [
+   "对于",
+   "於",
+   "upon",
+   "priori"
+  ]
+ }
+}

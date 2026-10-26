@@ -1,0 +1,57 @@
+{
+ "contribution": "2026-10-26-JasperBlank-43d083be",
+ "contributor": "JasperBlank",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N5135-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T13:17:27+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N5135",
+   "pole": "-",
+   "label": "'new' (as operator or in identifiers like list_new_kernels) and alloc/delete memory words in code or technical docs",
+   "fire": [
+    "int main() {\n    int *buf = new int[100];\n    buf[0] = 1;\n    return 0;\n}",
+    "pair<int, double> * ww = new pair<int, double> [size];",
+    "FUNCTION GlobalAlloc(INT Mode, INT Length)\n/* Allocate memory and return handle */",
+    "The new size of the file is given in bytes as the second argument.",
+    "def list_new_kernels(path):\n    return sorted(os.listdir(path))",
+    "code = \"obj = new core.Mouse({})\"\nprint(code)",
+    "free(p);\ndelete data;\np = NULL;",
+    "Memory that was allocated with malloc must be released before the program ends."
+   ],
+   "quiet": [
+    "int main() {\n    int buf[100];\n    buf[0] = 1;\n    return 0;\n}",
+    "pair<int, double> ww = make_pair(1, 2.0);",
+    "FUNCTION GetLength(INT Mode)\n/* Return the length of the string */",
+    "The maximum size of the file is given in bytes as the second argument.",
+    "def list_all_kernels(path):\n    return sorted(os.listdir(path))",
+    "code = \"obj = core.Mouse({})\"\nprint(code)",
+    "fclose(f);\nreturn data;\np = NULL;",
+    "Files that were opened with fopen must be closed before the program ends."
+   ]
+  }
+ ],
+ "predictions": "6/8 fire, 1 near miss",
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card"
+  ]
+ },
+ "short": "new / alloc / delete in code",
+ "unit_kind": "contextual",
+ "confidence": "medium",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "trigger": {
+  "words": [
+   "new",
+   "_new",
+   "Alloc",
+   "allocated",
+   "deleted",
+   "delete"
+  ]
+ }
+}
