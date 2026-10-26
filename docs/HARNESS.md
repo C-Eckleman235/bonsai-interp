@@ -139,3 +139,22 @@ compositional pass runs in four steps:
 
 The composed label is then "A here, given B one token back" or "A anywhere after B". It is tested like any other label:
 placebos, a held-out 8 + 8, and the 50% coverage rule.
+
+## Status after round 1 (2026-10-26)
+
+| pass | what it explains | result |
+|---|---|---|
+| census (weights only) | the output side of every pole | 12% prediction-type, 10% strong steerers, 550 frequency, 0 entropy |
+| word screen (auto-token@2) | word-level triggers | 35 layers; 68k held tests, mostly partial coverage |
+| sweeplib@1 | copy, number, language/script, predict | 225 held |
+| sweeplib@2 twins (seeded by the word screen) | which part of a word is the trigger | 20,164 held on 10,715 poles; 1,378 partial word poles reach assignment |
+| sweeplib@3 grammar | generic roles at the last token | 30 held; roles mark sub-triggers, not assignments |
+| compose@1 (seeded by characterized units) | layers 6–11 as compositions at offsets 0 and 1 | 506 held, 334 assignment-grade |
+
+All of it is in the atlas: lib_* columns (the best test per pole across passes, its coverage, every condition held) and
+census_flags. It shows on `play card`, `play search --kind …` and the map.
+
+Next:
+- **compose@2:** layers 12–17, composing from round 1's holds and the twins' sharpened word units.
+- **The attention distance sweep** on held pairs.
+- **The residual count** per round as the stopping rule.

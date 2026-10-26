@@ -832,3 +832,52 @@ cover it, as a greedy union of word units from the word screen's token tables:
 
 **Caveat.** These are peaks (the scan's top examples), which favour sharp local triggers. Coverage of the full
 strong-activation pool still has to be measured per label.
+
+## 2026-10-26: The first deterministic round, census, twins, grammar, composition, float16 (docs/CENSUS.md, SWEEPLIB2.md, GRAMMAR.md, COMPOSE.md, FLOAT16.md)
+
+Four passes ran over Bonsai-8B without a language model. All were pre-registered (protocol, tests and results each in a
+commit of its own) and judged by quick-8+8@2 with placebo tests, beside the live stream.
+
+**Weights-only census** (all 884,736 poles):
+- **12% are prediction-type.** Their direct logit effect stands above a sign-random null, and pushing them writes the
+  same tokens. The share rises from 0% in layers 0–11 to 34% in layers 30–35.
+- **10% steer the output strongly.**
+- **550 are frequency-type,** almost all in the last six layers.
+- **There are no entropy neurons.** The unembedding has only two near-null directions.
+- **Validation:** the predict flag finds the sweep library's held prediction tests at 3.2× the base rate, and survey
+  prediction labels at 2.3×.
+
+**Twin batteries** (sweeplib@2), pass 2 seeded by pass 1:
+- For 300 seed words, 40,273 tests each varied one axis of a word hit: case, leading space, own token vs piece,
+  inflection, sentence position, code slot.
+- **20,164 held on 10,715 poles,** against 20 placebo holds (0.05%).
+- Most word poles are case- and spacing-blind and fire on whole words.
+- **9,825 poles with a partial word result gained a sharper held claim,** and 1,378 now cover at least half of their
+  pole.
+
+**Grammar first pass** (sweeplib@3):
+- 20 spaCy roles, each tested as the same word in another role. **30 poles held,** 22 of them on the possessive 's,
+  against 0 of 326 placebo tests.
+- The core argument roles (subject, object, preposition object, determiner, possessor) select no pole at the last
+  token.
+- Held conditions cover a median 3% of their poles: sub-triggers, not assignments.
+
+**Composition round 1** (compose@1, layers 6–11), the recursive step:
+- Poles were explained by already-characterized units at token offsets 0 and 1. The basis comes from the
+  occlusion pilot: the read token carries about 99% of a peak, the previous token 47–87%.
+- **506 poles held, 334 of them covering at least 50%,** against 0 of 199 placebo tests.
+- Pair compositions held 24% of the time. Examples: "ahead of", "I mean", "fill in", "se le", `(` after `return`, "day"
+  after a digit.
+- Holds fall from 263 at layer 6 to 9 at layer 11. Deeper poles need deeper units, which is round 2's test.
+
+**float16 parity** (for T4s):
+- 150 re-scored tests agree on every outcome. Readings are within 0.049 of a pole's max, against bfloat16's own
+  batch-shape noise of 0.025.
+- No value overflows. float16 is allowed for missions; scans and screens stay in bfloat16.
+
+**Engineering lessons:**
+- **One batch model copy on the card at a time.** `gpu_turn.hold_batch_slot` lets several jobs queue beside the stream.
+- **Stopping a background agent hard-kills its GPU child.** Doing that mid-work caused event 153 at 22:12 on Oct 25.
+  An idle process stopped on Oct 26 caused none.
+- **Coverage must be computed layer by layer.** In test order it reloaded a 17M-entry table per held claim, turning
+  minutes into hours (sweeplib@2 amendment 1).
