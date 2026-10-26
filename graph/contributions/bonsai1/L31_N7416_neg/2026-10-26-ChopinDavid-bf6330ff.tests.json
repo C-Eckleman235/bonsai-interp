@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-bf6330ff",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N7416-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T19:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L31/N7416",
+   "pole": "-",
+   "label": "a word after which 'into' is the expected next word (bumped, crashed, N minutes/pages as elapsed progress), a next-token predictor for 'into', as against matched words that do not set up 'into'",
+   "fire": [
+    "While shopping for bread, my father bumped into his old teacher.",
+    "The cyclist lost control and crashed into a parked van.",
+    "Just five minutes into the lecture, the fire alarm went off.",
+    "She was only forty pages into the report when her boss called.",
+    "Three hours into the flight, the pilot announced a delay.",
+    "Late at night the drunk driver slammed into the shop window.",
+    "Barely ten seconds into the race, two runners tripped.",
+    "Halfway home, the boy ran smack into a lamppost."
+   ],
+   "quiet": [
+    "While shopping for bread, my father greeted his old teacher.",
+    "The cyclist lost control and fell off near a parked van.",
+    "Just before the lecture, the fire alarm went off.",
+    "She had only read the summary of the report when her boss called.",
+    "Before the flight, the pilot announced a delay.",
+    "Late at night the drunk driver was stopped by the police.",
+    "At the start of the race, two runners tripped.",
+    "Halfway home, the boy stopped to buy a lemonade."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.6 on ' bumped', ' crashed', ' minutes', ' pages', ' hours' in frames that predict 'into'; matched frames with met/hit/later-free wording below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predicts 'into' (bumped / N minutes ...)",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: ' прямо' (глядя прямо в глаза), ' seconds' (10 seconds into), ' bumped', ' bought' (into), ' minutes', ' pages', врезал|ся; the + pole suppresses ' into'/' onto'. Probe: 'bumped into' 0.453 and 'bumped the door' 0.453 (fires before 'into' is seen), 'two minutes into' 0.472 vs 'scored ... in the first period' 0.003, 'twenty pages into' 0.463, 'ten seconds' 0.290 either way. So it predicts 'into' from the left context."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-164517ed",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N10626+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T19:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N10626",
+   "pole": "+",
+   "label": "the final digit of a two-digit day-of-month or clock value written in digits (October 1|5, 12h3|0), as against the same digits as plain counts and dates written in words",
+   "fire": [
+    "All grant forms received after November 14th will be returned unopened.",
+    "Our office closes for the holiday on December 23rd this year.",
+    "The final exam has been moved to May 18th because of the strike.",
+    "Taxes are usually due on April 15th, though extensions are common.",
+    "The ferry to the island leaves each morning at 9h45 sharp.",
+    "Rent for the flat must be paid by March 28th at the latest.",
+    "The first rehearsal is scheduled for September 12th in the hall.",
+    "In France the evening news begins at 20h15 on the main channel."
+   ],
+   "quiet": [
+    "All grant forms received after the fourteenth of November will be returned.",
+    "Our office closes for the holiday a few days before Christmas this year.",
+    "The final exam has been moved to the following week because of the strike.",
+    "The shop sold 15 boxes of pencils, though more were ordered.",
+    "The ferry to the island leaves each morning shortly after breakfast.",
+    "Rent for the flat must be paid at the end of March at the latest.",
+    "The first rehearsal is scheduled for early September in the hall.",
+    "In France the evening news begins after dinner on the main channel."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.7 on the last digit of '15th'/'22nd'-style dates after a month and on clock minutes like 9h45; counts like '15 boxes' and spelled-out dates below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "last digit of a day or clock number",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: top digits close a number: '200[3]', '880,00[0]', '£3[0]', 'October 1[5]th', 'April 1[5]th', '12h3[0]'. Probe: 'October 15th' 0.606, '12h30' 0.406, '880,000' 0.280; 'in 2003,' 0.017, '£30.00' 0.031, single digits 0.009, 'fifteenth' 0.011. Digits tokenize singly. Dates are the cleanest reading; coverage is likely partial."
+}
