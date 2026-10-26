@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-26-moridinamael-35b0b1f1",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N10613+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T20:13:48+00:00",
+ "neighbours": [
+  {
+   "unit": "L6/N10613",
+   "pole": "+",
+   "label": "A hyphen, plus, star or quote fused with a closing bracket into one token (-) *) +) '), as in '(co-)founder'; a plain ) closing a bracketed prefix like '(re)' is weaker",
+   "fire": [
+    "She is the (co-)founder of a small bakery chain in Lyon.",
+    "All applicants need (pre-)approval from the department before they enroll.",
+    "Thanks so much for the help yesterday :-)",
+    "Items marked with an asterisk (*) are optional.",
+    "He has written code in several languages (C, Java, C++) over the years.",
+    "Call the function as print('hello') to see the output.",
+    "The (non-)existence of such a solution remains an open question.",
+    "Blood types (A+, B+, O+) were recorded for every donor."
+   ],
+   "quiet": [
+    "She is the co-founder of a small bakery chain in Lyon.",
+    "All applicants need prior approval from the department before they enroll.",
+    "Thanks so much for the help yesterday, really.",
+    "Items marked with an asterisk are optional.",
+    "He has written code in several languages, including C and Java, over the years.",
+    "Call the print function to see the output.",
+    "The nonexistence of such a solution remains an open question.",
+    "Blood types were recorded for every donor at the clinic."
+   ]
+  }
+ ],
+ "predictions": "Fused -) / *) / ') tokens should fire strongly (0.7-0.95 in my probes); a few items (C++), A+,) may not tokenise as fused and could miss. Expect ~6/8 fire, 0 near misses.",
+ "short": "hyphen/plus/star/quote fused with ) (reads L0/N3863+)",
+ "roles": ["reads bonsai1/L0/N3863+"],
+ "selection": "step-in from bonsai1/L0/N3863+",
+ "notes": "Reader candidate chosen via play which --token=-) after play step --down hit CUDA OOM; no ablation drop measured (null edge weight).",
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "which",
+   "inverse-gmoo"
+  ]
+ }
+}
