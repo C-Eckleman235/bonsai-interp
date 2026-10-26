@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-d9a388e7",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L16/N4774-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T14:19:53+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L16/N4774",
+   "pole": "-",
+   "label": "the final word piece of a descriptive test-function name in Python unit tests ('_dict', '_message', '_template' in def test_..._returns_valid_dict), as against ordinary short function names",
+   "fire": [
+    "class PaymentTests(TestCase):\n    def test_refund_with_card_returns_valid_dict(self):",
+    "class ViewTests(TestCase):\n    def test_custom_login_view_and_template(self):",
+    "class ApiTests(TestCase):\n    def test_missing_token_returns_error_message(self):",
+    "class CartTests(TestCase):\n    def test_empty_cart_returns_empty_list(self):",
+    "class UserTests(TestCase):\n    def test_signup_with_bad_email_raises_error(self):",
+    "class FeedTests(TestCase):\n    def test_feed_page_uses_correct_template(self):",
+    "class OrderTests(TestCase):\n    def test_cancel_order_returns_status_dict(self):",
+    "class AuthTests(TestCase):\n    def test_expired_session_shows_warning_message(self):"
+   ],
+   "quiet": [
+    "class PaymentTests(TestCase):\n    def setUp(self):",
+    "class ViewTests(TestCase):\n    def run(self):",
+    "class ApiTests(TestCase):\n    def tearDown(self):",
+    "class CartTests(TestCase):\n    def add(self, x):",
+    "class UserTests(TestCase):\n    def save(self):",
+    "class FeedTests(TestCase):\n    def load(self):",
+    "class OrderTests(TestCase):\n    def get(self, key):",
+    "class AuthTests(TestCase):\n    def close(self):"
+   ]
+  }
+ ],
+ "predictions": "fire around 0.2-0.3 on the last underscore piece of long def test_... names; short ordinary defs below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "last piece of long test-function names",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Broad pole (1.6% of tokens above 0.1 of max), scattered peaks (code identifiers, a Korean syllable, '.\\n' in docstrings, Chinese 肯定). Probe: 'test_purchase_returns_valid_dict' 0.183, 'zoom mode' docstring 0.122, 'test_returns_error_message' 0.042, 'test_admin_index_view_and_template' 0.021; prose 0.024-0.038. No trigger reaches 0.3; best guess only."
+}
