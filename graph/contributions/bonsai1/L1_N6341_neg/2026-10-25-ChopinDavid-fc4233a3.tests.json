@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-fc4233a3",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N6341-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T03:19:56+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N6341",
+   "pole": "-",
+   "label": "the character 报 as its own token in Chinese verbs of false or missing reporting (谎报, 瞒报, 漏报, 误报), on a broad weak unit that also fires on other scripts",
+   "fire": [
+    "这家公司被发现谎报了利润。",
+    "他多次拒报了自己的收入。",
+    "公司漏报了去年的税款。",
+    "他因为虚报费用被公司开除了。",
+    "工厂多次瞒报事故的真实情况。",
+    "系统昨晚误报了一次火警。",
+    "企业故意多报了今年的产量。",
+    "他们谎报了孩子的年龄。"
+   ],
+   "quiet": [
+    "这家公司被发现隐瞒了利润。",
+    "他多次隐瞒了自己的收入。",
+    "公司拖欠了去年的税款。",
+    "他因为迟到太多被公司开除了。",
+    "工厂多次隐瞒事故的真实情况。",
+    "系统昨晚发出了一次火警。",
+    "企业故意提高了今年的产量。",
+    "他们隐瞒了孩子的年龄。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on 报; Chinese sentences without 报 0.2-0.35 (the unit is broad, so near misses may leak)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "报 in Chinese report verbs",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card: broad (4.1% of tokens reach 0.1 of a 0.16 max); peaks '、' x5, '报' x2, '老' x2, Arabic 'ر', 'ism', ' Hyper'. Probe: 拒报或者谎报 0.952; ' Hyper' 0.749; 'ism' 0.476; Hitler '.' 0.438; Chinese and Japanese lists with '、' only 0.24-0.32 (peak on '。'). Low confidence."
+}
