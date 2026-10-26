@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-98cdd86b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N961+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T21:19:59+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N961",
+   "pole": "+",
+   "label": "code inside a Python class method that updates or redraws a widget, view or record through self (self.panel..., comments on view state), as against flat top-level scripts and SQL",
+   "fire": [
+    "class Dialog(wx.Frame):\n    def layout(self):\n        # Resize so the buttons fit.\n        self.sizer.Fit(self)\n        self.Centre()",
+    "class Admin(ModelAdmin):\n    def approve(self, request, queryset):\n        queryset.update(state=\"ok\")\n        self.message_user(request, \"Approved\")",
+    "class Chart(View):\n    def on_resize(self):\n        \"\"\"Called when the canvas changes size.\"\"\"\n        self.canvas.redraw()",
+    "class Editor:\n    def reload(self):\n        # The buffer may not be loaded yet.\n        if self.buffer is None:\n            return",
+    "class Table(Widget):\n    def select(self, row):\n        self.current = row\n        self.highlight(row)",
+    "class Form(Panel):\n    def reset(self):\n        # Clear every field and redraw.\n        self.fields.clear()\n        self.refresh()",
+    "class Player(Window):\n    def show(self):\n        \"\"\"Make the window visible.\"\"\"\n        self.visible = True",
+    "class Order(Model):\n    def cancel(self):\n        # Only open orders can be cancelled.\n        self.state = \"cancelled\"\n        self.save()"
+   ],
+   "quiet": [
+    "import sys\nnames = sys.argv[1:]\nprint(len(names))",
+    "SELECT id, total FROM orders WHERE total > 100;",
+    "total = 0\nfor n in range(10):\n    total += n\nprint(total)",
+    "UPDATE users SET active = 0 WHERE last_login < '2020-01-01';",
+    "data = open(\"in.txt\").read()\nwords = data.split()\nprint(words[:5])",
+    "nums = [4, 8, 15]\navg = sum(nums) / len(nums)\nprint(avg)",
+    "DELETE FROM sessions WHERE expired = 1;",
+    "import math\nr = 2.0\narea = math.pi * r ** 2\nprint(area)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.5 on ' self', comment words or method names inside an indented method; top-level one-line scripts and SQL below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Python method body acting on self / view state",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: ' self' x2 (self.message_user), ' becomes' in a docstring about a view becoming visible, '- no: if the SO is not', 'The widget may not be realized', '.Fit(self)'. Probe: def refresh(self) with redraw comment 0.526, def on_show docstring 0.502, def save 0.374, widget comment 0.275; 'x = [1, 2, 3]' 0.014, SQL 0.012. Prose about a window becoming visible also fired (0.341, 0.209), so the pole is not code-only."
+}

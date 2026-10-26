@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-994ae267",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N12139+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T21:19:59+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N12139",
+   "pole": "+",
+   "label": "a variable operand inside an algebraic expression (the second x in x * x, 1/x, b * x), as against code and prose without algebra",
+   "fire": [
+    "    return x * x - 4 * x + 3",
+    "The integral of 1/x is the natural log of x plus a constant.",
+    "    f = lambda x: 3 * x**3 - 2 * x + 1",
+    "    grad = 2 * w * x / (x * x + 1)",
+    "For small values, sin(x) is close to x - x**3/6.",
+    "    y = math.exp(-x / tau) * x",
+    "The slope of y = 5x is constant, but y = x * x curves upward.",
+    "    loss = (y - w * x) ** 2 / n"
+   ],
+   "quiet": [
+    "    return name.strip().lower()",
+    "The integral tells us the area under a curve between two points.",
+    "    f = open(\"data.csv\")",
+    "    grad = model.backward()",
+    "For small values, the error is close to zero.",
+    "    y = config.get(\"timeout\")",
+    "The slope of the hill is constant, but the path curves upward.",
+    "    loss = criterion(output, target)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.9 on ' x', '/x' or operators after a variable in formulas; string handling code and prose about derivatives below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "variable operand inside an algebraic expression",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: ' x' x3, '/' x3, '1', ' *', '**' in series expansions and math code ('- x * math.exp(- x * x)', 'x**2/4'). Probe: '1/x by the chain rule' 0.900, '- x * math.exp(-x * x)' 0.682, 'a * x**2 + b * x + c' 0.458, series with '/2' 0.204; string concatenation 0.021, print 0.002, prose derivative 0.023."
+}

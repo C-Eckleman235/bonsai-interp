@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-4ff9694f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N4367-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T21:19:59+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N4367",
+   "pole": "-",
+   "label": "the piece 'ian' (or 'rian', 'lian') inside a proper name the tokenizer splits (C|ian|ciarulo, V|ian|ney, Fab|ian, Gill|ian), as against names that are single tokens",
+   "fire": [
+    "The prize for best student went to a quiet boy called Fabian Weber.",
+    "Scholars still argue about the reforms of the emperor Aurelian.",
+    "The satirist Lucian wrote one of the earliest stories about the moon.",
+    "Her aunt Gillian ran the post office in the village for decades.",
+    "The monk John Cassian wrote about life in the Egyptian desert.",
+    "The hotel was owned by an elderly woman named Vivian Holt.",
+    "Our new coach, Bastian Keller, played in the German league.",
+    "The letter was signed by Lilian Moore, the head of the school."
+   ],
+   "quiet": [
+    "The prize for best student went to a quiet boy called Peter Weber.",
+    "Scholars still argue about the reforms of the emperor Augustus.",
+    "The satirist Swift wrote one of the earliest stories about the moon.",
+    "Her aunt Margaret ran the post office in the village for decades.",
+    "The monk John Smith wrote about life in the Egyptian desert.",
+    "The hotel was owned by an elderly woman named Mary Holt.",
+    "Our new coach, Thomas Keller, played in the German league.",
+    "The letter was signed by Sarah Moore, the head of the school."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.85 on 'ian' inside split names; single-token names (Smith, John, Damian, Sebastian, Tristan) below 0.1, though single-token 'Adrian' reached 0.28",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'ian' piece inside a split proper name",
+ "unit_kind": "token",
+ "confidence": 0.6,
+ "notes": "Card: 'ian' x8, 'an' x3, 'yan', 'orian', 'arian', 'ean' inside names (Cianciarulo, Vianney, Thorianite, Mariano, Sihanoukville). Probe: Cianciarulo 0.852, Vianney 0.728, thorianite 0.542, Ossian 0.316; 'Sebastian and Adrian' 0.280 (peak ' Adrian'), 'Adam Smith' 0.019, 'Saint John' 0.052. Tokenizer checked: Fabian, Lucian, Cassian, Gillian, Vivian, Lilian, Bastian, Aurelian all carry a separate 'ian'/'lian' piece."
+}
