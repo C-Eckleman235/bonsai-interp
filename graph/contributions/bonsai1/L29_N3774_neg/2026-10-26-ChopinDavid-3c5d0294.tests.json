@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-3c5d0294",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N3774-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T11:21:23+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N3774",
+   "pole": "-",
+   "label": "the word-initial piece ' ch' when the tokenizer splits a word into ' ch' plus the rest (ch|ilblains, ch|emo, ch|olecystitis, ch|akra), as against ch-words that are single tokens (church, chocolate, children)",
+   "fire": [
+    "Her grandmother rubbed a warm balm on her chilblains every winter.",
+    "The surgeon removed the gallbladder after a bout of cholecystitis.",
+    "My uncle felt very tired during his second round of chemo.",
+    "The yoga teacher spoke about opening the heart chakra.",
+    "We served the curry with a spicy mango chutney on the side.",
+    "He scribbled the order on a small chit and handed it over.",
+    "After months of chemo, she finally rang the bell at the clinic.",
+    "Some healers claim each chakra is linked to a different colour."
+   ],
+   "quiet": [
+    "Her grandmother rubbed a warm balm on her hands every winter.",
+    "The surgeon removed the gallbladder after a bout of stones.",
+    "My uncle felt very tired during his second round of chemotherapy.",
+    "The yoga teacher spoke about opening the heart and mind.",
+    "We served the curry with a spicy mango pickle on the side.",
+    "He scribbled the order on a small card and handed it over.",
+    "After months of treatment, she finally rang the bell at the church.",
+    "Some healers claim each chord is linked to a different colour."
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.5 on ' ch'; whole-token ch-words and other words in the same sentences below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "the split-off piece ' ch'",
+ "unit_kind": "word",
+ "confidence": 0.6,
+ "notes": "Card: ' ch' x6, 'ch' x5, ' Ch' x5, 'Ch' x4, 'ach' x3, '_ch' x3, often in Sanskrit, Thai and medical words (Shalya-⟦ch⟧ikitsa, ⟦ ch⟧ilblains, ⟦ ch⟧olecystitis). Probe: chilblains 0.418, cholecystitis 0.461, chemo 0.382, chakra 0.374; church 0.004, chocolate 0.002, blisters 0.011. Tokenizer: ' chit', ' chutney', ' chakra', ' chemo' split as ' ch' + rest; ' chemotherapy', ' cheese', ' chicken', ' chord' are single tokens.",
+ "trigger": {
+  "words": [
+   " ch"
+  ]
+ }
+}
