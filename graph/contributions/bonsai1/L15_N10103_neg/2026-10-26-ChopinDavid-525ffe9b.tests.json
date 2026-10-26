@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-525ffe9b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N10103-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T21:19:59+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L15/N10103",
+   "pole": "-",
+   "label": "structural tokens of Python source files: class and def headers with self, and '#' comment banners, as against prose describing the same code",
+   "fire": [
+    "class Reader(object):\n    \"\"\"Read records from a file.\"\"\"\n    def __init__(self, path):\n        self.path = path",
+    "############\n#\n#   network helpers\n#\n############",
+    "  def __init__(self, hidden_size, dropout=0.1):\n    self._hidden = hidden_size",
+    "    # These helpers clean the cache\n    def clear(self):\n        pass",
+    "class Worker(Thread):\n    def __init__(self, queue):\n        Thread.__init__(self)\n        self.queue = queue",
+    "#\n# Configuration section\n#\nDEBUG = False",
+    "class Cache(dict):\n    \"\"\"A small cache.\"\"\"\n    def __init__(self, size):\n        self.size = size",
+    "    ##########\n    # Now test the delete operations\n    def test_delete(self):\n        pass"
+   ],
+   "quiet": [
+    "The reader class opens a file and reads its records one by one.",
+    "Our network helpers live in a separate module of the project.",
+    "The model takes a hidden size and a dropout rate when it is created.",
+    "These helpers clean the cache whenever the server restarts.",
+    "Each worker pulls jobs from a shared queue in the background.",
+    "Debug mode is switched off in the configuration file by default.",
+    "The cache keeps a small number of recent results in memory.",
+    "Next we test what happens when a record is deleted."
+   ]
+  }
+ ],
+ "predictions": "best guess: fire 0.25-0.4 on 'self', ',' and '#' lines in class/def headers and comment banners; prose about the same code below 0.15, though the pole is broad (2.7% of tokens) and prose lists with 'etc.' reached 0.26",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Python class/def headers and comment banners",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card: broad (2.7% of tokens reach 0.1 of max), peaks on 'self' in def __init__(, '#\\n' banner lines, '):\\n' after class headers, ' etc', Spanish 'iple'. Probe: comment banner 0.402, def __init__(self, num_units 0.302, comment + def 0.287, class Launcher 0.255; 'etc.' prose 0.260, 'process' prose 0.156, Spanish 0.147, 'Our parser tests' prose 0.040. Weak separation; registered as unclear."
+}

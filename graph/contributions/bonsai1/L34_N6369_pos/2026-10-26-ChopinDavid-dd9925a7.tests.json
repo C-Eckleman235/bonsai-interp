@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-dd9925a7",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N6369+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T21:19:59+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N6369",
+   "pole": "+",
+   "label": "' br' as the bare word-initial piece of a word the tokenizer splits (br|aggart, br|aves, br|usque, br|ine), as against br-words that are a single token",
+   "fire": [
+    "Everyone in the tavern knew the old sailor was a shameless braggart.",
+    "The ballad tells of the young braves who rode out before dawn.",
+    "The olives are cured in a salty brine for several weeks.",
+    "His manner was brusque, but the patients trusted the doctor.",
+    "The path behind the cottage was overgrown with thick bramble.",
+    "The attic was full of dusty bric-a-brac and broken chairs.",
+    "The novel calls the guards cruel brutes who mocked the prisoners.",
+    "The joiner pressed a bradawl into the beam to mark the hole."
+   ],
+   "quiet": [
+    "Everyone in the tavern knew the old sailor was a brave man.",
+    "The ballad tells of the young brothers who rode out before dawn.",
+    "The olives are served on fresh bread with a little oil.",
+    "His manner was bright and cheerful, and the patients trusted him.",
+    "The path behind the cottage was lined with brass lanterns.",
+    "The attic was full of dusty boxes and broken chairs.",
+    "The novel calls the guards cruel men who mocked the prisoners.",
+    "The joiner took a brisk walk before marking the beam."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.5 on ' br' when the word continues in more pieces; single-token words (brave, bright, bread, brother, brass, brisk) below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "word-initial ' br' piece of a split word",
+ "unit_kind": "token",
+ "confidence": 0.6,
+ "notes": "Card: ' br' x13 (bradawl, bric-a-brac, braves, braggart, brutes), '-br', Japanese 'ブラ'. Probe: braggart 0.479, braves 0.420, bradawl 0.408, brusque 0.329; 'brave man' 0.011, 'bright red bracelet' 0.020. Tokenizer checked: braggart, braves, brutes, bradawl, brusque, brine, bramble, bric all start with a bare ' br'."
+}
