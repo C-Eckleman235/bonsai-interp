@@ -122,3 +122,20 @@ The harness needs four adapters:
 Everything else, from the census through the scan, screens, batteries, placebos, judging and atlas, is
 model-agnostic. Costs scale with depth by the measured model: ms per scored sequence = 0.309 + 0.713·(L+1). The
 reasons the 8B sweep was slow are recorded in docs/SWEEP_LEARNINGS.md, so a re-sweep can avoid them.
+
+## Composition and attention (pilot, 2026-10-26; FINDINGS same date)
+
+Composition works on **tokens at offsets**, not on neurons. Zeroing a pole's top 10 attributed neurons removes only about
+half of a peak, but replacing the read token removes almost all of it and the previous token most of the rest. So the
+compositional pass runs in four steps:
+1. **Occlusion map** (`compose/feeders.occlude`). Which offsets a pole needs, attention included, without modelling heads.
+2. **Class at each offset** (`compose/match.cover`). The union of characterized upstream word units covering the tokens
+   seen there. An uncovered class (no "making verb" unit) is a gap that says which kind to add next.
+3. **Factorial test.** Both classes present, one only, or neither, at the measured offsets. Then a **distance sweep**
+   moves the earlier class to 1, 2, 4, 8, 16 or 32 back. A response at 1 only means a previous-token or bigram path;
+   a decaying response means a phrase; a flat response means copying or topic.
+4. **Heads**, only for confirmed links: knock out the source→target attention edge head by head to find the carrier,
+   and type the head (previous-token, induction, duplicate-token, sink).
+
+The composed label is then "A here, given B one token back" or "A anywhere after B". It is tested like any other label:
+placebos, a held-out 8 + 8, and the 50% coverage rule.

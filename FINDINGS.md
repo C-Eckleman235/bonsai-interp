@@ -777,3 +777,58 @@ coverage round measures them. The deepen queue (`play search --deepen`) lists th
 **Caveat.** The quoted-word estimate can be wrong. It undercounts a label that lists its word forms in parentheses
 instead of quotes, and it counts a quoted context word as part of the trigger. A new contribution that declares the
 trigger replaces the estimate.
+
+## 2026-10-26: What feeds a pole's peak: a token or two, not a few neurons (`bonsai_interp/compose/`)
+
+**Question.** The compositional pass would characterize a neuron by the already-characterized neurons that feed it,
+then recurse upward like a sudoku. Is a pole's activation driven by a few upstream units, and how does attention enter?
+
+**Method.** For 60 random eligible poles in each of three depth bands, I took 4 of each pole's strongest corpus examples
+(about 238 examples per band) and measured three things:
+1. Position-resolved gradient × activation attribution to every earlier (layer, neuron, position).
+2. Ablation: zero the top 1, 3 or 10 attributed terms at their positions and measure the activation lost.
+3. Token occlusion: replace the token k back with " the", for k = 0..31.
+
+The context was 256 tokens for layers 6–23 and 128 tokens for layers 30–35, because of GPU memory.
+
+**Neuron feeders are diffuse.** A single example's attribution splits into thousands of terms. Their absolute sizes add
+up to 35–150 times the activation, and most of it cancels.
+
+| layers | activation lost, top 1 zeroed | top 3 | top 10 |
+|---|---:|---:|---:|
+| 6–11 | 16% | 37% | 61% |
+| 18–23 | 11% | 24% | 46% |
+| 30–35 | 14% | 28% | 55% |
+
+(medians)
+
+**Tokens are sharp.** Median share of the activation lost when the token k back is replaced:
+
+| layers | k = 0 | 1 | 2 | 3 | 4 | 8 | 16 | far (10–31) | examples with a far token ≥ 0.25 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 6–11 | 0.99 | 0.87 | 0.18 | 0.10 | 0.05 | 0.02 | 0.01 | 0.004 | 17% |
+| 18–23 | 0.97 | 0.78 | 0.40 | 0.21 | 0.11 | 0.04 | 0.02 | 0.012 | 40% |
+| 30–35 | 0.99 | 0.47 | 0.21 | 0.08 | 0.06 | 0.02 | 0.01 | 0.008 | 21% |
+
+A single token's replacement removes half the activation in 98%, 97% and 88% of examples respectively.
+
+**So at their peaks, poles are mostly local functions:** the read token, the one before it, and (from mid depth) a
+little more. That is the clean basis for composition: units at small offsets.
+
+**Attention is handled as positions, not heads.** Occlusion asks which earlier tokens the pole needs, wherever attention
+carried them from. Long-range dependence peaks mid-network: 40% of layer 18–23 examples have a token 10–31 back that
+matters.
+
+**Peaks are classes, not fixed bigrams.** A pole's top 32 peaks span a median of 22–24 distinct read tokens and 24–28
+distinct previous tokens. Example: L10/N5404− fires on "designed | especially", "constructed | specifically",
+"tailored | especially", "created | specifically", "específ|icamente".
+
+**The matcher** (`compose/match.py`) names the class at each offset by the upstream poles whose strong activations
+cover it, as a greedy union of word units from the word screen's token tables:
+- L10/N5404−'s read token is covered 81% by the ' especially' unit (L3/N4610+) plus a ' for'/' to' unit. Its previous
+  token, a making verb (designed, created, tailored), has no covering unit: **a gap the loop found by itself**.
+- L10/N6727−'s read token is covered by the ' sinus' (L8), ' cheek' (L3) and ' bone' (L1) units: facial anatomy,
+  composed from word units.
+
+**Caveat.** These are peaks (the scan's top examples), which favour sharp local triggers. Coverage of the full
+strong-activation pool still has to be measured per label.
