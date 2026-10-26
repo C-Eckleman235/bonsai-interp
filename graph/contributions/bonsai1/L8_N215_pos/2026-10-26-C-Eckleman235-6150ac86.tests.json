@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-26-C-Eckleman235-6150ac86",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N215+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T21:33:51+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L8/N215",
+   "pole": "+",
+   "label": "A variable name directly inside a Python subscript or slice (x[:, t, :], s[:-self.n])",
+   "fire": [
+    "batch = states[:, t, :]",
+    "tail = path[:-self.suffix_len]",
+    "row = grid[i, :, k]",
+    "head = items[:n_keep]",
+    "y_hat = preds[:, step, :]",
+    "frame = movie[:, :, idx]",
+    "chunk = data[start:stop]",
+    "trimmed = name[:-self.pad]"
+   ],
+   "quiet": [
+    "batch = states[:, 0, :]",
+    "tail = path[:-4]",
+    "row = grid[3, :, 7]",
+    "head = items[:10]",
+    "y_hat = preds[:, 5, :]",
+    "frame = movie[:, :, 12]",
+    "chunk = data[2:9]",
+    "trimmed = name[:-3]"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "variable inside a slice",
+ "unit_kind": "contextual",
+ "confidence": 0.5,
+ "notes": "triage: unclear then probed. probe: [:, t, :] 0.72, [:-self.n] 0.65, range(x+1) 0.10, [:mo.start] 0.01."
+}
