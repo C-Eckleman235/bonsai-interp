@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-524e88c2",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N8795-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T11:21:23+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L21/N8795",
+   "pole": "-",
+   "label": "the last piece of a developer's username inside a code comment 'TODO(name):', as against the same comments without a name",
+   "fire": [
+    "    # TODO(priyag): Support async callbacks here.\n    return self._run()",
+    "    # TODO(jsmith): Handle the empty list case.\n    items = list(items)",
+    "    # TODO(kmorris): Drop this flag after the migration.\n    flags = {}",
+    "    # TODO(dvogel): Cache the parsed config.\n    cfg = load_config(path)",
+    "    # TODO(priyag): Make the timeout configurable.\n    timeout = 30",
+    "    # TODO(ahmedr): Replace with the new client.\n    client = OldClient()",
+    "    # TODO(lwang): Add unit tests for this branch.\n    if x is None:",
+    "    # TODO(mfischer): Log a warning instead of raising.\n    raise ValueError(msg)"
+   ],
+   "quiet": [
+    "    # TODO: Support async callbacks here.\n    return self._run()",
+    "    # Note: Handle the empty list case.\n    items = list(items)",
+    "    # TODO: Drop this flag after the migration.\n    flags = {}",
+    "    # Cache the parsed config later.\n    cfg = load_config(path)",
+    "    # TODO: Make the timeout configurable.\n    timeout = 30",
+    "    # FIXME: Replace with the new client.\n    client = OldClient()",
+    "    # Add unit tests for this branch.\n    if x is None:",
+    "    # TODO: Log a warning instead of raising.\n    raise ValueError(msg)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.7 on the end of the name in TODO(name); the same comments as plain TODO: below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "username in 'TODO(name):'",
+ "unit_kind": "unclear",
+ "confidence": 0.3,
+ "notes": "Card: broad (3.1% of tokens reach 0.1 of max), gate-closed (-g +u leak 95%); peaks TODO(priy⟦ag⟧) x2, ' empty', '.\\n', delic⟦acy⟧, ' Dallas'. Probe: 'TODO(priyag):' 0.721, 'is empty' 0.243, same comment without the name 0.122, prose 0.04-0.10. Only one username was probed, so other names may not fire."
+}

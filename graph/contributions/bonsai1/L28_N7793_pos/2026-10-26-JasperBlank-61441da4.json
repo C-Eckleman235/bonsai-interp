@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-26-JasperBlank-61441da4",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N7793+",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T12:53:22+00:00",
+ "recipe": {
+  "toolchain_commit": "5aeca8eb",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L28_N7793_pos/2026-10-26-JasperBlank-61441da4.tests.json"
+ },
+ "label": "Modal/causal words (' can', ' may', ' cause', ' causing', ' be', ' of' after 'cause') in a statement about something that might produce a harmful or problematic effect, i.e. positions where a negative consequence is expected next",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L28_N7793_pos/2026-10-26-JasperBlank-61441da4.tests.json",
+   "prereg_commit": "5aeca8eb",
+   "author": "JasperBlank",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.053,
+     "peak": " blood"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.13,
+     "peak": " be"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.087,
+     "peak": " cause"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.07,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.103,
+     "peak": " causing"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.5,
+     "peak": " be"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.02,
+     "peak": " attacks"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.184,
+     "peak": " or"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.027,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.023,
+     "peak": " bridge"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.013,
+     "peak": " schedule"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.015,
+     "peak": " fence"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.016,
+     "peak": " several"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.023,
+     "peak": " out"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.022,
+     "peak": " station"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.025,
+     "peak": " visitors"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.922,
+    "median_fire": 0.095,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "5aeca8eb",
+  "minutes": 193,
+  "batch_size": 48
+ },
+ "short": "modal/cause before harm",
+ "unit_kind": "contextual",
+ "confidence": "low",
+ "notes": "Label and sentences written blind by a Claude subagent from the card text alone (prompt: haiku_labeler/prompt.md, identical for Haiku, Sonnet and Opus); one retry on mechanical checks. Part of a Haiku/Sonnet/Opus comparison on the same 48 poles.",
+ "selection": "random draw"
+}

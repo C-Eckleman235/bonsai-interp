@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-576767c8",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N4595+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T19:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N4595",
+   "pole": "+",
+   "label": "code tokens that open the failure or error path of a branch (else: after a success return, except ...Error:, 'cancelled'/'Invalid' messages), as against code on the normal path",
+   "fire": [
+    "def load(path):\n    if os.path.exists(path):\n        return read_file(path)\n    else:\n        return None",
+    "try:\n    conn = connect(host)\nexcept ConnectionError:\n    log.warning(\"no connection\")",
+    "try:\n    await task\nexcept asyncio.TimeoutError:\n    task.cancel()",
+    "if answer == 'y':\n    save()\nelse:\n    print('Operation cancelled by user.')",
+    "def check(mode):\n    if mode not in MODES:\n        raise ValueError(\"Invalid mode: %s\" % mode)\n    return mode",
+    "    result = parse(text)\n    if result:\n        return result\n    else:\n        logger.error('parse failed')",
+    "try:\n    value = int(raw)\nexcept TypeError:\n    value = 0",
+    "while True:\n    data = sock.recv(1024)\n    if data:\n        handle(data)\n    else:\n        break"
+   ],
+   "quiet": [
+    "def load(path):\n    with open(path) as f:\n        text = f.read()\n    return text",
+    "conn = connect(host)\nconn.send(payload)\nlog.info(\"sent\")",
+    "for task in tasks:\n    await task\nprint('all done')",
+    "if answer == 'y':\n    save()\n    print('Saved to disk.')",
+    "def check(mode):\n    mode = mode.lower()\n    return mode",
+    "    result = parse(text)\n    result.sort()\n    return result",
+    "value = int(raw)\nvalue += 1\nprint(value)",
+    "for chunk in stream:\n    data = chunk.decode()\n    handle(data)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on ' else', 'Error', ' cancelled', 'Invalid' in multi-line code; loops, assignments and success-path prints below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "opening of a code failure/error branch",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: ' else' x9, ' except', 'Exception', 'ValueError', 'CancelledError', ' cancelled'. Probe: else after return S_OK 0.499, except asyncio.CancelledError 0.612, 'User cancelled' 0.657, raise Exception('Invalid' 0.423, except ValueError 0.211; for-loop 0.004, if/print 'Found!' 0.085; prose 'else'/'except' 0.02/0.004."
+}

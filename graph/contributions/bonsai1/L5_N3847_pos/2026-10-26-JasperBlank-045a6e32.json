@@ -1,0 +1,156 @@
+{
+ "id": "2026-10-26-JasperBlank-045a6e32",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N3847+",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T13:39:13+00:00",
+ "recipe": {
+  "toolchain_commit": "dc58702b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N3847_pos/2026-10-26-JasperBlank-045a6e32.tests.json"
+ },
+ "label": "very weak, dense background activation on most tokens; peaks slightly on 'wood' ending a proper name (Hillwood, Fleetwood, Glenwood, Sandalwood)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N3847_pos/2026-10-26-JasperBlank-045a6e32.tests.json",
+   "prereg_commit": "dc58702b",
+   "author": "JasperBlank",
+   "n_fire": 8,
+   "n_false_pos": 6,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.853,
+     "peak": "wood"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.864,
+     "peak": "wood"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.887,
+     "peak": "wood"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.909,
+     "peak": "wood"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.529,
+     "peak": "ewood"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.649,
+     "peak": "wood"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.681,
+     "peak": "wood"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.857,
+     "peak": "wood"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.313,
+     "peak": " our"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.186,
+     "peak": " my"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.396,
+     "peak": " program"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.338,
+     "peak": " study"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.347,
+     "peak": " another"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.315,
+     "peak": "Part"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.282,
+     "peak": " host"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.32,
+     "peak": "walk"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.855,
+    "near_misses_at_0.3": 6
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc58702b",
+  "minutes": 10,
+  "batch_size": 192
+ },
+ "short": "dense weak 'wood'",
+ "unit_kind": "dense / positional",
+ "confidence": "low",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "selection": "random draw",
+ "trigger": {
+  "pieces": [
+   "wood"
+  ]
+ }
+}

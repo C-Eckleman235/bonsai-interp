@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-d2a5eb23",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N2943-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T12:29:50+00:00",
+ "recipe": {
+  "toolchain_commit": "8e9cd6a4",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L28_N2943_neg/2026-10-26-ChopinDavid-d2a5eb23.tests.json"
+ },
+ "label": "a number or multiplicity prefix that opens a hyphenated technical compound in a machine spec (5-speed, multi-link, twin-turbo, double-acting), as against the same specs without that compound",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L28_N2943_neg/2026-10-26-ChopinDavid-d2a5eb23.tests.json",
+   "prereg_commit": "8e9cd6a4",
+   "author": "ChopinDavid",
+   "n_fire": 2,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.249,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.672,
+     "peak": " multi"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.371,
+     "peak": " twin"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.174,
+     "peak": "-"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.09,
+     "peak": "-c"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.112,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.176,
+     "peak": " multi"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.166,
+     "peak": "3"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.076,
+     "peak": " an"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.34,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.147,
+     "peak": " with"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.013,
+     "peak": " sheet"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.018,
+     "peak": " bon"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.095,
+     "peak": " cassette"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.045,
+     "peak": " driven"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.022,
+     "peak": " rear"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.859,
+    "median_fire": 0.175,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "8e9cd6a4",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "count prefix of a spec compound",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: '5' x6, '2' x4, '多', '双' (双馈), ' Multi'-link, ' double'-acting, ' multiple'-gear. Probe: 'aluminium multi-link' 0.800, '5-speed manual' 0.579, 'double-acting' 0.340 (peak '-'), '235/40 tyres' 0.189; without the prefix 0.205/0.289 (spec context leaks), 'five sisters' 0.011, 'double espresso' 0.018.",
+ "selection": "random draw"
+}

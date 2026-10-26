@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-26-JasperBlank-d2438390",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N79-",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T12:55:09+00:00",
+ "recipe": {
+  "toolchain_commit": "cfd6808b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L6_N79_neg/2026-10-26-JasperBlank-d2438390.tests.json"
+ },
+ "label": "final word piece completing a short proper name, acronym or Arabic root word split by the tokenizer (DB|A, D|icer, Jab|ir, Daub|ert, ذ|كر / الذ|كر)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L6_N79_neg/2026-10-26-JasperBlank-d2438390.tests.json",
+   "prereg_commit": "cfd6808b",
+   "author": "JasperBlank",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.917,
+     "peak": "A"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 1.114,
+     "peak": "icer"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.882,
+     "peak": "ir"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.864,
+     "peak": "ert"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.335,
+     "peak": "كر"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 1.007,
+     "peak": "A"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 1.051,
+     "peak": "icer"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.836,
+     "peak": "ert"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.003,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.012,
+     "peak": " cy"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.011,
+     "peak": " Malik"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.011,
+     "peak": "Cour"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.273,
+     "peak": "جر"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.005,
+     "peak": " owner"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.008,
+     "peak": " stall"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.004,
+     "peak": "Before"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.899,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5 (subagent)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "cfd6808b",
+  "minutes": 195,
+  "batch_size": 48
+ },
+ "short": "split-name final word piece",
+ "unit_kind": "sparse feature",
+ "confidence": "low",
+ "notes": "Label and sentences written blind by a Claude subagent from the card text alone (prompt: haiku_labeler/prompt.md, identical for Haiku, Sonnet and Opus); one retry on mechanical checks. Part of a Haiku/Sonnet/Opus comparison on the same 48 poles.",
+ "selection": "random draw"
+}

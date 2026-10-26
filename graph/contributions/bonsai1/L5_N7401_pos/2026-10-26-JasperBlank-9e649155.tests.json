@@ -1,0 +1,52 @@
+{
+ "contribution": "2026-10-26-JasperBlank-9e649155",
+ "contributor": "JasperBlank",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N7401+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T13:17:27+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N7401",
+   "pole": "+",
+   "label": "'.cursor' (database cursor) in Python code like db.cursor() / conn.cursor(); also ' with' in context managers",
+   "fire": [
+    "def insertRegion(db, tableName):\n    cursor = db.cursor()\n    sql = \"insert into regions values (?)\"\n    cursor.execute(sql, (tableName,))",
+    "import sqlite3\nconn = sqlite3.connect('data.db')\ncur = conn.cursor()\ncur.execute('select * from users')",
+    "def load_users(db):\n    cursor = db.cursor()\n    sql = \"SELECT userid FROM users\"\n    cursor.execute(sql)",
+    "DBconn = lite.connect('/var/db/rht.db')\ncursor = DBconn.cursor()\nsql = \"select ComputerTime from Raw\"",
+    "def get_rows(connection):\n    cur = connection.cursor()\n    cur.execute('select name from items')\n    return cur.fetchall()",
+    "db = pydb.get_db()\ncursor = db.cursor()\nsql = \"SELECT id FROM orders\"\ncursor.execute(sql)",
+    "def count(db):\n    c = db.cursor()\n    c.execute('select count(*) from log')\n    return c.fetchone()",
+    "conn = psycopg2.connect(dsn)\ncur = conn.cursor()\ncur.execute('delete from temp')\nconn.commit()"
+   ],
+   "quiet": [
+    "def insertRegion(db, tableName):\n    sql = \"insert into regions values (?)\"\n    db.execute(sql, (tableName,))",
+    "import sqlite3\nconn = sqlite3.connect('data.db')\nrows = conn.execute('select * from users')\nprint(rows)",
+    "def load_users(db):\n    sql = \"SELECT userid FROM users\"\n    return db.query(sql)",
+    "The mouse pointer shows as a small arrow until you hover over a link on the page.",
+    "def get_rows(connection):\n    result = connection.execute('select name from items')\n    return result.fetchall()",
+    "x = compute_total(prices)\ny = x * 2\nprint(y)",
+    "The database stores user records in a table and returns them sorted by name.",
+    "conn = psycopg2.connect(dsn)\nconn.commit()\nconn.close()"
+   ]
+  }
+ ],
+ "predictions": "7/8 fire, 0 near misses",
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card"
+  ]
+ },
+ "short": "db.cursor() call",
+ "unit_kind": "contextual",
+ "confidence": "medium",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "trigger": {
+  "tokens": [
+   ".cursor"
+  ]
+ }
+}

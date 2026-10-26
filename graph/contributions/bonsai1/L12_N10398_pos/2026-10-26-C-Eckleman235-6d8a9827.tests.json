@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-26-C-Eckleman235-6d8a9827",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N10398+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T18:54:28+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N10398",
+   "pole": "+",
+   "label": "The module name 'ctypes' in Python code (ctypes.windll, ctypes.sizeof) and similar low-level binding helpers",
+   "fire": [
+    "    def get_layout(self):\n        win_id = ctypes.windll.user32.GetKeyboardLayout(0)\n        return win_id\n",
+    "    _python = ctypes.sizeof(getattr(self.namespace, name))\n    return _python\n",
+    "import ctypes\nlib = ctypes.CDLL('libc.so.6')\nlib.puts(b'hello')\n",
+    "    buf = ctypes.create_string_buffer(64)\n    ctypes.memmove(buf, data, len(data))\n",
+    "    handle = ctypes.windll.kernel32.GetStdHandle(-11)\n    ctypes.windll.kernel32.SetConsoleTextAttribute(handle, 7)\n",
+    "from ctypes import c_int, Structure\nclass Point(Structure):\n    _fields_ = [('x', c_int), ('y', c_int)]\n",
+    "    size = ctypes.sizeof(ctypes.c_double)\n    print(size)\n",
+    "    func = ctypes.cdll.LoadLibrary('./lib.so')\n    func.run.restype = ctypes.c_int\n"
+   ],
+   "quiet": [
+    "    def get_layout(self):\n        win_id = os.environ.get('LAYOUT')\n        return win_id\n",
+    "    _python = sys.getsizeof(getattr(self.namespace, name))\n    return _python\n",
+    "import json\ndata = json.loads('{\"a\": 1}')\nprint(data)\n",
+    "    buf = bytearray(64)\n    buf[:len(data)] = data\n",
+    "    handle = open('out.txt', 'w')\n    handle.write('done')\n",
+    "from collections import namedtuple\nPoint = namedtuple('Point', ['x', 'y'])\n",
+    "    size = struct.calcsize('d')\n    print(size)\n",
+    "    func = importlib.import_module('lib')\n    func.run()\n"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5",
+  "screens": [
+   "card"
+  ]
+ },
+ "short": "'ctypes' module",
+ "unit_kind": "lexical",
+ "confidence": 0.5,
+ "trigger": {
+  "words": [
+   "ctypes"
+  ]
+ }
+}

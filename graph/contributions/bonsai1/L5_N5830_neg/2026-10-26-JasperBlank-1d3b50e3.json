@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-26-JasperBlank-1d3b50e3",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N5830-",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T13:39:32+00:00",
+ "recipe": {
+  "toolchain_commit": "dc58702b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N5830_neg/2026-10-26-JasperBlank-1d3b50e3.tests.json"
+ },
+ "label": "Korean/Japanese grammatical suffixes and syllables inside web-shop style text (e.g. 할인, 적립, をご), plus scattered subword pieces; broad and diffuse",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N5830_neg/2026-10-26-JasperBlank-1d3b50e3.tests.json",
+   "prereg_commit": "dc58702b",
+   "author": "JasperBlank",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.805,
+     "peak": " 적"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.722,
+     "peak": " 할"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.762,
+     "peak": "로서"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.953,
+     "peak": "をご"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.63,
+     "peak": " Com"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.671,
+     "peak": " 할"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.578,
+     "peak": "をご"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.572,
+     "peak": " thing"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.14,
+     "peak": " every"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.013,
+     "peak": " baked"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.148,
+     "peak": " vom"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.096,
+     "peak": " de"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.046,
+     "peak": " cellar"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.054,
+     "peak": " report"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.188,
+     "peak": " her"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.025,
+     "peak": " with"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.697,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc58702b",
+  "minutes": 10,
+  "batch_size": 192
+ },
+ "short": "CJK suffix syllables",
+ "unit_kind": "dense / positional",
+ "confidence": "low",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "selection": "random draw",
+ "trigger": {
+  "words": [
+   "할",
+   "적",
+   "をご",
+   "로서"
+  ]
+ }
+}

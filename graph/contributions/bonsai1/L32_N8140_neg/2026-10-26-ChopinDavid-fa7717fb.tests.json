@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-fa7717fb",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N8140-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T11:21:23+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L32/N8140",
+   "pole": "-",
+   "label": "positions in botanical text that set up a plant-part noun (the ' the' before tissue or leaves, 'young tender' before roots), as against the same sentence frames about animal or human bodies",
+   "fire": [
+    "Sugars travel downward through the stem of the plant to the roots.",
+    "The oil is pressed from the seeds of a small desert shrub.",
+    "Aphids suck sap from the leaves of young rose bushes.",
+    "Nutrients pass slowly through the plant tissue during the night.",
+    "Farmers harvest the fibres from the stalks of the hemp plant.",
+    "A white powder appears on the leaves of infected squash plants.",
+    "Water is drawn up through the roots of the tree in spring.",
+    "The dye is boiled out of the bark of the alder tree."
+   ],
+   "quiet": [
+    "Sugars travel downward through the gut of the animal to the liver.",
+    "The oil is pressed from the fat of a small desert lizard.",
+    "Ticks suck blood from the ears of young farm dogs.",
+    "Nutrients pass slowly through the bloodstream during the night.",
+    "Farmers harvest the wool from the backs of the mountain sheep.",
+    "A white rash appears on the skin of infected children.",
+    "Water is drawn up through the trunk of the elephant in spring.",
+    "The glue is boiled out of the hooves of old horses."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.6 on the token before a plant-part noun in plant text; the same frames about animal bodies below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "set-up for a plant-part noun",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: ' the' x13 and ' tender', ' leaf', ' bigger' before plant parts (young⟦ tender⟧ roots, through⟦ the⟧ plant tissue, from⟦ the⟧ leaves); the + pole suppresses ' pods', ' stem', ' shoot', so the - pole promotes plant parts. Also ancient-Egypt periods (Period⟦:⟧ Late Period). Probe: 'through the plant tissue' 0.615, 'extracted from the leaves' 0.517, 'young tender roots' 0.421; 'through the body' 0.093, 'Late Period' 0.217, but 'young tender meat' 0.421 also fired, so the word 'tender' alone leaks and is not used."
+}

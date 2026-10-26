@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-26-ChopinDavid-4f1d3f2b",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N1531-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T10:26:48+00:00",
+ "recipe": {
+  "toolchain_commit": "f54a8679",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N1531_neg/2026-10-26-ChopinDavid-4f1d3f2b.tests.json"
+ },
+ "label": "the token ' porcelain' and the Russian piece ' кар' that starts карточка, as against other materials and other Russian nouns in the same sentences",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N1531_neg/2026-10-26-ChopinDavid-4f1d3f2b.tests.json",
+   "prereg_commit": "f54a8679",
+   "author": "ChopinDavid",
+   "n_fire": 6,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.641,
+     "peak": " porcelain"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.197,
+     "peak": " porcelain"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.754,
+     "peak": " porcelain"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.396,
+     "peak": " кар"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.55,
+     "peak": " porcelain"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.594,
+     "peak": " кар"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.601,
+     "peak": " porcelain"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.253,
+     "peak": " кар"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.044,
+     "peak": " rag"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.347,
+     "peak": " clay"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.05,
+     "peak": " crown"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.04,
+     "peak": " нуж"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": -0.018,
+     "peak": " plates"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.017,
+     "peak": "ала"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.035,
+     "peak": " sink"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.011,
+     "peak": " зап"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.572,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "f54a8679",
+  "minutes": 0,
+  "batch_size": 16
+ },
+ "short": "the tokens ' porcelain' and ' кар'",
+ "unit_kind": "word",
+ "confidence": 0.5,
+ "notes": "Broad, gate-closed L4 pole. Card: ' porcelain' x8, ' кар' x2 (визитную карточку, картина). Probe: ' porcelain' 0.579, 0.513, 0.487; 'визитная карточка' ' кар' 0.610; ' ceramics' 0.218 (related material leaks partly), 'glass vase' -0.002, 'Harry Potter' -0.059. A word list, not a meaning.",
+ "selection": "random draw",
+ "trigger": {
+  "words": [
+   " porcelain",
+   " кар"
+  ]
+ }
+}

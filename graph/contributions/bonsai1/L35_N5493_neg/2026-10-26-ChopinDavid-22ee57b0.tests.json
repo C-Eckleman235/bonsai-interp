@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-22ee57b0",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N5493-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T05:22:49+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N5493",
+   "pole": "-",
+   "label": "tokens of standard code boilerplate that is copied verbatim (the Apache license header, the Python traceback header), as against the same words in ordinary prose",
+   "fire": [
+    "# Copyright 2019 Example Corp.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at",
+    "# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.",
+    "$ python app.py\nTraceback (most recent call last):\n  File \"app.py\", line 3, in <module>\n    main()",
+    "/*\n * Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at\n *\n *      http://www.apache.org/licenses/LICENSE-2.0\n */",
+    ">>> import foo\nTraceback (most recent call last):\n  File \"<stdin>\", line 1, in <module>\nImportError: No module named foo",
+    "// Copyright 2021 The Authors.\n// Licensed under the Apache License, Version 2.0 (the \"License\");\n// you may not use this file except in compliance with the License.\n// You may obtain a copy of the License at",
+    "$ pytest\nTraceback (most recent call last):\n  File \"test_main.py\", line 8, in test_add",
+    "# software distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions"
+   ],
+   "quiet": [
+    "Copyright law protects books and songs for many years after the author dies.",
+    "Unless the shop agrees in writing, the warranty does not cover water damage of either kind.",
+    "In my most recent call with the bank, they promised to fix the error.",
+    "Residents may obtain a copy of the town plan at the library on Main Street.",
+    "When I import foo bars from abroad, the most recent shipment always arrives late.",
+    "The authors said either version of the book could be read first.",
+    "My most recent test at school was in maths, and I passed.",
+    "The store sells software as is, with no promise that it will work on older computers."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.75 on 'www', ' obtain', ' either', ' recent' inside the boilerplate; the same words in prose near 0",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "verbatim code boilerplate (license, traceback)",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: peaks on ' obtain' (You may obtain a copy), ' either' (either express or implied), 'www' (www.apache.org), ' recent' (most recent call last), '#'. Probe: Apache header 0.738 (www), WITHOUT WARRANTIES line 0.551 (either), 'Traceback (most recent call last)' 0.688; prose 'may obtain a copy of the schedule' 0.009, 'either the bus or the train' 0.001, 'most recent survey' -0.001, 'www.example.com' -0.000."
+}

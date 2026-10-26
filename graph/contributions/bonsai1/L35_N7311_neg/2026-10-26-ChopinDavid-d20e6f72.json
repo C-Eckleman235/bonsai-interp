@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-d20e6f72",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N7311-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T13:26:17+00:00",
+ "recipe": {
+  "toolchain_commit": "31705c30",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N7311_neg/2026-10-26-ChopinDavid-d20e6f72.tests.json"
+ },
+ "label": "a word-initial 'H'/'h' that the tokenizer splits off as its own token (rare names and foreign words)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N7311_neg/2026-10-26-ChopinDavid-d20e6f72.tests.json",
+   "prereg_commit": "31705c30",
+   "author": "ChopinDavid",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.159,
+     "peak": " H"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.188,
+     "peak": " H"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.181,
+     "peak": " H"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.207,
+     "peak": " H"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.369,
+     "peak": " h"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.179,
+     "peak": " H"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.227,
+     "peak": " H"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.174,
+     "peak": " H"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.022,
+     "peak": "op"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.01,
+     "peak": "bin"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.015,
+     "peak": " Holl"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.019,
+     "peak": "uk"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.002,
+     "peak": " bath"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.012,
+     "peak": "ni"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.01,
+     "peak": " ch"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.011,
+     "peak": " new"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.184,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "31705c30",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "split-off initial H",
+ "unit_kind": "token/lexical",
+ "confidence": "medium",
+ "notes": "Probe: Hakan (' H') 0.502, Hristo 0.303, Hmong 0.269, harem (' h') 0.285, hulp 0.231; Mehmet 0.109, Hyundai 0.004 (whole token). Fire and quiet words were tokenizer-checked: fire words start with ' H'/' h' alone, quiet H-words do not.",
+ "selection": "random draw"
+}

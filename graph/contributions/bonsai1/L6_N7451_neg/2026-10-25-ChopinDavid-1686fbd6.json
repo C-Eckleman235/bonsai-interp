@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-25-ChopinDavid-1686fbd6",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N7451-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T04:29:14+00:00",
+ "recipe": {
+  "toolchain_commit": "6128d7ee",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L6_N7451_neg/2026-10-25-ChopinDavid-1686fbd6.tests.json"
+ },
+ "label": "dense / positional: on for a large share of tokens (33% reach 0.1 of max); best guess, the word ' contest' as against its synonyms",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L6_N7451_neg/2026-10-25-ChopinDavid-1686fbd6.tests.json",
+   "prereg_commit": "6128d7ee",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 7,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.723,
+     "peak": " contest"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.803,
+     "peak": " contest"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.582,
+     "peak": " contest"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.71,
+     "peak": " contest"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.688,
+     "peak": " contest"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.881,
+     "peak": " contest"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.52,
+     "peak": " contest"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.891,
+     "peak": " contest"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.229,
+     "peak": " festival"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.511,
+     "peak": " competition"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.31,
+     "peak": " fight"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.453,
+     "peak": " class"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.42,
+     "peak": " show"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.449,
+     "peak": " tournament"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.467,
+     "peak": " fair"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.619,
+     "peak": " club"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.716,
+    "near_misses_at_0.3": 7
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "6128d7ee",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "dense; ' contest' guess",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Card: dense flag (33.0% of tokens reach 0.1 of max), gate-closed regime 100%, max 0.67; peak tokens ' contest' x6 plus Arabic, French and Korean pieces. Probe: ' contest' 0.596-0.918, 'tantôt' 0.945, 'Дедушка' 0.834, but 'competition' 0.470, cat on windowsill 0.328 and rain 0.346.",
+ "selection": "random draw"
+}

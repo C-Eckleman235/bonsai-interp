@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-6a2bc02f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N3615+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T11:21:23+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L27/N3615",
+   "pole": "+",
+   "label": "medial word pieces of rare Greek- or Latin-derived scientific terms that the tokenizer splits into fragments (encephal|omy|elitis, r|hy|olitic, monoc|yt|ogenes), as against sentences on the same topic that use plain words",
+   "fire": [
+    "Doctors confirmed a rare case of encephalomyelitis after the viral infection.",
+    "The ridge is made of pale rhyolite that formed from sticky lava.",
+    "Health officials traced the outbreak to Listeria monocytogenes in the salad.",
+    "Before the vaccine, poliomyelitis paralysed thousands of children each year.",
+    "The geologists sampled rhyolitic tuff along the canyon walls.",
+    "In older textbooks the antibiotic was sold as Chloromycetin in many countries.",
+    "Some patients with myalgic encephalomyelitis struggle to stand for long.",
+    "Inspectors found monocytogenes strains in the cold storage room."
+   ],
+   "quiet": [
+    "Doctors confirmed a rare case of brain swelling after the viral infection.",
+    "The ridge is made of pale granite that formed from slow cooling.",
+    "Health officials traced the outbreak to bacteria in the salad.",
+    "Before the vaccine, the disease paralysed thousands of children each year.",
+    "The geologists sampled volcanic ash along the canyon walls.",
+    "In older textbooks the antibiotic was sold under many names in many countries.",
+    "Some patients with chronic fatigue struggle to stand for long.",
+    "Inspectors found germ strains in the cold storage room."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on a medial piece such as 'omy', 'hy', 'yt'; same-topic sentences with common words below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "inner pieces of rare Greek/Latin terms",
+ "unit_kind": "word",
+ "confidence": 0.5,
+ "notes": "Card: 'omy' x4 (encephal⟦omy⟧elitis), 'hy' (r⟦hy⟧olitic), 'pt' (consum⟦pt⟧ives), 'yt' (monoc⟦yt⟧ogenes), 'et' (Chloromyc⟦et⟧in), 'ast' (My⟦ast⟧henia). Probe: 'disseminated encephalomyelitis' 0.806, 'rhyolitic glass' 0.838, 'Listeria monocytogenes' 0.516, 'Myasthenia gravis' 0.297; same-topic plain words 0.010-0.018; but sentence-initial 'Osteomyelitis is' 0.058, so the test keeps the terms mid-sentence."
+}

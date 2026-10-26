@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-af366f7f",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N9805-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T08:29:05+00:00",
+ "recipe": {
+  "toolchain_commit": "393fbffd",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L21_N9805_neg/2026-10-26-ChopinDavid-af366f7f.tests.json"
+ },
+ "label": "the module name right after 'from' or 'import' inside a multi-line Python import block (os, sys, itertools, collections), as against the same module names in prose or in ordinary code use",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L21_N9805_neg/2026-10-26-ChopinDavid-af366f7f.tests.json",
+   "prereg_commit": "393fbffd",
+   "author": "ChopinDavid",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.483,
+     "peak": " sys"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.233,
+     "peak": " itertools"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.398,
+     "peak": " os"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.368,
+     "peak": " sys"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.272,
+     "peak": " itertools"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.132,
+     "peak": " collections"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.291,
+     "peak": " os"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.43,
+     "peak": " sys"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.037,
+     "peak": " whether"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.034,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.109,
+     "peak": " starts"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.15,
+     "peak": " program"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.014,
+     "peak": " at"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.049,
+     "peak": " os"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.037,
+     "peak": "print"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.043,
+     "peak": "other"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.33,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "393fbffd",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "module name in import block",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: ' os' x9 after 'import' in import blocks, ' sys', ' itertools', ' collections'. Probe: 'from os.path import join / from sys import argv' 0.300 on sys, 'from itertools import' 0.231; but a plain 'import sys/os/re/json' block only 0.076, prose 'os module' 0.072, 'os.path.join(a,b)' 0.024. Weak in short snippets; fire items are longer blocks with 'from X import'.",
+ "selection": "random draw"
+}

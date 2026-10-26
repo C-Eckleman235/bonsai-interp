@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-f8206dba",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N12056-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T12:20:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L20/N12056",
+   "pole": "-",
+   "label": "the head noun of a noun phrase that names a large institution, system or catastrophe (Institute, data center, war, cancer, model) in explanatory text, as against verbs, adverbs and pronouns in the same sentences",
+   "fire": [
+    "Most of the old bridges were destroyed in a war that lasted six years.",
+    "The report was written by the Pacific Coast Timber Institute in 2010.",
+    "New hyperscale data center projects need huge amounts of water.",
+    "Once lung cancer spreads, the cancer becomes much harder to treat.",
+    "The query returns a list of facet values for each product.",
+    "A massive earthquake hit the region and the quake damaged thousands of homes.",
+    "The weather model predicts heavy snow for the mountains.",
+    "Engineers at the research institute built a faster battery."
+   ],
+   "quiet": [
+    "Most of the old bridges were quietly repaired over six years.",
+    "The report was written carefully and published in 2010.",
+    "New projects often need surprisingly large amounts of water.",
+    "Once it spreads, it becomes much harder to treat.",
+    "The query quickly returns a list for each product.",
+    "It shook the region badly and damaged thousands of homes.",
+    "They predict heavy snow for the mountains tonight.",
+    "Engineers worked late and built a faster battery."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3+ on head nouns such as Institute, center, war, cancer; other tokens below 0.1. Expected weak.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "unclear: institutional/system head nouns",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card is broad (1.2% of tokens reach 0.1 of max) and mixed: '-api', ' Institute', '_model', ' facet', ' center', 東日本大地震, ' car', ' war', ' cancer'. Probe: nothing reached 0.12 (facet counts 0.113, war 0.112, data center 0.076, Institute 0.041, cancer 0.052); controls 0.008-0.036. No hypothesis found; best guess recorded with low confidence."
+}

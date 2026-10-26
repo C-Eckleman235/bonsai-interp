@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-1596585c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N2293+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T20:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N2293",
+   "pole": "+",
+   "label": "unclear: best guess is the first piece of a split plural noun in technical or code-comment text (TP|Us, heat|maps, story|boards)",
+   "fire": [
+    "# TODO: remove this check once we support TPUs.\ndef run(model):\n    return model.fit()",
+    "def test_plot(self):\n    \"\"\"Check the number of heatmaps drawn.\"\"\"\n    assert len(self.view.maps) == 3",
+    "# You can add several storyboards at once with a comma-separated list.\nboards = []",
+    "# Events for two different sids should not interact.\nevents = {}",
+    "def load(cfg):\n    # Build the dataloaders for training and testing.\n    return cfg.loaders",
+    "# NOTE: skip the checkpoints that are older than a day.\nfiles = []",
+    "def draw(self):\n    \"\"\"Draw the scatterplots for each column.\"\"\"\n    pass",
+    "# Merge the spreadsheets into one table.\ntables = []"
+   ],
+   "quiet": [
+    "# TODO: remove this check once we support GPU.\ndef run(model):\n    return model.fit()",
+    "def test_plot(self):\n    \"\"\"Check the number of plots drawn.\"\"\"\n    assert len(self.view.maps) == 3",
+    "# You can add several items at once with a comma-separated list.\nboards = []",
+    "# Events for two different users should not interact.\nevents = {}",
+    "def load(cfg):\n    # Build the data for training and testing.\n    return cfg.loaders",
+    "# NOTE: skip the files that are older than a day.\nfiles = []",
+    "def draw(self):\n    \"\"\"Draw the chart for each column.\"\"\"\n    pass",
+    "# Merge the rows into one table.\ntables = []"
+   ]
+  }
+ ],
+ "predictions": "best guess: first pieces of split plurals in code comments reach 0.2; plain prose split plurals stayed near 0.02 in probes, so this will likely fail",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "unclear; first piece of split plural in technical text",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Card: scattered peaks on the first piece of a split word (TP|Us, heat|maps, so|aps, s|ids, understand|ings, cast|les, p|ears, y|aks, tank|ers, story|boards), several from code. Probe in prose: soaps 0.026, pears 0.020, yaks 0.020, tankers 0.017, castles 0.114, meerkats 0.016. The prose reading failed, so this test tries the code-comment contexts of the top examples."
+}

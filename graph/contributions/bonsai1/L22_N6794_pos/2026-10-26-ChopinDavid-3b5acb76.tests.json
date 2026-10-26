@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-3b5acb76",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N6794+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T14:19:53+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N6794",
+   "pole": "+",
+   "label": "the opening brace of a positional placeholder ('{0}', '{1}') inside a Python string that is later passed to .format(), in multi-line code, as against the same messages built with + concatenation or % formatting",
+   "fire": [
+    "def report(n, path):\n    if n == 0:\n        return\n    print(\"Copied {0} images into {1}\".format(n, path))",
+    "for job in jobs:\n    if job.failed:\n        log.warning(\"Job {0} failed after {1} tries\".format(job.id, job.tries))",
+    "class Order:\n    def check(self):\n        if self.paid:\n            raise ValueError(_(\"Order cannot be edited, as it is already {0}\").format(self.state))",
+    "try:\n    data = fetch(url)\nexcept Exception as e:\n    print(\"Could not load {0}: {1}\".format(url, e))",
+    "def summary(stats):\n    lines = []\n    lines.append('Total rows\\t: {0:d}'.format(stats.rows))\n    return lines",
+    "if amount > limit:\n    frappe.throw(_(\"Discount must be smaller than {0}\").format(limit))",
+    "while queue:\n    item = queue.pop()\n    sys.stdout.write(\"Processing {0} of {1}\\n\".format(item, total))",
+    "def greet(user):\n    name = user.strip()\n    return \"Hello {0}, you have {1} new messages\".format(name, count)"
+   ],
+   "quiet": [
+    "def report(n, path):\n    if n == 0:\n        return\n    print(\"Copied \" + str(n) + \" images into \" + path)",
+    "for job in jobs:\n    if job.failed:\n        log.warning(\"Job %s failed after %d tries\" % (job.id, job.tries))",
+    "class Order:\n    def check(self):\n        if self.paid:\n            raise ValueError(\"Order cannot be edited, as it is already \" + self.state)",
+    "try:\n    data = fetch(url)\nexcept Exception as e:\n    print(\"Could not load\", url, e)",
+    "def summary(stats):\n    lines = []\n    lines.append('Total rows\\t: %d' % stats.rows)\n    return lines",
+    "if amount > limit:\n    raise ValueError(\"Discount must be smaller than \" + str(limit))",
+    "while queue:\n    item = queue.pop()\n    sys.stdout.write(\"Processing \" + str(item) + \"\\n\")",
+    "def greet(user):\n    name = user.strip()\n    return \"Hello \" + name + \", welcome back\""
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-1.0 on ' {' before 0/1 in .format strings inside a multi-line block; concatenated or %-formatted versions below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'{' of a .format() placeholder",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: ' {' x7 in frappe.throw(_('... {0}').format(...)), print('Downloaded {0} tweets'), plus newline before numbered lists in Arabic/genealogy text. Probe with one-line snippets was weak: 'Downloaded {0} files' 0.120, 'less than {0}' 0.043, '{}' 0.004, concatenation 0.006; numbered lists after 'following children:' 0.004. Card peaks sit deep in longer code, so the fire items are multi-line passages (AGENTS tip for code poles)."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-d2a5eb23",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N2943-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T12:20:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N2943",
+   "pole": "-",
+   "label": "a number or multiplicity prefix that opens a hyphenated technical compound in a machine spec (5-speed, multi-link, twin-turbo, double-acting), as against the same specs without that compound",
+   "fire": [
+    "The new hatchback pairs a small petrol engine with a 6-speed automatic gearbox.",
+    "Its rear suspension is a light multi-link setup borrowed from the sports model.",
+    "Power comes from a 3.0-litre twin-turbo V6 with direct injection.",
+    "The press uses a double-acting hydraulic cylinder to shape the sheet.",
+    "Under the bonnet sits a 4-cylinder diesel tuned for low-end torque.",
+    "The bike has a 12-speed rear cassette and hydraulic disc brakes.",
+    "Each wing carries a multi-blade propeller driven by an electric motor.",
+    "The tractor is fitted with a 3-point hitch at the rear."
+   ],
+   "quiet": [
+    "The new hatchback pairs a small petrol engine with an automatic gearbox.",
+    "Its rear suspension is a light setup borrowed from the sports model.",
+    "Power comes from a large V6 with direct injection.",
+    "The press uses a hydraulic cylinder to shape the sheet.",
+    "Under the bonnet sits a diesel engine tuned for low-end torque.",
+    "The bike has a light rear cassette and hydraulic disc brakes.",
+    "Each wing carries a propeller driven by an electric motor.",
+    "The tractor is fitted with a hitch at the rear."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on the number or 'multi'/'double' starting a hyphenated spec compound; the same spec sentences without it 0.1-0.3",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "count prefix of a spec compound",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: '5' x6, '2' x4, '多', '双' (双馈), ' Multi'-link, ' double'-acting, ' multiple'-gear. Probe: 'aluminium multi-link' 0.800, '5-speed manual' 0.579, 'double-acting' 0.340 (peak '-'), '235/40 tyres' 0.189; without the prefix 0.205/0.289 (spec context leaks), 'five sisters' 0.011, 'double espresso' 0.018."
+}

@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-26-JasperBlank-f8bd725f",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N1267+",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T12:55:04+00:00",
+ "recipe": {
+  "toolchain_commit": "cfd6808b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N1267_pos/2026-10-26-JasperBlank-f8bd725f.tests.json"
+ },
+ "label": "'ц' inside Russian 'офицер' (officer: офицер/офицера/офицеров), plus weak broad firing on '-ology/-ological' suffixes",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N1267_pos/2026-10-26-JasperBlank-f8bd725f.tests.json",
+   "prereg_commit": "cfd6808b",
+   "author": "JasperBlank",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.85,
+     "peak": " офи"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.583,
+     "peak": "ц"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.687,
+     "peak": "ц"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.72,
+     "peak": "ц"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.512,
+     "peak": " офи"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.613,
+     "peak": " офи"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.627,
+     "peak": "ц"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.623,
+     "peak": " офи"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.017,
+     "peak": "ви"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.028,
+     "peak": "ом"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.094,
+     "peak": "и"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.111,
+     "peak": "ем"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.064,
+     "peak": " стар"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.115,
+     "peak": "и"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.054,
+     "peak": "бы"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.06,
+     "peak": "л"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.625,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5 (subagent)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "cfd6808b",
+  "minutes": 195,
+  "batch_size": 48
+ },
+ "short": "Russian офицер 'ц'",
+ "unit_kind": "dense / positional",
+ "confidence": "low",
+ "notes": "Label and sentences written blind by a Claude subagent from the card text alone (prompt: haiku_labeler/prompt.md, identical for Haiku, Sonnet and Opus); one retry on mechanical checks. Part of a Haiku/Sonnet/Opus comparison on the same 48 poles.",
+ "selection": "random draw"
+}

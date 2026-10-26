@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-26-JasperBlank-19e75c98",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N3368+",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T13:39:07+00:00",
+ "recipe": {
+  "toolchain_commit": "dc58702b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N3368_pos/2026-10-26-JasperBlank-19e75c98.tests.json"
+ },
+ "label": "Passive/auxiliary slot in academic abstracts: ' also', ' are', ' discussed', ' summarized' right after a plural subject + 'are/is' (e.g. 'are also discussed', 'methods ... are needed')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N3368_pos/2026-10-26-JasperBlank-19e75c98.tests.json",
+   "prereg_commit": "dc58702b",
+   "author": "JasperBlank",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.574,
+     "peak": " also"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.232,
+     "peak": " needed"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.567,
+     "peak": " discussed"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.308,
+     "peak": " summarized"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.69,
+     "peak": " also"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.491,
+     "peak": " also"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.507,
+     "peak": " discussed"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.369,
+     "peak": " included"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.218,
+     "peak": " were"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.017,
+     "peak": " content"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.018,
+     "peak": " for"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.017,
+     "peak": " millions"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.077,
+     "peak": " rose"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.02,
+     "peak": " well"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.024,
+     "peak": " Monday"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.04,
+     "peak": " in"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.499,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc58702b",
+  "minutes": 10,
+  "batch_size": 192
+ },
+ "short": "abstract passive 'are also discussed'",
+ "unit_kind": "contextual",
+ "confidence": "medium",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "selection": "random draw",
+ "trigger": {
+  "tokens": [
+   " also",
+   " discussed",
+   " are",
+   " summarized"
+  ]
+ }
+}

@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-26-JasperBlank-90472462",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N4216+",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T13:39:16+00:00",
+ "recipe": {
+  "toolchain_commit": "dc58702b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N4216_pos/2026-10-26-JasperBlank-90472462.tests.json"
+ },
+ "label": "Diffuse, weak pole on function words (' to', ' of') and casual forum phrases such as 'good catch' and 'appreciated'; mostly gate-closed",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N4216_pos/2026-10-26-JasperBlank-90472462.tests.json",
+   "prereg_commit": "dc58702b",
+   "author": "JasperBlank",
+   "n_fire": 5,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.71,
+     "peak": " catch"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 1.034,
+     "peak": " will"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.193,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.733,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.3,
+     "peak": " catch"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.601,
+     "peak": " owe"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.093,
+     "peak": " dial"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.249,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.159,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.786,
+     "peak": " will"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.082,
+     "peak": " rew"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.288,
+     "peak": " visit"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.209,
+     "peak": " work"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.333,
+     "peak": " owe"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.041,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.037,
+     "peak": "Her"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.734,
+    "median_fire": 0.451,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc58702b",
+  "minutes": 10,
+  "batch_size": 192
+ },
+ "short": "diffuse function words",
+ "unit_kind": "dense / positional",
+ "confidence": "low",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "selection": "random draw",
+ "trigger": {
+  "words": [
+   "catch",
+   "appreciated",
+   "to",
+   "of"
+  ]
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-f824808f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N3060-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T08:21:20+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L13/N3060",
+   "pole": "-",
+   "label": "the closing quote or backslash of a string fragment that continues on the next line (implicit string concatenation or explicit line continuation in code), as against the same message written as one string on one line",
+   "fire": [
+    "error = (\"The configuration file could not be parsed. \"\n         \"Check the syntax and try again.\")",
+    "raise RuntimeError('Unable to connect to the remote server '\n                   'after three attempts.')",
+    "help_text = \"Set this flag to skip the cache \" \\\n    \"when downloading packages.\"",
+    "warnings.warn('This option is deprecated and will be removed '\n              'in the next major release.')",
+    "sql = 'SELECT id, name FROM users ' + \\\n      'WHERE active = 1'",
+    "log.info(\"Finished processing all records in the batch \"\n         \"without errors.\")",
+    "message = ('Your password must contain at least one digit '\n           'and one capital letter.')",
+    "print(\"The download finished, but the checksum did not match. \" \\\n      \"Please retry.\")"
+   ],
+   "quiet": [
+    "error = \"The configuration file could not be parsed. Check the syntax and try again.\"",
+    "raise RuntimeError('Unable to connect to the remote server after three attempts.')",
+    "help_text = \"Set this flag to skip the cache when downloading packages.\"",
+    "warnings.warn('This option is deprecated and will be removed in the next major release.')",
+    "sql = 'SELECT id, name FROM users WHERE active = 1'",
+    "log.info(\"Finished processing all records in the batch without errors.\")",
+    "message = 'Your password must contain at least one digit and one capital letter.'",
+    "print(\"The download finished, but the checksum did not match. Please retry.\")"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 at the quote/backslash before a line break inside a split string; single-line strings under 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "string fragment continued on next line",
+ "unit_kind": "context",
+ "confidence": 0.75,
+ "notes": "Card top 32: ' \"\\n' x7, \" '\\n\" x6, ' \\\\\\n' x5 — all string fragments continued on the next line. Probe: split msg with backslash 0.824, split ValueError message 0.396, 'AND ' + \\ 0.398, 'x = a + \\' 0.231; same messages on one line 0.004-0.008, prose quote 0.007."
+}

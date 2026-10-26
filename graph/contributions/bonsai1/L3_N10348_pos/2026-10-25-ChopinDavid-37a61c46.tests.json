@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-37a61c46",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N10348+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T03:19:56+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L3/N10348",
+   "pole": "+",
+   "label": "the stem piece after a split prefix in dis|qual-, dis|continue and pro|sci-utto, as against unsplit dis- words (disrepair-style splits that do not continue a known stem, dismiss, distrust)",
+   "fire": [
+    "The referee may disqualify any player who argues with him.",
+    "A late payment can disqualify you from the scholarship.",
+    "The bakery will discontinue its rye bread next month.",
+    "Doctors told her to discontinue the drug at once.",
+    "The salad comes with figs, rocket and thin prosciutto.",
+    "We served prosciutto and melon as a starter.",
+    "Any false answer will disqualify the application.",
+    "The airline plans to discontinue the night flight to Rome."
+   ],
+   "quiet": [
+    "The referee may dismiss any player who argues with him.",
+    "A late payment can distract you from the scholarship.",
+    "The bakery will display its rye bread next month.",
+    "Doctors told her to distrust the drug at once.",
+    "The salad comes with figs, rocket and thin salami.",
+    "We served ham and melon as a starter.",
+    "Any false answer will discredit the application.",
+    "The airline plans to disclose the night flight to Rome."
+   ]
+  }
+ ],
+ "predictions": "fire 0.8-0.95 on 'qual'/'continue'/'sci'; unsplit dis- words and dis|repair below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "stem after ' dis' / ' pro' split",
+ "unit_kind": "token",
+ "confidence": 0.5,
+ "notes": "Card: peaks 'qual' x6, 'continue' x6, 'pro' x4 (Dis|pro|portion, s|pro|cket), 'sci' x2 (pro|sci|utto). Probe: disqualifying 0.951; disqualify 0.924; discontinue 0.859; prosciutto 0.909; dis|inherit 0.290; dis|repair 0.007; but single-token ' disqualified' 0.419 (so not used as a near miss). Splits checked with tok.py."
+}

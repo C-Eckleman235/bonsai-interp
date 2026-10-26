@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-fbb177d5",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N11231+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T20:27:56+00:00",
+ "recipe": {
+  "toolchain_commit": "b2cd2c52",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L12_N11231_pos/2026-10-26-ChopinDavid-fbb177d5.tests.json"
+ },
+ "label": "the opening line of a Python docstring or a 'from' import line at the start of a new code line, as against code lines that start with ordinary statements or comments",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L12_N11231_pos/2026-10-26-ChopinDavid-fbb177d5.tests.json",
+   "prereg_commit": "b2cd2c52",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 6,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.313,
+     "peak": " \"\"\"\n"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 1.212,
+     "peak": " \"\"\"\n"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.652,
+     "peak": "from"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 1.489,
+     "peak": " \"\"\"\n"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.885,
+     "peak": "from"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 1.226,
+     "peak": " \"\"\"\n"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.708,
+     "peak": "from"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 1.32,
+     "peak": " \"\"\"\n"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.299,
+     "peak": ":\n"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.92,
+     "peak": " #"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.276,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.702,
+     "peak": "class"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.318,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.857,
+     "peak": " #"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.389,
+     "peak": "\n\n"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.617,
+     "peak": "class"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.906,
+    "median_fire": 1.219,
+    "near_misses_at_0.3": 6
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "b2cd2c52",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "docstring opener / 'from' import at line start in code",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: 'from' x5 at line start, ' \"\"\"\\n' x2, 'import' x2, plus paragraph-initial names in news. Probe: class docstring 1.439 (peak ' \"\"\"\\n'); 'import numpy\\nfrom scipy' 0.549 (peak 'from'); news paragraph starts 0.276-0.301 but the same text without a newline scored the same (0.263-0.309) and plain sentence-initial 'The' scored 0.18-0.30, so the news reading is a first-token effect, not line starts.",
+ "selection": "random draw"
+}

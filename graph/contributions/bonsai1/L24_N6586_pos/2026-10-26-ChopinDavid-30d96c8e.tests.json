@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-30d96c8e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N6586+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T11:21:23+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L24/N6586",
+   "pole": "+",
+   "label": "the full stop after a one-word attention-grabbing vocative or interjection (Dude. / Y'all. / Bro.) that opens an emphatic informal outburst, as against full stops that end ordinary sentences in the same chatty text",
+   "fire": [
+    "We finally got the keys to the new apartment and Bro. This kitchen is enormous!",
+    "My sister texted me after the game: \"Y’all. We actually won that thing!\"",
+    "He saw the parking ticket on his windshield and just said, \"Dude. Seriously?\"",
+    "I opened the box from grandma last night and Guys. She knitted me a whole blanket!",
+    "Okay so the season finale aired yesterday and Y’all. I cannot stop crying.",
+    "My friend tasted the hot sauce and yelled, \"Bro. My mouth is on fire!\"",
+    "The waiter brought out the dessert tower and Dude. It was taller than my kid.",
+    "Coach looked at our scoreboard and said, \"Ladies. That was unbelievable!\""
+   ],
+   "quiet": [
+    "We finally got the keys to the new apartment today. The kitchen is quite large.",
+    "My sister texted me after the game to say we won. The score was close.",
+    "He saw the parking ticket on his windshield and sighed. It cost forty dollars.",
+    "I opened the box from grandma last night. She knitted me a warm blanket.",
+    "The season finale aired yesterday evening. I watched it with my parents.",
+    "My friend tasted the hot sauce at dinner. He thought it was rather spicy.",
+    "The waiter brought out the dessert after the meal. It was a lemon tart.",
+    "Coach looked at our scoreboard after practice. He wrote the results down."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.7 on the '.' after the one-word vocative; ordinary sentence-final full stops in the same informal text below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "the '.' after 'Dude.', 'Y'all.'",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: '.' x14, all after a one-word address or exclamation (Y'all⟦.⟧, Dude⟦.⟧, Katherine⟦.⟧, Oh my god⟦.⟧), plus all-caps praise (HOLY CR⟦AP⟧, I⟦ LOVE⟧). Probe: 'Dude. Clean this up.' 0.670, 'wow. Y'all.' 0.480, all-caps 'THIS IS AMAZING' 0.515, 'Oh my god.' 0.233; ordinary sentence ends 0.005-0.017. The test covers the vocative full stop only."
+}

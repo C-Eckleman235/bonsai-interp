@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-26-JasperBlank-01e43eb3",
+ "contributor": "JasperBlank",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N7437-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T13:17:27+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N7437",
+   "pole": "-",
+   "label": "Underscore-suffix pieces '_with', '_config', '_data', '_called' inside Python method/decorator names (assert_called_with, @view_config, set_data); also fires on some Arabic word pieces",
+   "fire": [
+    "def test_push(self):\n    mock_call.assert_called_with('git stash drop --quiet')",
+    "@view_config(route_name='scrum_sprint_edit', request_method='GET')\ndef sprint_edit(request):\n    return {}",
+    "self.line.set_data(list(zip(*self.poly.xy)))\nself.canvas.draw()",
+    "@view_config(request_method=\"GET\", route_name='home')\ndef home(request):\n    return HTTPNotFound()",
+    "def check(self):\n    self.client.post.assert_called_with('/api', json=payload)",
+    "plot.set_data(xs, ys)\nplot.figure.canvas.draw_idle()",
+    "app.config.from_object(Settings)\nsettings = app.config\nlogger.assert_called_with('ready')",
+    "@view_config(route_name='login', renderer='templates/login.pt')\ndef login(request):\n    return {}"
+   ],
+   "quiet": [
+    "def test_push(self):\n    mock_call.assert_called_once()\n    mock_call.reset_mock()",
+    "@app.route('/sprint/edit', methods=['GET'])\ndef sprint_edit(request):\n    return {}",
+    "self.line.draw(list(zip(*self.poly.xy)))\nself.canvas.draw()",
+    "The committee met with the council on Monday to discuss the budget and the schedule.",
+    "def home(request):\n    value = request.GET.get('x')\n    return HTTPNotFound()",
+    "plot.update(xs, ys)\nplot.figure.canvas.draw_idle()",
+    "with open('log.txt') as f:\n    data = f.read()\nprint(data)",
+    "She spoke with the manager about the new plan and the people involved."
+   ]
+  }
+ ],
+ "predictions": "7/8 fire, 0 near misses",
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card"
+  ]
+ },
+ "short": "_with/_config/_data suffix",
+ "unit_kind": "lexical",
+ "confidence": "medium",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "trigger": {
+  "pieces": [
+   "_with",
+   "_config",
+   "_data"
+  ]
+ }
+}

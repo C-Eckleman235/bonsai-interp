@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-82e953bf",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N4490-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T10:20:09+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N4490",
+   "pole": "-",
+   "label": "the name of a setting or attribute key in code (options['mode'], df.fieldtype, BACKEND, LOCALE_PATHS), as against the same words used in prose",
+   "fire": [
+    "if config['mode'] == 'debug':\n    log.setLevel(10)",
+    "for f in meta.fields:\n    if f.fieldtype == \"Date\":\n        dates.append(f)",
+    "DATABASES = {\"default\": {\"ENGINE\": \"sqlite3\"}}",
+    "width = self.opts[\"lineWidth\"] * scale",
+    "if args.mode in (\"train\", \"eval\"):\n    run(args)",
+    "col = table.get_column(name)\nif col.datatype == \"int\":\n    cast(col)",
+    "settings[\"TIMEZONE\"] = \"UTC\"",
+    "kind = node.attrs.get(\"type\", \"leaf\")"
+   ],
+   "quiet": [
+    "The debug mode makes the program print more messages.",
+    "We wrote down the date of each meeting on the board.",
+    "The default engine in the old car was quite loud.",
+    "The line on the page was too thin to read.",
+    "She switched the camera to night mode before the show.",
+    "Every column in the old ledger was written in ink.",
+    "They changed the time zone on their watches in Paris.",
+    "This kind of tree grows well near the coast."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.6 on option and field key names in code; the same words in ordinary prose below 0.12",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "attribute or option key name in code",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: field⟦type⟧ x2, options['⟦mode⟧'], 'BACK⟦END⟧', LOCALE⟦_PATH⟧S, minorGrid⟦Unit⟧, requests⟦.codes⟧, plus 'Discuss genre'. Probe: options['mode'] 0.583, df.fieldtype 0.390, BACKEND 0.278, df.fieldname 0.272, options['out_file'] 0.266, minorGridUnit 0.119, 'Discuss genre' 0.381; prose 'type of bread' 0.096. The key word itself matters less than its role as a key; 'genre' in prose leaked once."
+}

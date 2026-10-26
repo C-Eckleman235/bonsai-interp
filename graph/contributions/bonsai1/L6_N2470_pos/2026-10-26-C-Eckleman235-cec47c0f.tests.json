@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-C-Eckleman235-cec47c0f",
+ "contributor": "C-Eckleman235",
+ "kind": "qc",
+ "neuron": "bonsai1/L6/N2470+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T17:44:03+00:00",
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "the comma ',' right after a clause-opening conjunction 'And' / 'But' / 'and' at the start of a sentence or clause, as in 'And, you know,' or 'But, in general,'",
+  "notes": "Model-QC pilot (concept-maps plan sha256 e2c0fbd950fc010cf3ac8c4a8d9473758ba54d8ddb3e2dbc13f451f5a8ddf787): label slot A of this pole, from contribution 2026-10-25-JasperBlank-5e497a69; which model wrote it stays sealed until all 30 tests are scored. Sentences written by a fresh Opus subagent that saw only the pole's card (record line removed) and the three anonymous labels; nothing was probed or scored."
+ },
+ "neighbours": [
+  {
+   "unit": "L6/N2470",
+   "pole": "+",
+   "label": "the comma ',' right after a clause-opening conjunction 'And' / 'But' / 'and' at the start of a sentence or clause, as in 'And, you know,' or 'But, in general,'",
+   "fire": [
+    "We tried the new recipe last week. And, to be honest, nobody at the table finished their plate.",
+    "The committee met twice in March. But, as far as I can tell, nothing was actually decided.",
+    "She moved to Denver for the job, and, after a rough first winter, she finally felt at home.",
+    "I wasn't sure the bridge would hold. And, sure enough, one of the cables snapped by noon.",
+    "The vaccine trial looked promising early on. But, in the larger cohort, the effect mostly disappeared.",
+    "He had already signed the lease, and, according to his landlord, the deposit was nonrefundable.",
+    "Our team lost the first three games. And, frankly, the coach deserved most of the blame.",
+    "The museum was crowded on Sunday. But, you know, the sculpture wing was almost empty."
+   ],
+   "quiet": [
+    "Last week we cooked that new recipe. And to be honest, nobody finished their plate.",
+    "Nothing was decided at either committee meeting. So, as far as I can tell, the plan is stalled.",
+    "After a rough first winter in Denver, she finally felt at home in the new apartment.",
+    "Sure enough, one of the cables on the old bridge snapped by noon, just as I feared.",
+    "In the larger cohort, however, the vaccine's early effect mostly disappeared.",
+    "According to his landlord, the deposit on the lease was nonrefundable, which annoyed him.",
+    "We lost the first three games. Frankly, the coach deserved most of the blame for that.",
+    "The sculpture wing was almost empty on Sunday. Well, you know, most people come for the paintings."
+   ]
+  }
+ ],
+ "predictions": "confirm: the label as written should hold a harder independent test (>= 6/8 fire, AUROC >= 0.9)",
+ "methods": {
+  "agent": "claude-code opus-5.5 (blind QC-writer subagent, card only)",
+  "screens": [
+   "card"
+  ]
+ },
+ "selection": "model-QC pilot: a seeded draw of poles held by all three labelling models (#1018-#1021)"
+}

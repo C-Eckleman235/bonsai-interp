@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-C-Eckleman235-6d3c06db",
+ "contributor": "C-Eckleman235",
+ "kind": "qc",
+ "neuron": "bonsai1/L25/N221+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T17:44:46+00:00",
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "' Anal' / ' anal' as the first piece of a longer word that the tokenizer splits (Anal|ogue, Anal|ysing, Anal|ytical), i.e. a word-initial 'anal' fragment; weaker secondary hits on 'ab' inside An|ab|aptism",
+  "notes": "Model-QC pilot (concept-maps plan sha256 e2c0fbd950fc010cf3ac8c4a8d9473758ba54d8ddb3e2dbc13f451f5a8ddf787): label slot B of this pole, from contribution 2026-10-26-JasperBlank-a1b19986; which model wrote it stays sealed until all 30 tests are scored. Sentences written by a fresh Opus subagent that saw only the pole's card (record line removed) and the three anonymous labels; nothing was probed or scored."
+ },
+ "neighbours": [
+  {
+   "unit": "L25/N221",
+   "pole": "+",
+   "label": "' Anal' / ' anal' as the first piece of a longer word that the tokenizer splits (Anal|ogue, Anal|ysing, Anal|ytical), i.e. a word-initial 'anal' fragment; weaker secondary hits on 'ab' inside An|ab|aptism",
+   "fire": [
+    "Most broadcasters switched off their Analogue transmitters a decade ago.",
+    "The committee is still Analysing the survey results from last spring.",
+    "Analysts praised the Analytical Engine as a remarkable design for its time.",
+    "She has a strongly analytical mind and enjoys solving logic puzzles.",
+    "Our team relies on analytical chemistry to verify every batch of medicine.",
+    "An old Analogue clock hung above the fireplace in the farmhouse kitchen.",
+    "Records show the Anabaptist preachers were often expelled from city walls.",
+    "Scholars of Dutch Anabaptism have written widely about Menno Simons."
+   ],
+   "quiet": [
+    "Most broadcasters switched off their older transmitters a decade ago.",
+    "The committee is still reviewing the survey results from last spring.",
+    "Engineers praised the Difference Engine as a remarkable design for its time.",
+    "She has a strongly logical mind and enjoys solving number puzzles.",
+    "Our team relies on organic chemistry to verify every batch of medicine.",
+    "An old wooden clock hung above the fireplace near the Annals of the village.",
+    "Records show the Puritan preachers were often expelled from city walls.",
+    "The full analysis of Dutch Mennonite history fills several thick volumes."
+   ]
+  }
+ ],
+ "predictions": "confirm: the label as written should hold a harder independent test (>= 6/8 fire, AUROC >= 0.9)",
+ "methods": {
+  "agent": "claude-code opus-5.5 (blind QC-writer subagent, card only)",
+  "screens": [
+   "card"
+  ]
+ },
+ "selection": "model-QC pilot: a seeded draw of poles held by all three labelling models (#1018-#1021)"
+}

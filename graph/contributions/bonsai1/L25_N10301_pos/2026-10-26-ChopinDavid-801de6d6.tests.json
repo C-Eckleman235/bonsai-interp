@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-801de6d6",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N10301+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T14:19:53+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L25/N10301",
+   "pole": "+",
+   "label": "the sentence boundary in expository science or history prose, right after a sentence that names a substance, object or process the next sentence will explain, as against the same boundary in narrative or casual everyday text",
+   "fire": [
+    "Iron is carried around the body by haemoglobin. Haemoglobin is a protein found in red blood cells.",
+    "Archaeologists found a bronze mirror in the tomb. Mirrors like this were made by polishing metal.",
+    "Caffeine blocks receptors for adenosine in the brain. Adenosine normally makes us feel sleepy.",
+    "The comet's tail is made of gas and dust. Because the tail points away from the sun, it changes direction.",
+    "Plants store energy as starch in their roots. Starch is a long chain of glucose molecules.",
+    "Lead pipes were common in Roman cities. Lead is toxic and slowly damages the nervous system.",
+    "The reaction is slowed down by cold temperatures. In winter, therefore, the process takes longer.",
+    "Coral reefs are built by tiny animals called polyps. Polyps take calcium from sea water."
+   ],
+   "quiet": [
+    "Tom put his keys on the table by the door. Then he went upstairs to change.",
+    "We found a cheap mirror at the market on Saturday. Mum hung it in the hall.",
+    "I had two coffees before the meeting this morning. Now I can't sit still.",
+    "The dog ran out into the garden after the ball. Then it rolled in the mud.",
+    "My aunt keeps potatoes in a sack in her shed. She cooks them every Sunday.",
+    "Sam fixed the old pipes in our bathroom last week. He charged us forty pounds.",
+    "It was cold when we left the house this morning. Lucy forgot her gloves again.",
+    "Ana went swimming at the reef with her cousins. They stayed until sunset."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.5 on '.' or the next connective in explanatory science/history passages; narrative and casual passages below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "sentence end in expository prose",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: '.' x13 and ' Since'/' Now'/' Because' at sentence starts in explanatory articles (folate in our blood. Folate is..., amphoras at the bottom of the bay. Amphoras were...). Probe: folate passage 0.281, amphoras 0.365, enzyme inhibited 0.224, 'Since it was raining' 0.277; narrative 'walked into the kitchen. She smiled' 0.010, shopping 0.044, dialogue 0.034. Moderate-low strength; topic/register-level guess."
+}

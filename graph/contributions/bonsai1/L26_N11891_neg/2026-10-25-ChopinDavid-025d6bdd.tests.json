@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-025d6bdd",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N11891-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T02:19:54+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N11891",
+   "pole": "-",
+   "label": "the first piece of a split Spanish or Russian word in the consec-/segu-/exce-/след- families (consecuencia, seguimiento, excepción, следующий), as against the same sentences with whole-token words",
+   "fire": [
+    "Llovió toda la semana y, como consecuencia, se suspendió el partido.",
+    "Los médicos hacen un seguimiento del paciente cada tres meses.",
+    "El museo abre todos los días, con la excepción de los lunes.",
+    "Откройте меню и выберите следующий пункт из списка.",
+    "La empresa perdió clientes y, en consecuencia, cerró dos tiendas.",
+    "Ayer seguimos el camino del río hasta llegar al pueblo.",
+    "Todas las reglas tienen sus excepciones, incluso esta.",
+    "Он прочитал письмо и следом позвонил своему брату."
+   ],
+   "quiet": [
+    "Llovió toda la semana y por eso no hubo partido.",
+    "Los médicos ven al paciente cada tres meses.",
+    "El museo abre todos los días menos los lunes.",
+    "Откройте меню и выберите нужный пункт из списка.",
+    "La empresa perdió clientes y por eso cerró dos tiendas.",
+    "Ayer fuimos por el camino del río hasta llegar al pueblo.",
+    "Todas las reglas tienen sus límites, incluso esta.",
+    "Он прочитал письмо и потом позвонил своему брату."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on ' consec', ' segu', ' exce', ' след'; rephrased sentences without those pieces below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "first piece of split consec-/segu-/exce-/след- words",
+ "unit_kind": "token",
+ "confidence": 0.45,
+ "notes": "Card: ' consec' x10, ' continu' x3, ' след' x3, ' segu' x2, ' exce'. Probe: en consecuencia 0.908, seguimiento 0.807, a excepción 0.790, следуйте 0.712, consecutively 0.386, a continuación 0.382; same sentences without the word 0.013-0.024. 'excepción' firing as strongly as the 'follow' words argues against a pure 'succession' meaning, so the label stays at the word-piece level."
+}

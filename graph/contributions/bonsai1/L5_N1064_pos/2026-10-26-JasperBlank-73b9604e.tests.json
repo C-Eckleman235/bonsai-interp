@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-26-JasperBlank-73b9604e",
+ "contributor": "JasperBlank",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N1064+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T13:17:27+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N1064",
+   "pole": "+",
+   "label": "Dense code-text pole; peaks on identifier pieces such as 'copyright' in __copyright__ module headers and 'virt' (virtual/virt-manager)",
+   "fire": [
+    "import os, sys\n\n__author__ = \"Peter Maxwell\"\n__copyright__ = \"Copyright 2008\"\n",
+    "#!/usr/bin/python\n\n__author__ = \"Anna Keller\"\n__copyright__ = \"Copyright 2014, Keller Labs\"\n__license__ = \"GPL\"\n",
+    "import sys\n__version__ = \"1.2\"\n__copyright__ = \"Copyright 2011 Acme\"\nprint(__version__)\n",
+    "from setuptools import setup\n\n__author__ = 'Li Wei'\n__copyright__ = 'Copyright 2019'\n",
+    "The module header defines __author__ and __copyright__ before any imports are executed in the file.",
+    "import virtualenv\nvirt = virtualenv.create('env')\nvirt.activate()\n",
+    "Use virt-manager to manage each virt guest, and enable virtio drivers on the virtualised host.",
+    "# config\n__title__ = 'tool'\n__copyright__ = 'Copyright 2016 Open Group'\n"
+   ],
+   "quiet": [
+    "import os, sys\n\nname = \"Peter Maxwell\"\nyear = 2008\nprint(name, year)\n",
+    "def main():\n    print('hello world')\n\nif __name__ == '__main__':\n    main()\n",
+    "The license text says all rights are reserved by the author and the project team.",
+    "from setuptools import find_packages\n\nsetup(name='demo', version='1.0')\n",
+    "She walked to the library and borrowed three books about gardening and cooking.",
+    "# config\nauthor = 'Li Wei'\nlicense = 'GPL'\n",
+    "Use the package manager to install the tool, then restart the machine afterwards.",
+    "x = [1, 2, 3]\nfor i in x:\n    print(i)\n"
+   ]
+  }
+ ],
+ "predictions": "5/8 fire, 1 near miss",
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card"
+  ]
+ },
+ "short": "dunder copyright, virt",
+ "unit_kind": "dense / positional",
+ "confidence": "low",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "trigger": {
+  "words": [
+   "copyright",
+   "virt"
+  ]
+ }
+}

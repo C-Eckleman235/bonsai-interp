@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-C-Eckleman235-ee661c79",
+ "contributor": "C-Eckleman235",
+ "kind": "qc",
+ "neuron": "bonsai1/L0/N3660-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T17:43:15+00:00",
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "word-piece continuation right after a split-off 'z'/'Z' token, mostly 'umin' in German 'zumindest', also Z+ithromax, Z+ufferey, z+ashchity",
+  "notes": "Model-QC pilot (concept-maps plan sha256 e2c0fbd950fc010cf3ac8c4a8d9473758ba54d8ddb3e2dbc13f451f5a8ddf787): label slot A of this pole, from contribution 2026-10-26-JasperBlank-d3a21ab4; which model wrote it stays sealed until all 30 tests are scored. Sentences written by a fresh Opus subagent that saw only the pole's card (record line removed) and the three anonymous labels; nothing was probed or scored."
+ },
+ "neighbours": [
+  {
+   "unit": "L0/N3660",
+   "pole": "-",
+   "label": "word-piece continuation right after a split-off 'z'/'Z' token, mostly 'umin' in German 'zumindest', also Z+ithromax, Z+ufferey, z+ashchity",
+   "fire": [
+    "Die Veranstaltung war zumindest in den ersten Stunden gut besucht, trotz des Regens.",
+    "Wir sollten zumindest einmal darüber reden, bevor wir den Vertrag unterschreiben.",
+    "My doctor prescribed Zithromax for the sinus infection last winter.",
+    "The drone swarm project was led by Jean-Christophe Zufferey at the Swiss lab.",
+    "The Russian headline read 'Ostavlen bez zashchity' after the regional elections.",
+    "Er hat es zumindest versucht, auch wenn das Ergebnis enttäuschend war.",
+    "Pharmacies stocked generic Zithromax tablets alongside other common antibiotics.",
+    "Laut Bericht hat die Firma zumindest teilweise auf die Kritik reagiert."
+   ],
+   "quiet": [
+    "Das Konzert blieb mindestens bis Mitternacht gut besucht, trotz des Regens.",
+    "Wir müssen wenigstens einmal darüber sprechen, bevor jemand unterschreibt.",
+    "Her physician recommended amoxicillin for the ear infection this spring.",
+    "The robotics group was led by Dario Floreano at the Swiss institute.",
+    "A Russian newspaper wrote that the region was left without protection.",
+    "Sie hat es immerhin probiert, obwohl das Ergebnis eher schwach war.",
+    "The aluminum foil and luminous paint were stocked next to the hardware aisle.",
+    "Zum Glück hat die Firma auf die Kritik zügig und offen reagiert."
+   ]
+  }
+ ],
+ "predictions": "confirm: the label as written should hold a harder independent test (>= 6/8 fire, AUROC >= 0.9)",
+ "methods": {
+  "agent": "claude-code opus-5.5 (blind QC-writer subagent, card only)",
+  "screens": [
+   "card"
+  ]
+ },
+ "selection": "model-QC pilot: a seeded draw of poles held by all three labelling models (#1018-#1021)"
+}

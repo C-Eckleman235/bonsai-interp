@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-fbb177d5",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N11231+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T20:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N11231",
+   "pole": "+",
+   "label": "the opening line of a Python docstring or a 'from' import line at the start of a new code line, as against code lines that start with ordinary statements or comments",
+   "fire": [
+    "x = 1\n\nclass Config:\n    \"\"\"\n    Holds the settings for the app.\n    \"\"\"",
+    "import os\n\ndef load(path):\n    \"\"\"\n    Load a file from disk.\n    \"\"\"\n    return open(path).read()",
+    "import json\nfrom pathlib import Path\n\ndata = json.loads(Path('a.json').read_text())",
+    "import sys\n\nclass Logger:\n    \"\"\"\n    Writes messages to a log file.\n    \"\"\"",
+    "import re\nfrom collections import Counter\n\nwords = Counter()",
+    "y = 2\n\ndef area(r):\n    \"\"\"\n    Return the area of a circle.\n    \"\"\"\n    return 3.14 * r * r",
+    "import time\nfrom datetime import date\n\ntoday = date.today()",
+    "import math\n\nclass Point:\n    \"\"\"\n    A point in the plane.\n    \"\"\""
+   ],
+   "quiet": [
+    "x = 1\n\nclass Config:\n    debug = False\n    name = 'app'",
+    "import os\n\ndef load(path):\n    # load a file from disk\n    return open(path).read()",
+    "import json, pathlib\n\ndata = json.loads(pathlib.Path('a.json').read_text())",
+    "import sys\n\nclass Logger:\n    level = 1\n    path = 'log.txt'",
+    "import re, collections\n\nwords = collections.Counter()",
+    "y = 2\n\ndef area(r):\n    # area of a circle\n    return 3.14 * r * r",
+    "import time, datetime\n\ntoday = datetime.date.today()",
+    "import math\n\nclass Point:\n    x = 0\n    y = 0"
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-1.4 on '\"\"\"' opening a docstring under class/def and on 'from' starting an import line; code whose lines open with assignments, returns or # comments below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "docstring opener / 'from' import at line start in code",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: 'from' x5 at line start, ' \"\"\"\\n' x2, 'import' x2, plus paragraph-initial names in news. Probe: class docstring 1.439 (peak ' \"\"\"\\n'); 'import numpy\\nfrom scipy' 0.549 (peak 'from'); news paragraph starts 0.276-0.301 but the same text without a newline scored the same (0.263-0.309) and plain sentence-initial 'The' scored 0.18-0.30, so the news reading is a first-token effect, not line starts."
+}
