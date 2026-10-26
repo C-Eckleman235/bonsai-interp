@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-0cf3af99",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N9606-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T15:27:37+00:00",
+ "recipe": {
+  "toolchain_commit": "5e41db80",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L2_N9606_neg/2026-10-26-ChopinDavid-0cf3af99.tests.json"
+ },
+ "label": "a single kanji token inside a Sino-Japanese compound written in Japanese (危機, 冷暖房, 貧しい, 本革), as against Japanese text made of common multi-character tokens and kana",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L2_N9606_neg/2026-10-26-ChopinDavid-0cf3af99.tests.json",
+   "prereg_commit": "5e41db80",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.834,
+     "peak": "危"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.744,
+     "peak": "暖"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.727,
+     "peak": "貧"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.863,
+     "peak": "革"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.845,
+     "peak": "浴"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.947,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.333,
+     "peak": "赤"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 1.043,
+     "peak": "危"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.122,
+     "peak": "みんな"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.094,
+     "peak": "屋"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.234,
+     "peak": "女"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.052,
+     "peak": "新しい"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.398,
+     "peak": "泳"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.091,
+     "peak": "送"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.2,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.246,
+     "peak": "静"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.839,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "5e41db80",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "lone kanji token in a Japanese compound",
+ "unit_kind": "token",
+ "confidence": 0.35,
+ "notes": "Broad weak L2 pole (3.7% of tokens reach 0.1 of max; leak regime 100%). Card: 同梱, 貧弱, 危機, 日光浴, 冷暖房, 赤道, 本革. Probe: 危機 0.959, 同梱 0.825, 冷暖房 0.785, 本革 0.760, 貧しい 0.711; '今日は天気がいいです' 0.099, '友達に会いました' 0.254 (on 達), English 0.034. Near misses may still fire on other kanji, hence low confidence.",
+ "selection": "random draw"
+}
