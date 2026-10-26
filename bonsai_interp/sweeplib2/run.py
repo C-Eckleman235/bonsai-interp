@@ -79,6 +79,15 @@ def _sha_gz(p):
     return hashlib.sha256(gzip.open(p, "rb").read()).hexdigest()
 
 
+def _amendments(P):
+    """Code versions allowed besides the registered one: entries of the committed-alone amendments file, each a fix that
+    changes no selection, test or judgement (a speed or crash fix), with its reason."""
+    p = P["protocol"].with_name(P["protocol"].name.replace(".protocol.", ".amendments."))
+    if not p.exists() or not R1._alone(p):
+        return set()
+    return {e["code_sha256"] for e in json.loads(p.read_text(encoding="utf-8"))}
+
+
 def _setup(a, need_prereg=False):
     if a.smoke:
         Path(a.smoke).mkdir(parents=True, exist_ok=True)
@@ -87,8 +96,9 @@ def _setup(a, need_prereg=False):
     if not P["protocol"].exists() or not R1._alone(P["protocol"]):
         sys.exit(f"commit {P['protocol'].relative_to(ROOT)} on its own before running any stage (run `protocol` first)")
     man = json.loads(P["protocol"].read_text(encoding="utf-8"))
-    if _code_sha() != man["code_sha256"]:
-        sys.exit("sweeplib2's code changed since its protocol was registered: that is a new protocol version")
+    if _code_sha() not in {man["code_sha256"]} | _amendments(P):
+        sys.exit("sweeplib2's code changed since its protocol was registered and the change is not a committed amendment: "
+                 "that is a new protocol version")
     if _sha_gz(P["seeds"]) != man["seeds_sha256"]:
         sys.exit("the seeds file does not match the protocol")
     if need_prereg and (not P["prereg"].exists() or not R1._alone(P["prereg"])):
@@ -448,11 +458,16 @@ def score(a):
              "auroc": round(float(((F[:, None] > Q[None]) + 0.5 * (F[:, None] == Q[None])).mean()), 3), "med_fire": round(float(np.median(F)), 3),
              "fire": fa, "quiet": qa, "select": r["select"]}
         if res == "held" and not plac:
-            e = sel[t]
-            sr = next((s for s in e["claims"][r["claim"]]["selected"] if s["neuron"] == r["neuron"]), {})
-            o["coverage"], o["coverage_bound"], o["coverage_method"] = _coverage(r["neuron"], r["claim"], e["info"], e["counts"], sr.get("rate", {}))
-            o["seed"] = sr.get("seed")
+            o["_cov"] = (r, t)
         out.append(o)
+    # coverage of the held claims, layer by layer: graph.coverage caches 4 layer tables, and a table costs ~6 s to load,
+    # so test order (by word, every layer mixed) reloaded a table for almost every held claim (amendment 1)
+    for o in sorted((o for o in out if "_cov" in o), key=lambda o: o["layer"]):
+        r, t = o.pop("_cov")
+        e = sel[t]
+        sr = next((s for s in e["claims"][r["claim"]]["selected"] if s["neuron"] == r["neuron"]), {})
+        o["coverage"], o["coverage_bound"], o["coverage_method"] = _coverage(r["neuron"], r["claim"], e["info"], e["counts"], sr.get("rate", {}))
+        o["seed"] = sr.get("seed")
     sha = ct._write_gz(P["results"], out)
     summ = summarize(out, sel)
     summ.update({"protocol": PROTOCOL, "scored": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "toolchain_commit": ct._commit(),
