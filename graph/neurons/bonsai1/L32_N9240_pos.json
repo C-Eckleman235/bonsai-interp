@@ -4,10 +4,10 @@
  "layer": 32,
  "index": 9240,
  "pole": "+",
- "label": "the word joining two numbers in a range, size or score, right after the first number ('2:00 PM to 3:00', 'aged 5 to 12', '39 x 30 cm', '12 by 14 feet', '9-to-5', 'won 3 to 1'): a second number comes next; 'to', 'by' and 'x' that do not join two numbers stay quiet",
+ "label": "a joiner (to, by, x, and, or, until) that opens the second end of a range, size, score or pair right after the first number, where another plain number is expected next; the same words with no number coming ('went to the store', '3 by mistake') stay quiet",
  "short": null,
  "kind": null,
- "status": "partial",
+ "status": "held",
  "depth": "quick",
  "tests": [
   {
@@ -131,12 +131,139 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-25-C-Eckleman235-d4e8d8a8"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L32_N9240_pos/2026-10-26-moridinamael-3b64bb64.tests.json",
+   "prereg_commit": "609fcbe1",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.462,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.36,
+     "peak": " by"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.598,
+     "peak": " x"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.441,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.592,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.329,
+     "peak": " or"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.213,
+     "peak": " until"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.895,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.199,
+     "peak": " x"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.234,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.006,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.01,
+     "peak": " drove"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.003,
+     "peak": " was"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.002,
+     "peak": " went"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.002,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.003,
+     "peak": " microwave"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 1,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.452,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-26-moridinamael-3b64bb64"
   }
  ],
  "label_history": [
   [
    "2026-10-25-C-Eckleman235-d4e8d8a8",
    "the word joining two numbers in a range, size or score, right after the first number ('2:00 PM to 3:00', 'aged 5 to 12', '39 x 30 cm', '12 by 14 feet', '9-to-5', 'won 3 to 1'): a second number comes next; 'to', 'by' and 'x' that do not join two numbers stay quiet",
+   "held"
+  ],
+  [
+   "2026-10-26-moridinamael-3b64bb64",
+   "a joiner (to, by, x, and, or, until) that opens the second end of a range, size, score or pair right after the first number, where another plain number is expected next; the same words with no number coming ('went to the store', '3 by mistake') stay quiet",
    "held"
   ]
  ],
@@ -146,29 +273,27 @@
   "feeds bonsai1/L35/N1376+"
  ],
  "contributors": [
-  "C-Eckleman235"
+  "C-Eckleman235",
+  "moridinamael"
  ],
  "contributions": [
   "2026-10-25-C-Eckleman235-d4e8d8a8",
-  "2026-10-26-C-Eckleman235-348107b8"
+  "2026-10-26-C-Eckleman235-348107b8",
+  "2026-10-26-moridinamael-3b64bb64"
  ],
  "qc": {
   "confirm": 0,
   "dispute": 0,
-  "refine": 0
+  "refine": 1
  },
  "replications": [],
- "coverage": {
-  "value": 0.25,
-  "method": "coverage round (4/16 described)",
-  "contribution": "2026-10-26-C-Eckleman235-348107b8"
- },
+ "coverage": null,
  "scrutiny": {
-  "level": 1,
-  "name": "tested",
-  "test_rounds": 1,
-  "sentences": 16,
-  "contributors": 1,
-  "qc": 0
+  "level": 3,
+  "name": "checked",
+  "test_rounds": 2,
+  "sentences": 32,
+  "contributors": 2,
+  "qc": 1
  }
 }
