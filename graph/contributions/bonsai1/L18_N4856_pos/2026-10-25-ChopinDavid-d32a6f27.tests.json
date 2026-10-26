@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-d32a6f27",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N4856+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T01:21:07+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N4856",
+   "pole": "+",
+   "label": "the attribute or member name right after a dot in code (tf.variable_scope, self.buttonFrame, form.fields, os.path), as against the same code lines written without dotted access",
+   "fire": [
+    "def build(x):\n    with tf.variable_scope(\"decoder\"):\n        h = dense(x, 64)\n    return h",
+    "        self.okButton = QtWidgets.QPushButton(self.buttonBox)\n        self.okButton.setText('OK')",
+    "    if form.is_valid():\n        name = form.fields['name']\n        save(name)",
+    "log_dir = os.path.join(root, 'logs')\nos.makedirs(log_dir, exist_ok=True)",
+    "    rows = self.db.query(sql)\n    return [r[0] for r in rows]",
+    "    with tf.variable_scope(\"head\", reuse=tf.AUTO_REUSE):\n        logits = proj(h)",
+    "    m = re.sub(r'\\s+', ' ', text)\n    return m.strip()",
+    "    widget = self.panel.button_frame\n    widget.pack()"
+   ],
+   "quiet": [
+    "def build(x):\n    with scope(\"decoder\"):\n        h = dense(x, 64)\n    return h",
+    "        okButton = QPushButton(buttonBox)\n        okButton.setText('OK')",
+    "    if is_valid(form):\n        name = get_name(form)\n        save(name)",
+    "log_dir = join(root, 'logs')\nmakedirs(log_dir, exist_ok=True)",
+    "    rows = query(sql)\n    return [r[0] for r in rows]",
+    "    with scope(\"head\", reuse=True):\n        logits = proj(h)",
+    "    m = collapse(text)\n    return strip(m)",
+    "    widget = button_frame\n    widget.pack()"
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.3 on the dotted member name; plain-name versions below 0.08; likely weak",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "member name after a dot in code",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card: .variable x2 (tf.variable_scope), .sub x2, .db, .button(Frame), os.path, form.fields, ' Boolean' in a docstring, ' atom' in prose; max 21.9, no single token. Probe: tf.variable_scope 0.258, form.fields 0.098, self.buttonFrame 0.055 (peak .Q), os.path.join 0.055, docstring Boolean 0.044, prose 'one atom of carbon' 0.081. Mostly weak; low confidence."
+}

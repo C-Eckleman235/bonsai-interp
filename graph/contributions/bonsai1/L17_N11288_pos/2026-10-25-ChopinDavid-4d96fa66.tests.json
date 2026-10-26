@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-4d96fa66",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N11288+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T01:21:07+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N11288",
+   "pole": "+",
+   "label": "string values in a Python dictionary literal ('username': 'guest'), as against the same dictionaries with variable values",
+   "fire": [
+    "    payload = {\n        'email': 'demo@example.com',\n        'token': 'abc123'\n    }",
+    "    creds = {\n        'user': 'admin',\n        'pass': 'hunter2'\n    }",
+    "config = {\n    'host': 'localhost',\n    'mode': 'debug'\n}",
+    "    data = {\n        'first_name': 'Ada',\n        'last_name': 'Lovelace'\n    }",
+    "    headers = {\n        'Accept': 'text/html',\n        'Agent': 'tester'\n    }",
+    "    form = {\n        'login': 'inactive',\n        'code': 'xyz'\n    }",
+    "settings = {\n    'theme': 'dark',\n    'lang': 'fr'\n}",
+    "    body = {\n        'status': 'closed',\n        'reason': 'duplicate'\n    }"
+   ],
+   "quiet": [
+    "    payload = {\n        'email': email,\n        'token': token\n    }",
+    "    creds = {\n        'user': user,\n        'pass': pw\n    }",
+    "config = {\n    'host': host,\n    'mode': mode\n}",
+    "    data = {\n        'first_name': first,\n        'last_name': last\n    }",
+    "    headers = {\n        'Accept': accept,\n        'Agent': agent\n    }",
+    "    form = {\n        'login': login,\n        'code': code\n    }",
+    "settings = {\n    'theme': theme,\n    'lang': lang\n}",
+    "    body = {\n        'status': status,\n        'reason': reason\n    }"
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.3 on the quoted value; variable values below 0.10; broad pole, likely fails",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "string values in a dict literal",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Card: broad (1.7% of tokens reach 0.1 of max), max 4.41: link|4 in a JSON key, (Gelephu and Phuentsholing|), my| daughter, A| parental, O|reg|ano, 'username':| ' , Current; no shared pattern. Probe: dict with 'password': 'secret' 0.257; '(Paro and Thimphu)' 0.180; baby/daughter 0.046, parental 0.030, Oregano 0.058; others 0.005-0.044. Best guess from the one strong probe; low confidence."
+}

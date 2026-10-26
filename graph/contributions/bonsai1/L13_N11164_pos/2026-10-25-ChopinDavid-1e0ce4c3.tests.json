@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-1e0ce4c3",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N11164+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T01:21:07+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L13/N11164",
+   "pole": "+",
+   "label": "the class or object name imported in a Python 'from module import Name' line (and the interpreter in a shebang), as against plain 'import module' lines and other code",
+   "fire": [
+    "#!/usr/bin/env python\n# -*- coding: utf-8 -*-\nimport os",
+    "from django.db import models\nfrom django.contrib.auth.models import User",
+    "from flask import Flask\nfrom flask_sqlalchemy import SQLAlchemy",
+    "from collections import OrderedDict\nfrom abc import ABCMeta",
+    "from twisted.web.server import Site\nfrom twisted.internet import reactor",
+    "from sqlalchemy.orm import sessionmaker\nfrom sqlalchemy import create_engine",
+    "from PyQt5.QtWidgets import QApplication\nfrom PyQt5.QtCore import QTimer",
+    "from rest_framework.views import APIView\nfrom rest_framework.response import Response"
+   ],
+   "quiet": [
+    "# utility helpers\n# -*- coding: utf-8 -*-\nimport os",
+    "import django\nimport django.db",
+    "import flask\nimport sqlalchemy",
+    "import collections\nimport abc",
+    "import twisted\nimport sys",
+    "import sqlalchemy\nimport logging",
+    "import sys\nimport time",
+    "import json\nimport requests"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-1.0 on the imported name; 'import module' lines and body code below 0.10",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "name imported by 'from ... import'",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: max 2.09 (tiny), gate-closed echo regime 99%, broad 2%: ' python' x10 in shebangs, py2exe, HTTPApplication, Api, HTTPServer, declarative_base, ABCMeta, AppConfig. Probe: from flask_restful import Api 1.005, declarative_base 0.371, AppConfig 0.323, shebang python 0.321; 'import numpy as np / import asyncio' 0.017, np.zeros code 0.085, prose about python 0.053."
+}

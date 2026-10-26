@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-cf544730",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N11456-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T01:21:07+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L21/N11456",
+   "pole": "-",
+   "label": "'if' as the first statement of a method body in Python class code (def name(self, ...):\\n        if ...), as against methods whose first statement is something else",
+   "fire": [
+    "class Player:\n    def __init__(self, name):\n        self.name = name\n\n    def on_hit(self, damage):\n        if self.shield > 0:\n            self.shield -= damage",
+    "class Uploader:\n    def __init__(self):\n        self.queue = []\n\n    def flush(self):\n        if not self.queue:\n            return",
+    "class Trainer:\n    def step(self):\n        self.n += 1\n\n    def maybe_save(self, path):\n        if self.n % self.save_every == 0:\n            self.save(path)",
+    "class Session:\n    def open(self):\n        self.alive = True\n\n    def close(self):\n        if self.conn is None:\n            return",
+    "class Grid:\n    def __init__(self, w, h):\n        self.w, self.h = w, h\n\n    def contains(self, x, y):\n        if x < 0 or y < 0:\n            return False",
+    "class Cart:\n    def add(self, item):\n        self.items.append(item)\n\n    def checkout(self):\n        if self.total() == 0:\n            raise ValueError",
+    "class Monitor:\n    def start(self):\n        self.running = True\n\n    def poll(self, ctx):\n        if CONF.poll_interval > 0:\n            self.tick(ctx)",
+    "class Tree:\n    def __init__(self):\n        self.root = None\n\n    def find(self, key):\n        if self.root is None:\n            return None"
+   ],
+   "quiet": [
+    "class Player:\n    def __init__(self, name):\n        self.name = name\n\n    def on_hit(self, damage):\n        self.shield -= damage\n        self.hits += 1",
+    "class Uploader:\n    def __init__(self):\n        self.queue = []\n\n    def flush(self):\n        self.send(self.queue)\n        self.queue = []",
+    "class Trainer:\n    def step(self):\n        self.n += 1\n\n    def maybe_save(self, path):\n        self.save(path)\n        self.saved += 1",
+    "class Session:\n    def open(self):\n        self.alive = True\n\n    def close(self):\n        self.conn.close()\n        self.alive = False",
+    "class Grid:\n    def __init__(self, w, h):\n        self.w, self.h = w, h\n\n    def contains(self, x, y):\n        return 0 <= x < self.w and 0 <= y < self.h",
+    "class Cart:\n    def add(self, item):\n        self.items.append(item)\n\n    def checkout(self):\n        total = self.total()\n        return self.pay(total)",
+    "class Monitor:\n    def start(self):\n        self.running = True\n\n    def poll(self, ctx):\n        self.tick(ctx)\n        self.count += 1",
+    "class Tree:\n    def __init__(self):\n        self.root = None\n\n    def find(self, key):\n        return self._find(self.root, key)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.5 on ' if' right after a def line inside a class; methods opening with an assignment or return below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'if' opening a method body",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: ' if' x27, '\\tif' x4, every one the first line of a method body after 'def ...(self...):' (onCellUpdate, try_update_target_networks, _invoke_openvpn), max 45.8. Probe (short snippets): class method opening with 'if not' 0.135 (peak ' not'), def load opening with if 0.085, 'if' later in a body 0.025-0.029, prose 'if' 0.005-0.010. Short snippets were weak; test items give a preceding method and class context."
+}

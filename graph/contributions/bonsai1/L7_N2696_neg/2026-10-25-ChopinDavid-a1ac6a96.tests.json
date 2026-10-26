@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-a1ac6a96",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N2696-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T01:21:07+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L7/N2696",
+   "pole": "-",
+   "label": "a word piece inside a multi-piece proper name or name abbreviation (Bodle|ian, Cor|rea, Sk|lod|owska, Mol. C|ytogenet.), as against the same sentences with a common noun in place of the name",
+   "fire": [
+    "The coins are now on display in the Ashmolean Museum in Oxford.",
+    "In the ninth inning Carlos Beltran drove in the winning run.",
+    "The ferry from Sweden docks at the port of Szczecin every morning.",
+    "Her adviser in Washington was Zbigniew Brzezinski during those years.",
+    "She later lectured at the Sorbonne on medieval French poetry.",
+    "The orchestra closed the evening with a symphony by Tchaikovsky.",
+    "The conference was held at the university in Wroclaw last spring.",
+    "The paper appeared in J. Neurochem. after a long review."
+   ],
+   "quiet": [
+    "The coins are now on display in the town museum in Oxford.",
+    "In the ninth inning the catcher drove in the winning run.",
+    "The ferry from Sweden docks at the northern port every morning.",
+    "Her adviser in Washington was a former diplomat during those years.",
+    "She later lectured at the university on medieval French poetry.",
+    "The orchestra closed the evening with a symphony by a young composer.",
+    "The conference was held at the university in the capital last spring.",
+    "The paper appeared in a chemistry journal after a long review."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on an inner piece of a rare name; common-noun versions below 0.10",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "piece inside a split proper name",
+ "unit_kind": "word",
+ "confidence": 0.45,
+ "notes": "Card: max 4.56 (small): Mol.| C|ytogenet x2, Bodle|ian x2, Prof.| Dr, Cor|rea, Sk|lod|owska, Team| Canada. Probe: Bodleian 0.848, Mol. Cytogenet 0.716, Correa 0.586, Sklodowska 0.532, Team Canada 0.346, Prof. Dr 0.298; common-noun controls 0.017-0.039. Names below checked with tok.py: Ashmolean = Ash|m|olean, Beltran = Bel|tran, Szczecin = Sz|cz|ec|in, Brzezinski = Br|ze|z|inski, Sorbonne = Sor|bon|ne, Tchaikovsky = T|cha|ik|ovsky, Wroclaw = W|ro|cl|aw."
+}
