@@ -1,0 +1,153 @@
+{
+ "id": "2026-10-26-C-Eckleman235-1587b434",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N6970+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-26T21:55:14+00:00",
+ "recipe": {
+  "toolchain_commit": "923b6b85",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L7_N6970_pos/2026-10-26-C-Eckleman235-1587b434.tests.json"
+ },
+ "label": "'school' (also 'place', 'where') after an article, naming an institution or setting ('a school board', 'a school where')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L7_N6970_pos/2026-10-26-C-Eckleman235-1587b434.tests.json",
+   "prereg_commit": "923b6b85",
+   "author": "C-Eckleman235",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.361,
+     "peak": " school"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.251,
+     "peak": " where"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.256,
+     "peak": " school"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.17,
+     "peak": " where"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.172,
+     "peak": " school"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.15,
+     "peak": " school"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.071,
+     "peak": " place"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.06,
+     "peak": " school"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.04,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.168,
+     "peak": " where"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.044,
+     "peak": "He"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.04,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.053,
+     "peak": " first"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.034,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.018,
+     "peak": " winter"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.011,
+     "peak": " Tuesday"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.953,
+    "median_fire": 0.171,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "923b6b85",
+  "minutes": 5,
+  "batch_size": 24,
+  "dtype": "float16"
+ },
+ "short": "'a school' / 'a place where'",
+ "unit_kind": "contextual",
+ "confidence": 0.45,
+ "notes": "triage: token/context. Weak pole (max 4.4). probe: school 0.25-0.40, 'a school where' 0.45, place 0.18; ship 0.001.",
+ "selection": "random draw"
+}
