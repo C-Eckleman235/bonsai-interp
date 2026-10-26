@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-d62d1c51",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N7838-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T19:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L3/N7838",
+   "pole": "-",
+   "label": "the piece at or right after a garbled replacement character ('?', '‚') inside a foreign personal or place name (Lutos?awski, Mu?ller), as against the same names correctly encoded",
+   "fire": [
+    "The shipyard strikes began in Gda?sk in the summer of 1980.",
+    "Her favourite symphony is the New World by Anton?n Dvo?ák.",
+    "The striker Fernando Mu?oz scored twice in the second half.",
+    "The essay quotes Fran?ois Mitterrand on European unity.",
+    "Tickets for the Bj?rk concert sold out within an hour.",
+    "The paper cites earlier work by J?rgen Habermas on discourse.",
+    "Our guide took us to the old town of Kraków and then to ?ód? by train.",
+    "A biography of Anton?n Dvo?ák appeared in Prague last year."
+   ],
+   "quiet": [
+    "The shipyard strikes began in Gdańsk in the summer of 1980.",
+    "Her favourite symphony is the New World by Antonín Dvořák.",
+    "The striker Fernando Muñoz scored twice in the second half.",
+    "The essay quotes François Mitterrand on European unity.",
+    "Tickets for the Björk concert sold out within an hour.",
+    "The paper cites earlier work by Jürgen Habermas on discourse.",
+    "Our guide took us to the old town of Kraków and then to Łódź by train.",
+    "A biography of the composer Dvořák appeared in Prague last year."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.9 on the '?' or following piece in names like Gda?sk, Dvo?ák, Mu?oz; the correctly spelled names below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "mojibake character inside a foreign name",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: 'Lutos?|aw|ski', 'C‚|sar', 'Mu|?|ller', 'Kas|¡|perske', 'Sch\\\"{o}lkopf', 'Bâ el'. Probe: Lutos?awski 0.675, Mu?ller 0.607, C‚sar 0.334, 'Bâ el H' 0.857; Lutosławski 0.004, Müller 0.000, César 0.009. Tokenizer: ' Gda|?|sk', ' D|vo|?|ák', ' Mu|?|oz', ' Fran|?|ois', ' Bj|?|rk'."
+}

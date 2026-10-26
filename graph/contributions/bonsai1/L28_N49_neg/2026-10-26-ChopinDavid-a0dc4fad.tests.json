@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-a0dc4fad",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N49-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T13:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N49",
+   "pole": "-",
+   "label": "an operator inside an inline formula or code keyword argument ('=', '/')",
+   "fire": [
+    "From the kinematics table, v2 = u2 + 2as, so s = (v2 - u2) / 2a.",
+    "'name': fields.char('Name', size=128),",
+    "The period follows from T = 2 * pi / w for this spring.",
+    "'email': fields.char('Email', size=240, required=True),",
+    "Using p = m * v, the change in speed is dv = F * t / m.",
+    "'phone': fields.char('Phone', size=32),",
+    "Then the density is rho = m / V, about 2.7 for aluminium.",
+    "'street': fields.char('Street', size=128),"
+   ],
+   "quiet": [
+    "From the kinematics table we can find the stopping distance of the car.",
+    "The name field holds up to a hundred and twenty eight characters.",
+    "The period of the spring depends on its stiffness and its mass.",
+    "The email field is required and holds up to two hundred and forty characters.",
+    "The change in speed depends on the force, the time and the mass.",
+    "The phone field holds up to thirty two characters.",
+    "Then the density comes out at about 2.7 for aluminium.",
+    "The street field holds up to a hundred and twenty eight characters."
+   ]
+  }
+ ],
+ "predictions": "Best guess: fires weakly on '=' and '/' in inline physics formulas and code keyword arguments; quiet on prose describing the same.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "operator in formula/code (weak)",
+ "unit_kind": "context",
+ "confidence": "low",
+ "notes": "Weak in probes: size=64 '=' 0.215, physics 'd = (vf2 - vi2) / 2a' 0.217; max_length=512 only 0.042, '6w/5 = 69' 0.011, 'x to the n' 0.011; prose 0.008-0.010."
+}

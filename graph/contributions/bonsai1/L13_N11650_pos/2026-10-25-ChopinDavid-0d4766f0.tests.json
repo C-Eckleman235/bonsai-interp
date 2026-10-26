@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-0d4766f0",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N11650+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T03:19:56+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L13/N11650",
+   "pole": "+",
+   "label": "a condition that signals something going wrong with health or safety (if you notice swelling, abnormal numbers, in case of), as against conditionals and descriptions about harmless matters",
+   "fire": [
+    "Call your pharmacist at once if you feel dizzy after the first dose.",
+    "Stop taking the tablets and see a doctor if your skin turns yellow.",
+    "Abnormal heart rhythms may need to be treated with medicine.",
+    "Seek help immediately if the child has trouble breathing.",
+    "An abnormal blood test can be a sign of liver disease.",
+    "Contact the clinic right away if the wound starts to bleed again.",
+    "Leave the building at once if you smell gas in the kitchen.",
+    "Tell the nurse straight away if the pain gets worse at night."
+   ],
+   "quiet": [
+    "Call your grandmother on Sunday if you have time after lunch.",
+    "Stop at the bakery and buy a cake if the shop is still open.",
+    "Regular piano lessons may help children learn to read music.",
+    "Bring a jacket if the evening turns cool by the lake.",
+    "A long walk can be a good way to clear your head.",
+    "Contact the office if you would like a copy of the brochure.",
+    "Open the window if you want some fresh air in the kitchen.",
+    "Tell the waiter if you would like another glass of water."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.4 on 'if'/'abnormal' in medical or safety warnings; harmless conditionals below 0.12",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "contingency of harm or abnormality",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: ' if' x2, 'normal' (Ab|normal), ' problems', ' warnings', ' case' (react in case of lack of information), ' develop' a serious medical problem. Probe: 'Tell your doctor right away if' 0.365; 'Abnormal numbers of chromosomes can' 0.331; 'In case of fire' 0.166; 'develop a serious medical problem' 0.140; 'If you like the movie' 0.014; 'Normal numbers' 0.148; 'Tell your doctor about your favorite foods' 0.119."
+}

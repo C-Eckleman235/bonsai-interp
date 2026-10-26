@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-26-moridinamael-e4b31e93",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N3863+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T14:21:16+00:00",
+ "roles": ["feeds bonsai1/L24/N8741+"],
+ "short": "hyphen/plus/star/quote fused with ) token",
+ "neighbours": [
+  {
+   "unit": "L0/N3863",
+   "pole": "+",
+   "label": "A single token made of a hyphen, plus, star or quote glued to a closing parenthesis (-) +) *) ') ''), as in '(co-)host' or '(H+)'; a bare ) or )) stays weak",
+   "fire": [
+    "She was invited to (co-)host the charity gala next spring.",
+    "The acid releases protons (H+) into the solution almost instantly.",
+    "Please list all (pre-)existing conditions on the form.",
+    "The sodium ion (Na+) moves across the membrane through dedicated channels.",
+    "Rate each item from one to five (5 = best*) before you submit.",
+    "Use the glob pattern (*.txt*) to match only the text files.",
+    "He kept calling it his 'little project (the 'thing')' for weeks.",
+    "The bill was signed by the (vice-)president of the club."
+   ],
+   "quiet": [
+    "She was invited to co-host the charity gala next spring.",
+    "The acid releases protons (hydrogen ions) into the solution almost instantly.",
+    "Please list all existing conditions (if any) on the form.",
+    "The sodium ion (Na) moves across the membrane through dedicated channels.",
+    "Rate each item from one to five (5 = best) before you submit.",
+    "Use the glob pattern (txt) to match only the text files.",
+    "He kept calling it his little project (the thing) for weeks.",
+    "The bill was signed by the vice-president (of the club)."
+   ]
+  }
+ ],
+ "predictions": "Most fire items hit on the fused token; the quote and star items are the risky ones. Near misses with bare ) should stay under 0.3.",
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "look",
+   "probe",
+   "inverse-de",
+   "step-out"
+  ]
+ }
+}

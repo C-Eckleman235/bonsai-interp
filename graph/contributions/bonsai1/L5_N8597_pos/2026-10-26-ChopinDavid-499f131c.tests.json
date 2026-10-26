@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-499f131c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N8597+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T15:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N8597",
+   "pole": "+",
+   "label": "the full stop that closes a sentence reporting growth between two dated figures ('from 3,000 in 1950 to more than 40,000 in 2010.'), as against full stops after other sentences, including other number sentences",
+   "fire": [
+    "Officials said the city expanded from 8,000 people in 1920 to nearly 90,000 in 2000. Schools struggled to keep up.",
+    "According to the report, enrollment went from 1,200 students in 1985 to over 6,000 in 2015. New buildings followed.",
+    "The census shows the county grew from 15,000 residents in 1940 to about 120,000 in 2020. Traffic is now a problem.",
+    "In short, the herd recovered from 300 animals in 1970 to more than 5,000 in 2012. Hunting was banned in that period.",
+    "The data show that exports climbed from $2 million in 1990 to $45 million in 2018. Most went to Europe.",
+    "Since its founding, the club grew from 40 members in 1965 to almost 3,000 in 2005. It now has its own stadium.",
+    "Records show the village shrank from 2,500 people in 1900 to fewer than 300 in 1990. Many houses stand empty.",
+    "Over time, the library's collection rose from 10,000 books in 1955 to over 400,000 in 2010. It needed a new wing."
+   ],
+   "quiet": [
+    "Officials said the city is planning a new park near the river. Schools welcomed the news.",
+    "According to the report, enrollment is stable and classes are full. New buildings are not needed.",
+    "The census shows the county is mostly rural with small farms. Traffic is light.",
+    "In short, the herd is healthy and grazes on the northern slopes. Hunting is banned there.",
+    "The data show that exporters prefer shipping by sea. Most goods go to Europe.",
+    "Since its founding, the club has played in green shirts. It now has its own stadium.",
+    "Records show the village had a mill and a small church. Many houses are old.",
+    "Over time, the library added a reading room and a cafe. It needed a new wing."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.6 on the full stop of a 'from A in year to B in year' growth sentence; other full stops below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "full stop after 'from X in YEAR to Y in YEAR'",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Broad weak pole (3.3% of tokens reach 0.1 of max; gate-closed regime 96%). Card peaks on '.' after 'from 1900 to 41,000 in 2010', 'up from 12,000 in 1995', '1978-2006 average'. Probe: the full from-to-in-year sentence 0.568, 'rose to 12,500 units in 2019.' 0.112, '900 to 4,200 members.' 0.057, plain sentences ~0.03. Low confidence: one probe configuration only."
+}

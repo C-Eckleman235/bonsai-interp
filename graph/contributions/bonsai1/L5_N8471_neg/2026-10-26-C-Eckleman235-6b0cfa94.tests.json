@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-C-Eckleman235-6b0cfa94",
+ "contributor": "C-Eckleman235",
+ "kind": "qc",
+ "neuron": "bonsai1/L5/N8471-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T17:43:47+00:00",
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "Word right after a negation, mainly ' time' in 'wasted no time' / 'not enough time', also stems completing un- words (unseemly, ungodly, unsurprisingly) and 'not improbable'",
+  "notes": "Model-QC pilot (concept-maps plan sha256 e2c0fbd950fc010cf3ac8c4a8d9473758ba54d8ddb3e2dbc13f451f5a8ddf787): label slot B of this pole, from contribution 2026-10-26-JasperBlank-7887bf9c; which model wrote it stays sealed until all 30 tests are scored. Sentences written by a fresh Opus subagent that saw only the pole's card (record line removed) and the three anonymous labels; nothing was probed or scored."
+ },
+ "neighbours": [
+  {
+   "unit": "L5/N8471",
+   "pole": "-",
+   "label": "Word right after a negation, mainly ' time' in 'wasted no time' / 'not enough time', also stems completing un- words (unseemly, ungodly, unsurprisingly) and 'not improbable'",
+   "fire": [
+    "The mayor wasted no time announcing a recount after the first ballots were tallied.",
+    "Volunteers said there was not enough time to train everyone before the shelter opened.",
+    "Such public bickering between the two bishops struck many parishioners as unseemly.",
+    "The bar stayed open until some ungodly hour, and the neighbors finally called the police.",
+    "The favored team, unsurprisingly, won the tournament without dropping a single game.",
+    "Historians think it is not improbable that the letter was forged by a rival courtier.",
+    "My cousin woke me at an ungodly hour to ask whether I wanted to go fishing.",
+    "Prices rose again in March, which unsurprisingly angered commuters across the region."
+   ],
+   "quiet": [
+    "The mayor took his time announcing a recount after the first ballots were tallied.",
+    "Volunteers said there was plenty of time to train everyone before the shelter opened.",
+    "In that era, a quiet and modest life was thought seemly for a country parson's wife.",
+    "The old monks were described in the chronicle as godly men who fasted every Friday.",
+    "The underdog team, surprisingly, won the tournament without dropping a single game.",
+    "Historians think it highly improbable that the letter was forged by a rival courtier.",
+    "My cousin woke me at an early hour to ask whether I wanted to go fishing.",
+    "Prices rose again in March, which predictably angered commuters across the region."
+   ]
+  }
+ ],
+ "predictions": "confirm: the label as written should hold a harder independent test (>= 6/8 fire, AUROC >= 0.9)",
+ "methods": {
+  "agent": "claude-code opus-5.5 (blind QC-writer subagent, card only)",
+  "screens": [
+   "card"
+  ]
+ },
+ "selection": "model-QC pilot: a seeded draw of poles held by all three labelling models (#1018-#1021)"
+}

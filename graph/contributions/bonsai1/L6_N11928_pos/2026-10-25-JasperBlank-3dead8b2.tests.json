@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-25-JasperBlank-3dead8b2",
+ "contributor": "JasperBlank",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N11928+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-25T11:04:17+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L6/N11928",
+   "pole": "+",
+   "label": "the indentation whitespace token (tab or run of spaces) that opens the first body line directly after a 'def ...):' function header line, i.e. the '\\t' / '   ' right after '):\\n' in Python code",
+   "fire": [
+    "def load_config(path):\n\tdata = open(path).read()\n\treturn json.loads(data)",
+    "class Parser(object):\n    def parse(self, text):\n   return text.split()",
+    "def connect(self, host):\n\tself.sock = socket.create_connection((host, 80))\n\treturn self.sock",
+    "def render(self):\n   return self.template.format(name=self.name)",
+    "def on_click(event):\n\tif event.button == 1:\n\t\tself.open_menu()",
+    "def suite():\n   \"\"\"Gather all the tests in the module\"\"\"\n   return unittest.TestSuite()",
+    "def get_status(self):\n\t# report the current state of the device\n\treturn self.state",
+    "def hasnext(self):\n   with self.lock:\n      return len(self.items) > 0"
+   ],
+   "quiet": [
+    "def close(self): self.sock.close()",
+    "Call the helper like this: result = load_config(path), then print the result.",
+    "data = {\n\t'name': 'lamp',\n\t'price': 12}",
+    "for item in items:\n\tprint(item)",
+    "total = compute(first_value,\n   second_value)",
+    "results = []\nresults.append(3)\nresults.append(4)",
+    "x = 1 +\n\t2",
+    "The header line 'def suite():' opens a function, but this sentence has no code body after it."
+   ]
+  }
+ ],
+ "predictions": "untested estimate: 7/8 fire, 1 near miss",
+ "methods": {
+  "agent": "claude-code haiku-5.5 (subagent)",
+  "screens": [
+   "card"
+  ]
+ },
+ "short": "indent after def header",
+ "unit_kind": "contextual",
+ "confidence": "medium",
+ "notes": "Label and sentences written blind by a Claude Haiku subagent from the card text alone (prompt: haiku_labeler/prompt.md); one automatic retry on mechanical checks. Draw restricted to layers 0-9."
+}

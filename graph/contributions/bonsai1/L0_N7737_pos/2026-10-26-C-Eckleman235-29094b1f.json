@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-26-C-Eckleman235-29094b1f",
+ "kind": "qc",
+ "neuron": "bonsai1/L0/N7737+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-26T18:42:38+00:00",
+ "recipe": {
+  "toolchain_commit": "4ababdad",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N7737_pos/2026-10-26-C-Eckleman235-29094b1f.tests.json"
+ },
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N7737_pos/2026-10-26-C-Eckleman235-29094b1f.tests.json",
+   "prereg_commit": "4ababdad",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 3,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.878,
+     "peak": " somewhere"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.989,
+     "peak": " somewhere"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.791,
+     "peak": " anywhere"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.853,
+     "peak": " somewhere"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.706,
+     "peak": " anywhere"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.887,
+     "peak": " somewhere"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.811,
+     "peak": " anywhere"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.833,
+     "peak": " somewhere"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.486,
+     "peak": " elsewhere"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.651,
+     "peak": " everywhere"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.235,
+     "peak": " place"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.115,
+     "peak": " place"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.032,
+     "peak": " nothing"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.037,
+     "peak": " somehow"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.033,
+     "peak": " before"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.703,
+     "peak": " nowhere"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.843,
+    "near_misses_at_0.3": 3
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5 (blind QC-writer subagent, card only)",
+  "screens": [
+   "card",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "4ababdad",
+  "minutes": 4,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "' somewhere' (and ' anywhere') as an indefinite place adverb meaning 'in some place' or 'in any place', e.g. 'need somewhere to store', 'can't get anywhere else'"
+ },
+ "selection": "QC noise floor: a second independent QC of each model-QC pilot label (#1051-#1080)"
+}

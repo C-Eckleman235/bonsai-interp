@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-47191b86",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N5167+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T14:19:53+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L2/N5167",
+   "pole": "+",
+   "label": "the '.Qt' piece of PyQt module imports (PyQt4.QtCore, PyQt5.QtGui), as against other Python package imports",
+   "fire": [
+    "import sys\nfrom PyQt5.QtWidgets import QApplication, QLabel",
+    "from PyQt4.QtGui import QIcon, QPixmap",
+    "import os\nfrom PyQt5.QtGui import QFont",
+    "from PyQt6.QtWidgets import QMainWindow",
+    "# GUI imports\nfrom PyQt4.QtCore import pyqtSignal",
+    "import logging\nfrom PyQt5.QtNetwork import QTcpSocket",
+    "from PyQt5.QtCore import Qt, QSize",
+    "from PyQt4.QtSql import QSqlDatabase"
+   ],
+   "quiet": [
+    "import sys\nfrom tkinter.ttk import Label, Button",
+    "from wx.lib import buttons",
+    "import os\nfrom matplotlib.pyplot import figure",
+    "from django.views import View",
+    "# GUI imports\nfrom kivy.app import App",
+    "import logging\nfrom requests.adapters import HTTPAdapter",
+    "from flask.json import jsonify",
+    "from sqlalchemy.orm import Session"
+   ]
+  }
+ ],
+ "predictions": "fire around 0.2-0.3 on '.Qt' after PyQt; other dotted imports below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'.Qt' in PyQt imports",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Tiny pole (max 2.92), gate-closed regime dominant, peaks scattered over pieces (Latin 'august|if|olia', ' Sh|river', 'fid|uci|ary', '.Qt', ' International'). Probe: 'from PyQt5.QtCore' 0.202, 'Amnesty International' 0.089, other International 0.013-0.021, 'fiduciary' 0.017. No trigger reached 0.3; '.Qt' is the best guess and probably sub-threshold."
+}

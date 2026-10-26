@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-164517ed",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N10626+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T19:27:14+00:00",
+ "recipe": {
+  "toolchain_commit": "f040c12c",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L22_N10626_pos/2026-10-26-ChopinDavid-164517ed.tests.json"
+ },
+ "label": "the final digit of a two-digit day-of-month or clock value written in digits (October 1|5, 12h3|0), as against the same digits as plain counts and dates written in words",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N10626_pos/2026-10-26-ChopinDavid-164517ed.tests.json",
+   "prereg_commit": "f040c12c",
+   "author": "ChopinDavid",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.416,
+     "peak": "4"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.381,
+     "peak": "3"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.331,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.554,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.338,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.285,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.257,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.445,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.096,
+     "peak": " November"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.011,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.012,
+     "peak": " following"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.004,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.017,
+     "peak": " after"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.027,
+     "peak": " end"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.01,
+     "peak": " early"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.009,
+     "peak": " main"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.36,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "f040c12c",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "last digit of a day or clock number",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: top digits close a number: '200[3]', '880,00[0]', '£3[0]', 'October 1[5]th', 'April 1[5]th', '12h3[0]'. Probe: 'October 15th' 0.606, '12h30' 0.406, '880,000' 0.280; 'in 2003,' 0.017, '£30.00' 0.031, single digits 0.009, 'fifteenth' 0.011. Digits tokenize singly. Dates are the cleanest reading; coverage is likely partial.",
+ "selection": "random draw"
+}

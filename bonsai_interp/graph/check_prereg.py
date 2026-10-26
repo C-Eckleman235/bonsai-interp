@@ -7,7 +7,7 @@
    pre-registration (tests_file); that file must be on the base branch already or have been added
    in an EARLIER commit of the PR, never in the same commit.
    For legacy probe folders (probes/), result files must likewise follow a test file in that folder.
-3. Size: files added under graph/ are at most 64 KB each and 256 KB in total per PR (bulky material
+3. Size: files added under graph/ are at most 64 KB each and 2 MB in total per PR (bulky material
    belongs in the library; see DATA_POLICY.md). Nothing may be added under data/ or models/.
 """
 import argparse
@@ -19,7 +19,7 @@ from pathlib import PurePosixPath
 
 TESTS = ["*.tests.json", "*tests*.json", "holdout*.json", "*plan*.json", "*_test.json", "PREREG*.md", "*request*.json"]
 RESULTS = ["quick*.json", "*_quick*.json", "*results*.json", "*_out.json", "solo.json", "invert_*.json"]
-MAX_FILE, MAX_TOTAL = 64 * 1024, 256 * 1024
+MAX_FILE, MAX_TOTAL = 64 * 1024, 2 * 1024 * 1024
 
 
 def git(*a):

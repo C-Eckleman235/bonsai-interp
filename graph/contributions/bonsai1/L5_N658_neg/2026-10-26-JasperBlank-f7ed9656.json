@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-26-JasperBlank-f7ed9656",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N658-",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T13:39:39+00:00",
+ "recipe": {
+  "toolchain_commit": "dc58702b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N658_neg/2026-10-26-JasperBlank-f7ed9656.tests.json"
+ },
+ "label": "Chinese/Pinyin name syllables for qing/qi (清, 青, 启, Qi/qi in names like Liang Qichao, Tianqi) and Arabic 'قي'/' الق' word pieces",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N658_neg/2026-10-26-JasperBlank-f7ed9656.tests.json",
+   "prereg_commit": "dc58702b",
+   "author": "JasperBlank",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.909,
+     "peak": "启"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.8,
+     "peak": "清"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.877,
+     "peak": "qi"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.649,
+     "peak": "清"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.659,
+     "peak": "青"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.694,
+     "peak": " Qi"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.413,
+     "peak": "قي"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.418,
+     "peak": " Qing"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.1,
+     "peak": "书店"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.047,
+     "peak": "下"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.009,
+     "peak": " Ming"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.162,
+     "peak": "去"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.061,
+     "peak": "星期"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.013,
+     "peak": " professors"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.248,
+     "peak": " ق"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.377,
+     "peak": " quite"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.676,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc58702b",
+  "minutes": 10,
+  "batch_size": 192
+ },
+ "short": "qing/qi syllables in names",
+ "unit_kind": "lexical",
+ "confidence": "low",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "selection": "random draw",
+ "trigger": {
+  "words": [
+   "清",
+   "青",
+   "启",
+   "Qi",
+   "qi",
+   "قي"
+  ]
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-7ed58f60",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N8223+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T20:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N8223",
+   "pole": "+",
+   "label": "the word right before 'humidity' that sets it up (percent relative, low relative, higher), i.e. a predictor of 'humidity', as against the same words before other nouns",
+   "fire": [
+    "Cure the plaster at room temperature and 50 percent relative humidity.",
+    "Dry northerly winds pushed the relative humidity below ten percent.",
+    "Keep the cigars in a box at about 70 percent relative humidity.",
+    "Mould grows quickly when the relative humidity stays above 60 percent.",
+    "Fire crews warned that low relative humidity would fuel the blaze.",
+    "The archive keeps documents at a steady 45 percent relative humidity.",
+    "Ferns thrive in bathrooms where the relative humidity is high.",
+    "The forecast calls for hot afternoons and very low relative humidity."
+   ],
+   "quiet": [
+    "The two trains passed each other at a modest relative speed.",
+    "In relative terms the town spent less on roads than its neighbours.",
+    "About 50 percent of voters turned out for the local election.",
+    "Dry northerly winds pushed the river level below the old mark.",
+    "Keep the cigars in a cedar box away from direct sunlight.",
+    "Her relative from Ohio arrived for the wedding on Friday.",
+    "Fire crews warned that strong gusts would spread the blaze.",
+    "The forecast calls for hot afternoons and clear skies all week."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-1.0 on ' relative' in 'percent/low/high relative humidity'; 'relative speed', 'relative terms' and 'percent of voters' below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "token predicting 'humidity' (relative, percent)",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: ' relative' x4, ' and' x5 (Temperature and Humidity), ' high', ' low', ' percent' just before 'humidity'; the - pole promotes ' humidity'. Probe: '40 percent relative humidity' 0.978; 'low relative humidity' 0.734; 'need higher humidity' 0.288; 'temperature and humidity' 0.397 but 'temperature and pressure' also 0.397 (setup, not the word); 'low relative speed' 0.121; 'need more light' 0.127. Near misses avoid the 'temperature and' setup."
+}

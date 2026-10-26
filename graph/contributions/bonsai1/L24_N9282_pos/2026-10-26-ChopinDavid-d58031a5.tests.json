@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-d58031a5",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N9282+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T17:21:28+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L24/N9282",
+   "pole": "+",
+   "label": "operands inside the condition of a Python if or while statement (between the keyword and the colon), as against the same names in plain assignments and returns",
+   "fire": [
+    "def first(rows):\n    if rows and rows[0] is not None:\n        return rows[0]\n    return None\n",
+    "def strip(text):\n    while text and text[-1] == '\\n':\n        text = text[:-1]\n    return text\n",
+    "def clamp(i, n):\n    if i < 0 or i >= n:\n        raise IndexError(i)\n    return i\n",
+    "def pop_empty(stack):\n    while len(stack) > 0 and stack[-1] == '':\n        stack.pop()\n",
+    "def valid(user):\n    if user.age >= 18 and user.email is not None:\n        return True\n    return False\n",
+    "def trim(parts):\n    while parts and not parts[0].strip():\n        parts = parts[1:]\n    return parts\n",
+    "def safe_get(d, key):\n    if key in d and d[key] is not None:\n        return d[key]\n    return ''\n",
+    "def done(tasks, limit):\n    if len(tasks) == 0 or limit <= 0:\n        return True\n    return False\n"
+   ],
+   "quiet": [
+    "def first(rows):\n    head = rows[0]\n    tail = rows[1:]\n    return head, tail\n",
+    "def strip(text):\n    text = text.rstrip('\\n')\n    words = text.split()\n    return words\n",
+    "def clamp(i, n):\n    low = max(i, 0)\n    high = min(low, n - 1)\n    return high\n",
+    "def pop_empty(stack):\n    stack.append('')\n    top = stack[-1]\n    return top\n",
+    "def valid(user):\n    name = user.name\n    email = user.email\n    return name, email\n",
+    "def trim(parts):\n    parts = [p.strip() for p in parts]\n    return parts\n",
+    "def safe_get(d, key):\n    value = d.get(key, '')\n    return value\n",
+    "def done(tasks, limit):\n    count = len(tasks)\n    left = limit - count\n    return left\n"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.35 on names, comparisons and 'and'/'or' inside if/while conditions; assignment-only code below 0.12, prose 'if' near 0",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "inside a Python if/while condition",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: 'if source_lines is None', 'if len(self.tracks) > 0', 'if pos >= self._capacity or pos < 0', 'while output and output[-1]'. Probe: while-condition 0.326, 'if len(items) > 0 and' 0.305, 'if pos >= cap or' 0.190, for-loop 0.142; assignment-only functions 0.117 and 0.075, ternary 0.053, English 'If the weather' 0.002. Near misses keep the same names in assignment code; they may leak around 0.1."
+}

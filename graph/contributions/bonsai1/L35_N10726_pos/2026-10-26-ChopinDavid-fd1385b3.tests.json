@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-fd1385b3",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N10726+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T08:21:20+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N10726",
+   "pole": "+",
+   "label": "the Russian word-start piece ' од' of одежду (clothes) and similar first pieces where the next piece completes a clothing word; tested as the piece itself vs clothing synonyms that do not start with it",
+   "fire": [
+    "Перед поездкой она аккуратно сложила всю одежду в большой чемодан.",
+    "В этом магазине продают детскую одежду по очень низким ценам.",
+    "После дождя ему пришлось сушить мокрую одежду у костра.",
+    "Мы отдали старую одежду в благотворительный фонд нашего района.",
+    "Мама всегда гладит одежду вечером перед рабочим днём.",
+    "Туристам советуют брать тёплую одежду даже летом.",
+    "Он быстро снял грязную одежду и пошёл в душ.",
+    "Солдаты получили новую форменную одежду весной."
+   ],
+   "quiet": [
+    "Перед поездкой она аккуратно сложила все вещи в большой чемодан.",
+    "В этом магазине продают детские игрушки по очень низким ценам.",
+    "После дождя ему пришлось сушить мокрые ботинки у костра.",
+    "Мы отдали старые книги в благотворительный фонд нашего района.",
+    "Мама всегда гладит рубашки вечером перед рабочим днём.",
+    "Туристам советуют брать тёплый спальник даже летом.",
+    "Он быстро снял грязные носки и пошёл в душ.",
+    "Солдаты получили новые ботинки весной."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.4 on ' од' in одежду; clothing synonyms (вещи, куртку, платье) under 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "' од' piece predicting одежда",
+ "unit_kind": "token",
+ "confidence": 0.25,
+ "notes": "Card top: '-c' of clothes, ' C' of CLOTHES, ' од' of одежду, ' ث' of ثياب, ' K' of Kostüme; output promotes continuation, suppresses 'clothing'/'clothes' (it predicts the clothing word). Probe weak: одежду 0.308 but одеялу (blanket) also 0.308, CLOTHES 0.175 vs COLLEGE 0.121, Arabic 0.167. So it looks like the ' од' piece in a wearing/buying context. Low confidence."
+}

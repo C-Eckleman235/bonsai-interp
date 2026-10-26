@@ -1,0 +1,56 @@
+{
+ "contribution": "2026-10-26-JasperBlank-138449d8",
+ "contributor": "JasperBlank",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N1443+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T13:17:27+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N1443",
+   "pole": "+",
+   "label": "Code: 'one'/'any'/'all' as an identifier or method name, e.g. query.one(), .one_or_none(), one_matched, any:, _all",
+   "fire": [
+    "def get_user(session, uid):\n    user = session.query(User).filter(User.id == uid).one()\n    return user",
+    "link = ctx.session.get(Link, id=text.id).one_or_none()\nif link is not None:\n    link.delete()",
+    "def test_any(self):\n    c = self.c({'any': [{'is_eq': 'pear'}, {'is_eq': 'plum'}]})\n    self.assertTrue(c('plum'))",
+    "matched = []\nfor pattern in patterns:\n    if fnmatch(name, pattern):\n        one_matched = True",
+    "row = database.mock.db.query_one('select * from specs')\nassert row is not None",
+    "results = Model.objects.filter(active=True).all()\nfor r in results:\n    print(r.name)",
+    "try:\n    Session.query(Domain).filter(Domain.name == domain).one()\nexcept NoResultFound:\n    domain = None",
+    "def test_all(self):\n    c = self.c({'all': [{'is_eq': 'fig'}]})\n    self.assertFalse(c('kiwi'))"
+   ],
+   "quiet": [
+    "The teacher asked if anyone wanted to answer, but nobody in the class raised a hand.",
+    "def get_user(session, uid):\n    user = session.query(User).filter(User.id == uid).first()\n    return user",
+    "I think everyone liked the film, though one of my friends fell asleep halfway through it.",
+    "for pattern in patterns:\n    if fnmatch(name, pattern):\n        matched = True\n        break",
+    "def test_values(self):\n    c = self.c({'eq': [{'is_eq': 'pear'}, {'is_eq': 'plum'}]})\n    self.assertTrue(c('plum'))",
+    "She gave all of her savings to the shelter and asked for nothing in return.",
+    "x = compute(a, b)\nprint(x)\nreturn x",
+    "My neighbor grows tomatoes and shares them with the street every summer."
+   ]
+  }
+ ],
+ "predictions": "6/8 fire, 0 near misses",
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card"
+  ]
+ },
+ "short": "one/any/all in code",
+ "unit_kind": "contextual",
+ "confidence": "medium",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "trigger": {
+  "words": [
+   "one",
+   "any",
+   "all",
+   "one_or_none",
+   "query_one"
+  ]
+ }
+}

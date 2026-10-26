@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-40912c63",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N7782-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T10:28:04+00:00",
+ "recipe": {
+  "toolchain_commit": "f54a8679",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L8_N7782_neg/2026-10-26-ChopinDavid-40912c63.tests.json"
+ },
+ "label": "repeated operands and operators inside dense code expressions (elements of numeric lists, hex bytes, chained ' .' or ' <=' operators), as against simple code statements and numbers written in prose",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L8_N7782_neg/2026-10-26-ChopinDavid-40912c63.tests.json",
+   "prereg_commit": "f54a8679",
+   "author": "ChopinDavid",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.331,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.082,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.036,
+     "peak": " ."
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.439,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.051,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.527,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.368,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.023,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.047,
+     "peak": ")"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.031,
+     "peak": ")"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.024,
+     "peak": "M"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.057,
+     "peak": ")"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.057,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.034,
+     "peak": ".zeros"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.022,
+     "peak": "header"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.031,
+     "peak": " then"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.812,
+    "median_fire": 0.207,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "f54a8679",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "elements of dense code sequences",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Gate-closed partly (69%). Card: digits '1' x8, '5' x6 in code lists, ' <=' x2, ' .' in 'Cov_X . W . Precision_Y', hex bytes. Probe: 'Cov_X . W . Precision_Y' 0.715, '[3, 3, 1, 1, 2, 1, 2, 1]' 0.741, 'bytearray([0x68, 0x01, 0x01, 0x96])' 0.705, chained '<=' 0.269, '@ diag @' 0.113; 'if num > 0' 0.046, prose 'three, three, one, two' 0.009, 'name = \"pattern\"' 0.049.",
+ "selection": "random draw"
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-c2424de6",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N11291-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T19:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N11291",
+   "pole": "-",
+   "label": "the HTTP response status in code (response.status, status_code, the 'HTTP/1.x' status line), as against non-HTTP status fields in code and 'status' in prose",
+   "fire": [
+    "r = urllib.request.urlopen(url)\ncode = r.status\nprint(code)",
+    "self.wfile.write(b\"HTTP/1.1 404 Not Found\\r\\n\\r\\n\")",
+    "resp = requests.get(api_url)\nif resp.status_code != 200:\n    raise RuntimeError(resp.text)",
+    "res = http_conn.getresponse()\nlog.info('got %s %s', res.status, res.reason)",
+    "sock.sendall(b\"HTTP/1.0 302 Found\\r\\nLocation: /login\\r\\n\\r\\n\")",
+    "response = client.post('/upload', data=form)\nassert response.status_code == 201",
+    "def handle(self):\n    self.send_response(500)\n    reply = self.response_code",
+    "reply = await session.get(url)\nif reply.status == 429:\n    await asyncio.sleep(5)"
+   ],
+   "quiet": [
+    "task = queue.pop()\ntask.status = 'running'\nrun(task)",
+    "order = Order.get(order_id)\nprint(order.status)",
+    "Please call the office to ask about the status of your visa.",
+    "if job.status == 'failed':\n    retry(job)",
+    "The museum gained national status after the war.",
+    "build = ci.latest()\nlabel = build.state\nnotify(label)",
+    "Her social status rose after the novel became famous.",
+    "player.health -= 10\nif player.health <= 0:\n    player.alive = False"
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.8 on status/version tokens of HTTP responses in code; job/order .status fields and prose 'status' below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "HTTP response status in code",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: '.status' x11, ' status' x9 in HTTP handlers, 'HTTP/1.[0] 200 OK', 'response_reason', 'response_code'. Probe: resp.status after getresponse 0.592, 'HTTP/1.0 200 OK' 0.761, 'unknown status code' 0.279; job.status='done' 0.071, 'status = 206' 0.069, order status prose 0.006, marital status 0.005."
+}

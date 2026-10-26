@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-26-C-Eckleman235-e0f1031f",
+ "kind": "qc",
+ "neuron": "bonsai1/L13/N7364+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-26T18:42:47+00:00",
+ "recipe": {
+  "toolchain_commit": "ae50f556",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L13_N7364_pos/2026-10-26-C-Eckleman235-e0f1031f.tests.json"
+ },
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L13_N7364_pos/2026-10-26-C-Eckleman235-e0f1031f.tests.json",
+   "prereg_commit": "ae50f556",
+   "author": "C-Eckleman235",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.069,
+     "peak": " at"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.454,
+     "peak": " at"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.024,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.678,
+     "peak": "ar"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.248,
+     "peak": " commentaire"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.307,
+     "peak": " una"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.028,
+     "peak": ":"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 1.018,
+     "peak": " reply"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.012,
+     "peak": "2"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.013,
+     "peak": " station"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.002,
+     "peak": "2"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.104,
+     "peak": " über"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.096,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.067,
+     "peak": "é"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.058,
+     "peak": " posted"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.08,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.844,
+    "median_fire": 0.381,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5 (blind QC-writer subagent, card only)",
+  "screens": [
+   "card",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "ae50f556",
+  "minutes": 3,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "Blog/forum comment metadata boundaries: the token right after a post date/timestamp (' at' in 'November 26, 2012 at 4:41 pm', or the newline after a dated byline), and 'Leave a reply/comment' footers, multilingual"
+ },
+ "selection": "QC noise floor: a second independent QC of each model-QC pilot label (#1051-#1080)"
+}

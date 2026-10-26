@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-1312726e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N3065+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T07:21:19+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N3065",
+   "pole": "+",
+   "label": "layout and punctuation tokens of source code (subscripts ['key'], assignments, newlines between statements), as against prose, including prose that talks about code",
+   "fire": [
+    "user = db.get(uid)\nemail = user['email']\nsend(email)",
+    "settings = {}\nsettings['theme'] = 'dark'\nsettings['lang'] = 'en'",
+    "for item in cart:\n    price = item['price']\n    total = total + price",
+    "a = 10\nb = a * 3\nprint(a, b)",
+    "rows = load_csv(path)\nfirst = rows[0]\nnames = [r['name'] for r in rows]",
+    "if args['verbose']:\n    log.setLevel(10)",
+    "count = 0\nwhile count < 5:\n    count += 1",
+    "out = {'id': 3, 'tags': []}\nout['tags'].append('new')"
+   ],
+   "quiet": [
+    "The program looks up the user and then sends them an email.",
+    "Users can switch the theme to dark and the language to English.",
+    "The shop adds up the price of every item in the basket.",
+    "The script multiplies ten by three and prints both numbers.",
+    "First we load the spreadsheet and then we read everyone's name.",
+    "When you ask for more detail, the log becomes much longer.",
+    "The counter goes up by one each time until it reaches five.",
+    "Each record has a number and a list of tags, and we add a new tag."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.7 on code snippets; plain prose 0.10-0.15. Dense pole (30% of tokens reach 0.1 of max), so prose near misses may leak",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "source-code layout tokens",
+ "unit_kind": "dense / positional",
+ "confidence": 0.3,
+ "notes": "Dense: 30.1% of tokens reach 0.1 of max. Card peaks on '=', \"['\", \"('\", newline in Python. Probe: dict subscripts 0.522-0.691, 'x = 5 / y = x + 2' 0.589, 'items = [1, 2, 3]' 0.592; English prose 0.100-0.152, French 0.137. Near misses are prose about the same programs."
+}

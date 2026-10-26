@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-26-C-Eckleman235-508c4955",
+ "kind": "qc",
+ "neuron": "bonsai1/L6/N10362-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-26T17:46:54+00:00",
+ "recipe": {
+  "toolchain_commit": "e19f9ee0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L6_N10362_neg/2026-10-26-C-Eckleman235-508c4955.tests.json"
+ },
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L6_N10362_neg/2026-10-26-C-Eckleman235-508c4955.tests.json",
+   "prereg_commit": "e19f9ee0",
+   "author": "C-Eckleman235",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.014,
+     "peak": " quarterly"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.007,
+     "peak": "in"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.04,
+     "peak": "wal"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.529,
+     "peak": "wal"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.008,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.028,
+     "peak": " merchant"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.972,
+     "peak": "al"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.03,
+     "peak": " firm"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.015,
+     "peak": " quarterly"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.011,
+     "peak": " festival"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.007,
+     "peak": " tariffs"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.025,
+     "peak": " survey"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.006,
+     "peak": "'s"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.028,
+     "peak": " merchant"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.026,
+     "peak": " tropical"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.03,
+     "peak": " firm"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.695,
+    "median_fire": 0.029,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5 (blind QC-writer subagent, card only)",
+  "screens": [
+   "card",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "e19f9ee0",
+  "minutes": 3,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "the split name-ending 'al' / 'wal' of Indian surnames (Agrawal, Agarwal), where the tokenizer breaks the name into pieces; the top examples are all names of this shape, and the pole does not fire on other 'al' endings"
+ },
+ "selection": "model-QC pilot: a seeded draw of poles held by all three labelling models (#1018-#1021)"
+}

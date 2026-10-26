@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-26-JasperBlank-9cef80e2",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N4743-",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T13:39:19+00:00",
+ "recipe": {
+  "toolchain_commit": "dc58702b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N4743_neg/2026-10-26-JasperBlank-9cef80e2.tests.json"
+ },
+ "label": "Weak, broad: mid-word fragments of proper names/place names in French, English and Chinese (e.g. Epar-res, nom-mé, Pots-dam)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N4743_neg/2026-10-26-JasperBlank-9cef80e2.tests.json",
+   "prereg_commit": "dc58702b",
+   "author": "JasperBlank",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.132,
+     "peak": "all"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.646,
+     "peak": "dam"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.785,
+     "peak": "lon"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.448,
+     "peak": "mé"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.877,
+     "peak": "page"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.667,
+     "peak": "dam"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.351,
+     "peak": "海"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.042,
+     "peak": " saison"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.074,
+     "peak": " travers"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.027,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.049,
+     "peak": " mus"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.069,
+     "peak": "ment"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.087,
+     "peak": "ers"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.014,
+     "peak": " autumn"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.064,
+     "peak": "，"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.037,
+     "peak": ","
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.922,
+    "median_fire": 0.547,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc58702b",
+  "minutes": 10,
+  "batch_size": 192
+ },
+ "short": "name word-fragments (weak)",
+ "unit_kind": "dense / positional",
+ "confidence": "low",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "selection": "random draw"
+}

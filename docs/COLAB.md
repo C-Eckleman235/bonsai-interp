@@ -26,8 +26,13 @@ Measured on 2026-10-20 (full forward pass, batch 8 × 256, bfloat16, the default
 **Why the T4 is ~20× slower, not ~4×:** it has tensor cores for float16 but not for bfloat16, which this toolchain
 uses to match the reference. A plain 4096 × 4096 matmul on the T4 runs at 25 TFLOPS in float16 but 2.3 TFLOPS in bfloat16.
 `BONSAI_DTYPE=float16` ran the model at ~939 tokens/s, and the parity test passed (all readings within 0.004 of the
-reference), but contributions are compared against a bfloat16 reference and `bonsai_interp/env.py` warns that float16
-can overflow, so **keep the default bfloat16 for contributions** unless the maintainers say otherwise.
+reference). **float16 is allowed for missions** (docs/FLOAT16.md, 2026-10-25):
+- 150 re-scored tests gave the same outcome as bfloat16;
+- readings stay within twice bfloat16's own batch-shape noise;
+- nothing overflows: the largest activation is 38,528 against float16's limit of 65,504.
+
+Put `BONSAI_DTYPE=float16` in `.env` on a T4 (`play doctor` suggests it). `play run` records the dtype in the
+contribution. Keep bfloat16 for long-window scans and the corpus screens.
 
 ## Setup (once per runtime)
 

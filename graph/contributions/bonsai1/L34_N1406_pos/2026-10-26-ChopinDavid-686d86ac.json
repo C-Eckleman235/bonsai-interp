@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-686d86ac",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N1406+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T20:29:31+00:00",
+ "recipe": {
+  "toolchain_commit": "b2cd2c52",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N1406_pos/2026-10-26-ChopinDavid-686d86ac.tests.json"
+ },
+ "label": "the ' inv'/' Inv'/'inv' word piece when 'inv...' words split across tokens (Inv|ited, un|inv|ited, inv|asives), as against invite, invest and inventory words that are a single token",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N1406_pos/2026-10-26-ChopinDavid-686d86ac.tests.json",
+   "prereg_commit": "b2cd2c52",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.076,
+     "peak": "inv"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.728,
+     "peak": " Inv"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.493,
+     "peak": " Inv"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.437,
+     "peak": " INV"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.578,
+     "peak": " inv"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.483,
+     "peak": "inv"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.424,
+     "peak": " inv"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.327,
+     "peak": " inv"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.005,
+     "peak": " crawled"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.063,
+     "peak": " three"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.003,
+     "peak": " cards"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.023,
+     "peak": " invitation"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.002,
+     "peak": " bank"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.002,
+     "peak": " questioned"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.004,
+     "peak": " plans"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.008,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.488,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "b2cd2c52",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "' inv' piece of split invite/invasive words",
+ "unit_kind": "token",
+ "confidence": 0.65,
+ "notes": "Card: ' inv' x12, ' Inv' x10, 'inv', '_inv', '(inv' in split words (un|inv|ited, Inv|ited, Inv|ites, inv|asives, Inv|itations). The - pole suppresses ' inv' and invite words. Probe: 'uninvited' 0.914; 'Invited speakers' 0.575; 'Invitations' 0.593; 'invasives' 0.293; 'invigorating' 0.332; single-token 'invited' 0.008, 'invitation' 0.019, 'inventory' 0.004. Tokenizer checked for every fire word.",
+ "selection": "random draw"
+}

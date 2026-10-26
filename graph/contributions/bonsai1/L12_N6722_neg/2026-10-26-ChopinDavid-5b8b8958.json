@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-5b8b8958",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N6722-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T17:30:30+00:00",
+ "recipe": {
+  "toolchain_commit": "9d340428",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L12_N6722_neg/2026-10-26-ChopinDavid-5b8b8958.tests.json"
+ },
+ "label": "anaphoric determiners and pro-forms (this, its, these, here) that point back to something just mentioned, as against 'the', 'a' or quantifiers in the same slot",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L12_N6722_neg/2026-10-26-ChopinDavid-5b8b8958.tests.json",
+   "prereg_commit": "9d340428",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.294,
+     "peak": " this"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.365,
+     "peak": " its"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.024,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.639,
+     "peak": " here"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.481,
+     "peak": " this"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.432,
+     "peak": " its"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.054,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.456,
+     "peak": " here"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.086,
+     "peak": " off"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.023,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.035,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.102,
+     "peak": " all"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.441,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.021,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.066,
+     "peak": " bones"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.079,
+     "peak": " and"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.781,
+    "median_fire": 0.398,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "9d340428",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "anaphoric this/its/these/here",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: 'When this occurs', 'or this might be caused', 'its body aches', 'these aggressive cancers', 'the currents here'. Probe: 'When this occurs' 0.607, 'the currents here' 0.576, 'these tumors' 0.215, 'its cabin' 0.214 vs 'When the dose' 0.071, 'the cabin' 0.031, 'many tumors' 0.031. A sentence-initial 'Operating' scored 0.27-0.35 in both versions, so no item starts with that word.",
+ "selection": "random draw"
+}

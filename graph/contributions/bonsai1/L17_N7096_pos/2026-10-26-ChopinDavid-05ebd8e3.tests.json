@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-05ebd8e3",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N7096+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T10:20:09+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N7096",
+   "pole": "+",
+   "label": "the closing bracket of a parenthetical inserted inside a noun phrase that then continues (Japanese place name (airport note) へ, German attributive phrase (aside) gelegenen), as against the same parentheticals placed at the end of a clause",
+   "fire": [
+    "東京から大阪(新幹線で約二時間半)への旅行は人気があります。",
+    "空港(成田と羽田の二つがある)からのバスは便利です。",
+    "Die am Fluss (laut dem Stadtplan jedenfalls) gelegene Mühle ist alt.",
+    "Wir fuhren zur im Wald (so sagte man uns) versteckten Hütte.",
+    "京都(特に東山の周辺)の寺を見て回りました。",
+    "Der von vielen (auch von mir) geschätzte Lehrer ging in Rente.",
+    "福岡(九州最大の都市)へのフライトを予約した。",
+    "Die hinter dem Bahnhof (nicht weit vom Markt) liegende Kneipe ist voll."
+   ],
+   "quiet": [
+    "東京から大阪への旅行は人気があります(新幹線で約二時間半)。",
+    "空港からのバスは便利です(成田と羽田の二つがある)。",
+    "Die am Fluss gelegene Mühle ist alt (laut dem Stadtplan jedenfalls).",
+    "Wir fuhren zur im Wald versteckten Hütte (so sagte man uns).",
+    "京都の寺を見て回りました(特に東山の周辺)。",
+    "Der von vielen geschätzte Lehrer ging in Rente (auch von mir).",
+    "福岡へのフライトを予約した(九州最大の都市)。",
+    "Die hinter dem Bahnhof liegende Kneipe ist voll (nicht weit vom Markt)."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.5 on ')' when the phrase continues right after it; ')' at a clause end below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "closing bracket inside a continuing phrase",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card peaks on ')' x8 mostly in Japanese and German text where the noun phrase continues after the bracket (金浦空港... ⟦)⟧へのフライト, schenkt⟦)⟧ gelegenen). English probes all failed: 'The village (which lies near the coast) has' 0.021, 'My uncle (a retired pilot) still' 0.032, German 'Der Bahnhof (der neu gebaut wurde) liegt' 0.055, 'print(len(items))' 0.064. Low confidence; the test uses the Japanese and German shapes of the card."
+}

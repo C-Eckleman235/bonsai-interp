@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-aaf776e3",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N4728+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T13:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L15/N4728",
+   "pole": "+",
+   "label": "the mock-assertion method name ('_calls', '_called') in Python unit tests",
+   "fire": [
+    "def test_sync(self):\n    self.store.sync()\n    self.mock_db.commit.assert_called_once_with()",
+    "def test_notify(self):\n    notify_all(self.users)\n    self.mock_mailer.send.assert_has_calls([mock.call('ann'), mock.call('bob')])",
+    "def test_retry(self):\n    fetch(url)\n    self.mock_http.get.assert_called_with(url, timeout=5)",
+    "def test_upload(self):\n    uploader.run(path)\n    s3_client.put_object.assert_called_once_with(Bucket='b', Key='k')",
+    "def test_log(self):\n    handler.emit(rec)\n    self.mock_stream.write.assert_has_calls([call('x'), call('y')])",
+    "def test_close(self):\n    conn.close()\n    self.sock.shutdown.assert_called_once_with(2)",
+    "def test_render(self):\n    view.render(req)\n    self.mock_tpl.render.assert_called_with(ctx)",
+    "def test_cleanup(self):\n    job.cleanup()\n    self.fs.remove.assert_has_calls([mock.call('/tmp/a')], any_order=True)"
+   ],
+   "quiet": [
+    "def test_sync(self):\n    result = self.store.sync()\n    self.assertEqual(result, 3)",
+    "def test_notify(self):\n    sent = notify_all(self.users)\n    self.assertEqual(sorted(sent), ['ann', 'bob'])",
+    "def test_retry(self):\n    resp = fetch(url)\n    self.assertTrue(resp.ok)",
+    "def test_upload(self):\n    key = uploader.run(path)\n    self.assertIn('uploads/', key)",
+    "def test_log(self):\n    out = handler.format(rec)\n    self.assertEqual(out, 'x y')",
+    "def test_close(self):\n    conn.close()\n    self.assertFalse(conn.is_open)",
+    "def test_render(self):\n    html = view.render(req)\n    self.assertIn('<h1>', html)",
+    "def test_cleanup(self):\n    job.cleanup()\n    self.assertFalse(os.path.exists('/tmp/a'))"
+   ]
+  }
+ ],
+ "predictions": "Fires on '_calls'/'_called' pieces of mock assertion methods; quiet on other unittest assertions in the same test code.",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "mock assert_called / assert_has_calls",
+ "unit_kind": "token/lexical",
+ "confidence": "medium",
+ "notes": "Probe: assert_has_calls 0.711, assert_called_once_with 0.362; prose 'was called' 0.147, 'the real reason' 0.175, 'purpose of' 0.045. The prose reason/purpose examples on the card did not reproduce, so the test is the code sense only."
+}
