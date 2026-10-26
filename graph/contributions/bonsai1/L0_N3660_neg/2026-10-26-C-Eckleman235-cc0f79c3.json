@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-26-C-Eckleman235-cc0f79c3",
+ "kind": "qc",
+ "neuron": "bonsai1/L0/N3660-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-26T17:46:06+00:00",
+ "recipe": {
+  "toolchain_commit": "049611f0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N3660_neg/2026-10-26-C-Eckleman235-cc0f79c3.tests.json"
+ },
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N3660_neg/2026-10-26-C-Eckleman235-cc0f79c3.tests.json",
+   "prereg_commit": "049611f0",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.956,
+     "peak": "umin"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.981,
+     "peak": "umin"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.8,
+     "peak": "umin"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 1.126,
+     "peak": "ith"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.956,
+     "peak": "uff"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 1.051,
+     "peak": "umin"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.828,
+     "peak": "ash"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.888,
+     "peak": "umin"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.032,
+     "peak": "ie"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.177,
+     "peak": "ren"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.031,
+     "peak": " case"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.124,
+     "peak": "yc"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.043,
+     "peak": "us"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.024,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.148,
+     "peak": "ashed"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.029,
+     "peak": " worked"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.956,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5 (blind QC-writer subagent, card only)",
+  "screens": [
+   "card",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "049611f0",
+  "minutes": 3,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "Word-piece 'umin' (also 'ith', 'uff', 'ash') right after a split-off word-initial 'z'/'Z', chiefly German 'zumindest' (z|umin|dest), also Zithromax"
+ },
+ "selection": "model-QC pilot: a seeded draw of poles held by all three labelling models (#1018-#1021)"
+}
