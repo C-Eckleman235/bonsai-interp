@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-aea9551c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N11080-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T09:21:20+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N11080",
+   "pole": "-",
+   "label": "a single 'c' or 'C' piece that the tokenizer splits off at the start of a word after a bracket, slash or hyphen (' (' c|abbage, /C|ascades, -C|ultural), as against the same frames where the word starts with a longer token",
+   "fire": [
+    "Okra belongs to the Malvaceae (cotton family), like hibiscus.",
+    "Melons and squash are members of the (cucumber family) of plants.",
+    "The old-growth forests of the Sierra/Cascades region are protected.",
+    "Prickly pears are in the Cactaceae (cactus family) and need little water.",
+    "Pinks and sweet williams belong to the (carnation family) of flowers.",
+    "Capers come from a shrub in the (caper family) native to the Mediterranean.",
+    "The festival celebrates Afro-Caribbean music and food every August.",
+    "Some salads use a peppery green called garden cress (Lepidium sativum)."
+   ],
+   "quiet": [
+    "Okra belongs to the mallow group of plants, like hibiscus.",
+    "Melons and squash need plenty of sun and water in summer.",
+    "The old-growth forests of Oregon/California are protected.",
+    "Prickly pears are in the Cactaceae family and need little water.",
+    "Lemons and limes belong to the (citrus family) of fruit trees.",
+    "Apples and pears belong to the (rose family) of fruit trees.",
+    "The festival celebrates African music and food every August.",
+    "Some salads use a peppery green called rocket or arugula."
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-1.1 on a lone c/C piece starting a word; the same frames with a multi-letter first token below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-off word-initial 'c'/'C' piece",
+ "unit_kind": "word",
+ "confidence": 0.35,
+ "notes": "Card: '(c|abbage family)', 'C|ANCER', '-C|ultural', '/C|ascades', 'water|c|ress'. Probe: '(cabbage family)' 1.109, 'Rockies/Cascades' 0.818, 'chicory and watercress' 0.395, 'Cross-Cultural' 0.383; but 'Pre-Columbian' (also a '-C' piece) 0.013, so not every split C fires; '/Sierra' 0.143, '(carrot family)' 0.011. Plant-family brackets dominate the fire items."
+}

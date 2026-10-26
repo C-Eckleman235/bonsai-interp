@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-2939b4ac",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N1086-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T09:21:20+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N1086",
+   "pole": "-",
+   "label": "a lone capital ' G' or ' O' that starts a place name the tokenizer splits letter-first (G|dansk, G|omel, O|axaca, O|ulu), as against place names starting with the same letter that are whole tokens",
+   "fire": [
+    "The shipyards of Gdansk became famous during the strikes of 1980.",
+    "We took the night train from Minsk to Gomel in the south.",
+    "Markets in Oaxaca sell chocolate, cheese and black pottery.",
+    "The university in Oulu is close to the Arctic circle.",
+    "The fort at Gwalior sits on a high rock above the town.",
+    "Vineyards line the river banks across the Gironde region.",
+    "Canoes drift slowly down the Oise towards Paris.",
+    "Her grandfather was a fisherman on the coast near Gdansk."
+   ],
+   "quiet": [
+    "The beaches of Goa became famous among travellers in the 1970s.",
+    "We took the night train from Minsk to Kiev in the south.",
+    "Markets in Lima sell chocolate, cheese and black pottery.",
+    "The university in Osaka is close to the old castle.",
+    "The fort at Delhi sits on the bank of the river above the town.",
+    "Vineyards line the river banks across the Texas hill country.",
+    "Canoes drift slowly down the river towards Lyon.",
+    "Her grandfather was a fisherman on the coast near Oman."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on ' G'/' O' as the first piece of a split place name; whole-token names (Goa, Gaza, Oman, Osaka) below 0.12",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-off initial ' G'/' O' of a place name",
+ "unit_kind": "word",
+ "confidence": 0.45,
+ "notes": "Card: ' O' x5, ' G' x4 (Ganges, Goma, Obed, Amban Ganga), plus one physics ' its' (velocity). Probe: Ganges 0.555, Gobi 0.456, Goma 0.442, Obed 0.321; Jordan 0.024, Kinshasa 0.083, Ohio (whole token) 0.050. Unexplained: 'reaches its maximum height when its velocity is zero' 1.125 on ' its', so the pole has a second physics side; near misses avoid physics."
+}
