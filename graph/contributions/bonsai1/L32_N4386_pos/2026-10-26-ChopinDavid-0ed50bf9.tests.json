@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-0ed50bf9",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N4386+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T15:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L32/N4386",
+   "pole": "+",
+   "label": "the subject or relative word right before a predicate of conflict or violation ('a use that violates', 'even when this may conflict', 'goes against'), a predictor of conflict verbs, as against the same frames with a predicate of agreement",
+   "fire": [
+    "Employees must follow the policy even when this may conflict with their own beliefs.",
+    "The warranty does not cover any repair that violates the safety guidelines.",
+    "Telling the truth here goes against everything the company stands for.",
+    "Judges must apply the law even when it may conflict with public opinion.",
+    "The school will punish any behaviour that breaks the code of conduct.",
+    "Leaving early even when this may clash with the schedule is not allowed.",
+    "Players will be fined for any action that violates the league's rules.",
+    "Staying silent in that meeting went against all my instincts."
+   ],
+   "quiet": [
+    "Employees must follow the policy and share their own beliefs politely.",
+    "The warranty does not cover repairs done in the first week.",
+    "Telling the truth here is something the company encourages.",
+    "Judges must apply the law and explain each ruling to the public.",
+    "The school will reward good behaviour in the classroom and the yard.",
+    "Leaving early on Fridays is allowed for staff with children.",
+    "Players will be paid a bonus for each goal in the league.",
+    "Staying silent in that meeting felt like the polite thing to do."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.4 on 'that' / 'may' / the subject before violates / conflicts / goes against; agreement predicates below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "subject before a conflict/violation predicate",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: 'answers that were incorrect', 'any use that violates', 'goes against the grain', 'even when this may conflict'; the opposite pole promotes ' goes', ' run', ' conflicts'. Probe is weak: 'even when this may conflict' 0.408, 'use that violates' 0.266, 'use that follows' 0.125, 'findings contradict' and 'findings support' both 0.194. Low confidence; the near misses differ from the fire items mostly after the peak token, so a fail is likely."
+}
