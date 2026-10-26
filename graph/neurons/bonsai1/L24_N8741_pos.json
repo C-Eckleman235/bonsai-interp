@@ -4,10 +4,10 @@
  "layer": 24,
  "index": 8741,
  "pole": "+",
- "label": "Inside code, a name, argument list or key chain being re-typed that was already written a few lines or tokens earlier (the next piece can be copied from above); the same call or lookup with fresh names, plain lookups, and prose stay low.",
+ "label": "In multi-line code, a call or key-chain line retyped almost exactly from a line a few lines above (names, arguments and brackets all repeated, so the rest can be copied); the same lines with fresh names, a single non-repeated line, and prose stay low.",
  "short": null,
  "kind": null,
- "status": "failed",
+ "status": "unresolved",
  "depth": "quick",
  "tests": [
   {
@@ -375,6 +375,128 @@
     "near_misses_at_0.3": 1
    },
    "contribution": "2026-10-26-moridinamael-ecf428c4"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L24_N8741_pos/2026-10-26-moridinamael-9818632c.tests.json",
+   "prereg_commit": "8f7f5cdf",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.146,
+     "peak": "\"]["
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.204,
+     "peak": " color"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.127,
+     "peak": ".assertEqual"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.149,
+     "peak": "(data"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.204,
+     "peak": " sep"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.184,
+     "peak": "(Dense"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.209,
+     "peak": "\","
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.166,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.15,
+     "peak": " reads"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.094,
+     "peak": "@"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.138,
+     "peak": "x"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.17,
+     "peak": "\")"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.129,
+     "peak": ".assertEqual"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.134,
+     "peak": ".user"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.141,
+     "peak": "df"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.181,
+     "peak": "(Dense"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.766,
+    "median_fire": 0.175,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-26-moridinamael-9818632c"
   }
  ],
  "label_history": [
@@ -387,6 +509,11 @@
    "2026-10-26-moridinamael-ecf428c4",
    "Inside code, a name, argument list or key chain being re-typed that was already written a few lines or tokens earlier (the next piece can be copied from above); the same call or lookup with fresh names, plain lookups, and prose stay low.",
    "failed"
+  ],
+  [
+   "2026-10-26-moridinamael-9818632c",
+   "In multi-line code, a call or key-chain line retyped almost exactly from a line a few lines above (names, arguments and brackets all repeated, so the rest can be copied); the same lines with fresh names, a single non-repeated line, and prose stay low.",
+   "failed"
   ]
  ],
  "examples": [],
@@ -398,21 +525,22 @@
  "contributions": [
   "2026-10-24-moridinamael-78b4dc3b",
   "2026-10-26-moridinamael-737bca58",
-  "2026-10-26-moridinamael-ecf428c4"
+  "2026-10-26-moridinamael-ecf428c4",
+  "2026-10-26-moridinamael-9818632c"
  ],
  "qc": {
   "confirm": 0,
   "dispute": 1,
-  "refine": 1
+  "refine": 2
  },
  "replications": [],
  "coverage": null,
  "scrutiny": {
   "level": 2,
   "name": "re-tested",
-  "test_rounds": 3,
-  "sentences": 48,
+  "test_rounds": 4,
+  "sentences": 64,
   "contributors": 1,
-  "qc": 2
+  "qc": 3
  }
 }
