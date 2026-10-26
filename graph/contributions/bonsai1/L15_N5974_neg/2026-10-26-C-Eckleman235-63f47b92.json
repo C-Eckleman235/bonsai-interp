@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-26-C-Eckleman235-63f47b92",
+ "kind": "qc",
+ "neuron": "bonsai1/L15/N5974-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-26T17:46:28+00:00",
+ "recipe": {
+  "toolchain_commit": "fa1b28e9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L15_N5974_neg/2026-10-26-C-Eckleman235-63f47b92.tests.json"
+ },
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L15_N5974_neg/2026-10-26-C-Eckleman235-63f47b92.tests.json",
+   "prereg_commit": "fa1b28e9",
+   "author": "C-Eckleman235",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.405,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.29,
+     "peak": " entirely"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.322,
+     "peak": " today"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.072,
+     "peak": " apartment"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.181,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.062,
+     "peak": " year"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.237,
+     "peak": " came"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.062,
+     "peak": " some"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.246,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.024,
+     "peak": " forgot"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.016,
+     "peak": " so"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.016,
+     "peak": " tenant"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.039,
+     "peak": " are"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.001,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.008,
+     "peak": "ata"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.018,
+     "peak": " stay"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.922,
+    "median_fire": 0.209,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5 (blind QC-writer subagent, card only)",
+  "screens": [
+   "card",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "fa1b28e9",
+  "minutes": 2,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "unclear: a determiner or noun phrase opener right after the connective 'so' (' so today', ' so these', ' so the trend'); peaks are spread over commas, 'in', 'are', 'a', 'each' with no single dominant token, so no clean trigger was found"
+ },
+ "selection": "model-QC pilot: a seeded draw of poles held by all three labelling models (#1018-#1021)"
+}
