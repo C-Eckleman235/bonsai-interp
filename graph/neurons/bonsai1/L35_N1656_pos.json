@@ -134,6 +134,128 @@
   },
   {
    "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N1656_pos/2026-10-26-JasperBlank-1d99c2bb.tests.json",
+   "prereg_commit": "5aeca8eb",
+   "author": "JasperBlank",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.509,
+     "peak": "資"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.337,
+     "peak": "資"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.526,
+     "peak": "資"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.449,
+     "peak": "資"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.635,
+     "peak": "S"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.149,
+     "peak": ".c"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.436,
+     "peak": " أس"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.909,
+     "peak": " الأ"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.001,
+     "peak": " cro"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.001,
+     "peak": "今天"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.001,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.001,
+     "peak": " greet"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.001,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.001,
+     "peak": "圖"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.001,
+     "peak": "("
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.003,
+     "peak": "ارات"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.479,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-26-JasperBlank-1d99c2bb"
+  },
+  {
+   "protocol": "quick-8+8@3",
    "tests_file": "graph/contributions/bonsai1/L35_N1656_pos/2026-10-26-JasperBlank-8986d709.tests.json",
    "prereg_commit": "cfd6808b",
    "author": "JasperBlank",
@@ -262,6 +384,11 @@
    "held"
   ],
   [
+   "2026-10-26-JasperBlank-1d99c2bb",
+   "Fires on the first piece of a word that is about to spell 'asset' in another script or identifier: CJK '資' in 資產/安全資產 (asset), Arabic ' الأ'/' أس' word-starts in finance text, 'AS' in ASSET_* constants, and '_fixed' in fixed-asset style names. It sits where the next token would be 'asset' (it suppresses the asset tokens).",
+   "held"
+  ],
+  [
    "2026-10-26-JasperBlank-8986d709",
    "Predicting the word 'asset(s)' (or stocks/profits): fires on the first piece of a financial asset/share word, especially in non-English text (Japanese/Chinese 資 in 資産, Arabic الأ/أس in الأسهم/الأرباح/الأصول) and code like ASSET_",
    "held"
@@ -275,6 +402,7 @@
  ],
  "contributions": [
   "2026-10-26-JasperBlank-bcda677e",
+  "2026-10-26-JasperBlank-1d99c2bb",
   "2026-10-26-JasperBlank-8986d709"
  ],
  "qc": {
@@ -287,8 +415,8 @@
  "scrutiny": {
   "level": 2,
   "name": "re-tested",
-  "test_rounds": 2,
-  "sentences": 32,
+  "test_rounds": 3,
+  "sentences": 48,
   "contributors": 1,
   "qc": 0
  }
