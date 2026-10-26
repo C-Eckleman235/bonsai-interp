@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-ed71e39c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N2529-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T18:19:51+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N2529",
+   "pole": "-",
+   "label": "the first piece of a word that the tokenizer breaks into fragments (Le|u|ven, p|iers, G|ATE|WAY, Te|ix|ido), as against a sentence where the same slot holds a word that is a single token",
+   "fire": [
+    "Every November, crowds gather at Ypres to remember the fallen.",
+    "The ferry from Gdansk reached Sweden early the next morning.",
+    "She spent two years teaching English in Tbilisi after college.",
+    "The conference will be held in Ljubljana next spring.",
+    "The harbour had three long wooden jetties for the fishing boats.",
+    "The router kept returning a 504 GATEWAY TIMEOUT message.",
+    "My cousin studied chemistry at Leuven before moving to Ghent.",
+    "Old fishing villages along the coast often had stone piers."
+   ],
+   "quiet": [
+    "Every November, crowds gather in London to remember the fallen.",
+    "The ferry from Berlin reached Sweden early the next morning.",
+    "She spent two years teaching English in Paris after college.",
+    "The conference will be held in Madrid next spring.",
+    "The harbour had three long wooden boats for the fishing trips.",
+    "The router kept returning an error message.",
+    "My cousin studied chemistry at Oxford before moving to London.",
+    "Old fishing villages along the coast often had stone houses."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.65 on the first piece of a multi-piece rare word; matching sentences with a one-token word in that slot below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "first fragment of a split word",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: ' eg|ipcia', 'BAD G|ATEWAY', ' 출|장', ' Le|uven', ' Te|ixido', ' p|iers'; 16 of 32 top tokens are byte-fallback ' �'. Probe: ' Le|uven' 0.624, ' p|iers' 0.542, ' G|ATEWAY' 0.455, ' Te|ixido' 0.282, ' eg|ipcia' 0.059 (weak); 'an error' -0.001, 'pleasure boats' 0.149, French article 'Le' 0.102. Tokenizer: Ypres ' Y|pres', Gdansk ' G|d|ansk', Tbilisi ' T|bil|isi', Ljubljana ' L|j|ub|lj|ana', jetties ' j|ett|ies'."
+}

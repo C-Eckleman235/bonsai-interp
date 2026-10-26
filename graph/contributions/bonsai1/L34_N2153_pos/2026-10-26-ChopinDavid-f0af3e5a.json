@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-f0af3e5a",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N2153+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T18:28:45+00:00",
+ "recipe": {
+  "toolchain_commit": "82b5e763",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N2153_pos/2026-10-26-ChopinDavid-f0af3e5a.tests.json"
+ },
+ "label": "electrical-hazard safety warnings (frayed cords, downed power lines, live wires that can shock or cause outages), read on the word just before the harm, as against the same warnings about non-electrical hazards",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N2153_pos/2026-10-26-ChopinDavid-f0af3e5a.tests.json",
+   "prereg_commit": "82b5e763",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.384,
+     "peak": " is"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.495,
+     "peak": " may"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.73,
+     "peak": " be"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.568,
+     "peak": " not"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 1.145,
+     "peak": " avoid"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.38,
+     "peak": " can"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.449,
+     "peak": " start"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.621,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.158,
+     "peak": " is"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.039,
+     "peak": " may"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.158,
+     "peak": " still"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.124,
+     "peak": " not"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.094,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.036,
+     "peak": " can"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.021,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.083,
+     "peak": " can"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.531,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "82b5e763",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "electrical hazard warnings",
+ "unit_kind": "topic",
+ "confidence": 0.6,
+ "notes": "Card: 'contact with the wires can result in service interruptions', 'cords ... are not cracked or frayed', 'avoid shorting the test leads', 'arc flash'; opposite pole promotes ' shock', ' arc'. Probe: 'downed power line ... could be electrocuted' 0.807, 'extension cords ... not frayed' 0.737, 'overhead wires can result in a power outage' 0.649; 'hot pan can result in a bad burn' 0.160, 'tires ... not worn' 0.046, 'knives ... get hurt' 0.138, neutral 'power company installed new wires' 0.090.",
+ "selection": "random draw"
+}
