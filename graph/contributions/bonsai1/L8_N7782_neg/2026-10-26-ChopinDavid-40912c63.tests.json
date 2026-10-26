@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-40912c63",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N7782-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T10:20:09+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L8/N7782",
+   "pole": "-",
+   "label": "repeated operands and operators inside dense code expressions (elements of numeric lists, hex bytes, chained ' .' or ' <=' operators), as against simple code statements and numbers written in prose",
+   "fire": [
+    "weights = [1, 2, 1, 2, 2, 1, 1, 2]",
+    "packet = bytes([0x01, 0x05, 0x01, 0x00, 0x05])",
+    "M = A . B . C . D",
+    "grid = [\n    [0, 1, 0, 1],\n    [1, 0, 1, 0],\n]",
+    "if 0 <= idx <= limit:\n    total += idx",
+    "scores = np.array([5, 5, 1, 5, 1, 1])",
+    "header = b\"\\x00\\x01\\x00\\x01\\x05\"",
+    "steps = (1, 1, 2, 3, 5, 8, 13)"
+   ],
+   "quiet": [
+    "weights = load_weights(path)",
+    "packet = build_packet(header, body)",
+    "M = compose(A, B)",
+    "grid = make_grid(rows, cols)",
+    "if idx > limit:\n    total += idx",
+    "scores = np.zeros(size)",
+    "header = read_header(stream)",
+    "She climbed one, then two, then three more steps."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.75 on list elements and chained operators in code; simple assignments and prose numbers below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "elements of dense code sequences",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Gate-closed partly (69%). Card: digits '1' x8, '5' x6 in code lists, ' <=' x2, ' .' in 'Cov_X . W . Precision_Y', hex bytes. Probe: 'Cov_X . W . Precision_Y' 0.715, '[3, 3, 1, 1, 2, 1, 2, 1]' 0.741, 'bytearray([0x68, 0x01, 0x01, 0x96])' 0.705, chained '<=' 0.269, '@ diag @' 0.113; 'if num > 0' 0.046, prose 'three, three, one, two' 0.009, 'name = \"pattern\"' 0.049."
+}

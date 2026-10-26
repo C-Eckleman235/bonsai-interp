@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-d0d24655",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N2895-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T10:20:09+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L23/N2895",
+   "pole": "-",
+   "label": "the leading lowercase letter piece of a short code identifier or abbreviation split by the tokenizer (x|idx, e|pg_, m|pc, i|pts), in longer code blocks, as against whole-word identifiers in the same code",
+   "fire": [
+    "import numpy as np\n\ndef clip(img, xs, ys):\n    for k in range(len(xs)):\n        if xidx[k] >= 0 and yidx[k] < img.shape[0]:\n            img[yidx[k], xidx[k]] = 1",
+    "def epg_update(sel_epg, epg_name, epg_desc):\n    if epg_name:\n        return epg_name",
+    "import mpd\n\nclient = mpd.MPDClient()\n# mpc.play()\nclient.play()",
+    "from scipy.spatial.distance import cdist\n\nmid = pts.mean(axis=0)\nd = cdist(ipts, [mid])\nnearest = d.argmin()",
+    "users = [\n    \"jdoe@example.com\",\n    \"asmith@example.com\",\n]\nfor u in users:\n    send(u)",
+    "def rgb_to_hsv(r, g, b):\n    vmax = max(r, g, b)\n    vmin = min(r, g, b)\n    return vmax - vmin",
+    "sys.path.append(\"pgoapi/protos\")\nimport pgoapi\napi = pgoapi.PGoApi()",
+    "for kidx, key in enumerate(keys):\n    if kidx > 0:\n        print(key)"
+   ],
+   "quiet": [
+    "import numpy as np\n\ndef clip(img, xs, ys):\n    for k in range(len(xs)):\n        if col[k] >= 0 and row[k] < img.shape[0]:\n            img[row[k], col[k]] = 1",
+    "def group_update(sel_group, group_name, group_desc):\n    if group_name:\n        return group_name",
+    "import player\n\nclient = player.Client()\n# client.play()\nclient.play()",
+    "from scipy.spatial.distance import cdist\n\nmid = points.mean(axis=0)\nd = cdist(points, [mid])\nnearest = d.argmin()",
+    "users = [\n    \"john@example.com\",\n    \"anna@example.com\",\n]\nfor u in users:\n    send(u)",
+    "def rgb_to_hsv(red, green, blue):\n    high = max(red, green, blue)\n    low = min(red, green, blue)\n    return high - low",
+    "sys.path.append(\"game/protos\")\nimport game\napi = game.Api()",
+    "for index, key in enumerate(keys):\n    if index > 0:\n        print(key)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.5 on the first piece of split short identifiers; whole-token identifiers below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "first letter piece of a split identifier",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card peaks very high (-107.5) on ' x'idx, 'Did'i, ' I'FTTT, ' D'FM, 'p'goapi, '(i'pts, ' e'pg, ' j'doe, ' m'pc, mostly in code. Probe reproduced none: 'if xidx >= 0' 0.052, 'Didi Chuxing' 0.007, 'IFTTT' 0.034, 'DFM' 0.003, 'cdist(ipts' 0.007. Low confidence; the test uses longer multi-line code like the card."
+}
