@@ -43,7 +43,7 @@ This gave 29,105 hypotheses (15,145 pair, 13,960 class); the best 6,000 were kep
 - **class:** fire on the class's words; quiet on the same word class outside it.
 - **Classes:** A is the upstream units' trigger words that the target itself fires on (selection windows). B is the
   previous-offset units' trigger words.
-- **Placebo:** 1 hypothesis in 30 also gets an 8 + 8 test of quiet against quiet.
+- **Placebo:** every 10th hypothesis also gets an 8 + 8 test of quiet against quiet (199 had enough held-out items).
 
 | | |
 |---|---|
