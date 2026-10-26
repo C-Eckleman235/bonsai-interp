@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-d20e6f72",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N7311-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T13:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N7311",
+   "pole": "-",
+   "label": "a word-initial 'H'/'h' that the tokenizer splits off as its own token (rare names and foreign words)",
+   "fire": [
+    "Last spring the painter Hjalmar Berg showed his seascapes in Oslo.",
+    "The ferry to the island of Hvar leaves twice a day in summer.",
+    "Pilgrims visit the Hlinka memorial in the old town square.",
+    "Local reporters asked Huseyin Aydin about the new tax plan.",
+    "Under Indonesian hukum adat, land disputes go to the village elders.",
+    "The poet Hryhoriy Skovoroda wandered across Ukraine for decades.",
+    "Fans in Zagreb chanted for Hrvatska as the match began.",
+    "The governor of Hidalgo opened a new hospital on Friday."
+   ],
+   "quiet": [
+    "Last spring the painter Hagop Berg showed his seascapes in Oslo.",
+    "The ferry to the island of Harbin Bay leaves twice a day in summer.",
+    "Pilgrims visit the Hollis memorial in the old town square.",
+    "Local reporters asked Haluk Aydin about the new tax plan.",
+    "Under the old hamam rules, men and women bathed on different days.",
+    "The poet Hosni Mansour wandered across Egypt for decades.",
+    "Fans in Zagreb chanted for Croatia as the match began.",
+    "The governor of Hadiza province opened a new hospital on Friday."
+   ]
+  }
+ ],
+ "predictions": "Fires on the standalone ' H'/' h' piece at the start of a split word; quiet on H-words whose first token is longer (' Ha', ' Hos', ' Har').",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-off initial H",
+ "unit_kind": "token/lexical",
+ "confidence": "medium",
+ "notes": "Probe: Hakan (' H') 0.502, Hristo 0.303, Hmong 0.269, harem (' h') 0.285, hulp 0.231; Mehmet 0.109, Hyundai 0.004 (whole token). Fire and quiet words were tokenizer-checked: fire words start with ' H'/' h' alone, quiet H-words do not."
+}
