@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-26-moridinamael-3b64bb64",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L32/N9240+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T23:05:10+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "the word joining two numbers in a range, size or score, right after the first number ('2:00 PM to 3:00', 'aged 5 to 12', '39 x 30 cm', '12 by 14 feet', '9-to-5', 'won 3 to 1'): a second number comes next; 'to', 'by' and 'x' that do not join two numbers stay quiet"
+ },
+ "neighbours": [
+  {
+   "unit": "L32/N9240",
+   "pole": "+",
+   "label": "a joiner (to, by, x, and, or, until) that opens the second end of a range, size, score or pair right after the first number, where another plain number is expected next; the same words with no number coming ('went to the store', '3 by mistake') stay quiet",
+   "fire": [
+    "The shop is open from 9 to 5 on weekdays.",
+    "We need a board that measures 2 by 4 for the frame.",
+    "The rug is 6 x 9 and fits the living room perfectly.",
+    "The home team won the match 3 to 1 in overtime.",
+    "Expect somewhere between 20 and 30 guests at the party.",
+    "Each serving takes 2 or 3 minutes in the microwave.",
+    "The museum stays open from 10 until 6 on Sundays.",
+    "Children aged 5 to 12 can join the summer camp."
+   ],
+   "quiet": [
+    "I x-rayed the 8 x ray.",
+    "Nov. 14 at noon, Tuesday, Jan. 8 at the library.",
+    "The shop is open in the morning, so we went to the store early.",
+    "We drove past the old barn by the river on our way home.",
+    "The rug was a gift and fits the living room perfectly.",
+    "The home team won the match easily and went to celebrate.",
+    "Expect a few friends and their parents at the party.",
+    "Each serving takes a moment or so in the microwave."
+   ]
+  }
+ ],
+ "predictions": "Expect most fire items to hold; the solver's leak items (x-ray, Nov. 14) are the risk, at about 0.2 each. Small joiners 'or' and 'x' may be weaker.",
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "which",
+   "inverse-gmoo",
+   "bank-solo"
+  ]
+ }
+}
