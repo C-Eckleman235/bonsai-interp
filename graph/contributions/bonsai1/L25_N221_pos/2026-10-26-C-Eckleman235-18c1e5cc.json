@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-26-C-Eckleman235-18c1e5cc",
+ "kind": "qc",
+ "neuron": "bonsai1/L25/N221+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-26T18:43:05+00:00",
+ "recipe": {
+  "toolchain_commit": "c636bc6c",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N221_pos/2026-10-26-C-Eckleman235-18c1e5cc.tests.json"
+ },
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N221_pos/2026-10-26-C-Eckleman235-18c1e5cc.tests.json",
+   "prereg_commit": "c636bc6c",
+   "author": "C-Eckleman235",
+   "n_fire": 6,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.087,
+     "peak": " Anal"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.927,
+     "peak": " Anal"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.29,
+     "peak": " analytical"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.864,
+     "peak": "ab"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.921,
+     "peak": "ab"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.177,
+     "peak": " analogous"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.644,
+     "peak": " Anal"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.615,
+     "peak": " analy"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.221,
+     "peak": " Anatomy"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.461,
+     "peak": " Ana"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.036,
+     "peak": " Anaheim"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.012,
+     "peak": "ennon"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.003,
+     "peak": " adult"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.057,
+     "peak": "agram"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.003,
+     "peak": " samples"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.149,
+     "peak": " ana"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.953,
+    "median_fire": 0.754,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5 (blind QC-writer subagent, card only)",
+  "screens": [
+   "card",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "c636bc6c",
+  "minutes": 3,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "Word-initial fragment 'Anal'/' anal' (Analogue, Analysing, analytical) and the 'ab' piece in Anabaptist/Anabaptism, i.e. the 'ana-' start of a word split across tokens, predicting a continuation like -ogue/-yses"
+ },
+ "selection": "QC noise floor: a second independent QC of each model-QC pilot label (#1051-#1080)"
+}
