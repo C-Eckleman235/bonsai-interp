@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-ef35adcf",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N5731-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T05:22:49+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N5731",
+   "pole": "-",
+   "label": "the '=' of a variable assignment inside a run of consecutive code assignment lines, as against the same variables described in prose",
+   "fire": [
+    "        name = row[0]\n        age = row[1]\n        city = row[2]",
+    "    x = point[0]\n    y = point[1]\n    z = point[2]",
+    "        msg.id = data[0]\n        msg.sec = data[1]\n        msg.nano = 0",
+    "    first = parts[0]\n    last = parts[1]\n    email = parts[2]",
+    "        red = color[0]\n        green = color[1]\n        blue = color[2]",
+    "    start = span[0]\n    end = span[1]\n    step = 1",
+    "        lat = coords[0]\n        lon = coords[1]\n        alt = coords[2]",
+    "    top = box[0]\n    left = box[1]\n    bottom = box[2]"
+   ],
+   "quiet": [
+    "The first column holds the name, the second the age and the third the city.",
+    "Each point has an x, a y and a z value stored in order.",
+    "The message carries an id, a seconds field and a nanoseconds field set to zero.",
+    "The parts list gives the first name, the last name and the email address.",
+    "A color is stored as red, green and blue values in that order.",
+    "The span starts at one index and ends at another, with a step of one.",
+    "The coordinates give latitude, longitude and altitude for each site.",
+    "The box records its top, left and bottom edges in pixels."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.35 on ' =' in multi-line assignment blocks; prose about the same values below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'=' in a run of code assignments",
+ "unit_kind": "unclear",
+ "confidence": 0.25,
+ "notes": "Card: mixed pole; peaks on ' =' (message.nano = 0, length = x[2]), ' boys', ' was', ' until', Russian ' на', ' via'. Probe: three-line 'width = x[1] / length = x[2] / height = x[0]' 0.331, '(via adapter)' 0.157, 'It wasn't until' 0.127; cleft 'It was the look ... that' 0.023, '76 boys' 0.062. Only code assignment cleared 0.2; the rest of the pole is unexplained."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-5be60608",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N7052+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T05:22:49+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L19/N7052",
+   "pole": "+",
+   "label": "the preposition in the dependent-claim formula of a patent ('The method as recited in claim N'), as against 'recited' or 'as described in' in ordinary prose",
+   "fire": [
+    "5. A device comprising a housing and a lens. 6. The device as recited in claim 5, wherein the lens is glass.",
+    "9. A system comprising a server. 10. The system as recited in claim 9, further comprising a database.",
+    "12. A method of heating water. 13. The method as recited in claim 12, wherein the water is heated to boiling.",
+    "1. A pump having a rotor. 2. The pump as recited in claim 1, wherein the rotor is made of steel.",
+    "3. A container having a lid. 4. The container as recited in claim 3, wherein the lid is hinged.",
+    "7. A circuit comprising a resistor. 8. The circuit as recited in claim 7, wherein the resistor is variable.",
+    "14. A shoe having a sole. 15. The shoe as recited in claim 14, wherein the sole is rubber.",
+    "20. A vehicle comprising wheels. 21. The vehicle as recited in claim 20, wherein the wheels are four in number."
+   ],
+   "quiet": [
+    "The device has a housing and a lens, and the lens is made of glass.",
+    "As described in the manual, the system connects to a database on the server.",
+    "The children recited a poem in class before the holiday break.",
+    "The pump has a steel rotor, which keeps it running for years.",
+    "As noted in the review, the container has a hinged lid.",
+    "She recited the names of the planets in order for her teacher.",
+    "The shoe has a rubber sole that grips well on wet floors.",
+    "As shown in the photo, the vehicle has four wheels and a roof rack."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-1.2 on ' in' after 'as recited' in numbered patent claims; ordinary prose and other legal phrasing below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "patent dependent-claim 'as recited in'",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: legal/patent register (' term', 'For example', 'as recited in', ' claims', ' criterion'), gate-closed regime dominates. Probe: 'The method as recited in claim 1, wherein' 1.182; every other legal sentence below 0.15 ('Such term shall be deemed' 0.140, 'All terms used in the claims' 0.067, 'For example' 0.076). Label narrowed to the claim formula; coverage of the pole is likely partial."
+}
