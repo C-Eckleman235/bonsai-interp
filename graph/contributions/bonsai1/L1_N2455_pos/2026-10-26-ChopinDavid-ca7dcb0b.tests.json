@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-ca7dcb0b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N2455+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T08:21:20+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N2455",
+   "pole": "+",
+   "label": "dense early unit, gate-closed: strongest on Python ' def' at a method start and on code-comment words like ' Construct', weakly on most text",
+   "fire": [
+    "import os\n\nclass Loader:\n    def __init__(self, path):\n        self.path = path\n\n    def load(self):\n        return open(self.path).read()",
+    "class Cache:\n    def get(self, key):\n        return self.store.get(key)",
+    "    return result\n\n    def close(self):\n        self.conn.close()",
+    "class Point:\n    def distance(self, other):\n        return abs(self.x - other.x)",
+    "        self.items = []\n\n    def add(self, item):\n        self.items.append(item)",
+    "class Timer:\n    def start(self):\n        self.t0 = time.time()",
+    "    @property\n    def name(self):\n        return self._name",
+    "class Queue:\n    def push(self, x):\n        self.data.append(x)"
+   ],
+   "quiet": [
+    "The loader reads the file from the given path and returns its text to the caller.",
+    "A cache returns the stored value for a key if it has seen that key before.",
+    "When the work is finished the connection to the database is closed.",
+    "The distance between two points is the absolute value of their difference.",
+    "Each new item is appended to the end of the list of items.",
+    "The timer records the current time when it starts running.",
+    "Every person in the registry has a name stored as a private field.",
+    "A queue adds each new element to the back of the line."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on ' def' in indented methods; prose 0.2-0.3, so the test will likely fail",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense; Python def",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Card flags dense (41% of tokens reach 0.1 max) and gate-closed; top 32 ' def' x19. Probe: ' Construct' comment 0.829, 'unpruned' pr 0.795, method def 0.494, but plain weather prose 0.301 and 'define your goals' 0.203. Recorded as dense; best-guess test."
+}
