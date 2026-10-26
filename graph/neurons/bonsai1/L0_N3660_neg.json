@@ -4,8 +4,8 @@
  "layer": 0,
  "index": 3660,
  "pole": "-",
- "label": "the 'umin' piece of German 'zumindest' ('at least'): a word-initial 'z' split from the rest of the word, so 'umin' fires after a leading z (zumindest, Zithromax, Zufferey)",
- "short": "'umin' in zumindest",
+ "label": "word-piece continuation right after a split-off 'z'/'Z' token, mostly 'umin' in German 'zumindest', also Z+ithromax, Z+ufferey, z+ashchity",
+ "short": "piece after split 'z'",
  "kind": "contextual",
  "status": "held",
  "depth": "quick",
@@ -131,12 +131,139 @@
     "near_misses_at_0.3": 1
    },
    "contribution": "2026-10-25-JasperBlank-f8c221f8"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N3660_neg/2026-10-26-JasperBlank-d3a21ab4.tests.json",
+   "prereg_commit": "cfd6808b",
+   "author": "JasperBlank",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.956,
+     "peak": "umin"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.923,
+     "peak": "umin"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 1.09,
+     "peak": "umin"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 1.115,
+     "peak": "ith"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 1.0,
+     "peak": "umin"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 1.0,
+     "peak": "uff"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.904,
+     "peak": "umin"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 1.072,
+     "peak": "umin"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.037,
+     "peak": "ie"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.056,
+     "peak": "cheiden"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.135,
+     "peak": "äng"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.069,
+     "peak": " den"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.045,
+     "peak": "re"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.065,
+     "peak": "uchen"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.037,
+     "peak": " wage"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.151,
+     "peak": "ern"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 1.0,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-26-JasperBlank-d3a21ab4"
   }
  ],
  "label_history": [
   [
    "2026-10-25-JasperBlank-f8c221f8",
    "the 'umin' piece of German 'zumindest' ('at least'): a word-initial 'z' split from the rest of the word, so 'umin' fires after a leading z (zumindest, Zithromax, Zufferey)",
+   "held"
+  ],
+  [
+   "2026-10-26-JasperBlank-d3a21ab4",
+   "word-piece continuation right after a split-off 'z'/'Z' token, mostly 'umin' in German 'zumindest', also Z+ithromax, Z+ufferey, z+ashchity",
    "held"
   ]
  ],
@@ -147,7 +274,8 @@
   "JasperBlank"
  ],
  "contributions": [
-  "2026-10-25-JasperBlank-f8c221f8"
+  "2026-10-25-JasperBlank-f8c221f8",
+  "2026-10-26-JasperBlank-d3a21ab4"
  ],
  "qc": {
   "confirm": 0,
@@ -157,10 +285,10 @@
  "replications": [],
  "coverage": null,
  "scrutiny": {
-  "level": 1,
-  "name": "tested",
-  "test_rounds": 1,
-  "sentences": 16,
+  "level": 2,
+  "name": "re-tested",
+  "test_rounds": 2,
+  "sentences": 32,
   "contributors": 1,
   "qc": 0
  }

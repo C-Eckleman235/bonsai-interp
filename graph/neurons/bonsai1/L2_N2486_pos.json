@@ -4,8 +4,8 @@
  "layer": 2,
  "index": 2486,
  "pole": "+",
- "label": "the Cyrillic vowel token 'и' inside Russian words (mid-word, e.g. в⟦и⟧брационные, в⟦и⟧да); weaker on 'о' and ' fö' in German",
- "short": "Cyrillic и mid-word",
+ "label": "Russian word piece 'и' (or 'о') right after a split-off ' в' inside a Cyrillic word, e.g. в|и|да, в|и|брационные, В|и|бропласт; weak broad firing on Russian text generally",
+ "short": "Russian 'и' after ' в'",
  "kind": "dense / positional",
  "status": "dense",
  "depth": "quick",
@@ -131,6 +131,128 @@
     "near_misses_at_0.3": 2
    },
    "contribution": "2026-10-25-JasperBlank-e893363a"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L2_N2486_pos/2026-10-26-JasperBlank-b3b56753.tests.json",
+   "prereg_commit": "cfd6808b",
+   "author": "JasperBlank",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.802,
+     "peak": "и"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.685,
+     "peak": "и"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.702,
+     "peak": "и"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.725,
+     "peak": "и"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.731,
+     "peak": "и"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.178,
+     "peak": " несколько"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.609,
+     "peak": "и"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.478,
+     "peak": " все"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.049,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.066,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.119,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.036,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.117,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.118,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.148,
+     "peak": " zur"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.025,
+     "peak": " opened"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.694,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-26-JasperBlank-b3b56753"
   }
  ],
  "label_history": [
@@ -138,6 +260,11 @@
    "2026-10-25-JasperBlank-e893363a",
    "the Cyrillic vowel token 'и' inside Russian words (mid-word, e.g. в⟦и⟧брационные, в⟦и⟧да); weaker on 'о' and ' fö' in German",
    "failed"
+  ],
+  [
+   "2026-10-26-JasperBlank-b3b56753",
+   "Russian word piece 'и' (or 'о') right after a split-off ' в' inside a Cyrillic word, e.g. в|и|да, в|и|брационные, В|и|бропласт; weak broad firing on Russian text generally",
+   "held"
   ]
  ],
  "examples": [],
@@ -147,7 +274,8 @@
   "JasperBlank"
  ],
  "contributions": [
-  "2026-10-25-JasperBlank-e893363a"
+  "2026-10-25-JasperBlank-e893363a",
+  "2026-10-26-JasperBlank-b3b56753"
  ],
  "qc": {
   "confirm": 0,
@@ -157,10 +285,10 @@
  "replications": [],
  "coverage": null,
  "scrutiny": {
-  "level": 1,
-  "name": "tested",
-  "test_rounds": 1,
-  "sentences": 16,
+  "level": 2,
+  "name": "re-tested",
+  "test_rounds": 2,
+  "sentences": 32,
   "contributors": 1,
   "qc": 0
  }

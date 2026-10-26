@@ -4,9 +4,9 @@
  "layer": 35,
  "index": 1656,
  "pole": "+",
- "label": "Asset and finance-economics terms: the token '資' inside 資產 (asset, e.g. 建築資產, 安全資產), plus the asset/share words ' أس' (أسهم, shares) and ' AS' (ASSET) in economic or finance text",
- "short": "asset/finance terms",
- "kind": "contextual",
+ "label": "Predicting the word 'asset(s)' (or stocks/profits): fires on the first piece of a financial asset/share word, especially in non-English text (Japanese/Chinese 資 in 資産, Arabic الأ/أس in الأسهم/الأرباح/الأصول) and code like ASSET_",
+ "short": "start of 'asset' word",
+ "kind": "sparse feature",
  "status": "held",
  "depth": "quick",
  "tests": [
@@ -131,12 +131,139 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-26-JasperBlank-bcda677e"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N1656_pos/2026-10-26-JasperBlank-8986d709.tests.json",
+   "prereg_commit": "cfd6808b",
+   "author": "JasperBlank",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.308,
+     "peak": "資"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.636,
+     "peak": "資"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.452,
+     "peak": "資"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.079,
+     "peak": " أس"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.555,
+     "peak": " الأ"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.455,
+     "peak": " الأ"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.424,
+     "peak": "S"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.145,
+     "peak": "aven"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.001,
+     "peak": "が"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.001,
+     "peak": "顧"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.001,
+     "peak": "در"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.008,
+     "peak": " الك"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.001,
+     "peak": " alphabet"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.001,
+     "peak": " slowly"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.001,
+     "peak": "的"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.001,
+     "peak": " Thursday"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.438,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-26-JasperBlank-8986d709"
   }
  ],
  "label_history": [
   [
    "2026-10-26-JasperBlank-bcda677e",
    "Asset and finance-economics terms: the token '資' inside 資產 (asset, e.g. 建築資產, 安全資產), plus the asset/share words ' أس' (أسهم, shares) and ' AS' (ASSET) in economic or finance text",
+   "held"
+  ],
+  [
+   "2026-10-26-JasperBlank-8986d709",
+   "Predicting the word 'asset(s)' (or stocks/profits): fires on the first piece of a financial asset/share word, especially in non-English text (Japanese/Chinese 資 in 資産, Arabic الأ/أس in الأسهم/الأرباح/الأصول) and code like ASSET_",
    "held"
   ]
  ],
@@ -147,7 +274,8 @@
   "JasperBlank"
  ],
  "contributions": [
-  "2026-10-26-JasperBlank-bcda677e"
+  "2026-10-26-JasperBlank-bcda677e",
+  "2026-10-26-JasperBlank-8986d709"
  ],
  "qc": {
   "confirm": 0,
@@ -157,10 +285,10 @@
  "replications": [],
  "coverage": null,
  "scrutiny": {
-  "level": 1,
-  "name": "tested",
-  "test_rounds": 1,
-  "sentences": 16,
+  "level": 2,
+  "name": "re-tested",
+  "test_rounds": 2,
+  "sentences": 32,
   "contributors": 1,
   "qc": 0
  }

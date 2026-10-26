@@ -4,9 +4,9 @@
  "layer": 15,
  "index": 5974,
  "pole": "-",
- "label": "unclear: a determiner or noun phrase opener right after the connective 'so' (' so today', ' so these', ' so the trend'); peaks are spread over commas, 'in', 'are', 'a', 'each' with no single dominant token, so no clean trigger was found",
- "short": "after 'so', determiner opener",
- "kind": "unclear",
+ "label": "the first word of a result clause after 'so' / 'therefore' (e.g. 'so today', 'therefore, each', 'so these', 'and so the trend'): the subject-starting token right after a consequence connective",
+ "short": "subject after 'so/therefore'",
+ "kind": "contextual",
  "status": "held",
  "depth": "quick",
  "tests": [
@@ -131,12 +131,139 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-26-JasperBlank-0163a0c4"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L15_N5974_neg/2026-10-26-JasperBlank-b6ad5e6c.tests.json",
+   "prereg_commit": "cfd6808b",
+   "author": "JasperBlank",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.804,
+     "peak": " today"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.179,
+     "peak": " each"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.756,
+     "peak": " suit"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.657,
+     "peak": " trend"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.347,
+     "peak": " this"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.244,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.174,
+     "peak": " every"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.33,
+     "peak": " those"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.014,
+     "peak": " bread"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.007,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.049,
+     "peak": " commuting"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.017,
+     "peak": " East"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.031,
+     "peak": " old"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.04,
+     "peak": " team"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.018,
+     "peak": "I"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.019,
+     "peak": " lights"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.339,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-26-JasperBlank-b6ad5e6c"
   }
  ],
  "label_history": [
   [
    "2026-10-26-JasperBlank-0163a0c4",
    "unclear: a determiner or noun phrase opener right after the connective 'so' (' so today', ' so these', ' so the trend'); peaks are spread over commas, 'in', 'are', 'a', 'each' with no single dominant token, so no clean trigger was found",
+   "held"
+  ],
+  [
+   "2026-10-26-JasperBlank-b6ad5e6c",
+   "the first word of a result clause after 'so' / 'therefore' (e.g. 'so today', 'therefore, each', 'so these', 'and so the trend'): the subject-starting token right after a consequence connective",
    "held"
   ]
  ],
@@ -147,7 +274,8 @@
   "JasperBlank"
  ],
  "contributions": [
-  "2026-10-26-JasperBlank-0163a0c4"
+  "2026-10-26-JasperBlank-0163a0c4",
+  "2026-10-26-JasperBlank-b6ad5e6c"
  ],
  "qc": {
   "confirm": 0,
@@ -157,10 +285,10 @@
  "replications": [],
  "coverage": null,
  "scrutiny": {
-  "level": 1,
-  "name": "tested",
-  "test_rounds": 1,
-  "sentences": 16,
+  "level": 2,
+  "name": "re-tested",
+  "test_rounds": 2,
+  "sentences": 32,
   "contributors": 1,
   "qc": 0
  }

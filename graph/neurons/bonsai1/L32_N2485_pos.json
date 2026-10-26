@@ -4,9 +4,9 @@
  "layer": 32,
  "index": 2485,
  "pole": "+",
- "label": "the verb 'shorten' (and 'short' in the sense of cutting a duration, time or length), e.g. 'may shorten the duration', 'shortened'; a meaning-level pattern with no single dominant token",
- "short": "shorten / cut duration",
- "kind": "contextual",
+ "label": "Token right before a predicted 'short'/'shorten' (multilingual): fires on the word preceding shorten/short, e.g. 'may' in 'may shorten the duration', 'is' in 'stay is shortened', 'Keep baths' before 'short'",
+ "short": "predicts shorten / short",
+ "kind": "sparse feature",
  "status": "failed",
  "depth": "quick",
  "tests": [
@@ -131,12 +131,139 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-26-JasperBlank-c8da7b60"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L32_N2485_pos/2026-10-26-JasperBlank-39419cec.tests.json",
+   "prereg_commit": "cfd6808b",
+   "author": "JasperBlank",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.031,
+     "peak": " duration"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.334,
+     "peak": " is"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 1.009,
+     "peak": " baths"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.02,
+     "peak": " fire"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.004,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.012,
+     "peak": " may"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.143,
+     "peak": " speech"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.008,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.047,
+     "peak": " cold"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.028,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.002,
+     "peak": " with"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.049,
+     "peak": " meeting"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.016,
+     "peak": " length"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.012,
+     "peak": " caused"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.096,
+     "peak": " be"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.014,
+     "peak": " article"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.57,
+    "median_fire": 0.026,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-26-JasperBlank-39419cec"
   }
  ],
  "label_history": [
   [
    "2026-10-26-JasperBlank-c8da7b60",
    "the verb 'shorten' (and 'short' in the sense of cutting a duration, time or length), e.g. 'may shorten the duration', 'shortened'; a meaning-level pattern with no single dominant token",
+   "failed"
+  ],
+  [
+   "2026-10-26-JasperBlank-39419cec",
+   "Token right before a predicted 'short'/'shorten' (multilingual): fires on the word preceding shorten/short, e.g. 'may' in 'may shorten the duration', 'is' in 'stay is shortened', 'Keep baths' before 'short'",
    "failed"
   ]
  ],
@@ -147,7 +274,8 @@
   "JasperBlank"
  ],
  "contributions": [
-  "2026-10-26-JasperBlank-c8da7b60"
+  "2026-10-26-JasperBlank-c8da7b60",
+  "2026-10-26-JasperBlank-39419cec"
  ],
  "qc": {
   "confirm": 0,
@@ -157,10 +285,10 @@
  "replications": [],
  "coverage": null,
  "scrutiny": {
-  "level": 1,
-  "name": "tested",
-  "test_rounds": 1,
-  "sentences": 16,
+  "level": 2,
+  "name": "re-tested",
+  "test_rounds": 2,
+  "sentences": 32,
   "contributors": 1,
   "qc": 0
  }

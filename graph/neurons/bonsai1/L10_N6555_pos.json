@@ -4,8 +4,8 @@
  "layer": 10,
  "index": 6555,
  "pole": "+",
- "label": "single digit tokens '4', '5', '6', '7' inside a number (clock times, coordinates, measurements, decimals, timestamps); strongest on 4 and 5 after a colon or decimal point",
- "short": "digits 4-7 in numbers",
+ "label": "Non-leading digit tokens inside multi-digit numbers in measurements, times, coordinates and amounts (e.g. the '7' in '47 minutes', '9' in '49秒'); broad, fires weakly on many digits",
+ "short": "inner digits of numbers",
  "kind": "dense / positional",
  "status": "dense",
  "depth": "quick",
@@ -131,6 +131,128 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-26-JasperBlank-79ae3b7e"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L10_N6555_pos/2026-10-26-JasperBlank-14b02f64.tests.json",
+   "prereg_commit": "cfd6808b",
+   "author": "JasperBlank",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.383,
+     "peak": " minutes"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.743,
+     "peak": "7"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.821,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.748,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.418,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.607,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.136,
+     "peak": " grams"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.186,
+     "peak": "8"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.0,
+     "peak": " outside"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.036,
+     "peak": " end"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.053,
+     "peak": " country"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.059,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.059,
+     "peak": " as"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.025,
+     "peak": " tall"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.085,
+     "peak": " this"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.051,
+     "peak": " touched"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.512,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-26-JasperBlank-14b02f64"
   }
  ],
  "label_history": [
@@ -138,6 +260,11 @@
    "2026-10-26-JasperBlank-79ae3b7e",
    "single digit tokens '4', '5', '6', '7' inside a number (clock times, coordinates, measurements, decimals, timestamps); strongest on 4 and 5 after a colon or decimal point",
    "failed"
+  ],
+  [
+   "2026-10-26-JasperBlank-14b02f64",
+   "Non-leading digit tokens inside multi-digit numbers in measurements, times, coordinates and amounts (e.g. the '7' in '47 minutes', '9' in '49秒'); broad, fires weakly on many digits",
+   "held"
   ]
  ],
  "examples": [],
@@ -147,7 +274,8 @@
   "JasperBlank"
  ],
  "contributions": [
-  "2026-10-26-JasperBlank-79ae3b7e"
+  "2026-10-26-JasperBlank-79ae3b7e",
+  "2026-10-26-JasperBlank-14b02f64"
  ],
  "qc": {
   "confirm": 0,
@@ -157,10 +285,10 @@
  "replications": [],
  "coverage": null,
  "scrutiny": {
-  "level": 1,
-  "name": "tested",
-  "test_rounds": 1,
-  "sentences": 16,
+  "level": 2,
+  "name": "re-tested",
+  "test_rounds": 2,
+  "sentences": 32,
   "contributors": 1,
   "qc": 0
  }

@@ -4,9 +4,9 @@
  "layer": 25,
  "index": 221,
  "pole": "+",
- "label": "' Anal' / ' anal' as the first piece of a longer word that the tokenizer splits (Anal|ogue, Anal|ysing, Anal|ytical), i.e. a word-initial 'anal' fragment; weaker secondary hits on 'ab' inside An|ab|aptism",
- "short": "word-initial 'Anal' fragment",
- "kind": "sparse feature",
+ "label": "Word-initial 'Anal'/'anal' (analysis/analytical/analogue) and 'ab' in Anabaptism: the second-syllable piece of 'An(a)-' words, fires on the fragment that starts the stem",
+ "short": "Ana- word stems",
+ "kind": "lexical",
  "status": "held",
  "depth": "quick",
  "tests": [
@@ -131,12 +131,139 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-26-JasperBlank-a1b19986"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N221_pos/2026-10-26-JasperBlank-63821bab.tests.json",
+   "prereg_commit": "cfd6808b",
+   "author": "JasperBlank",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.923,
+     "peak": "ab"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.953,
+     "peak": "ab"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.791,
+     "peak": "Anal"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.843,
+     "peak": " analytical"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 1.03,
+     "peak": " Anal"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.931,
+     "peak": "ab"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.666,
+     "peak": " analytical"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.791,
+     "peak": "Anal"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.002,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.002,
+     "peak": " professor"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.003,
+     "peak": " samples"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.001,
+     "peak": " imaging"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.164,
+     "peak": " synthes"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.007,
+     "peak": " abb"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.02,
+     "peak": "ists"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.002,
+     "peak": " effort"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.883,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-26-JasperBlank-63821bab"
   }
  ],
  "label_history": [
   [
    "2026-10-26-JasperBlank-a1b19986",
    "' Anal' / ' anal' as the first piece of a longer word that the tokenizer splits (Anal|ogue, Anal|ysing, Anal|ytical), i.e. a word-initial 'anal' fragment; weaker secondary hits on 'ab' inside An|ab|aptism",
+   "held"
+  ],
+  [
+   "2026-10-26-JasperBlank-63821bab",
+   "Word-initial 'Anal'/'anal' (analysis/analytical/analogue) and 'ab' in Anabaptism: the second-syllable piece of 'An(a)-' words, fires on the fragment that starts the stem",
    "held"
   ]
  ],
@@ -147,7 +274,8 @@
   "JasperBlank"
  ],
  "contributions": [
-  "2026-10-26-JasperBlank-a1b19986"
+  "2026-10-26-JasperBlank-a1b19986",
+  "2026-10-26-JasperBlank-63821bab"
  ],
  "qc": {
   "confirm": 0,
@@ -157,10 +285,10 @@
  "replications": [],
  "coverage": null,
  "scrutiny": {
-  "level": 1,
-  "name": "tested",
-  "test_rounds": 1,
-  "sentences": 16,
+  "level": 2,
+  "name": "re-tested",
+  "test_rounds": 2,
+  "sentences": 32,
   "contributors": 1,
   "qc": 0
  }

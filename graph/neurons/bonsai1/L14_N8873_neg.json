@@ -4,8 +4,8 @@
  "layer": 14,
  "index": 8873,
  "pole": "-",
- "label": "the - pole: weak, diffuse. Fires on line breaks and punctuation at the end of a line in list-like or multi-line web text (menu items, bullet lists, numbered headings); no single trigger token and no clear context beyond 'a line ends here'",
- "short": "line-end punctuation in lists",
+ "label": "Broad boundary detector: fires weakly at segment ends in list-like or heading-like text (newlines ending short list items or headings, a period ending a promo sentence, separators like '|'), with no single trigger token",
+ "short": "list/heading item boundaries",
  "kind": "dense / positional",
  "status": "dense",
  "depth": "quick",
@@ -131,12 +131,139 @@
     "near_misses_at_0.3": 1
    },
    "contribution": "2026-10-26-JasperBlank-0665d0ab"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L14_N8873_neg/2026-10-26-JasperBlank-e3cff516.tests.json",
+   "prereg_commit": "cfd6808b",
+   "author": "JasperBlank",
+   "n_fire": 3,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.218,
+     "peak": " Cor"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.243,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.637,
+     "peak": " |"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.378,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.003,
+     "peak": " Contact"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.105,
+     "peak": " Pie"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.1,
+     "peak": "Chapter"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.848,
+     "peak": " D"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.174,
+     "peak": " while"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.126,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.174,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.089,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.166,
+     "peak": "We"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.183,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.094,
+     "peak": " took"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.336,
+     "peak": " his"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.656,
+    "median_fire": 0.23,
+    "near_misses_at_0.3": 1
+   },
+   "contribution": "2026-10-26-JasperBlank-e3cff516"
   }
  ],
  "label_history": [
   [
    "2026-10-26-JasperBlank-0665d0ab",
    "the - pole: weak, diffuse. Fires on line breaks and punctuation at the end of a line in list-like or multi-line web text (menu items, bullet lists, numbered headings); no single trigger token and no clear context beyond 'a line ends here'",
+   "failed"
+  ],
+  [
+   "2026-10-26-JasperBlank-e3cff516",
+   "Broad boundary detector: fires weakly at segment ends in list-like or heading-like text (newlines ending short list items or headings, a period ending a promo sentence, separators like '|'), with no single trigger token",
    "failed"
   ]
  ],
@@ -147,7 +274,8 @@
   "JasperBlank"
  ],
  "contributions": [
-  "2026-10-26-JasperBlank-0665d0ab"
+  "2026-10-26-JasperBlank-0665d0ab",
+  "2026-10-26-JasperBlank-e3cff516"
  ],
  "qc": {
   "confirm": 0,
@@ -157,10 +285,10 @@
  "replications": [],
  "coverage": null,
  "scrutiny": {
-  "level": 1,
-  "name": "tested",
-  "test_rounds": 1,
-  "sentences": 16,
+  "level": 2,
+  "name": "re-tested",
+  "test_rounds": 2,
+  "sentences": 32,
   "contributors": 1,
   "qc": 0
  }

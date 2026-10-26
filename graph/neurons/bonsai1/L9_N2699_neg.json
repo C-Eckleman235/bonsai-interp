@@ -4,8 +4,8 @@
  "layer": 9,
  "index": 2699,
  "pole": "-",
- "label": "muscle-protein and sarcomere terms (troponin, striated, sarcoplasmic, myofibrillar, actin/Z-line context); word pieces 'pon', 'yst', 'ated', 'opl' inside those words, no single trigger token",
- "short": "muscle/sarcomere protein terms",
+ "label": "word pieces inside muscle-contraction / sarcomere protein terms (tro-pon-in, striated, sarcoplasmic, myofibril, Z lines), peaking on the middle piece like 'pon' in troponin",
+ "short": "muscle protein word pieces",
  "kind": "contextual",
  "status": "held",
  "depth": "quick",
@@ -131,12 +131,139 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-26-JasperBlank-7a5a5a5d"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L9_N2699_neg/2026-10-26-JasperBlank-980b0908.tests.json",
+   "prereg_commit": "cfd6808b",
+   "author": "JasperBlank",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.929,
+     "peak": "pon"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.453,
+     "peak": "pon"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.889,
+     "peak": "pon"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 1.297,
+     "peak": "ated"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.564,
+     "peak": "opl"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 1.266,
+     "peak": " fil"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.896,
+     "peak": "pon"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.738,
+     "peak": "opl"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.086,
+     "peak": " pain"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.207,
+     "peak": " grow"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.056,
+     "peak": " blood"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.008,
+     "peak": " temperature"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.01,
+     "peak": "es"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.022,
+     "peak": " cy"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.005,
+     "peak": " before"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.006,
+     "peak": "Doctors"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.893,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-26-JasperBlank-980b0908"
   }
  ],
  "label_history": [
   [
    "2026-10-26-JasperBlank-7a5a5a5d",
    "muscle-protein and sarcomere terms (troponin, striated, sarcoplasmic, myofibrillar, actin/Z-line context); word pieces 'pon', 'yst', 'ated', 'opl' inside those words, no single trigger token",
+   "held"
+  ],
+  [
+   "2026-10-26-JasperBlank-980b0908",
+   "word pieces inside muscle-contraction / sarcomere protein terms (tro-pon-in, striated, sarcoplasmic, myofibril, Z lines), peaking on the middle piece like 'pon' in troponin",
    "held"
   ]
  ],
@@ -147,7 +274,8 @@
   "JasperBlank"
  ],
  "contributions": [
-  "2026-10-26-JasperBlank-7a5a5a5d"
+  "2026-10-26-JasperBlank-7a5a5a5d",
+  "2026-10-26-JasperBlank-980b0908"
  ],
  "qc": {
   "confirm": 0,
@@ -157,10 +285,10 @@
  "replications": [],
  "coverage": null,
  "scrutiny": {
-  "level": 1,
-  "name": "tested",
-  "test_rounds": 1,
-  "sentences": 16,
+  "level": 2,
+  "name": "re-tested",
+  "test_rounds": 2,
+  "sentences": 32,
   "contributors": 1,
   "qc": 0
  }

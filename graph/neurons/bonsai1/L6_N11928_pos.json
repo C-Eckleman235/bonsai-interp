@@ -4,8 +4,8 @@
  "layer": 6,
  "index": 11928,
  "pole": "+",
- "label": "the indentation whitespace token (tab or run of spaces) that opens the first body line directly after a 'def ...):' function header line, i.e. the '\\t' / '   ' right after '):\\n' in Python code",
- "short": "indent after def header",
+ "label": "First indentation whitespace (spaces or tab) on the line right after a Python 'def ...():' header, i.e. the start of a function body",
+ "short": "function body first indent",
  "kind": "contextual",
  "status": "failed",
  "depth": "quick",
@@ -131,12 +131,139 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-25-JasperBlank-3dead8b2"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L6_N11928_pos/2026-10-26-JasperBlank-3af3607a.tests.json",
+   "prereg_commit": "cfd6808b",
+   "author": "JasperBlank",
+   "n_fire": 6,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.634,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.247,
+     "peak": "           "
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.319,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.422,
+     "peak": "\t"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.316,
+     "peak": "       "
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.36,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.446,
+     "peak": "\t"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.226,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.027,
+     "peak": "user"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.03,
+     "peak": "values"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.041,
+     "peak": "USER"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.451,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.272,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.033,
+     "peak": "Our"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.031,
+     "peak": "save"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.194,
+     "peak": "   "
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.859,
+    "median_fire": 0.34,
+    "near_misses_at_0.3": 1
+   },
+   "contribution": "2026-10-26-JasperBlank-3af3607a"
   }
  ],
  "label_history": [
   [
    "2026-10-25-JasperBlank-3dead8b2",
    "the indentation whitespace token (tab or run of spaces) that opens the first body line directly after a 'def ...):' function header line, i.e. the '\\t' / '   ' right after '):\\n' in Python code",
+   "failed"
+  ],
+  [
+   "2026-10-26-JasperBlank-3af3607a",
+   "First indentation whitespace (spaces or tab) on the line right after a Python 'def ...():' header, i.e. the start of a function body",
    "failed"
   ]
  ],
@@ -147,7 +274,8 @@
   "JasperBlank"
  ],
  "contributions": [
-  "2026-10-25-JasperBlank-3dead8b2"
+  "2026-10-25-JasperBlank-3dead8b2",
+  "2026-10-26-JasperBlank-3af3607a"
  ],
  "qc": {
   "confirm": 0,
@@ -157,10 +285,10 @@
  "replications": [],
  "coverage": null,
  "scrutiny": {
-  "level": 1,
-  "name": "tested",
-  "test_rounds": 1,
-  "sentences": 16,
+  "level": 2,
+  "name": "re-tested",
+  "test_rounds": 2,
+  "sentences": 32,
   "contributors": 1,
   "qc": 0
  }
