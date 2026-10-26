@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-C-Eckleman235-ad14e083",
+ "contributor": "C-Eckleman235",
+ "kind": "qc",
+ "neuron": "bonsai1/L0/N3660-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T18:38:22+00:00",
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "word-piece continuation right after a split-off 'z'/'Z' token, mostly 'umin' in German 'zumindest', also Z+ithromax, Z+ufferey, z+ashchity",
+  "notes": "Replicate QC (round 2 of 2) for a QC noise-floor study (plan sha256 54b0a719c1fd9151a78a4e5192055503b32101af3b24153d9274b53fec255a82), on the labels of the model-QC pilot (#1051-#1080): label slot A of this pole, from contribution 2026-10-26-JasperBlank-d3a21ab4. Sentences written by a NEW fresh Opus subagent given the identical packet as round 1 (the pole's card with its record line removed and the three anonymous labels), never shown round 1's tests or results and not told which model wrote which label; nothing was probed or scored before this commit."
+ },
+ "neighbours": [
+  {
+   "unit": "L0/N3660",
+   "pole": "-",
+   "label": "word-piece continuation right after a split-off 'z'/'Z' token, mostly 'umin' in German 'zumindest', also Z+ithromax, Z+ufferey, z+ashchity",
+   "fire": [
+    "Wir sollten zumindest versuchen, den letzten Zug nach Hamburg noch zu erwischen.",
+    "Das Wetter war schlecht, aber die Stimmung blieb zumindest bis zum Abend gut.",
+    "Der Bericht erklärt zumindest teilweise, warum die Kosten so stark gestiegen sind.",
+    "My doctor prescribed Zithromax for the sinus infection, five days of tablets.",
+    "Can I take Zithromax with ibuprofen, or should I wait a few hours between doses?",
+    "The drone swarm study was led by Jean-Christophe Zufferey at the robotics lab in Lausanne.",
+    "In an interview, Zufferey described how the flying robots coordinate without a central controller.",
+    "The Russian headline read \"bez zashchity,\" meaning the region was left without protection."
+   ],
+   "quiet": [
+    "Wir sollten wenigstens versuchen, den letzten Bus nach Bremen noch zu bekommen.",
+    "Der Plan funktioniert mindestens so gut wie die alte Lösung, sagt die Firma.",
+    "My doctor prescribed azithromycin for the chest infection, three days of pills.",
+    "Can I take amoxicillin with paracetamol, or should I space the doses apart?",
+    "The robot study was led by a Swiss engineer at the aerial systems lab in Lausanne.",
+    "In an interview, the group leader explained how the flying robots share position data.",
+    "The Russian headline said the region had been left without any defense at all.",
+    "Die Gäste kamen zum Fest, obwohl es den ganzen Tag über regnete."
+   ]
+  }
+ ],
+ "predictions": "confirm: the label as written should hold a harder independent test (>= 6/8 fire, AUROC >= 0.9)",
+ "methods": {
+  "agent": "claude-code opus-5.5 (blind QC-writer subagent, card only)",
+  "screens": [
+   "card"
+  ]
+ },
+ "selection": "QC noise floor: a second independent QC of each model-QC pilot label (#1051-#1080)"
+}
