@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-26-moridinamael-737bca58",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L24/N8741+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T15:46:30+00:00",
+ "qc": {
+  "verdict": "dispute",
+  "label_under_test": "Inside code, a line that looks up a value by key or index, with square brackets (d[a][b], row['name'], items[0]) or chained .get() calls; code without a lookup (arithmetic, print, loops, assignments of literals) and prose stay low."
+ },
+ "neighbours": [
+  {
+   "unit": "L24/N8741",
+   "pole": "+",
+   "label": "Inside code, a line that looks up a value by key or index, especially chained (d[a][b], row['name'], items[0], or chained .get() calls); code without a lookup (arithmetic, print, loops, assignments of literals) and prose stay low.",
+   "fire": [
+    "name = row['name']",
+    "city = data['users'][0]['address']['city']",
+    "first = items[0]",
+    "port = config.get('server', {}).get('port', 8080)",
+    "value = matrix[i][j]",
+    "total += prices[item_id]",
+    "token = response.json()['data']['token']",
+    "const title = props.book.chapters[2].title;"
+   ],
+   "quiet": [
+    "The quote reads: \"he [the mayor] agreed\".",
+    "@classmethod",
+    "name = 'Alice'",
+    "city = 'Paris'",
+    "first = 0",
+    "port = 8080",
+    "value = i * j + 1",
+    "total += 5"
+   ]
+  }
+ ],
+ "predictions": "Expect a fail or exploratory result: my probes showed calls with fused parens ('(user', '(label') fire as much as lookups, and short one-liners read low on the resident model. Easy near misses may still separate, so a hold is possible.",
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "neighbors"
+  ]
+ }
+}
