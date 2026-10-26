@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-26-JasperBlank-e4324d38",
+ "contributor": "JasperBlank",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N7716-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T02:07:20+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N7716",
+   "pole": "-",
+   "label": "the token ' *' (multiplication operator) in code, usually directly before or after a math.cos/math.sin/cos/sin call, as in 'speed * math.cos(angle)' or 'r * sin(theta)'",
+   "fire": [
+    "To place the particle, we set its horizontal speed as speed * math.cos(angle) inside the update loop.",
+    "The sphere position is computed with radius * math.sin(theta) so the points wrap around the circle.",
+    "In the physics step, the offset is scaled by dt * math.cos(heading) before it is added to the position.",
+    "Our rotation code multiplies amplitude * math.sin(phase) every frame to produce the bobbing motion.",
+    "For each sample we compute x = r * sin(theta) * cos(phi) and store the result in the output array.",
+    "The helper returns scale * math.cos(angle) so callers receive the horizontal component of the velocity.",
+    "Inside the loop, the vertical offset is calculated as step_size * math.sin(t) before it moves the sprite.",
+    "She wrote the kernel as weight * math.cos(omega * t), and the first multiply line confused the reviewer."
+   ],
+   "quiet": [
+    "The particle velocity is set from math.cos(angle) directly, while speed is kept in its own variable.",
+    "In the update loop we call scale_speed(speed, math.cos(angle)) to get the horizontal velocity.",
+    "The sphere position uses radius, then math.sin(theta), then the rotate helper, all in one line.",
+    "Each frame the bobbing sprite follows a sine curve that the engine evaluates on its own schedule.",
+    "Type ls *.txt in the terminal to list every text file in the current folder.",
+    "The cover headline was printed in *italic* type on the front of the glossy brochure.",
+    "In the RTF2XYZ function, x is computed from sin(thet) and cos(phi) with r passed in separately.",
+    "Pick a pattern such as report*.csv when searching the export folder for last month's files."
+   ]
+  }
+ ],
+ "predictions": "about 6/8 fire, 1 near miss; untested, card is scan-only",
+ "methods": {
+  "agent": "claude-code haiku-5.5 (subagent)",
+  "screens": [
+   "card"
+  ]
+ },
+ "short": "' *' multiply before trig call",
+ "unit_kind": "contextual",
+ "confidence": "low",
+ "notes": "Label and sentences written blind by a Claude subagent from the card text alone (prompt: haiku_labeler/prompt.md, identical for Haiku, Sonnet and Opus); one retry on mechanical checks. Part of a Haiku/Sonnet/Opus comparison on the same 48 poles."
+}
