@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-C-Eckleman235-48a14668",
+ "contributor": "C-Eckleman235",
+ "kind": "qc",
+ "neuron": "bonsai1/L15/N5974-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T17:44:33+00:00",
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "the first word of a result clause after 'so' / 'therefore' (e.g. 'so today', 'therefore, each', 'so these', 'and so the trend'): the subject-starting token right after a consequence connective",
+  "notes": "Model-QC pilot (concept-maps plan sha256 e2c0fbd950fc010cf3ac8c4a8d9473758ba54d8ddb3e2dbc13f451f5a8ddf787): label slot A of this pole, from contribution 2026-10-26-JasperBlank-b6ad5e6c; which model wrote it stays sealed until all 30 tests are scored. Sentences written by a fresh Opus subagent that saw only the pole's card (record line removed) and the three anonymous labels; nothing was probed or scored."
+ },
+ "neighbours": [
+  {
+   "unit": "L15/N5974",
+   "pole": "-",
+   "label": "the first word of a result clause after 'so' / 'therefore' (e.g. 'so today', 'therefore, each', 'so these', 'and so the trend'): the subject-starting token right after a consequence connective",
+   "fire": [
+    "The bakery ran out of flour early this morning, so tomorrow the bread order will be cut in half.",
+    "Our printer jammed twice during the meeting, so everyone had to share the single remaining copy.",
+    "The bridge is closed for repairs until spring; therefore, all trucks must take the northern detour.",
+    "Rainfall has dropped sharply across the valley for three years, and so the reservoirs are nearly empty.",
+    "My old laptop kept overheating whenever I opened a video, so this new one feels like a luxury.",
+    "The committee could not reach a quorum on Friday; therefore the vote was postponed until next month.",
+    "I had never tried knitting socks before, so yesterday was mostly spent untangling yarn.",
+    "Each server stores only a fragment of the data, therefore, every query must contact several machines."
+   ],
+   "quiet": [
+    "The bakery ran out of flour early this morning because tomorrow the big wedding order is due.",
+    "Our printer jammed twice during the meeting while everyone was waiting for the handouts.",
+    "The bridge is closed for repairs until spring, although all trucks may still use the ferry.",
+    "Rainfall has dropped sharply across the valley for three years, but the reservoirs remain surprisingly full.",
+    "My old laptop kept overheating whenever I opened a video, and it was so loud I gave up on it.",
+    "After the committee failed to reach a quorum on Friday, members went home without voting.",
+    "I had never tried knitting socks before yesterday, when my aunt finally showed me how.",
+    "Each server stores only a fragment of the data, which makes backups both faster and cheaper."
+   ]
+  }
+ ],
+ "predictions": "confirm: the label as written should hold a harder independent test (>= 6/8 fire, AUROC >= 0.9)",
+ "methods": {
+  "agent": "claude-code opus-5.5 (blind QC-writer subagent, card only)",
+  "screens": [
+   "card"
+  ]
+ },
+ "selection": "model-QC pilot: a seeded draw of poles held by all three labelling models (#1018-#1021)"
+}
