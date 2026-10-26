@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-5ee998fb",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N1086+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T22:21:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L14/N1086",
+   "pole": "+",
+   "label": "the extent of a counting sequence: 'finite', 'infinity', 'natural numbers', or an ellipsis standing for an elided run of integers, as against explicitly listed numbers and everyday size words",
+   "fire": [
+    "Because the set of possible moves is finite, the game must end.",
+    "Let S be the sum of the first hundred natural numbers.",
+    "    ids = [1, 2, 3, ..., N]\n    total = sum(ids)",
+    "In this model the price can rise without limit, all the way to infinity.",
+    "Every bounded sequence of integers takes only finitely many values, so the list is finite.",
+    "The proof works for any positive integer n among the natural numbers.",
+    "    for k in 0, 1, 2, ..., m - 1:\n        visit(k)",
+    "Since only a finite number of digits are possible, the pattern repeats."
+   ],
+   "quiet": [
+    "Because the number of players is small, the game must end early.",
+    "Let S be the sum of the prices of the first hundred books.",
+    "    ids = [1, 2, 3, 4, 5]\n    total = sum(ids)",
+    "In this market the price can rise a lot during the busy season.",
+    "Every bag in the shop holds about twenty apples, so the box is heavy.",
+    "The proof was checked by every student in the evening class.",
+    "    for k in [0, 1, 2]:\n        visit(k)",
+    "Since only a few guests are coming, the table is big enough."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on ' finite', ' natural' (numbers), ' infinity' or ' ...' in an integer list; fully written-out lists and words like 'large' or 'many' below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "extent of a counting sequence (finite / ... / natural numbers)",
+ "unit_kind": "meaning",
+ "confidence": 0.5,
+ "notes": "Card: ' finite' x4, ' ...' in '[0, 1, 2, ... B-1]', ' infinity', 'first 11 natural numbers', ',...' in '0,1,2,...23'; the - pole suppresses ' infinite', ' endless'. Probe: 'first ten natural numbers' 0.553, 'number of states is finite' 0.506, '[0, 1, 2, ..., n-1]' 0.460, 'to infinity' 0.332; explicit list '[0, 1, 2, 3, 4]' 0.075, 'number of guests is large' 0.023, 'one, two, three, and so on' 0.046."
+}
