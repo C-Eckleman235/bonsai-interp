@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-98cdd86b",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N961+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-26T21:27:52+00:00",
+ "recipe": {
+  "toolchain_commit": "7d55f237",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L22_N961_pos/2026-10-26-ChopinDavid-98cdd86b.tests.json"
+ },
+ "label": "code inside a Python class method that updates or redraws a widget, view or record through self (self.panel..., comments on view state), as against flat top-level scripts and SQL",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N961_pos/2026-10-26-ChopinDavid-98cdd86b.tests.json",
+   "prereg_commit": "7d55f237",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.626,
+     "peak": "(self"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.408,
+     "peak": " self"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.68,
+     "peak": " self"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.201,
+     "peak": " self"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.466,
+     "peak": " self"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.454,
+     "peak": " self"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.401,
+     "peak": " self"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.477,
+     "peak": " self"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.007,
+     "peak": "names"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.124,
+     "peak": " FROM"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.101,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.089,
+     "peak": " last"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.009,
+     "peak": "])"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.017,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.038,
+     "peak": " expired"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.004,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.46,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "7d55f237",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "Python method body acting on self / view state",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: ' self' x2 (self.message_user), ' becomes' in a docstring about a view becoming visible, '- no: if the SO is not', 'The widget may not be realized', '.Fit(self)'. Probe: def refresh(self) with redraw comment 0.526, def on_show docstring 0.502, def save 0.374, widget comment 0.275; 'x = [1, 2, 3]' 0.014, SQL 0.012. Prose about a window becoming visible also fired (0.341, 0.209), so the pole is not code-only.",
+ "selection": "random draw"
+}
