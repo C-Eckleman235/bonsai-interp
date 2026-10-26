@@ -81,6 +81,7 @@ LIB_SOURCES = {  # every deterministic pass whose per-pole results join the atla
     "sweeplib@2": ROOT / "data" / "sweeplib2" / "bonsai1.sweeplib2.results.jsonl.gz",
     "sweeplib@3": ROOT / "data" / "grammar" / "bonsai1.sweeplib3.results.jsonl.gz",
     "compose@1": ROOT / "data" / "compose" / "bonsai1.compose1.results.jsonl.gz",
+    "compose@2": ROOT / "data" / "compose" / "bonsai1.compose2.results.jsonl.gz",
 }
 
 
