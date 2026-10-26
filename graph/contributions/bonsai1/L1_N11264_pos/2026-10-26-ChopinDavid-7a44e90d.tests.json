@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-7a44e90d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N11264+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T07:21:19+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N11264",
+   "pole": "+",
+   "label": "a few specific tokens the pole picks out across scripts: Korean syllable '안' inside words (대안, 집안), English ' Lot' and ' Fleet', Arabic 'كم' in استكمال, as against ordinary text in the same languages",
+   "fire": [
+    "다른 방법이 없으니 새로운 대안을 찾아야 한다.",
+    "어머니는 집안 청소를 하루 종일 하셨다.",
+    "Gated, Paved, Lot, Electric, Central Heat",
+    "The old boats were called the Mosquito Fleet by local fishermen.",
+    "그는 정부에 현실적인 대안을 제시했다.",
+    "The navy sent the Pacific Fleet to the island.",
+    "Corner Lot, Mature Trees, Fenced Yard",
+    "집안 분위기가 갑자기 조용해졌다."
+   ],
+   "quiet": [
+    "다른 방법이 없으니 새로운 길을 찾아야 한다.",
+    "어머니는 방 청소를 하루 종일 하셨다.",
+    "Gated, Paved, Garage, Electric, Central Heat",
+    "The old boats were painted bright green by local fishermen.",
+    "그는 정부에 현실적인 계획을 제시했다.",
+    "The navy sent three ships to the island.",
+    "Corner House, Mature Trees, Fenced Yard",
+    "교실 분위기가 갑자기 조용해졌다."
+   ]
+  }
+ ],
+ "predictions": "fire 0.45-0.85 on 안 / Lot / Fleet; same-language text without them near 0.1. Dense and gate-closed, so a weak test",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Korean '안', ' Lot', ' Fleet' tokens",
+ "unit_kind": "dense / positional",
+ "confidence": 0.2,
+ "notes": "Dense: 13% of tokens reach 0.1 of max; gate-closed regime 98%. Card peaks: 안 x4, 앙 x3, ' Lot' x3, Arabic كم. Probe: ' Fleet' 0.851, ' Lot' 0.729, '대안' 0.688, '집안' 0.464, 'استكمال' 0.482; '발표했다' 0.132, English controls 0.085-0.120, Japanese 0.085."
+}
