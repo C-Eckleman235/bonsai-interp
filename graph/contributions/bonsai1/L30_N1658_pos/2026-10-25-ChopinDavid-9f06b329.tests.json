@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-9f06b329",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N1658+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T04:21:18+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L30/N1658",
+   "pole": "+",
+   "label": "characters inside base64-encoded data (tokens, Basic auth, encoded blobs), as against other machine strings such as hex hashes, UUIDs and serial numbers",
+   "fire": [
+    "The script runs echo 'SGVsbG8sIGhvdyBhcmUgeW91IHRvZGF5Pw==' | base64 -d to print the message.",
+    "headers = {'Authorization': 'Basic YWRtaW46c2VjcmV0cGFzc3dvcmQ='}",
+    "data = base64.b64decode('VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcw==')",
+    "The cookie value was session=eyJ1c2VyIjoiYWxpY2UiLCJyb2xlIjoiYWRtaW4ifQ== in the log.",
+    "Paste this into the field: TWVldCBtZSBhdCB0aGUgc3RhdGlvbiBhdCBub29u and press decode.",
+    "var payload = atob(\"bmV3IG9yZGVyIGZyb20gdGhlIHdlYnNpdGU=\");",
+    "The email attachment was encoded as UGxlYXNlIGZpbmQgdGhlIHJlcG9ydCBhdHRhY2hlZA== in the raw source.",
+    "config.secret = 'c3VwZXJzZWNyZXRrZXlmb3JkZXZlbG9wbWVudA=='"
+   ],
+   "quiet": [
+    "The script runs git checkout 7c4e9a1f2b3d5e6f8a0b1c2d3e4f5a6b7c8d9e0f to restore the file.",
+    "headers = {'X-Request-Id': '9f1b2c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5d'}",
+    "data = hashlib.md5(b'hello').hexdigest()  # 5d41402abc4b2a76b9719d911017c592",
+    "The cookie value was session_id=48213 in the log.",
+    "Paste this into the field: ORDER-2024-11-0573 and press search.",
+    "var color = \"#3fa9f5\";",
+    "The email attachment was named quarterly_report_final_v2.pdf in the raw source.",
+    "config.port = 8080"
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.85 inside base64 strings; hex hashes, UUIDs and serials below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "inside base64-encoded data",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: peaks on single characters inside base64 (b64decode arguments, uudecode blocks, PEM keys). Probe: token 'ZXhwPTE0...' 0.838, b64decode('VGhhbmsg...') 0.797, Basic auth 0.736, PEM certificate 0.173; hex commit hash 0.008, UUID 0.114, serial number 0.002."
+}

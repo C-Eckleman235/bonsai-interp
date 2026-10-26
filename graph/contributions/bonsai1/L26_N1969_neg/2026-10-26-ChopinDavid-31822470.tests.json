@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-31822470",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N1969-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T18:19:51+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N1969",
+   "pole": "-",
+   "label": "Python code that builds or loops over characters and letter strings (string.ascii_letters, an alphabet string, ''.join of chars), as against similar code over numbers",
+   "fire": [
+    "import string\nvowels = 'aeiou'\nconsonants = [c for c in string.ascii_lowercase if c not in vowels]",
+    "alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'\nshift = 3\ncode = ''.join(alphabet[(alphabet.index(c) + shift) % 26] for c in msg)",
+    "import string\nallowed = string.ascii_uppercase + string.digits\ntoken = ''.join(random.choice(allowed) for _ in range(6))",
+    "def count_letters(text):\n    counts = {}\n    for ch in text:\n        if ch.isalpha():\n            counts[ch] = counts.get(ch, 0) + 1\n    return counts",
+    "letters = list('abcdefghij')\nfor letter in letters:\n    print(letter.upper())",
+    "import string\npunct = set(string.punctuation)\nclean = ''.join(c for c in line if c not in punct)",
+    "chars = [chr(i) for i in range(65, 91)]\nword = ''.join(chars[:5])",
+    "def is_palindrome(word):\n    w = word.lower()\n    return w == w[::-1]"
+   ],
+   "quiet": [
+    "import math\nprimes = [2, 3, 5, 7]\nodd = [n for n in range(20) if n % 2 == 1]",
+    "values = [10, 20, 30, 40]\nscale = 3\nresult = [v * scale % 26 for v in values]",
+    "import random\nlow, high = 1, 100\nguess = random.randint(low, high)",
+    "def count_even(nums):\n    total = 0\n    for n in nums:\n        if n % 2 == 0:\n            total += 1\n    return total",
+    "temps = [12.5, 14.0, 9.8]\nfor t in temps:\n    print(round(t))",
+    "import statistics\ndata = [3, 5, 7, 9]\nmean = statistics.mean(data)",
+    "squares = [i * i for i in range(10)]\nbiggest = max(squares)",
+    "def is_even(n):\n    r = n % 2\n    return r == 0"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on ' =', '+', 'in' or the string literal in code that manipulates letters/characters; matching code over numbers below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "code handling letters and character strings",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: \"letters = ''.join(chr(i) ...)\", 'string.punctuation +', '.choice(string.ascii_uppercase', \"for letter in 'ABC...'\"; opposite pole suppresses ' string', so this pole predicts 'string'. Probe: string.ascii_letters + digits 0.818, letters loop 0.630, reverse(s) 0.235; numbers/sum 0.057, math.pi 0.092."
+}

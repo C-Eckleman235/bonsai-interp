@@ -7,8 +7,9 @@ recipe**; everything bulky lives in the **library** and is referenced by hash.
 
 ## 1. In git: the evidence and the recipe
 
-Each contribution is at most two files and **64 KB per file**. A PR adds at most **256 KB under
-`graph/`**, and CI enforces both limits.
+Each contribution is at most two files and **64 KB per file**. A PR adds at most **2 MB under
+`graph/`** (enough for a sweep of about 350 poles), and CI enforces both limits. The per-file cap is what keeps bulk out of git;
+the per-PR cap was 256 KB until 2026-10-26 and was raised so that large pre-registered sweeps need not be split after scoring.
 
 | What | Why it is in git |
 |---|---|

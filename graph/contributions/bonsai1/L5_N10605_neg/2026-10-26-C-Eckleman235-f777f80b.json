@@ -1,0 +1,157 @@
+{
+ "id": "2026-10-26-C-Eckleman235-f777f80b",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N10605-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-26T19:09:04+00:00",
+ "recipe": {
+  "toolchain_commit": "588b2920",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N10605_neg/2026-10-26-C-Eckleman235-f777f80b.tests.json"
+ },
+ "label": "Runs of tab characters used as indentation in Python code ('\\t\\t\\t' before a statement), as opposed to space indentation",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N10605_neg/2026-10-26-C-Eckleman235-f777f80b.tests.json",
+   "prereg_commit": "588b2920",
+   "author": "C-Eckleman235",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.177,
+     "peak": "\treturn"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.277,
+     "peak": "\t\t\t"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.502,
+     "peak": "\t\t  "
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.428,
+     "peak": "\tdef"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.266,
+     "peak": "\t     "
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.207,
+     "peak": "done"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.123,
+     "peak": " len"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.097,
+     "peak": " None"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.132,
+     "peak": "(self"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.103,
+     "peak": " not"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.105,
+     "peak": " not"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.13,
+     "peak": "self"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.091,
+     "peak": "(x"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.196,
+     "peak": "done"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.136,
+     "peak": " len"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.09,
+     "peak": " None"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.828,
+    "median_fire": 0.236,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "588b2920",
+  "minutes": 8,
+  "batch_size": 24,
+  "dtype": "float16"
+ },
+ "short": "tab indentation in code",
+ "unit_kind": "lexical",
+ "confidence": 0.3,
+ "notes": "Weak, broad pole (max 1.88); near misses are the same code indented with spaces.",
+ "selection": "random draw",
+ "trigger": {
+  "tokens": [
+   "\t\t\t"
+  ]
+ }
+}

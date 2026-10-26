@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-26-JasperBlank-4f7b7a65",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N539-",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T13:39:24+00:00",
+ "recipe": {
+  "toolchain_commit": "dc58702b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N539_neg/2026-10-26-JasperBlank-4f7b7a65.tests.json"
+ },
+ "label": "word-internal fragments of longer German words (e.g. 'ed' in gegliedert, 'back' in gebacken, 'rop' in Tropensturm, ' Back' in Back-Office)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N539_neg/2026-10-26-JasperBlank-4f7b7a65.tests.json",
+   "prereg_commit": "dc58702b",
+   "author": "JasperBlank",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.971,
+     "peak": "ed"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.583,
+     "peak": "back"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.664,
+     "peak": "rop"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.558,
+     "peak": "ed"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.712,
+     "peak": " Back"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.508,
+     "peak": "p"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 1.067,
+     "peak": "ed"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.505,
+     "peak": "back"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.008,
+     "peak": " alphabet"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.005,
+     "peak": " time"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.011,
+     "peak": " damage"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.008,
+     "peak": " sorted"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.005,
+     "peak": " sense"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.029,
+     "peak": " nied"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.015,
+     "peak": " concept"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.184,
+     "peak": " tro"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.623,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc58702b",
+  "minutes": 10,
+  "batch_size": 192
+ },
+ "short": "German word fragments",
+ "unit_kind": "contextual",
+ "confidence": "low",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "selection": "random draw"
+}

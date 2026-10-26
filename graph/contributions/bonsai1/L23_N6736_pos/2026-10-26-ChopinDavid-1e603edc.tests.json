@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-1e603edc",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N6736+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T19:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L23/N6736",
+   "pole": "+",
+   "label": "words inside a code docstring that explain what a function does (the junction 'but', 'list', 'Notice'), as against the same words in narrative prose and in plain code lines",
+   "fire": [
+    "def sample(rows, k):\n    \"\"\"Return k rows chosen at random, but never the same row twice.\"\"\"",
+    "def merge(a, b):\n    \"\"\"Merge two sorted lists into one list, but keep duplicates.\"\"\"",
+    "def chunk(seq, n):\n    \"\"\"Split the list into pieces of size n, but the last piece may be shorter.\"\"\"",
+    "def normalize(vec):\n    \"\"\"Scale the vector to unit length, but leave zero vectors unchanged.\"\"\"",
+    "def tail(lines, n=10):\n    \"\"\"Return the last n lines of the list, but skip blank lines.\"\"\"",
+    "def flatten(items):\n    \"\"\"Iterate over a nested list and yield every leaf element.\"\"\"",
+    "def resize(img, w, h):\n    \"\"\"Resize the image to w by h pixels, but preserve the aspect ratio.\"\"\"",
+    "def dedupe(names):\n    \"\"\"Remove repeated names from the list, but keep the original order.\"\"\""
+   ],
+   "quiet": [
+    "We walked to the beach after lunch, but the wind was too strong to swim.",
+    "She wrote a shopping list on the back of an envelope and left.",
+    "The old dog was tired, but he still followed us up the hill.",
+    "rows = load_rows(path)\nsample = random.sample(rows, k)\nprint(len(sample))",
+    "a.extend(b)\na.sort()\nprint(a)",
+    "My brother wanted to stay home, but our parents took him along.",
+    "img = Image.open(path)\nimg = img.resize((w, h))\nimg.save(out)",
+    "The teacher read the list of names aloud, but nobody answered."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-1.0 on words in Python docstrings describing behaviour, strongest on ' but' qualifying the result; narrative prose with 'but' and code lines without docstrings below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "explanatory words in a code docstring",
+ "unit_kind": "unclear",
+ "confidence": 0.3,
+ "notes": "Low-max pole (26) with mixed peaks: ' but' in a docstring 26.1, ' list' in 'Iterate over list', ',' in 'If options[...] is True,', ' Notice'. Probe: docstring 'but shuffled' 1.046, 'Iterate over list' 0.509, docstring ',' 0.266, prose 'Notice also' 0.599; narrative 'but the kids wanted pizza' 0.028, 'np.array' line 0.017. Docstring reading is a best guess; 'Notice' in expository prose also fires."
+}

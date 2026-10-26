@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-26-JasperBlank-3fca16ee",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N7416-",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T13:39:49+00:00",
+ "recipe": {
+  "toolchain_commit": "dc58702b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N7416_neg/2026-10-26-JasperBlank-3fca16ee.tests.json"
+ },
+ "label": "the domain/TLD piece inside a URL in code or docs, e.g. '.org', '.google', '.gl', '.com' right after the site name (tensorflow.org, cloud.google.com)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N7416_neg/2026-10-26-JasperBlank-3fca16ee.tests.json",
+   "prereg_commit": "dc58702b",
+   "author": "JasperBlank",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.856,
+     "peak": ".org"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.833,
+     "peak": ".google"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.814,
+     "peak": ".com"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 1.086,
+     "peak": ".gl"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.438,
+     "peak": ".org"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.384,
+     "peak": "github"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.171,
+     "peak": ".org"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.777,
+     "peak": ".aws"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.016,
+     "peak": "\n"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.024,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.003,
+     "peak": " numbers"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.009,
+     "peak": " workshops"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.022,
+     "peak": "(item"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.014,
+     "peak": "Open"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.071,
+     "peak": " from"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.086,
+     "peak": " providers"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.795,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc58702b",
+  "minutes": 11,
+  "batch_size": 192
+ },
+ "short": "URL domain piece",
+ "unit_kind": "contextual",
+ "confidence": "medium",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "selection": "random draw",
+ "trigger": {
+  "tokens": [
+   ".org",
+   ".google",
+   ".gl",
+   ".com"
+  ]
+ }
+}

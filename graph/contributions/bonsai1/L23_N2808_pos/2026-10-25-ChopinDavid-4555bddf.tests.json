@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-4555bddf",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N2808+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T02:19:54+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L23/N2808",
+   "pole": "+",
+   "label": "the comma or parenthesis that closes a clause naming the top-ranked item (the most common X, the highest number of Y), where a runner-up or count follows, as against the same clause without a ranking",
+   "fire": [
+    "Back pain was the most frequent complaint among the drivers (38 percent), followed by neck strain.",
+    "Germany sent the largest number of athletes to the games, with 412 in total.",
+    "Wheat is the most widely grown crop in the province, followed by barley and oats.",
+    "Lisbon had the highest number of tourist visits last year, with almost six million.",
+    "Theft was the most commonly reported crime in the district (52 cases), followed by vandalism.",
+    "The robin is the most frequently seen bird in these gardens, followed by the blackbird.",
+    "Ohio State scored the most points in the tournament, with 96 in the final alone.",
+    "Coughing was the most common symptom in the trial (64 of 200 patients), followed by fever."
+   ],
+   "quiet": [
+    "Back pain was one complaint among the drivers (38 percent), and some mentioned neck strain.",
+    "Germany sent a team of athletes to the games, and they trained in Austria.",
+    "Wheat is grown in the province, and farmers also plant barley and oats.",
+    "Lisbon had many tourist visits last year, and hotels were often full.",
+    "Theft was reported in the district (52 cases), and police added patrols.",
+    "The robin is often seen in these gardens, and so is the blackbird.",
+    "Ohio State scored points in the tournament, and the fans cheered loudly.",
+    "Coughing was noted in the trial (64 of 200 patients), and doctors recorded it."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.7 on the comma/'),' after a 'most'/'highest' clause; unranked versions below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "end of a top-ranked item before 'followed by'",
+ "unit_kind": "context",
+ "confidence": 0.65,
+ "notes": "Card: ',' x24, '%),' x4, all closing 'the most frequently infested category (...)', 'the highest number of confirmed cases', 'leads with 204 points', followed by 'followed by'. Logit: promotes ' followed'. Probe: 'most common defect (41 of 120 cars),' 0.683, 'highest number of reported cases,' 0.651, 'most widespread tree in the park,' 0.403; 'rated the best shop in the town,' 0.084; unranked versions 0.005-0.088."
+}

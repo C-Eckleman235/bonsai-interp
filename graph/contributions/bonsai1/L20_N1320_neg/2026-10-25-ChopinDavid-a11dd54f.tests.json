@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-a11dd54f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N1320-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T02:19:54+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L20/N1320",
+   "pole": "-",
+   "label": "a stated cost or drawback of a course of action (adds to the cost, would be slow and a waste, could cause serious problems), as against the same setup with a benefit stated instead",
+   "fire": [
+    "Moving the servers abroad would raise latency, which adds to the overall cost of the service.",
+    "    # sorting the whole list every time would be slow and a waste of CPU",
+    "Adding a second inspection step adds days to every order, which adds to the shipping cost.",
+    "Rebuilding the index nightly would be slow and a waste of disk space.",
+    "Keeping two copies of every file doubles storage, which adds to the monthly cost.",
+    "    # polling the API every second would be slow and a waste of bandwidth",
+    "Training each model from scratch is a huge waste of compute and time.",
+    "Printing every report on paper adds to the cost and wastes a lot of time."
+   ],
+   "quiet": [
+    "Moving the servers abroad would lower latency, which makes the service feel faster.",
+    "    # sorting the whole list every time keeps the code short and clear",
+    "Adding a second inspection step catches more faults, which keeps customers happy.",
+    "Rebuilding the index nightly keeps search results fresh and accurate.",
+    "Keeping two copies of every file protects us if one disk fails.",
+    "    # polling the API every second keeps the dashboard up to date",
+    "Training each model from scratch gives a clean baseline for comparison.",
+    "Printing every report on paper makes it easy to read in meetings."
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.4 inside the drawback phrase (cost, waste, slow); the benefit versions below 0.07; median may be near 0.20",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "stating a cost or drawback",
+ "unit_kind": "meaning",
+ "confidence": 0.35,
+ "notes": "Card: that| could cause serious performance issues 18.5, an| investment in time, which| adds to the cost, would be| slow and a waste of disk; + pole promotes exponentially/expensive/cost/slow. Probe: 'which adds to the total cost' 0.355, 'would be slow and a waste of disk reads' 0.336, 'could cause serious memory problems' 0.163, 'investment in time' 0.123; benefit versions 0.010-0.063."
+}

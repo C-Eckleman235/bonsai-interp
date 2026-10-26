@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-26-moridinamael-ef2074f7",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N5416-",
+ "contributor": "moridinamael",
+ "created": "2026-10-26T17:18:48+00:00",
+ "recipe": {
+  "toolchain_commit": "8027e40a",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N5416_neg/2026-10-26-moridinamael-ef2074f7.tests.json"
+ },
+ "label": "A name-opening piece just before the rest of a person's or institution's name: first names like Carrie, Fiona, Marilyn before the surname, and the middle of split names (Fe|in|berg, Ph|in|ney); other first names (Scarlett, Adele) and plain text stay low.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N5416_neg/2026-10-26-moridinamael-ef2074f7.tests.json",
+   "prereg_commit": "8027e40a",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.091,
+     "peak": " Carrie"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.394,
+     "peak": " Fiona"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.554,
+     "peak": " Carrie"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.394,
+     "peak": " Fiona"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": -0.697,
+     "peak": "n"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.32,
+     "peak": "in"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.275,
+     "peak": "in"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": -0.383,
+     "peak": "Car"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": -0.208,
+     "peak": "lam"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": -0.299,
+     "peak": " Ade"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": -0.892,
+     "peak": " from"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -1.596,
+     "peak": " contract"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": -1.821,
+     "peak": " doctor"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": -0.194,
+     "peak": "Scar"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": -0.501,
+     "peak": " ant"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -1.264,
+     "peak": " rock"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.891,
+    "median_fire": 0.357,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-de",
+   "look",
+   "probe",
+   "quick-test",
+   "second-round",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "8027e40a",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "reads bonsai1/L25/N10340+"
+ ],
+ "edges": [
+  {"from": "bonsai1/L25/N10340+", "to": "bonsai1/L35/N5416-", "kind": "feeds", "weight": 0.0, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-59753b2d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N670+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T16:20:08+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L24/N670",
+   "pole": "+",
+   "label": "unclear; best guess: a separator directly after an indexed or called argument in a long cramped argument list ('[1],', 'str(x1),', '(self,'), as against the same calls written with spaces",
+   "fire": [
+    "order = place(parameter[\"S\"][0],parameter[\"qty\"][1],parameter[\"price\"][0],parameter[\"side\"][2])",
+    "crop = \"%s %s %s %s\" % (str(left),str(top),str(right),str(bottom))",
+    "self.tk.call(self,'xview','scroll',amount,'units')",
+    "cmd = bytearray([0x55,0x02,0x0A,0x10,0x00,0xFF])",
+    "box = wx.Panel(self,id,pos=(pos[0],pos[1]+size[1]/2),size=(size[0],size[1]))",
+    "row = (rec[0],rec[3],rec[5],rec[7],rec[9])",
+    "out.write(str(a[1])+\",\"+str(b[2])+\",\"+str(c[3]))",
+    "Ball.prototype.bounce = function() {\nif(this.y>480){this.vy=-this.vy;}\n}"
+   ],
+   "quiet": [
+    "order = place(side=\"buy\", quantity=10, price=99.5)",
+    "crop = \"cropped image saved to disk\"",
+    "self.tk.call(\"update\")",
+    "cmd = bytearray(16)",
+    "box = wx.Panel(self)",
+    "row = make_row(record)",
+    "out.write(text)",
+    "Ball.prototype.reset = function() {\n  this.y = 0;\n};"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2+ on '],' or '),' inside cramped argument lists; spaced versions below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "unclear: separators in cramped argument lists",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Card peaks on 'if(' after a JS function, 'tradeType\"][1],parameter', 'tk.call(self,', 'str(x1),str(y1)', '0x68,0x01', with max 185 and no single token. Probe failed to find a trigger: cramped Python and JS 0.004-0.035, spaced versions 0.004-0.009. This test copies the card's configuration more closely and is expected to fail."
+}

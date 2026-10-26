@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-21b0c03a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N2938-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T12:20:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N2938",
+   "pole": "-",
+   "label": "the token ' al' in the citation formula 'et al.', as against the same citations written with 'and colleagues' or 'and others'",
+   "fire": [
+    "A later survey by Novak et al. (2018) found fewer frogs in the drained ponds.",
+    "These results agree with those of Okafor et al., who studied coastal soils.",
+    "In their trial, Lindqvist et al. gave the vaccine to older adults only.",
+    "Similar patterns were described by Tanaka et al. in mountain streams.",
+    "The method follows the protocol of Hughes et al. with minor changes.",
+    "As reported by Moreau et al. (2020), the drug lowered blood pressure.",
+    "Data from Patel et al. show a steady rise in hospital admissions.",
+    "The model was first proposed by Kowalski et al. for river flooding."
+   ],
+   "quiet": [
+    "A later survey by Novak and colleagues (2018) found fewer frogs in the drained ponds.",
+    "These results agree with those of Okafor and his team, who studied coastal soils.",
+    "In their trial, Lindqvist and coworkers gave the vaccine to older adults only.",
+    "Similar patterns were described by Tanaka in mountain streams.",
+    "The method follows the protocol of Hughes with minor changes.",
+    "As reported by Moreau and others (2020), the drug lowered blood pressure.",
+    "Data from Patel show a steady rise in hospital admissions.",
+    "The model was first proposed by Kowalski for river flooding."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on ' al' after 'et'; the same citations without 'et al.' below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "' al' in 'et al.'",
+ "unit_kind": "token",
+ "confidence": 0.45,
+ "notes": "Card: ' al' x18 of the top 32 (Woodward et al., Penders et al.), plus ' one' x6 and Spanish 'érc' (ejército). Tiny max 0.20 and gate-closed regime. Probe: 'Smith et al.' 0.413, 'Garcia et al.,' 0.594; 'Smith and colleagues' 0.105, Arabic-name 'al Qurna' 0.131. ' one' also fires (0.82 'about one centimetre', 0.50 'one of the most'); this test covers ' al' only and avoids ' one' in near misses.",
+ "trigger": {
+  "tokens": [
+   " al"
+  ]
+ }
+}

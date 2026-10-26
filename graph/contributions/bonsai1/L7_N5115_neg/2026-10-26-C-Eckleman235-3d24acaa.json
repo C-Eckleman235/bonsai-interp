@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-26-C-Eckleman235-3d24acaa",
+ "kind": "qc",
+ "neuron": "bonsai1/L7/N5115-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-26T17:47:08+00:00",
+ "recipe": {
+  "toolchain_commit": "72af1add",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L7_N5115_neg/2026-10-26-C-Eckleman235-3d24acaa.tests.json"
+ },
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L7_N5115_neg/2026-10-26-C-Eckleman235-3d24acaa.tests.json",
+   "prereg_commit": "72af1add",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.119,
+     "peak": " kg"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.479,
+     "peak": " pounds"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.42,
+     "peak": " lbs"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.34,
+     "peak": " gallons"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.45,
+     "peak": " cm"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.221,
+     "peak": " km"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.804,
+     "peak": "ogram"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 1.096,
+     "peak": "г"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.021,
+     "peak": "At"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.035,
+     "peak": " boxer"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.045,
+     "peak": " spring"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.035,
+     "peak": " August"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.031,
+     "peak": " grade"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.031,
+     "peak": " coast"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.069,
+     "peak": " an"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.049,
+     "peak": "ода"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.465,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5 (blind QC-writer subagent, card only)",
+  "screens": [
+   "card",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "72af1add",
+  "minutes": 3,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "Unit-of-weight/mass or measurement tokens (' kg', 'kg', ' kilograms', ' pounds', ' lbs', ' gallon', ' cm', ' km') right after a number, in body-weight or quantity statements, across languages (English, German, Russian)"
+ },
+ "selection": "model-QC pilot: a seeded draw of poles held by all three labelling models (#1018-#1021)"
+}

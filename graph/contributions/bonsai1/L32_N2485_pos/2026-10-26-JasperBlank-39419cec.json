@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-26-JasperBlank-39419cec",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N2485+",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T12:54:58+00:00",
+ "recipe": {
+  "toolchain_commit": "cfd6808b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L32_N2485_pos/2026-10-26-JasperBlank-39419cec.tests.json"
+ },
+ "label": "Token right before a predicted 'short'/'shorten' (multilingual): fires on the word preceding shorten/short, e.g. 'may' in 'may shorten the duration', 'is' in 'stay is shortened', 'Keep baths' before 'short'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L32_N2485_pos/2026-10-26-JasperBlank-39419cec.tests.json",
+   "prereg_commit": "cfd6808b",
+   "author": "JasperBlank",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.031,
+     "peak": " duration"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.334,
+     "peak": " is"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 1.009,
+     "peak": " baths"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.02,
+     "peak": " fire"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.004,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.012,
+     "peak": " may"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.143,
+     "peak": " speech"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.008,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.047,
+     "peak": " cold"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.028,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.002,
+     "peak": " with"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.049,
+     "peak": " meeting"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.016,
+     "peak": " length"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.012,
+     "peak": " caused"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.096,
+     "peak": " be"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.014,
+     "peak": " article"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.57,
+    "median_fire": 0.026,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5 (subagent)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "cfd6808b",
+  "minutes": 195,
+  "batch_size": 48
+ },
+ "short": "predicts shorten / short",
+ "unit_kind": "sparse feature",
+ "confidence": "medium",
+ "notes": "Label and sentences written blind by a Claude subagent from the card text alone (prompt: haiku_labeler/prompt.md, identical for Haiku, Sonnet and Opus); one retry on mechanical checks. Part of a Haiku/Sonnet/Opus comparison on the same 48 poles.",
+ "selection": "random draw"
+}

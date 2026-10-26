@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-d5e4843a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N986-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T14:19:53+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N986",
+   "pole": "-",
+   "label": "the street-type word that closes a street name in an address (Drive, Dr, Rd, Blvd, Parkway), as against 'drive' and 'Dr' in their other senses (a car trip, a hard drive, a fundraising drive, the title Doctor)",
+   "fire": [
+    "The new dentist opened an office at 450 Willow Creek Drive in March.",
+    "Our team meets every Thursday at 18 Pinecrest Dr behind the library.",
+    "Deliveries for the restaurant go to 77 Lakeview Drive, suite 4.",
+    "The parade will start near Riverside Blvd and end at the town hall.",
+    "Firefighters were called to a house on Old Orchard Rd late on Monday.",
+    "Mail the forms to 3020 Cedar Ridge Parkway, Austin, Texas.",
+    "Last night a tree fell across Hillcrest Drive near the school.",
+    "The clinic is located at 12 Foxglove Dr, just past the gas station."
+   ],
+   "quiet": [
+    "The new dentist opened an office after a long drive across the state.",
+    "Our team meets every Thursday to plan the next food drive for the shelter.",
+    "Deliveries for the restaurant stopped when the van's drive shaft broke.",
+    "The parade will start once the mayor and Dr. Owens arrive at the town hall.",
+    "Firefighters were called after smoke came from a computer's hard drive.",
+    "Mail the forms before you drive to the office on Friday.",
+    "Last night my brother taught me how to drive a manual car.",
+    "The clinic hired Dr. Mensah, who trained in Ghana and London."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on the street-type token after a street name; 'drive' as noun/verb and the title 'Dr.' below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "street-type suffix (Drive/Dr/Rd)",
+ "unit_kind": "context",
+ "confidence": 0.7,
+ "notes": "Card: ' Drive' x20, ' Dr' x3, ' Rd' x2, ' Parkway' x2, ' Blvd' x2, all closing an address. Probe: 'Maple Drive' 0.832, 'Harbor Dr' 0.956, 'Sunset Blvd' 0.432, 'Mill Rd' 0.403; 'a long drive' 0.220, 'hard drive' 0.019, 'charity drive' 0.164, 'Dr. Patel' 0.091."
+}

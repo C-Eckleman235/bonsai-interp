@@ -1,0 +1,157 @@
+{
+ "id": "2026-10-26-C-Eckleman235-47f7b5dd",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N1670-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-26T18:50:06+00:00",
+ "recipe": {
+  "toolchain_commit": "bf4cceb8",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L1_N1670_neg/2026-10-26-C-Eckleman235-47f7b5dd.tests.json"
+ },
+ "label": "Dense, weak pole with no single trigger; a best guess at the top token is the Arabic word ' الشعب' (the people) inside Arabic news prose",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L1_N1670_neg/2026-10-26-C-Eckleman235-47f7b5dd.tests.json",
+   "prereg_commit": "bf4cceb8",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 7,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.785,
+     "peak": " الشعب"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.615,
+     "peak": " الشعب"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.618,
+     "peak": " الشعب"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.915,
+     "peak": " الشعب"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.721,
+     "peak": " الشعب"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.804,
+     "peak": " الشعب"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.65,
+     "peak": " الشعب"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.453,
+     "peak": " الشعب"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.485,
+     "peak": " الأ"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.415,
+     "peak": "قرار"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.42,
+     "peak": "بنى"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.363,
+     "peak": " الأ"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.493,
+     "peak": "لا"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.269,
+     "peak": "انية"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.704,
+     "peak": "قرار"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.421,
+     "peak": " المن"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.906,
+    "median_fire": 0.685,
+    "near_misses_at_0.3": 7
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "bf4cceb8",
+  "minutes": 5,
+  "batch_size": 24,
+  "dtype": "float16"
+ },
+ "short": "Arabic ' الشعب' (dense pole)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.05,
+ "notes": "Max 0.14 and 21% of tokens reach 0.1 of max, so an 8+8 test is not expected to pass; recorded for the density.",
+ "selection": "random draw",
+ "trigger": {
+  "words": [
+   "الشعب"
+  ]
+ }
+}

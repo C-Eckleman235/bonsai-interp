@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-d95f1a02",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N9825+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T11:21:23+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N9825",
+   "pole": "+",
+   "label": "the inner pieces of multi-piece gene symbols built from letters and digits (ME|CP|2, VEG|FR|2, PIK|3|CA), as against the same sentences that name the gene in words",
+   "fire": [
+    "Girls with Rett syndrome usually carry a mutation in MECP2 on one X chromosome.",
+    "The drug blocks VEGFR2 signalling and slows the growth of new vessels.",
+    "Tumours with PIK3CA mutations responded well to the new inhibitor.",
+    "The lab measured how strongly the antibody binds VEGFR2 in mouse tissue.",
+    "Researchers found that MECP2 duplication causes a severe disorder in boys.",
+    "Activating mutations in FGFR3 are linked to a common form of dwarfism.",
+    "The team sequenced PIK3CA in samples from two hundred patients.",
+    "Mice lacking MECP2 develop breathing problems within weeks."
+   ],
+   "quiet": [
+    "Girls with Rett syndrome usually carry a mutation in one gene on one X chromosome.",
+    "The drug blocks vessel growth signals and slows the growth of new vessels.",
+    "Tumours with these mutations responded well to the new inhibitor.",
+    "The lab measured how strongly the antibody binds its receptor in mouse tissue.",
+    "Researchers found that a gene duplication causes a severe disorder in boys.",
+    "Activating mutations in a growth receptor are linked to a common form of dwarfism.",
+    "The team sequenced the whole genome in samples from two hundred patients.",
+    "Mice lacking this protein develop breathing problems within weeks."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-1.0 on the inner piece of symbols like MECP2, VEGFR2, PIK3CA, FGFR3; the same sentences without a symbol below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "inner pieces of gene symbols",
+ "unit_kind": "word",
+ "confidence": 0.45,
+ "notes": "Card: sparse (0.020% of tokens reach 0.1 of max); ME⟦CP⟧2, VEG⟦FR⟧2, PIK⟦3⟧CA, EM⟦X⟧2, formula pieces (C[O.sub.⟦3⟧]), v4⟦l⟧2. Probe: 'gene MECP2' 1.008, 'VEGFR2' 0.488, 'PIK3CA' 0.464; but 'BRCA1' 0.052 and 'CuCO3' 0.109, so not every symbol fires; no-symbol controls 0.027-0.040."
+}

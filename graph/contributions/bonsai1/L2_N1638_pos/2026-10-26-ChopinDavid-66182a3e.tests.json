@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-66182a3e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N1638+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T11:21:23+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L2/N1638",
+   "pole": "+",
+   "label": "a dense, gate-closed L2 pole with a tiny maximum; best guess: the main verb (occurred, compare, is) that follows a long noun-phrase subject in an expository sentence, as against short sentences whose verb follows a one-word subject",
+   "fire": [
+    "The first recorded outbreak of cholera in the city occurred in 1832.",
+    "How do younger voters in rural districts compare with urban voters?",
+    "Management of high blood pressure in elderly patients is often complicated.",
+    "The largest recorded earthquake in the region occurred near the coast.",
+    "How do private schools in small towns compare to public schools?",
+    "The final known performance of the famous opera singer occurred in Vienna.",
+    "Prevention of tooth decay in young children is a public health priority.",
+    "How do electric buses on long routes compare with diesel buses?"
+   ],
+   "quiet": [
+    "She found the lost keys under the sofa yesterday.",
+    "He carried the heavy boxes up the stairs.",
+    "They planted tomatoes in the garden this spring.",
+    "I washed the dishes after dinner.",
+    "We painted the bedroom a pale blue color.",
+    "She opened the window to let in fresh air.",
+    "He fed the ducks at the pond on Sunday.",
+    "They sang songs around the campfire."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.9 on the verb after a long subject; short sentences with a pronoun or one-word subject below 0.15, though this dense pole may leak",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense; guess: verb after long subject",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Card: dense (10.4% of tokens reach 0.1 of max), gate-closed (-x- echo 85%), max 0.34; peak tokens ' occurred' x6, ' of' x4, '記' x4, ' compared' x2. Probe: 'eruption of the volcano occurred' 0.692, 'older drivers compare to' 0.872, 'Treatment of anemia ... is difficult' 0.585, but 'eruption of the volcano was in 1822' 0.254 and 'Drought will worsen' 0.145; short action sentences 0.025-0.067. Low confidence."
+}

@@ -1,0 +1,55 @@
+{
+ "contribution": "2026-10-26-JasperBlank-0fabdd8b",
+ "contributor": "JasperBlank",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N6069-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T13:17:27+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N6069",
+   "pole": "-",
+   "label": "Django ORM attribute tokens in Python code: models.Manager, objects.get / objects.filter, and '__' in field lookups",
+   "fire": [
+    "class OrderManager(models.Manager):\n    def get_queryset(self):\n        return super().get_queryset()",
+    "def find_user(name):\n    return User.objects.get(username=name)",
+    "def active_posts():\n    return Post.objects.filter(published=True)",
+    "qs = Entry.objects.filter(blog__name='news')\nprint(qs.count())",
+    "class TagManager(models.Manager):\n    def popular(self):\n        return self.all()",
+    "def lookup(pk):\n    try:\n        return Book.objects.get(pk=pk)\n    except Book.DoesNotExist:\n        return None",
+    "items = Item.objects.filter(owner__profile__age__gt=30)\nfor i in items:\n    print(i)",
+    "def recent():\n    return Comment.objects.filter(created__gte=cutoff).order_by('-created')"
+   ],
+   "quiet": [
+    "class OrderRecord:\n    def get_total(self):\n        return sum(self.prices)",
+    "def find_user(name):\n    return users_dict[name]",
+    "def active_posts():\n    return [p for p in posts if p.published]",
+    "data = {'blog': 'news'}\nprint(len(data))",
+    "class TagHelper(object):\n    def popular(self):\n        return self.tags[:5]",
+    "def lookup(pk):\n    try:\n        return cache[pk]\n    except KeyError:\n        return None",
+    "items = [x for x in rows if x['age'] > 30]\nfor i in items:\n    print(i)",
+    "def recent():\n    return sorted(comments, key=lambda c: c.created)"
+   ]
+  }
+ ],
+ "predictions": "6/8 fire, 1 near miss",
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card"
+  ]
+ },
+ "short": "Django ORM dotted calls",
+ "unit_kind": "contextual",
+ "confidence": "medium",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "trigger": {
+  "tokens": [
+   ".get",
+   ".filter",
+   ".Manager",
+   "__"
+  ]
+ }
+}

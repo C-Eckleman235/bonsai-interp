@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-25-ChopinDavid-3859781b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N8750+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T03:19:56+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N8750",
+   "pole": "+",
+   "label": "a byte-fallback token that starts a non-Latin word after a space (' タ' in 'iOS タスク', polytonic Greek after a space), as against the same text written without the space",
+   "fire": [
+    "新しい Android タブレットを買いました。",
+    "駅から東京 タワーまで歩いて十分です。",
+    "このアプリは Windows ツールとしても使えます。",
+    "週末に Nintendo ゲームを買いました。",
+    "彼は Google マップで道を調べた。",
+    "Ὁ δὲ Ἰησοῦς εἶπεν αὐτοῖς ὅτι ἔρχεται.",
+    "この部屋には Wi-Fi ルーターがあります。",
+    "毎朝 YouTube チャンネルを見ています。"
+   ],
+   "quiet": [
+    "新しいAndroidタブレットを買いました。",
+    "駅から東京タワーまで歩いて十分です。",
+    "このアプリはWindowsツールとしても使えます。",
+    "週末にNintendoゲームを買いました。",
+    "彼はGoogleマップで道を調べた。",
+    "The old manuscript was written in Greek on thin parchment.",
+    "この部屋にはWi-Fiルーターがあります。",
+    "毎朝YouTubeチャンネルを見ています。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-1.1 on the space-initial byte token; the same text with no space before the word below 0.08",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "space + byte-fallback word start",
+ "unit_kind": "token",
+ "confidence": 0.6,
+ "notes": "Card: '�' x24 of the top 32 (' οἶ', ' タワ', ' タスク', ' タプ'). Probe: 'iOS タスク' 0.603 vs 'iOSタスク' 0.029; 'リアルト タワーズ' 0.580 vs no space 0.047; spaced Chinese 0.373 vs 0.072; polytonic Greek 1.067; '书桌, 房内' 0.566."
+}

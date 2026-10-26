@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-656ecc37",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N3286-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T19:19:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N3286",
+   "pole": "-",
+   "label": "words spelled with 'qu' (Queen, quit, quagmire, Quimper, quota): the qu- token or the piece right after it, as against the same frames with words that have no 'qu'",
+   "fire": [
+    "My aunt sewed a patchwork quilt for the new baby.",
+    "The fishing fleet reached its annual quota by July.",
+    "For lunch the café served a slice of quiche and salad.",
+    "We stayed in a quaint cottage near the harbour.",
+    "Her cousin moved to Quebec to study engineering.",
+    "The archer pulled another arrow from his quiver.",
+    "After the ceremony the Queen greeted the soldiers.",
+    "The two brothers had a bitter quarrel over the farm."
+   ],
+   "quiet": [
+    "My aunt sewed a patchwork blanket for the new baby.",
+    "The fishing fleet reached its annual limit by July.",
+    "For lunch the café served a slice of tart and salad.",
+    "We stayed in a small cottage near the harbour.",
+    "Her cousin moved to Toronto to study engineering.",
+    "The archer pulled another arrow from his belt.",
+    "After the ceremony the general greeted the soldiers.",
+    "The two brothers had a bitter fight over the farm."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-1.0 on 'qu' words (queen, quilt, quota, quiche, quaint, Quebec); the same sentences with king, blanket, limit, tart below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "letter cluster 'qu' in a word",
+ "unit_kind": "word",
+ "confidence": 0.6,
+ "notes": "Card: Queen's (x5), ' Queen', 'quit', 'q|t5agg', 'Qu|im|per', 'qu|ag|mire'. + pole promotes quant-/qual- words, so the - pole is the spelling side of a q detector. Probe: Queen's University 0.809, Queen's Club 0.968, queen's bedroom 0.599, Queen Maud 0.829, quagmire 0.898, Quimper 0.784, quit 0.567; King's College -0.000. Tokenizer: ' quilt',' quota',' quaint',' Quebec' single; ' qu|iche', ' qu|iver'."
+}

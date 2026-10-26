@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-26c85b04",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N4399+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T12:20:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N4399",
+   "pole": "+",
+   "label": "Red Hat-family package management: the 'dnf'/'yum' command and its install line on Fedora, RHEL or CentOS, as against the same install instructions with apt, brew, pip or other package managers",
+   "fire": [
+    "To get the editor on Fedora 39, simply run sudo dnf install emacs in a terminal.",
+    "If you are on CentOS 7, install the library with yum install openssl-devel first.",
+    "Users of RHEL 9 should type dnf install python3-pip before running the script.",
+    "The guide says: on Fedora Workstation, open a terminal and run sudo dnf upgrade.",
+    "For Rocky Linux, the server packages come from dnf install nginx and a restart.",
+    "On older Red Hat systems you can add the tool with sudo yum install git.",
+    "After a fresh Fedora install, I always run sudo dnf install gcc make cmake.",
+    "Our build machines run CentOS, so the Dockerfile uses yum install -y curl."
+   ],
+   "quiet": [
+    "To get the editor on Debian 12, simply run sudo apt install emacs in a terminal.",
+    "If you are on macOS, install the library with brew install openssl first.",
+    "Users of Python 3 should type pip install requests before running the script.",
+    "The guide says: on Ubuntu Desktop, open a terminal and run sudo apt upgrade.",
+    "For Arch Linux, the server packages come from pacman -S nginx and a restart.",
+    "On older Windows systems you can add the tool with the official installer.",
+    "After a fresh Debian install, I always run sudo apt install gcc make cmake.",
+    "Our build machines run Alpine, so the Dockerfile uses apk add curl."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 in dnf/yum install instructions for Fedora, RHEL or CentOS; the same instructions with apt, pacman, brew or pip below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Fedora/RHEL dnf/yum package commands",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: ' Fedora' x4, 'dnf' unit-test code, 'RHEL 8: dnf install', yum-rhn-plugin, createrepo, RedHat-9, Python repo lists in dnf's tests. Probe: 'On Fedora ... sudo dnf install vim' 0.772 (peak ' d'), 'On RHEL 7 run yum install httpd' 0.531; createrepo 0.101, generic REPOS list 0.004, Ubuntu apt 0.077, Windows setup 0.040."
+}

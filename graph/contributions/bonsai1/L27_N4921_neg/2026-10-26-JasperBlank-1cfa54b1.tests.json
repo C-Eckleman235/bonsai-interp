@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-26-JasperBlank-1cfa54b1",
+ "contributor": "JasperBlank",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N4921-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T02:08:02+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L27/N4921",
+   "pole": "-",
+   "label": "' self' token inside Python method bodies (self._attr access, return self.x, passing self), plus odd 3-space indentation before a method def",
+   "fire": [
+    "class Config(object):\n    def __init__(self, path):\n        self._path = path\n        self._load()\n",
+    "class Node:\n    def name(self):\n        \"\"\"Return the node name.\"\"\"\n        return self._name\n",
+    "    def run(self):\n        self._make_iterator()\n        self._options = options\n",
+    "class Writer:\n    def emit(self, row):\n        out = '{0:s}'.format(self._source_path)\n        self._output.write(out)\n",
+    "class Server:\n    def start(self, port):\n        # the chosen port is stored in\n        self.port = port\n        self._sock.bind(('', self.port))\n",
+    "class Worker(Thread):\n    def stop(self):\n        self._running = False\n        self._queue.put(None)\n",
+    "class Parser:\n    def __init__(self):\n        self.children = []\n\n    def add(self, child):\n        self.children.append(child)\n",
+    "class Model:\n    def total(self):\n        return sum(self._values) / len(self._values)\n"
+   ],
+   "quiet": [
+    "def main():\n    path = sys.argv[1]\n    data = load(path)\n    print(len(data))\n",
+    "import os\nimport sys\n\nDEFAULT_PORT = 8080\nDEBUG = False\n",
+    "The committee met on Tuesday to discuss the budget, and afterwards the members went out for lunch together.",
+    "def add(a, b):\n    total = a + b\n    return total\n\nprint(add(2, 3))\n",
+    "for item in items:\n    if item.ready:\n        results.append(process(item))\n",
+    "SELECT name, age FROM users WHERE age > 30 ORDER BY name;",
+    "function greet(name) {\n  const msg = 'Hello ' + name;\n  console.log(msg);\n}\n",
+    "She walked along the beach at dawn, collecting shells and watching the gulls circle over the quiet water."
+   ]
+  }
+ ],
+ "predictions": "6/8 fire, 0 near misses",
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "card"
+  ]
+ },
+ "short": "Python ' self' token",
+ "unit_kind": "lexical",
+ "confidence": "medium",
+ "notes": "Label and sentences written blind by a Claude subagent from the card text alone (prompt: haiku_labeler/prompt.md, identical for Haiku, Sonnet and Opus); one retry on mechanical checks. Part of a Haiku/Sonnet/Opus comparison on the same 48 poles."
+}

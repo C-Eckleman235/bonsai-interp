@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-8e8d9d2f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N1128+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T18:19:51+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L23/N1128",
+   "pole": "+",
+   "label": "Chinese text inside code comments and docstrings (a '# 读取配置文件' comment, a docstring in Chinese), as against the same code commented in English",
+   "fire": [
+    "def save_user(user):\n    # 将用户信息写入数据库\n    db.session.add(user)\n    db.session.commit()",
+    "for i in range(10):\n    # 打印每一行的结果\n    print(rows[i])",
+    "def parse_date(text):\n    \"\"\"\n    把字符串转换成日期对象\n    \"\"\"\n    return datetime.strptime(text, '%Y-%m-%d')",
+    "timeout = 30  # 超时时间，单位是秒\nretries = 3",
+    "class Cache:\n    # 简单的内存缓存，用于保存查询结果\n    def __init__(self):\n        self.data = {}",
+    "if not items:\n    # 列表为空时直接返回\n    return []",
+    "def area(r):\n    # 计算圆的面积\n    return 3.14 * r * r",
+    "url = base + '/login'  # 登录接口的地址\nresp = requests.post(url)"
+   ],
+   "quiet": [
+    "def save_user(user):\n    # write the user record to the database\n    db.session.add(user)\n    db.session.commit()",
+    "for i in range(10):\n    # print the result of each row\n    print(rows[i])",
+    "def parse_date(text):\n    \"\"\"\n    Convert a string into a date object.\n    \"\"\"\n    return datetime.strptime(text, '%Y-%m-%d')",
+    "timeout = 30  # timeout in seconds\nretries = 3",
+    "class Cache:\n    # simple in-memory cache for query results\n    def __init__(self):\n        self.data = {}",
+    "if not items:\n    # return early when the list is empty\n    return []",
+    "def area(r):\n    # compute the area of a circle\n    return 3.14 * r * r",
+    "url = base + '/login'  # address of the login endpoint\nresp = requests.post(url)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on Chinese tokens in comments/docstrings of Python code; the same code with English comments below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Chinese in code comments",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: Chinese @param docs, '# FlatPageForm是form类，', Chinese docstrings, '# 创建保存 ... 默认值'. Probe: '# 读取配置文件' 0.665, '# 默认值为五' 0.756, Chinese docstring 0.506; English comments 0.119 and 0.087; plain Chinese prose 0.330 and 0.314 (so prose is weaker but not off; near misses avoid it)."
+}

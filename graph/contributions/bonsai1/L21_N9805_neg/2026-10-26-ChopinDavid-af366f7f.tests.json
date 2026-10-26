@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-af366f7f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N9805-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T08:21:20+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L21/N9805",
+   "pole": "-",
+   "label": "the module name right after 'from' or 'import' inside a multi-line Python import block (os, sys, itertools, collections), as against the same module names in prose or in ordinary code use",
+   "fire": [
+    "# -*- coding: utf-8 -*-\nimport logging\nimport re\nfrom os.path import exists\nfrom sys import exit",
+    "import json\nimport math\nfrom collections import Counter\nfrom itertools import chain",
+    "#!/usr/bin/env python\nimport argparse\nimport time\nfrom os import listdir\nimport subprocess",
+    "import random\nimport string\nfrom sys import stdin\nfrom collections import defaultdict",
+    "\"\"\"Utilities.\"\"\"\nimport base64\nimport hashlib\nfrom itertools import groupby\nfrom os import environ",
+    "import socket\nimport struct\nfrom collections import namedtuple\nimport os.path",
+    "import csv\nimport datetime\nfrom os import walk\nfrom itertools import product",
+    "import signal\nimport threading\nfrom sys import platform\nfrom os import getpid"
+   ],
+   "quiet": [
+    "The logging tools write every message to a file, and the os library helps check whether that file exists.",
+    "Counting words is easy with a counter from the collections library, the tutorial said.",
+    "To list a folder, the script calls the os library, then it starts a subprocess.",
+    "The program reads lines from standard input that the sys library exposes.",
+    "Grouping records by key is what the itertools library is good at.",
+    "files = os.listdir(base)\nfor f in files:\n    print(f.upper())",
+    "rows = list(csv.reader(handle))\nprint(len(rows), 'rows found')",
+    "if sys.platform == 'win32':\n    print('windows')\nelse:\n    print('other')"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.5 on module names after from/import with earlier import lines; prose and attribute uses under 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "module name in import block",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: ' os' x9 after 'import' in import blocks, ' sys', ' itertools', ' collections'. Probe: 'from os.path import join / from sys import argv' 0.300 on sys, 'from itertools import' 0.231; but a plain 'import sys/os/re/json' block only 0.076, prose 'os module' 0.072, 'os.path.join(a,b)' 0.024. Weak in short snippets; fire items are longer blocks with 'from X import'."
+}

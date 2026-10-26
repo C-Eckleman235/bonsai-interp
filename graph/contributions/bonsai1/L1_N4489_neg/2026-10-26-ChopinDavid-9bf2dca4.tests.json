@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-9bf2dca4",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N4489-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T17:21:28+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N4489",
+   "pole": "-",
+   "label": "a dense, gate-closed unit that peaks on a few rare content tokens (' Rover', ' excerpt', ' exacerb', ' hazard', 'rove' in mangrove) above a broad background",
+   "fire": [
+    "The rover drove across the dunes, and the Rover team cheered.",
+    "Rising prices may exacerbate the shortage of housing.",
+    "She read a brief excerpt from her novel at the festival.",
+    "Old wiring is a fire hazard in many houses.",
+    "Crabs live among the roots of the mangrove trees.",
+    "The new Rover model was shown at the car fair.",
+    "Poor sleep can exacerbate the symptoms of anxiety.",
+    "The anthology opens with an excerpt from a famous diary."
+   ],
+   "quiet": [
+    "The truck drove across the dunes, and the team cheered.",
+    "Rising prices may worsen the shortage of housing.",
+    "She read a brief chapter from her novel at the festival.",
+    "Old wiring is a fire risk in many houses.",
+    "Crabs live among the roots of the coastal trees.",
+    "The new Ford model was shown at the car fair.",
+    "Poor sleep can increase the symptoms of anxiety.",
+    "The anthology opens with a passage from a famous diary."
+   ]
+  }
+ ],
+ "predictions": "fire 0.7-0.9 on ' Rover', ' excerpt', ' exacerb', ' hazard', 'rove'; plain-word versions 0.3-0.45, so near misses will likely leak",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense; peaks on Rover/excerpt/exacerb/hazard",
+ "unit_kind": "dense / positional",
+ "confidence": 0.25,
+ "notes": "Card: FLAG dense (29.8% of tokens reach 0.1 of max), gate-closed regime 99%; top ' Rover', ' exacerb', 'rove', ' hazard', ' excerpt'. Probe: 'Mars Rover' 0.931, 'exacerbate' 0.924, 'short excerpt' 0.921, 'Mangrove' 0.731, 'moral hazard' 0.720; ordinary controls 0.29-0.45 ('parked' 0.445, 'worsen' sentence 0.390). A dense unit; the 8+8 test is a token test that will likely fail on leaks."
+}

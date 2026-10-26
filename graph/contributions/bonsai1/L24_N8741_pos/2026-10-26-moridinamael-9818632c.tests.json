@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-26-moridinamael-9818632c",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L24/N8741+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T19:26:34+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Inside code, a name, argument list or key chain being re-typed that was already written a few lines or tokens earlier (the next piece can be copied from above); the same call or lookup with fresh names, plain lookups, and prose stay low."
+ },
+ "neighbours": [
+  {
+   "unit": "L24/N8741",
+   "pole": "+",
+   "label": "In multi-line code, a call or key-chain line retyped almost exactly from a line a few lines above (names, arguments and brackets all repeated, so the rest can be copied); the same lines with fresh names, a single non-repeated line, and prose stay low.",
+   "fire": [
+    "x = config[\"model\"][\"layers\"][0]\ny = 2\nz = config[\"model\"][\"layers\"][1]",
+    "plt.plot(xs, ys, color=\"red\", linewidth=2)\nplt.title(\"Loss\")\nplt.plot(xs, ys, color=\"blue\", linewidth=2)",
+    "self.assertEqual(result.status, 200)\nresult = client.get(\"/b\")\nself.assertEqual(result.status, 200)",
+    "console.log(data.user.profile.name);\nlet n = 3;\nconsole.log(data.user.profile.email);",
+    "df = pd.read_csv(\"train.csv\", sep=\",\")\nprint(df.shape)\ndv = pd.read_csv(\"valid.csv\", sep=\",\")",
+    "model.add(Dense(64, activation='relu'))\nmodel.add(Dropout(0.5))\nmodel.add(Dense(64, activation='relu'))",
+    "logger.info(\"Starting step %d\", step)\nrun(step)\nlogger.info(\"Finished step %d\", step)",
+    "parser.add_argument(\"--lr\", type=float, default=0.01)\nparser.add_argument(\"--seed\", type=int, default=0)\nparser.add_argument(\"--wd\", type=float, default=0.01)"
+   ],
+   "quiet": [
+    "The quote reads: \"he [the mayor] agreed\".",
+    "@classmethod",
+    "x = config[\"model\"][\"layers\"][0]\ny = 2\nz = total + offset",
+    "plt.plot(xs, ys, color=\"red\", linewidth=2)\nplt.title(\"Loss\")\nfig.savefig(\"out.png\")",
+    "self.assertEqual(result.status, 200)\nresult = client.get(\"/b\")\nassert body is not None",
+    "console.log(data.user.profile.name);\nlet n = 3;\nwindow.alert(msg);",
+    "df = pd.read_csv(\"train.csv\", sep=\",\")\nprint(df.shape)\nlabels = df.pop(\"target\")",
+    "model.add(Dense(64, activation='relu'))\nmodel.add(Dropout(0.5))\nnet.compile(optimizer=opt)"
+   ]
+  }
+ ],
+ "predictions": "Expect about 5/8 fire to pass 0.20; the repeat-vs-fresh twin was 0.39 vs 0.07 in my probes, but short items may stay weak, so a fail is plausible.",
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-de",
+   "neighbors"
+  ]
+ }
+}

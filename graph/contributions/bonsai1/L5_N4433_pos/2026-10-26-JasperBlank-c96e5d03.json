@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-26-JasperBlank-c96e5d03",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N4433+",
+ "contributor": "JasperBlank",
+ "created": "2026-10-26T13:39:17+00:00",
+ "recipe": {
+  "toolchain_commit": "dc58702b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N4433_pos/2026-10-26-JasperBlank-c96e5d03.tests.json"
+ },
+ "label": "Weak, diffuse pole: ' authors' in boilerplate declarations ('The authors declare no conflict of interest') and word fragments in code/identifiers or ' copy'/' paper'; no single trigger",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N4433_pos/2026-10-26-JasperBlank-c96e5d03.tests.json",
+   "prereg_commit": "dc58702b",
+   "author": "JasperBlank",
+   "n_fire": 2,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.299,
+     "peak": " interests"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.643,
+     "peak": " manuscript"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.056,
+     "peak": " copy"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.244,
+     "peak": " paper"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.644,
+     "peak": "ed"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.098,
+     "peak": " design"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.056,
+     "peak": " copy"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.103,
+     "peak": " staff"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.145,
+     "peak": " section"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.325,
+     "peak": " manuscript"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.052,
+     "peak": " please"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.031,
+     "peak": " deadline"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.071,
+     "peak": " open"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.035,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.049,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.052,
+     "peak": " were"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.812,
+    "median_fire": 0.173,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagents)",
+  "screens": [
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc58702b",
+  "minutes": 10,
+  "batch_size": 192
+ },
+ "short": "authors declare boilerplate",
+ "unit_kind": "unclear",
+ "confidence": "low",
+ "notes": "Label and sentences written by Claude Sonnet subagents (8 poles each) from the card text alone (prompt: haiku_labeler/prompt_l5.md); one retry on mechanical checks. Part of a 192-pole layer-5 sweep.",
+ "selection": "random draw",
+ "trigger": {
+  "words": [
+   "authors",
+   "copy",
+   "paper"
+  ]
+ }
+}

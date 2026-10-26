@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-0008afa1",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N11542+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T12:20:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N11542",
+   "pole": "+",
+   "label": "a word piece inside a rare word that the tokenizer splits into several pieces in French, Russian or other non-English text (j|és|uite, tr|ic|ote|uses, вы|стр|ела), as against the same sentences with a common word in that slot",
+   "fire": [
+    "Hier soir, un vieux jésuite a raconté son voyage en Chine.",
+    "Au marché, nous avons croisé des tricoteuses et des vendeurs de fromage.",
+    "Dans le roman, le capitaine entend soudain un coup de feu et un sifflement.",
+    "Mon grand-père collectionnait des estampes et des chrysanthèmes séchés.",
+    "Le maire a félicité les ébénistes pour leur travail remarquable.",
+    "Elle a lu les mémoires du mousquetaire pendant les vacances.",
+    "Солдат вздрогнул, услышав далёкий выстрел в лесу.",
+    "Нас удивили виртуозные балалаечники на площади."
+   ],
+   "quiet": [
+    "Hier soir, un vieux prêtre a raconté son voyage en Chine.",
+    "Au marché, nous avons croisé des amis et des vendeurs de pain.",
+    "Dans le roman, le capitaine entend soudain un bruit et une voix.",
+    "Mon grand-père collectionnait des livres et des cartes.",
+    "Le maire a félicité les enfants pour leur travail.",
+    "Elle a lu les lettres de sa mère pendant les vacances.",
+    "Солдат вздрогнул, услышав голос в лесу.",
+    "Нас удивили музыканты на площади."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on a piece of a split rare word in French or Russian; the same sentences with a common one-token word in that slot below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "pieces of split rare words, non-English",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: 'és' (jésuite), '紹' (紹介), ' Ver' (Veronique), 'стр' (выстрела), ' tr' (tricoteuses), ' Vol' (Voltaire), '紛'. Probe: jésuite 0.487, tricoteuses 0.613, выстрела 0.408, Veronique 0.387, Voltaire sentence 0.340 (peak ' L' of Lumières); prêtre 0.098, Diderot sentence 0.291 (again ' L'), English plain 0.002. Lumières leaks, so near misses avoid split words where possible."
+}
