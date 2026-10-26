@@ -1,0 +1,153 @@
+{
+ "id": "2026-10-26-C-Eckleman235-6150ac86",
+ "kind": "interpret",
+ "neuron": "bonsai1/L8/N215+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-26T21:54:57+00:00",
+ "recipe": {
+  "toolchain_commit": "923b6b85",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L8_N215_pos/2026-10-26-C-Eckleman235-6150ac86.tests.json"
+ },
+ "label": "A variable name directly inside a Python subscript or slice (x[:, t, :], s[:-self.n])",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L8_N215_pos/2026-10-26-C-Eckleman235-6150ac86.tests.json",
+   "prereg_commit": "923b6b85",
+   "author": "C-Eckleman235",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.885,
+     "peak": " t"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.457,
+     "peak": "self"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.143,
+     "peak": " :,"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.03,
+     "peak": " items"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.265,
+     "peak": " step"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.008,
+     "peak": "[:,"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.255,
+     "peak": ":"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.28,
+     "peak": "self"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.074,
+     "peak": "batch"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.008,
+     "peak": " path"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.072,
+     "peak": " :,"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.03,
+     "peak": " items"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.017,
+     "peak": "y"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.008,
+     "peak": "[:,"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.149,
+     "peak": ":"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.003,
+     "peak": " name"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.836,
+    "median_fire": 0.26,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "923b6b85",
+  "minutes": 4,
+  "batch_size": 24,
+  "dtype": "float16"
+ },
+ "short": "variable inside a slice",
+ "unit_kind": "contextual",
+ "confidence": 0.5,
+ "notes": "triage: unclear then probed. probe: [:, t, :] 0.72, [:-self.n] 0.65, range(x+1) 0.10, [:mo.start] 0.01.",
+ "selection": "random draw"
+}
