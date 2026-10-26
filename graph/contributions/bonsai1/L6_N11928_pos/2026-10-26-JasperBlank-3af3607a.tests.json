@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-26-JasperBlank-3af3607a",
+ "contributor": "JasperBlank",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N11928+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-26T02:08:10+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L6/N11928",
+   "pole": "+",
+   "label": "First indentation whitespace (spaces or tab) on the line right after a Python 'def ...():' header, i.e. the start of a function body",
+   "fire": [
+    "import os\n\ndef get_user():\n    try:\n        return os.getlogin()\n    except OSError:\n        return None",
+    "class Server:\n    def serve_forever(self):\n        self.running = True\n        while self.running:\n            self.handle()",
+    "def suite():\n    \"\"\"Gather all the tests in this module.\"\"\"\n    return unittest.TestSuite()",
+    "class Form:\n\tdef on_submit(self):\n\t\tself.validate()\n\t\tself.save()",
+    "class Plugin:\n    def getIcon(self):\n        return QIcon(':/plugins/icons/join.png')",
+    "def load_config(path):\n    with open(path) as f:\n        return json.load(f)",
+    "class Queue:\n\tdef hasnext(self):\n\t\twith self.lock:\n\t\t\treturn len(self.items) > 0",
+    "def main():\n    args = parse_args()\n    run(args)\n\nif __name__ == '__main__':\n    main()"
+   ],
+   "quiet": [
+    "import os\nimport sys\nuser = os.getlogin()\nprint(user)",
+    "values = [1, 2, 3]\ntotal = sum(values)\nprint('total is', total)",
+    "# Returns the username for the banner\nBANNER_FILE = '/etc/classification-banner'\nUSER = 'admin'",
+    "config = {\n    'host': 'localhost',\n    'port': 8080,\n}",
+    "result = compute(a, b)\nif result is None:\n    raise ValueError('no result')",
+    "Our team meets every Tuesday to define the goals for the next sprint and review progress.",
+    "data = load('file.csv')\nrows = [r for r in data if r]\nsave(rows)",
+    "items = fetch_items()\nfor item in items:\n    process(item)"
+   ]
+  }
+ ],
+ "predictions": "7/8 fire, 1 near miss",
+ "methods": {
+  "agent": "claude-code opus-5.5 (subagent)",
+  "screens": [
+   "card"
+  ]
+ },
+ "short": "function body first indent",
+ "unit_kind": "contextual",
+ "confidence": "medium",
+ "notes": "Label and sentences written blind by a Claude subagent from the card text alone (prompt: haiku_labeler/prompt.md, identical for Haiku, Sonnet and Opus); one retry on mechanical checks. Part of a Haiku/Sonnet/Opus comparison on the same 48 poles."
+}
