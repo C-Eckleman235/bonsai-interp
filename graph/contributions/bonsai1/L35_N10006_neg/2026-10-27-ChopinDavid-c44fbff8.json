@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-c44fbff8",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N10006-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T07:28:36+00:00",
+ "recipe": {
+  "toolchain_commit": "2da055c2",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N10006_neg/2026-10-27-ChopinDavid-c44fbff8.tests.json"
+ },
+ "label": "a dash or line break that interrupts a sentence in narrative or reflective prose so that the clause continues after it, as against the same passage with the break replaced by a comma or a full stop",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N10006_neg/2026-10-27-ChopinDavid-c44fbff8.tests.json",
+   "prereg_commit": "2da055c2",
+   "author": "ChopinDavid",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.483,
+     "peak": "–"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.058,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.079,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.42,
+     "peak": "–"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.005,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.006,
+     "peak": " time"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.286,
+     "peak": "–"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.056,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.019,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.033,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.007,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.009,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.012,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.008,
+     "peak": " that"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.007,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.005,
+     "peak": " everything"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.773,
+    "median_fire": 0.069,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "2da055c2",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "dash interrupting a sentence (guess)",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Card: peaks on mid-sentence em and en dashes, '---', ',—', mid-sentence line breaks, opening quotes, and spaces between Chinese clauses (max 115). Probe was weak: 'I don't know–having' 0.155, opening quote in 'simply: “pause.”' 0.097, 'drink deeply—get lost' 0.005, ',—and' 0.016, '---equal' 0.004; comma versions 0.009-0.036, floor 0.000. The card's activations seem to need longer preceding context. Low-confidence guess with longer passages.",
+ "selection": "random draw"
+}
