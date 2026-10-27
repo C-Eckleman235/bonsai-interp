@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-0c7a3906",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N5132-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T16:20:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N5132",
+   "pole": "-",
+   "label": "the plural agent suffix 'ers' when the tokenizer splits it off as its own piece (coff|ers, bunk|ers, fram|ers, lock|ers), as against plural -ers nouns that are a single token (farmers, workers) and the bare stems",
+   "fire": [
+    "After the scandal, the party's campaign coffers were nearly empty.",
+    "The old rockers played one last show in the stadium.",
+    "My uncle calls everyone under thirty a bunch of slackers.",
+    "Night stockers refill the shelves before the store opens.",
+    "Crews poured the concrete for two new bunkers near the border.",
+    "The gym installed new lockers beside the showers.",
+    "Historians still argue about what the framers really intended.",
+    "Most of the money ended up in the coffers of the royal family."
+   ],
+   "quiet": [
+    "After the scandal, the party's donors were nearly gone.",
+    "The old teachers played one last game in the stadium.",
+    "My uncle calls everyone under thirty a bunch of workers.",
+    "Night staff refill the shelves before the store opens.",
+    "Crews poured the concrete for two new walls near the border.",
+    "The gym installed new benches beside the showers.",
+    "Historians still argue about what the founders really intended.",
+    "Most of the money ended up in the hands of the royal family."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.8 on the 'ers' piece; single-token -ers plurals and bare stems below 0.06",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-off 'ers' suffix",
+ "unit_kind": "word",
+ "confidence": 0.7,
+ "notes": "Card: 'ers' x29 of the top 32 (coffers, framers, bunkers). Probe: coff|ers 0.763, bunk|ers 0.618, fram|ers 0.713, lock|ers 0.664; single-token ' farmers' 0.046, ' bakers'/' brewers' 0.039, bare ' bunk' 0.037. Gate-closed leak regime 65%: low max (0.57) layer-0 unit."
+}

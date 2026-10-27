@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-bfac0754",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N3036-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T16:27:11+00:00",
+ "recipe": {
+  "toolchain_commit": "63f15f79",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N3036_neg/2026-10-27-ChopinDavid-bfac0754.tests.json"
+ },
+ "label": "the token just before a predictable manufacturing word in German or English (Auto|hersteller, Reifen|hersteller, 'nach alter Tradition' + hergestellt, man|-made), i.e. a predictor of 'her(stellen)' / '-made', as against the same sentences where nothing sets up manufacture",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N3036_neg/2026-10-27-ChopinDavid-bfac0754.tests.json",
+   "prereg_commit": "63f15f79",
+   "author": "ChopinDavid",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.333,
+     "peak": " Auto"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.436,
+     "peak": "ifen"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.563,
+     "peak": " Tradition"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.467,
+     "peak": "bel"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.263,
+     "peak": "enden"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.217,
+     "peak": " man"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.485,
+     "peak": "ren"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.762,
+     "peak": "zept"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.014,
+     "peak": " E"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.008,
+     "peak": " Straßen"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.137,
+     "peak": " B"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.006,
+     "peak": "ed"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.014,
+     "peak": "ien"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.001,
+     "peak": " friendly"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.028,
+     "peak": " seine"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.007,
+     "peak": "ife"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.452,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "63f15f79",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "predicts a manufacturing word ('her'-stellen)",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: ' man' x5, 'ifen' (Reifen|hersteller), ' Auto' (Auto|hersteller), ' Tradition' before hergestellt; the pole promotes ' her'/' Her'. Probe: Reifenhersteller 0.557, 'nach alter Tradition hergestellt' 0.514, Autohersteller 0.417, 'man-made' 0.449; 'die Banken' 0.030, Käse schmeckt 0.057; 'für die Herstellung' only 0.113 (capital ' Her' does not carry it).",
+ "selection": "random draw"
+}

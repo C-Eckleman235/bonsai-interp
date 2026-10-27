@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-bfac0754",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N3036-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T16:20:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N3036",
+   "pole": "-",
+   "label": "the token just before a predictable manufacturing word in German or English (Auto|hersteller, Reifen|hersteller, 'nach alter Tradition' + hergestellt, man|-made), i.e. a predictor of 'her(stellen)' / '-made', as against the same sentences where nothing sets up manufacture",
+   "fire": [
+    "Der französische Autohersteller Renault meldet höhere Gewinne.",
+    "Der deutsche Reifenhersteller Continental streicht Stellen.",
+    "Das Brot wird in unserer Bäckerei nach alter Tradition hergestellt.",
+    "Der schwedische Möbelhersteller Ikea eröffnet eine neue Filiale.",
+    "Viele Spielzeughersteller kämpfen mit steigenden Kosten.",
+    "Most of the fibres in this jacket are man-made.",
+    "Der Schweizer Uhrenhersteller Swatch verkauft weniger Uhren.",
+    "Die Seife wird von Hand nach einem alten Rezept hergestellt."
+   ],
+   "quiet": [
+    "Der französische Fußballverein Paris meldet höhere Einnahmen.",
+    "Der deutsche Bundestag streicht Mittel für Straßen.",
+    "Das Brot schmeckt in unserer Bäckerei am besten mit Butter.",
+    "Der schwedische Sänger eröffnet seine neue Tournee.",
+    "Viele Familien kämpfen mit steigenden Kosten.",
+    "Most of the people in this town are friendly.",
+    "Der Schweizer Bankkunde verkauft seine Aktien.",
+    "Die Seife riecht nach Lavendel und frischer Minze."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.6 on the compound head or noun before hersteller/hergestellt; same sentences about banks, sales or food below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predicts a manufacturing word ('her'-stellen)",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: ' man' x5, 'ifen' (Reifen|hersteller), ' Auto' (Auto|hersteller), ' Tradition' before hergestellt; the pole promotes ' her'/' Her'. Probe: Reifenhersteller 0.557, 'nach alter Tradition hergestellt' 0.514, Autohersteller 0.417, 'man-made' 0.449; 'die Banken' 0.030, Käse schmeckt 0.057; 'für die Herstellung' only 0.113 (capital ' Her' does not carry it)."
+}

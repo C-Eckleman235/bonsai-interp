@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-b38cbadd",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N663-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T16:20:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N663",
+   "pole": "-",
+   "label": "dense layer-1 unit: weakly on almost everywhere, strongest on the second character of CJK and Korean words (호|두, 底|片, 前|払); English text also reaches about a third of max",
+   "fire": [
+    "그는 오래된 사진 앨범을 천천히 넘겨 보았다.",
+    "我们昨天在公园里拍了很多照片。",
+    "このカメラは軽くて使いやすいです。",
+    "주말마다 할머니 댁에 가서 김치를 담근다.",
+    "他把旧报纸整齐地放进了箱子里。",
+    "駅の近くに新しいパン屋ができました。",
+    "겨울 바다는 생각보다 훨씬 조용했다.",
+    "图书馆的门口停着几辆自行车。"
+   ],
+   "quiet": [
+    "He slowly turned the pages of the old photo album.",
+    "We took a lot of photos in the park yesterday.",
+    "This camera is light and easy to use.",
+    "Every weekend we go to grandma's house to make kimchi.",
+    "He put the old newspapers neatly into the box.",
+    "A new bakery opened near the station.",
+    "The winter sea was much quieter than I expected.",
+    "A few bicycles were parked at the library door."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.8 on CJK/Korean text; English near misses 0.25-0.35, so the test will likely fail the near-miss rule",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense; CJK word-internal characters",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Card: FLAG dense (54.7% of tokens above 0.1 of max), gate-closed leak 100%, max 0.50. Probe: 底片 0.826, 여름 0.583, 호두 0.557, 前払 0.539, 少人数 0.370; plain English 0.268-0.355. Best-guess script contrast, expected to fail on density."
+}

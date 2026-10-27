@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-13346ff1",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N4133-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T16:20:00+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L2/N4133",
+   "pole": "-",
+   "label": "dense layer-2 unit: on for most tokens, strongest on the first piece of a split word or abbreviation in technical, legal or non-English text (' utf', ' overs', 'mand', 'mente', ' v', '전'), lowest on plain everyday English",
+   "fire": [
+    "The file header reads # -*- coding: latin-1 -*- on every script.",
+    "Undersampling the signal causes aliasing in the output.",
+    "Les peintures flamandes du quinzième siècle sont célèbres.",
+    "La ciudad crece rápidamente desde hace diez años.",
+    "In Smith v. Jones the court reversed the ruling.",
+    "이 제품의 한국어 버전은 내년에 나옵니다.",
+    "Set PYTHONIOENCODING=utf8 before running the tool.",
+    "Die Ergebnisse wurden anschließend veröffentlicht."
+   ],
+   "quiet": [
+    "The dog barked at the mailman again.",
+    "We had soup and bread for lunch.",
+    "My brother likes to play football.",
+    "The sun was warm on the porch.",
+    "She read a book before bed.",
+    "The kids ran to the park.",
+    "I made tea and sat by the window.",
+    "The bus was late this morning."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-0.8 on split pieces in technical or foreign text; plain English near misses near 0 or negative",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense; split pieces in technical/foreign text",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Card: FLAG dense (69% of tokens above 0.1 of max), gate-closed leak 100%, max 0.25. Probe: ' utf' 0.710, ' overs' 0.767, 'mand' 0.769, 'mente' 0.623, ' v' 0.733, '전' 0.728; 'German troops' 0.258, 'The cat slept' -0.111, cereal -0.065."
+}
