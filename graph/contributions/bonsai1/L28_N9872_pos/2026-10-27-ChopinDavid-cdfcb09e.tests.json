@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-cdfcb09e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N9872+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T11:21:40+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N9872",
+   "pole": "+",
+   "label": "argument and literal boundaries in Python source (commas between call arguments, opening quotes of string literals, 'import'), as against the same punctuation and words in prose",
+   "fire": [
+    "import re\n\nfound = re.search(pattern, line, re.IGNORECASE)\nif found:\n    print(found.group(0))",
+    "CODES = {\n    404: 'NOT FOUND',\n    500: 'SERVER ERROR',\n}",
+    "try:\n    import json\nexcept ImportError:\n    import simplejson as json",
+    "def get(self, key, default=None):\n    return self.data.get(key, default)",
+    "parts = text.split(',')\nnames = [p.strip() for p in parts]",
+    "mode = 'r'  # 'r' | 'w' | 'a'\nwith open(path, mode) as f:\n    data = f.read()",
+    "class Cache(dict):\n    def __missing__(self, key):\n        value = self.loader(key)\n        return value",
+    "path = os.path.join(base_dir, 'static', 'images')\nfiles = os.listdir(path)"
+   ],
+   "quiet": [
+    "The search found the pattern in the first line, and she printed the result.",
+    "Error codes like not found and server error appear when a page fails.",
+    "The country began to import more grain after the drought, officials said.",
+    "He asked the clerk for the key, and she returned it with a smile.",
+    "She split the bill with her friends, and everyone paid a fair share.",
+    "The sign said 'read only' in red letters above the old cabinet.",
+    "The museum keeps a cache of old letters in a locked room.",
+    "They walked from the base camp to the static display of old planes."
+   ]
+  }
+ ],
+ "predictions": "code items 0.3-0.8; prose with commas, quotes and 'import' below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Python argument/literal boundaries",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: \" '\" x5, ',' x5, ' import' x3, '(' x2, all in Python/C++ source. Probe: dict of status strings 0.735, re.finditer args 0.780, 'from StringIO import' 0.687, __missing__(self, key) 0.387, '|'-separated string options 0.418, readline().rstrip 0.145; prose with quotes/commas 0.004-0.005."
+}

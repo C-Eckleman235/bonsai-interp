@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-16629b72",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N4738-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T11:21:40+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N4738",
+   "pole": "-",
+   "label": "column names in a SQL CREATE TABLE definition (the name before its type), as against the same columns used in SELECT, UPDATE or DELETE",
+   "fire": [
+    "CREATE TABLE books (book_id SERIAL PRIMARY KEY, title VARCHAR(200), author_name VARCHAR(100));",
+    "cur.execute('CREATE TABLE IF NOT EXISTS logs (id INTEGER PRIMARY KEY, message TEXT, level TEXT)')",
+    "create table places (place_name TEXT, location BLOB);",
+    "CREATE TABLE orders (\n  order_id INT PRIMARY KEY,\n  customer_name VARCHAR(80),\n  total DECIMAL(10,2)\n);",
+    "db.execute(\"CREATE TABLE notes (note_id INTEGER, body TEXT, created TEXT)\")",
+    "CREATE TABLE cities (city_id SERIAL, country_code CHAR(2), population INTEGER);",
+    "create table events (event_name TEXT, start_time TEXT, venue TEXT);",
+    "CREATE TABLE pets (pet_id INT, owner_name VARCHAR(60), species VARCHAR(30));"
+   ],
+   "quiet": [
+    "SELECT title, author_name FROM books WHERE book_id = 3;",
+    "cur.execute('SELECT message, level FROM logs WHERE id = 1')",
+    "select place_name from places order by place_name;",
+    "SELECT\n  order_id,\n  customer_name,\n  total\nFROM orders;",
+    "db.execute(\"SELECT body FROM notes WHERE note_id = 2\")",
+    "UPDATE cities SET population = 5000 WHERE city_id = 7;",
+    "select event_name, venue from events where start_time > '10:00';",
+    "DELETE FROM pets WHERE owner_name = 'Ann';"
+   ]
+  }
+ ],
+ "predictions": "CREATE TABLE items 0.5-0.95; queries over the same columns below 0.25",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "SQL CREATE TABLE column names",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: 'last⟦_name⟧ VARCHAR(70)', 'syntax TEXT,⟦ comment⟧ TEXT', 'create table test1 (⟦alias⟧ TEXT', 'committee⟦_name⟧ VARCHAR', '⟦ url⟧ varchar(200)', plus a cron '0,1⟦5⟧'. Probe: CREATE TABLE donors 0.926, CREATE TABLE users 0.688, create table test1 0.736, cron string 0.480; SELECT same columns 0.040, INSERT VALUES 0.243, Python signature with types 0.011, prose 0.005."
+}

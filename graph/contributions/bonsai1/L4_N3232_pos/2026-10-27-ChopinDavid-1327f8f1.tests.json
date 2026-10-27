@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-1327f8f1",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N3232+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T11:21:40+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N3232",
+   "pole": "+",
+   "label": "the Arabic letter ط (ṭāʾ) opening a word stem as its own token (وال⟦ط⟧عام, ⟦ ط⟧لع, ⟦ط⟧ريقة), as against Arabic words without ط",
+   "fire": [
+    "نشتري الخبز والطعام من السوق كل صباح.",
+    "كان اللقاء بين الأم والطفل مؤثرا جدا.",
+    "جلسنا ننتظر حتى طلع القمر فوق التلال.",
+    "سافرنا عبر الجبال والطريق الضيق نحو القرية.",
+    "تعلمت أمس طريقة سهلة لإعداد الأرز.",
+    "غض الرجل طرفا عن أخطاء صديقه القديم.",
+    "يناقش المؤتمر البرنامج على المدى المتوسط والطويل.",
+    "زرع الفلاحون القمح والطماطم في الحقول."
+   ],
+   "quiet": [
+    "نشتري الخبز والحليب من السوق كل صباح.",
+    "كان اللقاء بين الأم والابن مؤثرا جدا.",
+    "جلسنا ننتظر حتى ظهر القمر فوق التلال.",
+    "سافرنا عبر الجبال والوادي الضيق نحو القرية.",
+    "تعلمت أمس أسلوبا سهلا لإعداد الأرز.",
+    "تجاهل الرجل أخطاء صديقه القديم بهدوء.",
+    "يناقش المؤتمر البرنامج على المدى المتوسط والبعيد.",
+    "زرع الفلاحون القمح والبصل في الحقول."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.9 on the ط token; near misses that swap in a ط-free word below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Arabic ط stem-initial",
+ "unit_kind": "token/lexical",
+ "confidence": 0.65,
+ "notes": "Card: 'ط' x18, ' ط' x13 in the top 32 (والطفل, والطويل, طريق, طلع). Splits: 'والطعام' = 'وال'+'ط'+'عام', ' طلع' = ' ط'+'لع', 'طريقة' = 'ط'+'ري'+'قة'. Probe: والطفل 0.624, والطعام 0.861, طلع 0.693, طريقة 0.607, ' الط' in الطازج 0.600; same sentence with والعائلة 0.130, 'والعلم' sentence 0.057, English 0.010. Near miss 3 uses ظ (byte tokens), the look-alike letter."
+}
