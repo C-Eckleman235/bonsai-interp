@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-b5d5799f",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N1127-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T21:28:20+00:00",
+ "recipe": {
+  "toolchain_commit": "47267e5d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L24_N1127_neg/2026-10-27-ChopinDavid-b5d5799f.tests.json"
+ },
+ "label": "the given name or initial of a scholar or author named in an academic attribution (scholar James Charlesworth, translated by Robert J. Penella), not a first name in everyday narrative",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L24_N1127_neg/2026-10-27-ChopinDavid-b5d5799f.tests.json",
+   "prereg_commit": "47267e5d",
+   "author": "ChopinDavid",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.535,
+     "peak": " John"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.6,
+     "peak": " Peter"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.112,
+     "peak": " by"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.527,
+     "peak": " Bart"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.076,
+     "peak": " by"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.365,
+     "peak": " Karen"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.181,
+     "peak": " Charles"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.238,
+     "peak": " Richard"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.231,
+     "peak": " about"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": -0.003,
+     "peak": " his"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.027,
+     "peak": " York"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.003,
+     "peak": " cousin"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.038,
+     "peak": " paper"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": -0.004,
+     "peak": " school"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.145,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.009,
+     "peak": " dinner"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.922,
+    "median_fire": 0.301,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "47267e5d",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "first name of a cited scholar",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: -47.75 at 'Robert J.', ' Michael' Washburn, ' Ken' Zuckerman, ' James' Charlesworth, list of cited works. Probe: 'scholar James Charlesworth' 0.661, 'translated by Robert J. Penella' 0.295 (on '.'), 'states Michael Washburn' 0.095, 'historian Thomas Berry' 0.095 (peak ' the'); 'My neighbour Michael' -0.005, 'Michael kicked the ball' 0.008. Fire items use the title + name pattern that scored highest.",
+ "selection": "random draw"
+}
