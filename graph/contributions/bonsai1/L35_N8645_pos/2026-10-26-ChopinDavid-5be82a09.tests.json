@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-5be82a09",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N8645+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T01:21:29+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N8645",
+   "pole": "+",
+   "label": "a single-letter word-start token that begins a rare name or identifier split letter-by-letter (' K'|ells, ' I'|bsen, ' K'|owal, ' u'|gettext), as against the same slot filled by a name that is not split off as one letter",
+   "fire": [
+    "Her favourite philosopher has always been Søren Kierkegaard.",
+    "The theatre is staging a short play by Eugène Ionesco tonight.",
+    "The museum owns a battle scene painted by Paolo Uccello.",
+    "from django.utils.translation import ungettext\n\nmsg = ungettext('item', 'items', n)",
+    "The gallery's new wing is devoted to Wassily Kandinsky.",
+    "His latest thriller borrows heavily from the plays of Henrik Ibsen.",
+    "The striker was signed by the club from Kraków, Jakub Kowalski.",
+    "The essay compares Kierkegaard with the later existentialists."
+   ],
+   "quiet": [
+    "Her favourite philosopher has always been Immanuel Kant.",
+    "The theatre is staging a short play by Samuel Beckett tonight.",
+    "The museum owns a battle scene painted by Peter Paul Rubens.",
+    "from django.utils.translation import gettext\n\nmsg = gettext('item')",
+    "The gallery's new wing is devoted to Pablo Picasso.",
+    "His latest thriller borrows heavily from the plays of Arthur Miller.",
+    "The striker was signed by the club from Madrid, Carlos Moreno.",
+    "The essay compares Nietzsche with the later existentialists."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.8 on ' K', ' I', ' U', ' u' starting Kierkegaard, Ionesco, Uccello, ungettext; whole-token or multi-letter-first names in the same slot stay under 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "single-letter first piece of a rare name",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: peaks ' u' x11 (ugettext), ' K' x6 (Kells, Kissing, Kowal), ' I' (Ibsen). Probe: ugettext 0.707, Kowal 0.694, Ibsen 0.651, Kells 0.474; Henrik Johnson 0.056, plain gettext 0.263, Lindisfarne 0.255, Blarney 0.095."
+}

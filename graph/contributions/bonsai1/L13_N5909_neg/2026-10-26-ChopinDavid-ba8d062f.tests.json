@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-ba8d062f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N5909-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T01:21:29+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L13/N5909",
+   "pole": "-",
+   "label": "the digits of a number given as a specification or setting value (plot and font sizes, hardiness zones, f-stops), as against the same digits used as counts or clock times",
+   "fire": [
+    "import matplotlib.pyplot as plt\n\nplt.figure(figsize=(16, 9))\nplt.plot(x, y)",
+    "import matplotlib.pyplot as plt\nfig, ax = plt.subplots(figsize=(10, 4))\nax.set_title('Loss')",
+    "plt.rcParams['font.size'] = 13\nplt.rcParams['axes.titlesize'] = 15",
+    "Native to the coast, this vine grows well in hardiness zones 8 through 10 if sheltered.",
+    "Light: partial shade\nHardiness Zones: 4-8\nBloom time: early summer",
+    "For group portraits, stop down to around f/16 so every face stays in focus.",
+    "The lilac is reliably hardy in USDA zones 3 to 7 and needs cold winters.",
+    "fig = plt.figure(figsize=(14, 5))\nax1 = fig.add_subplot(121)\nax2 = fig.add_subplot(122)"
+   ],
+   "quiet": [
+    "The train to the coast leaves at 10 o'clock every weekday morning.",
+    "There were 16 students and 9 teachers on the museum trip.",
+    "She planted 13 tomato plants and 15 pepper plants this spring.",
+    "Our neighbours have lived in the same house for 18 years now.",
+    "The bakery sold 14 loaves and 8 cakes before noon.",
+    "He turned 16 in March and got his first job at the shop.",
+    "Doors open at 11 and the concert starts an hour later.",
+    "The class has 12 boys and 17 girls this year."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-1.0 on the digit inside figsize, font-size, zone and aperture values; counts of people and clock times stay under 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "digits of a setting/spec value",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: peaks on the second digit of figsize=(12, 6), labelsize = 14, hardiness zones 7, f/11. Probe: figsize 0.968, zones 7 through 11 0.660, labelsize 14 0.586, f/11 0.580, 'Zones: 5-9' 0.475; '12 o'clock' 0.033, '14 children and 6 adults' 0.055, '14.0 points' 0.175."
+}

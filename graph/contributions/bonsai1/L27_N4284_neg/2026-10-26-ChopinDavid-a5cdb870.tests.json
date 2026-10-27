@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-a5cdb870",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N4284-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T01:21:29+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L27/N4284",
+   "pole": "-",
+   "label": "the slot that introduces the gear or instrument used to carry out a practical activity ('caught using ___', 'fishermen use ___', 'requires ___ and ___'), as against naming the activity's products or setting",
+   "fire": [
+    "Lobsters along this coast are trapped using wooden cages left overnight.",
+    "Farmers in the valley still harvest the rice using hand sickles.",
+    "The divers collected the coral samples using small steel chisels.",
+    "Oysters here are gathered using long iron rakes at low tide.",
+    "Surveyors map the old quarry using drones and laser scanners.",
+    "The beekeepers calm the hives using smoke from burning straw.",
+    "Shrimp in the bay are caught using fine mesh nets towed behind boats.",
+    "Workers drilled the tunnel using a huge rotating cutting head."
+   ],
+   "quiet": [
+    "Lobsters along this coast are sold to restaurants in the city.",
+    "Farmers in the valley still grow rice on terraced hillsides.",
+    "The divers saw bright coral near the edge of the reef.",
+    "Oysters here are popular with tourists in the summer months.",
+    "Surveyors visited the old quarry last spring with the owners.",
+    "The beekeepers sell their honey at the Saturday market.",
+    "Shrimp in the bay have become scarce in recent years.",
+    "Workers finished the tunnel two months ahead of schedule."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on 'using'/'use'/'with' or the modifier before the gear noun; sentences about the same trade without naming its tools stay under 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "introducing the gear used for a task",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: peaks ' fishing' x7, ' using', ' use', ' drilling', ' such as' (lidar), ' requires'; + pole promotes ' object', ' material'. Probe: 'caught using large steel pots' 0.822, 'use traditional nets' 0.831, 'requires expensive ships and acoustic beacons' 0.556, 'fishing boats' 0.504, 'such as lidar' 0.365; 'crabs are sold at the market' 0.071, 'novels such as Middlemarch' 0.006. Bare 'Fishing is a pastime' 0.425, so fishing words are kept out of the near misses."
+}
