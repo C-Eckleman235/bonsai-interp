@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-1c7afe4a",
+ "contributor": "C-Eckleman235",
+ "kind": "qc",
+ "neuron": "bonsai1/L6/N2470+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T18:45:18+00:00",
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "The comma token ',' immediately after a sentence-initial conjunction (And/But/and), opening a parenthetical or interrupting aside, e.g. 'And, you know,' / 'But, in general,'",
+  "notes": "Codex pilot, arm Q (plan sha256 419bfb6f8d41a7f64c56bd5a223d777ca937bf8fdc6c3f00634a70eed40f8021): a third independent QC of the model-QC pilot's labels (rounds 1 and 2 were Opus): label slot B of this pole, from contribution 2026-10-26-JasperBlank-3d1950f0. Sentences written by one fresh `codex exec` (gpt-6.1-sol, reasoning effort high, read-only sandbox, no tool use) given the identical packet the Opus writers got (the pole's card with its record line removed and the three anonymous labels); never shown earlier tests or results, not told who wrote which label; sentences unedited; nothing probed or scored before this commit."
+ },
+ "neighbours": [
+  {
+   "unit": "L6/N2470",
+   "pole": "+",
+   "label": "The comma token ',' immediately after a sentence-initial conjunction (And/But/and), opening a parenthetical or interrupting aside, e.g. 'And, you know,' / 'But, in general,'",
+   "fire": [
+    "The shipping clerk replied, “And, to avoid further delays, we have already booked another truck.”",
+    "The judge observed, “But, as counsel surely understands, that document cannot establish ownership.”",
+    "The gardening column advised, “And, if the soil feels dry, give each seedling a little water.”",
+    "The forecaster cautioned, “But, despite the clear morning sky, thunderstorms remain possible this afternoon.”",
+    "The admissions officer added, “And, for the sake of fairness, every application receives two independent reviews.”",
+    "The chat message read, “and, to be honest, I had already left before anyone noticed.”",
+    "The lecturer continued, “But, in this particular experiment, temperature remained constant throughout the trial.”",
+    "The captain remarked, “And, much to our surprise, the substitute goalkeeper saved the final penalty.”"
+   ],
+   "quiet": [
+    "Another truck was available, and, to avoid further delays, the shipping clerk immediately booked it.",
+    "The document was genuine, and, as counsel surely understood, its authenticity was never disputed.",
+    "The seedlings looked healthy, and, if the soil stayed moist, the gardener expected rapid growth.",
+    "A warning from the forecaster read, “But, thunderstorms remain possible this afternoon.”",
+    "The admissions officer's assurance was “And, every application receives two independent reviews.”",
+    "A later chat message said, “And to be honest, I had already left before anyone noticed.”",
+    "During the lecture she explained, “But in this particular experiment, temperature remained constant throughout the trial.”",
+    "The captain's assessment was “Yet, much to our surprise, the substitute goalkeeper saved the final penalty.”"
+   ]
+  }
+ ],
+ "predictions": "confirm: the label as written should hold a harder independent test (>= 6/8 fire, AUROC >= 0.9)",
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort high; blind QC writer, card only)",
+  "screens": [
+   "card"
+  ]
+ },
+ "selection": "Codex pilot: a cross-model QC of each model-QC pilot label (#1051-#1080)"
+}
