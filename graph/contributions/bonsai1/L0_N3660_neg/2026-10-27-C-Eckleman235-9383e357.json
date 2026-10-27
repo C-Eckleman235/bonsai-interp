@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-C-Eckleman235-9383e357",
+ "kind": "qc",
+ "neuron": "bonsai1/L0/N3660-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-27T19:01:50+00:00",
+ "recipe": {
+  "toolchain_commit": "f45e48c8",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N3660_neg/2026-10-27-C-Eckleman235-9383e357.tests.json"
+ },
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N3660_neg/2026-10-27-C-Eckleman235-9383e357.tests.json",
+   "prereg_commit": "f45e48c8",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.006,
+     "peak": "umin"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.874,
+     "peak": "umin"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.98,
+     "peak": "umin"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.922,
+     "peak": "ith"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.95,
+     "peak": "ith"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.9,
+     "peak": "uff"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.732,
+     "peak": "ash"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.864,
+     "peak": "ash"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.079,
+     "peak": "pp"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.052,
+     "peak": "ige"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.432,
+     "peak": "umin"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.535,
+     "peak": "ith"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.039,
+     "peak": " reminded"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.029,
+     "peak": " aircraft"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.019,
+     "peak": " before"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.037,
+     "peak": " initial"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.911,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort high; blind QC writer, card only)",
+  "screens": [
+   "card",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "f45e48c8",
+  "minutes": 18,
+  "batch_size": 1,
+  "dtype": "float16"
+ },
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "Word-piece 'umin' (also 'ith', 'uff', 'ash') right after a split-off word-initial 'z'/'Z', chiefly German 'zumindest' (z|umin|dest), also Zithromax"
+ },
+ "selection": "Codex pilot: a cross-model QC of each model-QC pilot label (#1051-#1080)"
+}
