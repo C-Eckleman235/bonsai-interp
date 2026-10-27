@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-fbd84c29",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N1545-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T12:21:50+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N1545",
+   "pole": "-",
+   "label": "a hyphen or underscore that the tokenizer leaves as its own token inside a compound or identifier ('franco|-|italienne', 'dit|-|elle', 'new|_|ice'), as against the same kind of compound where the joiner is merged into the next piece ('franco|-b|ritannique', 'peut|-être', 'set|_alpha')",
+   "fire": [
+    "Le sommet a renforcé la coopération franco-italienne dans les Alpes.",
+    "« Je ne viendrai pas demain », dit-elle en fermant la porte.",
+    "Les historiens étudient encore la guerre franco-espagnole du XVIIe siècle.",
+    "Die deutsch-österreichische Grenze verläuft entlang des Inn.",
+    "Le train pour Saint-Étienne part à sept heures du matin.",
+    "Pourquoi est-elle partie si tôt hier soir ?",
+    "    glass.setIce(new_ice)\n    glass.setEgg(new_egg)",
+    "    farm.setOwl(new_owl)\n    farm.setUrn(old_urn)"
+   ],
+   "quiet": [
+    "Le sommet a renforcé la coopération franco-britannique dans la Manche.",
+    "« Je ne viendrai peut-être pas demain », murmura Marie en fermant la porte.",
+    "Les historiens étudient encore la guerre russo-japonaise de 1905.",
+    "Die Grenze zwischen Bayern und Tirol verläuft entlang des Inn.",
+    "Le train pour Lyon part à sept heures du matin.",
+    "Après la pluie, un arc-en-ciel est apparu au-dessus du lac.",
+    "    glass.setSize(new_size)\n    glass.setColor(new_color)",
+    "    farm.setFruit(old_fruit)\n    farm.setTyre(new_tyre)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on a standalone '-' or '_' inside a word; compounds whose joiner is fused with the next piece below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "standalone in-word joiner token",
+ "unit_kind": "spelling unit",
+ "confidence": 0.55,
+ "notes": "Card: peaks are standalone '-' in 'franco|-|allemande', 'schweizerisch|-|österreichischen', 'cria-t|-|elle', '_' in 'new|_|ice', and spaces/dots in URLs and code. Probe: 'franco-allemande' 0.861, 'schweizerisch-österreichischen' 0.614, 'cria-t-elle' 0.471, 'new_ice' 0.417; 'well|-known' -0.004, 'Franco-German' (fused) -0.000. Tokenizer checked: 'franco-italienne', 'franco-espagnole', 'dit-elle', 'est-elle', 'deutsch-österreichische', 'Saint-Étienne' keep '-' alone; 'franco-britannique', 'russo-japonaise', 'peut-être', 'arc-en-ciel' fuse it."
+}
