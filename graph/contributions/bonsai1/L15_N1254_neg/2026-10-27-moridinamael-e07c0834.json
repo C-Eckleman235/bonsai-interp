@@ -1,0 +1,170 @@
+{
+ "id": "2026-10-27-moridinamael-e07c0834",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N1254-",
+ "contributor": "moridinamael",
+ "created": "2026-10-27T15:54:55+00:00",
+ "recipe": {
+  "toolchain_commit": "66fd8c6a",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L15_N1254_neg/2026-10-27-moridinamael-e07c0834.tests.json"
+ },
+ "label": "a technical or formal modifier word (equity, ionic, admin, preferred) before its noun",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L15_N1254_neg/2026-10-27-moridinamael-e07c0834.tests.json",
+   "prereg_commit": "66fd8c6a",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 3,
+   "n_false_pos": 4,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.269,
+     "peak": " small"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.607,
+     "peak": "ionic"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.245,
+     "peak": " admin"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.34,
+     "peak": " preferred"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.313,
+     "peak": " because"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.227,
+     "peak": " lab"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.266,
+     "peak": " portal"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.208,
+     "peak": " cardiac"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.333,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.47,
+     "peak": " together"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.03,
+     "peak": " reset"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.436,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.565,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.136,
+     "peak": " lab"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.104,
+     "peak": " clerk"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.283,
+     "peak": " to"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.5,
+    "median_fire": 0.268,
+    "near_misses_at_0.3": 4
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-gmoo",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "66fd8c6a",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "short": "technical modifier word",
+ "unit_kind": "dense / positional",
+ "confidence": "low",
+ "notes": "Step-in reader of L14/N1923+ (drop 0.23). Cold labelling from own top examples; dense pole (12.6% of tokens >0.1 max), top examples scattered (code pieces, Korean/Arabic suffixes).",
+ "roles": [
+  "reads bonsai1/L14/N1923+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L14/N1923+",
+   "to": "bonsai1/L15/N1254-",
+   "kind": "feeds",
+   "weight": 0.23,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
