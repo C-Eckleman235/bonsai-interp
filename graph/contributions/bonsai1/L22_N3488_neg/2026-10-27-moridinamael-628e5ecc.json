@@ -1,0 +1,157 @@
+{
+ "id": "2026-10-27-moridinamael-628e5ecc",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N3488-",
+ "contributor": "moridinamael",
+ "created": "2026-10-27T21:41:41+00:00",
+ "recipe": {
+  "toolchain_commit": "70e5efd5",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L22_N3488_neg/2026-10-27-moridinamael-628e5ecc.tests.json"
+ },
+ "label": "a comma that closes a clause and hands off to another clause (e.g. after 'Although it was a little heavy at first,' or 'touted his bona fides,')",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N3488_neg/2026-10-27-moridinamael-628e5ecc.tests.json",
+   "prereg_commit": "70e5efd5",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.555,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.379,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.112,
+     "peak": " children"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.091,
+     "peak": " for"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.112,
+     "peak": " instead"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.076,
+     "peak": " north"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.086,
+     "peak": " on"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.091,
+     "peak": " stop"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.12,
+     "peak": "gender"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.08,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.1,
+     "peak": " stopped"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.218,
+     "peak": " fighting"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.044,
+     "peak": " at"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.067,
+     "peak": " north"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.089,
+     "peak": " before"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.096,
+     "peak": " stop"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 1,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.641,
+    "median_fire": 0.102,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "inverse-gmoo",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "70e5efd5",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Step-in reader of bonsai1/L15/N1254-. Weak diffuse pole (max about -5.7). Only two commas scored above 0.3 (the 'bona fides,' leak and 'Although ... at first,'); other clause-closing commas stayed near 0.1. Label too broad; the real trigger, if any, is narrower than 'clause-closing comma'.",
+ "edges": [
+  {"from": "bonsai1/L15/N1254-", "to": "bonsai1/L22/N3488-", "kind": "feeds", "weight": 0.01, "method": "single-unit zero ablation, downstream (play step --down)"}
+ ]
+}
