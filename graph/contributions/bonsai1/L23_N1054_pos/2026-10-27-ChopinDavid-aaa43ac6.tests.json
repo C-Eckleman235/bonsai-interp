@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-aaa43ac6",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N1054+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T13:19:56+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L23/N1054",
+   "pole": "+",
+   "label": "the last character of a person's name introduced by '名叫' ('named') in Chinese, as against the same sentences that describe the person without a name",
+   "fire": [
+    "村里有一位名叫张秀英的老师教了三十年书。",
+    "上个月，一位名叫刘建国的司机救起了落水儿童。",
+    "这家面馆的老板是一个名叫陈国华的中年人。",
+    "故事讲述了一位名叫李小红的女孩去城市打工。",
+    "昨天，一名叫赵明亮的学生考上了北京大学。",
+    "公司新来了一位名叫孙志强的工程师。",
+    "在山区，有一位名叫杨春梅的医生每天出诊。",
+    "报道采访了一位名叫周文斌的退休工人。"
+   ],
+   "quiet": [
+    "村里有一位年纪很大的老师教了三十年书。",
+    "上个月，一位出租车司机救起了落水儿童。",
+    "这家面馆的老板是一个热情的中年人。",
+    "故事讲述了一位农村女孩去城市打工。",
+    "昨天，一名普通中学的学生考上了北京大学。",
+    "公司新来了一位年轻的工程师。",
+    "在山区，有一位乡村医生每天出诊。",
+    "报道采访了一位刚退休的工人。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-1.2 on the final character of names after 名叫; the same sentences with a description instead of a name below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "end of a Chinese personal name",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: no single token; peaks include the last character of names (谢利华, 阿汉赫尔) and of fixed noun phrases (健康, 意义, 集团). Probe: '名叫王丽华' 1.169 on 华, '健康成长' 0.583; 意义 0.011, 集团 0.006, 知识产权 0.015, 卫生部 0.004, English 0.003. Only the name frame was reliable, so the test is about names."
+}

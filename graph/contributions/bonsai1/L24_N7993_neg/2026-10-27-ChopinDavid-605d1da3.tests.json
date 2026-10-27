@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-605d1da3",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N7993-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T13:19:56+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L24/N7993",
+   "pole": "-",
+   "label": "first-person words of love, guilt or forgiveness quoted in advice about grief and caregiving ('I love you', 'Did I cause this?'), as against quoted everyday first-person speech in the same advice",
+   "fire": [
+    "In the last days, many people simply tell their mother 'I love you' again.",
+    "After the funeral, a child may ask, 'Did I make Grandpa die?'",
+    "Hospice nurses encourage families to say 'I forgive you' while there is time.",
+    "Siblings sometimes whisper, 'Was it my fault that she got sick?'",
+    "Before the surgery, the old man said 'I love you' to each grandchild.",
+    "Counsellors hear grieving teens ask, 'Could I have stopped it?'",
+    "At his bedside she finally said, 'I'm sorry, and I love you.'",
+    "Young children often believe, 'I caused the divorce because I was bad.'"
+   ],
+   "quiet": [
+    "In the last days, many people simply tell their mother 'I brought soup' again.",
+    "After the funeral, a child may ask, 'Can I have some juice?'",
+    "Hospice nurses encourage families to say 'I parked outside' when they arrive.",
+    "Siblings sometimes whisper, 'Is it time for dinner yet?'",
+    "Before the surgery, the old man said 'I need my glasses' to each nurse.",
+    "Counsellors hear grieving teens ask, 'Can I leave early today?'",
+    "At his bedside she finally said, 'I'll open the window now.'",
+    "Young children often say, 'I want the blue cup, not the red one.'"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on ' I'/quote marks in quoted 'I love you', 'I forgive you', 'Was it my fault?'; quoted practical speech below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "quoted 'I love you / my fault' words",
+ "unit_kind": "meaning",
+ "confidence": 0.35,
+ "notes": "Card: no single token; peaks inside quoted emotional speech in parenting and grief advice (\"I love you\", \"Did I cause the death\", 'You seem really mad'). Probe: \"'I love you' and 'I forgive you'\" 0.711, \"'Did I cause this to happen?'\" 0.588; 'You seem really sad' 0.169, 'because you were angry' 0.154, customer 'Did you want the receipt' 0.039. The floor sentence reached 0.234, so near misses may fire weakly."
+}

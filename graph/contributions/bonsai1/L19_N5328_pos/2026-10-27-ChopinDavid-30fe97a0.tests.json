@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-30fe97a0",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N5328+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T13:19:56+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L19/N5328",
+   "pole": "+",
+   "label": "a line break that falls in the middle of a sentence inside a Python comment or docstring (wrapped comment text), as against comments whose line breaks fall at sentence ends",
+   "fire": [
+    "def resize(img):\n    # Scale the picture down so that the longest side is at\n    # most one thousand pixels before it is saved.\n    return img",
+    "def merge(a, b):\n    # Combine the two lists while keeping the order in which\n    # the items first appeared in either list.\n    return a + b",
+    "def retry(job):\n    # Try the job again a few times, because the server can\n    # be slow to respond when many users are online.\n    return job()",
+    "def clean(text):\n    \"\"\"Remove the extra spaces that the scanner leaves between\n    words on every page of the document.\"\"\"\n    return text",
+    "def sort(items):\n    # Sort by price first and then by name, so that items with\n    # the same price still appear in a stable order.\n    return items",
+    "def load(path):\n    # Read the whole file into memory at once, which is fine as\n    # long as the files stay smaller than a few megabytes.\n    return path",
+    "def check(user):\n    \"\"\"Return True if the user has paid, and False if the account\n    is still waiting for its first payment.\"\"\"\n    return user",
+    "def send(msg):\n    # Queue the message instead of sending it directly, since the\n    # mail server only accepts a few messages per second.\n    return msg"
+   ],
+   "quiet": [
+    "def resize(img):\n    # Scale the picture down.\n    # The longest side becomes one thousand pixels.\n    return img",
+    "def merge(a, b):\n    # Combine the two lists.\n    # Keep the original order of the items.\n    return a + b",
+    "def retry(job):\n    # Try the job again a few times.\n    # The server can be slow when many users are online.\n    return job()",
+    "def clean(text):\n    \"\"\"Remove extra spaces.\n    The scanner leaves them between words.\"\"\"\n    return text",
+    "def sort(items):\n    # Sort by price first.\n    # Then sort by name.\n    return items",
+    "def load(path):\n    # Read the whole file into memory.\n    # This is fine for small files.\n    return path",
+    "def check(user):\n    \"\"\"Return True if the user has paid.\n    Return False otherwise.\"\"\"\n    return user",
+    "def send(msg):\n    # Queue the message.\n    # The mail server is slow.\n    return msg"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on the '\\n' that splits a comment sentence; one-sentence-per-line comments below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "mid-sentence wrap in a code comment",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: broad (3.9%); peaks are '\\n' inside wrapped comments/docstrings ('each worker sees a\\n # different subset'), plus '_' in identifiers and Arabic kasra. Probe: wrapped comment 0.488, wrapped docstring 0.280, dunder identifier '_' 0.420; comment broken at sentence ends 0.149, wrapped plain prose 0.123. Near misses avoid underscores in identifiers."
+}

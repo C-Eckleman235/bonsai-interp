@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-e5ba8373",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N10267-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T13:19:56+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L31/N10267",
+   "pole": "-",
+   "label": "a word-internal piece of an unusual foreign surname split into several tokens (C|eb|al|los, Bah|dan|au), as against common names that are single tokens",
+   "fire": [
+    "In the second half the coach brought on Wojciechowski at left back.",
+    "The violin concerto was premiered by Szczepański in Warsaw.",
+    "The midfielder Ceballos signed a new contract with Madrid.",
+    "The prize went to the young architect Przybylski from Gdańsk.",
+    "The attention layer follows the design of Bahdanau and his colleagues.",
+    "The goalkeeper Kepa made three saves against Valencia on Sunday.",
+    "Our chemistry teacher, Mrs. Kowalczyk, retired after forty years.",
+    "The striker Aubameyang scored twice in the cup final."
+   ],
+   "quiet": [
+    "In the second half the coach brought on Smith at left back.",
+    "The violin concerto was premiered by Brown in Warsaw.",
+    "The midfielder Martin signed a new contract with Madrid.",
+    "The prize went to the young architect Taylor from Gdańsk.",
+    "The attention layer follows the design of Johnson and his colleagues.",
+    "The goalkeeper David made three saves against Valencia on Sunday.",
+    "Our chemistry teacher, Mrs. Clark, retired after forty years.",
+    "The striker Henry scored twice in the cup final."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on inner pieces of rare split surnames; common one-token names below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "piece inside a rare surname",
+ "unit_kind": "unclear",
+ "confidence": 0.25,
+ "notes": "Card: no single token; peaks '.B' in seq2seq.BahdanauAttention, 'eb' in Dani Ceballos, ' and' in 'identify and understand', '7' in GT75, ' face'. Probe: 'Dani Ceballos' 0.662 on 'eb', '.BahdanauAttention' 0.538, 'tails ... to swim' 0.490 on ' to'; 'identify and understand' 0.135, 'Psychologist' 0.170, 'GT75' 0.070. Surname pieces were the most repeatable; low confidence."
+}
