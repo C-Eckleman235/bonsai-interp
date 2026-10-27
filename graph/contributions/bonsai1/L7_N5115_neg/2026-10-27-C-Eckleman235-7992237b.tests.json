@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-7992237b",
+ "contributor": "C-Eckleman235",
+ "kind": "qc",
+ "neuron": "bonsai1/L7/N5115-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T18:45:26+00:00",
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "Unit-of-weight/mass or measurement tokens (' kg', 'kg', ' kilograms', ' pounds', ' lbs', ' gallon', ' cm', ' km') right after a number, in body-weight or quantity statements, across languages (English, German, Russian)",
+  "notes": "Codex pilot, arm Q (plan sha256 419bfb6f8d41a7f64c56bd5a223d777ca937bf8fdc6c3f00634a70eed40f8021): a third independent QC of the model-QC pilot's labels (rounds 1 and 2 were Opus): label slot A of this pole, from contribution 2026-10-26-JasperBlank-3517cbdf. Sentences written by one fresh `codex exec` (gpt-6.1-sol, reasoning effort high, read-only sandbox, no tool use) given the identical packet the Opus writers got (the pole's card with its record line removed and the three anonymous labels); never shown earlier tests or results, not told who wrote which label; sentences unedited; nothing probed or scored before this commit."
+ },
+ "neighbours": [
+  {
+   "unit": "L7/N5115",
+   "pole": "-",
+   "label": "Unit-of-weight/mass or measurement tokens (' kg', 'kg', ' kilograms', ' pounds', ' lbs', ' gallon', ' cm', ' km') right after a number, in body-weight or quantity statements, across languages (English, German, Russian)",
+   "fire": [
+    "At her annual checkup, the nurse recorded a body weight of 63 kg before measuring her blood pressure.",
+    "На мешке с кормом указано 8kg, и этого запаса собаке хватит на месяц.",
+    "The shipping manifest lists 24 kilograms of spare parts inside the wooden crate.",
+    "Her trainer recorded a body weight of 138 pounds after the morning session.",
+    "The rescue volunteer estimated the injured seal weighed 85 lbs before transport.",
+    "For the picnic, the recipe calls for 1 gallon of apple juice in a chilled dispenser.",
+    "Im Untersuchungsbericht steht, dass das Neugeborene einen Kopfumfang von 34 cm hat.",
+    "Laut Fahrtenbuch legte der Lieferwagen bis zum nächsten Lager genau 17 km zurück."
+   ],
+   "quiet": [
+    "At today's appointment, the nurse described her weight as stable despite the recent illness.",
+    "Ветеринар посоветовал купить большой мешок корма, которого собаке хватит примерно на месяц.",
+    "According to the shipping form, kilograms are the required unit for reporting the spare parts' mass.",
+    "In her training diary, she noted spending 138 pounds on a replacement bicycle saddle.",
+    "Before transporting the injured seal, the volunteer checked whether the scale displayed lbs or ounces.",
+    "The picnic instructions specify gallon containers for the apple juice, with plenty of ice nearby.",
+    "Bei der Untersuchung wurde der Kopfumfang des Neugeborenen sorgfältig gemessen und anschließend im Bericht eingetragen.",
+    "Für die Strecke zum Lager verwendet das Fahrtenbuch km, während die Fahrzeit gesondert vermerkt wird."
+   ]
+  }
+ ],
+ "predictions": "confirm: the label as written should hold a harder independent test (>= 6/8 fire, AUROC >= 0.9)",
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort high; blind QC writer, card only)",
+  "screens": [
+   "card"
+  ]
+ },
+ "selection": "Codex pilot: a cross-model QC of each model-QC pilot label (#1051-#1080)"
+}
