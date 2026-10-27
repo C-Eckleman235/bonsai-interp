@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-69f9e381",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N8614+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T15:21:48+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L11/N8614",
+   "pole": "+",
+   "label": "the start of a new row in a multi-row matrix written in code or LaTeX (the indent or '[' that opens row 2, 3 ...), as against one-row lists and line-continued lists of non-matrix items",
+   "fire": [
+    "The shear matrix is\n\nS = np.array([[1., 2., 0.],\n              [0., 1., 0.],\n              [0., 0., 1.]])",
+    "Define the covariance:\n\ncov = np.array([[4.0, 1.5],\n                [1.5, 9.0]])",
+    "The stiffness block reads\n\n\\begin{bmatrix} k & -k & 0\\\\\n -k & 2k & -k\\\\\n 0 & -k & k \\end{bmatrix}",
+    "The transition matrix is\n\n    {P_11  P_12  ...  P_1k}\n    {P_21  P_22  ...  P_2k}",
+    "Rotate by ninety degrees with\n\nR = [[0, -1],\n     [1,  0]]\npoint = R @ v",
+    "Start from the board state\n\ngrid = np.array([[0, 1, 0],\n                 [1, 1, 1],\n                 [0, 1, 0]])",
+    "The Jacobian is\n\n\\begin{pmatrix} 2x & 1\\\\\n y & x \\end{pmatrix}",
+    "Initial weights:\n\nW = torch.tensor([[0.1, 0.2, 0.3],\n                  [0.4, 0.5, 0.6]])"
+   ],
+   "quiet": [
+    "The colours are\n\ncolours = ['red', 'green',\n           'blue', 'yellow']",
+    "Define the scores:\n\nscores = np.array([4.0, 1.5, 9.0, 2.5])",
+    "The city list reads\n\ncities = ('Paris', 'Rome',\n          'Madrid', 'Berlin')",
+    "The settings are\n\nconfig = {'depth': 3,\n          'width': 64}",
+    "Shift by one with\n\noffsets = [0, -1, 1, 0]\npoint = shift(v, offsets)",
+    "Start from the moves\n\nmoves = ['up', 'down',\n         'left', 'right']",
+    "The import line is\n\nfrom utils import (load, save,\n                   parse)",
+    "Initial biases:\n\nb = torch.tensor([0.1, 0.2, 0.3, 0.4])"
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.9 on the bracket or spaces opening a later matrix row; flat lists and wrapped string lists below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "matrix row start",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: peaks ' [' x13 and spaces at the start of matrix rows (np.array([[1.,0.,0.],\\n [0.,...), {M_11  M_12 ...}, bmatrix rows). Probe: np.array 3x3 0.563, {A_11  A_12} rows 0.898, bmatrix 0.690; wrapped list of names 0.007, flat values list 0.012; prose about a matrix 0.23-0.25 (so prose near misses avoided)."
+}
