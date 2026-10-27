@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-2b852bf2",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N3733+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T10:28:42+00:00",
+ "recipe": {
+  "toolchain_commit": "4778aa94",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L22_N3733_pos/2026-10-27-ChopinDavid-2b852bf2.tests.json"
+ },
+ "label": "' (' opening a parenthetical number or statistic in a report sentence (Arabic and English), as against the same sentences giving the value without a parenthesis",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N3733_pos/2026-10-27-ChopinDavid-2b852bf2.tests.json",
+   "prereg_commit": "4778aa94",
+   "author": "ChopinDavid",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.221,
+     "peak": "3"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.54,
+     "peak": " ("
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.025,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.014,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.078,
+     "peak": " were"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.09,
+     "peak": " الذ"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.121,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.123,
+     "peak": " ("
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.019,
+     "peak": "ات"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.014,
+     "peak": " across"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.015,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.016,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.01,
+     "peak": " were"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.005,
+     "peak": " الذ"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.012,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.006,
+     "peak": "Rain"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.945,
+    "median_fire": 0.105,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "4778aa94",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "' (' before a statistic",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card: every top example peaks on ' ('; 'alkali (6.62-8.3', 'نساء (40,3%)', 'survival rate (p=0.426)', 'St. Thomas (175)'. Probe was weak: 'World Health Organization (WHO' 0.219, 'alkaline (6.6-8.3)' 0.170, 'survival rate (p=0.426)' 0.031, '(175 points)' 0.005. The probe sentences were short; the card's are mid-document, so fire items here are longer. Likely to fail.",
+ "selection": "random draw"
+}

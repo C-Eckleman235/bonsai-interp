@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-f2b1c0bd",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N4500-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T10:20:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L3/N4500",
+   "pole": "-",
+   "label": "sentence-final punctuation closing an exclamation or statement mid-passage, as against unpunctuated fragments of the same content",
+   "fire": [
+    "What a lovely garden you have! The roses smell wonderful.",
+    "How kind of you to come! We really missed you.",
+    "The soup was ready at last. Everyone sat down to eat.",
+    "What a beautiful sunset it was! The sky turned pink.",
+    "The storm passed during the night.\nIn the morning the street was full of branches.",
+    "What a clever idea that is! Let's try it tomorrow.",
+    "The train left on time. We arrived before noon.",
+    "How quickly the summer went! The kids are back at school."
+   ],
+   "quiet": [
+    "a lovely garden with roses that smell wonderful",
+    "kind friends who came over because we missed them",
+    "soup ready at last and everyone sitting down to eat",
+    "a beautiful sunset with the sky turning pink",
+    "the storm passing in the night and a street full of branches",
+    "a clever idea to try tomorrow",
+    "the train leaving on time and arriving before noon",
+    "summer going quickly and kids going back to school"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.5 on '!' or '.' ending a sentence followed by more text; unpunctuated fragments below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "sentence-final punctuation",
+ "unit_kind": "dense / positional",
+ "confidence": 0.2,
+ "notes": "Card: broad (4.1%), gate-closed; peaks '.\\n' x11 and '.' x11. Probe: '!' in 'What a delicious cake it was!' 0.475, 'Dr. Smith ... a.m.' 0.247, '...together.\\nCut' 0.217, 'severe. It lasted' 0.192; unpunctuated 'The leaves range ... green' 0.164, question 0.081. Periods alone were weak, so this is a best guess."
+}

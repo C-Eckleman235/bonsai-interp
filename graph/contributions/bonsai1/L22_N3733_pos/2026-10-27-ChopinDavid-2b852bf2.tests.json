@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-2b852bf2",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N3733+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T10:20:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N3733",
+   "pole": "+",
+   "label": "' (' opening a parenthetical number or statistic in a report sentence (Arabic and English), as against the same sentences giving the value without a parenthesis",
+   "fire": [
+    "The survey covered 400 households. أظهرت الإحصائيات انخفاض الفقر في الأسر التي تعيلها نساء (38%) مقارنة بغيرها.",
+    "Samples were taken from twelve fields. Soil pH ranged from slightly acidic to alkaline (6.4-8.1) across the sites.",
+    "We followed the patients for two years. Age had no effect on the recovery rate (p=0.51) in this cohort.",
+    "The tournament ended on Sunday. Luther College finished first, followed by Carleton (168) and St. Olaf.",
+    "The study enrolled adults from three clinics. Most participants were women (62%) aged over forty.",
+    "تم توزيع الاستبيان على الطلاب. وكانت نسبة المشاركين من الذكور (45%) أقل من الإناث.",
+    "The trial ran for six months. Blood pressure fell in the treatment group (p<0.01) but not in controls.",
+    "Rainfall was recorded daily. The wettest month was March (212 mm) and the driest was August."
+   ],
+   "quiet": [
+    "The survey covered 400 households. أظهرت الإحصائيات انخفاض الفقر في الأسر التي تعيلها نساء مقارنة بغيرها.",
+    "Samples were taken from twelve fields. Soil pH ranged from slightly acidic to alkaline across the sites.",
+    "We followed the patients for two years. Age had no effect on the recovery rate in this cohort.",
+    "The tournament ended on Sunday. Luther College finished first, followed by Carleton and St. Olaf.",
+    "The study enrolled adults from three clinics. Most participants were women aged over forty.",
+    "تم توزيع الاستبيان على الطلاب. وكانت نسبة المشاركين من الذكور أقل من الإناث.",
+    "The trial ran for six months. Blood pressure fell in the treatment group but not in controls.",
+    "Rainfall was recorded daily. The wettest month was March and the driest was August."
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.4 on ' (' that opens a figure; the same sentences with the figure given without brackets below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "' (' before a statistic",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card: every top example peaks on ' ('; 'alkali (6.62-8.3', 'نساء (40,3%)', 'survival rate (p=0.426)', 'St. Thomas (175)'. Probe was weak: 'World Health Organization (WHO' 0.219, 'alkaline (6.6-8.3)' 0.170, 'survival rate (p=0.426)' 0.031, '(175 points)' 0.005. The probe sentences were short; the card's are mid-document, so fire items here are longer. Likely to fail."
+}

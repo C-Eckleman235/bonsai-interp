@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-c7efc4cc",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N467+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T10:20:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N467",
+   "pole": "+",
+   "label": "the token ' Dict' (and the closely related code piece 'Class' in 'setUpClass'), as against other type names and the English word 'dictionary'",
+   "fire": [
+    "import json\nfrom typing import Any, Dict\n",
+    "from typing import Dict, Tuple\n\nCache = Dict[str, int]",
+    "def load(path: str) -> Dict[str, float]:\n    return {}",
+    "from marshmallow.fields import Dict, Str, Int",
+    "class TestCache(TestCase):\n    @classmethod\n    def setUpClass(cls):\n        cls.cache = {}",
+    "    config: Dict[str, Any] = field(default_factory=dict)",
+    "from schema import Schema, Dict, Optional as Opt",
+    "class TestParser(unittest.TestCase):\n    @classmethod\n    def tearDownClass(cls):\n        pass"
+   ],
+   "quiet": [
+    "import json\nfrom typing import Any, List\n",
+    "from typing import Tuple, Set\n\nCache = Set[str]",
+    "def load(path: str) -> List[float]:\n    return []",
+    "from marshmallow.fields import Str, Int, Bool",
+    "class TestCache(TestCase):\n    def test_empty(self):\n        self.assertTrue(True)",
+    "    config: List[str] = field(default_factory=list)",
+    "We looked the word up in an old dictionary at the library.",
+    "class TestParser(unittest.TestCase):\n    def test_parse(self):\n        pass"
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.85 on ' Dict' and 'Class'; import lines with only List/Optional/Tuple and prose 'dictionary' below 0.3",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "the token ' Dict'",
+ "unit_kind": "token",
+ "confidence": 0.4,
+ "notes": "Card: ' Dict' x10, 'Class' x7, 'licht/richt' x6; tiny max 0.16, broad 5.6%, gate-closed. Probe: 'import List, Dict, Optional' 0.844, 'Bool, Dict, Float' 0.776, 'setUpClass' 0.740, prose 'The Dict type' 0.514, 'dictionary' 0.150, 'dialog' 0.046; German 'Blickrichtung' 0.879 also fires."
+}

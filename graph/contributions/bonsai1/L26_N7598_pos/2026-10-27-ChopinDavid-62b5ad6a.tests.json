@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-62b5ad6a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N7598+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T10:20:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N7598",
+   "pole": "+",
+   "label": "a word stem split off by the tokenizer that still awaits its past-participle ending ('de|hydr|ated', 'domestic|ated', 'over-re|present|ed', 'electr|ified', 'aktiv|iert'), as against the same roots as whole-token nouns",
+   "fire": [
+    "After the marathon, two of the runners were badly dehydrated and needed fluids.",
+    "The nurse explained that the baby had become dehydrated during the fever.",
+    "Researchers think the horse was first domesticated on the steppe.",
+    "In the survey, rural voters were over-represented compared with the census.",
+    "Female scientists remain under-represented on the review panels.",
+    "The old railway was fully electrified in the late seventies.",
+    "Nach dem Neustart wurde der Schutz wieder aktiviert.",
+    "The hikers rehydrated quickly once they reached the spring."
+   ],
+   "quiet": [
+    "After the marathon, two of the runners suffered from dehydration and needed fluids.",
+    "The nurse explained that the baby needed more hydration during the fever.",
+    "Researchers think the horse was first ridden on the open steppe.",
+    "In the survey, rural voters had a larger representation compared with the census.",
+    "Female scientists still lack representation on the review panels.",
+    "The old railway got a new electric line in the late seventies.",
+    "Nach dem Neustart war der Schutz wieder an.",
+    "The hikers drank quickly once they reached the spring."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on the stem piece before -ated/-ed/-ified/-iert; whole-token nouns 'dehydration', 'representation', 'hydration' below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "stem awaiting a participle ending",
+ "unit_kind": "spelling unit",
+ "confidence": 0.6,
+ "notes": "Card: 'domestic|ated' 81.5, 'de|hydr|ated' 77.5, 'over-re|present|ed' 75.5, 'aktiv|iert' 75.5. Probe: 'under-represented' 0.930, 'domesticated' 0.823, 'dehydrated' 0.725, 'electrified' 0.571, 'aktiviert' 0.505, whole-token 'underrepresented' 0.458, whole-token 'hydrated' 0.291, noun 'dehydration' 0.041. Near misses use whole-token noun forms of the same roots."
+}
