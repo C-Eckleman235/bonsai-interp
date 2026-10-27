@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-2d0e019b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N655+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T05:21:42+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L27/N655",
+   "pole": "+",
+   "label": "the 'Form' or 'Test' suffix that ends a CamelCase class name in Python code (class SignupForm, class ParserTest, LoginForm(request...)), as against other class-name suffixes and the words in prose",
+   "fire": [
+    "from django import forms\n\n\nclass SignupForm(forms.Form):\n    email = forms.EmailField()",
+    "import unittest\n\n\nclass CacheTest(unittest.TestCase):\n    def test_miss(self):\n        self.assertIsNone(get('x'))",
+    "from flask_wtf import FlaskForm\n\n\nclass FeedbackForm(FlaskForm):\n    username = StringField('User')",
+    "from django.test import TestCase\n\n\nclass OrderViewTest(TestCase):\n    fixtures = ['orders.json']",
+    "def edit(request):\n    form = ProfileForm(request.POST)\n    if form.is_valid():\n        form.save()",
+    "import pytest\n\n\nclass TestInvoiceForm(object):\n    def test_total(self):\n        assert True",
+    "from wtforms import Form\n\n\nclass SearchForm(Form):\n    query = StringField('Query')",
+    "import unittest\n\n\nclass TokenizerTests(unittest.TestCase):\n    def setUp(self):\n        self.tok = Tokenizer()"
+   ],
+   "quiet": [
+    "from django.db import models\n\n\nclass SignupRecord(models.Model):\n    email = models.EmailField()",
+    "import logging\n\n\nclass CacheManager(object):\n    def get(self, key):\n        return None",
+    "from flask import Flask\n\n\nclass LoginHandler(object):\n    username = 'guest'",
+    "from django.views import View\n\n\nclass OrderView(View):\n    template_name = 'orders.html'",
+    "def edit(request):\n    profile = ProfileStore(request.user)\n    if profile.exists():\n        profile.save()",
+    "Every student filled in the invoice form before the end of the class.",
+    "from collections import deque\n\n\nclass SearchQueue(deque):\n    pass",
+    "The teacher handed out the spelling test right after lunch."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on 'Form'/'Test' ending a CamelCase class name; class names ending in other words, and 'form'/'test' in prose, below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Form/Test suffix of a class name",
+ "unit_kind": "token",
+ "confidence": 0.5,
+ "notes": "Card: 'Test' x5, 'Form' x3, 'Tests' x2 ending class names after imports and blank lines (also 'Operator', 'set'). Probe: 'class ContactForm(forms.Form)' 0.512, 'class ParserTest(unittest.TestCase)' 0.372, 'ContactForm(request.POST)' 0.344; 'class UserSerializer' 0.008, 'class S3ToRedshiftOperator' 0.012, 'class Dog' 0.010, prose 'test form' 0.006. Label kept to Form/Test because other suffixes did not fire."
+}

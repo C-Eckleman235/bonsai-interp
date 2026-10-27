@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-4881d72a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N7774-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T05:21:42+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N7774",
+   "pole": "-",
+   "label": "the separator that closes a cell or field in structured documentation: the row-ending '|' of a wiki/markdown table and the ' -' or ':' between a parameter name and its type in API docs, as against the same content written as prose",
+   "fire": [
+    "Top producers by output:\n| Rank || Company || Barrels per day |\n| 1 || Aramco || 10.5 |\n| 2 || Rosneft || 4.1 |",
+    "Args:\n    `learning_rate` - `float`. Step size for the optimizer.\n    `epochs` - `int`. Passes over the data.",
+    "Keyword arguments:\n  ``max_depth`` : int, the deepest split allowed in a tree.",
+    "The survey covered three regions:\n| Region || Schools || Pupils |\n| North || 41 || 9,800 |",
+    "Attributes:\n* `created_at` - `datetime`. When the record was stored.\n* `owner` - `str`. Who owns it.",
+    "Options:\n  ``verbose`` : bool, print progress while training.\n  ``seed`` : int, random seed.",
+    "Library statistics, 1850:\n| Town || Members || Volumes |\n| Leeds || 310 || 4,200 |",
+    "Inputs:\n    `image_size` - `tuple`. Height and width in pixels."
+   ],
+   "quiet": [
+    "The top producer was Aramco, pumping about ten and a half million barrels a day, ahead of Rosneft.",
+    "The optimizer uses a learning rate, which is a float, and runs for a set number of epochs.",
+    "You can set the maximum depth of each tree, an integer that limits how far it splits.",
+    "The survey covered three regions, and the northern one had forty-one schools.",
+    "Each record keeps the time it was created and the name of the person who owns it.",
+    "If you turn on verbose mode the program prints its progress while it trains.",
+    "In 1850 the Leeds library had three hundred and ten members and four thousand volumes.",
+    "The model expects every image to have the same height and width in pixels."
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.5 on the '|\\n' row end or the ' -'/':' after a backticked field name; prose saying the same thing below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "table/field separator in docs",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: ' -' after `data_source`, ':' after ``'internal_value'``, '|\\n' at the end of '||'-style table rows. Probe: '|| ... |' table row 0.445, '`batch_size` - `int`' 0.230, '``timeout`` : float' 0.213, '`user_id` - `str`' 0.168; the same facts in prose 0.099, shopping-list prose 0.012, floor 0.004. Weak relative to card max."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-bb35ddb6",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N6844-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T05:21:42+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L15/N6844",
+   "pole": "-",
+   "label": "the last word of a journal title in a reference citation (Arch Intern Med, Cancer Res, Journal of Animal Ecology, Sociological Review), as against the same words in ordinary prose",
+   "fire": [
+    "Garcia M. Sleep and memory in teenagers. Pediatr Res 2011;70:88-94.",
+    "Patel R. Blood pressure in rural clinics. Ann Intern Med 2015;162:12-20.",
+    "Olsen T. Migration of songbirds. Journal of Avian Ecology, 31, 2002.",
+    "Chen L. Class and voting. American Political Review, 88(3), 1994.",
+    "Novak J. Alkaloids in desert plants. J Nat Prod 2012;75:410-17.",
+    "Ito H. Gene expression in leukemia. Cancer Res 2003;63:5011-18.",
+    "Ruiz F. Exercise and depression. Psychosomatic Medicine 70 (2): 2008.",
+    "Hart D. Fungal growth on wheat. Plant Pathology Journal, 12, 1999."
+   ],
+   "quiet": [
+    "The hospital's pediatric research team met on Monday to discuss sleep.",
+    "Her internal medicine residency began in a busy rural clinic.",
+    "He studied the ecology of songbirds during a long summer.",
+    "The political review she wrote was printed in the school paper.",
+    "Desert plants make natural products that protect them from insects.",
+    "Funding for cancer research rose sharply at the university.",
+    "Doctors say exercise can help with depression and sleep.",
+    "The farmer kept a journal about fungal growth on his wheat."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.7 on the final journal-name word ('Med', 'Res', 'Review', 'Ecology', 'Prod'); the same words in prose below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "journal title end in a citation",
+ "unit_kind": "context",
+ "confidence": 0.7,
+ "notes": "Card: ' Med', ' Review', ' Prod', ' Res', ' Journal', ' Medicine', ' Ecology' ending journal names in citations. Probe: 'Journal of Animal Ecology' 0.694, 'Arch Intern Med' 0.638, 'Cancer Res' 0.619, 'J Nat Prod' 0.517, 'American Sociological Review' 0.474; 'the Cancer Research Institute' 0.002, 'the medical review' 0.003, floor 0.009."
+}
