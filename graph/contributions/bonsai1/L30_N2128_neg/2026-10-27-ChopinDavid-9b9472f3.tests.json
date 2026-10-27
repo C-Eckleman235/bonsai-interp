@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-9b9472f3",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N2128-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T19:19:58+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L30/N2128",
+   "pole": "-",
+   "label": "the word-start piece ' rec' / ' Rec' when a word splits after it (recitation, Recession, recant, recollection), as against whole-word re- tokens (record, receive, recent)",
+   "fire": [
+    "Police managed to recapture the escaped prisoner within a day.",
+    "The poem was recited at the opening of the new library.",
+    "Many workers lost their jobs during the Recession of 2008.",
+    "She has no recollection of signing the contract.",
+    "The patient was resting in a recumbent position after surgery.",
+    "Under pressure, the minister refused to recant his statement.",
+    "The clinic treats children with Recurrent ear infections.",
+    "His recitation of the multiplication tables impressed the teacher."
+   ],
+   "quiet": [
+    "Police managed to catch the escaped prisoner within a day.",
+    "The poem was read aloud at the opening of the new library.",
+    "Many workers lost their jobs during the downturn of 2008.",
+    "She has no memory of signing the contract.",
+    "The patient was lying flat on her back after surgery.",
+    "Under pressure, the minister refused to withdraw his statement.",
+    "The clinic treats children with recent ear infections.",
+    "His record in the multiplication quiz impressed the teacher."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.75 on ' rec'/' Rec' pieces; whole-word record/receive/recent below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "' rec' word piece",
+ "unit_kind": "token/lexical",
+ "confidence": 0.75,
+ "notes": "Card: ' rec' x12, ' Rec' x11, 'Rec' x4 of the top 32 (Reciprocity, Recalled, recitation, recueil, Recurrent, Recession). Probe: 'recitation' 0.436, 'Great Recession' 0.550, 'Recurrent infections' 0.724, 'recollection' 0.653, 'recant' 0.526; 'receive' 0.004, 'record' 0.016. Tokenizer: recapture, recited, recumbent also split after ' rec'."
+}
