@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-5bd8c2b9",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N4575+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T04:30:23+00:00",
+ "recipe": {
+  "toolchain_commit": "91a8ad54",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N4575_pos/2026-10-26-ChopinDavid-5bd8c2b9.tests.json"
+ },
+ "label": "the newline that ends a bare 'import X' line inside a Python import block",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N4575_pos/2026-10-26-ChopinDavid-5bd8c2b9.tests.json",
+   "prereg_commit": "91a8ad54",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.209,
+     "peak": "\n"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.141,
+     "peak": "\n"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.413,
+     "peak": "\n"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.54,
+     "peak": "\n"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.468,
+     "peak": "\n"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.338,
+     "peak": "\n"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.581,
+     "peak": "\n"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.289,
+     "peak": "\n"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": -0.002,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.153,
+     "peak": ">\n"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": -0.001,
+     "peak": " add"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.001,
+     "peak": " '"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": -0.0,
+     "peak": "ana"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": -0.002,
+     "peak": " range"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": -0.001,
+     "peak": " require"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.002,
+     "peak": " list"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.376,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "91a8ad54",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "newline after Python import",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Probe: newline after 'import time' in a block 0.565 and 0.479; block with 'import numpy as np' 0.158; #include lines 0.078; assignments, plain lines and a shopping list about 0. Near misses: other code newlines, C #include, Ruby/JS require blocks, a plain list.",
+ "selection": "random draw"
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-67df6279",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N4627+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T04:21:31+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L13/N4627",
+   "pole": "+",
+   "label": "the '.assertEqual' method token in Python unit tests (the equality assertion), not other assert methods",
+   "fire": [
+    "class TestCart(unittest.TestCase):\n    def test_total(self):\n        cart = Cart([3, 4])\n        self.assertEqual(cart.total(), 7)",
+    "def test_name(self):\n    user = User('ana')\n    self.assertEqual(user.name, 'ana')",
+    "    def test_parse(self):\n        result = parse('1,2')\n        self.assertEqual(result, [1, 2])",
+    "def test_upper(self):\n    word = 'abc'.upper()\n    self.assertEqual(word, 'ABC')",
+    "class MathTest(TestCase):\n    def test_square(self):\n        self.assertEqual(square(5), 25)",
+    "    def test_keys(self):\n        d = load()\n        self.assertEqual(sorted(d), ['a', 'b'])",
+    "def test_status(self):\n    resp = self.client.get('/')\n    self.assertEqual(resp.status_code, 200)",
+    "    def test_count(self):\n        rows = db.fetch()\n        self.assertEqual(len(rows), 12)"
+   ],
+   "quiet": [
+    "class TestCart(unittest.TestCase):\n    def test_empty(self):\n        cart = Cart([])\n        self.assertTrue(cart.is_empty())",
+    "def test_member(self):\n    user = User('ana')\n    self.assertIn('ana', registry)",
+    "    def test_bad_input(self):\n        with self.assertRaises(ValueError):\n            parse('x,y')",
+    "def test_lower(self):\n    word = 'ABC'.lower()\n    self.assertIsNotNone(word)",
+    "class MathTest(TestCase):\n    def test_negative(self):\n        self.assertFalse(is_positive(-5))",
+    "    def test_missing(self):\n        d = load()\n        self.assertIsNone(d.get('z'))",
+    "def test_redirect(self):\n    resp = self.client.get('/old')\n    self.assertTrue(resp.is_redirect)",
+    "    def test_rows(self):\n        rows = db.fetch()\n        self.assertGreater(len(rows), 0)"
+   ]
+  }
+ ],
+ "predictions": "5/8 fire; assertTrue/assertIn near misses mostly quiet",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "assertEqual",
+ "unit_kind": "token/lexical",
+ "confidence": 0.3,
+ "notes": "Probe: self.assertEqual 0.488; plain 'assert x == y' 0.092 and 'if row == ...' 0.046, so the card's ' ==' peaks do not generalize. Off-topic card items also fired (even/odd function 0.426, disulfide bonds 0.399, recyclable 0.344), so the pole is wider than this label; testing the code reading only."
+}

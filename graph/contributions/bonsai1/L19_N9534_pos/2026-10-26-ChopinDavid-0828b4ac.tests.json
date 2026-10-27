@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-0828b4ac",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N9534+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T04:21:31+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L19/N9534",
+   "pole": "+",
+   "label": "the tested name in a negated existence check in Python ('if not found_x:' / 'if not os.path.exists(...)') (best guess)",
+   "fire": [
+    "    for req in reqs:\n        if req.name == old:\n            found_flag = True\n            break\n    if not found_flag:\n        missing.append(old)",
+    "    if not found_match:\n        logger.warning('no match for %s', key)",
+    "        seen_flag = False\n        for item in queue:\n            if item.id == target:\n                seen_flag = True\n        if not seen_flag:\n            queue.append(target)",
+    "    if not found_entry:\n        entries.append(new_entry)",
+    "    if not os.path.exists(cache_dir):\n        os.makedirs(cache_dir)",
+    "    if not found_user:\n        raise KeyError(username)",
+    "        if not os.path.isfile(config_path):\n            write_default(config_path)",
+    "    if not found_key:\n        return default"
+   ],
+   "quiet": [
+    "    for req in reqs:\n        if req.name == old:\n            count = count + 1\n            break\n    total = count * 2\n    missing.append(old)",
+    "    logger.warning('no match for %s', key)",
+    "        for item in queue:\n            if item.id == target:\n                item.mark()\n        queue.append(target)",
+    "    entries.append(new_entry)\n    entries.sort()",
+    "    cache_dir = os.path.join(base, 'cache')\n    os.makedirs(cache_dir)",
+    "    user = users[username]\n    user.save()",
+    "        config_path = os.path.join(home, 'cfg.ini')\n        write_default(config_path)",
+    "    value = table.get(key)\n    return value"
+   ]
+  }
+ ],
+ "predictions": "weak: 2-4/8",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "negated existence check (guess)",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card top: ' found' in 'if not found_flag:' 25.25, '.exists' x2, '):\\n' after os.path checks. Probe did not reproduce: 'if not found:' 0.021, 'if os.path.exists(...)' 0.068, os.path.isfile 0.024, '/ float(count' 0.112; prose 0.002-0.012. Writing the card's exact 'found_<name>' and 'if not os.path...' forms as a best guess; expect failure."
+}
