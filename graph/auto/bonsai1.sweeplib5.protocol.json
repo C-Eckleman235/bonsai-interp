@@ -1,0 +1,259 @@
+{
+ "protocol": "sweeplib@5",
+ "kind": "code",
+ "written": "2026-10-27T18:31:13+00:00",
+ "toolchain_commit": "189039aa",
+ "code_sha256": "f2ff74693dc4845439e21c389e9914ae2428355b9a1e7adb5abf0b0188ebca60",
+ "reused": "bonsai_interp/sweeplib (sweeplib@1): read_last, _pairs, selection rule and statistics, judge; unchanged",
+ "parser": {
+  "model": "pygments PythonLexer with bracket and statement state (codesyn/lex.py)",
+  "domains": "code, windows judged Python (lex.is_python)",
+  "windows_per_split": "every code window",
+  "splits": {
+   "select": [
+    0,
+    16000
+   ],
+   "test": [
+    16400,
+    null
+   ]
+  },
+  "parse_select_sha256": "4a6a5238d6fe764f09dc50a5c34e11f8f682576de988b5098f4dcc5a53a74c08",
+  "test_split": "parsed only after this manifest is committed"
+ },
+ "layers": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30,
+  31,
+  32,
+  33,
+  34,
+  35
+ ],
+ "snippet": 48,
+ "min_pos": 64,
+ "pairs": {
+  "select": 64,
+  "min_select": 32,
+  "test": 8,
+  "per_key": {
+   "tok": {
+    "select": 8,
+    "test": 1
+   },
+   "any": {
+    "select": 16,
+    "test": 2
+   }
+  },
+  "few_keys": [],
+  "cap": {
+   "tok": 12,
+   "any": 400
+  }
+ },
+ "last_token": "any non-whitespace token of a Python window after its first line break, at position >= 111, whose logical line starts at most 46 tokens back",
+ "conditions": {
+  "role:cond": {
+   "label": "code syntax: fires on a token in the condition of an if, elif or while statement, not on the same token elsewhere in code",
+   "key": "token"
+  },
+  "role:for_target": {
+   "label": "code syntax: fires on a token in the loop variable of a for statement (between 'for' and 'in'), not on the same token elsewhere in code",
+   "key": "token"
+  },
+  "role:for_iter": {
+   "label": "code syntax: fires on a token in the iterable of a for statement (between 'in' and ':'), not on the same token elsewhere in code",
+   "key": "token"
+  },
+  "role:return": {
+   "label": "code syntax: fires on a token in a return statement's expression, not on the same token elsewhere in code",
+   "key": "token"
+  },
+  "role:import": {
+   "label": "code syntax: fires on a token in an import statement, not on the same token elsewhere in code",
+   "key": "token"
+  },
+  "role:def_name": {
+   "label": "code syntax: fires on a token in the name of a function being defined (after 'def'), not on the same token elsewhere in code",
+   "key": "token"
+  },
+  "role:def_sig": {
+   "label": "code syntax: fires on a token in a function definition's parameter list, not on the same token elsewhere in code",
+   "key": "token"
+  },
+  "role:class_name": {
+   "label": "code syntax: fires on a token in the name of a class being defined (after 'class'), not on the same token elsewhere in code",
+   "key": "token"
+  },
+  "role:decorator": {
+   "label": "code syntax: fires on a token in a decorator line, not on the same token elsewhere in code",
+   "key": "token"
+  },
+  "role:call_arg": {
+   "label": "code syntax: fires on a token in a function call's argument list (innermost brackets), not on the same token elsewhere in code",
+   "key": "token"
+  },
+  "role:kwarg_name": {
+   "label": "code syntax: fires on a token in a keyword argument's name in a call ('b' in 'f(b=2)'), not on the same token elsewhere in code",
+   "key": "token"
+  },
+  "role:subscript": {
+   "label": "code syntax: fires on a token in a subscript or slice ('x[i]' at 'i'), not on the same token elsewhere in code",
+   "key": "token"
+  },
+  "role:list": {
+   "label": "code syntax: fires on a token in a list literal or list comprehension (innermost brackets), not on the same token elsewhere in code",
+   "key": "token"
+  },
+  "role:dict_key": {
+   "label": "code syntax: fires on a token in a dictionary literal's key, not on the same token elsewhere in code",
+   "key": "token"
+  },
+  "role:dict_value": {
+   "label": "code syntax: fires on a token in a dictionary literal's value, not on the same token elsewhere in code",
+   "key": "token"
+  },
+  "role:comprehension": {
+   "label": "code syntax: fires on a token in the 'for ... in ...' part of a comprehension, not on the same token elsewhere in code",
+   "key": "token"
+  },
+  "role:assign_lhs": {
+   "label": "code syntax: fires on a token in the target of an assignment (left of a top-level '='), not on the same token elsewhere in code",
+   "key": "token"
+  },
+  "role:assign_rhs": {
+   "label": "code syntax: fires on a token in the value of an assignment (right of a top-level '='), not on the same token elsewhere in code",
+   "key": "token"
+  },
+  "role:string": {
+   "label": "code syntax: fires on a token in a string literal (not a docstring), not on the same token elsewhere in code",
+   "key": "token"
+  },
+  "role:docstring": {
+   "label": "code syntax: fires on a token in a docstring, not on the same token elsewhere in code",
+   "key": "token"
+  },
+  "role:comment": {
+   "label": "code syntax: fires on a token in a comment, not on the same token elsewhere in code",
+   "key": "token"
+  },
+  "role:nested": {
+   "label": "code syntax: fires on a token in two or more levels of brackets deep, not one, not on the same token elsewhere in code",
+   "key": "token"
+  },
+  "any:cond": {
+   "label": "code syntax (any token): fires on the condition of an if, elif or while statement, whatever the token, not on tokens of the same type and frequency elsewhere",
+   "key": "coarse token type x corpus-frequency band"
+  },
+  "any:for_target": {
+   "label": "code syntax (any token): fires on the loop variable of a for statement (between 'for' and 'in'), whatever the token, not on tokens of the same type and frequency elsewhere",
+   "key": "coarse token type x corpus-frequency band"
+  },
+  "any:for_iter": {
+   "label": "code syntax (any token): fires on the iterable of a for statement (between 'in' and ':'), whatever the token, not on tokens of the same type and frequency elsewhere",
+   "key": "coarse token type x corpus-frequency band"
+  },
+  "any:return": {
+   "label": "code syntax (any token): fires on a return statement's expression, whatever the token, not on tokens of the same type and frequency elsewhere",
+   "key": "coarse token type x corpus-frequency band"
+  },
+  "any:import": {
+   "label": "code syntax (any token): fires on an import statement, whatever the token, not on tokens of the same type and frequency elsewhere",
+   "key": "coarse token type x corpus-frequency band"
+  },
+  "any:def_sig": {
+   "label": "code syntax (any token): fires on a function definition's parameter list, whatever the token, not on tokens of the same type and frequency elsewhere",
+   "key": "coarse token type x corpus-frequency band"
+  },
+  "any:decorator": {
+   "label": "code syntax (any token): fires on a decorator line, whatever the token, not on tokens of the same type and frequency elsewhere",
+   "key": "coarse token type x corpus-frequency band"
+  },
+  "any:call_arg": {
+   "label": "code syntax (any token): fires on a function call's argument list (innermost brackets), whatever the token, not on tokens of the same type and frequency elsewhere",
+   "key": "coarse token type x corpus-frequency band"
+  },
+  "any:kwarg_name": {
+   "label": "code syntax (any token): fires on a keyword argument's name in a call ('b' in 'f(b=2)'), whatever the token, not on tokens of the same type and frequency elsewhere",
+   "key": "coarse token type x corpus-frequency band"
+  },
+  "any:subscript": {
+   "label": "code syntax (any token): fires on a subscript or slice ('x[i]' at 'i'), whatever the token, not on tokens of the same type and frequency elsewhere",
+   "key": "coarse token type x corpus-frequency band"
+  },
+  "any:list": {
+   "label": "code syntax (any token): fires on a list literal or list comprehension (innermost brackets), whatever the token, not on tokens of the same type and frequency elsewhere",
+   "key": "coarse token type x corpus-frequency band"
+  },
+  "any:dict_key": {
+   "label": "code syntax (any token): fires on a dictionary literal's key, whatever the token, not on tokens of the same type and frequency elsewhere",
+   "key": "coarse token type x corpus-frequency band"
+  },
+  "any:dict_value": {
+   "label": "code syntax (any token): fires on a dictionary literal's value, whatever the token, not on tokens of the same type and frequency elsewhere",
+   "key": "coarse token type x corpus-frequency band"
+  },
+  "any:comprehension": {
+   "label": "code syntax (any token): fires on the 'for ... in ...' part of a comprehension, whatever the token, not on tokens of the same type and frequency elsewhere",
+   "key": "coarse token type x corpus-frequency band"
+  },
+  "any:assign_lhs": {
+   "label": "code syntax (any token): fires on the target of an assignment (left of a top-level '='), whatever the token, not on tokens of the same type and frequency elsewhere",
+   "key": "coarse token type x corpus-frequency band"
+  },
+  "any:assign_rhs": {
+   "label": "code syntax (any token): fires on the value of an assignment (right of a top-level '='), whatever the token, not on tokens of the same type and frequency elsewhere",
+   "key": "coarse token type x corpus-frequency band"
+  },
+  "any:nested": {
+   "label": "code syntax (any token): fires on two or more levels of brackets deep, not one, whatever the token, not on tokens of the same type and frequency elsewhere",
+   "key": "coarse token type x corpus-frequency band"
+  }
+ },
+ "selection": {
+  "auroc": 0.8,
+  "med_fire": 0.1,
+  "quiet_hi": 0.3,
+  "quiet_hi_share": 0.15,
+  "win": 0.7,
+  "mean_diff": 0.07
+ },
+ "separating_diagnostic": "poles with selection AUROC >= 0.85 at any magnitude (not a selection)",
+ "excluded": "weak poles (corpus max < 0.5)",
+ "judge": "quick-8+8@2",
+ "read": "last token, mean over the 3 PREAMBLES (selection: PREAMBLES[0])",
+ "placebo": "per condition: selection on quiet-vs-quiet pairs (false selections) and an 8 + 8 quiet-vs-quiet test on the selected poles (false holds)",
+ "report": "held / failed / placebo by construction, by layer band, and by the pole's atlas bin (auto-token@2 word screen); coverage of held conditions: the share of the pole's 32 strongest corpus activations (scan, English windows) where the condition holds, against the condition's base rate",
+ "about": "Code syntax roles as minimal-pair batteries (sweeplib@5; CPU only, deterministic, from the Pygments lex in lex.py).\n\nThe model is also a model of programming languages, whose syntax is explicit: an if statement's condition, a call's\narguments, a list literal, a dictionary's keys. Each role (lex.ROLES) is a condition on a snippet's last token, which may be\nany non-whitespace token of a Python window. Two families:\n\n  role:R   the same token in role R against that token elsewhere ('x' in an if condition vs 'x' outside one); quiet snippets\n           are spread over the token's other contexts (strata: the innermost context, lex.CTX). For a code role both\n           tokens are code (neither is in a string, docstring or comment); for string, docstring and comment the quiet token\n           is the same token in code or another of the three.\n  any:R    role R whatever the token, against tokens of the same coarse type (name, keyword, number, ...) and corpus-frequency\n           band outside R. Not for roles that fix the token type (strings, comments, docstrings, def and class names).\n\nBoth snippets must show the token's whole logical line: its start is at most SNIP - 2 tokens back, so the role is decidable\nfrom the 48 tokens the model reads.\n"
+}
