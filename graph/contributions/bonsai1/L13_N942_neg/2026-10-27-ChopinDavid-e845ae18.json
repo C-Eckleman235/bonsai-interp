@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-e845ae18",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N942-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T22:22:24+00:00",
+ "recipe": {
+  "toolchain_commit": "f57fb592",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L13_N942_neg/2026-10-27-ChopinDavid-e845ae18.tests.json"
+ },
+ "label": "the end of a code line whose last item is an indexed array element (factor[n]\\n, weights[i]\\n) inside a loop, and similar closers of an indexed math term (alpha_i, dx)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L13_N942_neg/2026-10-27-ChopinDavid-e845ae18.tests.json",
+   "prereg_commit": "f57fb592",
+   "author": "ChopinDavid",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.284,
+     "peak": "]\n"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.429,
+     "peak": "]\n"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.325,
+     "peak": "]\n"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.273,
+     "peak": "]\n"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.217,
+     "peak": "]\n"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.436,
+     "peak": "]\n"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.245,
+     "peak": "]\n"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.356,
+     "peak": "]\n"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.218,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.161,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.145,
+     "peak": "\n"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.123,
+     "peak": "\n"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.188,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.156,
+     "peak": "\n"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.245,
+     "peak": ")\n"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.178,
+     "peak": ")\n"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.961,
+    "median_fire": 0.304,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "f57fb592",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "line end after an indexed array term in code",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: ' dx', 'alpha_i', 'factor[n]\\n', 'W[w_ind];\\n', newline tokens in code. Probe: two loop lines ending in 'weights[i]' / 'factor[n]' 0.461 and 0.476 (peak ']\\n'), 'sin^2(alpha_i)' 0.245, 'cosine of 5x dx' 0.262; lines ending in ')' 0.006, prose integral 0.040.",
+ "selection": "random draw"
+}

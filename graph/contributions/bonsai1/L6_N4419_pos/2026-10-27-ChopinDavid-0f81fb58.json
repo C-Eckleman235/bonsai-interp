@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-0f81fb58",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N4419+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T22:22:09+00:00",
+ "recipe": {
+  "toolchain_commit": "f57fb592",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L6_N4419_pos/2026-10-27-ChopinDavid-0f81fb58.tests.json"
+ },
+ "label": "the stem right after the prefix 'anti' (anti|-war, anti-vacc|ination, anti-intel|lectual, anti|-government): marks the thing being opposed",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L6_N4419_pos/2026-10-27-ChopinDavid-0f81fb58.tests.json",
+   "prereg_commit": "f57fb592",
+   "author": "ChopinDavid",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.815,
+     "peak": "-war"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.72,
+     "peak": "accine"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.755,
+     "peak": "lectual"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.587,
+     "peak": "-government"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.009,
+     "peak": " passed"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.775,
+     "peak": "ederal"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.419,
+     "peak": "uclear"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.067,
+     "peak": "ico"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.049,
+     "peak": " war"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.011,
+     "peak": " town"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.018,
+     "peak": " intellectuals"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.018,
+     "peak": " government"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.027,
+     "peak": " corruption"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.012,
+     "peak": "8"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.008,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.016,
+     "peak": " blood"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.891,
+    "median_fire": 0.653,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "f57fb592",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "stem after the prefix 'anti'",
+ "unit_kind": "token-in-context",
+ "confidence": 0.65,
+ "notes": "Card: all top examples are the piece after 'anti' (-war, ination, lectual, ederal, -government, let). Probe: 'anti-vaccination' 1.018, 'anti-war movement' 0.748, 'anti-intellectual' 0.683, 'anti-government' 0.607, 'antiplatelet' 0.417; 'pro-war' 0.316 (a leak: the near misses avoid pro-), 'against the war' 0.051, bare 'war' 0.012.",
+ "selection": "random draw"
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-e845ae18",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N942-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T22:13:41+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L13/N942",
+   "pole": "-",
+   "label": "the end of a code line whose last item is an indexed array element (factor[n]\\n, weights[i]\\n) inside a loop, and similar closers of an indexed math term (alpha_i, dx)",
+   "fire": [
+    "for j in range(n):\n    score += votes[j] * scale[j]\n    seen += 1",
+    "for k in range(len(xs)):\n    acc = acc + xs[k] * ws[k]\n    steps += 1",
+    "for t in range(T):\n    energy += signal[t] * signal[t]\n    # next sample",
+    "total = 0\nfor i in range(8):\n    total += digits[i] * weight[i]\nprint(total)",
+    "for r in range(rows):\n    out += grid[r] * mask[r]\n    r_count += 1",
+    "for i in range(m):\n    loss += err[i] * err[i]\n    # accumulate",
+    "s = 0.0\nfor n in range(N):\n    s += coeffs[n] * xs[n]\nreturn s",
+    "for idx in range(size):\n    dot += left[idx] * right[idx]\n    idx_seen += 1"
+   ],
+   "quiet": [
+    "for j in range(n):\n    score += compute(votes, scale)\n    seen += 1",
+    "for k in range(len(xs)):\n    acc = acc + weight_of(k)\n    steps += 1",
+    "for t in range(T):\n    energy += amplitude * gain\n    # next sample",
+    "total = 0\nfor i in range(8):\n    total += 10\nprint(total)",
+    "for r in range(rows):\n    out += row_sum(grid)\n    r_count += 1",
+    "for i in range(m):\n    loss += error_rate\n    # accumulate",
+    "s = 0.0\nfor n in range(N):\n    s += math.sqrt(n)\nreturn s",
+    "for idx in range(size):\n    dot += product(left, right)\n    idx_seen += 1"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.5 on ']\\n' ending a loop line with an indexed element; loop lines ending in a call, a name or a number below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "line end after an indexed array term in code",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: ' dx', 'alpha_i', 'factor[n]\\n', 'W[w_ind];\\n', newline tokens in code. Probe: two loop lines ending in 'weights[i]' / 'factor[n]' 0.461 and 0.476 (peak ']\\n'), 'sin^2(alpha_i)' 0.245, 'cosine of 5x dx' 0.262; lines ending in ')' 0.006, prose integral 0.040."
+}

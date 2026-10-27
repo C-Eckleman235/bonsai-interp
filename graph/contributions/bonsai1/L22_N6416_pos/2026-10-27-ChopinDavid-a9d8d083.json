@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-a9d8d083",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N6416+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T22:23:17+00:00",
+ "recipe": {
+  "toolchain_commit": "f57fb592",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L22_N6416_pos/2026-10-27-ChopinDavid-a9d8d083.tests.json"
+ },
+ "label": "the subject pronoun 'It' in a casual review or listing voice, referring to the product or thing being reviewed (Good diaper... It keeps everything in); 'It' in neutral expository prose fires less",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N6416_pos/2026-10-27-ChopinDavid-a9d8d083.tests.json",
+   "prereg_commit": "f57fb592",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.72,
+     "peak": " It"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.529,
+     "peak": " It"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.488,
+     "peak": " It"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.735,
+     "peak": " it"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.399,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.568,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.661,
+     "peak": " it"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.538,
+     "peak": " it"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.045,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.084,
+     "peak": " It"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.042,
+     "peak": " Greek"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.069,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.066,
+     "peak": " It"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.043,
+     "peak": " It"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.05,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.06,
+     "peak": " It"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.553,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "f57fb592",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "'It' as subject in a casual review",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: ' It' x7, 'it' x3, 'It' x3 in reviews and listings ('WTF It's cubes and cubes', 'Good diaper... It keeps everything in', 'nice composition, it's got'). Probe: 'Good diaper. It keeps everything in' 0.610, \"Nice composition, it's got some atmosphere\" 0.623; 'This one keeps' 0.287 and 'the picture has' 0.445, so the casual review voice itself fires; formal 'It was written by three authors' 0.238, weather 'It is raining' 0.072. Near misses are expository 'It' sentences, so this tests the review voice rather than the pronoun.",
+ "selection": "random draw"
+}
