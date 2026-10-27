@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-236f8aec",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N11716-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T08:20:03+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N11716",
+   "pole": "-",
+   "label": "insulin, the hormone as a diabetes treatment and the devices that deliver it, as against diabetes sentences about other treatments",
+   "fire": [
+    "After the diagnosis, her doctor started her on insulin at bedtime.",
+    "He checks his sugar and then injects insulin before each meal.",
+    "The clinic teaches new patients how to store insulin in the fridge.",
+    "My cousin switched to an insulin pump last spring.",
+    "Rising insulin prices have made the drug hard to afford.",
+    "Type 1 diabetics depend on insulin to stay alive.",
+    "The nurse adjusted his insulin dose after the blood test.",
+    "Long-acting insulin keeps glucose steady through the night."
+   ],
+   "quiet": [
+    "After the diagnosis, her doctor started her on metformin at bedtime.",
+    "He checks his sugar and then takes a walk after each meal.",
+    "The clinic teaches new patients how to cook low-sugar meals.",
+    "My cousin switched to a glucose monitor last spring.",
+    "Rising drug prices have made many medicines hard to afford.",
+    "Type 2 diabetics can often manage with diet and exercise.",
+    "The nurse adjusted his diet plan after the blood test.",
+    "A light snack keeps glucose steady through the night."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-1.0 on ' insulin' and on ' pump' in 'insulin pump'; diabetes sentences without insulin below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "insulin",
+ "unit_kind": "token/lexical",
+ "confidence": 0.6,
+ "notes": "Card: ' insulin' x8 and the Russian 'ин⟦су⟧лина'; also fuel ' pumps' and ' injector'. Probe: 'need insulin every day' 0.793, 'insulin pump' 1.128 (peak on pump); 'fuel pumps' 0.176, 'injector sprays fuel' 0.076, 'diabetes need to walk' 0.146, 'phone app' 0.093. The fuel-system side is weak, so the label is insulin."
+}

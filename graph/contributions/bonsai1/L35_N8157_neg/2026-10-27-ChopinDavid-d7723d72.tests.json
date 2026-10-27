@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-d7723d72",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N8157-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T08:20:03+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N8157",
+   "pole": "-",
+   "label": "tokens deep inside long Japanese, Korean or Chinese running text (word starts and names after many native-script tokens), as against English text on the same subjects",
+   "fire": [
+    "春天，我们去了函馆看樱花。夏天，我们又去了北海道的富良野看薰衣草。秋天的时候，我们打算去京都看红叶，冬天再去札幌看雪祭。",
+    "회원님께서는 안심하고 호텔을 예약하실 수 있습니다. 저희는 여러 예약 사이트와 제휴하고 있으며, 트립어드바이저는 매일 가격을 비교하여 가장 저렴한 요금을 보여 드립니다.",
+    "当社は地域で一番の大企業ではありません。しかしお客様を大切にする気持ちは一番です。情報の多さにも自信を持っておりますので、長岡京市や向日市の物件はお任せください。",
+    "어제 이모부가 전화를 하셨다. 내가 열심히 모은 돈 이야기를 하셨는데, 그 돈 모으면 새 컴퓨터를 사 주겠다고 약속하셨다.",
+    "这家餐厅在上海很有名。每到周末，门口都排着长队。我们点了小笼包、红烧肉和一碗鸡汤，味道都非常好，价格也很合理。",
+    "オートファジーの研究は近年大きく進展した。Atg7遺伝子を欠失したマウスでは、オートファゴソームの形成が阻害され、細胞内に異常なタンパク質が蓄積する。",
+    "서울에서 부산까지 기차로 약 세 시간이 걸린다. 우리는 아침 일찍 출발해서 해운대 바닷가를 걷고, 저녁에는 자갈치 시장에서 회를 먹었다.",
+    "我在北京工作了五年。刚来的时候什么都不习惯，后来慢慢交了很多朋友，现在已经把这里当成第二个家了。"
+   ],
+   "quiet": [
+    "In spring we went to Hakodate to see the cherry blossoms. In summer we went to Furano in Hokkaido to see the lavender, and in autumn we plan to visit Kyoto.",
+    "You can book your hotel with confidence. We partner with several booking sites, and the price checker compares rates every day to show you the lowest price.",
+    "Our company is not the biggest in the region, but our care for customers is second to none, and we know every listing in Nagaokakyo and Muko.",
+    "Yesterday my uncle called. He talked about the money I had saved and promised to buy me a new computer once I saved enough.",
+    "This restaurant is famous in Shanghai. Every weekend there is a long line at the door, and the soup dumplings and braised pork are excellent.",
+    "Research on autophagy has advanced rapidly. In mice lacking the Atg7 gene, autophagosome formation is blocked and abnormal proteins build up in cells.",
+    "It takes about three hours by train from Seoul to Busan. We left early, walked along Haeundae beach, and ate raw fish at Jagalchi market.",
+    "I worked in Beijing for five years. At first nothing felt familiar, but I slowly made many friends, and now it feels like a second home."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.5 on some CJK/Korean token in long passages; English versions near 0",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "deep CJK text (guess)",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Card: peaks on byte tokens and CJK/Korean/Cyrillic word starts ('北海道', 'トリップアドバイザー' as ' 트', '長岡京市', 'Юрий Ки⟦щук⟧') deep inside long native-script pages; flag-free but 0.32% density. Probe with one-sentence items scored near zero everywhere (Chinese 0.006, Korean 0.005, Russian 0.036, Japanese 0.019, English 0.000-0.005). The short probes may miss it; this test uses longer passages, as a guess."
+}

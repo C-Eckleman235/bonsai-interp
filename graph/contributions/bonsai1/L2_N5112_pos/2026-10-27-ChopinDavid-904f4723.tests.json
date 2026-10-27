@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-904f4723",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N5112+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T08:20:03+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L2/N5112",
+   "pole": "+",
+   "label": "the last token of a capitalized multiword organization or publication name (the plural 's' of 'Biomaterials', 'Forests', or a brand word in capitals such as 'RADIO'), as against the same words used as ordinary lowercase nouns",
+   "fire": [
+    "After her degree she took a post at the Boston Nanomaterials Institute downtown.",
+    "His essay on drought appeared in Western Marshes magazine last fall.",
+    "The concert was sponsored by WNYC RADIO and a local bakery.",
+    "She edits the newsletter of the Ohio Biopolymers Society each month.",
+    "The study was funded by the Northern Prairies Foundation in Fargo.",
+    "Most mornings he listens to KXLU RADIO on the drive to work.",
+    "A long profile of the founder ran in American Glaciers magazine.",
+    "He now chairs the Pacific Wetlands Council in Seattle."
+   ],
+   "quiet": [
+    "After her degree she took a post studying nanomaterials in a lab downtown.",
+    "His essay on drought described the western marshes drying up last fall.",
+    "The concert was broadcast on the radio and sponsored by a local bakery.",
+    "She writes about biopolymers in a newsletter each month.",
+    "The study looked at the northern prairies around Fargo.",
+    "Most mornings he listens to the radio on the drive to work.",
+    "A long article described the shrinking glaciers of the Rockies.",
+    "He now studies the coastal wetlands near Seattle."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on the final piece of the name; the same word as a common noun below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "end of org name (guess)",
+ "unit_kind": "contextual",
+ "confidence": 0.2,
+ "notes": "Tiny pole (max 6.06) and the gate-closed regime dominates. Card: 'American Forest⟦s⟧ magazine', 'Syracuse Biomaterial⟦s⟧ Institute', 'CBS⟦ RADIO⟧', 'American⟦ Veterinary⟧ Medical'. Probe: 'Syracuse Biomaterials Institute' 0.511, 'CBS RADIO' 0.609, 'American Forests magazine' 0.526; but 'American Veterinary Medical Association' 0.051 and 'National Petroleum Council' 0.047; lowercase 'forests' 0.059, 'radio' 0.057, 'veterinary' 0.010. Inconsistent across names, so this is a guess."
+}
