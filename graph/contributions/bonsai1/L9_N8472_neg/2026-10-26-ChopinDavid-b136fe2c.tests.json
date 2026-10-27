@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-b136fe2c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N8472-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T00:20:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L9/N8472",
+   "pole": "-",
+   "label": "a currency code or non-dollar currency name attached to an amount (NT$, HK$, CNY, kronor, KES, Cdn), as against the same amount in plain dollars or the same abbreviation used for a place",
+   "fire": [
+    "A double room at the inn costs NT$1,800 on weekdays.",
+    "Taxis from the airport charge about HK$300 to the centre.",
+    "The ticket was priced at 250 Danish kroner at the door.",
+    "Last year the firm's sales reached 900 CNY per customer.",
+    "Each tourist visa now costs 4,000 Kenyan shillings, or KES 4,000.",
+    "The course fee is $199 Cdn including all materials.",
+    "She paid 120 Norwegian kroner for a small coffee.",
+    "Bus fares in the capital rose to NT$30 last month."
+   ],
+   "quiet": [
+    "A double room at the inn costs $180 on weekdays.",
+    "Taxis from the airport take about 30 minutes to the centre.",
+    "The ticket was priced at 250 points in the loyalty scheme.",
+    "Last year the firm's sales grew in every region it served.",
+    "Each tourist visa now takes four weeks to process in Nairobi.",
+    "The course fee is $199 including all materials.",
+    "She paid with cash for a small coffee in Oslo.",
+    "Bus routes in the capital changed last month."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-1.0 on ' NT', ' HK', 'NY' of CNY, ' kron'; plain '$' amounts and place abbreviations below 0.25",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "currency code attached to an amount",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: ' NT' x5 (NT$), ' HK' (HK$), 'ais' (meticais), 'NY' (CNY), ' kron' (kronа), 'dn' (Cdn), 'ES' (KES). Probe: 'Swedish kronor' 0.979, 'NT$2,500' 0.925, '12 billion CNY' 0.735, 'HK$50,000' 0.533; '$2,500' 0.062, 'NT government' 0.073, 'HK office' 0.204, '8 million dollars' 0.334 (peak ' million'), so near misses avoid 'million/billion' before the currency word."
+}

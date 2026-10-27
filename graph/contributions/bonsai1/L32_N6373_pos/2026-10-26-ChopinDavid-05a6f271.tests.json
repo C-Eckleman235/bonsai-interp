@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-05a6f271",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N6373+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T00:20:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L32/N6373",
+   "pole": "+",
+   "label": "short identifier tokens inside code strings and keyword arguments (ha='center', '/clusters/' path segments, :meth: roles), as against plain code statements",
+   "fire": [
+    "    ax.text(0.5, 0.9, label, ha='center', va='top')",
+    "    url = '%s/nodes/%s' % (base, node_id)",
+    "    plt.title(name, ha='left', fontsize=12)",
+    "    endpoint = '%s/projects/%s/jobs' % (host, pid)",
+    "    ax.annotate(txt, xy, ha='right', color='red')",
+    "    path = '%s/users/%s' % (api_root, user_id)",
+    "    fig.suptitle(title, ha='center', y=0.98)",
+    "    link = '%s/repos/%s/issues' % (base, repo)"
+   ],
+   "quiet": [
+    "    ax.set_xlim(0, 10)",
+    "    count = count + 1",
+    "    plt.show()",
+    "    result = a * b - c",
+    "    ax.grid(True)",
+    "    total = sum(values)",
+    "    fig.tight_layout()",
+    "    print(len(items))"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.9 on ' ha', path segments or role names; plain arithmetic and print code below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "identifiers in code strings / kwargs",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: 'attr' in :attr:, 'usters' in '/clusters/', ' ha' in ha='center', '.d' in '/etc/grub.d/', 'boards', '/items', 'target' in route strings, 'obj', 'meth'. Probe: ha='center' 0.898, '/clusters/' format string 0.652 (peak 'base'), :meth: docstring 0.392, '/boards/' 0.216, '/target/' route 0.199; arithmetic 0.110, print 0.023. Mixed; low confidence."
+}

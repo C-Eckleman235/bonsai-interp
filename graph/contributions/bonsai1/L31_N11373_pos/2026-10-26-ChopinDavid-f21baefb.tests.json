@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-f21baefb",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N11373+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T00:20:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L31/N11373",
+   "pole": "+",
+   "label": "class and function names in machine-learning model code (KMeans/ClusterMixin, OneClassSVM, _kmeans_single_lloyd), as against identifiers in ordinary non-ML code",
+   "fire": [
+    "from sklearn.cluster import KMeans, ClusterMixin\nmodel = KMeans(n_clusters=8, max_iter=300)",
+    "from sklearn.svm import OneClassSVM\ndetector = OneClassSVM(nu=0.1)",
+    "def _kmeans_plusplus(X, n_clusters, random_state):\n    pass",
+    "class SpectralClustering(BaseEstimator, ClusterMixin):\n    pass",
+    "def _mini_batch_kmeans_step(X, centers, max_iter):\n    pass",
+    "from sklearn.mixture import GaussianMixture\ngmm = GaussianMixture(n_components=3)",
+    "class DBSCAN(ClusterMixin, BaseEstimator):\n    pass",
+    "from sklearn.svm import OneClassSVM, LinearSVC\nclf = LinearSVC(max_iter=500)"
+   ],
+   "quiet": [
+    "from datetime import datetime, timedelta\nstart = datetime(2020, 1, 1)",
+    "from pathlib import Path\nroot = Path('.')",
+    "def _parse_header(lines, encoding, strict):\n    pass",
+    "class HttpClient(BaseSession, RetryMixin):\n    pass",
+    "def _render_page(template, context, cache):\n    pass",
+    "from collections import OrderedDict\ncache = OrderedDict()",
+    "class Invoice(Document, Printable):\n    pass",
+    "from os import path, environ\nhome = environ.get('HOME')"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on pieces of ML class and function names; generic code below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "names in ML model code (clustering, SVM)",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: '_l' in _kmeans_single_lloyd, 'h' in 'hinge', 'verted' in InvertedGenerationalDistance, ' Cluster' in ClusterMixin, 'One' in OneClassSVM. Probe: OneClassSVM import 0.520, kmeans_single_lloyd def 0.483 (peak ' max'), ClusterMixin class 0.420, hinge loss list 0.170, elkan option string 0.018, prose k-means 0.102; generic code 0.005-0.011."
+}

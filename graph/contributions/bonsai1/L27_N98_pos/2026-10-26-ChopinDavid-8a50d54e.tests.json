@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-8a50d54e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N98+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T00:20:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L27/N98",
+   "pole": "+",
+   "label": "the setup right before a statistic is given: an estimate or a superlative/endangered claim about to be quantified ('scientists estimate that', 'the leading cause of X,' 'critically endangered,'), as against the same claims that are not followed by a number",
+   "fire": [
+    "Stroke is the second leading cause of death, accounting for about 11 percent of deaths.",
+    "Researchers estimate that roughly 40 percent of the reef has already died.",
+    "The vaquita is critically endangered, with only about ten animals remaining.",
+    "Economists estimate that the flood cost the region two billion dollars.",
+    "Malaria is the deadliest disease in the region, killing 400,000 people a year.",
+    "Experts estimate that it takes six months to train a new pilot.",
+    "The snow leopard is endangered, with fewer than 7,000 left in the wild.",
+    "Lung cancer is the most common cancer worldwide, making up 12 percent of cases."
+   ],
+   "quiet": [
+    "Stroke is a medical emergency that needs treatment within hours.",
+    "Researchers believe that the reef is home to colourful fish.",
+    "The vaquita is a small porpoise that lives in the Gulf of California.",
+    "Economists say that the flood damaged roads and bridges in the region.",
+    "Malaria is spread by mosquitoes that bite at night.",
+    "Experts say that training a new pilot is hard work.",
+    "The snow leopard is a large cat that lives in the mountains of Asia.",
+    "Lung cancer is often linked to smoking and air pollution."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.5 on ' estimate' or on the comma after a superlative claim; plain descriptive sentences without a statistic below 0.25",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "setup before a statistic (estimate that, leading cause,)",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: commas after 'most serious', 'verge of collapse', 'most common cause of kidney failure', 'critically endangered', then the statistic; also ' estimated', ' would' in 'predicts that it would take 170 years'. Probe: 'critically endangered,' 0.510, 'leading cause of death,' 0.461, 'Scientists estimate' 0.453, 'close to collapse,' 0.240, 'predicts' 0.221. Leaks: 'a serious illness, and' 0.326, 'a large animal, with' 0.247, so the comma alone carries a lot; near misses here drop the comma. 'Scientists think' 0.023. Low confidence; may fail on leaks."
+}

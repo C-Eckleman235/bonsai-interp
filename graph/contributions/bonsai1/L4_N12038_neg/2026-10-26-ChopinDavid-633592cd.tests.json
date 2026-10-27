@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-633592cd",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N12038-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T00:20:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N12038",
+   "pole": "-",
+   "label": "a fragment of a word split into several tokens, typical of non-English or misspelled words (' uniqu'|ement, ' aggi'|ung|ere, ' duplic'|ating), as against whole-word English tokens",
+   "fire": [
+    "Le service est disponible seulement pour les membres, évidemment.",
+    "Questo programma permette di aggiungere nuovamente i file.",
+    "La tienda abrió recientemente en el centro de la ciudad.",
+    "Lo hanno probabilmente spostato in un altro ufficio.",
+    "Elle est finalement arrivée en retard, évidemment.",
+    "sorry m8 cant come 2nite, plz tel the otherz",
+    "Il sistema verrà aggiornato nuovamente domani mattina.",
+    "Hemos recibido recientemente una respuesta del ministerio."
+   ],
+   "quiet": [
+    "The service is open only to members, of course.",
+    "This program lets you add the files back again.",
+    "The shop opened last week in the centre of the city.",
+    "They have probably moved him to another office.",
+    "She finally arrived late, of course.",
+    "Sorry, I can't come tonight, please tell the others.",
+    "The system will be updated again tomorrow morning.",
+    "We have just received an answer from the ministry."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-1.0 on a word piece of a split word; sentences of whole common English tokens peak around 0.15-0.25",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split word fragment (non-English or misspelled)",
+ "unit_kind": "spelling unit",
+ "confidence": 0.35,
+ "notes": "Card flags dense (33% of tokens reach 0.1 of a tiny max 1.06), so whole-token text sits at a high floor. Probe: ' tym' 1.027, ' uniqu' 0.892, ' duplic' 0.881, 'unge' 0.732, 'nic' (Únicamente) 0.652; plain English paraphrases 0.155-0.259, pancakes floor 0.184. The near-miss floor is close to 0.3, so leaks are likely; this may be a dense unit."
+}
