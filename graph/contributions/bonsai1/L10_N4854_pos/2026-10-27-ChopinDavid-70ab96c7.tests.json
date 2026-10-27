@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-70ab96c7",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N4854+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T09:20:09+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L10/N4854",
+   "pole": "+",
+   "label": "the period of the title 'Mr.' before a surname in news reporting, as against the periods of other titles (Dr., Prof., Gen., St.) and sentence periods",
+   "fire": [
+    "Speaking to the press on Friday, Mr. Alvarez said the deal was done.",
+    "In a short statement, Mr. Okafor denied any wrongdoing.",
+    "According to court papers, Mr. Brennan owed the bank millions.",
+    "At the hearing, Mr. Tanaka answered questions for two hours.",
+    "Last year, Mr. Dorsey sold most of his shares in the company.",
+    "Reached by phone on Sunday, Mr. Whitfield declined to comment.",
+    "Before joining the firm, Mr. Nakamura worked as a lawyer.",
+    "In his office downtown, Mr. Kowalski showed me the plans."
+   ],
+   "quiet": [
+    "Speaking to the press on Friday, Dr. Alvarez said the trial was done.",
+    "In a short statement, the company denied any wrongdoing.",
+    "According to court papers, Dr. Brennan owed the bank millions.",
+    "At the hearing, Gen. Tanaka answered questions for two hours.",
+    "Last year, St. Mary's sold most of its land to the city.",
+    "Reached by phone on Sunday, the senator declined to comment.",
+    "Before joining the firm, Dr. Nakamura worked as a surgeon.",
+    "In his office downtown, Prof. Kowalski showed me the plans."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.6 on '.' after 'Mr'; Dr./Prof./St. periods below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'.' of 'Mr.'",
+ "unit_kind": "token/lexical",
+ "confidence": 0.6,
+ "notes": "Card: 23 of 32 top peaks are 'Mr⟦.⟧' before a surname in news text. Probe: 'Mr. Johnson said' 0.527, 'Ms. Garcia' 0.317, 'Mrs. Lee' 0.163, 'Mr Smith' (no period, peak ' Mr') 0.196; 'Dr. Patel' 0.071, 'St. Louis' 0.013, sentence period before 'Johnson said' 0.035, '4.5 dollars' 0.024. The test claims Mr. only."
+}
