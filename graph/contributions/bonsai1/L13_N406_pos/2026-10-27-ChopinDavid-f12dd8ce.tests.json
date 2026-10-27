@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-f12dd8ce",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N406+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T14:21:49+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L13/N406",
+   "pole": "+",
+   "label": "a pointer into a cited source: the opening quotation mark right after an attribution ('According to X, \"'), 'depicts' after a figure, and page or figure numbers, as against the same content paraphrased without the pointer",
+   "fire": [
+    "Our guide was blunt about the trail. According to Maria, \"Nobody should hike it alone.\"",
+    "The figure below depicts the main stages of the water cycle.",
+    "The full proof is given on page 214 of the second volume.",
+    "Asked about the result, the coach was calm. According to Hassan, \"We simply ran out of time.\"",
+    "The chart above depicts rainfall in each month of the year.",
+    "Details of the method appear in Table 3 on page 58.",
+    "The tomatoes failed this year. According to Ruth, \"The soil was simply too wet.\"",
+    "The photograph on the left depicts the bridge before the flood."
+   ],
+   "quiet": [
+    "Our guide was blunt about the trail and said nobody should hike it alone.",
+    "In spring the water cycle speeds up as the snow melts.",
+    "The full proof was finished by the author many years later.",
+    "Asked about the result, the coach calmly said they had run out of time.",
+    "Rainfall in this region peaks during the late summer months.",
+    "The method was tested on three groups of students.",
+    "The tomatoes failed this year, and Ruth blamed the wet soil.",
+    "Before the flood the old bridge carried two lanes of traffic."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on the opening quote after 'According to X,', on 'depicts', and on page numbers; paraphrases without quotes or references below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "pointer to a cited source",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: peaks on opening quotes after attributions (explains Natalie. “; According to Luke, \"), ' depicts', figure/page digits ('Figure 26', 'page 113'). Probe: 'According to Luke, \"' 0.665, 'The diagram below depicts' 0.732, 'page 113 of the textbook.' 0.619, curly quote after 'explains Natalie.' 0.292, after 'put it in a 2011 interview,' 0.167; paraphrases 0.148, 0.250, 0.126. Straight quotes scored higher than curly ones, so fire items use straight quotes. Mixed label; low confidence."
+}

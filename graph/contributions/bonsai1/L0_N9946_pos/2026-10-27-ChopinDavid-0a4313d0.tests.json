@@ -1,0 +1,57 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-0a4313d0",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N9946+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T14:21:49+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N9946",
+   "pole": "+",
+   "label": "the bare tokens ' almost', ' always', ' half', ' whole', ' usually' (layer-0 lexical unit), as against near synonyms such as nearly, often, entire",
+   "fire": [
+    "By noon the hikers had almost reached the summit.",
+    "Our neighbour always waves when she drives past.",
+    "He spent half the morning looking for his keys.",
+    "The whole village turned out for the harvest fair.",
+    "On Sundays we usually eat lunch with my grandparents.",
+    "The bakery was almost empty by six in the evening.",
+    "Grandpa always keeps a pencil behind his ear.",
+    "They ate half the pie before the guests arrived."
+   ],
+   "quiet": [
+    "By noon the hikers had nearly reached the summit.",
+    "Our neighbour often waves when she drives past.",
+    "He spent part of the morning looking for his keys.",
+    "The entire village turned out for the harvest fair.",
+    "On Sundays we generally eat lunch with my grandparents.",
+    "The bakery was nearly empty by six in the evening.",
+    "Grandpa often keeps a pencil behind his ear.",
+    "They ate some of the pie before the guests arrived."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.9 on the five words; synonyms (nearly, often, entire, generally) about 0.3",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "' almost/always/half/whole'",
+ "unit_kind": "word",
+ "confidence": 0.55,
+ "notes": "Card: broad (1.9% density); top 32 peaks are ' whole' x14, ' almost' x9, ' half' x5, ' always' x3, ' usually' x1. Probe: whole 0.540, almost 0.880, always 0.834, half 0.724, usually 0.510; synonyms entire 0.297 (peak elsewhere), nearly 0.348, often 0.341; tomato sauce 0.100. Synonym near misses fire about 0.3, so AUROC depends on that gap.",
+ "trigger": {
+  "tokens": [
+   " almost",
+   " always",
+   " half",
+   " whole",
+   " usually"
+  ]
+ }
+}

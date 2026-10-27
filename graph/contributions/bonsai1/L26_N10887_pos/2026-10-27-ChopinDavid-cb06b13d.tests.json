@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-cb06b13d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N10887+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T14:21:49+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N10887",
+   "pole": "+",
+   "label": "the piece 'ut' when it is its own token inside a split word (Exec|ut|ives, Min|ut|emen, EXEC|UT|ORS, Res|olut|eness), as against the same words written as single tokens",
+   "fire": [
+    "Several senior Executives resigned after the merger was announced.",
+    "Statues of the Minutemen stand on the green in Lexington.",
+    "The town's Minuteman Museum reopened after repairs.",
+    "Copies of the will were sent to both EXECUTORS by post.",
+    "Our Executives will present the annual report on Friday.",
+    "Reenactors dressed as Minutemen marched through the square.",
+    "The board thanked the outgoing Executives for their service.",
+    "The coach praised the team's Resoluteness in the final minutes."
+   ],
+   "quiet": [
+    "Several senior managers resigned after the merger was announced.",
+    "Statues of the soldiers stand on the green in Lexington.",
+    "The town's history museum reopened after repairs.",
+    "Copies of the will were sent to both lawyers by post.",
+    "Our Executive will present the annual report on Friday.",
+    "Reenactors dressed as redcoats marched through the square.",
+    "The board thanked the outgoing Institute for its service.",
+    "The coach praised the team's courage in the final minutes."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-1.0 on 'ut'/'UT' in Executives, Minutemen, Executors; single-token Executive, Minute, Institute below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'ut' piece in split words",
+ "unit_kind": "word",
+ "confidence": 0.65,
+ "notes": "Card: 'ut' x18, 'UT' x5, 'olut' x2 of the top 32 peaks (Minuteman, Executives, EXECUTORS). Tokenizer: ' Executives' -> Exec|ut|ives, ' Minutemen' -> Min|ut|emen, but ' Executive', ' Minute', ' Constitution', ' Institute' are single tokens. Probe: Executives 0.703, Minutemen 0.909, Minuteman 0.963, EXECUTORS 0.671, Resoluteness 0.598; ' Executive' 0.033, ' Minute' 0.064, managers 0.001.",
+ "trigger": {
+  "pieces": [
+   "ut",
+   "UT"
+  ]
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-7c9f73dd",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N10105+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T14:21:49+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L6/N10105",
+   "pole": "+",
+   "label": "a second dollar marker attached to an amount already marked as dollars ('$250 dollars', '$7-$15', 'dollar-for-dollar'), as against amounts marked only once",
+   "fire": [
+    "My cousin earns $400 dollars a week at the garage.",
+    "Entry is $5-$10 depending on age.",
+    "Her employer matches pension savings dollar-for-dollar.",
+    "The landlord wants $900 dollars for the small flat.",
+    "Parking costs $3-$6 an hour downtown.",
+    "He sold the old bike for $60 dollars at the fair.",
+    "Most bottles on the menu run $20-$45.",
+    "The city will match donations dollar-for-dollar until June."
+   ],
+   "quiet": [
+    "My cousin earns 400 euros a week at the garage.",
+    "Entry is $5 for children and more for adults.",
+    "Her employer adds a small bonus to pension savings.",
+    "The landlord wants $900 a month for the small flat.",
+    "Parking costs three to six pounds an hour downtown.",
+    "He sold the old bike for sixty dollars at the fair.",
+    "Most bottles on the menu cost under $45.",
+    "The city will add to donations until June."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.9 on the repeated 'dollars'/'-$'/'-dollar'; singly marked amounts and other currencies below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "redundant dollar marker",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: peaks '$' x5, '-$' x5, ' dollars' x4, '-dollar' x2 at a repeated dollar marker ($250 dollars, $7-$15, dollar-for-dollar). Probe: '$250 dollars' 0.953, '$7-$15' 0.719, 'dollar-for-dollar' 0.700; 'between $1500 and $2000' 0.020, '250 euros' 0.221, 'two million dollars' 0.101, shell '$USER' 0.033. A single marker barely fires."
+}

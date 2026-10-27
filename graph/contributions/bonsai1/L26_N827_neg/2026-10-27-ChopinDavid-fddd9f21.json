@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-fddd9f21",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N827-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T14:29:20+00:00",
+ "recipe": {
+  "toolchain_commit": "8e5bdba3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L26_N827_neg/2026-10-27-ChopinDavid-fddd9f21.tests.json"
+ },
+ "label": "word-internal pieces of long derived Russian words (participles and abstract nouns such as протестующие, разногласий, выступающие), as against the same content in English",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L26_N827_neg/2026-10-27-ChopinDavid-fddd9f21.tests.json",
+   "prereg_commit": "8e5bdba3",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.542,
+     "peak": "ест"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.709,
+     "peak": "лас"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.662,
+     "peak": "ступ"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.709,
+     "peak": "ет"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.495,
+     "peak": "лен"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.488,
+     "peak": "ост"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.427,
+     "peak": "числен"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.379,
+     "peak": "ств"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.11,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.058,
+     "peak": "reements"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.097,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.051,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.05,
+     "peak": " audience"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.056,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.069,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.002,
+     "peak": " teams"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.518,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "8e5bdba3",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "inside long Russian words",
+ "unit_kind": "word",
+ "confidence": 0.35,
+ "notes": "Card: peaks on mid-word Cyrillic pieces ('ост', 'ет', 'лас', 'ест', 'ступ') in Russian news, with some Korean and Japanese. Probe: Протестующие 0.536, Посетив 0.710, злостно 0.752, разногласий 0.885, Выступающие 0.660, Изумленный 0.515; short Russian words 'купили хлеб' 0.258, 'солнечно' 0.305; English 'The protesters left' 0.033. Short Russian sentences fire about 0.3, so near misses are English translations of the same fire content; this tests Cyrillic subwords, not the derivation.",
+ "selection": "random draw"
+}
