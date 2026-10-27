@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-0482f1c9",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N12173+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T03:26:37+00:00",
+ "recipe": {
+  "toolchain_commit": "c41c9893",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L3_N12173_pos/2026-10-26-ChopinDavid-0482f1c9.tests.json"
+ },
+ "label": "a row of '=' or '-' characters that underlines a title line in a docstring, README or comment banner (a section-heading rule), as against the same title text with no rule",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L3_N12173_pos/2026-10-26-ChopinDavid-0482f1c9.tests.json",
+   "prereg_commit": "c41c9893",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.64,
+     "peak": "================"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.508,
+     "peak": "---------------"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.475,
+     "peak": " ----------------"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.553,
+     "peak": "================"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.584,
+     "peak": "================"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.47,
+     "peak": " ------------------------------------------------"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.492,
+     "peak": "---------------"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.552,
+     "peak": "================"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.009,
+     "peak": " subnet"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.002,
+     "peak": "tool"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.007,
+     "peak": "\n"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.004,
+     "peak": ".py"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.004,
+     "peak": ".\n"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.008,
+     "peak": "#!/"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.004,
+     "peak": ".\n"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.004,
+     "peak": ".\n"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.53,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "c41c9893",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "heading underline rule",
+ "unit_kind": "token",
+ "confidence": 0.7,
+ "notes": "Card: '================' and ' ----------------' under titles in Python docstrings and comment banners. Probe: docstring title + '================' 0.621, RST 'Usage Examples' + '---------------' 0.485, '# ----------------' banner 0.433, prose 'Chapter One' + '====' 0.490; the same docstring without the rule 0.013, code comment 0.003, '3 - 2' 0.003, '==' operator -0.000.",
+ "selection": "random draw"
+}
