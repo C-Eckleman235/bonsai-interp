@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-27-moridinamael-aa263858",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N2937+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T20:07:17+00:00",
+ "selection": "step-in from bonsai1/L15/N6373+",
+ "roles": ["candidate reader of bonsai1/L15/N6373+ (unmeasured: play step --down ran out of GPU memory)"],
+ "notes": "Cold label from own top examples and probes. play step --down OOM'd, so the reader was picked by co-firing on a key/base64 string via play which, not by ablation drop. Solver (globalMOO) found a leak: the piece 'va' in the rare name 'Irva' fired 0.53 with no code in the text, so the label was widened to rare split-up names.",
+ "neighbours": [
+  {
+   "unit": "L25/N2937",
+   "pole": "+",
+   "label": "a middle fragment inside a long unpredictable string split into small pieces: DOI hex suffixes, base64 blobs, long digit runs, rare split-up names",
+   "fire": [
+    "The article is available at doi:10.1016/j.cell.2019.08.4f7a9c2e3b1d and was cited twice last year.",
+    "Paste this token into the config: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ZjJxN3ZrIn0.",
+    "The image was embedded as data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAB in the email.",
+    "His account number is 004827193650281746 and the routing code follows it.",
+    "The commit hash a9f3e71c2b84d06f5e1a7c39b2d8 broke the build on Tuesday.",
+    "The town of Llanfairpwllgwyngyllgogerychwyrndrobwll is famous for its long name.",
+    "Pi begins 3.14159265358979323846264338327950288 and continues forever.",
+    "The tracking number 1Z84X7R20391846625 shows the package left the depot."
+   ],
+   "quiet": [
+    "The article was published in Cell in 2019 and was cited twice last year.",
+    "Paste your login token into the config file before running the app.",
+    "The image was embedded directly in the email as an attachment.",
+    "His account number is printed on the back of the bank card.",
+    "The latest commit broke the build on Tuesday.",
+    "The small Welsh town is famous for its long name.",
+    "Pi begins with three point one four and continues forever.",
+    "The tracking page shows the package left the depot this morning."
+   ]
+  }
+ ],
+ "predictions": "expect around 5/8 fire; commit hashes and tracking numbers may be weak, base64 and DOI strongest",
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "look",
+   "probe",
+   "which",
+   "inverse-gmoo",
+   "bank-solo"
+  ]
+ }
+}

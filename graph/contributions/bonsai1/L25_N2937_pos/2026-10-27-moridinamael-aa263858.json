@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-27-moridinamael-aa263858",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N2937+",
+ "contributor": "moridinamael",
+ "created": "2026-10-27T20:07:55+00:00",
+ "recipe": {
+  "toolchain_commit": "808fcc41",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N2937_pos/2026-10-27-moridinamael-aa263858.tests.json"
+ },
+ "label": "a middle fragment inside a long unpredictable string split into small pieces: DOI hex suffixes, base64 blobs, long digit runs, rare split-up names",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N2937_pos/2026-10-27-moridinamael-aa263858.tests.json",
+   "prereg_commit": "808fcc41",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.013,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 1.413,
+     "peak": "kp"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.491,
+     "peak": "go"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.038,
+     "peak": "His"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.028,
+     "peak": " hash"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.125,
+     "peak": "ng"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.498,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.024,
+     "peak": " left"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.023,
+     "peak": " cited"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.06,
+     "peak": " your"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.029,
+     "peak": " directly"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.034,
+     "peak": "His"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.019,
+     "peak": " commit"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.029,
+     "peak": " name"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.012,
+     "peak": " continues"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.018,
+     "peak": " left"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.75,
+    "median_fire": 0.082,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "inverse-gmoo",
+   "look",
+   "probe",
+   "quick-test",
+   "which"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "808fcc41",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "notes": "Cold label from own top examples and probes. play step --down OOM'd, so the reader was picked by co-firing on a key/base64 string via play which, not by ablation drop. Solver (globalMOO) found a leak: the piece 'va' in the rare name 'Irva' fired 0.53 with no code in the text, so the label was widened to rare split-up names.",
+ "edges": [
+  {"from": "bonsai1/L15/N6373+", "to": "bonsai1/L25/N2937+", "kind": "feeds", "weight": null, "method": "unmeasured: single-unit zero ablation (play step --down) ran out of GPU memory; reader chosen by co-firing on a base64/key string (play which)"}
+ ],
+ "roles": [
+  "candidate reader of bonsai1/L15/N6373+ (unmeasured: play step --down ran out of GPU memory)"
+ ],
+ "selection": "step-in from bonsai1/L15/N6373+"
+}
