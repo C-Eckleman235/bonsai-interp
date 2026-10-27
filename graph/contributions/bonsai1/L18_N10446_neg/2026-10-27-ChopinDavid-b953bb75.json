@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-b953bb75",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N10446-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T17:29:19+00:00",
+ "recipe": {
+  "toolchain_commit": "33719a0b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L18_N10446_neg/2026-10-27-ChopinDavid-b953bb75.tests.json"
+ },
+ "label": "the '_id'-style suffix of a key argument in a self.method call that passes an id and its value (dropdown_id, dropdown_val); calls without the id argument are silent",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L18_N10446_neg/2026-10-27-ChopinDavid-b953bb75.tests.json",
+   "prereg_commit": "33719a0b",
+   "author": "ChopinDavid",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.092,
+     "peak": " menu"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.103,
+     "peak": "_id"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.168,
+     "peak": "_id"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.088,
+     "peak": "_id"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.211,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.027,
+     "peak": "_id"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.033,
+     "peak": "_option"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.294,
+     "peak": "_id"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.037,
+     "peak": "_label"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.063,
+     "peak": "(row"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.041,
+     "peak": ")"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.016,
+     "peak": " self"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.127,
+     "peak": "(field"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.016,
+     "peak": " self"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.013,
+     "peak": "_option"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.164,
+     "peak": "(s"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.75,
+    "median_fire": 0.098,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "33719a0b",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "id argument in a self.method call",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card: tiny max 22, scattered peaks ('_id', ' one', '_col', ' p', ' their'). Probe: self._change_dropdown_option(dropdown_id, ...) 0.430, tree.set(iid, currency_name_col) 0.134, 'In each one' 0.235, 'then their colors' 0.181; get_user(user_id) 0.010, compute(x, y) 0.017. Best guess on one strong example.",
+ "selection": "random draw"
+}

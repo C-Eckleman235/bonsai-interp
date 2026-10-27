@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-ef21ff2e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N6338-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T17:19:59+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L32/N6338",
+   "pole": "-",
+   "label": "the token just before a bare letter 's' in technical notation, as a predictor of that 's': the digit before an orbital 's' (4s, 3s), the '7' of the Springer DOI prefix 10.1007/s, and the width digit of a '%17s' format; other DOI prefixes, prose and other formats are silent",
+   "fire": [
+    "Fresenius J Anal Chem. 1999;364:12-18. doi:10.1007/s002160051291",
+    "See Plant Cell Rep (2015) 34:1-9, https://doi.org/10.1007/s00299-014-1700-3.",
+    "Sodium has the configuration 1s2 2s2 2p6 3s1.",
+    "After the 3d level fills, the next electrons go into the 4s orbital.",
+    "        print('%-12s %8.2f' % (name, total))",
+    "Calcium: 1s2 2s2 2p6 3s2 3p6 4s2.",
+    "    line = '%20s | %s' % (key, value)",
+    "Neurol Sci. 2010;31:5-10. https://doi.org/10.1007/s10072-009-0200-9"
+   ],
+   "quiet": [
+    "Anal Chem. 1999;71:12-18. doi:10.1021/ac9900012",
+    "See Plant Physiol (2015) 167:1-9, https://doi.org/10.1104/pp.114.250001.",
+    "Sodium has an atomic number of 11 and a mass of 23.",
+    "After the third step, the solution is heated and then cooled slowly.",
+    "        print(name.ljust(12), round(total, 2))",
+    "Calcium has 20 protons, 20 electrons and 20 neutrons.",
+    "    line = key + ' | ' + value",
+    "Neurology. 2010;74:5-10. https://doi.org/10.1212/WNL.0b013e3181c7da4"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on the token before 's' in orbitals, 10.1007/s DOIs and %Ns formats; other DOIs, plain numbers and string concatenation below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predicts a bare 's' in notation",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: peaks on ' %', '7', '\">%', '4' before 's'; + side suppresses 's' tokens. Probe: orbital '4' 0.812, DOI 10.1007/s '7' 0.709, '%17s' '7' 0.602, '%s' 0.204; DOI 10.1016/j 0.048, prose '7 %' 0.001, '%d ... %5.3f' leaked 0.285 at '5' (so near misses avoid numeric formats)."
+}

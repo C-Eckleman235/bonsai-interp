@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-7a9832eb",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N9640-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T17:30:10+00:00",
+ "recipe": {
+  "toolchain_commit": "33719a0b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L22_N9640_neg/2026-10-27-ChopinDavid-7a9832eb.tests.json"
+ },
+ "label": "a person's name in non-Latin-script text, strongest after a title or role (Arabic الدكتور سمير البدوي, Korean 대표자 송상현, Japanese author names), as against the same sentences with the title or role but no name",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N9640_neg/2026-10-27-ChopinDavid-7a9832eb.tests.json",
+   "prereg_commit": "33719a0b",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.7,
+     "peak": " الع"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.642,
+     "peak": " أحمد"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.581,
+     "peak": " محمود"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.611,
+     "peak": " ح"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.839,
+     "peak": " 김"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.587,
+     "peak": "田"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.61,
+     "peak": " الق"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.52,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.131,
+     "peak": "اذ"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.054,
+     "peak": "بيب"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.331,
+     "peak": " الح"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.163,
+     "peak": "صر"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.095,
+     "peak": "회사"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.145,
+     "peak": " �"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.099,
+     "peak": " م"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.11,
+     "peak": "편"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.611,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "33719a0b",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "personal name in non-Latin text",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: peaks on Arabic name tokens (' محمد', ' ال', 'اهر'), Korean and Japanese names after roles. Probe: المهندس محمد 0.695, الدكتور سمير البدوي 0.909, الشيخ محمد علي الأكوع 0.600, Korean 대표자 송상현 0.881, Japanese 藤谷順子 0.414; title without name 0.172, plain Arabic 0.041, English 'Engineer Mohammed Ahmed' 0.092.",
+ "selection": "random draw"
+}

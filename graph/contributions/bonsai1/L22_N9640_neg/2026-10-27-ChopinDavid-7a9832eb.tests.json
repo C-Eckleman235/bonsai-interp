@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-7a9832eb",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N9640-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T17:19:59+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N9640",
+   "pole": "-",
+   "label": "a person's name in non-Latin-script text, strongest after a title or role (Arabic الدكتور سمير البدوي, Korean 대표자 송상현, Japanese author names), as against the same sentences with the title or role but no name",
+   "fire": [
+    "وقال الأستاذ خالد العتيبي إن النتائج كانت مشجعة.",
+    "أكد الدكتور أحمد الشريف أن العلاج آمن.",
+    "حضر الحفل الشاعر محمود درويش وعدد من الأدباء.",
+    "صرح المهندس علي حسن بأن الجسر سيفتتح الشهر المقبل.",
+    "회사명 한빛상사 | 대표자 김민수 | 사업자등록번호",
+    "著者 山田花子 出版社 講談社",
+    "وكتب الصحفي يوسف القعيد مقالا عن الرواية.",
+    "편집 이지은 | 사진 박준호"
+   ],
+   "quiet": [
+    "وقال الأستاذ إن النتائج كانت مشجعة جدا.",
+    "أكد الطبيب المختص أن العلاج آمن.",
+    "حضر الحفل عدد كبير من الأدباء والشعراء.",
+    "صرح المهندس المسؤول بأن الجسر سيفتتح الشهر المقبل.",
+    "회사 소개 | 사업 분야 | 고객 센터",
+    "著者紹介 出版社 講談社",
+    "وكتب الصحفي مقالا طويلا عن الرواية.",
+    "편집 안내 | 사진 자료"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on name tokens; title-only and nameless versions below 0.2; English names stay low",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "personal name in non-Latin text",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: peaks on Arabic name tokens (' محمد', ' ال', 'اهر'), Korean and Japanese names after roles. Probe: المهندس محمد 0.695, الدكتور سمير البدوي 0.909, الشيخ محمد علي الأكوع 0.600, Korean 대표자 송상현 0.881, Japanese 藤谷順子 0.414; title without name 0.172, plain Arabic 0.041, English 'Engineer Mohammed Ahmed' 0.092."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-b953bb75",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N10446-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T17:19:59+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N10446",
+   "pole": "-",
+   "label": "the '_id'-style suffix of a key argument in a self.method call that passes an id and its value (dropdown_id, dropdown_val); calls without the id argument are silent",
+   "fire": [
+    "        self._select_menu_item(menu_id, menu_label)",
+    "        self._update_row(row_id, row_values)",
+    "        self._set_widget_state(widget_id, enabled)",
+    "        self._toggle_checkbox(checkbox_id, checkbox_val)",
+    "        self._fill_field(field_id, field_value)",
+    "        self._open_tab(tab_id, tab_title)",
+    "        self._remove_option(option_id, option_val)",
+    "        self._change_slider_value(slider_id, slider_val)"
+   ],
+   "quiet": [
+    "        self._select_menu_item(menu_label)",
+    "        self._update_row(row_values)",
+    "        self._set_widget_state(enabled)",
+    "        self._toggle_checkbox(checked)",
+    "        self._fill_field(field_value)",
+    "        self._open_tab(tab_title)",
+    "        self._remove_option(option_val)",
+    "        self._change_slider_value(slider_val)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.4 on '_id' in self._x(thing_id, thing_val); calls without an id argument below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "id argument in a self.method call",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card: tiny max 22, scattered peaks ('_id', ' one', '_col', ' p', ' their'). Probe: self._change_dropdown_option(dropdown_id, ...) 0.430, tree.set(iid, currency_name_col) 0.134, 'In each one' 0.235, 'then their colors' 0.181; get_user(user_id) 0.010, compute(x, y) 0.017. Best guess on one strong example."
+}

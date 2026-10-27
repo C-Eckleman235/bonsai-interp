@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-73cb08f0",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N5558-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T17:19:59+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N5558",
+   "pole": "-",
+   "label": "a bare word-initial ' r' / ' R' / ' Er' piece when the tokenizer splits an r-initial word (' r'|ique|za, ' Er'|asmus, ' R'|orsch|ach), as against r-initial words that are a single token (rich, rabbit, rice) or split after a longer piece (' rav'|ine)",
+   "fire": [
+    "Los informes hablan de las riquezas minerales escondidas bajo la sierra.",
+    "El profesor colgó la rúbrica de evaluación junto a la pizarra del aula.",
+    "The crowd listened in rapture as the choir began to sing.",
+    "For dinner we ordered a plate of ravioli with butter and sage.",
+    "The therapist handed the patient a Rorschach card and waited.",
+    "Scholars still read the letters of Erasmus to understand the Reformation.",
+    "In 1911 the physicist Ernest Rutherford proposed a new model of the atom.",
+    "Many old houses near Rittenhouse Square have been turned into flats."
+   ],
+   "quiet": [
+    "Los informes hablan de las reservas minerales escondidas bajo la sierra.",
+    "El profesor colgó la tabla de evaluación junto a la pizarra del aula.",
+    "The crowd listened in silence as the choir began to sing.",
+    "For dinner we ordered a plate of rice with butter and sage.",
+    "The therapist handed the patient a blank card and waited.",
+    "Scholars still read the letters of Luther to understand the Reformation.",
+    "In 1911 the physicist Niels Bohr was still a student in Copenhagen.",
+    "Many old houses near Washington Square have been turned into flats."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on the bare ' r'/' R'/' Er' piece; single-token r-words and other names below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-off word-initial 'r' piece",
+ "unit_kind": "word",
+ "confidence": 0.55,
+ "notes": "Card: ' r', 'ار', ' ر', ' Er', ' R' dominate the top 32 (Arabic and Latin). Probe: ' r'|iqueza 0.577, ' Er'|adication 0.349, Arabic f|ار|جع 0.165 and ورحمة 0.053 (Arabic weaker); single-token rich/rabbit/raise 0.002-0.005, ' rav'|ine 0.005. Test uses Latin-script items only."
+}
