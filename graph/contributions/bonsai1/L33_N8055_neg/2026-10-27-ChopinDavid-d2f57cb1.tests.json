@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-d2f57cb1",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N8055-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T13:19:56+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N8055",
+   "pole": "-",
+   "label": "text inside a Python string literal that is split across lines by implicit concatenation (a wrapped SQL query or message), as against the same functions written without the string",
+   "fire": [
+    "def fetch(cur, oid):\n    sql = (\"SELECT id, total, status, \"\n           \"created FROM orders WHERE id = %s\")\n    cur.execute(sql, (oid,))",
+    "def purge(cur):\n    sql = (\"DELETE FROM sessions WHERE expired = 1 \"\n           \"AND user_id IS NULL\")\n    cur.execute(sql)",
+    "def report(cur):\n    sql = (\"SELECT city, COUNT(*) FROM shops \"\n           \"GROUP BY city ORDER BY 2 DESC\")\n    return cur.execute(sql).fetchall()",
+    "def rename(cur, new, old):\n    sql = (\"UPDATE teams SET name = %s \"\n           \"WHERE name = %s AND active = 1\")\n    cur.execute(sql, (new, old))",
+    "def validate(rows):\n    if not rows:\n        raise RuntimeError(\"the table that you \"\n                           \"selected contains no rows\")",
+    "def label(self):\n    s = \"depth=\" + str(self.depth) + \"cm, \"\n    s += \"weight=\" + str(self.weight) + \"kg\"\n    return s",
+    "def count(cur):\n    sql = (\"SELECT COUNT(*) FROM visits \"\n           \"WHERE day >= %s AND day < %s\")\n    return sql",
+    "def warn(path):\n    log.warning(\"could not open the file at %s, \"\n                \"falling back to defaults\", path)"
+   ],
+   "quiet": [
+    "def fetch(cur, oid):\n    row = cur.get(oid)\n    total = row.total + row.tax\n    return total",
+    "def purge(cur):\n    for s in cur.sessions:\n        if s.expired and s.user_id is None:\n            s.delete()",
+    "def report(cur):\n    counts = collections.Counter(s.city for s in cur.shops)\n    return counts.most_common()",
+    "def rename(cur, new, old):\n    for team in cur.teams:\n        if team.name == old and team.active:\n            team.name = new",
+    "def validate(rows):\n    if not rows:\n        raise RuntimeError()\n    return len(rows)",
+    "def label(self):\n    d = self.depth * 100\n    w = self.weight / 1000\n    return d, w",
+    "def count(cur):\n    days = [v.day for v in cur.visits]\n    return len(days)",
+    "def warn(path):\n    if not os.path.exists(path):\n        return None\n    return open(path)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.3 inside split SQL/message strings; the same code without string literals below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "inside a wrapped string literal",
+ "unit_kind": "context",
+ "confidence": 0.2,
+ "notes": "Card: peaks are the last token before a closing '\"' on a line of a string that continues on the next line (SQL fragments, error messages). Probe was weak: split SELECT 0.239, split UPDATE 0.195, 'm, ' concatenation 0.208, split ValueError message 0.109, unsplit message 0.051, code without strings 0.012, prose 0.006. Expect a median near the 0.20 bar; written as the best guess."
+}

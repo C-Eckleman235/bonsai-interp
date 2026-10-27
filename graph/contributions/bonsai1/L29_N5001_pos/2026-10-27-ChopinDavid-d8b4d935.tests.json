@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-d8b4d935",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N5001+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T13:19:56+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N5001",
+   "pole": "+",
+   "label": "the last piece of a famous person's name that is conventionally followed by 'Jr.' (King, Downey, Ripken), predicting the generational suffix, as against famous names that take no suffix",
+   "fire": [
+    "The 1996 football film starred Cuba Gooding Jr. as a proud receiver.",
+    "Many racing fans cheered when Dale Earnhardt Jr. took the lead.",
+    "As a young outfielder, Ken Griffey Jr. hit fifty-six home runs.",
+    "The jazz album was recorded by Harry Connick Jr. in New Orleans.",
+    "The Rat Pack shows in Las Vegas featured Sammy Davis Jr. on stage.",
+    "Our history class read the letters of Martin Luther King Jr. aloud.",
+    "The officer in that film was played by Louis Gossett Jr. in 1982.",
+    "Before Sherlock Holmes, critics doubted Robert Downey Jr. could lead."
+   ],
+   "quiet": [
+    "The 1996 football film starred Tom Cruise as a proud sports agent.",
+    "Many racing fans cheered when Jeff Gordon took the lead.",
+    "As a young outfielder, Mickey Mantle hit fifty-two home runs.",
+    "The jazz album was recorded by Louis Armstrong in New Orleans.",
+    "The Rat Pack shows in Las Vegas featured Dean Martin on stage.",
+    "Our history class read the letters of Abraham Lincoln aloud.",
+    "The officer in that film was played by Richard Gere in 1982.",
+    "Before Sherlock Holmes, critics doubted Benedict Cumberbatch could lead."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on the last piece of Gooding, Earnhardt, Griffey, Connick, Davis (Sammy); famous suffix-less names below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "name that takes 'Jr.' next",
+ "unit_kind": "context",
+ "confidence": 0.65,
+ "notes": "Card: peaks on the last name piece right before Jr./Sr./Junior (Down|ey, Mum|y, Har|rell, ' King'); promotes ' Jr', ' Sr', ' Junior'. Probe: 'Martin Luther King Jr.' 0.567, 'Robert Downey Jr.' 0.818, 'Cal Ripken Jr.' 0.660; 'Martin Luther' 0.001, 'Robert De Niro' 0.052, 'Stephen King' 0.037, 'Walter Holt Senior' 0.229. Next-token predictor: the fire is on the name before the suffix."
+}

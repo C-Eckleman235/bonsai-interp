@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-dce6c273",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N4091-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T13:19:56+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N4091",
+   "pole": "-",
+   "label": "the split-off Spanish prefix ' des-' at the start of a word whose stem follows as separate pieces (des|acuerdo, des|orden), as against Spanish sentences with plain unprefixed words",
+   "fire": [
+    "El informe muestra un fuerte desacuerdo entre los dos partidos.",
+    "Tras la fiesta, la casa quedó en completo desorden.",
+    "Según el gobierno, el desempleo bajó en el último trimestre.",
+    "Los vecinos expresaron su descontento con las obras.",
+    "En esa región, la desigualdad sigue siendo muy alta.",
+    "Muchos aficionados se sintieron desanimados tras la derrota.",
+    "La policía investiga por qué los documentos pudieron desaparecer.",
+    "La nueva ley tiene ventajas y también algunas desventajas claras."
+   ],
+   "quiet": [
+    "El informe muestra un fuerte acuerdo entre los dos partidos.",
+    "Tras la fiesta, la casa quedó limpia y ordenada.",
+    "Según el gobierno, el empleo subió en el último trimestre.",
+    "Los vecinos expresaron su alegría con las obras.",
+    "En esa región, la pobreza sigue siendo muy alta.",
+    "Muchos aficionados se sintieron tristes tras la derrota.",
+    "La policía investiga por qué los documentos fueron robados.",
+    "La nueva ley tiene ventajas y también algunos problemas claros."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on ' des' in desacuerdo, desorden, desempleo; the same sentences with unprefixed words below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split prefix 'des-' (Spanish)",
+ "unit_kind": "word",
+ "confidence": 0.55,
+ "notes": "Card: peaks are word-initial prefix pieces: ' des' (desventajas, desconfianzas), '-dis', ' RE', ' 예', ' مست'. Probe: Spanish ' des' 0.836, 'now-discontinued' 0.583, Korean ' 예' 0.281, uppercase 'FEW/RECENT' 0.335, lowercase English 'reconsider' 0.013 and 'review' 0.017. The cleanest case is Spanish des-; tokenizer checked that each fire word splits as ' des' + stem."
+}

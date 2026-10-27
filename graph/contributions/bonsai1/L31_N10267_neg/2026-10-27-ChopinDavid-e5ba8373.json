@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-e5ba8373",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N10267-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T13:29:38+00:00",
+ "recipe": {
+  "toolchain_commit": "110c5c0e",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L31_N10267_neg/2026-10-27-ChopinDavid-e5ba8373.tests.json"
+ },
+ "label": "a word-internal piece of an unusual foreign surname split into several tokens (C|eb|al|los, Bah|dan|au), as against common names that are single tokens",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L31_N10267_neg/2026-10-27-ChopinDavid-e5ba8373.tests.json",
+   "prereg_commit": "110c5c0e",
+   "author": "ChopinDavid",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.008,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.015,
+     "peak": "ep"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.498,
+     "peak": "eb"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.003,
+     "peak": " Gdańsk"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.08,
+     "peak": " Bah"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.011,
+     "peak": " on"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.022,
+     "peak": "zy"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.053,
+     "peak": " Aub"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.008,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.002,
+     "peak": " Brown"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.003,
+     "peak": " contract"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": " Taylor"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.018,
+     "peak": " Johnson"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.013,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.005,
+     "peak": " after"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.001,
+     "peak": " in"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.844,
+    "median_fire": 0.018,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "110c5c0e",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "piece inside a rare surname",
+ "unit_kind": "unclear",
+ "confidence": 0.25,
+ "notes": "Card: no single token; peaks '.B' in seq2seq.BahdanauAttention, 'eb' in Dani Ceballos, ' and' in 'identify and understand', '7' in GT75, ' face'. Probe: 'Dani Ceballos' 0.662 on 'eb', '.BahdanauAttention' 0.538, 'tails ... to swim' 0.490 on ' to'; 'identify and understand' 0.135, 'Psychologist' 0.170, 'GT75' 0.070. Surname pieces were the most repeatable; low confidence.",
+ "selection": "random draw"
+}

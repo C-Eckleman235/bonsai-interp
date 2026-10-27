@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-605d1da3",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N7993-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T13:28:35+00:00",
+ "recipe": {
+  "toolchain_commit": "110c5c0e",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L24_N7993_neg/2026-10-27-ChopinDavid-605d1da3.tests.json"
+ },
+ "label": "first-person words of love, guilt or forgiveness quoted in advice about grief and caregiving ('I love you', 'Did I cause this?'), as against quoted everyday first-person speech in the same advice",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L24_N7993_neg/2026-10-27-ChopinDavid-605d1da3.tests.json",
+   "prereg_commit": "110c5c0e",
+   "author": "ChopinDavid",
+   "n_fire": 3,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.096,
+     "peak": " love"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.472,
+     "peak": "Did"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.228,
+     "peak": " say"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.225,
+     "peak": " got"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.163,
+     "peak": "child"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.09,
+     "peak": " I"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.357,
+     "peak": " love"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.546,
+     "peak": " I"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.061,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.343,
+     "peak": " I"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.228,
+     "peak": " say"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.116,
+     "peak": "Is"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.114,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.081,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.146,
+     "peak": "I"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.282,
+     "peak": "I"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.68,
+    "median_fire": 0.227,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "110c5c0e",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "quoted 'I love you / my fault' words",
+ "unit_kind": "meaning",
+ "confidence": 0.35,
+ "notes": "Card: no single token; peaks inside quoted emotional speech in parenting and grief advice (\"I love you\", \"Did I cause the death\", 'You seem really mad'). Probe: \"'I love you' and 'I forgive you'\" 0.711, \"'Did I cause this to happen?'\" 0.588; 'You seem really sad' 0.169, 'because you were angry' 0.154, customer 'Did you want the receipt' 0.039. The floor sentence reached 0.234, so near misses may fire weakly.",
+ "selection": "random draw"
+}

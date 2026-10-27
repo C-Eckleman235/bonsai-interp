@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-848c17c2",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N82+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T13:29:23+00:00",
+ "recipe": {
+  "toolchain_commit": "110c5c0e",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L2_N82_pos/2026-10-27-ChopinDavid-848c17c2.tests.json"
+ },
+ "label": "dense early unit; best guess: text-format words in code imports and prose (' unicode', ' markdown'), as against other words in the same frames",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L2_N82_pos/2026-10-27-ChopinDavid-848c17c2.tests.json",
+   "prereg_commit": "110c5c0e",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.631,
+     "peak": " unicode"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.551,
+     "peak": " unicode"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.52,
+     "peak": " markdown"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.36,
+     "peak": " markdown"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.28,
+     "peak": " unicode"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.474,
+     "peak": " markdown"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.319,
+     "peak": " unicode"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.387,
+     "peak": " markdown"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.265,
+     "peak": " division"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.209,
+     "peak": " lowercase"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.225,
+     "peak": " json"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.172,
+     "peak": " plain"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.114,
+     "peak": " mixed"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.194,
+     "peak": "from"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.124,
+     "peak": " font"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.062,
+     "peak": " and"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.43,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "110c5c0e",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "dense; 'unicode'/'markdown' guess",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Card: max 1.98, broad (9.8% of tokens reach 0.1 of max), echo regime 100%; peaks ' unicode' in 'import unicode_literals' (x13), ' southwestern', '-car', ' markdown'. Probe: 'import unicode_literals' 0.631, 'from markdown import markdown' 0.538, 'as unicode text' 0.404, 'southwestern' 0.444, 'Thanksgiving dinner' 0.385, floor 0.263. Near misses will likely fire; recorded as dense.",
+ "selection": "random draw"
+}

@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-aaa43ac6",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N1054+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T13:27:52+00:00",
+ "recipe": {
+  "toolchain_commit": "110c5c0e",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L23_N1054_pos/2026-10-27-ChopinDavid-aaa43ac6.tests.json"
+ },
+ "label": "the last character of a person's name introduced by '名叫' ('named') in Chinese, as against the same sentences that describe the person without a name",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L23_N1054_pos/2026-10-27-ChopinDavid-aaa43ac6.tests.json",
+   "prereg_commit": "110c5c0e",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.015,
+     "peak": "英"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.777,
+     "peak": "建国"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.79,
+     "peak": "华"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.848,
+     "peak": "红"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.881,
+     "peak": "明亮"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.668,
+     "peak": "志强"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.925,
+     "peak": "梅"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.865,
+     "peak": "斌"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.066,
+     "peak": "很大的"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.137,
+     "peak": "水"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.011,
+     "peak": "热情"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.0,
+     "peak": "位"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.026,
+     "peak": "中学"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.016,
+     "peak": "位"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.046,
+     "peak": "山区"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.241,
+     "peak": "退休"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.857,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "110c5c0e",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "end of a Chinese personal name",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: no single token; peaks include the last character of names (谢利华, 阿汉赫尔) and of fixed noun phrases (健康, 意义, 集团). Probe: '名叫王丽华' 1.169 on 华, '健康成长' 0.583; 意义 0.011, 集团 0.006, 知识产权 0.015, 卫生部 0.004, English 0.003. Only the name frame was reliable, so the test is about names.",
+ "selection": "random draw"
+}
