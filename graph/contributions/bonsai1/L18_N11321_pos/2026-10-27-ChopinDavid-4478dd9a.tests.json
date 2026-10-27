@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-4478dd9a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N11321+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T18:21:51+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N11321",
+   "pole": "+",
+   "label": "a later piece of an English word that the tokenizer splits (ro|sters, cal|ipers, inaccur|ately), as against whole-token words in the same sentence frame",
+   "fire": [
+    "The coach posted the new rosters on the gym door.",
+    "He tightened the clamp with a pair of pliers and stepped back.",
+    "The ship's navigator checked the sextants before dawn.",
+    "Workers lined the trench with tarpaulins against the rain.",
+    "The chef sharpened the cleavers before service began.",
+    "Our neighbours keep two parakeets in a cage by the window.",
+    "The dentist laid out the forceps on a tray.",
+    "Hikers rubbed salve on their blisters at the camp."
+   ],
+   "quiet": [
+    "The coach posted the new list on the gym door.",
+    "He tightened the clamp with his hands and stepped back.",
+    "The ship's navigator checked the maps before dawn.",
+    "Workers lined the trench with plastic against the rain.",
+    "The chef sharpened the knives before service began.",
+    "Our neighbours keep two birds in a cage by the window.",
+    "The dentist laid out the tools on a tray.",
+    "Hikers rubbed cream on their feet at the camp."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.4 on the trailing piece of a split word; whole-word near misses below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "inner piece of a split English word (guess)",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card: broad (2.6% of tokens reach 0.1 of max), no dominant token, top examples mix 'control', 'sters', 'ipers', code and Arabic. Probe: 'rosters' 0.416, 'calipers' 0.340, 'inaccurately' 0.230, 'prosecuting' 0.207, 'could control' 0.278 (at ' in'); plain sentences 0.06. This is a guess; the probe could not separate split words from content."
+}

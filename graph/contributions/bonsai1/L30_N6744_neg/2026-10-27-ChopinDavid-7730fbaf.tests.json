@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-7730fbaf",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N6744-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T18:21:51+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L30/N6744",
+   "pole": "-",
+   "label": "an inner fragment of an Arabic ت-prefixed (Form V/VI) imperfect verb that the tokenizer breaks into several pieces (يت|عد|ى, تت|ض|اع|ف), as against ت-verbs whose stem is one token (ي|تعاون, تت|راجع) and Form I verbs",
+   "fire": [
+    "قال الطبيب إن المريض يتعافى ببطء بعد العملية.",
+    "يرى الخبراء أن هذا القرار يتعارض مع القانون.",
+    "في فصل الصيف تتفاقم مشكلة نقص المياه في القرى.",
+    "مع مرور الوقت تتلاشى آثار الحريق في الغابة.",
+    "يقول السكان إن الدخان يتصاعد من المصنع كل ليلة.",
+    "في المدن الكبيرة تتسارع وتيرة الحياة بشكل واضح.",
+    "حين يغيب الدعم تتعثر المشاريع الصغيرة بسرعة.",
+    "كل عام تتعاظم قوة الشركة في السوق المحلية."
+   ],
+   "quiet": [
+    "قال الطبيب إن المريض يتناول الدواء بعد العملية.",
+    "يرى الخبراء أن هذا القرار يتعلق بالقانون.",
+    "في فصل الصيف تتطلب القرى كميات أكبر من المياه.",
+    "مع مرور الوقت تتراجع آثار الحريق في الغابة.",
+    "يقول السكان إن المصنع يعمل كل ليلة.",
+    "في المدن الكبيرة تتمثل الحياة في العمل الطويل.",
+    "حين يغيب الدعم يتعاون أصحاب المشاريع الصغيرة.",
+    "كل عام يتحمل العمال ضغطا أكبر في السوق المحلية."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.9 on the inner stem fragment; whole-stem ت-verbs and Form I verbs below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "inner piece of a split ت-verb",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: top examples are stem fragments after ي/يت/تت/تتض in Form V/VI verbs (يتعلموه, يتعدى, تتخلف, تتلاءم, تتضاعف). Probe: يتعدى (يت|عد|ى) 0.908, تتضاعف (تت|ض|اع|ف) 0.694; يتعلم (ي|تعلم) 0.092, يتغير (يت|غير) 0.038, Form I يكتب 0.021, يزيد 0.083. Tokenizer checked: fire verbs split into 3-4 pieces, near-miss verbs into 2."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-ded84b22",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L16/N10923-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T18:21:51+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L16/N10923",
+   "pole": "-",
+   "label": "the indentation token of a Python line that continues inside a loop right after an early 'return' (code after the return-guarded branch), as against dedenting to the function's final return or code with no early return",
+   "fire": [
+    "def count_down(n):\n    while n > 0:\n        if n == 5:\n            return n\n        n = n - 2\n    return -1",
+    "def seek(items, target):\n    i = 0\n    while i < len(items):\n        if items[i] == target:\n            return i\n        i = i + 1\n    return None",
+    "def scan(lines):\n    for line in lines:\n        if not line:\n            return False\n        total = total + len(line)\n    return True",
+    "def grow(s, limit):\n    while s < limit:\n        if s * s == limit:\n            return s\n        s = s * 2\n    return 0",
+    "def walk(node):\n    while node:\n        if node.done:\n            return node\n        node = node.next\n    return None",
+    "def check(xs):\n    for x in xs:\n        if x < 0:\n            return x\n        seen.append(x)\n    return 0",
+    "def poll(q, tries):\n    while tries > 0:\n        if q.ready():\n            return q.get()\n        tries = tries - 1\n    return None",
+    "def pick(pairs, key):\n    for k, v in pairs:\n        if k == key:\n            return v\n        last = k\n    return last"
+   ],
+   "quiet": [
+    "def count_down(n):\n    while n > 0:\n        n = n - 2\n    return -1",
+    "def seek(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return None",
+    "def scan(lines):\n    total = 0\n    for line in lines:\n        total = total + len(line)\n    return total",
+    "def grow(s, limit):\n    while s < limit:\n        s = s * 2\n    return s",
+    "def walk(node):\n    while node:\n        if node.done:\n            return node\n    return None",
+    "def check(xs):\n    for x in xs:\n        seen.append(x)\n    return seen",
+    "def poll(q, tries):\n    while tries > 0:\n        tries = tries - 1\n    return None",
+    "def pick(pairs, key):\n    result = dict(pairs)\n    value = result.get(key)\n    return value"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on the indentation of the statement after the 'return' line; dedent straight to the function body and plain code below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "indent after an early return in a loop",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: top 32 are whitespace tokens on the line after 'return ...' (e.g. 'return i / s = s * 2', 'return / tries = tries - 1'). Probe: while-loop with 'if n == 3: return n' then 'n = n - 1' 0.617; same with print instead of return 0.356 (at ' n'); return as last loop line then function-level 'return None' 0.023; break variant 0.030; plain code 0.023. Code items are multi-line."
+}
