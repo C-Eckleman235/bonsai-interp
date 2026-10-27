@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-cad00960",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N8908+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T06:20:16+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L19/N8908",
+   "pole": "+",
+   "label": "the ':\\n' that closes an `if` header deep inside nested Python code (inside a method or loop), opening the indented branch, as against the same nested code with the branch written as a plain statement",
+   "fire": [
+    "class Loader:\n    def read(self, paths):\n        out = []\n        for path in paths:\n            for line in open(path):\n                if line.startswith('#'):\n                    continue\n                out.append(line)\n        return out",
+    "def merge(a, b):\n    result = {}\n    for key in a:\n        if key in b:\n            for sub in a[key]:\n                if sub not in b[key]:\n                    b[key].append(sub)\n    return b",
+    "class Cache:\n    def get(self, key):\n        with self.lock:\n            if key in self.store:\n                entry = self.store[key]\n                if entry.expired():\n                    del self.store[key]\n                    return None\n                return entry.value",
+    "def scan(grid):\n    for i in range(len(grid)):\n        for j in range(len(grid[i])):\n            cell = grid[i][j]\n            if cell == 0:\n                grid[i][j] = -1\n    return grid",
+    "    def update(self, frame):\n        for sprite in self.sprites:\n            if sprite.visible:\n                sprite.move(frame)\n                if sprite.x > self.width:\n                    sprite.x = 0",
+    "def parse(tokens):\n    stack = []\n    for tok in tokens:\n        if tok == '(':\n            stack.append(tok)\n        elif tok == ')':\n            if not stack:\n                raise ValueError('unbalanced')\n            stack.pop()",
+    "class Server:\n    def handle(self, request):\n        try:\n            user = self.auth(request)\n            if user.banned:\n                return self.reject(request)\n        except KeyError:\n            return None",
+    "def clean(rows):\n    kept = []\n    for row in rows:\n        for field in row:\n            if field is None:\n                break\n        else:\n            kept.append(row)\n    return kept"
+   ],
+   "quiet": [
+    "class Loader:\n    def read(self, paths):\n        out = []\n        for path in paths:\n            for line in open(path):\n                out.append(line.strip())\n                count += 1\n        return out",
+    "def merge(a, b):\n    result = {}\n    for key in a:\n        result[key] = a[key] + b.get(key, [])\n        total = len(result)\n    return result",
+    "class Cache:\n    def get(self, key):\n        with self.lock:\n            entry = self.store.get(key)\n            self.hits += 1\n            return entry.value",
+    "def scan(grid):\n    for i in range(len(grid)):\n        for j in range(len(grid[i])):\n            grid[i][j] = grid[i][j] * 2\n            total += grid[i][j]\n    return grid",
+    "    def update(self, frame):\n        for sprite in self.sprites:\n            sprite.move(frame)\n            sprite.x = sprite.x % self.width\n            sprite.draw()",
+    "def parse(tokens):\n    stack = []\n    for tok in tokens:\n        stack.append(tok)\n        depth = len(stack)\n    return stack",
+    "class Server:\n    def handle(self, request):\n        user = self.auth(request)\n        self.log(user.name)\n        return self.respond(request)",
+    "def clean(rows):\n    kept = []\n    for row in rows:\n        kept.append([f.strip() for f in row])\n        n = len(kept)\n    return kept"
+   ]
+  }
+ ],
+ "predictions": "fire on the ':\\n' after a deeply indented `if ...` header in a longer code passage; the same code without the if header lower",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "':\\n' closing a nested Python if",
+ "unit_kind": "context",
+ "confidence": 0.2,
+ "notes": "Card: 22 of the top 32 peaks are ':\\n' after an `if` condition at 12-20 spaces of indentation. Probe was weak: short snippets with 4-8 space `if` headers scored 0.013-0.053 (best 'if item is None:' 0.053), else-branch 0.039, floor 0.007. Guess: needs deeper nesting and more preceding code, as in the card. Low confidence."
+}

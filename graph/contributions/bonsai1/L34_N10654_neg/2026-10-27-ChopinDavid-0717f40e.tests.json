@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-0717f40e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N10654-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T06:20:16+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N10654",
+   "pole": "-",
+   "label": "the punctuation that opens or closes a quoted string value in code and config (=' in XML attributes, \\\",\\n between items of a list of quoted strings), as against the same structures with unquoted values",
+   "fire": [
+    "paths = [\n\"/var/log/app.log\",\n\"/var/log/db.log\",\n\"/var/log/web.log\",\n]",
+    "<interface type='bridge'>\n  <source bridge='br0'/>\n  <model type='virtio'/>\n</interface>",
+    "hosts = [\n\"api.example.com\",\n\"cdn.example.com\",\n\"mail.example.com\",\n]",
+    "endpoints = [\n\"/login?next=home\",\n\"/logout?next=home\",\n]",
+    "<disk device='cdrom'>\n  <target dev='hdc'/>\n</disk>",
+    "names = [\n\"alice\",\n\"bob\",\n\"carol\",\n\"dave\",\n]",
+    "<graphics type='vnc' port='5900'/>\n<video model='qxl'/>",
+    "queries = [\n\"SELECT 1\",\n\"SELECT 2\",\n]"
+   ],
+   "quiet": [
+    "paths = [\n12,\n40,\n77,\n]",
+    "<interface type=bridge>\n  <mtu size=1500/>\n</interface>",
+    "hosts = [\n10,\n20,\n30,\n]",
+    "endpoints = [\nLOGIN,\nLOGOUT,\n]",
+    "<disk device=cdrom>\n  <boot order=1/>\n</disk>",
+    "names = [\nalice,\nbob,\ncarol,\ndave,\n]",
+    "<graphics port=5900/>\n<video heads=1/>",
+    "queries = [\nq1,\nq2,\n]"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.6 on \\\",\\n in multi-line lists of quoted strings and =' in XML attributes; the same with numbers or unquoted values below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "quote punctuation around string values in code",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: =', [', =\", \\\",\\n in config, XML and Python. Probe: multi-line list of quoted URLs (peak '\\\",\\n') 0.613, XML <source file='...'> 0.218; unquoted XML 0.034, config['timeout'] 0.033 (no separate [' token), append=\\\"console=...\\\" 0.054, prose with quotes 0.004. Fire items lean on multi-line quoted lists, which scored highest."
+}

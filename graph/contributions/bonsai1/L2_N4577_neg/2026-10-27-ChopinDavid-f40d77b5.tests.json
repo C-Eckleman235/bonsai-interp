@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-f40d77b5",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N4577-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T06:20:16+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L2/N4577",
+   "pole": "-",
+   "label": "dense early-layer unit (39.6% of tokens reach 0.1 of max) whose strongest peaks are '際' in Japanese '〜の際' and some specific nouns (' commas', ' Cabinet', ' careers'); best guess only",
+   "fire": [
+    "ご来店の際には、受付で番号札をお取りください。",
+    "Please put commas between the items in your shopping list.",
+    "The new Cabinet was sworn in at the palace on Monday.",
+    "Many graduates change careers at least twice before forty.",
+    "お支払いの際に、ポイントカードをご提示ください。",
+    "Les fans attendaient leurs idoles devant la salle de concert.",
+    "退出の際は、必ず電気を消してください。",
+    "The editor removed three commas from my first paragraph."
+   ],
+   "quiet": [
+    "ご来店の時には、受付で番号札をお取りください。",
+    "Please put dashes between the items in your shopping list.",
+    "The new mayor was sworn in at the town hall on Monday.",
+    "Many graduates change cities at least twice before forty.",
+    "お支払いの前に、ポイントカードをご提示ください。",
+    "Les fans attendaient leurs amis devant la salle de concert.",
+    "退出する時は、必ず電気を消してください。",
+    "The editor removed three words from my first paragraph."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-1.0 on '際' and the listed nouns; near misses with '時' or other nouns 0.2-0.4 (density makes leaks likely)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense; '際' and some nouns",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Card flags dense (39.6%) and gate-closed regime; max only 0.35. Probe: 'commas' 0.971, 'idoles' 0.917, '引渡しの際' 0.913, 'Cabinet' 0.764, 'careers' 0.678, '契約の際に' 0.482; but near-identical '時には' 0.367, 'spaces' 0.331, floor 0.180. An 8 + 8 test will likely fail on leaks."
+}

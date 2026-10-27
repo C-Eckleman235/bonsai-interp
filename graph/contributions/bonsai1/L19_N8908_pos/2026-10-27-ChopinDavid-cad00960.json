@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-cad00960",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N8908+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T06:27:39+00:00",
+ "recipe": {
+  "toolchain_commit": "e4f78a3d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L19_N8908_pos/2026-10-27-ChopinDavid-cad00960.tests.json"
+ },
+ "label": "the ':\\n' that closes an `if` header deep inside nested Python code (inside a method or loop), opening the indented branch, as against the same nested code with the branch written as a plain statement",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L19_N8908_pos/2026-10-27-ChopinDavid-cad00960.tests.json",
+   "prereg_commit": "e4f78a3d",
+   "author": "ChopinDavid",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.05,
+     "peak": "('#"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.484,
+     "peak": "]:\n"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.161,
+     "peak": "                   "
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.022,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.181,
+     "peak": ":\n"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.346,
+     "peak": ":\n"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.12,
+     "peak": ":\n"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.138,
+     "peak": ":\n"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.026,
+     "peak": " line"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.079,
+     "peak": " total"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.018,
+     "peak": ".hits"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.013,
+     "peak": "[i"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.016,
+     "peak": " self"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.02,
+     "peak": " depth"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.021,
+     "peak": " self"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.024,
+     "peak": " f"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.15,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "e4f78a3d",
+  "minutes": 0,
+  "batch_size": 16
+ },
+ "short": "':\\n' closing a nested Python if",
+ "unit_kind": "context",
+ "confidence": 0.2,
+ "notes": "Card: 22 of the top 32 peaks are ':\\n' after an `if` condition at 12-20 spaces of indentation. Probe was weak: short snippets with 4-8 space `if` headers scored 0.013-0.053 (best 'if item is None:' 0.053), else-branch 0.039, floor 0.007. Guess: needs deeper nesting and more preceding code, as in the card. Low confidence.",
+ "selection": "random draw"
+}
