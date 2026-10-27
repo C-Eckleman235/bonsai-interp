@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-8073e907",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N221+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-27T21:52:13+00:00",
+ "recipe": {
+  "toolchain_commit": "0c11d5b3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N221_pos/2026-10-27-C-Eckleman235-8073e907.tests.json"
+ },
+ "label": "Detects token-exposed ana-/Ana- word beginnings.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N221_pos/2026-10-27-C-Eckleman235-8073e907.tests.json",
+   "prereg_commit": "0c11d5b3",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.7,
+     "peak": " analytical"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.367,
+     "peak": " analys"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 1.103,
+     "peak": " Anal"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.839,
+     "peak": " anal"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 1.043,
+     "peak": "ab"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.94,
+     "peak": "ab"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.685,
+     "peak": " Anast"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.622,
+     "peak": " Ана"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.23,
+     "peak": " analysis"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.171,
+     "peak": " analyses"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.002,
+     "peak": " recording"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.005,
+     "peak": "al"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.002,
+     "peak": " with"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.001,
+     "peak": " letters"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.011,
+     "peak": " Anton"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.082,
+     "peak": "на"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.769,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort xhigh)",
+  "screens": [
+   "card",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "0c11d5b3",
+  "minutes": 7,
+  "batch_size": 48,
+  "dtype": "float16"
+ },
+ "unit_kind": "lexical",
+ "notes": "Codex pilot round 3 (concept-maps/codex-pilot/ROUND3.md, sha256 47a45a0fe1132ca280db661e86b5a194a0093f77d5b839517e4a9c86032f5128): round 2's setup (full card, verbatim survey guidance) with reasoning effort xhigh; one fresh codex exec per pole; sentences unedited. Codex's note: Partial, card-only hypothesis: listed word-hit coverage totals 35%. The proposed spelling pattern is tokenization-sensitive; analysis and analyses test its boundary, while Anastasia and Ана test generalization across peak-token families.",
+ "selection": "picked: JasperBlank's 48 poles (#1018-#1021), Codex pilot round 3"
+}
