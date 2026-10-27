@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-3d6c22de",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N9128+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-27T21:52:44+00:00",
+ "recipe": {
+  "toolchain_commit": "0c11d5b3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L2_N9128_pos/2026-10-27-C-Eckleman235-3d6c22de.tests.json"
+ },
+ "label": "Dense activity broadly distributed across text",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L2_N9128_pos/2026-10-27-C-Eckleman235-3d6c22de.tests.json",
+   "prereg_commit": "0c11d5b3",
+   "author": "C-Eckleman235",
+   "n_fire": 5,
+   "n_false_pos": 3,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.92,
+     "peak": " how"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.571,
+     "peak": " definitely"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.398,
+     "peak": " funny"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.328,
+     "peak": " each"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.288,
+     "peak": " train"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.192,
+     "peak": "For"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.148,
+     "peak": " pumps"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.499,
+     "peak": " village"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.334,
+     "peak": " tree"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.231,
+     "peak": " panel"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.205,
+     "peak": " laughing"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.253,
+     "peak": " writing"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.299,
+     "peak": " service"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.216,
+     "peak": " preparing"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.32,
+     "peak": " pumps"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.353,
+     "peak": "T"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.656,
+    "median_fire": 0.363,
+    "near_misses_at_0.3": 3
+   }
+  }
+ ],
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort xhigh)",
+  "screens": [
+   "card",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "0c11d5b3",
+  "minutes": 8,
+  "batch_size": 48,
+  "dtype": "float16"
+ },
+ "unit_kind": "dense / positional",
+ "notes": "Codex pilot round 3 (concept-maps/codex-pilot/ROUND3.md, sha256 47a45a0fe1132ca280db661e86b5a194a0093f77d5b839517e4a9c86032f5128): round 2's setup (full card, verbatim survey guidance) with reasoning effort xhigh; one fresh codex exec per pole; sentences unedited. Codex's note: The card explicitly flags density: 30.279% of tokens exceed 0.1 of maximum, with 100% gate-closed echo. These are matched comparison sets; the quiet items may also activate strongly. No reliable 8+8 separation or selective content trigger is supported by the card.",
+ "selection": "picked: JasperBlank's 48 poles (#1018-#1021), Codex pilot round 3"
+}

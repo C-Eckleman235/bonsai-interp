@@ -1,0 +1,44 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-854c55e0",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N7716-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T21:44:48+00:00",
+ "selection": "picked: JasperBlank's 48 poles (#1018-#1021), Codex pilot round 3",
+ "neighbours": [
+  {
+   "unit": "L29/N7716",
+   "pole": "-",
+   "label": "Multiplying a coefficient by sine, cosine, or a logarithm.",
+   "fire": [
+    "def horizontal_position(radius, heading):\n    import math\n    # Project the orbit onto the horizontal axis\n    return radius * math.cos(heading)",
+    "def upward_velocity(speed, elevation):\n    import math\n    # Resolve the launch velocity along the vertical axis\n    return speed * math.sin(elevation)",
+    "def projected_coordinate(radius, latitude, longitude):\n    from math import sin, cos\n    # Combine both angular projections with the radial scale\n    return radius * sin(latitude) * cos(longitude)",
+    "def arm_projection(reach, extension, tilt):\n    from math import cos\n    # Project the combined length of both arm segments\n    return (reach + extension)*cos(tilt)",
+    "def information_total(count, outcomes):\n    import math\n    # Scale logarithmic information by the number of observations\n    return count * math.log10(outcomes)",
+    "def growth_correction(amplitude, ratio):\n    from math import log\n    # Apply the specified amplitude to the logarithmic response\n    return amplitude*log(ratio)",
+    "To calculate the horizontal shadow, multiply the rod's length by the cosine of its angle above the ground.",
+    "For a positive integer k, the digit estimate is k log10(7), with multiplication between k and the logarithm left implicit."
+   ],
+   "quiet": [
+    "def offset_response(baseline, bearing):\n    import math\n    # Add the angular response to the fixed baseline\n    return baseline + math.cos(bearing)",
+    "def residual_reading(reference, phase):\n    import math\n    # Subtract the periodic response from the reference reading\n    return reference - math.sin(phase)",
+    "def combined_angles(first_angle, second_angle):\n    from math import sin, cos\n    # Add the two angular responses into one score\n    return sin(first_angle) + cos(second_angle)",
+    "def circular_measure(diameter):\n    import math\n    # Calculate the circumference from the supplied circle diameter\n    return diameter * math.pi",
+    "def combined_information(batch_count, outcome_count):\n    import math\n    # Take the logarithm after combining the two counts\n    return math.log10(batch_count * outcome_count)",
+    "def adjusted_growth(baseline, proportion):\n    from math import log\n    # Add the logarithmic correction to the starting value\n    return baseline + log(proportion)",
+    "For the shadow calculation, record the rod's length and the cosine of its tilt in separate columns.",
+    "When estimating an integer's digit count, evaluate log10(k), round the result downward, and then add one."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort xhigh)",
+  "screens": [
+   "card"
+  ]
+ },
+ "unit_kind": "contextual",
+ "notes": "Codex pilot round 3 (concept-maps/codex-pilot/ROUND3.md, sha256 47a45a0fe1132ca280db661e86b5a194a0093f77d5b839517e4a9c86032f5128): round 2's setup (full card, verbatim survey guidance) with reasoning effort xhigh; one fresh codex exec per pole; sentences unedited. Codex's note: Partial, card-only hypothesis; activation thresholds and discrimination remain untested."
+}

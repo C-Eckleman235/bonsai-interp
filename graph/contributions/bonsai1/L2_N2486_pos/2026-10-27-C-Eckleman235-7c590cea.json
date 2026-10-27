@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-7c590cea",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N2486+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-27T21:52:43+00:00",
+ "recipe": {
+  "toolchain_commit": "0c11d5b3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L2_N2486_pos/2026-10-27-C-Eckleman235-7c590cea.tests.json"
+ },
+ "label": "Cyrillic «и» immediately after word-initial «в» or «В».",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L2_N2486_pos/2026-10-27-C-Eckleman235-7c590cea.tests.json",
+   "prereg_commit": "0c11d5b3",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 5,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.328,
+     "peak": " в"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.698,
+     "peak": "и"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.813,
+     "peak": "и"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.395,
+     "peak": " вы"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.323,
+     "peak": "ил"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.469,
+     "peak": "иш"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.461,
+     "peak": "ин"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.285,
+     "peak": " пот"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.357,
+     "peak": " время"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.283,
+     "peak": " т"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.426,
+     "peak": " две"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.478,
+     "peak": "о"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.269,
+     "peak": " гл"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.359,
+     "peak": "в"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.205,
+     "peak": "ер"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.44,
+     "peak": " вы"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.688,
+    "median_fire": 0.428,
+    "near_misses_at_0.3": 5
+   }
+  }
+ ],
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort xhigh)",
+  "screens": [
+   "card",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "0c11d5b3",
+  "minutes": 8,
+  "batch_size": 48,
+  "dtype": "float16"
+ },
+ "unit_kind": "lexical",
+ "notes": "Codex pilot round 3 (concept-maps/codex-pilot/ROUND3.md, sha256 47a45a0fe1132ca280db661e86b5a194a0093f77d5b839517e4a9c86032f5128): round 2's setup (full card, verbatim survey guidance) with reasoning effort xhigh; one fresh codex exec per pole; sentences unedited. Codex's note: partial; card-only hypothesis based on repeated в⟦и⟧ peaks, with new ви- words testing generalization. Listed coverage does not quantify this piece; tokenization and activation scores remain unverified.",
+ "selection": "picked: JasperBlank's 48 poles (#1018-#1021), Codex pilot round 3"
+}

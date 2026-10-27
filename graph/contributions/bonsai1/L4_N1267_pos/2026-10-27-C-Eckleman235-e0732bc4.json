@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-e0732bc4",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N1267+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-27T21:53:16+00:00",
+ "recipe": {
+  "toolchain_commit": "0c11d5b3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N1267_pos/2026-10-27-C-Eckleman235-e0732bc4.tests.json"
+ },
+ "label": "The internal Cyrillic 'ц' in Russian 'офицер' ('officer') and its inflected forms.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N1267_pos/2026-10-27-C-Eckleman235-e0732bc4.tests.json",
+   "prereg_commit": "0c11d5b3",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.767,
+     "peak": " офи"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.69,
+     "peak": "ц"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.64,
+     "peak": "ц"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.443,
+     "peak": " офи"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.621,
+     "peak": "ц"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.562,
+     "peak": " офи"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.927,
+     "peak": "ц"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.393,
+     "peak": "ц"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.06,
+     "peak": " св"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.054,
+     "peak": " воз"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.014,
+     "peak": "ными"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.001,
+     "peak": "Об"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.074,
+     "peak": " сов"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.442,
+     "peak": " офи"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.145,
+     "peak": "ис"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.086,
+     "peak": " leading"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.631,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort xhigh)",
+  "screens": [
+   "card",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "0c11d5b3",
+  "minutes": 8,
+  "batch_size": 48,
+  "dtype": "float16"
+ },
+ "unit_kind": "lexical",
+ "notes": "Codex pilot round 3 (concept-maps/codex-pilot/ROUND3.md, sha256 47a45a0fe1132ca280db661e86b5a194a0093f77d5b839517e4a9c86032f5128): round 2's setup (full card, verbatim survey guidance) with reasoning effort xhigh; one fresh codex exec per pole; sentences unedited. Codex's note: partial: targets the strongest Russian peak cluster; its coverage is unspecified. English -ology-family and Arabic peaks remain unexplained. Card-only hypothesis, untested.",
+ "selection": "picked: JasperBlank's 48 poles (#1018-#1021), Codex pilot round 3"
+}

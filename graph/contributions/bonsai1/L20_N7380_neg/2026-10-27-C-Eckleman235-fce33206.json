@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-fce33206",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N7380-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-27T21:51:59+00:00",
+ "recipe": {
+  "toolchain_commit": "0c11d5b3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L20_N7380_neg/2026-10-27-C-Eckleman235-fce33206.tests.json"
+ },
+ "label": "Responds to the word forms 'end', 'ending', 'ended', and 'final'.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L20_N7380_neg/2026-10-27-C-Eckleman235-fce33206.tests.json",
+   "prereg_commit": "0c11d5b3",
+   "author": "C-Eckleman235",
+   "n_fire": 2,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.441,
+     "peak": " end"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.426,
+     "peak": " end"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.032,
+     "peak": " ending"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.167,
+     "peak": " ending"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.192,
+     "peak": " home"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.116,
+     "peak": " ended"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.035,
+     "peak": " final"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.169,
+     "peak": " final"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.168,
+     "peak": " finish"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.399,
+     "peak": " last"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.162,
+     "peak": " conclusion"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.265,
+     "peak": " scene"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.131,
+     "peak": " home"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.074,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.017,
+     "peak": " received"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.041,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.594,
+    "median_fire": 0.168,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort xhigh)",
+  "screens": [
+   "card",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "0c11d5b3",
+  "minutes": 7,
+  "batch_size": 48,
+  "dtype": "float16"
+ },
+ "unit_kind": "lexical",
+ "notes": "Codex pilot round 3 (concept-maps/codex-pilot/ROUND3.md, sha256 47a45a0fe1132ca280db661e86b5a194a0093f77d5b839517e4a9c86032f5128): round 2's setup (full card, verbatim survey guidance) with reasoning effort xhigh; one fresh codex exec per pole; sentences unedited. Codex's note: partial: ' end' and ' final' have combined reported coverage of 22%; 'ending' and 'ended' appear among peaks but lack coverage estimates. Card-only hypothesis; activation thresholds and separation remain untested.",
+ "selection": "picked: JasperBlank's 48 poles (#1018-#1021), Codex pilot round 3"
+}
