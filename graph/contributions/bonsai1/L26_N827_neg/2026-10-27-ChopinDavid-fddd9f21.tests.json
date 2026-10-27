@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-fddd9f21",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N827-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T14:21:49+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N827",
+   "pole": "-",
+   "label": "word-internal pieces of long derived Russian words (participles and abstract nouns such as протестующие, разногласий, выступающие), as against the same content in English",
+   "fire": [
+    "Вчера протестующие студенты собрались у здания мэрии.",
+    "Разногласия между министрами затянули обсуждение бюджета.",
+    "Выступающие на конференции говорили о климате.",
+    "Посетив выставку, школьники написали короткие сочинения.",
+    "Изумленные зрители долго аплодировали оркестру.",
+    "Руководство злостно игнорировало жалобы рабочих.",
+    "Наблюдатели зафиксировали многочисленные нарушения.",
+    "Участвующие команды получили памятные медали."
+   ],
+   "quiet": [
+    "Yesterday the protesting students gathered outside city hall.",
+    "Disagreements among the ministers delayed the budget debate.",
+    "The speakers at the conference talked about the climate.",
+    "After visiting the exhibition, the pupils wrote short essays.",
+    "The astonished audience applauded the orchestra for a long time.",
+    "The management maliciously ignored the workers' complaints.",
+    "Observers recorded numerous violations.",
+    "The participating teams received commemorative medals."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.9 on inner pieces of long Russian words; English translations below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "inside long Russian words",
+ "unit_kind": "word",
+ "confidence": 0.35,
+ "notes": "Card: peaks on mid-word Cyrillic pieces ('ост', 'ет', 'лас', 'ест', 'ступ') in Russian news, with some Korean and Japanese. Probe: Протестующие 0.536, Посетив 0.710, злостно 0.752, разногласий 0.885, Выступающие 0.660, Изумленный 0.515; short Russian words 'купили хлеб' 0.258, 'солнечно' 0.305; English 'The protesters left' 0.033. Short Russian sentences fire about 0.3, so near misses are English translations of the same fire content; this tests Cyrillic subwords, not the derivation."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-c942177a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6760-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T14:21:49+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N6760",
+   "pole": "-",
+   "label": "the first piece of a present-tense verb that the tokenizer splits (dep|arts, inv|ades, dev|otes, con|veys), predicting the verb's ending, as against single-token verbs in the same slot",
+   "fire": [
+    "Every morning the ferry departs from the old harbour.",
+    "In the second act the army invades the island.",
+    "My aunt devotes her weekends to the animal shelter.",
+    "The painting conveys a sense of quiet loss.",
+    "The last bus departs from the square at midnight.",
+    "She devotes an hour each day to the piano.",
+    "His letter conveys warm thanks to all the staff.",
+    "In the story a dragon invades the peaceful valley."
+   ],
+   "quiet": [
+    "Every morning the ferry leaves from the old harbour.",
+    "In the second act the army lands on the island.",
+    "My aunt gives her weekends to the animal shelter.",
+    "The painting shows a sense of quiet loss.",
+    "The last bus will depart from the square at midnight.",
+    "She spends an hour each day at the piano.",
+    "His letter sends warm thanks to all the staff.",
+    "In the story a dragon attacks the peaceful valley."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on ' dep', ' dev', ' inv', ' con' before the verb ending; single-token verbs (leaves, spends, depart) below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "first piece of a split verb",
+ "unit_kind": "context",
+ "confidence": 0.65,
+ "notes": "Card: peaks ' dep' x7, ' con' x4, ' att' x3, ' pert' x3, ' inv', ' dev' as first pieces of 3rd-person verbs (departs, devotes, invades). Tokenizer: departs -> dep|arts, invades -> inv|ades, devotes -> dev|otes, conveys -> con|veys, retorts -> ret|orts; depart, provides, converts are single tokens. Probe: departs 0.643, invades 0.510, devotes 0.757, conveys 0.408, attains 0.185; 'will depart' 0.002, 'leaves' 0.002, 'spends' 0.012."
+}

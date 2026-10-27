@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-92bae05d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N2532-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T14:21:49+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N2532",
+   "pole": "-",
+   "label": "the stem of a French past participle that ends in a separate '-i' piece (accompl|i, rempl|i, sort|i, invest|i, sub|i), predicting the '-i' ending, as against participles and adjectives that do not split that way",
+   "fire": [
+    "Après des mois d'efforts, le projet est enfin accompli.",
+    "Le seau était rempli d'eau froide.",
+    "Le chat est sorti par la fenêtre ouverte.",
+    "La ville a investi dans de nouveaux bus électriques.",
+    "Les récoltes ont subi de lourdes pertes cette année.",
+    "Mon frère a fini ses devoirs avant le dîner.",
+    "Le verre était rempli de jus d'orange.",
+    "Le roman est sorti en librairie la semaine dernière."
+   ],
+   "quiet": [
+    "Après des mois d'efforts, le projet est enfin terminé.",
+    "Le seau était plein d'eau froide.",
+    "Le chat est passé par la fenêtre ouverte.",
+    "La ville a acheté de nouveaux bus électriques.",
+    "Les récoltes ont eu de lourdes pertes cette année.",
+    "Mon frère a terminé ses devoirs avant le dîner.",
+    "Le verre contenait du jus d'orange.",
+    "Le roman est publié en librairie la semaine dernière."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.8 on the stem before '-i' in French participles; terminé, plein and other non-'-i' words below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "French stem before '-i'",
+ "unit_kind": "context",
+ "confidence": 0.65,
+ "notes": "Card: peaks on ' accompl', ' rempl', ' sort', ' invest', ' sub' before 'i'; output suppresses 'i', 'и', 'y'. Tokenizer: accompli -> accompl|i, rempli -> rempl|i, sorti -> sort|i, investi -> invest|i, fini -> fin|i; choisi -> cho|isi does not split there. Probe: accompli 0.805, rempli 0.488, sorti 0.585, investi 0.586, subi 0.564, English 'fait accompli' 0.481; terminé 0.081, plein 0.026."
+}
