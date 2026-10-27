@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-ea6efbea",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N9272+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T10:20:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N9272",
+   "pole": "+",
+   "label": "the Russian word piece 'ен' inside split words ('плет|ен|ая', 'дерев|ен|ский'), as against Russian words without that piece; a dense unit",
+   "fire": [
+    "Летом мы купили плетеную корзину для грибов.",
+    "Бабушка жила в деревенском доме у реки.",
+    "На рынке продавали плетеные кресла и столы.",
+    "Мой брат любит деревенскую жизнь и тишину.",
+    "У окна стоял старый плетеный стул.",
+    "Мы ели деревенский хлеб с маслом.",
+    "Соседка подарила нам плетеный коврик.",
+    "Отец вспоминает деревенское детство с теплом."
+   ],
+   "quiet": [
+    "Летом мы купили большую корзину для грибов.",
+    "Бабушка жила в маленьком доме у реки.",
+    "На рынке продавали старые кресла и столы.",
+    "Мой брат любит тихую жизнь и покой.",
+    "У окна стоял старый деревянный стул.",
+    "Мы ели свежий хлеб с маслом.",
+    "Соседка подарила нам красивый коврик.",
+    "Отец вспоминает своё детство с теплом."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on 'ен' pieces; Russian sentences without it below 0.3, though the pole is dense",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Russian piece 'ен'",
+ "unit_kind": "dense / positional",
+ "confidence": 0.2,
+ "notes": "Card flags dense (11.7%), gate-closed; peaks on spaces before digits, ' the', 'ен'. Probe: 'Плетеная мебель' 'ен' 0.924, 'Franklin (1-1' 0.490, 'from the book' 0.429, code dict 0.326, English prose 0.046-0.105. Best guess for a dense unit; check each split carries 'ен'."
+}

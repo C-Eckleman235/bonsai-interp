@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-692f88c6",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N11516-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T10:20:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N11516",
+   "pole": "-",
+   "label": "abstract-noun suffix pieces in non-English text (German '-keit/-heit', Spanish '-idad', French '-ité'), as against concrete nouns in the same languages",
+   "fire": [
+    "Im Hotel wird die Sauberkeit der Zimmer jeden Tag geprüft.",
+    "Für diesen Beruf braucht man die Fähigkeit, ruhig zu bleiben.",
+    "La agencia trabaja en publicidad y en consultoría.",
+    "La empresa invierte mucho dinero en publicidad cada año.",
+    "Nach langer Zeit fühlte er endlich eine echte Freiheit.",
+    "Le directeur parle de la responsabilité de chaque employé.",
+    "El informe destaca la creciente visibilidad de la marca.",
+    "Wegen der Haltbarkeit kaufen viele Leute diese Schuhe."
+   ],
+   "quiet": [
+    "Im Hotel wird jeden Tag das Bett im Zimmer gemacht.",
+    "Für diesen Beruf braucht man einen Hammer und eine Säge.",
+    "La agencia trabaja en una oficina cerca del puerto.",
+    "La empresa compra muchos camiones nuevos cada año.",
+    "Nach langer Zeit sah er endlich den alten Bahnhof.",
+    "Le directeur parle avec le boulanger devant la porte.",
+    "El informe muestra una foto del nuevo coche rojo.",
+    "Wegen des Regens kaufen viele Leute diese Stiefel."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.7 on the suffix piece of split abstract nouns; concrete-noun sentences in the same languages below 0.3, though the pole is dense",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "abstract-noun suffix (non-English)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.25,
+ "notes": "Card flags dense (13.4% of tokens at 0.1 of max), gate-closed. Peaks 'idad', 'able', 'ية', 'ности'. Probe: 'Verfügbarkeit' 'keit' 0.715, 'actualidad' 'idad' 0.642, 'possibilité' 0.489, English 'viewable' 0.231, 'liable' 0.146, cat floor 0.050. Best guess for a dense unit."
+}
