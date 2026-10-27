@@ -357,3 +357,4 @@ Entry format:
 - change: CPU-side work (tests, refits, prereg) runs only in the gaps between GPU passes, or limited to 2 threads.
 - transfers: a host-bound GPU pass loses about 30% to any concurrent CPU work. Schedule CPU jobs between passes, and
   for the next model move more of the per-layer bookkeeping onto the device.
+- 2026-10-27: `gh pr checks --watch` returns at once when no checks have registered yet (a fresh PR): wait until `gh pr checks` lists them before watching, or a code PR merges unchecked (#1183).
