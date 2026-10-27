@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-1c0bf823",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N11928+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-27T20:46:47+00:00",
+ "recipe": {
+  "toolchain_commit": "ca8480f5",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L6_N11928_pos/2026-10-27-C-Eckleman235-1c0bf823.tests.json"
+ },
+ "label": "Indenting Python function bodies with runs of spaces or tabs",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L6_N11928_pos/2026-10-27-C-Eckleman235-1c0bf823.tests.json",
+   "prereg_commit": "ca8480f5",
+   "author": "C-Eckleman235",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.415,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.341,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.223,
+     "peak": "       "
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.171,
+     "peak": "           "
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.04,
+     "peak": ".exists"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.36,
+     "peak": "\t"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.458,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.419,
+     "peak": "\t"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.022,
+     "peak": "cwd"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.024,
+     "peak": " effective"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.038,
+     "peak": "pending"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.06,
+     "peak": "configured"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.031,
+     "peak": " pathlib"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.03,
+     "peak": "stored"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.022,
+     "peak": "(text"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.036,
+     "peak": "registered"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.351,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort high)",
+  "screens": [
+   "card",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "ca8480f5",
+  "minutes": 7,
+  "batch_size": 48,
+  "dtype": "float16"
+ },
+ "unit_kind": "contextual",
+ "notes": "Codex pilot round 2 (concept-maps/codex-pilot/ROUND2.md, sha256 e3c9e416fc55e8549b57eb1f3547919a794a699c998abf9761cc83422490e1d7): blind label and test by one fresh codex exec from the full play card and the survey's own guidance quoted verbatim; sentences unedited. Codex's note: Card-only inference; no activation test performed. Space runs and tabs account for 89% of the listed strong-activation coverage. The supported context is indentation following Python function headers; broader whitespace sensitivity remains untested.",
+ "selection": "picked: JasperBlank's 48 poles (#1018-#1021), Codex pilot round 2"
+}

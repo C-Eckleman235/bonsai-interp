@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-b536a65e",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N1267+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-27T20:46:41+00:00",
+ "recipe": {
+  "toolchain_commit": "ca8480f5",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N1267_pos/2026-10-27-C-Eckleman235-b536a65e.tests.json"
+ },
+ "label": "Completes non-physio words with -ology, -ological, -ologist, or -ologists, including biological.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N1267_pos/2026-10-27-C-Eckleman235-b536a65e.tests.json",
+   "prereg_commit": "ca8480f5",
+   "author": "C-Eckleman235",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.089,
+     "peak": " her"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.16,
+     "peak": " biological"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.192,
+     "peak": "ology"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.235,
+     "peak": " geological"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.239,
+     "peak": "ologist"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.137,
+     "peak": "ologists"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.16,
+     "peak": "ology"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.114,
+     "peak": "ological"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.133,
+     "peak": " organisms"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.199,
+     "peak": " biochemical"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.062,
+     "peak": " textbook"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.019,
+     "peak": " an"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.097,
+     "peak": " across"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.067,
+     "peak": " stone"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.09,
+     "peak": " imaginary"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.113,
+     "peak": " assumptions"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.828,
+    "median_fire": 0.16,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort high)",
+  "screens": [
+   "card",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "ca8480f5",
+  "minutes": 6,
+  "batch_size": 48,
+  "dtype": "float16"
+ },
+ "unit_kind": "lexical",
+ "notes": "Codex pilot round 2 (concept-maps/codex-pilot/ROUND2.md, sha256 e3c9e416fc55e8549b57eb1f3547919a794a699c998abf9761cc83422490e1d7): blind label and test by one fresh codex exec from the full play card and the survey's own guidance quoted verbatim; sentences unedited. Codex's note: Partial, untested card-only hypothesis: listed word-hit coverage sums to 36%; Cyrillic and Arabic peaks remain unexplained.",
+ "selection": "picked: JasperBlank's 48 poles (#1018-#1021), Codex pilot round 2"
+}

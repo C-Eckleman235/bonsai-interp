@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-9e441d13",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N9128+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-27T20:46:13+00:00",
+ "recipe": {
+  "toolchain_commit": "ca8480f5",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L2_N9128_pos/2026-10-27-C-Eckleman235-9e441d13.tests.json"
+ },
+ "label": "Dense activation dominated by gate-closed echo",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L2_N9128_pos/2026-10-27-C-Eckleman235-9e441d13.tests.json",
+   "prereg_commit": "ca8480f5",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.873,
+     "peak": " how"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.677,
+     "peak": " how"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.928,
+     "peak": " how"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.907,
+     "peak": " how"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.486,
+     "peak": " definitely"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.742,
+     "peak": " Definitely"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.533,
+     "peak": " Funny"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.485,
+     "peak": " Mrs"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.273,
+     "peak": " that"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.296,
+     "peak": " each"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.313,
+     "peak": " photographs"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.194,
+     "peak": " as"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.257,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.099,
+     "peak": " he"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.232,
+     "peak": " stories"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.19,
+     "peak": " Eleanor"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.71,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort high)",
+  "screens": [
+   "card",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "ca8480f5",
+  "minutes": 6,
+  "batch_size": 48,
+  "dtype": "float16"
+ },
+ "unit_kind": "dense / positional",
+ "notes": "Codex pilot round 2 (concept-maps/codex-pilot/ROUND2.md, sha256 e3c9e416fc55e8549b57eb1f3547919a794a699c998abf9761cc83422490e1d7): blind label and test by one fresh codex exec from the full play card and the survey's own guidance quoted verbatim; sentences unedited. Codex's note: The card explicitly flags density: 30.279% of tokens exceed 0.1 of maximum, and all recorded positive regimes are gate-closed echo. These untested contrasts sample peak-associated wording; they are not expected to establish a passing fire/quiet separation or a content label.",
+ "selection": "picked: JasperBlank's 48 poles (#1018-#1021), Codex pilot round 2"
+}

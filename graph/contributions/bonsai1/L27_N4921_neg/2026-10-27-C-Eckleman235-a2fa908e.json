@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-a2fa908e",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N4921-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-27T20:45:55+00:00",
+ "recipe": {
+  "toolchain_commit": "ca8480f5",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L27_N4921_neg/2026-10-27-C-Eckleman235-a2fa908e.tests.json"
+ },
+ "label": "Using `self` as an instance reference in Python class code",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L27_N4921_neg/2026-10-27-C-Eckleman235-a2fa908e.tests.json",
+   "prereg_commit": "ca8480f5",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 5,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.658,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.409,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.648,
+     "peak": " self"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.449,
+     "peak": " self"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.576,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.554,
+     "peak": "(self"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.261,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.431,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.43,
+     "peak": " instance"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.454,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.223,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.343,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.432,
+     "peak": " owner"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.184,
+     "peak": "aption"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.302,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.167,
+     "peak": "   "
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.828,
+    "median_fire": 0.502,
+    "near_misses_at_0.3": 5
+   }
+  }
+ ],
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort high)",
+  "screens": [
+   "card",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "ca8480f5",
+  "minutes": 6,
+  "batch_size": 48,
+  "dtype": "float16"
+ },
+ "unit_kind": "contextual",
+ "notes": "Codex pilot round 2 (concept-maps/codex-pilot/ROUND2.md, sha256 e3c9e416fc55e8549b57eb1f3547919a794a699c998abf9761cc83422490e1d7): blind label and test by one fresh codex exec from the full play card and the survey's own guidance quoted verbatim; sentences unedited. Codex's note: Partial: the card reports 33% coverage for ` self`; indentation and blank lines account for additional peaks. The test contrasts instance references spelled `self` with renamed receivers and includes ordinary-language `self` as a near miss. Card-only hypothesis; no activation scores were available.",
+ "selection": "picked: JasperBlank's 48 poles (#1018-#1021), Codex pilot round 2"
+}
