@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-e34c3dcf",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N4570-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T07:29:41+00:00",
+ "recipe": {
+  "toolchain_commit": "2da055c2",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L19_N4570_neg/2026-10-27-ChopinDavid-e34c3dcf.tests.json"
+ },
+ "label": "the bound arguments inside a counting for-loop header (range(1, n), i=0; i<n), as against loops over a collection and other code with no counting header",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L19_N4570_neg/2026-10-27-ChopinDavid-e34c3dcf.tests.json",
+   "prereg_commit": "2da055c2",
+   "author": "ChopinDavid",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.297,
+     "peak": "[k"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.33,
+     "peak": "-"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.235,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.208,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.396,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.261,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.127,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.166,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.033,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.013,
+     "peak": "for"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.061,
+     "peak": " >"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.027,
+     "peak": " row"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.018,
+     "peak": "for"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.023,
+     "peak": "});"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.024,
+     "peak": "while"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.019,
+     "peak": "for"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.248,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "2da055c2",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "bounds of a counting for-loop",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: peaks on '-', ',', '0', '1' and ' range' inside 'for i in range(...)' / 'xrange(n-1, -1, -1)' / 'for(var i=0;'. Probe: 'xrange(n-1, -1, -1)' 0.324, 'for (var i=0;' 0.267, 'range(1, n)' 0.196, 'list(range(10))' 0.165, 'range(2, sheet.max_row+1)' 0.098; 'for item in items' 0.015, while loop 0.067, prose 'range' 0.025. Weak pole on short snippets.",
+ "selection": "random draw"
+}

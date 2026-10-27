@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-30912098",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N12159+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T07:28:03+00:00",
+ "recipe": {
+  "toolchain_commit": "2da055c2",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L2_N12159_pos/2026-10-27-ChopinDavid-30912098.tests.json"
+ },
+ "label": "the character '請' in the Japanese and Chinese word 要請 (request), as against the same sentences with another word for asking (依頼, 求め)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L2_N12159_pos/2026-10-27-ChopinDavid-30912098.tests.json",
+   "prereg_commit": "2da055c2",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.814,
+     "peak": "請"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.793,
+     "peak": "請"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.865,
+     "peak": "請"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.855,
+     "peak": "請"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.857,
+     "peak": "請"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.9,
+     "peak": "請"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.789,
+     "peak": "請"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.898,
+     "peak": "請"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.296,
+     "peak": "支援"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.299,
+     "peak": "住"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.168,
+     "peak": "支援"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.41,
+     "peak": "先"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.156,
+     "peak": "害"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.168,
+     "peak": "陣"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.207,
+     "peak": "の"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.691,
+     "peak": "停"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.856,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "2da055c2",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "'請' in 要請",
+ "unit_kind": "token/lexical",
+ "confidence": 0.35,
+ "notes": "Card: broad (6.8% of tokens reach 0.1 of max), max 0.27, gate-closed regime; peaks on '請' in 要請, '전' in 백과사전, 'anc' in flancs, '신' in 수신. Probe: '派遣するよう要請した' 0.964, '協力を要請しました' 0.824; '依頼した' 0.252, '百科事典' 0.156, 'flancs' 0.752, '수신' 0.760, English 'casual' 0.228, floor 0.097. The pole fires on several scattered pieces; 要請 is the one the card repeats. Near misses may leak at 0.2-0.3.",
+ "selection": "random draw"
+}

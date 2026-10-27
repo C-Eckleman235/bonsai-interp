@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-c8207bd1",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N6972-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T07:29:16+00:00",
+ "recipe": {
+  "toolchain_commit": "2da055c2",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L33_N6972_neg/2026-10-27-ChopinDavid-c8207bd1.tests.json"
+ },
+ "label": "the second number of a quantity pair: the upper end of a range ('2.5 to 3 million', 'between 1.2 and 2') or a converted equivalent in brackets ('(20 square kilometers)'), as against a single quantity in the same sentence",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L33_N6972_neg/2026-10-27-ChopinDavid-c8207bd1.tests.json",
+   "prereg_commit": "2da055c2",
+   "author": "ChopinDavid",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.68,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.072,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.07,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.153,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.004,
+     "peak": " between"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.145,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.003,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.195,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.001,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.126,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.016,
+     "peak": "5"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": " about"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.024,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.15,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.001,
+     "peak": "Rep"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.195,
+     "peak": "0"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.688,
+    "median_fire": 0.108,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "2da055c2",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "second number of a range or conversion",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: peaks on digits of the second number in conversions ('(£1.0m', '(20 square kilometers)', 'about $1.30 to $2') and range ends ('2.5 to 3 million', 'between 1.2 million and 2 million'), plus code constants. Probe: '1.2 million and 2 million' 0.611, '(20 square kilometers)' 0.643, '2.5 to 3 million' 0.430, '(£1.0m)' 0.390; 'about 2 million' 0.006, '3 cats' 0.007, '/ 2' in code 0.038, floor 0.002.",
+ "selection": "random draw"
+}

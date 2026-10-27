@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-bd5a3c68",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N9534+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T07:21:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N9534",
+   "pole": "+",
+   "label": "the space-initial Korean syllable '뉴' (as in 뉴스, 뉴욕, 뉴캐슬), which the tokenizer splits into byte tokens after a space, as against Korean sentences of the same kind with other space-initial words",
+   "fire": [
+    "어제 저녁에 경제 뉴스를 들으면서 밥을 먹었다.",
+    "저는 매주 회사 뉴스레터를 읽는 편입니다.",
+    "그녀는 작년 여름에 뉴질랜드로 여행을 갔다.",
+    "삼촌은 지금 미국 뉴저지에 살고 계신다.",
+    "아버지는 매일 아침 텔레비전 뉴스를 켜신다.",
+    "학교에서 새로 나온 뉴스를 친구에게 알려 주었다.",
+    "그 회사는 다음 달에 뉴욕 지사를 연다.",
+    "형은 스포츠 뉴스만 골라서 본다."
+   ],
+   "quiet": [
+    "어제 저녁에 경제 방송을 들으면서 밥을 먹었다.",
+    "저는 매주 회사 소식을 읽는 편입니다.",
+    "그녀는 작년 여름에 호주로 여행을 갔다.",
+    "삼촌은 지금 미국 텍사스에 살고 계신다.",
+    "아버지는 매일 아침 텔레비전 날씨를 켜신다.",
+    "학교에서 새로 나온 소문을 친구에게 알려 주었다.",
+    "그 회사는 다음 달에 서울 지사를 연다.",
+    "형은 스포츠 경기만 골라서 본다."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-1.0 on the first byte of ' 뉴'; matching Korean sentences without ' 뉴' below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "space + Korean '뉴'",
+ "unit_kind": "token/lexical",
+ "confidence": 0.6,
+ "notes": "Card: 31 of the top 32 peaks are the byte token of ' 뉴' (뉴스, 뉴스레터, 뉴캐슬). Probe: ' 뉴스를' 0.785, ' 뉴스레터' 0.954, ' 뉴캐슬' 0.775, ' 뉴욕' 0.807; same sentence with ' 기사를' 0.186, ' 소식지' 0.092, '주요뉴스' with no space 0.135, English 'news' 0.095, floor 0.058. Gate-closed regime dominates and max is 0.42, so it is a tiny-activation unit."
+}

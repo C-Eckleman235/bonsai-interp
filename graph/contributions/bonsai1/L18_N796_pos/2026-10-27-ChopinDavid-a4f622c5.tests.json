@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-a4f622c5",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N796+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T07:21:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N796",
+   "pole": "+",
+   "label": "the indentation that opens the first line of a Python docstring under a class or function header, as against the same header followed directly by code",
+   "fire": [
+    "class Loader(Dataset):\n    \"\"\"\n    Loads a small image dataset.\n    \"\"\"",
+    "def resize(img, size):\n    \"\"\"\n    Resizes an image to the given size.\n    \"\"\"",
+    "class Parser(object):\n    \"\"\"\n    Parses a configuration file.\n    \"\"\"",
+    "def train(model, data):\n    \"\"\"\n    Trains the model on a dataset.\n    \"\"\"",
+    "class Graph:\n    \"\"\"\n    Builds a simple undirected graph.\n    \"\"\"",
+    "def tokenize(text):\n    \"\"\"\n    Splits a string into tokens.\n    \"\"\"",
+    "class Reader(Base):\n    \"\"\"\n    Reads records from a CSV file.\n    \"\"\"",
+    "def score(pred, gold):\n    \"\"\"\n    Computes a simple accuracy score.\n    \"\"\""
+   ],
+   "quiet": [
+    "class Loader(Dataset):\n    def __init__(self):\n        self.items = []",
+    "def resize(img, size):\n    w, h = size\n    return img.resize((w, h))",
+    "class Parser(object):\n    def __init__(self):\n        self.lines = []",
+    "def train(model, data):\n    for batch in data:\n        model.step(batch)",
+    "class Graph:\n    def __init__(self):\n        self.edges = {}",
+    "def tokenize(text):\n    return text.split()",
+    "class Reader(Base):\n    def __init__(self, path):\n        self.path = path",
+    "def score(pred, gold):\n    return sum(p == g for p, g in zip(pred, gold))"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.4 near the docstring's first line; the same headers with a code body below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "start of a Python docstring (guess)",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card: scattered peaks (docstring indent after a class header 12.9, ' this' after optimized/make, ' are' in a docstring, ' Symbols', ' (' in a docstring, ' by'). Probe: class with docstring 0.291 (peak ' a'), 'ensign by' 0.225, 'ISBN' 0.107, 'optimized this' 0.089, 'make this production' 0.047; class with 'pass' 0.073, floor 0.026. Low-confidence guess on the strongest probe."
+}
