@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-21edf0e7",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N9426+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T03:19:55+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N9426",
+   "pole": "+",
+   "label": "in Chinese text, the place or organization noun that completes a destination/employer phrase ('一家…有限公司', '去…公园'), as against Chinese sentences about the same people with no named place",
+   "fire": [
+    "毕业以后，她进入北京一家食品加工有限公司，做了会计。",
+    "老人每天早上都去人民公园打太极拳。",
+    "那年夏天，他在杭州一家贸易有限公司找到了工作。",
+    "我们周末带孩子去中山公园看花。",
+    "出差的时候，他总是住在火车站旁边的那家酒店。",
+    "她后来加入了深圳一家软件科技有限公司，负责销售。",
+    "小王每天傍晚都去河边的滨江公园跑步。",
+    "来北京以后，他先在一家建筑工程有限公司当司机。"
+   ],
+   "quiet": [
+    "毕业以后，她换了好几份工作，后来做了会计。",
+    "老人每天早上都起得很早，然后打太极拳。",
+    "那年夏天，他终于找到了一份满意的工作。",
+    "我们周末带孩子出去看花，玩得很开心。",
+    "出差的时候，他总是很早起床，晚上很晚才睡。",
+    "她后来换了工作，开始负责销售。",
+    "小王每天傍晚都会出去跑步，跑半个小时。",
+    "来北京以后，他先当了两年司机。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on 有限公司/公园/酒店-type nouns; Chinese sentences without a named place below 0.25 (some broad firing expected in non-English text)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Chinese place/organization noun",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: Chinese 有限公司/家/店/公园 and German word pieces (Innsbr-uck, zu, alle-ine). Probe: '一家电子设备有限公司' 0.752, '北海公园' 0.476, '回家' 0.231, German ' zu' 0.741, 'alleine' 0.702, 'Innsbruck' 0.224, German weather 0.137, English 0.103. The pole fires broadly in Chinese and German; this test covers only the Chinese place noun."
+}

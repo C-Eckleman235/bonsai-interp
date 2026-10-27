@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-b21774a3",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N931-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T03:28:06+00:00",
+ "recipe": {
+  "toolchain_commit": "c41c9893",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N931_neg/2026-10-26-ChopinDavid-b21774a3.tests.json"
+ },
+ "label": "tokens that set up a finance word as the next token ('both premature and f|iscally', 'strategic and [financial]', 'private [equity]'), as against the same frames completed by a non-finance word",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N931_neg/2026-10-26-ChopinDavid-b21774a3.tests.json",
+   "prereg_commit": "c41c9893",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.909,
+     "peak": " f"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.624,
+     "peak": " f"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.177,
+     "peak": " responsible"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.504,
+     "peak": " strategic"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.393,
+     "peak": " private"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.23,
+     "peak": " toward"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.237,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.373,
+     "peak": " private"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.264,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.198,
+     "peak": " both"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.153,
+     "peak": " responsible"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.234,
+     "peak": " family"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.006,
+     "peak": "She"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.001,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.028,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.101,
+     "peak": " young"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.906,
+    "median_fire": 0.383,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "c41c9893",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "predicts fiscal/financial",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: ' f'(iscally/iscal), ' private' (equity), ' strategic' (and financial), ' conservative'; the + pole suppresses wealth/financial/fiscal, so the - pole predicts them. Probe: 'premature and fiscally irresponsible' 0.571 vs 'morally irresponsible' 0.030; 'strategic and financial advisory' 0.436; 'private equity fund' 0.307; 'fiscal cliff' 0.237; 'a form of self-expression' 0.559 (unexplained); 'my favorite feature' -0.004.",
+ "selection": "random draw"
+}

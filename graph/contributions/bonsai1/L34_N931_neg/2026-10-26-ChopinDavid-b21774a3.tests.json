@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-b21774a3",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N931-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T03:19:55+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N931",
+   "pole": "-",
+   "label": "tokens that set up a finance word as the next token ('both premature and f|iscally', 'strategic and [financial]', 'private [equity]'), as against the same frames completed by a non-finance word",
+   "fire": [
+    "Critics called the new stadium deal reckless and fiscally unsound.",
+    "The senator warned that the budget was both rushed and fiscally dangerous.",
+    "The governor promised a fiscally responsible plan for the schools.",
+    "The firm offers strategic and financial guidance to family businesses.",
+    "She left banking to join a private equity firm in Boston.",
+    "Economists fear the country is heading toward a fiscal crisis.",
+    "The consultancy provides strategic and financial planning for startups.",
+    "Many hospitals were bought by private equity investors last decade."
+   ],
+   "quiet": [
+    "Critics called the new stadium deal reckless and morally unsound.",
+    "The senator warned that the plan was both rushed and legally dangerous.",
+    "The governor promised a socially responsible plan for the schools.",
+    "The firm offers friendly and practical guidance to family gardeners.",
+    "She left teaching to join a theater company in Boston.",
+    "Doctors fear the patient is heading toward a medical crisis.",
+    "The studio provides creative and technical training for artists.",
+    "Many farms were bought by young families last decade."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on ' f' of 'fiscally/fiscal' and on ' strategic'/' private' before financial/equity; the same frames with moral/legal words below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predicts fiscal/financial",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: ' f'(iscally/iscal), ' private' (equity), ' strategic' (and financial), ' conservative'; the + pole suppresses wealth/financial/fiscal, so the - pole predicts them. Probe: 'premature and fiscally irresponsible' 0.571 vs 'morally irresponsible' 0.030; 'strategic and financial advisory' 0.436; 'private equity fund' 0.307; 'fiscal cliff' 0.237; 'a form of self-expression' 0.559 (unexplained); 'my favorite feature' -0.004."
+}

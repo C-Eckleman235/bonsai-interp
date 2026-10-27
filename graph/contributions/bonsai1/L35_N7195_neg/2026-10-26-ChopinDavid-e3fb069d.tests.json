@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-e3fb069d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N7195-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T03:19:55+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N7195",
+   "pole": "-",
+   "label": "the first fragment of a word or name that the tokenizer splits into several pieces (' Ar'+'beiter', ' V'+'UE', katakana 'ア'+'ーケ'), as against whole-token words in the same slot",
+   "fire": [
+    "The shortstop Carlos Arrieta hit two home runs on Sunday.",
+    "The midfielder Diego Arzola scored twice in the derby.",
+    "The exam is delivered at any Pearson VUE center near you.",
+    "We met the architect Ana Arvelo at the opening of the museum.",
+    "The singer Sarah Vukovic recorded the song in 1955.",
+    "Our new accountant, Mr. Arvizu, starts work on Monday.",
+    "The goalkeeper Pablo Arnaiz saved a penalty in the final minute.",
+    "Candidates book their test through the Pearson VUE website."
+   ],
+   "quiet": [
+    "The shortstop Carlos Smith hit two home runs on Sunday.",
+    "The midfielder Diego Lopez scored twice in the derby.",
+    "The exam is delivered at any testing center near you.",
+    "We met the architect Ana Brown at the opening of the museum.",
+    "The singer Sarah Jones recorded the song in 1955.",
+    "Our new accountant, Mr. Brown, starts work on Monday.",
+    "The goalkeeper Pablo Cruz saved a penalty in the final minute.",
+    "Candidates book their test through the official website."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.75 on the word-initial fragment of a split name/word; the same sentences with a single-token word below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "first piece of a split word",
+ "unit_kind": "spelling",
+ "confidence": 0.5,
+ "notes": "Card: ' Ar'(beiter/royo), ' V'(UE), byte pieces in CJK, katakana 'ーケ'. Probe: 'wie ein Arbeiter' 0.504 vs 'wie ein Bauer' 0.139; 'Bronson Arroyo' 0.566 vs 'Bronson Smith' 0.017; 'Pearson VUE' 0.738; 'アーケード' 0.588; Chinese 网络 0.275; floor 0.006."
+}
