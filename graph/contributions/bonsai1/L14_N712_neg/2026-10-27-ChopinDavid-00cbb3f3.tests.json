@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-00cbb3f3",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N712-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T20:20:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L14/N712",
+   "pole": "-",
+   "label": "the ' =' that assigns a new value to a self attribute inside an ordinary Python method (self.items = [...]), as against local-variable assignments and self comparisons",
+   "fire": [
+    "class Door:\n    def close(self):\n        self.is_open = False\n        self.closed_at = time.time()\n",
+    "class Cart:\n    def clear(self):\n        self.products = []\n        self.total = 0\n",
+    "class Window:\n    def build_menu(self):\n        self.menu_bar = tk.Menu(self.root)\n",
+    "class Reader:\n    def load(self):\n        with open(self.path) as f:\n            self.lines = f.readlines()\n",
+    "class Game:\n    def restart(self):\n        self.board = np.zeros((8, 8))\n",
+    "class Player:\n    def mute(self):\n        self.volume_before = self.volume\n        self.muted = True\n",
+    "class Camera:\n    def capture(self):\n        self.frame = self.device.read()\n",
+    "class Job:\n    def finish(self):\n        self.status = 'done'\n        self.result = self.compute()\n"
+   ],
+   "quiet": [
+    "class Door:\n    def close(self):\n        is_open = False\n        closed_at = time.time()\n",
+    "class Cart:\n    def clear(self):\n        products = []\n        total = 0\n",
+    "class Window:\n    def build_menu(self):\n        menu_bar = tk.Menu(root)\n",
+    "class Reader:\n    def load(self):\n        with open(path) as f:\n            lines = f.readlines()\n",
+    "class Game:\n    def restart(self):\n        if self.board is None:\n            return\n",
+    "class Player:\n    def mute(self):\n        if self.muted == True:\n            return\n",
+    "class Camera:\n    def capture(self):\n        frame = device.read()\n",
+    "class Job:\n    def finish(self):\n        status = 'done'\n        result = compute()\n"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.6 at ' =' after self.<attr> in a non-constructor method; local variables and 'self.x ==' below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'=' setting self.attr in a method",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: ' =' x19 in 'self.files =', 'self.confirm_button =', 'self._is_muted ='; ' self' x5 at the start of a method body. Probe: 'self.items = []' in open() 0.575, 'self.count += 1' 0.253; local 'name = path.strip()' 0.083, 'if self.count == 0' 0.027, 'x = 5' 0.029; but 'self.name = name' in __init__ only 0.023, so items avoid __init__."
+}

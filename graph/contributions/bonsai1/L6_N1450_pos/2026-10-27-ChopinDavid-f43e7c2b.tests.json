@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-f43e7c2b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N1450+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T20:20:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L6/N1450",
+   "pole": "+",
+   "label": "a hard line break in the middle of a running sentence (the text continues on the next line), as against the same sentence unbroken or a break between sentences",
+   "fire": [
+    "The committee agreed that the town must\nbuild a new bridge before winter.",
+    "Nobody could explain why\nthe birds left the island so early.",
+    "It was obvious,\nhowever, that the plan would cost too much.",
+    "She had finished her tea and\nwas reading the letter a second time.",
+    "Every member of the crew should\nreport to the deck at noon.",
+    "Doctors still do not know why\nthe fever returns each spring.",
+    "The rain had stopped and\nwas replaced by a cold wind from the north.",
+    "Once more the farmers must\nwait for the river to fall."
+   ],
+   "quiet": [
+    "The committee agreed the town must build a new bridge before winter.",
+    "Nobody could explain why the birds had left the island so early.",
+    "It was obvious, however, that the scheme would cost too much.",
+    "She had finished her tea.\nThe letter lay open on the table.",
+    "Each member of the crew should report to the deck at noon.",
+    "Doctors still cannot say why the fever returns each spring.",
+    "The rain had stopped.\nA cold wind came from the north.",
+    "Once more the farmers must wait for the river to go down."
+   ]
+  }
+ ],
+ "predictions": "fire 0.1-0.25 just after a mid-sentence newline; the same sentence on one line, or a newline at a sentence boundary, below 0.04",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "line break inside a sentence",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: '\\n' x13, mostly hard-wrapped prose ('Potion and\\nwas pacing', 'discovered why\\nthese infections'). Probe weak: 'must\\ntake steps' 0.162, 'clear,\\nhowever' 0.107, 'why\\nthese' 0.073, 'and\\nwas pacing' 0.064; same sentences unbroken 0.014-0.028, break after a full stop 0.010. Fire median may fall below threshold."
+}

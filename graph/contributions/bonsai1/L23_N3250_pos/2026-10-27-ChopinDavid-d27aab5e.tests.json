@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-d27aab5e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N3250+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T20:20:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L23/N3250",
+   "pole": "+",
+   "label": "the first word piece of a split code identifier that repeats an identifier stem from the line just above (contributions_zip -> contrib|utions_txt), as against the same split identifier used fresh",
+   "fire": [
+    "configurations_json = root + '/conf.json'\nconfigurations_yaml = root + '/conf.yaml'\n",
+    "recommendations_raw = model.predict(users)\nrecommendations_top = recommendations_raw[:10]\n",
+    "experiments_dir = os.path.join(base, 'runs')\nexperiments_log = os.path.join(experiments_dir, 'log.txt')\n",
+    "measurements_raw = sensor.read_all()\nmeasurements_clean = filter_noise(measurements_raw)\n",
+    "trialsPerBlock = 40\nprint('trialsPerBlock =', trialsPerBlock)\n",
+    "neighbours_list = grid.adjacent(cell)\nneighbours_count = len(neighbours_list)\n",
+    "contributions_csv = out_dir + '/c.csv'\ncontributions_json = out_dir + '/c.json'\n",
+    "recommendations_by_user = {}\nrecommendations_by_item = {}\n"
+   ],
+   "quiet": [
+    "root = '/etc/app'\nconfigurations_yaml = root + '/conf.yaml'\n",
+    "users = load_users()\nrecommendations_top = model.predict(users)[:10]\n",
+    "base = os.getcwd()\nexperiments_log = os.path.join(base, 'log.txt')\n",
+    "sensor = Sensor(port=3)\nmeasurements_clean = filter_noise(sensor.read_all())\n",
+    "block_size = 40\nprint('trialsPerBlock =', block_size)\n",
+    "cell = grid.cell(2, 3)\nneighbours_count = len(grid.adjacent(cell))\n",
+    "out_dir = 'results'\ncontributions_json = out_dir + '/c.json'\n",
+    "by_user = {}\nrecommendations_by_item = {}\n"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on the first piece of a split identifier that copies the previous line's stem; the same identifier after an unrelated line below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "repeated split identifier stem",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: 'contributions_zip_file = ...\\ncontrib|utions_txt_file', 'trialsPerCondition=...\\nlogging.info(\\'tr|ials...', 'self.k|ing_loc_dict'. Probe: repeated 'contributions_' line 0.655; single-line 'trialsPerCondition' 0.014, 'confidence_level' 0.010, 'create_guild' 0.014. Tokenizer: config|urations, recommend|ations, ex|periments, measure|ments, tr|ials, ne|ighbours, contrib|utions."
+}
