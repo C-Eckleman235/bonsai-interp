@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-14ca2ce1",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N10280-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T11:21:40+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N10280",
+   "pole": "-",
+   "label": "dense weak unit; best guess: discourse-framing tokens of expository prose ('According', 'such as', the space before a split year or count) over plain narrative",
+   "fire": [
+    "The town grew last year. According to the census, it gained 400 people.",
+    "Many crops, such as wheat and barley, need cool weather.",
+    "The bridge was finished in 1998 after six years of work.",
+    "Prices fell sharply. According to analysts, demand was weak.",
+    "He studied subjects such as physics, chemistry and biology.",
+    "The festival takes place on 12 June 2021 in the main square.",
+    "Visitors can try activities such as kayaking and hiking.",
+    "Officials met twice. According to one witness, the talks went well."
+   ],
+   "quiet": [
+    "The boy walked home slowly and ate an apple on the way.",
+    "She laughed at the joke and poured another glass of juice.",
+    "The old dog slept by the fire while snow fell outside.",
+    "They sang songs around the campfire until late.",
+    "He closed the book and looked out the window.",
+    "The garden was full of roses and buzzing bees.",
+    "We waited at the bus stop and talked about our weekend.",
+    "The kitten chased a ball of yarn under the sofa."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.55 on 'According'/'such'/digit spaces; narrative 0.1-0.15, so a narrow margin",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense; 'According'/'such as' guess",
+ "unit_kind": "dense / positional",
+ "confidence": 0.2,
+ "notes": "Card flags broad (7.4% of tokens reach 0.1 of max, max only 2.92) and gate-closed leak 96%. Peaks ' ' before digits x5, ' According' x4, ' such'. Probe: 'According to the report' 0.540, 'such as' 0.467, '2001' 0.347, '9 April 2019' 0.281, '__name__' 0.279; narrative controls 0.097-0.140. Near misses are plain narrative, not minimal pairs, because the guess is about register."
+}

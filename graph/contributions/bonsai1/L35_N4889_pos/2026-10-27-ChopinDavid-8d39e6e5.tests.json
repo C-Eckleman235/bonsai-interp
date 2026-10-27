@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-8d39e6e5",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N4889+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T11:21:40+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N4889",
+   "pole": "+",
+   "label": "byte-fallback pieces of a rare CJK character that completes a predictable compound (推⟦奨⟧, 一生⟦懸⟧命, 強⟦韌⟧), as against the same sentence with a single-token word",
+   "fire": [
+    "安全のため、パスワードは定期的に変更することを推奨します。",
+    "メーカーは年に一度の確認を推奨しています。",
+    "医師は一日三十分の運動を推奨している。",
+    "このゲームは十二歳以上の方のプレイを推奨します。",
+    "専門家は朝食をしっかり取ることを推奨しています。",
+    "当店ではクレジットカードでのお支払いを推奨しております。",
+    "選手たちは試合に勝つために一生懸命練習した。",
+    "詳しい推奨設定はマニュアルを読んでください。"
+   ],
+   "quiet": [
+    "安全のため、パスワードは定期的に変更することをおすすめします。",
+    "メーカーは年に一度の確認を求めています。",
+    "医師は一日三十分の運動が大切だと言っている。",
+    "このゲームは十二歳以上の方を対象としています。",
+    "専門家は朝食をしっかり取ることが大切だと言っています。",
+    "当店ではクレジットカードでのお支払いが可能です。",
+    "選手たちは試合に勝つために毎日練習した。",
+    "詳しい設定はマニュアルを読んでください。"
+   ]
+  }
+ ],
+ "predictions": "推奨 items 0.6-0.9, 一生懸命 ~0.4; near misses with おすすめ/求め/single-token words below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predictable rare CJK char bytes",
+ "unit_kind": "token/lexical",
+ "confidence": 0.55,
+ "notes": "Card: '�' x17 / ' �' x12, top items 推⟦奨⟧ (97-108), 強⟦韌⟧, 一生⟦懸⟧命, Korean ' 달'. Split: '推奨' = '推'+2 bytes, '推進' = '推'+'進' (single tokens). Probe: 推奨 0.802 / 0.829, 一生懸命 0.383, 強韌 0.520; 推進 0.009, おすすめ 0.011, まじめ 0.118, Japanese filler 0.015. Avoided 勧 in near misses because it is also byte-split."
+}
