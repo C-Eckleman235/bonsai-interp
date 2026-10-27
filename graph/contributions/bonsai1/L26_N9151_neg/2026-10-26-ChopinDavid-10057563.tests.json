@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-10057563",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N9151-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T02:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N9151",
+   "pole": "-",
+   "label": "the ' =' that starts a timer reading ('start = time.time()', 't0 = time.time()'): a point where a clock time is about to be recorded, as against '=' assigning other values",
+   "fire": [
+    "import time\n\ndef benchmark(fn):\n    start = time.time()\n    fn()\n    return time.time() - start",
+    "import time\n\nstart_time = time.time()\nmodel.fit(X, y)\nprint('took', time.time() - start_time)",
+    "import time\nfor n in sizes:\n    t0 = time.time()\n    sort(data[:n])\n    print(n, time.time() - t0)",
+    "import time\n\nclass Timer:\n    def __enter__(self):\n        self.start = time.time()\n        return self",
+    "import time\n\ndef download(url):\n    tic = time.time()\n    data = fetch(url)\n    toc = time.time()",
+    "import time\n\nbegin_time = time.time()\nrun_simulation()\nelapsed = time.time() - begin_time",
+    "import time\n\ndef main():\n    t_start = time.time()\n    load_data()\n    train()",
+    "import time\nif __name__ == '__main__':\n    t1 = time.time()\n    convert_all()\n    print(time.time() - t1)"
+   ],
+   "quiet": [
+    "import os\n\ndef list_files(folder):\n    names = os.listdir(folder)\n    return sorted(names)",
+    "import json\n\nconfig = json.load(open('settings.json'))\nmodel.fit(X, y)",
+    "import math\nfor n in sizes:\n    total = 0\n    sort(data[:n])\n    print(n, total)",
+    "import sys\n\nclass Reader:\n    def __enter__(self):\n        self.lines = sys.stdin.readlines()\n        return self",
+    "import requests\n\ndef download(url):\n    resp = requests.get(url)\n    data = resp.content\n    return data",
+    "import random\n\nseed = 42\nrun_simulation()\nresult = random.random()",
+    "import csv\n\ndef main():\n    rows = list(csv.reader(open('data.csv')))\n    load_data()",
+    "import os\nif __name__ == '__main__':\n    path = os.getcwd()\n    convert_all()\n    print(path)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.7 on ' =' after a timer variable in code that imports time; '=' assigning counts or paths below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'=' before a timer reading",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: ' =' x20, nearly all 'start/t0/tini = time.time()', plus 'the game clock does not restart'; logits suppress clock/timer words. Probe: 'start = time.time()' 0.691, 't0 = time.time()' 0.664, 'begin = 0' 0.366, 'begin = datetime.now()' 0.201, prose 'game clock does not' 0.652; 'count = 0' 0.010, 'path = os.getcwd()' 0.002."
+}
