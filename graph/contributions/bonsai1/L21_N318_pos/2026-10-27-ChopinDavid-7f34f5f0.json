@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-7f34f5f0",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N318+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T12:30:00+00:00",
+ "recipe": {
+  "toolchain_commit": "128e2a7b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L21_N318_pos/2026-10-27-ChopinDavid-7f34f5f0.tests.json"
+ },
+ "label": "positions inside an egg-free (vegan) baking recipe's ingredient list (soy milk, egg replacer, flax mixture), as against ordinary prose about the same foods; a weak best guess",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L21_N318_pos/2026-10-27-ChopinDavid-7f34f5f0.tests.json",
+   "prereg_commit": "128e2a7b",
+   "author": "ChopinDavid",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.072,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.105,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.079,
+     "peak": " milk"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.063,
+     "peak": " milk"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.07,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.104,
+     "peak": " milk"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.065,
+     "peak": " milk"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.049,
+     "peak": "isk"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.021,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.059,
+     "peak": " hay"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.134,
+     "peak": " lights"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.016,
+     "peak": " picnic"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.01,
+     "peak": " schedule"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.013,
+     "peak": " dairy"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.005,
+     "peak": " gift"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.012,
+     "peak": " are"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.859,
+    "median_fire": 0.071,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "128e2a7b",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "vegan baking ingredient list (guess)",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card: top peaks 'soy milk' in a vegan recipe 27.9, '.' between egg additions, 'egg replacer and vanilla', plus code attribute newlines and a citation surname. Probe: every short sentence scored 0.011-0.062 (recipe lists 0.044-0.047, code attributes 0.062). Short single sentences may not build the context; the test uses longer recipe passages. Low confidence.",
+ "selection": "random draw"
+}

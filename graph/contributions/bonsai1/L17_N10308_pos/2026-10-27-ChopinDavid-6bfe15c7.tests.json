@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-6bfe15c7",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N10308+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T12:21:50+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N10308",
+   "pole": "+",
+   "label": "the 'def' that opens a new top-level Python function after blank lines, as against indented method definitions inside a class",
+   "fire": [
+    "import os\n\n\ndef read_config(path):\n    with open(path) as f:\n        return f.read()\n\n\ndef write_config(path, text):\n    pass",
+    "    total = sum(values)\n    return total / len(values)\n\n\ndef median(values):\n    values = sorted(values)",
+    "    if not items:\n        return None\n    return items[0]\n\n\ndef last_item(items):\n    return items[-1]",
+    "    plt.savefig(out_file)\n    plt.close()\n\n\ndef plot_histogram(data, bins=10):\n    fig, ax = plt.subplots()",
+    "    response = requests.get(url)\n    return response.json()\n\n\ndef post_data(url, payload):\n    return requests.post(url, json=payload)",
+    "    logger.info('done')\n    return True\n\n\ndef cleanup(tmp_dir):\n    shutil.rmtree(tmp_dir)",
+    "    x = np.asarray(x)\n    return x / x.max()\n\n\ndef standardize(x):\n    return (x - x.mean()) / x.std()",
+    "    for row in rows:\n        print(row)\n\n\ndef count_rows(rows):\n    return len(rows)"
+   ],
+   "quiet": [
+    "class Reader:\n    def __init__(self, path):\n        self.path = path\n\n    def read_config(self):\n        return open(self.path).read()",
+    "class Stats:\n    def mean(self, values):\n        return sum(values) / len(values)\n\n    def median(self, values):\n        return sorted(values)",
+    "class Queue:\n    def first(self):\n        return self.items[0]\n\n    def last_item(self):\n        return self.items[-1]",
+    "class Plotter:\n    def save(self, out_file):\n        plt.savefig(out_file)\n\n    def plot_histogram(self, data):\n        fig, ax = plt.subplots()",
+    "class Client:\n    def get_data(self, url):\n        return requests.get(url).json()\n\n    def post_data(self, url, payload):\n        return requests.post(url)",
+    "class Job:\n    def finish(self):\n        logger.info('done')\n\n    def cleanup(self, tmp_dir):\n        shutil.rmtree(tmp_dir)",
+    "class Scaler:\n    def normalize(self, x):\n        return x / x.max()\n\n    def standardize(self, x):\n        return x - x.mean()",
+    "class Table:\n    def show(self, rows):\n        print(rows)\n\n    def count_rows(self, rows):\n        return len(rows)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.4 on 'def' at column 0 after a previous function and blank lines; indented 'def' inside a class below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "top-level 'def'",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: 13 of the top 32 peaks are 'def' after '\\n\\n\\n' at top level; others ' (' before years in author-year citations and SQL 'CREATE'. Probe: top-level 'def plot_tree' 0.267, 'Ramaswamy (2004)' 0.237, 'CREATE TABLE' 0.181, indented class method 0.041, 'SELECT' 0.026. Test uses only the def context."
+}

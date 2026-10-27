@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-1e034aaa",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L16/N4090-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T12:21:50+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L16/N4090",
+   "pole": "-",
+   "label": "the final digit of a number that sets an age, percentage or index threshold (ages 16 or younger, reaches 100 percent, n - 1), as against numbers that simply count things",
+   "fire": [
+    "The camp accepts children ages 13 or younger for the summer session.",
+    "Free tickets are available for kids ages 12 and under on weekends.",
+    "Once the battery charge reaches 100 percent, the light turns green.",
+    "The study enrolled adolescents ages 15 to 17 from three schools.",
+    "When the tank level reaches 90 percent, the pump switches off.",
+    "last = items[len(items) - 1]\nprint(last)",
+    "The library card is free for residents ages 18 or older.",
+    "for j in range(size - 1):\n    swap(arr, j)"
+   ],
+   "quiet": [
+    "The camp has 13 cabins and a lake for the summer session.",
+    "Free tickets are available for groups of 12 people on weekends.",
+    "Once the battery charge is full, the light turns green.",
+    "The study enrolled 15 adolescents from three schools.",
+    "When the tank is nearly full, the pump switches off.",
+    "last = items[-1]\nprint(last)",
+    "The library has 18 computers for residents to use.",
+    "for j in range(size):\n    swap(arr, j)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.9 on the last digit in 'ages 15 and under', 'reaches 100 percent', 'len(x) - 1'; counts like '16 floors', '25 points' below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "last digit of a threshold number",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: peaks on the second digit of ages ('children ages 1|6', 'Children 1|6 to 18'), '10|0 percent', 'May 3|1', '- 1' in code. Probe: 'children ages 16' 0.881, 'reaches 100 percent' 0.778, 'range(n - 1)' 0.572, 'between 12 and 23 months' 0.274, 'May 31' 0.204; '16 floors' 0.018, '16 points' 0.076."
+}

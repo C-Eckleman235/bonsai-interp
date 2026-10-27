@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-1e034aaa",
+ "kind": "interpret",
+ "neuron": "bonsai1/L16/N4090-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T12:30:19+00:00",
+ "recipe": {
+  "toolchain_commit": "128e2a7b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L16_N4090_neg/2026-10-27-ChopinDavid-1e034aaa.tests.json"
+ },
+ "label": "the final digit of a number that sets an age, percentage or index threshold (ages 16 or younger, reaches 100 percent, n - 1), as against numbers that simply count things",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L16_N4090_neg/2026-10-27-ChopinDavid-1e034aaa.tests.json",
+   "prereg_commit": "128e2a7b",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.521,
+     "peak": "3"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.396,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.295,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.104,
+     "peak": "5"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.037,
+     "peak": " off"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.376,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.46,
+     "peak": "8"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.744,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.02,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.002,
+     "peak": " are"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.021,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.0,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.036,
+     "peak": " off"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.412,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.016,
+     "peak": " computers"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.017,
+     "peak": ","
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.922,
+    "median_fire": 0.386,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "128e2a7b",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "last digit of a threshold number",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: peaks on the second digit of ages ('children ages 1|6', 'Children 1|6 to 18'), '10|0 percent', 'May 3|1', '- 1' in code. Probe: 'children ages 16' 0.881, 'reaches 100 percent' 0.778, 'range(n - 1)' 0.572, 'between 12 and 23 months' 0.274, 'May 31' 0.204; '16 floors' 0.018, '16 points' 0.076.",
+ "selection": "random draw"
+}
