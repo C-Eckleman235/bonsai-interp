@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-df58518b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N11280+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T04:21:31+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N11280",
+   "pole": "+",
+   "label": "digits deep inside long identifier strings (DOIs, URL ids, phone and tracking numbers), as opposed to numbers that are quantities",
+   "fire": [
+    "Nature Genetics 41: 1-8. doi:10.1038/ng.3472915",
+    "Answer adapted from https://stackoverflow.com/questions/4383571/importing-files",
+    "For bookings, ring the front desk at 6175550194 between nine and five.",
+    "Ann. Bot. 102 (3): 389-401. doi:10.1093/aob/mcn11728",
+    "Tracking number 940011189956231 shows the parcel left Memphis.",
+    "See https://github.com/user/repo/issues/58213 for the bug report.",
+    "Contact Tom at 2025550147 if the listing is still available.",
+    "J. Appl. Phys. 98, 113522. doi:10.1063/1.2138793"
+   ],
+   "quiet": [
+    "Nature Genetics published the study in 2009 with 41 authors.",
+    "The answer received 4383 votes and 57 comments on the forum.",
+    "For bookings, ring the front desk between nine and five on weekdays.",
+    "The botanists counted 102 species across 3 sites in the valley.",
+    "The parcel weighs 9 kilograms and left Memphis on Tuesday.",
+    "The repository has 582 stars and 13 open issues this week.",
+    "Tom sold 20 chairs and 5 tables at the market on Saturday.",
+    "The physics lab measured 98 samples at 113 degrees."
+   ]
+  }
+ ],
+ "predictions": "7/8 fire; quantity numbers quiet",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "digits in long IDs",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Probe: stackoverflow question id 0.987, DOI 0.762, phone number 0.506, order number 0.245; '4125 in the last census' 0.011, journal volume/pages without DOI 0.015, room 12 0.005. Digits tokenize one per token, so the pole tracks position inside a long digit run. Near misses keep the topic with short quantity numbers."
+}

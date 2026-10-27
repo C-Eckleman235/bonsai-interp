@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-7ca29131",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N7037+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T04:21:31+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L21/N7037",
+   "pole": "+",
+   "label": "the '=' that opens a continuation line in a multi-line worked calculation (vs the same calculation written inline in prose)",
+   "fire": [
+    "F = m * a\n= 12 kg * 3 m/s^2\n= 36 N",
+    "Cost = price x quantity\n= $45 x 20\n= $900",
+    "A = pi * r^2\n= 3.14 * 25\n= 78.5 cm^2",
+    "d = v * t\n= 60 km/h * 2.5 h\n= 150 km",
+    "Profit = revenue - costs\n= 8,000 - 5,500\n= 2,500 dollars",
+    "P = V^2 / R\n= 144 / 6\n= 24 W",
+    "Average = sum / n\n= 420 / 7\n= 60 points",
+    "E = 0.5 * m * v^2\n= 0.5 * 4 * 9\n= 18 J"
+   ],
+   "quiet": [
+    "Using Newton's second law with 12 kg and 3 m/s^2 gives a force of 36 N.",
+    "The cost is the price times the quantity, so 45 dollars for 20 units comes to 900 dollars.",
+    "With a radius of 5 cm the area of the circle is about 78.5 square centimeters.",
+    "Driving at 60 km/h for 2.5 hours covers 150 km in total.",
+    "Revenue was 8,000 and costs were 5,500, leaving a profit of 2,500 dollars.",
+    "A 12 volt source across a 6 ohm resistor dissipates 24 watts.",
+    "Seven games totaling 420 points give an average of 60 points.",
+    "A 4 kg mass moving at 3 m/s has 18 joules of kinetic energy."
+   ]
+  }
+ ],
+ "predictions": "7/8 fire; inline prose versions quiet",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "line-initial '=' in a derivation",
+ "unit_kind": "context",
+ "confidence": 0.65,
+ "notes": "Probe: line-initial '=' continuing a derivation 0.905 and 0.605; inline '=' in prose 0.212-0.289; 'we have' line 0.107; prose about equations 0.020. Near misses state the same numbers inline with no '=' sign."
+}
