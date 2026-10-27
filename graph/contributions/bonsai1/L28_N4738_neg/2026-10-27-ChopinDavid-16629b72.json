@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-16629b72",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N4738-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T11:31:39+00:00",
+ "recipe": {
+  "toolchain_commit": "210ff2d3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L28_N4738_neg/2026-10-27-ChopinDavid-16629b72.tests.json"
+ },
+ "label": "column names in a SQL CREATE TABLE definition (the name before its type), as against the same columns used in SELECT, UPDATE or DELETE",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L28_N4738_neg/2026-10-27-ChopinDavid-16629b72.tests.json",
+   "prereg_commit": "210ff2d3",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.003,
+     "peak": " title"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.598,
+     "peak": " level"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.841,
+     "peak": "_name"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.731,
+     "peak": "_name"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.46,
+     "peak": "_id"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.743,
+     "peak": "city"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.932,
+     "peak": "_name"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.985,
+     "peak": "_name"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.098,
+     "peak": "_name"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.053,
+     "peak": " level"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.0,
+     "peak": "_name"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.041,
+     "peak": "_name"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.001,
+     "peak": "db"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.001,
+     "peak": " "
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.157,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": -0.0,
+     "peak": " '"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.792,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "210ff2d3",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "SQL CREATE TABLE column names",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: 'last⟦_name⟧ VARCHAR(70)', 'syntax TEXT,⟦ comment⟧ TEXT', 'create table test1 (⟦alias⟧ TEXT', 'committee⟦_name⟧ VARCHAR', '⟦ url⟧ varchar(200)', plus a cron '0,1⟦5⟧'. Probe: CREATE TABLE donors 0.926, CREATE TABLE users 0.688, create table test1 0.736, cron string 0.480; SELECT same columns 0.040, INSERT VALUES 0.243, Python signature with types 0.011, prose 0.005.",
+ "selection": "random draw"
+}
