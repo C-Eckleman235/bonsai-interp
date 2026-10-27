@@ -1,0 +1,157 @@
+{
+ "id": "2026-10-27-moridinamael-f1433831",
+ "kind": "qc",
+ "neuron": "bonsai1/L0/N6274+",
+ "contributor": "moridinamael",
+ "created": "2026-10-27T15:30:23+00:00",
+ "recipe": {
+  "toolchain_commit": "fc9a4e59",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N6274_pos/2026-10-27-moridinamael-f1433831.tests.json"
+ },
+ "label": "In running Spanish (or Catalan) text, the short degree and function words ' tan', ' gran', ' tales', 'por fin' (strongest) and ' ya', ' y', ' su(s)', ' del' (weaker); the same words in English, French, Italian or Portuguese stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N6274_pos/2026-10-27-moridinamael-f1433831.tests.json",
+   "prereg_commit": "fc9a4e59",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 5,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.486,
+     "peak": " tan"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.715,
+     "peak": " fin"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.666,
+     "peak": " gran"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.498,
+     "peak": " tales"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.206,
+     "peak": " y"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.244,
+     "peak": " sus"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.245,
+     "peak": " fin"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.431,
+     "peak": " gran"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.073,
+     "peak": " so"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.022,
+     "peak": "opo"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.52,
+     "peak": " gran"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.031,
+     "peak": " grandmother"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.04,
+     "peak": " la"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.075,
+     "peak": " fest"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.049,
+     "peak": "ans"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.151,
+     "peak": " già"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.906,
+    "median_fire": 0.459,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-gmoo",
+   "look",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "fc9a4e59",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "the token ' tan' (mid-sentence, lower-case) when the surrounding text is Spanish; English 'tan' alone is silent, but ' tan' after Spanish text fires whatever it means; weaker side triggers ' tales', ' ya', ' ampl', and ' gran' after 'una'"
+ }
+}
