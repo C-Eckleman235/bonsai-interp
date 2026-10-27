@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-75e79af5",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N9846-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T23:19:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N9846",
+   "pole": "-",
+   "label": "dense and tiny (max 0.22, 41% of tokens): fires most on word-internal pieces of foreign words and proper names split mid-word (V|uit|ton, Et|ob|icoke, ホ|ワ|イト, T|ücken); plain English words weaker",
+   "fire": [
+    "Yesterday my aunt bought a scarf from Louis Vuitton in Paris.",
+    "Der Plan klingt gut, hat aber einige Tücken im Detail.",
+    "今年のホワイトデーにはクッキーを買いました。",
+    "Our cousins moved to Etobicoke near the lake last year.",
+    "Der Bürgermeister sprach über die Fremdwährungskredite der Gemeinde.",
+    "Last week the tourists visited Schwarzwald villages by train.",
+    "ミルクティーとワッフルを注文しました。",
+    "Her grandmother was born in Przemyśl before the war."
+   ],
+   "quiet": [
+    "Yesterday my aunt bought a scarf from a small shop downtown.",
+    "The plan sounds good, but it has some problems in the details.",
+    "This year I bought some cookies for my friends at work.",
+    "Our cousins moved to a town near the lake last year.",
+    "The mayor talked about the city's loans in foreign money.",
+    "Last week the tourists visited small villages by train.",
+    "We ordered milk tea and waffles at the corner cafe.",
+    "Her grandmother was born in a small town before the war."
+   ]
+  }
+ ],
+ "predictions": "fire 0.45-0.75 on mid-word pieces of brand names, German words, katakana; plain English sentences 0.13-0.26, so the margin is small",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "mid-word pieces of foreign/proper names (dense)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Card flags dense (41.3%) and gate-closed. Probe: 'Tücken' 0.724, 'ホワイトデー' 0.671, 'Etobicoke' 0.670, 'Vuitton' 0.643, 'Verraten' 0.456; plain English 0.136-0.255 ('The river flows south' 0.189, 'walked to the store' 0.221)."
+}

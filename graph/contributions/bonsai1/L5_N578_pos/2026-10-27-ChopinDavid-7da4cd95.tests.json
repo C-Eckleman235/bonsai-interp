@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-7da4cd95",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N578+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T23:19:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N578",
+   "pole": "+",
+   "label": "Arabic letters split off as their own tokens inside a word (غ ghayn, ث tha, ك kaf: يتغذى, مثالية, استكملت) and the Korean byte pieces of 뿌리 (root/spray); Arabic words that tokenize whole and other Korean stay quiet",
+   "fire": [
+    "في الصباح، تتغذى الطيور على البذور في الحقل.",
+    "قال المدرب إن هذه الطريقة مثالية لتعلم السباحة.",
+    "بعد الحرب، استكملت الحكومة بناء الجسر القديم.",
+    "في الربيع، يتغذى الأطفال جيدا في المدرسة الجديدة.",
+    "كانت الغرفة مثالية للقراءة في المساء.",
+    "في النهاية، استكملت الفرقة جولتها في المدن الشمالية.",
+    "봄이 오면 우리는 정원에 물을 뿌리고 꽃을 심는다.",
+    "그 나무는 오래되어서 뿌리가 아주 깊다."
+   ],
+   "quiet": [
+    "في الصباح، تطير الطيور فوق الحقل الكبير.",
+    "قال المدرب إن هذه الطريقة جيدة لتعلم السباحة.",
+    "بعد الحرب، بنت الحكومة الجسر القديم من جديد.",
+    "في الربيع، يلعب الأطفال كثيرا في المدرسة الجديدة.",
+    "كانت الغرفة جميلة للقراءة في المساء.",
+    "في النهاية، عادت الفرقة إلى المدن الشمالية.",
+    "봄이 오면 우리는 정원에 가서 꽃을 심는다.",
+    "그 나무는 오래되어서 아주 크고 높다."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on standalone غ/ث/ك pieces and the 뿌 bytes; Arabic and Korean sentences without them below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split Arabic letters غ/ث/ك; Korean 뿌",
+ "unit_kind": "token/lexical",
+ "confidence": 0.45,
+ "notes": "Card: 'غ' x7, 'ث' x6, Korean 뿌리 in several top examples (byte tokens). Probe: 'يتغذى' 0.472 (peak غ), 'مثالية' 0.456 (peak ث), 'استكملت' 0.279 (peak ك), '뿌리는' 0.553, '뿌리기' 0.823; Arabic sentence without them 0.014-0.052, plain Korean 0.080, English 'roots' 0.022."
+}
