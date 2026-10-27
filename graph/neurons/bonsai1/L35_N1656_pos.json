@@ -4,9 +4,9 @@
  "layer": 35,
  "index": 1656,
  "pole": "+",
- "label": "Predicting the word 'asset(s)' (or stocks/profits): fires on the first piece of a financial asset/share word, especially in non-English text (Japanese/Chinese 資 in 資産, Arabic الأ/أس in الأسهم/الأرباح/الأصول) and code like ASSET_",
+ "label": "Referring to financial or productive assets, including multilingual expressions and asset-handling code",
  "short": "start of 'asset' word",
- "kind": "contextual",
+ "kind": "semantic",
  "status": "held",
  "depth": "quick",
  "tests": [
@@ -619,6 +619,128 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-27-C-Eckleman235-fa4d9c2a"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N1656_pos/2026-10-27-C-Eckleman235-a07663e3.tests.json",
+   "prereg_commit": "0c11d5b3",
+   "author": "C-Eckleman235",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.087,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.084,
+     "peak": " holds"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.379,
+     "peak": " الم"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.538,
+     "peak": " أس"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.475,
+     "peak": "資"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.428,
+     "peak": "資"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.363,
+     "peak": " fixed"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.205,
+     "peak": "(self"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.061,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.007,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.046,
+     "peak": "ض"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.083,
+     "peak": " الن"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.153,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.001,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.002,
+     "peak": " company"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.001,
+     "peak": ".grade"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.371,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-27-C-Eckleman235-a07663e3"
   }
  ],
  "label_history": [
@@ -646,6 +768,11 @@
    "2026-10-27-C-Eckleman235-fa4d9c2a",
    "Begins asset-related terms in multilingual financial prose and program identifiers.",
    "failed"
+  ],
+  [
+   "2026-10-27-C-Eckleman235-a07663e3",
+   "Referring to financial or productive assets, including multilingual expressions and asset-handling code",
+   "held"
   ]
  ],
  "examples": [],
@@ -660,7 +787,8 @@
   "2026-10-26-JasperBlank-1d99c2bb",
   "2026-10-26-JasperBlank-8986d709",
   "2026-10-27-C-Eckleman235-2bb7d688",
-  "2026-10-27-C-Eckleman235-fa4d9c2a"
+  "2026-10-27-C-Eckleman235-fa4d9c2a",
+  "2026-10-27-C-Eckleman235-a07663e3"
  ],
  "qc": {
   "confirm": 0,
@@ -672,8 +800,8 @@
  "scrutiny": {
   "level": 2,
   "name": "re-tested",
-  "test_rounds": 5,
-  "sentences": 80,
+  "test_rounds": 6,
+  "sentences": 96,
   "contributors": 2,
   "qc": 0
  }

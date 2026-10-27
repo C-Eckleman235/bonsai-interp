@@ -6,7 +6,7 @@
  "pole": "-",
  "label": "Python ' self' token in method bodies (attribute access like self._x, return self.x, (self.x)), plus the indent before 'def' in class bodies",
  "short": "Python self references",
- "kind": "contextual",
+ "kind": "lexical",
  "status": "held",
  "depth": "quick",
  "tests": [
@@ -619,6 +619,128 @@
     "near_misses_at_0.3": 5
    },
    "contribution": "2026-10-27-C-Eckleman235-a2fa908e"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L27_N4921_neg/2026-10-27-C-Eckleman235-66933af8.tests.json",
+   "prereg_commit": "0c11d5b3",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 8,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.678,
+     "peak": " self"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.508,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.507,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.509,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.511,
+     "peak": " self"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.45,
+     "peak": " self"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.495,
+     "peak": "   "
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.372,
+     "peak": " self"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.851,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.377,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.471,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.47,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.545,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.482,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.382,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.56,
+     "peak": "   "
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.531,
+    "median_fire": 0.508,
+    "near_misses_at_0.3": 8
+   },
+   "contribution": "2026-10-27-C-Eckleman235-66933af8"
   }
  ],
  "label_history": [
@@ -646,6 +768,11 @@
    "2026-10-27-C-Eckleman235-a2fa908e",
    "Using `self` as an instance reference in Python class code",
    "failed"
+  ],
+  [
+   "2026-10-27-C-Eckleman235-66933af8",
+   "The name `self` in Python instance-method code.",
+   "failed"
   ]
  ],
  "examples": [],
@@ -660,7 +787,8 @@
   "2026-10-26-JasperBlank-1cfa54b1",
   "2026-10-26-JasperBlank-73456d56",
   "2026-10-27-C-Eckleman235-92c602fc",
-  "2026-10-27-C-Eckleman235-a2fa908e"
+  "2026-10-27-C-Eckleman235-a2fa908e",
+  "2026-10-27-C-Eckleman235-66933af8"
  ],
  "qc": {
   "confirm": 0,
@@ -672,8 +800,8 @@
  "scrutiny": {
   "level": 2,
   "name": "re-tested",
-  "test_rounds": 5,
-  "sentences": 80,
+  "test_rounds": 6,
+  "sentences": 96,
   "contributors": 2,
   "qc": 0
  }
