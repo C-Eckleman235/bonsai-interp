@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-188ac81d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N2735+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T08:20:03+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N2735",
+   "pole": "+",
+   "label": "Arabic hotel-booking text (reservations, rooms, check-in, booking office), firing on its space-initial word pieces such as ' الح' of 'الحجز', as against Arabic sentences on other topics with the same word pieces and English booking text",
+   "fire": [
+    "نرجو منكم تأكيد الحجز قبل موعد الوصول بيومين على الأقل.",
+    "يمكن إلغاء الحجز مجانا حتى الساعة الثانية عشرة ظهرا.",
+    "تم الحجز بنجاح وسنرسل لك رقم الغرفة عبر البريد.",
+    "للاستفسار عن أسعار الغرف يرجى التواصل مع مكتب الاستقبال في الفندق.",
+    "اخترنا غرفة مزدوجة مع إفطار وأكملنا الحجز عبر الموقع.",
+    "يبدأ تسجيل الوصول في الفندق من الساعة الثالثة عصرا.",
+    "سياسة الحجز: يتم دفع مبلغ الليلة الأولى مقدما.",
+    "يوفر الفندق خدمة الحجز المسبق لسيارات الأجرة من المطار."
+   ],
+   "quiet": [
+    "نرجو منكم قراءة الحديث كاملا قبل الدرس بيومين على الأقل.",
+    "يمكن زيارة الحديقة مجانا حتى الساعة الثانية عشرة ظهرا.",
+    "تم الحساب بنجاح وسنرسل لك النتيجة عبر البريد.",
+    "للاستفسار عن مواعيد الدروس يرجى التواصل مع إدارة المدرسة.",
+    "اخترنا كتابا جديدا عن التاريخ وقرأناه في المكتبة.",
+    "يبدأ الحفل في القاعة الكبرى من الساعة الثالثة عصرا.",
+    "Booking policy: the first night is paid in advance at the hotel.",
+    "يوفر المصنع الحليب الطازج للمحلات في المدينة كل صباح."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.7 in Arabic booking sentences; Arabic non-booking sentences (even with ' الح' words) below 0.2; English booking below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Arabic hotel booking",
+ "unit_kind": "contextual",
+ "confidence": 0.35,
+ "notes": "Card: all top peaks are ' الح' in the TripAdvisor template 'خيارات الحجز' or in 'مكتب الحجز/الحجاب' in hotel pages. Probe: 'مكتب الحجز ... الغرفة' 0.619 (peak on ' الغ'), 'خيارات الحجز ... الدفع عند الوصول' 0.312 (peak ' عند'); ' الح' in الحديقة 0.157, الحمام 0.144, الحليب 0.018; non-booking Arabic 0.016-0.036; English booking 0.063. The peak moves off ' الح' in booking sentences, so the label is the booking context, not the token."
+}

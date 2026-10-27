@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-567bb216",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N10254+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T08:20:03+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N10254",
+   "pole": "+",
+   "label": "words that place a person under a criminal accusation or verdict ('charged with', 'convicted', 'accused of', 'on suspicion of'), as against the same words in non-criminal senses",
+   "fire": [
+    "Officers said the teenager was charged with assault after the fight.",
+    "A federal jury convicted the banker of wire fraud in March.",
+    "The guard accused of smuggling drugs was suspended without pay.",
+    "She was detained on suspicion of shoplifting at the mall.",
+    "Prosecutors charged three men with arson on Thursday.",
+    "The former mayor was convicted of taking bribes from builders.",
+    "A nurse accused of stealing painkillers will stand trial in June.",
+    "Two tourists were held on suspicion of vandalizing the statue."
+   ],
+   "quiet": [
+    "Officers said the phone was charged by the time the fight began.",
+    "A federal panel praised the banker for his work in March.",
+    "The guard trained in first aid was promoted with higher pay.",
+    "She was detained by a long line of shoppers at the mall.",
+    "The shop charged three men twenty dollars for parking on Thursday.",
+    "The former mayor was fond of taking walks with builders.",
+    "A nurse known for her kindness will retire in June.",
+    "Two tourists were held up by traffic near the statue."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.8 on the accusation word; 'charged' for batteries or prices, 'accused' in everyday blame without a crime, below 0.25",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "criminal accusation",
+ "unit_kind": "contextual",
+ "confidence": 0.6,
+ "notes": "Card: ' charged' x7, ' convicted' x3, ' suspicion' x2, ' accused' in crime reports. Probe: 'charged with burglary' 0.673, 'convicted her of fraud' 0.651, 'accused of the robbery' 0.616, 'on suspicion of drunk driving' 0.816; 'battery was charged' 0.086, 'hotel charged us' 0.069; 'was convinced' 0.198 and 'on Monday' 0.215 show a noisy floor."
+}

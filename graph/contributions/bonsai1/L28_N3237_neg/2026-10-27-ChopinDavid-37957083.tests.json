@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-37957083",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N3237-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T08:20:03+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N3237",
+   "pole": "-",
+   "label": "the opening bracket of a row in a multi-line, column-aligned list of tuples or arrays in code (the '(' or '[' at the start of each indented row), as against brackets in ordinary code and prose",
+   "fire": [
+    "DIRECTIONS = [\n    ( 1,  0),\n    ( 0,  1),\n    (-1,  0),\n    ( 0, -1),\n]",
+    "kernel = np.array([\n    [ 0, -1,  0],\n    [-1,  4, -1],\n    [ 0, -1,  0],\n])",
+    "atoms = [\n    ['C', ( 0.0,  0.0, 0.0)],\n    ['O', ( 1.2,  0.0, 0.0)],\n    ['H', (-0.5,  0.9, 0.0)],\n]",
+    "points = [\n    (10, 20),\n    (15, 25),\n    (20, 30),\n    (25, 35),\n]",
+    "matrix = [\n    [1, 0, 0],\n    [0, 1, 0],\n    [0, 0, 1],\n]",
+    "COLORS = (\n    (255,   0,   0),\n    (  0, 255,   0),\n    (  0,   0, 255),\n)",
+    "moves = [\n    ( 2,  1),\n    ( 1,  2),\n    (-1,  2),\n    (-2,  1),\n]",
+    "data = np.array([\n    [ 3.1,  2.0],\n    [ 1.4, -0.7],\n    [-2.2,  0.5],\n])"
+   ],
+   "quiet": [
+    "DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]",
+    "kernel = np.zeros((3, 3))\nkernel[1, 1] = 4",
+    "atoms = load_atoms('water.xyz')\nprint(len(atoms))",
+    "def add(a, b):\n    total = (a + b)\n    return total",
+    "matrix = np.eye(3)\nprint(matrix.shape)",
+    "COLORS = dict(red=255, green=0, blue=0)",
+    "for move in moves:\n    x, y = apply(move, x, y)",
+    "The table lists three rows (one per sample) and two columns."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-1.0 on the row-opening ' (' or ' [' in aligned multi-line lists; one-line lists, function calls and prose below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "row bracket in aligned list",
+ "unit_kind": "contextual",
+ "confidence": 0.45,
+ "notes": "Card: top peaks are ' (' or ' [' opening a row in aligned lists ('NEIGHBOURS = [ ( 0, 1), ...', np.array rows), plus '.\\n' ending footnote citations. Probe: aligned tuple list 1.091, aligned np.array 0.653; footnote lists 0.076 and 0.039, a def with parentheses 0.105, prose 0.001-0.038. The footnote side did not reproduce, so the test claims the code rows only."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-d0e12150",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N1055-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T08:20:03+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L30/N1055",
+   "pole": "-",
+   "label": "the research-field word that names a lab facility ('Genomics' Core, 'proteomics' facility, 'molecular biology' laboratory), predicting 'Core', 'Facility' or 'Center', as against the same field words used as a subject of study and other kinds of facility",
+   "fire": [
+    "Tissue samples go to the Metabolomics Core Facility on the third floor.",
+    "The institute opened a new imaging facility for electron microscopy last year.",
+    "She runs the Flow Cytometry Core, which sorts cells for twenty labs.",
+    "His team built a bioinformatics core that supports every department.",
+    "Our Mass Spectrometry Shared Resource is open to outside users.",
+    "Mice are housed in the transgenic facility next to the medical school.",
+    "He was hired to direct the university's Structural Biology Center.",
+    "All DNA libraries are prepared in the sequencing core before analysis."
+   ],
+   "quiet": [
+    "Tissue samples show changes in metabolomics after a long fast.",
+    "The institute published a new guide to electron microscopy last year.",
+    "She learned flow cytometry, which sorts cells, in her first year.",
+    "His team taught bioinformatics to students in every department.",
+    "Mass spectrometry is a technique that outside users often misread.",
+    "Mice are housed in cages in a quiet room next to the kennel.",
+    "He was hired to coach the university's basketball team.",
+    "All the old books are stored in the library basement before sale."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on the field word (or its last piece) before Core/Facility/Center/laboratory; the field word as a topic below 0.1; non-science facilities near 0",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "field word in facility name",
+ "unit_kind": "contextual",
+ "confidence": 0.55,
+ "notes": "Card: 'Micro⟦array⟧ Core Facility' (max), 'prote⟦omics⟧ facility', 'molecular⟦ biology⟧ research laboratory', 'Nanosc⟦ience⟧ ... center', 'Stem⟦ Cells⟧ Research Center'; the + pole suppresses ' core', ' Facility', ' center', ' Shared', so the - pole promotes them. Probe: 'Genomics Core Facility' 0.467, 'proteomics facility' 0.516, 'molecular biology research laboratory' 0.317, 'Nanoscience Center' 0.198; 'the genomics of wheat' 0.092, 'studied proteomics' 0.014, 'sports facility' 0.003."
+}
