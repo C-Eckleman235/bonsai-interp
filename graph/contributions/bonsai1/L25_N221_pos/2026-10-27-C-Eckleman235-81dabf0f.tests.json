@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-81dabf0f",
+ "contributor": "C-Eckleman235",
+ "kind": "qc",
+ "neuron": "bonsai1/L25/N221+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T18:46:02+00:00",
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "' Anal' / ' anal' as the first piece of a longer word that the tokenizer splits (Anal|ogue, Anal|ysing, Anal|ytical), i.e. a word-initial 'anal' fragment; weaker secondary hits on 'ab' inside An|ab|aptism",
+  "notes": "Codex pilot, arm Q (plan sha256 419bfb6f8d41a7f64c56bd5a223d777ca937bf8fdc6c3f00634a70eed40f8021): a third independent QC of the model-QC pilot's labels (rounds 1 and 2 were Opus): label slot B of this pole, from contribution 2026-10-26-JasperBlank-a1b19986. Sentences written by one fresh `codex exec` (gpt-6.1-sol, reasoning effort high, read-only sandbox, no tool use) given the identical packet the Opus writers got (the pole's card with its record line removed and the three anonymous labels); never shown earlier tests or results, not told who wrote which label; sentences unedited; nothing probed or scored before this commit."
+ },
+ "neighbours": [
+  {
+   "unit": "L25/N221",
+   "pole": "+",
+   "label": "' Anal' / ' anal' as the first piece of a longer word that the tokenizer splits (Anal|ogue, Anal|ysing, Anal|ytical), i.e. a word-initial 'anal' fragment; weaker secondary hits on 'ab' inside An|ab|aptism",
+   "fire": [
+    "The festival programme lists \"Analogue Futures\" as its opening exhibition.",
+    "For tomorrow's workshop, read the chapter titled \"Analysing Household Spending.\"",
+    "At the laboratory, analytical instruments detected a small amount of copper.",
+    "Before publication, the editor asked an analyst to check the financial projections.",
+    "In her lecture, several analogies made the unfamiliar machinery easier to understand.",
+    "During recovery, the patient reported adequate analgesia without excessive drowsiness.",
+    "The documentary explores the emergence of Anabaptism in sixteenth-century Switzerland.",
+    "A disputed manuscript links early Anabaptism with debates over voluntary church membership."
+   ],
+   "quiet": [
+    "On the festival programme, \"Digital Futures\" appears as the opening exhibition.",
+    "Tomorrow's reading comes from the chapter titled \"Examining Household Spending.\"",
+    "Within the laboratory, anatomic specimens were arranged beside the copper testing equipment.",
+    "Prior to publication, the editor requested a financial review of the projections.",
+    "Throughout her lecture, the machinery became clearer through comparisons with familiar tools.",
+    "Following surgery, the patient described anal discomfort despite receiving pain medication.",
+    "This documentary follows an abbot through the religious disputes of sixteenth-century Switzerland.",
+    "According to the manuscript, baptism became central to debates over voluntary church membership."
+   ]
+  }
+ ],
+ "predictions": "confirm: the label as written should hold a harder independent test (>= 6/8 fire, AUROC >= 0.9)",
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort high; blind QC writer, card only)",
+  "screens": [
+   "card"
+  ]
+ },
+ "selection": "Codex pilot: a cross-model QC of each model-QC pilot label (#1051-#1080)"
+}
