@@ -1,0 +1,156 @@
+{
+ "id": "2026-10-26-moridinamael-c90a2a4e",
+ "kind": "qc",
+ "neuron": "bonsai1/L0/N8268-",
+ "contributor": "moridinamael",
+ "created": "2026-10-27T00:28:21+00:00",
+ "recipe": {
+  "toolchain_commit": "2ad64406",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N8268_neg/2026-10-26-moridinamael-c90a2a4e.tests.json"
+ },
+ "label": "a word piece ending in '-as' (strongest 'las'/'ras'; also 'itas', 'adas', 'jas', names like Matias, Callas) in names, Spanish and split rare words; common English words like glass, class, brass, gas stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N8268_neg/2026-10-26-moridinamael-c90a2a4e.tests.json",
+   "prereg_commit": "2ad64406",
+   "author": "blind:claude-sonnet-5-5 (label-only)",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.377,
+     "peak": "as"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.885,
+     "peak": " Las"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.58,
+     "peak": "ias"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.311,
+     "peak": " unas"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.238,
+     "peak": " Vegas"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.498,
+     "peak": "ás"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.659,
+     "peak": "Las"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.549,
+     "peak": "pas"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.015,
+     "peak": " opera"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.006,
+     "peak": " afternoon"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.01,
+     "peak": " goal"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.025,
+     "peak": "lets"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.057,
+     "peak": " glass"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.009,
+     "peak": " arrived"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.016,
+     "peak": " town"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.146,
+     "peak": " brass"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.524,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-gmoo",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "2ad64406",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "the word piece 'las'/'ras' (weaker for other '-as' pieces such as 'olas', 'cas') split off inside a rare word or name: Las Vegas, Niklas, toxoplasmosis, Krasinski, idiosyncrasies; common whole words with the same letters (glass, class, grass, brass, plasma) stay quiet"
+ }
+}
