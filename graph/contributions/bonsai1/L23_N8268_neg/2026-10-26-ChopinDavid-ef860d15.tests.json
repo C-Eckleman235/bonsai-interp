@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-ef860d15",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N8268-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T01:21:29+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L23/N8268",
+   "pole": "-",
+   "label": "the first indentation token of a Python class body, the line right after 'class X:', as against indentation that opens a function, loop or conditional body",
+   "fire": [
+    "import json\n\n\nclass Cache(object):\n    def __init__(self, size):\n        self.size = size",
+    "import logging\n\n\nclass Worker(threading.Thread):\n    daemon = True\n    name = 'worker'",
+    "from enum import Enum\n\n\nclass Color(Enum):\n    RED = 1\n    GREEN = 2",
+    "import os\n\n\nclass Settings:\n    DEBUG = False\n    ROOT = os.getcwd()",
+    "import abc\n\n\nclass Store(metaclass=abc.ABCMeta):\n    _items = None\n    limit = 10",
+    "import socket\n\n\nclass Client:\n    def connect(self, host):\n        self.host = host",
+    "from typing import List\n\n\nclass Queue(object):\n    def __init__(self):\n        self.items = []",
+    "import time\n\n\nclass Timer:\n    start = 0\n    stop = 0"
+   ],
+   "quiet": [
+    "import json\n\n\ndef read(path):\n    with open(path) as f:\n        return json.load(f)",
+    "import logging\n\n\ndef worker(n):\n    total = 0\n    return total + n",
+    "from enum import Enum\n\nfor color in colors:\n    if color:\n        print(color)",
+    "import os\n\n\ndef settings():\n    root = os.getcwd()\n    return root",
+    "import abc\n\nwhile True:\n    item = queue.get()\n    handle(item)",
+    "import socket\n\n\ndef connect(host):\n    sock = socket.socket()\n    return sock",
+    "from typing import List\n\nif items:\n    first = items[0]\n    print(first)",
+    "import time\n\n\ndef timer():\n    start = time.time()\n    return start"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on the '   ' token after a class header; indentation after def/for/if headers stays under 0.25",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "first indent of a Python class body",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: '   ' x26, nearly all the first indent after 'class X(...):'. Probe: class Repo body 0.685, class Loader 0.642, class Config 0.590, class Point (blank line first) 0.361; def body 0.191 and 0.263, for/if body 0.017."
+}
