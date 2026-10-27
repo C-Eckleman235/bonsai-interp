@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-27-moridinamael-f1433831",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L0/N6274+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T15:30:05+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "the token ' tan' (mid-sentence, lower-case) when the surrounding text is Spanish; English 'tan' alone is silent, but ' tan' after Spanish text fires whatever it means; weaker side triggers ' tales', ' ya', ' ampl', and ' gran' after 'una'"
+ },
+ "neighbours": [
+  {
+   "unit": "L0/N6274",
+   "pole": "+",
+   "label": "In running Spanish (or Catalan) text, the short degree and function words ' tan', ' gran', ' tales', 'por fin' (strongest) and ' ya', ' y', ' su(s)', ' del' (weaker); the same words in English, French, Italian or Portuguese stay quiet",
+   "fire": [
+    "La película fue tan aburrida que nos fuimos antes del final.",
+    "Después de tres horas de espera, por fin llegó el tren a la estación.",
+    "Mi abuelo tenía una gran colección de sellos antiguos en su despacho.",
+    "No entiendo cómo pudieron cometer tales errores en un informe tan sencillo.",
+    "Ya es tarde, así que cerramos la tienda y volvemos mañana.",
+    "Los vecinos del pueblo celebraron la fiesta con sus familias y amigos.",
+    "Por fin terminamos la mudanza y podemos descansar un poco.",
+    "Era una gran oportunidad, pero ella ya había aceptado otro trabajo."
+   ],
+   "quiet": [
+    "The film was so boring that we left before the end of the show.",
+    "Dopo tre ore di attesa, il treno è finalmente arrivato in stazione.",
+    "Mio nonno aveva una gran collezione di francobolli antichi nel suo studio.",
+    "My grandmother told us old tales about the sea before we went to sleep.",
+    "Il est déjà tard, alors nous fermons la boutique et revenons demain.",
+    "Gli abitanti del paese hanno festeggiato con le loro famiglie e gli amici.",
+    "Finalmente terminamos a mudança e podemos descansar um pouco.",
+    "Era una grande occasione, ma lei aveva già accettato un altro lavoro."
+   ]
+  }
+ ],
+ "predictions": "Expect most fire items to clear 0.20 of max, but short one-line items may be weak; Italian 'gran' near miss may leak. Roughly 6/8 fire, 0-1 near misses.",
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "quick-test"
+  ]
+ }
+}
