@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-d078ecd4",
+ "contributor": "C-Eckleman235",
+ "kind": "qc",
+ "neuron": "bonsai1/L15/N5974-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T18:45:48+00:00",
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "the first word of a result clause after 'so' / 'therefore' (e.g. 'so today', 'therefore, each', 'so these', 'and so the trend'): the subject-starting token right after a consequence connective",
+  "notes": "Codex pilot, arm Q (plan sha256 419bfb6f8d41a7f64c56bd5a223d777ca937bf8fdc6c3f00634a70eed40f8021): a third independent QC of the model-QC pilot's labels (rounds 1 and 2 were Opus): label slot A of this pole, from contribution 2026-10-26-JasperBlank-b6ad5e6c. Sentences written by one fresh `codex exec` (gpt-6.1-sol, reasoning effort high, read-only sandbox, no tool use) given the identical packet the Opus writers got (the pole's card with its record line removed and the three anonymous labels); never shown earlier tests or results, not told who wrote which label; sentences unedited; nothing probed or scored before this commit."
+ },
+ "neighbours": [
+  {
+   "unit": "L15/N5974",
+   "pole": "-",
+   "label": "the first word of a result clause after 'so' / 'therefore' (e.g. 'so today', 'therefore, each', 'so these', 'and so the trend'): the subject-starting token right after a consequence connective",
+   "fire": [
+    "The soil dried out overnight, so these seedlings need water before the afternoon heat arrives.",
+    "The office remained closed yesterday, so today became our only chance to submit the application.",
+    "Demand has fallen for six consecutive months, and so the trend appears likely to continue.",
+    "The server stores documents separately; therefore, each file receives its own permanent address.",
+    "The mountain path was blocked by snow; therefore, a different route became necessary.",
+    "The original instructions confused several volunteers, so this revised guide includes a worked example.",
+    "The lid prevents moisture from escaping; therefore, the mixture stays soft throughout the cooking process.",
+    "The front row has already filled; therefore, these guests will need seats near the back."
+   ],
+   "quiet": [
+    "Despite the dry soil, these seedlings still looked healthy when the gardener inspected them.",
+    "According to the office calendar, today remains the final day for submitting an application.",
+    "The decline in demand developed so gradually that analysts initially overlooked the emerging trend.",
+    "For the document archive, each file receives an address based on its creation date.",
+    "The mountain path was blocked; therefore, after lunch, we examined the alternative routes.",
+    "The revised guide explains the procedure so clearly that volunteers rarely request additional instructions.",
+    "The cook tightened the lid so that the mixture would retain moisture during baking.",
+    "The front row filled quickly; therefore, near the back, several guests began looking for seats."
+   ]
+  }
+ ],
+ "predictions": "confirm: the label as written should hold a harder independent test (>= 6/8 fire, AUROC >= 0.9)",
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort high; blind QC writer, card only)",
+  "screens": [
+   "card"
+  ]
+ },
+ "selection": "Codex pilot: a cross-model QC of each model-QC pilot label (#1051-#1080)"
+}
