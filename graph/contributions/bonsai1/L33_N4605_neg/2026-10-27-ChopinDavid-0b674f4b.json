@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-0b674f4b",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N4605-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T22:23:06+00:00",
+ "recipe": {
+  "toolchain_commit": "f57fb592",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L33_N4605_neg/2026-10-27-ChopinDavid-0b674f4b.tests.json"
+ },
+ "label": "a token whose likely continuation starts with 'A'/'a' (' (' opening an acronym that begins with A, as in complex (ADC)): a next-token predictor; ' (' before acronyms with other first letters stays quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L33_N4605_neg/2026-10-27-ChopinDavid-0b674f4b.tests.json",
+   "prereg_commit": "f57fb592",
+   "author": "ChopinDavid",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.106,
+     "peak": " fibr"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.095,
+     "peak": "AK"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.222,
+     "peak": " ("
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.031,
+     "peak": " ("
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.024,
+     "peak": "ics"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.098,
+     "peak": "osp"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.054,
+     "peak": " le"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": -0.001,
+     "peak": " year"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.003,
+     "peak": " at"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.01,
+     "peak": "D"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.02,
+     "peak": " ("
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.02,
+     "peak": "ATO"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.003,
+     "peak": " Royal"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.097,
+     "peak": "osp"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.118,
+     "peak": " phys"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.107,
+     "peak": "N"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.625,
+    "median_fire": 0.074,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "f57fb592",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "' (' before an A-initial acronym",
+ "unit_kind": "next-token predictor",
+ "confidence": 0.4,
+ "notes": "Card: ' (' x8 before ADC, APodC, ACDF, TACF, CIV, plus pieces before 'a/e' continuations (stom|acke, expect|ancies, pert|en|ecemos, T|aker); the + pole suppresses ' AC', 'ac', so this pole promotes them. Probe: 'complex (ADC)' 1.049, 'fusion (ACDF)' 0.480, 'Foundation (TACF)' 0.316, 'expectancies' 0.529, 'pertenecemos' 0.604; 'Organization (WHO)' 0.013, plain parentheticals 0.001 and -0.000. The near misses keep a medical or institutional name with an acronym that does not start with A.",
+ "selection": "random draw"
+}
