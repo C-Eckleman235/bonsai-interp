@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-aa908bf6",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N10708+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T02:19:57+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L25/N10708",
+   "pole": "+",
+   "label": "a mid-word piece that cuts across the morpheme boundary of a long word ('in|train|dividual', 'met|ase|arch', 'Datensch|utzer|klärung'), as against the same meaning written as separate words",
+   "fire": [
+    "The biologists measured intraspecific competition among the beetles in each plot.",
+    "Patients received an intramuscular injection of the vaccine in the upper arm.",
+    "Bitte lesen Sie unsere Datenschutzbestimmungen, bevor Sie das Formular absenden.",
+    "The therapist focused on intrapersonal conflict during the first sessions.",
+    "Researchers built a metasearch tool that queries ten databases at once.",
+    "The drug acts on intracellular signalling pathways in the liver.",
+    "Der Datenschutzbeauftragte der Firma beantwortet alle Fragen per E-Mail.",
+    "Scientists studied inbreeding in small populations of island foxes."
+   ],
+   "quiet": [
+    "The biologists measured competition within each species of beetle in each plot.",
+    "Patients received an injection of the vaccine into the muscle of the upper arm.",
+    "Bitte lesen Sie unsere Regeln, bevor Sie das Formular absenden.",
+    "The therapist focused on inner conflict during the first sessions.",
+    "Researchers built a search tool that queries ten databases at once.",
+    "The drug acts on signalling pathways inside the cells of the liver.",
+    "Die Leiterin der Firma beantwortet alle Fragen per E-Mail.",
+    "Scientists studied mating between close relatives in small populations of island foxes."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on mis-segmented inner pieces; the same idea in separate whole words below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "mid-word piece across a morpheme cut",
+ "unit_kind": "token",
+ "confidence": 0.3,
+ "notes": "Card: inner pieces of words split against their morphemes ('train' in intraindividual, 'ase' in metasearch, 'utzer' in Datenschutzerklärung, 'odel' in to_nodelink). Probe: 'Datenschutzerklärung' 0.757, 'metasearch' 0.708, 'intraindividual' 0.645, 'seabed' 0.177; 'Bundesverfassungsgericht' 0.003 (so not every compound), paraphrases 0.004-0.020. Low confidence about which splits qualify; fire items use intr-/met-/Datensch- style splits."
+}

@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-eb1c341d",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N10382+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T02:28:34+00:00",
+ "recipe": {
+  "toolchain_commit": "596b4993",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L6_N10382_pos/2026-10-26-ChopinDavid-eb1c341d.tests.json"
+ },
+ "label": "the word completing a compound that begins with 'Field/field' ('Field Service', 'Field Museum', 'field sobriety', 'near field communication'), as against the same word after another modifier",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L6_N10382_pos/2026-10-26-ChopinDavid-eb1c341d.tests.json",
+   "prereg_commit": "596b4993",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.349,
+     "peak": " Hospital"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.353,
+     "peak": " Engineer"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.075,
+     "peak": " kitchen"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.413,
+     "peak": "rops"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.416,
+     "peak": " School"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.04,
+     "peak": " payments"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.337,
+     "peak": " Techn"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.193,
+     "peak": " Marshal"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.012,
+     "peak": " week"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.009,
+     "peak": " as"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.023,
+     "peak": " large"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.02,
+     "peak": " Plant"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.01,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.007,
+     "peak": " shops"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.071,
+     "peak": " Assist"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.022,
+     "peak": " field"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.343,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "596b4993",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "word after 'Field' in a compound",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: ' Service' (Field Service), 'ology' (Field Archaeology), ' Museum' (Field Museum), 'ety' (Field Sobriety), ' communication' (near field). Probe: 'Field Service Management' 0.817, 'Field Archaeology' 0.715, 'Field Museum' 0.681, 'near field communication' 0.584, 'field sobriety' 0.454; 'Customer Service' 0.017, 'Marine Archaeology' 0.047, 'Science Museum' 0.017, 'grazed in the field' 0.018.",
+ "selection": "random draw"
+}
