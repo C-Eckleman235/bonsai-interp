@@ -29,7 +29,7 @@ GROUPS = [("spelling", ["spelling"]), ("word", ["lexical"]), ("meaning", ["sense
 GROUP_OF = {b: i for i, (_, bins) in enumerate(GROUPS) for b in bins}
 # the sweep library's kinds, folded into the same groups (a held library test colours a pole the screen left unexplained)
 LIB_GROUP = {"copy": "copy", "topic": "topic", "lang": "context", "predict": "context", "struct": "format", "number": "format",
-             "twin": "lexical", "grammar": "context", "compose": "context"}
+             "twin": "lexical", "grammar": "context", "compose": "context", "pos": "lexical", "code": "context", "cover": "context"}
 OTHER, HIT = 7, 8
 
 

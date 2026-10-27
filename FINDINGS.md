@@ -897,3 +897,22 @@ compose@1).
   - composition over mid-layer units.
 
 The local word-class basis reaches about layer 11.
+
+## 2026-10-27: Part of speech is morphology, early (sweeplib@4, docs/POS.md)
+
+sweeplib@4 screened all 884,736 poles for part of speech and morphology:
+- 12 word classes, each against other classes of the same word frequency;
+- the same word used in two classes;
+- 8 morphological features.
+
+- **313 poles selected, 26 held,** against 0 of 313 placebo tests. 11 of the holds are assignment-grade.
+- **The holds are morphological and early:**
+  - superlative 10, comparative 3, gerund 3, proper noun 3, third person singular 2;
+  - 20 of the 26 are in layers 0–5;
+  - superlative poles also appear at L18–24 (L18/N11306+ covers 62% of its top activations, against a 0.3% base rate).
+- **No pure noun, adjective, adverb or pronoun pole held** once the frequency band was matched.
+- **With the word held fixed, the class it is used in selected one pole** (of 884,736), which failed.
+
+Word class, as such, is not a single-pole feature in Bonsai-8B. Classes marked in the letters are, early. The rest
+is either spread over many partial poles or bound to particular words; composition round 3 tests the second reading.
+
