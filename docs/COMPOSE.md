@@ -237,3 +237,59 @@ context, read through attention one or two tokens back.
 
 Layers 12–17 again yield little (5 holds). That band stays the map's hardest.
 
+## Round 4 (compose@4): format conditions and the tokens before
+
+Round 3 left layers 12–17 almost empty. A diagnostic on its event sample showed why. At L14 and L16 only 7–14% of
+poles have a read-token condition covering half of them, against 18–27% at other depths. Their strong activations
+also spread over more read tokens: the top 8 cover 33%, against 41–47% elsewhere.
+
+Round 4 keeps round 3's engine and event sample (pinned by the same hash) and widens the library to 222 conditions
+(`bonsai_interp/compose/conds2.py`):
+- **13 text-format conditions:**
+  - line start, sentence start;
+  - digit, after a digit;
+  - capitalized, all capitals;
+  - punctuation, after punctuation;
+  - inside brackets or a quotation opened on the same line;
+  - in a URL;
+  - on a list line, on a `#`-led line;
+- **every round 3 condition shifted** to the previous token and the one before it (`prev1:`, `prev2:`).
+
+Poles that round 3 tested are left out, as is every assignment-grade pole. Re-testing them could repeat round 3's
+pairs exactly.
+
+| | |
+|---|---|
+| Protocol | 7cfebb38 |
+| Tests pre-registered | c2d27487 |
+| Results | 0f7e61dd |
+
+Selection gave 2,499 hypotheses. 672 item sets were untestable, which left 1,755 tests.
+
+| | tests | held |
+|---|---:|---:|
+| shifted one token (`prev1:`) | 886 | 180 |
+| format (`fmt:`) | 738 | 126 |
+| shifted two tokens (`prev2:`) | 131 | 14 |
+| **all** | **1,755** | **320 poles, all assignment-grade** |
+| placebo | 1,735 | **0** |
+
+- **Coverage and firing:** median held coverage 0.63, median fire 0.32 of max.
+- **By depth:** L0–5 166, L6–11 73, L12–17 10, L18–23 33, L24–29 23, L30–35 15.
+- **What holds:**
+  - words after a number ("of" in "3 of", L24), after a conjunction (" other" in "and other", L12) or after a
+    possessive;
+  - `(self` right after a def name (L16, L24);
+  - list and dict continuations (`,\n`) inside brackets (L14, L15, L24);
+  - single capital letters at line start (L35);
+  - `#`-led lines. In code windows these are Python comments, mostly license headers: " governing", " language" and
+    " details" on a `#` line.
+
+### Reading
+
+Format and the token before carry about as much as round 3's read-token roles did. The deterministic passes now cover
+three kinds of pole: the word, the word in a sense or slot, and the word in a local frame. Layers 12–17 still yield
+little (10). Every method that conditions on the read token or the one or two before it reaches about layer 11, then
+picks up again past layer 17. Whatever the mid layers compute is not visible in the local text window at this
+resolution.
+

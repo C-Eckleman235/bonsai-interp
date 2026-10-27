@@ -957,3 +957,22 @@ Many poles the word screen labels "partial" (the word covers under half of the p
 syntactic slot. Put the sense in the label and the coverage passes half. Layers 12–17 remain the hardest band for
 every deterministic method so far.
 
+## 2026-10-27: Format and the previous token cover another 320 poles; layers 12–17 stay dark (compose@4)
+
+compose@4 ran compose@3's cover on the same event sample with 222 conditions. The new ones are 13 text-format
+conditions, and every compose@3 condition shifted one or two tokens back. Poles compose@3 tested were left out.
+
+- **320 of 1,755 tests held on 320 poles, all assignment-grade** (median coverage 0.63, median fire 0.32), against
+  **0 of 1,735** placebo tests.
+- **By kind:** conditions one token back 180, format 126, two tokens back 14.
+- **Examples:**
+  - " other" after a conjunction (L12);
+  - "of" after a number (L24);
+  - `(self` after a def name (L16, L24);
+  - list continuations inside brackets (L14–15);
+  - license-header words on `#` lines.
+- **By depth:** 239 holds in L0–11, 10 in L12–17, 71 in L18–35.
+
+With compose@3 the cover rounds add 605 assignment-grade poles. Both stall in layers 12–17 (15 holds together). There
+the strong activations spread over more read tokens, and fewer poles have any local condition covering half of them.
+

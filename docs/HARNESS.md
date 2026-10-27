@@ -154,12 +154,14 @@ placebos, a held-out 8 + 8, and the 50% coverage rule.
 | sweeplib@4 part of speech, morphology (docs/POS.md) | word classes and inflections at the last token | 26 held, 11 assignment-grade; morphology (-est, -er, -ing, -s), early layers; no pure noun or verb poles |
 | sweeplib@5 code syntax (docs/CODESYN.md) | Python syntax roles at the last token | 65 held on 54 poles, 20 assignment-grade; binding sites (class, def, for-loop and keyword names), every depth |
 | compose@3 (docs/COMPOSE.md) | each pole against the whole condition library on a sample of its strong activations | 285 held, all assignment-grade; word poles for one sense or slot of their word (bear as a noun, as in an import) |
+| compose@4 (docs/COMPOSE.md) | the same cover with format conditions and the conditions one and two tokens back | 320 held, all assignment-grade; words in a local frame (after a number, after a conjunction, `(self` after a def name) |
 
 All of it is in the atlas: lib_* columns (the best test per pole across passes, its coverage, every condition held) and
 census_flags. It shows on `play card`, `play search --kind …` and the map.
 
 Next:
-- **compose@4:** the same cover with the round's new units and far-context conditions (occlusion offsets), aimed at
-  layers 12–17, the band every round has found hardest.
+- **Layers 12–17:** every method conditioned on the read token or the one or two before it stalls here (compose@3 5
+  holds, compose@4 10). Next: far context from each pole's occlusion map, and composition over the mid-layer units
+  themselves.
 - **The attention distance sweep** on held pairs.
 - **The residual count** per round as the stopping rule.
