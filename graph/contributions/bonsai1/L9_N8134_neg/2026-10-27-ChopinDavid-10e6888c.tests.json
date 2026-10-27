@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-10e6888c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N8134-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T22:13:41+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L9/N8134",
+   "pole": "-",
+   "label": "a deictic time expression anchored to the present (ago, last night, today, tomorrow, yesterday) in the middle of a sentence",
+   "fire": [
+    "My uncle sold his old truck to a neighbour about two months ago.",
+    "We heard a loud crash in the street last night around eleven.",
+    "Nobody can promise that tomorrow will bring better weather.",
+    "The doctor told me that a few years ago this test did not exist.",
+    "Honestly, I felt much calmer today than I did all week.",
+    "She called her mother yesterday to wish her a happy birthday.",
+    "The shop that opened a decade ago is still run by the same family.",
+    "Something strange happened at the station last night after the storm."
+   ],
+   "quiet": [
+    "My uncle sold his old truck to a neighbour who needed it for work.",
+    "We heard a loud crash in the street around eleven during the storm.",
+    "Nobody can promise that the new season will bring better weather.",
+    "The doctor told me that in earlier decades this test did not exist.",
+    "Honestly, I felt much calmer after the meeting than before it.",
+    "She called her mother on her birthday to wish her well.",
+    "The shop that opened in 1990 is still run by the same family.",
+    "Something strange happened at the station after the storm in April."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on ago/night/tomorrow/today mid-sentence; non-deictic time phrases (after the inspection, in March) below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "deictic time word (ago, last night, tomorrow)",
+ "unit_kind": "word-in-meaning",
+ "confidence": 0.4,
+ "notes": "Card: ' ago' x7, ' night' x3 (last night), ' today', ' yesterday', ' tomorrow'. Probe: 'assume that tomorrow will be' 0.758, 'a strange dream last night' 0.656, 'Yesterday the council' 0.267 (peak later), 'Three weeks ago' at sentence start 0.155, 'announced today' 0.129; 'after the inspection' 0.023, 'with a new exhibition' 0.011. Fire items keep the expression mid-sentence."
+}

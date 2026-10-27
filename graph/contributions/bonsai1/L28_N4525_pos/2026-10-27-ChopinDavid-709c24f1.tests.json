@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-709c24f1",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N4525+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T22:13:41+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N4525",
+   "pole": "+",
+   "label": "the slot just before a verb of securing or achieving a quality: Japanese を before 実現/確保/完備, and 'make' in 'just / but / whatever you do, make sure'; a next-token predictor of ensure",
+   "fire": [
+    "この新しいサーバーは高速な処理を実現しました。",
+    "当社は最新の設備で品質の安定を確保しています。",
+    "The paint dries fast, but make sure the room has fresh air.",
+    "この車は低燃費と静かな走りを実現しています。",
+    "Buying a used car is fine. Just make sure the brakes are checked.",
+    "当ホテルは快適な客室とサービスを完備しております。",
+    "Whatever you decide, make sure everyone knows the plan.",
+    "このアプリは簡単な操作性を実現しています。"
+   ],
+   "quiet": [
+    "私は毎朝コーヒーを飲みながら新聞を読みます。",
+    "当社は最新の設備で毎日パンを焼いています。",
+    "The paint dries fast, and the room smells fresh by evening.",
+    "この車は先月、父が中古で買ったものです。",
+    "Buying a used car is fine. My cousin bought one last year.",
+    "当ホテルの近くには小さな公園と川があります。",
+    "Whatever you decide, we will meet again on Friday.",
+    "このアプリは友達に教えてもらいました。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on を before 実現/確保 and on 'make' after 'just'/'but'/'whatever you do,'; を before ordinary verbs and 'check that' lead-ins below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "slot before ensure/achieve (を+実現, make sure)",
+ "unit_kind": "next-token predictor",
+ "confidence": 0.3,
+ "notes": "Card: Japanese 'を' before 実現/完備 (58.5, 47.75), ' make' x5 before 'sure' after 'Whatever you do,' / 'Just' / 'but', ' to' before 'ensure'; output promotes ' ensure', ' guarantee'. Probe: '安全性を実現' 0.836, 'Whatever you choose, make' 0.459 (same with or without 'sure', since it predicts), but 'Before you leave, make sure' 0.047 and 'precision rail to ensure' 0.113, so the English side depends on the lead-in."
+}

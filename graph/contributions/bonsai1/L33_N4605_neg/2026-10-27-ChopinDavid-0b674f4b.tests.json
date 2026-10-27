@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-0b674f4b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N4605-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T22:13:41+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N4605",
+   "pole": "-",
+   "label": "a token whose likely continuation starts with 'A'/'a' (' (' opening an acronym that begins with A, as in complex (ADC)): a next-token predictor; ' (' before acronyms with other first letters stays quiet",
+   "fire": [
+    "Doctors at the clinic treat many patients with atrial fibrillation (AF) each week.",
+    "She was diagnosed with acute kidney injury (AKI) after the operation.",
+    "The study followed children with autism spectrum disorder (ASD) for ten years.",
+    "Members of the Association of Southeast Asian Nations (ASEAN) met in Jakarta.",
+    "He joined Alcoholics Anonymous (AA) after his second arrest.",
+    "Hospitals must report every adverse drug reaction (ADR) to the agency.",
+    "Patients with acute myeloid leukaemia (AML) often need a bone marrow transplant.",
+    "The report was written by the American Heart Association (AHA) last year."
+   ],
+   "quiet": [
+    "Doctors at the clinic treat many patients with chronic kidney disease (CKD) each week.",
+    "She was diagnosed with deep vein thrombosis (DVT) after the operation.",
+    "The study followed children with cerebral palsy (CP) for ten years.",
+    "Members of the North Atlantic Treaty Organization (NATO) met in Brussels.",
+    "He joined the Royal Air Force (RAF) after leaving school.",
+    "Hospitals must report every surgical site infection (SSI) to the agency.",
+    "Patients with multiple sclerosis (MS) often need regular physiotherapy.",
+    "The report was written by the National Health Service (NHS) last year."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-1.0 on ' (' when the acronym that follows starts with A; ' (' before acronyms starting with other letters below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "' (' before an A-initial acronym",
+ "unit_kind": "next-token predictor",
+ "confidence": 0.4,
+ "notes": "Card: ' (' x8 before ADC, APodC, ACDF, TACF, CIV, plus pieces before 'a/e' continuations (stom|acke, expect|ancies, pert|en|ecemos, T|aker); the + pole suppresses ' AC', 'ac', so this pole promotes them. Probe: 'complex (ADC)' 1.049, 'fusion (ACDF)' 0.480, 'Foundation (TACF)' 0.316, 'expectancies' 0.529, 'pertenecemos' 0.604; 'Organization (WHO)' 0.013, plain parentheticals 0.001 and -0.000. The near misses keep a medical or institutional name with an acronym that does not start with A."
+}

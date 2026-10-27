@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-a1125237",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N9038-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T22:13:41+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N9038",
+   "pole": "-",
+   "label": "the word just before 而言 / 来说 / 说 in a perspective frame (对很多人而言, 一般而言, 从…意义上说; German soz|us|agen): a next-token predictor of 'speaking'",
+   "fire": [
+    "在这个问题上，对年轻人而言，工作机会比工资更重要。",
+    "说实话，对大多数家长而言，孩子的健康是第一位的。",
+    "今年的天气很特别，对农民来说，雨水太少了。",
+    "这本书写得很好，对初学者而言，内容也不难。",
+    "公司做了很多调整，从长远意义上说，这是正确的决定。",
+    "这个城市发展很快，对于外地人来说，房租实在太贵。",
+    "Die Küche ist sozusagen das Herz des ganzen Hauses.",
+    "新政策已经实施，总体而言，效果还不错。"
+   ],
+   "quiet": [
+    "在这个问题上，年轻人更关心工作机会，而不是工资。",
+    "说实话，大多数家长都很关心孩子的健康。",
+    "今年的天气很特别，农民们都说雨水太少了。",
+    "这本书写得很好，初学者也能读懂里面的内容。",
+    "公司做了很多调整，经理认为这是正确的决定。",
+    "这个城市发展很快，外地人都觉得房租太贵。",
+    "Die Küche ist eigentlich das Herz des ganzen Hauses.",
+    "新政策已经实施，大家觉得效果还可以。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on the token before 而言/来说/说 in 对X而言 frames; Chinese sentences with 对 or 说 in other roles below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "slot before 而言/来说 (perspective frame)",
+ "unit_kind": "next-token predictor",
+ "confidence": 0.45,
+ "notes": "Card: all top examples are the noun before 而言/来说 (对很多人而言, 对于大功率LED厂商而言, 一般而言, 换句话说); output promotes ' speaking', '来说', '而言'. Probe: '对很多人而言' 0.755, 'sozusagen' 0.615 (peak 'us'), '从经济意义上说' 0.434, '一般而言' 0.332, '对于我们来说' 0.216; English 'Generally speaking' 0.187, '换句话说' 0.033, unrelated Chinese -0.000."
+}
