@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-e3bbf46d",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N8675-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T06:29:02+00:00",
+ "recipe": {
+  "toolchain_commit": "e4f78a3d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N8675_neg/2026-10-27-ChopinDavid-e3bbf46d.tests.json"
+ },
+ "label": "positional unit: fires on the first one or two tokens of a context window (84% of top peaks at window position 0), regardless of the token; best guess only",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N8675_neg/2026-10-27-ChopinDavid-e3bbf46d.tests.json",
+   "prereg_commit": "e4f78a3d",
+   "author": "ChopinDavid",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.016,
+     "peak": "/"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.056,
+     "peak": " valley"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.001,
+     "peak": "ol"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.007,
+     "peak": "/"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.092,
+     "peak": "項目"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.002,
+     "peak": " "
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.019,
+     "peak": " voting"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.008,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.016,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.036,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.007,
+     "peak": " journal"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.009,
+     "peak": "If"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.018,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.017,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.009,
+     "peak": "Several"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.012,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.453,
+    "median_fire": 0.012,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "e4f78a3d",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "positional: first token of the window",
+ "unit_kind": "dense / positional",
+ "confidence": 0.1,
+ "notes": "Card flags positional: 84% of top peaks at window position 0, all within the first 16 tokens, on varied tokens ('/', ' total', ' qual', 'の'). Probe: all nine sentences 0.006-0.026, including fragments copied in shape from the card ('/2019, ...' 0.014, 'Maximum total salary' 0.006). The test harness likely cannot reproduce position 0 of a mid-document window; expected to fail.",
+ "selection": "random draw"
+}
