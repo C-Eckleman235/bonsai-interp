@@ -22,7 +22,8 @@ One row per pole, keyed by `pole` = 2 * neuron + (1 for the - pole):
   bin, context, test, auroc       the auto-token@2 screen and auto test, when the layer has been screened
   lib_kind, lib_condition,        the pole's best test across the deterministic passes (atlas.LIB_SOURCES): sweeplib@1
   lib_test, lib_auroc, lib_held,  (copy, topic, lang, struct, number, predict), sweeplib@2 (twin), sweeplib@3 (grammar),
-  lib_label, lib_coverage         sweeplib@4 (pos), compose@1-2 (compose); a held one first, then the higher coverage. lib_held lists every
+  lib_label, lib_coverage         sweeplib@4 (pos), sweeplib@5 (code),
+                                  compose@1-2 (compose); a held one first, then the higher coverage. lib_held lists every
                                   kind:condition it held under, lib_label the claim (scrutiny 0: automatic, never a
                                   survey label), lib_coverage its share of the pole's strong activations when measured
   census_flags                    the weights-only census (docs/CENSUS.md): predict 1, frequency 2, entropy 4, steer 8
@@ -83,6 +84,7 @@ LIB_SOURCES = {  # every deterministic pass whose per-pole results join the atla
     "compose@1": ROOT / "data" / "compose" / "bonsai1.compose1.results.jsonl.gz",
     "compose@2": ROOT / "data" / "compose" / "bonsai1.compose2.results.jsonl.gz",
     "sweeplib@4": ROOT / "data" / "grammar" / "bonsai1.sweeplib4.results.jsonl.gz",
+    "sweeplib@5": ROOT / "data" / "codesyn" / "bonsai1.sweeplib5.results.jsonl.gz",
 }
 GRAMMAR_KIND = {"sweeplib@3": "grammar", "sweeplib@4": "pos", "sweeplib@5": "code"}  # passes on the grammar engine
 

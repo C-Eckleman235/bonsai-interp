@@ -916,3 +916,21 @@ sweeplib@4 screened all 884,736 poles for part of speech and morphology:
 Word class, as such, is not a single-pole feature in Bonsai-8B. Classes marked in the letters are, early. The rest
 is either spread over many partial poles or bound to particular words; composition round 3 tests the second reading.
 
+## 2026-10-27: Code syntax poles mark binding sites (sweeplib@5, docs/CODESYN.md)
+
+sweeplib@5 screened all 884,736 poles for 22 Python syntax roles (39 conditions) on a Pygments lex of the corpus's
+code windows. The conditions compare the same token in and out of a role, and any token in a role against tokens of the
+same type and frequency.
+
+- **442 poles selected; 65 tests held on 54 poles,** against 0 of 442 placebo tests. 20 poles are assignment-grade.
+- **The holds are binding sites:**
+  - a for loop's variable (31 held tests);
+  - the name in a class (18) or def (8) statement;
+  - keyword-argument names (4).
+  Examples: L26/N1135− (class name, 94% of its top activations), L32/N8525− (loop variable, 89%).
+- **Positional roles held nothing:** inside a call, a list, a condition, a string or a comment, and nesting depth.
+- **Unlike part of speech, they run deep:** 21 of the holds are in layers 30–35, 18 in layers 0–5, and none in 6–11.
+
+The model dedicates poles to where a program introduces a name, not to where a token merely sits. In prose, the
+grammar pass's possessive and relative-pronoun holds point the same way.
+

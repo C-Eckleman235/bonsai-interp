@@ -152,12 +152,12 @@ placebos, a held-out 8 + 8, and the 50% coverage rule.
 | compose@1 (seeded by characterized units) | layers 6–11 as compositions at offsets 0 and 1 | 506 held, 334 assignment-grade |
 | compose@2 | layers 13–17, the same engine | 22 held, 8 assignment-grade: local word composition stalls past ~L11 |
 | sweeplib@4 part of speech, morphology (docs/POS.md) | word classes and inflections at the last token | 26 held, 11 assignment-grade; morphology (-est, -er, -ing, -s), early layers; no pure noun or verb poles |
+| sweeplib@5 code syntax (docs/CODESYN.md) | Python syntax roles at the last token | 65 held on 54 poles, 20 assignment-grade; binding sites (class, def, for-loop and keyword names), every depth |
 
 All of it is in the atlas: lib_* columns (the best test per pole across passes, its coverage, every condition held) and
 census_flags. It shows on `play card`, `play search --kind …` and the map.
 
 Next:
-- **sweeplib@5:** code syntax roles (if condition, call arguments, list literal, def signature, assignment sides, ...).
 - **compose@3:** cover each pole with the condition library (domain, part of speech, grammar, code syntax) measured on a
   uniform sample of its strong activations, so a hold is assignment-grade by construction.
 - **The attention distance sweep** on held pairs.
