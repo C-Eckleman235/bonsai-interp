@@ -1,0 +1,44 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-1c0bf823",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N11928+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T20:40:15+00:00",
+ "selection": "picked: JasperBlank's 48 poles (#1018-#1021), Codex pilot round 2",
+ "neighbours": [
+  {
+   "unit": "L6/N11928",
+   "pole": "+",
+   "label": "Indenting Python function bodies with runs of spaces or tabs",
+   "fire": [
+    "import os\n\ndef current_folder():\n    directory = os.getcwd()\n    return directory if directory else None",
+    "DEFAULT_LIMIT = 25\n\ndef choose_limit(requested):\n    return requested if requested is not None else DEFAULT_LIMIT",
+    "class MessageQueue:\n    def remove_first(self):\n        item = self.items.pop(0)\n        return item if item else None",
+    "class Service:\n    class Options:\n        def timeout_seconds(self):\n            return self.timeout if self.timeout is not None else 30",
+    "import pathlib\n\ndef file_present(filename):\n\tpath = pathlib.Path(filename)\n\treturn path.exists() and path.is_file()",
+    "class Counter:\n\tdef increment(self, amount):\n\t\tself.value += amount\n\t\treturn self.value if self.value > 0 else 0",
+    "import json\n\ndef parse_payload(raw):\n    try:\n        return json.loads(raw)\n    except ValueError:\n        return None",
+    "class Registry:\n\tdef find_entry(self, key):\n\t\twith self.lock:\n\t\t\treturn self.entries.get(key) if key else None"
+   ],
+   "quiet": [
+    "from os import getcwd\n\ndef working_directory(): return getcwd() or None\n\nfolder = working_directory()",
+    "FALLBACK_LIMIT = 25\n\ndef effective_limit(value): return value if value is not None else FALLBACK_LIMIT",
+    "pending_items = [None, 'message']\n\ndef take_first(items): return items.pop(0) if items else None",
+    "configured_timeout = None\n\ndef timeout_value(setting): return setting if setting is not None else 30",
+    "from pathlib import Path\n\ndef regular_file(name): return Path(name).exists() and Path(name).is_file()",
+    "stored_count = 4\n\ndef increased_count(value, step): return value + step if value + step > 0 else 0",
+    "from json import loads\n\ndef decode_payload(text): return loads(text)\n\nresult = decode_payload('{}')",
+    "registered_entries = {'active': True}\n\ndef lookup_entry(entries, name): return entries.get(name) if name else None"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort high)",
+  "screens": [
+   "card"
+  ]
+ },
+ "unit_kind": "contextual",
+ "notes": "Codex pilot round 2 (concept-maps/codex-pilot/ROUND2.md, sha256 e3c9e416fc55e8549b57eb1f3547919a794a699c998abf9761cc83422490e1d7): blind label and test by one fresh codex exec from the full play card and the survey's own guidance quoted verbatim; sentences unedited. Codex's note: Card-only inference; no activation test performed. Space runs and tabs account for 89% of the listed strong-activation coverage. The supported context is indentation following Python function headers; broader whitespace sensitivity remains untested."
+}

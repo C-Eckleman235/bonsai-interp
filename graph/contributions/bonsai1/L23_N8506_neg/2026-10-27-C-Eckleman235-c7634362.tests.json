@@ -1,0 +1,44 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-c7634362",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N8506-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T20:40:15+00:00",
+ "selection": "picked: JasperBlank's 48 poles (#1018-#1021), Codex pilot round 2",
+ "neighbours": [
+  {
+   "unit": "L23/N8506",
+   "pole": "-",
+   "label": "Specifies temporal boundaries or computes elapsed time",
+   "fire": [
+    "The backup service remains active until the overnight transfer finishes.",
+    "Administrators can choose when to start the scheduled workflow.",
+    "Researchers measured the interval from each child's initial treatment to the follow-up examination.",
+    "The renovation occupied three summers before the building reopened.",
+    "def elapsed_seconds(record, now):\n    last_checked = record.last_accessed\n    return (now - last_checked).total_seconds()",
+    "def remaining_days(today, deadline):\n    diff = deadline - today\n    return diff.days",
+    "def configure_schedule(settings):\n    start = settings.first_run_date\n    end = start + timedelta(days=7)\n    return start, end",
+    "def await_release(clock, release_time):\n    # Keep waiting until the release time arrives.\n    while clock.now() < release_time:\n        sleep(1)"
+   ],
+   "quiet": [
+    "During overnight transfers, the backup service displays a blue status icon.",
+    "Editors can choose whether to capitalize the word start in the workflow description.",
+    "Clinic staff recorded each child's treatment date using the standard calendar format.",
+    "The renovated building features photographs of summer festivals beside its entrance.",
+    "def display_access_date(record):\n    last_checked = record.last_accessed\n    return last_checked.strftime('%A, %B %d')",
+    "def compare_descriptions(previous, current):\n    diff = current.description != previous.description\n    return diff",
+    "def configure_schedule(settings):\n    color = settings.calendar_color\n    title = settings.calendar_title\n    return color, title",
+    "def describe_keyword(document):\n    # Highlight the conjunction in the grammar example.\n    return document.highlight('until')"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort high)",
+  "screens": [
+   "card"
+  ]
+ },
+ "unit_kind": "contextual",
+ "notes": "Codex pilot round 2 (concept-maps/codex-pilot/ROUND2.md, sha256 e3c9e416fc55e8549b57eb1f3547919a794a699c998abf9761cc83422490e1d7): blind label and test by one fresh codex exec from the full play card and the survey's own guidance quoted verbatim; sentences unedited. Codex's note: Card-only hypothesis, untested; temporal examples support this context, but it does not explain every peak."
+}
