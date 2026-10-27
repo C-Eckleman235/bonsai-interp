@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-C-Eckleman235-0d70314d",
+ "kind": "qc",
+ "neuron": "bonsai1/L7/N5115-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-27T19:23:03+00:00",
+ "recipe": {
+  "toolchain_commit": "dfe1fe19",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L7_N5115_neg/2026-10-27-C-Eckleman235-0d70314d.tests.json"
+ },
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L7_N5115_neg/2026-10-27-C-Eckleman235-0d70314d.tests.json",
+   "prereg_commit": "dfe1fe19",
+   "author": "C-Eckleman235",
+   "n_fire": 5,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.143,
+     "peak": " kg"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.825,
+     "peak": " kg"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.467,
+     "peak": " kg"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.196,
+     "peak": " kg"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.13,
+     "peak": " kg"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.436,
+     "peak": " kilograms"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.559,
+     "peak": " pounds"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.021,
+     "peak": " gallon"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.128,
+     "peak": " kg"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.579,
+     "peak": " cm"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.045,
+     "peak": " kg"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.028,
+     "peak": " unl"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.066,
+     "peak": " team"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.037,
+     "peak": " luggage"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.048,
+     "peak": " boxer"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.031,
+     "peak": " set"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.797,
+    "median_fire": 0.452,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort high; blind QC writer, card only)",
+  "screens": [
+   "card",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "dfe1fe19",
+  "minutes": 38,
+  "batch_size": 1,
+  "dtype": "float16"
+ },
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "the unit token ' kg' (kilogram) right after a number, a weight/mass measurement; close relatives ' kilograms', ' pounds', ' gallon' in the same role"
+ },
+ "selection": "Codex pilot: a cross-model QC of each model-QC pilot label (#1051-#1080)"
+}
