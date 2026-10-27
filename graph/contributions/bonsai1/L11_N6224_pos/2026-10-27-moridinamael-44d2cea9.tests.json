@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-27-moridinamael-44d2cea9",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N6224+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T16:16:29+00:00",
+ "neighbours": [
+  {
+   "unit": "L11/N6224",
+   "pole": "+",
+   "label": "In code, a namespace or prefix piece (wx., QtCore.Qt, GPIO., logging., HTTPStatus., VIR_ERR_) right before the ALL_CAPS member name of a library constant or enum is spelled out",
+   "fire": [
+    "sizer.Add(button, 0, wx.ALL | wx.EXPAND, 5)",
+    "label.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AA_EnableHighDpiScaling)",
+    "GPIO.setup(18, GPIO.OUT)",
+    "logging.basicConfig(level=logging.DEBUG)",
+    "return Response(status=HTTPStatus.NOT_FOUND)",
+    "if (err->code == VIR_ERR_NO_DOMAIN) return -1;",
+    "sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)",
+    "fd = os.open(path, os.O_RDONLY)"
+   ],
+   "quiet": [
+    "self.timer = QtCore.QTimer(self)",
+    "sizer.Add(button, 0, flags, 5)",
+    "GPIO.setmode(mode)",
+    "logger = logging.getLogger(__name__)",
+    "return Response(status=404)",
+    "if (err->code == code) return -1;",
+    "sock = socket.socket(family, kind)",
+    "fd = os.open(path, flags)"
+   ]
+  }
+ ],
+ "predictions": "Expect 6-7/8 fire above 0.2; the QTimer leak may reach 0.3, other near misses stay low.",
+ "short": "code prefix before a library constant name",
+ "roles": ["feeds bonsai1/L13/N8268+"],
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "step-out"
+  ]
+ }
+}
