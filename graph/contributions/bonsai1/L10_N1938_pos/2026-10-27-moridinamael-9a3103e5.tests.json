@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-moridinamael-9a3103e5",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N1938+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T20:54:02+00:00",
+ "neighbours": [
+  {
+   "unit": "L10/N1938",
+   "pole": "+",
+   "label": "In code, the first fragment of a C-style ALL-CAPS system-library constant after a module dot (socket.AF_, os.O_, cv2.THRESH_, signal.SIG), before the underscore; not Tk/logging/enum members",
+   "fire": [
+    "sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)",
+    "fd = os.open(path, os.O_RDONLY | os.O_NONBLOCK)",
+    "_, mask = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)",
+    "signal.signal(signal.SIGINT, handle_interrupt)",
+    "fcntl.flock(lockfile, fcntl.LOCK_EX)",
+    "gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)",
+    "f.seek(0, os.SEEK_END); size = f.tell()",
+    "soft, hard = resource.getrlimit(resource.RLIMIT_NOFILE)"
+   ],
+   "quiet": [
+    "sock = socket.socket(family, kind)",
+    "fd = os.open(path, flags)",
+    "_, mask = cv2.threshold(gray, 127, 255, mode)",
+    "signal.signal(sig, handle_interrupt)",
+    "logger.setLevel(logging.DEBUG_LEVEL)",
+    "label.pack(side=tk.LEFT_SIDE, fill=tk.BOTH)",
+    "f.seek(0, whence); size = f.tell()",
+    "if color == Color.DARK_RED: print('stop')"
+   ]
+  }
+ ],
+ "predictions": "Expect most fire items to pass (AF, O, THRESH, SIG strong); LOCK/SEEK/RLIMIT/COLOR less sure. Near misses should stay low except maybe the tk/logging ones.",
+ "short": "first piece of a C-style library constant (socket.AF_, os.O_)",
+ "roles": ["feeds bonsai1/L13/N8268+"],
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "step-out"
+  ]
+ }
+}
