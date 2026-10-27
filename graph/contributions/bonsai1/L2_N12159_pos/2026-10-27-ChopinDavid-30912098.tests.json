@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-30912098",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N12159+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T07:21:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L2/N12159",
+   "pole": "+",
+   "label": "the character '請' in the Japanese and Chinese word 要請 (request), as against the same sentences with another word for asking (依頼, 求め)",
+   "fire": [
+    "市長は国に財政支援を要請した。",
+    "警察は住民に情報提供を要請しています。",
+    "政府は各国に人道支援を要請した。",
+    "会社は取引先に納期の延長を要請しました。",
+    "知事は自衛隊に災害派遣を要請した。",
+    "組合は経営陣に説明を要請している。",
+    "学校は保護者に送迎の協力を要請した。",
+    "国連は双方に停戦を要請しました。"
+   ],
+   "quiet": [
+    "市長は国に財政支援を依頼した。",
+    "警察は住民に情報提供をお願いしています。",
+    "政府は各国に人道支援を求めた。",
+    "会社は取引先に納期の延長を頼みました。",
+    "知事は自衛隊に災害派遣を依頼した。",
+    "組合は経営陣に説明を求めている。",
+    "学校は保護者に送迎の協力をお願いした。",
+    "国連は双方に停戦を呼びかけました。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-1.0 on '請' after '要'; the same sentences with 依頼 or お願い below 0.3",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'請' in 要請",
+ "unit_kind": "token/lexical",
+ "confidence": 0.35,
+ "notes": "Card: broad (6.8% of tokens reach 0.1 of max), max 0.27, gate-closed regime; peaks on '請' in 要請, '전' in 백과사전, 'anc' in flancs, '신' in 수신. Probe: '派遣するよう要請した' 0.964, '協力を要請しました' 0.824; '依頼した' 0.252, '百科事典' 0.156, 'flancs' 0.752, '수신' 0.760, English 'casual' 0.228, floor 0.097. The pole fires on several scattered pieces; 要請 is the one the card repeats. Near misses may leak at 0.2-0.3."
+}

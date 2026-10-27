@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-e34c3dcf",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N4570-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T07:21:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L19/N4570",
+   "pole": "-",
+   "label": "the bound arguments inside a counting for-loop header (range(1, n), i=0; i<n), as against loops over a collection and other code with no counting header",
+   "fire": [
+    "total = 0\nfor k in range(1, len(values)):\n    total += values[k]",
+    "for j in range(n-1, 0, -1):\n    swap(a, j)",
+    "for (int i = 0; i < count; i++) {\n    out[i] = 0;\n}",
+    "rows = load()\nfor r in range(1, rows.shape[0]):\n    print(rows[r])",
+    "for idx in range(len(names)-1, -1, -1):\n    names.pop(idx)",
+    "for (let i = 0; i < arr.length; i++) {\n  sum += arr[i];\n}",
+    "for step in range(2, steps+1):\n    update(step)",
+    "for c in xrange(0, width, 2):\n    draw(c)"
+   ],
+   "quiet": [
+    "total = 0\nfor v in values:\n    total += v",
+    "for item in reversed(a):\n    swap(a, item)",
+    "while (count > 0) {\n    count--;\n}",
+    "rows = load()\nfor row in rows:\n    print(row)",
+    "for name in list(names):\n    names.remove(name)",
+    "arr.forEach(function (x) {\n  sum += x;\n});",
+    "while not done:\n    done = update()",
+    "for c in columns:\n    draw(c)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.1-0.35 on the numbers, commas or '-' inside range( ) of a for header; collection loops and while loops below 0.07",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "bounds of a counting for-loop",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: peaks on '-', ',', '0', '1' and ' range' inside 'for i in range(...)' / 'xrange(n-1, -1, -1)' / 'for(var i=0;'. Probe: 'xrange(n-1, -1, -1)' 0.324, 'for (var i=0;' 0.267, 'range(1, n)' 0.196, 'list(range(10))' 0.165, 'range(2, sheet.max_row+1)' 0.098; 'for item in items' 0.015, while loop 0.067, prose 'range' 0.025. Weak pole on short snippets."
+}

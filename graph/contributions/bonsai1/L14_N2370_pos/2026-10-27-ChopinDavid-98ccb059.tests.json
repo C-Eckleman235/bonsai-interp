@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-98ccb059",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N2370+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T07:21:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L14/N2370",
+   "pole": "+",
+   "label": "the middle value of a scale or ranking (medium, middle, median, normal, center), as against the ends of the same scale (small, large, highest, lowest, edge)",
+   "fire": [
+    "The coffee comes in small, medium and large cups.",
+    "The middle 40% of households saw little change in income.",
+    "Your blood pressure reading is in the normal range.",
+    "Cook the steak to medium for the best flavour.",
+    "The median price of a house rose again this year.",
+    "Place the vase in the center of the table.",
+    "Skin types are dry, oily or normal for most people.",
+    "Pick a medium onion and chop it finely."
+   ],
+   "quiet": [
+    "The coffee comes in small and large cups.",
+    "The top 10% of households saw large gains in income.",
+    "Your blood pressure reading is in the high range.",
+    "Cook the steak until well done for the best flavour.",
+    "The highest price of a house rose again this year.",
+    "Place the vase at the edge of the table.",
+    "Skin types are dry or oily for most people.",
+    "Pick a large onion and chop it finely."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on the middle-value word or the token after it; the same sentences with an end-of-scale word below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "middle of a scale",
+ "unit_kind": "meaning",
+ "confidence": 0.5,
+ "notes": "Card: peaks on ' median', ' medium', ' middle', ' center', ' normal', '%' after 'middle 50'. Probe: 'small, medium or large' 0.603, 'middle 50% of workers' 0.733, 'thin, thick or normal' 0.385, 'center of the valley' 0.333, 'median annual wage' 0.265 (peak on ' annual'), 'moderate heat' 0.158; 'small or large' 0.008, 'highest annual wage' 0.024, floor 0.014. The pole distinguishes the middle of a scale from its ends."
+}

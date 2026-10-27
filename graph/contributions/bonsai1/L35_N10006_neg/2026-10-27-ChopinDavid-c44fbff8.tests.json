@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-c44fbff8",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N10006-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T07:21:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N10006",
+   "pole": "-",
+   "label": "a dash or line break that interrupts a sentence in narrative or reflective prose so that the clause continues after it, as against the same passage with the break replaced by a comma or a full stop",
+   "fire": [
+    "We had planned the trip for months. I kept telling myself it would be fine, that I was, I don't know–ready for whatever came next.",
+    "She looked at the old house for a long time. It was smaller than she remembered—smaller and quieter, and somehow sadder.",
+    "He opened the letter slowly. Inside was a single photograph of the lake, the cabin, and him—younger, thinner, smiling.",
+    "I tried to explain it to my mother. It wasn't that I disliked the job, it was more that I felt, well–trapped by it.",
+    "The storm came in fast that evening. We barely had time to close the shutters—and then the power went out.",
+    "They walked along the river in silence. Neither of them wanted to say it—that this was the last time.",
+    "My grandfather rarely spoke about the war. When he did, his voice changed–lower, slower, almost a whisper.",
+    "The kitchen smelled of bread and coffee. For a moment everything felt right—warm, familiar, safe."
+   ],
+   "quiet": [
+    "We had planned the trip for months. I kept telling myself it would be fine, that I was ready for whatever came next.",
+    "She looked at the old house for a long time. It was smaller than she remembered. It was quieter, and somehow sadder.",
+    "He opened the letter slowly. Inside was a single photograph of the lake, the cabin, and a younger version of him.",
+    "I tried to explain it to my mother. It wasn't that I disliked the job, it was more that I felt trapped by it.",
+    "The storm came in fast that evening. We barely had time to close the shutters, and then the power went out.",
+    "They walked along the river in silence. Neither of them wanted to say that this was the last time.",
+    "My grandfather rarely spoke about the war. When he did, his voice became lower and slower.",
+    "The kitchen smelled of bread and coffee. For a moment everything felt warm and familiar."
+   ]
+  }
+ ],
+ "predictions": "fire 0.1-0.3 on the dash; the same passages with a comma or full stop below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dash interrupting a sentence (guess)",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Card: peaks on mid-sentence em and en dashes, '---', ',—', mid-sentence line breaks, opening quotes, and spaces between Chinese clauses (max 115). Probe was weak: 'I don't know–having' 0.155, opening quote in 'simply: “pause.”' 0.097, 'drink deeply—get lost' 0.005, ',—and' 0.016, '---equal' 0.004; comma versions 0.009-0.036, floor 0.000. The card's activations seem to need longer preceding context. Low-confidence guess with longer passages."
+}

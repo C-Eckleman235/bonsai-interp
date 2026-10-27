@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-f097adef",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N10064+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T07:21:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N10064",
+   "pole": "+",
+   "label": "the Python standard-library module name 'tempfile' (in imports and calls), as against the same code using another standard module",
+   "fire": [
+    "import re\nimport glob\nimport tempfile\nimport subprocess",
+    "import argparse\nimport tempfile\n\ndef main():\n    pass",
+    "from tempfile import mkdtemp\nfrom pathlib import Path",
+    "import logging\nimport tempfile\nimport time\n\nlog = logging.getLogger()",
+    "import io\nimport zipfile\nimport tempfile",
+    "from tempfile import TemporaryFile\nimport csv",
+    "import hashlib\nimport tempfile\nimport threading",
+    "import pytest\nimport tempfile\nimport os.path"
+   ],
+   "quiet": [
+    "import re\nimport glob\nimport string\nimport subprocess",
+    "import argparse\nimport random\n\ndef main():\n    pass",
+    "from os import makedirs\nfrom pathlib import Path",
+    "import logging\nimport socket\nimport time\n\nlog = logging.getLogger()",
+    "import io\nimport zipfile\nimport struct",
+    "from collections import Counter\nimport csv",
+    "import hashlib\nimport queue\nimport threading",
+    "import pytest\nimport random\nimport os.path"
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-1.0 on ' tempfile' or the Temporary piece after it; the same code with os, json, shutil or pathlib below 0.35",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Python 'tempfile' module",
+ "unit_kind": "token/lexical",
+ "confidence": 0.6,
+ "notes": "Card: 5 of the top 10 peaks are ' tempfile' in import lists, plus 'Temporary' in NamedTemporaryFile. Probe: 'import tempfile' in an import list 0.927, 'from tempfile import NamedTemporaryFile' 0.715, 'tempfile.TemporaryDirectory()' 0.353; import list without tempfile 0.316 (peak ' shutil'), 'temporary file' in prose 0.241, ' connector' 0.204, floor 0.011. Near misses keep the import-list shape; the 0.3 baseline on module lists may leak."
+}

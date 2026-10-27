@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-c8207bd1",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N6972-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T07:21:35+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N6972",
+   "pole": "-",
+   "label": "the second number of a quantity pair: the upper end of a range ('2.5 to 3 million', 'between 1.2 and 2') or a converted equivalent in brackets ('(20 square kilometers)'), as against a single quantity in the same sentence",
+   "fire": [
+    "The bridge is 1.2 miles (2 kilometres) long.",
+    "Tickets cost between 15 and 25 dollars each.",
+    "The project will cost 4 to 6 million euros.",
+    "The lake covers about 3 square miles (8 square kilometres).",
+    "The town has between 40,000 and 60,000 residents.",
+    "Each bag weighs 10 pounds (4.5 kilograms).",
+    "Repairs could take 2 to 3 weeks to finish.",
+    "The fine was raised to $500 (£400) last year."
+   ],
+   "quiet": [
+    "The bridge is about 2 kilometres long.",
+    "Tickets cost about 20 dollars each.",
+    "The project will cost around 5 million euros.",
+    "The lake covers about 8 square kilometres.",
+    "The town has about 50,000 residents.",
+    "Each bag weighs about 10 pounds.",
+    "Repairs could take a few weeks to finish.",
+    "The fine was raised to $500 last year."
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.7 on the leading digit of the second number; single quantities below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "second number of a range or conversion",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: peaks on digits of the second number in conversions ('(£1.0m', '(20 square kilometers)', 'about $1.30 to $2') and range ends ('2.5 to 3 million', 'between 1.2 million and 2 million'), plus code constants. Probe: '1.2 million and 2 million' 0.611, '(20 square kilometers)' 0.643, '2.5 to 3 million' 0.430, '(£1.0m)' 0.390; 'about 2 million' 0.006, '3 cats' 0.007, '/ 2' in code 0.038, floor 0.002."
+}
