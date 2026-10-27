@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-07fb39a9",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N4016+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T23:19:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L15/N4016",
+   "pole": "+",
+   "label": "'name' or 'title' used as a data field label (code keys, keyword arguments, form or column fields: item_name, title=, Account Name, a person's name, age, salary); 'name' in ordinary prose and other field labels stay quiet",
+   "fire": [
+    "product = {\"product_name\": product_name, \"quantity\": quantity}",
+    "def __init__(self, master, title='Import Settings'):\n    self.master = master",
+    "The spreadsheet has one row per student with a column for name, grade, and email.",
+    "Beneficiary Name: Green Valley Farms Cooperative",
+    "for row in rows:\n    user_name = row['name']\n    print(user_name)",
+    "class Book(models.Model):\n    title = models.CharField(max_length=200)",
+    "Please fill in the form with your full name, date of birth, and address.",
+    "config = {'name': 'staging', 'region': 'eu-west'}"
+   ],
+   "quiet": [
+    "product = {\"product_code\": product_code, \"quantity\": quantity}",
+    "def __init__(self, master, height=400):\n    self.master = master",
+    "The spreadsheet has one row per student with a column for grade and email.",
+    "Beneficiary Bank: Green Valley Farms Cooperative",
+    "for row in rows:\n    user_id = row['id']\n    print(user_id)",
+    "class Book(models.Model):\n    pages = models.IntegerField(default=0)",
+    "Please fill in the form with your date of birth and address.",
+    "config = {'size': 'large', 'region': 'eu-west'}"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.7 on name/title field tokens; other keys (code, width) and prose 'name' below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'name'/'title' as a field label",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: ' name' x6, '_name' x3, 'title' x3 (\"item_name\": item_name 24.0, name = step_info['name'], title='Edit Movie Metadata', Account Name:). Probe: item_name key 0.620, title= kwarg 0.398, 'person's name, age, and salary' 0.399, 'Account Name:' 0.214; item_code key 0.123, width= 0.011, 'the name of the restaurant' 0.057."
+}

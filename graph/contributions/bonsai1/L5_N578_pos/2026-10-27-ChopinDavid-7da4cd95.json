@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-7da4cd95",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N578+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T23:25:50+00:00",
+ "recipe": {
+  "toolchain_commit": "2f281002",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N578_pos/2026-10-27-ChopinDavid-7da4cd95.tests.json"
+ },
+ "label": "Arabic letters split off as their own tokens inside a word (غ ghayn, ث tha, ك kaf: يتغذى, مثالية, استكملت) and the Korean byte pieces of 뿌리 (root/spray); Arabic words that tokenize whole and other Korean stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N578_pos/2026-10-27-ChopinDavid-7da4cd95.tests.json",
+   "prereg_commit": "2f281002",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.786,
+     "peak": "غ"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.51,
+     "peak": "ث"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.324,
+     "peak": "ك"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.855,
+     "peak": "غ"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.439,
+     "peak": "ث"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.486,
+     "peak": "ك"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.645,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.576,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.474,
+     "peak": "ط"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.08,
+     "peak": "د"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.032,
+     "peak": " جديد"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.05,
+     "peak": "در"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.252,
+     "peak": "ر"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.169,
+     "peak": "ر"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.264,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.321,
+     "peak": "�"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.543,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "2f281002",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "split Arabic letters غ/ث/ك; Korean 뿌",
+ "unit_kind": "token/lexical",
+ "confidence": 0.45,
+ "notes": "Card: 'غ' x7, 'ث' x6, Korean 뿌리 in several top examples (byte tokens). Probe: 'يتغذى' 0.472 (peak غ), 'مثالية' 0.456 (peak ث), 'استكملت' 0.279 (peak ك), '뿌리는' 0.553, '뿌리기' 0.823; Arabic sentence without them 0.014-0.052, plain Korean 0.080, English 'roots' 0.022.",
+ "selection": "random draw"
+}
