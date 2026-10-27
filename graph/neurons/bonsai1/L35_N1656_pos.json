@@ -6,7 +6,7 @@
  "pole": "+",
  "label": "Predicting the word 'asset(s)' (or stocks/profits): fires on the first piece of a financial asset/share word, especially in non-English text (Japanese/Chinese 資 in 資産, Arabic الأ/أس in الأسهم/الأرباح/الأصول) and code like ASSET_",
  "short": "start of 'asset' word",
- "kind": "sparse feature",
+ "kind": "semantic",
  "status": "held",
  "depth": "quick",
  "tests": [
@@ -375,6 +375,128 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-26-JasperBlank-8986d709"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N1656_pos/2026-10-27-C-Eckleman235-2bb7d688.tests.json",
+   "prereg_commit": "9e206bfa",
+   "author": "C-Eckleman235",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.021,
+     "peak": " الأ"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.193,
+     "peak": " أس"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.299,
+     "peak": "�"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.438,
+     "peak": "資"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.147,
+     "peak": " fixed"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.127,
+     "peak": "'s"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.085,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.129,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.002,
+     "peak": "حسن"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.004,
+     "peak": "فت"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.008,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.023,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.073,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.026,
+     "peak": "'s"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.024,
+     "peak": "ED"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.034,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.922,
+    "median_fire": 0.138,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-27-C-Eckleman235-2bb7d688"
   }
  ],
  "label_history": [
@@ -392,18 +514,25 @@
    "2026-10-26-JasperBlank-8986d709",
    "Predicting the word 'asset(s)' (or stocks/profits): fires on the first piece of a financial asset/share word, especially in non-English text (Japanese/Chinese 資 in 資産, Arabic الأ/أس in الأسهم/الأرباح/الأصول) and code like ASSET_",
    "held"
+  ],
+  [
+   "2026-10-27-C-Eckleman235-2bb7d688",
+   "Financial assets and corporate value, especially within Arabic financial words, Chinese/Japanese asset terms, and asset-related code identifiers.",
+   "failed"
   ]
  ],
  "examples": [],
  "evidence": [],
  "roles": [],
  "contributors": [
-  "JasperBlank"
+  "JasperBlank",
+  "C-Eckleman235"
  ],
  "contributions": [
   "2026-10-26-JasperBlank-bcda677e",
   "2026-10-26-JasperBlank-1d99c2bb",
-  "2026-10-26-JasperBlank-8986d709"
+  "2026-10-26-JasperBlank-8986d709",
+  "2026-10-27-C-Eckleman235-2bb7d688"
  ],
  "qc": {
   "confirm": 0,
@@ -415,9 +544,9 @@
  "scrutiny": {
   "level": 2,
   "name": "re-tested",
-  "test_rounds": 3,
-  "sentences": 48,
-  "contributors": 1,
+  "test_rounds": 4,
+  "sentences": 64,
+  "contributors": 2,
   "qc": 0
  }
 }

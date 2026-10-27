@@ -4,10 +4,10 @@
  "layer": 14,
  "index": 8873,
  "pole": "-",
- "label": "Broad boundary detector: fires weakly at segment ends in list-like or heading-like text (newlines ending short list items or headings, a period ending a promo sentence, separators like '|'), with no single trigger token",
+ "label": "Line breaks separating short entries in lists or outlines.",
  "short": "list/heading item boundaries",
- "kind": "dense / positional",
- "status": "dense",
+ "kind": "contextual",
+ "status": "unresolved",
  "depth": "quick",
  "tests": [
   {
@@ -375,6 +375,128 @@
     "near_misses_at_0.3": 1
    },
    "contribution": "2026-10-26-JasperBlank-e3cff516"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L14_N8873_neg/2026-10-27-C-Eckleman235-248700d7.tests.json",
+   "prereg_commit": "9e206bfa",
+   "author": "C-Eckleman235",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.214,
+     "peak": "For"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.381,
+     "peak": " three"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.144,
+     "peak": ":\n"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.137,
+     "peak": "ient"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.263,
+     "peak": "For"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.091,
+     "peak": ":\n"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.144,
+     "peak": "umble"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.123,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.112,
+     "peak": "Please"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.189,
+     "peak": "Available"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.055,
+     "peak": "At"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.169,
+     "peak": "Vis"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.146,
+     "peak": " soft"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.098,
+     "peak": " recorded"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.261,
+     "peak": "D"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.181,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.562,
+    "median_fire": 0.144,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-27-C-Eckleman235-248700d7"
   }
  ],
  "label_history": [
@@ -392,18 +514,25 @@
    "2026-10-26-JasperBlank-e3cff516",
    "Broad boundary detector: fires weakly at segment ends in list-like or heading-like text (newlines ending short list items or headings, a period ending a promo sentence, separators like '|'), with no single trigger token",
    "failed"
+  ],
+  [
+   "2026-10-27-C-Eckleman235-248700d7",
+   "Line breaks separating short entries in lists or outlines.",
+   "failed"
   ]
  ],
  "examples": [],
  "evidence": [],
  "roles": [],
  "contributors": [
-  "JasperBlank"
+  "JasperBlank",
+  "C-Eckleman235"
  ],
  "contributions": [
   "2026-10-26-JasperBlank-0665d0ab",
   "2026-10-26-JasperBlank-be044ba5",
-  "2026-10-26-JasperBlank-e3cff516"
+  "2026-10-26-JasperBlank-e3cff516",
+  "2026-10-27-C-Eckleman235-248700d7"
  ],
  "qc": {
   "confirm": 0,
@@ -415,9 +544,9 @@
  "scrutiny": {
   "level": 2,
   "name": "re-tested",
-  "test_rounds": 3,
-  "sentences": 48,
-  "contributors": 1,
+  "test_rounds": 4,
+  "sentences": 64,
+  "contributors": 2,
   "qc": 0
  }
 }

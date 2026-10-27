@@ -4,9 +4,9 @@
  "layer": 32,
  "index": 2485,
  "pole": "+",
- "label": "Token right before a predicted 'short'/'shorten' (multilingual): fires on the word preceding shorten/short, e.g. 'may' in 'may shorten the duration', 'is' in 'stay is shortened', 'Keep baths' before 'short'",
+ "label": "Short durations or shortening the time something takes.",
  "short": "predicts shorten / short",
- "kind": "sparse feature",
+ "kind": "semantic",
  "status": "unresolved",
  "depth": "quick",
  "tests": [
@@ -375,6 +375,128 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-26-JasperBlank-39419cec"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L32_N2485_pos/2026-10-27-C-Eckleman235-ec42f08f.tests.json",
+   "prereg_commit": "9e206bfa",
+   "author": "C-Eckleman235",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.047,
+     "peak": " baths"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.005,
+     "peak": " needed"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.022,
+     "peak": " cold"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.089,
+     "peak": " can"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.061,
+     "peak": " muscle"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.006,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.123,
+     "peak": " will"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.011,
+     "peak": " face"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.003,
+     "peak": " about"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.002,
+     "peak": " credits"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.036,
+     "peak": " cold"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.001,
+     "peak": "In"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.044,
+     "peak": " muscle"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.001,
+     "peak": " each"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.031,
+     "peak": " travel"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.003,
+     "peak": " decision"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.812,
+    "median_fire": 0.041,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-27-C-Eckleman235-ec42f08f"
   }
  ],
  "label_history": [
@@ -392,18 +514,25 @@
    "2026-10-26-JasperBlank-39419cec",
    "Token right before a predicted 'short'/'shorten' (multilingual): fires on the word preceding shorten/short, e.g. 'may' in 'may shorten the duration', 'is' in 'stay is shortened', 'Keep baths' before 'short'",
    "failed"
+  ],
+  [
+   "2026-10-27-C-Eckleman235-ec42f08f",
+   "Short durations or shortening the time something takes.",
+   "failed"
   ]
  ],
  "examples": [],
  "evidence": [],
  "roles": [],
  "contributors": [
-  "JasperBlank"
+  "JasperBlank",
+  "C-Eckleman235"
  ],
  "contributions": [
   "2026-10-26-JasperBlank-c8da7b60",
   "2026-10-26-JasperBlank-c499fcff",
-  "2026-10-26-JasperBlank-39419cec"
+  "2026-10-26-JasperBlank-39419cec",
+  "2026-10-27-C-Eckleman235-ec42f08f"
  ],
  "qc": {
   "confirm": 0,
@@ -415,9 +544,9 @@
  "scrutiny": {
   "level": 2,
   "name": "re-tested",
-  "test_rounds": 3,
-  "sentences": 48,
-  "contributors": 1,
+  "test_rounds": 4,
+  "sentences": 64,
+  "contributors": 2,
   "qc": 0
  }
 }
