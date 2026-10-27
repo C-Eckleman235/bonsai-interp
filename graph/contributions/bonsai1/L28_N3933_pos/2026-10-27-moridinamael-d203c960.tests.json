@@ -1,0 +1,60 @@
+{
+ "contribution": "2026-10-27-moridinamael-d203c960",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L28/N3933+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T22:04:38+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "the universal quantifier 'all' in French/Spanish: toutes, tous, todos, todas"
+ },
+ "neighbours": [
+  {
+   "unit": "L28/N3933",
+   "pole": "+",
+   "label": "'all' as a determiner before a noun phrase in French/Spanish (toutes les, toute la, todos los, todas las), not English 'all'",
+   "fire": [
+    "Toutes les fenêtres de la maison étaient ouvertes ce matin.",
+    "Elle a lu toute la lettre avant de répondre.",
+    "Todos los niños jugaban en el parque después de clase.",
+    "Todas las tiendas del centro cierran a las nueve.",
+    "Il pleut tous les jours depuis le début du mois.",
+    "Hemos limpiado toda la cocina antes de que llegaran los invitados.",
+    "Nous avons visité toutes les églises de la vieille ville.",
+    "Mi abuela guarda todas las cartas que le escribió mi abuelo."
+   ],
+   "quiet": [
+    "All the windows in the house were open this morning.",
+    "Elle a lu la lettre avant de répondre.",
+    "Los niños jugaban en el parque después de clase.",
+    "Las tiendas del centro cierran a las nueve.",
+    "Il pleut chaque jour depuis le début du mois.",
+    "We cleaned all of the kitchen before the guests arrived.",
+    "Nous avons visité plusieurs églises de la vieille ville.",
+    "Mi abuela guarda las cartas que le escribió mi abuelo."
+   ]
+  }
+ ],
+ "predictions": "Expect 7-8/8 fire above 0.3 for French/Spanish all-determiners; English all and other quantifiers stay low (my earlier probes put English 'all' at 0.1-0.3, so 'All the windows' could leak).",
+ "trigger": {
+  "words": [
+   " toutes",
+   " toute",
+   " tous",
+   " todos",
+   " todas",
+   " toda"
+  ]
+ },
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "bank-solo"
+  ]
+ }
+}
