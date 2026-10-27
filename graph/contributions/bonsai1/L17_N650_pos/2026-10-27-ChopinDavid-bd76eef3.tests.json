@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-bd76eef3",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N650+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T20:20:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N650",
+   "pole": "+",
+   "label": "the '):' + newline closing a Python method signature or condition whose call takes only self or nothing (def name(self):, if self.ready():), as against signatures that list further parameters",
+   "fire": [
+    "class Sensor:\n    @property\n    def temperature(self):\n        return self._temp\n",
+    "class Queue:\n    def is_empty(self):\n        return len(self.items) == 0\n",
+    "class Robot:\n    def step(self):\n        if self.blocked():\n            self.turn()\n",
+    "class Account:\n    @property\n    def balance(self):\n        return self._balance\n",
+    "class Stream:\n    def close(self):\n        self.handle.close()\n",
+    "class Worker:\n    def run(self):\n        while self.has_jobs():\n            self.next_job()\n",
+    "class Page:\n    @property\n    def title(self):\n        return self.meta['title']\n",
+    "class Lamp:\n    def toggle(self):\n        self.on = not self.on\n"
+   ],
+   "quiet": [
+    "class Sensor:\n    def set_temperature(self, value, unit):\n        self._temp = value\n",
+    "class Queue:\n    def push(self, item, priority):\n        self.items.append(item)\n",
+    "class Robot:\n    def step(self, dx, dy):\n        self.x += dx\n",
+    "class Account:\n    def deposit(self, amount, note):\n        self._balance += amount\n",
+    "class Stream:\n    def write(self, data, flush):\n        self.handle.write(data)\n",
+    "class Worker:\n    def assign(self, job, deadline):\n        self.jobs.append(job)\n",
+    "class Page:\n    def set_title(self, text, lang):\n        self.meta['title'] = text\n",
+    "class Lamp:\n    def dim(self, level, speed):\n        self.level = level\n"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on '):\\n' / '():\\n' after (self) or an empty call; 'def f(self, a, b):' below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'(self):' line end",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: '):\\n' x6 in '@property def icon(self):', 'password_kickstarted(self):', 'if self.alive():'. Probe: '@property def is_on(self):' 0.777, '@property def icon(self):' 0.438, 'if self.ready():' 0.294; 'def turn_on(self, level):' 0.049 (peak elsewhere), 'compute(self)' mid-line 0.008."
+}

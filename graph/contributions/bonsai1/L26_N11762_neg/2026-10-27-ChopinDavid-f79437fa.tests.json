@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-f79437fa",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N11762-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T20:20:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N11762",
+   "pole": "-",
+   "label": "a span of time measured in hours or minutes spent on something (eight hours of play, ten minutes of homework, divmod of a duration), as against the same quantity frames with non-time units",
+   "fire": [
+    "The campaign took roughly twelve hours of gameplay to complete.",
+    "Experts recommend thirty minutes of exercise for adults every day.",
+    "The pilots logged nearly 300 hours of flight time last year.",
+    "def format_time(total_seconds):\n    hours, rest = divmod(total_seconds, 3600)\n",
+    "After six hours of waiting, the passengers finally boarded.",
+    "The course includes forty hours of video lectures.",
+    "He practised the piano for two hours a day all summer.",
+    "Children should get at least an hour of reading each evening."
+   ],
+   "quiet": [
+    "The campaign took roughly twelve boxes of leaflets to complete.",
+    "Experts recommend thirty grams of fibre for adults every day.",
+    "The pilots carried nearly 300 kilograms of cargo last year.",
+    "def format_name(full_name):\n    first, rest = full_name.split(' ', 1)\n",
+    "After six rounds of voting, the delegates finally agreed.",
+    "The course includes forty pages of printed notes.",
+    "He bought the piano for two thousand dollars last summer.",
+    "Children should get at least a cup of milk each evening."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on the token after an hours/minutes quantity; pounds, dozens, kilometres below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "spans of hours/minutes",
+ "unit_kind": "meaning",
+ "confidence": 0.6,
+ "notes": "Card: 'hours of fun', 'totaled about 8 hours of gameplay', '10 minutes of homework', 'parse_duration ... divmod'; + side suppresses ' time', ' hours', ' minutes'. Probe: 'eight hours of play' 0.780, divmod duration code 0.750, 'ten minutes of homework' 0.440, 'totaling 40 hours' 0.376, 'two hours daily' 0.166; 'eight pounds of flour' 0.011, 'two dozen books' 0.000."
+}
