@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-C-Eckleman235-7e70d228",
+ "kind": "qc",
+ "neuron": "bonsai1/L5/N8471-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-27T19:15:24+00:00",
+ "recipe": {
+  "toolchain_commit": "aa513f3f",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N8471_neg/2026-10-27-C-Eckleman235-7e70d228.tests.json"
+ },
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N8471_neg/2026-10-27-C-Eckleman235-7e70d228.tests.json",
+   "prereg_commit": "aa513f3f",
+   "author": "C-Eckleman235",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.717,
+     "peak": " time"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.342,
+     "peak": " time"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 1.048,
+     "peak": "em"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.591,
+     "peak": "god"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.09,
+     "peak": "prisingly"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.375,
+     "peak": " improbable"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.647,
+     "peak": " courage"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.198,
+     "peak": " ready"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.194,
+     "peak": " time"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.077,
+     "peak": " time"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.013,
+     "peak": " dinner"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.011,
+     "peak": " listeners"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.069,
+     "peak": " days"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.114,
+     "peak": " improbable"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.159,
+     "peak": " courage"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.011,
+     "peak": " approaching"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.953,
+    "median_fire": 0.483,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort high; blind QC writer, card only)",
+  "screens": [
+   "card",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "aa513f3f",
+  "minutes": 31,
+  "batch_size": 1,
+  "dtype": "float16"
+ },
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "Word right after a negation, mainly ' time' in 'wasted no time' / 'not enough time', also stems completing un- words (unseemly, ungodly, unsurprisingly) and 'not improbable'"
+ },
+ "selection": "Codex pilot: a cross-model QC of each model-QC pilot label (#1051-#1080)"
+}
