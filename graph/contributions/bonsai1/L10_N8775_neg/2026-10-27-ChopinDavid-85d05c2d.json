@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-85d05c2d",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N8775-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T18:30:15+00:00",
+ "recipe": {
+  "toolchain_commit": "20dff69d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N8775_neg/2026-10-27-ChopinDavid-85d05c2d.tests.json"
+ },
+ "label": "' plant' (and nearby cell-biology words) when plant cells are contrasted with animal cells, as against 'plant' in other senses and cell biology with no plant/animal contrast",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L10_N8775_neg/2026-10-27-ChopinDavid-85d05c2d.tests.json",
+   "prereg_commit": "20dff69d",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.353,
+     "peak": " plant"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 1.341,
+     "peak": " plant"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 1.389,
+     "peak": " plant"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.994,
+     "peak": " plant"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 1.345,
+     "peak": " plant"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 1.333,
+     "peak": " plant"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 1.061,
+     "peak": " plant"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 1.32,
+     "peak": " plant"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.02,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.006,
+     "peak": "She"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.012,
+     "peak": " plant"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.023,
+     "peak": "F"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.089,
+     "peak": " binary"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.178,
+     "peak": " matrix"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.012,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.107,
+     "peak": " oxygen"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 1.337,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "20dff69d",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "plant vs animal cells",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: top two are 'such as plant cells' (max 10.56) and 'Unlike animals, plant cells', the rest are weak cell-biology tokens (4-6). Probe: 'Unlike animal cells, plant cells' 1.337; 'such as plant cells' 0.158; 'higher plants' 0.118; 'Animal cells lack a cell wall' 0.187 (at 'u' in vacuoles); power plant 0.013, windowsill plant 0.009, car plant 0.014, fungi 0.012. Fire items all put the animal contrast before ' plant'.",
+ "selection": "random draw"
+}

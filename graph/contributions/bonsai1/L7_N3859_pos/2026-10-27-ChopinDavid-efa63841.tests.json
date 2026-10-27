@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-efa63841",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N3859+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T18:21:51+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L7/N3859",
+   "pole": "+",
+   "label": "the ' =' of a Python tuple-unpacking assignment (a, _ = f(), (lo, hi) = ...), as against the ' =' of a single-name assignment and other operators",
+   "fire": [
+    "def split(path):\n    head, tail = os.path.split(path)\n    return tail",
+    "def stats(xs):\n    mean, std = compute(xs)\n    return mean",
+    "def load():\n    X, y = read_csv('data.csv')\n    return X",
+    "def step(model):\n    loss, _ = model.train_batch()\n    return loss",
+    "def size(img):\n    h, w, c = img.shape\n    return h * w",
+    "def parse(line):\n    (key, value) = line.split('=')\n    return key",
+    "def swap(a, b):\n    a, b = b, a\n    return a",
+    "def fetch(client):\n    status, body = client.get('/items')\n    return body"
+   ],
+   "quiet": [
+    "def split(path):\n    tail = os.path.basename(path)\n    return tail",
+    "def stats(xs):\n    mean = compute(xs)\n    return mean",
+    "def load():\n    X = read_csv('data.csv')\n    return X",
+    "def step(model):\n    loss = model.train_batch()\n    return loss",
+    "def size(img):\n    if img.shape[0] == 0:\n        return 0\n    return img.size",
+    "def parse(line):\n    parts = line.split('=')\n    return parts",
+    "def inc(a):\n    a += 1\n    return a",
+    "def fetch(client):\n    body = client.get('/items')\n    return body"
+   ]
+  }
+ ],
+ "predictions": "fire 0.45-0.9 on ' =' after a comma-separated target list; single-target ' =' and '+=', '==' below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "' =' in tuple unpacking",
+ "unit_kind": "context",
+ "confidence": 0.65,
+ "notes": "Card: ' =' x30 of the top 32, nearly all after targets like '_, D', '(position, quaternion)', 'acc, _'. Probe: 'acc, _ = evaluate(data)' 0.869, '(lo, hi) = bounds(xs)' 0.481; 'acc = evaluate(data)' 0.051, 'lo = min(xs)' 0.015, 'x += 1' 0.015, '==' 0.012, 'for i, v in' 0.153 (at ' in'). Multi-line function items."
+}

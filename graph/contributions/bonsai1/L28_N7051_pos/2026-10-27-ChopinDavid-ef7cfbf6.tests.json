@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-ef7cfbf6",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N7051+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T18:21:51+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N7051",
+   "pole": "+",
+   "label": "the ' -' that begins a short option flag in a shell command (mkdir -p, rm -rf, tail -f), as against minus signs, prose dashes and the same commands written without flags",
+   "fire": [
+    "On the build machine, run mkdir -p build and then cd build.",
+    "To clean up, type rm -rf temp at the prompt.",
+    "You can watch the file with tail -f app.log while it runs.",
+    "First list the files with ls -la to see hidden ones.",
+    "The script calls grep -i error report.txt to find problems.",
+    "Copy the folder with cp -r photos backup before editing.",
+    "Check the disk usage with df -h on each node.",
+    "os.system('chmod -R 755 ' + folder)"
+   ],
+   "quiet": [
+    "On the build machine, run make build and then open the folder.",
+    "To clean up, delete the temp folder by hand.",
+    "You can watch the file in an editor while it runs.",
+    "The total is 12 - 5, which leaves seven apples.",
+    "The script - a short one - looks for errors in the report.",
+    "Copy the photos into a backup folder before editing.",
+    "Check the disk usage on each node every morning.",
+    "count = total - 1"
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.9 on ' -' before a command-line option; arithmetic minus, prose dashes and flagless commands below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dash of a shell option flag",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: ' -' x17 of the top 32, all option flags (rsync -avz, mkdir -p, rm -r, tail -n, tail -f); a few ' if' in dd/ifind. Probe: 'mkdir -p' 0.922, \"'rm -rf '\" 0.704, 'tail -f' 0.525, 'tar -xzf' 0.353; '10 - 3' 0.008, prose dash 0.005, 'y - 1' 0.031; 'mkdir /var/data/logs' leaked 0.397 at 'var', so near misses avoid '/var' paths."
+}

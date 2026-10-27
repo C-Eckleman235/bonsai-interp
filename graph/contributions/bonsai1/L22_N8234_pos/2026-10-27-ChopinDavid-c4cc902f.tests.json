@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-c4cc902f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N8234+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T18:21:51+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N8234",
+   "pole": "+",
+   "label": "news-style reported speech after a '..., X said' attribution, quoted or paraphrased, as against the same topics written with no speaker attribution",
+   "fire": [
+    "Sales fell sharply this spring, the store manager said. \"We had to cut staff.\"",
+    "The bridge will reopen in May, a city spokesman said, and traffic should ease.",
+    "Crops were damaged by the frost, Johnson said. “It was the worst week in years.”",
+    "The school will add two classrooms, the principal said, because enrolment is up.",
+    "Water levels are still rising, officials said. \"People should stay indoors.\"",
+    "The new vaccine works well in older adults, Dr. Patel said, and side effects are rare.",
+    "Ticket prices will not change next season, the club's owner said. “Fans deserve that.”",
+    "The factory will hire forty workers, the mayor said, and training starts in June."
+   ],
+   "quiet": [
+    "Sales fell sharply this spring, and the store had to cut staff.",
+    "The bridge will reopen in May, and traffic should ease after that.",
+    "Crops were damaged by the frost during the worst week in years.",
+    "The school will add two classrooms because enrolment is up.",
+    "Water levels are still rising across the low parts of the valley.",
+    "The new vaccine works well in older adults, and side effects are rare.",
+    "Ticket prices will stay the same next season for all fans.",
+    "The factory will hire forty workers, and training starts in June."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.3 on the clause after a 'said' attribution; unattributed statements of the same content below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "news reported speech (broad guess)",
+ "unit_kind": "context",
+ "confidence": 0.25,
+ "notes": "Card: broad (3.6% of tokens reach 0.1 of max), peaks on opening quote marks after 'X said.' in news. Probe: quoted continuations 0.198-0.290, but paraphrased continuations equally 0.177-0.291, so the quote mark itself is not the trigger; 'The word \"cat\"' 0.013, novel sentence 0.010. Label moves to the attribution context; low confidence."
+}
