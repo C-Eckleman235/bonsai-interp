@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-34438675",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6436+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T17:19:59+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N6436",
+   "pole": "+",
+   "label": "an inner piece of a word that the tokenizer breaks into many pieces in non-English running text: all-caps Cyrillic (УК|РА|ИНЫ), Latin transliteration of Russian (' Ross'|iyu) and kana readings of Japanese names; the same content in English is silent",
+   "fire": [
+    "Заголовок гласил: ПРЕЗИДЕНТ РОССИИ ПОДПИСАЛ НОВЫЙ ЗАКОН О ВЫБОРАХ.",
+    "На плакате было написано: МИНИСТЕРСТВО ОБОРОНЫ УКРАИНЫ ПРЕДУПРЕЖДАЕТ.",
+    "The headline read \"Kreml' obvinil Zapad v provokatsii\", according to the translator.",
+    "In the archive the article was titled \"Rossiya i Ukraina: novye peregovory\".",
+    "主演は田中 美咲子（たなか みさこ）さんです。",
+    "監督：佐藤 健太郎（さとう けんたろう）",
+    "Last week Moskovskiy komsomolets pisal o novykh vyborakh v Gosdumu.",
+    "Слоган кампании: ГОЛОСУЙ ЗА БУДУЩЕЕ СТРАНЫ!"
+   ],
+   "quiet": [
+    "Заголовок гласил: президент России подписал новый закон о выборах.",
+    "На плакате было написано: министерство обороны Украины предупреждает.",
+    "The headline read \"The Kremlin accused the West of lying\", according to the translator.",
+    "In the archive the article was titled \"Russia and Ukraine: new talks\".",
+    "主演は新人の女優です。",
+    "監督は若い男性です。",
+    "Last week a Moscow newspaper wrote about new elections to parliament.",
+    "Слоган кампании: голосуй за будущее страны!"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.9 on inner pieces of all-caps Russian, transliterated Russian and kana readings; English and plain-Japanese near misses below 0.1, lowercase Russian uncertain",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "inner piece of a shredded foreign word",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: max 564, top examples are pieces of caps Russian, German compounds, phonetic transcription, kana readings. Probe: caps УКРАИНЫ 'РА' 0.930, transliterated Rossiyu 0.720, kana reading 0.716, German Perspektiven 0.271, Neuwagen 0.203, phonetic T.UW 0.281; English 'Ukraine held elections' 0.003, 'The perspective' 0.002. Lowercase Russian was not probed; three near misses test it."
+}

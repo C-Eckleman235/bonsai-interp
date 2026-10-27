@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-d4ebf9b0",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N3787-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T17:19:59+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L2/N3787",
+   "pole": "-",
+   "label": "the punctuation ('?', '…', '.') right after a one-word reply or interjection that opens a line of dialogue (Really? Yes? Yeah… Okay.), as against the same punctuation closing a full sentence",
+   "fire": [
+    "She looked up from her book. \"Seriously? You lost the keys again?\"",
+    "A voice called from the hall: \"Hello? Is anyone in the kitchen?\"",
+    "He shrugged. \"Well… I guess we could try.\"",
+    "She nodded slowly. \"Okay. Then we leave at six.\"",
+    "The clerk leaned closer. \"Sorry? I didn't catch your name.\"",
+    "He rubbed his chin. \"Maybe… but I doubt it will work.\"",
+    "She spun around. \"What? Who told you that?\"",
+    "He threw up his hands. \"Fine. Do it your way.\""
+   ],
+   "quiet": [
+    "She looked up from her book. \"Did you really lose the keys again?\"",
+    "A voice called from the hall to ask whether anyone was in the kitchen.",
+    "He shrugged and said that they could try it tomorrow.",
+    "She nodded slowly. \"We are going to leave the house at six.\"",
+    "The clerk leaned closer. \"I am afraid I did not catch your name.\"",
+    "He rubbed his chin. \"I doubt that the new plan will work at all.\"",
+    "She spun around. \"Who was the person who told you about that?\"",
+    "He threw up his hands. \"You can do the whole thing your own way.\""
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on the mark after a one-word opener; the same marks ending full sentences below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "punctuation after a one-word reply",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: '?' x17, '…' x9 of the top 32, after Yes/No/Really/Yeah/Never mind; gate leak regime 100%, max 3.1. Probe: 'Really?' 0.775, 'Yes?' 0.810, 'Yeah…' 0.757, 'Never mind…' 0.486, 'Not unless…' 0.394, 'Really.' 0.644; long question '?' 0.056, 'He said yes and...' 0.039."
+}

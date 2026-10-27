@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-8263651c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N12054+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T17:19:59+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N12054",
+   "pole": "+",
+   "label": "the continuation piece of a capitalized word that the tokenizer splits after its stem (View|ed, R|itten|house, Weather|ed, Exc|ited), as against single-token words in the same slot",
+   "fire": [
+    "Our guide said that, Viewed from the north bank, the bridge seems to float.",
+    "Item 14: Weathered oak bench, early 1900s.",
+    "Lot 22: Crested ceramic jug with a blue glaze.",
+    "We rented a small flat near Rittenhouse Square for the summer.",
+    "The poster read: Excited About Science? Join the club.",
+    "Chapter 3: Sheltered Lives in the Valley",
+    "The first paper mill in America was built by the Rittenhouse family.",
+    "Plate 9: Hunted Deer in a Winter Forest"
+   ],
+   "quiet": [
+    "Our guide said that, seen from the north bank, the bridge seems to float.",
+    "Item 14: Old oak bench, early 1900s.",
+    "Lot 22: Blue ceramic jug with a white glaze.",
+    "We rented a small flat near Washington Square for the summer.",
+    "The poster read: Crazy About Science? Join the club.",
+    "Chapter 3: Quiet Lives in the Valley",
+    "The first paper mill in America was built by the Wilson family.",
+    "Plate 9: Young Deer in a Winter Forest"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.7 on the second piece; single-token replacements below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "continuation piece of a split capitalized word",
+ "unit_kind": "word",
+ "confidence": 0.25,
+ "notes": "Card: low max 3.3, peaks on 'ed', 'itten', 'id', 'ashed', ' radiant'; gate regimes mixed (echo 34%). Probe: View|ed 0.588, R|itten|house 0.737, Exc|ited 0.314, Radi|ant 0.237, Vir|idian 0.161, single-token ' shaded' 0.175; plain 'view' sentence 0.057, 'happy' 0.015."
+}
