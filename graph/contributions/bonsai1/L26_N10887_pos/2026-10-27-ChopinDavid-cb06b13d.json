@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-27-ChopinDavid-cb06b13d",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N10887+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T14:29:08+00:00",
+ "recipe": {
+  "toolchain_commit": "8e5bdba3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L26_N10887_pos/2026-10-27-ChopinDavid-cb06b13d.tests.json"
+ },
+ "label": "the piece 'ut' when it is its own token inside a split word (Exec|ut|ives, Min|ut|emen, EXEC|UT|ORS, Res|olut|eness), as against the same words written as single tokens",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L26_N10887_pos/2026-10-27-ChopinDavid-cb06b13d.tests.json",
+   "prereg_commit": "8e5bdba3",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.739,
+     "peak": "ut"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.733,
+     "peak": "ut"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.922,
+     "peak": "ut"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.627,
+     "peak": "UT"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.698,
+     "peak": "ut"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.624,
+     "peak": "ut"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.731,
+     "peak": "ut"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.653,
+     "peak": "olut"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.005,
+     "peak": " senior"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.053,
+     "peak": "Stat"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.002,
+     "peak": " repairs"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.001,
+     "peak": " both"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.035,
+     "peak": " Executive"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.004,
+     "peak": " red"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.006,
+     "peak": " Institute"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.005,
+     "peak": " coach"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.714,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "8e5bdba3",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "'ut' piece in split words",
+ "unit_kind": "word",
+ "confidence": 0.65,
+ "notes": "Card: 'ut' x18, 'UT' x5, 'olut' x2 of the top 32 peaks (Minuteman, Executives, EXECUTORS). Tokenizer: ' Executives' -> Exec|ut|ives, ' Minutemen' -> Min|ut|emen, but ' Executive', ' Minute', ' Constitution', ' Institute' are single tokens. Probe: Executives 0.703, Minutemen 0.909, Minuteman 0.963, EXECUTORS 0.671, Resoluteness 0.598; ' Executive' 0.033, ' Minute' 0.064, managers 0.001.",
+ "selection": "random draw",
+ "trigger": {
+  "pieces": [
+   "ut",
+   "UT"
+  ]
+ }
+}

@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-11af8c2e",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N2933-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T14:28:35+00:00",
+ "recipe": {
+  "toolchain_commit": "8e5bdba3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N2933_neg/2026-10-27-ChopinDavid-11af8c2e.tests.json"
+ },
+ "label": "degree and certainty adverbs (surely, definitely, much, a lot, mostly) in helpful or promotional prose, as against the same sentences without the intensifier",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N2933_neg/2026-10-27-ChopinDavid-11af8c2e.tests.json",
+   "prereg_commit": "8e5bdba3",
+   "author": "ChopinDavid",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.075,
+     "peak": " surely"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.369,
+     "peak": " glad"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.083,
+     "peak": " much"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.134,
+     "peak": " lot"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.091,
+     "peak": " surely"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.111,
+     "peak": " definitely"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.06,
+     "peak": " much"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.012,
+     "peak": " language"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.011,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.044,
+     "peak": " help"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.018,
+     "peak": " original"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.017,
+     "peak": " month"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.016,
+     "peak": " save"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.012,
+     "peak": "itors"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.103,
+     "peak": " nothing"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.01,
+     "peak": " language"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.852,
+    "median_fire": 0.087,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "8e5bdba3",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "degree/certainty adverb",
+ "unit_kind": "word",
+ "confidence": 0.2,
+ "notes": "Card: peaks ' surely', ' much', ' mostly', ' definitely', ' a lot', ' somewhat' plus name pieces ' Man'/' Sur'. Probe: 'will surely help' 0.104, 'definitely be glad' 0.176 on glad, 'not much left' 0.106, 'cost you a lot' 0.111; same sentences without the adverb 0.043 and 0.007; 'mostly needed' 0.033. 'Manikarnika/Manraj' 0.318 (name piece, not tested). The pole is weak; median likely near 0.1, so this is a low-confidence guess.",
+ "selection": "random draw"
+}

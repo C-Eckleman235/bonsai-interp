@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-27-ChopinDavid-0a4313d0",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N9946+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T14:28:49+00:00",
+ "recipe": {
+  "toolchain_commit": "8e5bdba3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N9946_pos/2026-10-27-ChopinDavid-0a4313d0.tests.json"
+ },
+ "label": "the bare tokens ' almost', ' always', ' half', ' whole', ' usually' (layer-0 lexical unit), as against near synonyms such as nearly, often, entire",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N9946_pos/2026-10-27-ChopinDavid-0a4313d0.tests.json",
+   "prereg_commit": "8e5bdba3",
+   "author": "ChopinDavid",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.254,
+     "peak": " almost"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.315,
+     "peak": " always"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.248,
+     "peak": " half"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.61,
+     "peak": " whole"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.346,
+     "peak": " usually"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.276,
+     "peak": " almost"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.171,
+     "peak": " always"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.189,
+     "peak": " half"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.095,
+     "peak": " h"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.16,
+     "peak": " often"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.22,
+     "peak": " keys"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.263,
+     "peak": " entire"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.136,
+     "peak": " generally"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.087,
+     "peak": " bakery"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.065,
+     "peak": " ear"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.087,
+     "peak": " pie"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.906,
+    "median_fire": 0.265,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "8e5bdba3",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "' almost/always/half/whole'",
+ "unit_kind": "word",
+ "confidence": 0.55,
+ "notes": "Card: broad (1.9% density); top 32 peaks are ' whole' x14, ' almost' x9, ' half' x5, ' always' x3, ' usually' x1. Probe: whole 0.540, almost 0.880, always 0.834, half 0.724, usually 0.510; synonyms entire 0.297 (peak elsewhere), nearly 0.348, often 0.341; tomato sauce 0.100. Synonym near misses fire about 0.3, so AUROC depends on that gap.",
+ "selection": "random draw",
+ "trigger": {
+  "tokens": [
+   " almost",
+   " always",
+   " half",
+   " whole",
+   " usually"
+  ]
+ }
+}

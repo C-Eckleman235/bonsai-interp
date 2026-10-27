@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-c942177a",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6760-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T14:30:18+00:00",
+ "recipe": {
+  "toolchain_commit": "8e5bdba3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N6760_neg/2026-10-27-ChopinDavid-c942177a.tests.json"
+ },
+ "label": "the first piece of a present-tense verb that the tokenizer splits (dep|arts, inv|ades, dev|otes, con|veys), predicting the verb's ending, as against single-token verbs in the same slot",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N6760_neg/2026-10-27-ChopinDavid-c942177a.tests.json",
+   "prereg_commit": "8e5bdba3",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.839,
+     "peak": " dep"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.646,
+     "peak": " inv"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.447,
+     "peak": " dev"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.445,
+     "peak": " con"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.504,
+     "peak": " dep"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.422,
+     "peak": " dev"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.436,
+     "peak": " con"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.816,
+     "peak": " inv"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.002,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.002,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.003,
+     "peak": " animal"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.003,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.003,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.002,
+     "peak": "His"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.003,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.476,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "8e5bdba3",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "first piece of a split verb",
+ "unit_kind": "context",
+ "confidence": 0.65,
+ "notes": "Card: peaks ' dep' x7, ' con' x4, ' att' x3, ' pert' x3, ' inv', ' dev' as first pieces of 3rd-person verbs (departs, devotes, invades). Tokenizer: departs -> dep|arts, invades -> inv|ades, devotes -> dev|otes, conveys -> con|veys, retorts -> ret|orts; depart, provides, converts are single tokens. Probe: departs 0.643, invades 0.510, devotes 0.757, conveys 0.408, attains 0.185; 'will depart' 0.002, 'leaves' 0.002, 'spends' 0.012.",
+ "selection": "random draw"
+}
