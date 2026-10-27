@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-ab9e50ac",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N7375+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T15:29:48+00:00",
+ "recipe": {
+  "toolchain_commit": "74447a6e",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N7375_pos/2026-10-27-ChopinDavid-ab9e50ac.tests.json"
+ },
+ "label": "dense / positional: the first token of a window when it is punctuation (..., ||, –, ;); in short test sentences the opening punctuation does not sit at window position 0, so this records the guess",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N7375_pos/2026-10-27-ChopinDavid-ab9e50ac.tests.json",
+   "prereg_commit": "74447a6e",
+   "author": "ChopinDavid",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.136,
+     "peak": "–"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.081,
+     "peak": "||"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.136,
+     "peak": "–"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.081,
+     "peak": "||"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.136,
+     "peak": "–"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.081,
+     "peak": "||"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.136,
+     "peak": "–"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.081,
+     "peak": "||"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.013,
+     "peak": "Twenty"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.019,
+     "peak": " table"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.022,
+     "peak": " streets"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.008,
+     "peak": " are"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.007,
+     "peak": " letter"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.031,
+     "peak": " row"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.022,
+     "peak": " home"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.008,
+     "peak": " are"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.109,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "74447a6e",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "window-initial punctuation",
+ "unit_kind": "dense / positional",
+ "confidence": 0.1,
+ "notes": "Card: positional flag, 84% of top peaks at window position 0, all punctuation ('...', '||', '—', ';', ',,'). Probe: leading '...' 0.036, '||' 0.081, ';' 0.031, '–' 0.136; 'And then' 0.006, trailing '...' 0.024. The probe cannot put the token at position 0, so the 8 + 8 test cannot pass; written to record it.",
+ "selection": "random draw"
+}

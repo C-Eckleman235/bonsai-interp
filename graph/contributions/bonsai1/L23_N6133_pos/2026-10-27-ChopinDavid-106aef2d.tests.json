@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-106aef2d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N6133+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T15:21:48+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L23/N6133",
+   "pole": "+",
+   "label": "the opening of a function call's argument list in test or doctest code (assert f(0) == ..., >>> Cls(13).get()), as against code lines in the same style that compare plain names without calling anything",
+   "fire": [
+    "Run the checks below.\n\n    assert sinh(0) == S.Zero\n    assert sinh(oo) == oo",
+    "Examples:\n\n    >>> Vector(3).norm() + Vector(4).norm()\n    7.0",
+    "Sanity tests for the helper.\n\n    assert clamp(5) == 5\n    assert clamp(-2) == 0",
+    "Usage:\n\n    >>> Stack(10).push(1).size()\n    1",
+    "Edge cases:\n\n    assert loggamma(1) == S.Zero\n    assert loggamma(2) == S.Zero",
+    "Doctest for the parser.\n\n    >>> Token(7).kind()\n    'int'",
+    "Check the special values.\n\n    assert cosh(0) == S.One\n    assert tanh(0) == S.Zero",
+    "Example session:\n\n    >>> Matrix(2).trace() * Matrix(3).trace()\n    6"
+   ],
+   "quiet": [
+    "Run the checks below.\n\n    assert result == expected\n    assert total == count",
+    "Examples:\n\n    >>> total = first + second\n    >>> total\n    7.0",
+    "Sanity tests for the helper.\n\n    assert value == 5\n    assert lower == 0",
+    "Usage:\n\n    >>> size = 10\n    >>> size\n    10",
+    "Edge cases:\n\n    assert low == S.Zero\n    assert high == S.Zero",
+    "Doctest for the parser.\n\n    >>> kind = 'int'\n    >>> kind\n    'int'",
+    "Check the special values.\n\n    assert left == S.One\n    assert right == S.Zero",
+    "Example session:\n\n    >>> area = width * height\n    >>> area\n    6"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.55 on '(' of calls inside assert/doctest lines; asserts on bare variables below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "call argument opening in test code",
+ "unit_kind": "context",
+ "confidence": 0.25,
+ "notes": "Card: broad pole, peaks on '(' in 'assert erfi(0)', '>>> _TestClass(13)', 'self' in __missing__(self, key), plus prose commas before a consequence. Probe: doctest 'Counter(5).value()' 0.552, 'assert gamma(1) == S.One' 0.509, '__missing__(self' 0.251, prose 'so the resistor' 0.274, 'applied strictly,' 0.205; plain prose 0.02-0.07. Broad flag: near misses may fire weakly; prose half of the pole not tested."
+}

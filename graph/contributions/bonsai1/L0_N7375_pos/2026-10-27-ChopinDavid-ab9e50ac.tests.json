@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-ab9e50ac",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N7375+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T15:21:48+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N7375",
+   "pole": "+",
+   "label": "dense / positional: the first token of a window when it is punctuation (..., ||, –, ;); in short test sentences the opening punctuation does not sit at window position 0, so this records the guess",
+   "fire": [
+    "– twenty minutes later the bus finally arrived.",
+    "|| Item || Price || Stock ||",
+    "– after the rain, the streets were quiet again.",
+    "|| Model || Year || Owner ||",
+    "– two days later the letter came back unopened.",
+    "|| Code || Region || Status ||",
+    "– by midnight the guests had all gone home.",
+    "|| Team || Wins || Losses ||"
+   ],
+   "quiet": [
+    "Twenty minutes later the bus finally arrived.",
+    "Item, price and stock are listed in the table.",
+    "After the rain, the streets were quiet again.",
+    "Model, year and owner are shown for each car.",
+    "Two days later the letter came back unopened.",
+    "Code, region and status appear in each row.",
+    "By midnight the guests had all gone home.",
+    "Team, wins and losses are counted every week."
+   ]
+  }
+ ],
+ "predictions": "fire about 0.05-0.15 on a leading dash or '||'; plain-word openings near 0; expected to fail on median",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "window-initial punctuation",
+ "unit_kind": "dense / positional",
+ "confidence": 0.1,
+ "notes": "Card: positional flag, 84% of top peaks at window position 0, all punctuation ('...', '||', '—', ';', ',,'). Probe: leading '...' 0.036, '||' 0.081, ';' 0.031, '–' 0.136; 'And then' 0.006, trailing '...' 0.024. The probe cannot put the token at position 0, so the 8 + 8 test cannot pass; written to record it."
+}
