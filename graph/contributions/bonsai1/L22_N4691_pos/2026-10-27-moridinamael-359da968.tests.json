@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-27-moridinamael-359da968",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N4691+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T17:26:24+00:00",
+ "roles": ["reads bonsai1/L15/N1254-"],
+ "neighbours": [
+  {
+   "unit": "L22/N4691",
+   "pole": "+",
+   "label": "a word or word-piece that repeats an earlier word from the same text (e.g. 'season' after 'Season 3', a code name reused on the next line)",
+   "fire": [
+    "Season 3 starts in March, and fans say this season will be the darkest yet.",
+    "The project is called Bluebird; Bluebird ships to testers next week.",
+    "She planted tomatoes in May, and by August the tomatoes covered the fence.",
+    "Run the script named cleanup.sh, then check that cleanup finished without errors.",
+    "Our neighbor bought a red kayak, and every Sunday he paddles the kayak across the lake.",
+    "The word 'lantern' appears twice in the poem: once in the title and once where the lantern goes out.",
+    "Chapter 7 is short, but chapter 8 makes up for it.",
+    "Doctor Alvarez examined the x-ray, and then Alvarez called the patient back in."
+   ],
+   "quiet": [
+    "Season 3 starts in March, and fans say the new episodes will be the darkest yet.",
+    "The project is called Bluebird; it ships to testers next week.",
+    "She planted tomatoes in May, and by August the vines covered the fence.",
+    "Run the script named cleanup.sh, then check that it finished without errors.",
+    "Our neighbor bought a red kayak, and every Sunday he paddles across the lake.",
+    "The poem has a short title and ends where the light finally goes out.",
+    "Chapter 7 is short, but the next one makes up for it.",
+    "Doctor Alvarez examined the x-ray, and then she called the patient back in."
+   ]
+  }
+ ],
+ "predictions": "I expect a fail: my probes showed repeats only weakly lifted (0.155 vs 0.069) and plain repeats stayed under 0.1.",
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "step-down"
+  ]
+ }
+}
