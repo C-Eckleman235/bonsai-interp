@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-26-moridinamael-975cc7cb",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L2/N3451+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T01:47:19+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "the token ' Buffalo' (the city in New York and its institutions)"
+ },
+ "neighbours": [
+  {
+   "unit": "L2/N3451",
+   "pole": "+",
+   "label": "a bundle of unrelated tokens, not one meaning: ' Buffalo' / ' buffalo' / ' Bison', ' Brown', ' Roberts', ' NT', ' bump', ' Berkeley'",
+   "fire": [
+    "Tom Brown met Dr. Brown at Brown & Co on Brown Avenue.",
+    "A herd of buffalo crossed the river at dawn.",
+    "We drove to Buffalo for the weekend to see the falls.",
+    "The American Bison was nearly hunted to extinction.",
+    "She painted the fence a warm shade of Brown.",
+    "Justice Roberts delivered the majority opinion.",
+    "The laptop shipped with Windows NT preinstalled.",
+    "Watch out for the bump in the road ahead."
+   ],
+   "quiet": [
+    "A herd of cattle crossed the river at dawn.",
+    "We drove to Toronto for the weekend to see the falls.",
+    "The American elk was nearly hunted to extinction.",
+    "She painted the fence a warm shade of green.",
+    "Justice Kagan delivered the majority opinion.",
+    "The laptop shipped with Linux preinstalled.",
+    "Watch out for the pothole in the road ahead.",
+    "He studied physics at Stanford for four years."
+   ]
+  }
+ ],
+ "trigger": {"words": ["Buffalo", "buffalo", "Bison", "Brown", "Roberts", "NT", "bump", "Berkeley"]},
+ "predictions": "Expect most fire items to clear 0.20; Roberts/NT/bump may be weaker; near misses near zero.",
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "bank-solo"
+  ]
+ }
+}
