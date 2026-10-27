@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-26-moridinamael-4dc78dce",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L27/N6013-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T02:32:54+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Small function words in expository or how-to prose that sit right before a clause's verb or a plural noun phrase: expletive 'there' (there are, there needs to be), 'of' after a quantifier (many of, some of, one of), and 'you' before a modal (so you can); quiet for locative 'there', possessive 'of' (roof of the house) and 'you' as an object"
+ },
+ "neighbours": [
+  {
+   "unit": "L27/N6013",
+   "pole": "-",
+   "label": "Expletive 'there' meaning 'there is/are/may be' (e.g. 'because there may be added sugar'), strongest mid-sentence in explanatory prose; quiet for locative 'over there'. Other small words (generic 'you can', 'many of', 'exactly') fire it only weakly",
+   "fire": [
+    "Check the label carefully, because there may be added sugar in products marketed as healthy.",
+    "In most older houses there are several layers of paint, so sanding takes longer than expected.",
+    "If the soil stays wet for weeks, there is a real risk that the roots will begin to rot.",
+    "Researchers noted that there were fewer complications when patients walked soon after surgery.",
+    "Before you sign the lease, ask whether there are any extra fees for parking or maintenance.",
+    "Because there is no single cause of migraines, treatment usually combines several approaches.",
+    "In cold climates there may be a delay of several days before the glue fully cures.",
+    "The manual explains that there are two ways to reset the router without losing your settings."
+   ],
+   "quiet": [
+    "Name exactly what the child did and how it helps you.",
+    "Control of the glue line is another consideration, and the thickness and uniformity of spread should be given constant attention.",
+    "Check the label carefully, because added sugar may hide in products marketed as healthy.",
+    "Put the paint cans over there by the door, and we will start sanding tomorrow.",
+    "If the soil stays wet for weeks, the roots will likely begin to rot.",
+    "Researchers noted fewer complications when patients walked soon after surgery.",
+    "Before you sign the lease, ask about any extra fees for parking or maintenance.",
+    "The hikers reached the summit and stayed there until the sun went down."
+   ]
+  }
+ ],
+ "predictions": "Expect most fire sentences 0.25-0.45 on 'there'; the solver leak 'Name exactly...' may reach ~0.30 and break the near-miss bar, since the pole is broad. Guess: 6/8 fire, 1 near miss at 0.3.",
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "quick-test"
+  ]
+}
+}
