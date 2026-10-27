@@ -1,0 +1,44 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-561da0e8",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N11928+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T21:44:48+00:00",
+ "selection": "picked: JasperBlank's 48 poles (#1018-#1021), Codex pilot round 3",
+ "neighbours": [
+  {
+   "unit": "L6/N11928",
+   "pole": "+",
+   "label": "Indenting the first line of a Python function body",
+   "fire": [
+    "from pathlib import Path\n\ndef load_caption(path):\n    return Path(path).read_text(encoding=\"utf-8\")",
+    "class SnapshotCache:\n    def remember(self, key, value):\n        self.entries[key] = value\n        return self.entries",
+    "class QueueReader:\n\tdef fetch(self, timeout=None):\n\t\titem = self.queue.get(timeout=timeout)\n\t\treturn item",
+    "import json\n\ndef encode_record(record):\n\tpayload = json.dumps(record, sort_keys=True)\n\treturn payload",
+    "class ReportBuilder:\n    def make_renderer(self, prefix):\n        def render_title(title):\n            return prefix + title.strip()\n        return render_title",
+    "class ColorPalette:\n   def lookup(self, name):\n      value = self.colors.get(name)\n      return value",
+    "import csv\n\ndef parse_records(stream):\n    \"\"\"Read labelled records from the input stream.\"\"\"\n    return list(csv.DictReader(stream))",
+    "import socket\n\ndef connect_peer(address):\n    try:\n        return socket.create_connection(address)\n    except OSError:\n        return None"
+   ],
+   "quiet": [
+    "import pathlib\n\ncandidate = pathlib.Path(\"settings.ini\")\nif candidate.exists():\n    contents = candidate.read_text()\nelse:\n    contents = \"\"",
+    "class CachedReply:\n    if ENABLE_CACHE:\n        if USE_FAST_CACHE:\n            backend = \"memory\"\n        else:\n            backend = \"disk\"",
+    "from pathlib import Path\n\nwith Path(\"inventory.txt\").open() as stream:\n\trows = stream.readlines()\n\tprint(len(rows), \"records loaded\")",
+    "for group in catalog:\n\tfor item in group:\n\t\tif item.enabled:\n\t\t\tprint(item.name, \"is available\")",
+    "import tomllib\n\ntry:\n    document = tomllib.loads(raw_text)\nexcept ValueError:\n    document = {}\nprint(document, \"configuration loaded\")",
+    "options = dict(\n        connect_timeout = 15,\n        retry_count = 3,\n        verbose_output = False,\n)\nprint(options, \"client options\")",
+    "MAX_RECORDS = 50\n\ndef keep_record(record): return record.active and record.rank < MAX_RECORDS\n\nselected = filter(keep_record, records)",
+    "left_column      = \"alpha\"\nright_column     = \"beta\"\ncolumn_width     = 12\nprint(left_column, right_column, column_width, \"aligned values\")"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort xhigh)",
+  "screens": [
+   "card"
+  ]
+ },
+ "unit_kind": "contextual",
+ "notes": "Codex pilot round 3 (concept-maps/codex-pilot/ROUND3.md, sha256 47a45a0fe1132ca280db661e86b5a194a0093f77d5b839517e4a9c86032f5128): round 2's setup (full card, verbatim survey guidance) with reasoning effort xhigh; one fresh codex exec per pole; sentences unedited. Codex's note: Card-only hypothesis, untested. All six displayed peaks mark function-entry indentation. Listed whitespace hits total approximately 89% coverage; coverage of this specific context is unknown."
+}

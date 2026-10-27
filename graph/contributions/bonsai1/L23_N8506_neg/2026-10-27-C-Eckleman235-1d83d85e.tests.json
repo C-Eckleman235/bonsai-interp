@@ -1,0 +1,44 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-1d83d85e",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N8506-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T21:44:48+00:00",
+ "selection": "picked: JasperBlank's 48 poles (#1018-#1021), Codex pilot round 3",
+ "neighbours": [
+  {
+   "unit": "L23/N8506",
+   "pole": "-",
+   "label": "Tracks temporal boundaries and elapsed intervals",
+   "fire": [
+    "For the analysis, follow-up extended from enrollment to the participant's final clinic visit.",
+    "Within the settings panel, staff specify when to start the nightly export and when the backup window closes.",
+    "To estimate recovery time, investigators measured the interval between surgery and the patient's return to work.",
+    "While processing the log, the scanner absorbs each event until a new timestamped header begins the next record.",
+    "def should_expire(session, now):\n    previous = session.last_seen\n    elapsed = now - previous\n    return elapsed.days > 30",
+    "def wait_for_job(job, now):\n    scheduled = job.start_time\n    if now < scheduled:\n        return scheduled - now\n    return 0",
+    "def days_remaining(today, deadline):\n    difference = deadline - today\n    if difference.days < 7:\n        return difference.days\n    return 7",
+    "def survey_span(patient, interview):\n    first_visit = patient.enrolled_at\n    closing_visit = interview.completed_at\n    return closing_visit - first_visit"
+   ],
+   "quiet": [
+    "For the clinic report, enrollment dates appeared in bold beside participant names and the nurse's initials.",
+    "On the settings screen, staff choose the nightly export's file format and the backup archive's display color.",
+    "During recovery research, investigators recorded the operation's billing code beside the patient's occupation and clinic location.",
+    "Inside the log viewer, each timestamped entry appears in a separate row with its severity highlighted in amber.",
+    "def session_caption(session, fallback):\n    surname = session.last_name\n    if surname:\n        return surname\n    return fallback",
+    "def find_marker(trail, symbols):\n    marker = trail.start_point\n    if marker in symbols:\n        return symbols[marker]\n    return None",
+    "def compare_styles(old, new):\n    diff = new.font_size - old.font_size\n    if diff < 7:\n        return diff\n    return 7",
+    "def survey_location(patient, interview):\n    home = patient.postal_code\n    venue = interview.building_name\n    return home, venue"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort xhigh)",
+  "screens": [
+   "card"
+  ]
+ },
+ "unit_kind": "contextual",
+ "notes": "Codex pilot round 3 (concept-maps/codex-pilot/ROUND3.md, sha256 47a45a0fe1132ca280db661e86b5a194a0093f77d5b839517e4a9c86032f5128): round 2's setup (full card, verbatim survey guidance) with reasoning effort xhigh; one fresh codex exec per pole; sentences unedited. Codex's note: partial; untested card-only hypothesis supported by the temporal examples; the Chinese scale peak remains unexplained."
+}
