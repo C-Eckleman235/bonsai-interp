@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-C-Eckleman235-a474d8d2",
+ "kind": "qc",
+ "neuron": "bonsai1/L0/N3660-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-27T19:02:35+00:00",
+ "recipe": {
+  "toolchain_commit": "e31a148f",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N3660_neg/2026-10-27-C-Eckleman235-a474d8d2.tests.json"
+ },
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N3660_neg/2026-10-27-C-Eckleman235-a474d8d2.tests.json",
+   "prereg_commit": "e31a148f",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.992,
+     "peak": "umin"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.942,
+     "peak": "umin"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.819,
+     "peak": "umin"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 1.006,
+     "peak": "umin"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 1.039,
+     "peak": "ith"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.919,
+     "peak": "ith"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.985,
+     "peak": "uff"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.866,
+     "peak": "uff"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.1,
+     "peak": "uchen"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.062,
+     "peak": "ages"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.09,
+     "peak": "chin"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.309,
+     "peak": "umin"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.583,
+     "peak": "ith"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.045,
+     "peak": " inventory"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.056,
+     "peak": " small"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.049,
+     "peak": " described"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.964,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort high; blind QC writer, card only)",
+  "screens": [
+   "card",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "e31a148f",
+  "minutes": 18,
+  "batch_size": 1,
+  "dtype": "float16"
+ },
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "the 'umin' piece of German 'zumindest' ('at least'): a word-initial 'z' split from the rest of the word, so 'umin' fires after a leading z (zumindest, Zithromax, Zufferey)"
+ },
+ "selection": "Codex pilot: a cross-model QC of each model-QC pilot label (#1051-#1080)"
+}
