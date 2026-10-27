@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-C-Eckleman235-d078ecd4",
+ "kind": "qc",
+ "neuron": "bonsai1/L15/N5974-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-27T19:07:48+00:00",
+ "recipe": {
+  "toolchain_commit": "fc982de6",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L15_N5974_neg/2026-10-27-C-Eckleman235-d078ecd4.tests.json"
+ },
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L15_N5974_neg/2026-10-27-C-Eckleman235-d078ecd4.tests.json",
+   "prereg_commit": "fc982de6",
+   "author": "C-Eckleman235",
+   "n_fire": 3,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.206,
+     "peak": " before"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.502,
+     "peak": " today"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.582,
+     "peak": " trend"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.318,
+     "peak": " each"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.079,
+     "peak": " a"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.202,
+     "peak": " this"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.046,
+     "peak": " throughout"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.294,
+     "peak": " these"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.017,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.024,
+     "peak": " submitting"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.163,
+     "peak": " initially"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.039,
+     "peak": " each"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.445,
+     "peak": " after"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.055,
+     "peak": " request"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.038,
+     "peak": " that"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.485,
+     "peak": " near"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.766,
+    "median_fire": 0.25,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort high; blind QC writer, card only)",
+  "screens": [
+   "card",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "fc982de6",
+  "minutes": 22,
+  "batch_size": 1,
+  "dtype": "float16"
+ },
+ "qc": {
+  "verdict": "confirm",
+  "label_under_test": "the first word of a result clause after 'so' / 'therefore' (e.g. 'so today', 'therefore, each', 'so these', 'and so the trend'): the subject-starting token right after a consequence connective"
+ },
+ "selection": "Codex pilot: a cross-model QC of each model-QC pilot label (#1051-#1080)"
+}
