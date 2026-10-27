@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-400ba037",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N8286-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T10:27:20+00:00",
+ "recipe": {
+  "toolchain_commit": "4778aa94",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L19_N8286_neg/2026-10-27-ChopinDavid-400ba037.tests.json"
+ },
+ "label": "the full-width comma '，' inside Chinese narrative prose, as against short Chinese sentences without a comma",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L19_N8286_neg/2026-10-27-ChopinDavid-400ba037.tests.json",
+   "prereg_commit": "4778aa94",
+   "author": "ChopinDavid",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.02,
+     "peak": "新鲜"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.034,
+     "peak": "。"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.573,
+     "peak": "，"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.017,
+     "peak": "跑到"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.015,
+     "peak": "。"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.021,
+     "peak": "笑了"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": -0.001,
+     "peak": "凉"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.045,
+     "peak": "了"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.004,
+     "peak": "公园"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.025,
+     "peak": "天下"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": -0.006,
+     "peak": "他的"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.008,
+     "peak": "看见"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.02,
+     "peak": "烟花"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.032,
+     "peak": "都"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.016,
+     "peak": "房间里"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.035,
+     "peak": "玩"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.648,
+    "median_fire": 0.021,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "4778aa94",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "Chinese full-width comma",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card is broad (2.3% of tokens) with mixed peaks: code indentation, '，' after 当然, ' appears', a year digit. Probe: Chinese '，当然，' 0.605, 'Jul 12' space 0.449, Python docstring 0.017, English prose 0.009-0.055. Best guess for an unclear pole.",
+ "selection": "random draw"
+}
