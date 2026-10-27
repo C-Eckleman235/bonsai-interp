@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-be1da01e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N2580+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T09:20:09+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N2580",
+   "pole": "+",
+   "label": "the last piece of a rare proper name split into several tokens, typically a river or place name before 'River' or 'County' (Truck|ee, Desch|utes), as against names that are a single token",
+   "fire": [
+    "Salmon still spawn in the Willamette River near Portland.",
+    "Orchards line the Okanogan River for many miles.",
+    "The bridge spans the Susquehanna River at Harrisburg.",
+    "Rafters run the Tuolumne River in early summer.",
+    "Mills once crowded the banks of the Merrimack River.",
+    "Fog settles over the Shenandoah River most mornings.",
+    "A pipeline spill fouled the Kalamazoo River in 2010.",
+    "In 1969 the Cuyahoga River famously caught fire."
+   ],
+   "quiet": [
+    "Salmon still spawn in the Columbia River near Portland.",
+    "Orchards line the Hudson River for many miles.",
+    "The bridge spans the Missouri River at Bismarck.",
+    "Rafters run the Colorado River in early summer.",
+    "Mills once crowded the banks of the Ohio River.",
+    "Fog settles over the Thames River most mornings.",
+    "A pipeline spill fouled the Mississippi River in 2010.",
+    "In 1969 the Amazon River flooded much of the basin."
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.9 on the final piece of a split river name; single-token names (Mississippi, Hudson) below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "end of a multi-piece river name",
+ "unit_kind": "contextual",
+ "confidence": 0.5,
+ "notes": "Card: 'Truck⟦ee⟧ River', 'Grassy Nar⟦rows⟧', 'Cree⟦ks⟧', 'Big Ch⟦ico⟧ Creek', 'Desch⟦utes⟧ River', 'Guadalquiv⟦ir⟧ River', 'Bleak⟦ House⟧'. Probe: 'Truckee River' 0.899, 'Deschutes River' 0.707, 'Deschutes County' 0.480, 'Bleak House' 0.513, 'Sandy Creek' 0.378, 'Guadalquivir' 0.316; 'Mississippi River' 0.034 (one token), 'the river behind the house' 0.041. Splits checked: Willamette, Okanogan, Susquehanna, Tuolumne, Merrimack, Shenandoah, Kalamazoo, Cuyahoga split; Mississippi, Thames, Hudson, Missouri, Colorado, Ohio, Amazon, Nile are one token."
+}

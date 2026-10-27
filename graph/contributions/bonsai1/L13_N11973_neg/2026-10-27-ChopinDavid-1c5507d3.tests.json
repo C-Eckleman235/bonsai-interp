@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-1c5507d3",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N11973-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T09:20:09+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L13/N11973",
+   "pole": "-",
+   "label": "the minus sign in code index arithmetic that subtracts from a size or count variable (n - 1, len(x) - 1, num_layers - 1), as against minus between ordinary values (new - old, x2 - x1)",
+   "fire": [
+    "pairs = []\nfor j in range(len(items) - 1):\n    pairs.append((items[j], items[j + 1]))",
+    "rows = load(path)\nlast = num_rows - 1\nprint(rows[last])",
+    "for epoch in range(n_epochs):\n    train()\n    if epoch == self.n_epochs - 1:\n        model.save(path)",
+    "idx = 0\nwhile idx < size - 1:\n    idx += 1",
+    "data.sort()\nmid = (count - 1) // 2\nprint(data[mid])",
+    "h = x\nfor layer in range(num_layers - 1):\n    h = blocks[layer](h)",
+    "text = line.rstrip()\nend = len(text) - 1\nprint(text[end])",
+    "for i, row in enumerate(batch):\n    out.write(row)\n    if i != batch_size - 1:\n        out.write(',')"
+   ],
+   "quiet": [
+    "diffs = []\nfor j in range(len(items)):\n    diffs.append(items[j] - mean)",
+    "rows = load(path)\nchange = new_price - old_price\nprint(change)",
+    "start_time = time.time()\ntrain()\nelapsed = time.time() - start_time\nprint(elapsed)",
+    "idx = 0\nwhile idx < size:\n    idx += step",
+    "data.sort()\nmid = (high + low) // 2\nprint(data[mid])",
+    "h = x\nfor layer in range(num_layers):\n    h = blocks[layer](h)",
+    "x1, x2 = 3, 9\ndx = x2 - x1\nprint(dx)",
+    "for i, row in enumerate(batch):\n    out.write(row)\n    if i != batch_size:\n        out.write(',')"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.7 on ' -' after a count or length; differences of values below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "' -' after a size/count",
+ "unit_kind": "contextual",
+ "confidence": 0.45,
+ "notes": "Card: 'num_layers⟦ -⟧ 1', 'self.epochs⟦ -⟧ 1', 'dim_{n⟦-⟧1}', 'E -⟦ #⟧ examples', 'Wellenl⟦änge⟧'. Probe: 'range(n - 1)' 0.682, 'self.max_steps - 1' 0.409, 'N - # samples' 0.494; 'x = a + b - c' 0.058, prose dash 0.031, 'wavelength' 0.088, 'Wellenlänge' 0.039 (the wavelength peaks did not reproduce). The minus cannot see the 1 after it, so the claim is about what is being subtracted from."
+}
