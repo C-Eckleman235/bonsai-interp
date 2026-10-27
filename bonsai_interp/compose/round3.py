@@ -8,7 +8,7 @@ construction (the survey's 50% rule, docs/HARNESS.md).
   python -m bonsai_interp.compose.round3 build       # CPU: held-out 8 + 8 tests from the test split; commit the prereg ALONE
   python -m bonsai_interp.compose.round3 score       # GPU: grammar/run.py's scorer (quick-8+8@2, 3 preambles)
   python -m bonsai_interp.compose.round3 report      # CPU
-  (--smoke DIR: no manifests, files in DIR, at most --max hypotheses)
+  (--smoke DIR: no manifests, files in DIR, at most --max hypotheses; its pairs come from the selection split)
 
 Hypotheses, per eligible pole not already assignment-grade, with >= SEL["min_events"] sampled strong activations in at
 least SEL["min_windows"] windows:
@@ -166,16 +166,17 @@ def select(a):
     print(f"wrote {P['select']}: {len(hyps)} hypotheses, kept {len(kept)}; by kind and family {by}", flush=True)
 
 
-def _test_masks():
-    """Per test-split source (English parse, code lex): windows, token ids, {condition: fire mask}, and where a quiet
-    snippet may end (the token ends its word / is lexed and visible), as compose@3's battery needs them."""
+def _test_masks(split="test"):
+    """Per source (English parse, code lex) of a split: windows, token ids, {condition: fire mask}, the natural complements,
+    and where a snippet may end (the token ends its word / is lexed and visible). A smoke run builds from the selection
+    split, so the test split stays unread until the tests are registered."""
     from bonsai_interp import explore
     from bonsai_interp.codesyn import lex as X
     from bonsai_interp.grammar import parse as PA
     toks = explore.corpus()
     out = []
-    for path, fn, kind in ((ROOT / "data" / "grammar" / "bonsai1.parse.test.npz", CD._english, "english"),
-                           (ROOT / "data" / "codesyn" / "bonsai1.lex.test.npz", CD._code, "code")):
+    for path, fn, kind in ((ROOT / "data" / "grammar" / f"bonsai1.parse.{split}.npz", CD._english, "english"),
+                           (ROOT / "data" / "codesyn" / f"bonsai1.lex.{split}.npz", CD._code, "code")):
         z = PA.load(path) if kind == "english" else X.load(path)
         ids = toks[z["windows"]].astype(np.int64)
         M = fn(z, ids)
@@ -190,13 +191,14 @@ def _test_masks():
     return out
 
 
-def battery(hyps):
-    """{item key: [(fire Snip, quiet Snip, stratum)], "placebo:<key>": [...]} on the test split."""
+def battery(hyps, split="test"):
+    """{item key: [(fire Snip, quiet Snip, stratum)], "placebo:<key>": [...]} on a split (the test split, or the selection
+    split for a smoke run)."""
     from bonsai_interp import explore
     from bonsai_interp.grammar import posmorph as PM
     toks, dom = explore.corpus(), ct._domains()
     band = PM._band()
-    src = _test_masks()
+    src = _test_masks(split)
     out = {}
     for key, (c, T) in sorted(hyps.items()):
         var = "conj" if T else "class"
@@ -245,7 +247,7 @@ def build(a):
     hyps = sel["hypotheses"]
     items = {_key(h): (h["condition"], h["tokens"]) for h in hyps}
     t0 = time.time()
-    bat = battery(items)
+    bat = battery(items, "select" if a.smoke else "test")
     print(f"batteries for {len(items)} item sets in {time.time() - t0:.0f} s", flush=True)
     tk = __import__("bonsai_interp.explore", fromlist=["tokenizer"]).tokenizer()
     rows = []
