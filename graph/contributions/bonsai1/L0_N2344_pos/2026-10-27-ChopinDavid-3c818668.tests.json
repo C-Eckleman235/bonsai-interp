@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-3c818668",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N2344+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T06:20:16+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N2344",
+   "pole": "+",
+   "label": "a few specific name and word-start tokens at layer 0: ' Percy', ' McB' (McBride, McBain) and ' gro' (groan), as against other names and words",
+   "fire": [
+    "The scholar Thomas Percy collected old English ballads.",
+    "Detective McBain lit a cigarette and stared at the map.",
+    "The old floorboards groaned under the weight of the piano.",
+    "My cousin Percy works at a bakery in Leeds.",
+    "Coach McBride called a timeout with two minutes left.",
+    "The audience groaned when the referee waved off the goal.",
+    "The ship's hull let out a long groan as the waves hit.",
+    "The archives hold letters from Lord Percy to his steward."
+   ],
+   "quiet": [
+    "The scholar Thomas Gray collected old English ballads.",
+    "Detective Harris lit a cigarette and stared at the map.",
+    "The old floorboards creaked under the weight of the piano.",
+    "My cousin Peter works at a bakery in Leeds.",
+    "Coach Wilson called a timeout with two minutes left.",
+    "The audience cheered when the referee waved off the goal.",
+    "The ship's hull let out a long creak as the waves hit.",
+    "The archives hold letters from Lord Russell to his steward."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.9 on ' Percy', ' McB' and ' gro' mid-sentence; other surnames and words below 0.1 (broad flag: some leak near 0.3)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "tokens ' Percy', ' McB', ' gro'",
+ "unit_kind": "token",
+ "confidence": 0.45,
+ "notes": "Card flags broad (2.9%); top peaks ' Percy', ' McB', ' gro', ' أع', ' וי'. Probe: 'Percy Shelley' 0.906, 'Mark McBride' 0.604, 'a single groan' 0.559, 'a groan of pain' 0.515; 'John Keats' 0.298 (on ' Ke'), 'Mark Johnson' 0.054, 'Mary' 0.042; bare 'Percy' at position 0 only 0.053, so the token must be mid-sentence. Tokenizer: ' groaned' and ' groans' start with ' gro', ' McBain' with ' McB'."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-60f404dd",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N2619-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T06:20:16+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N2619",
+   "pole": "-",
+   "label": "the token '事' standing alone in Japanese text (知事, 事例, ちょっとした事), as against Japanese sentences without it (including compounds where 事 merges into one token, such as 記事 and 大事)",
+   "fire": [
+    "県知事は来週、被災地を視察する予定だ。",
+    "この事実を知っている人はほとんどいない。",
+    "昨日の食事はとてもおいしかった。",
+    "駅前で工事の音が響いた。",
+    "彼女の返事はまだ届いていない。",
+    "具体的な事例をいくつか挙げてください。",
+    "そんな事は気にしなくていいよ。",
+    "見事な演奏に観客は拍手を送った。"
+   ],
+   "quiet": [
+    "県の担当者は来週、被災地を視察する予定だ。",
+    "この秘密を知っている人はほとんどいない。",
+    "昨日の夕飯はとてもおいしかった。",
+    "駅前で太鼓の音が響いた。",
+    "彼女の手紙はまだ届いていない。",
+    "新聞の記事をいくつか読んでください。",
+    "それは大事な問題だから気にしてね。",
+    "素晴らしい演奏に観客は拍手を送った。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.45-1.0 where '事' is its own token; sentences without it, or with merged tokens 記事/大事, below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "the token '事'",
+ "unit_kind": "token",
+ "confidence": 0.55,
+ "notes": "Card: 15 of the top 32 peaks are '事' (知事, 事例, 重大事, 議事録), plus Korean ' 그래서' and 'gravity'. Probe: '重大事' 0.966, ' 그래서' 0.870, 'ちょっとした事' 0.726, 'gravity' 0.556, '事例' 0.521, '知事' 0.457; '市長' 0.081, '仕事' 0.167 (peak on '仕'), 'ので' 0.126. Tokenizer: 事例, 事実, 知事, 食事, 見事, 返事, 工事 split off '事'; 記事, 大事, 事故, 人事 are single tokens."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-e3bbf46d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N8675-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T06:20:16+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N8675",
+   "pole": "-",
+   "label": "positional unit: fires on the first one or two tokens of a context window (84% of top peaks at window position 0), regardless of the token; best guess only",
+   "fire": [
+    "/04/2017, the meeting was moved to the second floor",
+    "/hectare per year of wheat harvested in the valley",
+    "ar sarcoma. J Clin Oncol 12: 44-51.",
+    "/GB.\n\nIf the disk is full, delete old logs",
+    "の一つであった。\n関連項目",
+    "Minimum total payment: 40 dollars",
+    "ms about voting for him again,",
+    "/88.14.2"
+   ],
+   "quiet": [
+    "On 4 April 2017 the meeting was moved to the second floor.",
+    "Farmers harvest many tons of wheat per hectare in the valley each year.",
+    "The study of sarcoma was published in a clinical oncology journal.",
+    "If the disk is full, the system deletes old logs automatically.",
+    "That console was one of the most unusual machines of its time.",
+    "The minimum total payment this month is forty dollars.",
+    "Several voters said they had doubts about supporting him again.",
+    "The version number was printed on the back of the box."
+   ]
+  }
+ ],
+ "predictions": "probably near 0 everywhere in this harness, since every probe sentence gets the same start; fire items that start with '/' or a fragment may reach slightly higher",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "positional: first token of the window",
+ "unit_kind": "dense / positional",
+ "confidence": 0.1,
+ "notes": "Card flags positional: 84% of top peaks at window position 0, all within the first 16 tokens, on varied tokens ('/', ' total', ' qual', 'の'). Probe: all nine sentences 0.006-0.026, including fragments copied in shape from the card ('/2019, ...' 0.014, 'Maximum total salary' 0.006). The test harness likely cannot reproduce position 0 of a mid-document window; expected to fail."
+}
