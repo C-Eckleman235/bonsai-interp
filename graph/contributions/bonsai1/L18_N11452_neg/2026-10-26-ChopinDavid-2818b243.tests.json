@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-2818b243",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N11452-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T00:20:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N11452",
+   "pole": "-",
+   "label": "the subject or focus words of a clause that follows a contrastive 'However,' or 'But', as against the same clause after an additive 'Also'/'And'",
+   "fire": [
+    "The new law is popular. However, if we look only at the cities, we miss rural voters.",
+    "The mayor welcomed the report. But the report did not say who would pay.",
+    "Most doctors approve of the drug. However, the side effects remain poorly studied.",
+    "The team trained hard all year. But the coach still had doubts about the defence.",
+    "Solar power is growing fast. However, storage costs are still too high for many towns.",
+    "The museum reopened in May. But the east wing is still closed to visitors.",
+    "The plan sounds simple. However, only a few countries have tried it.",
+    "Prices fell last month. But the drop did not reach most shoppers."
+   ],
+   "quiet": [
+    "The new law is popular. Also, if we look at the cities, we see many supporters.",
+    "The mayor welcomed the report. And the report said the state would pay.",
+    "Most doctors approve of the drug. Also, the benefits are well studied.",
+    "The team trained hard all year. And the coach was proud of the defence.",
+    "Solar power is growing fast. Also, panel prices keep falling for many towns.",
+    "The museum reopened in May. And the east wing is now open to visitors.",
+    "The plan sounds simple. Also, several countries have tried it.",
+    "Prices fell last month. And the drop reached most shoppers."
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.3 on the first content words after 'However,' or 'But'; the same clause after 'Also' or 'And' below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "clause after contrastive However/But",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: peaks on content words right after 'However,' or 'But' (' only', ' statement', ' advance', ' conditions', ' liberty'); suppresses ' however'. Probe: 'But the statement' 0.221, 'However, if we focus only' 0.197, 'However, some ... dry conditions' 0.048; additive versions 0.004-0.023; in-sentence ', but the cost' 0.039. Weak pole on these inputs; median may miss 0.20."
+}

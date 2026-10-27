@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-26-ChopinDavid-2818b243",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N11452-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T00:27:47+00:00",
+ "recipe": {
+  "toolchain_commit": "25f151d3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L18_N11452_neg/2026-10-26-ChopinDavid-2818b243.tests.json"
+ },
+ "label": "the subject or focus words of a clause that follows a contrastive 'However,' or 'But', as against the same clause after an additive 'Also'/'And'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L18_N11452_neg/2026-10-26-ChopinDavid-2818b243.tests.json",
+   "prereg_commit": "25f151d3",
+   "author": "ChopinDavid",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.092,
+     "peak": " miss"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.196,
+     "peak": " report"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.009,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.007,
+     "peak": " defence"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.003,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.043,
+     "peak": " wing"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.055,
+     "peak": " tried"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.393,
+     "peak": " drop"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.014,
+     "peak": " new"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.037,
+     "peak": " report"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.015,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.006,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.015,
+     "peak": " panel"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.004,
+     "peak": " reopened"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.021,
+     "peak": " it"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.116,
+     "peak": " drop"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.641,
+    "median_fire": 0.049,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "25f151d3",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "clause after contrastive However/But",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: peaks on content words right after 'However,' or 'But' (' only', ' statement', ' advance', ' conditions', ' liberty'); suppresses ' however'. Probe: 'But the statement' 0.221, 'However, if we focus only' 0.197, 'However, some ... dry conditions' 0.048; additive versions 0.004-0.023; in-sentence ', but the cost' 0.039. Weak pole on these inputs; median may miss 0.20.",
+ "selection": "random draw"
+}

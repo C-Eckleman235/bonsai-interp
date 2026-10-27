@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-d74b6b12",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L16/N1604+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T00:20:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L16/N1604",
+   "pole": "+",
+   "label": "counting distinct items: the 'unique' collection in code (len(unique), set of unique values) and 'the total number of' species-type counts, as against plain arithmetic or totals that are not counts of distinct kinds",
+   "fire": [
+    "def tally(rows):\n    unique = sorted(set(rows))\n    n = len(unique)\n    return n",
+    "words = text.split()\nunique = set(words)\nprint(len(unique))",
+    "labels = df['label'].tolist()\nunique = list(set(labels))\nsizes = len(unique) * [0]",
+    "def distinct(ids):\n    unique = set(ids)\n    return len(unique), sorted(unique)",
+    "The survey found the total number of species on the island had fallen.",
+    "Alpha diversity is simply the total number of species in one habitat.",
+    "items = load()\nunique = {x.name for x in items}\nreport(len(unique))",
+    "Ecologists recorded the total number of species living in each pond."
+   ],
+   "quiet": [
+    "def tally(rows):\n    total = sum(rows)\n    n = total * 2\n    return n",
+    "words = text.split()\nfirst = words[0]\nprint(first.upper())",
+    "labels = df['label'].tolist()\nlast = labels[-1]\nsizes = [0, 0]",
+    "def double(ids):\n    out = [i * 2 for i in ids]\n    return out",
+    "The survey found the total weight of fish on the island had fallen.",
+    "Alpha decay is simply the loss of a helium nucleus from an atom.",
+    "items = load()\nnames = [x.name for x in items]\nreport(names[0])",
+    "Ecologists recorded the water temperature in each pond every morning."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.9 on '(unique' in code and on ' of' in 'total number of species'; ordinary code and quantity totals below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "counting distinct items (unique, number of species)",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card max is small (18.4) and the top example is '(unique' in counts = len(unique) * [0]; the rest are weak counting contexts (number of species, Counter loops). Probe: len(unique) code 0.975, 'total number of species' 0.336, Counter(...).items() 0.233, 'how many different bird species' 0.148, 'number of distinct species' 0.059; 'total weight' 0.008, 'number of visitors' 0.015. Mixed; low confidence."
+}

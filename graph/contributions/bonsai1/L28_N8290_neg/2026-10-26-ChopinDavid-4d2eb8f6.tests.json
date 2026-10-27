@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-4d2eb8f6",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N8290-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T00:20:04+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N8290",
+   "pole": "-",
+   "label": "the separator right before 4 in a run of consecutive integers (1, 2, 3, 4), the slot that predicts 'four', as against integer runs that do not reach 4",
+   "fire": [
+    "levels = [1, 2, 3, 4]\nfor lv in levels:\n    run(lv)",
+    "for k in (1, 2, 3, 4):\n    plot(k)",
+    "sizes = [1, 2, 3, 4, 5]\nprint(sum(sizes))",
+    "x = np.array([1, 2, 3, 4])\ny = x * 2",
+    "for season in [1, 2, 3, 4]:\n    load(season)",
+    "ids = (1, 2, 3, 4, 5, 6)\nprint(ids)",
+    "quarters = [1, 2, 3, 4]\nfor q in quarters:\n    report(q)",
+    "assert f([1, 2, 3, 4]) == 10"
+   ],
+   "quiet": [
+    "levels = [1, 2, 3]\nfor lv in levels:\n    run(lv)",
+    "for k in (5, 6, 7, 8):\n    plot(k)",
+    "sizes = [1, 2, 3]\nprint(sum(sizes))",
+    "x = np.array([7, 8, 9])\ny = x * 2",
+    "for season in [5, 6, 7]:\n    load(season)",
+    "ids = (10, 20, 30)\nprint(ids)",
+    "quarters = ['spring', 'summer']\nfor q in quarters:\n    report(q)",
+    "assert f([1, 2, 3]) == 6"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.5 on the comma or space before 4 in a code-like integer list; lists that stop at 3 or run 5-8 below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "slot before 4 in a 1-2-3-4 run",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: every top example is the token just before a 4 (p.|405, 9|4, #|4, 1|4 in 2013-14, '- 4', 'Unit 4', '3,| 4]'); the other pole's output promotes ' four'. Probe: 'for q in [1, 2, 3, 4]' 0.469, 'Chapter 1 ... Chapter 4' 0.193, 'Unit 1 ... Unit 4' 0.037, numbered recipe steps 0.007; [5, 6, 7] 0.010. Only code lists fired; low confidence."
+}
