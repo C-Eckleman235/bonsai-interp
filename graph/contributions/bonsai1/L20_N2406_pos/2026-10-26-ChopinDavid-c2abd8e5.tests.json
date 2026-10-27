@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-26-ChopinDavid-c2abd8e5",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N2406+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T03:19:55+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L20/N2406",
+   "pole": "+",
+   "label": "'then' (or the next-step connector) that starts the following step in a procedure or game rules ('…for three weeks then test…'), as against the same steps without a sequencing word",
+   "fire": [
+    "Soak the beans overnight then drain them in the morning.",
+    "Keep the plant in the dark for two weeks then move it to a window.",
+    "Run on the treadmill for ten minutes then stretch your legs.",
+    "Let the dough rise for an hour then shape it into loaves.",
+    "Avoid sugar for a month then add small amounts back slowly.",
+    "Leave the paint to dry for a day then apply a second coat.",
+    "Shuffle the deck three times then deal seven cards to each player.",
+    "Heat the solution for five minutes then let it cool on the bench."
+   ],
+   "quiet": [
+    "Soak the beans overnight in a large bowl of water.",
+    "Keep the plant in a bright window during the winter months.",
+    "Running on the treadmill is good for your legs.",
+    "The dough rose for an hour in the warm kitchen.",
+    "She avoided sugar for a month last spring.",
+    "The paint dried quickly in the warm afternoon sun.",
+    "The deck had fifty-two cards and two jokers.",
+    "The solution was heated in a glass flask on the bench."
+   ]
+  }
+ ],
+ "predictions": "fire 0.1-0.45 on ' then' between procedure steps; the same instructions joined without 'then' below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "next-step 'then' in procedures",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: ' and'/' then'/' a' starting the next clause in game rules and diet/lab procedures. Probe: 'for three weeks then test yourself' 0.431, 'and then add the chopped onions' 0.099, 'two attempts and the best time counts' 0.148, 'the number shown decides' 0.054; descriptive 'and the onions were sweet' 0.030, 'my sister likes chess' 0.013, floor 0.013. Weak; 'then' without 'and' strongest."
+}
