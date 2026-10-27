@@ -14,7 +14,9 @@ Hypotheses, per eligible pole not already assignment-grade, with >= SEL["min_eve
 least SEL["min_windows"] windows:
   1. Condition c: its coverage (share of the pole's sampled activations where c holds) >= SEL["min_cov"] and its lift
      (coverage / c's base rate over the sampled windows) >= SEL["min_lift"]. The pole's c is the one with the highest
-     lift among those.
+     precision among those: the share of c's positions in the sampled windows where the pole is strong (coverage x the
+     pole's strong count / c's count). Coverage says c explains the pole; precision says c fires it, which a held-out
+     8 + 8 needs (the selection-split pilot, 2026-10-27: below 0.1, 1 of 103 tests held; at 0.1 or more, 15 of 55).
   2. Tokens: T = the fewest of the pole's commonest tokens (where c holds) that cover SEL["token_share"] of those
      activations, at most SEL["max_tokens"]. When c and T together still cover >= SEL["min_cov"] of the pole, the
      hypothesis is the conjunction "a token of T where c holds" (kind conj), tested as the same token with c on against c
@@ -22,7 +24,10 @@ least SEL["min_windows"] windows:
      same corpus-frequency band where c fails, in the same domain, and in c's natural complement where its pass defines
      one (sweeplib@3/4/5's quiet side: present against past verbs, plain against superlative adjectives, the same word in
      another grammatical role, code tokens outside the code role).
-  Hypotheses are ranked by coverage x log(lift); the best SEL["cap"] are tested. Each test has a placebo (two snippets
+  A conjunction also needs c to matter within T: the share of the pole's activations on T where c holds must be at least
+  SEL["min_lift_in_tokens"] times the share of all of T's positions where c holds (otherwise it is the word pole again).
+  A hypothesis needs precision >= SEL["min_precision"] (for a conjunction, over the positions where c holds on a token of
+  T). Hypotheses are ranked by coverage x precision; the best SEL["cap"] are tested. Each test has a placebo (two snippets
   where c fails, same keys) read on the same pole.
 """
 import argparse
@@ -47,7 +52,7 @@ from bonsai_interp.sweeplib import kinds as SK
 ROOT = ct.ROOT
 PROTOCOL, KIND, BASE = "compose@3", "cover", "bonsai1.compose3"
 OUT = ROOT / "data" / "compose"
-SEL = {"min_events": 32, "min_windows": 8, "min_cov": 0.5, "min_lift": 2.0, "token_share": 0.8, "max_tokens": 8, "cap": 6000}
+SEL = {"min_events": 32, "min_windows": 8, "min_cov": 0.5, "min_lift": 2.0, "min_precision": 0.1, "min_lift_in_tokens": 1.5, "token_share": 0.8, "max_tokens": 8, "cap": 6000}
 PER_KEY = {"conj": {"select": 4, "test": 2}, "class": {"select": 16, "test": 2}}
 CAP = {"conj": 24, "class": 400}
 CODE = [Path(__file__), Path(CD.__file__), Path(EV.__file__)]
@@ -115,7 +120,10 @@ def select(a):
     ids, mp = z["ids"], int(z["min_pos"])
     toks = explore.corpus()
     nm = CD.names()
-    base = CD.base_rates(mp)
+    hist, npos, alltok = CD.population(mp)
+    base = hist.sum(1) / npos
+    occ = hist.sum(1)
+    count = z["count_dom"].sum(-1)  # (L, 2, N): every strong activation in the sampled windows
     U, inv = np.unique(ids[ids >= 0], return_inverse=True)
     print(f"{len(U):,} distinct sampled positions; evaluating {len(nm)} conditions", flush=True)
     CU = CD.at(U)  # (U, conditions)
@@ -138,10 +146,11 @@ def select(a):
                 cm = CU[u]  # (k, conditions)
                 cov = cm.mean(0)
                 lift = np.where(base > 0, cov / np.maximum(base, 1e-12), 0)
+                prec = cov * count[L, p, n] / np.maximum(occ, 1)  # the share of c's positions where the pole is strong
                 ok = (cov >= SEL["min_cov"]) & (lift >= SEL["min_lift"])
                 if not ok.any():
                     continue
-                c = int(np.argmax(np.where(ok, lift, -1)))
+                c = int(np.argmax(np.where(ok, prec, -1)))
                 on = cm[:, c]
                 tk, cnt = np.unique(tokU[u][on], return_counts=True)
                 o = np.argsort(-cnt, kind="stable")
@@ -150,10 +159,18 @@ def select(a):
                 T = sorted(int(x) for x in tk[o][:k]) if k <= SEL["max_tokens"] else None
                 ccov = float(np.isin(tokU[u], T).__and__(on).mean()) if T else 0.0
                 kind = "conj" if T and ccov >= SEL["min_cov"] else "class"
+                if kind == "conj":  # c must matter within T: commoner at the pole's activations on T than on T overall
+                    tcov = float(np.isin(tokU[u], T).mean())
+                    if ccov / tcov < SEL["min_lift_in_tokens"] * hist[c][T].sum() / max(alltok[T].sum(), 1):
+                        continue
+                cv = ccov if kind == "conj" else float(cov[c])
+                pr = cv * count[L, p, n] / max(int(hist[c][T].sum() if kind == "conj" else occ[c]), 1)
+                if pr < SEL["min_precision"]:
+                    continue
                 hyps.append({"neuron": ct.pid(p, int(n), L), "condition": nm[c], "kind": kind, "tokens": T if kind == "conj" else None,
                              "coverage": round(ccov if kind == "conj" else float(cov[c]), 3), "cond_coverage": round(float(cov[c]), 3),
-                             "lift": round(float(lift[c]), 2), "events": int(len(u)),
-                             "score": round(float((ccov if kind == "conj" else cov[c]) * np.log(lift[c])), 4)})
+                             "lift": round(float(lift[c]), 2), "precision": round(float(pr), 3), "events": int(len(u)),
+                             "score": round(float(cv * pr), 4)})
         if L % 6 == 5:
             print(f"  through layer {L}: {len(hyps)} hypotheses ({time.time() - t0:.0f} s)", flush=True)
     hyps.sort(key=lambda h: (-h["score"], h["neuron"]))
@@ -271,7 +288,7 @@ def build(a):
     for h in hyps:
         if _key(h) in tested:
             rows.append({"type": "test", "neuron": h["neuron"], "kind": KIND, "condition": _key(h),
-                         "select": {k: h[k] for k in ("coverage", "cond_coverage", "lift", "events", "kind")}})
+                         "select": {k: h[k] for k in ("coverage", "cond_coverage", "lift", "precision", "events", "kind")}})
     sha = ct._write_gz(P["tests"], rows)
     counts = {"items": len(tested), "untestable": sum(r["type"] == "items" and r["class"] == "untestable" for r in rows),
               "tests": sum(r["type"] == "test" for r in rows)}

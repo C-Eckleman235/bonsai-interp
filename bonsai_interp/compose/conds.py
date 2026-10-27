@@ -99,16 +99,27 @@ def at(wp):
     return out
 
 
-def base_rates(min_pos):
-    """Per condition: its share of all positions >= min_pos over the parsed and lexed windows (the sample's population)."""
+def population(min_pos):
+    """Over all positions >= min_pos of the parsed and lexed windows (the sample's population): per condition, the count of
+    positions where it holds by token id (conditions x vocabulary), the number of positions, and every token id's count."""
     from bonsai_interp import explore
     toks = explore.corpus()
     nm = names()
-    tot = np.zeros(len(nm))
+    V = ct.vocab()["V"]
+    hist = np.zeros((len(nm), V), np.int64)
+    alltok = np.zeros(V, np.int64)
     n = 0
     for z, fn in ((_parse(), _english), (_lex(), _code)):
-        M = fn(z, toks[z["windows"]].astype(np.int64))
+        ids = toks[z["windows"]].astype(np.int64)
+        alltok += np.bincount(ids[:, min_pos:].ravel(), minlength=V)
+        M = fn(z, ids)
         for k, m in M.items():
-            tot[nm.index(k)] += m[:, min_pos:].sum()
+            hist[nm.index(k)] += np.bincount(ids[:, min_pos:][m[:, min_pos:]], minlength=V)
         n += len(z["windows"]) * (1024 - min_pos)
-    return tot / n
+    return hist, n, alltok
+
+
+def base_rates(min_pos):
+    """Per condition: its share of all positions >= min_pos over the parsed and lexed windows."""
+    hist, n, _ = population(min_pos)
+    return hist.sum(1) / n
