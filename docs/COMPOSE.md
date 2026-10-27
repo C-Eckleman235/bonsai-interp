@@ -136,3 +136,104 @@ co-occur at the peaks without causing them. The occlusion pilot points the same 
 
 Round 2 is a registered negative result about the method, not about the model: local word-class composition reaches
 about layer 11.
+
+## Round 3 (compose@3, all layers): cover poles with conditions
+
+Round 2 matched upstream *word* units at fixed offsets. Round 3 instead matches each pole against *conditions*: the
+whole library of deterministic passes, evaluated on a uniform sample of the pole's own strong activations. A
+hypothesis is selected only if it already covers at least half of the pole, so a hold is assignment-grade by
+construction (the 50% rule).
+
+Code:
+- `bonsai_interp/events/sample.py`: the sample;
+- `bonsai_interp/compose/conds.py`: the condition library;
+- `bonsai_interp/compose/round3.py`: the round.
+
+Protocol: compose@3 (graph/auto/bonsai1.compose3.*), with the sample pinned by hash. Data: the `compose3-data` release.
+
+**The sample** (one GPU pass, 118 min, all 36 layers):
+- **Windows:** the 13,593 selection-split windows that the grammar pass parsed (11,166 English) and sweeplib@5 lexed
+  (2,427 code).
+- **Per pole:** a bottom-k sample (k = 64, by a hash of window and position) of its activations at 0.3 of max or
+  more, plus the count of all of them.
+- **Coverage:** nearly every non-weak pole has 64 samples, so coverage can be measured over the selection split as a
+  whole, not only the top 32 examples.
+
+**The conditions (71):**
+- the domain gates (English, code);
+- 12 parts of speech and 8 morphological features (sweeplib@4);
+- 20 grammatical roles (sweeplib@3), 6 dependency groups, and "in a question";
+- 22 code syntax roles (sweeplib@5).
+
+**Selection** (selection split; per eligible pole not already assignment-grade):
+- **The pole needs** at least 32 sampled activations spread over at least 8 windows.
+- **The condition c is chosen** among those with coverage ≥ 0.5 and lift ≥ 2 over c's base rate. It is the one with
+  the highest **precision**: the share of c's positions where the pole is strong.
+- **Tokens:** T is the pole's commonest tokens where c holds, at most 8, covering 80% of those activations. If c and T
+  together still cover half the pole, the hypothesis is the conjunction "a token of T where c holds".
+- **The conjunction must earn its place:** c must be at least 1.5× commoner at the pole's activations on T than on T
+  overall. Otherwise it is just the word pole again.
+- **Precision floor:** 0.1.
+
+The precision floor and the within-token rule came from a pilot on the selection split. At 0.1 or more, 15 of 55 pilot
+tests held; below it, 1 of 103.
+
+**Tests** (held-out split):
+- **Conjunction:** the same token with c on, against the same token with c off.
+- **Class:** c whatever the token, against c's natural complement in the same frequency band. Examples: present
+  against past verbs; the same word in another grammatical role; code tokens outside the code role.
+
+Every test has a placebo (two c-off snippets) on the same pole.
+
+### Results (2026-10-27)
+
+| | |
+|---|---|
+| Protocol | 67c3f6e7 |
+| Tests pre-registered | 7286b1f7 |
+| Results | f71f5464 |
+
+Selection gave 3,536 hypotheses. 877 item sets were untestable (too few c-off uses of the token in the test split),
+which left 2,601 tests.
+
+| | tests | held |
+|---|---:|---:|
+| conjunction (token of T where c) | 2,399 | 270 |
+| class (c, any token) | 202 | 15 |
+| **all** | **2,601** | **285 poles, all assignment-grade** |
+| placebo | 2,518 | **0** |
+
+- **Coverage and firing:** the median held coverage is 0.59. The median held fire is 0.34 of max, against 0.001 in
+  round 2: the conditions drive these poles.
+- **By family:** part of speech 106, code syntax 85, grammatical role 76, morphology 10, dependency 6, question 2.
+- **By depth:** L0–5 133, L6–11 58, L12–17 5, L18–23 40, L24–29 35, L30–35 14.
+
+**What holds:** word poles that fire for one sense or one syntactic use of their word. These are the "word detectors
+that are more subtle" the survey suspected.
+- **Homographs by part of speech:**
+  - " bear", " warrant" and " license / permit" as nouns, not verbs;
+  - " file", " deal" (L22) and " result" (L31) as verbs, not nouns;
+  - " sign" as a verb (L22).
+- **Grammatical role:**
+  - " help" when negated ("can't help");
+  - " wonder" after a determiner ("a wonder");
+  - " care" as an object ("take care").
+- **Code:**
+  - " as" in an `import … as` (L0 to L23);
+  - " is" and " or" in an if-condition;
+  - ":" in a def signature (L24);
+  - " for" in a comprehension (L6, L21, L22);
+  - "from" in an import (L24).
+- **Questions:** " you", " are" and " do" in a question (L0, L31).
+
+### Reading
+
+The word screen calls many poles "word detectors" whose word covers under half of them (partial). Round 3 shows what
+part of the rest is: the same word in another sense or slot. A pole that fires on " bear" the animal but not on
+" bear" the verb is a sense unit, and its coverage passes 50% once the sense is in the label.
+
+These sense units exist at every depth, and most often early (L0–11). That fits disambiguation from the local
+context, read through attention one or two tokens back.
+
+Layers 12–17 again yield little (5 holds). That band stays the map's hardest.
+

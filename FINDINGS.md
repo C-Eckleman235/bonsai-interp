@@ -934,3 +934,26 @@ same type and frequency.
 The model dedicates poles to where a program introduces a name, not to where a token merely sits. In prose, the
 grammar pass's possessive and relative-pronoun holds point the same way.
 
+## 2026-10-27: Word poles are sense poles (compose@3, docs/COMPOSE.md)
+
+compose@3 sampled every pole's strong activations over 13,593 parsed and lexed windows (64 per pole, uniform). It
+then matched each pole against 71 conditions from the deterministic passes: domain, part of speech, morphology,
+grammatical role, dependency, question, and code syntax.
+
+A hypothesis was tested only if it already covered at least half of its pole, with a precision of at least 0.1.
+Conjunctions ("this word, when it is a noun") also had to show that the condition matters beyond the word.
+
+- **285 of 2,601 tests held on 285 poles, all assignment-grade** (median coverage 0.59), against **0 of 2,518**
+  placebo tests.
+- **The poles fire hard:** a median 0.34 of max on held-out text, against 0.001 for round 2's word compositions.
+- **Most are sense or slot units of a word:**
+  - " bear", " warrant" and " license" as nouns; " file", " deal" and " result" as verbs;
+  - " help" when negated;
+  - " as" in a Python import; " is" in an if-condition; ":" in a def signature; " for" in a comprehension;
+  - " you" in a question.
+- **By depth:** 133 holds in L0–5, 58 in L6–11, 5 in L12–17, 89 in L18–35.
+
+Many poles the word screen labels "partial" (the word covers under half of the pole) are the word in one sense or
+syntactic slot. Put the sense in the label and the coverage passes half. Layers 12–17 remain the hardest band for
+every deterministic method so far.
+
