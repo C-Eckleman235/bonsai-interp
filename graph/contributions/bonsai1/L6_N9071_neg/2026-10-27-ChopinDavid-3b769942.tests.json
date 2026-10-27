@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-3b769942",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N9071-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T19:19:58+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L6/N9071",
+   "pole": "-",
+   "label": "'between' / 'confront' words and verb-stem pieces in Spanish, French and Russian accounts of conflict or forces (entre, между, recrudece, abattait), as against the same conflicts told without them",
+   "fire": [
+    "Война между двумя кланами продолжалась много лет.",
+    "Los dos equipos se enfrentan el domingo en la final.",
+    "La rivalité entre les deux villes remonte au Moyen Âge.",
+    "La violencia se recrudece en la región tras las elecciones.",
+    "Переговоры между Москвой и Киевом снова зашли в тупик.",
+    "Les tensions entre les syndicats et le patronat se sont aggravées.",
+    "El gobierno decidió enfrentar a los rebeldes en las montañas.",
+    "Противостояние между севером и югом длилось десятилетия."
+   ],
+   "quiet": [
+    "Война двух кланов продолжалась много лет.",
+    "Los dos equipos juegan el domingo la final.",
+    "La rivalité des deux villes remonte au Moyen Âge.",
+    "La violencia continúa en la región tras las elecciones.",
+    "Переговоры Москвы и Киева снова зашли в тупик.",
+    "Les tensions des syndicats avec le patronat se sont aggravées.",
+    "El gobierno decidió atacar a los rebeldes en las montañas.",
+    "Война севера и юга длилась десятилетия."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on между/entre/recrudece-type pieces; same-language conflict sentences without them below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "between/conflict in Romance-Russian text",
+ "unit_kind": "context",
+ "confidence": 0.25,
+ "notes": "Card: peaks on mid-word verb pieces in French/Spanish/Russian ('ab|attait', 'recr|ude|ciendo', 'rel|ancer', 'enfrent' x2) and 'между'/'between' ('Cold War between'). Probe: 'между Востоком и Западом' 0.654, 'se recrudece' 0.745, 'entre les deux blocs' 0.377, 'abattait' 0.314; English 'talks between' only 0.137, 'talks with' 0.024."
+}

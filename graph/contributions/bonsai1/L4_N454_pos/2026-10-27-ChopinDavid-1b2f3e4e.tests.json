@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-1b2f3e4e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N454+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T19:19:58+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N454",
+   "pole": "+",
+   "label": "numerals and ' aged' that give a person's or thing's physical measure (age, height, weight, dimensions), as against the same descriptions in words",
+   "fire": [
+    "Witnesses told officers the driver was a man, 6 feet 1 inch tall and about 210 pounds.",
+    "The survey recruited 312 volunteers aged 18 to 30 from three universities.",
+    "According to the report, a girl, 15, was taken to hospital with minor injuries.",
+    "The missing hiker is described as 5 foot 4 and 120 pounds with short brown hair.",
+    "Researchers followed a cohort of 900 women aged 50 to 70 for a decade.",
+    "The reservoir behind the dam is 85 feet deep and 12 miles long.",
+    "Officers arrested a man, 34, after a short chase on Elm Street.",
+    "The study included boys aged 8 to 12 who played organized football."
+   ],
+   "quiet": [
+    "Witnesses told officers the driver was a tall, heavy man with a grey beard.",
+    "The survey recruited volunteers from three universities across the state.",
+    "According to the report, a teenage girl was taken to hospital with minor injuries.",
+    "The missing hiker is described as short and slight with short brown hair.",
+    "Researchers followed a large group of older women for a decade.",
+    "The reservoir behind the dam is deep, long and very cold in spring.",
+    "Officers arrested a young man after a short chase on Elm Street.",
+    "The study included boys who played organized football after school."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on the first digit of a height/weight/age or on ' aged'; worded descriptions below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "numeric age / body measure",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: top examples are a suspect's age '17', weight '195 lbs', '32-mile long', ' aged 5 to 16', ' size of'. Probe: '5 feet 9 inches ... 180 pounds' 0.523, 'adults aged 40 to 65' 0.417, 'the size of a football field' 0.173, 'large enough' 0.048, plain kitchen 0.102. Near misses describe the same people and things in words."
+}

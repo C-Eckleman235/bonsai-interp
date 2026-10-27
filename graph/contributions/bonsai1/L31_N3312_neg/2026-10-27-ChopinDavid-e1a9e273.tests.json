@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-e1a9e273",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N3312-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T19:19:58+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L31/N3312",
+   "pole": "-",
+   "label": "function words (' to', ' in', ' by') inside research-report framing ('the aim of this study is to', 'published in', 'we aimed to'), as against the same words in everyday prose",
+   "fire": [
+    "The primary objective of this randomized trial is to compare two doses of vitamin D.",
+    "In a cohort study published in the Lancet, investigators tracked heart failure admissions.",
+    "Mortality from stroke has fallen in recent decades.\nWe sought to quantify the role of blood pressure control.",
+    "The purpose of the present study was to evaluate sleep quality in shift nurses.",
+    "Findings reported in the British Medical Journal suggest a link between noise and hypertension.",
+    "Investigators characterized the immune response by sequencing tumour samples from 40 patients.",
+    "This secondary analysis aimed to identify predictors of readmission after hip surgery.",
+    "Data were collected by trained interviewers using a structured questionnaire."
+   ],
+   "quiet": [
+    "My grandmother takes vitamin D in the winter because her doctor told her to.",
+    "We drove to the hospital in the rain to visit my uncle after his surgery.",
+    "Last night I sat by the window and read a magazine about gardening.",
+    "The nurse brought a blanket to my room and turned off the lights.",
+    "My cousin hurt his hip in a fall and stayed in bed for a week.",
+    "I put my shoes by the door and went to sleep early.",
+    "The kids ran to the park in their new trainers after lunch.",
+    "She keeps her blood pressure cuff in a drawer by the sink."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on to/in/by in research framing; everyday prose with the same words below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "study-framing function words",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: peaks on ' to' x5, ' by', '.\\n' in medical abstracts ('aim of this proposed 2-year study is to', 'study published in the Journal', 'functioning of an organism by studying'). Probe: 'aim of this pilot study is to' 0.521, 'study published in the journal' 0.566, 'by studying disease' 0.384, 'We aimed to estimate' 0.453; everyday 'went to the store' 0.006, cake 0.022, chat 0.057. Near misses are everyday health sentences with the same function words."
+}

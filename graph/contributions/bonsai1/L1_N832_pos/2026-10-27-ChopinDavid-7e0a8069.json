@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-7e0a8069",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N832+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T19:27:41+00:00",
+ "recipe": {
+  "toolchain_commit": "b4443853",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L1_N832_pos/2026-10-27-ChopinDavid-7e0a8069.tests.json"
+ },
+ "label": "the token ' over' in any sense (all over, over the fence, the game is over), as against around/everywhere/finished",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L1_N832_pos/2026-10-27-ChopinDavid-7e0a8069.tests.json",
+   "prereg_commit": "b4443853",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 3,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.898,
+     "peak": " over"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.738,
+     "peak": " over"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.562,
+     "peak": " over"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.477,
+     "peak": " over"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.84,
+     "peak": " over"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.476,
+     "peak": " over"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.466,
+     "peak": " over"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.724,
+     "peak": " over"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.539,
+     "peak": " across"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.349,
+     "peak": " kitchen"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.207,
+     "peak": " concert"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.199,
+     "peak": " through"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.509,
+     "peak": " across"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.179,
+     "peak": "A"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.295,
+     "peak": " storm"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.208,
+     "peak": " coffee"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.906,
+    "median_fire": 0.643,
+    "near_misses_at_0.3": 3
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "b4443853",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "' over'",
+ "unit_kind": "token/lexical",
+ "confidence": 0.55,
+ "notes": "Card: dense (51.9% of tokens reach 0.1 of a tiny 0.19 max), but ' over' x28 of the top 32. Probe: 'all over the world' 0.791, 'all over the floor' 0.707, 'game is over' 0.655, 'jumped over' 0.528, 'talked it over' 0.458; ' now' also 0.888 (kept out of the test). Background is high: 'around the world' 0.244, 'everywhere' 0.186, 'due on Friday' 0.263.",
+ "selection": "random draw"
+}
