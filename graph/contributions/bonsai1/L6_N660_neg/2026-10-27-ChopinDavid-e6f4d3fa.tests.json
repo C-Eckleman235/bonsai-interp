@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-e6f4d3fa",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N660-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T21:21:46+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L6/N660",
+   "pole": "-",
+   "label": "the continuation piece of a word the tokenizer splits after ' Por'/' por' or ' Hol' (por|be|agle, Hol|be|in, por|cup|ine, Por|co), as against Por- and Hol- words that are single tokens",
+   "fire": [
+    "We watched a porpoise surface near the bow of the ferry.",
+    "The painter Hans Holbein worked for years at the English court.",
+    "General Porfirio Díaz ruled Mexico for more than three decades.",
+    "The playwright Ludvig Holberg wrote comedies in Danish.",
+    "A porcupine had chewed the handle of the old axe.",
+    "He was elected to the Porcellian Club in his second year.",
+    "The town of Holbrook lies along the old highway in Arizona.",
+    "Fishermen hooked a porbeagle off the coast of Cornwall."
+   ],
+   "quiet": [
+    "We watched a dolphin surface near the bow of the ferry.",
+    "The painter Hans Memling worked for years in the city of Bruges.",
+    "General Santa Anna ruled Mexico on and off for decades.",
+    "The playwright Sherlock Holmes wrote comedies in English, the joke went.",
+    "A beaver had chewed the handle of the old axe.",
+    "He drove a Porsche to the club in his second year.",
+    "The town of Porto lies along the river in Portugal.",
+    "Fishermen hooked a Porter's shark off the coast of Cornwall."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on the piece after ' Por'/' por'/' Hol'; whole-token words like Porsche, Porto, Portugal, Holmes below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "piece after split 'Por'/'Hol'",
+ "unit_kind": "spelling unit",
+ "confidence": 0.45,
+ "notes": "Card: 'be' (porbeagle, Holbein), 'cup' (porcupine), 'co' (Porco). Probe: porbeagle 0.770, Holbein 0.742, porcupine 0.520, Porco 0.353; Porsche 0.017, Porto 0.010, mako 0.006, Rembrandt 0.014. Fire items include unprobed splits (por|po|ise, Por|fir|io, Hol|brook, Hol|berg, Por|cell|ian) to test the spelling rule beyond the card words."
+}

@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-1830e8e1",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N3855-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T21:21:46+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L3/N3855",
+   "pole": "-",
+   "label": "the token ' ci' / ' CI' (95% CI, ci-dessous, CI server, ci|el), regardless of meaning, as against words that merely start with ci- as one token",
+   "fire": [
+    "The hazard ratio was 0.82 (95% CI 0.70 to 0.96) in the treated group.",
+    "Vous trouverez le formulaire ci-joint à remplir avant lundi.",
+    "Our CI pipeline runs the unit tests on every pull request.",
+    "Les conditions ci-après s'appliquent à toutes les commandes.",
+    "Risk fell by 12% (95% CI, 4% to 19%) after the program began.",
+    "Le ciel était gris toute la matinée au-dessus du port.",
+    "The deploy job waits until CI passes on the main branch.",
+    "Voir le tableau ci-dessus pour les tarifs de cette année."
+   ],
+   "quiet": [
+    "The hazard ratio was 0.82 in the treated group, a clear benefit.",
+    "Vous trouverez le formulaire dans le dossier à remplir avant lundi.",
+    "Our CIA analyst briefed the committee on every report.",
+    "Les conditions suivantes s'appliquent à toutes les commandes.",
+    "Risk fell by 12% after the program began in the city.",
+    "Le cinema était plein toute la soirée au-dessus du port.",
+    "The deploy job waits until the circle of reviewers approves.",
+    "Voir le tableau en haut pour les tarifs de cette année."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.9 wherever ' CI' or ' ci' is its own token; CIA, cinema, circle, ciudad and spelled-out phrases below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "the token ' ci'/' CI'",
+ "unit_kind": "word",
+ "confidence": 0.6,
+ "notes": "Card: 'CI' x9, ' ci' x8, ' CI' x8 in confidence intervals, 'ci-dessous', 'MyWebSite CI'. Probe: '95% CI' 0.830, 'ci-dessous' 0.852, 'CI server' 0.687, 'ciabatta' (' ci' piece) 0.782; ' ici' 0.048, 'en bas' 0.005, 'test server' 0.002. Caveat: 'confidence interval' spelled out still gave 0.505, so near misses avoid it.",
+ "trigger": {
+  "words": [
+   " CI",
+   " ci"
+  ]
+ }
+}
