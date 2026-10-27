@@ -153,12 +153,13 @@ placebos, a held-out 8 + 8, and the 50% coverage rule.
 | compose@2 | layers 13–17, the same engine | 22 held, 8 assignment-grade: local word composition stalls past ~L11 |
 | sweeplib@4 part of speech, morphology (docs/POS.md) | word classes and inflections at the last token | 26 held, 11 assignment-grade; morphology (-est, -er, -ing, -s), early layers; no pure noun or verb poles |
 | sweeplib@5 code syntax (docs/CODESYN.md) | Python syntax roles at the last token | 65 held on 54 poles, 20 assignment-grade; binding sites (class, def, for-loop and keyword names), every depth |
+| compose@3 (docs/COMPOSE.md) | each pole against the whole condition library on a sample of its strong activations | 285 held, all assignment-grade; word poles for one sense or slot of their word (bear as a noun, as in an import) |
 
 All of it is in the atlas: lib_* columns (the best test per pole across passes, its coverage, every condition held) and
 census_flags. It shows on `play card`, `play search --kind …` and the map.
 
 Next:
-- **compose@3:** cover each pole with the condition library (domain, part of speech, grammar, code syntax) measured on a
-  uniform sample of its strong activations, so a hold is assignment-grade by construction.
+- **compose@4:** the same cover with the round's new units and far-context conditions (occlusion offsets), aimed at
+  layers 12–17, the band every round has found hardest.
 - **The attention distance sweep** on held pairs.
 - **The residual count** per round as the stopping rule.
