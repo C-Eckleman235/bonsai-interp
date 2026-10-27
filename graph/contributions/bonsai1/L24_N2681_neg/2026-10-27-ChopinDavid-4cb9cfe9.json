@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-4cb9cfe9",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N2681-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-27T18:29:51+00:00",
+ "recipe": {
+  "toolchain_commit": "20dff69d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L24_N2681_neg/2026-10-27-ChopinDavid-4cb9cfe9.tests.json"
+ },
+ "label": "an '-ly' adverb that premodifies a participle or adjective inside a noun phrase (densely packed rows, recently released figures), as against a plain adjective in the same slot or an '-ly' adverb after the verb",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L24_N2681_neg/2026-10-27-ChopinDavid-4cb9cfe9.tests.json",
+   "prereg_commit": "20dff69d",
+   "author": "ChopinDavid",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.299,
+     "peak": " carefully"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.267,
+     "peak": " newly"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.363,
+     "peak": "ly"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.214,
+     "peak": " beautifully"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.368,
+     "peak": " poorly"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.159,
+     "peak": " brightly"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.286,
+     "peak": " rarely"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.037,
+     "peak": " furnished"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.08,
+     "peak": " from"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.078,
+     "peak": " small"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.018,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.047,
+     "peak": "She"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.044,
+     "peak": " old"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.008,
+     "peak": "Vis"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.031,
+     "peak": " northern"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.03,
+     "peak": " near"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.276,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "20dff69d",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "-ly adverb premodifying a participle",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: ' recently' x6, ' densely', ' directly', ' simply' before participles (rarely documented, densely-packed, recently acquired). Probe: 'densely packed rows' 0.783, 'recently released figures' 0.653; 'dense rows' 0.231 (leak), 'new census figures' 0.063, 'pumped directly from' 0.077, 'spoke quickly and' 0.036. Near misses therefore avoid adjectives that are cousins of the adverb.",
+ "selection": "random draw"
+}
