@@ -1,0 +1,44 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-a2fa908e",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N4921-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-27T20:40:15+00:00",
+ "selection": "picked: JasperBlank's 48 poles (#1018-#1021), Codex pilot round 2",
+ "neighbours": [
+  {
+   "unit": "L27/N4921",
+   "pole": "-",
+   "label": "Using `self` as an instance reference in Python class code",
+   "fire": [
+    "class Counter:\n    def advance(self):\n        \"\"\"Increase the stored count by one.\"\"\"\n        self.count += 1\n        return self.count",
+    "class Buffer:\n    def clear(self):\n        \"\"\"Discard every item currently held here.\"\"\"\n        self.items.clear()",
+    "class Reader:\n    def read(self):\n        \"\"\"Fetch another chunk from the stream.\"\"\"\n        return self.stream.read(64)",
+    "class Connection:\n    def close(self):\n        \"\"\"Release the socket owned by this connection.\"\"\"\n        self.socket.close()",
+    "class Registry:\n    def register(self, manager):\n        \"\"\"Make this registry available to the manager.\"\"\"\n        manager.attach(self)",
+    "class Display:\n    def render(self):\n        \"\"\"Format the current title for terminal output.\"\"\"\n        return '{}'.format(self.title)",
+    "class Endpoint:\n    def describe(self):\n        \"\"\"The selected address is available through self.address.\"\"\"\n        return self.address",
+    "class Session:\n    def refresh(self):\n        \"\"\"Reload credentials before checking the current session.\"\"\"\n        self.reload()\n        return self.validate()"
+   ],
+   "quiet": [
+    "class Tally:\n    def increment(instance):\n        \"\"\"Add one to the saved running total.\"\"\"\n        instance.total += 1\n        return instance.total",
+    "class Queue:\n    def reset(receiver):\n        \"\"\"Remove all entries from the pending queue.\"\"\"\n        receiver.entries.clear()",
+    "class Source:\n    def fetch(obj):\n        \"\"\"Read the next block from this source.\"\"\"\n        return obj.stream.read(128)",
+    "class Channel:\n    def disconnect(connection):\n        \"\"\"Close the transport associated with this channel.\"\"\"\n        connection.transport.close()",
+    "class Catalog:\n    def connect(catalog, owner):\n        \"\"\"Give the owner access to this catalog.\"\"\"\n        owner.attach(catalog)",
+    "class Caption:\n    def format(caption):\n        \"\"\"Prepare the saved heading for printed output.\"\"\"\n        return '{}'.format(caption.heading)",
+    "class Listener:\n    def describe(endpoint):\n        \"\"\"The configured port is available through endpoint.port.\"\"\"\n        return endpoint.port",
+    "class Glossary:\n    def lookup(book):\n        \"\"\"The word self denotes a person's individual identity.\"\"\"\n        return book.entries.get('identity')"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort high)",
+  "screens": [
+   "card"
+  ]
+ },
+ "unit_kind": "contextual",
+ "notes": "Codex pilot round 2 (concept-maps/codex-pilot/ROUND2.md, sha256 e3c9e416fc55e8549b57eb1f3547919a794a699c998abf9761cc83422490e1d7): blind label and test by one fresh codex exec from the full play card and the survey's own guidance quoted verbatim; sentences unedited. Codex's note: Partial: the card reports 33% coverage for ` self`; indentation and blank lines account for additional peaks. The test contrasts instance references spelled `self` with renamed receivers and includes ordinary-language `self` as a near miss. Card-only hypothesis; no activation scores were available."
+}

@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-2c1685c2",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N7531-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-27T20:46:39+00:00",
+ "recipe": {
+  "toolchain_commit": "ca8480f5",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L3_N7531_neg/2026-10-27-C-Eckleman235-2c1685c2.tests.json"
+ },
+ "label": "Dense activation dominated by gate-closed leakage",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L3_N7531_neg/2026-10-27-C-Eckleman235-2c1685c2.tests.json",
+   "prereg_commit": "ca8480f5",
+   "author": "C-Eckleman235",
+   "n_fire": 6,
+   "n_false_pos": 8,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.778,
+     "peak": " greeted"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.475,
+     "peak": " initialization"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.779,
+     "peak": " enclosure"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.793,
+     "peak": " honorary"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.324,
+     "peak": " photograph"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.237,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.222,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.445,
+     "peak": "Near"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.585,
+     "peak": " welcomed"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.496,
+     "peak": " up"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.496,
+     "peak": " several"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.403,
+     "peak": " invited"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.443,
+     "peak": " preparing"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.318,
+     "peak": " interpretations"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.544,
+     "peak": " courier"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.408,
+     "peak": " through"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.516,
+    "median_fire": 0.46,
+    "near_misses_at_0.3": 8
+   }
+  }
+ ],
+ "methods": {
+  "agent": "codex-cli gpt-6.1-sol (effort high)",
+  "screens": [
+   "card",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "ca8480f5",
+  "minutes": 6,
+  "batch_size": 48,
+  "dtype": "float16"
+ },
+ "unit_kind": "dense / positional",
+ "notes": "Codex pilot round 2 (concept-maps/codex-pilot/ROUND2.md, sha256 e3c9e416fc55e8549b57eb1f3547919a794a699c998abf9761cc83422490e1d7): blind label and test by one fresh codex exec from the full play card and the survey's own guidance quoted verbatim; sentences unedited. Codex's note: The card explicitly flags density: 23.076% of tokens exceed 0.1 of maximum, and 99% of activity uses the gate-closed leak regime. No content trigger is supported. These matched diagnostic sets are not predicted to separate reliably under the scoring criteria.",
+ "selection": "picked: JasperBlank's 48 poles (#1018-#1021), Codex pilot round 2"
+}
