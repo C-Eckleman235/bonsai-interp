@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-d46f6f9a",
+ "contributor": "C-Eckleman235",
+ "kind": "qc",
+ "neuron": "bonsai1/L8/N10681-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:01:58+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Iran as a place: Tehran, Isfahan, Mashhad, Qom, Tabriz and 'Persian' things, named or not; Iraq, Afghanistan, Syria and the Caucasus in the same frames stay low"
+ },
+ "neighbours": [
+  {
+   "unit": "L8/N10681",
+   "pole": "-",
+   "label": "the words 'Iran' and 'Iranian' in any use (the country, its films and exports, a file or a character's name) and Persepolis; Persian things without the word (Rumi, Nowruz, Shiraz, Persian cooking) and Iraq stay low",
+   "fire": [
+    "The festival opened with a new Iranian film about a taxi driver.",
+    "Engineers in Iran finished the dam two years late.",
+    "He saved the spreadsheet as Iran_trade_2019.csv on the shared drive.",
+    "In the novel, a quiet detective called Iran Haddad solves the case.",
+    "Exporters say Iranian pistachios dominate the market this year.",
+    "Visitors climbed the great stairway of Persepolis at noon.",
+    "The talks between Iran and its neighbors stalled again.",
+    "A cookbook of Iranian home cooking won the prize."
+   ],
+   "quiet": [
+    "The festival opened with a new Turkish film about a taxi driver.",
+    "Engineers in Iraq finished the dam two years late.",
+    "He saved the spreadsheet as Peru_trade_2019.csv on the shared drive.",
+    "In the novel, a quiet detective called Omar Haddad solves the case.",
+    "A worn collection of Rumi's poems sat on the nightstand.",
+    "Visitors climbed the great stairway of the Lincoln Memorial at noon.",
+    "Every spring the family hosted a Nowruz dinner for the neighbors.",
+    "A cookbook of Persian home cooking won the prize."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "the word Iran, any use",
+ "unit_kind": "sparse feature",
+ "confidence": 0.6,
+ "notes": "QC refine after a Codex red-team round (10x pilot P5): the held label claimed Iran as a place, 'named or not', but the pole fires on the word Iran in non-place uses (a variable 0.67, a character 0.58, a folder name 0.69) and stays low on Persian things without the word (Hafez, Nowruz, Dasht-e Lut, fesenjan, Kashan rugs, all < 0.2). Persepolis is the exception (0.85) and is claimed. A word-level refine; 'Persian cooking' is the hard near miss. Exploration (play probe: 12 Codex-written red-team probes and 8 of the author's, none of these 16 sentences; 0 overlap checked). The author saw the held label and those probe readings but did not read the original test's sentences before drafting these."
+}
