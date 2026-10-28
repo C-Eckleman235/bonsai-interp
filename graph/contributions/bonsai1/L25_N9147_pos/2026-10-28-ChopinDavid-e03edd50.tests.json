@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-e03edd50",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N9147+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T12:21:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L25/N9147",
+   "pole": "+",
+   "label": "the '\")' + newline that closes a Python decorator line before a def or class: the end of '@register(\"Name\")', not the same closing token after an ordinary call",
+   "fire": [
+    "import tf\n\n@ops.RegisterShape(\"Reshape\")\ndef _ReshapeShape(op):\n    return [op.shape]",
+    "from flask import Flask\napp = Flask(__name__)\n\n@app.route(\"/about\")\ndef about():\n    return page()",
+    "import ops\n\n@ops.RegisterGradient(\"Tanh\")\ndef _TanhGrad(op, grad):\n    return grad",
+    "@app.route('/logout')\ndef logout():\n    session.clear()",
+    "registry = Registry()\n\n@registry.register(\"resnet\")\nclass ResNet(Model):\n    pass",
+    "import click\n\n@click.command(\"sync\")\ndef sync():\n    run_sync()",
+    "@bp.route('/users')\ndef users():\n    return list_users()",
+    "import tf\n\n@ops.RegisterShape(\"Squeeze\")\ndef _SqueezeShape(op):\n    return [op.shape]"
+   ],
+   "quiet": [
+    "import tf\n\ndef reshape(op):\n    log(\"Reshape\")\n    return [op.shape]",
+    "from flask import Flask\napp = Flask(__name__)\n\ndef about():\n    print(\"/about\")\n    return page()",
+    "import ops\n\ndef tanh_grad(op, grad):\n    warn(\"Tanh\")\n    return grad",
+    "def logout():\n    log('/logout')\n    session.clear()",
+    "registry = Registry()\n\nmodel = registry.get(\"resnet\")\nmodel.train()",
+    "import click\n\ndef sync():\n    echo(\"sync\")\n    run_sync()",
+    "def users():\n    log('/users')\n    return list_users()",
+    "import tf\n\ndef squeeze(op):\n    log(\"Squeeze\")\n    return [op.shape]"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.7 on '\")\\n' or '')\\n' ending a decorator; ordinary calls ending a line below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "closing a decorator line",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: '\")\\n' x16 ending @ops.RegisterShape(\"X\") / @parser(\"x\") lines, then def. Probe: '@ops.RegisterGradient(\"Softmax\")' 0.664, \"@app.route('/home')\" 0.478, '@app.route(\"/login\")' 0.374, pytest mark 0.212; 'print(\"Starting the job\")' 0.024, 'load(\"data.csv\")' 0.004."
+}

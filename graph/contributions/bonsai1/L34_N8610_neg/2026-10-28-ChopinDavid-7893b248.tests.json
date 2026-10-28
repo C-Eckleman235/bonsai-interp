@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-7893b248",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N8610-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T12:21:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N8610",
+   "pole": "-",
+   "label": "a word-initial 'w' spelling piece where the tokenizer splits a word right after w ('verw|ischen', 'ang|ew|endet', ' w|avy', ' w|icking'): a spelling unit, not whole words containing w",
+   "fire": [
+    "Nach dem Regen verwandelte sich der Garten in einen Sumpf.",
+    "Die Farben verwischen, wenn man das Bild mit nassen Fingern berührt.",
+    "Diese Methode wird seit Jahren in der Praxis angewendet.",
+    "Her hair fell in soft wavy curls over her shoulders.",
+    "The candle needs a cotton wick, and good wicking keeps the flame steady.",
+    "Der Zauberer verwandelt den Frosch in einen Prinzen.",
+    "Die Regel wurde falsch angewendet, sagte der Richter.",
+    "The sea was calm, with only a few wavy lines on the surface."
+   ],
+   "quiet": [
+    "Nach dem Regen wurde der Garten zu einem Sumpf.",
+    "Die Farben laufen, wenn man das Bild mit nassen Fingern berührt.",
+    "Diese Methode wird seit Jahren in der Praxis genutzt.",
+    "Her hair fell in soft loose curls over her shoulders.",
+    "The candle needs a cotton thread, and good airflow keeps the flame steady.",
+    "Der Zauberer macht aus dem Frosch einen Prinzen.",
+    "Die Regel wurde falsch gelesen, sagte der Richter.",
+    "The sea was calm, with only a few thin lines on the surface."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-1.0 on ' verw', 'ew', ' w' pieces; sentences whose w-words are whole tokens below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-off 'w' word piece",
+ "unit_kind": "token",
+ "confidence": 0.65,
+ "notes": "Card: ' w' x9, ' verw' x8, 'w' x4, ' tw', 'ew', '-w'. Probe: 'verwischen' 0.988, 'verwandeln' 0.891, 'angewendet' (peak 'ew') 0.670, ' w|avy' 0.496, ' w|icking' 0.379; 'sind ... unklar' 0.173, 'smooth edges' 0.003, 'window frames' 0.002."
+}

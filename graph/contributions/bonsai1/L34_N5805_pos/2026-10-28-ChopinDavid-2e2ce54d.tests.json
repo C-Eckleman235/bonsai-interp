@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-2e2ce54d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N5805+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T12:21:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N5805",
+   "pole": "+",
+   "label": "the word right before an expected 'groups' (divided into three …, the two …, match.groups): a context that predicts the noun 'groups', not number words before other nouns",
+   "fire": [
+    "For the trial, the patients were randomly split into two groups of forty.",
+    "The teacher sorted the pupils into four groups by reading level.",
+    "Volunteers were randomly assigned to three groups before the test.",
+    "The class was divided into five groups to work on posters.",
+    "We split the hikers into two groups at the fork in the trail.",
+    "The mice were allocated to three groups receiving different diets.",
+    "The researchers divided the participants into four groups by age.",
+    "The coach broke the squad into three groups for the drills."
+   ],
+   "quiet": [
+    "For the dinner, the pizza was cut into eight slices of equal size.",
+    "The teacher sorted the books by reading level onto four shelves.",
+    "Volunteers waited for three hours before the test began.",
+    "The class read five chapters of the novel last week.",
+    "We hiked two miles to the fork in the trail.",
+    "The mice ate three meals a day on different diets.",
+    "The researchers measured the participants twice over four years.",
+    "The coach ran the squad for three laps before the drills."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on the number word after 'divided/split/sorted into'; numbers in contexts predicting other nouns below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predicts 'groups'",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: ' two' x4, ' three' x3, ' both', ' match' before 'groups'; the - pole suppresses group/groups. Probe: 'divided into three' 0.524 (also with 'teams', since it fires before the noun), 'm.groups()' 0.375 at ' m', 'the two groups' 0.188, 'both groups' 0.039 (low)."
+}
