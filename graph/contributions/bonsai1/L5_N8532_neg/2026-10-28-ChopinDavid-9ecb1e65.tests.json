@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-9ecb1e65",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N8532-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T19:19:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N8532",
+   "pole": "-",
+   "label": "the Python method tokens '.copy' and '.set' (X.copy(), tf.set_random_seed); other method calls such as .append, .sum or .mean stay low",
+   "fire": [
+    "import numpy as np\n\ndef normalise(a):\n    b = a.copy()\n    b /= b.max()\n    return b",
+    "import tensorflow as tf\n\ndef build():\n    tf.set_random_seed(7)\n    return tf.zeros([3])",
+    "def snapshot(state):\n    saved = state.copy()\n    return saved",
+    "import pandas as pd\n\ndf = pd.read_csv('a.csv')\nbackup = df.copy()\nprint(backup.head())",
+    "import random\n\nopts = {}\nflags = opts.copy()\nflags['seed'] = random.random()",
+    "def clone(cfg):\n    new_cfg = cfg.copy()\n    new_cfg['debug'] = True\n    return new_cfg",
+    "import tensorflow as tf\n\ng = tf.Graph()\nwith g.as_default():\n    tf.set_random_seed(0)",
+    "def reset(grid):\n    start = grid.copy()\n    start[0, 0] = 1\n    return start"
+   ],
+   "quiet": [
+    "import numpy as np\n\ndef normalise(a):\n    b = a.mean()\n    b /= a.max()\n    return b",
+    "import tensorflow as tf\n\ndef build():\n    tf.zeros([3])\n    return tf.ones([3])",
+    "def snapshot(state):\n    saved = state.keys()\n    return saved",
+    "import pandas as pd\n\ndf = pd.read_csv('a.csv')\nbackup = df.dropna()\nprint(backup.head())",
+    "import random\n\nopts = {}\nflags = opts.items()\nseed = random.random()",
+    "def clone(cfg):\n    new_cfg = cfg.get('name')\n    debug = True\n    return new_cfg",
+    "import tensorflow as tf\n\ng = tf.Graph()\nwith g.as_default():\n    tf.zeros([2])",
+    "def reset(grid):\n    start = grid.sum()\n    total = start + 1\n    return total"
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.9 on '.copy'/'.set'; other methods below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'.copy' / '.set' method tokens",
+ "unit_kind": "token/lexical",
+ "confidence": 0.6,
+ "notes": "Card peaks '.copy' x13, '.set' x11, '.run' x2. Probe: 'X.copy()' 0.777, 'tf.set_random_seed' 0.906, 'job.run()' 0.512; 'X.append(1)' and 'X.sum()' 0.137, prose 'copy the file' 0.192. Near misses avoid '.run'."
+}

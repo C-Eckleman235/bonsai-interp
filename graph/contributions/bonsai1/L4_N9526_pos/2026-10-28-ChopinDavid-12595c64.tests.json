@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-12595c64",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N9526+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T19:19:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N9526",
+   "pole": "+",
+   "label": "dense pole whose clearest peak is the suffix 'ación' in Spanish collaboration words (colabor|ación, cooper|ación); ordinary Spanish and English text also sits well above zero",
+   "fire": [
+    "La biblioteca publicó el catálogo en colaboración con el archivo municipal.",
+    "Gracias a la colaboración de los voluntarios, el festival fue un éxito.",
+    "El gobierno firmó un acuerdo de cooperación con los países vecinos.",
+    "La película se rodó en colaboración con una productora mexicana.",
+    "Los científicos agradecieron la estrecha colaboración entre ambos hospitales.",
+    "El hospital mantiene un programa de cooperación con médicos de Cuba.",
+    "La revista nació de la colaboración entre dos artistas jóvenes.",
+    "Las escuelas rurales recibieron libros gracias a la cooperación internacional."
+   ],
+   "quiet": [
+    "La biblioteca publicó el catálogo junto al archivo municipal.",
+    "Gracias a la ayuda de los voluntarios, el festival fue un éxito.",
+    "El gobierno firmó un acuerdo comercial con los países vecinos.",
+    "La película se rodó con el apoyo de una productora mexicana.",
+    "Los científicos agradecieron el estrecho vínculo entre ambos hospitales.",
+    "El hospital mantiene un programa de intercambio con médicos de Cuba.",
+    "La revista nació del encuentro entre dos artistas jóvenes.",
+    "Las escuelas rurales recibieron libros gracias a donantes de otros países."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-0.9 on 'ación' in colaboración/cooperación; Spanish near misses still around 0.4-0.5, so the test will likely fail",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "dense; peaks on Spanish 'colabor|ación'",
+ "unit_kind": "dense / positional",
+ "confidence": 0.2,
+ "notes": "Card FLAG dense (40% of tokens reach 0.1 of max), top 'ación' x6 in 'colaboración'. Probe: 'en colaboración con' 0.812, 'cooperación' 0.651, 'colaborar' 0.605; but plain Spanish 'entró en vigor' 0.505, 'junto con' 0.520 and an English cat sentence 0.345. Best-guess lexical test on a dense unit."
+}

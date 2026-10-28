@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-e3db090b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N11712+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T19:19:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N11712",
+   "pole": "+",
+   "label": "a sentence-initial one-word discourse connective that continues an argument ('Moreover', 'Furthermore', 'However'); the same sentence opened by 'In addition', 'Then' or no connective stays low",
+   "fire": [
+    "The museum lost its main sponsor last year. Moreover, visitor numbers fell sharply.",
+    "The road is narrow and badly lit. Furthermore, there is no pavement for walkers.",
+    "The plan looked cheap on paper. However, the final bill was twice the estimate.",
+    "Our results agree with earlier surveys. Moreover, they hold across all age groups.",
+    "The drug lowered blood pressure in most patients. Furthermore, it had few side effects.",
+    "The village seemed quiet at first. However, the market drew crowds every weekend.",
+    "The contract was signed in haste. Moreover, nobody had read the final page.",
+    "The engine is efficient at low speeds. Furthermore, it runs on several fuels."
+   ],
+   "quiet": [
+    "The museum lost its main sponsor last year. In addition, visitor numbers fell sharply.",
+    "The road is narrow and badly lit. There is no pavement for walkers either.",
+    "The plan looked cheap on paper. Then the final bill arrived at twice the estimate.",
+    "Our results agree with earlier surveys. They hold across all age groups.",
+    "The drug lowered blood pressure in most patients. In addition, it had few side effects.",
+    "The village seemed quiet at first. Then the market drew crowds every weekend.",
+    "The contract was signed in haste. Nobody had read the final page.",
+    "The engine is efficient at low speeds. In addition, it runs on several fuels."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.6 on ' Moreover'/' Furthermore'/' However'; 'In addition', 'Then' and bare openings below 0.12",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "sentence-initial 'Moreover/Furthermore/However'",
+ "unit_kind": "token/lexical",
+ "confidence": 0.7,
+ "notes": "Card peaks ' Moreover' x15, ' However' x7, ' Furthermore' x3, all after a full stop. Probe on one frame: Moreover 0.518, Furthermore 0.454, However 0.417, Also 0.289; 'In addition,' 0.036, 'Then' 0.102, no connective 0.011, mid-sentence 'and, moreover,' 0.151. Near misses avoid 'Also'."
+}

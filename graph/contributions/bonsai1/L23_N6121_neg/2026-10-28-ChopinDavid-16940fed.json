@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-28-ChopinDavid-16940fed",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N6121-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-28T19:26:22+00:00",
+ "recipe": {
+  "toolchain_commit": "78136f49",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L23_N6121_neg/2026-10-28-ChopinDavid-16940fed.tests.json"
+ },
+ "label": "field names in Python ORM and schema code: the field inside a domain tuple or filter() expression ('state' in search([('state', '=', ...)]), User.email == ...) and model-field assignments (customer = models.ForeignKey); the same identifiers in ordinary code stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L23_N6121_neg/2026-10-28-ChopinDavid-16940fed.tests.json",
+   "prereg_commit": "78136f49",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.28,
+     "peak": "':"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.586,
+     "peak": "bn"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.343,
+     "peak": " ="
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.348,
+     "peak": "(status"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.351,
+     "peak": "',"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.434,
+     "peak": ".enabled"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.373,
+     "peak": " ="
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.689,
+     "peak": "name"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.059,
+     "peak": "_end"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.035,
+     "peak": "bn"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.051,
+     "peak": "["
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.05,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.03,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.043,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.041,
+     "peak": "_profile"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.031,
+     "peak": " ="
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.362,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "78136f49",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "field name in ORM query/schema code",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card peaks ' =' x5 in field definitions, '_type', 'state', '.name' inside search/filter domains. Probe: Django filter(title__contains=) 0.653, SQLAlchemy filter(User.email == name) 0.484, models.ForeignKey assignment 0.453, Odoo search([('state', ...)]) 0.390; print(User.email, name) 0.036, 'x = 3' 0.015, prose 'The state of the order' 0.012.",
+ "selection": "random draw"
+}

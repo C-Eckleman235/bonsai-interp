@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-28-ChopinDavid-819eb41e",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N10185-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-28T19:26:26+00:00",
+ "recipe": {
+  "toolchain_commit": "78136f49",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N10185_neg/2026-10-28-ChopinDavid-819eb41e.tests.json"
+ },
+ "label": "the Chinese token '从而' ('thereby', introducing a result); other result connectives such as '因此' or '所以' stay lower",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N10185_neg/2026-10-28-ChopinDavid-819eb41e.tests.json",
+   "prereg_commit": "78136f49",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.014,
+     "peak": "从而"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.781,
+     "peak": "从而"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.916,
+     "peak": "从而"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.883,
+     "peak": "从而"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 1.18,
+     "peak": "从而"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.852,
+     "peak": "从而"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 1.019,
+     "peak": "从而"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.799,
+     "peak": "从而"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.099,
+     "peak": "公司"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.063,
+     "peak": "解决了"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.455,
+     "peak": "增加了"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.254,
+     "peak": "扩建"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.109,
+     "peak": "粮食"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.107,
+     "peak": "医院"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.113,
+     "peak": "减少了"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.08,
+     "peak": "空气"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.899,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "78136f49",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "the token '从而'",
+ "unit_kind": "token/lexical",
+ "confidence": 0.6,
+ "notes": "Card peaks '从而' x7, also ' globe' x3 and '/' x4; FLAG broad (2.8% of tokens reach 0.1 of max). Probe: '从而推动了' 1.050; the same sentence with '因此' 0.212 or no connective 0.212; but English ' globe' 0.793 and 'Others' 0.684, so this is a token test within Chinese only.",
+ "selection": "random draw"
+}

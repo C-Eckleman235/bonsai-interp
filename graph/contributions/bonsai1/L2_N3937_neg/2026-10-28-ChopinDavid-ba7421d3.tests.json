@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-ba7421d3",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N3937-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T19:19:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L2/N3937",
+   "pole": "-",
+   "label": "the word 'simply' in Russian and English (Просто / simply), strongest when it is split into pieces (sentence-initial 'Прост|о', quoted 'sim|ply'); other sentence adverbs in the same slot stay silent",
+   "fire": [
+    "Она не ответила на письмо. Просто забыла, как это часто бывает.",
+    "Мы не ссоримся. Просто иногда устаём друг от друга.",
+    "Никакого секрета нет. Просто нужно больше тренироваться.",
+    "Я не обиделся. Просто хотел побыть один.",
+    "The recipe says to “simply” whisk the eggs, which is never simple.",
+    "Their slogan was \"simply\" better coffee, printed on every cup.",
+    "Он не злой человек. Просто очень устал на работе.",
+    "The ad promised you could “simply” plug it in and go."
+   ],
+   "quiet": [
+    "Она не ответила на письмо. Наверное, забыла, как это часто бывает.",
+    "Мы не ссоримся. Конечно, иногда устаём друг от друга.",
+    "Никакого секрета нет. Однако нужно больше тренироваться.",
+    "Я не обиделся. Пусто стало в доме без детей.",
+    "The recipe says to “gently” whisk the eggs, which is never simple.",
+    "Their slogan was \"always\" better coffee, printed on every cup.",
+    "Он не злой человек. Конечно, очень устал на работе.",
+    "The ad promised you could “just” plug it in and go."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-0.95 on 'о' of 'Просто' and 'ply' of split 'simply'; Конечно/Наверное/Пусто below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'simply' (Просто / simply)",
+ "unit_kind": "token/lexical",
+ "confidence": 0.7,
+ "notes": "Card peaks ' просто'/'Прост|о' x24, 'sim|ply' x5. Probe: 'Просто я не знал' 0.895, 'Просто сидел' 0.879, quoted '“simply”' 0.955, ' просто' (one token) 0.657, plain ' simply' 0.341; 'Конечно' 0.003, 'Пусто было' 0.106. Items checked with tokcheck."
+}

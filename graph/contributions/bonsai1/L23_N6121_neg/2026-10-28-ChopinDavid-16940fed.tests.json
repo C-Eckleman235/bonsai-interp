@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-16940fed",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N6121-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T19:19:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L23/N6121",
+   "pole": "-",
+   "label": "field names in Python ORM and schema code: the field inside a domain tuple or filter() expression ('state' in search([('state', '=', ...)]), User.email == ...) and model-field assignments (customer = models.ForeignKey); the same identifiers in ordinary code stay low",
+   "fire": [
+    "    def _expire(self):\n        old = self.search([('date_end', '<', today)])\n        old.write({'active': False})",
+    "def find_book(isbn):\n    return session.query(Book).filter(Book.isbn == isbn).one()",
+    "class Invoice(models.Model):\n    partner = models.ForeignKey(Partner, on_delete=models.CASCADE)\n    amount = models.FloatField()",
+    "    drafts = Post.objects.filter(status__exact='draft')\n    return drafts",
+    "    def count_open(self):\n        return self.env['project.task'].search_count([('stage', '=', 'open')])",
+    "def active_users(db):\n    return db.query(Account).filter(Account.enabled == True).all()",
+    "class Profile(models.Model):\n    owner = models.OneToOneField(User, null=True)\n    bio = models.TextField()",
+    "    books = Book.objects.filter(author__name__icontains=query)\n    return books"
+   ],
+   "quiet": [
+    "    def _expire(self):\n        old = self.date_end\n        print(old, today)",
+    "def find_book(isbn):\n    print(Book.isbn, isbn)\n    return None",
+    "def total(invoice):\n    partner = invoice[0]\n    amount = invoice[1] * 2",
+    "    drafts = []\n    status = 'draft'\n    return drafts",
+    "    def count_open(self):\n        stage = 'open'\n        return len(stage)",
+    "def active_users(db):\n    enabled = True\n    return enabled",
+    "def make_profile(user):\n    owner = user\n    bio = ''",
+    "    query = query.strip()\n    return query"
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.7 on the field name or ' =' of a model field; plain variables and print calls below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "field name in ORM query/schema code",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card peaks ' =' x5 in field definitions, '_type', 'state', '.name' inside search/filter domains. Probe: Django filter(title__contains=) 0.653, SQLAlchemy filter(User.email == name) 0.484, models.ForeignKey assignment 0.453, Odoo search([('state', ...)]) 0.390; print(User.email, name) 0.036, 'x = 3' 0.015, prose 'The state of the order' 0.012."
+}
