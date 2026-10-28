@@ -1,0 +1,157 @@
+{
+ "id": "2026-10-28-C-Eckleman235-6e40f65c",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N6433+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T16:59:42+00:00",
+ "recipe": {
+  "toolchain_commit": "d4c59bf4",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N6433_pos/2026-10-28-C-Eckleman235-6e40f65c.tests.json"
+ },
+ "label": "'c.' as the abbreviation of 'century' after an ordinal (the 15th c., 12th c. manuscripts), weaker on 'century' written out; ordinals not about centuries (4th place, 8th birthday) and 'c.' meaning 'circa' before a year stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N6433_pos/2026-10-28-C-Eckleman235-6e40f65c.tests.json",
+   "prereg_commit": "d4c59bf4",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.82,
+     "peak": " c"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.694,
+     "peak": " c"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.819,
+     "peak": " c"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.654,
+     "peak": " c"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.827,
+     "peak": " c"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.878,
+     "peak": " c"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.577,
+     "peak": " c"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.459,
+     "peak": " c"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.009,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.005,
+     "peak": " illumination"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.291,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.004,
+     "peak": " later"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.121,
+     "peak": " Roman"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.021,
+     "peak": "rd"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": -0.001,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.001,
+     "peak": " "
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.756,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "bands",
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "d4c59bf4",
+  "minutes": 5,
+  "batch_size": 15,
+  "dtype": "float16"
+ },
+ "short": "'c.' for century (15th c.)",
+ "unit_kind": "contextual",
+ "confidence": 0.6,
+ "notes": "Feeder of bonsai1/L8/N6938+, found by a batched edge measurement (attribution candidates + census weight links, single-unit zero ablation on the anchor's top 8 corpus sites, 8 same-layer placebos): zeroing this neuron removes 0.36 of the anchor's peak on average (placebo max < 0.01); this pole is the one active at those sites. Explored with the card, all-pole band samples and one probe round of 8 sentences (none reused here).",
+ "roles": [
+  "feeds bonsai1/L8/N6938+"
+ ],
+ "selection": "step-out from bonsai1/L8/N6938+ (10x edges pipeline, batch 2)"
+}

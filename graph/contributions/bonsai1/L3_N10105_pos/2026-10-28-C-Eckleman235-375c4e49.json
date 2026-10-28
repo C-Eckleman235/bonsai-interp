@@ -1,0 +1,166 @@
+{
+ "id": "2026-10-28-C-Eckleman235-375c4e49",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N10105+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T16:59:38+00:00",
+ "recipe": {
+  "toolchain_commit": "d4c59bf4",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L3_N10105_pos/2026-10-28-C-Eckleman235-375c4e49.tests.json"
+ },
+ "label": "'Canton' / 'canton' in any sense (the old name of Guangzhou, Cantonese, a Swiss canton, a flag's canton) and Guangzhou; other southern Chinese cities (Shenzhen, Hong Kong, Macau) and Swiss places named without 'canton' stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L3_N10105_pos/2026-10-28-C-Eckleman235-375c4e49.tests.json",
+   "prereg_commit": "d4c59bf4",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.759,
+     "peak": " Canton"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.889,
+     "peak": "on"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.709,
+     "peak": "ese"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.829,
+     "peak": "zhou"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.786,
+     "peak": "on"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.753,
+     "peak": "on"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.554,
+     "peak": " Canton"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 1.024,
+     "peak": "anton"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.001,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.002,
+     "peak": " Bern"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.001,
+     "peak": " still"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": " line"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.001,
+     "peak": " center"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.001,
+     "peak": " sets"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.001,
+     "peak": " old"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.002,
+     "peak": " shop"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.772,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "bands",
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "d4c59bf4",
+  "minutes": 5,
+  "batch_size": 15,
+  "dtype": "float16"
+ },
+ "short": "canton, any sense; Guangzhou",
+ "unit_kind": "lexical",
+ "confidence": 0.6,
+ "notes": "Feeder of bonsai1/L10/N7854+, found by a batched edge measurement (attribution candidates + census weight links, single-unit zero ablation on the anchor's top 8 corpus sites, 8 same-layer placebos): zeroing this neuron removes 0.53 of the anchor's peak on average (placebo max < 0.01); this pole is the one active at those sites. Explored with the card, all-pole band samples and one probe round of 8 sentences (none reused here).",
+ "roles": [
+  "feeds bonsai1/L10/N7854+"
+ ],
+ "selection": "step-out from bonsai1/L10/N7854+ (10x edges pipeline, batch 2)",
+ "trigger": {
+  "words": [
+   "Canton",
+   "canton",
+   "cantons",
+   "Cantonese",
+   "Guangzhou"
+  ]
+ }
+}
