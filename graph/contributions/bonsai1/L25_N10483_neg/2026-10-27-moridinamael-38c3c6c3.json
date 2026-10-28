@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-27-moridinamael-38c3c6c3",
+ "kind": "qc",
+ "neuron": "bonsai1/L25/N10483-",
+ "contributor": "moridinamael",
+ "created": "2026-10-28T02:47:22+00:00",
+ "recipe": {
+  "toolchain_commit": "c88d1bce",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N10483_neg/2026-10-27-moridinamael-38c3c6c3.tests.json"
+ },
+ "notes": "Failed refine, narrowly (AUROC 0.875 vs 0.90 bar; median fire 0.468; 6/8 fire >= 0.30; 1 near miss >= 0.30: a one-token '.' in a political sentence at 0.303). Multi-sentence passages did what one-liners could not (median 0.47 vs 0.29 earlier). New detail: 5 of 8 fire items peak on ' have' in a science-news opener ('Researchers/Physicists/Scientists/Astronomers have detected...', 0.33-0.52), so the strongest part is the auxiliary after a plural science-agent subject, not generic function words. The weakest fire item (0.039) was a 'quantum computer' news passage with no 'have' opener. Not tested: a 'have'-after-scientists label against non-science 'have'. Loop-back: neighbours L9/N926+, L27/N2326-, L34/N5526+, L4/N9075+, L35/N4916+ failed, L7/N3945+ held; none sharpens this pole, so the label keeps science-news register as the frame and the next refine should test ' have' after science-agent subjects.",
+ "label": "Weak, diffuse pole: ordinary function words (to, the, for, with, more) inside running multi-sentence science-news or research-explainer prose (astronomy, physics, devices, cell biology); near silent in single short sentences, recipes and instructions, fiction, chat, politics, history, code.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N10483_neg/2026-10-27-moridinamael-38c3c6c3.tests.json",
+   "prereg_commit": "c88d1bce",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 6,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.499,
+     "peak": " have"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.329,
+     "peak": " have"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.509,
+     "peak": " have"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.437,
+     "peak": " have"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.571,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.283,
+     "peak": " phone"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.515,
+     "peak": " have"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.039,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.107,
+     "peak": " degrees"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.24,
+     "peak": "ewhere"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.077,
+     "peak": " again"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.087,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.145,
+     "peak": " generations"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.037,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.303,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.201,
+     "peak": " loading"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.875,
+    "median_fire": 0.468,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "c88d1bce",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Ordinary mid-sentence words (to, with, for, more, the) inside running science and research explainer prose (physics, devices, astronomy, biology, what causes what); weaker for economics and history, low for fiction, chat, recipes, politics news, code and maths."
+ }
+}
