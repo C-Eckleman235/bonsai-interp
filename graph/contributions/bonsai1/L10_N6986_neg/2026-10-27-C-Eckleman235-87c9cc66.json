@@ -1,0 +1,156 @@
+{
+ "id": "2026-10-27-C-Eckleman235-87c9cc66",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N6986-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T01:57:46+00:00",
+ "recipe": {
+  "toolchain_commit": "2662b97d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L10_N6986_neg/2026-10-27-C-Eckleman235-87c9cc66.tests.json"
+ },
+ "label": "The additive connective ' also' placed mid-clause right after a subject or auxiliary in expository prose (They also bring, It also requires, have also included); weaker on sibling discourse connectives like ' Otherwise' and ' although'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L10_N6986_neg/2026-10-27-C-Eckleman235-87c9cc66.tests.json",
+   "prereg_commit": "2662b97d",
+   "author": "C-Eckleman235",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.099,
+     "peak": " summer"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.207,
+     "peak": " also"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.622,
+     "peak": " also"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.078,
+     "peak": "def"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.334,
+     "peak": " also"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.248,
+     "peak": " also"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.083,
+     "peak": " also"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.244,
+     "peak": " also"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.054,
+     "peak": " summer"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.048,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.153,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.081,
+     "peak": ".strip"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.078,
+     "peak": " too"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.043,
+     "peak": " for"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.034,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.04,
+     "peak": " it"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.93,
+    "median_fire": 0.225,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "2662b97d",
+  "minutes": 18,
+  "batch_size": 1
+ },
+ "short": "mid-clause 'also' adding a point",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, census arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples + concept-census evidence (which concepts and domains selected the pole)); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Top examples are mostly ' also' after a subject/auxiliary (113x lift, 11% coverage), with a long tail of other discourse connectives (Otherwise, because, although, 'and' after 'Oh') and sporadic code-comment tokens, so only part of the pole is covered by the word. The census disease-frame hit is probably a frame effect I could not explain from the packet.",
+ "selection": "concept search: 10x census (diseases\r)",
+ "trigger": {
+  "words": [
+   "also"
+  ]
+ }
+}
