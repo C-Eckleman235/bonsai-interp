@@ -1,0 +1,53 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-48a040fd",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N923+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:44:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L20/N923",
+   "pole": "+",
+   "label": "The coordinating conjunction ' or' (and Arabic ' أو') joining two alternative noun/verb phrases mid-sentence, as the model predicts the second alternative; the '-' pole is the same slot with ' and'.",
+   "fire": [
+    "Patients who experience nausea or vomiting after the procedure should contact the clinic within a day.",
+    "The committee will review any complaints about noise or pollution before approving the new factory.",
+    "Before the trip, we asked whether the hotel offered a shuttle to the airport or a discount on taxis.",
+    "Students can submit the essay by email or through the course portal, whichever is easier for them.",
+    "Whether the bakery was robbed by strangers or by someone on its own staff remained unclear for weeks.",
+    "Many families struggle to afford the rent or groceries once the winter heating bills start arriving.",
+    "يمكن للطالب أن يختار الدراسة في الصباح أو المساء حسب ظروفه.",
+    "If you lose the receipt or the warranty card, the store may still be able to help you with a repair."
+   ],
+   "quiet": [
+    "Patients who experience nausea and vomiting after the procedure should contact the clinic within a day.",
+    "The committee will review the complaints about noise but ignore the pollution before approving the new factory.",
+    "Before the trip, we asked whether the hotel offered a shuttle to the airport, and a discount on taxis was also mentioned.",
+    "Students can submit the essay by email, but the course portal is the only way to see the grade.",
+    "The bakery was robbed by strangers, and by someone on its own staff, which remained unclear for weeks.",
+    "Many families struggle to afford the rent, groceries, and the winter heating bills that start arriving.",
+    "يمكن للطالب أن يختار الدراسة في الصباح و المساء حسب ظروفه.",
+    "If you lose the receipt, then the warranty card, the store may still decline to help you with a repair."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "card",
+   "bands"
+  ]
+ },
+ "short": "' or' joining alternatives",
+ "confidence": "medium",
+ "trigger": {
+  "words": [
+   "or",
+   "أو",
+   "either"
+  ]
+ },
+ "notes": "10x pilot (concept-maps/tenx, random arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Peak tokens are overwhelmingly ' or' (70% coverage by word) plus Arabic ' أو', mostly mid-sentence between two parallel noun phrases; band samples show weaker activations also on ' or' and ' either', and code-license 'OR' in uppercase. Output direction promotes ' or'/' either', so it looks like an 'alternative coming' predictor; the opposite pole is ' and' in the same slot, so near misses swap in ' and', 'but', and commas."
+}

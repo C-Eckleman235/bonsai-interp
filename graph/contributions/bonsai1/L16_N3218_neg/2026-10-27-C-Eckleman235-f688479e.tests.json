@@ -1,0 +1,46 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-f688479e",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L16/N3218-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:44:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L16/N3218",
+   "pole": "-",
+   "label": "Last token that completes a multi-word proper name, especially an institution or agency (Commission, University, Enforcement, Bureau, Journal), and the closing piece of a split word like 'Allowance'",
+   "fire": [
+    "Last spring the board of the Federal Communications Commission voted to review the rule again.\nCritics said the change would hurt small broadcasters.",
+    "My sister just accepted a research position at Michigan State University, and she moves in August.",
+    "Agents from Immigration and Customs Enforcement arrived at the warehouse before dawn on Tuesday.",
+    "The paper appeared in the American Heart Association Journal, and it drew quick attention from cardiologists.",
+    "After years at a private bank, he joined the Consumer Financial Protection Bureau as a senior adviser.",
+    "Supplements are considered safe when taken below the Tolerable Upper Intake Level, but check with your doctor first.",
+    "We watched every episode of the show, then bought a Game of Thrones-inspired mug for her birthday.",
+    "Documents filed with the Equal Employment Opportunity Commission show the company received three complaints in 2019."
+   ],
+   "quiet": [
+    "Last spring the board of the commission voted to review the rule again, and critics said it would hurt small broadcasters.",
+    "My sister just accepted a research position at a big state school in the Midwest, and she moves in August.",
+    "Agents arrived at the warehouse before dawn on Tuesday and began searching the loading docks for contraband.",
+    "The paper appeared in a well-known cardiology periodical, and it drew quick attention from specialists.",
+    "After years at a private bank, he joined a federal consumer watchdog as a senior adviser.",
+    "Supplements are considered safe when taken at modest doses, but check with your doctor first.",
+    "We watched every episode of the show, then bought a dragon mug from the gift shop for her birthday.",
+    "Documents filed with Equal Employment Opportunity officials show the company received three complaints in 2019."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "card",
+   "bands"
+  ]
+ },
+ "short": "final token of institution names",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, random arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Top and band examples are mostly the head noun that ends a capitalized organization name (Commission, University, Enforcement, Bureau, Service, Journal) plus some split-word tails (Allowance, Blood in True Blood); coverage is a mix and only weakly structured. Near misses use generic or truncated names so they keep the topic but drop the completed name."
+}
