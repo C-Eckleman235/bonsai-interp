@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-28-ChopinDavid-17132d2e",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N4173+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-28T18:27:48+00:00",
+ "recipe": {
+  "toolchain_commit": "b1187d1e",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L27_N4173_pos/2026-10-28-ChopinDavid-17132d2e.tests.json"
+ },
+ "label": "' and' / ' or' directly after a number (year, grade, age, version, level) that opens an open-ended or paired numeric range ('12 and up', '1965 and earlier', 'Android 8 or newer'); 'and/or' between ordinary words stays silent",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L27_N4173_pos/2026-10-28-ChopinDavid-17132d2e.tests.json",
+   "prereg_commit": "b1187d1e",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.47,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.535,
+     "peak": " or"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.718,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.279,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.524,
+     "peak": " or"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.561,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.642,
+     "peak": " or"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.682,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.004,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.006,
+     "peak": " supports"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.008,
+     "peak": "omes"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.024,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.011,
+     "peak": " start"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.005,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.025,
+     "peak": " or"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.009,
+     "peak": " and"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.548,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "b1187d1e",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "'and/or' after a number in a range",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: '1979 and prior', '1969 or 1970', 'grades 6 and 7', 'iPhone 5s or later', 'Age 10 and up'. Probe: 'aged 12 and up' 0.706, '1965 and earlier' 0.657, 'Android 8 or newer' 0.480, 'grades 9 and 10' 0.446; 'salt and pepper' 0.018, 'tea or coffee' 0.011. But 'Scores of 70 or higher' only 0.008, so not every number fires.",
+ "selection": "random draw"
+}
