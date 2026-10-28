@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-34b3bca4",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N10136+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T02:07:57+00:00",
+ "recipe": {
+  "toolchain_commit": "639497d3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L6_N10136_pos/2026-10-27-C-Eckleman235-34b3bca4.tests.json"
+ },
+ "label": "Continuation subword piece inside a rare multi-token proper name (surname, place or acronym such as EDF, Eshel, Ehley, East Anglia), especially names beginning with E",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L6_N10136_pos/2026-10-27-C-Eckleman235-34b3bca4.tests.json",
+   "prereg_commit": "639497d3",
+   "author": "C-Eckleman235",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.2,
+     "peak": "kol"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.556,
+     "peak": "DF"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.368,
+     "peak": "lers"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.789,
+     "peak": "lia"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.133,
+     "peak": "e"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.069,
+     "peak": "FTA"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.231,
+     "peak": "ichel"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.368,
+     "peak": " Foundation"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.038,
+     "peak": " minister"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.027,
+     "peak": "Customers"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.043,
+     "peak": " chairman"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.04,
+     "peak": "ate"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.039,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.039,
+     "peak": " framework"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.03,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.294,
+     "peak": " Foundation"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.299,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "639497d3",
+  "minutes": 24,
+  "batch_size": 13
+ },
+ "short": "Mid-name subword of rare proper names",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, random arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Very sparse + pole (0.007% above 0.3 max); top examples are the 2nd+ token of a rare proper name (E-DF, Esh-el, Eh-ley, Ang-lia) plus odd cases like /licenses and hyper-ker-atosis, so it looks like a mid-word fragment detector with an E-name bias. Label is a hedge over a mixed bag; the near misses use common, single-token names.",
+ "selection": "random draw"
+}

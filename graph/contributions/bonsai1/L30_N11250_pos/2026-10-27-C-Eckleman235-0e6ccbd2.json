@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-0e6ccbd2",
+ "kind": "interpret",
+ "neuron": "bonsai1/L30/N11250+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T02:07:54+00:00",
+ "recipe": {
+  "toolchain_commit": "639497d3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L30_N11250_pos/2026-10-27-C-Eckleman235-0e6ccbd2.tests.json"
+ },
+ "label": "Comma/quote/dash boundary (or the first letter of 'i.e.', 'т.е.', 'd.h.', 'c'est-à-dire') right where the text is about to restate or gloss the preceding term ('i.e.', 'that is', 'то есть', 'أي'); strongest in Russian, Arabic, German and French prose. Output promotes ' i', ' namely', '即', 'cioè'.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L30_N11250_pos/2026-10-27-C-Eckleman235-0e6ccbd2.tests.json",
+   "prereg_commit": "639497d3",
+   "author": "C-Eckleman235",
+   "n_fire": 4,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.1,
+     "peak": " i"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.318,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.414,
+     "peak": " d"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.628,
+     "peak": "،"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.446,
+     "peak": " c"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.018,
+     "peak": ";"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.184,
+     "peak": " то"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.001,
+     "peak": " costs"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.001,
+     "peak": " after"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.003,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.091,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.628,
+     "peak": "،"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.248,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.023,
+     "peak": ";"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.001,
+     "peak": "бы"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.001,
+     "peak": " costs"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.719,
+    "median_fire": 0.251,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "639497d3",
+  "minutes": 24,
+  "batch_size": 13
+ },
+ "short": "punctuation before an 'i.e.' gloss",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, random arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Top examples are all the token right before an appositive gloss (i.e./т.е./d.h./c'est-à-dire), with output promoting ' i', ' namely', 'cioè'; the neuron is very sparse (0.009% above 0.3 max) and bands show it also fires weakly on many bare commas, so near misses use commas that lead to ordinary continuations. The - pole (commas before 'which means/that is' definitions) looks related but opposite in sign, and fire items may land under 0.3 of max since the max (400) is an outlier.",
+ "selection": "random draw"
+}

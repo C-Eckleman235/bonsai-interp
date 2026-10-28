@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-25d3c171",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N632+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T02:07:57+00:00",
+ "recipe": {
+  "toolchain_commit": "639497d3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L33_N632_pos/2026-10-27-C-Eckleman235-25d3c171.tests.json"
+ },
+ "label": "Articles and prepositions mid-phrase in Spanish or Spain-related text, where a noun phrase is about to start",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L33_N632_pos/2026-10-27-C-Eckleman235-25d3c171.tests.json",
+   "prereg_commit": "639497d3",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 2,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.364,
+     "peak": " la"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.856,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.67,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 1.324,
+     "peak": " de"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.365,
+     "peak": " las"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.516,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.366,
+     "peak": " el"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.593,
+     "peak": " las"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.163,
+     "peak": " bon"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.052,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.394,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.4,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.008,
+     "peak": " l"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.005,
+     "peak": " towards"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.173,
+     "peak": " v"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.234,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.906,
+    "median_fire": 0.554,
+    "near_misses_at_0.3": 2
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "639497d3",
+  "minutes": 24,
+  "batch_size": 13
+ },
+ "short": "Spanish function words before noun",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, random arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Strong activations are on articles, prepositions and conjunctions (de, del, la, las, el, the) in Spanish text and in English text about Spain or Spanish place names, with no single token dominating; band samples show weaker firing on many mid-phrase function words and word fragments, so coverage is likely partial and the Spanish-vs-Spain-topic split is unresolved.",
+ "selection": "random draw"
+}
