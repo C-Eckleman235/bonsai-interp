@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-21b94535",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N2617-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T11:21:37+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L20/N2617",
+   "pole": "-",
+   "label": "best guess: the closing '),\\n' of a keyword-argument spec line inside a multi-line argument dictionary (Ansible-style dict(...) specs); probes found no trigger",
+   "fire": [
+    "argument_spec = dict(\n    host=dict(required=True),\n    port=dict(type='int', default=22),\n    api_key=dict(no_log=True),\n    state=dict(choices=['present', 'absent']),\n)",
+    "module_args = dict(\n    name=dict(type='str', required=True),\n    token=dict(type='str', no_log=True),\n    timeout=dict(type='int', default=30),\n)",
+    "spec = dict(\n    username=dict(required=True),\n    password=dict(required=True, no_log=True),\n    validate_certs=dict(type='bool', default=True),\n)",
+    "fields = dict(\n    url=dict(type='str'),\n    secret=dict(no_log=True),\n    retries=dict(type='int', default=3),\n)",
+    "argument_spec = dict(\n    path=dict(type='path', required=True),\n    owner=dict(type='str'),\n    api_token=dict(no_log=True),\n)",
+    "opts = dict(\n    region=dict(default='us-east-1'),\n    access_key=dict(no_log=True),\n    bucket=dict(required=True),\n)",
+    "params = dict(\n    server=dict(required=True),\n    login_password=dict(no_log=True),\n    database=dict(default='main'),\n)",
+    "argument_spec = dict(\n    name=dict(required=True),\n    client_secret=dict(no_log=True),\n    scopes=dict(type='list'),\n)"
+   ],
+   "quiet": [
+    "connect(host='example.org', port=22, api_key=key)",
+    "run(name='job', token=tok, timeout=30)",
+    "login(username=user, password=pw, validate_certs=True)",
+    "fetch(url=link, secret=s, retries=3)",
+    "copy(path=src, owner='root', api_token=t)",
+    "upload(region='us-east-1', access_key=k, bucket='logs')",
+    "query(server='db1', login_password=pw, database='main')",
+    "register(name='app', client_secret=cs, scopes=['read'])"
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.4 on the closing token of an argument-spec line; the same keys in one-line plain calls below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "guess: '),' ending a dict(...) arg spec",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Card: max 24.0, peaks scattered (',' x5, '\\n', ')\\n', '),\\n' in 'api_key=dict(no_log=True),\\n', '_cookies', ' scope', ' password'). Probe failed everywhere: 'self.password = password' 0.016, 'verbose=verbose' 0.006, 'params[\"scope\"] = scope' 0.012, prose 'knowledge by description' 0.030; max 0.062. No trigger found; this guess copies the top example's form."
+}

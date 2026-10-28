@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-6ffaa3ce",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N5398-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T11:21:37+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N5398",
+   "pole": "-",
+   "label": "a lone letter split off inside a non-English name or a chemical formula (Lászl|ó, Gy|ő|r, L|j|ubljana, U|O|2): a letter-fragment unit, not the same names when they tokenize as whole pieces",
+   "fire": [
+    "The train from Vienna stops in Győr before reaching the capital.",
+    "The new coach, Anna Szőke, trained the team for two seasons.",
+    "Our guide in Kraków was a retired teacher named Józef.",
+    "The team flew home to Ljubljana after the final match.",
+    "The fuel rods contain enriched UO2 pressed into small pellets.",
+    "The striker, Ljubo Petrović, scored twice in the second half.",
+    "The bridge in Győr was rebuilt after the floods of last year.",
+    "The paper by Albert-László Barabási changed how we study networks."
+   ],
+   "quiet": [
+    "The train from Vienna stops in Linz before reaching the capital.",
+    "The new coach, Anna Smith, trained the team for two seasons.",
+    "Our guide in Krakow was a retired teacher named Joseph.",
+    "The team flew home to Zagreb after the final match.",
+    "The fuel rods contain enriched uranium pressed into small pellets.",
+    "The striker, Luke Peters, scored twice in the second half.",
+    "The bridge in Linz was rebuilt after the floods of last year.",
+    "The paper by Albert Hall and Ben Smith changed how we study networks."
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-1.1 on the split letter ('ő', 'ó', 'j', 'O'); English names and whole-token formulas below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "lone letter piece in foreign name/formula",
+ "unit_kind": "token",
+ "confidence": 0.5,
+ "notes": "Card: max 2.31, peaks 'J' x6, 'O' x5, 'j' x4, 'ó' x2 (Üllői, Lászl-ó, L-j-ubljana, U-O-2, LJ). Probe: 'Üllői út' 1.164, 'UO2' 0.914, 'Albert-László' 0.792, '(LJ) potential' 0.735, 'Ljubljana' 0.472, initials 'HJ' 0.300; 'Zagreb' 0.011, 'Albert Einstein' 0.055. Tokenizer: Győr -> Gy|ő|r, Szőke -> Sz|ő|ke, Józef -> J|ó|z|ef, Ljubo -> L|j|ubo."
+}
