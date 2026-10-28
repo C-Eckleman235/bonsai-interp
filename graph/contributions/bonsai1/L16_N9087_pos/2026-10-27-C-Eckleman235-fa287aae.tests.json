@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-fa287aae",
+ "contributor": "C-Eckleman235",
+ "kind": "qc",
+ "neuron": "bonsai1/L16/N9087+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:02:27+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "South Africa: Cape Town, Johannesburg, Durban and South African web addresses (.co.za, .za); Kenya, Nigeria and the word 'Africa' alone stay low"
+ },
+ "neighbours": [
+  {
+   "unit": "L16/N9087",
+   "pole": "+",
+   "label": "Afrikaans and Afrikaners: Afrikaans text, Afrikaner surnames wherever the person is (Botha, Cilliers, du Plessis, Burger) and Afrikaner food and Cape places (boerewors, braai, Hermanus); Dutch text and Dutch names stay low",
+   "fire": [
+    "Ons gaan more vroeg na die strand toe.",
+    "My dentist in London is a friendly man called Johan Botha.",
+    "The chess club in Ohio is run by Marietjie Cilliers.",
+    "We grilled boerewors over the coals at the braai.",
+    "Toe ons opstaan, was die weer koud en die wind het sterk gewaai.",
+    "Our new manager, Riaan du Plessis, moved here from Perth.",
+    "Whales can be seen from the cliffs at Hermanus in spring.",
+    "The rugby flanker Schalk Burger retired last year."
+   ],
+   "quiet": [
+    "We gaan morgen vroeg naar het strand.",
+    "My dentist in London is a friendly man called Johan de Jong.",
+    "The chess club in Ohio is run by Marieke Jansen.",
+    "We grilled sausages over the coals at the barbecue.",
+    "Toen we opstonden, was het weer koud en waaide de wind hard.",
+    "Our new manager, Ruud van Dijk, moved here from Perth.",
+    "Whales can be seen from the cliffs at Kaikoura in spring.",
+    "The rugby flanker Richie McCaw retired last year."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Afrikaans and Afrikaner names",
+ "unit_kind": "sparse feature",
+ "confidence": 0.6,
+ "notes": "QC refine after a Codex red-team round (10x pilot P5): the held label was South Africa as a place and .za addresses, but the pole fires hardest on Afrikaans text (1.13 in a Codex probe; 0.86 in exploration) and Afrikaner surnames anywhere (Cilliers 0.63, Pienaar 0.52), while a Dutch name stayed at 0.05. The test claims Afrikaans and Afrikaner things against Dutch text and names. Exploration (play probe: 12 Codex-written red-team probes and 8 of the author's, none of these 16 sentences; 0 overlap checked). The author saw the held label and those probe readings but did not read the original test's sentences before drafting these."
+}
