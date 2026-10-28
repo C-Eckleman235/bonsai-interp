@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-1d15445f",
+ "kind": "interpret",
+ "neuron": "bonsai1/L16/N3851-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T01:55:02+00:00",
+ "recipe": {
+  "toolchain_commit": "68ca28f5",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L16_N3851_neg/2026-10-27-C-Eckleman235-1d15445f.tests.json"
+ },
+ "label": "Words in a verb/preposition-object slot that refer to people or agents (them, someone, other members, its, a profession noun after 'about'), i.e. the point where a person-referent has just been named or is about to complete",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L16_N3851_neg/2026-10-27-C-Eckleman235-1d15445f.tests.json",
+   "prereg_commit": "68ca28f5",
+   "author": "C-Eckleman235",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.1,
+     "peak": " them"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.257,
+     "peak": " visited"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.171,
+     "peak": " show"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.43,
+     "peak": " out"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.403,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.069,
+     "peak": " themselves"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.47,
+     "peak": " worker"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.134,
+     "peak": " worked"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.037,
+     "peak": " she"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.128,
+     "peak": " visited"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.05,
+     "peak": " through"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.048,
+     "peak": " down"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.031,
+     "peak": "ira"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.04,
+     "peak": " along"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.13,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.113,
+     "peak": " boxes"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.906,
+    "median_fire": 0.214,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "68ca28f5",
+  "minutes": 16,
+  "batch_size": 1
+ },
+ "short": "person-referring object slot after verb",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, census arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples + concept-census evidence (which concepts and domains selected the pole)); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Strong activations are a mix: object pronouns/determiners referring to people ('them', 'someone', 'other', 'its', 'her') after verbs like talk/stick with/cheat on, with census showing profession nouns in neutral 'about X' frames firing at 88%. Pole is broad (1% of tokens above 0.1 max) so near misses swap people for things at the same slot.",
+ "selection": "concept search: 10x census (professions\r)"
+}
