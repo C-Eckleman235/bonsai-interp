@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-1f2a166e",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N8926+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T01:59:35+00:00",
+ "recipe": {
+  "toolchain_commit": "1fc3bd79",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L24_N8926_pos/2026-10-27-C-Eckleman235-1f2a166e.tests.json"
+ },
+ "label": "Function words/commas right where a clause or comparison is about to open after a predicate of checking, asking, knowing or likelihood ('make sure', 'find out if', 'ask if', 'in order for', 'less likely', 'to know'), also list-commas after a predicted outcome; weak, mixed pole",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L24_N8926_pos/2026-10-27-C-Eckleman235-1f2a166e.tests.json",
+   "prereg_commit": "1fc3bd79",
+   "author": "C-Eckleman235",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.166,
+     "peak": " sure"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.263,
+     "peak": " if"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.655,
+     "peak": " less"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.586,
+     "peak": " for"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.553,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.359,
+     "peak": " that"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.1,
+     "peak": " covers"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.58,
+     "peak": "0"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.01,
+     "peak": " burn"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.042,
+     "peak": " booked"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.185,
+     "peak": " hours"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.167,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.059,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.064,
+     "peak": "ically"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.011,
+     "peak": "'s"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.013,
+     "peak": " app"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.456,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "1fc3bd79",
+  "minutes": 19,
+  "batch_size": 1
+ },
+ "short": "clause-opener after check/ask/likelihood predicates",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, census arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples + concept-census evidence (which concepts and domains selected the pole)); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Top examples are heterogeneous function tokens (commas, 'if', 'for', 'sure', 'less') sitting at a clause boundary after check/ask/likelihood predicates; the output promotes ' there'/' have', fitting a clause-subject slot. Census food-domain signal and the broad density suggest this is a weak, diffuse pole, so low confidence.",
+ "selection": "concept search: 10x census (foods\r)"
+}
