@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-28-ChopinDavid-7893b248",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N8610-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-28T12:29:58+00:00",
+ "recipe": {
+  "toolchain_commit": "883d7177",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N8610_neg/2026-10-28-ChopinDavid-7893b248.tests.json"
+ },
+ "label": "a word-initial 'w' spelling piece where the tokenizer splits a word right after w ('verw|ischen', 'ang|ew|endet', ' w|avy', ' w|icking'): a spelling unit, not whole words containing w",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N8610_neg/2026-10-28-ChopinDavid-7893b248.tests.json",
+   "prereg_commit": "883d7177",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.556,
+     "peak": " verw"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.725,
+     "peak": " verw"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.654,
+     "peak": "ew"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.427,
+     "peak": " w"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.512,
+     "peak": " w"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.546,
+     "peak": " verw"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.644,
+     "peak": "ew"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.194,
+     "peak": " w"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.005,
+     "peak": " S"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.134,
+     "peak": " ber"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.228,
+     "peak": " gen"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.006,
+     "peak": " loose"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.047,
+     "peak": " cotton"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.023,
+     "peak": " F"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.024,
+     "peak": " ge"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.004,
+     "peak": " a"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.551,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "883d7177",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "split-off 'w' word piece",
+ "unit_kind": "token",
+ "confidence": 0.65,
+ "notes": "Card: ' w' x9, ' verw' x8, 'w' x4, ' tw', 'ew', '-w'. Probe: 'verwischen' 0.988, 'verwandeln' 0.891, 'angewendet' (peak 'ew') 0.670, ' w|avy' 0.496, ' w|icking' 0.379; 'sind ... unklar' 0.173, 'smooth edges' 0.003, 'window frames' 0.002.",
+ "selection": "random draw"
+}
