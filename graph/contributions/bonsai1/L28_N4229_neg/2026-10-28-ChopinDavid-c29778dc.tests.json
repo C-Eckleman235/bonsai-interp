@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-c29778dc",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N4229-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T10:21:46+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N4229",
+   "pole": "-",
+   "label": "C standard-library code and the C function names it uses (printf, strerror, #include <...>, the ');' that closes a C call), including a C function named in prose; equivalent code in Python or JavaScript stays silent",
+   "fire": [
+    "#include <string.h>\nint n = strlen(name);\nprintf(\"%d\\n\", n);",
+    "FILE *fp = fopen(path, \"r\");\nif (fp == NULL) perror(\"fopen\");",
+    "char buf[64];\nsnprintf(buf, sizeof buf, \"%s\", src);\nputs(buf);",
+    "To copy memory in C, call the memcpy function declared in string.h.",
+    "#include <stdlib.h>\nint *a = malloc(n * sizeof *a);\nfree(a);",
+    "int fd = open(\"log.txt\", O_RDONLY);\nclose(fd);",
+    "The old code reads input with the fgets function from stdio.h.",
+    "#include <time.h>\ntime_t now = time(NULL);\nprintf(\"%ld\\n\", now);"
+   ],
+   "quiet": [
+    "name = input()\nn = len(name)\nprint(n)",
+    "with open(path) as fp:\n    data = fp.read()\nprint(data)",
+    "const buf = src.slice(0, 64);\nconsole.log(buf);",
+    "To copy a list in Python, call the copy method on the list.",
+    "items = [0] * n\nitems.append(5)\ndel items",
+    "let text = fs.readFileSync(\"log.txt\");\nconsole.log(text);",
+    "The old script reads input with the readline module in Node.",
+    "import time\nnow = time.time()\nprint(now)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-1.4 on C call syntax and stdlib names; Python/JavaScript code doing the same work below 0.08",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "C stdlib code and function names",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: max 102, peaks in C manual pages and code: 'strerror(errnum);\\n', 'inet_pton', 'printf(\"', '#include <unistd.h>', 'exit(3),'. Probe: 'strerror(errnum);' 1.395, 'with the printf function' in prose 0.760, '#include <stdio.h>' 0.671, 'exit(3), mkstemp(3)' 0.457; Python 'def greet' 0.048, Python loop 0.010, prose about a programmer 0.008."
+}
