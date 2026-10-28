@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-5f3f6b57",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N4704+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T06:19:33+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N4704",
+   "pole": "+",
+   "label": "an inner word piece of a demonym or place-derived word that the tokenizer splits into several pieces (Sen|eg|alese, neu|qu|inos, san|mart|inense), as against single-token demonyms; weak",
+   "fire": [
+    "The market was full of Togolese traders selling cloth and spices.",
+    "A Gabonese delegation arrived in Paris for the climate talks.",
+    "Several Congolese musicians played at the festival in Brussels.",
+    "The restaurant serves Guatemalan coffee roasted in small batches.",
+    "Two Malagasy runners finished in the top ten of the marathon.",
+    "The museum bought a Nicaraguan painting from a private collector.",
+    "A group of Burkinabe farmers visited the research station last year.",
+    "The ship carried Djiboutian salt across the Red Sea to Yemen."
+   ],
+   "quiet": [
+    "The market was full of French traders selling cloth and spices.",
+    "A German delegation arrived in Paris for the climate talks.",
+    "Several Belgian musicians played at the festival in Brussels.",
+    "The restaurant serves Mexican coffee roasted in small batches.",
+    "Two Pakistani runners finished in the top ten of the marathon.",
+    "The museum bought a Spanish painting from a private collector.",
+    "A group of Indian farmers visited the research station last year.",
+    "The ship carried Egyptian salt across the Red Sea to Yemen."
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.6 on the inner piece of split demonyms like Togolese, Gabonese, Guatemalan; single-token demonyms (French, Pakistani) below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "inner piece of split demonym",
+ "unit_kind": "token",
+ "confidence": 0.3,
+ "notes": "Card: peaks on 'mart' in sanmartinense, ' Sen' in Senegalese, 'qu' in neuquinos/paquistaníes, 'ту' in португальский, Arabic Tunisian piece, but also 'ne' in tunneled. Probe: Senegalese 'eg' 0.567, sanmartinense 0.189, neuquinos 0.187, paquistaníes 0.147, tunneled 'ne' 0.326; single-token Pakistani 0.001, French 0.002, Tunis|ians 0.009. Generalisation to other demonyms untested."
+}

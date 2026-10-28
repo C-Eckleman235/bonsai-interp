@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-28-ChopinDavid-5f3f6b57",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N4704+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-28T06:26:46+00:00",
+ "recipe": {
+  "toolchain_commit": "d31f055a",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N4704_pos/2026-10-28-ChopinDavid-5f3f6b57.tests.json"
+ },
+ "label": "an inner word piece of a demonym or place-derived word that the tokenizer splits into several pieces (Sen|eg|alese, neu|qu|inos, san|mart|inense), as against single-token demonyms; weak",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N4704_pos/2026-10-28-ChopinDavid-5f3f6b57.tests.json",
+   "prereg_commit": "d31f055a",
+   "author": "ChopinDavid",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.116,
+     "peak": "og"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.021,
+     "peak": "on"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.002,
+     "peak": "Several"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.124,
+     "peak": "atem"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.041,
+     "peak": "ag"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.353,
+     "peak": " Nicar"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.113,
+     "peak": " Bur"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.004,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.002,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.003,
+     "peak": " for"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.002,
+     "peak": "Several"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": " serves"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.003,
+     "peak": " Pakistani"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.004,
+     "peak": " collector"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.003,
+     "peak": " last"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.012,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.875,
+    "median_fire": 0.077,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "d31f055a",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "inner piece of split demonym",
+ "unit_kind": "token",
+ "confidence": 0.3,
+ "notes": "Card: peaks on 'mart' in sanmartinense, ' Sen' in Senegalese, 'qu' in neuquinos/paquistaníes, 'ту' in португальский, Arabic Tunisian piece, but also 'ne' in tunneled. Probe: Senegalese 'eg' 0.567, sanmartinense 0.189, neuquinos 0.187, paquistaníes 0.147, tunneled 'ne' 0.326; single-token Pakistani 0.001, French 0.002, Tunis|ians 0.009. Generalisation to other demonyms untested.",
+ "selection": "random draw"
+}

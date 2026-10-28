@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-3ffde6f4",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N1467-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T06:19:33+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N1467",
+   "pole": "-",
+   "label": "the punctuation that closes a cited title or document name (the ',\"' or '\"' after 'Reserved Words', 'Solar Photovoltaic Systems'); weak, probes stayed low",
+   "fire": [
+    "Section 4, \"Handling Hazardous Materials,\" explains the storage rules.",
+    "The report includes Chapter 9, \"Regional Water Supplies,\" with new maps.",
+    "Read the essay \"Notes on Modern Bridges,\" which appeared in 1962.",
+    "See Appendix B, \"Glossary of Legal Terms,\" for definitions.",
+    "The manual's section \"Installing the Base Unit\" shows each step.",
+    "The guide adds Part 3, \"Bird Songs of the Coast,\" as a bonus.",
+    "His thesis, \"Trade Routes of the Baltic,\" won a national prize.",
+    "Use Table 2, \"Average Rainfall by Month,\" to plan the planting."
+   ],
+   "quiet": [
+    "Section 4 explains the storage rules for hazardous materials.",
+    "The report includes a chapter on regional water supplies with new maps.",
+    "Read his essay on modern bridges, which appeared in 1962.",
+    "See the glossary at the back of the book for definitions.",
+    "The manual shows each step of installing the base unit.",
+    "The guide adds a bonus part about the birds of the coast.",
+    "His thesis on Baltic trade routes won a national prize.",
+    "Use the rainfall table in the back to plan the planting."
+   ]
+  }
+ ],
+ "predictions": "fire 0.1-0.2 on the closing ',\"' of a quoted section title; the same sentence without the title below 0.07; likely fails the 0.20 median",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "punctuation closing a cited title (guess)",
+ "unit_kind": "context",
+ "confidence": 0.15,
+ "notes": "Card: peaks on ',\"' after 'T-SQL Reserved Words', ':' after 'Sir William Petty', '.' after 'Oil Consumption', ',' after 'Priory of Sion', '”' after 'Solar Photovoltaic Systems'. Probe: 'The Last Voyage,\"' 0.163, 'Reserved Words,\"' 0.128, 'Photovoltaic Systems\"' 0.092; untitled versions 0.050-0.082, floor 0.047. Weak separation; best-guess test."
+}

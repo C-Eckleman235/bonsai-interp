@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-787f2287",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N2031-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T06:19:33+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N2031",
+   "pole": "-",
+   "label": "the second occurrence of a word in a parallel construction, where the clause repeats the frame of an earlier one ('you did ... you did', 'an attack on one ... an attack on all', 'just as it is for'), as against the same word used once",
+   "fire": [
+    "A threat to one worker in this factory is a threat to every worker here.",
+    "What you give to the hungry, you give to the whole village.",
+    "Learning a language is hard for adults, just as it is for many teenagers.",
+    "An insult to my brother is an insult to my whole family.",
+    "Whatever we build for the children, we build for the future of the town.",
+    "The law protects tenants no more than it protects the landlords.",
+    "A victory for one team in the league is a victory for the whole sport.",
+    "Whatever she promised to the voters, she promised to her own conscience too."
+   ],
+   "quiet": [
+    "A worker in this factory was hurt by a falling crate last week.",
+    "The farmers gave the hungry families bread and milk every morning.",
+    "Learning a language is hard for many adults at first.",
+    "My brother was upset by the rude remark at dinner.",
+    "We built a new playground for the children near the river.",
+    "The new law was passed by the council in early spring.",
+    "The team celebrated its first victory of the season on Sunday.",
+    "During the campaign she promised the voters lower taxes."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on the repeated word in the second clause; single-use versions below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "repeated word in parallel clause",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: peaks on ' did' in 'you did not do for me', ' attack' in 'it's an attack on everyone', ' first', ' it' in 'just as it is for many adults' and 'than it is to capital', code that echoes self/other. Probe: 'attack on one of us is an attack' 0.811, 'you did it with a kind heart' 0.690, 'you did not do for me' 0.604, 'just as it is for' 0.476, 'than it is to owners' 0.389; single-use versions 0.001-0.002."
+}

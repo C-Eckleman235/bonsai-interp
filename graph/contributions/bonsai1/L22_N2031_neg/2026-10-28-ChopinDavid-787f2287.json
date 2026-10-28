@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-28-ChopinDavid-787f2287",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N2031-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-28T06:27:48+00:00",
+ "recipe": {
+  "toolchain_commit": "d31f055a",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L22_N2031_neg/2026-10-28-ChopinDavid-787f2287.tests.json"
+ },
+ "label": "the second occurrence of a word in a parallel construction, where the clause repeats the frame of an earlier one ('you did ... you did', 'an attack on one ... an attack on all', 'just as it is for'), as against the same word used once",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N2031_neg/2026-10-28-ChopinDavid-787f2287.tests.json",
+   "prereg_commit": "d31f055a",
+   "author": "ChopinDavid",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.628,
+     "peak": " threat"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.209,
+     "peak": " give"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.491,
+     "peak": " is"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.553,
+     "peak": " insult"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.283,
+     "peak": " build"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.295,
+     "peak": " it"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.282,
+     "peak": " victory"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.19,
+     "peak": " promised"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.007,
+     "peak": " by"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.003,
+     "peak": " gave"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.006,
+     "peak": " adults"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.004,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.002,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.004,
+     "peak": " Sunday"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.004,
+     "peak": " she"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.289,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "d31f055a",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "repeated word in parallel clause",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: peaks on ' did' in 'you did not do for me', ' attack' in 'it's an attack on everyone', ' first', ' it' in 'just as it is for many adults' and 'than it is to capital', code that echoes self/other. Probe: 'attack on one of us is an attack' 0.811, 'you did it with a kind heart' 0.690, 'you did not do for me' 0.604, 'just as it is for' 0.476, 'than it is to owners' 0.389; single-use versions 0.001-0.002.",
+ "selection": "random draw"
+}
