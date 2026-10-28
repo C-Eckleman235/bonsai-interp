@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-28-ChopinDavid-7487c90c",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N3545-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-28T16:28:13+00:00",
+ "recipe": {
+  "toolchain_commit": "8022d98f",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L27_N3545_neg/2026-10-28-ChopinDavid-7487c90c.tests.json"
+ },
+ "label": "pieces of multi-token Russian words (prefix and stem pieces such as ' про', ' след', 'лежа'): a Cyrillic word-assembly pole; the same content in English or another Latin-script language stays quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L27_N3545_neg/2026-10-28-ChopinDavid-7487c90c.tests.json",
+   "prereg_commit": "8022d98f",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.682,
+     "peak": " установлен"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.527,
+     "peak": " закон"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.294,
+     "peak": " сохран"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.31,
+     "peak": " дополн"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.329,
+     "peak": "од"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.344,
+     "peak": " приня"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.332,
+     "peak": "лежа"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.503,
+     "peak": "итель"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.002,
+     "peak": "Employees"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.092,
+     "peak": " manner"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.049,
+     "peak": " keeping"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": "For"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.015,
+     "peak": " Mon"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.007,
+     "peak": "ü"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.005,
+     "peak": " demand"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.002,
+     "peak": " a"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.338,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "8022d98f",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "pieces of split Russian words",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Broad flag (1.1%). Card: ' про' x6, 'ш' x4, ' след' x3, 'лежа' in Russian bureaucratic prose. Probe: 'надлежащие' 0.923, 'о прохождении' 0.832, 'сегодняшним' 0.813, 'следующее' 0.715, 'профиль' 0.674; short simple Russian 'Мы гуляли в парке' 0.235, 'кошек' 0.168; English translation 0.006, German 0.002. Near misses are translations, since plain Russian leaks weakly.",
+ "selection": "random draw"
+}
