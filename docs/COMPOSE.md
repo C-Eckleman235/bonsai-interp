@@ -293,3 +293,45 @@ little (10). Every method that conditions on the read token or the one or two be
 picks up again past layer 17. Whatever the mid layers compute is not visible in the local text window at this
 resolution.
 
+## Round 5 (compose@5): far context
+
+The same cover, with conditions from the context before the read token (`bonsai_interp/compose/conds3.py`, 386
+conditions):
+- **`win8:C`:** C held at one of the 8 tokens before;
+- **`dense32:C`:** C held unusually often in the 32 tokens before, at or above the 90th-percentile count.
+
+C is any of compose@4's read-token and format conditions. A diagnostic on the event sample motivated it. At layers
+14–16 the conditions that best covered poles were of this kind (a pronoun in the last 8 tokens, past tense in the last
+32), though none reached the precision floor on its own.
+
+| | |
+|---|---|
+| Protocol | 538f7506 |
+| Tests pre-registered | d64b1c3e |
+
+Selection gave 1,050 hypotheses. 580 item sets were untestable: the same token rarely appears with the context both on
+and off. That left 407 tests.
+
+- **Held:** 22 of 407 (5%), against **0 of 405** placebo tests.
+- **By family:** near context (`win8`) 12, dense context (`dense32`) 10.
+- **By depth:** L0–11 14, L12–17 2, L18–35 6.
+- **Examples:**
+  - "..." within 8 tokens of a URL (L11, L13);
+  - `def` right after a decorator (L8, L10);
+  - `else`/`elif` within 8 tokens of a `return` (L7);
+  - closing brackets in a passage dense with line starts (L0);
+  - `except` among dense line starts (L19).
+
+### Three negative results (selection split diagnostics, 2026-10-28)
+
+1. **Two conditions together, any token.** Pairs of library conditions with no token set never reached the precision
+   floor, at any depth (0 of about 2,000 sampled poles).
+2. **Semantic classes.** WordNet supersenses at each word's first sense (noun.person, verb.motion, …) also never
+   reached it (0 of about 4,000). A supersense occurs at 0.5–2% of positions, while a typical mid-layer pole is strong
+   at about 0.01%. For a precision of 0.1, the condition would have to be about that rare.
+3. **Far context:** as above, 2 holds in L12–17.
+
+So a mid-layer pole is sparser than any class this library can name: grammatical, format, contextual or semantic.
+Where the rounds succeed, a token set supplies the precision. In layers 12–17 the strong activations spread over too
+many tokens for that.
+
