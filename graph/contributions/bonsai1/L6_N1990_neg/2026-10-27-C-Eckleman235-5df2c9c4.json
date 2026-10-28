@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-5df2c9c4",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N1990-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T02:05:01+00:00",
+ "recipe": {
+  "toolchain_commit": "66608162",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L6_N1990_neg/2026-10-27-C-Eckleman235-5df2c9c4.tests.json"
+ },
+ "label": "Inside or just after a job-title or role phrase naming a person (professor, nurse practitioner, deputy director, designer), at the point where the person's name is expected to follow",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L6_N1990_neg/2026-10-27-C-Eckleman235-5df2c9c4.tests.json",
+   "prereg_commit": "66608162",
+   "author": "C-Eckleman235",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.51,
+     "peak": " practitioner"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.115,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.459,
+     "peak": " director"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.049,
+     "peak": " flew"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.102,
+     "peak": " was"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.056,
+     "peak": " financial"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.038,
+     "peak": " after"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.107,
+     "peak": " at"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.058,
+     "peak": "ocked"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.016,
+     "peak": " new"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.119,
+     "peak": " outside"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.029,
+     "peak": "Our"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.024,
+     "peak": "Among"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.012,
+     "peak": " merger"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.034,
+     "peak": "-f"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.022,
+     "peak": " is"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.859,
+    "median_fire": 0.104,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "66608162",
+  "minutes": 23,
+  "batch_size": 1
+ },
+ "short": "job-title phrase before a name",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, census arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples + concept-census evidence (which concepts and domains selected the pole)); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Strong - activations fall on tokens inside occupational/role phrases ('nurse practitioner', 'associate professor', 'deputy director') and on 'designed/developed' agent phrases; the + pole fires on the first name that follows a title, and the census shows professions trigger it, so I read it as a title-then-name expectation. The strong examples are a mixed multilingual bag, so coverage is probably partial.",
+ "selection": "concept search: 10x census (professions\r)"
+}
