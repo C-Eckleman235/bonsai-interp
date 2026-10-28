@@ -1,0 +1,157 @@
+{
+ "id": "2026-10-28-C-Eckleman235-7c983037",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N1637+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T16:59:16+00:00",
+ "recipe": {
+  "toolchain_commit": "d4c59bf4",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L11_N1637_pos/2026-10-28-C-Eckleman235-7c983037.tests.json"
+ },
+ "label": "the name Perth (either Perth, Western Australia or Perth, Scotland) and Western Australia (the Pilbara, Fremantle); Sydney, Melbourne, Adelaide and Brisbane stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L11_N1637_pos/2026-10-28-C-Eckleman235-7c983037.tests.json",
+   "prereg_commit": "d4c59bf4",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.376,
+     "peak": " Perth"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.592,
+     "peak": "bara"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.745,
+     "peak": "ant"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.528,
+     "peak": " Perth"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.711,
+     "peak": " Australia"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.77,
+     "peak": " Perth"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.715,
+     "peak": "bara"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.688,
+     "peak": " Australia"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.002,
+     "peak": "ights"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.025,
+     "peak": "ina"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.034,
+     "peak": "art"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.016,
+     "peak": "irling"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.001,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.005,
+     "peak": "She"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.003,
+     "peak": " one"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.01,
+     "peak": " desert"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.7,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "bands",
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "d4c59bf4",
+  "minutes": 5,
+  "batch_size": 15,
+  "dtype": "float16"
+ },
+ "short": "Perth and Western Australia",
+ "unit_kind": "contextual",
+ "confidence": 0.6,
+ "notes": "Feeder of bonsai1/L14/N11283-, found by a batched edge measurement (attribution candidates + census weight links, single-unit zero ablation on the anchor's top 8 corpus sites, 8 same-layer placebos): zeroing this neuron removes 0.28 of the anchor's peak on average (placebo max < 0.01); this pole is the one active at those sites. Explored with the card, all-pole band samples and one probe round of 8 sentences (none reused here).",
+ "roles": [
+  "feeds bonsai1/L14/N11283-"
+ ],
+ "selection": "step-out from bonsai1/L14/N11283- (10x edges pipeline, batch 2)"
+}

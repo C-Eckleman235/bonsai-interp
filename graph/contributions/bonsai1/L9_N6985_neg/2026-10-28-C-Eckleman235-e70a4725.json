@@ -1,0 +1,157 @@
+{
+ "id": "2026-10-28-C-Eckleman235-e70a4725",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N6985-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T16:59:49+00:00",
+ "recipe": {
+  "toolchain_commit": "d4c59bf4",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L9_N6985_neg/2026-10-28-C-Eckleman235-e70a4725.tests.json"
+ },
+ "label": "Saudi Arabia and its cities (Saudi, Riyadh, Jeddah, Dammam, Al Khobar), also in Arabic (السعودية); Egypt, Iraq, Jordan and Morocco stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L9_N6985_neg/2026-10-28-C-Eckleman235-e70a4725.tests.json",
+   "prereg_commit": "d4c59bf4",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.589,
+     "peak": " Saudi"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.571,
+     "peak": " Riyadh"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.457,
+     "peak": "ah"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.828,
+     "peak": "obar"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.259,
+     "peak": " الرياض"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.623,
+     "peak": "Saudi"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.491,
+     "peak": " Riyadh"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.422,
+     "peak": "ah"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.076,
+     "peak": " visa"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.181,
+     "peak": "man"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.001,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.028,
+     "peak": " workers"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.081,
+     "peak": "د"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.069,
+     "peak": " desert"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.001,
+     "peak": "He"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.007,
+     "peak": " Ramadan"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.531,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "bands",
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "d4c59bf4",
+  "minutes": 6,
+  "batch_size": 15,
+  "dtype": "float16"
+ },
+ "short": "Saudi Arabia and its cities",
+ "unit_kind": "contextual",
+ "confidence": 0.6,
+ "notes": "Feeder of bonsai1/L11/N9365-, found by a batched edge measurement (attribution candidates + census weight links, single-unit zero ablation on the anchor's top 8 corpus sites, 8 same-layer placebos): zeroing this neuron removes 0.32 of the anchor's peak on average (placebo max < 0.01); this pole is the one active at those sites. Explored with the card, all-pole band samples and one probe round of 8 sentences (none reused here).",
+ "roles": [
+  "feeds bonsai1/L11/N9365-"
+ ],
+ "selection": "step-out from bonsai1/L11/N9365- (10x edges pipeline, batch 2)"
+}
