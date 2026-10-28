@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-52795cfa",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N8742-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T12:21:52+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N8742",
+   "pole": "-",
+   "label": "' (' opening a nested S-expression in Lisp code: the paren that starts a Lisp form, not parentheses in prose or in C-style function calls",
+   "fire": [
+    "The textbook example reads:\n(defun double (n) (* 2 n))",
+    "In Emacs you can add this line:\n(setq inhibit-startup-screen t)\n(global-set-key (kbd \"C-c c\") 'compile)",
+    "CL-USER> (mapcar #'car (list (list 1 2) (list 3 4)))",
+    "Here is the Scheme version:\n(define (fact n) (if (= n 0) 1 (* n (fact (- n 1)))))",
+    "Type this at the prompt:\n(let ((x 5) (y 7)) (+ x y))",
+    "The macro expands to:\n(progn (print \"start\") (run-job) (print \"done\"))",
+    "In Clojure we write:\n(defn greet [name] (str \"Hello, \" name))",
+    "The config file ends with:\n(provide 'my-settings)\n(require 'org)"
+   ],
+   "quiet": [
+    "The textbook example (see chapter two) doubles a number n.",
+    "In Emacs you can hide the startup screen (it is shown by default).",
+    "In Python you call map(len, items) to get the lengths.",
+    "Here is the C version:\nint fact(int n) { return n == 0 ? 1 : n * fact(n - 1); }",
+    "Type this at the prompt:\nx = 5; y = 7; print(x + y)",
+    "The function prints a message (start), runs the job, and prints done.",
+    "In JavaScript we write:\nfunction greet(name) { return \"Hello, \" + name; }",
+    "The config file (about forty lines) ends with a single import."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-1.0 on ' (' inside Lisp forms; prose parentheses and Python/C calls below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "' (' opening a Lisp form",
+ "unit_kind": "context",
+ "confidence": 0.7,
+ "notes": "Card: ' (' x20 in Lisp REPL lines, positional flag. Probe: Lisp REPL '(eval (test nil))' 0.930, '(defun square (x) (* x x))' 0.948; prose '(see below)' 0.022, 'print(value)' 0.015, docstring 'req_name (str)' 0.021."
+}
