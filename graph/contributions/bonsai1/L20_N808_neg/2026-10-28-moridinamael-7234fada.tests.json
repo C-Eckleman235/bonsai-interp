@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-28-moridinamael-7234fada",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N808-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T14:50:41+00:00",
+ "selection": "step-in from bonsai1/L18/N10678+",
+ "roles": ["reads bonsai1/L18/N10678+"],
+ "short": "' =' of Python assignment",
+ "confidence": "low",
+ "notes": "Cold read (labelled from own top examples and probes only). Probes showed indentation whitespace in Python bodies and the Chinese verb \u89c1 also fire, so the assignment claim is probably partial.",
+ "neighbours": [
+  {
+   "unit": "L20/N808",
+   "pole": "-",
+   "label": "the ' =' of a variable assignment in indented Python code",
+   "fire": [
+    "def area(r):\n    result = 3.14159 * r * r\n    return result",
+    "for item in items:\n    total = total + item.price",
+    "if user is not None:\n    name = user.get_name()",
+    "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y",
+    "while running:\n    line = f.readline()\n    if not line:\n        break",
+    "try:\n    data = json.load(fh)\nexcept ValueError:\n    data = {}",
+    "with open(path) as f:\n    contents = f.read()",
+    "def main():\n    args = parser.parse_args()\n    run(args)"
+   ],
+   "quiet": [
+    "\u73b0\u573a\u89c1\u9648\u51a0\u5e0c\u4e0d\u65ad\u5411\u88c5\u4fee\u5de5\u4eba\u6307\u70b9",
+    "def area(r):\n    return 3.14159 * r * r",
+    "for item in items:\n    print(item.price)",
+    "if user is not None:\n    greet(user.get_name())",
+    "class Point:\n    def __init__(self, x, y):\n        super().__init__()",
+    "while running:\n    if f.readline() == '':\n        break",
+    "try:\n    json.load(fh)\nexcept ValueError:\n    pass",
+    "with open(path) as f:\n    print(f.read())"
+   ]
+  }
+ ],
+ "predictions": "Unsure: 8/8 fire likely, but quiet code items may leak via indentation; the Chinese leak item should fire",
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "step-down",
+   "bank-solo"
+  ]
+ }
+}

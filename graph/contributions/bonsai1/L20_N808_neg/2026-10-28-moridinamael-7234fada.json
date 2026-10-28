@@ -1,0 +1,169 @@
+{
+ "id": "2026-10-28-moridinamael-7234fada",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N808-",
+ "contributor": "moridinamael",
+ "created": "2026-10-28T14:51:11+00:00",
+ "recipe": {
+  "toolchain_commit": "b96aa164",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L20_N808_neg/2026-10-28-moridinamael-7234fada.tests.json"
+ },
+ "label": "the ' =' of a variable assignment in indented Python code",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L20_N808_neg/2026-10-28-moridinamael-7234fada.tests.json",
+   "prereg_commit": "b96aa164",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 6,
+   "n_false_pos": 4,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.275,
+     "peak": " ="
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.529,
+     "peak": " ="
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.319,
+     "peak": " ="
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.268,
+     "peak": "self"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.54,
+     "peak": " ="
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.51,
+     "peak": " ="
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.604,
+     "peak": " ="
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.362,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.391,
+     "peak": "见"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.179,
+     "peak": "):\n"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.304,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.307,
+     "peak": ".get"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.268,
+     "peak": "self"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.296,
+     "peak": " =="
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.265,
+     "peak": ".load"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.354,
+     "peak": " print"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 1,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.789,
+    "median_fire": 0.436,
+    "near_misses_at_0.3": 4
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "inverse-gmoo",
+   "look",
+   "probe",
+   "quick-test",
+   "step-down"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "b96aa164",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "short": "' =' of Python assignment",
+ "confidence": "low",
+ "notes": "Cold read (labelled from own top examples and probes only). Probes showed indentation whitespace in Python bodies and the Chinese verb 见 also fire, so the assignment claim is probably partial.",
+ "roles": [
+  "reads bonsai1/L18/N10678+"
+ ],
+ "selection": "step-in from bonsai1/L18/N10678+",
+ "edges": [
+  {
+   "from": "bonsai1/L18/N10678+",
+   "to": "bonsai1/L20/N808-",
+   "kind": "feeds",
+   "weight": 0.07,
+   "method": "single-unit zero ablation, downstream (play step --down)"
+  }
+ ]
+}
