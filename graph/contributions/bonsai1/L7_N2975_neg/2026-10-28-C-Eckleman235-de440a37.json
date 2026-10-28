@@ -1,0 +1,156 @@
+{
+ "id": "2026-10-28-C-Eckleman235-de440a37",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N2975-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T16:19:07+00:00",
+ "recipe": {
+  "toolchain_commit": "92ef0db3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L7_N2975_neg/2026-10-28-C-Eckleman235-de440a37.tests.json"
+ },
+ "label": "the twentieth century as an ordinal: the 'th' of '20th' before 'century' and 'century' after 'twentieth'; other centuries (17th, 18th, 19th, 21st) and 20th as a rank or anniversary stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L7_N2975_neg/2026-10-28-C-Eckleman235-de440a37.tests.json",
+   "prereg_commit": "92ef0db3",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.732,
+     "peak": "th"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.371,
+     "peak": "-century"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.679,
+     "peak": "th"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.621,
+     "peak": "th"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.677,
+     "peak": " twentieth"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.318,
+     "peak": " twentieth"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.757,
+     "peak": "th"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.616,
+     "peak": "th"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.002,
+     "peak": " did"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.008,
+     "peak": "th"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.002,
+     "peak": " it"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.15,
+     "peak": "st"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.009,
+     "peak": " century"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.0,
+     "peak": " had"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.003,
+     "peak": " one"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.029,
+     "peak": " century"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.649,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "bands",
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "92ef0db3",
+  "minutes": 4,
+  "batch_size": 8
+ },
+ "short": "'20th' / twentieth century",
+ "unit_kind": "contextual",
+ "confidence": 0.6,
+ "notes": "Feeder of bonsai1/L8/N3796+, found by a batched edge measurement (attribution candidates + census weight links, single-unit zero ablation on the anchor's top 8 corpus sites, 8 same-layer placebos): zeroing this neuron removes 0.82 of the anchor's peak on average (placebo max < 0.01); this pole is the one active at those sites. Explored with the card, all-pole band samples and one probe round of 8 sentences (none reused here).",
+ "roles": [
+  "feeds bonsai1/L8/N3796+"
+ ],
+ "selection": "step-out from bonsai1/L8/N3796+ (10x edges pipeline, batch trial)"
+}
