@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-27-moridinamael-e583f1dc",
+ "kind": "qc",
+ "neuron": "bonsai1/L0/N11771+",
+ "contributor": "moridinamael",
+ "created": "2026-10-28T03:52:23+00:00",
+ "recipe": {
+  "toolchain_commit": "f2c39801",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N11771_pos/2026-10-27-moridinamael-e583f1dc.tests.json"
+ },
+ "label": "a plural name (-s ending) inside multi-line code, e.g. self.errors, stock_items, timedelta(days=1); the same plural in plain prose, or the singular name in code, stays quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N11771_pos/2026-10-27-moridinamael-e583f1dc.tests.json",
+   "prereg_commit": "f2c39801",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.624,
+     "peak": ".errors"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.471,
+     "peak": "_items"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.545,
+     "peak": "(days"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.054,
+     "peak": "()\n"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.17,
+     "peak": "results"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.101,
+     "peak": "(node"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.005,
+     "peak": "::"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.484,
+     "peak": ".items"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.033,
+     "peak": ".error"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.082,
+     "peak": " total"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.021,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.018,
+     "peak": ")."
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.042,
+     "peak": " fetched"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.084,
+     "peak": "(node"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.045,
+     "peak": " Token"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.058,
+     "peak": " value"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.828,
+    "median_fire": 0.321,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "bank-solo",
+   "card",
+   "inverse-gmoo",
+   "look",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "f2c39801",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "plural collection or time-unit identifier tokens in Python code ('_items', '.items', 'messages', '(days', '(minutes', '.errors')"
+ }
+}

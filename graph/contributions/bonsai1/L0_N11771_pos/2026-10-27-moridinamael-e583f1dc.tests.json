@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-27-moridinamael-e583f1dc",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L0/N11771+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T03:52:10+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "plural collection or time-unit identifier tokens in Python code ('_items', '.items', 'messages', '(days', '(minutes', '.errors')"
+ },
+ "neighbours": [
+  {
+   "unit": "L0/N11771",
+   "pole": "+",
+   "label": "a plural name (-s ending) inside multi-line code, e.g. self.errors, stock_items, timedelta(days=1); the same plural in plain prose, or the singular name in code, stays quiet",
+   "fire": [
+    "def validate(self):\n    self.errors = []\n    return self.errors",
+    "for item in stock_items:\n    total += item.price\nprint(total)",
+    "start = datetime.now()\nend = start + timedelta(days=1)\nprint(end)",
+    "users = db.query(User).all()\nfor u in users:\n    print(u.name)",
+    "const results = await fetchAll();\nresults.forEach(r => {\n  console.log(r.id);\n});",
+    "if len(self.children) > 0:\n    node = self.children[0]\n    visit(node)",
+    "let mut tokens = Vec::new();\ntokens.push(tok);\nreturn tokens;",
+    "config = load()\nfor key, val in config.settings.items():\n    apply(key, val)"
+   ],
+   "quiet": [
+    "def validate(self):\n    self.error = None\n    return self.error",
+    "The warehouse report listed all the stock items and their total prices for the month.",
+    "start = datetime.now()\nend = start + timedelta(hour=1)\nprint(end)",
+    "user = db.query(User).first()\nif user:\n    print(user.name)",
+    "We fetched all the results from the server and logged each one to the console.",
+    "if self.child is not None:\n    node = self.child\n    visit(node)",
+    "let mut token = Token::new();\ntoken.kind = Kind::Ident;\nreturn token;",
+    "The application loads its settings at startup and applies each value in turn."
+   ]
+  }
+ ],
+ "predictions": "Expect fire items to be uneven (some plurals like users/results weak); prose and singular near misses quiet. Guess 5/8 fire at >=0.2, 0-1 near misses over 0.3.",
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "bank-solo"
+  ]
+ }
+}
