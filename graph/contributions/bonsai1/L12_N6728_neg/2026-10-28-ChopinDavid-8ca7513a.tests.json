@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-8ca7513a",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N6728-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T08:21:37+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N6728",
+   "pole": "-",
+   "label": "lines, wires or edges that join pairs of points or may cross (non-crossing chords, wire pairs, short circuits)",
+   "fire": [
+    "The puzzle asks you to draw non-crossing paths linking each pair of dots.",
+    "In a planar drawing, each edge joins two vertices and no two edges cross.",
+    "Store every link as a tuple (wire_a, wire_b) so the circuit can be rebuilt.",
+    "Count the ways to join 2n points on a circle with non-crossing chords.",
+    "If the bare wires touch each other, a short circuit trips the breaker.",
+    "The netlist records which wire connects to which pin on the board.",
+    "A perfect matching pairs each left node with one right node, without crossings.",
+    "On the board the two traces must not cross, or the signals will short together."
+   ],
+   "quiet": [
+    "The puzzle asks you to color each dot either red or blue.",
+    "In the table, each vertex has a label printed next to its degree.",
+    "Store every reading as a float so the sensor data can be plotted.",
+    "Count the ways to choose n points on a circle at random.",
+    "If the battery runs low, a warning light comes on in the car.",
+    "The datasheet lists the voltage rating of each pin on the board.",
+    "A sorting step orders each left node by its numeric weight.",
+    "On the board the two resistors are rated at ten ohms each."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.7 on crossing/joining words in technical text; same-domain sentences without joining below 0.1; weak, single-outlier pole",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "pairwise joining / crossing (guess)",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card: one outlier 'non-cross|ing' 18.88, the rest about 6.5 on ' connected', '_partition', ' connection', ' short' (circuit), ' pairing'. Probe: 'non-crossing way' 0.777 (peak 'ing'), '(wire_i, wire_j)' 0.491 (peak ' wire'), 'short circuit' 0.281, 'connected with pin 8' 0.102, 'pairing of players' 0.042, floor 0.017."
+}
