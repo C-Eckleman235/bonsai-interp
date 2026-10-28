@@ -1,0 +1,49 @@
+{
+ "contribution": "2026-10-28-moridinamael-d900a516",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L0/N3928-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T15:35:40+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "the letters 'est' ending a short word-piece of the form consonant(s) + 'est' (fest, vest, nest, zest, jest, pest, chest), in any language or sense, including when such a piece starts a longer word (Oktoberfest, vestige, Nestlé); NOT a/i/o + 'st' (fast, mist, cost), not 'est' inside a longer single token (street, estate, Budapest), and weak on the very common words test, rest, best, west"
+ },
+ "neighbours": [
+  {
+   "unit": "L0/N3928",
+   "pole": "-",
+   "label": "the short word-pieces fest, vest and nest (strongest), then zest, jest, dest, chest, pest and a bare 'est'; weak on common -est words (test, rest, best, west, guest) and on superlatives (tallest, oldest)",
+   "fire": [
+    "The town holds a beer fest every October in the old market square.",
+    "He zipped up his wool vest before heading out into the cold.",
+    "A pair of robins built a nest in the gutter above our porch.",
+    "Grate a little lemon zest over the cake just before serving.",
+    "She said it in jest, but he took the remark seriously.",
+    "The pirates buried a wooden chest full of coins on the island.",
+    "Aphids are a common garden pest that attack young roses.",
+    "Our film fest drew more than two thousand visitors this year."
+   ],
+   "quiet": [
+    "The town holds a beer party every October in the old market square.",
+    "He zipped up his wool coat before heading out into the cold.",
+    "A pair of robins built a home in the gutter above our porch.",
+    "Grate a little lemon peel over the cake just before serving.",
+    "She said it as a joke, but he took the remark seriously.",
+    "The pirates buried a wooden box full of coins on the island.",
+    "We ran a soil test to see why the young roses were failing.",
+    "Our film night drew the best crowd we have had this year."
+   ]
+  }
+ ],
+ "predictions": "expect 7/8 fire (jest and pest/chest weaker, ~0.4) and 0-1 near-miss leaks (best ~0.2)",
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo"
+  ]
+ }
+}
