@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-27-C-Eckleman235-3ee02bb4",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N9787-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T02:07:47+00:00",
+ "recipe": {
+  "toolchain_commit": "639497d3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N9787_neg/2026-10-27-C-Eckleman235-3ee02bb4.tests.json"
+ },
+ "label": "Word-final syllable piece 'la' (ola/ela/ila/ula) completing a name or word split by the tokenizer, e.g. Ang|ola, hyperb|ola, Renss|ela|er, Nic|ola; weaker on the standalone article ' la' and Arabic 'لا'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N9787_neg/2026-10-27-C-Eckleman235-3ee02bb4.tests.json",
+   "prereg_commit": "639497d3",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.114,
+     "peak": " Angola"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.567,
+     "peak": "ola"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.357,
+     "peak": " Nicola"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.91,
+     "peak": "ela"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.639,
+     "peak": "ila"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.83,
+     "peak": "ola"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.852,
+     "peak": "ela"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.356,
+     "peak": " la"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.037,
+     "peak": " delegation"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.01,
+     "peak": " lecture"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.108,
+     "peak": " Nicholas"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.05,
+     "peak": " Lund"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.067,
+     "peak": " Carlos"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.071,
+     "peak": "ello"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.078,
+     "peak": " town"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.01,
+     "peak": " border"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.603,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "639497d3",
+  "minutes": 23,
+  "batch_size": 13
+ },
+ "short": "split-word -ola/-ela/-ila piece",
+ "confidence": "medium",
+ "notes": "10x pilot (concept-maps/tenx, random arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Top examples are almost all the tokenizer piece 'ola/ela/ila/ula' ending a proper name or word (Angola, hyperbola, Nicola, Rensselaer); band samples add weaker firing on the Spanish/French article ' la' and Arabic 'لا'. Label is lexical and covers the strong cases but the weaker article firings are a separate, lower-activation mode.",
+ "selection": "random draw",
+ "trigger": {
+  "words": [
+   "ola",
+   "ela",
+   "ila",
+   "ula",
+   "la"
+  ]
+ }
+}

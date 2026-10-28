@@ -1,0 +1,46 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-f09465c1",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L16/N5948-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:44:18+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L16/N5948",
+   "pole": "-",
+   "label": "The section-header or field-name word that opens a documentation field, right where its content is about to start: the 'Returns' heading or ':return:' / ':type' field in a code docstring, and medical-abstract or article headings such as 'INTERVENTIONS', 'Signs & Symptoms' and 'Exams and Tests'.",
+   "fire": [
+    "def load_config(path):\n    \"\"\"\n    Read the configuration file from disk.\n\n    Returns\n    -------\n    cfg : dict\n        The parsed settings.\n    \"\"\"\n    return {}",
+    "def area(width, height):\n    \"\"\"Compute the area of a rectangle.\n\n    :param width: the horizontal size\n    :type width: float\n    :return: the area as a number\n    \"\"\"\n    return width * height",
+    "CASE PRESENTATION: A 54-year-old man arrived with chest pain and sweating. INTERVENTIONS: He was given aspirin and taken to the catheterization lab for a stent. OUTCOMES: He recovered fully.",
+    "About the condition\nPeople with this infection often have a mild cough.\nSigns & Symptoms\nMost patients notice fever, fatigue, and aching muscles within a few days.",
+    "class Cache:\n    def get(self, key):\n        \"\"\"\n        Look up a key in the store.\n\n        :param key: the lookup name\n        :rtype: object or None\n        \"\"\"\n        return self.data.get(key)",
+    "If you have a rash that does not go away, see your doctor.\nExams and Tests\nYour provider will look at your skin and may take a small sample for a lab.",
+    "- Pros: Light enough to carry all day and easy to clean.\n- Cons: The battery is weak and the strap feels cheap.",
+    "def parse(line):\n    \"\"\"\n    Split a log line into fields.\n\n    Args:\n        line: one raw line from the file\n\n    Returns:\n        A list of strings.\n    \"\"\"\n    return line.split()"
+   ],
+   "quiet": [
+    "def load_config(path):\n    \"\"\"\n    Read the configuration file from disk and give back a dict of the parsed settings.\n    \"\"\"\n    with open(path) as f:\n        return json.load(f)",
+    "def area(width, height):\n    # multiply the two sides together\n    result = width * height\n    print('computed the area of the rectangle')\n    return result",
+    "A 54-year-old man arrived with chest pain and sweating. He was given aspirin and taken to the catheterization lab for a stent, and he recovered fully within a week.",
+    "People with this infection often have a mild cough, and most patients notice fever, fatigue, and aching muscles within a few days of getting sick.",
+    "class Cache:\n    def get(self, key):\n        # check whether we already stored this item\n        if key in self.data:\n            return self.data[key]\n        return None",
+    "If you have a rash that does not go away, see your doctor, who will look at your skin and may take a small sample to send to a lab.",
+    "The reviewer liked the bag because it was light enough to carry all day and easy to clean, though the battery was weak and the strap felt cheap.",
+    "When the train returns to the station each evening, the conductor checks every car and then writes a short note about the day's passengers."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "card",
+   "bands"
+  ]
+ },
+ "short": "docstring/abstract section-header word",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, random arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Strong activations are a mix of docstring section markers (Returns, :return:, :type) and medical/structured-article headings (INTERVENTIONS, Symptoms, Tests), all at the token that names a field just before its content; the strongest are numpy-style 'Returns' headings. Only about 0.15% of tokens are over a tenth of max, and no single token explains most of the pole."
+}

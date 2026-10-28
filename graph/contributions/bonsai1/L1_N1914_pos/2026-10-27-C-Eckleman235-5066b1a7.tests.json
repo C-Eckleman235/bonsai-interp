@@ -1,0 +1,54 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-5066b1a7",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N1914+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:44:18+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N1914",
+   "pole": "+",
+   "label": "Dense, mixed early-layer pole: fires on the token ' helpful' after a copula/modal (is/be/not helpful), and more weakly on ' thus', ' health' and Chinese '深入'; no single meaning covers the strong activations",
+   "fire": [
+    "When a toddler melts down in the store, it may be helpful to crouch down and speak quietly.",
+    "Reading the manual twice was not helpful, since half the pages described a different model.",
+    "Our budget is tight and the deadline is near, and thus we must cut the optional features.",
+    "The clinic has expanded its public health programs to cover three more counties this year.",
+    "I thought it would be helpful to write the steps on a card and tape it to the fridge.",
+    "The council ignored the warnings, and thus the bridge stayed open through the whole storm season.",
+    "Given the serious environmental and health risks, the town voted to close the old plant.",
+    "Is the extra detail helpful, or does it just clutter the report for readers?"
+   ],
+   "quiet": [
+    "When a toddler melts down in the store, it may be useful to crouch down and speak quietly.",
+    "Reading the manual twice did not clear things up, since half the pages described a different model.",
+    "Our budget is tight and the deadline is near, so we must cut the optional features.",
+    "The clinic has expanded its nursing programs to cover three more counties this year.",
+    "I figured it would be easier to write the steps on a card and tape it to the fridge.",
+    "The council ignored the warnings, therefore the bridge stayed open through the whole storm season.",
+    "Given the serious environmental and safety risks, the town voted to close the old plant.",
+    "Does the extra detail clarify anything, or does it just clutter the report for readers?"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "card",
+   "bands"
+  ]
+ },
+ "short": "dense; ' helpful', ' thus', ' health'",
+ "unit_kind": "dense / positional",
+ "confidence": "low",
+ "trigger": {
+  "words": [
+   " helpful",
+   " thus",
+   " health"
+  ]
+ },
+ "notes": "10x pilot (concept-maps/tenx, random arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Pole is dense (14% of tokens above 0.1 of max) and the top examples are ' helpful' after copulas, but the band >=0.5 samples are a mix (' thus', ' health', 'healthcare', Japanese '心'), so the label is a short word list that will likely only partly cover the pole. Near misses use synonyms (useful, therefore, safety) as hard edges."
+}

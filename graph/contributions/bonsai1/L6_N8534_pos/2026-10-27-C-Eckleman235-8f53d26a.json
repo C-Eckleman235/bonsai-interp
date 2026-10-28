@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-8f53d26a",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N8534+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T02:07:58+00:00",
+ "recipe": {
+  "toolchain_commit": "639497d3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L6_N8534_pos/2026-10-27-C-Eckleman235-8f53d26a.tests.json"
+ },
+ "label": "In code, an identifier part naming one member of a paired/ordered family (min/max, start/end, old/new, lower/upper, major/minor, x/y/z), inside names built on a sibling pattern seen on nearby lines",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L6_N8534_pos/2026-10-27-C-Eckleman235-8f53d26a.tests.json",
+   "prereg_commit": "639497d3",
+   "author": "C-Eckleman235",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.459,
+     "peak": ".max"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.174,
+     "peak": " upper"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.532,
+     "peak": "(old"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.437,
+     "peak": " start"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.857,
+     "peak": "major"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.124,
+     "peak": ".x"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.242,
+     "peak": " max"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.493,
+     "peak": " first"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.069,
+     "peak": ".name"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.011,
+     "peak": "\n"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.041,
+     "peak": "(filename"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.027,
+     "peak": " minimum"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.051,
+     "peak": "host"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.016,
+     "peak": " from"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.03,
+     "peak": ".delay"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.043,
+     "peak": "0"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.448,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "639497d3",
+  "minutes": 24,
+  "batch_size": 13
+ },
+ "short": "code paired-name part (min, start, old)",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, random arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Top examples are code identifier fragments (min, start, old, .major, lower, x) that are one member of a sibling pair/triple, and the - pole fires on the z/w end of x,y,z; band samples show weak spread across numbers and variable parts in code and some prose, so coverage is likely poor. Label is a guess at a distinction (sibling-pair names) rather than a single token.",
+ "selection": "random draw"
+}

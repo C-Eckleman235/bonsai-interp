@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-837308b5",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N7564+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T02:07:53+00:00",
+ "recipe": {
+  "toolchain_commit": "639497d3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L26_N7564_pos/2026-10-27-C-Eckleman235-837308b5.tests.json"
+ },
+ "label": "Function word (to/of/the/non-) right after a moral or legal permit/forbid/justify predicate, where the next word is expected to be killing or violence",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L26_N7564_pos/2026-10-27-C-Eckleman235-837308b5.tests.json",
+   "prereg_commit": "639497d3",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 1.396,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.374,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.71,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.599,
+     "peak": " justify"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.448,
+     "peak": " non"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.482,
+     "peak": "izing"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.28,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.992,
+     "peak": " not"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.236,
+     "peak": " acceptable"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.061,
+     "peak": " forbidden"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.043,
+     "peak": " sensible"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.255,
+     "peak": " prohibits"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.002,
+     "peak": " growth"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.075,
+     "peak": " really"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.173,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.11,
+     "peak": " to"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.54,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "639497d3",
+  "minutes": 24,
+  "batch_size": 13
+ },
+ "short": "slot before 'kill/violence' after forbid/allow",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, random arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Strong activations sit on function words/prefixes (to, of, the, non-) in ethics/law/religion passages about forbidding or justifying killing, violence, lying; output promotes ' kill', ' killing', ' violence', so it looks like a prediction slot for harm words. Weak coverage by any single token, so label is a mix and the fire/quiet contrast tests the anticipation of killing/violence versus other prohibited or permitted acts.",
+ "selection": "random draw"
+}

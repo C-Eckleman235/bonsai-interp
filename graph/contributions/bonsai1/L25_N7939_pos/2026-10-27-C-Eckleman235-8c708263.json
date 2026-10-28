@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-8c708263",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N7939+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T02:07:52+00:00",
+ "recipe": {
+  "toolchain_commit": "639497d3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N7939_pos/2026-10-27-C-Eckleman235-8c708263.tests.json"
+ },
+ "label": "Mid-token fragment inside a Spanish/Basque-style surname (e.g. Ib|arr|uri, Rob|les, Az|kargorta) in the middle of a person's name, after a first name, where the next piece completes the surname",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N7939_pos/2026-10-27-C-Eckleman235-8c708263.tests.json",
+   "prereg_commit": "639497d3",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.833,
+     "peak": "rr"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.914,
+     "peak": " Az"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.664,
+     "peak": " Ar"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.624,
+     "peak": " Rob"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.503,
+     "peak": " Mad"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.357,
+     "peak": "al"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.555,
+     "peak": "ar"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.792,
+     "peak": "u"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.149,
+     "peak": " Jose"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.088,
+     "peak": "ued"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.099,
+     "peak": " ag"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.156,
+     "peak": " Francisco"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.136,
+     "peak": " Luis"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.099,
+     "peak": " ay"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.001,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.023,
+     "peak": " coleg"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.644,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "639497d3",
+  "minutes": 24,
+  "batch_size": 13
+ },
+ "short": "Surname fragments in Hispanic names",
+ "confidence": "medium",
+ "notes": "10x pilot (concept-maps/tenx, random arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Strong activations are all on mid-name sub-tokens of Spanish/Basque/Latin surnames (arr, Mon, Rob, Az) right after a first name, in lists of people or bylines; the negative pole is the same position with Al/Pal/Cal-type pieces. Near misses drop the surname but keep the first name, frame and language.",
+ "selection": "random draw"
+}

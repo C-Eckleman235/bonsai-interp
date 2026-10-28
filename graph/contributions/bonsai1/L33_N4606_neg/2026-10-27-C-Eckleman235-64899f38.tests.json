@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-64899f38",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N4606-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:44:18+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N4606",
+   "pole": "-",
+   "label": "Broad, weak pole on function words (a, an, are, the, it) where the next word is likely an importance/relevance word (important, central, essential, concerned, related, regarding); roughly the opposite of the + pole's 'different/change' predictor. Mixed and diffuse, not a single token.",
+   "fire": [
+    "When the budget is tight, having an emergency fund becomes an essential part of any household plan.",
+    "The committee reviewed the evidence and agreed that early screening plays a central role in reducing mortality.",
+    "Many of the villagers living along the river are directly concerned with the new flood regulations.",
+    "In most clinical trials, patient consent is a key requirement, and it is regarded as vital by regulators.",
+    "Teachers often say that reading aloud at home is an important habit for young children to build.",
+    "Among the many frequently asked questions, those about refund policies are of particular concern to buyers.",
+    "For a small bakery, location turns out to be a critical factor in whether customers keep coming back.",
+    "The report notes that water quality in the northern lakes remains a matter closely related to local farming."
+   ],
+   "quiet": [
+    "After the update, the software behaves in a slightly different way, with a completely new menu layout.",
+    "The new coach decided to alter the lineup and radically change how the team trains each week.",
+    "Identical twins raised apart often end up with strikingly different tastes in music and food.",
+    "My brother painted the kitchen yellow last weekend and then repainted the hallway blue on Sunday.",
+    "The old bridge crosses the river at a narrow point just north of the market town.",
+    "She packed three sweaters, a thermos of tea, and a worn paperback into her bag before the trip.",
+    "Prices at the two stores vary widely, and the final total may shift depending on the exchange rate.",
+    "He walked down the quiet street, whistling a tune and kicking a small stone ahead of him."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "card",
+   "bands"
+  ]
+ },
+ "short": "Predicts importance/relevance word next",
+ "unit_kind": "dense / positional",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, random arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Strong activations land on assorted function words (a, an, are, the) and a few content tokens; 2.3% of tokens reach 0.1 of max, and output tokens promote important/central/concerned/related, so I labelled it as a position predicting an importance/relevance word; expect it to be weak and diffuse."
+}
