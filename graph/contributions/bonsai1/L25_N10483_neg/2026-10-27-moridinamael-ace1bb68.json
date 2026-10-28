@@ -1,0 +1,160 @@
+{
+ "id": "2026-10-27-moridinamael-ace1bb68",
+ "kind": "qc",
+ "neuron": "bonsai1/L25/N10483-",
+ "contributor": "moridinamael",
+ "created": "2026-10-28T00:32:39+00:00",
+ "recipe": {
+  "toolchain_commit": "5757c018",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N10483_neg/2026-10-27-moridinamael-ace1bb68.tests.json"
+ },
+ "notes": "Failed refine (AUROC 0.797, median fire 0.29, 3/8 fire >= 0.30, 1 near miss >= 0.30). Direction holds: 7/8 near misses stayed <= 0.22, and science/research prose (physics, astronomy, biology, history of science, court text) all reach 0.3-0.76 in my pre-draw probes, so the earlier 'physical things only' label was too narrow. But fire items are weak and scatter over arbitrary tokens (why, helium, everything, ., debris, or), and a recipe near miss peaked on 'stir' (0.435). Single sentences are too short to show it: a clearly on-topic one-liner scored 0.04 alone. Loop-back: neighbours L9/N926+ and L27/N2326- failed (L27 is dense/weak), L7/N3945+ held; none sharpens this pole. Treat as a weak diffuse pole (9.5% of tokens at 0.1 of max, prediction-type): label as diffuse science-news prose, not a sharp concept.",
+ "label": "Ordinary mid-sentence words (to, with, for, more, the) inside running science and research explainer prose (physics, devices, astronomy, biology, what causes what); weaker for economics and history, low for fiction, chat, recipes, politics news, code and maths.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N10483_neg/2026-10-27-moridinamael-ace1bb68.tests.json",
+   "prereg_commit": "5757c018",
+   "author": "blind:claude-sonnet-5-5 (label-only)",
+   "n_fire": 3,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.361,
+     "peak": " why"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.258,
+     "peak": " helium"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.296,
+     "peak": " everything"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.385,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.196,
+     "peak": " debris"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.108,
+     "peak": " it"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.318,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.285,
+     "peak": " or"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.212,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.156,
+     "peak": " mix"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.112,
+     "peak": " stuck"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.047,
+     "peak": " committee"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.037,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.028,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.119,
+     "peak": " then"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.435,
+     "peak": " stir"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.797,
+    "median_fire": 0.29,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "blind-room",
+   "card",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "5757c018",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Ordinary words in impersonal explanatory prose about how physical things work (gases, electricity, machines, devices, planets): what causes what, e.g. 'the more you press it, the faster it goes'; weaker for biology or economics, near zero for code, maths proofs and stories about people."
+ }
+}
