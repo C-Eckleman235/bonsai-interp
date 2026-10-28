@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-28-ChopinDavid-263d1843",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N1793+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-28T05:27:24+00:00",
+ "recipe": {
+  "toolchain_commit": "dc8f7932",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N1793_pos/2026-10-28-ChopinDavid-263d1843.tests.json"
+ },
+ "label": "an 'f' that the tokenizer splits off as its own piece inside a word, mostly German compounds in -fahrt (Irr|f|ahrt, Rund|f|ahrt) and water|f|owl, as against compounds without a separate f piece",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N1793_pos/2026-10-28-ChopinDavid-263d1843.tests.json",
+   "prereg_commit": "dc8f7932",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.101,
+     "peak": "f"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.589,
+     "peak": "f"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.237,
+     "peak": "f"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.267,
+     "peak": "f"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.31,
+     "peak": "f"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.305,
+     "peak": "f"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.381,
+     "peak": "f"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.503,
+     "peak": "f"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.011,
+     "peak": " zur"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.042,
+     "peak": " lang"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.085,
+     "peak": "ier"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": " sehr"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.001,
+     "peak": "H"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.004,
+     "peak": " am"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.032,
+     "peak": " Kan"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.001,
+     "peak": "ologists"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.307,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc8f7932",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "split-off 'f' piece inside a word",
+ "unit_kind": "token",
+ "confidence": 0.5,
+ "notes": "Card: peaks on word-internal f pieces: Trittbret|tf|ahrern, La|F|ayette, Irr|f|ahrt, Schif|ff|ahrt, Erholung|sf|ähigkeit, water|f|owl, Ausnahm|ef|ällen. Probe: Irrfahrt 0.597, waterfowl 0.379, Rundfahrt 0.333, Abfahrt 0.268; Ankunft 0.058, Wanderung 0.060, whole-token Lafayette 0.003, fish 0.004.",
+ "selection": "random draw"
+}

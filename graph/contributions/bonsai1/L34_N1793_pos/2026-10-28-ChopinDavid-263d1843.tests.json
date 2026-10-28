@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-263d1843",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N1793+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T05:19:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N1793",
+   "pole": "+",
+   "label": "an 'f' that the tokenizer splits off as its own piece inside a word, mostly German compounds in -fahrt (Irr|f|ahrt, Rund|f|ahrt) and water|f|owl, as against compounds without a separate f piece",
+   "fire": [
+    "Die Ausfahrt zur Stadt war die ganze Woche gesperrt.",
+    "Nach der langen Irrfahrt kamen die Kinder müde nach Hause.",
+    "Wir machten eine Rundfahrt durch die Altstadt mit dem Bus.",
+    "Die Abfahrt vom Gipfel war steil und sehr rutschig.",
+    "Hunters counted the waterfowl along the marsh every autumn.",
+    "Ich kaufte eine Fahrkarte für die Heimfahrt am Sonntag.",
+    "Die Bergfahrt mit der alten Bahn dauert eine Stunde.",
+    "Biologists study how waterfowl choose their nesting sites."
+   ],
+   "quiet": [
+    "Die Straße zur Stadt war die ganze Woche gesperrt.",
+    "Nach der langen Wanderung kamen die Kinder müde nach Hause.",
+    "Wir machten einen Spaziergang durch die Altstadt am Abend.",
+    "Die Ankunft am Gipfel war kalt und sehr windig.",
+    "Hunters counted the deer along the marsh every autumn.",
+    "Ich kaufte ein Geschenk für meine Mutter am Sonntag.",
+    "Die Brücke über den alten Kanal ist eine Stunde entfernt.",
+    "Biologists study how songbirds choose their nesting sites."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.6 on the bare 'f' piece; compounds without it and whole-token words below 0.07",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-off 'f' piece inside a word",
+ "unit_kind": "token",
+ "confidence": 0.5,
+ "notes": "Card: peaks on word-internal f pieces: Trittbret|tf|ahrern, La|F|ayette, Irr|f|ahrt, Schif|ff|ahrt, Erholung|sf|ähigkeit, water|f|owl, Ausnahm|ef|ällen. Probe: Irrfahrt 0.597, waterfowl 0.379, Rundfahrt 0.333, Abfahrt 0.268; Ankunft 0.058, Wanderung 0.060, whole-token Lafayette 0.003, fish 0.004."
+}
