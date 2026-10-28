@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-7e929cf0",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N8927+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-28T03:28:09+00:00",
+ "recipe": {
+  "toolchain_commit": "81e7f7c4",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L2_N8927_pos/2026-10-27-ChopinDavid-7e929cf0.tests.json"
+ },
+ "label": "word-internal pieces such as 'pend' and 'enc' inside French and Spanish words (ind|é|pend|ance, com|enc|emos); broad early-layer guess",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L2_N8927_pos/2026-10-27-ChopinDavid-7e929cf0.tests.json",
+   "prereg_commit": "81e7f7c4",
+   "author": "ChopinDavid",
+   "n_fire": 5,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.694,
+     "peak": "pend"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.055,
+     "peak": "à"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.372,
+     "peak": "enc"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.728,
+     "peak": "pend"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.173,
+     "peak": "enc"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.081,
+     "peak": "em"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.914,
+     "peak": "pend"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.691,
+     "peak": "enc"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.106,
+     "peak": " gained"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.043,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.118,
+     "peak": "yer"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.203,
+     "peak": " un"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.057,
+     "peak": "Ma"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.089,
+     "peak": "em"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.076,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.121,
+     "peak": "z"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.797,
+    "median_fire": 0.531,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "81e7f7c4",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "'pend'/'enc' pieces in Romance words (guess)",
+ "unit_kind": "token",
+ "confidence": 0.2,
+ "notes": "Card: broad (6.1% at 0.1 max), gate-closed regime, peaks 'pend' x5, 'enc' x3, ' Saudi' x9, ' commons'. Probe: 'indépendance' 0.865 on 'pend', 'comencemos' 0.593 on 'enc', ' Saudi' 0.503, ' commons' 0.335; English 'independence' 0.115, 'empezamos' 0.085, weather 0.151. Splits checked with tokcheck.",
+ "selection": "random draw"
+}

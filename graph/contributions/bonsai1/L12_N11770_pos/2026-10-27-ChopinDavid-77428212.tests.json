@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-77428212",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N11770+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T03:19:40+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N11770",
+   "pole": "+",
+   "label": "separators inside bibliographic citations and dated URLs ('/' between URL date parts, ';' before volume, ' p.' page markers), as against the same numbers in running prose",
+   "fire": [
+    "Retrieved from https://www.theguardian.com/world/2019/03/12/floods-report",
+    "Clin Infect Dis. 2014 Mar;58(6):801-9. doi: 10.1093/cid/cit842",
+    "See https://example.org/wp-content/uploads/2020/11/annual-report.pdf",
+    "Nature. 2009 Jan;457(7227):312-6. PMID 19148099.",
+    "Johnson, Mark; Reed, Alice (2003). \"Soil and water.\" p. 118.",
+    "Archived at https://www.bbc.co.uk/news/2015/08/21/science-briefing",
+    "Am J Epidemiol. 2011 Jun;173(11):1230-8. doi: 10.1093/aje/kwr001",
+    "Turner, Paul (1998). Coastal Towns. London: Hale. p. 44."
+   ],
+   "quiet": [
+    "In March 2019 the river flooded the old town for twelve days.",
+    "Doctors in 2014 saw fifty-eight cases in six months.",
+    "The annual report for 2020 was printed in November.",
+    "In January 2009 the journal printed a short note on birds.",
+    "Mark and Alice wrote about soil and water in 2003.",
+    "The science briefing aired on the evening news in August 2015.",
+    "In June 2011 the survey reached eleven hundred homes.",
+    "Paul Turner wrote about coastal towns in 1998."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on '/' ';' or ' p' in a citation; prose with dates and numbers below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "citation / dated-URL separators",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: broad, gate-closed; peaks '/' in 'wp-content/uploads/2021/05', ';' in 'J Med Syst. 2016 Oct;40(10)', ' p.' and ' (' in reference lists. Probe: 'Retrieved from https://www.nytimes.com/2017/06/04' 0.628, '2016 Oct;40(10):218' 0.529, ' p. 30' 0.305; prose with dates 0.050-0.087; 'p. 705.\" — Presentation transcript' 0.038."
+}
