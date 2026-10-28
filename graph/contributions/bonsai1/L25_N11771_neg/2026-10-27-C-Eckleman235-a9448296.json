@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-a9448296",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N11771-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T02:06:06+00:00",
+ "recipe": {
+  "toolchain_commit": "63ecedfb",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N11771_neg/2026-10-27-C-Eckleman235-a9448296.tests.json"
+ },
+ "label": "The name of a profession or craft as an activity (acting, conducting, filmmaking, teaching, design, programming, bartending), esp. after 'for/in/of/at' where a skill or career would follow; fires on the word's stem token, covers a mix of occupations and disciplines",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N11771_neg/2026-10-27-C-Eckleman235-a9448296.tests.json",
+   "prereg_commit": "63ecedfb",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.779,
+     "peak": " teaching"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.6,
+     "peak": " filmm"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.522,
+     "peak": " design"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 1.046,
+     "peak": " conducting"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.709,
+     "peak": "ending"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.392,
+     "peak": " programming"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 1.056,
+     "peak": " acting"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.458,
+     "peak": " engineering"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.52,
+     "peak": " gardening"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.146,
+     "peak": " film"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.015,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.032,
+     "peak": " concert"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.023,
+     "peak": " at"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.107,
+     "peak": " history"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.012,
+     "peak": " big"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.108,
+     "peak": " ship"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.654,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "63ecedfb",
+  "minutes": 24,
+  "batch_size": 1
+ },
+ "short": "profession/craft name as activity",
+ "confidence": "medium",
+ "notes": "10x pilot (concept-maps/tenx, census arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples + concept-census evidence (which concepts and domains selected the pole)); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Top examples are all stems of occupation/craft gerunds (conducting, bartending, filmmaking, choreographing, teaching, acting, design); census shows 65% of profession items fire it versus ~0% of objects, and the output suppresses ' profession/skills/expertise'. Strong activations also include discipline names (engineering, photography, singing), so coverage is a mix of professions and disciplines.",
+ "selection": "concept search: 10x census (professions\r)"
+}
