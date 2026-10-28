@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-1c27220a",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N7594-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-28T00:26:59+00:00",
+ "recipe": {
+  "toolchain_commit": "0960cc1b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L4_N7594_neg/2026-10-27-ChopinDavid-1c27220a.tests.json"
+ },
+ "label": "a subscript marker (LaTeX '_' or '_{', '.sub.' in chemical formulas, the word ' subscript'); underscores inside identifiers and file names stay quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L4_N7594_neg/2026-10-27-ChopinDavid-1c27220a.tests.json",
+   "prereg_commit": "0960cc1b",
+   "author": "ChopinDavid",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.528,
+     "peak": "_"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.765,
+     "peak": ".sub"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 1.02,
+     "peak": "_{"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.616,
+     "peak": "_"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 1.016,
+     "peak": "_{"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.492,
+     "peak": "_"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.261,
+     "peak": " subscript"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.859,
+     "peak": ".sub"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.004,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.002,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.014,
+     "peak": "_weights"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.006,
+     "peak": "_count"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.002,
+     "peak": " saved"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.001,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.004,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.001,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.691,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "0960cc1b",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "subscript marker",
+ "unit_kind": "token",
+ "confidence": 0.7,
+ "notes": "Card: '_' x18, 'sub' x5, '}_{', '_{', ' subscript', '.sub' (one family dominates). Probe: 'Ca.sub.2' 0.783, '$M_{ij}$' 0.649, '$x_1 + x_2$' 0.565, '\\log_2' 0.433, 'small subscript' 0.330; 'my_function(input_value)' 0.003, 'report_final_v2.docx' 0.004.",
+ "selection": "random draw"
+}
