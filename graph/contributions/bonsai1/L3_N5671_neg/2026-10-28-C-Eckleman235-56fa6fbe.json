@@ -1,0 +1,165 @@
+{
+ "id": "2026-10-28-C-Eckleman235-56fa6fbe",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N5671-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T16:19:07+00:00",
+ "recipe": {
+  "toolchain_commit": "92ef0db3",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L3_N5671_neg/2026-10-28-C-Eckleman235-56fa6fbe.tests.json"
+ },
+ "label": "the word 'forge' in any sense (forge, forges, forged, forging, Valley Forge): the smithy, faking a document, building a bond; smithy words without it (anvil, foundry, smith) and faking words (fake, counterfeit) stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L3_N5671_neg/2026-10-28-C-Eckleman235-56fa6fbe.tests.json",
+   "prereg_commit": "92ef0db3",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.625,
+     "peak": " forge"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.506,
+     "peak": " forged"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.62,
+     "peak": " forging"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.855,
+     "peak": " Forge"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.64,
+     "peak": " forge"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.612,
+     "peak": " forged"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.509,
+     "peak": " forged"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.754,
+     "peak": " Forge"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.005,
+     "peak": " smith"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.0,
+     "peak": " nephew"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.0,
+     "peak": " two"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.0,
+     "peak": " Pennsylvania"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.006,
+     "peak": " furnace"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.005,
+     "peak": " built"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.0,
+     "peak": " single"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.002,
+     "peak": " authors"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.623,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "bands",
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "92ef0db3",
+  "minutes": 4,
+  "batch_size": 8
+ },
+ "short": "the word 'forge'",
+ "unit_kind": "lexical",
+ "confidence": 0.6,
+ "notes": "Feeder of bonsai1/L8/N1349+, found by a batched edge measurement (attribution candidates + census weight links, single-unit zero ablation on the anchor's top 8 corpus sites, 8 same-layer placebos): zeroing this neuron removes 0.71 of the anchor's peak on average (placebo max < 0.01); this pole is the one active at those sites. Explored with the card, all-pole band samples and one probe round of 8 sentences (none reused here).",
+ "roles": [
+  "feeds bonsai1/L8/N1349+"
+ ],
+ "selection": "step-out from bonsai1/L8/N1349+ (10x edges pipeline, batch trial)",
+ "trigger": {
+  "words": [
+   "forge",
+   "forges",
+   "forged",
+   "forging",
+   "Forge"
+  ]
+ }
+}
