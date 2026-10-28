@@ -1,0 +1,156 @@
+{
+ "id": "2026-10-27-C-Eckleman235-d46f6f9a",
+ "kind": "qc",
+ "neuron": "bonsai1/L8/N10681-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T01:04:45+00:00",
+ "recipe": {
+  "toolchain_commit": "1874b591",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L8_N10681_neg/2026-10-27-C-Eckleman235-d46f6f9a.tests.json"
+ },
+ "label": "the words 'Iran' and 'Iranian' in any use (the country, its films and exports, a file or a character's name) and Persepolis; Persian things without the word (Rumi, Nowruz, Shiraz, Persian cooking) and Iraq stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L8_N10681_neg/2026-10-27-C-Eckleman235-d46f6f9a.tests.json",
+   "prereg_commit": "1874b591",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.681,
+     "peak": " Iranian"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.685,
+     "peak": " Iran"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.652,
+     "peak": " Iran"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.664,
+     "peak": " Iran"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.769,
+     "peak": " Iranian"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.832,
+     "peak": "pol"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.777,
+     "peak": " Iran"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.508,
+     "peak": " Iranian"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.022,
+     "peak": " driver"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.029,
+     "peak": " dam"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.006,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.002,
+     "peak": " case"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.005,
+     "peak": "stand"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.055,
+     "peak": " Memorial"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.117,
+     "peak": "ruz"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.405,
+     "peak": " Persian"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.683,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "1874b591",
+  "minutes": 3,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Iran as a place: Tehran, Isfahan, Mashhad, Qom, Tabriz and 'Persian' things, named or not; Iraq, Afghanistan, Syria and the Caucasus in the same frames stay low"
+ },
+ "short": "the word Iran, any use",
+ "unit_kind": "sparse feature",
+ "confidence": 0.6,
+ "notes": "QC refine after a Codex red-team round (10x pilot P5): the held label claimed Iran as a place, 'named or not', but the pole fires on the word Iran in non-place uses (a variable 0.67, a character 0.58, a folder name 0.69) and stays low on Persian things without the word (Hafez, Nowruz, Dasht-e Lut, fesenjan, Kashan rugs, all < 0.2). Persepolis is the exception (0.85) and is claimed. A word-level refine; 'Persian cooking' is the hard near miss. Exploration (play probe: 12 Codex-written red-team probes and 8 of the author's, none of these 16 sentences; 0 overlap checked). The author saw the held label and those probe readings but did not read the original test's sentences before drafting these."
+}
