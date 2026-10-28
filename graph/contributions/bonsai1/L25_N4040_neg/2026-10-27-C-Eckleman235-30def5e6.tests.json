@@ -1,0 +1,46 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-30def5e6",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N4040-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:39:32+00:00",
+ "selection": "concept search: 10x census (professions\r)",
+ "neighbours": [
+  {
+   "unit": "L25/N4040",
+   "pole": "-",
+   "label": "Sentence-final period (or clause comma / 'when') after a clause about a person, esp. a professional or client in a person-to-person interaction, where the next sentence will continue about that person with a pronoun",
+   "fire": [
+    "The night nurse noticed that one of her patients had been crying quietly since dinner. She sat down beside the bed and waited.",
+    "Our landlord called last week to say that a tenant on the third floor had complained about the noise. We had no idea who it could be.",
+    "A young carpenter walked into the shop and asked the old foreman for a job. The foreman looked him over without a word.",
+    "Back in 1998 the coach pulled aside his best striker after a bad loss, even when the team was still in first place. Nobody knew what he said.",
+    "In the story, a poor tailor meets a wealthy merchant on the road to Prague and begs him for a ride. The merchant laughs.",
+    "My aunt once hired a plumber who turned out to be an old schoolmate of her husband. They talked for two hours.",
+    "The senator's aide spent the morning calling reporters who had questioned his boss about the vote. By noon the phone had stopped ringing.",
+    "Overwhelmed and shivering, the little girl was carried into the clinic by a stranger who had found her near the bridge. The doctor came running."
+   ],
+   "quiet": [
+    "The old bridge over the river was repainted last spring, and the new paint already shows rust near the northern pillars. Engineers plan an inspection in June.",
+    "To make the sauce, simmer the tomatoes with garlic and a pinch of salt for twenty minutes. Stir occasionally so the bottom does not scorch.",
+    "The function returns a sorted list of integers, and any duplicate values are removed before the result is cached. Callers should not mutate the returned list.",
+    "Rainfall across the plateau was well below average in October, which left the reservoirs at forty percent of capacity. Officials expect restrictions by December.",
+    "The nurse's station on the fourth floor is stocked with gloves, gauze, and saline flushes. The supply closet is restocked every Monday.",
+    "Photosynthesis converts light energy into chemical energy stored in glucose, and it happens mostly in the chloroplasts of leaf cells. Without it, most food chains would collapse.",
+    "The quarterly report shows revenue growth of three percent, driven largely by a rise in subscription renewals and lower shipping costs. Margins stayed flat.",
+    "Lightning struck the water tower during the storm, and a loud crack shook every window on Main Street. Power was out for an hour"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "card",
+   "bands"
+  ]
+ },
+ "short": "Period after a person-centered clause",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, census arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples + concept-census evidence (which concepts and domains selected the pole)); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Peak tokens are mostly '.' (50% coverage) at the end of sentences narrating one person's contact with another (client, banker, rabbi, referee), with a few ' when' and commas; output side suppresses ' him'/' them' (the + pole fires on the verb/preposition before an object pronoun for a person). Census says professions in neutral frames drive it, so the label stresses person-centered context, but much of the band mass is ordinary sentence-final periods, so this may be a weak, broad pole."
+}
