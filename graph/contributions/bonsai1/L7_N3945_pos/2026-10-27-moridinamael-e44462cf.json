@@ -1,0 +1,164 @@
+{
+ "id": "2026-10-27-moridinamael-e44462cf",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N3945+",
+ "contributor": "moridinamael",
+ "created": "2026-10-28T00:09:04+00:00",
+ "recipe": {
+  "toolchain_commit": "887414a8",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L7_N3945_pos/2026-10-27-moridinamael-e44462cf.tests.json"
+ },
+ "label": "the operator (+, -, /) right after a squared or powered term in a written formula (x^2 + y^2, a² - b, 2**31 - 1)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L7_N3945_pos/2026-10-27-moridinamael-e44462cf.tests.json",
+   "prereg_commit": "887414a8",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.525,
+     "peak": " +"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.733,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.376,
+     "peak": "1"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.856,
+     "peak": "4"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 1.474,
+     "peak": " +"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.677,
+     "peak": " b"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.27,
+     "peak": " -"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.207,
+     "peak": " *"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.01,
+     "peak": "use"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.023,
+     "peak": " /"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.009,
+     "peak": "Set"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.013,
+     "peak": "x"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.011,
+     "peak": " circle"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.016,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.274,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.033,
+     "peak": " +"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.601,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "inverse-gmoo",
+   "look",
+   "probe",
+   "quick-test",
+   "step-out"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "887414a8",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "roles": [
+  "feeds bonsai1/L9/N926+"
+ ],
+ "edges": [
+  {
+   "from": "bonsai1/L7/N3945+",
+   "to": "bonsai1/L9/N926+",
+   "kind": "feeds",
+   "weight": null,
+   "method": "attribution on top-4 corpus examples of the target (feeders tool); play step zero ablation OOM'd, so no drop measured"
+  }
+ ]
+}

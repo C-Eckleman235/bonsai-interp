@@ -1,0 +1,47 @@
+{
+ "contribution": "2026-10-27-moridinamael-e44462cf",
+ "contributor": "moridinamael",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N3945+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T00:08:52+00:00",
+ "roles": ["feeds bonsai1/L9/N926+"],
+ "neighbours": [
+  {
+   "unit": "L7/N3945",
+   "pole": "+",
+   "label": "the operator (+, -, /) right after a squared or powered term in a written formula (x^2 + y^2, a² - b, 2**31 - 1)",
+   "short": "operator after a squared/powered term in a formula",
+   "fire": [
+    "By Pythagoras, c^2 = a^2 + b^2 for any right triangle.",
+    "The energy term simplifies to E = m*v² / 2 after we drop the constant.",
+    "Set the mask to 2**31 - 1 so it fits in a signed int.",
+    "Expand (x + 1)^2 - 4 and solve for x.",
+    "The circle is defined by x² + y² = 25.",
+    "Factor a² - b² into (a - b)(a + b).",
+    "The variance equals E[X^2] - E[X]^2 by definition.",
+    "In the code, area = r**2 * 3.14159 + offset was a bug."
+   ],
+   "quiet": [
+    "By Pythagoras, the hypotenuse relates to the two legs of any right triangle.",
+    "The energy term simplifies to E = m*v / 2 after we drop the constant.",
+    "Set the mask to 2147483647 so it fits in a signed int.",
+    "Expand (x + 1) times itself and solve for x.",
+    "The circle is defined by x + y = 25 in this simplified sketch.",
+    "Factor a - b out of the expression first.",
+    "The variance equals the mean of squares minus the square of the mean.",
+    "In the code, area = r * 3.14159 + offset was a bug."
+   ]
+  }
+ ],
+ "predictions": "Expect 7/8 fire and at most 1 near miss above 0.30; the resident scorer reads low but play run uses the full model.",
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "step-out"
+  ]
+ }
+}
