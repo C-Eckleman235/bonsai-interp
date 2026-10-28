@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-84c06518",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N1567+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:21:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L19/N1567",
+   "pole": "+",
+   "label": "the item just before 'and' that closes a list of three or more coordinated items written without a serial comma ('save, tag, manage and share'); two-item coordination stays quiet",
+   "fire": [
+    "The software helps teams track, sort, review and approve invoices.",
+    "Volunteers will clean, paint, repair and reopen the old library.",
+    "For the picnic we packed bread, cheese, grapes and lemonade.",
+    "The course teaches you to sketch, ink, color and publish comics.",
+    "Our crew can survey, design, install and service solar panels.",
+    "Kids at the camp swim, hike, climb and canoe every day.",
+    "The museum collects, restores, catalogs and displays old maps.",
+    "Bring a hat, gloves, a scarf and boots for the sleigh ride."
+   ],
+   "quiet": [
+    "The software helps teams track invoices and approve them.",
+    "Volunteers will clean the old library and reopen it.",
+    "For the picnic we packed bread and some lemonade.",
+    "The course teaches you to sketch comics and publish them.",
+    "Our crew can install solar panels and service them.",
+    "Kids at the camp swim in the lake and hike every day.",
+    "The museum restores old maps and displays them.",
+    "Bring a warm hat and boots for the sleigh ride."
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.6 on the item before 'and' in 4-item lists; 'X and Y' pairs below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "last-but-one item of a list",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: 'save, tag, manage and share', 'design, build, operate and maintain', 'buy, read, give away, repeat'. Probe: 'create, edit, organize and share' 0.586 on ' organize', 'plan, build, run and repair' 0.557, 'shirts, socks, shoes and' 0.357; serial-comma lists lower ('cook, garden, and paint' 0.181, 'read, copy, or print' 0.061); two-item 'create notes and share' 0.035, single verb 0.010."
+}

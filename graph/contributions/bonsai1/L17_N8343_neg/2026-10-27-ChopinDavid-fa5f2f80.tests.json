@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-fa5f2f80",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N8343-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:21:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N8343",
+   "pole": "-",
+   "label": "dense / positional pole; best guess the run of alignment spaces padding a name before '=' or a description in code and argument lists",
+   "fire": [
+    "    title         = models.CharField(max_length=200)\n    author        = models.CharField(max_length=100)",
+    "        cache_dir     = root + \"/cache\"\n        temp_dir      = root + \"/tmp\"",
+    "parent          = None,\n            flags           = 0,",
+    "    timeout       = 30\n    retries       = 5\n    verbose       = False",
+    "        self.port          = port\n        self.host          = host",
+    "    price         = models.DecimalField(max_digits=8)\n    stock         = models.IntegerField()",
+    "Arguments:\n1. blockhash        (string, required) The block hash",
+    "        out_path      = base + \"/out\"\n        in_path       = base + \"/in\""
+   ],
+   "quiet": [
+    "    heading = models.CharField(max_length=200)\n    writer = models.CharField(max_length=100)",
+    "        cache_path = root + \"/cache\"\n        scratch_path = root + \"/tmp\"",
+    "owner = None,\n            mode = 0,",
+    "    wait = 30\n    attempts = 5\n    debug = False",
+    "        self.socket = socket\n        self.address = address",
+    "    cost = models.DecimalField(max_digits=8)\n    amount = models.IntegerField()",
+    "Arguments:\n1. blockid (string, required) The block id",
+    "        result_dir = base + \"/out\"\n        source_dir = base + \"/in\""
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.45 on multi-space padding before '='; the same kind of code with single spaces near 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "alignment padding in code (dense)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.15,
+ "notes": "Card: dense (19.3% of tokens reach 0.1 of max), max 3.2, gate-closed leak regime 100%; top examples are whitespace runs aligning '=' in Python. Probe: aligned 'work_dir      =' 0.363, 'name          =' 0.446 vs unaligned 0.144/0.138; but 'x = 1' 0.279 and prose 0.118, floor 0.125. An 8+8 test may fail because the pole is dense."
+}

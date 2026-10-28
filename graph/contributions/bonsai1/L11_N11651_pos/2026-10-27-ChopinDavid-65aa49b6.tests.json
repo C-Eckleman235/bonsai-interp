@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-65aa49b6",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L11/N11651+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:21:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L11/N11651",
+   "pole": "+",
+   "label": "broad weak pole over Chinese and Japanese text, inside common multi-character words; the same content in English stays quiet",
+   "fire": [
+    "这家酒店的早餐非常丰富，客人都很满意。",
+    "周末我们开车去海边，玩得很开心。",
+    "空港までの無料シャトルサービスがあります。",
+    "他慷慨地捐出了一半的奖金。",
+    "旅館の露天風呂から海がよく見えます。",
+    "这座城市的地铁系统非常方便。",
+    "週末は友達とカフェでゆっくり過ごしました。",
+    "孩子们在公园里放风筝，笑声不断。"
+   ],
+   "quiet": [
+    "The hotel's breakfast is very generous and guests are very satisfied.",
+    "On the weekend we drove to the seaside and had a great time.",
+    "There is a free shuttle service to the airport.",
+    "He generously donated half of his prize money.",
+    "From the inn's outdoor bath you can see the sea clearly.",
+    "The subway system in this city is very convenient.",
+    "On the weekend I relaxed slowly at a cafe with friends.",
+    "The children flew kites in the park, laughing all the time."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.4 somewhere in CJK sentences; English translations below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Chinese/Japanese text (broad)",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: max 2.9, broad (1.1% of tokens), gate-closed regime dominates; peaks on pieces of CJK words (トル in シャトル, 囊 in 解囊, 心 in 称心). Probe: CJK sentences 0.196-0.375 except one 0.014 ('把窗帘关上'); English shuttle sentence 0.056, floor 0.081. Labelled at the language level the probe supports, not a word."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-0b7be6e7",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N1305+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:21:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L31/N1305",
+   "pole": "+",
+   "label": "the first noun after an example-introducing 'such as' / 'like' that opens a list of examples; the same noun outside an example frame stays quiet",
+   "fire": [
+    "Pack small comforts such as earplugs, a sleep mask, and a book.",
+    "The shop sells kitchen tools like a whisk, a grater, and a peeler.",
+    "Bring basic supplies such as tape, scissors, and glue to class.",
+    "Kids love snacks like popcorn, pretzels, and apple slices.",
+    "The form asks for details such as address, phone number, and birth date.",
+    "Avoid sharing items like a toothbrush, a razor, or a towel.",
+    "The farm grows crops such as barley, oats, and rye.",
+    "Clean surfaces like a light switch, a faucet, or a railing daily."
+   ],
+   "quiet": [
+    "Pack a pair of earplugs in the side pocket of your bag.",
+    "The shop sells a whisk that never rusts in the sink.",
+    "Bring some tape to class on Monday morning.",
+    "Kids love the popcorn at the old cinema downtown.",
+    "The form asks for your address at the top of the page.",
+    "Avoid sharing a toothbrush with anyone in the house.",
+    "The farm grows barley on the hill behind the barn.",
+    "Clean the light switch in the hallway every day."
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.5 on the first listed example; same nouns in plain object position below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "first item after 'such as/like'",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: 'such as author,', 'examples might be a telephone,', 'consisting of trams,', 'garden for leaves and'. Probe: 'things like a telephone, a doorknob' 0.485, 'fields such as author, title' 0.368; plain 'on a telephone that nobody cleans' 0.138, 'for leaves, acorns' 0.133, 'network of trams' 0.008, 'quiet bench' 0.085. The model cannot see the comma yet, so the example frame must be what lifts it."
+}

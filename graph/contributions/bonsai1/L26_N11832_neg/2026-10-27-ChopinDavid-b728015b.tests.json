@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-b728015b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N11832-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:21:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N11832",
+   "pole": "-",
+   "label": "the line break that closes a header line opening a structured block (catalog field labels, PGP armor, YAML document start); line breaks in ordinary prose stay quiet",
+   "fire": [
+    "Published 1998 by Harper\nWritten in French\nThe Physical Object\nPagination 310 p.\nNumber of pages 310",
+    "Thanks for the update.\n-----BEGIN PGP SIGNATURE-----\nVersion: GnuPG v1.4.9\n\niEYEARECAAYFAkk",
+    "EXAMPLES = '''\n---\n- name: restart the web server\n  service:\n    name: httpd\n'''",
+    "Edition Notes\nIncludes index.\nThe Physical Object\nFormat Paperback\nPagination 96 p.",
+    "Signed message follows.\n-----BEGIN PGP SIGNED MESSAGE-----\nHash: SHA1\n\nThe release is ready.",
+    "spec:\n  containers:\n    - name: app\n      image: redis",
+    "Subjects\nGardening, Roses\nThe Physical Object\nPagination 128 p.",
+    "DOCUMENTATION = '''\n---\nmodule: user_add\nshort_description: Add a user\n'''"
+   ],
+   "quiet": [
+    "We left early in the morning.\nThe road was empty and the sky was clear.\nBy noon we reached the coast.",
+    "Thanks for the update.\nI will read the notes tonight and reply tomorrow.\nTalk soon.",
+    "Dear Sam,\nThe garden looks lovely this week.\nThe roses finally opened.",
+    "The book has a soft cover.\nIt is about ninety pages long.\nMy aunt gave it to me.",
+    "He opened the letter slowly.\nInside was a short note from his brother.\nHe smiled.",
+    "The recipe is simple.\nMix the flour and the eggs.\nBake for twenty minutes.",
+    "First we went to the market.\nThen we bought some fish.\nLater we cooked dinner.",
+    "The meeting went well today.\nEveryone agreed on the plan.\nWe start on Monday."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.9 on the newline after a block header; prose newlines below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "header line break before a structured block",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: '|The Physical Object|\\n', '-----BEGIN PGP SIGNATURE-----\\n', YAML 'parent:\\n', '---\\n'. Probe: 'Written in English\\nThe Physical Object\\n' 0.928, PGP 0.525, YAML '---' 0.446, 'services:\\n' 0.186, table cells 0.134; prose 'ended at noon:\\n' 0.004."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-3cb87a4c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N271-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:21:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L32/N271",
+   "pole": "-",
+   "label": "the token right before a predicted 'watch / surveillance / supervise' continuation (über→wachen, video→наблюдение, neighborhood→watch); the same tokens without a monitoring setup stay quiet",
+   "fire": [
+    "Die Firma lässt ihre Lager rund um die Uhr mit Kameras überwachen.",
+    "Neighbors formed a neighborhood watch to patrol the streets at night.",
+    "Der Arzt muss die Dosis des Patienten genau überwachen.",
+    "В магазине установлено круглосуточное видеонаблюдение.",
+    "The nurses kept a close watch on the newborn through the night.",
+    "Die Behörde will den Verkehr auf der Autobahn überwachen.",
+    "After the thefts, the owners asked the neighborhood watch for help.",
+    "Lifeguards keep a close watch on swimmers near the rocks."
+   ],
+   "quiet": [
+    "Die Familie fährt jeden Sommer mit dem Auto über die Alpen.",
+    "Neighbors held a neighborhood barbecue in the park on Sunday.",
+    "Der Arzt spricht mit dem Patienten über die neue Diät.",
+    "В магазине продаются свежие фрукты и овощи.",
+    "The nurses kept a close friendship long after the hospital closed.",
+    "Die Kinder laufen schnell über die kleine Brücke.",
+    "After the move, the owners joined a neighborhood choir for fun.",
+    "Lifeguards keep a close eye on the weather near the rocks."
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-1.2 on über/видео/neighborhood/close where 'watch/surveil' follows; same tokens in non-monitoring frames below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predicts 'watch / surveil'",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Card: 'über|w|achen' 398, 'виде|он|аблюдение', 'neighborhood| watch', 'natural| surveillance', 'uns|up|ervised'; + pole suppresses ' watch'. Probe: 'mit Kameras über|wachen' 1.265, 'видео|наблюдение' 0.647, 'started a neighborhood' 0.415 (also with 'garden' after, as a causal predictor must), 'keep a close watch' 0.343, 'unsupervised' 0.436, 'mit Kameras schützen' 0.537 (on 'Kameras'); floor 0.000. Near misses remove the monitoring setup, not just the next word."
+}

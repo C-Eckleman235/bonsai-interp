@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-26adf09e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N7784+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:21:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L10/N7784",
+   "pole": "+",
+   "label": "unclear weak pole; best guess a conclusive connective ('Thus', 'Hence', 'Por lo tanto') opening a sentence that draws a consequence",
+   "fire": [
+    "The river flooded the lower fields in April. Thus, the harvest came three weeks late.",
+    "The contract was never signed by both parties. Hence, it has no legal force.",
+    "The data showed no difference between the groups. Thus, the drug had no effect.",
+    "The roads were icy all morning. Hence, the school opened two hours late.",
+    "La empresa perdió a su mayor cliente. Por lo tanto, cerró dos oficinas.",
+    "Our power bill doubled over the winter. Therefore, we bought better insulation.",
+    "The glue had not dried overnight. Thus, the shelf fell when we loaded it.",
+    "The witness was abroad at the time. Hence, her statement was ruled out."
+   ],
+   "quiet": [
+    "The river flooded the lower fields in April. Later, the harvest came three weeks late.",
+    "The contract was never signed by both parties. Also, it was printed on old paper.",
+    "The data showed no difference between the groups. Meanwhile, the second trial began.",
+    "The roads were icy all morning. Then, the sun came out around noon.",
+    "La empresa perdió a su mayor cliente. Además, cambió de director.",
+    "Our power bill doubled over the winter. Also, the boiler made strange noises.",
+    "The glue had not dried overnight. Later, we painted the other shelf.",
+    "The witness was abroad at the time. Afterwards, she moved to Lisbon."
+   ]
+  }
+ ],
+ "predictions": "fire 0.05-0.1 on Thus/Hence; additive or temporal openers below 0.04",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "conclusive connective (guess)",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Card: max 6.5, top examples split between newlines after code section comments and 'Por lo tanto', 'Hence', 'Thus'. Probe was flat: 'Therefore' 0.064, 'Thus' 0.054, 'Por lo tanto' 0.055, code section header 0.049 vs none 0.045, 'and' controls 0.032-0.042. Guess; expected to fail."
+}
