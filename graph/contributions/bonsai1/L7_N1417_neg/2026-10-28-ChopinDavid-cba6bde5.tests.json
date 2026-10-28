@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-cba6bde5",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N1417-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T19:19:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L7/N1417",
+   "pole": "-",
+   "label": "a preposition repeated in an elliptical parallel after 'as', 'i.e.' or 'than' ('spoke of her as of a saint', 'applies to adults, i.e., to anyone over 18'); the same sentence without the repeated preposition stays low",
+   "fire": [
+    "He always spoke of his teacher as of a saint who could do no wrong.",
+    "The new rule applies to adults, i.e., to anyone over eighteen.",
+    "They prepared for the inspection as for a siege, stocking every shelf.",
+    "She wrote about the war as about a distant dream.",
+    "The grant is limited to the coastal towns, i.e., to the villages near the sea.",
+    "He longed for the city as for a lost love.",
+    "We think of the old mill as of a member of the family.",
+    "The tax falls on the poorest households, i.e., on families with no savings."
+   ],
+   "quiet": [
+    "He always spoke of his teacher as a saint who could do no wrong.",
+    "The new rule applies to adults, i.e., anyone over eighteen.",
+    "They prepared for the inspection like a siege, stocking every shelf.",
+    "She wrote about the war as a distant dream.",
+    "The grant is limited to the coastal towns, i.e., the villages near the sea.",
+    "He longed for the city like a lost love.",
+    "We think of the old mill as a member of the family.",
+    "The tax falls on the poorest households, i.e., families with no savings."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.6 on the repeated preposition; versions without it below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "repeated preposition in an elliptical parallel",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card peaks ' to'/' of'/' de'/' for' right after 'as', 'i.e.,', 'que', 'wie': 'fell at the battle ... as of men that were punished', 'stipulate for them as for aliens', 'to the micro-political one, i.e., to an analysis'. Probe: only the true repeat fired: 'to the local one, i.e., to an analysis' 0.411; 'as of no more worth' (no repeat) 0.028, 'as for minors' without an earlier 'for' 0.045, 'so to speak' 0.035, 'such as the iPad' 0.044. Hypothesis: the preposition is a parallel copy of an earlier one."
+}

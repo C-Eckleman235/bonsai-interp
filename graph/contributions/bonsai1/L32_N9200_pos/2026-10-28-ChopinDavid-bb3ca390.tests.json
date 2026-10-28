@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-bb3ca390",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L32/N9200+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T19:19:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L32/N9200",
+   "pole": "+",
+   "label": "guess: the token just before a month name in a written date, strongest between paired month names (Arabic إبريل/نيسان) and in French/Spanish dates ('22 de mayo', '14 juillet'); numbers not followed by a month stay silent",
+   "fire": [
+    "أجري الإحصاء في شهر إبريل/نيسان من عام 1931 في كل المدن.",
+    "Le concert aura lieu le 3 juillet au théâtre municipal.",
+    "La feria empieza el 12 de mayo y dura una semana.",
+    "وصل الوفد في الخامس من أيار/مايو إلى العاصمة.",
+    "Elle a quitté Paris le 21 avril pour s'installer à Lyon.",
+    "El colegio cierra el 30 de junio para las vacaciones.",
+    "صدر القرار في تشرين الأول/أكتوبر من ذلك العام.",
+    "Les inscriptions se terminent le 15 mars à midi."
+   ],
+   "quiet": [
+    "أجري الإحصاء في 31 مدينة من عام 1931 في كل المناطق.",
+    "Le concert aura lieu dans 3 salles au théâtre municipal.",
+    "La feria tiene 12 puestos y dura una semana.",
+    "وصل الوفد مع خمسة من الوزراء إلى العاصمة.",
+    "Elle a quitté Paris avec 21 valises pour s'installer à Lyon.",
+    "El colegio tiene 30 aulas para los alumnos.",
+    "صدر القرار بعد اجتماع طويل في ذلك العام.",
+    "Les inscriptions coûtent 15 euros par personne."
+   ]
+  }
+ ],
+ "predictions": "fire 0.1-0.25 on the slash or 'de' before a month name; counts and plain numbers below 0.02",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "guess: slot before a month name in a date",
+ "unit_kind": "context",
+ "confidence": 0.2,
+ "notes": "Card max 512, peaks '/' between April/Nisan in Arabic, ' de' in '22 de mayo', digits before months; promotes ' Mayo', 'avr'. Probe was weak: 'April/Nisan' 0.218 (peak '/N'), '14 juillet' 0.171, '22 de mayo' 0.118; '9 November' 0.015, '27 May' 0.004; '9 goals' 0.002. Low confidence."
+}
