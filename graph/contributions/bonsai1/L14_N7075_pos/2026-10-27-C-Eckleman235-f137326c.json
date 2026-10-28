@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-f137326c",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N7075+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T02:00:07+00:00",
+ "recipe": {
+  "toolchain_commit": "46cc72c8",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L14_N7075_pos/2026-10-27-C-Eckleman235-f137326c.tests.json"
+ },
+ "label": "Words of showing or depicting in expository writing (illustrate, demonstrate, show, 'a snapshot of', 'visualization of'), at the point where the thing being shown is about to be introduced",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L14_N7075_pos/2026-10-27-C-Eckleman235-f137326c.tests.json",
+   "prereg_commit": "46cc72c8",
+   "author": "C-Eckleman235",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.626,
+     "peak": " demonstrate"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.106,
+     "peak": " is"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.091,
+     "peak": " quick"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.085,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.399,
+     "peak": " show"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.161,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.14,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.192,
+     "peak": " photograph"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.083,
+     "peak": " technician"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.106,
+     "peak": " is"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.089,
+     "peak": " quick"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.03,
+     "peak": " handed"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.017,
+     "peak": " brother"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.039,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.073,
+     "peak": " at"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.042,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.945,
+    "median_fire": 0.151,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "46cc72c8",
+  "minutes": 20,
+  "batch_size": 1
+ },
+ "short": "demonstrate/illustrate/show-of slot",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, census arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples + concept-census evidence (which concepts and domains selected the pole)); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Strongest hits are verbs/nouns that introduce a demonstration or depiction (illustrate, demonstrate, show, 'image/snapshot/visualization of') in scientific or reporting prose, plus scattered weak commas and 'of' in similar slots; the census hit on diseases in neutral frames does not obviously fit, so this is a best guess with mixed coverage. Near misses keep topic and syntax but replace the showing word with an unrelated action.",
+ "selection": "concept search: 10x census (diseases\r)"
+}
