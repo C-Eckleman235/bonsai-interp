@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-89e804d3",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N3729+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T01:58:52+00:00",
+ "recipe": {
+  "toolchain_commit": "d70ded9b",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L18_N3729_pos/2026-10-27-C-Eckleman235-89e804d3.tests.json"
+ },
+ "label": "Final token of a noun naming a person or group by role, occupation, tenure or affiliation (tenants, prisoner, restorationists, sadhakas, arbitrators, an ex), including mid-word pieces of such nouns",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L18_N3729_pos/2026-10-27-C-Eckleman235-89e804d3.tests.json",
+   "prereg_commit": "d70ded9b",
+   "author": "C-Eckleman235",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.701,
+     "peak": " tenants"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.345,
+     "peak": " convicted"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.22,
+     "peak": "avers"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.232,
+     "peak": " colleague"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.24,
+     "peak": "keepers"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.139,
+     "peak": " union"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.49,
+     "peak": " ex"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.261,
+     "peak": " senator"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.236,
+     "peak": " landlord"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.099,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.028,
+     "peak": " carved"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.11,
+     "peak": " sut"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.074,
+     "peak": "Local"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.044,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.067,
+     "peak": "He"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.261,
+     "peak": " senator"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.883,
+    "median_fire": 0.251,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "d70ded9b",
+  "minutes": 19,
+  "batch_size": 1
+ },
+ "short": "role/affiliation person nouns",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, census arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples + concept-census evidence (which concepts and domains selected the pole)); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Top and band examples are mostly nouns for people/groups by role or affiliation (tenants, prisoner, Unionists, flatmates, taxpayers, Nut|zer), often at a word-completion token, and the census shows professions select it strongly; the activation is weak and diffuse, so coverage is uncertain.",
+ "selection": "concept search: 10x census (professions\r)"
+}
