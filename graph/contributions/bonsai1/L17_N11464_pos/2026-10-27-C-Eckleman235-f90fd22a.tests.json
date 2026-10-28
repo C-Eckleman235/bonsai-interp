@@ -1,0 +1,46 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-f90fd22a",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N11464+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:44:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N11464",
+   "pole": "+",
+   "label": "Structural tokens inside multi-line source code (mostly Python): line-final newlines, ' =' assignments, comment-start '#'/commented-out keywords, and mid-identifier pieces; only in code, not in prose about code. Broad pole, partial coverage.",
+   "fire": [
+    "import os\nimport sys\n\ndef load_config(path):\n    # open the file and read all lines\n    result = {}\n    with open(path) as fh:\n        for line in fh:\n            key, value = line.split('=')\n            result[key] = value\n    return result\n",
+    "class Counter(object):\n    def __init__(self, start):\n        self.count = start\n        self.limit = 100\n\n    def step(self):\n        #if self.count > self.limit:\n        #    self.count = 0\n        self.count += 1\n        return self.count\n",
+    "for i in range(len(rows)):\n    total = 0\n    for j in range(len(rows[i])):\n        total = total + rows[i][j]\n    # print the row sum\n    #print total\n    sums.append(total)\n",
+    "def parse_args(argv):\n    parser = argparse.ArgumentParser()\n    parser.add_argument('--name', default='run')\n    args = parser.parse_args(argv)\n    verbose = args.name != ''\n    if verbose:\n        print('running', args.name)\n    return args\n",
+    "try:\n    data = json.loads(text)\nexcept ValueError as e:\n    # bad input, give up\n    logger.error('could not parse: %s', e)\n    raise\nresult = process(data)\nversion = 2  # bump when the schema changes\n",
+    "    def test_roundtrip(self):\n        \"\"\"Check that save and load agree.\"\"\"\n        path = os.path.join(TMP_DIR, 'out.txt')\n        obj = Model(name='a', size=3)\n        obj.save(path)\n        other = Model.load(path)\n        self.assertEqual(obj, other)\n",
+    "x = np.zeros((10, 10))\ny = np.ones((10, 10))\n#z = x + y\n\nwith tf.control_dependencies([x]):\n    if compat.forward_compatible(2019, 9, 1):\n        out = tf.matmul(x, y)\n",
+    "while True:\n    line = sock.recv(1024)\n    if not line:\n        break\n    # strip trailing whitespace\n    line = line.strip()\n    count = count + 1\n    print(line)\n"
+   ],
+   "quiet": [
+    "The old bridge over the river had been closed for repairs since March, so every morning the commuters walked a mile upstream to cross. Nobody complained much, since the path along the water was pleasant and the weather had been mild all spring.",
+    "Our team spent the afternoon discussing how a function should be named and why a comment ought to explain the reason for a decision instead of repeating the code. We agreed that clear writing matters as much as clever algorithms.",
+    "To make the sauce, melt the butter over low heat, whisk in the flour, and slowly add the warm milk. Stir constantly until it thickens, then season with salt, pepper and a little nutmeg before pouring it over the pasta.",
+    "The board approved the budget for the coming year after a long meeting. Members said they were pleased with enrollment numbers, though several raised concerns about rising costs for maintenance, transportation and staff salaries.",
+    "Chapter 3 explains how to install the package. First download the archive from the website, then unpack it into a folder of your choice, and finally open a terminal window and follow the instructions printed on the screen.",
+    "She pulled the old map from the drawer and spread it across the table. The coast was drawn in faded blue ink, with tiny villages marked by crosses, and a note in the corner read: keep north on your left until the lighthouse.",
+    "Ingredients:\n- 2 cups flour\n- 1 cup sugar\n- 3 eggs\n- a pinch of salt\n\nMix the dry items first, then fold in the eggs one at a time. Bake for thirty minutes and let the cake cool before slicing.",
+    "Dear Mr. Harris,\n\nThank you for your letter of last week. We have reviewed your request and are happy to confirm that your appointment is set for Tuesday at ten. Please bring your identification and arrive a little early.\n\nSincerely,\nThe Office"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "card",
+   "bands"
+  ]
+ },
+ "short": "Code structure tokens (newline, =, #)",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, random arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Top examples and strong band samples are nearly all source code (Python) at structural tokens (newline after a line, ' =', '#', commented-out 'if'/'print'), but only 2.4% of tokens exceed 0.1 of max and a few strong hits are prose ('var' in various, a period in fiction), so the label covers only part of the pole. Near misses are prose and lists about the same topics, and no non-Python code was tested."
+}

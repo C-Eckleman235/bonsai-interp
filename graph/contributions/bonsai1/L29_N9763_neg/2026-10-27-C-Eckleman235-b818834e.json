@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-b818834e",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N9763-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T02:08:44+00:00",
+ "recipe": {
+  "toolchain_commit": "60b85eea",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L29_N9763_neg/2026-10-27-C-Eckleman235-b818834e.tests.json"
+ },
+ "label": "Fires on the token just before an expected 'perfect' (nobody is / isn't / not / picture- + perfect), i.e. predicts the word 'perfect' or 'perfection' next, mostly in negated or hedged perfectionism contexts",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L29_N9763_neg/2026-10-27-C-Eckleman235-b818834e.tests.json",
+   "prereg_commit": "60b85eea",
+   "author": "C-Eckleman235",
+   "n_fire": 4,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.97,
+     "peak": " is"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.411,
+     "peak": " picture"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.183,
+     "peak": " not"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.184,
+     "peak": " is"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.04,
+     "peak": " hardly"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.556,
+     "peak": " sentence"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.126,
+     "peak": "card"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.615,
+     "peak": " not"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.97,
+     "peak": " is"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.129,
+     "peak": " make"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.033,
+     "peak": " be"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.0,
+     "peak": " warm"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.001,
+     "peak": " was"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.03,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.08,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.053,
+     "peak": " was"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.82,
+    "median_fire": 0.297,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "60b85eea",
+  "minutes": 24,
+  "batch_size": 12
+ },
+ "short": "predicts 'perfect' as next word",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, random arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Strong activations sit on the token right before a predicted 'perfect' (nobody IS perfect, isn't, picture-perfect, hardly) and the output direction promotes ' perfect'/'ideal' when the - pole is on, so it looks like a next-word-'perfect' predictor with weaker activations on negation/copula tokens in perfectionism contexts. Mix of contexts, so coverage may be partial.",
+ "selection": "random draw"
+}

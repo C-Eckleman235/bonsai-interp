@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-f90fd22a",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N11464+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T02:08:37+00:00",
+ "recipe": {
+  "toolchain_commit": "60b85eea",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L17_N11464_pos/2026-10-27-C-Eckleman235-f90fd22a.tests.json"
+ },
+ "label": "Structural tokens inside multi-line source code (mostly Python): line-final newlines, ' =' assignments, comment-start '#'/commented-out keywords, and mid-identifier pieces; only in code, not in prose about code. Broad pole, partial coverage.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L17_N11464_pos/2026-10-27-C-Eckleman235-f90fd22a.tests.json",
+   "prereg_commit": "60b85eea",
+   "author": "C-Eckleman235",
+   "n_fire": 6,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.595,
+     "peak": " open"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.313,
+     "peak": "if"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.34,
+     "peak": " print"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.455,
+     "peak": ".name"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.319,
+     "peak": ".error"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.28,
+     "peak": "(self"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.638,
+     "peak": "patible"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.25,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.086,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.029,
+     "peak": " instead"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.029,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.039,
+     "peak": " said"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.041,
+     "peak": " explains"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.336,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.052,
+     "peak": " before"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.013,
+     "peak": " appointment"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.938,
+    "median_fire": 0.33,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "60b85eea",
+  "minutes": 24,
+  "batch_size": 12
+ },
+ "short": "Code structure tokens (newline, =, #)",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, random arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Top examples and strong band samples are nearly all source code (Python) at structural tokens (newline after a line, ' =', '#', commented-out 'if'/'print'), but only 2.4% of tokens exceed 0.1 of max and a few strong hits are prose ('var' in various, a period in fiction), so the label covers only part of the pole. Near misses are prose and lists about the same topics, and no non-Python code was tested.",
+ "selection": "random draw"
+}

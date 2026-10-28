@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-345906c9",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N11069+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T02:08:44+00:00",
+ "recipe": {
+  "toolchain_commit": "60b85eea",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L7_N11069_pos/2026-10-27-C-Eckleman235-345906c9.tests.json"
+ },
+ "label": "In Python code, the token right after a variable's own name when it is re-assigned from itself (x = x[...], x = x if ..., x = x.replace(...), x = int(x))",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L7_N11069_pos/2026-10-27-C-Eckleman235-345906c9.tests.json",
+   "prereg_commit": "60b85eea",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.467,
+     "peak": ".strip"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.48,
+     "peak": "[:"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.443,
+     "peak": " if"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.496,
+     "peak": ")\n"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.569,
+     "peak": ".replace"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.713,
+     "peak": "["
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.597,
+     "peak": ")"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.741,
+     "peak": "["
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.062,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.024,
+     "peak": "[:"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.088,
+     "peak": "\n"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.249,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.026,
+     "peak": " root"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.051,
+     "peak": " was"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.025,
+     "peak": " again"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.112,
+     "peak": ")"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.532,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "60b85eea",
+  "minutes": 24,
+  "batch_size": 12
+ },
+ "short": "Token after self-reassigned variable",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, random arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Strong activations (top and >=0.5 band) are almost all Python tokens (a [, [:, ' if', .replace, ')') directly after a variable name that also appears on the LHS of the assignment (x = x...), plus weaker spread over other code; the weak and middle bands include non-code text so the pole is partly diffuse. Label is a context guess, not covering all firing.",
+ "selection": "random draw"
+}

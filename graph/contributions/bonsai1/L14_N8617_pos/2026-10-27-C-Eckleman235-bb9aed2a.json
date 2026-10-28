@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-27-C-Eckleman235-bb9aed2a",
+ "kind": "interpret",
+ "neuron": "bonsai1/L14/N8617+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T02:08:36+00:00",
+ "recipe": {
+  "toolchain_commit": "60b85eea",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L14_N8617_pos/2026-10-27-C-Eckleman235-bb9aed2a.tests.json"
+ },
+ "label": "Words placing a part by orientation or level (horizontal, above, top, bottom, flat, rooftop) in physical descriptions of plants, anatomy and structures",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L14_N8617_pos/2026-10-27-C-Eckleman235-bb9aed2a.tests.json",
+   "prereg_commit": "60b85eea",
+   "author": "C-Eckleman235",
+   "n_fire": 4,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.758,
+     "peak": " above"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.152,
+     "peak": " horizontal"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.635,
+     "peak": " horizontal"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.159,
+     "peak": " top"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.24,
+     "peak": " shallow"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.334,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.249,
+     "peak": " rooftop"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.437,
+     "peak": " ceiling"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.073,
+     "peak": " runner"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.034,
+     "peak": " firmly"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.275,
+     "peak": " spread"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.032,
+     "peak": " old"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.189,
+     "peak": " shallow"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.02,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.034,
+     "peak": " sits"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.437,
+     "peak": " ceiling"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.82,
+    "median_fire": 0.291,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "60b85eea",
+  "minutes": 24,
+  "batch_size": 12
+ },
+ "short": "vertical-position/orientation words",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, random arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Strong activations are a mix: spatial orientation/level words (horizontal x7, above, top, bottom, flat) in botany, anatomy and construction text, plus oddities like 'terminates in' and 'close to'; weak mass is scattered subword pieces. The - pole fires on inside/outside/sides/shaft/hollow, so this looks like the vertical/orientation half of a part-location distinction, but coverage by the word list is only a few percent.",
+ "selection": "random draw",
+ "trigger": {
+  "words": [
+   "horizontal",
+   "above",
+   "top",
+   "bottom",
+   "flat",
+   "rooftop"
+  ]
+ }
+}

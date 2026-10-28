@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-27-C-Eckleman235-48a040fd",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N923+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T02:08:39+00:00",
+ "recipe": {
+  "toolchain_commit": "60b85eea",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L20_N923_pos/2026-10-27-C-Eckleman235-48a040fd.tests.json"
+ },
+ "label": "The coordinating conjunction ' or' (and Arabic ' أو') joining two alternative noun/verb phrases mid-sentence, as the model predicts the second alternative; the '-' pole is the same slot with ' and'.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L20_N923_pos/2026-10-27-C-Eckleman235-48a040fd.tests.json",
+   "prereg_commit": "60b85eea",
+   "author": "C-Eckleman235",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.093,
+     "peak": " or"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.073,
+     "peak": " or"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.192,
+     "peak": " or"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.05,
+     "peak": " through"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.015,
+     "peak": "Whether"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.324,
+     "peak": " or"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.188,
+     "peak": " أو"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.083,
+     "peak": " or"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.003,
+     "peak": " who"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.015,
+     "peak": " approving"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.018,
+     "peak": " offered"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.048,
+     "peak": " way"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.015,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.023,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.008,
+     "peak": "باح"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.029,
+     "peak": " may"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.922,
+    "median_fire": 0.088,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "60b85eea",
+  "minutes": 24,
+  "batch_size": 12
+ },
+ "short": "' or' joining alternatives",
+ "confidence": "medium",
+ "notes": "10x pilot (concept-maps/tenx, random arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Peak tokens are overwhelmingly ' or' (70% coverage by word) plus Arabic ' أو', mostly mid-sentence between two parallel noun phrases; band samples show weaker activations also on ' or' and ' either', and code-license 'OR' in uppercase. Output direction promotes ' or'/' either', so it looks like an 'alternative coming' predictor; the opposite pole is ' and' in the same slot, so near misses swap in ' and', 'but', and commas.",
+ "selection": "random draw",
+ "trigger": {
+  "words": [
+   "or",
+   "أو",
+   "either"
+  ]
+ }
+}

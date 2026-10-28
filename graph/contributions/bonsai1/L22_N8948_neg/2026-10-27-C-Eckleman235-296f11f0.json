@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-296f11f0",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N8948-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T02:08:41+00:00",
+ "recipe": {
+  "toolchain_commit": "60b85eea",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L22_N8948_neg/2026-10-27-C-Eckleman235-296f11f0.tests.json"
+ },
+ "label": "Function word that opens a time/condition/circumstance adjunct (after, before, over, when, for, with, 'in' of a for-loop, 'you' in a conditional), at the point where the main-clause event or consequence is expected next",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N8948_neg/2026-10-27-C-Eckleman235-296f11f0.tests.json",
+   "prereg_commit": "60b85eea",
+   "author": "C-Eckleman235",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.05,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.458,
+     "peak": " you"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.117,
+     "peak": " Over"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.061,
+     "peak": "(item"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.155,
+     "peak": " finally"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.092,
+     "peak": " tried"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.073,
+     "peak": " you"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.157,
+     "peak": " With"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.056,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.059,
+     "peak": "Keep"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.194,
+     "peak": " behind"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.036,
+     "peak": " results"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.034,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.087,
+     "peak": " tried"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.065,
+     "peak": "ores"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.055,
+     "peak": " staff"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.766,
+    "median_fire": 0.105,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "60b85eea",
+  "minutes": 24,
+  "batch_size": 12
+ },
+ "short": "adjunct-opening connective before main clause",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, random arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Strongest hits are clause-opening prepositions/conjunctions (after, before, over, when, for, with, 'in' in 'for x in') and 'you' in a conditional, i.e. a setup adjunct awaiting its main clause; the pole is sparse (0.3% of tokens above 0.1 max), mixed across prose and code, and no single token covers it, so this is a loose syntactic-role label that may only partly hold.",
+ "selection": "random draw"
+}
