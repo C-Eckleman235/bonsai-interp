@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-7e5825ff",
+ "contributor": "C-Eckleman235",
+ "kind": "qc",
+ "neuron": "bonsai1/L29/N5803+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:02:17+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Japan: the word 'Japanese', Japanese places (Tokyo, Kyoto, Osaka, Mount Fuji) and Imperial Japan; Korea and China stay low"
+ },
+ "neighbours": [
+  {
+   "unit": "L29/N5803",
+   "pole": "+",
+   "label": "Japan and Japanese things, including Japanese personal names wherever the person is (Takeshi Yamamoto, Aiko, Hiroshi Nakamura, Kazuo) and the word 'Japanese'; Korean and Chinese names, places and things stay low",
+   "fire": [
+    "The cellist Takeshi Yamamoto joined an orchestra in Vienna.",
+    "Our intern, Aiko, built the dashboard in a single weekend in Chicago.",
+    "Dr. Hiroshi Nakamura leads the lab in Toronto.",
+    "Snow monkeys bathe in hot springs in the mountains of Nagano.",
+    "A bowl of udon cost less than a coffee in Osaka.",
+    "She studied Japanese calligraphy for three years.",
+    "The novelist Kazuo Ishiguro grew up in England.",
+    "Pilgrims walked between temples on Shikoku island."
+   ],
+   "quiet": [
+    "The cellist Jae-won Kim joined an orchestra in Vienna.",
+    "Over one weekend in Chicago our intern, Mei Lin, built the dashboard.",
+    "Dr. Wei Zhang leads the lab in Toronto.",
+    "Mountain goats climb the steep cliffs above the lakes of Montana.",
+    "A bowl of pho cost less than a coffee in Hanoi.",
+    "She studied Chinese calligraphy for three years.",
+    "The novelist Han Kang grew up in Gwangju.",
+    "Pilgrims walked between monasteries on Jeju island."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Japanese, incl. Japanese names",
+ "unit_kind": "sparse feature",
+ "confidence": 0.6,
+ "notes": "QC refine after a Codex red-team round (10x pilot P5): the pole fired on Japanese given names with no Japanese place in the sentence (Masahiko 0.73, Akihito 0.68; in exploration Yuki in London 0.51, Kenji 0.46), which the place label left out; a Korean name stayed at 0.03. The test claims Japanese names anywhere plus Japanese places and things, against Korean, Chinese and Vietnamese ones. Exploration (play probe: 12 Codex-written red-team probes and 8 of the author's, none of these 16 sentences; 0 overlap checked). The author saw the held label and those probe readings but did not read the original test's sentences before drafting these."
+}

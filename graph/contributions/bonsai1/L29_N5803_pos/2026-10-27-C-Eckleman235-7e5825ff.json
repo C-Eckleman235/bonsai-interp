@@ -1,0 +1,156 @@
+{
+ "id": "2026-10-27-C-Eckleman235-7e5825ff",
+ "kind": "qc",
+ "neuron": "bonsai1/L29/N5803+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T01:07:02+00:00",
+ "recipe": {
+  "toolchain_commit": "90798252",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L29_N5803_pos/2026-10-27-C-Eckleman235-7e5825ff.tests.json"
+ },
+ "label": "Japan and Japanese things, including Japanese personal names wherever the person is (Takeshi Yamamoto, Aiko, Hiroshi Nakamura, Kazuo) and the word 'Japanese'; Korean and Chinese names, places and things stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L29_N5803_pos/2026-10-27-C-Eckleman235-7e5825ff.tests.json",
+   "prereg_commit": "90798252",
+   "author": "C-Eckleman235",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.427,
+     "peak": "hi"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.647,
+     "peak": "iko"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.879,
+     "peak": "shi"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.559,
+     "peak": "ano"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.323,
+     "peak": " Osaka"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.477,
+     "peak": " Japanese"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.227,
+     "peak": " in"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.297,
+     "peak": "oku"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.0,
+     "peak": "-w"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.004,
+     "peak": " Mei"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.021,
+     "peak": " lab"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": -0.0,
+     "peak": " lakes"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.044,
+     "peak": " than"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": -0.0,
+     "peak": " studied"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.0,
+     "peak": "wang"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.015,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.452,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "90798252",
+  "minutes": 5,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Japan: the word 'Japanese', Japanese places (Tokyo, Kyoto, Osaka, Mount Fuji) and Imperial Japan; Korea and China stay low"
+ },
+ "short": "Japanese, incl. Japanese names",
+ "unit_kind": "sparse feature",
+ "confidence": 0.6,
+ "notes": "QC refine after a Codex red-team round (10x pilot P5): the pole fired on Japanese given names with no Japanese place in the sentence (Masahiko 0.73, Akihito 0.68; in exploration Yuki in London 0.51, Kenji 0.46), which the place label left out; a Korean name stayed at 0.03. The test claims Japanese names anywhere plus Japanese places and things, against Korean, Chinese and Vietnamese ones. Exploration (play probe: 12 Codex-written red-team probes and 8 of the author's, none of these 16 sentences; 0 overlap checked). The author saw the held label and those probe readings but did not read the original test's sentences before drafting these."
+}
