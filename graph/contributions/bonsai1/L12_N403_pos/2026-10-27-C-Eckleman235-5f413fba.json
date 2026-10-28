@@ -1,0 +1,163 @@
+{
+ "id": "2026-10-27-C-Eckleman235-5f413fba",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N403+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T02:08:35+00:00",
+ "recipe": {
+  "toolchain_commit": "60b85eea",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L12_N403_pos/2026-10-27-C-Eckleman235-5f413fba.tests.json"
+ },
+ "label": "Word pieces of skin-care and abrasion/smoothing vocabulary: moistur(izer), skin (cells), exfol(iate), sandpaper/sanding, grit, pedicure, eczema; strongest on mid-word pieces",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L12_N403_pos/2026-10-27-C-Eckleman235-5f413fba.tests.json",
+   "prereg_commit": "60b85eea",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.695,
+     "peak": " moistur"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.719,
+     "peak": "paper"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.869,
+     "peak": " skin"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.759,
+     "peak": " grit"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.411,
+     "peak": " cream"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.372,
+     "peak": " body"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.745,
+     "peak": " grit"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.497,
+     "peak": " lotion"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.05,
+     "peak": " brushes"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.046,
+     "peak": " first"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.009,
+     "peak": "ently"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.073,
+     "peak": " Wood"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.046,
+     "peak": " inhal"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.021,
+     "peak": " at"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.071,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.022,
+     "peak": " stretch"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.707,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "60b85eea",
+  "minutes": 24,
+  "batch_size": 12
+ },
+ "short": "skin-care and sanding word pieces",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, random arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Top examples are mid-word pieces of moisturizer/exfoliate/sandpaper/pedicure/eczema plus ' skin' and 'grit', so the theme is skin care plus abrasion/smoothing of surfaces; the minus pole is skin/RAM/oral body-part nouns, so ' skin' itself is a weak edge. Strong activations are a mix with rare code leaks (multigrid), so coverage may be partial.",
+ "selection": "random draw",
+ "trigger": {
+  "words": [
+   "moistur",
+   "skin",
+   "sandpaper",
+   "sand",
+   "grit",
+   "exfol",
+   "pedicure",
+   "eczema"
+  ]
+ }
+}
