@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-52c6d719",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N9049+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T01:54:29+00:00",
+ "recipe": {
+  "toolchain_commit": "c8b7660e",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L23_N9049_pos/2026-10-27-C-Eckleman235-52c6d719.tests.json"
+ },
+ "label": "A measure/kind/part head noun right before an expected 'of' (what kind, the number, a piece, the remainder, next round), or a wh-word plus noun asking which sort/level/side; the slot where a partitive 'of' is about to come.",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L23_N9049_pos/2026-10-27-C-Eckleman235-52c6d719.tests.json",
+   "prereg_commit": "c8b7660e",
+   "author": "C-Eckleman235",
+   "n_fire": 4,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.164,
+     "peak": " kind"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.355,
+     "peak": " piece"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.071,
+     "peak": " number"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.157,
+     "peak": " remainder"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.437,
+     "peak": " level"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.419,
+     "peak": " type"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.181,
+     "peak": " round"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.464,
+     "peak": " number"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.049,
+     "peak": " managed"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.114,
+     "peak": " recipe"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.069,
+     "peak": " many"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.03,
+     "peak": " cut"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.163,
+     "peak": " tell"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.269,
+     "peak": " corner"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.068,
+     "peak": "s"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.516,
+     "peak": " up"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.766,
+    "median_fire": 0.268,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "c8b7660e",
+  "minutes": 15,
+  "batch_size": 1
+ },
+ "short": "head noun awaiting 'of' (kind, number, piece)",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, census arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples + concept-census evidence (which concepts and domains selected the pole)); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Strong activations sit on nouns like kind/type/level/side/round/number/piece/remainder/century that head a 'X of' phrase or follow what/which; the neg pole is the quantity/count side (fewer, number, few). Pole is broad (1.2% of tokens above 0.1 max), so near misses may fire weakly; the census profession result is unexplained.",
+ "selection": "concept search: 10x census (professions\r)"
+}
