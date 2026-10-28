@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-C-Eckleman235-52568b59",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N86+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T02:05:34+00:00",
+ "recipe": {
+  "toolchain_commit": "ef868fe4",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L12_N86_pos/2026-10-27-C-Eckleman235-52568b59.tests.json"
+ },
+ "label": "Head or quantity word inside a noun phrase after a degree/size modifier (the higher price, a wide variety, a large quantity, those very few, the many links)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L12_N86_pos/2026-10-27-C-Eckleman235-52568b59.tests.json",
+   "prereg_commit": "ef868fe4",
+   "author": "C-Eckleman235",
+   "n_fire": 3,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.308,
+     "peak": " bigger"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.099,
+     "peak": " depot"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.153,
+     "peak": "atorio"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.426,
+     "peak": " few"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.937,
+     "peak": " many"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.287,
+     "peak": " period"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.082,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.155,
+     "peak": " equipment"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.163,
+     "peak": " mechanic"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.027,
+     "peak": " call"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.135,
+     "peak": " shop"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.095,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.306,
+     "peak": " new"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.143,
+     "peak": " train"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.076,
+     "peak": ".txt"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.044,
+     "peak": ","
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.781,
+    "median_fire": 0.221,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "ef868fe4",
+  "minutes": 24,
+  "batch_size": 1
+ },
+ "short": "quantity/degree word in noun phrase",
+ "unit_kind": "dense / positional",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, census arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples + concept-census evidence (which concepts and domains selected the pole)); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Strong examples are mid-noun-phrase tokens following a degree/quantity modifier (higher price, wide variety, very few, great quantity), across languages, but 1.6% of tokens fire above 0.1 and band samples are mixed (suffix pieces, 'sought after', code), so coverage is likely poor. Census shows profession nouns also select it, which this label does not explain.",
+ "selection": "concept search: 10x census (professions\r)"
+}
