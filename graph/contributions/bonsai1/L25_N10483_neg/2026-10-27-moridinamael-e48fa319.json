@@ -1,0 +1,158 @@
+{
+ "id": "2026-10-27-moridinamael-e48fa319",
+ "kind": "qc",
+ "neuron": "bonsai1/L25/N10483-",
+ "contributor": "moridinamael",
+ "created": "2026-10-28T04:39:22+00:00",
+ "recipe": {
+  "toolchain_commit": "ca2699d5",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L25_N10483_neg/2026-10-27-moridinamael-e48fa319.tests.json"
+ },
+ "label": "Small function words ('to', 'more', 'for', 'the') in sentences about physics, astronomy and earth science (gravitational waves, neutrinos, hydrogen gas, moons, volcanoes), even in a single sentence; weaker in biology and engineering prose, near silent in history, politics, fiction, chat and recipes",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L25_N10483_neg/2026-10-27-moridinamael-e48fa319.tests.json",
+   "prereg_commit": "ca2699d5",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 6,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.56,
+     "peak": " from"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.804,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.658,
+     "peak": " gas"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.304,
+     "peak": " forces"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.208,
+     "peak": " beneath"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.059,
+     "peak": " photon"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.363,
+     "peak": "ern"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.519,
+     "peak": " of"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.153,
+     "peak": " treaty"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.06,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.089,
+     "peak": " come"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.418,
+     "peak": "'s"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.1,
+     "peak": " parliament"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.118,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.115,
+     "peak": " we"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.135,
+     "peak": " trade"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.828,
+    "median_fire": 0.441,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "inverse-gmoo",
+   "look",
+   "neighbors",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [
+   "bank-solo",
+   "look"
+  ],
+  "toolchain_commit": "ca2699d5",
+  "minutes": 0,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Weak, diffuse pole: ordinary function words (to, the, for, with, more) inside running multi-sentence science-news or research-explainer prose (astronomy, physics, devices, cell biology); near silent in single short sentences, recipes and instructions, fiction, chat, politics, history, code."
+ }
+}
