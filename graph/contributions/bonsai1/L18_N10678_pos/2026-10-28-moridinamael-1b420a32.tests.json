@@ -1,0 +1,51 @@
+{
+ "contribution": "2026-10-28-moridinamael-1b420a32",
+ "contributor": "moridinamael",
+ "kind": "qc",
+ "neuron": "bonsai1/L18/N10678+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T15:59:25+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "the final subword of a multi-token Spanish/Italian surname in a person's full name (Bermude|z, Ramazz|ini)"
+ },
+ "neighbours": [
+  {
+   "unit": "L18/N10678",
+   "pole": "+",
+   "label": "the last piece of a rare or foreign person's name that the tokenizer splits into several pieces, in any language (Bermude|z, Kristoffers|en); common names like Smith stay quiet",
+   "fire": [
+    "The report was signed by Dr. Elena Bermudez, who led the field survey.",
+    "Our new neighbor, Lars Kristoffersen, brought over a loaf of rye bread.",
+    "The award went to a young violinist named Tomasz Wrzesniewski.",
+    "Ask Mr. Oluwaseun Adebayo-Okonkwo about the shipping schedule.",
+    "In the novel, Captain Ingrid Halvorsdottir steers the ship through the storm.",
+    "The guest lecture will be given by Professor Rajendra Venkataraman.",
+    "Die Rechnung wurde an Frau Annegret Schwarzenegger-Ploetz geschickt.",
+    "The detective finally tracked down a man called Bartholomew Szczepankiewicz."
+   ],
+   "quiet": [
+    "The report was signed by Dr. Elena Smith, who led the field survey.",
+    "Our new neighbor, Lars Johnson, brought over a loaf of rye bread.",
+    "The award went to a young violinist from a small town in the north.",
+    "Ask Mr. Brown about the shipping schedule.",
+    "In the novel, the captain steers the ship through the storm.",
+    "The guest lecture will be given by Professor John Taylor.",
+    "Die Rechnung wurde an Frau Müller geschickt.",
+    "The detective finally tracked down a man called David Miller."
+   ]
+  }
+ ],
+ "predictions": "Expect most fire items to pass 0.20; risk: first names like Lars/Elena/Tomasz may split and leak into the near misses, and quiet names may fire weakly (this neuron is broad).",
+ "short": "last piece of a split rare/foreign personal name",
+ "methods": {
+  "agent": "claude-sonnet-5-5 (letsplay stream)",
+  "screens": [
+   "card",
+   "look",
+   "probe",
+   "inverse-gmoo",
+   "neighbors"
+  ]
+ }
+}
