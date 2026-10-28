@@ -1,0 +1,157 @@
+{
+ "id": "2026-10-27-C-Eckleman235-8b4eb101",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N8306+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T01:55:34+00:00",
+ "recipe": {
+  "toolchain_commit": "76ccbb26",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L15_N8306_pos/2026-10-27-C-Eckleman235-8b4eb101.tests.json"
+ },
+ "label": "The verb 'tell' (Tell us / and tell them) in chatty informal prose; strong activations are otherwise a heterogeneous mix",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L15_N8306_pos/2026-10-27-C-Eckleman235-8b4eb101.tests.json",
+   "prereg_commit": "76ccbb26",
+   "author": "C-Eckleman235",
+   "n_fire": 3,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.203,
+     "peak": " call"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.345,
+     "peak": " favourite"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.332,
+     "peak": " that"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.347,
+     "peak": " tell"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.043,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.092,
+     "peak": " me"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.043,
+     "peak": " tell"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.16,
+     "peak": " has"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.131,
+     "peak": " I"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.266,
+     "peak": " favourite"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.323,
+     "peak": " that"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.185,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.184,
+     "peak": " into"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.026,
+     "peak": "Did"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.061,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.16,
+     "peak": " has"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.586,
+    "median_fire": 0.181,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "76ccbb26",
+  "minutes": 16,
+  "batch_size": 1
+ },
+ "short": "'tell' in chatty prose (mixed pole)",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, census arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples + concept-census evidence (which concepts and domains selected the pole)); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Top examples are a scatter (' to' after 'excuse', ' tell', 'ed', CJK particles, punctuation) with no single token or context; the clearest repeated item is 'tell'. Census hints at foods/drinks but only 56% of foods in templates, so the label is a weak token hypothesis and partial coverage is expected.",
+ "selection": "concept search: 10x census (foods\r)",
+ "trigger": {
+  "words": [
+   "tell",
+   "Tell"
+  ]
+ }
+}
