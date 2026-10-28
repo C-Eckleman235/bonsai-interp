@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-28-ChopinDavid-aa5af39d",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N3845+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-28T09:27:28+00:00",
+ "recipe": {
+  "toolchain_commit": "3b96b8f0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L29_N3845_pos/2026-10-28-ChopinDavid-aa5af39d.tests.json"
+ },
+ "label": "a preposition where 'other(s)' is the expected next word ('isolated from __ animals', 'life on __ planets', 'for __ to follow'): a next-token predictor of 'other'",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L29_N3845_pos/2026-10-28-ChopinDavid-aa5af39d.tests.json",
+   "prereg_commit": "3b96b8f0",
+   "author": "ChopinDavid",
+   "n_fire": 3,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.225,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.162,
+     "peak": " from"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.542,
+     "peak": " with"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.04,
+     "peak": " against"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.037,
+     "peak": " for"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.345,
+     "peak": " with"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.024,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.422,
+     "peak": " for"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.006,
+     "peak": " keep"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.064,
+     "peak": " farm"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.122,
+     "peak": " with"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.02,
+     "peak": " fence"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.009,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.009,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.004,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.021,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.906,
+    "median_fire": 0.194,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "3b96b8f0",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "predicts 'other' after a preposition",
+ "unit_kind": "context",
+ "confidence": "medium",
+ "notes": "Probe: 'on other planets' 0.406, 'for others to follow' 0.362, 'interactions with other' 0.306, 'apart from other dogs' 0.303, but 'apart from the sofa' 0.231 (setup alone fires, as expected for a predictor); 'playing with other kids' 0.025. Logit effect promotes ' other', ' others', ' otros', ' another'. Near misses remove the setup, not only the word.",
+ "selection": "random draw"
+}
