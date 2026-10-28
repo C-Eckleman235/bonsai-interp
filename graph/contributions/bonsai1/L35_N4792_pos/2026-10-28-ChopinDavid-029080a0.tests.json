@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-029080a0",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N4792+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T05:19:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N4792",
+   "pole": "+",
+   "label": "a continuation piece inside a word written in a non-Latin script that the tokenizer splits into several pieces (katakana loanwords like ディ|レ|クター, Korean 슬|라이|스, Cyrillic homoglyphs inside Latin words), as against the same scripts in whole-token words and plain Latin text",
+   "fire": [
+    "会議では研究所のディレクターが新しい計画について話した。",
+    "クラウド上で二つ目のインスタンスを作成して負荷を分散させた。",
+    "디스크의 각 슬라이스 번호를 명령어에 입력해야 합니다.",
+    "Plеаsе sеnd thе rеpоrt tо thе оffіcе bеfоrе Frіdаy.",
+    "Our new art ディレクター joined the team in Tokyo last spring.",
+    "The software creates a new インスタンス whenever a user logs in.",
+    "Тhе nеw mаnаgеr wіll stаrt wоrk іn thе bіg оffіcе.",
+    "그는 회사의 아트 디렉터로 일하면서 많은 광고를 만들었다."
+   ],
+   "quiet": [
+    "会議では研究所の所長が新しい計画について話した。",
+    "東京の空港から市内までシャトルサービスを利用した。",
+    "디스크의 각 번호를 명령어에 정확하게 입력해야 합니다.",
+    "Please send the report to the office before Friday.",
+    "Our new art director joined the team in Tokyo last spring.",
+    "The software creates a new copy whenever a user logs in.",
+    "The new manager will start work in the big office.",
+    "그는 회사에서 오랫동안 일하면서 많은 친구를 만났다."
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.6 on the inner piece of a split word; whole-token Japanese/Korean words and plain English below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "mid-word piece of split non-Latin word",
+ "unit_kind": "token",
+ "confidence": 0.45,
+ "notes": "Card: peaks on 'レ' in ディレクター, 'ービス', 'スタン' in インスタンス, '라이' in 슬라이스, Cyrillic 'і' inside 'trаffіc', ' ℃'. Probe: 슬라이스 0.627, homoglyph traffic 0.590, インスタンス 0.534, ディレクター 0.489, ' «' 0.363, ℃ 0.389; single-token サービス sentence 0.040, plain English traffic 0.004, floor 0.003."
+}
