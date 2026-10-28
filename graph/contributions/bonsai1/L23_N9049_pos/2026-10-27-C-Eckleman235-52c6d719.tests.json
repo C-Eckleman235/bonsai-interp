@@ -1,0 +1,46 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-52c6d719",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N9049+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:39:02+00:00",
+ "selection": "concept search: 10x census (professions\r)",
+ "neighbours": [
+  {
+   "unit": "L23/N9049",
+   "pole": "+",
+   "label": "A measure/kind/part head noun right before an expected 'of' (what kind, the number, a piece, the remainder, next round), or a wh-word plus noun asking which sort/level/side; the slot where a partitive 'of' is about to come.",
+   "fire": [
+    "During the interview the committee asked her what kind of experience she had with large budgets.",
+    "The recipe calls for a small piece of fresh ginger, peeled and grated finely over the pan.",
+    "Researchers were surprised by the sheer number of species living in a single square metre of soil.",
+    "After the storm, the remainder of the village was cut off from the main road for three days.",
+    "Nobody could tell me which level of difficulty the second boss was designed for, so I guessed.",
+    "She stared at the last bit of the map, wondering what type of terrain lay beyond the ridge.",
+    "Talks will resume next month, and officials expect a final round of negotiations before the deadline.",
+    "# count how many\n    total = len(items)\n    # the minimum number of retries before we give up\n    retries = 3"
+   ],
+   "quiet": [
+    "During the interview the committee asked her whether she had ever managed a large budget.",
+    "The recipe calls for fresh ginger, peeled and grated finely over the pan until fragrant.",
+    "Researchers were surprised that so many species were living in a single square metre of soil.",
+    "After the storm, the village was cut off from the main road for three days.",
+    "Nobody could tell me whether the second boss was meant to be easy, so I just guessed.",
+    "She stared at the last corner of the map, wondering what lay beyond the ridge.",
+    "Talks will resume next month, and officials hope to finish negotiating before the deadline.",
+    "# count the items\n    total = len(items)\n    # give up after three failed tries\n    retries = 3"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "card",
+   "bands"
+  ]
+ },
+ "short": "head noun awaiting 'of' (kind, number, piece)",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, census arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples + concept-census evidence (which concepts and domains selected the pole)); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Strong activations sit on nouns like kind/type/level/side/round/number/piece/remainder/century that head a 'X of' phrase or follow what/which; the neg pole is the quantity/count side (fewer, number, few). Pole is broad (1.2% of tokens above 0.1 max), so near misses may fire weakly; the census profession result is unexplained."
+}
