@@ -1,0 +1,46 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-61174a82",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N6443-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:39:24+00:00",
+ "selection": "concept search: 10x census (professions\r)",
+ "neighbours": [
+  {
+   "unit": "L15/N6443",
+   "pole": "-",
+   "label": "Item-boundary punctuation (newline, dash bullet, period) inside recipe, materials and instruction lists and code string delimiters; weaker evidence that professions named in neutral frames also drive it",
+   "fire": [
+    "Pot roast for Sunday\n- 2 lbs chuck roast, trimmed\n- 1 large onion, sliced thin\n- 3 carrots, peeled and chopped\n- 1 cup beef broth",
+    "Supplies you will need for the project:\n- Two sheets of felt\n- A glue gun\n- Pair of sharp scissors\n- Spool of red thread\n- Small buttons",
+    "Before you install the package, make sure you open the terminal and cd into the folder. Then type the command exactly as shown, surrounded by quotes. Press enter to continue.",
+    "def build_message(items):\n    parts = []\n    for item in items:\n        parts.append(item.name)\n    return \", \".join(parts)\n\nprint(build_message(cart))",
+    "Easy pancakes\n1 cup flour\n2 tbsp sugar\n1 tsp baking powder\n1 egg, beaten\n3/4 cup milk\nmelted butter for the pan\nWhisk everything together and cook on a hot griddle.",
+    "query = \"\"\"\nSELECT `user_id` AS `id`, CAST(`score` AS double) AS `value`\nFROM leaderboard\nWHERE `score` > 10\n\"\"\"\nrows = db.execute(query)",
+    "At the meeting we spent an hour discussing what a plumber actually does all day, and everyone had a story.",
+    "She mentioned that the job of a court stenographer was mostly the topic of the whole dinner conversation."
+   ],
+   "quiet": [
+    "Once the chuck roast has been trimmed, you cook it slowly with an onion and some carrots in beef broth until the meat falls apart",
+    "The felt, the glue gun and a pair of sharp scissors are all that a child needs to make this craft on a rainy afternoon",
+    "Installing the package is straightforward because the installer already knows which folder to use and which command to run for you",
+    "The function walks through every item in the cart, collects each name, and then glues them together with commas before showing the result on screen",
+    "My grandmother always whisked flour, sugar, baking powder, an egg and some milk in a big bowl and poured it onto a hot griddle with melted butter",
+    "The database query asks for the user id and the score of every player whose score is above ten, sorted from best to worst on the leaderboard",
+    "We talked about the weather in Lisbon for an hour and everyone agreed the ocean looked unusually calm that week",
+    "The article was mostly about how sourdough starters behave during a cold winter in the mountains"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "card",
+   "bands"
+  ]
+ },
+ "short": "list-item boundaries in recipes/instructions",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, census arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples + concept-census evidence (which concepts and domains selected the pole)); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Strongest negative-pole examples are line breaks, dashes and periods at item boundaries in ingredient and supply lists and code string delimiters, but the band samples are a scatter of function words and punctuation in many genres and the pole is mostly gate-closed leak; the census profession signal is unexplained, so two fire items test it."
+}
