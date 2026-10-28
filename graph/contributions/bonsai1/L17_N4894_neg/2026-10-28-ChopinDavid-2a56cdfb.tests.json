@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-2a56cdfb",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N4894-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T17:19:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L17/N4894",
+   "pole": "-",
+   "label": "dense / unclear: a broad pole that fires weakly on many tokens (Python '(self' in method definitions, abbreviation periods, time spans); the guess is the '(self' parameter opening a method definition",
+   "fire": [
+    "class Motor:\n    def onStepX(self, evt):\n        self.move('X', self.steps)",
+    "class Cache:\n    def _evict(self, key, **kw):\n        del self.items[key]",
+    "class Panel:\n    def onResize(self, event):\n        self.layout()",
+    "class Reader:\n    def _parse_header(self, line):\n        return line.split(',')",
+    "class Timer:\n    def onTick(self, evt):\n        self.count += 1",
+    "class Store:\n    def _flush(self, force=False):\n        self.buffer.clear()",
+    "class Robot:\n    def onUseForZ(self, evt):\n        self.use('Z', self.value)",
+    "class Graph:\n    def _resample(self, rule, **kwargs):\n        return self.data"
+   ],
+   "quiet": [
+    "def step_x(evt):\n    move('X', steps)\n    return True",
+    "def evict(cache, key):\n    del cache[key]\n    return cache",
+    "def on_resize(event):\n    layout()\n    return None",
+    "def parse_header(line):\n    return line.split(',')",
+    "def tick(count):\n    count += 1\n    return count",
+    "def flush(buffer):\n    buffer.clear()\n    return buffer",
+    "def use_z(value):\n    use('Z', value)\n    return value",
+    "def resample(data, rule):\n    return data"
+   ]
+  }
+ ],
+ "predictions": "guess: fire 0.2-0.4 on '(self' in def lines; plain functions near 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "(self in method definitions (guess)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.1,
+ "notes": "Card: broad flag (5.1% of tokens reach 0.1 of max), max 5.7, peaks '(self' x2, ' days', '_down', '...', 'N.Y.'. Probe flat: 'N.Y.' 0.269, 'past seven days' 0.199, 'past week' 0.194, board meeting 0.186, milk floor 0.176, def add(a, b) 0.162, '_downsample(self' 0.114. Nothing separates; expected to fail."
+}

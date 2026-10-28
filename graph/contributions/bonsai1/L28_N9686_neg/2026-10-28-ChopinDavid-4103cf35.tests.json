@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-4103cf35",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N9686-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T17:19:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N9686",
+   "pole": "-",
+   "label": "the point in a recipe where boiling turns into turning the heat down (the comma after 'bring to a boil', ' the' in 'reduce/lower the heat'): it anticipates 'reduce the heat and simmer'; recipe steps with no boil-then-lower move stay low",
+   "fire": [
+    "Pour in the broth, bring to a boil, then reduce the heat and cover.",
+    "When the soup starts to bubble, turn down the heat and simmer gently.",
+    "Add the lentils and water. Bring to a boil, lower the heat and cook for 25 minutes.",
+    "Stir in the tomatoes and bring the sauce to a boil, then reduce the heat to low.",
+    "Cover the potatoes with water and bring to a boil; reduce the heat and simmer until tender.",
+    "Once the milk boils, lower the heat so it does not burn.",
+    "Add the rice and bring back to the boil. Reduce the heat and cover tightly.",
+    "Pour the syrup into the pan, bring to a boil, then lower the heat for five minutes."
+   ],
+   "quiet": [
+    "Pour in the broth, add the herbs, then stir and taste for salt.",
+    "When the soup is ready, ladle it into warm bowls and serve.",
+    "Add the lentils and water. Stir in the spices and the chopped garlic.",
+    "Stir in the tomatoes and the basil, then season with salt and pepper.",
+    "Cover the potatoes with foil and set them aside until you need them.",
+    "Once the milk is cold, pour it into a jug for the table.",
+    "Add the rice and the peas. Fluff with a fork and serve warm.",
+    "Pour the syrup into a jar, close the lid, then keep it in the fridge."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.95 at 'bring to a boil,' or 'lower/reduce the' before 'heat'; other recipe steps below 0.25",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "boil, then turn the heat down",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card max 207: ',' x9 after 'Bring to a boil', ' the' in 'Lower the heat', 'reduce the heat', ' Reduce'. Probe: 'lower the heat and let it simmer' 0.948, 'bring to a boil, reduce the heat' 0.638, 'Reduce heat and simmer' 0.602, 'bring to a boil, and cook' 0.544; 'Add the onions, stir well, and season' 0.253 (leak), 'stir in the parsley' 0.163, 'Reduce your spending' 0.023."
+}

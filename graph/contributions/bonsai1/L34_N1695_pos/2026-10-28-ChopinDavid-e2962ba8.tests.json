@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-e2962ba8",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N1695+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T17:19:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N1695",
+   "pole": "+",
+   "label": "a word-initial h/kh-sound letter split off as its own piece in a non-Latin script (Cyrillic ' х', Arabic ' ه'/' وه', katakana 'ヒ'); words in the same scripts without that split stay quiet",
+   "fire": [
+    "Старик говорил хриплым голосом у костра.",
+    "На столе стояла хрустальная ваза с цветами.",
+    "Утро было хмурым, и шёл мелкий дождь.",
+    "كانت الغرفة نظيفة وهادئة طوال الليل.",
+    "درس الطالب كثيرا وهكذا نجح في الامتحان.",
+    "先生は問題を解くためのヒントをくれた。",
+    "この映画のヒーローはとても勇敢だ。",
+    "Ребёнок слушал хлюпающие шаги в темноте."
+   ],
+   "quiet": [
+    "Старик говорил тихим голосом у костра.",
+    "На столе стояла большая ваза с цветами.",
+    "Утро было серым, и шёл мелкий дождь.",
+    "كانت الغرفة نظيفة وجميلة طوال الليل.",
+    "درس الطالب كثيرا ولذلك نجح في الامتحان.",
+    "先生は問題を解くための答えをくれた。",
+    "この映画の主人公はとても勇敢だ。",
+    "Ребёнок слушал тяжёлые шаги в темноте."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on ' х' / ' وه' / 'ヒ' pieces; same sentences with other words below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split initial h-sound letter",
+ "unit_kind": "token",
+ "confidence": 0.4,
+ "notes": "Card max 207: ' ه' x9, ' اله' x7, ' х' x5, ' وه' x3, ' h' (hâlé), 'ヒ'. Probe: 'ヒューマン' 0.645, 'хрипатой' 0.626, 'وهادئة' 0.535, 'هائلة' 0.272, 'هدفها' 0.085, 'hâlé' 0.136; controls 0.004-0.053 (\"d'hiver\" 0.152). Arabic bare ' ه' is uneven, so items lean on ' х', ' وه' and 'ヒ'. Tokens checked: х|ри|пл|ый, х|ру|ст|альный, х|м|ур|ый, وه|ك|ذا, ه|اد|ئ, ヒ|ント."
+}
