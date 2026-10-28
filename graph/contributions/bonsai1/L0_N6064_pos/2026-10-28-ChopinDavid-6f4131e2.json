@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-28-ChopinDavid-6f4131e2",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N6064+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-28T10:31:21+00:00",
+ "recipe": {
+  "toolchain_commit": "ad952e67",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L0_N6064_pos/2026-10-28-ChopinDavid-6f4131e2.tests.json"
+ },
+ "label": "the Korean object particle '를' (after a vowel-final noun); the consonant-final form '을' and other particles stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N6064_pos/2026-10-28-ChopinDavid-6f4131e2.tests.json",
+   "prereg_commit": "ad952e67",
+   "author": "ChopinDavid",
+   "n_fire": 2,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.178,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.097,
+     "peak": "를"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.384,
+     "peak": " �"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.362,
+     "peak": "러"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.257,
+     "peak": "를"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.041,
+     "peak": "는"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.231,
+     "peak": " 대"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.137,
+     "peak": " 부"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.323,
+     "peak": " �"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.018,
+     "peak": "�"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.056,
+     "peak": "다"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.192,
+     "peak": " �"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.064,
+     "peak": "할"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.152,
+     "peak": "다"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.239,
+     "peak": " �"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.137,
+     "peak": " 부"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.648,
+    "median_fire": 0.205,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "ad952e67",
+  "minutes": 3,
+  "batch_size": 16
+ },
+ "short": "Korean object particle '를'",
+ "unit_kind": "token",
+ "confidence": 0.45,
+ "notes": "Card: tiny max 0.41, broad (4.3% of tokens reach 0.1 of max), gate-closed regime; peaks '를' x5 (간부를, 공부를, 여부를), ' عبد' x13, 'ما', '.com'. Probe: '간부를' 0.659, '여부를' 0.571, '공부를' 0.374; '점심을' (the 을 form) 0.052; also ' عبد' 0.536 and '.com' 0.600 (not tested). Tokenizer: '공부를' -> '공','부','를'.",
+ "selection": "random draw"
+}

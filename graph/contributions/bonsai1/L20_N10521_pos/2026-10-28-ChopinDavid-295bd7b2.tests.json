@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-295bd7b2",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N10521+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T10:21:46+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L20/N10521",
+   "pole": "+",
+   "label": "best guess: the final item of a list of vehicle types ('cars, buses and trucks'), the noun that closes the class; the same vehicle words outside a list stay low",
+   "fire": [
+    "New fuel rules will apply to taxis, buses and trucks across the region.",
+    "The bridge carries cars, vans and trucks over the river every day.",
+    "Exhaust from motorcycles, cars and lorries fills the narrow streets.",
+    "The port handles cars, buses and tractors shipped from abroad.",
+    "Noise from scooters, cars and trucks keeps residents awake at night.",
+    "The tunnel is open to cars, coaches and lorries after midnight.",
+    "Diesel engines power most of the city's ferries, buses and trucks.",
+    "The car park has spaces for bikes, cars and vans near the station."
+   ],
+   "quiet": [
+    "A truck was parked outside the bakery all morning.",
+    "The bridge is painted bright red and is very old.",
+    "Exhaust from the old car filled the narrow garage.",
+    "The port handles bananas, coffee and cocoa shipped from abroad.",
+    "Noise from the party next door keeps residents awake at night.",
+    "The tunnel is closed for repairs after midnight.",
+    "Diesel prices rose again this month across the city.",
+    "The market has stalls for bread, cheese and honey near the station."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on the last vehicle noun in 'cars, buses and trucks'-type lists; the same nouns as plain subjects and food or fruit lists below 0.08",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "guess: last item of a vehicle list",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: ' trucks' x2 ('the world's cars, buses and trucks'), ' skills', ' soccer', ' marine' as last conjuncts. Probe: 'cars, buses and trucks' 0.770, 'abilities and skills' 0.362, 'basketball or soccer' 0.135, 'freshwater and marine' 0.036; 'Trucks are parked' 0.059, 'apples, pears and plums' 0.048 (peak ','), 'cars has worsened' 0.034. Only the vehicle list fired strongly, so the label stays at that level."
+}
