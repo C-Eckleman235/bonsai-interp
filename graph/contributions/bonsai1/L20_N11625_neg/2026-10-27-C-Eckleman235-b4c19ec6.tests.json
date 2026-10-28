@@ -1,0 +1,46 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-b4c19ec6",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L20/N11625-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:41:23+00:00",
+ "selection": "concept search: 10x census (foods\r)",
+ "neighbours": [
+  {
+   "unit": "L20/N11625",
+   "pole": "-",
+   "label": "Fires on mid-sentence words in food, cooking and restaurant-review text, where a dish or food word is about to come (e.g. 'my favorite', 'I made', 'try the', 'went great with'); quiet in non-food text using the same phrasings",
+   "fire": [
+    "After a long hike we finally sat down at the little diner, and my husband said he would try the smoked brisket while I ordered the lemon tart.",
+    "Grandma always said that whatever you stir into the pot first decides how the whole stew will taste, so I made her recipe with extra onions and browned them slowly.",
+    "The review was glowing: the crust on the pizza was blistered and chewy, and the house red went great with the wild mushroom pie.",
+    "Here are a few of my favorite weeknight dinners, all of which come together in under thirty minutes with a single skillet.",
+    "We were craving something warm after the storm, so we stopped at a roadside stand famous for its fried catfish and sweet tea.",
+    "Once the dough has doubled in size, punch it down, shape it into loaves, and let it rest again before baking until golden.",
+    "At the farmers market the stalls were piled with ripe peaches and fresh tamales, and a vendor offered us a taste of his homemade salsa.",
+    "Dessert arrived last; the waiter set down a bowl of warm bread pudding drizzled with caramel and a scoop of vanilla ice cream on the side."
+   ],
+   "quiet": [
+    "After a long hike we finally sat down on the old bench, and my husband said he would try the new trail while I checked the map for a shortcut.",
+    "Grandpa always said that whatever you tighten first decides how the whole shelf will hold, so I made his bookcase with extra braces and sanded them slowly.",
+    "The review was glowing: the screen on the laptop was bright and sharp, and the battery life went great with the lightweight aluminum case.",
+    "Here are a few of my favorite weeknight podcasts, all of which are short enough to finish during a single commute.",
+    "We were exhausted after the storm, so we stopped at a roadside garage famous for its fast tire repairs and honest mechanics.",
+    "Once the concrete has cured fully, remove the forms, level the surface, and let the slab rest again before laying the flooring.",
+    "At the trade show the booths were crowded with new drones and robotic arms, and an engineer offered us a demo of his prototype controller.",
+    "The committee met last; the chairman set down a folder of budget reports and a stack of amendments for the board to review."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "card",
+   "bands"
+  ]
+ },
+ "short": "Food-talk context before a dish word",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, census arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples + concept-census evidence (which concepts and domains selected the pole)); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Strong activations land on many different tokens (made, love, favorite, commas, 'in', 'rock') but always inside food, recipe or restaurant-review prose, and the output suppresses food words, so it looks like a 'a food word is coming' context pole rather than a token; census shows 72% of foods hit but no everyday objects. Coverage is uncertain since the pole is sparse and the exact token within the passage is variable."
+}
