@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-3f1eaa42",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N5674+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T16:19:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N5674",
+   "pole": "+",
+   "label": "the German validity stem 'gelt/gült/gilt' (gelten, Geltung, Entgelt, endgültig, gültig, gilt): a spelling unit for the gelt/gült pieces, other German words with 'elt' or 'gel' should stay low",
+   "fire": [
+    "Ab Montag tritt die neue Hausordnung in Geltung und betrifft alle Mieter.",
+    "Im Vertrag steht das Entgelt für die Reinigung der Büroräume.",
+    "Nach langer Diskussion fiel die endgültige Entscheidung erst am Abend.",
+    "Ohne Stempel ist diese Fahrkarte leider ungültig.",
+    "In unserem Verein gilt die Regel, dass jeder mithilft.",
+    "Die Kundin will ihre Rechte gegenüber dem Händler geltend machen.",
+    "Er hat sein Studium nun endgültig abgebrochen.",
+    "Das monatliche Entgelt wird am letzten Werktag überwiesen."
+   ],
+   "quiet": [
+    "Ab Montag hängt die neue Hausordnung im Flur und betrifft alle Mieter.",
+    "Im Vertrag stehen die Kosten für die Reinigung der Büroräume.",
+    "Nach langer Diskussion fiel die letzte Entscheidung erst am Abend.",
+    "Ohne Stempel ist diese Fahrkarte leider wertlos.",
+    "In unserem Verein haben wir die Regel, dass jeder mithilft.",
+    "Die Kundin will ihre Rechte gegenüber dem Händler durchsetzen.",
+    "Er hat sein Studium nun ganz abgebrochen.",
+    "Der monatliche Lohn wird am letzten Werktag überwiesen."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-1.0 on 'elt'/'ült'/' gilt' in gelten-family words; Zelt/Welt/Geld/Gewalt below 0.25",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "German 'gelt/gült' (validity) stem",
+ "unit_kind": "token",
+ "confidence": 0.6,
+ "notes": "Card: 'elt' x8 (G|elt|ung, Entg|elt, g|elt|enden), ' gel' x6, ' gilt' x5, 'ült' x3 (endg|ült|ig). Probe: 'Geltendmachung' 0.983, 'Entgelt' 0.952, 'endgültig' 0.711, ' gilt' 0.535, 'gelten' 0.529; 'Zelt' 0.018, 'Geld' 0.223, but 'gelb' 0.463 (the ' gel' piece leaks), English 'apply' 0.003. Near misses avoid ' gel'-initial words."
+}
