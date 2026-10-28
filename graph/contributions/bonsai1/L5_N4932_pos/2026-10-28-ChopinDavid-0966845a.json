@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-28-ChopinDavid-0966845a",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N4932+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-28T19:26:11+00:00",
+ "recipe": {
+  "toolchain_commit": "78136f49",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N4932_pos/2026-10-28-ChopinDavid-0966845a.tests.json"
+ },
+ "label": "the word piece 'avel' where it is its own token (f|avel|as, n|avel, R|avel|lo, Fl|avel); whole-word tokens such as ' gravel' or ' travel' stay silent",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N4932_pos/2026-10-28-ChopinDavid-0966845a.tests.json",
+   "prereg_commit": "78136f49",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.714,
+     "peak": "avel"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.671,
+     "peak": "avel"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.632,
+     "peak": "avel"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.973,
+     "peak": "avel"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.439,
+     "peak": "avel"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.607,
+     "peak": "avel"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.654,
+     "peak": "avel"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.977,
+     "peak": "avel"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.053,
+     "peak": " clinics"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.086,
+     "peak": " belly"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.066,
+     "peak": " coast"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.263,
+     "peak": "yt"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.028,
+     "peak": " just"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.014,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.116,
+     "peak": "ple"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.043,
+     "peak": " dirt"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.663,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "78136f49",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "the piece 'avel'",
+ "unit_kind": "spelling unit",
+ "confidence": 0.75,
+ "notes": "Card peaks 'avel' x8 (favelas, navel, Ravello, Flavel), plus 'ap'/'els' in lap|els. Probe: 'favelas' 0.790, 'Ravello' 0.701, 'navel' 0.480, 'lapels' 0.651 (peak 'els'); 'slums' 0.026, ' gravel' (single token) 0.015, ' travel' 0.069. Items checked with tokcheck so 'avel' is a separate token.",
+ "selection": "random draw"
+}

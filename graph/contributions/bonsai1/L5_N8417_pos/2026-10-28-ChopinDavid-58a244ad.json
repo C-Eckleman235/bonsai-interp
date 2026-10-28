@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-28-ChopinDavid-58a244ad",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N8417+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-28T19:26:25+00:00",
+ "recipe": {
+  "toolchain_commit": "78136f49",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L5_N8417_pos/2026-10-28-ChopinDavid-58a244ad.tests.json"
+ },
+ "label": "guess: clause-opening 'as' / 'since' in archaic, verse or scripture English, strongest in the simile 'even as'; modern role 'as' and modern 'since' stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L5_N8417_pos/2026-10-28-ChopinDavid-58a244ad.tests.json",
+   "prereg_commit": "78136f49",
+   "author": "ChopinDavid",
+   "n_fire": 3,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.236,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.05,
+     "peak": " even"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.06,
+     "peak": " even"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.336,
+     "peak": " as"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.295,
+     "peak": " grief"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.133,
+     "peak": " went"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.488,
+     "peak": "since"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.321,
+     "peak": " as"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.049,
+     "peak": " from"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.015,
+     "peak": " were"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.016,
+     "peak": "Her"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.015,
+     "peak": "His"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.3,
+     "peak": " grief"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.067,
+     "peak": ",\n"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.112,
+     "peak": " since"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.04,
+     "peak": " moved"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.859,
+    "median_fire": 0.265,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "78136f49",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "guess: archaic clause-opening 'as'/'since'",
+ "unit_kind": "context",
+ "confidence": 0.25,
+ "notes": "Card peaks ' since' x9, ' as' x6, 'As' x5, all in Shakespeare, scripture or verse ('since I am a dog', 'droppeth as the gentle rain', 'even as the ice'). Probe was weak: 'even as the ice' 0.355, 'droppeth as the gentle rain' 0.154; archaic 'since thou art a knave' only 0.050, modern 'since we are late' 0.061, 'works as a nurse' 0.004. Low confidence; fire items lean on 'even as' similes and line-broken verse.",
+ "selection": "random draw"
+}

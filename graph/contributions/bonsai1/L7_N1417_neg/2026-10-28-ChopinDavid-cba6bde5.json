@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-28-ChopinDavid-cba6bde5",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N1417-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-28T19:26:08+00:00",
+ "recipe": {
+  "toolchain_commit": "78136f49",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L7_N1417_neg/2026-10-28-ChopinDavid-cba6bde5.tests.json"
+ },
+ "label": "a preposition repeated in an elliptical parallel after 'as', 'i.e.' or 'than' ('spoke of her as of a saint', 'applies to adults, i.e., to anyone over 18'); the same sentence without the repeated preposition stays low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L7_N1417_neg/2026-10-28-ChopinDavid-cba6bde5.tests.json",
+   "prereg_commit": "78136f49",
+   "author": "ChopinDavid",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.065,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.512,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.244,
+     "peak": " for"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.409,
+     "peak": " about"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.759,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.522,
+     "peak": " for"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.333,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.432,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.031,
+     "peak": " always"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.033,
+     "peak": " rule"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.019,
+     "peak": " like"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.016,
+     "peak": " dream"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.066,
+     "peak": " villages"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.035,
+     "peak": " long"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.023,
+     "peak": " think"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.029,
+     "peak": " households"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.42,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "78136f49",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "repeated preposition in an elliptical parallel",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card peaks ' to'/' of'/' de'/' for' right after 'as', 'i.e.,', 'que', 'wie': 'fell at the battle ... as of men that were punished', 'stipulate for them as for aliens', 'to the micro-political one, i.e., to an analysis'. Probe: only the true repeat fired: 'to the local one, i.e., to an analysis' 0.411; 'as of no more worth' (no repeat) 0.028, 'as for minors' without an earlier 'for' 0.045, 'so to speak' 0.035, 'such as the iPad' 0.044. Hypothesis: the preposition is a parallel copy of an earlier one.",
+ "selection": "random draw"
+}
