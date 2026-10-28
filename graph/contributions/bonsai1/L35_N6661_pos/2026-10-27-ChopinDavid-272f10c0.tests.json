@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-272f10c0",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N6661+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T00:19:31+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N6661",
+   "pole": "+",
+   "label": "a non-final piece of a word that the tokenizer splits into several pieces, mostly German words and rare proper names, where the rest of the word is predictable (' K|ritik', 'inter|kont|inental', ' Th|iers'); German sentences of short everyday words stay quiet",
+   "fire": [
+    "Nach dem Unfall brachte man ihn sofort ins Krankenhaus am Stadtrand.",
+    "Der neue Bürgermeister sprach lange über die Zuständigkeit der Behörden.",
+    "Für die Firma war die Gewährleistung des Produkts unverzichtbar.",
+    "In his history of the war, Thukydides describes the plague in Athens.",
+    "Die Verhandlungen über den Vertrag dauerten bis spät in die Nacht.",
+    "Er bekam die Kündigung kurz vor Weihnachten per Post.",
+    "Die Überraschung war groß, als der Kühlschrank plötzlich leer war.",
+    "The ferry from Thessaloniki arrived late in the evening."
+   ],
+   "quiet": [
+    "Nach dem Essen gingen die Kinder in den Garten, um zu spielen.",
+    "Der Mann sprach lange mit seiner Frau über das Haus in der Stadt.",
+    "Für die Kinder war der Tag im Park sehr schön.",
+    "In his history of the war, the author describes the plague in Athens.",
+    "Die Leute in der Stadt waren heute sehr froh und laut.",
+    "Er bekam die Karte kurz vor Weihnachten von seiner Mutter.",
+    "Die Freude war groß, als das Kind endlich nach Hause kam.",
+    "The ferry from the island arrived late in the evening."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on the early pieces of long split German words and split names; sentences of short everyday words below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "non-final piece of a split word",
+ "unit_kind": "spelling unit",
+ "confidence": 0.45,
+ "notes": "Card: peaks on ' Th' (Thiers, Thoth), ' K' (Kürze, Kritik), 'kont' (interkontinentalen), 'h' (verhohlener, dehors), 'd' (unverdient), Arabic 'ث' in الثانية. Probe: 'interkontinentalen' 0.772, 'unverdient' 0.464, 'in die Kritik' 0.448, 'Thiers' 0.339, 'Thoth' 0.208, 'in Kürze' 0.113; 'Die Polizei war ... bekannt' -0.111, English control -0.010. Splits checked with tok.py."
+}
