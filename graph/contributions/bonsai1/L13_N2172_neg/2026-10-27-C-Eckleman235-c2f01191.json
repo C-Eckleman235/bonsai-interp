@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-c2f01191",
+ "kind": "interpret",
+ "neuron": "bonsai1/L13/N2172-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T02:04:29+00:00",
+ "recipe": {
+  "toolchain_commit": "bfb2ef3d",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L13_N2172_neg/2026-10-27-C-Eckleman235-c2f01191.tests.json"
+ },
+ "label": "Biomedical/lab specimen-analysis context: tokens inside clinical or laboratory research text about cells, tissue, samples, spectroscopy and diagnosis (the model is setting up a specimen or measurement noun), weakly spread over health text",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L13_N2172_neg/2026-10-27-C-Eckleman235-c2f01191.tests.json",
+   "prereg_commit": "bfb2ef3d",
+   "author": "C-Eckleman235",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.178,
+     "peak": " malign"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.528,
+     "peak": " spectro"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.129,
+     "peak": " then"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.058,
+     "peak": " liver"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.543,
+     "peak": " spect"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.209,
+     "peak": " findings"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.237,
+     "peak": " cells"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.111,
+     "peak": " doctors"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.044,
+     "peak": " then"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.037,
+     "peak": " stones"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.021,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.012,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.176,
+     "peak": " seats"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.02,
+     "peak": "Our"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.121,
+     "peak": " novels"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.012,
+     "peak": " into"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.922,
+    "median_fire": 0.194,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "bfb2ef3d",
+  "minutes": 23,
+  "batch_size": 1
+ },
+ "short": "lab specimen / cell analysis text",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, census arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples + concept-census evidence (which concepts and domains selected the pole)); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Top negative activations land on tokens inside lab/biomedical text (spectro-, cells, the sample, diagnosis) and census shows 65% of diseases fire it; but strong band samples are scattered (turtles 'them', recipe 'bowl'), so only a broad biomedical-specimen context is supported. Note the + pole is the tissue/pathology-sample feature and this pole is its reversed, weaker side.",
+ "selection": "concept search: 10x census (diseases\r)"
+}
