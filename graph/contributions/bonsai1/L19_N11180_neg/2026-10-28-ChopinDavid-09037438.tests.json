@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-09037438",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L19/N11180-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T09:19:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L19/N11180",
+   "pole": "-",
+   "label": "code that initialises an empty or derived collection (names = set(), results = [], counts = {}): best guess for a pole whose top examples mix code collection set-up with the last digits of large counts",
+   "fire": [
+    "def collect(rows):\n    seen = set()\n    for r in rows:\n        seen.add(r)\n    return seen",
+    "results = []\nfor x in data:\n    results.append(x * 2)",
+    "def index(batch):\n    all_ids = set()\n    for item in batch:\n        all_ids.add(item.id)\n    return all_ids",
+    "counts = {}\nfor w in words:\n    counts[w] = counts.get(w, 0) + 1",
+    "def parse(lines):\n    names = []\n    for line in lines:\n        names.append(line.strip())\n    return names",
+    "unique_tags = set(tags)\nold_tags = set(previous)\nnew_tags = unique_tags - old_tags",
+    "class Graph:\n    def __init__(self):\n        self.edges = []\n        self.nodes = set()",
+    "def bounds(grid):\n    z_min = min([v for row in grid for v in row])\n    z_max = max([v for row in grid for v in row])\n    return z_min, z_max"
+   ],
+   "quiet": [
+    "def collect(rows):\n    total = 0\n    for r in rows:\n        total += r\n    return total",
+    "result = 1\nfor x in data:\n    result *= x",
+    "def index(batch):\n    max_id = 0\n    for item in batch:\n        max_id = item.id\n    return max_id",
+    "count = 0\nfor w in words:\n    count = count + 1",
+    "def parse(lines):\n    text = ''\n    for line in lines:\n        text += line.strip()\n    return text",
+    "first_tag = tags[0]\nlast_tag = previous[-1]\nsame = first_tag == last_tag",
+    "class Graph:\n    def __init__(self):\n        self.name = 'g'\n        self.size = 0",
+    "def bounds(grid):\n    z_min = 0\n    z_max = 10\n    return z_min, z_max"
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.4 inside lines like 'x = set()' or 'x = []'; scalar initialisations (x = 0, x = '') below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "code: initialising a collection",
+ "unit_kind": "unclear",
+ "confidence": "low",
+ "notes": "Probe: 'all_names = set()' 0.231 (peak on '_names'); the large-count reading failed: '1,500 soldiers' 0.076, '25,600 people' 0.074, '70,000 fans' 0.024, '232 seats' 0.034. Best guess from the one hit."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-11a9ea2b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N4680-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T09:19:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L12/N4680",
+   "pole": "-",
+   "label": "indentation and line-break tokens that lead into a commented-out line of code inside a code block ('    # for row in data:'); the same indentation before live code stays quiet",
+   "fire": [
+    "def load(self):\n    data = self.read()\n    # for row in data:\n    #     self.check(row)\n    return data",
+    "def stop(self):\n    if self.ok:\n        self.halt()\n        # retry_count = self.get_retries()\n        # self.reset(retry_count)\n        self.finish()",
+    "for i in range(n):\n    x = f(i)\n    # y = g(x)\n    # print(x, y)\n    out.append(x)",
+    "class Parser:\n    def run(self):\n        tokens = self.lex()\n        # tree = self.build(tokens)\n        # tree.dump()\n        return tokens",
+    "def connect():\n    url = os.environ.get('DB_URL')\n    #    url = 'sqlite:///test.db'\n    return open_db(url)",
+    "def main():\n    args = parse()\n    # for key in args:\n    #     log(key)\n    run(args)",
+    "while running:\n    event = poll()\n    # if event.type == QUIT:\n    #     running = False\n    handle(event)",
+    "def upper_all(names):\n    results = []\n    # for name in names:\n    #     results.append(name.upper())\n    return results"
+   ],
+   "quiet": [
+    "def load(self):\n    data = self.read()\n    for row in data:\n        self.check(row)\n    return data",
+    "def stop(self):\n    if self.ok:\n        self.halt()\n        retry_count = self.get_retries()\n        self.reset(retry_count)\n        self.finish()",
+    "for i in range(n):\n    x = f(i)\n    y = g(x)\n    print(x, y)\n    out.append(x)",
+    "class Parser:\n    def run(self):\n        tokens = self.lex()\n        tree = self.build(tokens)\n        tree.dump()\n        return tokens",
+    "def connect():\n    url = os.environ.get('DB_URL')\n    url = url or 'sqlite:///test.db'\n    return open_db(url)",
+    "def main():\n    args = parse()\n    for key in args:\n        log(key)\n    run(args)",
+    "while running:\n    event = poll()\n    if event.type == QUIT:\n        running = False\n    handle(event)",
+    "def upper_all(names):\n    results = []\n    for name in names:\n        results.append(name.upper())\n    return results"
+   ]
+  }
+ ],
+ "predictions": "fire 0.1-0.4 on the indentation or newline before '#' lines holding code; live-code versions below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "indent before commented-out code",
+ "unit_kind": "context",
+ "confidence": "low",
+ "notes": "Probe weak: function with commented-out loop 0.251 (peak on '):\\n'), file of commented-out lines 0.123, commented-out method body 0.071 vs live version 0.024; prose comment 0.015, license block 0.045. Card top examples are all indentation before '#   code'. Written as multi-line passages."
+}

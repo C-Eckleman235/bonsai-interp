@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-84f84fe5",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L22/N9115-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T09:19:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L22/N9115",
+   "pole": "-",
+   "label": "the slot after a prevalence or likelihood comparison where the group or condition it holds for comes next ('higher in __', 'more common among __', 'more likely to __ when'); plain 'X is taller than Y' comparisons stay quiet",
+   "fire": [
+    "Survey data show that depression rates are higher in teenagers who use social media heavily.",
+    "Doctors note that the infection is more common in children under five years old.",
+    "Coaches warn that injuries are more likely to happen when players skip the warm-up.",
+    "The census found that poverty was more widespread in rural counties than in cities.",
+    "Analysts say voter turnout tends to be lower in districts with few polling stations.",
+    "According to the study, older drivers are more likely to crash on unlit roads.",
+    "Researchers report that allergies are more frequent in households without pets.",
+    "Teachers say cheating is more common among students under heavy pressure."
+   ],
+   "quiet": [
+    "Visitors noticed that the new tower is higher than the church on the hill.",
+    "Everyone agrees that my brother is taller than me by a few inches.",
+    "This summer the river was lower than usual, so the ferry stopped running.",
+    "Her second novel was longer than the first and took three years to write.",
+    "Hikers know the mountain path is steeper than the road but much shorter.",
+    "At the market the red apples were more expensive than the green ones.",
+    "My father says our new car is faster than the old one on the highway.",
+    "The coffee at this cafe is stronger than the coffee at the office."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.5 on ' in'/' among'/the verb after 'more likely to'; 'than' comparisons below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "comparative prevalence: who/when slot",
+ "unit_kind": "context",
+ "confidence": "medium",
+ "notes": "Probe: 'higher in students' 0.433, 'more common in men' 0.352, 'more likely to donate when' 0.344, 'more likely to occur' 0.291, 'prevalent among' 0.273, 'prices were higher in March' 0.237; 'bridge is higher than' 0.026. Logit effect promotes ' whenever', ' situations', ' environments'."
+}

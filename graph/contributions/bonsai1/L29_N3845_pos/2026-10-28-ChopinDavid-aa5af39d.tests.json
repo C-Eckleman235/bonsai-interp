@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-aa5af39d",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N3845+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T09:19:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N3845",
+   "pole": "+",
+   "label": "a preposition where 'other(s)' is the expected next word ('isolated from __ animals', 'life on __ planets', 'for __ to follow'): a next-token predictor of 'other'",
+   "fire": [
+    "Astronomers keep searching for signs of liquid water on other worlds.",
+    "The infected hen was separated from other birds in the flock.",
+    "This drug may cause problems when it is combined with other medicines.",
+    "The new vaccine also protects against other strains of the virus.",
+    "Please leave the gate open for others to come in after you.",
+    "Puppies need time to socialize with other dogs early in life.",
+    "The island is recognized as a state by other nations in the region.",
+    "Scout bees leave a scent on flowers for other bees to find."
+   ],
+   "quiet": [
+    "Astronomers keep their largest telescope on the roof of the building.",
+    "The infected hen was bought from a farm on Monday morning.",
+    "This drug should be swallowed with a glass of water after meals.",
+    "The new fence also protects against strong winds from the north.",
+    "Please leave the keys on the table for me before you go.",
+    "Puppies need time to sleep in a quiet corner during the day.",
+    "The island is famous for its olive oil and its long beaches.",
+    "Scout bees fly from flower to flower in the warm afternoon."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.5 on the preposition before 'other(s)'; the same prepositions with no 'other' setup below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "predicts 'other' after a preposition",
+ "unit_kind": "context",
+ "confidence": "medium",
+ "notes": "Probe: 'on other planets' 0.406, 'for others to follow' 0.362, 'interactions with other' 0.306, 'apart from other dogs' 0.303, but 'apart from the sofa' 0.231 (setup alone fires, as expected for a predictor); 'playing with other kids' 0.025. Logit effect promotes ' other', ' others', ' otros', ' another'. Near misses remove the setup, not only the word."
+}
