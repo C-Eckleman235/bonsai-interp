@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-f3740440",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N2679+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T03:19:40+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N2679",
+   "pole": "+",
+   "label": "a word-initial 'f'/'F' split off as its own token ('-f|uelled', 'then-F|DA', ' f|eds'), as against f-words that stay whole tokens",
+   "fire": [
+    "The airline tested a biofuel in an ethanol-fuelled engine last year.",
+    "Critics said the then-FDA commissioner ignored the warnings.",
+    "Local dealers were worried that the feds would raid the warehouse.",
+    "The report was written by an ex-FIFA official who later resigned.",
+    "Engineers praised the jet-fueled turbine for its quiet running.",
+    "Rules introduced by the then-FCC chairman were later reversed.",
+    "Researchers used fMRI scans to watch the brain respond to music.",
+    "The town saw a sharp rise in overdoses linked to fentanyl."
+   ],
+   "quiet": [
+    "The airline tested a biofuel in an electric engine last year.",
+    "Critics said the former commissioner ignored the warnings.",
+    "Local dealers were worried that the police would raid the warehouse.",
+    "The report was written by a former league official who later resigned.",
+    "Engineers praised the coal-fired turbine for its quiet running.",
+    "Rules introduced by the previous chairman were later reversed.",
+    "Researchers used brain scans to watch the brain respond to music.",
+    "The town saw a sharp rise in overdoses linked to heroin."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.6 on '-f', '-F' or ' f' pieces; near misses with whole-token f-words or none below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-off initial f / F piece",
+ "unit_kind": "token",
+ "confidence": 0.45,
+ "notes": "Card: top peaks '-f' x8, ' f' x3, '-F' x2 ('then-FBI', 'kerosene-fuelled', 'omega 3-fatty', 'the feds'). Probe: 'hydrogen-fuelled' 0.571 on '-f', 'the feds' 0.535 on ' f', 'then-FBI' 0.480 on '-F'; 'hydrogen powered' 0.010, 'The director' 0.015, whole-token ' fatty' 0.197. Also ' as' in 'replaced Kissinger as' 0.520, not tested here. Splits checked with tokcheck."
+}

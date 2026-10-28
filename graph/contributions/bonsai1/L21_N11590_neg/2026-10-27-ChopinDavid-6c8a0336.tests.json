@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-6c8a0336",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L21/N11590-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T03:19:40+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L21/N11590",
+   "pole": "-",
+   "label": "short literal values (digits, short keys) inside code data structures such as tuple lists and dicts; weak broad guess",
+   "fire": [
+    "moves = [\n    (0, 1),\n    (1, 1),\n    (-1, 0),\n    (0, -1),\n]",
+    "offsets = [\n    (2, -1),\n    (-2, 1),\n    (1, 2),\n]",
+    "if key.startswith('TMP'):\n    key = key.replace('y-', '')",
+    "grid = [\n    (-1, 1),\n    (0, 0),\n    (1, -1),\n]",
+    "counts = {\n    'hits': 12,\n    'misses': 0,\n    'errors': 3,\n}",
+    "dirs = [\n    ( 1,  0),\n    ( 0,  1),\n    (-1,  0),\n]",
+    "cfg = {\n    \"min_temp\": \"C\",\n    \"avg_wind\": \"kph\",\n}",
+    "pairs = [\n    (3, 4),\n    (-3, -4),\n    (0, 5),\n]"
+   ],
+   "quiet": [
+    "We moved one step north, then one step east, and stopped.",
+    "The knight can jump two squares across and one square up.",
+    "Every key in the drawer was labelled with a paper tag.",
+    "The town grid has wide avenues and narrow side streets.",
+    "The team had twelve hits, no misses and three errors.",
+    "The wind changed direction twice during the afternoon.",
+    "The minimum temperature fell below freezing on Tuesday.",
+    "Three, four and five make the classic right triangle."
+   ]
+  }
+ ],
+ "predictions": "fire 0.1-0.3 on literals inside code; prose with numbers below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "literals inside code data (guess)",
+ "unit_kind": "unclear",
+ "confidence": 0.15,
+ "notes": "Card: weak scattered peaks on '1', '0', 'x', 'avg', '\"h' inside Python dicts, tuples and string calls. Probe: tuple list '(-1, -1)' 0.285, startswith('MASTER') 0.149, dict values 0.064-0.081; prose 0.005-0.018. Guess; most code items probed under the 0.2 median."
+}

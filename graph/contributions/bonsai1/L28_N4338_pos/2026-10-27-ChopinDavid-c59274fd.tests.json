@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-c59274fd",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N4338+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T03:19:40+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L28/N4338",
+   "pole": "+",
+   "label": "the determiner after a form-filling verb ('fill out the', 'complete our', 'submit the') where the next word is predicted to be 'form', as against the same contact-page context without a form-filling verb",
+   "fire": [
+    "Interested in a free estimate? Just fill out the short form and we will reply.",
+    "To reserve a table, please complete our booking form on this page.",
+    "Need help with your claim? Submit the enquiry form below.",
+    "Ready to join? Fill in the registration form to get started today.",
+    "For a callback, kindly complete the contact form and press send.",
+    "Want a quote on your car? Start by filling out our online form.",
+    "If you have questions, please submit our feedback form at any time.",
+    "To apply for the scholarship, fill in the application form by June."
+   ],
+   "quiet": [
+    "Interested in a free estimate? Just call our office and we will reply.",
+    "To reserve a table, please phone the restaurant during opening hours.",
+    "Need help with your claim? Read the guide below.",
+    "Ready to join? Visit the clubhouse to get started today.",
+    "For a callback, kindly leave a voicemail and we will ring back.",
+    "Want a quote on your car? Start by visiting our showroom.",
+    "If you have questions, please email our support team at any time.",
+    "To apply for the scholarship, talk to your teacher by June."
+   ]
+  }
+ ],
+ "predictions": "fire 0.8-0.95 on 'the'/'our' after fill out / complete / submit; contact-page near misses without such a verb below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "determiner before predicted 'form'",
+ "unit_kind": "context",
+ "confidence": 0.6,
+ "notes": "Card: + pole peaks on ' the' / ' our' in 'fill up the form', 'submit the online contact form'; the - pole promotes ' form' / ' forms'. Probe: 'complete the online form' 0.918, 'submit the contact form' 0.918, 'filling in our short application' 0.924, 'fill out the form' 0.849; 'fill out the tank' 0.503 (the verb alone sets up the prediction), 'filled the bucket' 0.202, 'The form of the sonnet' 0.023. Near misses therefore drop the form-filling verb, not only the word 'form'."
+}

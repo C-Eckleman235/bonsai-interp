@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-36a23b26",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N5384-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T03:19:40+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N5384",
+   "pole": "-",
+   "label": "dense layer-1 pole; best guess navigation and heading words ('Links', 'Learn') and code identifiers, above a high floor on all text",
+   "fire": [
+    "Home | About | Related Links | Contact us | Site map",
+    "Useful Links: tide tables, ferry times and weather.",
+    "Learn more about our summer courses for beginners.",
+    "fig, ax = plt.subplots()\nax.set_xlabel('time')",
+    "print('__init__ called with', args)",
+    "External Links\n- Official website\n- Archive",
+    "Learn to bake sourdough bread in one weekend.",
+    "df = pd.read_csv('data.csv')\ndf.dropna(inplace=True)"
+   ],
+   "quiet": [
+    "We walked home along the river after the concert.",
+    "The ferry was late because of the strong wind.",
+    "Our summer was spent mostly at my aunt's farm.",
+    "The time on the station clock was wrong again.",
+    "He called his mother every evening at seven.",
+    "The old website was replaced by a newer one.",
+    "My brother baked bread for the whole street.",
+    "The data showed a small rise in sales."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-0.95 on ' Links', 'Learn', code identifiers; near misses 0.2-0.35 (dense floor), likely more than one leak",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "nav words / code identifiers (dense guess)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.1,
+ "notes": "Card: dense (42% of tokens at 0.1 max), gate-closed leak regime 100%, peaks ' Links', 'Learn', '.colorbar', \"('__\", '_under'. Probe: 'Skip Navigation Links' 0.964, 'Podcast Links' 0.721, \"logging.debug('__\" 0.781, '.colorbar' 0.713, 'Learn how' 0.639; plain prose 0.200-0.343. Guess; the dense floor will likely sink it."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-7e929cf0",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N8927+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T03:19:40+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L2/N8927",
+   "pole": "+",
+   "label": "word-internal pieces such as 'pend' and 'enc' inside French and Spanish words (ind|é|pend|ance, com|enc|emos); broad early-layer guess",
+   "fire": [
+    "Le Maroc a obtenu son indépendance en 1956 après de longues négociations.",
+    "Cette région reste en dépendance économique vis-à-vis de la capitale.",
+    "Ayer comencé a estudiar alemán con una profesora muy paciente.",
+    "C'est un journaliste indépendant qui travaille pour plusieurs revues.",
+    "Mañana recomencemos el trabajo desde el primer capítulo.",
+    "Le prix du blé dépend surtout de la météo de printemps.",
+    "Après la guerre, le pays a proclamé son indépendance totale.",
+    "Si todo va bien, comencemos la reunión a las diez."
+   ],
+   "quiet": [
+    "Morocco gained its freedom in 1956 after long negotiations.",
+    "Cette région reste très pauvre par rapport à la capitale.",
+    "Ayer empecé a estudiar alemán con una profesora muy paciente.",
+    "C'est un journaliste libre qui travaille pour plusieurs revues.",
+    "Mañana empezamos el trabajo desde el primer capítulo.",
+    "Le prix du blé change surtout avec la météo de printemps.",
+    "After the war, the country proclaimed its full freedom.",
+    "Si todo va bien, empezamos la reunión a las diez."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.85 on 'pend'/'enc' pieces; English whole-word equivalents 0.1-0.2 (broad floor)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'pend'/'enc' pieces in Romance words (guess)",
+ "unit_kind": "token",
+ "confidence": 0.2,
+ "notes": "Card: broad (6.1% at 0.1 max), gate-closed regime, peaks 'pend' x5, 'enc' x3, ' Saudi' x9, ' commons'. Probe: 'indépendance' 0.865 on 'pend', 'comencemos' 0.593 on 'enc', ' Saudi' 0.503, ' commons' 0.335; English 'independence' 0.115, 'empezamos' 0.085, weather 0.151. Splits checked with tokcheck."
+}
