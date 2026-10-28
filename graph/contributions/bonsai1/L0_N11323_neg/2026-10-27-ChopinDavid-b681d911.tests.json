@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-b681d911",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N11323-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T04:21:41+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N11323",
+   "pole": "-",
+   "label": "the token ' the' (a dense, weak layer-0 unit), as against the same short sentences using other determiners",
+   "fire": [
+    "She put the keys on the table near the door.",
+    "We will meet at the station after lunch.",
+    "He fixed the bike in the garage.",
+    "My sister found the letter under the bed.",
+    "They painted the fence on Saturday.",
+    "Put the milk back in the fridge, please.",
+    "I left the umbrella at the office.",
+    "Our dog chased the ball down the hill."
+   ],
+   "quiet": [
+    "She put her keys on a table near a door.",
+    "We will meet at noon after lunch.",
+    "He fixed his bike in our garage.",
+    "My sister found a letter under her bed.",
+    "They painted their fence on Saturday.",
+    "Put this milk back in your fridge, please.",
+    "I left my umbrella at work.",
+    "Our dog chased a ball down that hill."
+   ]
+  }
+ ],
+ "predictions": "fire 0.1-0.25 on ' the'; sentences with a/his/our instead somewhat lower, may leak",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "' the' (dense)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.25,
+ "notes": "Card: max 0.53, broad and positional (72% of top peaks in the first 16 tokens), ' the' x17 of top 32, also '葡萄'. Probe: every sentence peaked on ' the' at 0.095-0.222; '葡萄' 0.377. No sentence without 'the' was probed, so the near misses are untested."
+}

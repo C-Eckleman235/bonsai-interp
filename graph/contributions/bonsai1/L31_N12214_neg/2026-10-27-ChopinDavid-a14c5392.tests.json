@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-a14c5392",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L31/N12214-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T04:21:41+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L31/N12214",
+   "pole": "-",
+   "label": "a position where 'delta' or Δ is the expected next token (after '=' in an equation with Δ terms, inside 'relativ|edelta', before a river delta), as against the same physics, code and geography without a delta",
+   "fire": [
+    "Newton's second law in impulse form reads F Δt = m Δv for a constant force.",
+    "next_run = today + relativedelta(months=+1)",
+    "For a small displacement we write W = F Δx along the path.",
+    "deadline = start + relativedelta(weeks=2)",
+    "The average velocity is v = Δx / Δt over the interval.",
+    "Heat absorbed by the sample is Q = m c ΔT for the water.",
+    "Most of the population lives along the Nile and its fertile mouth.",
+    "Rice grows well in the wet soils of the Mekong in southern Vietnam."
+   ],
+   "quiet": [
+    "Newton's second law in its usual form reads F = m a for a constant force.",
+    "next_run = today + one_month",
+    "For a small push we write the work as force times distance.",
+    "deadline = start + extra_weeks",
+    "The average velocity is distance divided by time over the interval.",
+    "Heat absorbed by the sample depends on the mass of the water.",
+    "Most of the population lives along the coast and its busy ports.",
+    "Rice grows well in the wet soils of the hills in southern Vietnam."
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.5 before Δ/delta; matched sentences without one below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Δ / delta comes next",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card: max 620, suppresses Δ/delta/δ/∆ in the logit lens; peaks on ' =' in 'F ∆t = m ∆v', 'relat|ived|elta', 'changes in ∆Ψm', 'total delta-v', ' Nile'. Probe: 'F Δt = m Δv' 0.548 (on ' ='), 'relativedelta(' 0.413 (on 'ived'), 'along the Nile valley' 0.327, 'wide marshy delta' 0.207 (on ' wide'); the delta token itself 0.132, 'changes in Δψ' 0.090, 'force times time interval' 0.145, floor 0.002."
+}
