@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-82215fbf",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N1484+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T02:21:37+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L2/N1484",
+   "pole": "+",
+   "label": "a concessive or contrastive connective set off by commas mid-sentence (', however,' ', while' ', though,')",
+   "fire": [
+    "The hotel was cheap. The rooms, however, were spotless.",
+    "My brother, however, refused to eat the soup.",
+    "Doctors agree that, while sleep matters, few adults get enough.",
+    "The bridge is old. Its cables, though, were replaced last year.",
+    "The team lost the match. Their coach, however, stayed calm.",
+    "Experts note that, although prices fell, rents kept rising.",
+    "Most guests left early. A few, however, danced until dawn.",
+    "Analysts say that, while exports grew, imports grew faster."
+   ],
+   "quiet": [
+    "The hotel was cheap and the rooms were spotless.",
+    "My brother refused to eat the soup at lunch.",
+    "Doctors agree that sleep matters for every adult.",
+    "The bridge is old and its cables were replaced last year.",
+    "The team lost the match and their coach stayed calm.",
+    "Experts note that prices fell and rents kept rising.",
+    "Most guests left early and a few danced until dawn.",
+    "Analysts say that exports grew and imports grew faster."
+   ]
+  }
+ ],
+ "predictions": "fire 0.7-0.95 on the connective; near misses 0.25-0.45 (broad pole, floor about 0.4)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "parenthetical 'however/while/though'",
+ "unit_kind": "token/lexical",
+ "confidence": 0.3,
+ "notes": "Card: broad (9.5% of tokens at 0.1 max), peaks ' however' x15, ' while' x5, ' although' x3. Probe: 'The plan, however,' 0.937, ', while people value' 0.878, 'Others, though,' 0.847, 'I, however,' 0.739; same sentences without the connective 0.253-0.416, bananas floor 0.409. Margin is narrow."
+}

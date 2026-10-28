@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-d3f0a5f4",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N5912+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T02:21:37+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L34/N5912",
+   "pole": "+",
+   "label": "the word-initial piece ' ST' / '-St' inside an all-caps heading or a hyphenated title ('TOP STORIES', 'All-Stars'); ' ST' in lower-case running text and whole-word caps (STOP, STATE) stay silent",
+   "fire": [
+    "Visit our homepage for the LATEST STORIES and photos.",
+    "The magazine cover read SPORTS STORIES OF THE YEAR in bold.",
+    "Tickets for the Disney All-Stars show sold out fast.",
+    "The poster said MEET THE STAFF at the bottom.",
+    "Our newsletter has a column called LOCAL STORIES each week.",
+    "Kids voted for their favorite Mario All-Stars character.",
+    "The sign above the door read BACK IN THE STICKS in red.",
+    "Fans lined up for the Star-Studded charity gala."
+   ],
+   "quiet": [
+    "Visit our homepage for the latest stories and photos.",
+    "The magazine cover read SPORTS NEWS OF THE YEAR in bold.",
+    "Tickets for the Disney ice show sold out fast.",
+    "The poster said MEET THE TEAM at the bottom.",
+    "Our newsletter has a column called LOCAL NEWS each week.",
+    "Kids voted for their favorite Mario Kart character.",
+    "The sign above the door read BACK IN THE CITY in red.",
+    "Fans lined up for the glamorous charity gala."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.6 on ' ST' after another caps word or on '-St' in a title; whole-token caps words and lower-case 'staff' below 0.03",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'ST'/'-St' piece in caps heading or title",
+ "unit_kind": "spelling",
+ "confidence": 0.35,
+ "notes": "Card: peaks '-st', ' ST' (TOP STORIES, SCIENCE STORIES, THE STICKS), '-St' (All-Stars), 'Ст', '_ST'. Probe: 'more TOP STORIES' 0.511, 'Sonic All-Stars' 0.464; 'all the STAFF' 0.003, 'The STICKS' 0.013, STOP 0.005, STATE 0.002, 'Steve' 0.018. Unclear why STAFF after lower-case text stays silent; hypothesis: needs a caps or hyphenated title context."
+}
