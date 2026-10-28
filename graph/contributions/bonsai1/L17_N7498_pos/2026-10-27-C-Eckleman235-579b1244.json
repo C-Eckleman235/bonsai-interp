@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-579b1244",
+ "kind": "interpret",
+ "neuron": "bonsai1/L17/N7498+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T01:57:13+00:00",
+ "recipe": {
+  "toolchain_commit": "e92ade4f",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L17_N7498_pos/2026-10-27-C-Eckleman235-579b1244.tests.json"
+ },
+ "label": "Abstract state/attribute noun (status, health, conduct, problems) completing a modified noun phrase about a condition or person, usually where 'of' or a complement is expected next; strongest in disease/health and social-policy text",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L17_N7498_pos/2026-10-27-C-Eckleman235-579b1244.tests.json",
+   "prereg_commit": "e92ade4f",
+   "author": "C-Eckleman235",
+   "n_fire": 2,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.349,
+     "peak": " status"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.031,
+     "peak": " family"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.034,
+     "peak": " of"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.024,
+     "peak": "Researchers"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.345,
+     "peak": " status"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.134,
+     "peak": " health"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.114,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.022,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.062,
+     "peak": " wash"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.028,
+     "peak": "ainted"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.019,
+     "peak": " council"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.021,
+     "peak": " running"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.034,
+     "peak": " bus"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.031,
+     "peak": " collected"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.019,
+     "peak": " sample"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.091,
+     "peak": " colour"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.75,
+    "median_fire": 0.074,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "e92ade4f",
+  "minutes": 18,
+  "batch_size": 1
+ },
+ "short": "condition/status noun awaiting 'of'",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, census arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples + concept-census evidence (which concepts and domains selected the pole)); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Strong activations are heterogeneous: head nouns like status, health, conduct, problems, system, centre that sit before an expected 'of' or complement; the census shows a clear disease-domain preference (70% of diseases vs 0% of objects). Label is a tentative grammatical-plus-topic hypothesis; the band samples show many weak off-topic tokens, so expect partial coverage.",
+ "selection": "concept search: 10x census (diseases\r)"
+}
