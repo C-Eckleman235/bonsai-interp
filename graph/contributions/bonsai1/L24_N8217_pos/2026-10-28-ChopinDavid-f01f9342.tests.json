@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-f01f9342",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N8217+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T09:19:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L24/N8217",
+   "pole": "+",
+   "label": "compiler and build configuration in code: lists of compiler/linker flags, include paths and setup()/Extension arguments; ordinary data lists in the same layout stay quiet",
+   "fire": [
+    "CFLAGS = [\n    '-Wall',\n    '-Wextra',\n    '-std=c99',\n]",
+    "ext = Extension(\n    'fastmod',\n    sources=['fast.c'],\n    extra_link_args=['-lm', '-pthread'],\n)",
+    "env = Environment()\nenv.Append(LINKFLAGS=['-static'])\nenv.Program('app', 'main.c')",
+    "To see warnings, compile it with gcc -O2 -Wall -o app main.c first.",
+    "include_dirs = [\n    '/usr/local/include',\n    '../third_party/include',\n]",
+    "setup(\n    name='fastlib',\n    ext_modules=[ext],\n    libraries=['m'],\n)",
+    "cmake_args = [\n    '-DCMAKE_BUILD_TYPE=Release',\n    '-DBUILD_TESTS=OFF',\n]",
+    "link_opts = ['-fPIC', '-shared', '-o', 'libfoo.so']"
+   ],
+   "quiet": [
+    "COLORS = [\n    'red',\n    'green',\n    'blue',\n]",
+    "user = User(\n    'alice',\n    email='alice@example.org',\n    roles=['admin', 'editor'],\n)",
+    "cart = Cart()\ncart.add(items=['apple'])\ncart.checkout('card')",
+    "For a crisp crust, bake it at 200 degrees for forty minutes first.",
+    "cities = [\n    'Paris',\n    'Berlin',\n    'Rome',\n]",
+    "profile = dict(\n    name='bob',\n    age=42,\n    city='Oslo',\n)",
+    "scores = [\n    ('ann', 91),\n    ('ben', 78),\n]",
+    "pets = ['cat', 'dog', 'bird', 'fish']"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-1.0 inside flag lists and build calls; plain data lists and dicts below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "build/compiler flags in code",
+ "unit_kind": "context",
+ "confidence": "high",
+ "notes": "Probe: extra_compile_args list 1.068, env.Append(CPPFLAGS) 0.713, '-O3' in prose 0.659, setup() 0.432, -isystem flags list 0.396; list of names 0.006, def add 0.013, symphony 0.006."
+}

@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-be823f5e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L10/N6666-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T09:19:34+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L10/N6666",
+   "pole": "-",
+   "label": "the token ' item(s)' / '_item' naming one entry of a collection, in code (item = queue.get()) and in library or catalogue notices; synonyms (entry, record, product) stay quiet",
+   "fire": [
+    "Copyright notice: items in this digital repository are protected by copyright.",
+    "Please note that all items in the archive collection may be used for research only.",
+    "class Cart:\n    def add(self, item):\n        self.items.append(item)\n        return item",
+    "The widget grid holds cells, and each display item may contain text or an image.",
+    "Library catalog: items held in the special collections cannot be borrowed.",
+    "while True:\n    item = queue.get()\n    if item is None:\n        break\n    process(item)",
+    "Online, the museum lists every item in its permanent collection.",
+    "menu = Menu()\nmenu_item = MenuItem('Quit')\nmenu.add_item(menu_item)"
+   ],
+   "quiet": [
+    "Copyright notice: documents in this digital repository are protected by copyright.",
+    "Please note that all records in the archive collection may be used for research only.",
+    "class Cart:\n    def add(self, product):\n        self.products.append(product)\n        return product",
+    "The widget grid holds cells, and each display cell may contain text or an image.",
+    "Library catalog: books held in the special collections cannot be borrowed.",
+    "while True:\n    job = queue.get()\n    if job is None:\n        break\n    process(job)",
+    "Online, the museum lists every painting in its permanent collection.",
+    "menu = Menu()\nmenu_entry = MenuEntry('Quit')\nmenu.add_entry(menu_entry)"
+   ]
+  }
+ ],
+ "predictions": "fire 0.15-0.5 on ' item'/' items'/'_item'; same sentences with entry/record/product below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "' item' as a collection entry",
+ "unit_kind": "token/lexical",
+ "confidence": "low",
+ "notes": "Probe weak: 'Each item in the collection is protected by copyright' 0.190, 'items you would like to return' 0.044, one-line 'for item in cart' -0.032; 'element' control 0.108. Card flags broad, gate-closed 90%. Best guess; code items written as multi-line passages."
+}

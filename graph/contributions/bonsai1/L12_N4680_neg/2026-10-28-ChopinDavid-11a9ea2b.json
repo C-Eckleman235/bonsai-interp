@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-28-ChopinDavid-11a9ea2b",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N4680-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-28T09:28:30+00:00",
+ "recipe": {
+  "toolchain_commit": "3b96b8f0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L12_N4680_neg/2026-10-28-ChopinDavid-11a9ea2b.tests.json"
+ },
+ "label": "indentation and line-break tokens that lead into a commented-out line of code inside a code block ('    # for row in data:'); the same indentation before live code stays quiet",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L12_N4680_neg/2026-10-28-ChopinDavid-11a9ea2b.tests.json",
+   "prereg_commit": "3b96b8f0",
+   "author": "ChopinDavid",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.308,
+     "peak": ":\n"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.077,
+     "peak": "()\n"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.033,
+     "peak": ")\n"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.043,
+     "peak": ")\n"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.153,
+     "peak": "'\n"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.257,
+     "peak": ":\n"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.154,
+     "peak": ":\n"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.262,
+     "peak": ":\n"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.015,
+     "peak": " return"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.033,
+     "peak": "       "
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.017,
+     "peak": " f"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.016,
+     "peak": " tree"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.018,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.033,
+     "peak": " parse"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.023,
+     "peak": "   "
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.026,
+     "peak": "   "
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.153,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "3b96b8f0",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "indent before commented-out code",
+ "unit_kind": "context",
+ "confidence": "low",
+ "notes": "Probe weak: function with commented-out loop 0.251 (peak on '):\\n'), file of commented-out lines 0.123, commented-out method body 0.071 vs live version 0.024; prose comment 0.015, license block 0.045. Card top examples are all indentation before '#   code'. Written as multi-line passages.",
+ "selection": "random draw"
+}
