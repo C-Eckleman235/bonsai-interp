@@ -4,10 +4,10 @@
  "layer": 0,
  "index": 3928,
  "pole": "-",
- "label": "the letters 'est' ending a short word-piece of the form consonant(s) + 'est' (fest, vest, nest, zest, jest, pest, chest), in any language or sense, including when such a piece starts a longer word (Oktoberfest, vestige, Nestlé); NOT a/i/o + 'st' (fast, mist, cost), not 'est' inside a longer single token (street, estate, Budapest), and weak on the very common words test, rest, best, west",
+ "label": "the short word-pieces fest, vest and nest (strongest), then zest, jest, dest, chest, pest and a bare 'est'; weak on common -est words (test, rest, best, west, guest) and on superlatives (tallest, oldest)",
  "short": null,
  "kind": null,
- "status": "partial",
+ "status": "held",
  "depth": "quick",
  "tests": [
   {
@@ -131,12 +131,139 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-20-moridinamael-9d16cc03"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L0_N3928_neg/2026-10-28-moridinamael-d900a516.tests.json",
+   "prereg_commit": "b077b0de",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.768,
+     "peak": " fest"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.717,
+     "peak": " vest"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.677,
+     "peak": " nest"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.476,
+     "peak": " zest"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.485,
+     "peak": " jest"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.421,
+     "peak": " chest"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.454,
+     "peak": " pest"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.903,
+     "peak": " fest"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.008,
+     "peak": " town"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.019,
+     "peak": " heading"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.035,
+     "peak": " porch"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.015,
+     "peak": " just"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.029,
+     "peak": " seriously"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.02,
+     "peak": " pirates"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.064,
+     "peak": " test"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.213,
+     "peak": " best"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.581,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-28-moridinamael-d900a516"
   }
  ],
  "label_history": [
   [
    "2026-10-20-moridinamael-9d16cc03",
    "the letters 'est' ending a short word-piece of the form consonant(s) + 'est' (fest, vest, nest, zest, jest, pest, chest), in any language or sense, including when such a piece starts a longer word (Oktoberfest, vestige, Nestlé); NOT a/i/o + 'st' (fast, mist, cost), not 'est' inside a longer single token (street, estate, Budapest), and weak on the very common words test, rest, best, west",
+   "held"
+  ],
+  [
+   "2026-10-28-moridinamael-d900a516",
+   "the short word-pieces fest, vest and nest (strongest), then zest, jest, dest, chest, pest and a bare 'est'; weak on common -est words (test, rest, best, west, guest) and on superlatives (tallest, oldest)",
    "held"
   ]
  ],
@@ -147,25 +274,22 @@
   "moridinamael"
  ],
  "contributions": [
-  "2026-10-20-moridinamael-9d16cc03"
+  "2026-10-20-moridinamael-9d16cc03",
+  "2026-10-28-moridinamael-d900a516"
  ],
  "qc": {
   "confirm": 0,
   "dispute": 0,
-  "refine": 0
+  "refine": 1
  },
  "replications": [],
- "coverage": {
-  "value": 0.234,
-  "method": "estimated from the label's quoted words (token measure)",
-  "strong": 4299
- },
+ "coverage": null,
  "scrutiny": {
-  "level": 1,
-  "name": "tested",
-  "test_rounds": 1,
-  "sentences": 16,
+  "level": 2,
+  "name": "re-tested",
+  "test_rounds": 2,
+  "sentences": 32,
   "contributors": 1,
-  "qc": 0
+  "qc": 1
  }
 }
