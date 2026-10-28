@@ -1,0 +1,161 @@
+{
+ "id": "2026-10-27-C-Eckleman235-2fb02186",
+ "kind": "interpret",
+ "neuron": "bonsai1/L7/N3886+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T02:01:12+00:00",
+ "recipe": {
+  "toolchain_commit": "8c1dad09",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L7_N3886_pos/2026-10-27-C-Eckleman235-2fb02186.tests.json"
+ },
+ "label": "Purpose/benefit/necessity predicate words (necessary, unnecessary, designed, help, beneficial, 'for') in health and biomedical prose, where a purpose or benefit complement is about to follow",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L7_N3886_pos/2026-10-27-C-Eckleman235-2fb02186.tests.json",
+   "prereg_commit": "8c1dad09",
+   "author": "C-Eckleman235",
+   "n_fire": 0,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.025,
+     "peak": " ear"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.028,
+     "peak": " straight"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.07,
+     "peak": " over"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.043,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.221,
+     "peak": " for"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.031,
+     "peak": " mild"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.06,
+     "peak": " to"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.053,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.031,
+     "peak": " report"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.024,
+     "peak": " inhal"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.035,
+     "peak": " was"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.044,
+     "peak": " wine"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.019,
+     "peak": "Her"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.028,
+     "peak": " mild"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.043,
+     "peak": " put"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.023,
+     "peak": " dug"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.773,
+    "median_fire": 0.048,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "8c1dad09",
+  "minutes": 21,
+  "batch_size": 1
+ },
+ "short": "purpose/necessity words in medical prose",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, census arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples + concept-census evidence (which concepts and domains selected the pole)); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Strong activations are a diffuse mix: purpose/necessity/benefit words and ' for' mostly in health or biomedical prose; the census shows the pole responding to disease topics in neutral frames. Coverage is likely partial and the label may be too broad.",
+ "selection": "concept search: 10x census (diseases\r)",
+ "trigger": {
+  "words": [
+   " necessary",
+   " unnecessary",
+   " designed",
+   " help",
+   " beneficial",
+   " for"
+  ]
+ }
+}
