@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-7487c90c",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N3545-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T16:19:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L27/N3545",
+   "pole": "-",
+   "label": "pieces of multi-token Russian words (prefix and stem pieces such as ' про', ' след', 'лежа'): a Cyrillic word-assembly pole; the same content in English or another Latin-script language stays quiet",
+   "fire": [
+    "Сотрудники обязаны соблюдать установленные правила внутреннего распорядка.",
+    "Заявитель может обжаловать решение в установленном законодательством порядке.",
+    "Пользователь самостоятельно отвечает за сохранность своего пароля.",
+    "Для получения дополнительной информации обратитесь в службу поддержки.",
+    "Продолжительность испытательного срока составляет три месяца.",
+    "Руководство предприятия приняло решение о проведении проверки.",
+    "Покупатель вправе потребовать замены товара ненадлежащего качества.",
+    "Строительство нового моста продолжается уже второй год."
+   ],
+   "quiet": [
+    "Employees must comply with the established internal rules of procedure.",
+    "The applicant may appeal the decision in the manner established by law.",
+    "The user is solely responsible for keeping their password safe.",
+    "For more information, please contact the support service.",
+    "Die Dauer der Probezeit beträgt drei Monate.",
+    "Die Geschäftsleitung hat beschlossen, eine Prüfung durchzuführen.",
+    "The buyer may demand replacement of goods of improper quality.",
+    "Construction of the new bridge has now continued for a second year."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-0.9 on a word piece in Russian sentences with long split words; English/German translations below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "pieces of split Russian words",
+ "unit_kind": "context",
+ "confidence": 0.5,
+ "notes": "Broad flag (1.1%). Card: ' про' x6, 'ш' x4, ' след' x3, 'лежа' in Russian bureaucratic prose. Probe: 'надлежащие' 0.923, 'о прохождении' 0.832, 'сегодняшним' 0.813, 'следующее' 0.715, 'профиль' 0.674; short simple Russian 'Мы гуляли в парке' 0.235, 'кошек' 0.168; English translation 0.006, German 0.002. Near misses are translations, since plain Russian leaks weakly."
+}

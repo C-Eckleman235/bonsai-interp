@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-a4689a48",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L9/N6104+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T16:19:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L9/N6104",
+   "pole": "+",
+   "label": "sports-game reporting: the token that opens the game description after a player's stat line ('in a 44-14 win', 'in an appearance', 'a campaign that'), within match recaps; the same words outside sport stay quiet",
+   "fire": [
+    "The quarterback threw for 310 yards and three touchdowns in a 31-17 win over Purdue.",
+    "She had 22 points and nine rebounds in a narrow loss to the Lakers on Friday.",
+    "The goalkeeper made eleven saves in a 1-0 shutout of the Rangers.",
+    "He struck out eight batters in a complete-game victory against Boston.",
+    "The winger has managed only two assists in a season of injuries.",
+    "Their captain scored a hat trick in a 5-2 rout of the visitors.",
+    "The rookie ran for 98 yards in an overtime win at Michigan.",
+    "The striker netted twice in a 4-1 derby triumph on Sunday."
+   ],
+   "quiet": [
+    "The novelist wrote 310 pages and three chapters in a quiet cabin near Purdue.",
+    "She had 22 guests and nine cousins in a narrow house near the Lakers' arena.",
+    "The baker made eleven loaves in a single batch of dough.",
+    "He planted eight trees in a small garden behind his house in Boston.",
+    "The tailor has managed only two suits in a season of illness.",
+    "Their captain wrote a letter in a quiet hour before dinner.",
+    "The student read for 98 minutes in an empty classroom at Michigan.",
+    "The painter finished two portraits in a sunny studio on Sunday."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-1.3 on ' a'/' an'/' campaign' after a stat line in sports recaps; non-sport 'in a' below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "sports-recap game slot",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card: ' a' x7 and ' against' x8 in 'two touchdowns in a 44-14 victory against', 'pair of goals in a 3-3 tie', '28 minutes in the game'. Probe: 'two touchdowns in a 44-14 victory' 1.288, 'four goals in a campaign' 1.080, 'two runs in an unexpected relief appearance' 0.818, '1:42 into the first period' 0.582, 'scored twice in a 3-3 tie' 0.489; 'read two chapters in a quiet library' 0.020, 'sandwich in a small shop' 0.044, 'budget in a short meeting' 0.001."
+}
