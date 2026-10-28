@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-924cc79b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L3/N957-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T07:19:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L3/N957",
+   "pole": "-",
+   "label": "word pieces inside non-English or transliterated words (Cyrillic, Arabic, Greek, macron transliterations); a broad low-magnitude pole that plain English stays below",
+   "fire": [
+    "В прошлом году комиссия проверила все банки города.",
+    "Он написал статью о философии Аристотеля для журнала.",
+    "The Persian poet wrote the Masnavī in the thirteenth century.",
+    "قدم الباحثون نتائج البحوث في المؤتمر السنوي.",
+    "The word λόγος appears often in early Greek texts.",
+    "The scholar al-Bīrūnī described the geography of India.",
+    "Студенты обсуждали новые правила на собрании.",
+    "يعمل المهندسون على تطوير مشروع جديد في المدينة."
+   ],
+   "quiet": [
+    "Last year the committee checked every bank in the city.",
+    "He wrote an article about the philosophy of Aristotle for a magazine.",
+    "The poet wrote a long book of verse in the thirteenth century.",
+    "The researchers presented their results at the annual conference.",
+    "The word reason appears often in early English texts.",
+    "The scholar described the geography of India in detail.",
+    "The students discussed the new rules at the meeting.",
+    "The engineers are working on a new project in the city."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.9 on mid-word pieces of Cyrillic/Arabic/Greek/transliterated words; English sentences on the same topics below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "pieces of non-English/transliterated words (broad)",
+ "unit_kind": "dense / positional",
+ "confidence": 0.3,
+ "notes": "Card: max 0.26, flagged broad (8.7% of tokens) and gate-closed. Peaks on 'ис', 'ū', 'وث', 'ν', 'ios', 'View'. Probe: Russian 'конфисковывать' 0.931, Greek 'Αἰών' 0.779, 'qolūb' 0.775, 'Cheerios' 0.593, Arabic 'البحوث' 0.564, 'Integral View' 0.580; plain English 0.034-0.082."
+}

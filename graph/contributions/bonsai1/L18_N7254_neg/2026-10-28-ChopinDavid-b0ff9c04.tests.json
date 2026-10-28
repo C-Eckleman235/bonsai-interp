@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-b0ff9c04",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N7254-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T07:19:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L18/N7254",
+   "pole": "-",
+   "label": "a noun naming a field of a record or form to be filled or displayed (name, address, description, title); weak guess",
+   "fire": [
+    "To register, type your first name, your email address and a password.",
+    "Each library card lists the owner's name, address and expiry date.",
+    "The label printed on the parcel shows the sender name and the postcode.",
+    "item = Item(title=row.title, description=row.description, price=row.price)",
+    "Fill in the box for your street address and then your phone number.",
+    "The badge displays the employee name above a small photo and the job title.",
+    "The receipt includes the store name, the date and the total amount paid.",
+    "print(f\"{user.name}: {user.address}\")"
+   ],
+   "quiet": [
+    "To register, you will need to bring a friend and a small fee.",
+    "The library owner gave a short speech about the new reading room.",
+    "The parcel arrived late because the courier got lost in the rain.",
+    "for row in rows:\n    total = total + row.price",
+    "Fill the box with old newspapers and then tape it shut.",
+    "The employee smiled for a small photo before going home.",
+    "The store closed early, so we went to the cafe next door.",
+    "print(f\"{count} items processed\")"
+   ]
+  }
+ ],
+ "predictions": "fire 0.1-0.25 on field nouns in form/record/code contexts; the same words in ordinary narrative below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "data-field noun (name, address, description) (guess)",
+ "unit_kind": "context",
+ "confidence": 0.15,
+ "notes": "Card (max 16.5): ' name' (state name on coins), ' message' (error message), '.description', ' value', ' data', ' document'. Probe weak: 'your full name, then your address' 0.207, 'state name' 0.141, 'self.item.description' 0.135, 'key and a value' 0.041; 'My name is Laura' 0.026, 'message of the film' 0.025. Only form-field uses rose above 0.1; best-guess test."
+}

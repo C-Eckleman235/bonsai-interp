@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-10ff042f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L5/N8424-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T07:19:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L5/N8424",
+   "pole": "-",
+   "label": "tokens inside a bibliographic reference (author lists, 'reprinted from', page markers); the same words in ordinary prose stay lower; weak pole",
+   "fire": [
+    "Smith, R. (ed.), Essays on Kant (1981), reprinted from Philosophy 40.",
+    "López, M., R. Torres, y A. Ruiz, 'Aves del sur', 1998, pp. 12-30.",
+    "Иванов, 1985, с. 212; Петров, 1990, с. 45.",
+    "See e.g. the studies by K. Lee and P. Grant in the same volume.",
+    "Jones, T., in Journal of Hellenic Studies 70 (1950), reprinted in Collected Papers.",
+    "Cf. the essays by M. Weber and E. Durkheim, cited in note 4.",
+    "García, L., P. Díaz, y J. Ramos, 'Suelos volcánicos', 2003, pp. 5-19.",
+    "Сидоров, 1972, с. 88; см. также Орлов, 1975."
+   ],
+   "quiet": [
+    "Smith read the essays on Kant last winter and found them hard.",
+    "López and Torres went bird watching in the south last spring.",
+    "Иванов приехал в Москву в прошлом году.",
+    "Look at the studies on the shelf before the class begins.",
+    "Jones taught Greek history at a school in the north of England.",
+    "Compare the essays you wrote in May with the ones from June.",
+    "García and Díaz grew vegetables in the volcanic soil of their farm.",
+    "Сидоров живёт в маленьком доме у реки."
+   ]
+  }
+ ],
+ "predictions": "fire 0.25-0.65 inside reference-list citations; ordinary prose with the same function words below 0.15",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "tokens inside bibliographic references",
+ "unit_kind": "context",
+ "confidence": 0.25,
+ "notes": "Card (max 4.9): ' the', ' y', ' с', ' re', ' so' inside references ('See e.g. the papers by', 'Hussain, y M. Arif', '1979, с. 401', 'reprinted from'). Probe: 'reprinted from Mind' 0.641, 'Hussain, y M. Arif' 0.600, 'See e.g. the papers by' 0.354, 'с. 401' 0.266; prose 'See the papers on the table' 0.164, 'the park and the beach' 0.038; 'Etheridge and the Indigo Girls' 0.370 (a name list also fires)."
+}
