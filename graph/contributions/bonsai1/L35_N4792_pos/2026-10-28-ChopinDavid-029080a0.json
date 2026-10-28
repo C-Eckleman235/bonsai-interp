@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-28-ChopinDavid-029080a0",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N4792+",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-28T05:26:44+00:00",
+ "recipe": {
+  "toolchain_commit": "dc8f7932",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L35_N4792_pos/2026-10-28-ChopinDavid-029080a0.tests.json"
+ },
+ "label": "a continuation piece inside a word written in a non-Latin script that the tokenizer splits into several pieces (katakana loanwords like ディ|レ|クター, Korean 슬|라이|스, Cyrillic homoglyphs inside Latin words), as against the same scripts in whole-token words and plain Latin text",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L35_N4792_pos/2026-10-28-ChopinDavid-029080a0.tests.json",
+   "prereg_commit": "dc8f7932",
+   "author": "ChopinDavid",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.723,
+     "peak": "レ"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.509,
+     "peak": "スタン"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.879,
+     "peak": "라이"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.887,
+     "peak": "і"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.077,
+     "peak": "レ"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.594,
+     "peak": "スタン"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.589,
+     "peak": "і"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.049,
+     "peak": "렉"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.002,
+     "peak": "した"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": -0.0,
+     "peak": "港"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.008,
+     "peak": "하게"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.003,
+     "peak": " office"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.001,
+     "peak": " last"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.001,
+     "peak": " creates"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.0,
+     "peak": "The"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.005,
+     "peak": " �"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.591,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "dc8f7932",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "mid-word piece of split non-Latin word",
+ "unit_kind": "token",
+ "confidence": 0.45,
+ "notes": "Card: peaks on 'レ' in ディレクター, 'ービス', 'スタン' in インスタンス, '라이' in 슬라이스, Cyrillic 'і' inside 'trаffіc', ' ℃'. Probe: 슬라이스 0.627, homoglyph traffic 0.590, インスタンス 0.534, ディレクター 0.489, ' «' 0.363, ℃ 0.389; single-token サービス sentence 0.040, plain English traffic 0.004, floor 0.003.",
+ "selection": "random draw"
+}
