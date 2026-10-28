@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-af1eb670",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L27/N5155-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T18:26:07+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L27/N5155",
+   "pole": "-",
+   "label": "the opening piece of a surname or institution name that the tokenizer splits into several pieces (' Gut'|tmacher, ' B'|ader, ' Me'|ier, R|utgers), strongest on ' Gut'; whole-token surnames stay low",
+   "fire": [
+    "A new survey from the Guttmacher Institute tracks clinic closures.",
+    "The economist Daniel Gutierrez spoke about rural banking.",
+    "The Gutman family donated the land for the public library.",
+    "Few judges were as influential as Justice Bader Ginsburg.",
+    "The architect Anna Meiers designed the white concert hall.",
+    "The poet Laura Gutierrez read from her new collection.",
+    "A study by Gutman and colleagues followed families for decades.",
+    "Professor Elena Gutman retired from the history department in 2010."
+   ],
+   "quiet": [
+    "A new survey from the Brookings Institute tracks clinic closures.",
+    "The economist Daniel Brown spoke about rural banking.",
+    "The Smith family donated the land for the public library.",
+    "Few judges were as influential as Justice Sandra O'Connor.",
+    "The architect Anna Black designed the white concert hall.",
+    "The poet Laura Green read from her new collection.",
+    "A study by Jones and colleagues followed families for decades.",
+    "Professor Elena Clark retired from the history department in 2010."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.9 on the first piece of a split surname; single-token surnames below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "opening piece of a split surname",
+ "unit_kind": "token/lexical",
+ "confidence": 0.45,
+ "notes": "Card peaks ' Gut' x6, ' Richard' x6, 'ut' x4, ' Me', ' Rut', ' Ruth'. Probe: 'Guttmacher' 0.945, 'Ruth Bader' 0.913, 'Herbert Gutman' 0.742, 'Richard Meier' 0.705, 'Rutgers' 0.604; 'gut-shaped' 0.312, but 'Richard Smith' 0.482 on ' Richard' itself, so near misses avoid that first name."
+}
