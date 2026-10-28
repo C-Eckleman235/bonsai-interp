@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-42aced47",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N3340-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T01:58:19+00:00",
+ "recipe": {
+  "toolchain_commit": "ad8071f0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L18_N3340_neg/2026-10-27-C-Eckleman235-42aced47.tests.json"
+ },
+ "label": "Mixed, diffuse pole: strongest on the SQLAlchemy 'backref' keyword (in db.relationship(...)) and, per census, on disease names in neutral frames; weak mid-clause activity elsewhere",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L18_N3340_neg/2026-10-27-C-Eckleman235-42aced47.tests.json",
+   "prereg_commit": "ad8071f0",
+   "author": "C-Eckleman235",
+   "n_fire": 3,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.48,
+     "peak": " back"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.432,
+     "peak": "ref"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.734,
+     "peak": "ref"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.149,
+     "peak": "ref"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.043,
+     "peak": " and"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.073,
+     "peak": " before"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.035,
+     "peak": "ic"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.062,
+     "peak": " clinic"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.48,
+     "peak": " back"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.13,
+     "peak": "',\n"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.031,
+     "peak": " ="
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.038,
+     "peak": "(os"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.037,
+     "peak": " drifted"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.075,
+     "peak": " along"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.054,
+     "peak": " its"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.052,
+     "peak": " clinic"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.68,
+    "median_fire": 0.111,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "ad8071f0",
+  "minutes": 18,
+  "batch_size": 1
+ },
+ "short": "SQLAlchemy backref; disease names",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, census arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples + concept-census evidence (which concepts and domains selected the pole)); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: The top examples are SQLAlchemy 'backref' (code) plus scattered function words and punctuation, and the band samples are a diffuse mix across code, legal, and prose, so no single concept covers it; the census says disease names in neutral frames reach 0.3 of max, so I tested both claims with near misses that keep the code or medical topic and drop only the trigger.",
+ "selection": "concept search: 10x census (diseases\r)"
+}
