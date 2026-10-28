@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-61174a82",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N6443-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T01:56:07+00:00",
+ "recipe": {
+  "toolchain_commit": "b1a7fa57",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L15_N6443_neg/2026-10-27-C-Eckleman235-61174a82.tests.json"
+ },
+ "label": "Item-boundary punctuation (newline, dash bullet, period) inside recipe, materials and instruction lists and code string delimiters; weaker evidence that professions named in neutral frames also drive it",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L15_N6443_neg/2026-10-27-C-Eckleman235-61174a82.tests.json",
+   "prereg_commit": "b1a7fa57",
+   "author": "C-Eckleman235",
+   "n_fire": 3,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.253,
+     "peak": " onion"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.373,
+     "peak": "\n"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.169,
+     "peak": "."
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.53,
+     "peak": " \","
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.341,
+     "peak": "\n"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.107,
+     "peak": "`\n"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.052,
+     "peak": " meeting"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.077,
+     "peak": "ographer"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.207,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.238,
+     "peak": " are"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.154,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.307,
+     "peak": " commas"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.079,
+     "peak": " grandmother"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.075,
+     "peak": " sorted"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.053,
+     "peak": " Lisbon"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.096,
+     "peak": " how"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.656,
+    "median_fire": 0.211,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "b1a7fa57",
+  "minutes": 17,
+  "batch_size": 1
+ },
+ "short": "list-item boundaries in recipes/instructions",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, census arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples + concept-census evidence (which concepts and domains selected the pole)); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Strongest negative-pole examples are line breaks, dashes and periods at item boundaries in ingredient and supply lists and code string delimiters, but the band samples are a scatter of function words and punctuation in many genres and the pole is mostly gate-closed leak; the census profession signal is unexplained, so two fire items test it.",
+ "selection": "concept search: 10x census (professions\r)"
+}
