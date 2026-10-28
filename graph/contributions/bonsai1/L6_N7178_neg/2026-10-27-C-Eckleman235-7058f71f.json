@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-27-C-Eckleman235-7058f71f",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N7178-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T01:53:56+00:00",
+ "recipe": {
+  "toolchain_commit": "78dc1e7e",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L6_N7178_neg/2026-10-27-C-Eckleman235-7058f71f.tests.json"
+ },
+ "label": "A past-tense or 'used to' verb directly after its subject noun in expository text (e.g. 'Diabetes was', 'It used to be'), plus the middle '0' of 200x years; strongest when the subject is a disease or topic noun",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L6_N7178_neg/2026-10-27-C-Eckleman235-7058f71f.tests.json",
+   "prereg_commit": "78dc1e7e",
+   "author": "C-Eckleman235",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.136,
+     "peak": " was"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.174,
+     "peak": " used"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.201,
+     "peak": " was"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.035,
+     "peak": " summary"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.166,
+     "peak": " was"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.227,
+     "peak": "0"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.72,
+     "peak": " used"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.107,
+     "peak": " recorded"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.038,
+     "peak": " early"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.091,
+     "peak": " bothers"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.02,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.043,
+     "peak": " well"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.081,
+     "peak": " far"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.052,
+     "peak": " published"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.076,
+     "peak": "let"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.026,
+     "peak": " the"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.906,
+    "median_fire": 0.17,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "78dc1e7e",
+  "minutes": 15,
+  "batch_size": 1
+ },
+ "short": "past verb right after subject noun",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, census arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples + concept-census evidence (which concepts and domains selected the pole)); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Strong activations are a mix: past-tense/copular verbs (' was', ' used', ' noted') right after a subject noun, and the '0' in years like 200x; the pole is mostly weak/gate-closed leak, and the census says diseases as subjects trigger it. Near misses use present or future tense with the same subjects.",
+ "selection": "concept search: 10x census (diseases\r)",
+ "trigger": {
+  "words": [
+   " was",
+   " used",
+   " noted",
+   "0"
+  ]
+ }
+}
