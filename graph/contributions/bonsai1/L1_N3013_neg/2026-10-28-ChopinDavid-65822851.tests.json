@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-65822851",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N3013-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T17:19:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N3013",
+   "pole": "-",
+   "label": "a line-opening token that fuses an opening quote or bracket with a word ('\"At', '\"T', '[I') after a newline; the pole is dense and most text fires weakly",
+   "fire": [
+    "The coach spoke after the match.\n\"At halftime we changed everything,\" he said.",
+    "The mayor answered questions.\n\"At the moment there is no money for it,\" she said.",
+    "Die Band spielte bis Mitternacht.\n\"Tatsächlich hat niemand das erwartet,\" sagte er.",
+    "The thread continued below.\n[I tried that already and it failed] said one user.",
+    "Police gave a short statement.\n\"At about nine the alarm went off,\" an officer said.",
+    "The reviewer was blunt.\n\"At no point did the plot make sense,\" she wrote.",
+    "Ein Sprecher bestätigte den Bericht.\n\"Tatsächlich gab es Probleme,\" sagte er.",
+    "Someone replied to the post.\n[I agree with the last comment] and added a link."
+   ],
+   "quiet": [
+    "The coach spoke after the match and said they changed everything at halftime.",
+    "The mayor answered questions and said that there is no money for it now.",
+    "Die Band spielte bis Mitternacht und niemand hatte das erwartet.",
+    "The thread continued below, where one user said the fix had failed.",
+    "Police gave a short statement saying the alarm went off at about nine.",
+    "The reviewer was blunt and wrote that the plot never made sense.",
+    "Ein Sprecher bestätigte den Bericht und nannte keine Details.",
+    "Someone replied to the post, agreed with the last comment and added a link."
+   ]
+  }
+ ],
+ "predictions": "fire 0.6-0.9 on '\"At'/'\"T'/'[I' at line start; same content without the fused token 0.2-0.35",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "quote-fused line opener",
+ "unit_kind": "dense / positional",
+ "confidence": 0.3,
+ "notes": "Layer 1, max 0.23, dense (62% of tokens reach 0.1 of max), gate-closed regime. Probe: '\\n\"At this point' 0.881, '\\n[I don't know' 0.803, '\\n\"Tatsächlich' 0.784, '\"At least' at text start 0.787; but ' robust' 0.689 and plain sentences 0.22-0.35. Tokens checked: '\"At', '\"T', '[I' are single tokens."
+}

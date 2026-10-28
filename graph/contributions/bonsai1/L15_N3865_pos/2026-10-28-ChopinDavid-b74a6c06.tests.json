@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-b74a6c06",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N3865+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T17:19:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L15/N3865",
+   "pole": "+",
+   "label": "separators between the vertices or side lengths of a triangle (the ',' and ')' in 'distance(a, b)' after 'a, b, c = triangle', '3, 4, and 5' for a right triangle); the same lists for other shapes stay low",
+   "fire": [
+    "p, q, r = triangle\nside1 = length(p, q)\nside2 = length(q, r)\nside3 = length(r, p)",
+    "A triangle with sides 5, 12, and 13 has a right angle.",
+    "x, y, z = tri\nab = dist(x, y)\nbc = dist(y, z)",
+    "The sides of the triangle measure 6, 8, and 10 centimetres.",
+    "a, b, c = triangle_points\nab = norm(a - b)\nbc = norm(b - c)",
+    "An isosceles triangle with sides 7, 7, and 4 is easy to draw.",
+    "u, v, w = triangle\nperimeter = dist(u, v) + dist(v, w) + dist(w, u)",
+    "Draw a triangle whose sides are 8, 15, and 17 inches long."
+   ],
+   "quiet": [
+    "p, q, r, s = square\nside1 = length(p, q)\nside2 = length(q, r)",
+    "A rectangle with sides 5 and 12 has four right angles.",
+    "x, y = segment\nab = dist(x, y)\nprint(ab)",
+    "The sides of the box measure 6 by 8 centimetres.",
+    "a, b = line_points\nab = norm(a - b)\nprint(ab)",
+    "A square with sides of 7 inches is easy to draw.",
+    "u, v = edge\nlength = dist(u, v)\nprint(length)",
+    "Draw a rectangle whose sides are 8 and 15 inches long."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.7 on separators in triangle vertex/side lists; square/rectangle lists below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "listing a triangle's vertices or sides",
+ "unit_kind": "context",
+ "confidence": 0.3,
+ "notes": "Card max 32.5 from one outlier: ')\\n' after 'a, b, c = triangle ... distance(a, b)'; others 5-8 ('l' in [h, k, l], 'equilateral triangle', '3, 4, and 5'). Probe: triangle code 0.642 (on ','), 'right triangle ... 3, 4, and 5' 0.319; same code with 'square' 0.195, rectangle 0.040, 'equilateral triangle' prose 0.128, 'triangles with nine sticks' 0.111."
+}

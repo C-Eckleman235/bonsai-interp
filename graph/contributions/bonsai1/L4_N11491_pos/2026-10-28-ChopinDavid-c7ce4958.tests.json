@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-c7ce4958",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L4/N11491+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T17:19:39+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L4/N11491",
+   "pole": "+",
+   "label": "dense: tokens built around a 'va'/'av' sound (' van', ' Aval', 'ava', ' lav'), most strongly ' van' and ' Aval'; the pole is dense and many tokens fire weakly",
+   "fire": [
+    "We rented a small van for the move across town.",
+    "The legend says King Arthur was taken to Avalon.",
+    "They loaded the drums into the back of the van.",
+    "The hotel is called the Avalon and faces the sea.",
+    "Doctors performed a gastric lavage after the poisoning.",
+    "The delivery van was parked outside the bakery.",
+    "Her favourite band played at the Avalon ballroom.",
+    "My uncle drives a white van with a ladder on top."
+   ],
+   "quiet": [
+    "We rented a small truck for the move across town.",
+    "The legend says King Arthur was taken to an island.",
+    "They loaded the drums into the back of the bus.",
+    "The hotel is called the Grand and faces the sea.",
+    "Doctors performed a quick scan after the poisoning.",
+    "The delivery truck was parked outside the bakery.",
+    "Her favourite band played at the town ballroom.",
+    "My uncle drives a white car with a rack on top."
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.95 on ' van'/' Aval'/' lav'; matched sentences without them 0.1-0.25",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "' van' and 'av' pieces",
+ "unit_kind": "dense / positional",
+ "confidence": 0.3,
+ "notes": "Layer 4, max 0.86, dense (13.6% of tokens reach 0.1 of max), echo regime. Card: 'ley', 'ما', ' van' x2, 'F' (Van|F|ossen), ' Aval', 'ava' (Balacl|ava), 'avage' (l|avage), 'amped' (cl|amped). Probe: ' Aval' 0.948, VanFossen 0.829, ' van' 0.808, ' vet' 0.568 but also 0.256 in a control; 'cl' 0.343; controls 0.114-0.204. Tokens checked: Aval|on, lav|age, vans single token."
+}

@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-28-ChopinDavid-4103cf35",
+ "kind": "interpret",
+ "neuron": "bonsai1/L28/N9686-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-28T17:27:34+00:00",
+ "recipe": {
+  "toolchain_commit": "365f0f26",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L28_N9686_neg/2026-10-28-ChopinDavid-4103cf35.tests.json"
+ },
+ "label": "the point in a recipe where boiling turns into turning the heat down (the comma after 'bring to a boil', ' the' in 'reduce/lower the heat'): it anticipates 'reduce the heat and simmer'; recipe steps with no boil-then-lower move stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L28_N9686_neg/2026-10-28-ChopinDavid-4103cf35.tests.json",
+   "prereg_commit": "365f0f26",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 3,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.597,
+     "peak": " reduce"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.95,
+     "peak": " turn"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.831,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.649,
+     "peak": " reduce"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.644,
+     "peak": " reduce"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.675,
+     "peak": " the"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.698,
+     "peak": " Reduce"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.804,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.344,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.02,
+     "peak": "le"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.428,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.326,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.171,
+     "peak": " foil"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.032,
+     "peak": " jug"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.168,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.188,
+     "peak": ","
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.686,
+    "near_misses_at_0.3": 3
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "365f0f26",
+  "minutes": 2,
+  "batch_size": 16
+ },
+ "short": "boil, then turn the heat down",
+ "unit_kind": "context",
+ "confidence": 0.55,
+ "notes": "Card max 207: ',' x9 after 'Bring to a boil', ' the' in 'Lower the heat', 'reduce the heat', ' Reduce'. Probe: 'lower the heat and let it simmer' 0.948, 'bring to a boil, reduce the heat' 0.638, 'Reduce heat and simmer' 0.602, 'bring to a boil, and cook' 0.544; 'Add the onions, stir well, and season' 0.253 (leak), 'stir in the parsley' 0.163, 'Reduce your spending' 0.023.",
+ "selection": "random draw"
+}
