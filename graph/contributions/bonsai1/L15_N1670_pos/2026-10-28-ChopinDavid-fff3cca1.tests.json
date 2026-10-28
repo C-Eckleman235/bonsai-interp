@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-fff3cca1",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L15/N1670+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T18:26:07+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L15/N1670",
+   "pole": "+",
+   "label": "guess: words that carry the worry in a health or risk discussion (whether a condition will progress, a screening recommendation, a disease name); everyday topics stay low",
+   "fire": [
+    "My doctor found a small polyp. Could this eventually become colon cancer?",
+    "Experts now advise against yearly lung cancer screening for most nonsmokers.",
+    "My son has frequent asthma attacks. Will this get worse as he grows up?",
+    "The panel recommended earlier breast cancer screening for women at high risk.",
+    "Villages that used bed nets saw far fewer malaria infections last year.",
+    "My blood sugar is a bit high. Will this turn into diabetes someday?",
+    "Researchers debated whether routine thyroid cancer screening does more harm than good.",
+    "My mother forgets names lately. Could this be the start of Alzheimer's?"
+   ],
+   "quiet": [
+    "My neighbour found a small puppy. Could this eventually become our pet?",
+    "Experts now advise against yearly tyre changes for most city drivers.",
+    "My son has frequent football practice. Will this get busier as he grows up?",
+    "The panel recommended earlier bus timetables for workers on night shifts.",
+    "Villages that used solar panels saw far lower electricity bills last year.",
+    "My garden is a bit messy. Will this turn into a jungle someday?",
+    "Researchers debated whether routine homework in primary school does more harm than good.",
+    "My mother bakes bread lately. Could this be the start of a new hobby?"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.6 on the disease or the referring pronoun in a health-risk question; non-health sentences below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "guess: health-risk discussion",
+ "unit_kind": "topic/meaning",
+ "confidence": 0.2,
+ "notes": "Card has no repeated peak (' this' in 'Will this eventually turn into Alzheimer's', ' cancer' screening, ' malaria' control, ' GH' therapy, ' welcome'). Probe: 'Will this eventually turn into dementia?' 0.654, 'prostate cancer screening' 0.480, 'overstay its welcome' 0.419, 'school homework' 0.256, 'malaria control' 0.184; 'lie down too soon' 0.037, 'library opens downtown' 0.024. A guess."
+}
