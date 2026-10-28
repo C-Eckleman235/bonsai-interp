@@ -1,0 +1,156 @@
+{
+ "id": "2026-10-27-C-Eckleman235-16dbb439",
+ "kind": "qc",
+ "neuron": "bonsai1/L22/N3610-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T01:05:20+00:00",
+ "recipe": {
+  "toolchain_commit": "c2e8a5bd",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L22_N3610_neg/2026-10-27-C-Eckleman235-16dbb439.tests.json"
+ },
+ "label": "Great Lakes and Rust Belt place names in any use: Erie, Ontario, Buffalo, Youngstown, Cleveland, Detroit, Duluth and the lakes, including namesakes and other senses (Erie Insurance, Ontario in California, buffalo the animal); place names of other US regions stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N3610_neg/2026-10-27-C-Eckleman235-16dbb439.tests.json",
+   "prereg_commit": "c2e8a5bd",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.446,
+     "peak": "rie"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.394,
+     "peak": " Ontario"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.198,
+     "peak": " buffalo"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.798,
+     "peak": "stown"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.489,
+     "peak": " Cleveland"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.594,
+     "peak": " Michigan"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.407,
+     "peak": " Detroit"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.356,
+     "peak": "ite"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.216,
+     "peak": " Maryland"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.019,
+     "peak": " airport"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.186,
+     "peak": " elk"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.095,
+     "peak": " Greenville"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.119,
+     "peak": " Miami"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.213,
+     "peak": " Bay"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.125,
+     "peak": " Tennessee"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.056,
+     "peak": " harbor"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.426,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "c2e8a5bd",
+  "minutes": 3,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "the Great Lakes and Rust Belt region on both sides of the border (Lake Erie and Lake Michigan shores, Ohio, Buffalo, Syracuse, Detroit, Pittsburgh, Toledo and the Ontario lakeshore), named or not; places in the South, the Southwest and on the Pacific coast stay low (lake country elsewhere in the north can read weakly, and is not tested here)"
+ },
+ "short": "Great Lakes names, any use",
+ "unit_kind": "sparse feature",
+ "confidence": 0.6,
+ "notes": "QC refine after a Codex red-team round (10x pilot P5): the held label described the Great Lakes region as a place, but its names fire in other referents (Ontario, California 0.52; Erie Insurance 0.59; buffalo on a Tanzanian grassland 0.59; Syracuse, Sicily 0.50). The test claims the names in any use, against names of other US regions in the same frames. Exploration (play probe: 12 Codex-written red-team probes and 8 of the author's, none of these 16 sentences; 0 overlap checked). The author saw the held label and those probe readings but did not read the original test's sentences before drafting these."
+}
