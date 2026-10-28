@@ -1,0 +1,50 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-d4a23dff",
+ "contributor": "C-Eckleman235",
+ "kind": "qc",
+ "neuron": "bonsai1/L22/N5705+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:02:07+00:00",
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Scotland as a place and Scottish things (Edinburgh, Glasgow, Aberdeen, the Highlands and islands, whisky glens, tartan and pipers, Holyrood), named or not; Wales, England and Ireland in the same frames stay low"
+ },
+ "neighbours": [
+  {
+   "unit": "L22/N5705",
+   "pole": "+",
+   "label": "Scotland and Scottish things, including Scottish personal names wherever the person lives (MacKenzie, MacAllister, Stewart, Ross, Drummond, Hamish, Morag, Euan) and Scottish words and things (loch, pipers in kilts, Islay malt); Irish, English and other surnames stay low",
+   "fire": [
+    "Hamish MacKenzie repairs boats at a marina in Florida.",
+    "The Toronto firm hired Morag Stewart as its new auditor.",
+    "Our landlord, Mr. MacAllister, lives two streets over in Denver.",
+    "A pianist named Alasdair Ross toured Japan this spring.",
+    "Fog lifted slowly off the loch behind the cottage.",
+    "Pipers in kilts led the parade down the high street of Stirling.",
+    "A dram of single malt from Islay warmed us after the hike.",
+    "The dentist, Dr. Euan Drummond, works late on Thursdays in Sydney."
+   ],
+   "quiet": [
+    "Hans Becker repairs boats at a marina in Florida.",
+    "The Toronto firm hired Maria Lopez as its new auditor.",
+    "My landlord, Mr. Kowalczyk, lives a few streets away in Denver.",
+    "A pianist named Pierre Laurent toured Japan this spring.",
+    "Fog lifted slowly off the pond behind the cottage.",
+    "Drummers in uniform led the parade down the high street of Bristol.",
+    "A glass of bourbon from Kentucky warmed us after the hike.",
+    "The dentist, Dr. Patrick Murphy, works late on Thursdays in Sydney."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "Scottish, incl. Scottish names",
+ "unit_kind": "sparse feature",
+ "confidence": 0.6,
+ "notes": "QC refine after a Codex red-team round (10x pilot P5): the pole fired strongly on Scottish surnames in non-Scottish places (MacGregor in Toronto 0.89, MacDougall in Ohio 0.87, Dugald in Dubai 0.81), which the place label left out. The test claims Scottish personal names anywhere plus Scottish things, with Irish, English, German, Polish and French names as near misses. Exploration (play probe: 12 Codex-written red-team probes and 8 of the author's, none of these 16 sentences; 0 overlap checked). The author saw the held label and those probe readings but did not read the original test's sentences before drafting these."
+}
