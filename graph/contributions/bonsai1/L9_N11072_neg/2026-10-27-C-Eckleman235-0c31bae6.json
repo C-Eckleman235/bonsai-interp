@@ -1,0 +1,156 @@
+{
+ "id": "2026-10-27-C-Eckleman235-0c31bae6",
+ "kind": "qc",
+ "neuron": "bonsai1/L9/N11072-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T01:06:27+00:00",
+ "recipe": {
+  "toolchain_commit": "d6318fc0",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L9_N11072_neg/2026-10-27-C-Eckleman235-0c31bae6.tests.json"
+ },
+ "label": "Greek personal names wherever the person is (Dimitris, Stavros, Kostas, Theodora, Papadimitriou, Alexiou, Konstantinidis) and modern Greek places and things (Piraeus, Naxos, Chania, ouzo); Italian, Spanish and Turkish names stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L9_N11072_neg/2026-10-27-C-Eckleman235-0c31bae6.tests.json",
+   "prereg_commit": "d6318fc0",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.693,
+     "peak": "ris"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.914,
+     "peak": "ros"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.501,
+     "peak": "i"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.812,
+     "peak": "as"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.877,
+     "peak": "idis"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.4,
+     "peak": "os"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.519,
+     "peak": "ania"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.568,
+     "peak": "ach"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.007,
+     "peak": " Monday"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.005,
+     "peak": " cook"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.008,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.014,
+     "peak": " Carlos"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.008,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.126,
+     "peak": " Naples"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.04,
+     "peak": " tavern"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.008,
+     "peak": " Giul"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.63,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "d6318fc0",
+  "minutes": 4,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "modern Greece: the islands (Mykonos, Corfu, Santorini, Crete, Naxos), Thessaloniki and Athens today, and 'Greek' in food and letters (Greek salad, Greek yogurt, the Greek letter mu); ancient Greek sites and other Mediterranean islands and countries in the same frames stay low"
+ },
+ "short": "Greek names and modern Greece",
+ "unit_kind": "sparse feature",
+ "confidence": 0.6,
+ "notes": "QC refine after a Codex red-team round (10x pilot P5): the held label was modern Greece as a place, but the pole fires hardest on Greek personal names in other countries (Papadakis in Boston 0.93; in exploration Yiannis in New Jersey 1.23, Konstantinos 1.04, Giovanni 0.03). The test claims Greek names anywhere plus Greek places and things; 'Carlos' (an -os name) is the hard near miss. Exploration (play probe: 12 Codex-written red-team probes and 8 of the author's, none of these 16 sentences; 0 overlap checked). The author saw the held label and those probe readings but did not read the original test's sentences before drafting these."
+}
