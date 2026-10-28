@@ -976,3 +976,20 @@ conditions, and every compose@3 condition shifted one or two tokens back. Poles 
 With compose@3 the cover rounds add 605 assignment-grade poles. Both stall in layers 12–17 (15 holds together). There
 the strong activations spread over more read tokens, and fewer poles have any local condition covering half of them.
 
+## 2026-10-28: Mid-layer poles are sparser than any describable class (compose@5 and three diagnostics)
+
+compose@5 added far-context conditions to the cover: a condition held in the last 8 tokens, or unusually often in the
+last 32. **22 of 407 tests held** (0 of 405 placebo), 2 of them in layers 12–17. Examples: "..." near a URL; `def`
+right after a decorator.
+
+Three diagnostics on the selection split's event sample point the same way:
+- **Pairs of conditions with no token set:** never reach a precision of 0.1, at any depth.
+- **WordNet supersenses** (noun.person, verb.motion, …): never reach it either.
+- **The arithmetic:** a typical mid-layer pole is strong at about 0.01% of positions. A word class, a semantic class or
+  a register occurs at 0.5–2%. A pole that fires on only 1 in 100 occurrences of a class fails a held-out 8 + 8,
+  however much of the pole the class covers.
+
+Where the deterministic rounds succeed, a set of tokens supplies the precision. In layers 12–17 the strong activations
+spread over too many tokens for that. Next: anticipation (what the next token will be), and composition over the
+mid-layer units themselves.
+

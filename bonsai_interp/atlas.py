@@ -23,7 +23,7 @@ One row per pole, keyed by `pole` = 2 * neuron + (1 for the - pole):
   lib_kind, lib_condition,        the pole's best test across the deterministic passes (atlas.LIB_SOURCES): sweeplib@1
   lib_test, lib_auroc, lib_held,  (copy, topic, lang, struct, number, predict), sweeplib@2 (twin), sweeplib@3 (grammar),
   lib_label, lib_coverage         sweeplib@4 (pos), sweeplib@5 (code),
-                                  compose@1-2 (compose), compose@3-4 (cover); a held one first, then the higher coverage. lib_held lists every
+                                  compose@1-2 (compose), compose@3+ (cover); a held one first, then the higher coverage. lib_held lists every
                                   kind:condition it held under, lib_label the claim (scrutiny 0: automatic, never a
                                   survey label), lib_coverage its share of the pole's strong activations when measured
   census_flags                    the weights-only census (docs/CENSUS.md): predict 1, frequency 2, entropy 4, steer 8
@@ -87,8 +87,14 @@ LIB_SOURCES = {  # every deterministic pass whose per-pole results join the atla
     "sweeplib@5": ROOT / "data" / "codesyn" / "bonsai1.sweeplib5.results.jsonl.gz",
     "compose@3": ROOT / "data" / "compose" / "bonsai1.compose3.results.jsonl.gz",
     "compose@4": ROOT / "data" / "compose" / "bonsai1.compose4.results.jsonl.gz",
+    "compose@5": ROOT / "data" / "compose" / "bonsai1.compose5.results.jsonl.gz",
 }
 GRAMMAR_KIND = {"sweeplib@3": "grammar", "sweeplib@4": "pos", "sweeplib@5": "code"}  # passes on the grammar engine
+
+
+def _cover(proto):
+    """compose@3 and later rounds: the cover engine (round3.py), coverage from the selection file."""
+    return proto.startswith("compose@") and int(proto.split("@")[1]) >= 3
 
 
 def _compose3_cov(path):
@@ -112,7 +118,7 @@ def _lib_rows(proto, path):
             for line in f:
                 c = json.loads(line)
                 cov[(c["neuron"], c["condition"])] = (c.get("coverage") or {}).get("share")
-    c3 = _compose3_cov(path) if proto in ("compose@3", "compose@4") else {}
+    c3 = _compose3_cov(path) if _cover(proto) else {}
     with gzip.open(path, "rt", encoding="utf-8") as f:
         for line in f:
             r = json.loads(line)
@@ -122,7 +128,7 @@ def _lib_rows(proto, path):
                 yield r["neuron"], r["kind"], r["condition"], r["outcome"], (v2_stats(r) or (None,))[0], r.get("label"), None
             elif proto == "sweeplib@2":
                 yield r["neuron"], "twin", r["claim"], r["outcome"], r.get("auroc"), r.get("label"), r.get("coverage")
-            elif proto in ("compose@3", "compose@4"):  # coverage: the hypothesis's share of the pole's sampled strong activations
+            elif _cover(proto):  # coverage: the hypothesis's share of the pole's sampled strong activations
                 cond = r["condition"].split("|")[0]
                 yield r["neuron"], "cover", cond, r["outcome"], (v2_stats(r) or (None,))[0], r.get("label"),                     c3.get((r["neuron"], r["condition"]))
             elif proto in GRAMMAR_KIND:

@@ -155,6 +155,7 @@ placebos, a held-out 8 + 8, and the 50% coverage rule.
 | sweeplib@5 code syntax (docs/CODESYN.md) | Python syntax roles at the last token | 65 held on 54 poles, 20 assignment-grade; binding sites (class, def, for-loop and keyword names), every depth |
 | compose@3 (docs/COMPOSE.md) | each pole against the whole condition library on a sample of its strong activations | 285 held, all assignment-grade; word poles for one sense or slot of their word (bear as a noun, as in an import) |
 | compose@4 (docs/COMPOSE.md) | the same cover with format conditions and the conditions one and two tokens back | 320 held, all assignment-grade; words in a local frame (after a number, after a conjunction, `(self` after a def name) |
+| compose@5 (docs/COMPOSE.md) | the same cover with far-context conditions (a condition in the last 8 tokens, or dense in the last 32) | 22 held of 407; far context adds little; pairs of conditions and WordNet supersenses never reach precision |
 
 All of it is in the atlas: lib_* columns (the best test per pole across passes, its coverage, every condition held) and
 census_flags. It shows on `play card`, `play search --kind …` and the map.
