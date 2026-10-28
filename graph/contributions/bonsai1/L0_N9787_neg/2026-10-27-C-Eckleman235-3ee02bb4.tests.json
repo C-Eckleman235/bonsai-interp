@@ -1,0 +1,55 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-3ee02bb4",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L0/N9787-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:44:18+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L0/N9787",
+   "pole": "-",
+   "label": "Word-final syllable piece 'la' (ola/ela/ila/ula) completing a name or word split by the tokenizer, e.g. Ang|ola, hyperb|ola, Renss|ela|er, Nic|ola; weaker on the standalone article ' la' and Arabic 'لا'",
+   "fire": [
+    "The delegation flew to Luanda after the long negotiations with Angola over the pipeline.\nThe talks resumed on Monday morning.",
+    "In the lecture notes, the focus of a hyperbola determines the shape of its two branches, as the teacher showed on the board.",
+    "Our new neighbor, Nicola Brandt, moved in last week and brought a plate of cookies to everyone on the street.",
+    "The study was led by Gabriela Montes and Ingela Strand, who presented their results at the Lund conference.",
+    "Reviews written by Camila Davila from Monterrey are now listed under the product page, sorted by date.",
+    "Another account holder, Akinola Bello, replied to the thread with a link to the quarterly report.",
+    "Sources say the team recovered the artifact near Lalibela, a town known for its rock-hewn churches.",
+    "El presidente habló a la prensa sobre la situación en la frontera, y la reunión terminó temprano."
+   ],
+   "quiet": [
+    "The delegation flew to Luanda after the long negotiations with Nigeria over the pipeline.\nThe talks resumed on Monday morning.",
+    "In the lecture notes, the focus of an ellipse determines the shape of its closed curve, as the teacher showed on the board.",
+    "Our new neighbor, Nicholas Brandt, moved in last week and brought a plate of cookies to everyone on the street.",
+    "The study was led by Gabriel Montes and Ingrid Strand, who presented their results at the Lund conference.",
+    "Reviews written by Carlos Marin from Monterrey are now listed under the product page, sorted by date.",
+    "Another account holder, Akintunde Bello, replied to the thread with a link to the quarterly report.",
+    "Sources say the team recovered the artifact near Axum, a town known for its ancient stone obelisks.",
+    "The president spoke to the press about the situation at the border, and the meeting ended early."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "card",
+   "bands"
+  ]
+ },
+ "short": "split-word -ola/-ela/-ila piece",
+ "confidence": "medium",
+ "trigger": {
+  "words": [
+   "ola",
+   "ela",
+   "ila",
+   "ula",
+   "la"
+  ]
+ },
+ "notes": "10x pilot (concept-maps/tenx, random arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Top examples are almost all the tokenizer piece 'ola/ela/ila/ula' ending a proper name or word (Angola, hyperbola, Nicola, Rensselaer); band samples add weaker firing on the Spanish/French article ' la' and Arabic 'لا'. Label is lexical and covers the strong cases but the weaker article firings are a separate, lower-activation mode."
+}

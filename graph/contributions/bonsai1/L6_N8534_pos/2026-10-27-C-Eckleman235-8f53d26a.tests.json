@@ -1,0 +1,46 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-8f53d26a",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L6/N8534+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:44:18+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L6/N8534",
+   "pole": "+",
+   "label": "In code, an identifier part naming one member of a paired/ordered family (min/max, start/end, old/new, lower/upper, major/minor, x/y/z), inside names built on a sibling pattern seen on nearby lines",
+   "fire": [
+    "class Range:\n    def __init__(self, lo, hi):\n        self.max_value = hi\n        self.min_value = lo\n        self.min_step = lo / 10\n        self.max_step = hi / 10\n",
+    "def clip(values, limits):\n    upper_limits = []\n    lower_limits = []\n    for v in values:\n        lower_limits.append(v - 1)\n        upper_limits.append(v + 1)\n",
+    "def rename(path, new_path):\n    old_name = os.path.basename(path)\n    new_name = os.path.basename(new_path)\n    print(old_name, new_name)\n    return old_name\n",
+    "def window(tokens, start_index=0, end_index=None):\n    end_index = end_index or len(tokens)\n    start_pos = tokens[start_index]\n    end_pos = tokens[end_index - 1]\n    return start_pos, end_pos\n",
+    "struct Version {\n    int major_;\n    int minor_;\n};\nvoid Version::set(int a, int b) {\n    this->major_ = a;\n    this->minor_ = b;\n}\n",
+    "def norm(p):\n    px = p.x\n    py = p.y\n    pz = p.z\n    return math.sqrt(p.x**2 + p.y**2 + p.z**2)\n",
+    "const config = {\n  maxRetries: 5,\n  minRetries: 1,\n  minDelay: 100,\n  maxDelay: 5000,\n};\nsetTimeout(run, config.minDelay);\n",
+    "def diff(before, after):\n    first_row = before[0]\n    second_row = after[0]\n    first_col = before[1]\n    second_col = after[1]\n    return first_col - second_col\n"
+   ],
+   "quiet": [
+    "class Greeter:\n    def __init__(self, name, mood):\n        self.name = name\n        self.mood = mood\n        self.volume = 3\n        self.language = 'en'\n",
+    "def clip(values, factor):\n    results = []\n    total = 0\n    for v in values:\n        results.append(v * factor)\n        total += v\n    return results, total\n",
+    "def rename(path, mapper):\n    filename = os.path.basename(path)\n    ext = os.path.splitext(filename)[1]\n    print(filename, ext)\n    return mapper(filename)\n",
+    "The minimum wage debate returned to the city council on Tuesday. Supporters said the old rules were unfair, while the chamber of commerce urged a slower start for small businesses.",
+    "def connect(host, port, timeout=30):\n    sock = socket.socket()\n    sock.settimeout(timeout)\n    sock.connect((host, port))\n    return sock\n",
+    "She walked from the start of the trail to the lookout, then took the old road back past the mill, counting each bend until the light faded behind the ridge.",
+    "const config = {\n  retries: 5,\n  delay: 100,\n  verbose: true,\n  name: 'worker',\n};\nsetTimeout(run, config.delay);\n",
+    "def tally(rows):\n    counts = {}\n    for row in rows:\n        key = row['category']\n        counts[key] = counts.get(key, 0) + 1\n    return counts\n"
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "card",
+   "bands"
+  ]
+ },
+ "short": "code paired-name part (min, start, old)",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, random arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Top examples are code identifier fragments (min, start, old, .major, lower, x) that are one member of a sibling pair/triple, and the - pole fires on the z/w end of x,y,z; band samples show weak spread across numbers and variable parts in code and some prose, so coverage is likely poor. Label is a guess at a distinction (sibling-pair names) rather than a single token."
+}
