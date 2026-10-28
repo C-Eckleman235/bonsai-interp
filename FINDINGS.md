@@ -993,3 +993,18 @@ Where the deterministic rounds succeed, a set of tokens supplies the precision. 
 spread over too many tokens for that. Next: anticipation (what the next token will be), and composition over the
 mid-layer units themselves.
 
+## 2026-10-28: Anticipation poles (compose@6)
+
+compose@6 added conditions on the next token and the one after, which the model has not seen. **37 of 650 tests held**
+(0 of 646 placebo), 25 of them in layers 18–35.
+
+- **The clearest group: phrasal-verb heads that anticipate their particle.** " carry", " make", " break", " play",
+  " find", " figure" and " rule" have poles at L10, L23, L28, L31 and L32 that fire before "out", "up", "down" or "off"
+  arrives, and stay quiet on the same verb without a particle.
+- **Other anticipations:**
+  - " so" before an intensified adjective;
+  - an `f` prefix before a string literal;
+  - " for" before a loop variable;
+  - " is" or " was" before a passive participle.
+- **Two late class poles:** the next word is a past-tense verb (L34), or a third-person singular verb (L35).
+

@@ -335,3 +335,41 @@ So a mid-layer pole is sparser than any class this library can name: grammatical
 Where the rounds succeed, a token set supplies the precision. In layers 12–17 the strong activations spread over too
 many tokens for that.
 
+## Round 6 (compose@6): anticipation
+
+The same cover, with conditions on what comes **next** (`bonsai_interp/compose/conds4.py`, 360 conditions):
+- **`next1:C`:** compose@3's condition C holds at the token right after the read token;
+- **`next2:C`:** C holds at the token after that.
+
+The test snippet ends at the read token, so the model never sees the next token. A pole that holds here anticipates
+C from the context. The census found prediction-type poles rising with depth (34% in L30–35).
+
+| | |
+|---|---|
+| Protocol | e676ff2d |
+| Tests pre-registered | 0b9184a9 |
+| Results | 8ea14011 |
+
+Selection gave 1,391 hypotheses (755 anticipation, the rest compose@4 conditions on poles it had not tested). 671
+item sets were untestable, which left 650 tests.
+
+- **Held:** 37 of 650, against **0 of 646** placebo tests.
+- **By family:** the next token 35, two tokens ahead 2.
+- **By depth:** L0–11 11, L12–17 1, L18–35 25.
+- **Phrasal-verb heads that expect their particle:** " carry", " make", " break", " play", " find", " figure" and
+  " rule", before "out", "up", "down" or "off" (L10, L23, L28, L31, L32). These are the clearest group.
+- **Other anticipations:**
+  - " so" before an intensified adjective (L1, L31);
+  - an `f` or `u` prefix right before a string literal (f-strings, L10, L13, L28);
+  - " West" and " Western" before a proper noun (L25);
+  - " for" before a loop variable (L21, L25);
+  - " is" or " was" before a passive participle (L22).
+- **Class-level anticipation:** the next word is a past-tense verb (L34/N589+) or a third-person singular verb
+  (L35/N7247+).
+
+### Reading
+
+Anticipation poles are real and mostly deep: two thirds of the holds are in L18–35, where the census places
+prediction-type poles. The phrasal-verb heads show the pattern well. A verb that takes a particle has a pole at
+several depths that fires before the particle arrives. Layers 12–17 again yield 1 hold.
+
