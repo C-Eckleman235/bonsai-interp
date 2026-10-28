@@ -1,0 +1,156 @@
+{
+ "id": "2026-10-27-C-Eckleman235-d4a23dff",
+ "kind": "qc",
+ "neuron": "bonsai1/L22/N5705+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T01:05:55+00:00",
+ "recipe": {
+  "toolchain_commit": "33df0ef8",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L22_N5705_pos/2026-10-27-C-Eckleman235-d4a23dff.tests.json"
+ },
+ "label": "Scotland and Scottish things, including Scottish personal names wherever the person lives (MacKenzie, MacAllister, Stewart, Ross, Drummond, Hamish, Morag, Euan) and Scottish words and things (loch, pipers in kilts, Islay malt); Irish, English and other surnames stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L22_N5705_pos/2026-10-27-C-Eckleman235-d4a23dff.tests.json",
+   "prereg_commit": "33df0ef8",
+   "author": "C-Eckleman235",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.664,
+     "peak": "ish"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.545,
+     "peak": "ag"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.825,
+     "peak": "All"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.615,
+     "peak": "air"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.746,
+     "peak": "ch"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.591,
+     "peak": "ts"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.531,
+     "peak": "lay"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.706,
+     "peak": "uan"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.008,
+     "peak": " Becker"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.016,
+     "peak": " Maria"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.02,
+     "peak": "ow"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.012,
+     "peak": " Laurent"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.066,
+     "peak": " cottage"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.057,
+     "peak": "um"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.065,
+     "peak": " bourbon"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.128,
+     "peak": " Patrick"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.639,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "33df0ef8",
+  "minutes": 4,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "Scotland as a place and Scottish things (Edinburgh, Glasgow, Aberdeen, the Highlands and islands, whisky glens, tartan and pipers, Holyrood), named or not; Wales, England and Ireland in the same frames stay low"
+ },
+ "short": "Scottish, incl. Scottish names",
+ "unit_kind": "sparse feature",
+ "confidence": 0.6,
+ "notes": "QC refine after a Codex red-team round (10x pilot P5): the pole fired strongly on Scottish surnames in non-Scottish places (MacGregor in Toronto 0.89, MacDougall in Ohio 0.87, Dugald in Dubai 0.81), which the place label left out. The test claims Scottish personal names anywhere plus Scottish things, with Irish, English, German, Polish and French names as near misses. Exploration (play probe: 12 Codex-written red-team probes and 8 of the author's, none of these 16 sentences; 0 overlap checked). The author saw the held label and those probe readings but did not read the original test's sentences before drafting these."
+}
