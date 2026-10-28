@@ -1,0 +1,46 @@
+{
+ "contribution": "2026-10-27-C-Eckleman235-42aced47",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N3340-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:39:55+00:00",
+ "selection": "concept search: 10x census (diseases\r)",
+ "neighbours": [
+  {
+   "unit": "L18/N3340",
+   "pole": "-",
+   "label": "Mixed, diffuse pole: strongest on the SQLAlchemy 'backref' keyword (in db.relationship(...)) and, per census, on disease names in neutral frames; weak mid-clause activity elsewhere",
+   "fire": [
+    "class Author(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    books = db.relationship('Book',\n                            backref='author', lazy='dynamic')\n",
+    "class Team(Base):\n    __tablename__ = 'team'\n    members = relationship(\n        'Player',\n        backref=backref('team', uselist=False),\n    )\n",
+    "orders = db.relationship('Order', secondary=order_items,\n                         backref=db.backref('products', lazy='select'))\n",
+    "    owner = relationship(\n        Account,\n        cascade='all, delete-orphan',\n        backref='owner_links')\n",
+    "During rounds, the whole conversation that afternoon drifted toward sarcoidosis and how rarely anyone catches it early.",
+    "My grandmother spent years living with rheumatoid arthritis before the new treatment came along.",
+    "The lecture was devoted almost entirely to cystic fibrosis and the way it changes a child's daily routine.",
+    "After the outbreak, the clinic's staff could talk of little except dengue fever and the shortage of tests."
+   ],
+   "quiet": [
+    "class Author(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    books = db.relationship('Book',\n                            back_populates='author', lazy='dynamic')\n",
+    "class Team(Base):\n    __tablename__ = 'team'\n    members = relationship(\n        'Player',\n        order_by='Player.number',\n    )\n",
+    "def total_price(items, tax_rate):\n    subtotal = sum(i.price for i in items)\n    return round(subtotal * (1 + tax_rate), 2)\n",
+    "for path in sorted(os.listdir(root)):\n    if path.endswith('.csv'):\n        frames.append(pd.read_csv(os.path.join(root, path)))\n",
+    "During rounds, the whole conversation that afternoon drifted toward the new parking garage and how rarely anyone found a spot.",
+    "My grandmother spent years knitting scarves for the church sale before the new craft fair came along.",
+    "The lecture was devoted almost entirely to the femur and the way its shaft bears weight in a runner's stride.",
+    "After the storm, the clinic's staff could talk of little except the flooded basement and the shortage of towels."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "card",
+   "bands"
+  ]
+ },
+ "short": "SQLAlchemy backref; disease names",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, census arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples + concept-census evidence (which concepts and domains selected the pole)); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: The top examples are SQLAlchemy 'backref' (code) plus scattered function words and punctuation, and the band samples are a diffuse mix across code, legal, and prose, so no single concept covers it; the census says disease names in neutral frames reach 0.3 of max, so I tested both claims with near misses that keep the code or medical topic and drop only the trigger."
+}
