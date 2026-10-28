@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-7a3ef801",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N10041-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T02:01:45+00:00",
+ "recipe": {
+  "toolchain_commit": "6ea3efc9",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L12_N10041_neg/2026-10-27-C-Eckleman235-7a3ef801.tests.json"
+ },
+ "label": "Running text about human health and medicine (diseases, patients, drugs, clinical care), firing on tokens inside the medical phrase where a health or clinical word is expected next",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L12_N10041_neg/2026-10-27-C-Eckleman235-7a3ef801.tests.json",
+   "prereg_commit": "6ea3efc9",
+   "author": "C-Eckleman235",
+   "n_fire": 7,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.426,
+     "peak": " nurses"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.439,
+     "peak": " antibiotics"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.283,
+     "peak": " pediatric"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.355,
+     "peak": " type"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.439,
+     "peak": " dose"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.339,
+     "peak": " infection"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.49,
+     "peak": " phys"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.546,
+     "peak": " diagnose"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.035,
+     "peak": " and"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.068,
+     "peak": " any"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.029,
+     "peak": " so"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.119,
+     "peak": " followed"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.015,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.014,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.124,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.064,
+     "peak": " cosmetic"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.432,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "6ea3efc9",
+  "minutes": 21,
+  "batch_size": 1
+ },
+ "short": "medical / health-care text context",
+ "confidence": "medium",
+ "notes": "10x pilot (concept-maps/tenx, census arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples + concept-census evidence (which concepts and domains selected the pole)); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Top and band examples are almost all health/medical text (patients, drugs like ranolazine, vaccines, physiotherapy, disclaimers), and the output suppresses/promotes clinical vocabulary; census shows 50% of diseases but 0% of objects. Near misses use other professional domains and the + pole's safety/hazard-adjacent style, keeping frames parallel.",
+ "selection": "concept search: 10x census (diseases\r)"
+}
