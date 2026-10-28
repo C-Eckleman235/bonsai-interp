@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-a36cda7f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N5030-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:21:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N5030",
+   "pole": "-",
+   "label": "unclear broad weak pole; best guess a word-final suffix piece split off a longer word (Arabic nisba '-ي/-وي/-الي', Spanish '-uido')",
+   "fire": [
+    "قدمت الحكومة دعما ماليا للمزارعين هذا العام.",
+    "ارتفع الإنتاج السنوي للمصنع بشكل كبير.",
+    "يجب شرب الماء يوميا للحفاظ على الصحة.",
+    "La cantidad de agua ha disminuido en el lago.",
+    "El puente fue construido hace cien años.",
+    "La presión ha disminuido desde que cerraron la fábrica.",
+    "التقرير السنوي للشركة صدر أمس.",
+    "Los precios han incluido el impuesto desde enero."
+   ],
+   "quiet": [
+    "قدمت الحكومة مساعدة كبيرة للمزارعين هذا العام.",
+    "ارتفع إنتاج المصنع بشكل كبير.",
+    "يجب شرب الماء كل صباح للحفاظ على الصحة.",
+    "La cantidad de agua es menor en el lago.",
+    "El puente fue hecho hace cien años.",
+    "La presión es menor desde que cerraron la fábrica.",
+    "تقرير الشركة صدر أمس.",
+    "Los precios llevan el impuesto desde enero."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.8 on the suffix piece of split Arabic and Spanish words; whole-token words below 0.2",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split-off suffix piece (guess)",
+ "unit_kind": "unclear",
+ "confidence": 0.2,
+ "notes": "Card: max 0.39, broad (3.1% of tokens); peaks 'الي' x5, 'يا' x4, 'وي' x3, 'uido' x2. Label narrowed to these pieces because other split pieces ('baj|ado') may also fire. Probe: 'السن|وي' 0.865, 'dismin|uido' 0.653, 'cut|lines' 0.634, 'م|الي' 0.509, 'يوم|يا' 0.526; plain Arabic 0.077, plain English 0.061, 'bajado' sentence 0.229. Splits checked with tokcheck."
+}

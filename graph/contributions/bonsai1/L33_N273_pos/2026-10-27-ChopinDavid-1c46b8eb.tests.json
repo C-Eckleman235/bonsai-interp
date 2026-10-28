@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-27-ChopinDavid-1c46b8eb",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L33/N273+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T01:21:26+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L33/N273",
+   "pole": "+",
+   "label": "a measurable-quantity noun whose value is about to be bounded or stated ('when the temperature is above', 'a certain income bracket', 'reach a valuation of'); ordinary nouns in the same frame stay quiet",
+   "fire": [
+    "Water the seedlings only when the humidity is below forty percent.",
+    "Households within a certain age bracket qualify for the discount.",
+    "The company expects to reach a market value of two billion dollars.",
+    "Open the vents whenever the temperature rises above eighty degrees.",
+    "Buyers stopped bidding once the price climbed past ten thousand.",
+    "Workers above a certain salary level pay a higher tax rate.",
+    "The battery shuts down when its voltage drops under three volts.",
+    "Drivers must slow down when the speed limit falls to thirty."
+   ],
+   "quiet": [
+    "Water the seedlings only when the gardener is back from lunch.",
+    "Households within a certain neighborhood qualify for the discount.",
+    "The company expects to reach a new office in two months.",
+    "Open the vents whenever the kitchen fills with smoke.",
+    "Buyers stopped bidding once the auctioneer left the room.",
+    "Workers above a certain floor take the north elevator.",
+    "The battery shuts down when its owner leaves the house.",
+    "Drivers must slow down when the road enters the village."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.75 on temperature/income/valuation/humidity-type nouns in threshold frames; concrete nouns below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "quantity noun before its value",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: ' percent' 81, ' pressure', ' temperature', ' income', ' price', ' valuation', ' energy level'. Probe: 'reach a valuation of' 0.763, 'certain income bracket' 0.702, 'when the temperature is above' 0.494; but 'blood pressure low' 0.031 and '5 percent' 0.002; control nouns (dishes, fence, weather) 0.000-0.002."
+}
