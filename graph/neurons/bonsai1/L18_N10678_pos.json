@@ -4,8 +4,8 @@
  "layer": 18,
  "index": 10678,
  "pole": "+",
- "label": "the final subword of a multi-token Spanish/Italian surname in a person's full name (Bermude|z, Ramazz|ini)",
- "short": "surname final subword",
+ "label": "the last piece of a rare or foreign person's name that the tokenizer splits into several pieces, in any language (Bermude|z, Kristoffers|en); common names like Smith stay quiet",
+ "short": "last piece of a split rare/foreign personal name",
  "kind": "lexical",
  "status": "failed",
  "depth": "quick",
@@ -131,6 +131,128 @@
     "near_misses_at_0.3": 4
    },
    "contribution": "2026-10-22-lm1909-cb515f2e"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L18_N10678_pos/2026-10-28-moridinamael-1b420a32.tests.json",
+   "prereg_commit": "f46e6b96",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.517,
+     "peak": "z"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.464,
+     "peak": "en"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.489,
+     "peak": "ski"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.261,
+     "peak": " A"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.068,
+     "peak": "ors"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.384,
+     "peak": "endra"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.261,
+     "peak": "eg"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.104,
+     "peak": "icz"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.24,
+     "peak": " who"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.196,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.286,
+     "peak": " from"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.045,
+     "peak": " Mr"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.063,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.265,
+     "peak": " Taylor"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.23,
+     "peak": " gesch"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.091,
+     "peak": " Miller"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.766,
+    "median_fire": 0.323,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-28-moridinamael-1b420a32"
   }
  ],
  "label_history": [
@@ -138,30 +260,37 @@
    "2026-10-22-lm1909-cb515f2e",
    "the final subword of a multi-token Spanish/Italian surname in a person's full name (Bermude|z, Ramazz|ini)",
    "failed"
+  ],
+  [
+   "2026-10-28-moridinamael-1b420a32",
+   "the last piece of a rare or foreign person's name that the tokenizer splits into several pieces, in any language (Bermude|z, Kristoffers|en); common names like Smith stay quiet",
+   "failed"
   ]
  ],
  "examples": [],
  "evidence": [],
  "roles": [],
  "contributors": [
-  "lm1909"
+  "lm1909",
+  "moridinamael"
  ],
  "contributions": [
-  "2026-10-22-lm1909-cb515f2e"
+  "2026-10-22-lm1909-cb515f2e",
+  "2026-10-28-moridinamael-1b420a32"
  ],
  "qc": {
   "confirm": 0,
   "dispute": 0,
-  "refine": 0
+  "refine": 1
  },
  "replications": [],
  "coverage": null,
  "scrutiny": {
-  "level": 1,
-  "name": "tested",
-  "test_rounds": 1,
-  "sentences": 16,
-  "contributors": 1,
-  "qc": 0
+  "level": 3,
+  "name": "checked",
+  "test_rounds": 2,
+  "sentences": 32,
+  "contributors": 2,
+  "qc": 1
  }
 }
