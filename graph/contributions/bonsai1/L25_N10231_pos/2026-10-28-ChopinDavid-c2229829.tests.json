@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-c2229829",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L25/N10231+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T13:22:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L25/N10231",
+   "pole": "+",
+   "label": "the blank line that closes a top-level code statement ending in a call ('app.run()' then an empty line before the next block): the '()\\n\\n' break between code blocks, not a call followed by a plain single newline",
+   "fire": [
+    "if __name__ == '__main__':\n    main()\n\nimport sys",
+    "    server = make_server()\n    server.start()\n\nclass Handler(object):\n    pass",
+    "    db.session.add(user)\n    db.session.commit()\n\n@app.route('/login')\ndef login():",
+    "    window.show()\n    sys.exit(app.exec_())\n\n\ndef helper():\n    pass",
+    "    loop = asyncio.get_event_loop()\n    loop.run_forever()\n\nprint('done')",
+    "    thread = Worker()\n    thread.start()\n\ndef stop():\n    pass",
+    "    reactor.listenTCP(8000, factory)\n    reactor.run()\n\nfrom twisted import log",
+    "    plt.plot(xs, ys)\n    plt.show()\n\nresults = []"
+   ],
+   "quiet": [
+    "if __name__ == '__main__':\n    main()\n    print('finished')",
+    "    server = make_server()\n    server.start()\n    server.wait()",
+    "    db.session.add(user)\n    db.session.commit()\n    return user",
+    "    window.show()\n    sys.exit(app.exec_())",
+    "    loop = asyncio.get_event_loop()\n    loop.run_forever()\n    loop.close()",
+    "    thread = Worker()\n    thread.start()\n    thread.join()",
+    "    reactor.listenTCP(8000, factory)\n    reactor.run()\n    log.msg('stopped')",
+    "    plt.plot(xs, ys)\n    plt.show()\n    plt.close()"
+   ]
+  }
+ ],
+ "predictions": "fire 0.2-0.6 on the '()\\n\\n' token; the same call ending with a single newline into an indented line below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "blank line after a closing call",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Card: ':\\n' x8 after 'looks like'/'following command', '()\\n\\n' x3, '\\n\\n' x4. Probe: \"app.run()\\n\\nimport os\" 0.576, 'st.save()\\n\\n@frappe.whitelist()' 0.207 vs 'st.save()' with no break 0.039; the ':\\n' cases peaked on ' command' (0.356 with or without the newline), 'looks like this:\\n' 0.077, so the colon reading was not supported."
+}

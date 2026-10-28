@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-6f197a2b",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L29/N8903-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T13:22:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L29/N8903",
+   "pole": "-",
+   "label": "an image-tensor layout specification in ML code (NHWC/NCHW, channels_last, (channels, height, width), [B, H, W, C]): naming the order of tensor axes, not other code arguments or prose about height and width",
+   "fire": [
+    "    # Convert the batch from NHWC to NCHW before the conv layer\n    x = x.permute(0, 3, 1, 2)",
+    "    # Output: tensor of shape [N, C, H, W]\n    return out",
+    "    model = build(input_shape=(224, 224, 3), data_format='channels_last')",
+    "    # Reorder the image to (height, width, channels)\n    img = np.transpose(img, (1, 2, 0))",
+    "    if data_format == 'NCHW':\n        axis = 1",
+    "    # x: a 4-D tensor of shape [batch, height, width, channels]\n    y = conv(x)",
+    "    layer = Conv2D(32, 3, data_format='channels_first')",
+    "    assert fmt in ('NHWC', 'NCHW'), 'bad layout'"
+   ],
+   "quiet": [
+    "    # Convert the batch from float to int before saving\n    x = x.long()",
+    "    # Output: the sum of all the losses\n    return out",
+    "    model = build(num_classes=10, dropout=0.5)",
+    "    # Reorder the names alphabetically\n    names = sorted(names)",
+    "    if mode == 'train':\n        step = 1",
+    "    # x: a list of file names to read\n    y = load(x)",
+    "    layer = Dense(32, activation='relu')",
+    "    assert mode in ('train', 'eval'), 'bad mode'"
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.75 inside the layout spec; other arguments and prose dimensions below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "tensor axis-order spec",
+ "unit_kind": "context",
+ "confidence": 0.7,
+ "notes": "Card: '(' before channels, 'N' of NCHW, '_N' of DATA_FORMAT_NHWC, \"='\" before channels_last, ',' in [B, H, W, D]. Probe: 'NHWC or NCHW' 0.743, '[B, H, W, D]' 0.537, '(channels, height, width)' 0.481, \"data_format='channels_last'\" 0.302; \"padding='same'\" 0.085, 'train or eval' 0.014, 'Transpose to a list of names' 0.005, prose height/width 0.011."
+}

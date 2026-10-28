@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-6ad0aef7",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L24/N2298-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T13:22:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L24/N2298",
+   "pole": "-",
+   "label": "the digits of a money amount right after a currency sign or abbreviation (Rs 13, £919, $969): the start of a price figure, not the same sentence without a figure",
+   "fire": [
+    "The new scooter costs Rs 85,000 in most showrooms in Delhi.",
+    "A ticket to the concert now costs £149 in London.",
+    "The laptop is listed at $1,299 on the company's website.",
+    "His latest film earned Rs 40 crores in the opening weekend.",
+    "The jacket was reduced from £220 to £180 in the sale.",
+    "The base model sells for $749 in the US and £699 in the UK.",
+    "Farmers were paid Rs 25 per kilo for onions last month.",
+    "The hotel charges €320 a night in the high season."
+   ],
+   "quiet": [
+    "The new scooter is popular in most showrooms in Delhi.",
+    "A ticket to the concert is hard to find in London.",
+    "The laptop is listed on the company's website.",
+    "His latest film did very well in the opening weekend.",
+    "The jacket was reduced in the sale last week.",
+    "The base model sells well in the US and in the UK.",
+    "Farmers were paid fairly for onions last month.",
+    "The hotel is always busy in the high season."
+   ]
+  }
+ ],
+ "predictions": "fire 0.4-0.7 on the space/digit after the currency mark; sentences without amounts below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "price digits after a currency mark",
+ "unit_kind": "context",
+ "confidence": 0.4,
+ "notes": "Broad flag (2.7%). Card: ' ' before 13 crores (after 'Rs'), '9' in £919, ':' in a citation, ' Molecular', dates. Probe: 'Rs 13 crores' 0.705, '$969 ... £919' 0.628, ' Molecular' 0.525, date '19.06.2017' 0.311, citation '493:' 0.219; 'done very well in its third week' 0.029, 'sells well in the US' 0.057, 'According to' 0.023."
+}

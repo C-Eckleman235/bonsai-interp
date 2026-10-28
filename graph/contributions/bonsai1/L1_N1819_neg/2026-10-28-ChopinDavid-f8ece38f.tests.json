@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-f8ece38f",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L1/N1819-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T13:22:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L1/N1819",
+   "pole": "-",
+   "label": "a space-initial katakana (or other CJK) byte-fallback token in Japanese text: a katakana loanword written after a space, not the same katakana written without a space",
+   "fire": [
+    "駅の近くに新しい カフェができました。",
+    "昨日は友達と カラオケに行きました。",
+    "この部屋には テレビ エアコン 冷蔵庫 があります。",
+    "朝ごはんに パンとコーヒーを食べました。",
+    "誕生日に父から カメラをもらいました。",
+    "週末は家で ゲームをして遊びました。",
+    "このお店では セーター シャツ コート を売っています。",
+    "母は毎朝 ジョギングをしています。"
+   ],
+   "quiet": [
+    "駅の近くに新しいカフェができました。",
+    "昨日は友達とカラオケに行きました。",
+    "この部屋にはテレビとエアコンと冷蔵庫があります。",
+    "朝ごはんにパンとコーヒーを食べました。",
+    "誕生日に父からカメラをもらいました。",
+    "週末は家でゲームをして遊びました。",
+    "このお店ではセーターとシャツとコートを売っています。",
+    "母は毎朝ジョギングをしています。"
+   ]
+  }
+ ],
+ "predictions": "fire 0.5-0.9 on the ' �' byte after the space; the same words without the space 0.2-0.35 (may leak)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "space before katakana word",
+ "unit_kind": "unclear",
+ "confidence": 0.3,
+ "notes": "Tiny max (0.14), broad flag (1.6% of tokens). Card: ' �' x27, space-initial katakana in Japanese lists. Probe: ' ビジネスセンター フィットネス' 0.879, ' ブーツ' 0.659, ' ロ ーソン' 0.610, also Chinese '樓' 0.870; no-space versions 0.357/0.271/0.213, English -0.152."
+}
