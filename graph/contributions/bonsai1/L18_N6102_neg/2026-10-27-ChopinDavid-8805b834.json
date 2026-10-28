@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-27-ChopinDavid-8805b834",
+ "kind": "interpret",
+ "neuron": "bonsai1/L18/N6102-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-28T04:30:22+00:00",
+ "recipe": {
+  "toolchain_commit": "0386bb2f",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L18_N6102_neg/2026-10-27-ChopinDavid-8805b834.tests.json"
+ },
+ "label": "a numeral in parentheses that restates a number already spelled out ('three (3) barrels', 'thirty (30) days'), as against the same legal-style sentence with the number written only once",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L18_N6102_neg/2026-10-27-ChopinDavid-8805b834.tests.json",
+   "prereg_commit": "0386bb2f",
+   "author": "ChopinDavid",
+   "n_fire": 1,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.15,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.147,
+     "peak": "3"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.149,
+     "peak": "6"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.298,
+     "peak": "4"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.077,
+     "peak": " days"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.209,
+     "peak": " ("
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.305,
+     "peak": "2"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.126,
+     "peak": "1"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.052,
+     "peak": " years"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.073,
+     "peak": " must"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.063,
+     "peak": " lease"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.066,
+     "peak": " copies"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.05,
+     "peak": " days"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.082,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.055,
+     "peak": " to"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.054,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.149,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "0386bb2f",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "parenthetical restated numeral",
+ "unit_kind": "context",
+ "confidence": 0.35,
+ "notes": "Card: low max 8.6, peaks on '/' in 'July/Tammuz', 'age/era', ',' in tag lists, and '3' in 'three (3) barrels' and 'three (3) business days'. Probe: 'five (5) working days' 0.160, 'thirty (30) days' 0.138, tag list 0.125; 'July/Tammuz' 0.062, 'colour/color' 0.074, 'five working days' 0.056, floor 0.085.",
+ "selection": "random draw"
+}
