@@ -1,0 +1,62 @@
+{
+ "contribution": "2026-10-28-C-Eckleman235-08cfd59f",
+ "contributor": "C-Eckleman235",
+ "kind": "interpret",
+ "neuron": "bonsai1/L2/N6024-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T16:54:16+00:00",
+ "selection": "step-out from bonsai1/L9/N5881+ (10x edges pipeline, batch 2)",
+ "neighbours": [
+  {
+   "unit": "L2/N6024",
+   "pole": "-",
+   "label": "the word 'Malay' in any form (Malay, Malays, Malaysia, Malaysian, Malayan, and even Malayalam); neighbouring countries and languages (Thai, Indonesian, Tamil, Filipino) named without it stay low",
+   "fire": [
+    "Her parents speak Malay at the dinner table.",
+    "Many Malaysian students study in Australia.",
+    "The airline flies from Malaysia to Japan daily.",
+    "A Malayan tapir wandered out of the forest.",
+    "The novel was translated into Malayalam last year.",
+    "Rice is central to Malay cooking.",
+    "The team beat Malaysia in the final.",
+    "He wrote a history of the Malays in Singapore."
+   ],
+   "quiet": [
+    "Her parents speak Thai at the dinner table.",
+    "Many Indonesian students study in Australia.",
+    "The airline flies from Vietnam to Japan daily.",
+    "A Sumatran tiger wandered out of the forest.",
+    "The novel was translated into Tamil last year.",
+    "Rice is central to Filipino cooking.",
+    "The team beat Thailand in the final.",
+    "He wrote a history of the Tamils in Singapore."
+   ]
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "bands",
+   "probe"
+  ]
+ },
+ "roles": [
+  "feeds bonsai1/L9/N5881+"
+ ],
+ "short": "the word Malay(sia)",
+ "unit_kind": "lexical",
+ "confidence": 0.6,
+ "trigger": {
+  "words": [
+   "Malay",
+   "Malays",
+   "Malaysia",
+   "Malaysian",
+   "Malaysians",
+   "Malayan",
+   "Malayalam"
+  ]
+ },
+ "notes": "Feeder of bonsai1/L9/N5881+, found by a batched edge measurement (attribution candidates + census weight links, single-unit zero ablation on the anchor's top 8 corpus sites, 8 same-layer placebos): zeroing this neuron removes 0.44 of the anchor's peak on average (placebo max < 0.01); this pole is the one active at those sites. Explored with the card, all-pole band samples and one probe round of 8 sentences (none reused here)."
+}
