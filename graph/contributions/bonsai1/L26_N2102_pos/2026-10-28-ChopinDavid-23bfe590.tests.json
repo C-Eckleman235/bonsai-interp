@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-23bfe590",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L26/N2102+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T13:22:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L26/N2102",
+   "pole": "+",
+   "label": "an empty-value marker, 'null' or 'blank', naming an unfilled slot (null=True, blank areas): absence of content, not the same slot filled",
+   "fire": [
+    "    birthday = models.DateField(null=True, blank=True)",
+    "Please leave the last box on the form blank if you have no middle name.",
+    "    notes = models.TextField(blank=True, null=True)",
+    "The detective stared at the blank pages at the back of the diary.",
+    "    parent = models.ForeignKey('self', null=True, on_delete=models.SET_NULL)",
+    "If the field is null, the report prints a dash instead of a date.",
+    "The old atlas still had blank spaces where the interior was unknown.",
+    "She handed in a blank sheet because she had forgotten the exam."
+   ],
+   "quiet": [
+    "    birthday = models.DateField(default=date.today)",
+    "Please write your middle name in the last box on the form.",
+    "    notes = models.TextField(max_length=500)",
+    "The detective stared at the dated pages at the back of the diary.",
+    "    parent = models.ForeignKey('self', on_delete=models.CASCADE)",
+    "If the field has a date, the report prints it in bold.",
+    "The old atlas still had painted cities where the interior was known.",
+    "She handed in a full sheet because she had revised for the exam."
+   ]
+  }
+ ],
+ "predictions": "fire 0.35-0.6 on ' null' / ' blank'; the same lines with filled values below 0.1",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "'null'/'blank' empty slot",
+ "unit_kind": "context",
+ "confidence": 0.45,
+ "notes": "Card: ' null' x3, ' ghost', 'silent' treatments, ' blank' areas, 'air foods'; − pole suppresses absence words. Probe: 'null=True, blank=True' 0.564, 'blank areas where no explorer had been' 0.384; 'heavy silence' 0.104, 'basically air' 0.085; 'on_delete=models.CASCADE' 0.021, 'towns where the explorers had stayed' 0.016."
+}

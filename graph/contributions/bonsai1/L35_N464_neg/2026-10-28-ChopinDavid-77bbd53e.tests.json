@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-77bbd53e",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N464-",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T13:22:01+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N464",
+   "pole": "-",
+   "label": "guess: a code statement mid-identifier (the first piece of a split identifier such as Mask|edImage, __has|_loaded); probes were weak and near the floor",
+   "fire": [
+    "        if self._is_initialized and not self._has_started:\n            self._boot()",
+    "        with self.assertRaises(PermissionDenied) as ctx:\n            run()",
+    "    for node in cluster.nodes_pending:\n        node.retry()",
+    "        if not record.last_modified:\n            return None",
+    "    img = MaskedArray(np.zeros((8, 8)))",
+    "        self._cleanup_stale_sessions(context, user)",
+    "        if not Loader.__was_initialized:\n            Loader.init()",
+    "    d['created'] = n.sf_LastModifiedDate.cdata"
+   ],
+   "quiet": [
+    "The engine had not started, so the driver called a mechanic.",
+    "The committee refused permission, and the run was cancelled.",
+    "Each pending application was sent back to the office for review.",
+    "The record had not been changed since the last spring.",
+    "The mask was made of paper and painted bright red.",
+    "Every evening the staff clean up the old meeting rooms.",
+    "The loader at the quarry was finally repaired on Monday.",
+    "The date on the letter showed it was written in March."
+   ]
+  }
+ ],
+ "predictions": "fire about 0.1-0.15 on code lines; plain prose about 0.03-0.10 (likely to fail)",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split identifier in code (guess)",
+ "unit_kind": "unclear",
+ "confidence": 0.1,
+ "notes": "Broad flag (1.9%). Card: first pieces of split identifiers (' M|okena', 'sf_C|reatedDate', ' Mask|edImage', '__has|_loaded', 'nodes|_started'). Probe weak: 'assertRaises(Unauthorized)' 0.157 but 'assertRaises(ValueError)' 0.142; 'if not BootAPI.__has_loaded' 0.110 vs 'if not loaded' 0.116; 'Mokena' 0.006; the far-domain floor scored 0.103. Best guess only."
+}
