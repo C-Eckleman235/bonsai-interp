@@ -1,0 +1,156 @@
+{
+ "id": "2026-10-27-C-Eckleman235-4c369e2a",
+ "kind": "qc",
+ "neuron": "bonsai1/L8/N7443-",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T01:04:12+00:00",
+ "recipe": {
+  "toolchain_commit": "ab2b0bb1",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L8_N7443_neg/2026-10-27-C-Eckleman235-4c369e2a.tests.json"
+ },
+ "label": "Holy Land and biblical place names in any use: Jerusalem, Bethlehem, Nazareth, Jericho, Galilee, Judea and the Dead Sea, including their namesakes (Bethlehem, Pennsylvania; Palestine, Texas; the hymn 'Jerusalem'); other reused place names (Paris, Texas) and people named Jordan stay low",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L8_N7443_neg/2026-10-27-C-Eckleman235-4c369e2a.tests.json",
+   "prereg_commit": "ab2b0bb1",
+   "author": "C-Eckleman235",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.435,
+     "peak": " Bethlehem"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.524,
+     "peak": " Palestine"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.266,
+     "peak": "ilee"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.331,
+     "peak": " Jerusalem"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.184,
+     "peak": "areth"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.661,
+     "peak": "icho"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.608,
+     "peak": " Sea"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.476,
+     "peak": "a"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.006,
+     "peak": "."
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.014,
+     "peak": " Monday"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.008,
+     "peak": " before"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.01,
+     "peak": " Scotland"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.009,
+     "peak": " stopped"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.084,
+     "peak": " Age"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.082,
+     "peak": " coast"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.011,
+     "peak": "."
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.456,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test",
+   "second-round"
+  ],
+  "detected": [],
+  "toolchain_commit": "ab2b0bb1",
+  "minutes": 2,
+  "batch_size": 1
+ },
+ "qc": {
+  "verdict": "refine",
+  "label_under_test": "the Holy Land region: Jerusalem, Palestine and Palestinians, Gaza, the West Bank, Jordan the country (Petra, Amman, the Dead Sea); Lebanon, Syria and Michael Jordan stay low"
+ },
+ "short": "biblical place names, any use",
+ "unit_kind": "sparse feature",
+ "confidence": 0.6,
+ "notes": "QC refine after a Codex red-team round (10x pilot P5): the held label described the Holy Land as a region, but the pole fired on its names in other uses (Palestine, Texas 0.55; Bethlehem, Pennsylvania 0.44; the hymn Jerusalem 0.49; Jerusalem artichokes 0.38), while Michael Jordan stayed at 0.01. The test claims the names in any use, with other reused place names as near misses. Exploration (play probe: 12 Codex-written red-team probes and 8 of the author's, none of these 16 sentences; 0 overlap checked). The author saw the held label and those probe readings but did not read the original test's sentences before drafting these."
+}
