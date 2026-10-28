@@ -1,0 +1,48 @@
+{
+ "contribution": "2026-10-28-ChopinDavid-414f9d18",
+ "contributor": "ChopinDavid",
+ "kind": "interpret",
+ "neuron": "bonsai1/L35/N11699+",
+ "protocol": "quick-8+8@3",
+ "written": "2026-10-28T07:19:36+00:00",
+ "selection": "random draw",
+ "neighbours": [
+  {
+   "unit": "L35/N11699",
+   "pole": "+",
+   "label": "the word-start piece ' intr' when a word is split there (intr|avenous, intr|insically, intr|uded, intr|amural); words the tokenizer keeps whole (intrinsic, introduce, intrusion) stay silent",
+   "fire": [
+    "The nurse started the patient on intravenous antibiotics after the scan.",
+    "Burglars intruded into the warehouse twice during the long weekend.",
+    "Some philosophers say that pleasure is intrinsically good for a person.",
+    "Our school offers intramural basketball for students who are not on the team.",
+    "The doctor gave the vaccine as an intramuscular shot in the upper arm.",
+    "Police arrested an intruder who had climbed over the back fence.",
+    "He apologized for intruding on their dinner so late in the evening.",
+    "Staff can read the new policy on the company intranet from any office."
+   ],
+   "quiet": [
+    "The nurse described the intrinsic risks of the surgery before the scan.",
+    "Burglars caused an intrusion into the warehouse during the long weekend.",
+    "Some philosophers find the question of pleasure intricate and hard to settle.",
+    "Our school will introduce basketball for students who are not on the team.",
+    "The doctor was intrigued by the rash on the patient's upper arm.",
+    "Police said the alarm was an intrusive noise for the neighbours.",
+    "He apologized for interrupting their dinner so late in the evening.",
+    "Staff can read the introductory policy on the company website from any office."
+   ]
+  }
+ ],
+ "predictions": "fire 0.3-0.8 on ' intr' in split intr- words; whole-token intr- words and other in- words below 0.05",
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe"
+  ]
+ },
+ "short": "split word-start piece ' intr'",
+ "unit_kind": "token",
+ "confidence": 0.7,
+ "notes": "Card: ' intr' x27 of the top 32 (intrinsically, intravenous, intruded), plus ' enc' (encroach). Probe: intruded 0.753, intravenously 0.498, intrinsically 0.400, intramural 0.339; whole token ' intrinsic' 0.004, ' introduce' 0.000, ' int|repid' 0.000; ' enc|roach' only 0.067, so the label drops 'enc'. The output suppresses ' intr'/' intrinsic', a next-piece predictor for the intr- stem."
+}
