@@ -1,0 +1,151 @@
+{
+ "id": "2026-10-27-C-Eckleman235-24914fcb",
+ "kind": "interpret",
+ "neuron": "bonsai1/L12/N313+",
+ "contributor": "C-Eckleman235",
+ "created": "2026-10-28T02:02:50+00:00",
+ "recipe": {
+  "toolchain_commit": "93292dc6",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L12_N313_pos/2026-10-27-C-Eckleman235-24914fcb.tests.json"
+ },
+ "label": "Early tokens of a quoted or spoken utterance (just after an opening quote, interjection or address word, e.g. 'Gee,' / 'Oh man' / 'I wanted'), most often in counselling, health or psychology prose",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L12_N313_pos/2026-10-27-C-Eckleman235-24914fcb.tests.json",
+   "prereg_commit": "93292dc6",
+   "author": "C-Eckleman235",
+   "n_fire": 6,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.392,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.533,
+     "peak": "Honestly"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 1.203,
+     "peak": " man"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.616,
+     "peak": ",\""
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.271,
+     "peak": "You"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.301,
+     "peak": ","
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.588,
+     "peak": " guess"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.254,
+     "peak": " we"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.082,
+     "peak": " suggested"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.08,
+     "peak": " dinner"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.174,
+     "peak": " flare"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.02,
+     "peak": " counted"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.144,
+     "peak": ","
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.27,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.071,
+     "peak": " the"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.027,
+     "peak": " for"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.984,
+    "median_fire": 0.463,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code sonnet-5.5 (subagent)",
+  "screens": [
+   "bands",
+   "card",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "93292dc6",
+  "minutes": 22,
+  "batch_size": 1
+ },
+ "short": "start of quoted speech",
+ "confidence": "low",
+ "notes": "10x pilot (concept-maps/tenx, census arm): label and 16 sentences written by a fresh Sonnet 5.5 subagent from a packet (card + all-pole band samples + concept-census evidence (which concepts and domains selected the pole)); no probes. An Opus gate checked rule-level items only (8 + 8, 0 overlap with census and probe text, near misses free of the declared trigger) and edited nothing. Labeller's note: Top examples are the first few tokens inside quoted or spoken utterances (interjections, address words, 'I wanted', 'You'); bands show weaker firing in quoted mental-health text, and the census disease-topic selectivity fits that register. Weak, broad pole, so low confidence; near misses keep the topic but drop direct speech.",
+ "selection": "concept search: 10x census (diseases\r)"
+}
