@@ -4,10 +4,10 @@
  "layer": 3,
  "index": 5486,
  "pole": "-",
- "label": "the tokens ' autor' (Spanish/Portuguese 'author', as in 'derechos de autor'), all-caps ' AUTHOR' in an 'ABOUT THE AUTHOR' heading, and ' least' in 'at the very least': a small set of specific word tokens, as against lowercase English ' author' and plain 'at least'",
+ "label": "'author'/'autor' as the writer or rights-holder of a text (byline, copyright, 'derechos de autor'), plus ' equivalent' and 'the very least'; not 'author' as a story character, not plain 'at least'",
  "short": "' autor' / ' AUTHOR' / 'very least'",
  "kind": "word",
- "status": "partial",
+ "status": "held",
  "depth": "quick",
  "tests": [
   {
@@ -131,6 +131,128 @@
     "near_misses_at_0.3": 0
    },
    "contribution": "2026-10-24-ChopinDavid-d0cf26b2"
+  },
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L3_N5486_neg/2026-10-28-moridinamael-67b8a360.tests.json",
+   "prereg_commit": "7b00dd76",
+   "author": "blind:claude-opus-5-5 (label-only)",
+   "n_fire": 4,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.517,
+     "peak": " least"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.506,
+     "peak": " least"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.083,
+     "peak": " author"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.325,
+     "peak": " author"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.836,
+     "peak": " autor"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.257,
+     "peak": " author"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.096,
+     "peak": "ió"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.193,
+     "peak": " author"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.013,
+     "peak": " on"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.053,
+     "peak": "9"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.059,
+     "peak": " ley"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.018,
+     "peak": " in"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.075,
+     "peak": " cr"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.024,
+     "peak": " approve"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.105,
+     "peak": " same"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.017,
+     "peak": " degree"
+    }
+   ],
+   "probed_before": {
+    "fire": 1,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 0.969,
+    "median_fire": 0.291,
+    "near_misses_at_0.3": 0
+   },
+   "contribution": "2026-10-28-moridinamael-67b8a360"
   }
  ],
  "label_history": [
@@ -138,34 +260,37 @@
    "2026-10-24-ChopinDavid-d0cf26b2",
    "the tokens ' autor' (Spanish/Portuguese 'author', as in 'derechos de autor'), all-caps ' AUTHOR' in an 'ABOUT THE AUTHOR' heading, and ' least' in 'at the very least': a small set of specific word tokens, as against lowercase English ' author' and plain 'at least'",
    "held"
+  ],
+  [
+   "2026-10-28-moridinamael-67b8a360",
+   "'author'/'autor' as the writer or rights-holder of a text (byline, copyright, 'derechos de autor'), plus ' equivalent' and 'the very least'; not 'author' as a story character, not plain 'at least'",
+   "held"
   ]
  ],
  "examples": [],
  "evidence": [],
  "roles": [],
  "contributors": [
-  "ChopinDavid"
+  "ChopinDavid",
+  "moridinamael"
  ],
  "contributions": [
-  "2026-10-24-ChopinDavid-d0cf26b2"
+  "2026-10-24-ChopinDavid-d0cf26b2",
+  "2026-10-28-moridinamael-67b8a360"
  ],
  "qc": {
   "confirm": 0,
   "dispute": 0,
-  "refine": 0
+  "refine": 1
  },
  "replications": [],
- "coverage": {
-  "value": 0.0574,
-  "method": "estimated from the label's quoted words (token measure)",
-  "strong": 4062
- },
+ "coverage": null,
  "scrutiny": {
-  "level": 1,
-  "name": "tested",
-  "test_rounds": 1,
-  "sentences": 16,
-  "contributors": 1,
-  "qc": 0
+  "level": 3,
+  "name": "checked",
+  "test_rounds": 2,
+  "sentences": 32,
+  "contributors": 2,
+  "qc": 1
  }
 }
