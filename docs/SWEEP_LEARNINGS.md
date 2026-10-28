@@ -358,3 +358,4 @@ Entry format:
 - transfers: a host-bound GPU pass loses about 30% to any concurrent CPU work. Schedule CPU jobs between passes, and
   for the next model move more of the per-layer bookkeeping onto the device.
 - 2026-10-27: `gh pr checks --watch` returns at once when no checks have registered yet (a fresh PR): wait until `gh pr checks` lists them before watching, or a code PR merges unchecked (#1183).
+- 2026-10-28 10:29: 103 driver resets (nvlddmkm 153) in 90 s, then a reboot at 10:39, during the stream's probe-eval GPU turn while a CPU-heavy compose@7 build (360-condition masks) ran beside it. The batch job held no GPU turn; cause unproven. A chain killed mid-build left a tests file without its prereg manifest: rebuild deterministically and pre-register before any scoring.
