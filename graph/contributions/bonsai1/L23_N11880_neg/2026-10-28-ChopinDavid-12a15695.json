@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-28-ChopinDavid-12a15695",
+ "kind": "interpret",
+ "neuron": "bonsai1/L23/N11880-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-28T14:27:19+00:00",
+ "recipe": {
+  "toolchain_commit": "42fbea7f",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L23_N11880_neg/2026-10-28-ChopinDavid-12a15695.tests.json"
+ },
+ "label": "Japanese verb in plain (dictionary or negative) form closing a subordinate clause before a conjunctive particle (〜すると, 〜するに, 〜しないで)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L23_N11880_neg/2026-10-28-ChopinDavid-12a15695.tests.json",
+   "prereg_commit": "42fbea7f",
+   "author": "ChopinDavid",
+   "n_fire": 8,
+   "n_false_pos": 0,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.682,
+     "peak": "す"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.5,
+     "peak": "行く"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 0.592,
+     "peak": "ける"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.331,
+     "peak": "ま"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.493,
+     "peak": "ける"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.408,
+     "peak": "する"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.593,
+     "peak": "く"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.451,
+     "peak": "かない"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.218,
+     "peak": "して"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.141,
+     "peak": "すぐ"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.17,
+     "peak": "けて"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.097,
+     "peak": "飲"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.227,
+     "peak": "け"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.116,
+     "peak": "だ"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.187,
+     "peak": "ています"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.086,
+     "peak": "に"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "held",
+   "stats": {
+    "auroc": 1.0,
+    "median_fire": 0.496,
+    "near_misses_at_0.3": 0
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "42fbea7f",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "JP plain verb before と/に",
+ "unit_kind": "contextual",
+ "confidence": "medium",
+ "notes": "Probe: 押す|と 0.708, 判断する|に 0.692, 使用しない|で 0.592, 飲める 0.432; past/polite main-clause verbs 0.26 (切り替わりました), 0.109 (就職した), 0.088. Fused 'すると' token scored only 0.255, so fire items avoid it where possible.",
+ "selection": "random draw"
+}

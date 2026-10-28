@@ -1,0 +1,152 @@
+{
+ "id": "2026-10-28-ChopinDavid-f2896792",
+ "kind": "interpret",
+ "neuron": "bonsai1/L34/N3383-",
+ "contributor": "ChopinDavid",
+ "created": "2026-10-28T14:26:57+00:00",
+ "recipe": {
+  "toolchain_commit": "42fbea7f",
+  "command": "python -m bonsai_interp.graph.play run graph/contributions/bonsai1/L34_N3383_neg/2026-10-28-ChopinDavid-f2896792.tests.json"
+ },
+ "label": "first word-piece of a split compound whose completion names a landform, forest or settlement (' rain'|forest, ' superv'|olcano, '-v'|illage, ' skys'|craper)",
+ "tests": [
+  {
+   "protocol": "quick-8+8@3",
+   "tests_file": "graph/contributions/bonsai1/L34_N3383_neg/2026-10-28-ChopinDavid-f2896792.tests.json",
+   "prereg_commit": "42fbea7f",
+   "author": "ChopinDavid",
+   "n_fire": 6,
+   "n_false_pos": 1,
+   "n_written": [
+    8,
+    8
+   ],
+   "per_sentence": [
+    {
+     "set": "fire",
+     "i": 0,
+     "act": 0.32,
+     "peak": " rain"
+    },
+    {
+     "set": "fire",
+     "i": 1,
+     "act": 0.343,
+     "peak": " superv"
+    },
+    {
+     "set": "fire",
+     "i": 2,
+     "act": 1.068,
+     "peak": "-v"
+    },
+    {
+     "set": "fire",
+     "i": 3,
+     "act": 0.386,
+     "peak": " skys"
+    },
+    {
+     "set": "fire",
+     "i": 4,
+     "act": 0.441,
+     "peak": " superv"
+    },
+    {
+     "set": "fire",
+     "i": 5,
+     "act": 0.016,
+     "peak": "J"
+    },
+    {
+     "set": "fire",
+     "i": 6,
+     "act": 0.961,
+     "peak": "-v"
+    },
+    {
+     "set": "fire",
+     "i": 7,
+     "act": 0.131,
+     "peak": " skys"
+    },
+    {
+     "set": "quiet",
+     "i": 0,
+     "act": 0.205,
+     "peak": " Amazon"
+    },
+    {
+     "set": "quiet",
+     "i": 1,
+     "act": 0.266,
+     "peak": " volcanic"
+    },
+    {
+     "set": "quiet",
+     "i": 2,
+     "act": 0.355,
+     "peak": " a"
+    },
+    {
+     "set": "quiet",
+     "i": 3,
+     "act": 0.129,
+     "peak": " new"
+    },
+    {
+     "set": "quiet",
+     "i": 4,
+     "act": 0.018,
+     "peak": " Yellowstone"
+    },
+    {
+     "set": "quiet",
+     "i": 5,
+     "act": 0.016,
+     "peak": "J"
+    },
+    {
+     "set": "quiet",
+     "i": 6,
+     "act": 0.235,
+     "peak": " tiny"
+    },
+    {
+     "set": "quiet",
+     "i": 7,
+     "act": 0.021,
+     "peak": " Fifth"
+    }
+   ],
+   "probed_before": {
+    "fire": 0,
+    "quiet": 0,
+    "source": "this checkout's .probe-log, before the pre-registration commit"
+   },
+   "outcome": "failed",
+   "stats": {
+    "auroc": 0.789,
+    "median_fire": 0.365,
+    "near_misses_at_0.3": 1
+   }
+  }
+ ],
+ "methods": {
+  "agent": "claude-code opus-5.5",
+  "screens": [
+   "card",
+   "probe",
+   "quick-test"
+  ],
+  "detected": [],
+  "toolchain_commit": "42fbea7f",
+  "minutes": 1,
+  "batch_size": 16
+ },
+ "short": "split landform/settlement compound",
+ "unit_kind": "contextual",
+ "confidence": "medium",
+ "notes": "Probe: eco-village -v 0.926, supervolcano 0.715, rainforest 0.603, skyscraper 0.446; raincoat ' rain' 0.242, whole-token 'crater' 0.174, 'building' 0.063, 'forest' 0.138. Near misses use whole-token synonyms (jungle, village, tower).",
+ "selection": "random draw"
+}
